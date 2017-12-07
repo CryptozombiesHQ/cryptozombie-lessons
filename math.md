@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 8;
+        uint dnaDigits = 10;
         //start here
 
       }
@@ -18,7 +18,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 8;
+        uint dnaDigits = 10;
         uint dnaModulus = 10 ** dnaDigits;
 
       }

@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 8;
+        uint dnaDigits = 10;
         uint dnaModulus = 10 ** dnaDigits;
 
         // start here
@@ -20,7 +20,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 8;
+        uint dnaDigits = 10;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
@@ -31,7 +31,7 @@ material:
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides **_Structs_**:
+Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
 
 ```
 struct Person {
@@ -44,18 +44,6 @@ struct Person {
 Structs allow you to create more complicated data types that have multiple properties.
 
 > Note that we just introduced a new data type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
-
-With the above example, we could then create new structs and interact with the data as in the following:
-
-```
-// Both of the following are valid ways to create a struct;
-Person satoshi = Person(172, "Satoshi");
-Person vitalik = Person({name: "Vitalik", age: 16});
-
-// How to access the data:
-uint age = satoshi.age;
-string name = satoshi.name;
-```
 
 # Put it to the test
 
