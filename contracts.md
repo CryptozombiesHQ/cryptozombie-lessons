@@ -44,6 +44,8 @@ contract HelloWorld {
 
 # Put it to the test
 
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+
 1. In the box to the left, make it so our contract uses solidity version 0.4.19.
 
 2. Create an empty contract called `ZombieFactory`.
