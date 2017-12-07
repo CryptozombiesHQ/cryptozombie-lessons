@@ -49,12 +49,12 @@ With the above example, we could then create new structs and interact with the d
 
 ```
 // Both of the following are valid ways to create a struct;
-Person james = Person(32, "James");
-Person grandpa = Person({name: "Grandpa", age: 132});
+Person satoshi = Person(172, "Satoshi");
+Person vitalik = Person({name: "Vitalik", age: 16});
 
 // How to access the data:
-uint myAge = james.age;
-string myName = james.name;
+uint age = satoshi.age;
+string name = satoshi.name;
 ```
 
 # Put it to the test
