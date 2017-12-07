@@ -12,6 +12,7 @@ material:
         }
     answer: >
         struct Zombie {
+          //add the correct types to these properties
           uint256 DNA;
           string name;
         }
