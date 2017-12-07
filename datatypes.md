@@ -17,7 +17,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 8;
+        uint dnaDigits = 10;
 
       }
 ---
