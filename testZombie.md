@@ -1,6 +1,7 @@
 ---
 title: Data Types
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material: 
   zombiePartsBin:
     answer: 1
