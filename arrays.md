@@ -9,12 +9,12 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
-          uint dna;
           string name;
+          uint dna;
         }
 
         // start here
@@ -25,12 +25,12 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
-          uint dna;
           string name;
+          uint dna;
         }
 
         Zombie[] public zombies;
@@ -38,27 +38,24 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**.
-
-There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays. With **_fixed_** arrays, you declare a maximum number of elements when you declare them, and this can't be changed. With **_dynamic_** arrays, you can keep growing the array to accommodate more elements.
-
-## Declaring Arrays
-
-In Solidity, arrays are declared as follows:
+When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
 
 ```
-uint[2] fixedArray; // has a fixed length of 2 elements
-string[5] stringArray; // fixed array, can contain 5 strings
-uint[] dynamicArray; // has no fixed size, can keep growing
+// Array with a fixed length of 2 elements:
+uint[2] fixedArray;
+// another fixed Array, can contain 5 strings:
+string[5] stringArray;
+// a dynamic Array - has no fixed size, can keep growing:
+uint[] dynamicArray; 
 ```
 
-You can also create an array of **_structs_**. From the previous chapter's example:
+You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
 
 ```
-Person[] people; // dynamic array
+Person[] people; // dynamic Array, we can keep adding to it
 ```
 
-Since we said state variables are stored in the blockchain when they're updated, creating a dynamic array of structs like this can be used as a kind of database for your contract.
+Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing People (or whatever) in your contract, kind of like a database.
 
 ## Public Arrays
 
@@ -74,4 +71,4 @@ Other contracts would then be able to read (but not write) to this array. So thi
 
 We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
-Create a public array of `Zombie` **_structs_**.
+1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.

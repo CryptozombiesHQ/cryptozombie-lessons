@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
@@ -27,7 +27,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
@@ -44,7 +44,7 @@ material:
       }
 ---
 
-An empty function declaration in solidity looks like the following:
+A function declaration in solidity looks like the following:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -54,7 +54,7 @@ function eatHamburgers(string _name, uint _amount) {
 
 This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
 
-It's convention (but not required) to put an underscore before the names of function parameter variables to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
 
 You would call this function like so:
 
@@ -64,6 +64,8 @@ eatHamburgers("vitalik", 100);
 
 # Put it to the test
 
-In our app, we're going to need to be able to create some zombies.
+In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-Create an empty function named `createZombie`. It should take two paramenters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. Create an function named `createZombie`. It should take two paramenters: **__name_** (a `string`), and **__dna_** (a `uint`).
+
+Leave the body empty for now — we'll fill it in later.

@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         // start here
@@ -20,12 +20,12 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
-          uint dna;
           string name;
+          uint dna;
         }
 
       }
@@ -43,12 +43,12 @@ struct Person {
 
 Structs allow you to create more complicated data types that have multiple properties.
 
-> Note that we just introduced a new data type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
 
 # Put it to the test
 
-We're going to want to create some zombies!
+In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
 
 1. Create a `struct` named `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `dna` (a `uint`), and `name` (a `string`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).

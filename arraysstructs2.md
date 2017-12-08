@@ -1,5 +1,5 @@
 ---
-title: Working With Arrays and Structs
+title: Working With Structs and Arrays
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -9,12 +9,12 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
-          uint dna;
           string name;
+          uint dna;
         }
 
         Zombie[] public zombies;
@@ -29,12 +29,12 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 10;
+        uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
 
         struct Zombie {
-          uint dna;
           string name;
+          uint dna;
         }
 
         Zombie[] public zombies;
@@ -46,36 +46,48 @@ material:
       }
 ---
 
-Solidity's code is encapsulated in contracts. A contract is basically...
+### Creating New Structs
+
+Remember our `Person` struct in the previous example?
 
 ```
-// Interacting with fixed-length arrays:
-fixedArray[0] = 2;
-fixedArray[1] = 3; // fixedArray is now [2, 3]
-fixedArray[2] = 4; // throws an error, since array is fixed
-fixedArray.length; // equal to 2
-fixedArray[1]; // equal to 3
+struct Person {
+  uint age;
+  string name;
+}
 
-// Interacting with dynamic arrays:
-dynamicArray[0] = 2; // this will fail...
-dynamicArray.length; // ...because this is equal to 0
-dynamicArray.length = 3; // this is legal with dynamic arrays
-dynamicArray[0] = 2; // this works now!
-dynamicArray.push(3); // this also works
-// dynamicArray now equal to [2, 3]
-dynamicArray.length; // now equal to 2
+Person[] public people;
 ```
 
+Now we're going to learn how to create new `Person`s and add them to our `people` array.
+
 ```
-// Both of the following are valid ways to create a struct;
+// create a New Person:
 Person satoshi = Person(172, "Satoshi");
-Person vitalik = Person({name: "Vitalik", age: 16});
 
-// How to access the data:
-uint age = satoshi.age;
-string name = satoshi.name;
+// Add that person to the Array:
+people.push(satoshi);
 ```
 
+We can also combine these together and do them in one line of code to keep things clean:
+
+```
+people.push(Person(16, "Vitalik"));
+```
+
+Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+
+```
+uint[] numbers;
+numbers.push(5);
+numbers.push(10);
+numbers.push(15);
+// numbers is now equal to [5, 10, 15]
+```
 
 # Put it to the test
 
+Let's make our createZombie function do something!
+
+1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+2. Let's do it in one line of code to keep things clean.
