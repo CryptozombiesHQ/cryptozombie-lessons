@@ -55,10 +55,11 @@ function generateZombie(id, name, dna) {
     zombieName: name,
     zombieDescription: "A Level 1 CryptoZombie",
   }
+  return zombieDetails
 }
 ```
 
-Not included here is the code to actually swap out the image files and update the CSS.
+What our java script then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images.
 
 # Give it a try!
 
