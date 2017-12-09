@@ -55,17 +55,17 @@ Let's look at how to declare a private function:
 ```
 uint[] numbers;
 
-function private _addToArray(uint _number) {
+function _addToArray(uint _number) private {
   numbers.push(_number) {
 }
 ```
 
 This means only other functions within our contract will be able to call this function and add to the `numbers` array.
 
-As you can see, we use the keyword `private` before the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
 
 # Put it to the test
 
-Our contract's `createZombie()` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
 
-1. Modify `createZombie()` so it's a private function. Don't forget the naming convention!
+1. Modify `createZombie` so it's a private function. Don't forget the naming convention!

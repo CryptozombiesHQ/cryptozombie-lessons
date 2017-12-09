@@ -36,7 +36,7 @@ Math in Solidity is pretty straightforward. The following operations are the sam
 Solidity also supports an **_exponential operator_**:
 
 ```
-uint x = 5 ** 2 // equal to 5^2 = 25
+uint x = 5 ** 2; // equal to 5^2 = 25
 ```
 
 # Put it to the test

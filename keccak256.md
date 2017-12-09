@@ -55,7 +55,7 @@ material:
       }
 ---
 
-We want our `_generateRandomDna()` function to return a (semi) random `uint`. How can we accomplish this?
+We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
 
 Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
 
@@ -71,6 +71,8 @@ keccak256("aaaac");
 ```
 
 As you can see, the returned values are totally different despite only a 1 character change in the input.
+
+> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
 
 ## Typecasting
 
@@ -89,7 +91,7 @@ In the above, `a * b` returns a `uint`, but we were trying to store it as a `uin
 
 # Put it to the test
 
-Let's fill in the body of our `_generateRandomDna()` function! Here's what it should do:
+Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
 
 1. The first line of code should take the `keccak256` hash of `_str` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 

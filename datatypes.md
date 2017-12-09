@@ -44,6 +44,6 @@ The `uint` data type is an unsigned integer, meaning **its value must be non-neg
 
 # Put it to the test
 
-Our Zombie DNA is going to be determined by an 8-digit number.
+Our Zombie DNA is going to be determined by an 16-digit number.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `8`.
+Declare a `uint` named `dnaDigits`, and set it equal to `16`.

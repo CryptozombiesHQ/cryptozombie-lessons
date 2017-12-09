@@ -23,7 +23,7 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // some sort of event listener to take the text input:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // Call our contract's `createRandomZombie()` function:
+  // Call our contract's `createRandomZombie` function:
   ZombieFactory.createRandomZombie(name)
 })
 
