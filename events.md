@@ -93,7 +93,7 @@ Your app front-end could then listen for the event. A javascript implementation 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
-  /* do something with result */ 
+  // do something with result
 }
 ```
 
