@@ -71,7 +71,7 @@ material:
       }
 ---
 
-Our contract is almost finished. Now let's add an **_event_**.
+Our contract is almost finished! Now let's add an **_event_**.
 
 **_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
@@ -89,7 +89,13 @@ function add(uint _x, uint y) public {
 }
 ```
 
-This way you can have your app front-end update every time some state changes in the application.
+Your app front-end could then listen for the event. A javascript implementation would look something like: 
+
+```
+YourContract.IntegersAdded(function(error, result) { 
+  /* do something with result */ 
+}
+```
 
 # Put it to the test
 
