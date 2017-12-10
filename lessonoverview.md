@@ -23,14 +23,16 @@ The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple 
 8356281049284737
 ```
 
-Just like real DNA, different parts of this number will map to different traits. For example, the first 2 digits map to the zombie's head type. 
+Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
 
-> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads. Later on we could add more head types if we wanted to increase the number of zombie variations.
+> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
-So let's take the first 2 digits of our example DNA above, `83`. That would map to `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type. On the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
+For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type. 
+
+In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
 # Put it to the test
 
 1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
 
-2. When you're ready to continue, hit "Next Chapter" below, and let's dive into coding!
+Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
