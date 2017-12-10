@@ -1,6 +1,7 @@
 ---
 title: Lesson Overview
 actions: ['checkAnswer', 'hints']
+skipCheckAnswer: true
 material: 
   zombieResult:
     hideNameField: true

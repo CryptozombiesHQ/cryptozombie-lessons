@@ -3,6 +3,7 @@ title: Web3.js
 actions: ['checkAnswer', 'hints']
 material:
   zombieResult:
+    hideSliders: true
     answer: 1
 ---
 
@@ -10,7 +11,9 @@ Our Solidity contract is complete! Now we need to write a javascript frontend th
 
 Ethereum has a javscript library called **_Web3.js_**. 
 
-In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract:
+In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
+
+Don't worry if this doesn't all make sense yet.
 
 ```
 // Here's how we would access our contract:
@@ -59,14 +62,10 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-What our java script then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images.
+What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
 
 # Give it a try!
 
 Go ahead — type in your name to the box on the right, and click "Generate". See what kind of zombie you get!
 
-Also feel free to play with the sliders to see how the different dna values would impact the Zombie's appearance.
-
-# This is just the start
-
-In future lessons...
+**Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**
