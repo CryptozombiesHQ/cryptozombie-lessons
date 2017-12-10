@@ -67,3 +67,6 @@ Go ahead — type in your name to the box on the right, and click "Generate". S
 
 Also feel free to play with the sliders to see how the different dna values would impact the Zombie's appearance.
 
+# This is just the start
+
+In future lessons...

@@ -8,13 +8,16 @@ material:
       pragma solidity //1. Enter solidity version here
 
       //1. Create contract here
-    answer: >
+    answer: > 
       pragma solidity ^0.4.19;
+
 
       contract ZombieFactory {
 
       }
 ---
+
+Starting with the absolute basics:
 
 Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
@@ -46,7 +49,7 @@ contract HelloWorld {
 
 To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version 0.4.19.
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
 2. Create an empty contract called `ZombieFactory`.
 
