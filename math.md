@@ -9,8 +9,8 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 16;
-        //start here
+          uint dnaDigits = 16;
+          //start here
 
       }
     answer: >
@@ -19,8 +19,8 @@ material:
 
       contract ZombieFactory {
 
-        uint dnaDigits = 16;
-        uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
       }
 
