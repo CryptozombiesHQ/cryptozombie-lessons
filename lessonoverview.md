@@ -5,6 +5,7 @@ skipCheckAnswer: true
 material: 
   zombieResult:
     hideNameField: true
+    ignoreZombieCache: true
     answer: 1
 ---
 
