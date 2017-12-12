@@ -60,7 +60,7 @@ In this chapter, we're going to learn about 2 things: Function **_return values_
 To return a value from a function, the declaration looks like this:
 
 ```
-uint greeting = "What's up dog";
+string greeting = "What's up dog";
 
 function sayHello() public returns (string) {
   return greeting;
