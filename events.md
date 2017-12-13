@@ -27,7 +27,8 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              return uint(keccak256(_str)) % dnaModulus;
+              uint rand = uint(keccak256(_str));
+              return rand % dnaModulus;
           }
 
           function createRandomZombie(string _name) public {
@@ -60,7 +61,8 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              return uint(keccak256(_str)) % dnaModulus;
+              uint rand = uint(keccak256(_str));
+              return rand % dnaModulus;
           }
 
           function createRandomZombie(string _name) public {
