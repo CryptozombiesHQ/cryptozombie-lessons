@@ -56,7 +56,7 @@ You can also create an array of **_structs_**. Using the previous chapter's `Per
 Person[] people; // dynamic Array, we can keep adding to it
 ```
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing People (or whatever) in your contract, kind of like a database.
+Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
 ## Public Arrays
 

@@ -53,7 +53,7 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about 2 things: Function **_return values_**, and different function modifiers.
+In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
 
 ## Return Values
 
@@ -89,12 +89,14 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you can add one of these modifiers.
+> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
 
 # Put it to the test
 
 We're going to want a helper function that generates a random DNA number from a string.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one paramter named `_str` (a `string`), and return a `uint`.
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
 2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+
+3. The function body should be empty at this point — we'll fill it in later.
