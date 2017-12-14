@@ -83,7 +83,7 @@ Example:
 // declare the event
 event IntegersAdded(uint x, uint y, uint result);
 
-function add(uint _x, uint y) public {
+function add(uint _x, uint _y) public {
   uint result = _x + _y;
   // fire an event to let the app know the function was called:
   IntegersAdded(_x, _y, result);

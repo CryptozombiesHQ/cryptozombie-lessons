@@ -9,7 +9,7 @@ material:
 
 Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
 
-Ethereum has a javscript library called **_Web3.js_**. 
+Ethereum has a javscript library called **_Web3.js_**.
 
 In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
 
@@ -33,7 +33,7 @@ $("#ourButton").click(function(e) {
 // Listen for the `NewZombie` event, and update the UI
 var event = ZombieFactory.NewZombie(function(error, result) {
   if (error) return
-  generateZombie(result.zombieId, result.name, result.dna)  
+  generateZombie(result.zombieId, result.name, result.dna)
 })
 
 // take the Zombie dna, and update our image
@@ -41,10 +41,13 @@ function generateZombie(id, name, dna) {
   let dnaStr = String(dna)
   // pad DNA with leading zeroes if it's less than 16 characters
   while (dnaStr.length < 16)
-    dnaStr = "0" + dnaStr 
+    dnaStr = "0" + dnaStr
 
   let zombieDetails = {
-    // first 2 digits make up the head. We have 7 possible heads, so % 7:
+    // first 2 digits make up the head. We have 7 possible heads, so % 7
+    // to get a number 0 - 6, then add 1 to make it 1 - 7. Then we have 7
+    // image files named "head1.png" through "head7.png" we load based on
+    // this number:
     headChoice: dnaStr.substring(0, 2) % 7 + 1,
     // 2nd 2 digits make up the eyes, 11 variations:
     eyeChoice: dnaStr.substring(2, 4) % 11 + 1,
