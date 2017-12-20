@@ -108,7 +108,7 @@ In addition to `public` and `private`, Solidity has two more types of visibility
 
 `internal` is the same as `private`, except that it's also accessible to functions that inherit from this contract. (Hey, that sounds like what we want here!).
 
-`external` is for functions that can ONLY be called outside the contract. We'll talk about why you might want to use those later.
+`external` is similar to `public`, except that these functions can ONLY be called outside the contract (it can't be called by other functions inside that contract). We'll talk about why you might want to use `external` vs `public` later.
 
 For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
 
