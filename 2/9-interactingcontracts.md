@@ -104,28 +104,28 @@ For our contract to talk to another contract on the blockchain that we don't own
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
 ```
-contract SaveYourName {
-  mapping(address => string) names;
+contract FavoriteNumber {
+  mapping(address => uint) numbers;
 
-  function setName(string _name) public {
-    names[msg.sender] = _name;
+  function setNum(uint _num) public {
+    numbers[msg.sender] = _num;
   }
 
-  function getName(address _myAddress) public view returns (string) {
-    return names[_myAddress];
+  function getNum(address _myAddress) public view returns (uint) {
+    return numbers[_myAddress];
   }
 }
 ```
 
-This would be a simple contract where anyone could store a name associated with their Ethereum address, then anyone else could look up that person's name using their address.
+This would be a simple contract where anyone could store their favorite number, and it will be associated with their Ethereum address. Then anyone else could look up that person's favorite number using their address.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getName` function. 
+Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
 
-First we'd have to define an **_interface_** of the `SaveYourName` contract with with `getName` function, which would look like this:
+First we'd have to define an **_interface_** of the `FavoriteNumber` contract with with `getNum` function, which would look like this:
 
 ```
-contract NameInterface {
-  function getName(address _myAddress) public view returns (string);
+contract NumberInterface {
+  function getNum(address _myAddress) public view returns (uint);
 }
 ```
 
