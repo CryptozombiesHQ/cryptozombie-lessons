@@ -10,15 +10,32 @@ material:
 
         import "./zombiefactory.sol";
 
-        // Create KittyInterface here
+        contract KittyInterface {
+          function getKitty(uint256 _id) external view returns (
+            bool isGestating,
+            bool isReady,
+            uint256 cooldownIndex,
+            uint256 nextActionAt,
+            uint256 siringWithId,
+            uint256 birthTime,
+            uint256 matronId,
+            uint256 sireId,
+            uint256 generation,
+            uint256 genes
+          );
+        }
 
         contract ZombieFeeding is ZombieFactory {
+
+          // Initialize kittyContract here
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             Zombie storage myZombie = zombies[_zombieId];
             uint newDna = (myZombie.dna + _targetDna) / 2;
             _createZombie("NoName", newDna);
           }
+
+          // and define feedOnKitty here
 
         }
       "zombiefactory.sol": |
@@ -41,6 +58,7 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
+            // edit function definition below
             function _createZombie(string _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna));
                 zombieToOwner[id] = msg.sender;
@@ -81,6 +99,9 @@ material:
       }
 
       contract ZombieFeeding is ZombieFactory {
+
+        address cryptoKittiesAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+        KittyInterface public kittyContract = KittyInterface();
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
           Zombie storage myZombie = zombies[_zombieId];
