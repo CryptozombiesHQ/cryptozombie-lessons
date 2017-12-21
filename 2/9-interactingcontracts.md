@@ -99,6 +99,8 @@ CryptoKitties! 😱😱😱
 
 In order to do this, we'll need to read the the kittyDna from the CryptoKitties smart contract. (And we can do that because the CryptoKitties data is stored openly on the blockchain. Isn't blockchain cool?!)
 
+Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actual delete it ;)
+
 For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:

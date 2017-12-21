@@ -17,16 +17,19 @@ import lessoncomplete from './1/lessoncomplete.md'
 
 // lesson2
 import overview from './2/0-overview.md'
-// import mappings from './2/1-mappings.md'
-// import msgsender from './2/2-msgsender.md'
-// import require from './2/3-require.md'
-// import inheritance from './2/4-inheritance.md'
-// import _import from './2/5-import.md'
-// import storage from './2/6-storage.md'
-// import eatandmultiply2 from './2/7-eatandmultiply2.md'
-// import internalfunctions from './2/8-internalfunctions.md'
-// import interactingcontracts from './2/9-interactingcontracts.md'
-// import interactingcontracts2 from './2/10-interactingcontracts2.md'
+import mappings from './2/1-mappings.md'
+import msgsender from './2/2-msgsender.md'
+import require from './2/3-require.md'
+import inheritance from './2/4-inheritance.md'
+import importfiles from './2/5-importfiles.md'
+import storage from './2/6-storage.md'
+import eatandmultiply2 from './2/7-eatandmultiply2.md'
+import internalfunctions from './2/8-internalfunctions.md'
+import interactingcontracts from './2/9-interactingcontracts.md'
+import interactingcontracts2 from './2/10-interactingcontracts2.md'
+import multiplereturns from './2/11-multiplereturns.md'
+import wrappingitup from './2/12-wrappingitup.md'
+import web3js2 from './2/13-web3js.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -50,16 +53,19 @@ export default {
     lessoncomplete,
   ],
   2: [
-    overview
-    // mappings,
-    // msgsender,
-    // require,
-    // inheritance,
-    // _import,
-    // storage,
-    // eatandmultiply2,
-    // internalfunctions,
-    // interactingcontracts,
-    // interactingcontracts2
+    overview,
+    mappings,
+    msgsender,
+    require,
+    inheritance,
+    importfiles,
+    storage,
+    eatandmultiply2,
+    internalfunctions,
+    interactingcontracts,
+    interactingcontracts2,
+    multiplereturns,
+    wrappingitup,
+    web3js2,
   ]
 }

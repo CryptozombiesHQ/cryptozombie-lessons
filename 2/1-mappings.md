@@ -1,5 +1,5 @@
 ---
-title: Data Types: Mappings and Addresses
+title: Mappings and Addresses
 actions: ['checkAnswer', 'hints']
 material:
   editor:

@@ -85,7 +85,13 @@ material:
       }
 ---
 
-If we want to prevent a function from executing unless some condition is true, we can use `require`:
+In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users can keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+
+Let's make it so only new players can call this function. Players in our game will be able to call it once when they first start the game to create their starting zombie.
+
+How can we make it so this function can only be called once per player? For that we use `require`.
+
+`require` makes it so that the function will throw an error if some condition is not true:
 
 ```
 function sayHiToVitalik(string _name) returns (string) {
