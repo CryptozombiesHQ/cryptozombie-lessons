@@ -103,7 +103,7 @@ function setMyNumber(uint _myNumber) public {
   // The syntax for storing data in a mapping is just like with an array
 }
 
-function whatIsMyNumber() public returns (uint) {
+function whatIsMyNumber() public view returns (uint) {
   // Retrieve the value stored in the sender's address
   // Will be `0` if the sender hasn't called `setMyNumber` yet
   return favoriteNumber[msg.sender];
