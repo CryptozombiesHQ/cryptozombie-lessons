@@ -101,6 +101,8 @@ Well it just so happens that CryptoZombies love to eat...
 
 **CryptoKitties!** 😱😱😱
 
+(Yes, I'm serious 😆 )
+
 In order to do this, we'll need to read the the kittyDna from the CryptoKitties smart contract. (And we can do that because the CryptoKitties data is stored openly on the blockchain. Isn't blockchain cool?!)
 
 Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
