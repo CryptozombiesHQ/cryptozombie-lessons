@@ -100,22 +100,23 @@ One feature of Solidity that makes this more manageable is contract **_inheritan
 ```
 contract Doge {
   function greet() public returns (string) {
-    return "So Wow" + name;
+    return "So Wow CryptoDoge";
   }
 }
 
 contract BabyDoge is Doge {
   function anotherGreet() public returns (string) {
-    return "Such Win";
+    return "Such Moon CryptoDoge";
+  }
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means you can call both `greet()` and `anotherGreet()` on `BabyDoge`, and both will work.
+`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `greet()` and `anotherGreet()`.
 
-This can be used for logical inheritance (such as a subclass, a Cat is an Animal). But it can also be used simply for organizing your code, but grouping similar logic together into different classes.
+This can be used for logical inheritance (such as a subclass, a Cat is an Animal). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
 
 # Put it to the test
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put them in their own class.
+In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own class that inherits all the methods from `ZombieFactory`.
 
-1. Make a contract called `ZombieFeeding`. This class should inherit from our `ZombieFactory` class so we can access everything from within one contract.
+1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
