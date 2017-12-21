@@ -14,9 +14,11 @@ In lesson 2, we're going to make our app more game-like: We're going to make it 
 
 How will we create new zombies? By having our zombies "feed" on other lifeforms!
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army.
+## Zombie Feeding
 
-And what do our zombies prefer to feed on?
+When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+
+And what do our zombies like to feed on most?
 
 To find that out... You'll have to complete lesson 2!
 
