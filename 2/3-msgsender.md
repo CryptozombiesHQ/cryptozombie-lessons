@@ -100,7 +100,7 @@ mapping (address => uint) favoriteNumber;
 function setMyNumber(uint _myNumber) public {
   // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
   favoriteNumber[msg.sender] = _myNumber;
-  // The syntax for storing data in a mapping is just like with an array
+  // ^ The syntax for storing data in a mapping is just like with arrays
 }
 
 function whatIsMyNumber() public view returns (uint) {

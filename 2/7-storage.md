@@ -62,6 +62,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+          require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
         }
 
@@ -123,6 +124,10 @@ When a zombie feeds on some other lifeform, its DNA will combine with the other 
 
 1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
 
-2. In our function, we're going to need to get this zombie's DNA. So the first thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+2. We we don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+
+3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+
+You should have 4 lines of code so far, including the line with the closing `}`. 
 
 We'll continue fleshing out this function in the next chapter!
