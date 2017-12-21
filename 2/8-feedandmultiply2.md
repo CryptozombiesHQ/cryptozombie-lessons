@@ -4,7 +4,7 @@ actions: ['checkAnswer', 'hints']
 material:
   editor:
     language: sol
-    startingCode: |
+    startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
@@ -75,24 +75,22 @@ material:
 
 Let's finish writing the `feedAndMultiply` function.
 
-Now that we have `myZombie` as a reference to our zombie, we can use it to access the different variables in the struct like:
-
-```
-myZombie.name;
-myZombie.dna;
-```
+Now that we have `myZombie` as a reference to our zombie, we can use it to access the different variables in the struct by using `myZombie.name` and `myZombie.dna`
 
 The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA. For example:
 
 ```
-zombieDna = 2222222222222222;
-targetDna = 4444444444444444;
-newZombieDna = (zombieDna + targetDna) / 2;
-// ^ will be equal to 3333333333333333
+function testDnaSplicing() public {
+  uint zombieDna = 2222222222222222;
+  uint targetDna = 4444444444444444;
+  uint newZombieDna = (zombieDna + targetDna) / 2;
+  // ^ will be equal to 3333333333333333
+}
+```
 
 # Put it to the test
 
-1. Our function will create a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna`.
+1. Our function will declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
 
 2. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to "NoName" for now — we can write a function to change zombies' names later.
 

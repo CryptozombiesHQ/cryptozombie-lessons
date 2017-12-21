@@ -65,9 +65,9 @@ material:
 
 Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable.
+Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
 
-In order to import one file into another, in Solidity we use the `import` keyword:
+In order to import one file into another, Solidity uses the `import` keyword:
 
 ```
 import "./someothercontract.sol";
@@ -77,7 +77,7 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-The above is assuming we have another file in the same directory named "someothercontract.sol" (.sol is the file extension for Solidity files), and that this file contains a contract named `SomeOtherContract`.
+The above assumes we have another file in the same directory named "someothercontract.sol" (.sol is the file extension for Solidity files), and that this file contains a contract named `SomeOtherContract`.
 
 When you went to compile `newContract`, the compiler would import the contents of "someothercontract.sol" into this file, and then compile the result.
 

@@ -23,7 +23,7 @@ import require from './2/4-require.md'
 import inheritance from './2/5-inheritance.md'
 import importfiles from './2/6-importfiles.md'
 import storage from './2/7-storage.md'
-import eatandmultiply2 from './2/8-eatandmultiply2.md'
+import feedandmultiply2 from './2/8-feedandmultiply2.md'
 import internalfunctions from './2/9-internalfunctions.md'
 import interactingcontracts from './2/10-interactingcontracts.md'
 import interactingcontracts2 from './2/11-interactingcontracts2.md'
@@ -60,7 +60,7 @@ export default {
     inheritance,
     importfiles,
     storage,
-    eatandmultiply2,
+    feedandmultiply2,
     internalfunctions,
     interactingcontracts,
     interactingcontracts2,

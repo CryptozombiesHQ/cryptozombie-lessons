@@ -4,7 +4,7 @@ actions: ['checkAnswer', 'hints']
 material:
   editor:
     language: sol
-    startingCode: |
+    startingCode:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
