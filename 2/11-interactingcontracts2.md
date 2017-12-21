@@ -32,6 +32,7 @@ material:
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             Zombie storage myZombie = zombies[_zombieId];
+            _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             _createZombie("NoName", newDna);
           }
@@ -103,6 +104,7 @@ material:
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
           Zombie storage myZombie = zombies[_zombieId];
+          _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           _createZombie("NoName", newDna);
         }
@@ -110,7 +112,7 @@ material:
       }
 ---
 
-Continuing our previous example with NumberInterface, once we've defined the interface as:
+Continuing our previous example with `NumberInterface`, once we've defined the interface as:
 
 ```
 contract NumberInterface {
@@ -122,13 +124,15 @@ We can use it in a contract as follows:
 
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38... // address of the contract on Ethereum
+  address NumberInterfaceAddress = 0xab38... 
+  // ^ The address of the FavoriteNumber contract on Ethereum
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
-  // now `numberContract` is pointing to the other contract
+  // Now `numberContract` is pointing to the other contract
 
   function someFunction() public {
+    // Now we can call `getNum` from that contract:
     uint num = numberContract.getNum(msg.sender);
-    // now we can do something with `num`
+    // ...and do something with `num` here
   }
 }
 ```
@@ -139,4 +143,4 @@ In this way, your contract can interact with any other contract on the Ethereum 
 
 Let's set up our contract to read from the CryptoKitties smart contract!
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` like we did about with `numberContract`.
+1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did about with `numberContract` above.

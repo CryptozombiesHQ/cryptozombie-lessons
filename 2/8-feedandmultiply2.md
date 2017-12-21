@@ -1,5 +1,5 @@
 ---
-title: Data Types
+title: Zombie DNA
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -66,6 +66,7 @@ material:
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
           Zombie storage myZombie = zombies[_zombieId];
+          _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           _createZombie("NoName", newDna);
         }
@@ -75,9 +76,9 @@ material:
 
 Let's finish writing the `feedAndMultiply` function.
 
-Now that we have `myZombie` as a reference to our zombie, we can use it to access the different variables in the struct by using `myZombie.name` and `myZombie.dna`
+The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA. 
 
-The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA. For example:
+For example:
 
 ```
 function testDnaSplicing() public {
@@ -88,10 +89,16 @@ function testDnaSplicing() public {
 }
 ```
 
+Later we can make our formula more complicated if we want to, like adding some randomness to the new zombie's DNA. But for now we'll keep it simple — we can always come back to it later.
+
 # Put it to the test
 
-1. Our function will declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus`.
 
-2. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to "NoName" for now — we can write a function to change zombies' names later.
+2. Next our function should declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+
+  > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
+
+3. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
 
 > Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)

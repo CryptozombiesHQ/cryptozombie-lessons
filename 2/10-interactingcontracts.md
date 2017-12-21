@@ -1,5 +1,5 @@
 ---
-title: Interacting With Other Contracts
+title: What Do Zombies Eat?
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -16,6 +16,7 @@ material:
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             Zombie storage myZombie = zombies[_zombieId];
+            _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             _createZombie("NoName", newDna);
           }
@@ -84,6 +85,7 @@ material:
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
           Zombie storage myZombie = zombies[_zombieId];
+          _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           _createZombie("NoName", newDna);
         }
@@ -95,18 +97,20 @@ It's time to feed our zombies! And what do zombies like to eat most?
 
 Well it just so happens that CryptoZombies love to eat...
 
-CryptoKitties! 😱😱😱
+**CryptoKitties!** 😱😱😱
 
 In order to do this, we'll need to read the the kittyDna from the CryptoKitties smart contract. (And we can do that because the CryptoKitties data is stored openly on the blockchain. Isn't blockchain cool?!)
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actual delete it ;)
+Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
+
+## Interacting with other contracts
 
 For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
 ```
-contract FavoriteNumber {
+contract LuckyNumber {
   mapping(address => uint) numbers;
 
   function setNum(uint _num) public {
@@ -119,11 +123,11 @@ contract FavoriteNumber {
 }
 ```
 
-This would be a simple contract where anyone could store their favorite number, and it will be associated with their Ethereum address. Then anyone else could look up that person's favorite number using their address.
+This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
 
 Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
 
-First we'd have to define an **_interface_** of the `FavoriteNumber` contract with with `getNum` function, which would look like this:
+First we'd have to define an **_interface_** of the `LuckyNumber` contract:
 
 ```
 contract NumberInterface {
@@ -131,13 +135,19 @@ contract NumberInterface {
 }
 ```
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — we don't have to define all the functions, and we don't need state variables. And secondly, we're not defining the functions — instead of curly braces (`{` and `}`), we're simply ending the function definition with a semi-colon (`;`).
+Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
 
-This is how the compiler knows it's an interface. By including this interface in our dapp's code, our contract knows what the other contract's function signature will look like, and so it knows how to interact with it. We'll get into interacting with it in the next lesson.
+Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+
+So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+
+By including this interface in our dapp's code, now our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+
+We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
 # Put it to the test
 
-I've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
 
 The function looks like this:
 
@@ -172,6 +182,8 @@ function getKitty(uint256 _id) external view returns (
 
 The function looks a bit different than we're used to. You can see it returns... A bunch of different values. If you're coming from a programming language like javascript, this is different — in Solidity you can return more than one value from a function.
 
-1. Define an interface called `KittyInterface`. (Remember, this looks just like creating a new contract).
+Now that we know what this function looks like, we can use it to create an interface:
+
+1. Define an interface called `KittyInterface`. (Remember, this looks just like creating a new contract — we use the `contract` keyword).
 
 2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `return` statement, instead of all the part inside the curly braces.

@@ -72,7 +72,7 @@ In Solidity, there are two place you can store variables — in `storage` and i
 
 **_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
 
-Most of the time you don't need to use these keywords — contract variables are `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends if you don't write them to a storage variable.
+Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
 
 However, there are times when you do need to use these keywords, namely when dealing with **_structs_** and **_arrays_** within functions:
 
@@ -98,20 +98,22 @@ contract SandwichFactory {
     mySandwich.status = "Eaten!";
     // ...this will permanently change `sandwiches[_index]` on the blockchain.
 
-    // If you just want to modify a copy, you can use `meemory`:
+    // If you just want a copy, you can use `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...in which case anotherSandwich will simply be a copy of the 
+    // ...in which case `anotherSandwich` will simply be a copy of the 
     // data in memory, and...
     anotherSandwich.status = "Eaten!";
     // ...will just modify the temporary variable and have no effect 
     // on `sandwiches[_index + 1]`. But you can do this:
     sandwiches[_index + 1] = anotherSandwich;
-    // ...and now the changes are permanently stored back on the blockchain.
+    // ...if you want to copy the changes back into blockchain storage.
   }
 }
 ```
 
 Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+
+For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
 
 # Put it to the test
 

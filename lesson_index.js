@@ -29,7 +29,6 @@ import interactingcontracts from './2/10-interactingcontracts.md'
 import interactingcontracts2 from './2/11-interactingcontracts2.md'
 import multiplereturns from './2/12-multiplereturns.md'
 import wrappingitup from './2/13-wrappingitup.md'
-import web3js2 from './2/14-web3js.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -66,6 +65,5 @@ export default {
     interactingcontracts2,
     multiplereturns,
     wrappingitup,
-    web3js2,
   ]
 }

@@ -1,5 +1,5 @@
 ---
-title: Dealing With Multiple Return Values
+title: Handling Multiple Return Values
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -32,6 +32,7 @@ material:
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             Zombie storage myZombie = zombies[_zombieId];
+            _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             _createZombie("NoName", newDna);
           }
@@ -105,6 +106,7 @@ material:
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
           Zombie storage myZombie = zombies[_zombieId];
+          _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           _createZombie("NoName", newDna);
         }
@@ -128,23 +130,30 @@ function processMultipleReturns() external {
   uint a;
   uint b;
   uint c;
+  // This is how you do multiple assignment:
   (a, b, c) = multipleReturns();
 }
 
-// or if we only cared about one of the values:
+// Or if we only cared about one of the values:
 function getLastReturnValue() external {
-  uint c
-  // we can just leave the other fields blank:
+  uint c;
+  // We can just leave the other fields blank:
   (,,c) = multipleReturns();
 }
 ```
 
 # Put it to the test
 
+Time to interact with the CryptoKitties contract!
+
+Let's make a function that gets the kitty genes from the contract:
+
 1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
 
 2. The function should first declare a `uint` named `kittyDna`.
 
-> Note: In the kitty contract, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId`. Remember — `getKitty` returns a ton of variables, but all we care about is the last one, `genes`. Count your commas carefully!
+3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+
+4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.

@@ -8,7 +8,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
-        // start here
+        // put import statement here
 
         contract ZombieFeeding is ZombieFactory {
 
