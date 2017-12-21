@@ -1,5 +1,5 @@
 ---
-title: Data Types
+title: More on Function Visibility
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -102,11 +102,13 @@ material:
 
 The code in our previous lesson has a mistake. If you try compiling it, the compiler will throw an error.
 
-The issue is we tried calling the `_createZombie` function from `zombiefeeding.sol`, but `_createZombie` is a `private` function. This means none of the contracts that inherit from `ZombieFactory` can access it.
+The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+
+## Internal and External
 
 In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
 
-`internal` is the same as `private`, except that it's also accessible to functions that inherit from this contract. (Hey, that sounds like what we want here!).
+`internal` is the same as `private`, except that it's also accessible to functions that inherit from this contract. **(Hey, that sounds like what we want here!)**.
 
 `external` is similar to `public`, except that these functions can ONLY be called outside the contract (it can't be called by other functions inside that contract). We'll talk about why you might want to use `external` vs `public` later.
 
