@@ -99,21 +99,21 @@ One feature of Solidity that makes this more manageable is contract **_inheritan
 
 ```
 contract Doge {
-  function greet() public returns (string) {
+  function catchphrase() public returns (string) {
     return "So Wow CryptoDoge";
   }
 }
 
 contract BabyDoge is Doge {
-  function anotherGreet() public returns (string) {
-    return "Such Moon CryptoDoge";
+  function anotherCatchphrase() public returns (string) {
+    return "Such Moon BabyDoge";
   }
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `greet()` and `anotherGreet()`.
+`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
 
-This can be used for logical inheritance (such as a subclass, a Cat is an Animal). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
+This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
 
 # Put it to the test
 
