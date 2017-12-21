@@ -56,7 +56,7 @@ material:
           Zombie[] public zombies;
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna));
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
           } 
 
@@ -107,4 +107,4 @@ We want an event to let our front-end know every time a new zombie was created, 
 
 2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the index of the new Zombie in the array. Store the result of `zombies.push()` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.

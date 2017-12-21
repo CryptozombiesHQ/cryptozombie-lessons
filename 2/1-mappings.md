@@ -24,7 +24,7 @@ material:
           // declare mappings here
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna));
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
           } 
 
@@ -61,7 +61,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna));
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
           } 
 

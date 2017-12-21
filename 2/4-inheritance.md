@@ -25,7 +25,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna));
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               NewZombie(id, _name, _dna);
@@ -68,7 +68,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna));
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               NewZombie(id, _name, _dna);
