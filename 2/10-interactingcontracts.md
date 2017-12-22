@@ -103,7 +103,7 @@ Well it just so happens that CryptoZombies love to eat...
 
 (Yes, I'm serious 😆 )
 
-In order to do this, we'll need to read the the kittyDna from the CryptoKitties smart contract. (And we can do that because the CryptoKitties data is stored openly on the blockchain. Isn't blockchain cool?!)
+In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
 
 Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
 
@@ -145,7 +145,7 @@ Secondly, we're not defining the function bodies. Instead of curly braces (`{` a
 
 So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
 
-By including this interface in our dapp's code, now our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
 
 We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
@@ -184,10 +184,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... A bunch of different values. If you're coming from a programming language like javascript, this is different — in Solidity you can return more than one value from a function.
+The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
 
 Now that we know what this function looks like, we can use it to create an interface:
 
-1. Define an interface called `KittyInterface`. (Remember, this looks just like creating a new contract — we use the `contract` keyword).
+1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `return` statement, instead of all the part inside the curly braces.
+2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `return` statement, instead of everything inside the curly braces.
