@@ -2,7 +2,7 @@
 title: Wrapping It Up
 actions: ['checkAnswer', 'hints']
 material:
-  zombieResult:
+  zombieBattle:
     hideSliders: true
     answer: 1
 ---

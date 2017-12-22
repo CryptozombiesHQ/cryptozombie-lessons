@@ -28,7 +28,8 @@ import internalfunctions from './2/9-internalfunctions.md'
 import interactingcontracts from './2/10-interactingcontracts.md'
 import interactingcontracts2 from './2/11-interactingcontracts2.md'
 import multiplereturns from './2/12-multiplereturns.md'
-import wrappingitup from './2/13-wrappingitup.md'
+import kittygenes from './2/13-kittygenes.md'
+import wrappingitup from './2/14-wrappingitup.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -64,6 +65,7 @@ export default {
     interactingcontracts,
     interactingcontracts2,
     multiplereturns,
+    kittygenes,
     wrappingitup,
   ],
   3:[],

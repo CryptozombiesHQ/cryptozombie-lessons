@@ -2,8 +2,8 @@
 title: Lesson 2 Overview
 actions: ['checkAnswer', 'hints']
 material:
-  zombieResult:
-    hideNameField: true
+  zombieBattle:
+    humanBattle: true
     ignoreZombieCache: true
     answer: 1
 ---
