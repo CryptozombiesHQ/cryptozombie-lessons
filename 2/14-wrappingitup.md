@@ -56,4 +56,6 @@ ZombieFactory.NewZombie(function(error, result) {
 
 Select the kitty you want to feed on. Your zombie's DNA and the kitty's DNA will combine, and you'll get a new zombie in your army!
 
-You can start over and try again if you want. When you get a kitty zombie you like (you only get to keep one), go ahead and proceed to the next chapter to complete lesson 2!
+Notice those cute cat legs on your new zombie? That's our final `99` digits of DNA at work 😉
+
+You can start over and try again if you want. When you get a kitty zombie you're happy with (you only get to keep one), go ahead and proceed to the next chapter to complete lesson 2!
