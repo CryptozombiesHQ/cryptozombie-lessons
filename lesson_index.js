@@ -65,5 +65,8 @@ export default {
     interactingcontracts2,
     multiplereturns,
     wrappingitup,
-  ]
+  ],
+  3:[],
+  4:[],
+  5:[],
 }
