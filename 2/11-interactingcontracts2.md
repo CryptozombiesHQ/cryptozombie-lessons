@@ -145,4 +145,4 @@ In this way, your contract can interact with any other contract on the Ethereum 
 
 Let's set up our contract to read from the CryptoKitties smart contract!
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did about with `numberContract` above.
+1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
