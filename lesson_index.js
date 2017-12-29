@@ -1,4 +1,8 @@
+// TODO: Shouldn't have to import stuff manually here, should just load all .md
+// files from the relevant locations... probably need to do that via webpack.
+
 // lesson 1
+import l1_overview from './1/00-overview.md'
 import datatypes from './1/datatypes.md'
 import contracts from './1/contracts.md'
 import math from './1/math.md'
@@ -16,6 +20,7 @@ import web3js from './1/web3js.md'
 import lessoncomplete from './1/lessoncomplete.md'
 
 // lesson2
+import l2_overview from './2/00-overview.md'
 import overview from './2/1-overview.md'
 import mappings from './2/2-mappings.md'
 import msgsender from './2/3-msgsender.md'
@@ -37,6 +42,7 @@ import lesson2complete from './2/15-lessoncomplete.md'
 
 export default {
   1: [
+    l1_overview,
     lessonoverview,
     contracts,
     datatypes,
@@ -54,6 +60,7 @@ export default {
     lessoncomplete,
   ],
   2: [
+    l2_overview,
     overview,
     mappings,
     msgsender,
