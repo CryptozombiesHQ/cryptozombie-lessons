@@ -2,6 +2,7 @@
 title: Web3.js
 actions: ['checkAnswer', 'hints']
 material:
+  saveZombie: true
   zombieResult:
     hideSliders: true
     answer: 1

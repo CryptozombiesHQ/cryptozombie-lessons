@@ -2,6 +2,7 @@
 title: Lesson 2 Overview
 actions: ['checkAnswer', 'hints']
 material:
+  saveZombie: false
   zombieBattle:
     humanBattle: true
     ignoreZombieCache: true

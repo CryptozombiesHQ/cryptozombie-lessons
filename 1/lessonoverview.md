@@ -2,7 +2,8 @@
 title: Lesson Overview
 actions: ['checkAnswer', 'hints']
 skipCheckAnswer: true
-material: 
+material:
+  saveZombie: false
   zombieResult:
     hideNameField: true
     ignoreZombieCache: true
