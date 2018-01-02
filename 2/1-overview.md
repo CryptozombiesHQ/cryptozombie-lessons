@@ -4,6 +4,8 @@ actions: ['checkAnswer', 'hints']
 material:
   saveZombie: false
   zombieBattle:
+    zombie:
+      lesson: 1
     humanBattle: true
     ignoreZombieCache: true
     answer: 1
