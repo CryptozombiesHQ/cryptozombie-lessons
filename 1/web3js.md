@@ -4,6 +4,8 @@ actions: ['checkAnswer', 'hints']
 material:
   saveZombie: true
   zombieResult:
+    zombie:
+      lesson: 1
     hideSliders: true
     answer: 1
 ---
