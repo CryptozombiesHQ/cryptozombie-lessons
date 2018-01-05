@@ -1,5 +1,5 @@
 ---
-title: Gas
+title: Saving Gas with View Functions
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -100,35 +100,44 @@ material:
 
       import "./zombiefeeding.sol";
 
-      contract ZombieHelper is ZombieFeeding {
+      contract ZombieFeeding is ZombieFactory {
 
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript. But there are a number of ways that Ethereum DApps are actually quite different from normal applications. 
+Because running functions costs real money from your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
 
-First is a very important concept in Ethereum: **_gas_**.
+One way to save on gas is using **_view functions_**.
 
-## What is Gas?
+## View functions don't require gas
 
-In Solidity, your DApp burns a small amount of a currency called "gas" for every line of code it executes. (There are some exceptions to this, which we'll talk about in the next chapter).
+When called externally by a client like **_web3.js_**, `view` functions don't cost any gas.
 
-Writing a variable to storage costs gas. Reading the contents of a variable also costs gas, but significantly less than writing. Doing mathematical operations like `+` and `*` cost a tiny amount of gas, as do comparison operators like `<` and `==`. And so on.
+This is because they don't actually change anything on the blockchain since they only do reads, not writes. So marking a function as `view` tells web3.js that it only needs to query your local Ethereum node to run the function — it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
 
-Each operation has a fixed **_gas cost_** based roughly on how much computing power will be required for that operation. The total **_gas cost_** of your function is a sum of the gas costs of its individual steps. So the more complex your function logic is, the more gas needs to be paid to execute it.
-
-## Who pays for gas?
-
-Whoever calls a function on your contract needs to send enough gas to execute it. This means the costs of running your DApp falls on your users. Gas is priced in Ether (the currency on Ethereum), so users can't interact with your DApp without having an Ethereum account and some Ether.
-
-Why is this necessary? Because Ethereum is like a big and slow but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying each function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
-
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and it requires gas to execute every function.
-
-> Note: This isn't necessarily true for side chains, like the ones the CryptoZombies authors are building at Loom Network. If users have to pay money for every function they execute on your contract, things can get very expensive very quickly, and some types of games or programs just don't make sense (like DApps with free trials). We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `view` functions wherever possible.
 
 ## Put it to the test
 
-We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. We'll use this file to add some helper methods to our contract in Lesson 3.
+We're going to implement a function that will return a user's entire zombie army.
 
-To start off, create a contract called `ZombieHelper` that inherits from `ZombieFeeding`. You can look back at `zombiefeeding.sol` if you don't remember how to do this from Lesson 2.
+1. We'll call this function `getZombiesByOwner`. Let's make it an `external view` function, so we can call it from web3.js without needing any gas.
+
+2. The function should return a `uint[]` (an array of uints).
+
+Leave the function body empty for now, we'll fill it in in the next chapter.
+
+  function getZombiesByOwner() external view returns(uint[]) {
+    uint tokenCount = ownerCount[0];
+    uint[] memory result = new uint[](tokenCount);
+    uint count;
+    uint resultIndex = 0;
+    for (count = 1; count <= stuff.length; count++) {
+      if (numberOwner[count] == 0) {
+        result[resultIndex] = count;
+        resultIndex++;
+      }
+    }
+    return result;
+  }
+

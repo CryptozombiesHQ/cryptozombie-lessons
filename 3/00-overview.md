@@ -1,12 +1,13 @@
 ---
-title: Some Super Catchy Title
-header: Lesson 3 is here at last!
+title: Advanced Solidity Concepts
+header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap2.jpg
 ---
 
-Impressive, human! You're a better coder than I thought.
+Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...
 
-Lesson 3 will teach you how to **rule the universe**.
+Now that you've got some experience coding Solidity under your belt, we're going to dive into some of the more technical aspects of Ethereum development. 
 
-In this lesson we will cover some more advanced Solidity concepts, so it's highly
-recommended that you complete Lesson 2 before starting.
+This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **gas costs, code optimization, and contract ownership**.
+
+You've been warned — no kitties and rainbows in Lesson 3! We highly recommend you complete lesson 2 before continuing.

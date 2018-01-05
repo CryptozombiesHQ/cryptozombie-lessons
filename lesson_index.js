@@ -40,6 +40,7 @@ import lesson2complete from './2/15-lessoncomplete.md'
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_introduction from './3/01-introduction.md'
+import l3_savinggasview from './3/02-savinggasview.md'
 import l3_complete from './3/15-lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
@@ -85,6 +86,7 @@ export default {
   3:[
     l3_overview,
     l3_introduction,
+    l3_savinggasview,
     l3_complete
   ],
   4:[],
