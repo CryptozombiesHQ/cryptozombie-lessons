@@ -1,5 +1,5 @@
 ---
-title: Saving Gas With `view` Functions
+title: Storage is Expensive
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -12,7 +12,9 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // Create your function here
+          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+            // Start here
+          }
 
         }
 
@@ -107,34 +109,53 @@ material:
       contract ZombieFeeding is ZombieFactory {
 
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          uint[] memory result = new uint[](ownerZombieCount[_owner]);
 
+          return result;
         }
 
       }
 ---
 
-Because running functions costs real money from your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
+One of the more expensive operations in Solidity is using `storage` — particularly writes.
 
-One way to save on gas is using **_view functions_**.
+This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
 
-## View functions don't require gas
+In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
 
-When called externally by a client like **_web3.js_**, `view` functions don't cost any gas.
+In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost any gas.
 
-This is because they don't actually change anything on the blockchain – they only do reads, not writes. So marking a function as `view` tells web3.js that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+We'll look at an example of this in the next chapter, but first, let's go over how to declare arrays in memory.
 
-We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
+## Declaring arrays in memory
 
-> Note: If a `view` function is called internally from another function in the same contract that is **not** a `view` function, it will still cost gas. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
+You can use the `memory` keyword with arrays to create a new array inside a function without needing to write anything to storage. The array will only exist until the end of the function call, and this is a lot cheaper gas-wise than updating an array in `storage` — free if it's a `view` function called externally.
+
+Here's how to declare an array in memory:
+
+```
+function getArray() external pure returns(uint[]) {
+  // Instantiate a new array in memory with a length of 3
+  uint[] memory values = new uint[](3);
+  // Add some values to it
+  values.push(1);
+  values.push(2);
+  values.push(3);
+  // Return the array
+  return values;
+}
+```
+
+This is a trivial example just too show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+
+Note that memory arrays must be created with a length argument — they currently cannot be resized like storage arrays can with `array.push()`.
 
 ## Put it to the test
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from web3.js if we want to display a user profile page with their entire army.
+In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies that owner owns. Let's start by declaring a new array in memory that we will eventually return.
 
-1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
+1. Declare a `uint[] memory` called `result`
 
-2. Let's make it an `external view` function, so we can call it from web3.js without needing any gas.
+2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `struct` with: `ownerZombieCount[_owner]`.
 
-3. The function should return a `uint[]` (an array of uints).
-
-Leave the function body empty for now, we'll fill it in in the next chapter.
+3. At the end of our function, return `result`. (It's just an empty array right now, but in the next chapter we'll fill in the gaps before returning it).

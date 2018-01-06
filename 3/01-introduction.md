@@ -121,14 +121,16 @@ Each operation has a fixed **_gas cost_** based roughly on how much computing po
 
 Whoever calls a function on your contract needs to send enough gas to execute it. This means the costs of running your DApp falls on your users. Gas is priced in Ether (the currency on Ethereum), so users can't interact with your DApp without having an Ethereum account and some Ether.
 
-Why is this necessary? Because Ethereum is like a big and slow but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying each function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
+Why is paying gas necessary? Because Ethereum is like a big and slow but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying each function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
 
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and it requires gas to execute every function.
+The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for compute and storage.
 
 > Note: This isn't necessarily true for side chains, like the ones the CryptoZombies authors are building at Loom Network. If users have to pay money for every function they execute on your contract, things can get very expensive very quickly, and some types of games or programs just don't make sense (like DApps with free trials). We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
 
 ## Put it to the test
 
-We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. We'll use this file to add some helper methods to our contract in Lesson 3.
+Let's get started with our code for Lesson 3.
 
-To start off, create a contract called `ZombieHelper` that inherits from `ZombieFeeding`. You can look back at `zombiefeeding.sol` if you don't remember how to do this from Lesson 2.
+We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. We'll use this file to add some useful helper methods to our contract throughout Lesson 3.
+
+To start off, create an empty contract called `ZombieHelper` that inherits from `ZombieFeeding`. You can look back at `zombiefeeding.sol` if you don't remember how to do this from Lesson 2.
