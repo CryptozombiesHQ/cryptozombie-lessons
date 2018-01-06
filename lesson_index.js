@@ -43,6 +43,7 @@ import l3_introduction from './3/01-introduction.md'
 import l3_savinggasview from './3/02-savinggasview.md'
 import l3_savinggasstorage from './3/03-savinggasstorage.md'
 import l3_forloops from './3/04-forloops.md'
+import l3_contractownership from './3/05-contractownership.md'
 import l3_complete from './3/15-lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
@@ -91,6 +92,7 @@ export default {
     l3_savinggasview,
     l3_savinggasstorage,
     l3_forloops,
+    l3_contractownership,
     l3_complete
   ],
   4:[],
