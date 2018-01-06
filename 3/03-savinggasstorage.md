@@ -10,7 +10,7 @@ material:
 
         import "./zombiefeeding.sol";
 
-        contract ZombieFeeding is ZombieFactory {
+        contract ZombieHelper is ZombieFeeding {
 
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
             // Start here
@@ -43,21 +43,21 @@ material:
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // Modify function definition here:
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            // Add an if statement here
+            if (keccak256(species) == keccak256("kitty")) {
+              newDna = newDna - newDna % 100 + 99;
+            }
             _createZombie("NoName", newDna);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            // And modify function call here:
-            feedAndMultiply(_zombieId, kittyDna);
+            feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
 
         }
