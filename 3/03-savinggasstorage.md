@@ -123,7 +123,7 @@ This is because every time you write or change a piece of data, it’s written p
 
 In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost any gas.
+In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost your users any gas.
 
 We'll look at an example of this in the next chapter, but first, let's go over how to declare arrays in memory.
 

@@ -125,15 +125,17 @@ material:
       }
 ---
 
-In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to rebuild the contents of an array in a function rather than saving that array to storage. Let's see why.
+In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage. 
 
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` `ZombieFactory` contract with an array every owner's zombie army:
+Let's look at why.
+
+For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` in the `ZombieFactory` contract with an array every owner's zombies:
 
 ```
 mapping (address =>uint[]) public ownerToZombies
 ```
 
-Every time we created a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's array. Then `getZombiesByOwner` would be a very straightforward function:
+Every time we created a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's array. And `getZombiesByOwner` would be a very straightforward function:
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -145,15 +147,15 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 
 This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another.
 
-That transfer function would need to: a) push the zombie to the new owner's `ownerToZombies` array, b) remove the zombie from the old owner's `ownerToZombies` array, c) shift every zombie up one place to fill the hole, and then d) reduce the array length by 1.
+That transfer function would need to: a) push the zombie to the new owner's `ownerToZombies` array, b) remove the zombie from the old owner's `ownerToZombies` array, c) shift every zombie in the older owner's array up one place to fill the hole, and then d) reduce the array length by 1.
 
 Step c) would be extremely expensive gas-wise, since we'd have to do a write for every zombie after the one we transfered. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array. 
 
-So every call to this transfer function would be very expensive gas-wise. And worse, it would cost a different amount of gas depending on how many zombies the user has in his/her army, so the user wouldn't know how much gas to send.
+So every call to this transfer function would be very expensive gas-wise. And worse, it would cost a different amount of gas depending on how many zombies the user has in his/her army and the index of the zombe being traded, so the user wouldn't know how much gas to send.
 
 > Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade. This approach would be much cheaper in cases where we don't care about order.
 
-But since `view` functions don't cost gas when called externally, we can simply use a for-loop to iterate the entire zombies array and build an array of the zombies that belong to this specific owner every time we call it. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays.
+But since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage.
 
 ## Using `for` loops
 
@@ -190,8 +192,8 @@ Let's finish our `getZombiesByOwner` function by writing a `for` loop that itera
 
 2. Declare a `for` loop that starts from `uint i = 1` and goes up through `i <= zombies.length`. This will iterate every zombie in our array.
 
-3. Make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
+3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
 
 4. Inside the if statement, a) add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`. And b) increment `counter` by 1 (see the `for` loop example above).
 
-That's it — then your function should return `result`, which we already have from the previous chapter.
+That's it — then your function should return `result`, which we already have from the previous chapter. And this function will now return all the zombies owned by `_owner` without spending any gas.
