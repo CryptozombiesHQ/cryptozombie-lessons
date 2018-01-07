@@ -185,3 +185,5 @@ We're back on `zombiefeeding.sol`. Let's update our code from Lesson 2 to be abl
 3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
 
 4. Inside the function will be one line of code: set `kittyContract` equal to `KittyInterface(_address);`
+
+> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
