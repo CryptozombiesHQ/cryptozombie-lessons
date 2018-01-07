@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-1. Create an function named `createZombie`. It should take two paramenters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
 Leave the body empty for now — we'll fill it in later.
