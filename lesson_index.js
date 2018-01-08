@@ -112,8 +112,6 @@ const en = {
     l3_ch13,
     l3_complete,
   ],
-  4:[],
-  5:[],
 }
 
 export default {
