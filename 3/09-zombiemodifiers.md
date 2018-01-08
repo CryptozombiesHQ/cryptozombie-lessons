@@ -223,8 +223,8 @@ function driveCar(uint _userId) olderThan(16, _userId) public {
 
 ## Put it to the test
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`). It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter.
+1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`). It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. And it should be `public`.
 
 2. The contents of this function should set `zombies[_zombieId].name` equal to `_newName`.
 
-3. Create a function named `changeDna`. It will be identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna`.
+3. Create a function named `changeDna` below `changeName`. It will be identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna`.
