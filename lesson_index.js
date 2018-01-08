@@ -78,9 +78,6 @@ const en = {
     wrappingitup,
     lesson2complete,
   ],
-  3:[],
-  4:[],
-  5:[],
 }
 
 export default {
