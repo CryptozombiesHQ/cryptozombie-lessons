@@ -204,7 +204,7 @@ This is a security hole, because that means anyone could change the address of t
 
 To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner who has special priveleges (you).
 
-Below is an example `Ownable` contract that you can use in your DApps, taken from **_OpenZeppelin_**'s Solidity library. You're going to see a few new things here, but don't worry, we'll talk about them below.
+Below is an example `Ownable` contract that you can use in your DApps, taken from **_OpenZeppelin_**'s Solidity library. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them below.
 
 Go ahead and give the `Ownable` contract a read-through, then we'll break it down below:
 
@@ -250,13 +250,13 @@ A few new things here we haven't seen before:
 
 1. **The `indexed` keyword.** This is only for `event`s, and it's basically a way to make those parameters searchable or filterable in the event logs. So because `newOwner` is `indexed`, you could have your DApp's front-end listen only for the `OwnershipTransferred` event when the new owner is a specific address. Or you could search the `OwnershipTransferred` logs to see if it was ever transfered to that address historically.
 
-2. **Constructors.** The constructor here is the function `function Ownable() public` — a constructor is a function with the same name as the contract name. This function will only execute once, when the contract is first created. In the case of `Ownable()`, it sets the owner to `msg.sender`, the person who deployed the contract. Constructors are optional in contracts.
+2. **Constructors.** The constructor here is the function `function Ownable() public` — a constructor is a function with the same name as the contract name. This function will only execute once, when the contract is first created. In the case of `Ownable()`, it sets the owner of the contract to `msg.sender`, the person who deployed it. Constructors are optional in contracts.
 
-3. **Function Modifiers.** Notice `modifier onlyOwner()`. This looks kind of like a function, but it's not a full function by itself — it's used as its name implies, to modify other functions. We're going to look more at how to use function modifiers in the next chapter, and what that weird line of code `_;` does. But you can use this function modifier so that only the owner of a contract can call certain functions.
+3. **Function Modifiers.** Notice `modifier onlyOwner()`. This looks kind of like a function, but it's not a full function by itself — it's used as its name implies, to modify other functions. We're going to look more at how to use function modifiers in the next chapter, and what that weird line of code `_;` does. But basically you can use this to limit function access so that only the owner of a contract can call certain functions.
 
-So the `Ownable` contract basically just adds a function modifier called `onlyOwner` that can restrict access to certain functions to only the owner of the contract, and a function called `transferOwnership` that transfers ownership to a new owner.
+So the `Ownable` contract basically adds an owner to a contract, provides a function modifier called `onlyOwner` that can restrict access to certain functions to only the owner, and a function called `transferOwnership` that lets you transfer ownership of the contract to someone else.
 
-`onlyOwner` is such a common pattern that most Solidity DApps start with this contract copy and pasted, and then their contract inherits from it. We're going to do the same for our DApp.
+`onlyOwner` is such a common pattern that most Solidity DApps start with this contract copy and pasted, and then their contract inherits from it. We're going to add this functionality to our DApp.
 
 ## Put it to the test
 

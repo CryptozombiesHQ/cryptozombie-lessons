@@ -1,10 +1,32 @@
 ---
-title: onlyOwner
+title: Function Modifiers
 actions: ['checkAnswer', 'hints']
 material:
   editor:
     language: sol
     startingCode:
+      "zombiehelper.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./zombiefeeding.sol";
+
+        contract ZombieHelper is ZombieFeeding {
+
+          // Start here
+
+          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+            uint[] memory result = new uint[](ownerZombieCount[_owner]);
+            uint counter = 0;
+            for (uint i = 1; i <= zombies.length; i++) {
+              if (zombieToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+              }
+            }
+            return result;
+          }
+
+        }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
@@ -29,8 +51,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modify this function:
-          function setKittyContractAddress(address _address) external {
+          function setKittyContractAddress(address _address) onlyOwner external {
             kittyContract = KittyInterface(_address);
           }
 
@@ -49,26 +70,6 @@ material:
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
             feedAndMultiply(_zombieId, kittyDna, "kitty");
-          }
-
-        }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
           }
 
         }
@@ -157,94 +158,84 @@ material:
     answer: >
       pragma solidity ^0.4.19;
 
-      import "./zombiefactory.sol";
+      import "./zombiefeeding.sol";
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
+      contract ZombieHelper is ZombieFeeding {
 
-      contract ZombieFeeding is ZombieFactory {
-
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) onlyOwner external {
-          kittyContract = KittyInterface(_address);
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(species) == keccak256("kitty")) {
-            newDna = newDna - newDna % 100 + 99;
+        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          uint[] memory result = new uint[](ownerZombieCount[_owner]);
+          uint counter = 0;
+          for (uint i = 1; i <= zombies.length; i++) {
+            if (zombieToOwner[i] == _owner) {
+              result[counter] = i;
+              counter++;
+            }
           }
-          _createZombie("NoName", newDna);
-        }
-
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
+          return result;
         }
 
       }
 ---
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in any of our contracts.
-
-This is because of how inheritance works:
+Function modifiers can also take arguments. Example:
 
 ```
-ZombieFactory is Ownable
-ZombieFeeding is ZombieFactory
-ZombieHelper is ZombieFeeding
-```
+// A mapping to store a user's age:
+mapping (uint => uint) public age;
 
-Thus `ZombieHelper` is also `Ownable`, and can access the functions / events / modifiers from `Ownable`. And this also means that if we deploy `ZombieHelper`, it will automatically run the `Ownable()` constructor and set us as the owner of the contract.
-
-Let's take a closer look at how function modifiers work:
-
-```
-/**
- * @dev Throws if called by any account other than the owner.
- */
-modifier onlyOwner() {
-  require(msg.sender == owner);
+// Require that this user be older than a certain age:
+modifier olderThan(uint _age, uint _userId) {
+  require (age[_userId] >= _age);
   _;
 }
-```
 
-We would use this modifier as follows:
-
-```
-contract MyContract is Ownable {
-  event LaughManiacally(string laughter);
-  function likeABoss() onlyOwner external {
-    LaughManiacally("Muahahahaha");
-  }
+// Must be older than 16 to drive a car (in the US, at least)
+function driveCar(uint _userId) olderThan(16, _userId) public {
+  // Some function logic
 }
 ```
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. This means only the owner of the contract (you, if you deployed it) can call that function.
+You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes these arguments to the modifier.
 
-That `_;` in the `onlyOwner` modifier means "inject the function definition here". So when you call `likeABoss`, it first calls `onlyOwner` and checks the `require` statement (and throws an error if its not true), then continues with the rest of the function.
+## Zombie level-ups
 
-So you can use function modifiers to add in checks with `require` statements that are common to multiple functions. And you can use `onlyOwner` to ensure no one but you is allowed to mess with important functions on your contract.
+Let's try making our own `modifier`.
+
+In our game, we want our zombies to have some way to level up as they get more experience in battle. And we want to have some functionality to limit what a zombie can do unless it's higher than a certain level.
+
+First, we need to add a `level` property on each zombie in our army. The code change to add this is trivial, so I've gone ahead and made it in the code for you. (No need to waste an entire chapter on that 😉 ). 
+
+Here are the 2 changes:
+
+1. Our `Zombie` struct now looks like this:
+
+```
+struct Zombie {
+  string name;
+  uint dna;
+  uint level; // now zombies have a level as well
+}
+```
+
+2. In our `_createZombie` function, we added a third argument when we create a new `Zombie` so all zombies start at level `0`:
+
+```
+uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
+```
+
+Again, these changes are already implemented for you in `zombiefactory.sol`. 
+
+Now let's use them to create a function `modifier` that we can use to restrict access to certain features unless a zombie is above a certain level.
 
 ## Put it to the test
 
-Now we can restrict access to `setKittyContractAddress` so we're the only one who can modify it in the future.
+We'll add logic for leveling up zombies in a later lesson when we implement the battle system. But for right now, let's add an `aboveLevel` modifier that we can use in other functions to limit accessbility to zombies above a certain level.
 
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+1. Create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint).
+
+2. This `modifier` should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
