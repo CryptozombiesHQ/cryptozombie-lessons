@@ -40,7 +40,8 @@ import lesson2complete from './2/15-lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
-export default {
+// English (source for all translations)
+const en = {
   1: [
     l1_overview,
     lessonoverview,
@@ -80,4 +81,8 @@ export default {
   3:[],
   4:[],
   5:[],
+}
+
+export default {
+  en
 }
