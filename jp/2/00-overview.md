@@ -1,0 +1,13 @@
+---
+title: Zombies Attack Their Victims in Japan
+header: So, you've made it to Lesson 2!
+roadmap: roadmap2.jpg
+---
+
+Impressive, human! You're a better coder than I thought.
+
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**,
+in Japanese!
+
+In this lesson we will cover some more advanced Solidity concepts, so it's highly
+recommended that you complete Lesson 1 before starting.
