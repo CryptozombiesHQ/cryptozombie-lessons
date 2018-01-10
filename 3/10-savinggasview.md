@@ -1,5 +1,5 @@
 ---
-title: Saving Gas With `view` Functions
+title: Saving Gas With 'View' Functions
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -17,11 +17,13 @@ material:
             _;
           }
 
-          function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+          function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
           }
 
@@ -51,8 +53,11 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          KittyInterface kittyContract = KittyInterface(ckAddress);
+          KittyInterface kittyContract;
+
+          function setKittyContractAddress(address _address) external onlyOwner {
+            kittyContract = KittyInterface(_address);
+          }
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -75,7 +80,9 @@ material:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
-        contract ZombieFactory {
+        import "./ownable.sol";
+
+        contract ZombieFactory is Ownable {
 
             event NewZombie(uint zombieId, string name, uint dna);
 
@@ -83,8 +90,9 @@ material:
             uint dnaModulus = 10 ** dnaDigits;
 
             struct Zombie {
-                string name;
-                uint dna;
+              string name;
+              uint dna;
+              uint level;
             }
 
             Zombie[] public zombies;
@@ -93,7 +101,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -112,6 +120,46 @@ material:
             }
 
         }
+      "ownable.sol": |
+        /**
+         * @title Ownable
+         * @dev The Ownable contract has an owner address, and provides basic authorization control
+         * functions, this simplifies the implementation of "user permissions".
+         */
+        contract Ownable {
+          address public owner;
+
+          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+          /**
+           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+           * account.
+           */
+          function Ownable() public {
+            owner = msg.sender;
+          }
+
+
+          /**
+           * @dev Throws if called by any account other than the owner.
+           */
+          modifier onlyOwner() {
+            require(msg.sender == owner);
+            _;
+          }
+
+
+          /**
+           * @dev Allows the current owner to transfer control of the contract to a newOwner.
+           * @param newOwner The address to transfer ownership to.
+           */
+          function transferOwnership(address newOwner) public onlyOwner {
+            require(newOwner != address(0));
+            OwnershipTransferred(owner, newOwner);
+            owner = newOwner;
+          }
+
+        }
     answer: >
       pragma solidity ^0.4.19;
 
@@ -124,11 +172,13 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+        function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
 
-        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].dna = _newDna;
         }
 
@@ -139,9 +189,15 @@ material:
       }
 ---
 
-Our DApp should have a function to view a user's zombie army, let's call it `getZombiesByOwner`.
+Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
 
-When talking about gas optimization, and important thing to note is that **`view` functions don't cost any gas** when they're called externally, like from `web3.js`.
+Let's add one more function: our DApp should have a function to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+
+This function only needs to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+
+## View functions don't cost gas
+
+`view` functions don't cost any gas when they're called externally by a user.
 
 This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
 

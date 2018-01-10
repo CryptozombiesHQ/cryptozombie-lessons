@@ -188,9 +188,9 @@ To handle cases like this, one common practice that has emerged is to make contr
 
 ## OpenZeppelin's `Ownable` contract
 
-Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, while you anxiously await the release of Lesson 4, check out some of those contracts!
+Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, while you anxiously await the release of Lesson 4, we highly recommend you check out their site to further your learning!
 
-Give the contract a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them below.
+Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
 
 ```
 /**
@@ -232,7 +232,7 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-- Constructors: `function Ownable()` is a constructor, which is an optional function with the same name as the contract. It will be executed only one time, when the contract is first created.
+- Constructors: `function Ownable()` is a **_constructor_**, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
 - Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
 - `indexed` keyword: don't worry about this one, we don't need it yet.
 

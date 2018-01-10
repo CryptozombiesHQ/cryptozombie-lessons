@@ -39,7 +39,7 @@ material:
 
           KittyInterface kittyContract;
 
-          function setKittyContractAddress(address _address) onlyOwner external {
+          function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
@@ -171,9 +171,11 @@ material:
 
 Great! Our zombie now has a functional cooldown timer.
 
-Next, you're going to add some additional helper methods, so we've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
+Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
 
-Wouldn't it be cool if zombies gained special abilities after reaching a certain level? We're going to implement that feature soon, but first we need to learn a little bit more about function modifiers.
+Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
+
+## Function modifiers with arguments
 
 Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
 
@@ -189,12 +191,12 @@ modifier olderThan(uint _age, uint _userId) {
 
 // Must be older than 16 to drive a car (in the US, at least).
 // We can call the `olderThan` modifier with arguments like so:
-function driveCar(uint _userId) olderThan(16, _userId) public {
+function driveCar(uint _userId) public olderThan(16, _userId) {
   // Some function logic
 }
 ```
 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes these arguments to the modifier.
+You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
 
 Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
 

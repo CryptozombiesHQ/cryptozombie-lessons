@@ -29,7 +29,7 @@ material:
 
           KittyInterface kittyContract;
 
-          function setKittyContractAddress(address _address) onlyOwner external {
+          function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
@@ -164,7 +164,7 @@ material:
 
         KittyInterface kittyContract;
 
-        function setKittyContractAddress(address _address) onlyOwner external {
+        function setKittyContractAddress(address _address) external onlyOwner {
           kittyContract = KittyInterface(_address);
         }
 
@@ -196,7 +196,7 @@ material:
       }
 ---
 
-Now that we have a `readyTime` property on our `Zombie` struct let's jump to `zombiefeeding.sol` and implement a cooldown timer.
+Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
 
 We're going to modify our `feedAndMultiply` such that:
 
@@ -204,7 +204,7 @@ We're going to modify our `feedAndMultiply` such that:
 
 2. Zombies can't feed on kitties until their cooldown period has passed
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day.
+This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
 
 First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
 

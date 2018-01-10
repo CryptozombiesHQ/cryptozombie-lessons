@@ -158,7 +158,7 @@ material:
 
         KittyInterface kittyContract;
 
-        function setKittyContractAddress(address _address) onlyOwner external {
+        function setKittyContractAddress(address _address) external onlyOwner {
           kittyContract = KittyInterface(_address);
         }
 
@@ -210,7 +210,7 @@ We would use this modifier as follows:
 ```
 contract MyContract is Ownable {
   event LaughManiacally(string laughter);
-  function likeABoss() onlyOwner external {
+  function likeABoss() external onlyOwner {
     LaughManiacally("Muahahahaha");
   }
 }
@@ -220,11 +220,13 @@ Notice the `onlyOwner` modifier on the `likeABoss` function. This means **only**
 
 >Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
 
->So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to read the full source code to see if it's actually secure. There's a careful balance between maintaining control over a contract such that it doesn't break, and maintaining the trust of your users (who audit the source code).
+>So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
 
 ## What's that weird-looking `_;` thing?
 
-When you call `likeABoss`, the code in `onlyOwner` executes before the function body runs, and when it hits the `_;` statement it executes the code inside `likeABoss`. So, adding a function modifier is a quick way of doing a `require` check before a function executes.
+When you call `likeABoss`, the code inside `onlyOwner` executes first. Then when it hits the `_;` statement, it executes the code inside `likeABoss`.
+
+So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
 
 ## Put it to the test
 

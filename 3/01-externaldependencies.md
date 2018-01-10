@@ -144,9 +144,9 @@ Up until now, Solidity has looked quite similar to other languages like JavaScri
 
 To start with, after you deploy a contract to Ethereum, it’s **_immutable_**, which means that it can never be modified or updated again.
 
-Whatever code was there when you deployed it, that code is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later.
+The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what it says it will do. No one can later change that function and give you unexpected results.
+But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
 
 ## External dependencies
 
@@ -168,6 +168,6 @@ Let's update our code from Lesson 2 to be able to change the CryptoKitties contr
 
 3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
 
-4. Inside the function add one line of code that assigns `KittyInterface(_address)` to `kittyContract`.
+4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
 
 > Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)

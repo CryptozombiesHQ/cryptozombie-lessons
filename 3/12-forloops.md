@@ -17,11 +17,13 @@ material:
             _;
           }
 
-          function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+          function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
           }
 
@@ -55,8 +57,11 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          KittyInterface kittyContract = KittyInterface(ckAddress);
+          KittyInterface kittyContract;
+
+          function setKittyContractAddress(address _address) external onlyOwner {
+            kittyContract = KittyInterface(_address);
+          }
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -79,7 +84,9 @@ material:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
-        contract ZombieFactory {
+        import "./ownable.sol";
+
+        contract ZombieFactory is Ownable {
 
             event NewZombie(uint zombieId, string name, uint dna);
 
@@ -87,8 +94,9 @@ material:
             uint dnaModulus = 10 ** dnaDigits;
 
             struct Zombie {
-                string name;
-                uint dna;
+              string name;
+              uint dna;
+              uint level;
             }
 
             Zombie[] public zombies;
@@ -97,7 +105,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -116,6 +124,46 @@ material:
             }
 
         }
+      "ownable.sol": |
+        /**
+         * @title Ownable
+         * @dev The Ownable contract has an owner address, and provides basic authorization control
+         * functions, this simplifies the implementation of "user permissions".
+         */
+        contract Ownable {
+          address public owner;
+
+          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+          /**
+           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+           * account.
+           */
+          function Ownable() public {
+            owner = msg.sender;
+          }
+
+
+          /**
+           * @dev Throws if called by any account other than the owner.
+           */
+          modifier onlyOwner() {
+            require(msg.sender == owner);
+            _;
+          }
+
+
+          /**
+           * @dev Allows the current owner to transfer control of the contract to a newOwner.
+           * @param newOwner The address to transfer ownership to.
+           */
+          function transferOwnership(address newOwner) public onlyOwner {
+            require(newOwner != address(0));
+            OwnershipTransferred(owner, newOwner);
+            owner = newOwner;
+          }
+
+        }
     answer: >
       pragma solidity ^0.4.19;
 
@@ -128,11 +176,13 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+        function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
 
-        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].dna = _newDna;
         }
 

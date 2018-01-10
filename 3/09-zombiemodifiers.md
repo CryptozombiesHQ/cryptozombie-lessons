@@ -44,7 +44,7 @@ material:
 
           KittyInterface kittyContract;
 
-          function setKittyContractAddress(address _address) onlyOwner external {
+          function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
@@ -161,11 +161,13 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+        function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
 
-        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].dna = _newDna;
         }
 
@@ -192,15 +194,17 @@ modifier olderThan(uint _age, uint _userId) {
 }
 
 // Must be older than 16 to drive a car (in the US, at least)
-function driveCar(uint _userId) olderThan(16, _userId) public {
+function driveCar(uint _userId) public olderThan(16, _userId) {
   // Some function logic
 }
 ```
 
 ## Put it to the test
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`). It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. And it should be `external`.
+1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
-2. The contents of this function should set `zombies[_zombieId].name` equal to `_newName`.
+2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 
-3. Create another function named `changeDna` below `changeName`. It will be identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna`.
+3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+
+3. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
