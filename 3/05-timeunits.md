@@ -1,5 +1,5 @@
 ---
-title: More Zombie Features
+title: Time Units
 actions: ['checkAnswer', 'hints']
 material:
   editor:
