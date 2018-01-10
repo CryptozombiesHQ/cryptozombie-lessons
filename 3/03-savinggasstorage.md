@@ -123,7 +123,7 @@ This is because every time you write or change a piece of data, it’s written p
 
 In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost your users any gas.
+In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost your users any gas (and gas costs real money!).
 
 We'll look at an example of this in the next chapter, but first, let's go over how to declare arrays in memory.
 
@@ -148,7 +148,7 @@ function getArray() external pure returns(uint[]) {
 
 This is a trivial example just too show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
 
-Note that memory arrays must be created with a length argument — they currently cannot be resized like storage arrays can with `array.push()`.
+>Note: memory arrays must be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
 
 ## Put it to the test
 
@@ -156,6 +156,6 @@ In our `getZombiesByOwner` function, we want to return a `uint[]` array with all
 
 1. Declare a `uint[] memory` called `result`
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `struct` with: `ownerZombieCount[_owner]`.
+2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
 
 3. At the end of our function, return `result`. (It's just an empty array right now, but in the next chapter we'll fill in the gaps before returning it).

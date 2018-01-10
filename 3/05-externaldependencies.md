@@ -160,6 +160,10 @@ material:
       }
 ---
 
+Great! Now we have a function that will get us all the zombie IDs for a specific owner.
+
+Now we're going to add some security features to our DApp.
+
 Once you deploy a contract to Ethereum, it’s **_immutable_** — that means it can never be modified again.
 
 Whatever code was there when you deployed it, that code is there to stay permanently on the blockchain. This is one reason security is such a huge concern in Solidity. If there's a flaw in your contract code, there's no way for you to patch it later.
@@ -172,7 +176,9 @@ In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp. But
 
 It's unlikely, but if this did happen it would render our DApp completely useless. We'd be unable to feed on kitties anymore — and we'd be unable to modify our contract to fix it.
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp. For example, instead of hard coding the CryptoKitties contract address into our DApp, we can have a `setKittyContractAddress` function that lets us set this address.
+For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+
+For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
 
 ## Put it to the test
 

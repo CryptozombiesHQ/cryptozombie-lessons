@@ -10,4 +10,4 @@ Now that you've got some experience coding Solidity under your belt, we're going
 
 This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **gas costs, code optimization, and contract ownership**.
 
-You've been warned — no kitties and rainbows in Lesson 3! We highly recommend you complete lesson 2 before continuing.
+You've been warned — no kitties and rainbows in Lesson 3! But a lot of densely-packed Solidity knowledge. We highly recommend you complete lesson 2 before continuing.

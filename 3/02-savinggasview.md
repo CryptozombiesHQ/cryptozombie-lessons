@@ -131,6 +131,8 @@ We'll cover setting up web3.js with your own node later. But for now the big tak
 
 We're going to implement a function that will return a user's entire zombie army. We can later call this function from web3.js if we want to display a user profile page with their entire army.
 
+This function's logic is a bit complicated so it will take a few chapters to implement. Let's create the function first:
+
 1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
 
 2. Let's make it an `external view` function, so we can call it from web3.js without needing any gas.

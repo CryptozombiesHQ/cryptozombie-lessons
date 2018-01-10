@@ -1,5 +1,5 @@
 ---
-title: onlyOwner
+title: Zombie Cooldowns
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -29,20 +29,24 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modify this function:
-          function setKittyContractAddress(address _address) external {
+          function setKittyContractAddress(address _address) onlyOwner external {
             kittyContract = KittyInterface(_address);
           }
 
+          // 1. Define `triggerCooldown` function here
+
+          // 2. Make this function internal
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
+            // 3. Add a check here
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            // 4. Call `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -83,10 +87,13 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
+            uint cooldownTime = 1 days;
 
             struct Zombie {
-                string name;
-                uint dna;
+              string name;
+              uint dna;
+              uint32 level;
+              uint32 readyTime;
             }
 
             Zombie[] public zombies;
@@ -95,7 +102,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 0, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -182,15 +189,21 @@ material:
           kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
+        function _triggerCooldown(Zombie storage _zombie) internal {
+          _zombie.readyTime = uint32(now + cooldownTime);
+        }
+
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string species) internal {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
+          require(myZombie.readyTime < now);
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           if (keccak256(species) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
+          _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -202,49 +215,34 @@ material:
       }
 ---
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in any of our contracts — not just `ZombieFactory`.
+Now we have a `readyTime` property on our zombies, and new zombies start with a 1 day cooldown.
 
-This is because of how contract inheritance works. Remember:
+Let's add some functionality such that:
+
+1. Zombies can't feed on kitties until their cooldown period has passed, and
+
+2. Feeding triggers a zombie's cooldown, so zombies can't just feed on unlimited kitties all day.
+
+## Passing structs as arguments
+
+You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+
+The syntax looks like this:
 
 ```
-ZombieHelper is ZombieFeeding
-ZombieFeeding is ZombieFactory
-ZombieFactory is Ownable
-```
-
-Thus `ZombieHelper` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. And this means that if we deploy `ZombieHelper`, it will automatically run the `Ownable()` constructor and set us as the owner of the contract.
-
-Let's take a closer look at how function modifiers work by examining `onlyOwner`:
-
-```
-/**
- * @dev Throws if called by any account other than the owner.
- */
-modifier onlyOwner() {
-  require(msg.sender == owner);
-  _;
+function _doStuff(Zombie storage _zombie) internal {
+  // do stuff with _zombie
 }
 ```
 
-We would use this modifier as follows:
+## Put it to the test 
 
-```
-contract MyContract is Ownable {
-  event LaughManiacally(string laughter);
-  function likeABoss() onlyOwner external {
-    LaughManiacally("Muahahahaha");
-  }
-}
-```
+1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer, and it should be `internal`.
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. This means only the owner of the contract (you, if you deployed it) can call that function.
+  The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
 
-That `_;` in the `onlyOwner` modifier means "inject the function definition here". So when you call `likeABoss`, it first calls `onlyOwner` and checks the `require` statement (and throws an error if its not true), then continues with the rest of the function.
+2. Previously we made `feedAndMultiply` a `public` function. Let's make this `internal` to increase security, since we don't want users to be able to call this function with any DNA they want.
 
-So you can use function modifiers to add in checks with `require` statements that are common to multiple functions. And you can use `onlyOwner` to ensure no one but you is allowed to mess with important functions on your contract.
+3. After we look up `myZombie`, add a `require` statement that checks if `myZombie.readyTime < now`. This will make sure the zombie's cooldown period has ended.
 
-## Put it to the test
-
-Now we can restrict access to `setKittyContractAddress` so we're the only one who can modify it in the future.
-
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+4. The very last thing in the function, let's call `_triggerCooldown(myZombie)`.

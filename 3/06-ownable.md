@@ -198,9 +198,9 @@ material:
       }
 ---
 
-One issue with our `setKittyContractAddress` function is that because it's `external`, anyone can call it.
+Did you spot the security hole with this function?
 
-This is a security hole, because that means anyone could change the address of the CryptoKitties contract and break our app.
+Because `setKittyContractAddress` is `external`, this means anyone can call it. That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
 
 To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner who has special priveleges (you).
 
@@ -248,15 +248,20 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-1. **The `indexed` keyword.** This is only for `event`s, and it's basically a way to make those parameters searchable or filterable in the event logs. So because `newOwner` is `indexed`, you could have your DApp's front-end listen only for the `OwnershipTransferred` event when the new owner is a specific address. Or you could search the `OwnershipTransferred` logs to see if it was ever transfered to that address historically.
+- Constructors: `function Ownable()`. A constructor is an optional function with the same name as the contract. A constructor only executes once, when the contract is first created.
+- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit function access to **only** the **owner** of the contract. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
 
-2. **Constructors.** The constructor here is the function `function Ownable() public` — a constructor is a function with the same name as the contract name. This function will only execute once, when the contract is first created. In the case of `Ownable()`, it sets the owner of the contract to `msg.sender`, the person who deployed it. Constructors are optional in contracts.
+So the `Ownable` contract basically does the following:
 
-3. **Function Modifiers.** Notice `modifier onlyOwner()`. This looks kind of like a function, but it's not a full function by itself — it's used as its name implies, to modify other functions. We're going to look more at how to use function modifiers in the next chapter, and what that weird line of code `_;` does. But basically you can use this to limit function access so that only the owner of a contract can call certain functions.
+1. When a contract is created, its constructor sets the `owner` to `msg.sender` (the person who deployed it)
 
-So the `Ownable` contract basically adds an owner to a contract, provides a function modifier called `onlyOwner` that can restrict access to certain functions to only the owner, and a function called `transferOwnership` that lets you transfer ownership of the contract to someone else.
+2. It adds an `onlyOwner` modifier, which can restrict access to certain functions to only the `owner`
 
-`onlyOwner` is such a common pattern that most Solidity DApps start with this contract copy and pasted, and then their contract inherits from it. We're going to add this functionality to our DApp.
+3. It allows you to transfer the contract to a new `owner`
+
+`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of `OnlyOwner`, and then their first contract inherits from it.
+
+Since we want to limit `setKittyContractAddress` to `onlyOwner`, we can do the same for our contract.
 
 ## Put it to the test
 
@@ -266,6 +271,4 @@ We've gone ahead and copied the code of the `Ownable` contract into a new file, 
 
 2. Set the `ZombieFactory` contract to inherit from `Ownable`. Again, you can reference `ZombieFeeding if you don't remember how this is done.
 
-Normally this is the very first thing you would do when creating a new contract, since `onlyOwner` is such a common requirement. But in CryptoZombies we wanted to start off with the fun and easy stuff, so we saved this for later ;)
-
-When you're finished, check your answer and move on to the next chapter.
+>Note: Giving the owner special powers over the contract makes your DApp less decentralized — if the owner added a "pause" function and decided to freeze the DApp, all users would be helpless. So there's a balance of maintaining required control over a contract such that it doesn't break, and maintaining the trust of your users who audit the source code.

@@ -111,7 +111,7 @@ First is a very important concept in Ethereum: **_gas_**.
 
 ## What is Gas?
 
-In Solidity, your DApp burns a small amount of a currency called "gas" for every line of code it executes. (There are some exceptions to this, which we'll talk about in the next chapter).
+In Solidity, your DApp burns a small amount of a currency called "gas" for every line of code it executes.
 
 Writing a variable to storage costs gas. Reading the contents of a variable also costs gas, but significantly less than writing. Doing mathematical operations like `+` and `*` cost a tiny amount of gas, as do comparison operators like `<` and `==`. And so on.
 
