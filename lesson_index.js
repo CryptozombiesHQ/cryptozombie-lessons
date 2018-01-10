@@ -51,8 +51,8 @@ import l3_ch9 from './3/09-zombiemodifiers.md'
 import l3_ch10 from './3/10-savinggasview.md'
 import l3_ch11 from './3/11-savinggasstorage.md'
 import l3_ch12 from './3/12-forloops.md'
-import l3_ch13 from './3/13.md'
-import l3_complete from './3/15-lessoncomplete.md'
+import l3_ch13 from './3/13-wrappingitup.md'
+import l3_complete from './3/14-lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1

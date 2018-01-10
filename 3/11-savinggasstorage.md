@@ -199,9 +199,9 @@ This is because every time you write or change a piece of data, it’s written p
 
 In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, loops are actually cheaper than `storage` if they're in an `external view` function, since they don't cost your users any gas (and gas costs real money!).
+In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
 
-We'll look at an example of this in the next chapter, but first, let's go over how to declare arrays in memory.
+We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
 
 ## Declaring arrays in memory
 
@@ -224,7 +224,7 @@ function getArray() external pure returns(uint[]) {
 
 This is a trivial example just too show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
 
->Note: memory arrays must be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+>Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
 
 ## Put it to the test
 

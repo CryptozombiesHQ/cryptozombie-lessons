@@ -191,9 +191,9 @@ material:
 
 Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
 
-Let's add one more function: our DApp should have a function to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `getZombiesByOwner`.
 
-This function only needs to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
 
 ## View functions don't cost gas
 
