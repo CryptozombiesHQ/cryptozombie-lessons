@@ -174,10 +174,10 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
 
 That transfer function would need to:
-1) push the zombie to the new owner's `ownerToZombies` array,
-2) remove the zombie from the old owner's `ownerToZombies` array,
-3) shift every zombie in the older owner's array up one place to fill the hole, and then
-4) reduce the array length by 1.
+1. push the zombie to the new owner's `ownerToZombies` array,
+2. remove the zombie from the old owner's `ownerToZombies` array,
+3. shift every zombie in the older owner's array up one place to fill the hole, and then
+4. reduce the array length by 1.
 
 Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
 
@@ -224,7 +224,7 @@ Let's finish our `getZombiesByOwner` function by writing a `for` loop that itera
 
 3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
 
-4. Inside the if statement:
+4. Inside the `if` statement:
    1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
    2. Increment `counter` by 1 (see the `for` loop example above).
 
