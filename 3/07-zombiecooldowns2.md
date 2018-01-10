@@ -1,5 +1,5 @@
 ---
-title: Zombie Cooldowns Part 2
+title: Public Functions & Security
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -225,12 +225,18 @@ material:
       }
 ---
 
-Now let's modify `feedAndMultiply` to check whether the zombie is capable of feeding (has his cooldown passed?), and trigger the zombie's cooldown after he feeds.
+Now let's modify `feedAndMultiply` to take our cooldown into account.
+
+Looking back at this function, we can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, it means that any user can call them and pass them any data they want to.
+
+Re-examining this function, the user could call the function directly and pass in any `_targetDna` or `species` they wanted to. This doesn't seem very game-like — we want them to have to follow our rules! 
+
+So on closer inspection, this function only needs to be called by internally `feedOnKitty()` at the moment. We'd better off making it `internal` and closing off potential unexpected behavior.
 
 ## Put it to the test 
 
 1. Previously we made `feedAndMultiply` a `public` function. Let's make this `internal` to increase security. We don't want users to be able to call this function with any DNA they want.
 
-2. After we look up `myZombie`, add a `require` statement that checks `_isReady` and passes this zombie to it.
+2. Now let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
 
-3. The very last thing in the function, let's call `_triggerCooldown(myZombie)`.
+3. The very last thing in the function, let's call `_triggerCooldown(myZombie)`. This way feeding triggers the zombie's cooldown time.

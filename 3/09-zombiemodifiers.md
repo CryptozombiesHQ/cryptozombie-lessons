@@ -1,10 +1,25 @@
 ---
-title: Zombie Cooldowns
+title: Zombie Modifiers
 actions: ['checkAnswer', 'hints']
 material:
   editor:
     language: sol
     startingCode:
+      "zombiehelper.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./zombiefeeding.sol";
+
+        contract ZombieHelper is ZombieFeeding {
+
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          // Start here
+
+        }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
@@ -33,10 +48,6 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Define `_triggerCooldown` function here
-
-          // 2. Define `_isReady` function here
-
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
@@ -55,26 +66,6 @@ material:
           }
 
         }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
-          }
-
-        }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
@@ -86,13 +77,11 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
-            uint cooldownTime = 1 days;
 
             struct Zombie {
               string name;
               uint dna;
-              uint32 level;
-              uint32 readyTime;
+              uint level;
             }
 
             Zombie[] public zombies;
@@ -101,7 +90,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna, 0, uint32(now + cooldownTime))) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -163,87 +152,55 @@ material:
     answer: >
       pragma solidity ^0.4.19;
 
-      import "./zombiefactory.sol";
+      import "./zombiefeeding.sol";
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
+      contract ZombieHelper is ZombieFeeding {
 
-      contract ZombieFeeding is ZombieFactory {
-
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) onlyOwner external {
-          kittyContract = KittyInterface(_address);
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
         }
 
-        function _triggerCooldown(Zombie storage _zombie) internal {
-          _zombie.readyTime = uint32(now + cooldownTime);
+        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+          zombies[_zombieId].name = _newName;
         }
 
-        function _isReady(Zombie storage _zombie) internal view returns (bool) {
-            return (_zombie.readyTime <= now);
-        }
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(species) == keccak256("kitty")) {
-            newDna = newDna - newDna % 100 + 99;
-          }
-          _createZombie("NoName", newDna);
-        }
-
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
+        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+          zombies[_zombieId].dna = _newDna;
         }
 
       }
 ---
 
-Now we have a `readyTime` property on our zombies, and new zombies start with a 1 day cooldown.
+Now let's use our `aboveLevel` modifier to create some functions.
 
-Let's add some functionality such that:
+Our game will have some incentives for people to level up their zombies:
 
-1. Zombies can't feed on kitties until their cooldown period has passed, and
+- For zombies level 1 and higher, users will be able to change their name.
+- For zombies level 20 and higher, users will be able to give them custom DNA.
 
-2. Feeding triggers a zombie's cooldown, so zombies can't just feed on unlimited kitties all day.
-
-First, let's define some helper functions that let us set and check a zombie's `readyTime`.
-
-## Passing structs as arguments
-
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
-
-The syntax looks like this:
+We'll implement these functions below. Here's the example code from the previous lesson if you want to reference it:
 
 ```
-function _doStuff(Zombie storage _zombie) internal {
-  // do stuff with _zombie
+// A mapping to store a user's age:
+mapping (uint => uint) public age;
+
+// Require that this user be older than a certain age:
+modifier olderThan(uint _age, uint _userId) {
+  require (age[_userId] >= _age);
+  _;
+}
+
+// Must be older than 16 to drive a car (in the US, at least)
+function driveCar(uint _userId) olderThan(16, _userId) public {
+  // Some function logic
 }
 ```
 
-## Put it to the test 
+## Put it to the test
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer, and it should be `internal`.
+1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`). It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. And it should be `external`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. The contents of this function should set `zombies[_zombieId].name` equal to `_newName`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
-
-4. The function body should return `(_zombie.readyTime <= now)` (which will evaluate to `true` or `false`). This function will tell us whether `now` has passed the zombie's `readyTime` or not.
+3. Create another function named `changeDna` below `changeName`. It will be identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna`.

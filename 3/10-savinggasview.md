@@ -1,5 +1,5 @@
 ---
-title: Gas
+title: Saving Gas With `view` Functions
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -10,7 +10,24 @@ material:
 
         import "./zombiefeeding.sol";
 
-        // Start here
+        contract ZombieHelper is ZombieFeeding {
+
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+            zombies[_zombieId].name = _newName;
+          }
+
+          function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+            zombies[_zombieId].dna = _newDna;
+          }
+
+          // Create your function here
+
+        }
 
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
@@ -102,35 +119,46 @@ material:
 
       contract ZombieHelper is ZombieFeeding {
 
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
+        }
+
+        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+          zombies[_zombieId].name = _newName;
+        }
+
+        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+          zombies[_zombieId].dna = _newDna;
+        }
+
+        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+
+        }
+
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript. But there are a number of ways that Ethereum DApps are actually quite different from normal applications. 
+Our DApp should also probably have a function to view a user's zombie army. So we should create a function called `getZombiesByOwner` that returns all an owner's zombies.
 
-First is a very important concept in Ethereum: **_gas_**.
+When talking about gas optimization, and important thing to note is that ** `view` functions don't cost any gas** when they're called externally, like from web3.js.
 
-## What is Gas?
+This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function as `view` tells web3.js that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
 
-In Solidity, your DApp burns a small amount of a currency called "gas" for every line of code it executes.
+We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
 
-Writing a variable to storage costs gas. Reading the contents of a variable also costs gas, but significantly less than writing. Doing mathematical operations like `+` and `*` cost a tiny amount of gas, as do comparison operators like `<` and `==`. And so on.
-
-Each operation has a fixed **_gas cost_** based roughly on how much computing power will be required for that operation. The total **_gas cost_** of your function is a sum of the gas costs of its individual steps. So the more complex your function logic is, the more gas needs to be paid to execute it.
-
-## Who pays for gas?
-
-Whoever calls a function on your contract needs to send enough gas to execute it. This means the costs of running your DApp falls on your users. Gas is priced in Ether (the currency on Ethereum), so users can't interact with your DApp without having an Ethereum account and some Ether.
-
-Why is paying gas necessary? Because Ethereum is like a big and slow but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying each function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
-
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for compute and storage.
-
-> Note: This isn't necessarily true for side chains, like the ones the CryptoZombies authors are building at Loom Network. If users have to pay money for every function they execute on your contract, things can get very expensive very quickly, and some types of games or programs just don't make sense (like DApps with free trials). We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+> Note: If a `view` function is called internally from another function in the same contract that is **not** a `view` function, it will still cost gas. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
 
 ## Put it to the test
 
-Let's get started with our code for Lesson 3.
+We're going to implement a function that will return a user's entire zombie army. We can later call this function from web3.js if we want to display a user profile page with their entire army.
 
-We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. We'll use this file to add some useful helper methods to our contract throughout Lesson 3.
+This function's logic is a bit complicated so it will take a few chapters to implement. Let's create the function first:
 
-To start off, create an empty contract called `ZombieHelper` that inherits from `ZombieFeeding`. You can look back at `zombiefeeding.sol` if you don't remember how to do this from Lesson 2.
+1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
+
+2. Let's make it an `external view` function, so we can call it from web3.js without needing any gas.
+
+3. The function should return a `uint[]` (an array of uints).
+
+Leave the function body empty for now, we'll fill it in in the next chapter.

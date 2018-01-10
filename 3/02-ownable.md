@@ -1,5 +1,5 @@
 ---
-title: Ownable
+title: Ownable Contracts
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -48,46 +48,6 @@ material:
             }
 
         }
-      "ownable.sol": |
-        /**
-         * @title Ownable
-         * @dev The Ownable contract has an owner address, and provides basic authorization control
-         * functions, this simplifies the implementation of "user permissions".
-         */
-        contract Ownable {
-          address public owner;
-
-          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-          /**
-           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-           * account.
-           */
-          function Ownable() public {
-            owner = msg.sender;
-          }
-
-
-          /**
-           * @dev Throws if called by any account other than the owner.
-           */
-          modifier onlyOwner() {
-            require(msg.sender == owner);
-            _;
-          }
-
-
-          /**
-           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-           * @param newOwner The address to transfer ownership to.
-           */
-          function transferOwnership(address newOwner) public onlyOwner {
-            require(newOwner != address(0));
-            OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
-          }
-
-        }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
@@ -134,23 +94,43 @@ material:
           }
 
         }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+      "ownable.sol": |
+        /**
+         * @title Ownable
+         * @dev The Ownable contract has an owner address, and provides basic authorization control
+         * functions, this simplifies the implementation of "user permissions".
+         */
+        contract Ownable {
+          address public owner;
 
-        import "./zombiefeeding.sol";
+          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-        contract ZombieHelper is ZombieFeeding {
+          /**
+           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+           * account.
+           */
+          function Ownable() public {
+            owner = msg.sender;
+          }
 
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
+
+          /**
+           * @dev Throws if called by any account other than the owner.
+           */
+          modifier onlyOwner() {
+            require(msg.sender == owner);
+            _;
+          }
+
+
+          /**
+           * @dev Allows the current owner to transfer control of the contract to a newOwner.
+           * @param newOwner The address to transfer ownership to.
+           */
+          function transferOwnership(address newOwner) public onlyOwner {
+            require(newOwner != address(0));
+            OwnershipTransferred(owner, newOwner);
+            owner = newOwner;
           }
 
         }
@@ -198,15 +178,19 @@ material:
       }
 ---
 
-Did you spot the security hole with this function?
+Did you spot the security hole in the previous chapter?
 
 Because `setKittyContractAddress` is `external`, this means anyone can call it. That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
 
+We do want the ability to update this address in our contract. But we don't want just anyone to be able to update it.
+
 To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner who has special priveleges (you).
 
-Below is an example `Ownable` contract that you can use in your DApps, taken from **_OpenZeppelin_**'s Solidity library. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them below.
+## OpenZeppelin's `Ownable` contract
 
-Go ahead and give the `Ownable` contract a read-through, then we'll break it down below:
+Below is the `Ownable` contract taken from **_OpenZeppelin_**'s Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, if you're anxiously waiting for the release of Lesson 4, we highly recommend you check them out for some extra studying!
+
+Give the contract a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them below.
 
 ```
 /**
@@ -248,8 +232,9 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-- Constructors: `function Ownable()`. A constructor is an optional function with the same name as the contract. A constructor only executes once, when the contract is first created.
-- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit function access to **only** the **owner** of the contract. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
+- Constructors: `function Ownable()`. A constructor is an optional function with the same name as the contract. It will only execute one time, when the contract is first created.
+- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
+- The `indexed` keyword — don't worry about this one, we don't need it yet.
 
 So the `Ownable` contract basically does the following:
 
@@ -259,9 +244,9 @@ So the `Ownable` contract basically does the following:
 
 3. It allows you to transfer the contract to a new `owner`
 
-`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of `OnlyOwner`, and then their first contract inherits from it.
+`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
 
-Since we want to limit `setKittyContractAddress` to `onlyOwner`, we can do the same for our contract.
+Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
 
 ## Put it to the test
 
@@ -269,6 +254,4 @@ We've gone ahead and copied the code of the `Ownable` contract into a new file, 
 
 1. Set our code to `import` the contents of `ownable.sol`. If you don't remember how to do this, look back at `zombiefeeding.sol`.
 
-2. Set the `ZombieFactory` contract to inherit from `Ownable`. Again, you can reference `ZombieFeeding if you don't remember how this is done.
-
->Note: Giving the owner special powers over the contract makes your DApp less decentralized — if the owner added a "pause" function and decided to freeze the DApp, all users would be helpless. So there's a balance of maintaining required control over a contract such that it doesn't break, and maintaining the trust of your users who audit the source code.
+2. Set the `ZombieFactory` contract to inherit from `Ownable`. Again, you can reference `ZombieFeeding` if you don't remember how this is done.

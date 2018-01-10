@@ -1,5 +1,5 @@
 ---
-title: Immutability of Contracts
+title: onlyOwner
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -27,12 +27,12 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // 1. Remove this:
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
-          KittyInterface kittyContract = KittyInterface(ckAddress);
+          KittyInterface kittyContract;
 
-          // 3. Add setKittyContractAddress method here
+          // Modify this function:
+          function setKittyContractAddress(address _address) external {
+            kittyContract = KittyInterface(_address);
+          }
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -52,30 +52,12 @@ material:
           }
 
         }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
-          }
-
-        }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
-        contract ZombieFactory {
+        import "./ownable.sol";
+
+        contract ZombieFactory is Ownable {
 
             event NewZombie(uint zombieId, string name, uint dna);
 
@@ -112,6 +94,46 @@ material:
             }
 
         }
+      "ownable.sol": |
+        /**
+         * @title Ownable
+         * @dev The Ownable contract has an owner address, and provides basic authorization control
+         * functions, this simplifies the implementation of "user permissions".
+         */
+        contract Ownable {
+          address public owner;
+
+          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+          /**
+           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+           * account.
+           */
+          function Ownable() public {
+            owner = msg.sender;
+          }
+
+
+          /**
+           * @dev Throws if called by any account other than the owner.
+           */
+          modifier onlyOwner() {
+            require(msg.sender == owner);
+            _;
+          }
+
+
+          /**
+           * @dev Allows the current owner to transfer control of the contract to a newOwner.
+           * @param newOwner The address to transfer ownership to.
+           */
+          function transferOwnership(address newOwner) public onlyOwner {
+            require(newOwner != address(0));
+            OwnershipTransferred(owner, newOwner);
+            owner = newOwner;
+          }
+
+        }
     answer: >
       pragma solidity ^0.4.19;
 
@@ -136,7 +158,7 @@ material:
 
         KittyInterface kittyContract;
 
-        function setKittyContractAddress(address _address) external {
+        function setKittyContractAddress(address _address) onlyOwner external {
           kittyContract = KittyInterface(_address);
         }
 
@@ -160,36 +182,52 @@ material:
       }
 ---
 
-Great! Now we have a function that will get us all the zombie IDs for a specific owner.
+Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
 
-Now we're going to add some security features to our DApp.
+This is because of how contract inheritance works. Remember:
 
-Once you deploy a contract to Ethereum, it’s **_immutable_** — that means it can never be modified again.
+```
+ZombieFeeding is ZombieFactory
+ZombieFactory is Ownable
+```
 
-Whatever code was there when you deployed it, that code is there to stay permanently on the blockchain. This is one reason security is such a huge concern in Solidity. If there's a flaw in your contract code, there's no way for you to patch it later.
+Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
 
-But this is also why these are called "smart contracts". The code is law. If you read the code of a smart contract, you can be sure that every time you call a function it's going to do exactly what it says it will do. No one can later change that function and give you unexpected results.
+Let's take a closer look at how function modifiers work by examining `onlyOwner`:
 
-## External dependencies
+```
+/**
+ * @dev Throws if called by any account other than the owner.
+ */
+modifier onlyOwner() {
+  require(msg.sender == owner);
+  _;
+}
+```
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp. But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties? Or if the contract owner called `selfdestruct`, a Solidity function that destroys the contract? (The CryptoKitties contract doesn't contain a `selfdestruct` method, but some contracts do).
+We would use this modifier as follows:
 
-It's unlikely, but if this did happen it would render our DApp completely useless. We'd be unable to feed on kitties anymore — and we'd be unable to modify our contract to fix it.
+```
+contract MyContract is Ownable {
+  event LaughManiacally(string laughter);
+  function likeABoss() onlyOwner external {
+    LaughManiacally("Muahahahaha");
+  }
+}
+```
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+Notice the `onlyOwner` modifier on the `likeABoss` function. This means **only** the **owner** of the contract (you, if you deployed it) can call that function.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+>Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
+
+>So an important take-home is that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to read the full source code to see if it's secure. And there's a careful balance between maintaining required control over a contract such that it doesn't break, and maintaining the trust of your users who audit the source code. 
+
+## What's that weird-looking `_;` thing?
+
+When you call `likeABoss`, the code in `onlyOwner` executes before the function body runs. Then when it hits the `_;` statement, it executes the function in the body of `likeABoss`. So adding a function modifier is a quick way to add a `require` check in before a function executes.
 
 ## Put it to the test
 
-We're back on `zombiefeeding.sol`. Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
+Now we can restrict access to `setKittyContractAddress` using `onlyOwner`, so we're the only one who can modify it in the future.
 
-1. Delete the line of code where we hard-coded `ckAddress`
-
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
-
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
-
-4. Inside the function will be one line of code: set `kittyContract` equal to `KittyInterface(_address);`
-
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+1. Add the `onlyOwner` modifier to `setKittyContractAddress`.

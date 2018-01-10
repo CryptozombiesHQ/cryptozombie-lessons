@@ -1,5 +1,5 @@
 ---
-title: Zombie Modifiers
+title: More on Function Modifiers
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -12,24 +12,7 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          modifier aboveLevel(uint _level, uint _zombieId) {
-            require(zombies[_zombieId].level >= _level);
-            _;
-          }
-
           // Start here
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
-          }
 
         }
       "zombiefeeding.sol": |
@@ -60,15 +43,25 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
+
+          function _isReady(Zombie storage _zombie) internal view returns (bool) {
+              return (_zombie.readyTime <= now);
+          }
+
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string species) internal {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
+            require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -173,58 +166,42 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) public {
-          zombies[_zombieId].name = _newName;
-        }
-
-        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) public {
-          zombies[_zombieId].dna = _newDna;
-        }
-
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
-          uint[] memory result = new uint[](ownerZombieCount[_owner]);
-          uint counter = 0;
-          for (uint i = 1; i <= zombies.length; i++) {
-            if (zombieToOwner[i] == _owner) {
-              result[counter] = i;
-              counter++;
-            }
-          }
-          return result;
-        }
-
       }
 ---
 
-Now let's use our `aboveLevel` modifier to create some functions.
+Great! Our zombie now has a functional cooldown time.
 
-Our game will have some incentives for people to level up their zombies:
+Next we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. This way we can keep these methods separate, and keep our code somewhat organized.
 
-- For zombies level 1 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+One feature that would be cool is to use the zombie's `level` property to add special abilities that only zombies above a certain level can perform. To do this, we can use function modifiers.
 
-We'll implement these functions below. Here's the example code from the previous lesson if you want to reference it:
+Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. Example:
 
 ```
 // A mapping to store a user's age:
 mapping (uint => uint) public age;
 
-// Require that this user be older than a certain age:
+// Modifier that requires this user to be older than a certain age:
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// Must be older than 16 to drive a car (in the US, at least)
+// Must be older than 16 to drive a car (in the US, at least).
+// We can call the `olderThan` modifier with arguments like so:
 function driveCar(uint _userId) olderThan(16, _userId) public {
   // Some function logic
 }
 ```
 
+You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes these arguments to the modifier.
+
+Let's try making our own `modifier`. We can use the zombie's `level` property to restrict access to features unless a zombie is above a certain level.
+
 ## Put it to the test
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`). It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. And it should be `public`.
+1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
 
-2. The contents of this function should set `zombies[_zombieId].name` equal to `_newName`.
+2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
 
-3. Create a function named `changeDna` below `changeName`. It will be identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna`.
+3. Remember to have the last line of the modifier call the rest of the function with `_;`.

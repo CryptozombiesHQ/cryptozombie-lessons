@@ -12,6 +12,19 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+            zombies[_zombieId].name = _newName;
+          }
+
+          function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+            zombies[_zombieId].dna = _newDna;
+          }
+
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
             // Start here
           }
@@ -107,6 +120,19 @@ material:
       import "./zombiefeeding.sol";
 
       contract ZombieHelper is ZombieFeeding {
+
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
+        }
+
+        function changeName(uint _zombieId, string _newName) aboveLevel(1, _zombieId) external {
+          zombies[_zombieId].name = _newName;
+        }
+
+        function changeDna(uint _zombieId, uint _newDna) aboveLevel(20, _zombieId) external {
+          zombies[_zombieId].dna = _newDna;
+        }
 
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
           uint[] memory result = new uint[](ownerZombieCount[_owner]);

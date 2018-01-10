@@ -16,12 +16,13 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
-            // 1. Define cooldownTime here
+            // 1. Define `cooldownTime` here
 
-            // 2. Modify Zombie struct here:
             struct Zombie {
-              string name;
-              uint dna;
+                string name;
+                uint dna;
+                uint32 level;
+                uint32 readyTime;
             }
 
             Zombie[] public zombies;
@@ -30,7 +31,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 3. Modify the creation of new zombies here:
+                // 2. Update the following line:
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
@@ -48,26 +49,6 @@ material:
                 randDna = randDna - randDna % 100;
                 _createZombie(_name, randDna);
             }
-
-        }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
-          }
 
         }
       "zombiefeeding.sol": |
@@ -135,7 +116,6 @@ material:
             owner = msg.sender;
           }
 
-
           /**
            * @dev Throws if called by any account other than the owner.
            */
@@ -143,7 +123,6 @@ material:
             require(msg.sender == owner);
             _;
           }
-
 
           /**
            * @dev Allows the current owner to transfer control of the contract to a newOwner.
@@ -203,21 +182,19 @@ material:
       }
 ---
 
-We'll talk more about function modifiers in a minute. But first we need to add a couple features to our zombies.
+`level` is pretty explanatory. Later when we introduce a battle system, zombies who win more battles can level up over time and get access to more features.
 
-In a later lesson, we're going to introduce a battle system. So we're going to need some extra features on our zombies:
+`readyTime` requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1000 times per day, which would make the game too easy.
 
-1. Let's add a "cooldown period", an amount of time a zombie has to wait before it's allowed to feed / attack again. Otherwise the zombie could attack and multiply 1000 times per day, which isn't very fair.
-
-2. Let's also give our zombies a level — this way zombies who win more battles can level up over time.
-
-In order to implement these features, we're going to have to make some changes to our zombie `struct`. But first let's talk about a couple more features of Solidity.
+In order to keep track of how much time the zombie has to wait until it can attack again, we can use Solidity's time units.
 
 ## Time units
 
 Solidity provides some native units for dealing with time. 
 
-The variable `now` refers to the current unix timestamp. (The number of seconds since unix epoch, January 1st 1970. This is a date-time standard used across many programming languages). The unix time as I write this is `1515527488`.
+The variable `now` will return the current unix timestamp (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
+
+>Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when unix timestamps will overflow... So if we'd rather have our DApp be usable in 20 years at the expense of costing our users more gas, we would use a 64-bit number here.
 
 Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a `uint` of the number of seconds in that length of time. So `1 minute` is `60`, `1 hour` is `3600` (60 seconds x 60 minutes), `1 day` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
 
@@ -234,56 +211,25 @@ function updateTimestamp() public {
 // Will return `true` if 30 seconds have passed since `updateTimestamp` was 
 // called, `false` if 30 seconds have not passed
 function thirtySecondsHavePassed() public view returns (bool) {
-  return (now > (lastUpdated + 30 seconds));
+  return (now >= (lastUpdated + 30 seconds));
 }
 ```
 
 We can use these time methods for our `cooldown` feature on our zombies.
 
-## Struct packing to save gas
-
-In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
-
-Normally there's no benefit to using these, since Solidity reserves 256 bits in storage when we declare a variable anyway, so using a smaller `uint` doesn't save on gas.
-
-But there's an exception to this: inside `struct`s.
-
-If you have multiple `uint`s inside a struct, using smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
-
-```
-struct NormalStruct {
-  uint a;
-  uint b;
-  uint c;
-}
-
-struct MiniMe {
-  uint32 a;
-  uint32 b;
-  uint8 c;
-}
-
-// `one` will cost less gas than `two`
-MiniMe one = MiniMe(10, 20, 30); 
-NormalStruct two = NormalStruct(10, 20, 30);
-```
-
-For this reason, inside a struct you want to use the smallest size of integers you can get away with for that type of data. E.g. If you're using a unix timestamp like `now`, you can use a `uint32`, since unix timestamps are only 32 bits.
-
-You also want to cluster the same data types together (put them next to each other in the struct), since this will allow Solidity to optimize storage. For example, a struct with the order `uint32 a; uint32 b; uint c;` will cost less gas than a struct with `uint32 a; uint c; uint 32 b;`, since we're clustering the `uint32` data types next to each other.
 
 ## Put it to the test 
 
-Let's go back to `ZombieFactory` and add a cooldown time and level to our zombies.
+Let's add a cooldown time to our zombies, and make it so they have to wait 1 day after attacking or feeding to attack again.
 
 1. Declare a `uint` called `cooldownTime`, and set it equal to `1 days`.
 
-2. Add 2 more fields to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). 32 bits is more than enough to hold a unix timestamp and the zombie's level, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
+2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
 
-3. Now that we have 2 more fields in our `Zombie` struct, we need to update `_createZombie()` to give these fields values when we create a zombie. Update the `zombies.push` line of code to add 2 more arguments: `0` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
+  Update the `zombies.push` line of code to add 2 more arguments: `0` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
 
 >Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
 
-Setting the new zombie's `readyTime` to `now + cooldownTime` means it won't be usable until 1 day after it's created, so the user can't just create zombies infinitely. 
+`now + cooldownTime` will equal the current unix timestamp (in seconds) plus the number of seconds in 1 day. Later we can compare to see if this zombie's `readyTime > now` to see if enough time has passed to use the zombie again.
 
 We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
