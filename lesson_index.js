@@ -39,19 +39,19 @@ import lesson2complete from './2/15-lessoncomplete.md'
 
 // lesson3
 import l3_overview from './3/00-overview.md'
-import l3_introduction from './3/01-introduction.md'
-import l3_savinggasview from './3/02-savinggasview.md'
-import l3_savinggasstorage from './3/03-savinggasstorage.md'
-import l3_forloops from './3/04-forloops.md'
-import l3_externaldependencies from './3/05-externaldependencies.md'
-import l3_ownable from './3/06-ownable.md'
-import l3_onlyowner from './3/07-onlyowner.md'
-import l3_morezombiefeatures from './3/08-morezombiefeatures.md'
-import l3_zombiecooldowns from './3/09-zombiecooldowns.md'
-import l3_zombiecooldowns2 from './3/10-zombiecooldowns2.md'
-import l3_functionmodifiers from './3/11-functionmodifiers.md'
-import l3_zombiemodifiers from './3/12-zombiemodifiers.md'
-import l3_helper from './3/13.md'
+import l3_ch1 from './3/01-externaldependencies.md'
+import l3_ch2 from './3/02-ownable.md'
+import l3_ch3 from './3/03-onlyowner.md'
+import l3_ch4 from './3/04-gas.md'
+import l3_ch5 from './3/05-timeunits.md'
+import l3_ch6 from './3/06-zombiecooldowns.md'
+import l3_ch7 from './3/07-zombiecooldowns2.md'
+import l3_ch8 from './3/08-functionmodifiers.md'
+import l3_ch9 from './3/09-zombiemodifiers.md'
+import l3_ch10 from './3/10-savinggasview.md'
+import l3_ch11 from './3/11-savinggasstorage.md'
+import l3_ch12 from './3/12-forloops.md'
+import l3_ch13 from './3/13.md'
 import l3_complete from './3/15-lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
@@ -96,19 +96,19 @@ export default {
   ],
   3:[
     l3_overview,
-    l3_introduction,
-    l3_savinggasview,
-    l3_savinggasstorage,
-    l3_forloops,
-    l3_externaldependencies,
-    l3_ownable,
-    l3_onlyowner,
-    l3_morezombiefeatures,
-    l3_zombiecooldowns,
-    l3_zombiecooldowns2,
-    l3_functionmodifiers,
-    l3_zombiemodifiers,
-    l3_helper,
+    l3_ch1,
+    l3_ch2,
+    l3_ch3,
+    l3_ch4,
+    l3_ch5,
+    l3_ch6,
+    l3_ch7,
+    l3_ch8,
+    l3_ch9,
+    l3_ch10,
+    l3_ch11,
+    l3_ch12,
+    l3_ch13,
     l3_complete,
   ],
   4:[],
