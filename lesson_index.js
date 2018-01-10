@@ -48,8 +48,10 @@ import l3_ownable from './3/06-ownable.md'
 import l3_onlyowner from './3/07-onlyowner.md'
 import l3_morezombiefeatures from './3/08-morezombiefeatures.md'
 import l3_zombiecooldowns from './3/09-zombiecooldowns.md'
-import l3_functionmodifiers from './3/10-functionmodifiers.md'
-import l3_zombiemodifiers from './3/11-zombiemodifiers.md'
+import l3_zombiecooldowns2 from './3/10-zombiecooldowns2.md'
+import l3_functionmodifiers from './3/11-functionmodifiers.md'
+import l3_zombiemodifiers from './3/12-zombiemodifiers.md'
+import l3_helper from './3/13.md'
 import l3_complete from './3/15-lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
@@ -103,8 +105,10 @@ export default {
     l3_onlyowner,
     l3_morezombiefeatures,
     l3_zombiecooldowns,
+    l3_zombiecooldowns2,
     l3_functionmodifiers,
     l3_zombiemodifiers,
+    l3_helper,
     l3_complete,
   ],
   4:[],
