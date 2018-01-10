@@ -155,13 +155,13 @@ In the previous chapter, we mentioned that sometimes you'll want to use a `for` 
 
 Let's look at why.
 
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` in the `ZombieFactory` contract with an array every owner's zombies:
+For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
 
 ```
 mapping (address =>uint[]) public ownerToZombies
 ```
 
-Every time we created a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's array. And `getZombiesByOwner` would be a very straightforward function:
+Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -173,11 +173,15 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 
 This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
 
-That transfer function would need to: 1) push the zombie to the new owner's `ownerToZombies` array, 2) remove the zombie from the old owner's `ownerToZombies` array, 3) shift every zombie in the older owner's array up one place to fill the hole, and then 4) reduce the array length by 1.
+That transfer function would need to:
+1) push the zombie to the new owner's `ownerToZombies` array,
+2) remove the zombie from the old owner's `ownerToZombies` array,
+3) shift every zombie in the older owner's array up one place to fill the hole, and then
+4) reduce the array length by 1.
 
-Step 3) would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array. 
+Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
 
-So every call to this transfer function would be very expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in his/her army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
+So every call to this transfer function would be very expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
 
 > Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
 
@@ -185,7 +189,7 @@ Since `view` functions don't cost gas when called externally, we can simply use 
 
 ## Using `for` loops
 
-The syntax for `for` loops is the same as JavaScript. 
+The syntax of `for` loops in Solidity is similar to JavaScript.
 
 Let's look at an example where we want to make an array of even numbers:
 
@@ -220,6 +224,8 @@ Let's finish our `getZombiesByOwner` function by writing a `for` loop that itera
 
 3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
 
-4. Inside the if statement, a) add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`. And b) increment `counter` by 1 (see the `for` loop example above).
+4. Inside the if statement:
+   1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
+   2. Increment `counter` by 1 (see the `for` loop example above).
 
-That's it — then your function should return `result`, which we already have from the previous chapter. And this function will now return all the zombies owned by `_owner` without spending any gas.
+That's it — the function will now return all the zombies owned by `_owner` without spending any gas.

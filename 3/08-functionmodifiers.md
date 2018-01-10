@@ -169,13 +169,13 @@ material:
       }
 ---
 
-Great! Our zombie now has a functional cooldown time.
+Great! Our zombie now has a functional cooldown timer.
 
-Next we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports from `zombiefeeding.sol`. This way we can keep these methods separate, and keep our code somewhat organized.
+Next, you're going to add some additional helper methods, so we've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
 
-One feature that would be cool is to use the zombie's `level` property to add special abilities that only zombies above a certain level can perform. To do this, we can use function modifiers.
+Wouldn't it be cool if zombies gained special abilities after reaching a certain level? We're going to implement that feature soon, but first we need to learn a little bit more about function modifiers.
 
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. Example:
+Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
 
 ```
 // A mapping to store a user's age:
@@ -196,7 +196,7 @@ function driveCar(uint _userId) olderThan(16, _userId) public {
 
 You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes these arguments to the modifier.
 
-Let's try making our own `modifier`. We can use the zombie's `level` property to restrict access to features unless a zombie is above a certain level.
+Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
 
 ## Put it to the test
 

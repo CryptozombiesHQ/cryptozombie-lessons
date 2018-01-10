@@ -179,7 +179,7 @@ Our game will have some incentives for people to level up their zombies:
 - For zombies level 1 and higher, users will be able to change their name.
 - For zombies level 20 and higher, users will be able to give them custom DNA.
 
-We'll implement these functions below. Here's the example code from the previous lesson if you want to reference it:
+We'll implement these functions below. Here's the example code from the previous lesson for reference:
 
 ```
 // A mapping to store a user's age:

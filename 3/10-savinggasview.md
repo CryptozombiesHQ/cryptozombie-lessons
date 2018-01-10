@@ -139,11 +139,11 @@ material:
       }
 ---
 
-Our DApp should also probably have a function to view a user's zombie army. So we should create a function called `getZombiesByOwner` that returns all an owner's zombies.
+Our DApp should have a function to view a user's zombie army, let's call it `getZombiesByOwner`.
 
-When talking about gas optimization, and important thing to note is that ** `view` functions don't cost any gas** when they're called externally, like from web3.js.
+When talking about gas optimization, and important thing to note is that **`view` functions don't cost any gas** when they're called externally, like from `web3.js`.
 
-This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function as `view` tells web3.js that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
 
 We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
 
@@ -151,14 +151,14 @@ We'll cover setting up web3.js with your own node later. But for now the big tak
 
 ## Put it to the test
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from web3.js if we want to display a user profile page with their entire army.
+We're going to implement a function that will return a user's entire zombie army. We can later call this function from `web3.js` if we want to display a user profile page with their entire army.
 
-This function's logic is a bit complicated so it will take a few chapters to implement. Let's create the function first:
+This function's logic is a bit complicated so it will take a few chapters to implement.
 
 1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
 
-2. Let's make it an `external view` function, so we can call it from web3.js without needing any gas.
+2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
 
-3. The function should return a `uint[]` (an array of uints).
+3. The function should return a `uint[]` (an array of `uint`).
 
 Leave the function body empty for now, we'll fill it in in the next chapter.
