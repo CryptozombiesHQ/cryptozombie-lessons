@@ -196,7 +196,7 @@ material:
       }
 ---
 
-Now that we have a `readyTime` property on our zombies, let's jump to `zombiefeeding.sol` and implement a cooldown time.
+Now that we have a `readyTime` property on our `Zombie` struct let's jump to `zombiefeeding.sol` and implement a cooldown timer.
 
 We're going to modify our `feedAndMultiply` such that:
 
@@ -220,14 +220,14 @@ function _doStuff(Zombie storage _zombie) internal {
 }
 ```
 
-This way we can pass a reference to our zombie between functions, instead of needing to pass its ID and look it up each time.
+This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
 
 ## Put it to the test 
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer, and it should be `internal`.
+1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
 
 2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
 
 3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us whether `now` has passed the zombie's `readyTime` or not.
+4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.

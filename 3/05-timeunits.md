@@ -182,11 +182,11 @@ material:
       }
 ---
 
-`level` is pretty explanatory. Later when we introduce a battle system, zombies who win more battles can level up over time and get access to more features.
+The `level` property is pretty self explanatory. Later on, when we create a battle system, zombies who win more battles will level up over time and get access to more abilities.
 
-`readyTime` requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1000 times per day, which would make the game too easy.
+The `readyTime` property requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
 
-In order to keep track of how much time the zombie has to wait until it can attack again, we can use Solidity's time units.
+In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
 
 ## Time units
 
@@ -194,7 +194,7 @@ Solidity provides some native units for dealing with time.
 
 The variable `now` will return the current unix timestamp (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
 
->Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when unix timestamps will overflow... So if we'd rather have our DApp be usable in 20 years at the expense of costing our users more gas, we would use a 64-bit number here.
+>Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow... So if we wanted our DApp to keep running 20 years from now we would have to use a 64-bit number instead, and our users would have to spend more gas to use our DApp.
 
 Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a `uint` of the number of seconds in that length of time. So `1 minute` is `60`, `1 hour` is `3600` (60 seconds x 60 minutes), `1 day` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
 
@@ -215,7 +215,7 @@ function thirtySecondsHavePassed() public view returns (bool) {
 }
 ```
 
-We can use these time methods for our `cooldown` feature on our zombies.
+We can use these time methods for our Zombie `cooldown` feature.
 
 
 ## Put it to the test 

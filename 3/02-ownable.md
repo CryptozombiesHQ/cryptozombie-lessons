@@ -180,15 +180,15 @@ material:
 
 Did you spot the security hole in the previous chapter?
 
-Because `setKittyContractAddress` is `external`, this means anyone can call it. That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
+`setKittyContractAddress` is `external`, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
 
-We do want the ability to update this address in our contract. But we don't want just anyone to be able to update it.
+We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
 
-To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner who has special priveleges (you).
+To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner (you) who has special privileges.
 
 ## OpenZeppelin's `Ownable` contract
 
-Below is the `Ownable` contract taken from **_OpenZeppelin_**'s Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, if you're anxiously waiting for the release of Lesson 4, we highly recommend you check them out for some extra studying!
+Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, while you anxiously await the release of Lesson 4, check out some of those contracts!
 
 Give the contract a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them below.
 
@@ -232,9 +232,9 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-- Constructors: `function Ownable()`. A constructor is an optional function with the same name as the contract. It will only execute one time, when the contract is first created.
+- Constructors: `function Ownable()` is a constructor, which is an optional function with the same name as the contract. It will be executed only one time, when the contract is first created.
 - Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
-- The `indexed` keyword — don't worry about this one, we don't need it yet.
+- `indexed` keyword: don't worry about this one, we don't need it yet.
 
 So the `Ownable` contract basically does the following:
 
@@ -252,6 +252,6 @@ Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to 
 
 We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
 
-1. Set our code to `import` the contents of `ownable.sol`. If you don't remember how to do this, look back at `zombiefeeding.sol`.
+1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
 
-2. Set the `ZombieFactory` contract to inherit from `Ownable`. Again, you can reference `ZombieFeeding` if you don't remember how this is done.
+2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.

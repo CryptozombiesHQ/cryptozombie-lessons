@@ -1,5 +1,5 @@
 ---
-title: onlyOwner
+title: onlyOwner Function Modifier
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -220,14 +220,14 @@ Notice the `onlyOwner` modifier on the `likeABoss` function. This means **only**
 
 >Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
 
->So an important take-home is that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to read the full source code to see if it's secure. And there's a careful balance between maintaining required control over a contract such that it doesn't break, and maintaining the trust of your users who audit the source code. 
+>So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to read the full source code to see if it's actually secure. There's a careful balance between maintaining control over a contract such that it doesn't break, and maintaining the trust of your users (who audit the source code).
 
 ## What's that weird-looking `_;` thing?
 
-When you call `likeABoss`, the code in `onlyOwner` executes before the function body runs. Then when it hits the `_;` statement, it executes the function in the body of `likeABoss`. So adding a function modifier is a quick way to add a `require` check in before a function executes.
+When you call `likeABoss`, the code in `onlyOwner` executes before the function body runs, and when it hits the `_;` statement it executes the code inside `likeABoss`. So, adding a function modifier is a quick way of doing a `require` check before a function executes.
 
 ## Put it to the test
 
-Now we can restrict access to `setKittyContractAddress` using `onlyOwner`, so we're the only one who can modify it in the future.
+Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
 
 1. Add the `onlyOwner` modifier to `setKittyContractAddress`.

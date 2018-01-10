@@ -140,34 +140,49 @@ material:
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript. But there are a number of ways that Ethereum DApps are actually quite different from normal applications. 
+Up until now, Solidity has looked quite similar to other languages like JavaScript.
+But there are a number of ways that Ethereum DApps are actually quite different
+from normal applications.
 
-To start with, after you deploy a contract to Ethereum, it’s **_immutable_**. That means it can never be modified or updated again.
+To start with, after you deploy a contract to Ethereum, it’s **_immutable_**,
+which means that it can never be modified or updated again.
 
-Whatever code was there when you deployed it, that code is there to stay permanently on the blockchain. This is one reason security is such a huge concern in Solidity. If there's a flaw in your contract code, there's no way for you to patch it later.
+Whatever code was there when you deployed it, that code is there to stay, permanently,
+on the blockchain. This is one reason security is such a huge concern in Solidity.
+If there's a flaw in your contract code, there's no way for you to patch it later.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what it says it will do. No one can later change that function and give you unexpected results.
+But this is also a feature of smart contracts. The code is law. If you read the code
+of a smart contract and verify it, you can be sure that every time you call a function
+it's going to do exactly what it says it will do. No one can later change that function
+and give you unexpected results.
 
 ## External dependencies
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp. But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp.
+But what would happen if the CryptoKitties contract had a bug and someone destroyed
+all the kitties?
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+It's unlikely, but if this did happen it would render our DApp completely useless — our DApp
+would point to a hardcoded address that no longer returned any kitties. Our zombies
+would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+For this reason, it often makes sense to have functions that will allow you to update key
+portions of the DApp.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+For example, instead of hard coding the CryptoKitties contract address into our DApp,
+we should probably have a `setKittyContractAddress` function that lets us change this
+address in the future in case something happens to the CryptoKitties contract.
 
 ## Put it to the test
 
 Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
 
-1. Delete the line of code where we hard-coded `ckAddress`
+1. Delete the line of code where we hard-coded `ckAddress`.
 
 2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
 
 3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
 
-4. Inside the function will be one line of code: set `kittyContract` equal to `KittyInterface(_address);`
+4. Inside the function add one line of code that assigns `KittyInterface(_address)` to `kittyContract`.
 
 > Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
