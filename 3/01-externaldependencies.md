@@ -1,6 +1,7 @@
 ---
 title: Immutability of Contracts
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

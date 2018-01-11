@@ -1,6 +1,7 @@
 ---
 title: Saving Gas With 'View' Functions
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

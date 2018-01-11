@@ -1,6 +1,7 @@
 ---
 title: Storage is Expensive
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

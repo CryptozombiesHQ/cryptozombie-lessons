@@ -1,6 +1,7 @@
 ---
 title: For Loops
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

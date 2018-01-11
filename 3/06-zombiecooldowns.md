@@ -1,6 +1,7 @@
 ---
 title: Zombie Cooldowns
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

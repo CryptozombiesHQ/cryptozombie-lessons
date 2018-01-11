@@ -1,6 +1,7 @@
 ---
 title: onlyOwner Function Modifier
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
