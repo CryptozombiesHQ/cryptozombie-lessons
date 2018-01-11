@@ -63,26 +63,6 @@ material:
           }
 
         }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 1; i <= zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
-          }
-
-        }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
