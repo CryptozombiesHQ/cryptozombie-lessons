@@ -4,7 +4,7 @@ actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   saveZombie: false
-  zombieChangeName:
+  zombieDeck:
     zombie:
       lesson: 2
     hideSliders: true
