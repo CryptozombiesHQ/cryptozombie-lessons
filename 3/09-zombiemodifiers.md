@@ -78,11 +78,13 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
+            uint cooldownTime = 1 days;
 
             struct Zombie {
               string name;
               uint dna;
-              uint level;
+              uint32 level;
+              uint32 readyTime;
             }
 
             Zombie[] public zombies;
@@ -91,7 +93,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -162,7 +164,7 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
           require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
@@ -179,7 +181,7 @@ Now let's use our `aboveLevel` modifier to create some functions.
 
 Our game will have some incentives for people to level up their zombies:
 
-- For zombies level 1 and higher, users will be able to change their name.
+- For zombies level 2 and higher, users will be able to change their name.
 - For zombies level 20 and higher, users will be able to give them custom DNA.
 
 We'll implement these functions below. Here's the example code from the previous lesson for reference:
@@ -202,7 +204,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 ## Put it to the test
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `1` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
 2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 

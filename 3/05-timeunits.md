@@ -162,7 +162,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-              uint id = zombies.push(Zombie(_name, _dna, 0, uint32(now + cooldownTime))) - 1;
+              uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               NewZombie(id, _name, _dna);
@@ -227,7 +227,7 @@ Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 d
 
 2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
 
-  Update the `zombies.push` line of code to add 2 more arguments: `0` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
+  Update the `zombies.push` line of code to add 2 more arguments: `1` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
 
 >Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
 

@@ -26,6 +26,6 @@ Congratulations! That concludes Lesson 3.
 
 As a reward for completing Lesson 3, both of your zombies have leveled up!
 
-And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 1, you can call `changeName` to give him/her a name. NoName no more!
+And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
 
 Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.

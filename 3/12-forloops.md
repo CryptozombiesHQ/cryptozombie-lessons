@@ -18,7 +18,7 @@ material:
             _;
           }
 
-          function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
@@ -93,11 +93,13 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
+            uint cooldownTime = 1 days;
 
             struct Zombie {
               string name;
               uint dna;
-              uint level;
+              uint32 level;
+              uint32 readyTime;
             }
 
             Zombie[] public zombies;
@@ -106,7 +108,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna, 0)) - 1;
+                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -177,7 +179,7 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(1, _zombieId) {
+        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
           require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
