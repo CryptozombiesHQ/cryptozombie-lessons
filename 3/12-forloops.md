@@ -192,7 +192,7 @@ material:
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
           uint[] memory result = new uint[](ownerZombieCount[_owner]);
           uint counter = 0;
-          for (uint i = 1; i <= zombies.length; i++) {
+          for (uint i = 0; i < zombies.length; i++) {
             if (zombieToOwner[i] == _owner) {
               result[counter] = i;
               counter++;
@@ -273,7 +273,7 @@ Let's finish our `getZombiesByOwner` function by writing a `for` loop that itera
 
 1. Declare a `uint` called `counter` and set it equal to `0`. We'll use this variable to keep track of the index in our `result` array.
 
-2. Declare a `for` loop that starts from `uint i = 1` and goes up through `i <= zombies.length`. This will iterate every zombie in our array.
+2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
 
 3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
 
