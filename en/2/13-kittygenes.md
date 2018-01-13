@@ -113,12 +113,12 @@ material:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
         KittyInterface kittyContract = KittyInterface(ckAddress);
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(species) == keccak256("kitty")) {
+          if (keccak256(_species) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
@@ -161,9 +161,9 @@ function eatBLT(string sandwich) public {
 
 Let's implement cat genes in our zombie code.
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `species`
+1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `species` and the string `"kitty"`
+2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
 
 3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
 
