@@ -1,5 +1,5 @@
 ---
-title: Arrays
+title: 数组
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -39,7 +39,7 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+如果你想建立一个集合，可以用 **_数组_**. Solidity支持两种数组: **_静态_** 数组和**_动态_** 数组:
 
 ```
 // Array with a fixed length of 2 elements:
@@ -50,26 +50,26 @@ string[5] stringArray;
 uint[] dynamicArray; 
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+你也可以建立一个 **_数据结构_**的集合 例如，上一章提到的 `Person` 数据结构:
 
 ```
 Person[] people; // dynamic Array, we can keep adding to it
 ```
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+记住：静态变量被永久保存在区域链中。 所以在你的合同中建立一个动态数组保存数据结构是非常有意义的，如同一个小数据库。
 
-## Public Arrays
+## 公共数组
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+你可以定义`public`数组, Solidity 会自动创建 **_getter_** 方法. 语法如下:
 
 ```
 Person[] public people;
 ```
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+其它的合同可以读（但不能写）这个数组，所以这是在合同中保存公共数据的一个有用的模式。
 
-# Put it to the test
+# 测试一把
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+目标是把一个僵尸部队保存在我们的APP里，而且我们想让其它APP看到这些骄傲的僵尸。为此我们要定义公共数组。
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+1. 建立一个公共的僵尸数据结构数组，命名为：`zombies`.

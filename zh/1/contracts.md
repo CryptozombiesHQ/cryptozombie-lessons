@@ -1,6 +1,6 @@
 ---
-title: "Contracts"
-actions: ['checkAnswer', 'hints']
+title: "合同"
+actions: ['答案', '提示']
 material: 
   editor:
     language: sol
@@ -17,11 +17,11 @@ material:
       }
 ---
 
-Starting with the absolute basics:
+从最基本的开始入手:
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+Solidity的代码都包裹在 **合同**里面. 一份 `合同` 就是以太应币应用的基本模块， 所有的变量和函数都属于一份合同, 它是你所有应用的起点.
 
-An empty contract named `HelloWorld` would look like this:
+一份空白合同 `世界您好` 模样如下:
 
 ```
 contract HelloWorld {
@@ -29,13 +29,13 @@ contract HelloWorld {
 }
 ```
 
-## Version Pragma
+## 版本指令
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+所有的solidity源码都必须冠以 "version pragma" — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的程序。
 
-It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
+例如: `pragma solidity ^0.4.19;` (此时此刻，solidity 的最新版本是 0.4.19).
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+综上所述， 下面就是一个最基本的合同 — 每次建立一个新的项目时的第一段代码:
 
 ```
 pragma solidity ^0.4.19;
@@ -45,12 +45,12 @@ contract HelloWorld {
 }
 ```
 
-# Put it to the test
+# 测试一把
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+为了建立我们的僵尸部队， 让我们先建立一个基础合同，称为 `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
+1. 在右边的输入框里输入`0.4.19`，我们的合同基于这个版本的编译器
 
-2. Create an empty contract called `ZombieFactory`.
+2. 建立一个空白合同`ZombieFactory`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+一切完毕，点击下面 "答案" . 如果不工作，点击 "提示".

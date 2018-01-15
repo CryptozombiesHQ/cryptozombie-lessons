@@ -1,6 +1,6 @@
 ---
-title: Function Declarations
-actions: ['checkAnswer', 'hints']
+title: 定义函数
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -45,7 +45,7 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+在solidity中函数定义的句法如下:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -53,20 +53,20 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+这是一个称作为 `eatHamburgers` 的函数，它接受两个参数：一个 `string` 和 一个 `uint`。现在函数本身还是空的。
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+注：: 习惯上函数里的变量都是以(`_`)开头 (但不是硬性规定) 以区别全局变量。我们整个教程都会沿用这个习惯。
 
-You would call this function like so:
+我们的函数定义如下:
 
 ```
 eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+# 测试一把
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+在我们的应用里，我们要能创建一些僵尸，让我们写一个函数做这件事吧！
 
-1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. 建立一个函数 `createZombie`. 它接受两个输入变量: **名字** (类型`string`), 和 **__dna_** (类型`uint`)。
 
-Leave the body empty for now — we'll fill it in later.
+暂时让函数空着－我们在后面会增加内容。

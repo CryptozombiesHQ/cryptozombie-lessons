@@ -1,5 +1,5 @@
 ---
-title: Working With Structs and Arrays
+title: 使用数据结构和数组
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### Creating New Structs
+### 创建新的数据结构
 
-Remember our `Person` struct in the previous example?
+还记得上个例子中的 `Person` 结构吗？
 
 ```
 struct Person {
@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+现在我们学习创建新的 `Person`结构，然后把它加入到 `people` 数组中.
 
 ```
 // create a New Person:
@@ -70,13 +70,13 @@ Person satoshi = Person(172, "Satoshi");
 people.push(satoshi);
 ```
 
-We can also combine these together and do them in one line of code to keep things clean:
+你也可以两步并一步，用一行代码更简洁:
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+注：`array.push()` 在数组的尾部加新元素 **end** ，所以元素在数组中的顺序就是我们添加的顺序， 如:
 
 ```
 uint[] numbers;
@@ -86,9 +86,9 @@ numbers.push(15);
 // numbers is now equal to [5, 10, 15]
 ```
 
-# Put it to the test
+# 测试一把
 
-Let's make our createZombie function do something!
+让createZombie做点儿什么吧
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. 在function里先创建一个`Zombie`, 然后把它加入 `zombies` 数组中. 新创见的僵尸的`name` 和 `dna`，是来自function的输入变量
+2. 让我们用一行代码简洁地完成它。

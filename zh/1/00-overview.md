@@ -8,4 +8,4 @@ roadmap: roadmap.jpg
 
 这个教学过程会教你如何搭建一个以太网的游戏
 
-是为了Solidity初学者而设计的课程，但是默认你稍微了解其他的程序语言（比如Javascript).
+这个课程是为了Solidity初学者而设计的，需要你对其他的程序语言有所了解（如Javascript).
