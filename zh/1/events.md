@@ -1,0 +1,110 @@
+---
+title: 事件
+actions: ['答案', '提示']
+material:
+  editor:
+    language: sol
+    startingCode: |
+      pragma solidity ^0.4.19;
+
+      contract ZombieFactory {
+
+          // declare our event here
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function _createZombie(string _name, uint _dna) private {
+              zombies.push(Zombie(_name, _dna));
+              // and fire it here
+          } 
+
+          function _generateRandomDna(string _str) private view returns (uint) {
+              uint rand = uint(keccak256(_str));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string _name) public {
+              uint randDna = _generateRandomDna(_name);
+              _createZombie(_name, randDna);
+          }
+
+      }
+    answer: >
+      pragma solidity ^0.4.19;
+
+
+      contract ZombieFactory {
+
+          event NewZombie(uint zombieId, string name, uint dna);
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function _createZombie(string _name, uint _dna) private {
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
+              NewZombie(id, _name, _dna);
+          } 
+
+          function _generateRandomDna(string _str) private view returns (uint) {
+              uint rand = uint(keccak256(_str));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string _name) public {
+              uint randDna = _generateRandomDna(_name);
+              _createZombie(_name, randDna);
+          }
+
+      }
+---
+
+我们的合同几乎就要完成了！让我们加上一个**事件**.
+
+**事件** 是合同和区块链通讯的一种机制。你的前端应用‘监听’某些事件，并做出反应。
+
+例子:
+
+```
+// declare the event
+event IntegersAdded(uint x, uint y, uint result);
+
+function add(uint _x, uint _y) public {
+  uint result = _x + _y;
+  // fire an event to let the app know the function was called:
+  IntegersAdded(_x, _y, result);
+  return result;
+}
+```
+
+你的 app 前端可以监听这个事件。javascript实现如下: 
+
+```
+YourContract.IntegersAdded(function(error, result) { 
+  // do something with result
+}
+```
+
+# 测试一把
+
+我们想每当一个僵尸创造出来时，我们的前端都能听到这个事件，并将它显示出来。
+
+1. 定义一个 `事件` 叫做 `NewZombie`. 它可以含有 `zombieId` (`uint`), `name` (`string`), 和 `dna` (`uint`).
+
+2. 修改 `_createZombie` 函数使得当新僵尸造出来并加入`zombies`数组后，生成事件`NewZombie`。
+
+3. 需要定义僵尸`id`. `array.push()` 返回数组的长度类型是`uint`  - 因为数组的第一个元素的索引是 0, `array.push() - 1` 将是我们加入的僵尸的索引。 `zombies.push() - 1` 就是 `id`，数据类型是`uint`。在下一行中你可以把它用到`NewZombie` 事件中。
