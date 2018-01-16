@@ -1,5 +1,5 @@
 ---
-title: Immutability of Contracts
+title: 智能协议的永固性
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -141,11 +141,13 @@ material:
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript.  But there are a number of ways that Ethereum DApps are actually quite different from normal applications.
+到现在为止，我们讲的Solidity和其他语言没有质的区别，长得很像Javascript. 但是，有几点Ethereum上的DApp跟普通的应用程序有天地之分。
 
-To start with, after you deploy a contract to Ethereum, it’s **_immutable_**, which means that it can never be modified or updated again.
+第一个例子，在你把智能协议传上Ethereum之后，它就再也**_不可更改_**, 这种永固性意味着你的代码永远不能被调整或更改。
 
-The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
+你编译的程序会一直，永久的，不可更改的，存在以太网上。也就是以为这一点，安全性是一个非常重要和严重的事。如果你的智能协议有任何漏洞，当你发现后会无法泥补。你只能让你的用户们放弃这个智能协议，让后移动到一个新的修好了的协议上。
+
+但是这也是智能协议的一个优点。代码成法。在你审查一个智能协议后，你拥有以后每一次保障
 
 But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
 
