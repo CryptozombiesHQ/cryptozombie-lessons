@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //start here
+          //这里开始
 
       }
     answer: >

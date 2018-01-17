@@ -19,7 +19,7 @@ material:
 
           Zombie[] public zombies;
 
-          // start here
+          // 事件
 
       }
     answer: >

@@ -2,8 +2,8 @@
 title: 第一课结束!
 actions: ['答案', '提示']
 material:
-  课程结束:
-    答案: 1
+  lessonComplete:
+    answer: 1
 ---
 
 祝贺! 你完成了第一课，为你的部队创造了第一个僵尸。

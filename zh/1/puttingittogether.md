@@ -28,7 +28,7 @@ material:
               return rand % dnaModulus;
           }
 
-          // start here
+          // 事件
 
       }
     answer: >

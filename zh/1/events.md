@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // declare our event here
+          // 这里建立事件
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,7 +23,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-              // and fire it here
+              // 这里触发事件
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
@@ -80,12 +80,12 @@ material:
 例子:
 
 ```
-// declare the event
+// 这里建立事件
 event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // fire an event to let the app know the function was called:
+  //触发事件，通知app
   IntegersAdded(_x, _y, result);
   return result;
 }
@@ -95,7 +95,7 @@ function add(uint _x, uint _y) public {
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
-  // do something with result
+  // 干些事
 }
 ```
 
