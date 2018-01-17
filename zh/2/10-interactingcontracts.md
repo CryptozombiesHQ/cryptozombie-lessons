@@ -95,23 +95,24 @@ material:
       }
 ---
 
-It's time to feed our zombies! And what do zombies like to eat most?
+是时候喂喂我们的僵尸了！ 那僵尸最喜欢吃什么呢？
 
-Well it just so happens that CryptoZombies love to eat...
+Crypto僵尸喜欢吃的是...
 
-**CryptoKitties!** 😱😱😱
+** CryptoKitties！** 😱😱😱
 
-(Yes, I'm serious 😆 )
+（正经点，我可不是开玩笑😆）
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+为了做到这一点，我们要读出CryptoKitties智能合约中的kittyDna。这些数据是公开存储在区块链中的。区块链是不是很酷？
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
+别担心 - 我们的游戏并不会伤害到任何真正的CryptoKitty。 我们只读取* CryptoKitties数据，但是无法物理上删除它
 
-## Interacting with other contracts
+##与其他合约交互
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+如果我们的合约需要和区块链上的其他的合约对话，则需要先定义一个** _interface_ **(接口)。
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+先举一个简单的栗子。 假设在区块链上有这么一个合约：
+
 
 ```
 contract LuckyNumber {
@@ -127,11 +128,12 @@ contract LuckyNumber {
 }
 ```
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+这是个简单的合约，您可以用它存储自己的幸运号码，并与您的以太坊地址关联。 这样其他人就可以使用这个地址查找您的幸运号码了。
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+现在假设我们有一个外部合约，使用`getNum`函数来读取其中的数据。
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+首先，我们定义“LuckyNumber”合约的** _interface_ **：
+
 
 ```
 contract NumberInterface {
@@ -139,21 +141,21 @@ contract NumberInterface {
 }
 ```
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+请注意，这个过程看起来像在定义一个合同，不同的是，首先，我们只声明了要与之交互的函数 - 在本例中为`getNum` - 而且，我们没有使用到任何关于函数或状态的变量。
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+其次，我们并没有用大括号（`{`和`}`）定义函数体，我们只是用分号（`;`）来结束函数声明。这使它看起来像一个合约框架。
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+编译器就是靠这些特征知道它是一个接口的。
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+在我们的app代码中使用这个接口，我们的合约就知道其他合约的函数是怎么样的，如何调用它们，以及期待什么类型的响应。
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+在下一课中，我们将真实地调用其他合约的函数。目前我们只要声明一个为调用CryptoKitties合约而准备的接口就行了。
 
-# Put it to the test
+# 小测试
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+我们已经为你查看过了CryptoKitties的源代码，并且找到了一个名为`getKitty`的函数，它返回所有的加密猫的数据，包括它的“基因”（我们的僵尸游戏要用它生成新的僵尸）。
 
-The function looks like this:
+该函数如下所示：
 
 ```
 function getKitty(uint256 _id) external view returns (
@@ -184,10 +186,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+这个函数看起来跟我们习惯的函数不太一样。 它竟然返回了...一堆不同的值！ 如果您使用过Javascript之类的编程语言，一定会感到奇怪 - 在Solidity中，您可以让一个函数返回多个值。
 
-Now that we know what this function looks like, we can use it to create an interface:
+现在我们知道这个函数章什么样的，我们可以用它来创建一个接口：
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1.定义一个名为`KittyInterface`的接口。 请注意，因为我们使用了`contract`关键字， 这过程看起来就像创建一个新的合同一样。
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2.在interface里定义了`getKitty`函数（不过是复制/粘贴上面的函数，但在`returns`语句之后用分号，而不是大括号内的所有内容。

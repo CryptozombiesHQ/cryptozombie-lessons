@@ -68,14 +68,14 @@ material:
 
       }
 ---
+在Solidity中，有两个地方可以存储变量 - “存储”或“内存”。
 
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+** _存储_ **变量是指永久存储在区块链中的变量。 ** _内存_ ** 变量则是临时的，当外部函数对某合约调用完成时，内存型变量即被移除。 您可以把它想象成存储在你电脑的硬盘或是RAM中数据的关系。
 
-**_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+大多数情况下，您都用不到这些关键字，默认情况下Solidity会自动处理它们。 状态变量（在函数之外声明的变量）默认为“存储”形式，并永久写入区块链；而在函数内部声明的变量是“内存”型的，它们函数调用结束后消失。
 
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
+然而也有一些时候，您需要手动声明存储类型，主要用于处理函数内的** _ structs _ **和** _ arrays _ ** 时：
 
-However, there are times when you do need to use these keywords, namely when dealing with **_structs_** and **_arrays_** within functions:
 
 ```
 contract SandwichFactory {
@@ -112,24 +112,24 @@ contract SandwichFactory {
 }
 ```
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+如果您还没有完全理解究竟应该使用哪一个，也不用担心 - 在本教程中，我们将告诉您何时使用“存储”以及何时使用“内存”，并且当您不得不使用到这些关键字的时候，Solidity编译器也发警示提醒您的。
 
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
+现在，只要知道在某些场合下您需要显式地声明“存储”或“内存”就够了！
 
-# Put it to the test
+# 小测试
 
-It's time to give our zombies the ability to feed and multiply!
+是时候给我们的僵尸增加“喂养”和“繁殖”功能了！
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
+当一个僵尸吞噬其他生物体时，它自身的DNA将与被吞噬生物的DNA结合在一起，形成一个新的僵尸DNA。
 
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
+1.创建一个名为`feedAndMultiply`的函数。 使用两个参数：`_zombieId`（`单元(uint)`）和`_targetDna`（也是`uint`类型）。 设置属性为“public”(公开)的。
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2.我们不希望别人用我们的僵尸喂食。 首先，我们确保对自己僵尸的拥有权。 通过添加一个`require`语句来确保`msg.sender`和这个僵尸的所有者是同一个人（类似于我们在`createRandomZombie`函数中所做的）。
 
- > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
+>注意：同样，因为我们的答案检查器比较原始，所以只能接收“msg.sender”在前的答案，如果您切换了参数的顺序，它就不认了。 但通常当您编码时，如何安排参数顺序都是正确的。
 
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. 我们需要获取这个僵尸的DNA。 所以我们的函数接下来声明一个名为myZombie的本地`僵尸'（这是一个“存储”形的指针）。 在我们的`zombies`数组中将这个变量设置为索引`_zombieId`。
 
-You should have 4 lines of code so far, including the line with the closing `}`. 
+到目前为止，包括关闭`}`的那一行， 你该一共写了4行代码。
 
-We'll continue fleshing out this function in the next chapter!
+下一章里，我们会继续丰富这个功能。

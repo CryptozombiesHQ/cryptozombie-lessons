@@ -122,7 +122,7 @@ material:
       }
 ---
 
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
+`getKitty`是我们所看到的第一个返回多个值的函数。我们来看看是如何处理的：
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -145,18 +145,18 @@ function getLastReturnValue() external {
 }
 ```
 
-# Put it to the test
+# 小测试
 
-Time to interact with the CryptoKitties contract!
+是时候与CryptoKitties合约交互起来了！
 
-Let's make a function that gets the kitty genes from the contract:
+让我们定义一个函数，从kitty 合约中获取它的基因：
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1.创建一个名为`feedOnKitty`的函数。它需要2个`uint`类型的参数，`_zombieId`和`_kittyId`，这是一个`public`类型的函数。
 
-2. The function should first declare a `uint` named `kittyDna`.
+2.函数首先要声明一个名为`kittyDna`的`uint`。
 
-  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+  >注意：在我们的KittyInterface中，`genes`是一个`uint256`类型的变量，但是如果你记得，我们在第一课中提到过，`uint`是`uint256`的别名，也就是说，它们是一回事。
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3.这个函数接下来使用了 _kittyId 参数，去调用`kittyContract.getKitty`函数，并将返回的 `genes`存储在`kittyDna`中。记住 - `getKitty`会返回一大堆变量。 （确切地说10个 - 我已经为你数过了，不错吧！）。但是我们只关心最后一个--“基因”。数逗号的时候小心点哦！
 
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+4.最后，函数调用了`feedAndMultiply`，传了`_zombieId`和`kittyDna`两个参数。

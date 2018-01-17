@@ -85,35 +85,39 @@ material:
       }
 ---
 
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+在第一课中，我们做到了让用户通过调用`createRandomZombie`并输入一个名字来创建新的僵尸。 但是，如果用户持续调用这个功能，并创建出无限多个僵尸加入他们的军团，这个游戏就太没意思了！
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+于是，我们做出限定：每个玩家只能调用一次这个功能。 这样一来，新玩家可以在刚开始玩游戏时调用它，以便在他们的军队中创建初始僵尸。
 
-How can we make it so this function can only be called once per player? 
+我们怎样才能限定每个玩家只调用一次创建功能呢？
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
+我们使用`require`。 `require`使得函数在某些状况下运行时候会抛出一个错误，迫使程序终止：
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-  // (Side note: Solidity doesn't have native string comparison, so we
-  // compare their keccak256 hashes to see if the strings are equal)
+  // 比较 _name 是否等于 "Vitalik". 如果成立，抛出异常并终止程序
+  // (敲黑板: Solidity 并不支持原生的字符串比较, 我们只能通过比较
+  // 两字符串的 keccak256 哈希码来进行判断)
   require(keccak256(_name) == keccak256("Vitalik"));
-  // If it's true, proceed with the function:
+  // 如果返回TRUE, 运行如下语句
   return "Hi!";
 }
 ```
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+如果你使用参数`sayHiToVitalik（“Vitalik”）`调用创建函数
+，它会返回“Hi！”。而如果你用任何其他的参数来调用它，它都会抛出一个错误并停止运行。
 
-# Put it to the test
+因此，在调用一个函数之前，用`require`验证前置条件是非常有必要的。
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+＃小测试
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+在我们的僵尸游戏中，我们不希望用户通过反复调用`createRandomZombie`来給他们的军队创建无限多个僵尸 - 这会让我们的游戏变得无聊。
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
+我们使用了`require`来确保这个函数只有在每个用户第一次执行的时候运行，用以创建初始僵尸。
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+1.在`createRandomZombie`的前面放置`require`语句。 该函数检查`ownerZombieCount [msg.sender]`是不是等于`0`，否则就抛出一个错误。
+
+>注意：在Solidity中，关键词放置的顺序并不重要 
+- 两个位置是等效的。 但是，由于我们的答案检查器比较呆板，它只能认定其中一个为正确答案 
+- 于是在这里，我们规定把`ownerZombieCount [msg.sender]`放前面吧 
