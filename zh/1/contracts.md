@@ -7,7 +7,7 @@ material:
     startingCode: |
       pragma solidity //1. Enter solidity version here
 
-      //2. Create contract here
+      //2. 这里建立智能合同
     answer: > 
       pragma solidity ^0.4.19;
 

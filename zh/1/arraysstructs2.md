@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // start here
+              // 这里开始
           }
 
       }

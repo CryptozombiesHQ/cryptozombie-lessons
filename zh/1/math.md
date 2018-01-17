@@ -10,7 +10,7 @@ material:
       contract ZombieFactory {
 
           uint dnaDigits = 16;
-          //start here
+          //事件
 
       }
     answer: >
