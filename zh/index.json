@@ -56,31 +56,31 @@
         "goToNextLesson": "去下一个课程",
         "lesson1": {
             "header": [
-                "Congratulations! You have completed Lesson 1 of CryptoZombies!",
-                "You're officially one step closer to building your own games on Ethereum.",
-                "Show off your first zombie to your friends!",
-                "Here's a permalink to your zombie:"
+                "太棒啦！你完成了CryptoZombies的第一个课程!",
+                "你离自己编译区块链游戏跨出了很大的一步。",
+                "跟你的朋友们晒一晒你新的僵尸吧！",
+                "这是你的僵尸的永久地址:"
             ],
-            "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "footer": "去下一课程之前，请保存进度。",
+            "zombieDesc": "CryptoZombie一级",
+            "shareLinkText": "我刚完成了#CryptoZombies的第一课！学会了如何在#Ethereum上搭建游戏。看我的部队里的第一个僵尸!"
         },
         "lesson2": {
             "header": [
-                "Congratulations! You have completed {lesson2} of CryptoZombies!",
-                "Achievements Unlocked:",
-                "{zombieName} has been upgraded to Level 2!",
-                "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
-                "Show off your CryptoKitty-slayer to your friends!",
-                "Share this URL so your friends can slay CryptoKitties with your zombie:"
+                "你好棒！太棒啦！你完成了CryptoZombies的{lesson2}!",
+                "成功解锁了:",
+                "{zombieName}被升级到二级!",
+                "无名～ 僵尸已加入你的部队! (别担心，第三节课里你会有机会改它的名字)",
+                "晒一晒你的CryptoKitty-猎杀者！和你的朋友们分享！",
+                "这是你的僵尸的永久地址，让你的朋友跟你一起猎杀CryptoKitties:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 3:"
+                "喜欢CryptoZombies? 跟我们打声招呼!",
+                "我们大家都在{telegramLink}, 或者可以查看{twitterLink}",
+                "少年！第三节课等待你:"
             ],
-            "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "zombieDesc": "CryptoZombie二级",
+            "shareLinkText": "我刚完成了#CryptoZombies的第二课！我的僵尸猎杀了一个在以太坊上的CryptoKitty。看他们对打吧!"
         },
         "lesson3": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -100,59 +100,59 @@
         }
     },
     "zombieBattle": {
-        "yourTurn": "Your Turn",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "New {species} Generated!",
-        "catZombie": "Cat-Zombie",
-        "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "New {species}'s DNA",
+        "yourTurn": "等你出牌",
+        "zombieDna": "{name}的基因",
+        "newZombieGenerated": "新僵尸种类： {species}，诞生!",
+        "catZombie": "猫型僵尸",
+        "mutantZombie": "混合僵尸",
+        "newSpeciesDna": "新的{species}的DNA",
         "cryptoKitty": "CryptoKitty",
-        "human": "Human",
-        "tryAnotherCombo": "Try Another Combination"
+        "human": "人类",
+        "tryAnotherCombo": "尝试另一个组合"
     },
     "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "CryptoZombie第一级"
     },
     "zombieDeck": {
-        "zombieDesc": "A Level {levelNum} CryptoZombie",
-        "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
-        "save": "Save",
-        "yourDeck": "Your Deck"
+        "zombieDesc": "CryptoZombie{levelNum}级",
+        "nameInputPlaceholder": "给～{name}～一个取名，再按'保存'",
+        "save": "保存",
+        "yourDeck": "你的牌"
     },
     "zombieResult": {
-        "headGeneLabel": "Head Gene:",
-        "eyeGeneLabel": "Eye Gene:",
-        "shirtGeneLabel": "Shirt Gene:",
-        "skinColorGeneLabel": "Skin Color Gene:",
-        "eyeColorGeneLabel": "Eye Color Gene:",
-        "clothesColorGeneLabel": "Clothes Color Gene:",
-        "nameInputPlaceholder": "Enter a name here",
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "headGeneLabel": "头部基因:",
+        "eyeGeneLabel": "眼部基因:",
+        "shirtGeneLabel": "上衣基因:",
+        "skinColorGeneLabel": "皮肤基因:",
+        "eyeColorGeneLabel": "眼色基因:",
+        "clothesColorGeneLabel": "衣服颜色基因:",
+        "nameInputPlaceholder": "取个名字",
+        "defaultZombieDesc": "CryptoZombie一级"
     },
     "sharePage": {
-        "pageTitle": "Check out my CryptoZombie {zombieName}!",
-        "presents": "Presents",
-        "zombieDesc": "{name}, a Level {levelNum} CryptoZombie",
+        "pageTitle": "看我的CryptoZombie {zombieName}!",
+        "presents": "隆重宣布",
+        "zombieDesc": "{name}, 一个第{levelNum}级的CryptoZombie",
         "lesson1": {
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "randomZombieGenerator": "random zombie generator",
+            "zombieDesc": "CryptoZombie一级",
+            "randomZombieGenerator": "僵尸随机生产器",
             "achievementPreamble": [
-                "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "你的朋友学会了以太坊的基础编程,并且编译了一个僵尸叫{zombieName}。 这个一级CryptoZombie是证明!",
+                "为了完成第一个CryptoZombies课程, 你的朋友建立了一个{randomZombieGenerator}，并且学会了:"
             ],
             "achievements": [
-                "How to write Ethereum smart contracts",
-                "Programming in Solidity, Ethereum's smart contract programming language",
-                "Building games on Ethereum"
+                "如何编译以太坊的职能协议",
+                "Solidity语言的基础, 这是以太坊的核心程序语言",
+                "如何在以太坊上编译游戏"
             ],
-            "tryItOut": "Give the random zombie generator a try.",
-            "below": "below",
-            "above": "above",
-            "zombieGeneratorText": "{tryItOut} Enter a name in the box {below}{above} to generate a new zombie!",
-            "nameInputPlaceholder": "Enter a name to generate a zombie",
+            "tryItOut": "试一下这个僵尸随机生产器。",
+            "below": "下面",
+            "above": "上面",
+            "zombieGeneratorText": "{tryItOut} 在{below}{above}的空中填入任何名字!",
+            "nameInputPlaceholder": "填入名字获得僵尸",
             "callToAction": [
-                "Want to build your own CryptoZombie and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "少年！编译你自己的僵尸游戏吗?",
+                "通过编游戏而学习以太坊! 还等什么:"
             ]
         },
         "lesson2": {
