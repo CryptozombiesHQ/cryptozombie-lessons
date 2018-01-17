@@ -24,7 +24,7 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              // 事件
+              // 这里开始
           }
 
       }
