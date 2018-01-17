@@ -76,7 +76,7 @@ people.push(satoshi);
 people.push(Person(16, "Vitalik"));
 ```
 
-注：`array.push()` 在数组的尾部加新元素 **end** ，所以元素在数组中的顺序就是我们添加的顺序， 如:
+> 注：`array.push()` 在数组的尾部加新元素 **end** ，所以元素在数组中的顺序就是我们添加的顺序， 如:
 
 ```
 uint[] numbers;

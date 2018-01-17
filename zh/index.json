@@ -1,13 +1,13 @@
 {
     "base": {
-        "name": "CryptoZombies ZH",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "name": "CryptoZombies",
+        "tagLine": "学习编译区块网游戏",
+        "lesson": "教程{lessonNum}",
+        "chapter": "第{chapterNum}章",
+        "syncing": "正在同步...",
         "telegram": {
             "name": "Telegram",
-            "action": "Join Our Telegram",
+            "action": "加入我们的Telegram",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
@@ -16,44 +16,44 @@
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "只读"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded"
+        "itemLabel": "教程 {lessonNum}: {title}",
+        "signIn": "登陆后同步进度",
+        "progressLoaded": "进度已同步"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
-        "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        "signInButton": "Sign In",
-        "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
-        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
-        "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
-        "generateNewZombieLink": "generate a new zombie",
-        "areYouReady": "Are you ready to get started?",
-        "resumeLesson": "Resume Lesson {lessonNum}"
+        "presents": "隆重宣布",
+        "title": "教程 {lessonNum}: {title}",
+        "signInPrompt": "从这章开始需要同步以前建立的僵尸，请注册或者登陆:",
+        "signInButton": "登陆",
+        "levelUpText": "这段课程我们会用到之前建立僵尸",
+        "missingZombieText": "亲，没有查到课程{lessonNum}的僵尸。如果没有完成的话请现在去完成:",
+        "fixMissingZombieText": "如果已经完成了第{lessonNum}课程，这个提醒可能是错误的，你可以跳回到之前的课程{generateNewZombie}，进度会保留。",
+        "generateNewZombieLink": "从新同步僵尸",
+        "areYouReady": "少年，准备开始了吗?",
+        "resumeLesson": "跳到云尖， 第{lessonNum}课"
     },
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Chapter {chapterNum}: {title}",
-        "saveProgress": "Save Progress",
-        "autosaveEnabled": "Autosave Enabled",
-        "resumeProgress": "Resume Progress",
-        "showHint": "Show Hint",
-        "nextChapter": "Next Chapter",
-        "tryAgain": "Try Again",
-        "checkAnswer": "Check Answer",
-        "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "header": "第{chapterNum}章: {title}",
+        "saveProgress": "保存进度",
+        "autosaveEnabled": "自动保存进度模式",
+        "resumeProgress": "跳到云尖",
+        "showHint": "显示提示",
+        "nextChapter": "下一章",
+        "tryAgain": "再查",
+        "checkAnswer": "交卷",
+        "showMeTheAnswer": "我要看答案！",
+        "hideAnswer": "不看答案了！"
     },
     "lessonComplete": {
-        "shareLinksAction": "Or you can click the buttons below to share:",
-        "signIn": "Sign in and save your progress",
-        "goToNextLesson": "Proceed to Next Lesson",
+        "shareLinksAction": "点击一下按钮后分享:",
+        "signIn": "登陆后同步进度",
+        "goToNextLesson": "去下一个课程",
         "lesson1": {
             "header": [
                 "Congratulations! You have completed Lesson 1 of CryptoZombies!",

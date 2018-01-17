@@ -1,6 +1,6 @@
 ---
-title: More on Functions
-actions: ['checkAnswer', 'hints']
+title: 函数的更多属性
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -53,11 +53,11 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+本章中我们将学习函数的返回值和修饰符。
 
-## Return Values
+## 返回值
 
-To return a value from a function, the declaration looks like this:
+要想函数返回一个数值，按如下定义：
 
 ```
 string greeting = "What's up dog";
@@ -67,19 +67,19 @@ function sayHello() public returns (string) {
 }
 ```
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+Solidity里，函数的定义里可包含返回值的数据类型(如本例中 `string`)。
 
-## Function modifiers
+## 函数的修饰符
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+上面的函数实际上没有改变Solidity里的状态，即，它没有改变任何值或者写任何东西。
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+这种情况下我们可以把函数定义为 **_view_**, 意味着它只读取数据但不更改数据:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity还支持 **_pure_** 函数, 表明这个函数甚至都没有接触程序里的数据，例如：
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,16 +87,16 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+这个函数甚至都没有读程序里的状态 — 它的返回值完全取决于它的输入参数，在这种情况下我们把函数定义为 **_pure_**.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> 注：可能很难记住何时把函数标记为 pure/view。 幸运的是， Solidity 编辑器会给出提示，提醒你使用这些修饰符。
 
-# Put it to the test
+# 测试一把
 
-We're going to want a helper function that generates a random DNA number from a string.
+我们想建立一个帮助函数，它根据一个字符串随机生成一个DNA数据。
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. 建立一个`private` 函数，命名为 `_generateRandomDna`。它只接收一个输入变量`_str` (类型`string`), 返回一个`uint`类型的数值。
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. 此函数只读取我们合同中的一些变量，所以标记为`view`。
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. 函数本身暂时空白，以后我们再添加代码。

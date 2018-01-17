@@ -1,6 +1,6 @@
 ---
-title: Lesson Overview
-actions: ['checkAnswer', 'hints']
+title: 课程概述
+actions: ['答案', '提示']
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -10,32 +10,32 @@ material:
     answer: 1
 ---
 
-In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
+第一课你将创造一个"僵尸工厂"， 用它建立一支僵尸部队。
 
-* Our factory will maintain a database of all zombies in our army
-* Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+* 我们的工厂会把我们部队中所有的僵尸保存到数据库中
+* 工厂会有一个函数能产生新的僵尸
+* 每个僵尸会有一个随机的独一无二的面孔
 
-In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
+在后面的课程里，我们会增加功能。比如，让僵尸能攻击人类，或其它僵尸! 但是在实现这些好玩的功能之前，我们先要加入生出新僵尸的基本功能。
 
-## How Zombie DNA Works
+## 僵尸DNA如何工作
 
-The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
+僵尸的面孔取决于它的DNA。它的DNA很简单由一个16位的整数组成：
 
 ```
 8356281049284737
 ```
 
-Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
+如同真正的DNA, 这个数字的不同部分会对应不同的特点。 前2位代表头型，紧接着的2位代表眼睛，等等。
 
-> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
+> 注: 本教程我们尽量简化。我们的僵尸只有7种头型(虽然2数字允许100种可能性)。 以后我们会加入更多的头型如果我们想增加僵尸的变化。
 
-For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type. 
+例如，前两位数字是 `83`. 计算僵尸的头型，我们做`83 % 7 + 1` = 7 运算， 此僵尸将被赋予第七类头型。
 
-In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
+在右手页面，移动头基因`head gene` 滑块到第七位置(圣诞老人的帽子)可见`83`所对应的特点。
 
-# Put it to the test
+# 测试一把
 
-1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
+1. 玩一下页面右侧的滑块。检验一下不同的数字对应不同的僵尸的长相。
 
-Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
+好了，这已经足够你玩一会儿了。 当你想继续的时候，点击下面的"Next Chapter" ，让我们来钻研Solidity!

@@ -1,15 +1,13 @@
 ---
-title: Advanced Solidity Concepts
+title: 高级Solidity理论
 header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap3.png
 ---
 
-Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...
+诶呦喂。。。少年！你比我想象的厉害。你的Solidity技能好狠。
 
-Now that you've got some experience coding Solidity under your belt, we're going to dive into some of the more technical aspects of Ethereum development.
+既然你已经有了些Solidity编程经验，我们就要提高难度，讲讲Ethereum开发的技术细节。
 
-This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
+这堂课比之前要少些特效（没有钱了。。。）但是你会学一些非常重要的基础理论，遍DApp时必知的：智能协议的拥有权，**Gas（汽油）的代价，代码优化，和代码安全**。
 
-You've been warned — no kitties and rainbows in Lesson 3!
-
-But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
+你被提醒了！这节课没有特效！只有高密度的知识等待你去消化。我们建议你完成第二教程之后再来。
