@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. 这里写版本指令
 
       //2. 这里建立智能合同
     answer: > 

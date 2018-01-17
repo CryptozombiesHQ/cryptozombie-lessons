@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // 事件
+          // 这里开始
 
       }
     answer: >

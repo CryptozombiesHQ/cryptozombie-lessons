@@ -12,7 +12,7 @@ material:
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
 
-          // 事件
+          // 这里开始
 
       }
     answer: >
