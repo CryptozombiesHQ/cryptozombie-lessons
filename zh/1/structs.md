@@ -1,6 +1,6 @@
 ---
-title: Structs
-actions: ['checkAnswer', 'hints']
+title: 结构
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
+有时你需要更复杂的数据类型，Solidity 提供了 **结构**:
 
 ```
 struct Person {
@@ -42,14 +42,14 @@ struct Person {
 
 ```
 
-Structs allow you to create more complicated data types that have multiple properties.
+结构允许你生成一个更复杂的数据类型，它有多个属性。
 
-> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+> 注：我们刚刚引进了一个新类型, `string`。 字符串用于保存任意长度的UTF-8 编码数据。 如： `string greeting = "Hello world!"`
 
-# Put it to the test
+# 测试一把
 
-In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
+在我们的程序中，我们将生出一些僵尸！每个僵尸将拥有多个属性，所以这是一个展示结构的完美的例子。
 
-1. Create a `struct` named `Zombie`.
+1. 建立一个`struct` 命名为 `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
+2. 我们的 `Zombie` 结构有两个属性： `name` (类型为 `string`), 和 `dna` (类型为 `uint`)。

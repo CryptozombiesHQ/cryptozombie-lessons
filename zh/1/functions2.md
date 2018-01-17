@@ -1,6 +1,6 @@
 ---
-title: Private / Public Functions
-actions: ['checkAnswer', 'hints']
+title: 私有 / 公共函数
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -47,11 +47,11 @@ material:
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+Solidity定义的函数的属性缺省为`公共`。 这就意味着任何一方 (或其它合同) 都可以调用你的合同里的函数。
 
-Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+显然，不是什么时候都需要这样，而且这样的合同易于受到攻击。 所以将自己的函数定义为`私有`是一个编程的好习惯，只有当你需要外部世界调用它时才将它设置为`公共`。
 
-Let's look at how to declare a private function:
+如何定义一个私有的函数呢？
 
 ```
 uint[] numbers;
@@ -61,12 +61,12 @@ function _addToArray(uint _number) private {
 }
 ```
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+这意味着只有我们合同中的其它函数才能够调用这个函数，给 `numbers` 数组添加新成员。
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+可以看到，在函数名字后面使用关键字 `private` 即可。和函数的输入参数类似， 私有函数的名字用(`_`)起始.
 
-# Put it to the test
+# 测试一把
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+我们的合同的`createZombie` 的缺省属性是公共，这意味着任何一方都可以调用它去创建一个僵尸。 咱们来把它变成私有吧！
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. 变 `createZombie` 为私有函数，不要忘记遵守命名的规矩哦！

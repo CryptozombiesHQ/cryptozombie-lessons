@@ -1,6 +1,6 @@
 ---
-title: Math Operations
-actions: ['checkAnswer', 'hints']
+title: 数学运算
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -26,22 +26,19 @@ material:
 
 ---
 
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+在Solidity中，数学运算很直观明了，于其它程序设计语言相同:
 
-* Addition: `x + y`
-* Subtraction: `x - y`,
-* Multiplication: `x * y`
-* Division: `x / y`
-* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+* 加法: `x + y`
+* 减法: `x - y`,
+* 乘法: `x * y`
+* 除法: `x / y`
+* 商 / 余数: `x % y` _(例如, `13 % 5` 余 `3`, 因为13除以5，余3)_
 
-Solidity also supports an **_exponential operator_** (i.e. "x to the power of y", x^y):
-
-```
-uint x = 5 ** 2; // equal to 5^2 = 25
+Solidity 还支持 **_乘方操作_** (如：x 的 y次方） // 例如： 5^2 = 25
 ```
 
-# Put it to the test
+# 测试一把
 
-To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+为了保证我们的僵尸的DNA只含有16个字符，我们先造一个`uint`数据，让它等于10^16。这样一来以后我们可以用模运算符 `%` 把一个整数变成16位。
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. 建立一个`uint`类型的变量，名字叫`dnaModulus`, 令其等于 **10 的 `dnaDigits` 次方**.

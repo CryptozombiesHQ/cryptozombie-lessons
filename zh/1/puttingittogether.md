@@ -1,6 +1,6 @@
 ---
-title: Putting It Together
-actions: ['checkAnswer', 'hints']
+title: 搭建在一起
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -64,16 +64,16 @@ material:
       }
 ---
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+我们接近完成我们的随记僵尸制造器了，让我们写一个公共的函数把所有的部件连接起来。
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+我们写一个公共函数，它又一个输入变量僵尸的名字，之后用它生成僵尸的DNA。
 
-# Put it to the test
+# 测试一把
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+1. 建立一个 `public` 函数，命名为`createRandomZombie`. 它又一个输入变量 `_name` (数据类型是 `string`). _(注: 定义一个公共函数 `public`， 如同你定义一个私有 `private`函数的做法一样)_
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. 函数的第一行应该调用 `_generateRandomDna` 函数，作用于`_name`, 结果保存在一个类型为 `uint` 的变量里，命名为 `randDna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. 第二行调用 `_createZombie` 函数， 输入参数： `_name` 和 `randDna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. 结果因该生成4行代码 (包括函数的结束符号 `}` )。
