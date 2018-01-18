@@ -133,20 +133,20 @@ material:
       }
 ---
 
-Our function logic is now complete... but let's add in one bonus feature.
+我们的功能逻辑主体已经完成了...现在让我们来添一个奖励功能吧。
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+这样吧，给从小猫制造出的僵尸有添加些特征，以显示他们是猫僵尸。
 
-To do this, we can add some special kitty code in the zombie's DNA.
+要做到这一点，咱们在新僵尸的DNA中添加一些特殊的小猫代码。
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics. 
+还记得吗，第一课中我们提到，我们目前只使用16位DNA的前12位数来指定僵尸的外观。所以现在我们可以使用最后2个数字来处理“特殊”的特征。
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+这样吧，把猫僵尸DNA的最后两个数字设定为“99”（因为猫有9条命）。所以在我们这么来写代码：`如果`这个僵尸是一只猫变来的，就将它DNA的最后两位数字设置为`99`。
 
-## If statements
 
-If statements in Solidity look just like javascript:
+## if 语句
 
+if语句的语法在 Solidity中，与在javascript差不多：
 ```
 function eatBLT(string sandwich) public {
   // Remember with strings, we have to compare their keccak256 hashes
@@ -157,16 +157,20 @@ function eatBLT(string sandwich) public {
 }
 ```
 
-# Put it to the test
+# 小测试
 
-Let's implement cat genes in our zombie code.
+让我们在我们的僵尸代码中实现小猫的基因。
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `species`
+1.首先，我们修改下`feedAndMultiply`函数的定义，给它传入第三个参数：一条名为`species`的字符串
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `species` and the string `"kitty"`
+2.接下来，在我们计算出新的僵尸的DNA之后，添加一个`if`语句来比较`species`和字符串``kitty``的keccak256`哈希值
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+在`if`语句中，我们想用`99`替换DNA的最后两位数字。一种方法是使用逻辑：`newDna = newDna - newDna％100 + 99;`。
 
-  > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+3. 在`if`语句中，我们用`99`替换了新僵尸DNA的最后两位数字。可以这么做：`newDna = newDna - newDna％100 + 99;`。
+
+ >解释：假设`newDna`是`334455`。那么`newDna％100`是`55`，所以`newDna - newDna％100`得到`334400`。最后加上`99`可得到`334499`。
 
 4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+
+4.最后，我们修改了`feedOnKitty`中的函数调用。当它调用`feedAndMultiply`时，增加了`“kitty”`作为最后一个参数。

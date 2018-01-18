@@ -114,15 +114,14 @@ material:
       }
 ---
 
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
+继续前面`NumberInterface`的例子，我们既然将接口定义为：
 
 ```
 contract NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```
-
-We can use it in a contract as follows:
+我们可以在合同中这样使用：
 
 ```
 contract MyContract {
@@ -139,10 +138,10 @@ contract MyContract {
 }
 ```
 
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
+通过这种方式，只要将您合约的功能设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
 
-# Put it to the test
+＃小测验
 
-Let's set up our contract to read from the CryptoKitties smart contract!
+我们来建个自己的合约去读取智能CryptoKitties合约的内容吧！
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1.我已经将代码中CryptoKitties合约的地址保存在一个名为`ckAddress`的变量中。在下一行中，请创建一个名为`kittyContract`的KittyInterface，并用`ckAddress`初始化 - 就像我们为`numberContract`所做的一样。

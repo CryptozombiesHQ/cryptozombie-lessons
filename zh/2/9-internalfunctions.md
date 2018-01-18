@@ -102,21 +102,21 @@ material:
       }
 ---
 
-**The code in our previous lesson has a mistake!**
+**我们上一课的代码有问题！**
 
-If you try compiling it, the compiler will throw an error.
+编译的时候编译器就会报错。
 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+错误在于，我们尝试从`ZombieFeeding`中调用`_createZombie`函数，但`_createZombie`却是'ZombieFactory`的`private`（私有）函数。这意味着任何继承自“ZombieFactory”的子合约都不能访问它。
 
-## Internal and External
+＃＃ 内部和外部
 
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
+除了“public”和“private”属性之外，Solidity还使用了另外两类可见性的函数：`internal`（内部）和`external`（外部）。
 
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
+`internal`和 “private” 类似，不过， 如果某个合约继承自其父合约，这个合约即可以访问父合约中定义的“内部”函数。（嘿，这听起来正式我们想要的那样！）。
 
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
+`external`与`public`类似，只不过这些函数只能在合约之外调用 - 它们不能被合约内的其他函数调用。稍后我们将讨论什么时候你需要使用`external`和`public`。
 
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+声明`internal`或`external`类型函数的语法，与声明`private`和`public`相同：
 
 ```
 contract Sandwich {
@@ -132,14 +132,14 @@ contract BLT is Sandwich {
 
   function eatWithBacon() public returns (string) {
     baconSandwichesEaten++;
-    // We can call this here because it's internal
+    // 因为eat() 是internal 的，所以我们能在这里调用
     eat();
   }
 }
 ```
 
-# Put it to the test
+# 小测试
 
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+1. 将 `_createZombie()`函数的属性从 `private`改为 `internal` ， 是的其他的合约也能访问到它。
 
-  We've already focused you back to the proper tab, `zombiefactory.sol`.
+我们已经成功把你的注意力集中在到`zombiefactory.sol`这个选项卡上啦。

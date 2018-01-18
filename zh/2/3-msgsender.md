@@ -63,8 +63,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
+               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               NewZombie(id, _name, _dna);
           }
@@ -82,17 +81,17 @@ material:
       }
 ---
 
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
+现在我们有了一套映射来记录僵尸的拥有者，我们可以修改`_createZombie`方法来使用它们。
 
-In order to do this, we need to use something called `msg.sender`.
+为了做到这一点，我们需要使用“msg.sender”。
 
 ## msg.sender
 
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
+在Solidity中，有一些全局变量可以被所有功能调用。 其中一个就是“msg.sender”，它指的是当前调用者（或智能合约）的“地址”。
 
-> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
+>注意：在Solidity中，功能执行始终需要从外部调用者开始。 一个合约只会在区块链上什么也做不了，除非有调用者呼叫其中的函数。 调用者就是`msg.sender`。
 
-Here's an example of using `msg.sender` and updating a `mapping`:
+以下是使用`msg.sender`来更新`mapping`的例子：
 
 ```
 mapping (address => uint) favoriteNumber;
@@ -110,24 +109,24 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
+在这个小小的例子中，任何人都可以调用`setMyNumber`并在我们的合约中存下一个`单元（uint）`并且与他们的地址相绑定。 然后，他们调用“whatIsMyNumber”就会返回他们存储的“单元（uint）”。
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+使用“msg.sender”很安全，因为它具有以太坊区块链的安全保障 - 除非窃取与以太坊地址相关联的私钥，否则是没有办法修改其他人的数据的。
 
-# Put it to the test
+# 小测验
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+让我们修改第1课的`_createZombie`方法，将僵尸的所有权分配给函数调用者。
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1.首先，在我们得到新的僵尸`id`后，更新`zombieToOwner`映射，在`id`下面存入`msg.sender`。
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`. 
+第二，我们为这个“msg.sender”增加`ownerZombieCount`。
 
-In Solidity, you can increase a `uint` with `++`, just like in javascript:
+跟在javascript中一样， 在Solidity中你也可以用`++`增加`uint`。
 
 ```
 uint number = 0;
 number++;
-// `number` is now `1`
+// `number` 现在是 `1`了
 ```
 
-Your final answer for this chapter should be 2 lines of code.
+本章答案，修改两行代码就可以了。

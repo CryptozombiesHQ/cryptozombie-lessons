@@ -78,43 +78,49 @@ material:
       }
 ---
 
-Let's make our game multi-player by giving the zombies in our database an owner.
+我们通过给数据库中的僵尸指定“主人”， 来支持“多玩家”模式。
 
-To do this, we'll need 2 new data types: `mapping` and `address`.
+要做到这一点，我们需要2个新的数据类型：“映射”和“地址”。
 
-## Addresses
+## 地址
 
-The Ethereum blockchain is made up of **_accounts_**, which you can think of like bank accounts. An account has a balance of **_Ether_** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
+以太坊区块链由** _ 账户号 _ **组成，您可以把它想象成银行账户。一个帐户的余额是** _以太_ **（在以太坊区块链上使用的币种），您可以和其他帐户之间支付和接受以太币，就像您的银行帐户可以电汇资金到其他银行帐户一样。
 
-Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
+每个帐户都有一个“地址”，您可以把它想象成银行账号。这是一个账户唯一的标识符，它看起来是这样的：
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 😉 )
+（这个地址属于CryptoZombies团队，如果你喜欢CryptoZombies，可以给我们一些以太币！😉）
 
-We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
+我们将在后面的课程中介绍地址的细节，现在您只需要了解**地址属于特定用户（或智能合约）的**。
 
-So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+所以我们可以指定“地址”作为僵尸拥有者的ID。当用户通过与我们的应用程序交互来创建新的僵尸时，我们将把这些僵尸的所有权设置到调用者的太坊地址名下。
 
-## Mappings
+##映射
 
-In Lesson 1 we looked at **_structs_** and **_arrays_**. **_Mappings_** are another way of storing organized data in Solidity.
+在第1课中，我们看了** _ structs _ ** 和 ** _ arrays _ **。 ** _映射_ **是另一种在Solidity中存储有组织数据的方法。
 
-Defining a `mapping` looks like this:
+这样可以定义一个映射：
 
 ```
 // For a financial app, storing a uint that holds the user's account balance:
 mapping (address => uint) public accountBalance;
 // Or could be used to store / lookup usernames based on userId
 mapping (uint => string) userIdToName;
+//对于金融应用程序，用以保存用户账户余额的单元：
+mapping (address => uint) public accountBalance;
+//或者可以用来通过userId 存储/查找的用户名
+mapping (uint => string) userIdToName;
+
 ```
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+映射本质上是存储和查找数据所用的键-值对。在第一个例子中，键是一个“地址”，值是一个“单元”，在第二个例子中，键是一个“单元”，值是一个“字符串”。
 
-# Put it to the test
+# 小测试
 
-To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
+为了存储僵尸的所有权，我们会使用到两个映射：一个记录僵尸拥有者的地址，另一个记录某ID所拥有僵尸的数量。
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1.创建一个叫做“zombieToOwner”的映射。将键作为“单元”（我们将根据它的id存储和查找僵尸），值为“address”。映射属性为`public`。
 
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+2.创建一个名为`ownerZombieCount`的映射，其中键是一个“地址”，值是`单元（unit）`。
+
