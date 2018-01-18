@@ -16,3 +16,9 @@ The source content that should be used for all translations is in the `en` direc
 1. Create a new branch off `master`.
 2. Fix fix fix.
 3. Submit a PR against `master`.
+
+
+
+## License
+
+Any contributions made have to assign copyright back to Loom Network.
