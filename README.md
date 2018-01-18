@@ -6,7 +6,7 @@ The source content that should be used for all translations is in the `en` direc
 
 ## Localizing for a new language
 1. Create a new branch off `master`.
-2. Create a new folder named after the locale code, e.g. `jp` (for Japanese), `cn` (for Chinese).
+2. Create a new folder named after the locale code, e.g. `jp` (for Japanese), `zh` (for Chinese).
 3. Translate the content.
 4. Add `index.ts` to the new folder.
 5. Update `index.ts` in the root folder.
