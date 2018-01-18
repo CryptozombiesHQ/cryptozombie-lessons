@@ -91,15 +91,15 @@ function testDnaSplicing() public {
 }
 ```
 
-以后，我们也可以让公式变得更复杂些，比方给新的僵尸的DNA增加一些随机性之类的。但现在先从最简单的开始 - 以后还可以回来完善它嘛。
+以后，我们也可以让函数变得更复杂些，比方给新的僵尸的DNA增加一些随机性之类的。但现在先从最简单的开始 - 以后还可以回来完善它嘛。
 
-# 小测试
+# 实战演习
 
 1.首先我们确保`_targetDna`不长于16位。要做到这一点，我们可以设置`_targetDna`为`_targetDna％dnaModulus`，并且只取其最后16位数字。
 
 2.接下来为我们的函数声明一个名叫 `newDna`的单元（uint），并将其值设置为myZombie的DNA和_targetDna的平均值（如上例所示）。
  
- >注意：您可以通过myZombie.name 或 myZombie.dna访问myZombie的属性。
+ >注意：您可以用 myZombie.name 或 myZombie.dna 访问 myZombie的属性。
 
 计算出新的DNA，再调用 `_createZombie`就可以生成新的僵尸了。如果你忘了调用这个函数所需要的参数，您可以查看`zombiefactory.sol`选项卡。请注意，需要先给他命名，所以现在我们把新的僵尸的名字设为“NoName” - 我们回头可以编写一个函数来更改僵尸的名字。
 

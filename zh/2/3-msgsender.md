@@ -81,9 +81,9 @@ material:
       }
 ---
 
-现在我们有了一套映射来记录僵尸的拥有者，我们可以修改`_createZombie`方法来使用它们。
+现在有了一套映射来记录僵尸的所有权了，我们可以修改`_createZombie`方法来运用它们。
 
-为了做到这一点，我们需要使用“msg.sender”。
+为了做到这一点，我们要用到“msg.sender”。
 
 ## msg.sender
 
@@ -113,15 +113,15 @@ function whatIsMyNumber() public view returns (uint) {
 
 使用“msg.sender”很安全，因为它具有以太坊区块链的安全保障 - 除非窃取与以太坊地址相关联的私钥，否则是没有办法修改其他人的数据的。
 
-# 小测验
+# 实战演习
 
-让我们修改第1课的`_createZombie`方法，将僵尸的所有权分配给函数调用者。
+我们来修改第1课的`_createZombie`方法，将僵尸分配给函数调用者吧。
 
-1.首先，在我们得到新的僵尸`id`后，更新`zombieToOwner`映射，在`id`下面存入`msg.sender`。
+1.首先，在得到新的僵尸`id`后，更新`zombieToOwner`映射，在`id`下面存入`msg.sender`。
 
-第二，我们为这个“msg.sender”增加`ownerZombieCount`。
+然后，我们为这个“msg.sender”名下的`ownerZombieCount`加1。
 
-跟在javascript中一样， 在Solidity中你也可以用`++`增加`uint`。
+跟在javascript中一样， 在Solidity中你也可以用`++`使`uint`递增。
 
 ```
 uint number = 0;
@@ -129,4 +129,4 @@ number++;
 // `number` 现在是 `1`了
 ```
 
-本章答案，修改两行代码就可以了。
+修改两行代码即可。
