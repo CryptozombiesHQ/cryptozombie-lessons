@@ -149,15 +149,14 @@ material:
 if语句的语法在 Solidity中，与在javascript差不多：
 ```
 function eatBLT(string sandwich) public {
-  // Remember with strings, we have to compare their keccak256 hashes
-  // to check equality
+  // 看清楚了，当我们比较字符串的时候，需要比较他们的 keccak256 哈希码
   if (keccak256(sandwich) == keccak256("BLT")) {
     eat();
   }
 }
 ```
 
-# 小测试
+# 实战演习
 
 让我们在我们的僵尸代码中实现小猫的基因。
 
@@ -170,7 +169,5 @@ function eatBLT(string sandwich) public {
 3. 在`if`语句中，我们用`99`替换了新僵尸DNA的最后两位数字。可以这么做：`newDna = newDna - newDna％100 + 99;`。
 
  >解释：假设`newDna`是`334455`。那么`newDna％100`是`55`，所以`newDna - newDna％100`得到`334400`。最后加上`99`可得到`334499`。
-
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
 
 4.最后，我们修改了`feedOnKitty`中的函数调用。当它调用`feedAndMultiply`时，增加了`“kitty”`作为最后一个参数。

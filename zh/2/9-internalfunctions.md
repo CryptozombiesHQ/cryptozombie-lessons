@@ -25,7 +25,7 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            // edit function definition below
+            // 在这里修改函数的功能
             function _createZombie(string _name, uint _dna) private {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
@@ -110,13 +110,13 @@ material:
 
 ＃＃ 内部和外部
 
-除了“public”和“private”属性之外，Solidity还使用了另外两类可见性的函数：`internal`（内部）和`external`（外部）。
+除“public”和“private”属性之外，Solidity还使用了另外两个描述函数可见性的修饰词：`internal`（内部）和`external`（外部）。
 
 `internal`和 “private” 类似，不过， 如果某个合约继承自其父合约，这个合约即可以访问父合约中定义的“内部”函数。（嘿，这听起来正式我们想要的那样！）。
 
-`external`与`public`类似，只不过这些函数只能在合约之外调用 - 它们不能被合约内的其他函数调用。稍后我们将讨论什么时候你需要使用`external`和`public`。
+`external`与`public`类似，只不过这些函数只能在合约之外调用 - 它们不能被合约内的其他函数调用。稍后我们将讨论什么时候使用`external`和`public`。
 
-声明`internal`或`external`类型函数的语法，与声明`private`和`public`相同：
+声明函数`internal`或`external`类型的语法，与声明`private`和`public`类型相同：
 
 ```
 contract Sandwich {
@@ -138,8 +138,8 @@ contract BLT is Sandwich {
 }
 ```
 
-# 小测试
+# 实战演习
 
-1. 将 `_createZombie()`函数的属性从 `private`改为 `internal` ， 是的其他的合约也能访问到它。
+1. 将 `_createZombie()`函数的属性从 `private`改为 `internal` ， 使得其他的合约也能访问到它。
 
 我们已经成功把你的注意力集中在到`zombiefactory.sol`这个选项卡上啦。

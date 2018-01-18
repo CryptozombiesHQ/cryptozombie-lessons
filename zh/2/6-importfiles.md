@@ -79,8 +79,8 @@ contract newContract is SomeOtherContract {
 
 这样当我们在合约（contract）目录下有一个名为`someothercontract.sol`的文件（`./`就是同一目录的意思），它就会被编译器导入。
 
-＃小测验
+＃实战演习
 
-现在我们已经建立了一个多文件架构，并且使用`import`来读取来自另一个文件中合约的内容：
+现在我们已经建立了一个多文件架构，并用`import`来读取来自另一个文件中合约的内容：
 
 1.将`zombiefactory.sol`导入到我们的新文件`zombiefeeding.sol`中。

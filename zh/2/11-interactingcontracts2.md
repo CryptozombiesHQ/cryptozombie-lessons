@@ -121,7 +121,8 @@ contract NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```
-我们可以在合同中这样使用：
+
+我们可以在合约中这样使用：
 
 ```
 contract MyContract {
@@ -138,10 +139,10 @@ contract MyContract {
 }
 ```
 
-通过这种方式，只要将您合约的功能设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
+通过这种方式，只要将您合约的可见性设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
 
 ＃小测验
 
-我们来建个自己的合约去读取智能CryptoKitties合约的内容吧！
+我们来建个自己的合约去读取另一个智能合约--CryptoKitties的内容吧！
 
-1.我已经将代码中CryptoKitties合约的地址保存在一个名为`ckAddress`的变量中。在下一行中，请创建一个名为`kittyContract`的KittyInterface，并用`ckAddress`初始化 - 就像我们为`numberContract`所做的一样。
+1.我已经将代码中CryptoKitties合约的地址保存在一个名为`ckAddress`的变量中。在下一行中，请创建一个名为`kittyContract`的KittyInterface，并用`ckAddress`为它初始化 - 就像我们为`numberContract`所做的一样。

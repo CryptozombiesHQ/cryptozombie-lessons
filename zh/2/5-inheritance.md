@@ -95,9 +95,7 @@ material:
 
 我们的游戏代码越来越长。 当代码过于冗长的时候，最好将代码和逻辑分拆到多个不同的合约中，以便于管理。
 
-有个让Solidity的更易于管理的功能，就是** _继承_ **合约：
-
-
+有个让Solidity的易于管理的功能，就是** _inheritance_ **(集成)合约：
 
 ```
 contract Doge {
@@ -113,13 +111,13 @@ contract BabyDoge is Doge {
 }
 ```
 
-由于 `BabyDoge` 是从 “Doge”哪里 **_ _inherits__** （继承)过来的。 这意味着当您编译和部署了`BabyDoge`，它将可以访问`catchphrase（）`和`anotherCatchphrase（）`以及我们在`Doge`中定义的其他公共函数。
+由于 `BabyDoge` 是从 “Doge”哪里 **_inherits_** （继承)过来的。 这意味着当您编译和部署了`BabyDoge`，它将可以访问`catchphrase（）`和`anotherCatchphrase（）`和其他我们在`Doge`中定义的其他公共函数。
 
 这可以用于逻辑继承（比如表达子类的时候，`Cat`是一种`Animal`）。 但也可以简单地将类似的逻辑组合到不同的类中以组织代码。
 
-＃小测试
+＃实战演习
 
-在接下来的章节中，我们将要为僵尸实现各种功能，让它可以“饲养”和“繁殖”。 我们把这些运算放到父类“ZombieFactory”中，这样所有继承自“ZombieFactory”的类都可以使用这些方法了。
+在接下来的章节中，我们将要为僵尸实现各种功能，让它可以“猎食”和“繁殖”。 通过将这些运算放到父类“ZombieFactory”中，使得所有“ZombieFactory”的继承者类都可以使用这些方法。
 
-1.在ZombieFactory下创建一个叫“ZombieFeeding”的合约，使它继承自“ZombieFactory”合约。
+1.在ZombieFactory下创建一个叫“ZombieFeeding”的合约，它是继承自“ZombieFactory”合约的。
 

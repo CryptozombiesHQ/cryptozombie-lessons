@@ -8,12 +8,14 @@ material:
     answer: >
 ---
 
-Solidity's code is encapsulated in contracts. A contract is basically...
+Solidity 代码封装在一种叫“合约(contracts)”的数据结构中。
+
+合约看起来是这样的...
 
 ```
 contract HelloWorld
 
 ```
 
-# Put it to the test
+# 实战演练
 
