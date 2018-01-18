@@ -1,3 +1,3 @@
-- [] I did these translations myself and own copyright for them
-- [] I didn't use a machine to do these translations
-- [] I assign all copyright to Loom Network for these translations
+- [ ] I did these translations myself and own copyright for them
+- [ ] I didn't use a machine to do these translations
+- [ ] I assign all copyright to Loom Network for these translations
