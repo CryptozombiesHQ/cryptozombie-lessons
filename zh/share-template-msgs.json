@@ -1,0 +1,14 @@
+{
+    "1": {
+        "pageTitle": "瞅瞅我的CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "我刚完成了CryptoZombies的第1课程，来看看我的僵尸军团！"
+    },
+    "2": {
+        "pageTitle": "我的僵尸{{ .ZombieName }}刚吃了个CryptoKitty，升级了!",
+        "ogDesc": "I just completed CryptoZombies Lesson 2, and added a reanimated CryptoKitty to my zombie army. Come take a look!"
+    },
+    "3": {
+        "pageTitle": "来看看我的僵尸军团!",
+        "ogDesc": "我刚完成了CryptoZombies的第三课！我的僵尸军团变大了！"
+    }
+}
