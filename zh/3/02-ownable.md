@@ -1,5 +1,5 @@
 ---
-title: 私有合同
+title: 私有合约
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
