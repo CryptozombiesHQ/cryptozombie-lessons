@@ -1,5 +1,5 @@
 ---
-title: 智能协议的永固性
+title: 智能合约的不变性
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -141,36 +141,35 @@ material:
       }
 ---
 
-到现在为止，我们讲的Solidity和其他语言没有质的区别，长得很像Javascript. 但是，有几点Ethereum上的DApp跟普通的应用程序有天地之分。
+目前为止，我们所讲的 `Solidity` 和其他语言没有质的区别，它长得很像 `Javascript`. 但是，在 `Ethereum` 上的 `DApp` 与普通的应用有着天壤之别。
 
-第一个例子，在你把智能协议传上Ethereum之后，它就再也**_不可更改_**, 这种永固性意味着你的代码永远不能被调整或更改。
+第一个例子，当你把智能合约部署到 `Ethereum` 之后，它就再也**_无法变更_**, 这种特性意味着你的代码永远不能被更新。
 
-你编译的程序会一直，永久的，不可更改的，存在以太网上。也就是以为这一点，安全性是一个非常重要和严重的事。如果你的智能协议有任何漏洞，当你发现后会无法泥补。你只能让你的用户们放弃这个智能协议，让后移动到一个新的修好了的协议上。
+你的程序会永久的存储在区块链中，且无法更改。基于这一点，安全性是非常重要的事情。如果你的智能合约有任何`BUG`，那么你必须让用户使用修复后的新的智能合约。
 
-但是这也是智能协议的一个优点。代码成法。在你审查一个智能协议后，你拥有以后每一次保障
+但是这同时也是智能合约特殊之处，你的智能合约就是法律，没有人可以逍遥法外，这意味着你的代码在执行过程中不会出现意料之外的结果。
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+## 外部依赖
 
-## External dependencies
+在第二课中，我们将 `CryptoKitties` 的合约地址写死了，但是如果有人将所有的 `猫咪` 资源删除，会发生什么呢？
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp.  But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+这不太可能，但如果这是真的，我们的`DApp`将无法使用 -- 我们的`DApp`会指向到我们写死的合约地址上，但它不会返回任何的 `猫咪` 资源。我们的僵尸
+将无法以`猫咪`为食，我们也无法修改我们的合同来修复它。
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+为此，我们有必要更新创建一些新的函数来进行更新
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+例如，我们应该定义一个可供修改 `CryptoKitties`合约的 `setKittyContractAddress` 函数，而不是将该地址写死到我们的`DApp`中。
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+## 练习
 
-## Put it to the test
+让我们从第 2 课中更新我们的代码，以便能够更改 `CryptoKitties`合约的地址。
 
-Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
+1. 删除我们写死的 `ckAddress` 这一行
 
-1. Delete the line of code where we hard-coded `ckAddress`.
+2. 将 `kittyContract` 这一行代码更改为仅声明变量，不让它等于任何东西。
 
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
+3. 创建一个名为 `setKittyContractAddress` 的函数，参数为`_address` (一个 `address`) 它应该是一个 `external` 函数。
 
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
+4. 在这个函数中，添加一行代码将 `kittyContract` 设置为 `KittyInterface(_address)`。
 
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
-
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+> Note: 如果你注意到这里有一个安全漏洞，别担心--我们会在下一章修复它 ;)

@@ -1,5 +1,5 @@
 ---
-title: onlyOwner Function Modifier
+title: onlyOwner 函数修饰符
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -183,22 +183,22 @@ material:
       }
 ---
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
+限制我们的 `ZombieFactory` 基础合约继承自 `Ownable`，我们可以在 `ZombieFeeding` 中使用 `onlyOwner` 函数修饰符
 
-This is because of how contract inheritance works. Remember:
+这需要我们知道合约继承是如何工作的. 我们记得:
 
 ```
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
+我们看到 `ZombieFeeding` 继承于 `ZombieFactory`， 而 `ZombieFactory` 继承于 `Ownable`， 因此，`ZombieFeeding` 也是继承于 `Ownable` ，并且可以从 `Ownable` 合约中访问 函数／事件／修饰符。这同样适用于任何继承 `ZombieFeeding`的合约
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+## 函数修饰符
 
-## Function Modifiers
+`函数修饰符` 看起来像是一个函数，但是关键字使用 `modifier` 而不是 `function` 。它无法像一个函数那样被直接调用
+-相反我们可以在函数定义的最后附加 `函数修饰符` 的名称来改变该函数的一些行为。
 
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
-
-Let's take a closer look by examining `onlyOwner`:
+让我们仔细看一下 `onlyOwner`:
 
 ```
 /**
@@ -210,7 +210,7 @@ modifier onlyOwner() {
 }
 ```
 
-We would use this modifier as follows:
+我们将使用下面的修饰符:
 
 ```
 contract MyContract is Ownable {
@@ -223,18 +223,19 @@ contract MyContract is Ownable {
 }
 ```
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+请注意`likeABoss`上的`onlyOwner`修饰符。 当你调用 `likeABoss` 时，`onlyOwner` 的内部代码会率先执行，然后当执行到 `_;` 时，在 `onlyOwner` 的声明里，他会返回并执行 `likeABoss`中的代码。
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+因此，虽然`函数修饰符`有其他使用方法，但最常见的用例之一是在函数执行之前添加 `require` 检查。
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+在 `onlyOwner`的情况下，添加这个修饰符到一个函数中，使得它只有部署者可以调用该函数。
 
->Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
+>Note: 通常，在函数中给予部署者特殊权利是必要的，但也可能会被恶意使用。例如，所有者可以添加一个后门函数，允许他将任何人的僵尸都转移到自己身上。
 
->So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
+>所以，记住这一点很重要，因为一个DApp在 以太坊 上并不意味着它是去中心化的 - 你必须真正阅读完整的源代码以确保它不受所有者的特殊控制，你需要担心它。
+作为开发人员，在保持对DApp的控制方面要有一个非常谨慎的平衡，这样你就可以修复潜在的问题，并构建一个用户可以信任的无所有者平台来保护他们的数据
 
-## Put it to the test
+## 练习
 
-Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
+现在，我们可以限制对 `setKittyContractAddress` 的访问，这样没有人可以在将来访问它了。
 
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+1. 添加 `onlyOwner` 修饰符到 `setKittyContractAddress` 函数。

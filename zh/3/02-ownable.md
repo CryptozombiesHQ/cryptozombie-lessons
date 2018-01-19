@@ -1,5 +1,5 @@
 ---
-title: Ownable Contracts
+title: 私有合同
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -179,19 +179,20 @@ material:
       }
 ---
 
-Did you spot the security hole in the previous chapter?
+你是否发现了前一章的安全漏洞？
 
-`setKittyContractAddress` is `external`, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
+`setKittyContractAddress` 函数是 `external` 类型，所以任何人都可以调用它！这意味着，任何调用该方法的人都可以更改 `CryptoKitties` 的合约地址，并且所有用户都能破解我们的 `app`。
 
-We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
+我们确实希望能够在合约中更新这个地址，但是我们不希望所有人都可以更新它。
 
-To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner (you) who has special privileges.
+处理此类事件，通常的做法是使用 `Ownable` 合约 -这意味着他们有一个拥有特殊权限的所有者(你自己)
 
-## OpenZeppelin's `Ownable` contract
+## OpenZeppelin 的 `Ownable` 合约
 
-Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, while you anxiously await the release of Lesson 4, we highly recommend you check out their site to further your learning!
+下面是一个从 *_OpenZeppelin_** 的`Solidity`库获得的 `Ownable` 合约。`OpenZeppelin` 是一个安全的、社区审查的智能合约库，可以在自己的`DApps`中使用。
+当这节课结束后，在你焦急地等待第 4 课的发布时，我们强烈建议你去看看他们的网站以便进一步学习！
 
-Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
+阅读下面的合约。你会发现一些我们还没有学习到的东西，但别担心，我们在之后会讨论他们。
 
 ```
 /**
@@ -231,28 +232,29 @@ contract Ownable {
 }
 ```
 
-A few new things here we haven't seen before:
+这里有一些我们之前从未见过的新东西:
 
-- Constructors: `function Ownable()` is a **_constructor_**, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
-- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
-- `indexed` keyword: don't worry about this one, we don't need it yet.
+- 构造函数: `function Ownable()` 是一个 **_构造函数_**, 它是一个可选的特殊函数，与合约名称相同，只在第一次创建合约时执行。
+- 函数修饰符: `modifier onlyOwner()`。修饰符是用于修改其他函数的 `half-functions`(半函数)，通常用于在执行之前检查某些要求。在这种情况下，`onlyOwner` 可以用来限制访问，因此只有合约的所有者才能执行该函数。在下一章中，我们将讨论函数修饰符，以及奇怪的`_;`
 
-So the `Ownable` contract basically does the following:
+- `indexed` 关键字: 不用担心这个，我们暂时还不需要它。
 
-1. When a contract is created, its constructor sets the `owner` to `msg.sender` (the person who deployed it)
+所以 `Ownable` 合约基本上是这样的:
 
-2. It adds an `onlyOwner` modifier, which can restrict access to certain functions to only the `owner`
+1. 当创建一个合约时, 它的构造函数将 `owner` 设置为 `msg.sender` (部署者的address)
 
-3. It allows you to transfer the contract to a new `owner`
+2. 它添加一个 `onlyOwner` 修饰符, 它可以将某些功能限定到只有 `owner` 才能访问
 
-`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
+3. 它允许你将合约转移到一个新的 `owner` 上
 
-Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
+`onlyOwner` 是智能合约中最常见的需求，大多数 `DApps` 都是从复制/粘贴 `Ownable`合约开始的，然后他们的第一个合约就继承了它。
 
-## Put it to the test
+因为我们想使用 `onlyOwner` 来限制 `setKittyContractAddress` 方法，所以我们会为我们的合约做同样的事情。
 
-We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
+## 练习
 
-1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
+我们已经将 `Ownable` 合约复制到新文件`ownable.sol`中，让我们来着手使 `ZombieFactory` 继承它。
 
-2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
+1. 修改我们的代码以导入合约 `ownable.sol`。如果你不记得如何做，看一看 `zombiefeeding.sol`
+
+2. 修改 `ZombieFactory` 合约继承 `Ownable`。如果你不记得如何做，看一看 `zombiefeeding.sol`
