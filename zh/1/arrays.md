@@ -39,7 +39,7 @@ material:
       }
 ---
 
-如果你想建立一个集合，可以用 **_数组_**. Solidity支持两种数组: **_静态_** 数组和**_动态_** 数组:
+如果你想建立一个集合，可以用 **_数组_**这样的数据类型. Solidity支持两种数组: **_静态_** 数组和**_动态_** 数组:
 
 ```
 // Array with a fixed length of 2 elements:
@@ -47,16 +47,16 @@ uint[2] fixedArray;
 // another fixed Array, can contain 5 strings:
 string[5] stringArray;
 // a dynamic Array - has no fixed size, can keep growing:
-uint[] dynamicArray; 
+uint[] dynamicArray;
 ```
 
-你也可以建立一个 **_数据结构_**的集合 例如，上一章提到的 `Person` 数据结构:
+你也可以建立一个 **_结构体_**类型的数组 例如，上一章提到的 `Person`:
 
 ```
 Person[] people; // dynamic Array, we can keep adding to it
 ```
 
-记住：状态变量被永久保存在区域链中。 所以在你的合同中建立一个动态数组保存数据结构是非常有意义的，如同一个小数据库。
+记住：状态变量被永久保存在区块链中。所以在你的合约中创建动态数组来保存成结构的数据是非常有意义的。
 
 ## 公共数组
 
@@ -66,10 +66,10 @@ Person[] people; // dynamic Array, we can keep adding to it
 Person[] public people;
 ```
 
-其它的合同可以读（但不能写）这个数组，所以这是在合同中保存公共数据的一个有用的模式。
+其它的合约可以从这个数组读取数据（但不能写入数据），所以这在合约中是一个有用的保存公共数据的模式。
 
 # 测试一把
 
-目标是把一个僵尸部队保存在我们的APP里，而且我们想让其它APP看到这些骄傲的僵尸。为此我们要定义公共数组。
+为了把一个僵尸部队保存在我们的APP里，并且能够让其它APP看到这些僵尸，我们需要一个公共数组。
 
-1. 建立一个公共的僵尸数据结构数组，命名为：`zombies`.
+1. 创建一个数据类型为`Zombie`的被`public`修饰的结构体数组，命名为：`zombies`.

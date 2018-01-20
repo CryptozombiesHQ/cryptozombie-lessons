@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-现在我们学习创建新的 `Person`结构，然后把它加入到 `people` 数组中.
+现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 数组中.
 
 ```
 // create a New Person:
@@ -76,7 +76,7 @@ people.push(satoshi);
 people.push(Person(16, "Vitalik"));
 ```
 
-> 注：`array.push()` 在数组的尾部加新元素 **end** ，所以元素在数组中的顺序就是我们添加的顺序， 如:
+> 注：`array.push()` 在数组的 **尾部** 加入新元素 ，所以元素在数组中的顺序就是我们添加的顺序， 如:
 
 ```
 uint[] numbers;
@@ -88,7 +88,7 @@ numbers.push(15);
 
 # 测试一把
 
-让createZombie做点儿什么吧
+让我们创建名为createZombie的函数来做点儿什么吧
 
-1. 在function里先创建一个`Zombie`, 然后把它加入 `zombies` 数组中. 新创见的僵尸的`name` 和 `dna`，是来自function的输入变量
+1. 在函数体里新创建一个`Zombie`, 然后把它加入 `zombies` 数组中. 新创建的僵尸的`name` 和 `dna`，来自于函数的参数
 2. 让我们用一行代码简洁地完成它。
