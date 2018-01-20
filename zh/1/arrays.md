@@ -1,6 +1,6 @@
 ---
 title: 数组
-actions: ['checkAnswer', 'hints']
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -42,11 +42,11 @@ material:
 如果你想建立一个集合，可以用 **_数组_**这样的数据类型. Solidity支持两种数组: **_静态_** 数组和**_动态_** 数组:
 
 ```
-// Array with a fixed length of 2 elements:
+// 固定长度为2的静态数组:
 uint[2] fixedArray;
-// another fixed Array, can contain 5 strings:
+// 固定长度为5的string类型的静态数组:
 string[5] stringArray;
-// a dynamic Array - has no fixed size, can keep growing:
+// 动态数组，长度不固定，可以动态添加元素:
 uint[] dynamicArray;
 ```
 

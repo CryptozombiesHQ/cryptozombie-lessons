@@ -1,5 +1,5 @@
 ---
-title: "合同"
+title: "合约"
 actions: ['答案', '提示']
 material:
   editor:
@@ -7,7 +7,7 @@ material:
     startingCode: |
       pragma solidity //1. 这里写版本指令
 
-      //2. 这里建立智能合同
+      //2. 这里建立智能合约
     answer: >
       pragma solidity ^0.4.19;
 

@@ -1,6 +1,6 @@
 ---
-title: 使用数据结构和数组
-actions: ['checkAnswer', 'hints']
+title: 使用结构体和数组
+actions: ['答案', '提示']
 material:
   editor:
     language: sol
@@ -47,7 +47,7 @@ material:
       }
 ---
 
-### 创建新的数据结构
+### 创建新的结构体
 
 还记得上个例子中的 `Person` 结构吗？
 
@@ -63,10 +63,10 @@ Person[] public people;
 现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 数组中.
 
 ```
-// create a New Person:
+// 创建一个新的Person:
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// 将新创建的satoshi添加进people数组:
 people.push(satoshi);
 ```
 
