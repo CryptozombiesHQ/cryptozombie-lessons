@@ -21,4 +21,5 @@ The source content that should be used for all translations is in the `en` direc
 
 ## License
 
-Any contributions made have to assign copyright back to Loom Network. Loom Network keeps ownership any derivative work created from original content.
+Contributors must assign copyright back to Loom Network for any contributions they make.
+Loom Network retains ownership of any derivative work created from original content.
