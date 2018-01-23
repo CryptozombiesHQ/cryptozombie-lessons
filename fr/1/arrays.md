@@ -1,5 +1,5 @@
 ---
-title: Arrays
+title: Tableaux
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -17,7 +17,7 @@ material:
               uint dna;
           }
 
-          // start here
+          // Commencer ici
 
       }
     answer: >
@@ -39,37 +39,36 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array en anglais). il y a deux sortes de tableaux dans Solidity : les tablaux  **_fixes_** et les tableaux **_dynamiques_** :
 
 ```
-// Array with a fixed length of 2 elements:
+// Tableau avec une longueur fixe de 2 éléments :
 uint[2] fixedArray;
-// another fixed Array, can contain 5 strings:
+// Un autre Tableau fixe, qui peut contenir 5 chaînes de caractères (string en anglais) :
 string[5] stringArray;
-// a dynamic Array - has no fixed size, can keep growing:
-uint[] dynamicArray; 
+// un Tableau dynamique, il n'a pas de taille fixe, il peut continuer de grandir :
+uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+Vous pouvez aussi créer un tableau de **_structs_**. En utilisant la structure Person du chapitre précédent :
 
 ```
-Person[] people; // dynamic Array, we can keep adding to it
+Person[] people; // Tableau dynamique, on peut en rajouter sans limite.
 ```
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Rappelez-vous que les variables d'état sont stockées définitivement dans la blockchain. Il peut donc être utile de créer des tableaux dynamique de structures de ce type pour stocker des données structurées dans votre contrat, un peu comme une base de données.
 
-## Public Arrays
+## Tableaux Public
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+Vous pouvez déclarer un tableau comme `public`, et Solidity créera automatiquement une méthode **_ getter _**. La syntaxe ressemble à:
 
 ```
 Person[] public people;
 ```
+Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc un modèle utile pour stocker des données publiques dans votre contrat.
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+# Essayons-le
 
-# Put it to the test
+Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications, cette armée devra donc être publique.
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
-
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+1. Créez un tableau public de **_structs_** `Zombie`, et appelez le `zombies`.
