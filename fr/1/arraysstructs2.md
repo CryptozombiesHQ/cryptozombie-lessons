@@ -1,5 +1,5 @@
 ---
-title: Working With Structs and Arrays
+title: Manipuler des Structures et des Tableaux
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // start here
+              // Commencer ici
           }
 
       }
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### Creating New Structs
+### Creer de nouvelles Structures
 
-Remember our `Person` struct in the previous example?
+Vous vous rappelez de notre structure `Person` dans l'exemple précédent ?
 
 ```
 struct Person {
@@ -60,33 +60,32 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Nous allons maintenant apprendre comment créer des nouvelles `Person` et les ajouter à notre tableau `people`.
 
 ```
-// create a New Person:
+// créer une nouvelle Person :
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// L'ajouter au tableau :
 people.push(satoshi);
 ```
-
-We can also combine these together and do them in one line of code to keep things clean:
+Pour garder un code plus concis, on peut aussi écrire cela en une ligne en combinant les déclarations :
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+Vous remarquerez que `array.push()` ajoute quelque chose à la **fin** du tableau, les éléments sont donc rangés selon l'ordre d'ajout. Exemple :
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// numbers est maintenant égal à [5, 10, 15]
 ```
 
-# Put it to the test
+# Essayons-le
 
 Let's make our createZombie function do something!
 
