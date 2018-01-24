@@ -177,37 +177,38 @@ material:
       }
 ---
 
-Now let's use our `aboveLevel` modifier to create some functions.
+现在让我们设计一些使用`aboveLevel`修改器的函数。
 
-Our game will have some incentives for people to level up their zombies:
+作为游戏，您得有一些措施激励玩家们去升级他们的僵尸：
 
-- For zombies level 2 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+- 2级以上的僵尸，玩家可给他们改名。
+- 20级以上的僵尸，玩家能给他们定制的DNA。
 
-We'll implement these functions below. Here's the example code from the previous lesson for reference:
+是实现这些功能的时候了。以下是上一课的示例代码，供参考：
 
 ```
-// A mapping to store a user's age:
+// 存储用户年龄的映射
 mapping (uint => uint) public age;
 
-// Require that this user be older than a certain age:
+// 限定用户年龄的修改器
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// Must be older than 16 to drive a car (in the US, at least)
+// 必须年满16周岁才允许开车 (至少在美国是这样的).
+// 我们可以用如下参数调用`olderThan` 修改器:
 function driveCar(uint _userId) public olderThan(16, _userId) {
-  // Some function logic
+  // 其余的程序逻辑
 }
 ```
 
-## Put it to the test
+## 实战演习
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+1.创建一个名为`changeName`的函数。它接收2个参数：`_zombieId`（`uint`类型）以及 `_newName`（`string`类型），可见性为`external`。它带有一个`aboveLevel`修改器，调用的时候通过`_level`参数传入`2`， 当然，别忘了同时传`_zombieId`参数。
 
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
+2.在这个函数中，首先我们用`require`语句，验证`msg.sender`是否就是`zombieToOwner [_zombieId]`。
 
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+3.然后函数将 `zombies[_zombieId] .name` 设置为 `_newName`。
 
-3. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
+4. 在`changeName`下创建另一个名为`changeDna`的函数。它的定义和内容几乎和`changeName`相同，不过它第二个参数是`_newDna`（`uint`类型），在修改器`aboveLevel`的`_level`参数中传递`20`。现在，他可以把僵尸的“dna”设置为“_newDna”了。
