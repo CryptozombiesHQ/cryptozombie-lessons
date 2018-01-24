@@ -196,45 +196,46 @@ material:
       }
 ---
 
-One of the more expensive operations in Solidity is using `storage` — particularly writes.
+Solidity使用“存储”是相当昂贵的，”写入“操作尤其贵。
 
-This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
+这是因为，无论是写入还是更改一段数据， 这都将永久性地写入区块链。”永久性“啊！需要在全球数千个节点的硬盘上存入这些数据，随着区块链的增长，拷贝份数更多，存储量也就越大。这是需要成本的！
 
-In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
+为了降低成本，不到万不得已，避免将数据写入存储。这也会导致效率低下的编程逻辑 - 比如每次调用一个函数，都需要在”内存“中重建一个数组，而不是简单地将上次计算的数组给存储下来以便快速查找。
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
+在大多数编程语言中，遍历大数据集合都是昂贵的。但是在Solidity中，使用一个标记了“外部视图”的函数，遍历比“存储”要便宜太多，因为“视图”函数不会产生任何花销。 （gas可是真金白银啊！）。
 
-We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
+我们将在下一章讨论”遍历“，现在我们来看一下看如何如何在内存中声明数组。
 
-## Declaring arrays in memory
+## 在内存中声明数组
 
-You can use the `memory` keyword with arrays to create a new array inside a function without needing to write anything to storage. The array will only exist until the end of the function call, and this is a lot cheaper gas-wise than updating an array in `storage` — free if it's a `view` function called externally.
+在数组后面加上`memory`关键字， 表明这个数组是仅仅在内存中创建，不需要写入外部存储，并且在函数调用结束时它就解散了。与在程序结束时把数据存下来的做法相比，内存运算可以大大节省gas开销 -- 把这数组放在`view`里用，完全不用花钱。
 
-Here's how to declare an array in memory:
+以下是申明一个内存数组的例子：
+
 
 ```
 function getArray() external pure returns(uint[]) {
-  // Instantiate a new array in memory with a length of 3
+  // 初始化一个长度为3的内存数组
   uint[] memory values = new uint[](3);
-  // Add some values to it
+  // 赋值
   values.push(1);
   values.push(2);
   values.push(3);
-  // Return the array
+  // 返回数组
   return values;
 }
 ```
 
-This is a trivial example just to show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+这个小例子展示了一些语法规则，下一章中，我们将通过一个实际用例，展示它和`for`循环结合的做法。
 
->Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+>注意：内存数组 **必须** 用长度参数（在本例中为`3`）创建。目前不支持 `array.push（）`之类的方法调整数组大小，在未来的版本可能会支持长度修改。
 
-## Put it to the test
+## 实战演习
 
-In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
+我们要要创建一个名为`getZombiesByOwner`的函数，它以uint []数组的形式返回某一用户所拥有的所有僵尸。
 
-1. Declare a `uint[] memory` variable called `result`
+1.声明一个名为`result`的'uint [] memory' （内存变量数组）
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2.将其设置为一个新的`uint`类型数组。数组的长度为该`_owner`所拥有的僵尸数量，这可通过调用 ”ownerZombieCount [_ owner]“ 来获取。
 
-3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
+3.函数结束，返回`result`。目前它只是个空数列，我们到下一章去实现它。

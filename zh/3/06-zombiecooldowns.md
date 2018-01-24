@@ -197,23 +197,24 @@ material:
       }
 ---
 
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
 
-We're going to modify our `feedAndMultiply` such that:
+现在，`Zombie`结构体中定义好了一个`readyTime`属性，让我们跳到`zombiefeeding.sol`， 去实现一个”冷静时间定时器“。
 
-1. Feeding triggers a zombie's cooldown, and
+按照以下步骤修改`feedAndMultiply`：
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+1.”捕猎“行为会触发僵尸的”冷静时间“
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+2.僵尸在这段”冷静时间“结束前不可再捕猎小猫
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+这将限制僵尸，防止其无限制地捕猎小猫或者整天不停地繁殖。将来，当我们增加战斗功能时，我们同样用”冷静时间“限制僵尸之间打斗的频率。
 
-## Passing structs as arguments
+首先，我们要定义一些辅助函数，设置并检查僵尸的readyTime。
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+## 将结构体作为参数传入
 
-The syntax looks like this:
+由于结构体的存储指针可以以参数的方式传递给一个”私有的“或”内部的“的函数，因此结构体可以在多个函数之间相互传递。
+
+遵循这样的语法：
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
@@ -221,14 +222,16 @@ function _doStuff(Zombie storage _zombie) internal {
 }
 ```
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+这样我们可以将某僵尸的引用直接传递给一个函数，而不用是通过参数传入僵尸ID后，函数再依据ID去查找。
 
-## Put it to the test 
+##实战演习
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
+1.先定义一个`_triggerCooldown`函数。它要求一个参数，_zombie，表示一某个僵尸的存储指针。这个函数可见性设置为`internal`。
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2.在函数中，把`_zombie.readyTime`设置为`uint32（now + cooldownTime）`。
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3.接下来，创建一个名为`_isReady`的函数。这个函数的参数也是名为`_zombie`的`僵尸指针`类型参数。这个功能只具有“内部”可见性，并返回一个逻辑变量。
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4.函数计算返回`（_zombie.readyTime <= now）`，值为“true”或“false”。这个功能的目的是判断下次允许猎食的时间是否已经到了。
+
+
