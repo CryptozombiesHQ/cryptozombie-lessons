@@ -33,7 +33,7 @@ contract HelloWorld {
 
 所有的solidity源码都必须冠以 "version pragma" — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的代码。
 
-例如: `pragma solidity ^0.4.19;` (此时此刻，solidity 的最新版本是 0.4.19).
+例如: `pragma solidity ^0.4.19;` (当前 solidity 的最新版本是 0.4.19).
 
 综上所述， 下面就是一个最基本的合约 — 每次建立一个新的项目时的第一段代码:
 

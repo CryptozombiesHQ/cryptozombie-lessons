@@ -67,11 +67,11 @@ function sayHello() public returns (string) {
 }
 ```
 
-Solidity里，函数的定义里可包含返回值的数据类型(如本例中 `string`)。
+Solidity 里，函数的定义里可包含返回值的数据类型(如本例中 `string`)。
 
 ## 函数的修饰符
 
-上面的函数实际上没有改变Solidity里的状态，即，它没有改变任何值或者写任何东西。
+上面的函数实际上没有改变 Solidity 里的状态，即，它没有改变任何值或者写任何东西。
 
 这种情况下我们可以把函数定义为 **_view_**, 意味着它只读取数据但不更改数据:
 
@@ -79,7 +79,7 @@ Solidity里，函数的定义里可包含返回值的数据类型(如本例中 `
 function sayHello() public view returns (string) {
 ```
 
-Solidity还支持 **_pure_** 函数, 表明这个函数甚至都没有接触程序里的数据，例如：
+Solidity 还支持 **_pure_** 函数, 表明这个函数甚至都没有接触程序里的数据，例如：
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -97,6 +97,6 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 1. 建立一个`private` 函数，命名为 `_generateRandomDna`。它只接收一个输入变量`_str` (类型`string`), 返回一个`uint`类型的数值。
 
-2. 此函数只读取我们合同中的一些变量，所以标记为`view`。
+2. 此函数只读取我们合约中的一些变量，所以标记为`view`。
 
 3. 函数本身暂时空白，以后我们再添加代码。

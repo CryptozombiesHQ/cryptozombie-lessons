@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 数组中.
+现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 的数组中.
 
 ```
 // 创建一个新的Person:
