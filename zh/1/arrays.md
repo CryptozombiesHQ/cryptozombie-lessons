@@ -72,4 +72,4 @@ Person[] public people;
 
 为了把一个僵尸部队保存在我们的APP里，并且能够让其它APP看到这些僵尸，我们需要一个公共数组。
 
-1. 创建一个数据类型为`Zombie`的被`public`修饰的结构体数组，命名为：`zombies`.
+1. 创建一个数据类型为`Zombie`的结构体数组，用`public`修饰，命名为：`zombies`.
