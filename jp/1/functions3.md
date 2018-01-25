@@ -1,6 +1,6 @@
 ---
-title: More on Functions
-actions: ['checkAnswer', 'hints']
+title: さらに関数を続けるぞ
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -53,11 +53,11 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+このチャプターでは、関数の **_戻り値_**と、修飾子について教えるぞ。
 
-## Return Values
+## 戻り値
 
-To return a value from a function, the declaration looks like this:
+関数から値を返すときは、次のように宣言するのだ：
 
 ```
 string greeting = "What's up dog";
@@ -67,19 +67,19 @@ function sayHello() public returns (string) {
 }
 ```
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+Solidityでは関数の宣言に戻り値の型を含むから覚えておくように（ここでは `string`だ）。
 
-## Function modifiers
+## 関数の修飾子
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+上の関数はSolidity上では何も変更されないぞ。例えば値を変更したり、何かを書き込むこともない。
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+このケースでは**_view_**関数を宣言できる。これはつまりデータの読み取り専用で編集できないということだ：
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidityには**_pure_**関数がある。これを使うとアプリ内のデータにすらアクセスできない。次のコードを考えてみよう：
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,16 +87,18 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+この関数はアプリから読み込むことすらできない。つまり戻り値が関数のパラメーターのみに依存することになる。この場合**_pure_**関数として宣言することができる。
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
 
-# Put it to the test
+> 注：pure/viewとだけ関数に書くと覚えにくくなります。幸い、Solidityのコンパイラは優秀なので、どちらの修飾子を使うべきか警告してくれます。
 
-We're going to want a helper function that generates a random DNA number from a string.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+# それではテストだ
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+文字列からランダムなDNA番号を生成するヘルパー関数を作りたい。
 
-3. The function body should be empty at this point — we'll fill it in later.
+1. `_generateRandomDna`という名前の`private`関数を作成せよ。パラメーターは `_str`(`string`)という名前で、戻り値を`uint`に設定せよ。
+
+2. この関数はコントラクトの変数を読み込むことはあるが、編集することはない。そこで修飾子を`view`と設定せよ。
+
+3. 関数の中身は空にせよ。中身は後で書き込むぞ。

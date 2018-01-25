@@ -1,6 +1,6 @@
 ---
-title: Working With Structs and Arrays
-actions: ['checkAnswer', 'hints']
+title: 構造体と配列の操作
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // start here
+              // ここから始めるのだ
           }
 
       }
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### Creating New Structs
+### 新しい構造体を作る
 
-Remember our `Person` struct in the previous example?
+前回の例で使った`Person`構造体を覚えているか？
 
 ```
 struct Person {
@@ -60,35 +60,35 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+さて、今度は新しい`Person`を作成して、それを`people`配列に格納する方法を教えるぞ。
 
 ```
-// create a New Person:
+// 新しいPersonを作る：
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// それを配列に格納する：
 people.push(satoshi);
 ```
 
-We can also combine these together and do them in one line of code to keep things clean:
+全部まとめて1行で書けば、さらにスッキリできるぞ：
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+`array.push()`は配列の**最後**に何かを追加するので、要素は追加した順番になります。次の例を参照してください：
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// 数字は [5, 10, 15]
 ```
 
-# Put it to the test
+# それではテストだ
 
-Let's make our createZombie function do something!
+createZombie関数を実際に動かすぞ！
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. 新しい`Zombie`を作れるように関数の中身を埋めて、それを `zombies` 配列に格納せよ。但し、新しいZombieの`name` と `dna`は関数の引数を使用せよ。
+2. 書いたコードを1行で書き直してスッキリさせよ。

@@ -1,6 +1,6 @@
 ---
-title: State Variables & Integers
-actions: ['checkAnswer', 'hints']
+title: 状態変数と整数
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //start here
+          //ここから開始するのだ
 
       }
     answer: >
@@ -23,28 +23,29 @@ material:
       }
 ---
 
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+見事だ！コントラクトの骨組みを作りあげたから、次はSolidityが変数をどのように扱うかについて教えていくぞ。
 
-**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+**_状態変数_** はコントラクト内に永遠に保管され続けるものだ。要するにイーサリアムブロックチェーン上に記載されるということだ。まぁDB（データベース）に書き込むようなものだと思って良い。
 
-##### Example:
+
+##### 例:
 ```
 contract Example {
-  // This will be stored permanently in the blockchain
+  // この部分がブロックチェーン上に記載される
   uint myUnsignedInteger = 100;
 }
 ```
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+この例では、`myUnsignedInteger`という名前の`uint`を作り、100に設定しているのだ。
 
-## Unsigned Integers: `uint`
+## 符号なし整数: `uint`
 
-The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
+`uint`というのは、符号なし整数のデータ型で、こいつは **負数ではない**ということを示しているのだ。この他に`int`という符号付整数もあるから覚えておくようにな。
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> 注: Solidityでは、 `uint`は256ビットの符号なし整数である`uint256`のエイリアスです。 `uint8`、` uint16`、 `uint32`など、少ないビット数でuintを宣言することもできます。しかし、一般的には、後のレッスンで説明するような特定の場合を除いて、単に` uint`を使います。
 
-# Put it to the test
+# テストの実行
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+我々ゾンビのDNAは16桁の数字で決まる。
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+`dnaDigits`という`uint` を宣言し、それを`16`に設定せよ。

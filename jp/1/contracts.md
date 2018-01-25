@@ -1,13 +1,13 @@
 ---
-title: "Contracts"
-actions: ['checkAnswer', 'hints']
+title: "コントラクト"
+actions: ['答え合わせ', 'ヒント']
 material: 
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. solidityのバージョンをここに入力
 
-      //2. Create contract here
+      //2. ここにコントラクトを作成
     answer: > 
       pragma solidity ^0.4.19;
 
@@ -17,11 +17,11 @@ material:
       }
 ---
 
-Starting with the absolute basics:
+一番簡単なことから始めよう：
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+Solidityのコードは**コントラクト**内にカプセル化されている。`コントラクト`はイーサリアムアプリケーションの基本ブロックのことだ。変数やファンクションはすべてコントラクトに属している。これがプロジェクトの出発点になる。
 
-An empty contract named `HelloWorld` would look like this:
+`HelloWorld`という名前の空のコントラクトはこういう形で表現される：
 
 ```
 contract HelloWorld {
@@ -29,13 +29,14 @@ contract HelloWorld {
 }
 ```
 
-## Version Pragma
+## Version pragma(バージョンのプラグマ)
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+Solidityのソースコードは全て”version pragma"で始まらなければならない。コードが使用するSolidityのコンパイラのバージョンを宣言するものだ。これは、将来コンパイラのバージョンが原因でコードが壊れることを防ぐために必要なのだ。
 
-It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
+実際には`pragma solidity ^0.4.19;` という風に宣言する（この解説を書いている時点での最新のsolidityのバージョンは0.4.19)。
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+これをまとめれば、コントラクトを開始するための骨組みが出来上がる　ー 新しいプロジェクトを始める毎に毎回必ず書くことを忘れるなよ：
+
 
 ```
 pragma solidity ^0.4.19;
@@ -45,12 +46,12 @@ contract HelloWorld {
 }
 ```
 
-# Put it to the test
+# テストの実行
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+ゾンビ軍団を生み出すための、`ZombieFactory`というコントラクトを作成してみよ。
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
+1. 右のボックス内に、solidity `0.4.19`バージョンを司祭して、コントラクトを使う準備をせよ
 
-2. Create an empty contract called `ZombieFactory`.
+2. `ZombieFactory`という空のコントラクトを作成せよ
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+作成が終わったら、下の"答えの確認"をクリックせよ。もし迷うことがあれば、"ヒント"を押せばヒントをやろう。 

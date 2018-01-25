@@ -1,6 +1,6 @@
 ---
-title: Events
-actions: ['checkAnswer', 'hints']
+title: イベント
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -73,19 +73,19 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
+我々のコントラクトももう直ぐ完成だ！そこで、**_event_**を追加しよう。
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+**_Events_** は、ブロックチェーンで何かが生じたときに、コントラクトがアプリのフロントエンドに伝えることができるものだ。しかも特定のイベントを'listening'状態にして、何かあった時にアクションを起こすこともできるのだ。
 
-Example:
+例：
 
 ```
-// declare the event
+// イベントの宣言
 event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // fire an event to let the app know the function was called:
+  // 関数が呼ばれたことをアプリに伝えるためにイベントを発生させる：
   IntegersAdded(_x, _y, result);
   return result;
 }
@@ -99,7 +99,7 @@ YourContract.IntegersAdded(function(error, result) {
 }
 ```
 
-# Put it to the test
+# それではテストだ
 
 We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 

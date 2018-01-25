@@ -1,6 +1,6 @@
 ---
-title: Math Operations
-actions: ['checkAnswer', 'hints']
+title: 数式演算
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -10,7 +10,7 @@ material:
       contract ZombieFactory {
 
           uint dnaDigits = 16;
-          //start here
+          //ここから開始するのだ
 
       }
     answer: >
@@ -26,22 +26,22 @@ material:
 
 ---
 
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+Solidityで使う数式は誰でもわかるような簡単なものだ。他のプログラム言語と全く同じだと思ってもらっていい：
 
-* Addition: `x + y`
-* Subtraction: `x - y`,
-* Multiplication: `x * y`
-* Division: `x / y`
-* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+* 加算（足し算）: `x + y`
+* 減算（引き算）: `x - y`,
+* 乗算（掛け算）: `x * y`
+* 除算（割り算）: `x / y`
+* 剰余 / 余り: `x % y` _(例えば、`13 % 5` は `3`になる。なぜかというと、5を13で割ると、余りが3だからだ.)_
 
-Solidity also supports an **_exponential operator_** (i.e. "x to the power of y", x^y):
+Solidityは**_指数演算子_**もサポートしている。(例 "xのy乗"、 x^y):
 
 ```
-uint x = 5 ** 2; // equal to 5^2 = 25
+uint x = 5 ** 2; // 5^2 = 25 と同様
 ```
 
-# Put it to the test
+# テストの実行
 
-To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+ゾンビのDNAが16桁の数字だと確認するために、別の`uint`を作成して10^16と設定せよ。後のレクチャーでは剰余演算子である `%`を使用して整数を16桁に縮小できる。
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. `dnaModulus`という名前の `uint`を作成し、**10の`dnaDigits`乗**に設定せよ。

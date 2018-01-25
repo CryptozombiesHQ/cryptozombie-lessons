@@ -1,6 +1,6 @@
 ---
-title: Arrays
-actions: ['checkAnswer', 'hints']
+title: 配列
+actions: ['答え合わせ', 'ヒント']
 material:
   editor:
     language: sol
@@ -39,37 +39,37 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+何かのコレクションを作りたければ、**_配列_**を利用するのだ。Solidityには2種類の配列が用意されている：**_固定長_**配列と**_可変長_**配列だ：
 
 ```
-// Array with a fixed length of 2 elements:
+// 2要素の固定長の配列の場合：
 uint[2] fixedArray;
-// another fixed Array, can contain 5 strings:
+// 別の固定長配列の例。5つの文字列を格納できる：
 string[5] stringArray;
-// a dynamic Array - has no fixed size, can keep growing:
+// 可変長配列 - 決まったサイズはないので、格納し続けることができるぞ：
 uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+**_構造体_**の配列も作れるぞ。前のチャプターの `Person` 構造体を例にすると：
 
 ```
-Person[] people; // dynamic Array, we can keep adding to it
+Person[] people; // このように可変長配列で書ける。さらに追加し続けることもできるぞ。
 ```
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+状態変数は永久にブロックチェーン上に格納されると話したことを覚えているか？こういう構造体の可変長配列は、データベースのように使えるから、コントラクトの構造データを格納する時に便利だ。
 
-## Public Arrays
+## パブリックの配列
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+配列を`public`で宣言すれば、Solidityが自動的に**_getter_**メソッドを作成するぞ。コードの書き方はこうだ：
 
 ```
 Person[] public people;
 ```
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+他のコントラクトもこの配列を読める（但し、書き込めない）ぞ。こういう性質を持っているから、コントラクトの公開データを格納するときに便利に使えるパターンとして覚えておくように。
 
-# Put it to the test
+# それではテストだ
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+私は自分のアプリにゾンビの軍隊を格納したいのだ。そして格納したゾンビを他のアプリに見せてやるために、公開したい。
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+1. パブリックの配列の`Zombie`**_構造体_**を作り、名前を`zombies`とせよ。
