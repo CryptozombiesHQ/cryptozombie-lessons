@@ -1,5 +1,5 @@
 ---
-title: Fazendo a Zombie Factory (Fábrica de Zumbi)
+title: Fazendo a Fábrica de Zumbi
 header: Bem vindo, humano!
 roadmap: roadmap.jpg
 ---

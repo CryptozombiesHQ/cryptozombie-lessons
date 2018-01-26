@@ -1,5 +1,5 @@
 ---
-title: Trabalhando com Estruturas (Structs) e Listas (Arrays)
+title: Trabalhando com Estruturas e Listas (Structs / Arrays)
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
