@@ -1,6 +1,6 @@
 ---
 title: ゾンビ修飾子
-actions:['答え合わせ', 'ヒント']
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
