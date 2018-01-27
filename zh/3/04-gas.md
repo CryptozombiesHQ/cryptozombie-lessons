@@ -179,35 +179,37 @@ material:
       }
 ---
 
-Great! Now we know how to update key portions of the DApp while preventing other users from messing with our contracts.
 
-Let's look at another way Solidity is quite different from other programming languages:
+厉害！现在我们懂了如何在禁止第三方修改我们的合约的同时，留个后门给咱们自己去修改。
 
-## Gas — the fuel Ethereum DApps run on
+让我们来看另一种使得Solidity编程语言与众不同的特征：
 
-In Solidity, your users have to pay every time they execute a function on your DApp using a currency called **_gas_**. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp. 
+## gas - 驱动以太坊DApps的能源
 
-How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a **_gas cost_** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total **_gas cost_** of your function is the sum of the gas costs of all its individual operations.
+在Solidity中，您的用户想要每次执行您的DApp都需要支付一定的 **_gas_**，gas可以用以太币购买，因此，用户每次跑DApp都得花费以太币。
 
-Because running functions costs real money for your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
+一个DApp收取多少gas取决于功能逻辑的复杂程度。每个操作背后，都在计算完成这个操作所需要的计算资源，（比如，存储数据就比做个加法运算贵得多）， 一次操作所需要花费的**_gas_**等于这个操作背后的所有运算花销的总和。
 
-## Why is gas necessary?
+由于运行您的程序需要花费用户的真金白银，在以太坊中代码的编程语言，比其他任何编程语言都更强调优化。同样的功能，使用笨拙的代码开发的程序，比起经过精巧优化的代码来，运行花费更高，这显然会给成千上万的用户带来大量不必要的开销。
 
-Ethereum is like a big, slow, but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
+## 为什么要用**_gas_**来驱动？
 
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
+以太坊就像一个巨大、缓慢、但非常安全的电脑。当您运行一个程序的时候，网络上的每一个节点都在进行相同的运算，以验证它的输出 - 这就是所谓的”去中心化“
+由于数以千计的节点同时在验证着每个功能的运行，这可以确保它的数据不会被被监控，或者被刻意修改。
 
-> Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+可能会有用户用无限循环堵塞网络，抑或用密集运算来占用大量的网络资源，为了防止这种事情的发生，以太坊的创建者为以太坊上的资源制定了价格，想要在以太坊上运算或者存储，您需要先付费。
 
-## Struct packing to save gas
+>注意：如果您使用侧链，倒是不一定需要付费，比如咱们在Loom Network上构建的CryptoZombies就免费。您不会想要在Ethereum主网上玩儿“魔兽世界”吧？ - 所需要的 gas 可能会买到您破产。但是您可以找个算法理念不同的侧链来玩它。我们将在以后的课程中咱们会讨论到，什么样的DApp应该部署在太坊主链上，什么又最好放在侧链。
 
-In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
+## 省”gas“的招数：结构封装 （Struct packing）
 
-Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the `uint` size. For example, using `uint8` instead of `uint` (`uint256`) won't save you any gas.
+在第1课中，我们提到除了基本版的“uint”（单元）外，还有其他变种“uint”（单元）：uint8，uint16，uint32等。
 
-But there's an exception to this: inside `struct`s.
+通常情况下我们不会考虑使用units变种，因为无论如何定义“uint”的大小，Solidity为它保留256位的存储空间。例如，使用`uint8`而不是`uint`（`uint256`）不会为您节省任何gas。
 
-If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
+除非，把units绑定到struct里面。
+
+如果一个struct中有多个`uint`，则尽可能使用较小的`uint`, Solidity会将这些units打包在一起，从而占用较少的存储空间。例如：
 
 ```
 struct NormalStruct {
@@ -222,25 +224,26 @@ struct MiniMe {
   uint c;
 }
 
-// `mini` will cost less gas than `normal` because of struct packing
+// 因为使用了结构打包，`mini ` 比 `normal ` 占用的空间更少，because of struct packing
 NormalStruct normal = NormalStruct(10, 20, 30);
 MiniMe mini = MiniMe(10, 20, 30); 
 ```
 
-For this reason, inside a struct you'll want to use the smallest integer sub-types you can get away with.
+所以，当unit 定义在一个struct中的时候，尽量使用最小的整数子类型以节约空间。
+并且把同样类型的变量放一起（即在struct中将把变量按照类型依次放置），这样Solidity 可以将存储空间最小化。例如，有两个struct：
 
-You'll also want to cluster identical data types together (i.e. put them next to each
-other in the struct) so that Solidity can minimize the required storage space. For example, a struct with
-fields `uint c; uint32 a; uint32 b;` will cost less gas than a struct with fields `uint32 a; uint c; uint32 b;`
-because the `uint32` fields are clustered together.
+ `uint c; uint32 a; uint32 b;`
+ 和
+`uint32 a; uint c; uint32 b;`
 
+前者比后者需要的gas更少，因为前者把`uint32`放一起了。
 
-## Put it to the test
+## 实战演习
 
-In this lesson, we're going to add 2 new features to our zombies: `level` and `readyTime` — the latter will be used to implement a cooldown timer to limit how often a zombie can feed. 
+在本课中，咱们给僵尸添2个新功能：`le​​vel`和`readyTime` - 后者是用来实现一个”冷却定时器“，以限制僵尸猎食的频率。
 
-So let's jump back to `zombiefactory.sol`.
+让我们回到`zombiefactory.sol`。
 
-1. Add two more properties to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
+1.为`Zombie`结构体 添加两个属性：`level`（`uint32`）和`readyTime`（`uint32`）。因为希望同类型数据打成一个包，所以把它们放在结构体的末尾。
 
-32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
+32位足以保存僵尸的级别和时间戳了，这样比起使用普通的“uint”（256位），可以更紧密地封装数据，从而为我们省点gas。

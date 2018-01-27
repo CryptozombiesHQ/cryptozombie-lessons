@@ -58,9 +58,9 @@ material:
 
 如何让 `_generateRandomDna` 函数返回一个(半) 随机的 `uint`?
 
-Ethereum内部有一个散列函数`keccak256`，它用了SHA3版本。一个散列函数基本上就是把一个字符串转换为一个256位的16进制数字。字符串的一个微小变化，会导致散列数据一个大的变化。
+Ethereum 内部有一个散列函数`keccak256`，它用了SHA3版本。一个散列函数基本上就是把一个字符串转换为一个256位的16进制数字。字符串的一个微小变化会引起散列数据极大变化。
 
-这在Ethereum中有很多应用，但是现在我们只是用它造一个假想的随机数。
+这在 Ethereum 中有很多应用，但是现在我们只是用它造一个假想的随机数。
 
 例子:
 
@@ -82,9 +82,9 @@ keccak256("aaaac");
 ```
 uint8 a = 5;
 uint b = 6;
-// throws an error because a * b returns a uint, not uint8:
+// 将会跑出错误，因为 a * b 返回 uint, 而不是 uint8:
 uint8 c = a * b; 
-// we have to typecast b as a uint8 to make it work:
+// 我们需要将 b 转换为 uint8:
 uint8 c = a * uint8(b); 
 ```
 

@@ -192,32 +192,34 @@ material:
       }
 ---
 
-Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
+酷炫！现在高级别僵尸可以拥有特殊技能了，这一定会鼓动我们的玩家去打怪升级的。您喜欢的话，回头我们还能添加更多的特殊技能。
 
-Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+现在需要添加的一个功能是：我们的DApp需要一个方法来查看某玩家的整个僵尸军团 - 我们称之为“getZombiesByOwner（根据玩家查看僵尸）”。
 
-This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+实现这个功能只需从区块链中读取数据，所以它可以是一个“视图”函数。这让我们不得不回顾一下“gas优化”这个重要话题。
 
-## View functions don't cost gas
+## “view”函数不花“gas”
 
-`view` functions don't cost any gas when they're called externally by a user.
+当玩家从外部调用一个’view函数‘，是不需要支付一分钱gas的。
 
-This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+这是因为`view`函数不会真正改变区块链上的任何数据 - 它们只是读取。因此用`view`标记一个函数，意味着告诉`web3.js`，运行这个函数只需要查询您的本地以太坊节点，而不需要在区块链上创建一个事务（事务需要运行在每个节点上，因此花费gas）。
 
-We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
+稍后我们将介绍如何在自己的节点上设置web3.js。但现在，您关键是要记住，在所能只读的函数上标记上表示“只读”的“`external view（外部视图）”声明，就能为您的玩家减少在DApp中gas用量。
 
-> Note: If a `view` function is called internally from another function in the same contract that is **not** a `view` function, it will still cost gas. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
+>注意：如果一个`view`函数在另一个函数的内部被调用，而调用函数与`view`函数的不属于同一个合约，也会产生调用成本。这是因为如果主调函数在以太坊创建了一个事务，它仍然需要逐个节点去验证。所以标记为`view`的函数只有在外部调用时才是免费的。
 
-## Put it to the test
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from `web3.js` if we want to display a user profile page with their entire army.
+## 实战演习
 
-This function's logic is a bit complicated so it will take a few chapters to implement.
+我们来写一个”返回某玩家的整个僵尸军团“的函数。当我们从web3.js中调用它，即可显示某一玩家的个人资料页。
 
-1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
+这个函数的逻辑有点复杂，我们需要好几个章节来描述它的实现。
 
-2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
+1.创建一个名为`getZombiesByOwner`的新函数。它有一个名为`_owner`的`address`类型的参数。
 
-3. The function should return a `uint[]` (an array of `uint`).
+2.将其申明为“external view（外部视图）”函数，这样当玩家从“web3.js”中调用它时，不需要花费任何gas。
 
-Leave the function body empty for now, we'll fill it in in the next chapter.
+3.函数需要返回一个`uint []`（`uint`数组）。
+
+先这么声明着，我们将在下一章中填充函数体。
+

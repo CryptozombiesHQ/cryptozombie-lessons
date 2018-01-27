@@ -54,6 +54,7 @@ import l3_ch12 from './3/12-forloops.md'
 import l3_ch13 from './3/13-wrappingitup.md'
 import l3_complete from './3/14-lessoncomplete.md'
 
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 

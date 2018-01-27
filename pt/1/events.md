@@ -1,6 +1,6 @@
 ---
-title: 事件
-actions: ['答案', '提示']
+title: Eventos (Events)
+actions: ['verificarResposta', 'dicas']
 material:
   editor:
     language: sol
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // 这里建立事件
+          // declare nosso evento aqui
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,7 +23,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-              // 这里触发事件
+              // dispare o evento aqui
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
@@ -73,38 +73,38 @@ material:
       }
 ---
 
-我们的合约几乎就要完成了！让我们加上一个**事件**.
+Nosso contract esta quase terminado! Agora vamos adicionar um **_event_** (evento)
 
-**事件** 是合约和区块链通讯的一种机制。你的前端应用‘监听’某些事件，并做出反应。
+**_Events_** (Eventos) são as maneiras dos seus contratos comunicarem que algo aconteceu na blockchain para o seu aplicativo em um front-end, que pode `ouvir` por certos tipos de eventos e tomar ações quando algo acontecer.
 
-例子:
+Exemplo:
 
 ```
-// 这里建立事件
+// declarando o evento
 event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  //触发事件，通知app
+  // dispare um evento e deixe o aplicativo saber que a função foi chamada:
   IntegersAdded(_x, _y, result);
   return result;
 }
 ```
 
-你的 app 前端可以监听这个事件。JavaScript 实现如下: 
+O seu aplicativo front-end poderá então ouvir o evento. Uma implementação em Javascript firaria assim:
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
-  // 干些事
+YourContract.IntegersAdded(function(error, result) {
+  // faça algo com o resultado
 }
 ```
 
-# 测试一把
+# Vamos testar
 
-我们想每当一个僵尸创造出来时，我们的前端都能听到这个事件，并将它显示出来。
+Nos queremos um evento que avise o front-end toda vez que um novo zumbi for criado, então o aplicativo pode mostrá-lo.
 
-1. 定义一个 `事件` 叫做 `NewZombie`. 它可以含有 `zombieId` (`uint`), `name` (`string`), 和 `dna` (`uint`).
+1. Declare um `event` chamado `NewZombie`. Deve passar os parâmetros `zombieID` (um `uint`), `name` (uma `string`), e `dna` (um `uint`).
 
-2. 修改 `_createZombie` 函数使得当新僵尸造出来并加入`zombies`数组后，生成事件`NewZombie`。
+2. Modifique a função `_createZombie` para disparar o evento `NewZombie` após adicionar o novo Zombie em nosso array `zombies`
 
-3. 需要定义僵尸`id`。 `array.push()` 返回数组的长度类型是`uint`  - 因为数组的第一个元素的索引是 0， `array.push() - 1` 将是我们加入的僵尸的索引。 `zombies.push() - 1` 就是 `id`，数据类型是`uint`。在下一行中你可以把它用到`NewZombie` 事件中。
+3. Você vai precisar do `id` do zumbi. O `array.push()` retorna um `uint` com o novo tamanho do array - e desde que o primeiro item no array tem o index 0, `array.push() - 1` vai ser o index do zumbi que acabamos de adicionar. Guarde o resultado do `zombies.push() -1` em um `uint` chamado `id`, então você pode usá-lo no evento `NewZombie` na próxima linha.
