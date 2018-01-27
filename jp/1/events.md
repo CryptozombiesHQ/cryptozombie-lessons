@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // declare our event here
+          // イベントをここで宣言するのだ
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,7 +23,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-              // and fire it here
+              // ここでイベントを発生させるのだ
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
@@ -91,20 +91,21 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Your app front-end could then listen for the event. A javascript implementation would look something like: 
+アプリのフロントエンドをリッスン（接続待ち）状態にできる。javascriptで実装すると次のように書けるのだ：
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
-  // do something with result
+  // 結果について何らかの処理をする
 }
 ```
 
 # それではテストだ
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+新しいゾンビを作る毎にそれをフロントエンドに伝えて、アプリ上に表示させたい。
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. `NewZombie`を呼び出す`event`を宣言せよ。`zombieId` (`uint`)、 `name` (`string`)、 `dna` (`uint`)の値を渡すのだ。
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
+2. `_createZombie`関数を編集し、`zombies`配列に新しいゾンビを追加したら `NewZombie`イベントが発生させよ。
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. ゾンビの`id`が必要だ。`array.push()`は新しい長さの`uint`配列を返し、配列の最初のインデックスは0であるから、`array.push() - 1` が追加したゾンビのインデックスだ。そこで、`zombies.push() - 1`結果を`id`という名前の`uint`に格納し、次の行で作成する`NewZombie`イベントで使用できるようにせよ。
+
