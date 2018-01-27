@@ -1,5 +1,5 @@
 ---
-title: 'View' 関数でガスを節約する
+title: 'View' 関数でガスを節約
 actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
