@@ -1,5 +1,5 @@
 ---
-title: onlyOwner 函数修饰符
+title: onlyOwner Function Modifier
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -183,26 +183,25 @@ material:
       }
 ---
 
-限制我们的 `ZombieFactory` 基础合约继承自 `Ownable`，我们可以在 `ZombieFeeding` 中使用 `onlyOwner` 函数修饰符
+现在我们有了个基本版的合约`ZombieFactory`了，它继承了`Ownable`接口，我们也可以给`ZombieFeeding`加上`onlyOwner`函数修改器。
 
-这需要我们知道合约继承是如何工作的. 我们记得:
+继承了`ZombieFactory`，就是这么酷！记得：
 
 ```
-ZombieFeeding is ZombieFactory
-ZombieFactory is Ownable
+ZombieFeeding 是个（继承了） ZombieFactory
+ZombieFactory 是个（继承了） Ownable
 ```
-我们看到 `ZombieFeeding` 继承于 `ZombieFactory`， 而 `ZombieFactory` 继承于 `Ownable`， 因此，`ZombieFeeding` 也是继承于 `Ownable` ，并且可以从 `Ownable` 合约中访问 函数／事件／修饰符。这同样适用于任何继承 `ZombieFeeding`的合约
+因此 `ZombieFeeding` 也是个（继承了） `Ownable`, 并可以通过`Ownable`接口访问父类中的函数/事件/修改器。往后，“ZombieFeeding”的继承者合约们同样也可以这么延续下去。
 
-## 函数修饰符
+## 函数修改器
 
-`函数修饰符` 看起来像是一个函数，但是关键字使用 `modifier` 而不是 `function` 。它无法像一个函数那样被直接调用
--相反我们可以在函数定义的最后附加 `函数修饰符` 的名称来改变该函数的一些行为。
+函数修改器看起来跟函数没什么不同，关键字'modifier' 告诉编译器，这是个“modifier(修改器)”，而不是个“function(函数)”。它不能像函数那样被直接调用，只能被添加到函数定义的末尾，用以改变函数的行为。
 
-让我们仔细看一下 `onlyOwner`:
+咱们仔细读读 `onlyOwner`:
 
 ```
 /**
- * @dev Throws if called by any account other than the owner.
+ * @dev 调用者不是‘主人’，就会抛出异常
  */
 modifier onlyOwner() {
   require(msg.sender == owner);
@@ -210,32 +209,31 @@ modifier onlyOwner() {
 }
 ```
 
-我们将使用下面的修饰符:
+‘onlyOwner’函数修改器是这么用的：
 
 ```
 contract MyContract is Ownable {
   event LaughManiacally(string laughter);
 
-  // Note the usage of `onlyOwner` below:
+  //注意！ `onlyOwner`上场 :
   function likeABoss() external onlyOwner {
     LaughManiacally("Muahahahaha");
   }
 }
 ```
 
-请注意`likeABoss`上的`onlyOwner`修饰符。 当你调用 `likeABoss` 时，`onlyOwner` 的内部代码会率先执行，然后当执行到 `_;` 时，在 `onlyOwner` 的声明里，他会返回并执行 `likeABoss`中的代码。
+注意`likeABoss`函数上的'onlyOwner`修改器。 当您调用`likeABoss`时，**首先执行**`onlyOwner`中的代码， 执行到`onlyOwner`中的`_;`语句时，程序再返回并执行'likeABoss`中的代码。
 
-因此，虽然`函数修饰符`有其他使用方法，但最常见的用例之一是在函数执行之前添加 `require` 检查。
+可见，尽管函数修改器也可以应用到各种场合，但最常见的还是放在函数执行之前添加快速的“require”检查。
 
-在 `onlyOwner`的情况下，添加这个修饰符到一个函数中，使得它只有部署者可以调用该函数。
+因为给函数添加了修改器`onlyOwner`，使得**唯有合约的主人**（也就是部署者）才能调用它。
 
->Note: 通常，在函数中给予部署者特殊权利是必要的，但也可能会被恶意使用。例如，所有者可以添加一个后门函数，允许他将任何人的僵尸都转移到自己身上。
+>注意：主人对合约享有的特权当然是正当的，不过也可能被恶意使用。比如，万一，主人添加了个后门，允许他偷走别人的僵尸呢？
 
->所以，记住这一点很重要，因为一个DApp在 以太坊 上并不意味着它是去中心化的 - 你必须真正阅读完整的源代码以确保它不受所有者的特殊控制，你需要担心它。
-作为开发人员，在保持对DApp的控制方面要有一个非常谨慎的平衡，这样你就可以修复潜在的问题，并构建一个用户可以信任的无所有者平台来保护他们的数据
+>所以非常重要的是，部署在以太坊上的DApp，并不能保证它真正做到去中心，您需要阅读并理解它的源代码，才能防止其中没有被部署者恶意植入后门； 作为开发人员，如何做到既要给自己留下修复bugs的余地， 又要尽量地放权给使用者，以便让他们放心您，从而愿意把数据放在您的DApp中，这确实需要个微妙的平衡。
+ 
+## 实战演习
 
-## 练习
+现在我们可以限制第三方对`setKittyContractAddress`的访问，除了我们自己，谁都无法去修改它。 
 
-现在，我们可以限制对 `setKittyContractAddress` 的访问，这样没有人可以在将来访问它了。
-
-1. 添加 `onlyOwner` 修饰符到 `setKittyContractAddress` 函数。
+1.将`onlyOwner`函数修改器添加到`setKittyContractAddress`中。

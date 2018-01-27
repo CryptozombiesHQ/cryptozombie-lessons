@@ -1,6 +1,6 @@
 ---
-title: 使用结构体和数组
-actions: ['答案', '提示']
+title: Trabalhando com Estruturas e Listas (Structs / Arrays)
+actions: ['verificarResposta', 'dicas']
 material:
   editor:
     language: sol
@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // 这里开始
+              // comece aqui
           }
 
       }
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### 创建新的结构体
+### Criando novas Structs
 
-还记得上个例子中的 `Person` 结构吗？
+Você lembra da nossa `Person` struct no exemplo anterior?
 
 ```
 struct Person {
@@ -60,35 +60,35 @@ struct Person {
 Person[] public people;
 ```
 
-现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 的数组中.
+Agora nós vamos aprender como criar uma nova `Person` e adiciona-lá ao nosso `people` array.
 
 ```
-// 创建一个新的Person:
+// criar uma nova Person:
 Person satoshi = Person(172, "Satoshi");
 
-// 将新创建的satoshi添加进people数组:
+// Adicionar a pessoa ao Array:
 people.push(satoshi);
 ```
 
-你也可以两步并一步，用一行代码更简洁:
+Nós também podemos combiná-los em uma única linha para ter um código limpo:
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-> 注：`array.push()` 在数组的 **尾部** 加入新元素 ，所以元素在数组中的顺序就是我们添加的顺序， 如:
+Perceba que o `array.push()` adiciona qualquer coisa no **fim** do array, então os elementos são adicionados em ordem conforme adicionamos. Veja o próximo exemplo:
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// number agora é [5, 10, 15]
 ```
 
-# 测试一把
+# Vamos testar
 
-让我们创建名为createZombie的函数来做点儿什么吧
+Vamos fazer a nossa função createZombie fazer algo!
 
-1. 在函数体里新创建一个`Zombie`, 然后把它加入 `zombies` 数组中. 新创建的僵尸的`name` 和 `dna`，来自于函数的参数
-2. 让我们用一行代码简洁地完成它。
+1. Preencha o corpo da função para cirar um novo `Zombie`, e adicione nossa array `zombies`. O `name` e `dna` para o Zombie deve vir nos argumentos da função.
+2. Vamos fazer isso em uma linha para manter o código claro.

@@ -1,0 +1,14 @@
+{
+    "1": {
+        "pageTitle": "Olha só o meu CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "Eu acabei de completar a Lição 1 do CryptoZombies e aprendi o básico para codificação de um jogo em Ethereum. Olha só o primeiro zumbi do meu exército!"
+    },
+    "2": {
+        "pageTitle": "O meu CryptoZombie {{ .ZombieName }} acabou de comer um CryptoKitty e subiu de nível!",
+        "ogDesc": "Eu acabei de completar a Liçao 2 do CryptoZombies, e adicionei um CryptoKitty reanimado ao meu exército zumbi. Vem ver!"
+    },
+    "3": {
+        "pageTitle": "Olha só o meu exército CryptoZombie!",
+        "ogDesc": "Eu acabei de completar a Lição 3 do CryptoZombies! Meu exército zumbi esta crescendo..."
+    }
+}

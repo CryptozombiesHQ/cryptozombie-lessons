@@ -1,6 +1,6 @@
 ---
-title: 放在一起
-actions: ['答案', '提示']
+title: Juntando Tudo
+actions: ['verificarResposta', 'dicas']
 material:
   editor:
     language: sol
@@ -28,7 +28,7 @@ material:
               return rand % dnaModulus;
           }
 
-          // 事件
+          // comece aqui
 
       }
     answer: >
@@ -64,16 +64,16 @@ material:
       }
 ---
 
-我们就快完成我们的随机僵尸制造器了，来写一个公共的函数把所有的部件连接起来。
+Nós estamos perto de terminar o nosso gerador aleatório de Zumbi! Vamos criar uma função pública que vai juntar tudo.
 
-写一个公共函数，它有一个变量，用来输入僵尸的名字，之后用它生成僵尸的DNA。
+Nós vamos criar uma função pública que tem uma entrada, o nome do zumbi, e usa o nome do zumbi para criar um DNA aleatório.
 
-# 测试一把
+# Vamos testar
 
-1. 建立一个 `public` 函数，命名为` createRandomZombie`. 它将被传入一个变量 `_name` (数据类型是 `string`). _(注: 定义公共函数 `public` 和定义一个私有 `private` 函数的做法一样)_
+1. Crie uma função `public` chamada `createRandomZombie`. Ela irá ter um parâmetro chamado `_name` (uma `string`). _(Nota: Declare esta função como `public` assim como você declarou as funções anteriores como `private`)_
 
-2. 函数的第一行应该调用 `_generateRandomDna` 函数，传入 `_name` 参数, 结果保存在一个类型为 `uint` 的变量里，命名为 `randDna`.
+2. A primeira linha desta função deve executar a função `_generateRandomDna` usando o parâmetro `_name`, e guardá-lo em um `uint` chamado `randDna`.
 
-3. 第二行调用 `_createZombie` 函数， 传入参数： `_name` 和 `randDna`.
+3. A segunda linha deve executar a função `_createZombie` e passar os parâmetros `_name` e `randDna`.
 
-4. 结果应该生成4行代码 (包括函数的结束符号 `}` )。
+4. A solução deve ter 4 linhas de código (incluindo o fechamento da função `}`)

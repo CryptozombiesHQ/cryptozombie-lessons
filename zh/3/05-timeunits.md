@@ -183,54 +183,55 @@ material:
       }
 ---
 
-The `level` property is pretty self-explanatory. Later on, when we create a battle system, zombies who win more battles will level up over time and get access to more abilities.
 
-The `readyTime` property requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
+'level'属性表示僵尸的级别。以后，在我们创建的战斗系统中，打胜仗的僵尸会逐渐升级并获得更多的能力。
 
-In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
+`readyTime`稍微复杂点。我们希望增加一个“冷静时间”，表示僵尸在两次猎食或攻击之之间必须等待的时间。如果没有它，僵尸每天可能会攻击和繁殖1,000次，这样游戏就太简单了。
 
-## Time units
+为了记录僵尸在下一次进击前需要等待的时间，我们使用了Solidity的时间单位。
 
-Solidity provides some native units for dealing with time. 
+## 时间单位
 
-The variable `now` will return the current unix timestamp (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
+Solidity使用自己的本地时间单位。
 
->Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow and break a lot of legacy systems. So if we wanted our DApp to keep running 20 years from now, we could use a 64-bit number instead — but our users would have to spend more gas to use our DApp in the meantime. Design decisions!
+变量`now`将返回当前的unix时间戳（自1970年1月1日以来经过的秒数）。我写这句话时unix时间是`1515527488`。
 
-Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a `uint` of the number of seconds in that length of time. So `1 minutes` is `60`, `1 hours` is `3600` (60 seconds x 60 minutes), `1 days` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
+>注意：Unix时间传统用一个32位的整数进行存储。这会导致“2038年”问题，当这个32位的unix时间戳不够用，产生溢出，使用这个时间的遗留系统就麻烦了。所以，如果我们想让我们的DApp跑够20年，我们可以使用64位整数表示时间，但为此我们的用户又得支付更多的gas。真是个两难的设计啊！
 
-Here's an example of how these time units can be useful:
+Solidity 还包含“秒”，“分钟”，“小时”，“天”，“周”和“年”等时间单位。它们都会转换成对应的秒数放入“uint”中。所以“1分钟”就是“60”，“1小时”是“3600”（60秒×60分钟），“1天”是“86400”（24小时×60分钟×60秒），以此类推。
+
+下面是一些使用时间单位的实用案例：
+
 
 ```
 uint lastUpdated;
 
-// Set `lastUpdated` to `now`
+// 将‘上次更新时间’ 设置为 ‘现在’
 function updateTimestamp() public {
   lastUpdated = now;
 }
 
-// Will return `true` if 5 minutes have passed since `updateTimestamp` was 
-// called, `false` if 5 minutes have not passed
+// 如果到上次`updateTimestamp` 超过5分钟，返回 'true'
+// 不到5分钟返回 'false'
 function fiveMinutesHavePassed() public view returns (bool) {
   return (now >= (lastUpdated + 5 minutes));
 }
 ```
 
-We can use these time units for our Zombie `cooldown` feature.
+有了这些工具，我们可以为僵尸设定”冷静时间“功能
 
+## 实战演习
 
-## Put it to the test 
+现在咱们给DApp添加一个”冷静时间“的设定，让僵尸两次攻击或捕猎之间必须等待 **1天**。
 
-Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 day** after attacking or feeding to attack again.
+1.声明一个名为`cooldownTime`的`uint`，并将其设置为`1 days`。（没错，”1 days“使用了复数， 否则通不过编译器）
 
-1. Declare a `uint` called `cooldownTime`, and set it equal to `1 days`. (Forgive the poor grammar — if you set it equal to "1 day", it won't compile!)
+2.因为在上一章中我们给`Zombie`结构体中添加`level`和`readyTime`两个参数，所以现在创建一个新的`Zombie`结构体时，需要修改`_createZombie（）`，在其中把新旧参数都初始化一下。
 
-2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
+修改`zombies.push`那一行， 添加加2个参数：`1`（表示当前的`level`）和`uint32（now + cooldownTime 现在+冷静时间）`（表示下次允许攻击的时间`readyTime`）。
 
-  Update the `zombies.push` line of code to add 2 more arguments: `1` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
+>注意：必须使用`uint32（...）`进行强制类型转换，因为`now`返回类型`uint256`。所以我们需要明确将它转换成一个`uint32`类型的变量。
 
->Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
+`now + cooldownTime`将等于当前的unix时间戳（以秒为单位）加上”1天“里的秒数 - 这将等于从现在起1天后的unix时间戳。然后我们就比较，看看这个僵尸的readyTime是否大于now，以决定再次启用僵尸的时机有没有到来。
 
-`now + cooldownTime` will equal the current unix timestamp (in seconds) plus the number of seconds in 1 day — which will equal the unix timestamp 1 day from now. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
-
-We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
+下一章中，我们将讨论如何通过`readyTime`来规范僵尸的行为。
