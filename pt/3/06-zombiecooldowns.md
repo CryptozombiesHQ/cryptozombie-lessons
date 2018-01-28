@@ -1,5 +1,5 @@
 ---
-title: Zombie Cooldowns
+title: Zumbis Calmos
 actions: ['verificarResposta', 'dicas']
 requireLogin: true
 material:
@@ -34,9 +34,9 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Define `_triggerCooldown` function here
+          // 1. Defina a função `_triggerCooldown` aqui
 
-          // 2. Define `_isReady` function here
+          // 2. Defina a função `_isReady` aqui
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -197,38 +197,38 @@ material:
       }
 ---
 
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
+Agora que temos a propriedade `readyTime` em nossa estrutura `Zombie`, vamos visitar o `zombiefeeding.sol` para implementar o tempo de esfriamento.
 
-We're going to modify our `feedAndMultiply` such that:
+Vamos modificar a nossa função `feedAndMultiply` desta forma:
 
-1. Feeding triggers a zombie's cooldown, and
+1. Gatilhos de esfriamento do zumbi, e
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+2. Zumbis não podem comer gatinhos até que seus períodos de esfriamento termine
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+Isto irá fazer com que os zumbis não possam se alimentar de gatinhos sem limites e multiplicar direto. Em futuras lições iremos adicionar a funcionalidade de batalhas, faremos com que atacar outros zumbis também dependam do esfriamento.
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+Primeiro, iremos definir alguma função de ajuda que faça a atribuição e checagem do `readyTime` do zumbi.
 
-## Passing structs as arguments
+## Passando estruturas como argumentos
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+Você pode passar um ponteiro de storage para uma estrutura como argumento em uma função `private` ou `internal`. Isto é útil por exemplo, passar a nossa estrutura `Zombie` entre as funções.
 
 The syntax looks like this:
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
-  // do stuff with _zombie
+  // faça algo com o zumbi aqui
 }
 ```
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+Desta maneira podemos passar uma referência do nosso zumbi para uma função ao invés de passar o ID e ter que procurá-lo.
 
-## Put it to the test 
+## Vamos testar
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
+1. Comece definindo uma função `_triggerCooldown`. Esta irá receber 1 argumento, `_zombie`, um ponteiro `Zombie storage`. A função deve ser `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. O corpo da função deve atribuir `_zombie.readyTime` para `uint32(now + cooldownTime)`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3. Próximo, crie uma função chamada `_isReady`. Esta função irá receber também o `Zombie.storage` como argumento chamado `_zombie`. Esta será uma função `internal view` e irá retornar um `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. O corpo da função deve retornar `(_zombie.readyTime <= now)`, quer irá validar se é `true` ou `false`. Esta função irá nos dizer se tempo o suficiente já passou desde a última vez que o zumbi se alimentou.

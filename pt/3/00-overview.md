@@ -8,9 +8,8 @@ Grr... Eu não consigo para você, consigo? Suas habilidades em Solidity são fo
 
 Agora que você tem alguma experiência em Solidity, vamos mergulhar em alguns aspectos mais técnicos do desenvolvimento em Ethereum.
 
-Esta lição será um pouco menos chamativa (desculpe, sem reviravoltas!). Mas você irá aprender conceitos realmente importantes que o deixara mais perto de criar DApps reias - coisas como **propriedade do contrato, custo em gas, otimização de código e segurança**.
+Esta lição será um pouco menos chamativa (desculpe, sem reviravoltas!). Mas você irá aprender conceitos realmente importantes que o deixara mais perto de criar DApps reais - coisas como **propriedade do contrato, custo em gas, otimização de código e segurança**.
 
-You've been warned — no kitties and rainbows in Lesson 3!
 Você foi avisado - sem gatinhos sem arcos-íris na Lição 3!
 
-Mas um grante conhecimento em Solidity empacotado. Recomendamos fortemente que você complete a Lição 2 antes de começar a próxima.
+Mas um grande conhecimento em Solidity empacotado. Recomendamos fortemente que você complete a Lição 2 antes de começar a próxima.

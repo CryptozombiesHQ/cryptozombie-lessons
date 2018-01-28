@@ -1,5 +1,5 @@
 ---
-title: Public Functions & Security
+title: Funções Públicas & Segurança
 actions: ['verificarResposta', 'dicas']
 requireLogin: true
 material:
@@ -42,18 +42,18 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 1. Make this function internal
+          // 1. Torne esta função internal
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. Add a check for `_isReady` here
+            // 2. Adicione a checagem para `_isReady` aqui
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. Call `triggerCooldown`
+            // 3. chame o `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -206,18 +206,18 @@ material:
       }
 ---
 
-Now let's modify `feedAndMultiply` to take our cooldown timer into account.
+Agora vamos modificar `feedAndMultiply` para considerar o tempo de resfriamento.
 
-Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Olhando novamente nesta função, você pode perceber que nós as criamos como `public` na lição anterior. Uma prática importante de segurança é auditar todas as funções `public` e `external`, e tentar imaginar as maneiras de como os usuários poderiam abusar delas. Lembre-se - ao menos que estas funções tenham um modificador `onlyOwner`, qualquer usuário pode executá-las e passar o dado que quiserem.
 
-Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+Re-examinando esta função em particular, o usuário poderia chamar esta função diretamente e tentar passar um `_targetDna` ou `_species` que quiserem. Isto não faria parecer um jogo - nós queremos que todos sigam as regras!
 
-On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+Olhando de perto, esta função só precisa ser chamada por `feedOnKitty()`, então a maneira mais fácil de prevenir tais explorações é torná-la um `internal`.
 
-## Put it to the test 
+## Vamos testar
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+1. Atualmente `feedAndMultiply` é uma função `public`. Vamos torná-la `internal` então o contrato será mais seguro. Não queremos que os usuários possam chamar esta função com o DNA que quiserem.
 
-2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
+2. Vamos fazer o `feedAndMultiply` considerar o nosso `cooldownTime`. Primeiro, após obter o `myZombie`, vamos adicionar uma declaração de `require` que verifica `_isReady()` e passa o `myZombie` como parâmetro. Desta maneira o usuário só pode executar a função se o tempo de esfriamento do zumbi terminar.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+3. No final da função execute o `_triggerCooldown(myZombie)` então ao se alimentar dispara o tempo de resfriamento do zumbi.

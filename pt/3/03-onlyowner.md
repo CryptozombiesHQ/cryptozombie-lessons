@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modifique ésta função:
+          // Modifique esta função:
           function setKittyContractAddress(address _address) external {
             kittyContract = KittyInterface(_address);
           }
@@ -198,7 +198,7 @@ Sendo assim `ZombieFeeding` é também `Ownable`, e tem acesso as funções / ev
 
 Uma função modificadora se parece com uma função, mas usa a palavra reservada `modifier` ao invés da palavra reservada `function`. E não pode ser chamada diretamente como um função - ao invés nós podemos anexar o nome da função modificador no final da definição da função para mudar o comportamento da função.
 
-Vamos olhar de perto e examinar o `onlyOnwer`:
+Vamos olhar de perto e examinar o `onlyOwner`:
 
 ```
 /**
@@ -216,7 +216,7 @@ Podemos usar este modificar conforme segue:
 contract MyContract is Ownable {
   event LaughManiacally(string laughter);
 
-  // Veja o uso de `onlyOnwer` abaixo:
+  // Veja o uso de `onlyOwner` abaixo:
   function likeABoss() external onlyOwner {
     LaughManiacally("Muahahahaha");
   }
@@ -227,11 +227,11 @@ Perceba que `onlyOwner` modifica a função `likeABoss`. Quando você chama `lik
 
 Enquanto há outras maneiras de usar os modificares, um dos casos mais comuns são os de adicionar rapidamente verificações de `require` antes de uma função executar.
 
-No caso de `onlyOwner`, adicionar este modificador à função faz com que **only** (somente) o **owner** (dono) do contrato (você, se você implatou-o) possa chamar essa função.
+No caso de `onlyOwner`, adicionar este modificador à função faz com que **only** (somente) o **owner** (dono) do contrato (você, se você implantou-o) possa chamar essa função.
 
->Nota: Dar ao dono poderes especiais sobre o contrato assim frequentemente é necessário, mas isso também pode ser malicioso. Por exemplo, o dono pode adicionar uma função _backdoor_ que permitiria a trasferência do zumbi de qualquer pessoa para ele mesmo!
+>Nota: Dar ao dono poderes especiais sobre o contrato assim frequentemente é necessário, mas isso também pode ser malicioso. Por exemplo, o dono pode adicionar uma função _backdoor_ que permitiria a transferência do zumbi de qualquer pessoa para ele mesmo!
 
->Então é importante lembrar que somente porque uma DApp esta no Ethereum não automaticamente quer dizer que é decentralizado - você tem que ler todo o código fonte para ter certeza que é livre de controles especiais impostos pelo dono que você deve se preocupar. Há um cuidadoso equilíbrio como um desenvolvedor entre manter o controle sobre uma DApp para que você possar arrumar potenciais problemas, e construir uma plataforma sem dono, que os seus usários possam confiar e manter os dados seguros.
+>Então é importante lembrar que somente porque uma DApp esta no Ethereum não automaticamente quer dizer que é decentralizado - você tem que ler todo o código fonte para ter certeza que é livre de controles especiais impostos pelo dono que você deve se preocupar. Há um cuidadoso equilíbrio como um desenvolvedor entre manter o controle sobre uma DApp para que você possar arrumar potenciais problemas, e construir uma plataforma sem dono, que os seus usuários possam confiar e manter os dados seguros.
 
 ## Vamos testar
 

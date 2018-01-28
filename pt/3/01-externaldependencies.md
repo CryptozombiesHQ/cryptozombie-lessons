@@ -147,17 +147,17 @@ Para começar, após você implantar um contrato em Ethereum, este é **_imutáv
 
 O código que você implantou para um contrato esta lá permanentemente, para sempre, na blockchain. Esta é uma das razões na qual a segurança em Solidity é uma grande preocupação. Se houver ma falha no código do contrato, não há maneira de remendar depois. Você precisará dizer aos seus usuários para começarem a usar um outro smart contract que tem a correção.
 
-Mais isto também é uma parte essêncial dos smart contracts. O código é a lei. Se você ler o código do smart contract e verificá-lo, você pode ter certeza que toda vez que chamar aquela função sempre irá acontecer exatamente aquilo que o código diz. Ninguém pode mudar essa função depois e retornar resultados inesperados.
+Mais isto também é uma parte essencial dos smart contracts. O código é a lei. Se você ler o código do smart contract e verificá-lo, você pode ter certeza que toda vez que chamar aquela função sempre irá acontecer exatamente aquilo que o código diz. Ninguém pode mudar essa função depois e retornar resultados inesperados.
 
 ## Dependências externas
 
-Na Lição 2, nós codamos o endereço do contratos do CryptoKitties em nossa DApp. Mas o que aconteceria se o contrato dos CryptoKitties tivesse um bug e alguém destruisse todos os gatinhos?
+Na Lição 2, nós programamos o endereço do contratos do CryptoKitties em nossa DApp. Mas o que aconteceria se o contrato dos CryptoKitties tivesse um bug e alguém destruísse todos os gatinhos?
 
-É improvável, mas se isso acontecer iria deixar nossa DApp completamente inútil - nossa DApp iria apontar para um endereço que nunca mais retornaria qualquer gatinho. Nossos zumbis não iriam mais poder comer gatinhos, e não poderiamos modificar nosso contrato para corrigir isso.
+É improvável, mas se isso acontecer iria deixar nossa DApp completamente inútil - nossa DApp iria apontar para um endereço que nunca mais retornaria qualquer gatinho. Nossos zumbis não iriam mais poder comer gatinhos, e não poderíamos modificar nosso contrato para corrigir isso.
 
 Por esta razão, faz sentido ter algumas funções que permitem atualizar algumas partes chaves da nossa DApp.
 
-Por exemplo, ao invés de ter um código fixo com o endereço do contrato dos CryptoKitties em nossa DApp, poderiamos ter uma função `setKittyContractAddress` que permitiria-nos mudar o endereço no futuro se caso algo acontecesse ao contrato do CryptoKitties.
+Por exemplo, ao invés de ter um código fixo com o endereço do contrato dos CryptoKitties em nossa DApp, poderíamos ter uma função `setKittyContractAddress` que permitiria-nos mudar o endereço no futuro se caso algo acontecesse ao contrato do CryptoKitties.
 
 ## Vamos testar
 
@@ -167,7 +167,7 @@ Vamos atualizar o nosso código para a Lição 2 para permitir a mudança do end
 
 2. Mude a linha onde criamos `kittyContract` para declarar somente a variável - digo, não defina igual a qualquer coisa.
 
-3. Crie umam função chamada `setKittyContractAddress`. Esta irá ter um argumento, `_address` (um `address`), e esta deve ser uma função `external`.
+3. Crie uma função chamada `setKittyContractAddress`. Esta irá ter um argumento, `_address` (um `address`), e esta deve ser uma função `external`.
 
 4. Dentro da função, adicione uma linha de código que define `kittyContract` igual a `KittyInterface(_address)`.
 

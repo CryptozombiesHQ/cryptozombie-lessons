@@ -1,5 +1,5 @@
 ---
-title: Contratos Proprietátios
+title: Contratos Proprietários
 actions: ['verificarResposta', 'dicas']
 requireLogin: true
 material:
@@ -179,7 +179,7 @@ material:
       }
 ---
 
-Você percebeu a falha de segunça no capítulo anterior?
+Você percebeu a falha de segurança no capítulo anterior?
 
 `setKittyContractAddress` é um `external`, então qualquer um pode chamá-lo! Isso quer dizer que qualquer que chamar a função pode mudar o endereço do contrato do CryptoKitties, e quebrar a nossa aplicação para todos os usuários.
 
@@ -233,8 +233,8 @@ contract Ownable {
 
 Um pouco de novas coisas que não vimos antes:
 
-- Construtores: `function Ownable()` is a **_constructor_**, que é um função opcional e espcial que tem o mesmo nome do contrato. Esta será executada somente uma vez, quando o contrato é criado a primeira vez.
-- Funções Modificadoras: `modifier onlyOnwer()`. Modificadores são um tipo de meia-função que são usadas para modificar outras funções, normalmente usadas para checar algo requerido antes da execução. Neste caso, `onlyOwner` pode ser usada para limitar o acesso então **only** (somente) the **owner** (dono) do contrato pode executar esta função. Nós iremos falar mais sobre funções modificadoras no próximo capítulo, e o que esse `_;` faz.
+- Construtores: `function Ownable()` is a **_constructor_**, que é um função opcional e especial que tem o mesmo nome do contrato. Esta será executada somente uma vez, quando o contrato é criado a primeira vez.
+- Funções Modificadoras: `modifier onlyOwner()`. Modificadores são um tipo de meia-função que são usadas para modificar outras funções, normalmente usadas para checar algo requerido antes da execução. Neste caso, `onlyOwner` pode ser usada para limitar o acesso então **only** (somente) the **owner** (dono) do contrato pode executar esta função. Nós iremos falar mais sobre funções modificadoras no próximo capítulo, e o que esse `_;` faz.
 - Palavra-chave `indexed`: não se preocupe com esse, nós ainda não precisamos.
 
 Então o contrato `Ownable` basicamente faz o seguinte:

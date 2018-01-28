@@ -1,5 +1,5 @@
 ---
-title: Storage is Expensive
+title: Armazenamento é Caro
 actions: ['verificarResposta', 'dicas']
 requireLogin: true
 material:
@@ -29,7 +29,7 @@ material:
           }
 
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            // Start here
+            // Comece aqui
           }
 
         }
@@ -196,45 +196,47 @@ material:
       }
 ---
 
-One of the more expensive operations in Solidity is using `storage` — particularly writes.
+Uma das operações mais caras em Solidity é usar o `storage` (armazenamento) - particularmente escrever.
 
-This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
+Isto porque toda vez que você escreve uma mudança em um pedaço de dado, ela escreve permanentemente na blockchain. Para sempre! Milhares de nós em todo o mundo precisam guardar esse dados em seus discos rígidos, e esta quantidade de dado continua crescendo continuamente com o tempo conforme o blockchain cresce. Então há um custo para isso.
 
-In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
+E para manter os custos baixos, você precisa evitar escritas de dados no *storage* armazenamento exceto quando absolutamente necessário. Algumas vezes envolve uma lógica de programação ineficiente - como reconstruir um array em `memory` (memória) toda vez que a função é chamada ao invés de simplesmente salvar o array em uma variável para buscas rápidas.
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
+Na maioria das linguagens, percorrer grande quantidade de dados é caro. Mas em Solidity, esta é a maneira mais barata do que usar `storage` se estiver em uma função `external view`, uma vez que funções `view` não custam qualquer gas para os seus usuários. (E gas custa dinheiro real para os seus usuários!).
 
-We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
+Iremos aprender os laços `for` no próximo capítulo, mas primeiro, vamos ver como declarar listas em memória.
 
-## Declaring arrays in memory
+## Declarando listas em memória
 
-You can use the `memory` keyword with arrays to create a new array inside a function without needing to write anything to storage. The array will only exist until the end of the function call, and this is a lot cheaper gas-wise than updating an array in `storage` — free if it's a `view` function called externally.
+Você pode usar a palavra reservada `memory`com arrays (litas) para criar um novo array dentro da função sem precisar do storage para nada. O array só existirá até o fim da função, e isto é um muito mais barato que atualizar um array em `storage` - de graça se for uma função `view` chamada externamente.
 
-Here's how to declare an array in memory:
+Aqui esta como declarar uma lista em memória:
 
 ```
 function getArray() external pure returns(uint[]) {
-  // Instantiate a new array in memory with a length of 3
+  // Estancia um novo array em memory com o tamanho de 3
   uint[] memory values = new uint[](3);
-  // Add some values to it
+
+  // Adiciona alguns valores
   values.push(1);
   values.push(2);
   values.push(3);
-  // Return the array
+
+  // Retorna o array
   return values;
 }
 ```
 
-This is a trivial example just to show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+Este é um exemplo trivial para somente mostrar para você a sintaxe, mas no próximo capítulo iremos ver como combinar este laço `for` em casos reais.
 
->Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+>Nota: Arrays em memória **precisam** ser criados com argumento de tamanho (neste caso `3`). Atualmente não podem ser redimensionados como arrays em storage com o `array.push()`, apesar de que isto pode mudar em uma futura versão do Solidity.
 
-## Put it to the test
+## Vamos testar
 
-In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
+Em nossa função `getZombiesByOwner`, queremos retornar um array `uint[]` com todos os zumbis que um usuário em particular possui.
 
-1. Declare a `uint[] memory` variable called `result`
+1. Declare uma variável `uint[] memory` chamada `result`
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2. Atribua a mesma igual a um novo array `uint`. O tamanho do array deve ser entretanto a quantidade de zumbis que este `_owner` possui, que podemos buscar olhando no mapeamento com: `ownerZombieCount[_owner]`.
 
-3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
+3. No final da função retorne o `result`. É somente um array vazio por enquanto, mas no próximo capítulo iremos preenchê-lo.

@@ -21,7 +21,7 @@ material:
             struct Zombie {
                 string name;
                 uint dna;
-                // Add new data here
+                // Adicione o novo dado aqui
             }
 
             Zombie[] public zombies;
@@ -179,35 +179,35 @@ material:
       }
 ---
 
-Great! Now we know how to update key portions of the DApp while preventing other users from messing with our contracts.
+Ótimo! Agora sabemos como atualizar porções importantes da DApp enquanto prevenimos que outros usuários estraguem com nossos contratos.
 
-Let's look at another way Solidity is quite different from other programming languages:
+Vamos ver outra maneira que Solidity é um tanto diferente de outras linguagens de programação:
 
-## Gas — the fuel Ethereum DApps run on
+## Gas — o combustível utilizado por DApps Ethereum
 
-In Solidity, your users have to pay every time they execute a function on your DApp using a currency called **_gas_**. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp. 
+Em Solidity, seus usuários tem que pagar toda vez que executam uma função em sua DApp usando uma moeda chamada **_gas_**. Usuários compram gas com Ether (a moeda no Ethereum), então os seus usuários precisam gastar ETH para executar funções em sua DApp.
 
-How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a **_gas cost_** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total **_gas cost_** of your function is the sum of the gas costs of all its individual operations.
+Quanto gas é preciso para executar uma função depende o quão complexo é a lógica desta função. Cada operação individual tem um **_custo em gas_** baseado mais ou menos em quanto recursos computacionais serão necessários para realizar essa operação (exemplo: escrever em storage é muito mais caro do que adicionar dois inteiros). O total de **_custo em gas_** da sua função é soma de todos os custo de todas as operações de forma individuais.
 
-Because running functions costs real money for your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
+E porque executar funções custam dinheiro real para os seus usuários, otimização do código é muito mais importante em Ethereum do que em qualquer outra linguagem de programação. Se o seu código é desleixado, seus usuários terão que pagar muito mais para executar suas funções - e isto pode adicionar milhões de dólares em custos desnecessários através de milhares de usuários.
 
-## Why is gas necessary?
+## Por que o gas é necessário?
 
-Ethereum is like a big, slow, but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
+Ethereum é como um grande, lento, mas extremamente seguro computador. Quando você executa uma função, cada um dos nós na rede precisa rodar esta mesma função e verificar suas saídas - milhares de nos verificando cada execução de cada função é o que faz do Ethereum decentralizado, e seus dados imutáveis e resistentes a censura.
 
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
+Os criadores do Ethereum queriam ter certeza que ninguém poderia entupir a rede com laços infinitos, ou estragar todos os recursos da rede com computações realmente intensivas. Então eles fizeram com que as transações não fossem grátis, e os usuários tem que pagar pelo tempo de computação como também pela guarda dos dados
 
-> Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+> Nota: Isto não é necessariamente verdade em sidechains, como a que os autores do CryptoZombies estão construindo na Loom Network. E provavelmente nunca irá fazer sentido rodar um jogo como World of Warcraft diretamente na rede mainnet do Ethereum - o custo em gas seria proibitivamente caro. Mas este pode rodar em uma sidechain com um algorítimo de consenso diferente. Iremos falar mais sobre os tipos de DApps que você poderia implantar em sidechains vs a mainnet do Ethereum em futuras lições.
 
-## Struct packing to save gas
+## Empacotamento da estrutura para economizar gas
 
-In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
+Na Lição 1, nós mencionamos que existem outros tipos de `uint`s: `uint8`, `uint16`, `uint32`, etc.
 
-Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the `uint` size. For example, using `uint8` instead of `uint` (`uint256`) won't save you any gas.
+Normalmente não há benefício algum em usar estes subtipos porque Solidity reserva 256 bits de espaço independente do tamanho do `uint`. Por exemplo, usar `uint8` ao invés de `uint` (`uint256`) não irá economizar gas algum.
 
-But there's an exception to this: inside `struct`s.
+Mas há uma exceção para isto: dentro das `struct`s.
 
-If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
+Se você tiver múltiplas `uint`s dentro de uma `struct`, usando um tamanho menor de `uint` quando possível irá permitir o Solidity de empacotar essas variáveis juntas para usar menos espaço. Por exemplo:
 
 ```
 struct NormalStruct {
@@ -222,25 +222,19 @@ struct MiniMe {
   uint c;
 }
 
-// `mini` will cost less gas than `normal` because of struct packing
+// `mini` irá custar menos gas que `normal` porque usar o empacotamento
 NormalStruct normal = NormalStruct(10, 20, 30);
-MiniMe mini = MiniMe(10, 20, 30); 
+MiniMe mini = MiniMe(10, 20, 30);
 ```
 
-For this reason, inside a struct you'll want to use the smallest integer sub-types you can get away with.
+Por essa razão, dentro de uma estrutura você irá querer usar o menor subtipo de integer que você puder. Você também quer juntar tipos de dados idênticos (exemplo: colando um perto do outro dentro da estrutura) então Solidity pode minimizar o espaço requerido para guardar a estrutura. Por exemplo, a estrutura com campos `uint c; uint32 a; uint32 b;` irá custar menos gas que a estrutura com os campos `uint32 a; uint c; uint32 b;` porque o  os campos `uint32` estão agrupados.
 
-You'll also want to cluster identical data types together (i.e. put them next to each
-other in the struct) so that Solidity can minimize the required storage space. For example, a struct with
-fields `uint c; uint32 a; uint32 b;` will cost less gas than a struct with fields `uint32 a; uint c; uint32 b;`
-because the `uint32` fields are clustered together.
+## Vamos testar
 
+Nesta lição, iremos adicionar 2 novas características para os nossos zumbis: `level` (nível) e `readyTime` - que mais tarde serão utilizados parar implementar o tempo de *cooldown* (esfriar) para limitar o quão frequente um zumbi pode se alimentar.
 
-## Put it to the test
+Vamos voltar então para `zombiefactory.sol`.
 
-In this lesson, we're going to add 2 new features to our zombies: `level` and `readyTime` — the latter will be used to implement a cooldown timer to limit how often a zombie can feed. 
+1. Adicione duas propriedades para a nossa estrutura `Zombie`: `level` (um `uint32`), e `readyTime` (também um `uint32`). Queremos empacotar esses tipos juntos, então vamos colocá-los no final da estrutura.
 
-So let's jump back to `zombiefactory.sol`.
-
-1. Add two more properties to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
-
-32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
+Um 32 bits é mais do que o suficiente para guardar o nível do zumbi e uma marca de horário, isso irá economizar-nos alguns custos em gas por empacotar o dado mais junto do que usar um `uint` (256-bits).
