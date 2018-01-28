@@ -98,12 +98,12 @@ Então nós podemos usar este ID único como propriedade dos nossos zumbis. Quan
 
 ## Mapeamentos
 
-Na Lição 1 nós vimos as **_stucts_** (estruturas) e **_arrays_** (listas). **_Mapeamentos_** são uma outra forma de guardar dados organizados em Solidity.
+Na Lição 1 nós vimos as **_structs_** (estruturas) e **_arrays_** (listas). **_Mapeamentos_** são uma outra forma de guardar dados organizados em Solidity.
 
 Definindo um `mapping` (mapeamento) se parece com isto:
 
 ```
-// Para uma aplicanção financeira, guardando um uint que guarda o saldo da conta do usuário
+// Para uma aplicação financeira, guardando um uint que guarda o saldo da conta do usuário
 mapping (address => uint) public accountBalance;
 
 // Ou pode ser usado para guardar nomes de usuários baseados no userId (id do usuário)

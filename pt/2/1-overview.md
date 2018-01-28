@@ -11,7 +11,7 @@ material:
     answer: 1
 ---
 
-Na lição 1, nós criamos uma função que obtem um nome, e o usa para gerar um zumbi aleatório, e adiciona esse zumbi ao banco de dados do nosso aplicativo na blockchain.
+Na lição 1, nós criamos uma função que obtém um nome, e o usa para gerar um zumbi aleatório, e adiciona esse zumbi ao banco de dados do nosso aplicativo na blockchain.
 
 Na lição 2, nós iremos fazer o nosso aplicativo mais parecido com um jogo: Nós vamos fazer um jogo multi-jogador, e vamos adicionar formas mais divertidas de criar zumbis ao invés de somente gerar-los de forma aleatória.
 

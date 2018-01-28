@@ -85,11 +85,11 @@ material:
       }
 ---
 
-Na lição 1, possibilitamos os usúarios de criar novos zumbis chamando a função `createRandomZombie` e colocando um nome. Porém, se os usuário continuarem chamando esta função e de forma ilimitada criando zumbis em seus exércitos, o jogo não teria tanta graça.
+Na lição 1, possibilitamos os usuários de criar novos zumbis chamando a função `createRandomZombie` e colocando um nome. Porém, se os usuário continuarem chamando esta função e de forma ilimitada criando zumbis em seus exércitos, o jogo não teria tanta graça.
 
 Vamos fazer assim, cada jogador só pode chamar esta função uma vez. Desta maneira novos jogadores irão chamar só quando começarem o jogo pela primeira vez, para criar o primeiro zumbi do exército.
 
-Comom podemos fazer esta função ser chamada somente uma vez por jogador?
+Como podemos fazer esta função ser chamada somente uma vez por jogador?
 
 Para isso nós vamos usar o `require` (requerer). `require` faz com que a função lance um erro e pare a execução se alguma condição não for verdadeira:
 
@@ -105,13 +105,13 @@ function sayHiToVitalik(string _name) public returns (string) {
 }
 ```
 
-Se você chamar esta função com `sayHiToVitalik("Vitalik")`, ela irá retornar "Olá!". Se você chaamr esta função com outra entrada, ela irá lancár um erro e não irá executar.
+Se você chamar esta função com `sayHiToVitalik("Vitalik")`, ela irá retornar "Olá!". Se você chamar esta função com outra entrada, ela irá lançar um erro e não irá executar.
 
 Sendo assim, `require` é muito útil para verificar certas condições que devem ser verdadeiras antes de executar uma função.
 
 # Vamos testar
 
-Em nosso jogo de zumbi, nós não queremos que o usuário possa criar zumbis ilimitadamente em seus exércitos ao chamar a função `createRandomZombie` repetidademente - acabaria com a graça do jogo.
+Em nosso jogo de zumbi, nós não queremos que o usuário possa criar zumbis ilimitadamente em seus exércitos ao chamar a função `createRandomZombie` consecutivamente - acabaria com a graça do jogo.
 
 Vamos usar o `require` para ter certeza que esta função só será executada uma vez por usuário, quando precisarem criar o primeiro zumbi.
 

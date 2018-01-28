@@ -17,7 +17,7 @@ Você pode testar na demo ao lodo direito para ver em ação. Vá em frente, Eu 
 
 ## Implementação em Javascript
 
-Uma vez que estamos prontos para a implantacão do contrato no Ethereum podemos compilar e implantar `ZombieFeeding` - desde que este contrato é o nosso contrato final que herda de `ZombieFactory`, e tem acesso a todos os métodos públicos em ambos os contratos.
+Uma vez que estamos prontos para a implantação do contrato no Ethereum podemos compilar e implantar `ZombieFeeding` - desde que este contrato é o nosso contrato final que herda de `ZombieFactory`, e tem acesso a todos os métodos públicos em ambos os contratos.
 
 Vejamos em um exemplo de interação com nosso contrato implantado usando Javascript e web3.js:
 
@@ -32,8 +32,8 @@ let zombieId = 1;
 let kittyId = 1;
 
 // Para obter a imagem do CryptoKitty, precisamos pesquisar na API deles.
-// Ésta informação não é guardada no blockchain, somente no servidor web.
-// Se tudo fosse guardado na blockchain, não teriamos que se preocupar
+// Esta informação não é guardada no blockchain, somente no servidor web.
+// Se tudo fosse guardado na blockchain, não teríamos que se preocupar
 // se o servidor cair, mudanças na API deles, ou mesmo se a empresa
 // nos bloqueassem para carregarmos as imagens se caso não gostarem de jogos de zumbi ;)
 let apiUrl = "https://api.cryptokitties.co/kitties/" + kittyId
@@ -51,7 +51,7 @@ $(".kittyImage").click(function(e) {
 // Escuta por evento NewZombie em nosso contrato e então podemos mostrar:
 ZombieFactory.NewZombie(function(error, result) {
   if (error) return
-  // Ésta função irá mostrar um novo zumbi, como na lição 1:
+  // Esta função irá mostrar um novo zumbi, como na lição 1:
   generateZombie(result.zombieId, result.name, result.dna)
 })
 ```

@@ -90,7 +90,7 @@ E para fazer isto, precisamos usar algo chamado `msg.sender`.
 
 Em Solidity, existem certas variáveis globais que estão disponíveis em todas funções. Umas dessas é a `msg.sender`, que refere-se ao `address` (endereço) da pessoa (ou smart contract) que chamou a função em atual.
 
-> Nota: Em Solidity, uma função sempre precisa iniciar como uma chamada externa. Um contrato irá somente descançar no blockchain sem fazer nada até que alguém chame alguma das suas funções. Então sempre haverá um `msg.sender`.
+> Nota: Em Solidity, uma função sempre precisa iniciar como uma chamada externa. Um contrato irá somente descansar no blockchain sem fazer nada até que alguém chame alguma das suas funções. Então sempre haverá um `msg.sender`.
 
 Segue um exemplo de uso do `msg.sender` e atualização de um `mapping`:
 
@@ -104,7 +104,7 @@ function setMyNumber(uint _myNumber) public {
 }
 
 function whatIsMyNumber() public view returns (uint) {
-  // Recupera o valor guardado em um endereço de quem trasmitiu (sender)
+  // Recupera o valor guardado em um endereço de quem transmitiu (sender)
   // Será `0` se o transmissor (sender) não chamou a função `setMyNumber` ainda
   return favoriteNumber[msg.sender];
 }

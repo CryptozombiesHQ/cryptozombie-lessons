@@ -134,7 +134,7 @@ function processMultipleReturns() external {
   uint b;
   uint c;
 
-  // Ésta é a forma como você faz múltiplas atribuições
+  // Esta é a forma como você faz múltiplas atribuições
   (a, b, c) = multipleReturns();
 }
 
@@ -150,7 +150,7 @@ function getLastReturnValue() external {
 
 Hora de interagir com o contrato do CryptoKitties!
 
-Vamos criar uma função que obtem os genes do gato direto do contrato:
+Vamos criar uma função que obtêm os genes do gato direto do contrato:
 
 1. Crie uma função chamada `feedOnKitty`. Que receberá 2 parâmetros `uint`, `_zombieId` e `_kittyId`, e deve ser uma função `public`.
 

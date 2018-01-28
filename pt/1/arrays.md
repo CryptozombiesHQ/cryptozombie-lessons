@@ -1,5 +1,5 @@
 ---
-title: Listas (Arrays)
+title: Listas
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -39,14 +39,16 @@ material:
       }
 ---
 
-Quando você quer uma lista de algo, você pode usar um **_array_** (lista). Existem dois tipos de arrays (listas) em Solidity: **_fixed_** (fixo) array e **_dynamic_** (dinâmico) arrays:
+Quando você quer uma lista de algo, você pode usar um **_array_** (lista). Existem dois tipos de arrays (listas) em Solidity: **_fixed_** (fixo) arrays e **_dynamic_** (dinâmico) arrays:
 
 ```
 // Array com tamanho fixo de 2 elementos:
 uint[2] fixedArray;
-// outro Array fixo, pode conter 5 strings:
+
+// Outro array fixo, pode conter 5 strings:
 string[5] stringArray;
-// um Array dinâmico - não tem tamanho fixo, e pode continuar aumentando:
+
+// Um array dinâmico - não tem tamanho fixo, e pode continuar aumentando:
 uint[] dynamicArray;
 ```
 
@@ -71,9 +73,7 @@ Outros contracts poderão ler (mas não escrever) este array. Isso é um padrão
 
 # Vamos testar
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
-
-Nós queremos armazenar um exército de zumbis em nosso applicativo. E nós queremos mostrar todos os nossos zumbis para outros aplicativos, então nós queremos que seja público.
+Nós queremos armazenar um exército de zumbis em nosso aplicativo. E queremos mostrar todos os nossos zumbis para outros aplicativos, então queremos que seja público.
 
 
 1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.

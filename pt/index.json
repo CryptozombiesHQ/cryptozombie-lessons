@@ -77,7 +77,7 @@
             "footer": [
                 "Gostou do CryptoZombies? Conte para nós!",
                 "Junte se a conversa no {telegramLink}, ou siga-nos no {twitterLink}",
-                "Quando você estiver pronto, clique no botão abaixo e accesse a Lissão 3:"
+                "Quando você estiver pronto, clique no botão abaixo e acesse a Lição 3:"
             ],
             "zombieDesc": "Um CryptoZombie de Nível 2",
             "shareLinkText": "Eu acabei de completar a Lição 2 do #CryptoZombies! Meu zumbi comeu alguns #CryptoKitties, e eu aprendi mais sobre desenvolvimento em #Ethereum. Veja o meu zumbi bater mais em CryptoKitties:"
@@ -152,7 +152,7 @@
             "nameInputPlaceholder": "Coloque um nome para gerar um zumbi",
             "callToAction": [
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
-                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Começe agora:"
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
         },
         "lesson2": {
@@ -165,7 +165,7 @@
                 "Quando um CryptoZombie sem alimenta com um CryptoKitty, os DNAs se misturam e o CryptoKitty é reanimado como um CryptoZombie. ",
                 "Vá em frente, escolha um CryptoKitty para atacar, e veja o tipo de CatZombie que você consegue!",
                 "Conceitos de Solidity Dominados",
-                "Para completar a Lição 2 escola de códificação CryptoZombies, o seu amigo criou um {zombieCardBattle} e aprendeu sobre:"
+                "Para completar a Lição 2 escola de codificação CryptoZombies, o seu amigo criou um {zombieCardBattle} e aprendeu sobre:"
             ],
             "achievements": [
                 "Conceito básico de como fazer um jogo multi-jogador",
@@ -174,7 +174,7 @@
             ],
             "callToAction": [
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
-                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Começe agora:"
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
         },
         "lesson3": {
@@ -183,14 +183,14 @@
                 "Para completar a Lição 3 do CryptoZombies, seu amigo aprendeu sobre:"
             ],
             "achievements": [
-                "Como criar smart contracts atualizaveis",
+                "Como criar smart contracts atualizáveis",
                 "Assegurar contratos com contratos de posse",
                 "Gas e otimização do gas em Ethereum",
                 "Modificadores de funções e checagens de segurança"
             ],
             "callToAction": [
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
-                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Começe agora:"
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
         }
     }
