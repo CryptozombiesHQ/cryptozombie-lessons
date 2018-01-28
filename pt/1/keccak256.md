@@ -1,5 +1,5 @@
 ---
-title: Keccak256 e Conversão de Tipos (Typecasting)
+title: Keccak256 e Conversão de Tipos
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -56,11 +56,11 @@ material:
       }
 ---
 
-Nós queremos que nossa função `_generateRandomDna` retorne um (semi) aleatório `uint`. Como podemos fazer isso ?
+Nós queremos que a nossa função `_generateRandomDna` retorne um (semi) aleatório `uint`. Como podemos fazer isso ?
 
-Ethereum tem uma função de hash `keccak256` interna, que é uma versão do SHA3. Uma função hash basicamente transforma uma string de entrada em número hexadecimal aleatório de 256-bit. Qualquer pequena mudança na string irá causa uma total mudança em sua hash.
+Ethereum tem uma função de hash `keccak256` interna, que é uma versão do SHA3. Uma função hash basicamente transforma uma string de entrada em um número hexadecimal aleatório de 256-bits. Qualquer pequena mudança na `string` irá causar uma total mudança em sua hash.
 
-É muito útil em diversos casos no Ethereum, mas agora nós vamos usar somente para a geração de um número pseudo-aleatório.
+É muito útil em diversos casos no Ethereum, mas por enquanto vamos usar somente para a geração de um número pseudo-aleatório.
 
 Exemplo:
 
@@ -72,7 +72,7 @@ keccak256("aaaab");
 keccak256("aaaac");
 ```
 
-Como você pode ver, os valores retornados são totalmente diferentes mesmo com a mudança de somente uma caractere de entrada.
+Como você pode ver, os valores retornados são totalmente diferentes mesmo com a mudança de somente um caractere de entrada.
 
 > Nota: Geração de números aleatórios de forma **segura** em um blockchain é um problema muito difícil. Nosso método aqui utilizado é inseguro, mas desde que a segurança não é a nossa prioridade principal para o nosso DNA zumbi, será o suficiente para o nosso propósito.
 
@@ -91,7 +91,7 @@ uint8 c = a * b;
 uint8 c = a * uint8(b); 
 ```
 
-Logo acima, `a * b` retorna um `uint`, mas nós estamos tentanto guardar o seu valor em um `uint8`, que potencialmente pode causar problemas. Ao converter-lo como um `uint8`, a conversão irá funcionar e o compilador não irá reclamar.
+Logo acima, `a * b` retorna um `uint`, mas nós estamos tentando guardar o seu valor em um `uint8`, que potencialmente pode causar problemas. Ao converter-lo como um `uint8`, a conversão irá funcionar e o compilador não irá reclamar.
 
 # Vamos testar
 

@@ -1,14 +1,14 @@
 {
     "1": {
-        "pageTitle": "Check out my CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "I just completed CryptoZombies Lesson 1 and learned the basics of coding a game on Ethereum. Take a look at the first zombie in my army!"
+        "pageTitle": "クリプトゾンビ {{ .ZombieName }}を作ったよ。これオススメ!",
+        "ogDesc": "CryptZombiesのレッスン1が終わったよ。イーサリアムでゲームを開発する基礎が学べたからオススメ。最初のゾンビを作ったよ！"
     },
     "2": {
-        "pageTitle": "My CryptoZombie {{ .ZombieName }} just ate a CryptoKitty and leveled up!",
-        "ogDesc": "I just completed CryptoZombies Lesson 2, and added a reanimated CryptoKitty to my zombie army. Come take a look!"
+        "pageTitle": "育てているクリプトゾンビの{{ .ZombieName }} がクリプトキティを捕食してレベルアップしたよ！",
+        "ogDesc": "CryptZombiesのレッスン2が終わったよ。ゾンビ化させたクリプトキティをゾンビ軍団に加えたよ。面白いからオススメ！ "
     },
     "3": {
-        "pageTitle": "Check out my CryptoZombie Army!",
-        "ogDesc": "I just completed CryptoZombies Lesson 3! My zombie army is growing..."
+        "pageTitle": "クリプトゾンビ軍団が成長したよ",
+        "ogDesc": "CryptZombiesのレッスン3が終わったよ！作ったゾンビ軍団が成長してきたよ...:”
     }
 }

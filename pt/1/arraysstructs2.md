@@ -1,5 +1,5 @@
 ---
-title: Trabalhando com Estruturas (Structs) e Listas (Arrays)
+title: Trabalhando com Estruturas e Listas
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -49,7 +49,7 @@ material:
 
 ### Criando novas Structs
 
-Você lembra da nossa `Person` struct no exemplo anterior?
+Você lembra da nossa estrutura `Person` no exemplo anterior?
 
 ```
 struct Person {
@@ -60,10 +60,10 @@ struct Person {
 Person[] public people;
 ```
 
-Agora nós vamos aprender como criar uma nova `Person` e adiciona-lá ao nosso `people` array.
+Agora nós vamos aprender como criar uma nova `Person` e adicioná-la ao nosso `people` array.
 
 ```
-// criar uma nova Person:
+// Criar uma nova Person:
 Person satoshi = Person(172, "Satoshi");
 
 // Adicionar a pessoa ao Array:
@@ -76,7 +76,7 @@ Nós também podemos combiná-los em uma única linha para ter um código limpo:
 people.push(Person(16, "Vitalik"));
 ```
 
-Perceba que o `array.push()` adiciona qualquer coisa no **fim** do array, então os elementos são adicionados em ordem conforme adicionamos. Veja o próximo exemplo:
+Perceba que o `array.push()` adiciona qualquer coisa no **fim** do array, então os elementos são adicionados em ordem conforme os adicionamos. Veja o próximo exemplo:
 
 ```
 uint[] numbers;
@@ -90,5 +90,5 @@ numbers.push(15);
 
 Vamos fazer a nossa função createZombie fazer algo!
 
-1. Preencha o corpo da função para cirar um novo `Zombie`, e adicione nossa array `zombies`. O `name` e `dna` para o Zombie deve vir nos argumentos da função.
+1. Preencha o corpo da função para criar um novo `Zombie`, e adicione nossa array `zombies`. O `name` e `dna` para o Zombie deve vir nos argumentos da função.
 2. Vamos fazer isso em uma linha para manter o código claro.

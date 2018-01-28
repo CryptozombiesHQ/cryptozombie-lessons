@@ -1,21 +1,21 @@
 ---
-title: Lesson 1 Complete!
-actions: ['checkAnswer', 'hints']
+title: レッスン1終了！
+actions: ['答え合わせ', 'ヒント']
 material:
   lessonComplete:
     answer: 1
 ---
 
-Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
+よく頑張った！レッスン1を無事に終えた上に、ゾンビ軍団の最初のゾンビを作ったのだ。
 
-# Next Steps
+# 次のステップ
 
-This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
+喜ぶのはまだ早い。毎週新しいCryptoZombiesのレッスンを実施するぞ。ゲームをどんどん進めて、ゾンビ軍団を成長させてくれ。
 
-### 1. Sign in to save your progress
+### 1. サインインして進捗を保存
 
-**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+**_サインイン_** すると画面上の”進捗の保存”リンクで進捗を保存できる。新しいレッスンの準備ができたら直ぐに呼ぶから、それまでおとなしく待つようにな。
 
-### 2. Share your zombie with your friends
+### 2. ゾンビを友達とシェアする
 
-**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+ツイッターでもなんでも自分のゾンビを**_シェア_** できるぞ。 (画像・リンクを挿入する必要があります。)
