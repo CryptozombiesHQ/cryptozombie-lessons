@@ -30,7 +30,7 @@ material:
 ##### 例子:
 ```
 contract Example {
-  // This will be stored permanently in the blockchain
+  // 这个无符号整数将会永久的被保存在区块链中
   uint myUnsignedInteger = 100;
 }
 ```
@@ -39,7 +39,7 @@ contract Example {
 
 ## 无符号整数: `uint`
 
-`uint` 无符号数据类型, 指 **其值不能是负数**，而且是整数 `int`
+`uint` 无符号数据类型, 指 **其值不能是负数**，对于有符号的整数存在名为 `int`的数据类型
 
 > 注: Solidity中, `uint` 实际上是 `uint256`代名词, 一个256位的无符号整数。你也可以定义位数少的uints — `uint8`, `uint16`, `uint32`, 等.. 但一般来讲你愿意使用简单的`uint` 除非在某些特殊情况下，这我们后面会讲。
 

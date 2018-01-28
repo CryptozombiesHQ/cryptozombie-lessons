@@ -24,7 +24,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
               // 这里触发事件
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -58,7 +58,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-你的 app 前端可以监听这个事件。JavaScript 实现如下: 
+你的 app 前端可以监听这个事件。JavaScript 实现如下:
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
@@ -101,7 +101,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 # 测试一把
 
-我们想每当一个僵尸创造出来时，我们的前端都能听到这个事件，并将它显示出来。
+我们想每当一个僵尸创造出来时，我们的前端都能监听到这个事件，并将它显示出来。
 
 1. 定义一个 `事件` 叫做 `NewZombie`. 它可以含有 `zombieId` (`uint`), `name` (`string`), 和 `dna` (`uint`).
 
