@@ -10,7 +10,7 @@ material:
     answer: 1
 ---
 
-Nosso contracto em Solidity esta completo! Agora nós vamos escrever o frontend em javascript que interagem com o contrato.
+Nosso contrato em Solidity esta completo! Agora nós vamos escrever o frontend em javascript que interagem com o contrato.
 
 Ethereum uma biblioteca em Javascript chamada **_Web3.js_**.
 
@@ -39,7 +39,7 @@ var event = ZombieFactory.NewZombie(function(error, result) {
   generateZombie(result.zombieId, result.name, result.dna)
 })
 
-// obtem o dna Zumbi e atualiza a nossa imagem
+// obtém o dna Zumbi e atualiza a nossa imagem
 function generateZombie(id, name, dna) {
   let dnaStr = String(dna)
   // preenche o DNA com zeros a esquerda se for menor que 16 caracteres
@@ -49,7 +49,7 @@ function generateZombie(id, name, dna) {
   let zombieDetails = {
     // os primeiros 2 dígitos fazem a cabeça, nós temos 7 possíveis cabeças, então % 7
     // para conseguir um número 0 - 6, então adicionamos 1 para fazer 1 - 7, então nós temos 7
-    // os arquivos de imagems chamam-se "head1.png" até "head7.png" nós carregamos
+    // os arquivos de imagens chamam-se "head1.png" até "head7.png" nós carregamos
     // baseados neste número:
     headChoice: dnaStr.substring(0, 2) % 7 + 1,
     // os segundos 2 dígitos fazer os olhos com 11 variações:
@@ -68,9 +68,9 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-O que o nosso javscript faz é pegar os valores gerados em `zombieDetails` acima, e os usa em um tipo de aplicação mágica no navegador (estamos usando Vue.js) para mudar as imagens e aplicar os filtros CSS. Você terá acesso a todo o código em futuras lições.
+O que o nosso javascript faz é pegar os valores gerados em `zombieDetails` acima, e os usa em um tipo de aplicação mágica no navegador (estamos usando Vue.js) para mudar as imagens e aplicar os filtros CSS. Você terá acesso a todo o código em futuras lições.
 
-# Tente tambêm!
+# Tente também!
 
 Vá em frente - escreva o seu nome na caixa a direita, e veja o tipo de zumbi que você terá!
 

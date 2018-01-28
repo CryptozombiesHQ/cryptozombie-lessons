@@ -150,7 +150,7 @@ Declaração de condições em Solidity parecem com as de javascript:
 ```
 function eatBLT(string sandwich) public {
   // Lembre-se com strings, temos que comprar os seus hashes em keccak256
-  // para checkar igualdade
+  // para checar igualdade
   if (keccak256(sandwich) == keccak256("BLT")) {
     eat();
   }

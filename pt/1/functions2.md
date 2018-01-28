@@ -1,5 +1,5 @@
 ---
-title: Funções Privadas / Públicas (Private / Public)
+title: Funções Privadas / Públicas
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-Em Solidity, funções são `public` (públicas) por padrão. Isso significa que qualquer um (ou qualquer outro contrato) pode chamar a função em seu contrato e executar seu código.
+Em Solidity, funções são públicas por padrão. Isso significa que qualquer um (ou qualquer outro contrato) pode chamar a função em seu contrato e executar seu código.
 
-Obviamente que isso nem sempre é o desejado, e pode tornar o seu contrato vulnerável a ataques. Sendo assim é uma boa prática marcar as suas funções como `private` (privada) por padrão, e somente marcar como `public` (pública) as funções que você quer expor para o mundo.
+Obviamente que isso nem sempre é o desejado, e pode tornar o seu contrato vulnerável a ataques. Sendo assim é uma boa prática marcar as suas funções com a palavra reservada `private` (privada) por padrão, e somente marcar com a palavra reservada `public` (pública) as funções que você quer expor para o mundo.
 
 Vejamos como declarar uma função privada:
 
@@ -61,9 +61,9 @@ function _addToArray(uint _number) private {
 }
 ```
 
-Isso singnifica que somente as funções em nosso próprio contrato podem chamar a função e adicionar ao array `numbers`.
+Isso quer dizer que somente as funções em nosso próprio contrato podem chamar a função e adicionar ao array `numbers`.
 
-Como você pode ver, nós usarmos a palavra reservada `private` após o nome da função. E assim como os parâmetros da função, a convenção é começar os nomes das funções privadas com sublinhando (`_`).
+Como você pode ver, usarmos a palavra reservada `private` após o nome da função. E assim como os parâmetros da função, a convenção é começar os nomes das funções privadas com sublinhado (`_`).
 
 # Vamos testar
 

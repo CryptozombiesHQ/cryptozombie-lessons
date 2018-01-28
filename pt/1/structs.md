@@ -1,6 +1,6 @@
 ---
-title: Estruturas (Structs)
-actions: ['verificarRespota', 'dicas']
+title: Estruturas
+actions: ['verificarResposta', 'dicas']
 material:
   editor:
     language: sol

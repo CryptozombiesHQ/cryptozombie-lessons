@@ -1,5 +1,5 @@
 ---
-title: Variáveis de Estado & Inteiros (State Variables & Integers)
+title: Variáveis de Estado & Inteiros
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //comece aqui
+          // comece aqui
 
       }
     answer: >
@@ -23,9 +23,9 @@ material:
       }
 ---
 
-Bom trabalho! Agora que nós temos a casca para os nossos contratos, vamos aprender sobre como trabalhar com variáveis em Solidity.
+Bom trabalho! Agora que temos a casca para os nossos contratos, vamos aprender sobre como trabalhar com variáveis em Solidity.
 
-**_State variables_** (Variáveis de estado) são permanentemente gravadas no storage do contrato. Isso signífica que são escritas na blockchain do Ethereum. Pense nelas como escrever em um banco de dados.
+**_Variáveis de Estado_** são permanentemente gravadas no armazenamento do contrato. Isso quer dizer que são escritas na blockchain do Ethereum. Pense nelas como escrever em um banco de dados.
 
 ##### Exemplo:
 ```
@@ -35,16 +35,16 @@ contract Example {
 }
 ```
 
-Neste exemplo de contract, nos criamos uma variável `uint` chamada `myUnsignedInteger` e determinamos o valor igual a 100.
+Neste exemplo de contrato, nós criamos uma variável `uint` chamada `myUnsignedInteger` e determinamos o valor igual a 100.
 
-## Inteiros sem sinal: `uint`
+## Inteiros Sem Sinal: `uint`
 
-O tipo de dado `uint` é um inteiro sem sinal, isso significa que **que este valor não pode ser negativo**. Também há um tipo de dado `int` para inteiros com sinal de negativo.
+O tipo de dado `uint` é um número inteiro sem sinal, isso significa que **este valor não pode ser negativo**. Também há um tipo de dado `int` para números inteiros com sinal de negativo.
 
-> Nota: Em Solidity, `uint` é na verdade um apelido para o tipo `uint256`, um inteiro sem sinal de 256-bits. Você pode declarar uints com menos bits - `uint8`, `uint16`, `uint32`, etc.. Mas em geral você pode simplesmente usar `uint` exeto em casos específicos, algo que vamos falar mais tarde.
+> Nota: Em Solidity, `uint` é na verdade um apelido para o tipo `uint256`, um número inteiro sem sinal de 256-bits. Você pode declarar uints com menos bits - `uint8`, `uint16`, `uint32`, etc.. Mas em geral você quer simplesmente usar `uint` exceto em casos específicos, algo de que iremos falar mais tarde.
 
 # Vamos testar
 
-Nosso DNA Zumbi vai ser deteterminado por um número 16-dígitos.
+Nosso DNA Zumbi vai ser determinado por um número de 16-dígitos.
 
-Declare um `uint` chamado `dnaDigits`, e defina-o igual a `16`.
+Declare um `uint` chamado `dnaDigits`, e atribua-lhe o valor `16`.

@@ -1,5 +1,5 @@
 ---
-title: Herança (Inheritance)
+title: Herança
 actions: ['verificarResposta', 'dicas']
 material:
   editor:
@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_herda_** de `Doge`. Isso significa que se você compilar e implantar `BabyDoge`, ele terá acesso a ambas `catchpharse()` e `anotherCatchphrase()` (e qualquer outra função pública que nós podemos definir em `Doge`).
+`BabyDoge` **_herda_** de `Doge`. Isso significa que se você compilar e implantar `BabyDoge`, ele terá acesso a ambas `catchphrase()` e `anotherCatchphrase()` (e qualquer outra função pública que nós podemos definir em `Doge`).
 
 Isto pode ser útil para uma herança lógica (assim como uma sub classe, um `Cat` é um `Animal`). Mas também pode ser usado para uma simples organização em seu código ao agrupar lógicas similares juntas em diferentes classes.
 

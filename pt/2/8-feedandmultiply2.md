@@ -95,7 +95,7 @@ Mais tarde podemos deixar a nossa fórmula mais complicada se quisermos, como ad
 
 # Vamos testar
 
-1. Primeiro precisamos ter certeza que o `_targerDna` não é maior do que 16 dígitos. Para isso nós vamos definir `_targetDna` igual à `targetDna % dnaModulus` para somente ter os últimos 16 dígitos.
+1. Primeiro precisamos ter certeza que o `_targetDna` não é maior do que 16 dígitos. Para isso nós vamos definir `_targetDna` igual à `targetDna % dnaModulus` para somente ter os últimos 16 dígitos.
 
 2. Depois nossa função deve declarar um `uint` chamado `newDna`, e definir igual a média do DNA do `myZombie` e `_targetDna` (como o exemplo acima).
 
