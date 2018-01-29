@@ -1,5 +1,5 @@
 ---
-title: Private / Public Functions
+title: Fonctions Privées / Publiques
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -47,11 +47,11 @@ material:
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+En Solidity, les fonctions sont publiques par défaut. Cela signifie que n'importe qui (ou n'importe quel contrat) peut appeler la fonction de votre contrat et exécuter son code.
 
-Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Évidemment, ce n'est pas toujours ce que l'on veut, cela pourrait rendre votre contrat vulnérable aux attaques. Il est donc recommandé de marquer vos fonctions comme `private` (privées) par défaut, puis de ne rendre `public` (publiques) seulement les fonctions que vous voulez exposer à tout le monde.
 
-Let's look at how to declare a private function:
+Voici comment déclarer une fonction privée :
 
 ```
 uint[] numbers;
@@ -60,13 +60,12 @@ function _addToArray(uint _number) private {
   numbers.push(_number) {
 }
 ```
+Cela veut dire que seulement les autres fonctions de notre contrat pourront appeler cette fonction et ajouter quelque chose au tableau `array`.
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+Comme vous pouvez le voir, nous avons utilisé le mot-clé `private` après le nom de la fonction. Et comme les arguments d'une fonction, par convention les fonctions privées commençent par un trait de soulignement (`_`).
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+# A votre tour.
 
-# Put it to the test
+La fonction `createZombie` de notre contrat est par défaut publique - cela veut dire que n'importe qui peut l'appeler et créer un nouveau Zombie dans notre contrat ! Changeons la en privée.
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
-
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Modifiez `createZombie` pour que ce soit une fonction privée. N'oubliez pas la convention de nom !

@@ -1,5 +1,5 @@
 ---
-title: Math Operations
+title: Opérations Mathématiques
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -10,7 +10,7 @@ material:
       contract ZombieFactory {
 
           uint dnaDigits = 16;
-          //start here
+          //commencez ici
 
       }
     answer: >
@@ -26,22 +26,22 @@ material:
 
 ---
 
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+Les mathématiques en Solidity sont assez simples. Les opérations sont les mêmes dans la plupart des langages de programmation :
 
-* Addition: `x + y`
-* Subtraction: `x - y`,
-* Multiplication: `x * y`
-* Division: `x / y`
-* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+* Addition : `x + y`
+* Soustraction : `x - y`,
+* Multiplication : `x * y`
+* Division : `x / y`
+* Modulo / reste : `x % y` _(par exemple, `13 % 5` est `3`, car si vous divisez 13 par 5)_
 
-Solidity also supports an **_exponential operator_** (i.e. "x to the power of y", x^y):
+Solidity prend aussi en charge l'**_opérateur exponentiel_** (c.-à-d. "x à la puissance y", x^y) :
 
 ```
-uint x = 5 ** 2; // equal to 5^2 = 25
+uint x = 5 ** 2; // égal à 5^2 = 25
 ```
 
-# Put it to the test
+# A votre tour
 
-To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+Pour être sûr que notre ADN Zombie est de seulement 16 chiffres, définissons un autre `uint` égal à 10^16. Comme ça, nous pourrons plus tard utiliser l'opérateur modulo `%` pour raccourcir un entier à 16 chiffres.
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. Créez un `uint` appelé `dnaModulus`, et définissez-le égal à **10 à la puissance `dnaDigits`**.

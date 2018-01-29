@@ -1,5 +1,5 @@
 ---
-title: Structs
+title: Structures
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -12,7 +12,7 @@ material:
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
 
-          // start here
+          // commencez ici
 
       }
     answer: >
@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
+Il est possible que vous ayez besoin d'un type de données plus complexe. Pour cela, Solidity fournit les **_ structures _** :
 
 ```
 struct Person {
@@ -42,14 +42,14 @@ struct Person {
 
 ```
 
-Structs allow you to create more complicated data types that have multiple properties.
+Les structures vous permettent de créer des types de données plus complexes avec plusieurs propriétés.
 
-> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères ont utilisées pour les données UTF-8 de longueur arbitraire. Ex. `string greeting = "Hello world!"`
 
-# Put it to the test
+# A votre tour
 
-In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
+Dans notre application, nous allons vouloir créer des zombies ! Et les zombies ont plusieurs propriétés, une structure est parfaitement adapté pour ça.
 
-1. Create a `struct` named `Zombie`.
+1. Créez une `struct` nommée `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
+2. Notre structure `Zombie` aura 2 propriétés : : `name` (un `string`), et `dna` (un `uint`).

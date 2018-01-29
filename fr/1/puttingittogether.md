@@ -1,5 +1,5 @@
 ---
-title: Putting It Together
+title: Tout mettre ensemble
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -21,14 +21,14 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          // start here
+          // commencez ici
 
       }
     answer: >
@@ -49,7 +49,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -64,16 +64,16 @@ material:
       }
 ---
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+Nous avons bientôt terminé notre générateur de Zombie aléatoire ! Créons une fonction publique qui va regrouper le tout.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+Nous allons créer une fonction publique qui prend un paramètre, le nom du zombie, et utilise ce nom pour créer un zombie avec un ADN aléatoire.
 
-# Put it to the test
+# A votre tour
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+1. Créez une fonction `public` nommée `createRandomZombie`. Elle devra prendre seulement un paramètre `_name` (un `string`). _(Remarque : déclarez cette fonction `public`. de la même manière que vous avez déclaré la fonction précédente `private`)_
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. La première ligne de la fonction devra exécuter la fonction `_generateRandomDna` avec comme argument `_name` and stocker le résultat dans un `uint` nommé `randDna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. La deuxième ligne devra exécuter la fonction `_createZombie` avec comme arguments `_name` et `randDna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. La solution devra faire 4 lignes de code (en comptant le `}` de fin de fonction).

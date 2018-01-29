@@ -85,9 +85,9 @@ numbers.push(15);
 // numbers est maintenant égal à [5, 10, 15]
 ```
 
-# Essayons-le
+# A votre tour
 
-Let's make our createZombie function do something!
+Faisons faire quelque chose à notre fonction createZombie !
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau` zombies`. Les noms `name` et` dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
+2. Faisons-le en une ligne de code pour garder les choses concises.

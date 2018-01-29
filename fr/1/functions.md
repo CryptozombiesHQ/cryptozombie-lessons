@@ -1,5 +1,5 @@
 ---
-title: Function Declarations
+title: Déclarations de fonction
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -19,7 +19,7 @@ material:
 
           Zombie[] public zombies;
 
-          // start here
+          // commencez ici
 
       }
     answer: >
@@ -45,28 +45,27 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+Une déclaration de fonction en Solidity ressemble à ça :
 
 ```
 function eatHamburgers(string _name, uint _amount) {
 
 }
 ```
+C'est une fonction appelée `eatHamburgers` qui prend 2 parametres : un `string` et un `uint`. Le corps de la fonction est vide pour l'instant.
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+> Remarque: Par convention (mais ce n'est pas obligatoire), les noms des arguments des fonctions commencent avec un trait de soulignement (`_`) afin de les différencier des variables globales. Nous utiliserons cette convention tout au long de notre tutoriel.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
-
-You would call this function like so:
+Vous pouvez appeler la fonction comme cela :
 
 ```
 eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+# A votre tour
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+Dans notre application, nous allons avoir besoin de créer des zombies. Pour cela, créons une fonction.
 
-1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. Créez une fonction appelée `createZombie`. Elle devra prendre deux arguments : **__name_** (un `string`), et **__dna_** (un `uint`).
 
-Leave the body empty for now — we'll fill it in later.
+Laissez le corps vide pour l'instant, nous le complèterons plus tard.

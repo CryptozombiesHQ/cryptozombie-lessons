@@ -67,7 +67,7 @@ Person[] public people;
 ```
 Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc un modèle utile pour stocker des données publiques dans votre contrat.
 
-# Essayons-le
+# A votre tour
 
 Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications, cette armée devra donc être publique.
 

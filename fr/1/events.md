@@ -1,5 +1,5 @@
 ---
-title: Events
+title: Évènements
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // declare our event here
+          // déclarez notre évènement ici
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,8 +23,8 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-              // and fire it here
-          } 
+              // et déclenchez le ici
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -58,7 +58,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -79,32 +79,38 @@ Our contract is almost finished! Now let's add an **_event_**.
 
 Example:
 
+Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _**.
+
+Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
+
+Exemple:
+
 ```
-// declare the event
+// déclaration de l'évènement
 event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // fire an event to let the app know the function was called:
+  // déclanchement de l'évènement pour indiquer à l'application que la fonction a été appelée :
   IntegersAdded(_x, _y, result);
   return result;
 }
 ```
 
-Your app front-end could then listen for the event. A javascript implementation would look something like: 
+Votre application frontale pourrait alors être en attente de l'évènement. Voici un exemple d'implémentation javascript :
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
-  // do something with result
+YourContract.IntegersAdded(function(error, result) {
+  // faire quelque chose avec le résultat
 }
 ```
 
-# Put it to the test
+# A votre tour
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+A chaque fois qu'un nouveau zombie est créé, nous voulons qu'un évènement informe l'application frontale, ainsi, elle pourra l'afficher.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Déclarez un `event` appelé `NewZombie`. Les arguments devront être `zombieId` (un `uint`), `name` (un `string`), et `dna` (un `uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
+2. Modifiez la fonction `_createZombie` pour déclencher l'évènement `NewZombie` après avoir ajouté le nouveau Zombie à notre tableau `zombies`.
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Vous allez avoir besoin de l'`id` du zombie. `array.push ()` retourne un `uint` de la nouvelle longueur du tableau - et puisque le premier élément d'un tableau a pour index 0, `array.push() - 1` sera l'index du nouveau zombie ajouté. Stockez le résultat de `zombies.push() - 1` dans un `uint` nommé `id`, vous pourez donc l'utiliser dans l'évènement `NewZombie` de la ligne suivante.
