@@ -45,7 +45,7 @@ material:
       }
 ---
 
-在solidity中函数定义的句法如下:
+在 Solidity 中函数定义的句法如下:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -69,4 +69,4 @@ eatHamburgers("vitalik", 100);
 
 1. 建立一个函数 `createZombie`. 它接受两个输入变量: **名字** (类型`string`), 和 **__dna_** (类型`uint`)。
 
-暂时让函数空着－我们在后面会增加内容。
+暂时让函数空着——我们在后面会增加内容。

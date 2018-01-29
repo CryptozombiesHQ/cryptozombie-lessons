@@ -75,8 +75,8 @@ export default {
     events,
     web3js,
     lessoncomplete
-  ],
-  2: [
+  ]
+  , 2: [
     l2_overview,
     overview,
     mappings,

@@ -172,41 +172,39 @@ material:
       }
 ---
 
-Great! Our zombie now has a functional cooldown timer.
 
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
+相当不错！我们的僵尸现在有了“冷静定时器”功能。
 
-Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
+接下来，我们将添加一些辅助方法。我们为您创建了一个名为zombiehelper.sol的新文件，并且将 `zombiefeeding.sol`导入其中，这让我们的代码更整洁。
 
-## Function modifiers with arguments
+我们打算让僵尸在达到一定水平后，获得特殊能力。但是达到这个小目标，我们还需要学一学什么是“函数修改器”。
 
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
+##带参数的函数修改器
+
+之前我们已经读过一个简单的函数修改器了：`onlyOwner`。函数修改器也可以带参数。例如：
 
 ```
-// A mapping to store a user's age:
+// 存储用户年龄的映射
 mapping (uint => uint) public age;
 
-// Modifier that requires this user to be older than a certain age:
+// 限定用户年龄的修改器
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// Must be older than 16 to drive a car (in the US, at least).
-// We can call the `olderThan` modifier with arguments like so:
+// 必须年满16周岁才允许开车 (至少在美国是这样的).
+// 我们可以用如下参数调用`olderThan` 修改器:
 function driveCar(uint _userId) public olderThan(16, _userId) {
-  // Some function logic
+  // 其余的程序逻辑
 }
 ```
+看到了吧， `olderThan` 修改器可以像函数一样接收参数，是“宿主”函数`driveCar` 把参数传递给它的修改器的。
 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
+来，我们自己生产一个修改器，通过传入的`level`参数来限制僵尸使用某些特殊功能。 
 
-Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
+## 实战演习
 
-## Put it to the test
-
-1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
-
-2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
-
-3. Remember to have the last line of the modifier call the rest of the function with `_;`.
+1.在“ZombieHelper”中，创建一个名为`aboveLevel`的'修改器'，它接收2个参数， `_level` (`uint`类型) 以及 `_zombieId` (`uint`类型)。
+2.运用函数逻辑确保僵尸`zombies[_zombieId].level`大于或等于 `_level`。
+3.记住，修改器的最后一行为 `_;`，表示修改器调用结束后返回，并执行调用函数余下的部分。

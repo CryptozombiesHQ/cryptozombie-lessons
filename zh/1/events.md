@@ -73,9 +73,9 @@ material:
       }
 ---
 
-我们的合同几乎就要完成了！让我们加上一个**事件**.
+我们的合约几乎就要完成了！让我们加上一个**事件**.
 
-**事件** 是合同和区块链通讯的一种机制。你的前端应用‘监听’某些事件，并做出反应。
+**事件** 是合约和区块链通讯的一种机制。你的前端应用‘监听’某些事件，并做出反应。
 
 例子:
 
@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-你的 app 前端可以监听这个事件。javascript实现如下: 
+你的 app 前端可以监听这个事件。JavaScript 实现如下: 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
@@ -107,4 +107,4 @@ YourContract.IntegersAdded(function(error, result) {
 
 2. 修改 `_createZombie` 函数使得当新僵尸造出来并加入`zombies`数组后，生成事件`NewZombie`。
 
-3. 需要定义僵尸`id`. `array.push()` 返回数组的长度类型是`uint`  - 因为数组的第一个元素的索引是 0, `array.push() - 1` 将是我们加入的僵尸的索引。 `zombies.push() - 1` 就是 `id`，数据类型是`uint`。在下一行中你可以把它用到`NewZombie` 事件中。
+3. 需要定义僵尸`id`。 `array.push()` 返回数组的长度类型是`uint`  - 因为数组的第一个元素的索引是 0， `array.push() - 1` 将是我们加入的僵尸的索引。 `zombies.push() - 1` 就是 `id`，数据类型是`uint`。在下一行中你可以把它用到`NewZombie` 事件中。

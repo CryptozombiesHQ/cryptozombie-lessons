@@ -1,0 +1,197 @@
+{
+    "base": {
+        "name": "CryptoZombies",
+        "tagLine": "イーサリアムでのゲーム開発を学ぶ",
+        "lesson": "レッスン {lessonNum}",
+        "chapter": "チャプター {chapterNum}",
+        "syncing": "同期中...",
+        "telegram": {
+            "name": "Telegram",
+            "action": "Telegramに参加する",
+            "link": "https://t.me/loomnetwork"
+        },
+        "twitter": {
+            "name": "Twitter",
+            "link": "https://twitter.com/loomnetwork"
+        }
+    },
+    "editor": {
+        "readOnly": "閲覧のみ"
+    },
+    "lessonMenu": {
+        "pageTitle": "@:base.name | @:base.tagLine",
+        "itemLabel": "レッスン {lessonNum}: {title}",
+        "signIn": "サインインをすれば進捗をロード",
+        "progressLoaded": "進捗がロードされました"
+    },
+    "overview": {
+        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+        "presents": "Presents",
+        "title": "レッスン {lessonNum}: {title}",
+        "signInPrompt": " ここからはサインインをして進捗やゾンビを保存する必要があります。 下のボタンからサインインしてください：",
+        "signInButton": "サインイン",
+        "levelUpText": "今回のレッスンでは、前のレッスンで作ったゾンビのレベルを上げていくぞ。",
+        "missingZombieText": "ムムム... どうやらレッスン{lessonNum}でゾンビをつくっていないな？レッスンを終わらせてからまたここに戻ってくるがよい。急がば回れだ：",
+        "fixMissingZombieText": "レッスン {lessonNum}を完了しているのにこのエラーメッセージが表示されているなら、 最後までスキップして{generateNewZombie}。",
+        "generateNewZombieLink": "新しいゾンビを作る",
+        "areYouReady": "準備はできたかな？",
+        "resumeLesson": "レッスン再開 {lessonNum}"
+    },
+    "chapter": {
+        "pageTitle": "@:base.name | {lesson} {chapter}",
+        "header": "チャプター {chapterNum}: {title}",
+        "saveProgress": "進捗を保存",
+        "autosaveEnabled": "自動保存オン",
+        "resumeProgress": "Resume Progress",
+        "showHint": "ヒントを表示",
+        "nextChapter": "次のチャプター",
+        "tryAgain": "もう一度答え合わせ",
+        "checkAnswer": "答え合せ",
+        "showMeTheAnswer": "答えを表示",
+        "hideAnswer": "答えを隠す"
+    },
+    "lessonComplete": {
+        "shareLinksAction": "下のボタンをクリックするだけでシェアできるぞ：",
+        "signIn": "サインインして進捗を保存",
+        "goToNextLesson": "次のレッスンへ進む",
+        "lesson1": {
+            "header": [
+                "よくやった！これでCryptoZombiesのレッスン1は終了だ！",
+                "イーサリアムのゲーム開発への一歩を踏み出したぞ。",
+                "友達に自分のゾンビを見せることもできるぞ！",
+                "これがゾンビのURLだ："
+            ],
+            "footer": "レッスン 2に進む前に進捗を保存するのだぞ。",
+            "zombieDesc": "クリプトゾンビ　レベル 1",
+            "shareLinkText": "#CryptoZombiesのレッスン 1を終えて#イーサリアムでゲームを構築する基本を学んだのでシェアするよ。 これが作った最初のゾンビ！"
+        },
+        "lesson2": {
+            "header": [
+                "よくやった！これでCryptoZombiesの{lesson2} は終了だ！",
+                "Achievements Unlocked:",
+                "{zombieName} のレベルが2にアップしたぞ！",
+                "NoNameの猫ゾンビをゾンビ軍団に加えたぞ！(名前を変える方法はLesson 3で説明するから、しばし待て。)",
+                "クリプトキティを捕食したゾンビを友達にみせてやれ！",
+                "このURLを送れば友達はいつでもこのゾンビを見れるからな："
+            ],
+            "footer": [
+                "CryptoZombiesはいかがでしたか？ご感想をこちらで受け付けています",
+                "{telegramLink}に参加するか,  {twitterLink}をフォロー",
+                "準備ができたら、下のボタンを押すとレッスン3に進みます："
+            ],
+            "zombieDesc": "クリプトゾンビ　レベル 2",
+            "shareLinkText": "#クリプトゾンビのレッスン2が終わったよ！#クリプトキティを捕食させることができたのと、#イーサリアムの開発がかなりわかってきたよ。これがクリプトキティーズを捕食したゾンビ："
+        },
+        "lesson3": {
+            "achievementsUnlocked": "次の課題が解除されました：",
+            "zombieUpgraded": "{zombieName} のレベルが {levelNum}にアップしました！",
+            "header": [
+                "よくやった！これでCryptoZombiesの{lesson3} は終了だ！",
+                "作ったゾンビ軍団を友達にみせてやろう！",
+                "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
+            ],
+            "footer": [
+                "レッスン 4は、1-2週間後にリリース予定です",
+                "リリースしたらすぐにメールをお送りします。",
+                "{telegramLink}に参加するか,  {twitterLink}をフォローして最新情報をチェックできます！"
+            ],
+            "zombieDesc": "クリプトゾンビ　レベル 3",
+            "shareLinkText": "#CryptZombiesのレッスン3が終わったよ！作ったゾンビ軍団はこんな感じ:"
+        }
+    },
+    "zombieBattle": {
+        "yourTurn": "あなたの番です",
+        "zombieDna": "{name}のDNA",
+        "newZombieGenerated": "新しい{species}が作成されました",
+        "catZombie": "猫ゾンビ",
+        "mutantZombie": "ミュータントゾンビ",
+        "newSpeciesDna": "新しい{species}の DNA",
+        "cryptoKitty": "クリプトキティ",
+        "human": "人間",
+        "tryAnotherCombo": "別の組み合わせを試す"
+    },
+    "zombieChar": {
+        "defaultZombieDesc": "クリプトゾンビ　レベル 1"
+    },
+    "zombieDeck": {
+        "zombieDesc": "レベル {levelNum} クリプトゾンビ",
+        "nameInputPlaceholder": "{name} に名前をつけて 'セーブ'を押します",
+        "save": "セーブ",
+        "yourDeck": "外見"
+    },
+    "zombieResult": {
+        "headGeneLabel": "頭部の遺伝子:",
+        "eyeGeneLabel": "目の遺伝子:",
+        "shirtGeneLabel": "シャツの遺伝子:",
+        "skinColorGeneLabel": "肌の色の遺伝子:",
+        "eyeColorGeneLabel": "目の色の遺伝子:",
+        "clothesColorGeneLabel": "服の色の遺伝子:",
+        "nameInputPlaceholder": "名前を入力",
+        "defaultZombieDesc": "クリプトゾンビ レベル1"
+    },
+    "sharePage": {
+        "pageTitle": "これが作ったクリプトゾンビ {zombieName}！",
+        "presents": "Presents",
+        "zombieDesc": "{name}, レベル{levelNum}のクリプトゾンビ ",
+        "lesson1": {
+            "zombieDesc": "クリプトゾンビ レベル1",
+            "randomZombieGenerator": "ランダムゾンビ生成装置",
+            "achievementPreamble": [
+                "お友達がイーサリアム上のゲーム開発のベーシックパートを学び、レベル1のクリプトゾンビ{zombieName}を作りました。",
+                "CryptoZombiesのレッスン1を終了するために{randomZombieGenerator}を開発して、さらに先へ進むようです："
+            ],
+            "achievements": [
+                "イーサリアムのスマートコントラクトの書き方",
+                "Solidityのプログラミング、イーサリアムスマートコントラクトのプログラム言語",
+                "イーサリアム上でゲームを開発"
+            ],
+            "tryItOut": "ランダムゾンビ生成装置を試す",
+            "below": "下",
+            "above": "上",
+            "zombieGeneratorText": "{tryItOut}ボックスに名前を入力して {below}{above} 新しいゾンビを作り出すのだ！",
+            "nameInputPlaceholder": "名前を入力してゾンビを作る",
+            "callToAction": [
+                "クリプトゾンビを作ってランキングに参加しますか？",
+                "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
+            ]
+        },
+        "lesson2": {
+            "zombieCardBattle": "ゾンビカードバトル",
+            "love": "愛",
+            "achievementPreamble": [
+                "友達はレッスン2を終了して、{zombieName} がクリプトキティスレイヤーにアップグレードしたぞ！",
+                "クリプトキティスレイヤーとは何かだって？！",
+                "クリプトゾンビ {love} がクリプトキティーズを餌にすることがわかったのだ",
+                "クリプトゾンビがクリプトキティーを捕食すると、DNAがミックスされ、クリプトキティがクリプトゾンビに変わるのだ。",
+                "さぁ、餌にするクリプトキティーを選ぶのだ。そして猫ゾンビを作り上げるのだ！",
+                "Solidityのコンセプトをマスターしました",
+                "CryptoZombies・コードスクールのレッスン２を終了するためには、君の友達は {zombieCardBattle} を開発する必要があるぞ："
+            ],
+            "achievements": [
+                "マルチプレーヤーゲームを作るための基本",
+                "イーサリアムネットワークの他のコントラクトとのやりとり",
+                "大きなSolidityのプロジェクトを複数のコントラクトに分けて管理する"
+            ],
+            "callToAction": [
+                "クリプトゾンビを作ってランキングに参加しますか？",
+                "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
+            ]
+        },
+        "lesson3": {
+            "achievementPreamble": [
+                "友達がクリプトゾンビのレッスン3を終了してゾンビ軍団をアップグレードしました！",
+                "レッスン3を終了するためには、友達は以下を学ぶ必要があります："
+            ],
+            "achievements": [
+                "更新できるスマートコントラクトの開発方法",
+                "安全なコントラクトとオーナーシップ",
+                "イーサリアムのガス（燃料）とガスの最適化",
+                "関数のモディファイアとセキュリティチェック"
+            ],
+            "callToAction": [
+                "クリプトゾンビを作ってランキングに参加しますか？",
+                "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
+            ]
+        }
+    }
+}
