@@ -1,196 +1,197 @@
 {
     "base": {
-        "name": "CryptoZombies",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "name": "크립토좀비",
+        "tagLine": "이더리움 게임 만드는 법 배우기",
+        "lesson": "레슨 {lessonNum}",
+        "chapter": "챕터 {chapterNum}",
+        "syncing": "동기화 진행 중...",
         "telegram": {
-            "name": "Telegram",
-            "action": "Join Our Telegram",
+            "name": "텔레그램",
+            "action": "크립토좀비 텔레그램 방에 들어 오게",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
-            "name": "Twitter",
+            "name": "트위터",
             "link": "https://twitter.com/loomnetwork"
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "읽기 전용"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded"
+        "itemLabel": "레슨 {lessonNum}: {title}",
+        "signIn": "로그인하여 진도 불러오기",
+        "progressLoaded": "진도 불러오기 완료"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
-        "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        "signInButton": "Sign In",
-        "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
-        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
-        "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
-        "generateNewZombieLink": "generate a new zombie",
-        "areYouReady": "Are you ready to get started?",
-        "resumeLesson": "Resume Lesson {lessonNum}"
+        "title": "레슨 {lessonNum}: {title}",
+        "signInPrompt": "여기서부터는 로그인을 해야만이 자네의 진도와 좀비를 동기화할 수 있네. 아래 버튼을 클릭하여 로그인하게:",
+        "signInButton": "로그인하기",
+        "levelUpText": "이번 레슨에서는 지난 레슨에서 생성한 좀비를 레벨업할 것이네.",
+        "missingZombieText": "안타깝게도 자네는 레슨 {lessonNum}의 좀비를 가지고 있지 않는 것 같군. 해당 레슨을 아직 마치지 않았다면 진도를 나가기 전에 마치기 바라네:",
+        "fixMissingZombieText": " 이미 레슨 {lessonNum}을 마쳤는데도 불구하고 에러로 이 메시지를 받는다면 레슨 {lessonNum}의 중간 내용을 생략하고 마지막 부분으로 가서 {generateNewZombie}을 실행하게.",
+        "generateNewZombieLink": "새로운 좀비 생성하기",
+        "areYouReady": "시작할 준비가 되었나",
+        "resumeLesson": "레슨 {lessonNum} 계속하기"
     },
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Chapter {chapterNum}: {title}",
-        "saveProgress": "Save Progress",
-        "autosaveEnabled": "Autosave Enabled",
-        "resumeProgress": "Resume Progress",
-        "showHint": "Show Hint",
-        "nextChapter": "Next Chapter",
-        "tryAgain": "Try Again",
-        "checkAnswer": "Check Answer",
-        "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "header": "챕터 {chapterNum}: {title}",
+        "saveProgress": "진도 저장하기",
+        "autosaveEnabled": "자동 저장이 활성화됨",
+        "resumeProgress": "진도 니가기",
+        "showHint": "힌트 보기",
+        "nextChapter": "다음 챕터",
+        "tryAgain": "다시 시도하기",
+        "checkAnswer": "정답 확인하기",
+        "showMeTheAnswer": "정답 보기",
+        "hideAnswer": "정답 가리기"
     },
     "lessonComplete": {
-        "shareLinksAction": "Or you can click the buttons below to share:",
-        "signIn": "Sign in and save your progress",
-        "goToNextLesson": "Proceed to Next Lesson",
+        "shareLinksAction": "혹은 아래 버튼을 클릭하면 공유할 수 있네:",
+        "signIn": "로그인하여 진도 저장하기",
+        "goToNextLesson": "다음 레슨으로 넘어 가기",
         "lesson1": {
             "header": [
-                "Congratulations! You have completed Lesson 1 of CryptoZombies!",
-                "You're officially one step closer to building your own games on Ethereum.",
-                "Show off your first zombie to your friends!",
-                "Here's a permalink to your zombie:"
+                "축하하네! 크립토좀비의 레슨 1을 마쳤군!",
+                "이더리움 게임을 만드는 것에 공식적으로 한 발짝 더 가까이 갔군.",
+                "자네의 첫번째 좀비를 친구들에게 자랑해 보게!",
+                "자네 좀비의 영구 링크가 여기에 있네:"
             ],
-            "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "footer": "레슨 2로 넘어가기 전에 자네 진도가 아래에 저장되도록 하게.",
+            "zombieDesc": "레벨 1 크립토좀비",
+            "shareLinkText": "제가 방금 전에 #CryptoZombies 레슨 1을 마쳤어요. #Ethereum 게임을 만드는 기본 내용을 배웠어요. 제가 처음 만든 좀비를 한번 보세요!"
         },
         "lesson2": {
             "header": [
-                "Congratulations! You have completed {lesson2} of CryptoZombies!",
-                "Achievements Unlocked:",
-                "{zombieName} has been upgraded to Level 2!",
-                "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
-                "Show off your CryptoKitty-slayer to your friends!",
-                "Share this URL so your friends can slay CryptoKitties with your zombie:"
+                "축하하네! 크립토좀비의 {lesson2}를 마쳤군!",
+                "도전과제 완료:",
+                "{zombieName}이/가 레벨 2가 되었네!",
+                "무명의 고양이좀비를 군대에 추가했네! (걱정말게. 레슨 3에서 좀비 이름을 변경하는 법을 배울 것이네)",
+                "자네의 크립토키티 사냥꾼 좀비를 친구들에게 자랑해 보게!",
+                "이 URL를 공유해서 자네 친구들이 자네 좀비로 크립토키티를 사냥할 수 있도록 하게:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 3:"
+                "크립토좀비를 즐기고 있나? 우리에게 알려 주게!",
+                "{telegramLink} 대화 방에 참가하거나 {twitterLink}에서 우리를 팔로우하게",
+                "준비가 되면 아래 버튼을 클릭하여 레슨 3을 진행하게:"
             ],
-            "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "zombieDesc": "레벨 2 크립토좀비",
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 2를 마쳤어요! 제 좀비가 #CryptoKitties 몇 마리를 잡아 먹었네요. 레슨을 통해 #Ethereum 게임 개발에 대해 더 배울 수 있었어요. 제 좀비가 더 많은 크립토키티를 사냥하는 것을 보세요:"
         },
         "lesson3": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "header": [
-                "Congratulations! You have completed {lesson3} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+            "achievementsUnlocked": "도전과제 완료:",
+            "zombieUpgraded": "{zombieName}이/가 레벨 {levelNum}이/가 되었네!",
+            "header": 
+                "축하하네! 크립토좀비 {lesson3}을 마쳤네!",
+                "자네의 좀비 군대를 친구들에게 자랑해 보게!",
+                "이 URL를 공유해서 친구들이 자네의 군대를 확인할 수 있도록 해보게:"
             ],
             "footer": [
-                "Lesson 4 coming in 1-2 weeks",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+                "레슨 4가 1-2주 후에 출시될 거네",
+                "레슨이 준비되는 대로 이메일을 받을 수 있을 거네.",
+                "한편, {telegramLink} 대화 방에 참가하거나 {twitterLink}에서 우리를 팔로우하게!"
             ],
-            "zombieDesc": "A Level 3 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 3! Check out my zombie army:"
+            "zombieDesc": "레벨 3 크립토좀비",
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 3을 마쳤어요! 제 좀비 군대를 확인해 보세요: just completed #CryptoZombies Lesson 3! Check out my zombie army:"
         }
     },
     "zombieBattle": {
-        "yourTurn": "Your Turn",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "New {species} Generated!",
-        "catZombie": "Cat-Zombie",
-        "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "New {species}'s DNA",
-        "cryptoKitty": "CryptoKitty",
-        "human": "Human",
-        "tryAnotherCombo": "Try Another Combination"
+        "yourTurn": "당신 차례입니다",
+        "zombieDna": "{name}의 DNA",
+        "newZombieGenerated": "새로운 {species} 생성 완료!",
+        "catZombie": "고양이 좀비",
+        "mutantZombie": "돌연변이 좀비",
+        "newSpeciesDna": "새로운 {species}의 DNA",
+        "cryptoKitty": "크립토키티",
+        "human": "인간",
+        "tryAnotherCombo": "또다른 조합 시도하기"
     },
     "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "레벨 1 크립토좀비"
     },
     "zombieDeck": {
-        "zombieDesc": "A Level {levelNum} CryptoZombie",
-        "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
-        "save": "Save",
-        "yourDeck": "Your Deck"
+        "zombieDesc": "레벨 {levelNum} 크립토좀비",
+        "nameInputPlaceholder": "{name}에게 새로운 이름을 주고 `저장하기`를 누른다",
+        "save": "저장하기",
+        "yourDeck": "당신의 좀비 꾸러미"
     },
     "zombieResult": {
-        "headGeneLabel": "Head Gene:",
-        "eyeGeneLabel": "Eye Gene:",
-        "shirtGeneLabel": "Shirt Gene:",
-        "skinColorGeneLabel": "Skin Color Gene:",
-        "eyeColorGeneLabel": "Eye Color Gene:",
-        "clothesColorGeneLabel": "Clothes Color Gene:",
-        "nameInputPlaceholder": "Enter a name here",
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "headGeneLabel": "머리 유전자:",
+        "eyeGeneLabel": "눈 유전자:",
+        "shirtGeneLabel": "셔츠 유전자:",
+        "skinColorGeneLabel": "피부색 유전자:",
+        "eyeColorGeneLabel": "눈 색깔 유전자:",
+        "clothesColorGeneLabel": "옷 색깔 유전자:",
+        "nameInputPlaceholder": "여기에 이름을 입력한다",
+        "defaultZombieDesc": "레벨 1 크립토좀비"
     },
     "sharePage": {
-        "pageTitle": "Check out my CryptoZombie {zombieName}!",
+        "pageTitle": "제 크립토좀비 {zombieName}을/를 확인해 보세요!",
         "presents": "Presents",
-        "zombieDesc": "{name}, a Level {levelNum} CryptoZombie",
+        "zombieDesc": "레벨 {levelNum} 크립토좀비",
         "lesson1": {
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "randomZombieGenerator": "random zombie generator",
+            "zombieDesc": "레벨 1 크립토좀비",
+            "randomZombieGenerator": "랜덤 좀비 생성기",
             "achievementPreamble": [
-                "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "당신의 친구는 이더리움 게임 개발에 대한 기본 사항을 학습했고 레벨 1 크립토 좀비 {zombieName}을/를 그 증거로 생성했습니다!",
+                "크립토좀비 레슨 1을 완료하기 위해서 당신의 친구는 {randomZombieGenerator}를 만들었고 다음 내용을 학습했습니다:"
             ],
             "achievements": [
-                "How to write Ethereum smart contracts",
-                "Programming in Solidity, Ethereum's smart contract programming language",
-                "Building games on Ethereum"
+                "이더리움 스마트 컨트렉트를 작성하는 방법",
+                "이더리움 스마트 컨트렉트 프로그래밍 언어인 솔리디티로 프로그램 작성하기",
+                "이더리움 게임 만들기"
             ],
-            "tryItOut": "Give the random zombie generator a try.",
-            "below": "below",
-            "above": "above",
-            "zombieGeneratorText": "{tryItOut} Enter a name in the box {below}{above} to generate a new zombie!",
-            "nameInputPlaceholder": "Enter a name to generate a zombie",
+            "tryItOut": "랜덤 좀비 생성기를 한번 실행해 보세요.",
+            "below": "아래",
+            "above": "위",
+            "zombieGeneratorText": "{tryItOut} 새로운 좀비를 생성하려면 박스 {below}{above}에 이름을 적으세요!",
+            "nameInputPlaceholder": "좀비를 생성하려면 이름을 적으세요",
             "callToAction": [
-                "Want to build your own CryptoZombie and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "자신의 크립토좀비를 만들어 랭킹에 참여하고 싶으세요?",
+                "크립토좀비를 활용하여 공짜로 자신의 이더리움 게임을 만드는 법을 배워 보세요! 지금 바로 시작하세요:"
             ]
         },
+
         "lesson2": {
-            "zombieCardBattle": "Zombie Card Battle",
-            "love": "love",
+            "zombieCardBattle": "좀비 카드 배틀",
+            "love": "매우 좋아하",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 2, and upgraded {zombieName} to a CryptoKitty slayer!",
-                "A CryptoKitty Slayer?!",
-                "It turns out CryptoZombies {love} to feed on CryptoKitties.",
-                "When a CryptoZombie feeds on a CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
-                "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
-                "Solidity Concepts Mastered",
-                "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
+                "당신의 친구가 크립토좀비 레슨 2를 완료했고, {zombieName}을/를 크립토키티 사냥꾼 좀비로 업그레이드 했습니다!",
+                "크립토키티 사냥꾼?!",
+                "크립토좀비가 크립토키티를 잡아 먹는 것을 {love}는 것으로 밝혀졌습니다.",
+                "크립토좀비가 크립토키티를 잡아 먹을 때, 좀비와 키티의 DNA가 혼합되어 크립토키티가 크립토좀비로 소생하게 됩니다.",
+                "계속 크립토키티를 선택해서 공격해 보세요. 어떤 종류의 고양이 좀비가 나오는지 보세요!",
+                "솔리디티 개념을 마스터했습니다.",
+                "크립토좀비 코딩 스쿨의 레슨 2를 마치기 위해서 당신의 친구는 {zombieCardBattle}을 만들었고 다음을 학습했습니다:"
             ],
             "achievements": [
-                "The basics of making a multi-player game",
-                "Interacting with other contracts on the Ethereum network",
-                "Organizing larger Solidity projects into multiple contracts"
+                "멀티 플레이 게임을 만드는 것에 대한 기본 사항",
+                "이더리움 네트워크 상의 다른 컨트렉트와 상호작용하기",
+                "대형 솔리디티 프로젝트를 다중 컨트렉트로 구조화하기"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombies and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "자신의 크립토좀비를 만들어 랭킹에 참여하고 싶으세요?",
+                "크립토좀비를 활용하여 공짜로 자신의 이더리움 게임을 만드는 법을 배워 보세요! 지금 바로 시작하세요:"
             ]
         },
         "lesson3": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 3, and upgraded their zombie army!",
-                "In order to complete Lesson 3 of CryptoZombies, your friend learned about:"
+                "당신의 친구는 크립토좀비 레슨 3을 완료했고, 좀비 군대를 업그레이드 했습니다!",
+                "크립토좀비의 레슨 3을 완료하기 위해서 당신의 친구는 다음을 학습했습니다:"
             ],
             "achievements": [
-                "How to build updatable smart contracts",
-                "Securing contracts with contract ownership",
-                "Gas and gas optimization on Ethereum",
-                "Function modifiers and security checks"
+                "업데이트 가능한 스마트 컨트렉트를 만드는 방법",
+                "컨트렉트 소유권을 활용하여 컨트렉트 안전하게 하기",
+                "이더리움 상에서의 가스 및 가스 최적화",
+                "함수 제어자와 보안 점검"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "자신의 크립토좀비를 만들어 랭킹에 참여하고 싶으세요?",
+                "크립토좀비를 활용하여 공짜로 자신의 이더리움 게임을 만드는 법을 배워 보세요! 지금 바로 시작하세요:"
             ]
         }
     }
