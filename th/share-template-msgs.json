@@ -1,0 +1,14 @@
+{
+    "1": {
+        "pageTitle": "เข้ามาชมCryptoZombie {{ .ZombieName }}ของฉัน!",
+        "ogDesc": "เรียน #CryptoZombies บทที่ 1 จบแล้ว!! และได้เรียนรู้เกี่ยวกับการเขียนโค้ดเกมขั้นพื้นฐานบนEthereum เข้ามาชมซอมบี้ตัวแรกในกองทัพของฉันสิ!"
+    },
+    "2": {
+        "pageTitle": "CryptoZombieของฉัน {{ .ZombieName }}เพิ่งกินCryptoKittyเข้าไปและได้อัพเกรดเลเวลขึ้น!",
+        "ogDesc": "เรียน #CryptoZombies บทที่ 2 จบแล้ว!! และได้เพิ่มreanimated CryptoKittyเข้าไปยังกองทัพซอมบี้ของฉัน เข้ามาดูสิ!"
+    },
+    "3": {
+        "pageTitle": "Check out my CryptoZombie Army!",
+        "ogDesc": "เรียน #CryptoZombies บทที่ 3 จบแล้ว!! และซอมบี้ของฉันก็กำลังโตขึ้นเรื่อยๆ..."
+    }
+}
