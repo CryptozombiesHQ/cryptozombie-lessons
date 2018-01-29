@@ -1,6 +1,6 @@
 ---
 title: Tableaux
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -17,7 +17,7 @@ material:
               uint dna;
           }
 
-          // Commencer ici
+          // commencez ici
 
       }
     answer: >
@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array en anglais). il y a deux sortes de tableaux dans Solidity : les tablaux  **_fixes_** et les tableaux **_dynamiques_** :
+Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array en anglais). il y a deux sortes de tableaux dans Solidity : les tableaux  **_fixes_** et les tableaux **_dynamiques_** :
 
 ```
 // Tableau avec une longueur fixe de 2 éléments :

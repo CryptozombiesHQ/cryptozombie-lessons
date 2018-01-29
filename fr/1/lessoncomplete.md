@@ -1,12 +1,12 @@
 ---
-title: Lesson 1 Complétée !
-actions: ['checkAnswer', 'hints']
+title: Leçon 1 Complétée !
+actions: ['vérifierLaRéponse', 'indice']
 material:
   lessonComplete:
     answer: 1
 ---
 
-Bravo ! Vous avez terminé la leçon 1, et vous avez créé le premier zombie de votre armée.
+Félicitations ! Vous avez terminé la leçon 1, et vous avez créé le premier zombie de votre armée.
 
 # Prochaines étapes
 

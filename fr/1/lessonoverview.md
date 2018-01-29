@@ -1,6 +1,6 @@
 ---
 title: Aperçu de la leçon
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -18,9 +18,9 @@ Dans la leçon 1, vous allez faire une "usine de zombies" afin d'avoir une armé
 
 Dans les leçons suivantes, nous ajouterons plus de fonctionnalités, comme donner aux zombies la capacité d'attaquer des humains ou d'autres zombies ! Mais avant d'en arriver là, nous devons commencer par la fonctionnalité de base pour créer de nouveaux zombies.
 
-## Comment l'ADN à Zombie marche
+## Comment marche l'ADN Zombie
 
-L'apparence du zombie va dépendre de son "ADN de Zombie". L'ADN d'un Zombie est simple - c'est un entier de 16 chiffres, comme :
+L'apparence du zombie va dépendre de son "ADN Zombie". L'ADN d'un Zombie est simple - c'est un entier de 16 chiffres, comme :
 
 ```
 8356281049284737
@@ -32,11 +32,11 @@ Tout comme l'ADN réel, différentes parties de ce nombre représenteront diffé
 
 Par exemple, les 2 premiers chiffres de note ADN exemple sont `83`. Pour faire correspondre à un type de tête, nous devons faire `83 % 7 + 1` = 7. Ce Zombie aura donc le 7ième type de tête.
 
-Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène de tête) sur la 7ème tête (le bonnet de Noel) pour voir à quel trait correspond le `83`.
+Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène pour la tête) sur la 7ème tête (le bonnet de Noël) pour voir à quel trait correspond le `83`.
 
 
 # A votre tour
 
 1. Jouez avec les curseurs sur le côté droit de la page. Testez pour voir comment les différentes valeurs numériques influent sur les différents aspects de l'apparence du zombie.
 
-Allez, assez jouer. Lorsque vous êtes prêt à continuer, cliquez sur "Next Chapter" ci-dessous, et plongons dans l'apprentissage de Solidity !
+Allez, assez jouer. Lorsque vous êtes prêt à continuer, cliquez sur "Next Chapter" ci-dessous, et plongeons dans l'apprentissage de Solidity !

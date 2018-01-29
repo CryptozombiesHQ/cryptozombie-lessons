@@ -1,13 +1,13 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "tagLine": "Apprendre à coder des jeux sur Ethereum",
+        "lesson": "Leçon {lessonNum}",
+        "chapter": "Chapitre {chapterNum}",
+        "syncing": "Synchronisation...",
         "telegram": {
             "name": "Telegram",
-            "action": "Join Our Telegram",
+            "action": "Rejoins-nous sur Telegram",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
@@ -16,58 +16,58 @@
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "lecture seulement"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
+        "itemLabel": "Leçon {lessonNum}: {title}",
+        "signIn": "Connectez-vous et enregistrez vos progrès",
         "progressLoaded": "Your progress is loaded"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
-        "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        "signInButton": "Sign In",
-        "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
-        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
-        "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
-        "generateNewZombieLink": "generate a new zombie",
-        "areYouReady": "Are you ready to get started?",
-        "resumeLesson": "Resume Lesson {lessonNum}"
+        "presents": "Presente",
+        "title": "Leçon {lessonNum}: {title}",
+        "signInPrompt": "A partir de maintenant, vous devez êtres connecté pour que nous puissions Synchroniser vos progrès et vos zombies. Veuillez vous enregistrez en utilisant le bouton ci-dessous :",
+        "signInButton": "S’enregistrer",
+        "levelUpText": "Dans cette leçon, nous allons faire monter de niveau les zombies créés dans les leçons précédentes.",
+        "missingZombieText": "Malheuresement, on dirait que vous n'avez aucun zombie de la Leçon {lessonNum}. Si vous n'avez pas terminé cette leçon, veuillez le faire avant de continuer :",
+        "fixMissingZombieText": "Si vous avez cette erreur et que vous avez déjà fini la Leçon {lessonNum}, ignorez-la et passez à la fin pour {generateNewZombie}.",
+        "generateNewZombieLink": "Générer un nouveau zombie",
+        "areYouReady": "Êtes-vous prêt à commencer ?",
+        "resumeLesson": "Reprendre la Leçon {lessonNum}"
     },
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Chapter {chapterNum}: {title}",
-        "saveProgress": "Save Progress",
-        "autosaveEnabled": "Autosave Enabled",
-        "resumeProgress": "Resume Progress",
-        "showHint": "Show Hint",
-        "nextChapter": "Next Chapter",
-        "tryAgain": "Try Again",
-        "checkAnswer": "Check Answer",
-        "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "header": "Chapitre {chapterNum}: {title}",
+        "saveProgress": "Sauvegarder",
+        "autosaveEnabled": "Sauvegarde automatique activée",
+        "resumeProgress": "Reprendre",
+        "showHint": "Montrer les indices",
+        "nextChapter": "Chapitre Suivant",
+        "tryAgain": "Essayer Encore",
+        "checkAnswer": "Vérifier La Réponse",
+        "showMeTheAnswer": "Montrez-moi La Réponse",
+        "hideAnswer": "Cacher La Réponse"
     },
     "lessonComplete": {
-        "shareLinksAction": "Or you can click the buttons below to share:",
-        "signIn": "Sign in and save your progress",
-        "goToNextLesson": "Proceed to Next Lesson",
+        "shareLinksAction": "Ou vous pouvez cliquer sur les boutons ci-dessous pour partager :",
+        "signIn": "Connectez vous et sauvegardez vos progrès",
+        "goToNextLesson": "Passer à la Leçon Suivante",
         "lesson1": {
             "header": [
-                "Congratulations! You have completed Lesson 1 of CryptoZombies!",
-                "You're officially one step closer to building your own games on Ethereum.",
-                "Show off your first zombie to your friends!",
-                "Here's a permalink to your zombie:"
+                "Félicitations ! Vous avez complété la Leçon 1 de CryptoZombies !",
+                "Vous êtes officiellement un peu plus près de construire vos propres jeux sur Ethereum.",
+                "Montrez votre premier zombie à vos amis !",
+                "Voici un permalien de votre : "
             ],
-            "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "footer": "Assurez-vous de sauvegarder vos progrès avant de passer à la Leçon 2.",
+            "zombieDesc": "Un CryptoZombie de niveau 1",
+            "shareLinkText": "Je viens juste de completer la Leçon 1 de #CryptoZombies et j'ai appris les bases pour coder un jeu sur #Ethereum. Venez voir le premier zombie de mon armée !"
         },
         "lesson2": {
             "header": [
-                "Congratulations! You have completed {lesson2} of CryptoZombies!",
+                "Félicitations ! Vous avez complété la {lesson2} de CryptoZombies !",
                 "Achievements Unlocked:",
                 "{zombieName} has been upgraded to Level 2!",
                 "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
@@ -86,7 +86,7 @@
             "achievementsUnlocked": "Achievements Unlocked:",
             "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
             "header": [
-                "Congratulations! You have completed {lesson3} of CryptoZombies!",
+                "Félicitations ! Vous avez complété la {lesson3} de CryptoZombies !",
                 "Show off your zombie army to your friends!",
                 "Share this URL so your friends can check out your army:"
             ],

@@ -1,6 +1,6 @@
 ---
 title: Structures
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol

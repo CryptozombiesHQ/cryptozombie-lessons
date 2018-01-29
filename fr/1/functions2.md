@@ -1,6 +1,6 @@
 ---
 title: Fonctions Privées / Publiques
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -62,7 +62,7 @@ function _addToArray(uint _number) private {
 ```
 Cela veut dire que seulement les autres fonctions de notre contrat pourront appeler cette fonction et ajouter quelque chose au tableau `array`.
 
-Comme vous pouvez le voir, nous avons utilisé le mot-clé `private` après le nom de la fonction. Et comme les arguments d'une fonction, par convention les fonctions privées commençent par un trait de soulignement (`_`).
+Comme vous pouvez le voir, nous avons utilisé le mot-clé `private` après le nom de la fonction. Et comme les arguments d'une fonction, par convention les fonctions privées commencent par un trait de soulignement (`_`).
 
 # A votre tour.
 

@@ -1,6 +1,6 @@
 ---
 title: Variables d'État et Entiers
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //commencez ici
+          // commencez ici
 
       }
     answer: >

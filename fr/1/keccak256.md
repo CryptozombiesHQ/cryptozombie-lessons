@@ -1,6 +1,6 @@
 ---
-title: Keccak256 and Conversion de type
-actions: ['checkAnswer', 'hints']
+title: Keccak256 et Conversion de type
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -70,7 +70,7 @@ keccak256("aaaab");
 //b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
 keccak256("aaaac");
 ```
-Comme vous pouvez le voir, les valeurs retournées sont complètement différentes alors qu'il y a seulement 1 charactère de changer à l'argument d'entrée.
+Comme vous pouvez le voir, les valeurs retournées sont complètement différentes alors qu'il y a seulement 1 caractère de changer à l'argument d'entrée.
 
 > Remarque: La génération de nombres aléatoires **sécurisés** dans la blockchain est un problème très complexe. Notre méthode ici n'est pas sécurisée, mais comme la sécurité n'est pas la grande priorité de notre ADN Zombie, cela sera suffisante pour notre usage.
 
@@ -88,7 +88,7 @@ uint8 c = a * b;
 uint8 c = a * uint8(b);
 ```
 
-Ci-dessus, `a * b` renvoie un `uint`, mais nous essayons de le stocker comme un `uint8`, ce qui pourrait poser problème. En le convertissant en `uint8`, cela marche et le compileur ne retourne pas d'erreur.
+Ci-dessus, `a * b` renvoie un `uint`, mais nous essayons de le stocker comme un `uint8`, ce qui pourrait poser problème. En le convertissant en `uint8`, cela marche et le compilateur ne retourne pas d'erreur.
 
 # A votre tour.
 

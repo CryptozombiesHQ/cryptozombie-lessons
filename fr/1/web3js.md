@@ -1,6 +1,6 @@
 ---
 title: Web3.js
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   saveZombie: true
   zombieResult:
@@ -10,30 +10,30 @@ material:
     answer: 1
 ---
 
-Notre contract Solidity est fini ! Maintenant nous devons écrire la partie client en javascript pour intéragir avec le contrat.
+Notre contrat Solidity est fini ! Maintenant nous devons écrire la partie client en javascript pour interagir avec le contrat.
 
 Ethereum a une bibliothèque Javascript appelée **_Web3.js_**.
 
-Dans une prochaine leçon, nous verrons en détail comment déployer un contrat et configurer Web3.js. Mais pour l'instant, regardons simplement un exemple de code sur la façon dont Web3.js pourrait intéragir avec notre contrat déployé.
+Dans une prochaine leçon, nous verrons en détail comment déployer un contrat et configurer Web3.js. Mais pour l'instant, regardons simplement un exemple de code sur la façon dont Web3.js pourrait interagir avec notre contrat déployé.
 
 Ne vous inquiétez pas si ce n'est pas très clair pour l'instant.
 
 ```
-// Voici comment nous accèderions à notre contrat
+// Voici comment nous accéderions à notre contrat
 var abi = /* abi générée par le compilateur */
 var ZombieFactoryContract = web3.eth.contract(abi)
 var contractAddress = /* l'adresse de notre contrat Ethereum après avoir été déployé */
 var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // `ZombieFactory` a accès aux fonctions et évènement publiques de notre contrat
 
-// une sorte d'écouteur d'événement pour enregister l'entrée de texte :
+// une sorte d'écouteur d'événement pour enregistrer l'entrée de texte :
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
   // Appelle la fonction `createRandomZombie` de notre contrat :
   ZombieFactory.createRandomZombie(name)
 })
 
-// Écoute l'évènement `NewZombie`, and met à jour l'interface utilisateur
+// Écoute l'évènement `NewZombie`, et met à jour l'interface utilisateur
 var event = ZombieFactory.NewZombie(function(error, result) {
   if (error) return
   generateZombie(result.zombieId, result.name, result.dna)
@@ -69,10 +69,10 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Notre code javascript prends alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie javascript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
+Notre code Javascript prends alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie Javascript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
 
-# A votre tour d'essayez !
+# A votre tour d’essayer !
 
 Allez-y - rentrer un nom dans le champ à droite, et regardez quel zombie vous obtiendrez !
 
-**Une fois que vous avez un zombie qui vous satisfait, cliquez sur "Next Chapter" ci-dessous pour enregistrer votre zombie et terminer la leçon 1 !**
+**Une fois que vous avez un zombie qui vous satisfait, cliquez sur "Prochain Chapitre" ci-dessous pour enregistrer votre zombie et terminer la leçon 1 !**

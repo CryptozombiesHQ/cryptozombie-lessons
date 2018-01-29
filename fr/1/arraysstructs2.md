@@ -1,6 +1,6 @@
 ---
 title: Manipuler des Structures et des Tableaux
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // Commencer ici
+              // commencez ici
           }
 
       }
@@ -89,5 +89,6 @@ numbers.push(15);
 
 Faisons faire quelque chose à notre fonction createZombie !
 
-1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau` zombies`. Les noms `name` et` dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
+1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau` zombies`. Les noms `name` et `dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
+
 2. Faisons-le en une ligne de code pour garder les choses concises.

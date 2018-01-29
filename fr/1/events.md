@@ -1,6 +1,6 @@
 ---
 title: Évènements
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -73,12 +73,6 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
-
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
-
-Example:
-
 Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _**.
 
 Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
@@ -113,4 +107,4 @@ A chaque fois qu'un nouveau zombie est créé, nous voulons qu'un évènement in
 
 2. Modifiez la fonction `_createZombie` pour déclencher l'évènement `NewZombie` après avoir ajouté le nouveau Zombie à notre tableau `zombies`.
 
-3. Vous allez avoir besoin de l'`id` du zombie. `array.push ()` retourne un `uint` de la nouvelle longueur du tableau - et puisque le premier élément d'un tableau a pour index 0, `array.push() - 1` sera l'index du nouveau zombie ajouté. Stockez le résultat de `zombies.push() - 1` dans un `uint` nommé `id`, vous pourez donc l'utiliser dans l'évènement `NewZombie` de la ligne suivante.
+3. Vous allez avoir besoin de l'`id` du zombie. `array.push ()` retourne un `uint` de la nouvelle longueur du tableau - et puisque le premier élément d'un tableau a pour index 0, `array.push() - 1` sera l'index du nouveau zombie ajouté. Stockez le résultat de `zombies.push() - 1` dans un `uint` nommé `id`, vous pourrez donc l'utiliser dans l'évènement `NewZombie` de la ligne suivante.

@@ -1,6 +1,6 @@
 ---
 title: Opérations Mathématiques
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -10,7 +10,7 @@ material:
       contract ZombieFactory {
 
           uint dnaDigits = 16;
-          //commencez ici
+          // commencez ici
 
       }
     answer: >

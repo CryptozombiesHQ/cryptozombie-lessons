@@ -1,13 +1,13 @@
 ---
 title: "Contrats"
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Entrer la version de solidity ici
+      pragma solidity // 1. Entrez la version de Solidity ici
 
-      //2. Créer le contrat ici
+      // 2. Créez le contrat ici
     answer: >
       pragma solidity ^0.4.19;
 

@@ -1,6 +1,6 @@
 ---
 title: Plus sur les fonctions
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // commencer ici
+          // commencez ici
 
       }
     answer: >
@@ -72,7 +72,7 @@ En Solidity, une déclaration de fonction indique le type de la valeur retourné
 
 La fonction ci-dessus ne change pas un état en Solidity - c.-à-d. elle ne change pas une valeur et n'écrit rien.
 
-Dans ce cas là, nous pouvons la déclarer comme une fonction **_view_** (vue), cela veut dire qu'elle va seulement voir des données sans les modifiers :
+Dans ce cas là, nous pouvons la déclarer comme une fonction **_view_** (vue), cela veut dire qu'elle va seulement voir des données sans les modifier :
 
 ```
 function sayHello() public view returns (string) {
@@ -90,7 +90,7 @@ Cette fonction ne lit aucune donnée du contrat - elle retourne une valeur qui d
 
 # A votre tour
 
-Nous allons vouloir une fonction d'aide pour génèrer un nombre ADN aléatoire à partir d'un string.
+Nous allons vouloir une fonction d'aide pour générer un nombre ADN aléatoire à partir d'un string.
 
 1. Créez une fonction `private` appelée `_generateRandomDna`. Elle prendra un paramètre nommé `_str` (un `string`), et retournera un `uint`.
 
