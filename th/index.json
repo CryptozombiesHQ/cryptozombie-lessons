@@ -1,0 +1,197 @@
+{
+    "base": {
+        "name": "CryptoZombies",
+        "tagLine": "เรียนรู้การเขียนโค้ดบน Ethereum",
+        "lesson": "บทเรียน {lessonNum}",
+        "chapter": "หัวข้อ {chapterNum}",
+        "syncing": "Synchronizing...",
+        "telegram": {
+            "name": "Telegram",
+            "action": "เข้ามาพูดคุยทาง Telegram กับเรา",
+            "link": "https://t.me/loomnetwork"
+        },
+        "twitter": {
+            "name": "Twitter",
+            "link": "https://twitter.com/loomnetwork"
+        }
+    },
+    "editor": {
+        "readOnly": "สามารถอ่านได้อย่างเดียว"
+    },
+    "lessonMenu": {
+        "pageTitle": "@:base.name | @:base.tagLine",
+        "itemLabel": "Lesson {lessonNum}: {title}",
+        "signIn": "ลงชื่อเข้าใช้เพื่อดูสิ่งที่คุณได้สร้างไว้",
+        "progressLoaded": "Your progress is loaded"
+    },
+    "overview": {
+        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+        "presents": "Presents",
+        "title": "บทเรียน {lessonNum}: {title}",
+        "signInPrompt": "คุณต้องทำการลงชื่อเข้าใช้ตรงส่วนนี้ก่อน เพื่อที่เราจะสามารถเชื่อมผลความคืบหน้าและซอมบี้ของคุณ ลงชื่อเข้าใช้โดยการคลิกด้านล่าง:",
+        "signInButton": "ลงชื่อเข้าใช้",
+        "levelUpText": "ในบทเรียนนี้เราจะทำการเพิ่มความสามารถให้แก่ซอมบี้ที่เราได้สร้างขึ้นในบทเรียนที่่แล้ว",
+        "missingZombieText": "ดูเหมือนว่าคุณจะยังไม่มีซอมบี้ที่สร้างขึ้นจากบทเรียนที่ {lessonNum} หากคุณยังไม่สำเร็จบทเรียนก่อนหน้าโปรดกลับไปทำก่อนเข้าสู่บทต่อไป:",
+        "fixMissingZombieText": "หากคุณได้สำเร็จบทเรียนที่ {lessonNum} แล้วและยังได้รับข้อความนี้อีก คุณสามารถข้ามไปยังตอนสุดท้ายและ{generateNewZombie}.",
+        "generateNewZombieLink": "สร้างซอมบี้ใหม่",
+        "areYouReady": "คุณพร้อมที่จะเริ่มแล้วหรือยัง?",
+        "resumeLesson": "ทำบทที่ {lessonNum} ต่อ"
+    },
+    "chapter": {
+        "pageTitle": "@:base.name | {lesson} {chapter}",
+        "header": "หัวข้อ {chapterNum}: {title}",
+        "saveProgress": "บันทึกการเปลี่ยนแปลง",
+        "autosaveEnabled": "เปิดใช้การบันทึกอัตโนมัติ",
+        "resumeProgress": "กลับไปทำต่อ",
+        "showHint": "คำใบ้",
+        "nextChapter": "หัวข้อถัดไป",
+        "tryAgain": "ลองดูอีกครั้ง",
+        "checkAnswer": "ตรวจสอบคำตอบ",
+        "showMeTheAnswer": "แสดงคำตอบ",
+        "hideAnswer": "ซ่อนคำตอบ"
+    },
+    "lessonComplete": {
+        "shareLinksAction": "หรือคุณสามารถคลิกด้านล่างเพื่อแชร์ผลงาน:",
+        "signIn": "ลงชื่อเข้าใช้เพื่อบันทึกการความคืบหน้าของคุณ",
+        "goToNextLesson": "ไปยังบทถัดไป",
+        "lesson1": {
+            "header": [
+                "ยินดีด้วย!คุณได้สำเร็จบทแรกของ CryptoZombies แล้ว!",
+                "คุณได้เข้าใกล้ความสำเร็จในการสร้างเกมของคุณเองบน Ethereum ไปอีก 1 ก้าวอย่างเป็นทางการ",
+                "อย่าลืมที่จะอวดซอมบี้ตัวแรกของคุณให้เพื่อนได้รับรู้!",
+                "นี่คือ permalink เพื่อชมซอมบี้ของคุณ:"
+            ],
+            "footer": "อย่าลืมบันทึกความคืบหน้าของคุณก่อนเข้าสู่บทเรียนที่2",
+            "zombieDesc": "A Level 1 CryptoZombie",
+            "shareLinkText": "เรียน #CryptoZombies บทที่1 จบแล้ว!! เรียนรู้การเขียนโค้ดพื้นฐานสำหรับเกมบน #Ethereum เข้ามาดูซอมบี้ตัวแรกในกองทัพของฉันสิ!"
+        },
+        "lesson2": {
+            "header": [
+                "ยินดีด้วย!คุณได้สำเร็จบทที่ {lesson2} ของ CryptoZombies แล้ว!",
+                "ปลดล็อคความสำเร็จ:",
+                "{zombieName} ได้ถูกอัพเกรดเป็นเลเวล 2!",
+                "คุณได้เพิ่ม NoName, a CatZombie ให้กับกองทัพซอมบี้นี้! (ไม่ต้องห่วง คุณจะได้เรียนรู้เกี่ยวกับการเปลี่ยนชื่อของมันในบทเรียนที่ 3)",
+                "อวด CryptoKitty-slayer ให้เพื่อนของคุณได้รับรู้!",
+                "แชร์ URL นี้เพื่อที่เพื่อนของคุณจะได้เข้ามาปราบ CryptoKitties ด้วยซอมบี้ของคุณ:"
+            ],
+            "footer": [
+                "รู้สึกอย่างไรกับ CryptoZombies? ได้โปรดบออกให้เราทราบ!",
+                "เข้ามาพูดคุยกับเราได้ที่ {telegramLink} หรือติดตามพวกเราทาง {twitterLink}",
+                "เมื่อคุณพร้อมแล้วให้คลิกที่ปุ่มด้านล่าง เพื่อเข้าสู่บทเรียนที่3:"
+            ],
+            "zombieDesc": "A Level 2 CryptoZombie",
+            "shareLinkText": "เรียน #CryptoZombies บทที่ 2 จบแล้ว!! เรียนรู้การเขียนโค้ดพื้นฐานสำหรับเกมบน #Ethereum เข้ามาดูซอมบี้กินน้องแมวสิ! Watch my zombie battle more CryptoKitties:"
+        },
+        "lesson3": {
+            "achievementsUnlocked": "ปลดล็อคความสำเร็จ:",
+            "zombieUpgraded": "{zombieName} ได้ถูกอัพเกรดเป็นเลเวล {levelNum}!",
+            "header": [
+                "ยินดีด้วย!คุณได้สำเร็จบทที่ {lesson3} ของ CryptoZombies แล้ว!",
+                "อวดกองทัพซอมบีี้ให้เพื่อนๆของคุณได้รับรู้!",
+                "แชร์ URL นี้เพื่อที่เพื่อนของคุณจะได้เข้ามาชมกองทัพซอมบี้ของคุณ:"
+            ],
+            "footer": [
+                "บทเรียนที่ 4 จะมาภายในอีก 1-2 สัปดาห์",
+                "คุณจะได้รับ email จากเราเพื่อแจ้งเตือนเมื่อมีบทเรียนใหม่เข้ามา",
+                "ในระหว่างนี้อย่าลืมเข้ามาร่วมคุยกับเราที่ {telegramLink} หรือติดตามเราผ่านทาง {twitterLink}"
+            ],
+            "zombieDesc": "A Level 3 CryptoZombie",
+            "shareLinkText": "เรียน #CryptoZombies บทที่ 3 จบแล้ว!! เข้ามาดูกองทัพซอมบี้ของฉันสิ!"
+        }
+    },
+    "zombieBattle": {
+        "yourTurn": "ตาของคุณ",
+        "zombieDna": "DNAของ{name}",
+        "newZombieGenerated": "{species}ใหม่ ได้ถูกสร้างขึ้น!",
+        "catZombie": "Cat-Zombie",
+        "mutantZombie": "Mutant-Zombie",
+        "newSpeciesDna": "New {species}'s DNA",
+        "cryptoKitty": "CryptoKitty",
+        "human": "มนุษย์",
+        "tryAnotherCombo": "Try Another Combination"
+    },
+    "zombieChar": {
+        "defaultZombieDesc": "A Level 1 CryptoZombie"
+    },
+    "zombieDeck": {
+        "zombieDesc": "A Level {levelNum} CryptoZombie",
+        "nameInputPlaceholder": "ให้ {name} เป็นชื่อใหม่ และเลือก'บันทึก'",
+        "save": "บันทึก",
+        "yourDeck": "Your Deck"
+    },
+    "zombieResult": {
+        "headGeneLabel": "Head Gene:",
+        "eyeGeneLabel": "Eye Gene:",
+        "shirtGeneLabel": "Shirt Gene:",
+        "skinColorGeneLabel": "Skin Color Gene:",
+        "eyeColorGeneLabel": "Eye Color Gene:",
+        "clothesColorGeneLabel": "Clothes Color Gene:",
+        "nameInputPlaceholder": "ใส่ชื่อตรงนี้",
+        "defaultZombieDesc": "A Level 1 CryptoZombie"
+    },
+    "sharePage": {
+        "pageTitle": "เข้ามาชม CryptoZombie {zombieName} ของฉัน!",
+        "presents": "Presents",
+        "zombieDesc": "{name} CryptoZombieเลเวล {levelNum}",
+        "lesson1": {
+            "zombieDesc": "A Level 1 CryptoZombie",
+            "randomZombieGenerator": "random zombie generator",
+            "achievementPreamble": [
+                "เพื่อนของคุณได้เรียนรู้เกี่ยวกับพื้นฐานการพัฒนาเกมบน Ethereum และได้สร้าง{zombieName} CryptoZombieเลเวล1 ให้เป็นข้อพิสูจน์!",
+                "เพื่อที่จะสำเร็จบทที่ 1 ของ CryptoZombies เพื่อนของคุณได้สร้าง {randomZombieGenerator} และเรียนรู้เกี่ยวกับ:"
+            ],
+            "achievements": [
+                "การเขียน Ethereum smart contracts",
+                "การเขียนโปรแกรมด้วย Solidity ซึ่งเป็นภาษาการเขียน smart contract ของ Ethereum",
+                "การสร้างเกมบน Ethereum"
+            ],
+            "tryItOut": "ลองใช้ตัวสร้างซอมบี้แบบสุ่มดู",
+            "below": "below",
+            "above": "above",
+            "zombieGeneratorText": "{tryItOut} ใส่ชื่อลงไปในช่องว่าง {below}{above} เพื่อส้างซอมบี้ตัวใหม่ขึ้น!",
+            "nameInputPlaceholder": "ใส่ชื่อเพื่อสร้างซอมบี้",
+            "callToAction": [
+                "อยากที่จะสร้าง CryptoZombie ของคุณเองและเข้าร่วมการจัดอันดับบ้างรึป่าว?",
+                "เรียนรู้การสร้างเกมบน Ethereum ด้วย CryptoZombies โดยไม่เสียค่าใช้จ่าย!เริ่มได้ตอนนี้เลย!"
+            ]
+        },
+        "lesson2": {
+            "zombieCardBattle": "Zombie Card Battle",
+            "love": "ชอบมาก",
+            "achievementPreamble": [
+                "เพื่อนของคุณเรียน CryptoZombies บทที่ 2 เสร็จแล้ว! และทำการอัพเกรด {zombieName} ให้เป็น CryptoKitty slayer!",
+                "A CryptoKitty Slayer?!",
+                "ดูเหมือนว่า CryptoZombies นั้น {love} การกิน CryptoKitties",
+                "เมื่อ CryptoZombie ได้กิน CryptoKitty เข้าไป DNA ของพวกมันก็จะรวมเข้าด้วยกัน CryptoKitty ก็ได้กลายเป็น CryptoZombie ไปแล้ว!",
+                "เลือก CryptoKitty มาสู้กันและดูว่าคุณจะได้ CatZombie แบบไหน!",
+                "Solidity Concepts Mastered",
+                "เพื่อที่จะประสบความสำเร็จในบทที่ 2 ใน CryptoZombies Code School เพื่อนของคุณได้สร้าง {zombieCardBattle} และเรียนรู้เกี่ยวกับ:"
+            ],
+            "achievements": [
+                "พื้นฐานการสร้างเกมในรูปแบบผู้เล่นหลายคน (multi-player game)",
+                "การมีปฎิสัมพันธ์กับ contracts อื่นๆ บน Ethereum network",
+                "การจัดการ Solidity projects ที่ใหญ่ขึ้นเข้าไปใน contract จำนวนที่มากขึ้น"
+            ],
+            "callToAction": [
+                "อยากที่จะสร้าง CryptoZombie ของคุณเองและเข้าร่วมการจัดอันดับบ้างใช่ไหม?",
+                "เรียนรู้การสร้างเกมบน Ethereum ด้วย CryptoZombies โดยไม่เสียค่าใช้จ่าย! เริ่มได้ตอนนี้เลย:"
+            ]
+        },
+        "lesson3": {
+            "achievementPreamble": [
+                "เพื่อนของคุณเรียน CryptoZombies บทที่ 2 เสร็จแล้ว! และได้ทำการอัพเกรดกองทัพซอมบี้ของเขาด้วย!",
+                "เพื่อที่จะประสบความสำเร็จในบทที่ 3 ของ CryptoZombies เพื่อนของคุณได้เรียนรู้เกี่ยวกับ:"
+            ],
+            "achievements": [
+                "การสร้างupdatable smart contracts",
+                "การสร้างความปลอดภัยให้ contracts ด้วย contract ownership",
+                "Gas and gas optimization on Ethereum",
+                "Function modifiers and security checks"
+            ],
+            "callToAction": [
+                "อยากที่จะสร้าง CryptoZombie ของคุณเองและเข้าร่วมการจัดอันดับบ้างรึป่าว",
+                "เรียนรู้การสร้างเกมบน Ethereum ด้วย CryptoZombies โดยไม่เสียค่าใช้จ่าย! เริ่มได้ตอนนี้เลย:"
+            ]
+        }
+    }
+}
