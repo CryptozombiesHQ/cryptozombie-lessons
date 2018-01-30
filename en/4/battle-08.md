@@ -254,4 +254,4 @@ In chapter 6 we calculated a random number from 0 to 100. Now let's use that num
 
   c. Increment `enemyZombie`'s `lossCount`. (Loser!!!!!! 😫 😫 😫)
 
-  d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string "zombie". (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).
+  d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).

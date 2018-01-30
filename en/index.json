@@ -97,6 +97,23 @@
             ],
             "zombieDesc": "A Level 3 CryptoZombie",
             "shareLinkText": "I just completed #CryptoZombies Lesson 3! Check out my zombie army:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Achievements Unlocked:",
+            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "header": [
+                "Congratulations! You have completed {lesson4} of CryptoZombies!",
+                "Show off your zombie army to your friends!",
+                "Share this URL so your friends can check out your army:"
+            ],
+            "footer": [
+                "Lesson 5 coming in 1-2 weeks",
+                "You'll get an email from us as soon as it's ready.",
+                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+            ],
+            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "shareLinkText": "I just completed #CryptoZombies Lesson 4! Check out my zombie army:"
         }
     },
     "zombieBattle": {
@@ -187,6 +204,23 @@
                 "Securing contracts with contract ownership",
                 "Gas and gas optimization on Ethereum",
                 "Function modifiers and security checks"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil Iota zombie!",
+                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
+                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Payable functions, and how to earn money from your Ethereum-based games",
+                "Withdrawing ETH from smart contracts",
+                "Random number generation & security on Ethereum",
+                "And more!"
             ],
             "callToAction": [
                 "Want to build your own CryptoZombie army and join the ranks?",
