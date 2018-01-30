@@ -126,9 +126,9 @@ contract NumberInterface {
 
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38... 
+  address NumberInterfaceAddress = 0xab38...; 
   // ここは、イーサリアム上のFavoriteNumberコントラクトのアドレスが入る。
-  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
+  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
   // `numberContract`は他のコントラクトを指し示すものになっているぞ 
 
   function someFunction() public {
