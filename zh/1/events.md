@@ -103,7 +103,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 我们想每当一个僵尸创造出来时，我们的前端都能监听到这个事件，并将它显示出来。
 
-1. 定义一个 `事件` 叫做 `NewZombie`. 它可以含有 `zombieId` (`uint`), `name` (`string`), 和 `dna` (`uint`).
+1. 定义一个 `事件` 叫做 `NewZombie`. 它有3个参数: `zombieId` (`uint`), `name` (`string`), 和 `dna` (`uint`).
 
 2. 修改 `_createZombie` 函数使得当新僵尸造出来并加入`zombies`数组后，生成事件`NewZombie`。
 
