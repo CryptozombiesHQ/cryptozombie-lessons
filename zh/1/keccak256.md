@@ -21,7 +21,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               // 这里开始
@@ -46,7 +46,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -56,11 +56,11 @@ material:
       }
 ---
 
-如何让 `_generateRandomDna` 函数返回一个(半) 随机的 `uint`?
+如何让 `_generateRandomDna` 函数返回一个全(半) 随机的 `uint`?
 
 Ethereum 内部有一个散列函数`keccak256`，它用了SHA3版本。一个散列函数基本上就是把一个字符串转换为一个256位的16进制数字。字符串的一个微小变化会引起散列数据极大变化。
 
-这在 Ethereum 中有很多应用，但是现在我们只是用它造一个假想的随机数。
+这在 Ethereum 中有很多应用，但是现在我们只是用它造一个伪随机数。
 
 例子:
 
@@ -82,18 +82,18 @@ keccak256("aaaac");
 ```
 uint8 a = 5;
 uint b = 6;
-// 将会跑出错误，因为 a * b 返回 uint, 而不是 uint8:
-uint8 c = a * b; 
+// 将会抛出错误，因为 a * b 返回 uint, 而不是 uint8:
+uint8 c = a * b;
 // 我们需要将 b 转换为 uint8:
-uint8 c = a * uint8(b); 
+uint8 c = a * uint8(b);
 ```
 
-上面, `a * b` 返回类型是 `uint`, 但是我们试图保存为`uint8`类型, 这回造成潜在的错误。如果把它的数据类型转换为`uint8`, 就可以了，编译器也不会出错。
+上面, `a * b` 返回类型是 `uint`, 但是当我们尝试用`uint8`类型接收时, 就会造成潜在的错误。如果把它的数据类型转换为`uint8`, 就可以了，编译器也不会出错。
 
 # 测试一把
 
 给`_generateRandomDna` 函数添加代码! 它应该完成如下功能:
 
-1. 第一行代码取`_str`的`keccak256`散列值，伪随机十六进制数。类型转换为`uint`, 最后保存在类型为 `uint` 变量 `rand`中。
+1. 第一行代码取`_str`的`keccak256`散列值，伪随机十六进制数。类型转换为`uint`, 最后保存在类型为 `uint` 名为 `rand`的变量中。
 
-2. 我们只想让我们的DNA的长度为16位 (还记得 `dnaModulus`?)。所以第二行代码应该`return` 上数值一部分 (`%`) `dnaModulus`.
+2. 我们只想让我们的DNA的长度为16位 (还记得 `dnaModulus`?)。所以第二行代码应该`return` 上面计算的数值对 `dnaModulus`求余数(`%`).

@@ -53,7 +53,7 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-这是一个称作为 `eatHamburgers` 的函数，它接受两个参数：一个 `string` 和 一个 `uint`。现在函数本身还是空的。
+这是一个名为 `eatHamburgers` 的函数，它接受两个参数：一个 `string`类型的 和 一个 `uint`类型的。现在函数内部还是空的。
 
 > 注：: 习惯上函数里的变量都是以(`_`)开头 (但不是硬性规定) 以区别全局变量。我们整个教程都会沿用这个习惯。
 
@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 在我们的应用里，我们要能创建一些僵尸，让我们写一个函数做这件事吧！
 
-1. 建立一个函数 `createZombie`. 它接受两个输入变量: **名字** (类型`string`), 和 **__dna_** (类型`uint`)。
+1. 建立一个函数 `createZombie`. 它有两个参数: **_name** (类型为`string`), 和 **__dna_** (类型为`uint`)。
 
 暂时让函数空着——我们在后面会增加内容。

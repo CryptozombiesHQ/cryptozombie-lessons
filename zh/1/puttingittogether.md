@@ -21,7 +21,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -49,7 +49,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -66,14 +66,14 @@ material:
 
 我们就快完成我们的随机僵尸制造器了，来写一个公共的函数把所有的部件连接起来。
 
-写一个公共函数，它有一个变量，用来输入僵尸的名字，之后用它生成僵尸的DNA。
+写一个公共函数，它有一个参数，用来接收僵尸的名字，之后用它生成僵尸的DNA。
 
 # 测试一把
 
-1. 建立一个 `public` 函数，命名为` createRandomZombie`. 它将被传入一个变量 `_name` (数据类型是 `string`). _(注: 定义公共函数 `public` 和定义一个私有 `private` 函数的做法一样)_
+1. 创建一个 `public` 函数，命名为` createRandomZombie`. 它将被传入一个变量 `_name` (数据类型是 `string`). _(注: 定义公共函数 `public` 和定义一个私有 `private` 函数的做法一样)_
 
 2. 函数的第一行应该调用 `_generateRandomDna` 函数，传入 `_name` 参数, 结果保存在一个类型为 `uint` 的变量里，命名为 `randDna`.
 
 3. 第二行调用 `_createZombie` 函数， 传入参数： `_name` 和 `randDna`.
 
-4. 结果应该生成4行代码 (包括函数的结束符号 `}` )。
+4. 整个函数应该是4行代码 (包括函数的结束符号 `}` )。
