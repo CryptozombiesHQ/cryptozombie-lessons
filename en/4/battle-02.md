@@ -220,7 +220,7 @@ Great! Now let's figure out the battle logic.
 
 All good games require some level of randomness. So how do we generate random numbers in Solidity?
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+The real answer here is — you can't. Well, at least you can't do it safely.
 
 Let's look at why.
 
@@ -250,7 +250,7 @@ Once a node has solved the PoW, the other nodes stop trying to solve the PoW, ve
 
 **This makes our random number function exploitable.**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Let's say we had a coin flip contract — heads will double your money, tails will lose you everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
 
 If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
 
