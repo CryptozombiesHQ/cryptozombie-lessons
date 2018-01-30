@@ -126,9 +126,9 @@ We can use it in a contract as follows:
 
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38... 
+  address NumberInterfaceAddress = 0xab38...; 
   // ^ The address of the FavoriteNumber contract on Ethereum
-  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
+  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
   // Now `numberContract` is pointing to the other contract
 
   function someFunction() public {
