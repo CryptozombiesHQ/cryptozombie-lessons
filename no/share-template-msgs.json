@@ -1,0 +1,14 @@
+{
+    "1": {
+        "pageTitle": "Sjekk ut min CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "Jeg ble akkurat ferdig med Leksjon 1 og lærte det grunnlegende for å lage et spill for Ethereum. Ta en titt på Zombien min!"
+    },
+    "2": {
+        "pageTitle": "Min CryptoZombie {{ .ZombieName }} spiste akkurat en CryptoKitty og gikk opp en level!",
+        "ogDesc": "Jeg ble akkurat ferdig med CryptoZombies Leksjon 2, og la til en reanimert CryptoKitty til min Zombie-hær. Kom og ta en titt!"
+    },
+    "3": {
+        "pageTitle": "Sjekk ut min CryptoZombie hær!",
+        "ogDesc": "Jeg ble akkurat ferdig med CryptoZombies Leksjon 3! Min zombie hær blir større"
+    }
+}
