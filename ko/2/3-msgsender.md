@@ -1,6 +1,6 @@
 ---
 title: Msg.sender
-actions: ['checkAnswer', 'hints']
+actions: ['정답 확인하기', '힌트 보기']
 material:
   editor:
     language: sol
@@ -26,7 +26,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              // 从这里开始
+              // 여기서 시작
               NewZombie(id, _name, _dna);
           }
 
@@ -82,52 +82,52 @@ material:
       }
 ---
 
-现在有了一套映射来记录僵尸的所有权了，我们可以修改 `_createZombie` 方法来运用它们。
+좀비 소유자를 추적하는 매핑을 가지고 있으니 `_createZombie` 메소드를 업데이트해서 이 매핑을 이용하도록 하고 싶네.
 
-为了做到这一点，我们要用到 `msg.sender`。
+이를 위해, `msg.sender`이라는 것을 이용할 필요가 있네. 
 
 ## msg.sender
 
-在 Solidity 中，有一些全局变量可以被所有功能调用。 其中一个就是 `msg.sender`，它指的是当前调用者（或智能合约）的 `address`。
+솔리디티에는 모든 함수에서 이용 가능한 특정 전역 변수들이 있지. 그 중의 하나가 현재 함수를 호출한 사람 (혹은 스마트 컨트렉트)의 주소를 가리키는 `msg.sender`이지.
 
->注意：在 Solidity 中，功能执行始终需要从外部调用者开始。 一个合约只会在区块链上什么也不做，除非有人调用其中的函数。调用者就是 `msg.sender`。
+> 참고: 솔리디티에서 함수 실행은 항상 외부 호출자가 시작하네. 컨트렉트는 누군가가 컨트렉트의 함수를 호출할 때까지 블록체인 상에서 아무 것도 안 하고 있을 거네. 그러니 항상 `msg.sender`가 있어야 하네. 
 
-以下是使用 `msg.sender` 来更新 `mapping` 的例子：
+`msg.sender`를 이용하고 `mapping`을 업데이트하는 예시가 여기에 있네: 
 
 ```
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
-  // 更新我们的 `favoriteNumber` 映射来将 `_myNumber` 存储给 `msg.sender`
+  // `msg.sender`에 대해 `_myNumber`가 저장되도록 `favoriteNumber` 매핑을 업데이트한다 `
   favoriteNumber[msg.sender] = _myNumber;
-  // ^ 存储数据至映射的方法和数组一样
+  // ^ 데이터를 저장하는 구문은 배열로 데이터를 저장할 떄와 동일하다 
 }
 
 function whatIsMyNumber() public view returns (uint) {
-  // 拿到存贮在调用者里的值
-  // 若调用者还没调 setMyNumber， 则值为 `0`
+  // sender의 주소에 저장된 값을 불러온다 
+  // sender가 `setMyNumber`을 아직 호출하지 않았다면 반환값은 `0`이 될 것이다
   return favoriteNumber[msg.sender];
 }
 ```
 
-在这个小小的例子中，任何人都可以调用 `setMyNumber` 在我们的合约中存下一个 `uint` 并且与他们的地址相绑定。 然后，他们调用 `whatIsMyNumber` 就会返回他们存储的 `uint`。
+이 간단한 예시에서 누구나 `setMyNumber`을 호출하여 본인의 주소와 연결된 우리 컨트렉트 내에 `uint`를 저장할 수 있지. 
 
-使用 `msg.sender` 很安全，因为它具有以太坊区块链的安全保障 —— 除非窃取与以太坊地址相关联的私钥，否则是没有办法修改其他人的数据的。
+`msg.sender`를 활용하면 자네가 이더리움 블록체인의 보안성을 이용할 수 있게 되지. 즉, 누군가가 다른 사람의 데이터를 변경할 수 있으려면 해당 이더리움 주소와 관련된 개인키를 훔치는 것 밖에는 다른 방법이 없지.
 
-# 实战演习
+# 직접 해보기
 
-我们来修改第1课的 `_createZombie` 方法，将僵尸分配给函数调用者吧。
+레슨 1에서 다뤘던 `_createZombie` 메소드를 업데이트하여 이 함수를 호출하는 누구나에게 좀비 소유권을 부여하도록 해 보세. 
 
-1. 首先，在得到新的僵尸 `id` 后，更新 `zombieToOwner` 映射，在 `id` 下面存入 `msg.sender`。
+1. 먼저, 새로운 좀비의 `id`가 반환된 후에  `zombieToOwner` 매핑을 업데이트하여 `id`에 대하여 `msg.sender`가 저장되도록 해보자. 
 
-2. 然后，我们为这个 `msg.sender` 名下的 `ownerZombieCount` 加 1。
+2. 그 다음, 저장된 `msg.sender`을 고려하여 `ownerZombieCount`를 증가시키자.
 
-跟在 JavaScript 中一样， 在 Solidity 中你也可以用 `++` 使 `uint` 递增。
+자바스크립트와 마찬가지로 솔리디티에서도 `uint`를 `++`로 증가시킬 수 있다. 
 
 ```
 uint number = 0;
 number++;
-// `number` 现在是 `1`了
+// `number`는 이제 `1`이다
 ```
 
-修改两行代码即可。
+자네의 최종 답안은 코드 2줄로 표현되어야 하네.

@@ -1,6 +1,6 @@
 ---
-title: 使用接口
-actions: ['checkAnswer', 'hints']
+title: 인터페이스 활용하기
+actions: ['정답 확인하기', '힌트 보기']
 material:
   editor:
     language: sol
@@ -28,7 +28,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // Initialize kittyContract here using `ckAddress` from above
+          // `ckAddress`를 이용하여 여기에 kittyContract를 초기화한다 
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -114,7 +114,7 @@ material:
       }
 ---
 
-继续前面 `NumberInterface` 的例子，我们既然将接口定义为：
+이전 챕터의 예시였던 `NumberInterface`를 활용하여 설명을 이어 나가겠네. 아래와 같이 인터페이스가 정의되면:
 
 ```
 contract NumberInterface {
@@ -122,27 +122,27 @@ contract NumberInterface {
 }
 ```
 
-我们可以在合约中这样使用：
+다음과 같이 컨트렉트에서 인터페이스를 이용할 수 있지: 
 
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38...; 
-  // ^ The address of the FavoriteNumber contract on Ethereum
-  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
-  // Now `numberContract` is pointing to the other contract
+  address NumberInterfaceAddress = 0xab38... 
+  // ^ 이더리움 상의 FavoriteNumber 컨트렉트 주소이다 
+  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
+  // 이제 `numberContract`는 다른 컨트렉트를 가리키고 있다. Now `numberContract` is pointing to the other contract
 
   function someFunction() public {
-    // Now we can call `getNum` from that contract:
+    // 이제 `numberContract`가 가리키고 있는 컨트렉트에서 `getNum` 함수를 호출할 수 있다: 
     uint num = numberContract.getNum(msg.sender);
-    // ...and do something with `num` here
+    // ...그리고 여기서 `num`으로 무언가를 할 수 있다 
   }
 }
 ```
 
-通过这种方式，只要将您合约的可见性设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
+이런 식으로 자네의 컨트렉트가 이더리움 블록체인 상의 다른 어떤 컨트렉트와도 상호작용할 수 있네. 물론 상호작용하는 함수가 `public`이나 `external`로 선언되어 있어야 하지. 
 
-# 实战演习
+# 직접 해보기
 
-我们来建个自己的合约去读取另一个智能合约-- CryptoKitties 的内容吧！
+크립토키티 스마트 컨트렉트에서 데이터를 읽어 오도록 우리 컨트렉트를 설정해 보세! 
 
-1. 我已经将代码中 CryptoKitties 合约的地址保存在一个名为 `ckAddress` 的变量中。在下一行中，请创建一个名为 `kittyContract` 的 KittyInterface，并用 `ckAddress` 为它初始化 —— 就像我们为 `numberContract`所做的一样。
+1. 코드를 보면 `ckAddress`라는 변수에 크립토키티 컨트렉트 주소가 입력되어 있다. 다음 줄에 `kittyContract`라는 `KittyInterface`를 생성하고, 위의 `numberContract` 선언 시와 동일하게 `ckAddress`를 이용하여 초기화한다. 
