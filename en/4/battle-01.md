@@ -215,10 +215,10 @@ Following the format from previous chapters, we'll organize our code by creating
 
 Let's review creating a new contract. Repetition leads to mastery!
 
-If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peaking first to test your knowledge.
+If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
 
 1. Declare at the top of the file that we're using Solidity version `^0.4.19`.
 
 2. `import` from `zombiehelper.sol`.
 
-3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the function body empty for now.
+3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.

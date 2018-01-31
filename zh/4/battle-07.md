@@ -1,11 +1,58 @@
 ---
-title: Zombie Loss 😞
+title: 僵尸的输赢
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
+      "zombiefactory.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./ownable.sol";
+
+        contract ZombieFactory is Ownable {
+
+            event NewZombie(uint zombieId, string name, uint dna);
+
+            uint dnaDigits = 16;
+            uint dnaModulus = 10 ** dnaDigits;
+            uint cooldownTime = 1 days;
+
+            struct Zombie {
+              string name;
+              uint dna;
+              uint32 level;
+              uint32 readyTime;
+              // 1. Add new properties here
+            }
+
+            Zombie[] public zombies;
+
+            mapping (uint => address) public zombieToOwner;
+            mapping (address => uint) ownerZombieCount;
+
+            function _createZombie(string _name, uint _dna) internal {
+                // 2. Modify new zombie creation here:
+                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
+                zombieToOwner[id] = msg.sender;
+                ownerZombieCount[msg.sender]++;
+                NewZombie(id, _name, _dna);
+            }
+
+            function _generateRandomDna(string _str) private view returns (uint) {
+                uint rand = uint(keccak256(_str));
+                return rand % dnaModulus;
+            }
+
+            function createRandomZombie(string _name) public {
+                require(ownerZombieCount[msg.sender] == 0);
+                uint randDna = _generateRandomDna(_name);
+                randDna = randDna - randDna % 100;
+                _createZombie(_name, randDna);
+            }
+
+        }
       "zombieattack.sol": |
         import "./zombiehelper.sol";
 
@@ -22,12 +69,6 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            if (rand <= attackVictoryProbability) {
-              myZombie.winCount++;
-              myZombie.level++;
-              enemyZombie.lossCount++;
-              feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // start here
           }
         }
       "zombiehelper.sol": |
@@ -132,53 +173,6 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
-      "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./ownable.sol";
-
-        contract ZombieFactory is Ownable {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-            uint cooldownTime = 1 days;
-
-            struct Zombie {
-              string name;
-              uint dna;
-              uint32 level;
-              uint32 readyTime;
-              uint16 winCount;
-              uint16 lossCount;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                randDna = randDna - randDna % 100;
-                _createZombie(_name, randDna);
-            }
-
-        }
       "ownable.sol": |
         /**
          * @title Ownable
@@ -220,59 +214,72 @@ material:
 
         }
     answer: >
-      import "./zombiehelper.sol";
+      pragma solidity ^0.4.19;
 
-      contract ZombieBattle is ZombieHelper {
-        uint randNonce = 0;
-        uint attackVictoryProbability = 70;
+      import "./ownable.sol";
 
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
-        }
+      contract ZombieFactory is Ownable {
 
-        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
-          Zombie storage myZombie = zombies[_zombieId];
-          Zombie storage enemyZombie = zombies[_targetId];
-          uint rand = randMod(100);
-          if (rand <= attackVictoryProbability) {
-            myZombie.winCount++;
-            myZombie.level++;
-            enemyZombie.lossCount++;
-            feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-          } else {
-            myZombie.lossCount++;
-            enemyZombie.winCount++;
+          event NewZombie(uint zombieId, string name, uint dna);
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+          uint cooldownTime = 1 days;
+
+          struct Zombie {
+            string name;
+            uint dna;
+            uint32 level;
+            uint32 readyTime;
+            uint16 winCount;
+            uint16 lossCount;
           }
-          _triggerCooldown(myZombie);
-        }
+
+          Zombie[] public zombies;
+
+          mapping (uint => address) public zombieToOwner;
+          mapping (address => uint) ownerZombieCount;
+
+          function _createZombie(string _name, uint _dna) internal {
+              uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
+              zombieToOwner[id] = msg.sender;
+              ownerZombieCount[msg.sender]++;
+              NewZombie(id, _name, _dna);
+          }
+
+          function _generateRandomDna(string _str) private view returns (uint) {
+              uint rand = uint(keccak256(_str));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string _name) public {
+              require(ownerZombieCount[msg.sender] == 0);
+              uint randDna = _generateRandomDna(_name);
+              randDna = randDna - randDna % 100;
+              _createZombie(_name, randDna);
+          }
+
       }
 ---
 
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+对我们的僵尸游戏来说，我们将要追踪我们的僵尸输赢了多少场。有了这个我们可以在游戏里维护一个 "僵尸排行榜"。
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+有多种方法在我们的DApp里面保存一个数值 — 作为一个单独的映射，作为一个“排行榜”结构体，或者保存在 `Zombie` 结构体内。
 
-To implement this logic, we'll need an `else` statement.
+每个方法都有其优缺点，取决于我们打算如何和这些数据打交道。在这个教程中，简单起见我们将这个状态保存在 `Zombie` 结构体中，将其命名为 `winCount` 和 `lossCount`。
 
-`else` statements are written just like in JavaScript and many other languages:
+我们跳回 `zombiefactory.sol`, 将这些属性添加进 `Zombie` 结构体.
 
-```
-if (zombieCoins[msg.sender] > 100000000) {
-  // You rich!!!
-} else {
-  // We require more ZombieCoins...
-}
-```
+## 测试一把
 
-## Put it to the test
+1. 修改 `Zombie` 结构体，添加两个属性:
 
-1. Add an `else` statement. If our zombie loses:
+  a. `winCount`, 一个 `uint16`
 
-  a. Increment `myZombie`'s `lossCount`.
+  b. `lossCount`, 也是一个 `uint16`
 
-  b. Increment `enemyZombie`'s `winCount`.
+  >注意： 记住, 因为我们能在结构体中包装`uint`, 我们打算用适合我们的最小的 `uint`。 一个 `uint8` 太小了， 因为 2^8 = 256 —— 如果我们的僵尸每天都作战，不到一年就溢出了。但是 2^16 = 65536 （`uint16`）—— 除非一个僵尸连续179年每天作战，否则我们就是安全的。
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
+2. 现在我们的 `Zombie` 结构体有了新的属性， 我们需要修改 `_createZombie()` 中的函数定义。
 
-
+  修改僵尸生成定义，让每个新僵尸都有 `0` 赢和 `0` 输。

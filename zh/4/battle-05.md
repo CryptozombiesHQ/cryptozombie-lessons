@@ -1,5 +1,5 @@
 ---
-title: Payable
+title: 更多重构
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -13,20 +13,28 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. Define levelUpFee here
+          uint levelUpFee = 0.001 ether;
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. Insert levelUp function here
+          function withdraw() external onlyOwner {
+            owner.transfer(this.balance);
+          }
 
+          function setLevelUpFee(uint _fee) external onlyOwner {
+            levelUpFee = _fee;
+          }
+
+          // 1. Modify this function to use `ownerOf`:
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
+          // 2. Do the same with this function:
           function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
@@ -44,6 +52,21 @@ material:
             return result;
           }
 
+        }
+      "zombieattack.sol": |
+        import "./zombiehelper.sol";
+
+        contract ZombieBattle is ZombieHelper {
+          uint randNonce = 0;
+          uint attackVictoryProbability = 70;
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          function attack(uint _zombieId, uint _targetId) external {
+          }
         }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
@@ -69,6 +92,11 @@ material:
 
           KittyInterface kittyContract;
 
+          modifier ownerOf(uint _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            _;
+          }
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
@@ -81,8 +109,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
@@ -199,18 +226,19 @@ material:
           _;
         }
 
-        function levelUp(uint _zombieId) external payable {
-          require(msg.value == levelUpFee);
-          zombies[_zombieId].level++;
+        function withdraw() external onlyOwner {
+          owner.transfer(this.balance);
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
+        function setLevelUpFee(uint _fee) external onlyOwner {
+          levelUpFee = _fee;
+        }
+
+        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
           zombies[_zombieId].name = _newName;
         }
 
-        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
           zombies[_zombieId].dna = _newDna;
         }
 
@@ -229,68 +257,10 @@ material:
       }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+在 `zombiehelper.sol`里有几处地方，需要我们实现我们新的 `modifier`—— `ownerOf`。
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+## 测试一把
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+1. 修改 `changeName()` 使其使用 `ownerOf`
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
-
-These modifiers can all be stacked together on a function definition as follows:
-
-```
-function test() external view onlyOwner anotherModifier { /* ... */ }
-```
-
-In this chapter, we're going to introduce one more function modifier: `payable`.
-
-## The `payable` Modifier
-
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether. 
-
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
-
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for for you to call a function **and** pay money to the contract at the same time.
-
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
-
-## Let's look at an example
-```
-contract OnlineStore {
-  function buySomething() external payable {
-    // Check to make sure 0.001 ether was sent to the function call:
-    require(msg.value == 0.001 ether);
-    // If so, some logic to transfer the digital item to the caller of the function:
-    transferThing(msg.sender);
-  }
-}
-```
-
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
-
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
-
-```
-// Assuming `OnlineStore` points to your contract on Ethereum:
-OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
-```
-
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
-
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
-
-
-## Putting it to the Test
-
-Let's create a `payable` function in our zombie game.
-
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH wil get stored in the contract, which you own — this a simple example of how you could make money on your games!
-
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
-
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
-
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
-
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.
+2. 修改 `changeDna()` 使其使用 `ownerOf`

@@ -1,5 +1,5 @@
 ---
-title: Zombie Fightin'
+title: 回到攻击！
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -11,14 +11,17 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Create attackVictoryProbability here
+          uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // Create new function here
+          // 1. Add modifier here
+          function attack(uint _zombieId, uint _targetId) external {
+            // 2. Start function definition here
+          }
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -42,18 +45,11 @@ material:
             levelUpFee = _fee;
           }
 
-          function levelUp(uint _zombieId) external payable {
-            require(msg.value == levelUpFee);
-            zombies[_zombieId].level++;
-          }
-
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
             zombies[_zombieId].name = _newName;
           }
 
-          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
             zombies[_zombieId].dna = _newDna;
           }
 
@@ -94,6 +90,11 @@ material:
 
           KittyInterface kittyContract;
 
+          modifier ownerOf(uint _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            _;
+          }
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
@@ -106,8 +107,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
@@ -222,28 +222,26 @@ material:
           return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
 
-        function attack(uint _zombieId, uint _targetId) external {
+        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+          Zombie storage myZombie = zombies[_zombieId];
+          Zombie storage enemyZombie = zombies[_targetId];
+          uint rand = randMod(100);
         }
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+重构完成了，回到 `zombieattack.sol`。
 
-Our zombie battles will work as follows:
+继续来完善我们的 `attack` 函数， 现在我们有了 `ownerOf` 修饰符来用了。
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+## 测试一把
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+1. 将 `ownerOf` 修饰符添加到 `attack` 来确保调用者拥有`_zombieId`.
 
-## Put it to the test
+2. 我们的函数所需要做的第一件事就是获得一个双方僵尸的 `storage` 指针， 这样我们才能很方便和它们交互：
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+  a. 定义一个 `Zombie storage` 命名为 `myZombie`，使其值等于 `zombies[_zombieId]`。
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+  b. 定义一个 `Zombie storage` 命名为 `enemyZombie`， 使其值等于  `zombies[_targetId]`。
 
-Leave the function body empty for now.
+3. 我们将用一个0到100的随机数来确定我们的战斗结果。 定义一个 `uint`，命名为 `rand`， 设定其值等于 `randMod` 函数的返回值，此函数传入 `100`作为参数。

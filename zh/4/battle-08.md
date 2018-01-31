@@ -1,5 +1,5 @@
 ---
-title: Zombie Fightin'
+title: 僵尸胜利了 😄
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -11,14 +11,19 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Create attackVictoryProbability here
+          uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // Create new function here
+          function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+            Zombie storage myZombie = zombies[_zombieId];
+            Zombie storage enemyZombie = zombies[_targetId];
+            uint rand = randMod(100);
+            // Start here
+          }
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -42,18 +47,11 @@ material:
             levelUpFee = _fee;
           }
 
-          function levelUp(uint _zombieId) external payable {
-            require(msg.value == levelUpFee);
-            zombies[_zombieId].level++;
-          }
-
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
             zombies[_zombieId].name = _newName;
           }
 
-          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
             zombies[_zombieId].dna = _newDna;
           }
 
@@ -94,6 +92,11 @@ material:
 
           KittyInterface kittyContract;
 
+          modifier ownerOf(uint _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            _;
+          }
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
@@ -106,8 +109,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
@@ -222,28 +224,34 @@ material:
           return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
 
-        function attack(uint _zombieId, uint _targetId) external {
+        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+          Zombie storage myZombie = zombies[_zombieId];
+          Zombie storage enemyZombie = zombies[_targetId];
+          uint rand = randMod(100);
+          if (rand <= attackVictoryProbability) {
+            myZombie.winCount++;
+            myZombie.level++;
+            enemyZombie.lossCount++;
+            feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
+          }
         }
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+有了 `winCount` 和 `lossCount`，我们可以根据僵尸哪个僵尸赢了战斗来更新它们了。
 
-Our zombie battles will work as follows:
+在第六章我们计算出来一个0到100的随机数。现在让我们用那个数来决定那谁赢了战斗，并以此更新我们的状态。
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+## 测试一把
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+1. 创建一个 `if` 语句来检查 `rand` 是不是 **_小于或者等于_** `attackVictoryProbability`。
 
-## Put it to the test
+2. 如果以上条件为 `true`， 我们的僵尸就赢了！所以：
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+  a. 增加 `myZombie` 的 `winCount`。
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+  b. 增加 `myZombie` 的 `level`。 (升级了啦!!!!!!!)
 
-Leave the function body empty for now.
+  c. 增加 `enemyZombie` 的 `lossCount`. (输家!!!!!! 😫 😫 😫)
+
+  d. 运行 `feedAndMultiply` 函数。 在 `zombiefeeding.sol` 里查看调用它的语句。 对于第三个参数 (`_species`)，传入字符串 "zombie". （现在它实际上什么都不做，不过在稍后， 如果我们愿意，可以添加额外的方法，用来制造僵尸变的僵尸）。

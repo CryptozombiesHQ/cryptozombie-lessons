@@ -1,11 +1,25 @@
 ---
-title: Payable
+title: 僵尸对战
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
+      "zombieattack.sol": |
+        import "./zombiehelper.sol";
+
+        contract ZombieBattle is ZombieHelper {
+          uint randNonce = 0;
+          // Create attackVictoryProbability here
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          // Create new function here
+        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -13,14 +27,25 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. Define levelUpFee here
+          uint levelUpFee = 0.001 ether;
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. Insert levelUp function here
+          function withdraw() external onlyOwner {
+            owner.transfer(this.balance);
+          }
+
+          function setLevelUpFee(uint _fee) external onlyOwner {
+            levelUpFee = _fee;
+          }
+
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
+          }
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -186,111 +211,39 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      import "./zombiehelper.sol";
 
-      import "./zombiefeeding.sol";
+      contract ZombieBattle is ZombieHelper {
+        uint randNonce = 0;
+        uint attackVictoryProbability = 70;
 
-      contract ZombieHelper is ZombieFeeding {
-
-        uint levelUpFee = 0.001 ether;
-
-        modifier aboveLevel(uint _level, uint _zombieId) {
-          require(zombies[_zombieId].level >= _level);
-          _;
+        function randMod(uint _modulus) internal returns(uint) {
+          randNonce++;
+          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
 
-        function levelUp(uint _zombieId) external payable {
-          require(msg.value == levelUpFee);
-          zombies[_zombieId].level++;
+        function attack(uint _zombieId, uint _targetId) external {
         }
-
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].name = _newName;
-        }
-
-        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].dna = _newDna;
-        }
-
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
-          uint[] memory result = new uint[](ownerZombieCount[_owner]);
-          uint counter = 0;
-          for (uint i = 0; i < zombies.length; i++) {
-            if (zombieToOwner[i] == _owner) {
-              result[counter] = i;
-              counter++;
-            }
-          }
-          return result;
-        }
-
       }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+我们的合约已经有了一些随机性的来源，可以用进我们的僵尸战斗中去计算结果。
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+我们的僵尸战斗看起来将是这个流程：
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+- 你选择一个自己的僵尸，然后选择一个对手的僵尸去攻击。
+- 如果你是攻击方，你将有70%的几率获胜，防守方将有30%的几率获胜。
+- 所有的僵尸（攻守双方）都将有一个 `winCount` 和一个 `lossCount`，这两个值都将根据战斗结果增长。
+- 若攻击方获胜，这个僵尸将升级并产生一个新僵尸。
+- 如果攻击方失败，除了失败次数将加一外，什么都不会发生。
+- 无论输赢，当前僵尸的冷却时间都将被激活。
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
+这有一大堆的逻辑需要处理，我们将把这些步骤分解到接下来的课程中去。
 
-These modifiers can all be stacked together on a function definition as follows:
+## 测试一把
 
-```
-function test() external view onlyOwner anotherModifier { /* ... */ }
-```
+1. 给我们合约一个 `uint` 类型的变量，命名为 `attackVictoryProbability`, 将其值设定为 `70`。
 
-In this chapter, we're going to introduce one more function modifier: `payable`.
+2. 创建一个名为 `attack`的函数。它将传入两个参数: `_zombieId` (`uint` 类型) 以及 `_targetId` (也是 `uint`)。它将是一个 `external` 函数。
 
-## The `payable` Modifier
-
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether. 
-
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
-
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for for you to call a function **and** pay money to the contract at the same time.
-
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
-
-## Let's look at an example
-```
-contract OnlineStore {
-  function buySomething() external payable {
-    // Check to make sure 0.001 ether was sent to the function call:
-    require(msg.value == 0.001 ether);
-    // If so, some logic to transfer the digital item to the caller of the function:
-    transferThing(msg.sender);
-  }
-}
-```
-
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
-
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
-
-```
-// Assuming `OnlineStore` points to your contract on Ethereum:
-OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
-```
-
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
-
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
-
-
-## Putting it to the Test
-
-Let's create a `payable` function in our zombie game.
-
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH wil get stored in the contract, which you own — this a simple example of how you could make money on your games!
-
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
-
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
-
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
-
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.
+函数体先留空吧。

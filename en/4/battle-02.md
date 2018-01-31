@@ -264,6 +264,8 @@ So while this random number generation is NOT secure on Ethereum, in practice un
 
 Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
 
+In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+
 ## Put it to the test
 
 Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
@@ -274,4 +276,4 @@ Let's implement a random number function we can use to determine the outcome of 
 
 3. The function should first increment `randNonce` (using the syntax `randNonce++`).
 
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we calculated a random number — the logic is very similar).
+4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).

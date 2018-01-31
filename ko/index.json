@@ -85,7 +85,7 @@
         "lesson3": {
             "achievementsUnlocked": "도전과제 완료:",
             "zombieUpgraded": "{zombieName}이/가 레벨 {levelNum}이/가 되었네!",
-            "header": 
+            "header": [
                 "축하하네! 크립토좀비 {lesson3}을 마쳤네!",
                 "자네의 좀비 군대를 친구들에게 자랑해 보게!",
                 "이 URL를 공유해서 친구들이 자네의 군대를 확인할 수 있도록 해보게:"

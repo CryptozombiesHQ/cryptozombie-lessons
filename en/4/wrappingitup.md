@@ -3,7 +3,7 @@ title: Wrapping It Up
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
-  saveZombie: false
+  saveZombie: true
   battleArena:
     zombie:
       lesson: 2
