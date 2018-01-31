@@ -138,12 +138,12 @@
             "randomZombieGenerator": "tilfeldig zombie generator",
             "achievementPreamble": [
                 "Din venn har lært grunnleggende om Ethereum spillutvikling, og opprettet {zombieName}, en Level 1 CryptoZombie som bevis!",
-                 "For å fullføre leksjon 1 i CryptoZombies, bygde din venn en {randomZombieGenerator} og lærte om:"
+                "For å fullføre leksjon 1 i CryptoZombies, bygde din venn en {randomZombieGenerator} og lærte om:"
             ],
             "achievements": [
                 "Hvordan skrive Ethereum smart-kontrakter",
-                 "Programmering i Solidity, Ethereums smarte kontraktspråk for programmering",
-                 "Bygge spill for Ethereum"
+                "Programmering i Solidity, Ethereums smarte kontraktspråk for programmering",
+                "Bygge spill for Ethereum"
             ],
             "tryItOut": "Gi den tilfeldige zombiegeneratoren et forsøk.",
             "below": "nedenfor",
@@ -152,7 +152,7 @@
             "nameInputPlaceholder": "Skriv inn et navn for å generere en zombie",
             "callToAction": [
                 "Vil du bygge din egen CryptoZombie og bli med i rekkene?",
-                 "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
             ]
         },
         "lesson2": {
@@ -160,27 +160,27 @@
             "love": "elsker",
             "achievementPreamble": [
                 "Din venn har fullført CryptoZombies Lesson 2, og oppgradert {zombieName} til en CryptoKitty slayer!",
-                 "En CryptoKitty Slayer ?!",
-                 "Det viser seg CryptoZombies {love} å spise CryptoKitties.",
-                 "Når en CryptoZombie spiser en CryptoKitty, blander deres DNA sammen og CryptoKitty blir reanimert som en CryptoZombie.",
-                 "Fortsett, velg en CryptoKitty å angripe, og se hva slags CatZombie du får!",
-                 "Solidity konsept overkommet",
-                 "For å fullføre leksjon 2 i CryptoZombies kode-skole, bygget din venn en {zombieCardBattle} og lærte om:"
+                "En CryptoKitty Slayer ?!",
+                "Det viser seg CryptoZombies {love} å spise CryptoKitties.",
+                "Når en CryptoZombie spiser en CryptoKitty, blander deres DNA sammen og CryptoKitty blir reanimert som en CryptoZombie.",
+                "Fortsett, velg en CryptoKitty å angripe, og se hva slags CatZombie du får!",
+                "Solidity konsept overkommet",
+                "For å fullføre leksjon 2 i CryptoZombies kode-skole, bygget din venn en {zombieCardBattle} og lærte om:"
             ],
             "achievements": [
                 "Grunnleggende om å lage et multi-player spill",
-                 "Interagere med andre kontrakter på Ethereum-nettverket",
-                 "Organisering av større soliditetsprosjekter i flere kontrakter"
+                "Interagere med andre kontrakter på Ethereum-nettverket",
+                "Organisering av større soliditetsprosjekter i flere kontrakter"
             ],
             "callToAction": [
                 "Vil du bygge dine egne CryptoZombies og bli med i rekkene?",
-                 "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
             ]
         },
         "lesson3": {
             "achievementPreamble": [
                 "Din venn har fullført CryptoZombies Lesson 3, og oppgradert sin zombie hær!",
-                 "For å fullføre leksjon 3 av CryptoZombies, lærte din venn om:"
+                "For å fullføre leksjon 3 av CryptoZombies, lærte din venn om:"
             ],
             "achievements": [
                 "Hvordan bygge oppdaterbare smarte kontrakter",
@@ -190,7 +190,7 @@
             ],
             "callToAction": [
                 "Vil du bygge din egen CryptoZombie-hær og bli med i rekkene?",
-                 "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
             ]
         }
     }
