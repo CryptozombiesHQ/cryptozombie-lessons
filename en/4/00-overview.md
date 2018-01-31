@@ -1,7 +1,7 @@
 ---
 title: Zombie Battle System
 header: "Lesson 4: Zombie Battle System"
-roadmap: roadmap3.png
+roadmap: roadmap4.jpg
 ---
 
 The time has come, human...
