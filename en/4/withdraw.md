@@ -260,7 +260,7 @@ contract GetPaid is Ownable {
 
 Note that we're using `owner` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
 
-You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users paid us 1 Ether, `this.balance` would equal 100 Ether.
+You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
 
 You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
 
