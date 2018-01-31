@@ -91,9 +91,9 @@
                 "Partagez cette URL afin que vos amis puissent voir votre armée :"
             ],
             "footer": [
-                "La Leçon 4 arrive dans 1 à 2 semaines",
-                "On vous préviendra par mail quand elle sera prête.",
-                "En attendant, rejoignez nous sur {telegramLink}, ou suivez nous sur {twitterLink} pour participer à la conversation !"
+                "Vous aimez CryptoZombies? Laissez-nous savoir !",
+                "Rejoignez la conversation sur {telegramLink}, ou suivez-nous sur {twitterLink}",
+                "Quand vous êtes prêt, cliquez sur le bouton pour accéder à la Leçon 4 :"
             ],
             "zombieDesc": "Un CryptoZombie de Niveau 3",
             "shareLinkText": "Je viens juste de finir la Leçon 3 de #CryptoZombies ! Viens voir mon armée de zombie :"
