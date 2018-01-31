@@ -63,7 +63,7 @@ function eatHamburgers(string _name, uint _amount) {
 eatHamburgers("vitalik", 100);
 ```
 
-# 测试一把
+# 实战演习
 
 在我们的应用里，我们要能创建一些僵尸，让我们写一个函数做这件事吧！
 

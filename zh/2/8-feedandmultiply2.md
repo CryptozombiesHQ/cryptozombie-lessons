@@ -76,9 +76,9 @@ material:
       }
 ---
 
-我们来把`feedAndMultiply`函数写完吧。
+我们来把 `feedAndMultiply` 函数写完吧。
 
-获取新的僵尸DNA的公式很简单：计算吞噬者僵尸DNA和被吞噬目标DNA之间的平均值。
+获取新的僵尸DNA的公式很简单：计算猎食僵尸DNA和猎食目标DNA之间的平均值。
 
 例如：
 
@@ -91,16 +91,16 @@ function testDnaSplicing() public {
 }
 ```
 
-以后，我们也可以让函数变得更复杂些，比方给新的僵尸的DNA增加一些随机性之类的。但现在先从最简单的开始 - 以后还可以回来完善它嘛。
+以后，我们也可以让函数变得更复杂些，比方给新的僵尸的 DNA 增加一些随机性之类的。但现在先从最简单的开始 —— 以后还可以回来完善它嘛。
 
 # 实战演习
 
-1.首先我们确保`_targetDna`不长于16位。要做到这一点，我们可以设置`_targetDna`为`_targetDna％dnaModulus`，并且只取其最后16位数字。
+1. 首先我们确保 `_targetDna` 不长于16位。要做到这一点，我们可以设置 `_targetDna` 为 `_targetDna％dnaModulus` ，并且只取其最后16位数字。
 
-2.接下来为我们的函数声明一个名叫 `newDna`的单元（uint），并将其值设置为myZombie的DNA和_targetDna的平均值（如上例所示）。
+2. 接下来为我们的函数声明一个名叫 `newDna` 的 `uint`，并将其值设置为 `myZombie`的 DNA 和 `_targetDna` 的平均值（如上例所示）。
  
- >注意：您可以用 myZombie.name 或 myZombie.dna 访问 myZombie的属性。
+>注意：您可以用 `myZombie.name` 或 `myZombie.dna` 访问 `myZombie` 的属性。
 
-计算出新的DNA，再调用 `_createZombie`就可以生成新的僵尸了。如果你忘了调用这个函数所需要的参数，您可以查看`zombiefactory.sol`选项卡。请注意，需要先给他命名，所以现在我们把新的僵尸的名字设为“NoName” - 我们回头可以编写一个函数来更改僵尸的名字。
+3. 一旦我们计算出新的DNA，再调用 `_createZombie` 就可以生成新的僵尸了。如果你忘了调用这个函数所需要的参数，可以查看 `zombiefactory.sol` 选项卡。请注意，需要先给它命名，所以现在我们把新的僵尸的名字设为`NoName` - 我们回头可以编写一个函数来更改僵尸的名字。
 
->注意：对于 Solidity whizzes，你可能会注意到我们的代码在不太正确。别担心，下一章会解决这个问题的 ;）
+>注意：对于 Solidity 高手，你可能会注意到我们的代码存在一个问题。别担心，下一章会解决这个问题的 ;）

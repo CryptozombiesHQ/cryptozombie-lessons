@@ -1,5 +1,5 @@
 ---
-title: Data Types
+title: 数据类型
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -17,5 +17,5 @@ contract HelloWorld
 
 ```
 
-# 实战演练
+# 实战演习
 

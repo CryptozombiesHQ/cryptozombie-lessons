@@ -47,7 +47,7 @@ material:
       }
 ---
 
-### 创建新的结构体
+## 创建新的结构体
 
 还记得上个例子中的 `Person` 结构吗？
 
@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-现在我们学习创建新的 `Person`结构，然后把它加入到名为`people` 的数组中.
+现在我们学习创建新的 `Person` 结构，然后把它加入到名为 `people` 的数组中.
 
 ```
 // 创建一个新的Person:
@@ -86,9 +86,9 @@ numbers.push(15);
 // numbers is now equal to [5, 10, 15]
 ```
 
-# 测试一把
+# 实战演习
 
-让我们创建名为createZombie的函数来做点儿什么吧
+让我们创建名为createZombie的函数来做点儿什么吧。
 
-1. 在函数体里新创建一个`Zombie`, 然后把它加入 `zombies` 数组中. 新创建的僵尸的`name` 和 `dna`，来自于函数的参数
+1. 在函数体里新创建一个 `Zombie`， 然后把它加入 `zombies` 数组中。 新创建的僵尸的 `name` 和 `dna`，来自于函数的参数。
 2. 让我们用一行代码简洁地完成它。
