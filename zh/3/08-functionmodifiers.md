@@ -1,5 +1,5 @@
 ---
-title: More on Function Modifiers
+title: 进一步了解函数修饰符
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -173,38 +173,38 @@ material:
 ---
 
 
-相当不错！我们的僵尸现在有了“冷静定时器”功能。
+相当不错！我们的僵尸现在有了“冷却定时器”功能。
 
-接下来，我们将添加一些辅助方法。我们为您创建了一个名为zombiehelper.sol的新文件，并且将 `zombiefeeding.sol`导入其中，这让我们的代码更整洁。
+接下来，我们将添加一些辅助方法。我们为您创建了一个名为 `zombiehelper.sol` 的新文件，并且将 `zombiefeeding.sol` 导入其中，这让我们的代码更整洁。
 
-我们打算让僵尸在达到一定水平后，获得特殊能力。但是达到这个小目标，我们还需要学一学什么是“函数修改器”。
+我们打算让僵尸在达到一定水平后，获得特殊能力。但是达到这个小目标，我们还需要学一学什么是“函数修饰符”。
 
-##带参数的函数修改器
+##带参数的函数修饰符
 
-之前我们已经读过一个简单的函数修改器了：`onlyOwner`。函数修改器也可以带参数。例如：
+之前我们已经读过一个简单的函数修饰符了：`onlyOwner`。函数修饰符也可以带参数。例如：
 
 ```
 // 存储用户年龄的映射
 mapping (uint => uint) public age;
 
-// 限定用户年龄的修改器
+// 限定用户年龄的修饰符
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
 // 必须年满16周岁才允许开车 (至少在美国是这样的).
-// 我们可以用如下参数调用`olderThan` 修改器:
+// 我们可以用如下参数调用`olderThan` 修饰符:
 function driveCar(uint _userId) public olderThan(16, _userId) {
   // 其余的程序逻辑
 }
 ```
-看到了吧， `olderThan` 修改器可以像函数一样接收参数，是“宿主”函数`driveCar` 把参数传递给它的修改器的。
+看到了吧， `olderThan` 修饰符可以像函数一样接收参数，是“宿主”函数 `driveCar` 把参数传递给它的修饰符的。
 
-来，我们自己生产一个修改器，通过传入的`level`参数来限制僵尸使用某些特殊功能。 
+来，我们自己生产一个修饰符，通过传入的`level`参数来限制僵尸使用某些特殊功能。 
 
 ## 实战演习
 
-1.在“ZombieHelper”中，创建一个名为`aboveLevel`的'修改器'，它接收2个参数， `_level` (`uint`类型) 以及 `_zombieId` (`uint`类型)。
-2.运用函数逻辑确保僵尸`zombies[_zombieId].level`大于或等于 `_level`。
-3.记住，修改器的最后一行为 `_;`，表示修改器调用结束后返回，并执行调用函数余下的部分。
+1. 在`ZombieHelper` 中，创建一个名为 `aboveLevel` 的`modifier`，它接收2个参数， `_level` (`uint`类型) 以及 `_zombieId` (`uint`类型)。
+2. 运用函数逻辑确保僵尸 `zombies[_zombieId].level` 大于或等于 `_level`。
+3. 记住，修饰符的最后一行为 `_;`，表示修饰符调用结束后返回，并执行调用函数余下的部分。
