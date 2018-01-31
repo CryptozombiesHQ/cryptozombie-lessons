@@ -251,7 +251,7 @@ In this chapter, we're going to introduce one more function modifier: `payable`.
 
 Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
 
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for for you to call a function **and** pay money to the contract at the same time.
+But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
 
 This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
 
@@ -285,7 +285,7 @@ Notice the `value` field, where the javascript function call specifies how much 
 
 Let's create a `payable` function in our zombie game.
 
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH wil get stored in the contract, which you own — this a simple example of how you could make money on your games!
+Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH will get stored in the contract, which you own — this a simple example of how you could make money on your games!
 
 1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
 
