@@ -122,27 +122,27 @@ contract NumberInterface {
 }
 ```
 
-다음과 같이 컨트렉트에서 인터페이스를 이용할 수 있지: 
+다음과 같이 컨트랙트에서 인터페이스를 이용할 수 있지: 
 
 ```
 contract MyContract {
   address NumberInterfaceAddress = 0xab38... 
-  // ^ 이더리움 상의 FavoriteNumber 컨트렉트 주소이다 
+  // ^ 이더리움 상의 FavoriteNumber 컨트랙트 주소이다 
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
-  // 이제 `numberContract`는 다른 컨트렉트를 가리키고 있다. Now `numberContract` is pointing to the other contract
+  // 이제 `numberContract`는 다른 컨트랙트를 가리키고 있다. Now `numberContract` is pointing to the other contract
 
   function someFunction() public {
-    // 이제 `numberContract`가 가리키고 있는 컨트렉트에서 `getNum` 함수를 호출할 수 있다: 
+    // 이제 `numberContract`가 가리키고 있는 컨트랙트에서 `getNum` 함수를 호출할 수 있다: 
     uint num = numberContract.getNum(msg.sender);
     // ...그리고 여기서 `num`으로 무언가를 할 수 있다 
   }
 }
 ```
 
-이런 식으로 자네의 컨트렉트가 이더리움 블록체인 상의 다른 어떤 컨트렉트와도 상호작용할 수 있네. 물론 상호작용하는 함수가 `public`이나 `external`로 선언되어 있어야 하지. 
+이런 식으로 자네의 컨트랙트가 이더리움 블록체인 상의 다른 어떤 컨트랙트와도 상호작용할 수 있네. 물론 상호작용하는 함수가 `public`이나 `external`로 선언되어 있어야 하지. 
 
 # 직접 해보기
 
-크립토키티 스마트 컨트렉트에서 데이터를 읽어 오도록 우리 컨트렉트를 설정해 보세! 
+크립토키티 스마트 컨트랙트에서 데이터를 읽어 오도록 우리 컨트랙트를 설정해 보세! 
 
-1. 코드를 보면 `ckAddress`라는 변수에 크립토키티 컨트렉트 주소가 입력되어 있다. 다음 줄에 `kittyContract`라는 `KittyInterface`를 생성하고, 위의 `numberContract` 선언 시와 동일하게 `ckAddress`를 이용하여 초기화한다. 
+1. 코드를 보면 `ckAddress`라는 변수에 크립토키티 컨트랙트 주소가 입력되어 있다. 다음 줄에 `kittyContract`라는 `KittyInterface`를 생성하고, 위의 `numberContract` 선언 시와 동일하게 `ckAddress`를 이용하여 초기화한다. 

@@ -8,7 +8,7 @@ material:
     answer: >
 ---
 
-솔리디티 코드는 컨트렉트에 싸여 있지. 컨트렉트는 기본적으로... Solidity's code is encapsulated in contracts. A contract is basically...
+솔리디티 코드는 컨트랙트에 싸여 있지. 컨트랙트는 기본적으로... Solidity's code is encapsulated in contracts. A contract is basically...
 
 ```
 contract HelloWorld
