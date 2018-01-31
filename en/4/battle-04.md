@@ -304,6 +304,6 @@ We're back to `zombiefeeding.sol`, since this is the first place we used that lo
 
   The body should `require` that `msg.sender` is equal to `zombieToOwner[_zombieId]`, then continue with the function. You can refer to `zombiehelper.sol` if you don't remember the syntax for a modifier.
 
-2. Change the function definition of `feedAndMultiply` such that it users the modifier `ownerOf`.
+2. Change the function definition of `feedAndMultiply` such that it uses the modifier `ownerOf`.
 
 3. Now that we're using a `modifier`, you can remove the line `require(msg.sender == zombieToOwner[_zombieId]);`
