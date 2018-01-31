@@ -1,6 +1,6 @@
 ---
-title: More on Function Visibility
-actions: ['checkAnswer', 'hints']
+title: 함수 접근 제어자 더 알아보기
+actions: ['정답 확인하기', '힌트 보기']
 material:
   editor:
     language: sol
@@ -25,7 +25,7 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            // 在这里修改函数的功能
+            // edit function definition below
             function _createZombie(string _name, uint _dna) private {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
@@ -102,21 +102,21 @@ material:
       }
 ---
 
-**我们上一课的代码有问题！**
+**지난 레슨의 코드에 실수가 있네!**
 
-编译的时候编译器就会报错。
+자네가 코드를 컴파일하려고 하면 컴파일러가 에러 메시지를 출력할 거네. 
 
-错误在于，我们尝试从 `ZombieFeeding` 中调用 `_createZombie` 函数，但 `_createZombie` 却是 `ZombieFactory` 的 `private` （私有）函数。这意味着任何继承自 `ZombieFactory` 的子合约都不能访问它。
+문제는 `ZombieFeeding` 컨트렉트 내에서 `_createZombie` 함수를 호출하려고 했다는 거지. 그런데 `_createZombie` 함수는 `ZombieFactory` 컨트렉트 내의 `private` 함수이지. 즉, `ZombieFactory` 컨트렉트를 상속하는 어떤 컨트렉트도 이 함수에 접근할 수 없다는 뜻이지.   
 
-## internal 和 external
+## Internal과 External
 
-除 `public` 和 `private` 属性之外，Solidity 还使用了另外两个描述函数可见性的修饰词：`internal`（内部） 和 `external`（外部）。
+`public`과 `private` 이외에도 솔리디티에는 `internal`과 `external`이라는 함수 접근 제어자가 있지.
 
-`internal` 和 `private` 类似，不过， 如果某个合约继承自其父合约，这个合约即可以访问父合约中定义的“内部”函数。（嘿，这听起来正是我们想要的那样！）。
+`internal`은 함수가 정의된 컨트렉트를 상속하는 컨트렉트에서도 접근이 가능하다 점을 제외하면 `private`과 동일하지. **(우리한테 필요한 게 바로 `internal`인 것 같군! 
 
-`external` 与`public` 类似，只不过这些函数只能在合约之外调用 - 它们不能被合约内的其他函数调用。稍后我们将讨论什么时候使用 `external` 和 `public`。
+`external`은 함수가 컨트렉트 바깥에서만 호출될 수 있고 컨트렉트 내의 다른 함수에 의해 호출될 수 없다는 점을 제외하면 `public`과 동일하지. 나중에 `external`과 `public`이 각각 왜 필요한지 살펴 볼 것이네. 
 
-声明函数 `internal` 或 `external` 类型的语法，与声明 `private` 和 `public`类 型相同：
+`interal`이나 `external` 함수를 선언하는 건 `private`과 `public` 함수를 선언하는 구문과 동일하네:
 
 ```
 contract Sandwich {
@@ -132,14 +132,15 @@ contract BLT is Sandwich {
 
   function eatWithBacon() public returns (string) {
     baconSandwichesEaten++;
-    // 因为eat() 是internal 的，所以我们能在这里调用
+    // eat 함수가 internal로 선언되었기 때문에 여기서 호출이 가능하다 
     eat();
   }
 }
 ```
 
-# 实战演习
+# 직접 해보기
 
-1. 将 `_createZombie()` 函数的属性从 `private` 改为 `internal` ， 使得其他的合约也能访问到它。
- 
-   我们已经成功把你的注意力集中在到`zombiefactory.sol`这个选项卡上啦。
+1. `_createZombie()` 함수를 `private`에서 `internal`로 바꾸어 선언하여 이 함수가 정의된 컨트렉트를 상속하는 컨트렉트에서도 접근 가능하도록 한다.
+
+  이미 `zombiefactory.sol` 탭이 활성화되어 있다.
+                                                      

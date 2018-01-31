@@ -1,6 +1,6 @@
 ---
-title: 继承（Inheritance）
-actions: ['checkAnswer', 'hints']
+title: 상속
+actions: ['정답 확인하기', '힌트 보기']
 material:
   editor:
     language: sol
@@ -44,7 +44,7 @@ material:
 
       }
 
-      // Start here
+      // 여기서 시작
 
     answer: >
       pragma solidity ^0.4.19;
@@ -93,9 +93,9 @@ material:
 
 ---
 
-我们的游戏代码越来越长。 当代码过于冗长的时候，最好将代码和逻辑分拆到多个不同的合约中，以便于管理。
+우리의 게임 코드가 점점 더 꽤 길어지고 있군. 엄청나게 긴 컨트렉트 하나를 만들기 보다는 코드를 잘 정리해서 여러 컨트렉트에 코드 로직을 나누는 것이 합리적일 때가 있지. 
 
-有个让 Solidity 的代码易于管理的功能，就是合约** _inheritance_ **(继承)：
+이를 보다 관리하기 쉽도록 하는 솔리디티 기능이 바로 컨트렉트 **_상속_**이지:
 
 ```
 contract Doge {
@@ -111,13 +111,12 @@ contract BabyDoge is Doge {
 }
 ```
 
-由于 `BabyDoge` 是从 `Doge` 那里  **_inherits_** （继承)过来的。 这意味着当您编译和部署了 `BabyDoge`，它将可以访问 `catchphrase()` 和 `anotherCatchphrase()`和其他我们在 `Doge` 中定义的其他公共函数。
+`BabyDoge` 컨트렉트는 `Doge` 컨트렉트를 상속하네. 즉, 자네가 `BabyDoge` 컨트렉트를 컴파일해서 구축할 때, `BabyDoge` 컨트렉트가 `catchphrase()` 함수와 `anotherCatchphrase()` 함수에 모두 접근할 수 있다는 뜻이지. (`Doge` 컨트렉트에 정의되는 다른 어떤 public 함수가 정의되어도 접근이 가능하네)  
 
-这可以用于逻辑继承（比如表达子类的时候，`Cat` 是一种 `Animal`）。 但也可以简单地将类似的逻辑组合到不同的类中以组织代码。
+상속 개념은 "`고양이`는 `동물`이다"의 경우처럼 부분집합 클래스가 있을 때 논리적 상속을 위해 활용할 수 있지. 하지만 동일한 로직을 다수의 클래스로 분할해서 단순히 코드를 정리할 때도 활용할 수 있지. 
 
-# 实战演习
+# 직접 해보기
 
-在接下来的章节中，我们将要为僵尸实现各种功能，让它可以“猎食”和“繁殖”。 通过将这些运算放到父类 `ZombieFactory` 中，使得所有 `ZombieFactory` 的继承者类都可以使用这些方法。
+다음 챕터에서 우리 좀비들이 먹이를 먹고 번식하도록 하는 기능을 구현할 것일세. 그 기능의 로직을 `ZombieFactory`의 모든 메소드를 상속하는 클래스에 넣어 보도록 하세.  
 
-1. 在 `ZombieFactory` 下创建一个叫 `ZombieFeeding` 的合约，它是继承自 `ZombieFactory 合约的。
-
+1. `ZombieFactory` 아래에 `ZombieFeeding` 컨트렉트르 생성한다. 이 컨트렉트는 `ZombieFactory`를 상속해야 한다.

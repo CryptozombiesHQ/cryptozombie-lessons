@@ -1,5 +1,5 @@
 ---
-title: Handling Multiple Return Values
+title: 处理多返回值
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -122,7 +122,7 @@ material:
       }
 ---
 
-`getKitty`是我们所看到的第一个返回多个值的函数。我们来看看是如何处理的：
+`getKitty` 是我们所看到的第一个返回多个值的函数。我们来看看是如何处理的：
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -133,7 +133,7 @@ function processMultipleReturns() external {
   uint a;
   uint b;
   uint c;
-  // This is how you do multiple assignment:
+  // 这样来做批量赋值:
   (a, b, c) = multipleReturns();
 }
 
@@ -147,16 +147,16 @@ function getLastReturnValue() external {
 
 # 实战演习
 
-是时候与CryptoKitties合约交互起来了！
+是时候与 CryptoKitties 合约交互起来了！
 
-我们来定义一个函数，从kitty 合约中获取它的基因：
+我们来定义一个函数，从 kitty 合约中获取它的基因：
 
-1.创建一个名为`feedOnKitty`的函数。它需要2个`uint`类型的参数，`_zombieId`和`_kittyId`，这是一个`public`类型的函数。
+1. 创建一个名为 `feedOnKitty` 的函数。它需要2个 `uint` 类型的参数，`_zombieId` 和`_kittyId` ，这是一个 `public` 类型的函数。
 
-2.函数首先要声明一个名为`kittyDna`的`uint`。
+2. 函数首先要声明一个名为 `kittyDna` 的 `uint`。
 
-  >注意：在我们的KittyInterface中，`genes`是一个`uint256`类型的变量，但是如果你记得，我们在第一课中提到过，`uint`是`uint256`的别名，也就是说它们是一回事。
+   >注意：在我们的 `KittyInterface` 中，`genes` 是一个 `uint256` 类型的变量，但是如果你记得，我们在第一课中提到过，`uint` 是 `uint256` 的别名，也就是说它们是一回事。
 
-3.这个函数接下来使用了 _kittyId 参数，去调用`kittyContract.getKitty`函数，并将返回的 `genes`存储在`kittyDna`中。记住 - `getKitty`会返回一大堆变量。 （确切地说10个 - 我已经为你数过了，不错吧！）。但是我们只关心最后一个--“基因”。数逗号的时候小心点哦！
+3. 这个函数接下来调用 `kittyContract.getKitty`函数, 传入 `_kittyId` ，将返回的 `genes` 存储在 `kittyDna` 中。记住 —— `getKitty` 会返回一大堆变量。 （确切地说10个 - 我已经为你数过了，不错吧！）。但是我们只关心最后一个-- `genes`。数逗号的时候小心点哦！
 
-4.最后，函数调用了`feedAndMultiply`，并传入了`_zombieId`和`kittyDna`两个参数。
+4. 最后，函数调用了 `feedAndMultiply` ，并传入了 `_zombieId` 和 `kittyDna` 两个参数。
