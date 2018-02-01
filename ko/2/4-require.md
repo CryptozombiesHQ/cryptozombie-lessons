@@ -116,4 +116,4 @@ function sayHiToVitalik(string _name) public returns (string) {
 
 1. `require` 키워드를 `createRandomZombie` 앞부분에 입력한다. `require` 함수가 `ownerZombieCount[msg.sender]`이 0과 같은지 확인하도록 하고, 0이 아닌 경우 에러 메시지를 출력하도록 한다.  
 
-> 참고: 솔리디티에서 값을 비교할 때 어떤 항이 먼저 오느냐는 중요하지 않네. 어떤 순서든지 동일하지. 하지만, 우리가 작성한 확인 기능은 매우 기본적이라서 한 가지 값만을 참이라고 하네. 그러니 `ownerZombieCount[msg.sender]`이 가장 먼저 올 것이 기대되지.  
+> 참고: 솔리디티에서 값을 비교할 때 어떤 항이 먼저 오느냐는 중요하지 않네. 어떤 순서든 동일하지. 하지만, 우리가 작성한 확인 기능은 매우 기본적이라서 한 가지 답만을 참이라고 하네. 그러니 `ownerZombieCount[msg.sender]`을 가장 먼저 작성 해주게.  

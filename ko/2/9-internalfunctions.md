@@ -106,15 +106,15 @@ material:
 
 자네가 코드를 컴파일하려고 하면 컴파일러가 에러 메시지를 출력할 거네. 
 
-문제는 `ZombieFeeding` 컨트렉트 내에서 `_createZombie` 함수를 호출하려고 했다는 거지. 그런데 `_createZombie` 함수는 `ZombieFactory` 컨트렉트 내의 `private` 함수이지. 즉, `ZombieFactory` 컨트렉트를 상속하는 어떤 컨트렉트도 이 함수에 접근할 수 없다는 뜻이지.   
+문제는 `ZombieFeeding` 컨트랙트 내에서 `_createZombie` 함수를 호출하려고 했다는 거지. 그런데 `_createZombie` 함수는 `ZombieFactory` 컨트랙트 내의 `private` 함수이지. 즉, `ZombieFactory` 컨트랙트를 상속하는 어떤 컨트랙트도 이 함수에 접근할 수 없다는 뜻이지.   
 
 ## Internal과 External
 
 `public`과 `private` 이외에도 솔리디티에는 `internal`과 `external`이라는 함수 접근 제어자가 있지.
 
-`internal`은 함수가 정의된 컨트렉트를 상속하는 컨트렉트에서도 접근이 가능하다 점을 제외하면 `private`과 동일하지. **(우리한테 필요한 게 바로 `internal`인 것 같군! 
+`internal`은 함수가 정의된 컨트랙트를 상속하는 컨트랙트에서도 접근이 가능하다 점을 제외하면 `private`과 동일하지. **(우리한테 필요한 게 바로 `internal`인 것 같군! 
 
-`external`은 함수가 컨트렉트 바깥에서만 호출될 수 있고 컨트렉트 내의 다른 함수에 의해 호출될 수 없다는 점을 제외하면 `public`과 동일하지. 나중에 `external`과 `public`이 각각 왜 필요한지 살펴 볼 것이네. 
+`external`은 함수가 컨트랙트 바깥에서만 호출될 수 있고 컨트랙트 내의 다른 함수에 의해 호출될 수 없다는 점을 제외하면 `public`과 동일하지. 나중에 `external`과 `public`이 각각 왜 필요한지 살펴 볼 것이네. 
 
 `interal`이나 `external` 함수를 선언하는 건 `private`과 `public` 함수를 선언하는 구문과 동일하네:
 
@@ -140,7 +140,7 @@ contract BLT is Sandwich {
 
 # 직접 해보기
 
-1. `_createZombie()` 함수를 `private`에서 `internal`로 바꾸어 선언하여 이 함수가 정의된 컨트렉트를 상속하는 컨트렉트에서도 접근 가능하도록 한다.
+1. `_createZombie()` 함수를 `private`에서 `internal`로 바꾸어 선언하여 이 함수가 정의된 컨트랙트를 상속하는 컨트랙트에서도 접근 가능하도록 한다.
 
   이미 `zombiefactory.sol` 탭이 활성화되어 있다.
                                                       
