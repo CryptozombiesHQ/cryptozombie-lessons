@@ -244,4 +244,4 @@ We're going to continue defining our `attack` function, now that we have the `ow
 
   b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
 
-3. We're going to use a random number between 0 and 100 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.

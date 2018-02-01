@@ -1,5 +1,5 @@
 ---
-title: onlyOwner Function Modifier
+title: onlyOwner 函数修饰符
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -183,19 +183,19 @@ material:
       }
 ---
 
-现在我们有了个基本版的合约`ZombieFactory`了，它继承了`Ownable`接口，我们也可以给`ZombieFeeding`加上`onlyOwner`函数修改器。
+现在我们有了个基本版的合约 `ZombieFactory` 了，它继承自 `Ownable` 接口，我们也可以给 `ZombieFeeding` 加上 `onlyOwner` 函数修饰符。
 
-继承了`ZombieFactory`，就是这么酷！记得：
+这就是合约继承的工作原理。记得：
 
 ```
-ZombieFeeding 是个（继承了） ZombieFactory
-ZombieFactory 是个（继承了） Ownable
+ZombieFeeding 是个 ZombieFactory
+ZombieFactory 是个 Ownable
 ```
-因此 `ZombieFeeding` 也是个（继承了） `Ownable`, 并可以通过`Ownable`接口访问父类中的函数/事件/修改器。往后，“ZombieFeeding”的继承者合约们同样也可以这么延续下去。
+因此 `ZombieFeeding` 也是个 `Ownable`, 并可以通过 `Ownable` 接口访问父类中的函数/事件/修饰符。往后，`ZombieFeeding` 的继承者合约们同样也可以这么延续下去。
 
-## 函数修改器
+## 函数修饰符
 
-函数修改器看起来跟函数没什么不同，关键字'modifier' 告诉编译器，这是个“modifier(修改器)”，而不是个“function(函数)”。它不能像函数那样被直接调用，只能被添加到函数定义的末尾，用以改变函数的行为。
+函数修饰符看起来跟函数没什么不同，不过关键字`modifier` 告诉编译器，这是个`modifier(修饰符)`，而不是个`function(函数)`。它不能像函数那样被直接调用，只能被添加到函数定义的末尾，用以改变函数的行为。
 
 咱们仔细读读 `onlyOwner`:
 
@@ -209,7 +209,7 @@ modifier onlyOwner() {
 }
 ```
 
-‘onlyOwner’函数修改器是这么用的：
+`onlyOwner` 函数修饰符是这么用的：
 
 ```
 contract MyContract is Ownable {
@@ -222,18 +222,18 @@ contract MyContract is Ownable {
 }
 ```
 
-注意`likeABoss`函数上的'onlyOwner`修改器。 当您调用`likeABoss`时，**首先执行**`onlyOwner`中的代码， 执行到`onlyOwner`中的`_;`语句时，程序再返回并执行'likeABoss`中的代码。
+注意 `likeABoss` 函数上的 `onlyOwner` 修饰符。 当你调用 `likeABoss` 时，**首先执行** `onlyOwner` 中的代码， 执行到 `onlyOwner` 中的 `_;` 语句时，程序再返回并执行 `likeABoss` 中的代码。
 
-可见，尽管函数修改器也可以应用到各种场合，但最常见的还是放在函数执行之前添加快速的“require”检查。
+可见，尽管函数修饰符也可以应用到各种场合，但最常见的还是放在函数执行之前添加快速的 `require`检查。
 
-因为给函数添加了修改器`onlyOwner`，使得**唯有合约的主人**（也就是部署者）才能调用它。
+因为给函数添加了修饰符 `onlyOwner`，使得**唯有合约的主人**（也就是部署者）才能调用它。
 
 >注意：主人对合约享有的特权当然是正当的，不过也可能被恶意使用。比如，万一，主人添加了个后门，允许他偷走别人的僵尸呢？
 
->所以非常重要的是，部署在以太坊上的DApp，并不能保证它真正做到去中心，您需要阅读并理解它的源代码，才能防止其中没有被部署者恶意植入后门； 作为开发人员，如何做到既要给自己留下修复bugs的余地， 又要尽量地放权给使用者，以便让他们放心您，从而愿意把数据放在您的DApp中，这确实需要个微妙的平衡。
+>所以非常重要的是，部署在以太坊上的 DApp，并不能保证它真正做到去中心，你需要阅读并理解它的源代码，才能防止其中没有被部署者恶意植入后门；作为开发人员，如何做到既要给自己留下修复 bug 的余地，又要尽量地放权给使用者，以便让他们放心你，从而愿意把数据放在你的 DApp 中，这确实需要个微妙的平衡。
  
 ## 实战演习
 
-现在我们可以限制第三方对`setKittyContractAddress`的访问，除了我们自己，谁都无法去修改它。 
+现在我们可以限制第三方对 `setKittyContractAddress `的访问，除了我们自己，谁都无法去修改它。 
 
-1.将`onlyOwner`函数修改器添加到`setKittyContractAddress`中。
+1. 将 `onlyOwner` 函数修饰符添加到 `setKittyContractAddress` 中。

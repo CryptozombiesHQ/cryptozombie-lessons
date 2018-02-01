@@ -63,10 +63,10 @@ function eatHamburgers(string _name, uint _amount) {
 eatHamburgers("vitalik", 100);
 ```
 
-# 测试一把
+# 实战演习
 
 在我们的应用里，我们要能创建一些僵尸，让我们写一个函数做这件事吧！
 
-1. 建立一个函数 `createZombie`. 它有两个参数: **_name** (类型为`string`), 和 **__dna_** (类型为`uint`)。
+1. 建立一个函数 `createZombie`。 它有两个参数: **_name** (类型为`string`), 和 **__dna_** (类型为`uint`)。
 
 暂时让函数空着——我们在后面会增加内容。

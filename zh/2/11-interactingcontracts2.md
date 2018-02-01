@@ -1,5 +1,5 @@
 ---
-title: Using an Interface
+title: 使用接口
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -114,7 +114,7 @@ material:
       }
 ---
 
-继续前面`NumberInterface`的例子，我们既然将接口定义为：
+继续前面 `NumberInterface` 的例子，我们既然将接口定义为：
 
 ```
 contract NumberInterface {
@@ -141,8 +141,8 @@ contract MyContract {
 
 通过这种方式，只要将您合约的可见性设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
 
-＃小测验
+# 实战演习
 
-我们来建个自己的合约去读取另一个智能合约--CryptoKitties的内容吧！
+我们来建个自己的合约去读取另一个智能合约-- CryptoKitties 的内容吧！
 
-1.我已经将代码中CryptoKitties合约的地址保存在一个名为`ckAddress`的变量中。在下一行中，请创建一个名为`kittyContract`的KittyInterface，并用`ckAddress`为它初始化 - 就像我们为`numberContract`所做的一样。
+1. 我已经将代码中 CryptoKitties 合约的地址保存在一个名为 `ckAddress` 的变量中。在下一行中，请创建一个名为 `kittyContract` 的 KittyInterface，并用 `ckAddress` 为它初始化 —— 就像我们为 `numberContract`所做的一样。

@@ -1,5 +1,5 @@
 ---
-title: Public Functions & Security
+title: 公有函数和安全性
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -206,18 +206,18 @@ material:
       }
 ---
 
-现在来修改`feedAndMultiply`，实现“冷静时间”。
+现在来修改 `feedAndMultiply` ，实现冷却周期。
 
-回顾一下这个函数，前一课上我们将其可见性设置为“public”。您必须仔细地检查所有声明为“公共”和“外部”的函数，一个个排除用户滥用它们的可能，谨防安全漏洞。请记住，如果这些函数没有类似`onlyOwner`这样的函数修改器，用户能利用各种可能的参数去调用它们。
+回顾一下这个函数，前一课上我们将其可见性设置为`public`。你必须仔细地检查所有声明为 `public` 和 `external `的函数，一个个排除用户滥用它们的可能，谨防安全漏洞。请记住，如果这些函数没有类似 `onlyOwner` 这样的函数修饰符，用户能利用各种可能的参数去调用它们。
 
-检查完这个函数，用户就可以直接调用这个它，并传入他们所希望的`_targetDna`或`species`。打个游戏还得遵循这么多的规则，还能不能愉快地玩耍啊！
+检查完这个函数，用户就可以直接调用这个它，并传入他们所希望的 `_targetDna` 或 `species` 。打个游戏还得遵循这么多的规则，还能不能愉快地玩耍啊！
 
-仔细观察，这个函数只需被`feedOnKitty（）`调用，因此，想要防止漏洞，最简单的方法就是设其可见性为“internal”。
+仔细观察，这个函数只需被 `feedOnKitty()` 调用，因此，想要防止漏洞，最简单的方法就是设其可见性为 `internal`。
 
-##实战演习
+## 实战演习
 
-1.目前函数`feedAndMultiply`可见性为`public`。我们将其改为“internal”以保障合约安全。因为我们不希望用户调用它的时候塞进一堆乱七八糟的DNA。
+1. 目前函数 `feedAndMultiply` 可见性为 `public`。我们将其改为 `internal` 以保障合约安全。因为我们不希望用户调用它的时候塞进一堆乱七八糟的 DNA。
 
-2.`feedAndMultiply` 过程需要参考 `cooldownTime`。首先，在找到`myZombie`之后，添加一个`require`语句来检查`_isReady（）`并将`myZombie`传递给它。这样用户必须等到僵尸的“冷静时间”结束后才能执行`feedAndMultiply`功能。
+2. `feedAndMultiply` 过程需要参考 `cooldownTime`。首先，在找到 `myZombie` 之后，添加一个 `require` 语句来检查 `_isReady()` 并将 `myZombie` 传递给它。这样用户必须等到僵尸的 `冷却周期` 结束后才能执行 `feedAndMultiply` 功能。
 
-3.在函数结束时，调用`_triggerCooldown（myZombie）`，标明捕猎行为触发了僵尸新的一段的冷静时间。
+3. 在函数结束时，调用 `_triggerCooldown(myZombie)`，标明捕猎行为触发了僵尸新的冷却周期。

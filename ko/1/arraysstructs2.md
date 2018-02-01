@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-이제 새로운 `Person`를 생성하고 `people` 배열에 추가하는 방법을 살펴 보도록 하지.
+이제 새로운 `Person`를 생성하고 `people` 배열에 추가하는 방법을 살펴보도록 하지.
 
 ```
 // 새로운 사람을 생성한다:
@@ -76,7 +76,7 @@ people.push(satoshi);
 people.push(Person(16, "Vitalik"));
 ```
 
-참고로 `array.push()`는 무언가를 배열의 **끝**에 추가해서 모든 원소가 순서를 유지하도록 하네. 다음 예시를 살펴 보도록 하지:
+참고로 `array.push()`는 무언가를 배열의 **끝**에 추가해서 모든 원소가 순서를 유지하도록 하네. 다음 예시를 살펴보도록 하지:
 
 ```
 uint[] numbers;
@@ -90,5 +90,5 @@ numbers.push(15);
 
 createZombie 함수가 무언가 할 수 있도록 만들어 보세!
 
-1. 함수의 몸체에 코드를 넣어 새로운 `Zombie`를 생성하여 `zombies` 배열에 추가하도록 한다. 새로운 좀비를 위한 `name`과 `dna`는 `createZombie`함수의 인자값이어야 한다. 
+1. 함수에 코드를 넣어 새로운 `Zombie`를 생성하여 `zombies` 배열에 추가하도록 한다. 새로운 좀비를 위한 `name`과 `dna`는 `createZombie`함수의 인자값이어야 한다. 
 2. 코드를 한 줄로 간결하게 작성해 보자.
