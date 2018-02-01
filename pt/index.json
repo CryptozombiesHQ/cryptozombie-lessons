@@ -7,6 +7,7 @@
         "syncing": "Sincronizando...",
         "telegram": {
             "name": "Telegram",
+            "openChat": "Open Chat",
             "action": "Participe em nosso Telegram",
             "link": "https://t.me/loomnetwork"
         },

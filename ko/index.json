@@ -7,8 +7,9 @@
         "syncing": "동기화 진행 중...",
         "telegram": {
             "name": "텔레그램",
+            "openChat": "Open Chat",
             "action": "크립토좀비 텔레그램 방에 들어오게.",
-            "link": "https://t.me/loomnetwork"
+            "link": "https://t.me/loomnetworkKR"
         },
         "twitter": {
             "name": "트위터",

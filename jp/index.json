@@ -7,8 +7,9 @@
         "syncing": "同期中...",
         "telegram": {
             "name": "Telegram",
+            "openChat": "Open Chat",
             "action": "Telegramに参加する",
-            "link": "https://t.me/loomnetwork"
+            "link": "https://t.me/loomnetworkJP"
         },
         "twitter": {
             "name": "Twitter",

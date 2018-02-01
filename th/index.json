@@ -7,8 +7,9 @@
         "syncing": "Synchronizing...",
         "telegram": {
             "name": "Telegram",
+            "openChat": "Open Chat",
             "action": "เข้ามาพูดคุยทาง Telegram กับเรา",
-            "link": "https://t.me/loomnetwork"
+            "link": "https://t.me/loomnetworkTH"
         },
         "twitter": {
             "name": "Twitter",
