@@ -122,7 +122,7 @@ material:
       }
 ---
 
-`getKitty` 함수는 우리가 살펴 본 예시 중 유일하게 다수의 반환값을 갖는 함수이지. 본 챕터에서는 어떻게 다수의 반환값을 처리하는지 살펴 보세: T
+`getKitty` 함수는 우리가 살펴 본 예시 중 유일하게 다수의 반환값을 갖는 함수이지. 본 챕터에서는 어떻게 다수의 반환값을 처리하는지 살펴 보세:
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -147,9 +147,9 @@ function getLastReturnValue() external {
 
 # 직접 해보기
 
-이제 크립토키티 컨트렉트와 상호작용할 시간이네! 
+이제 크립토키티 컨트랙트와 상호작용할 시간이네! 
 
-크립토키티 컨트렉트에서 고양이 유전자를 얻어내는 함수를 생성해 보세: 
+크립토키티 컨트랙트에서 고양이 유전자를 얻어내는 함수를 생성해 보세: 
 
 1. `feedOnKitty`라는 함수를 생성한다. 이 함수는 `_zombieId`와 `_kittyId`라는 `uint` 인자 값 2개를 전달받고, `public` 함수로 선언되어야 한다.
 
