@@ -1,5 +1,5 @@
 ---
-title: Zombie Cooldowns
+title: 僵尸冷却
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -198,21 +198,21 @@ material:
 ---
 
 
-现在，`Zombie`结构体中定义好了一个`readyTime`属性，让我们跳到`zombiefeeding.sol`， 去实现一个”冷静时间定时器“。
+现在，`Zombie` 结构体中定义好了一个 `readyTime` 属性，让我们跳到 `zombiefeeding.sol`， 去实现一个”冷却周期定时器“。
 
-按照以下步骤修改`feedAndMultiply`：
+按照以下步骤修改 `feedAndMultiply`：
 
-1.”捕猎“行为会触发僵尸的”冷静时间“
+1. ”捕猎“行为会触发僵尸的”冷却周期“
 
-2.僵尸在这段”冷静时间“结束前不可再捕猎小猫
+2. 僵尸在这段”冷却周期“结束前不可再捕猎小猫
 
-这将限制僵尸，防止其无限制地捕猎小猫或者整天不停地繁殖。将来，当我们增加战斗功能时，我们同样用”冷静时间“限制僵尸之间打斗的频率。
+这将限制僵尸，防止其无限制地捕猎小猫或者整天不停地繁殖。将来，当我们增加战斗功能时，我们同样用”冷却周期“限制僵尸之间打斗的频率。
 
-首先，我们要定义一些辅助函数，设置并检查僵尸的readyTime。
+首先，我们要定义一些辅助函数，设置并检查僵尸的 `readyTime`。
 
 ## 将结构体作为参数传入
 
-由于结构体的存储指针可以以参数的方式传递给一个”私有的“或”内部的“的函数，因此结构体可以在多个函数之间相互传递。
+由于结构体的存储指针可以以参数的方式传递给一个 `private` 或 `internal` 的函数，因此结构体可以在多个函数之间相互传递。
 
 遵循这样的语法：
 
@@ -224,14 +224,14 @@ function _doStuff(Zombie storage _zombie) internal {
 
 这样我们可以将某僵尸的引用直接传递给一个函数，而不用是通过参数传入僵尸ID后，函数再依据ID去查找。
 
-##实战演习
+## 实战演习
 
-1.先定义一个`_triggerCooldown`函数。它要求一个参数，_zombie，表示一某个僵尸的存储指针。这个函数可见性设置为`internal`。
+1. 先定义一个 `_triggerCooldown` 函数。它要求一个参数，`_zombie`，表示一某个僵尸的存储指针。这个函数可见性设置为 `internal`。
 
-2.在函数中，把`_zombie.readyTime`设置为`uint32（now + cooldownTime）`。
+2. 在函数中，把 `_zombie.readyTime` 设置为 `uint32（now + cooldownTime）`。
 
-3.接下来，创建一个名为`_isReady`的函数。这个函数的参数也是名为`_zombie`的`僵尸指针`类型参数。这个功能只具有“内部”可见性，并返回一个逻辑变量。
+3. 接下来，创建一个名为 `_isReady` 的函数。这个函数的参数也是名为 `_zombie` 的 `Zombie storage`。这个功能只具有 `internal` 可见性，并返回一个 `bool` 值。
 
-4.函数计算返回`（_zombie.readyTime <= now）`，值为“true”或“false”。这个功能的目的是判断下次允许猎食的时间是否已经到了。
+4. 函数计算返回`(_zombie.readyTime <= now)`，值为 `true` 或 `false`。这个功能的目的是判断下次允许猎食的时间是否已经到了。
 
 
