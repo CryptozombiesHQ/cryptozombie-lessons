@@ -11,24 +11,26 @@ material:
     answer: 1
 ---
 
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+Avec la leçon 1, nous avons créé une fonction qui prend un nom, et qui l'utilise pour générer un zombie aléatoire, ce zombie est ajouté à la base de donnée stockée sur la blockchain de notre jeu.
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+Avec la leçon 2, nous allons faire que notre application ressemble plus à un jeu : Nous allons la rendre multijoueur, et nous allons aussi ajouter des manières plus amusantes de créer des zombies, au lieu de les générer juste aléatoirement.
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+Comment allons nous créer de nouveaux zombie ? En faisant manger d'autres formes de vie à nos zombies !
 
-## Zombie Feeding
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+## Alimentation des Zombies
 
-And what do our zombies like to feed on most?
+Quand un zombie mange, il infecte l'hôte avec un virus. The virus transforme l'hôte en un nouveau zombie qui va rejoindre votre armée. L'ADN du nouveau zombie va être calculée à partir de l'ADN du zombie et de l'ADN de l'hôte.
 
-To find that out... You'll have to complete lesson 2!
+Et qu'est ce que les zombie préfèrent manger ?
 
-# Put it to the test
+Pour le savoir... Vous allez devoir finir la Leçon 2 !
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+# A votre tour
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+Il y a un petit exemple à droite. Cliquez sur un humain pour voir ce qu'il arrive quand votre zombie mange !
+
+Vous pouvez voir que l'ADN du nouveau zombie est déterminé par l'ADN de votre zombie et l'ADN de l'hôte.
+
+Quand vous êtes prêt, cliquez sur "Prochain Chapitre" et nous allons rendre ce jeu multijoueur.
