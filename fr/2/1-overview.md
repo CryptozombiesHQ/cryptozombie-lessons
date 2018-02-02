@@ -1,6 +1,6 @@
 ---
-title: Lesson 2 Overview
-actions: ['checkAnswer', 'hints']
+title: Aperçu de la Leçon 2
+actions: ['vérifierLaRéponse', 'indice']
 material:
   saveZombie: false
   zombieBattle:

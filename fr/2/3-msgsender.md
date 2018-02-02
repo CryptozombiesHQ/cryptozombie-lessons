@@ -1,6 +1,6 @@
 ---
 title: Msg.sender
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -120,7 +120,7 @@ Let's update our `_createZombie` method from lesson 1 to assign ownership of the
 
 1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`. 
+2. Second, let's increase `ownerZombieCount` for this `msg.sender`.
 
 In Solidity, you can increase a `uint` with `++`, just like in javascript:
 

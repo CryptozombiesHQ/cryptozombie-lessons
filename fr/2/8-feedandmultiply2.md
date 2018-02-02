@@ -1,6 +1,6 @@
 ---
 title: Zombie DNA
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -78,7 +78,7 @@ material:
 
 Let's finish writing the `feedAndMultiply` function.
 
-The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA. 
+The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA.
 
 For example:
 

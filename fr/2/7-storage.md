@@ -1,6 +1,6 @@
 ---
 title: Storage vs Memory
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -101,10 +101,10 @@ contract SandwichFactory {
 
     // If you just want a copy, you can use `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...in which case `anotherSandwich` will simply be a copy of the 
+    // ...in which case `anotherSandwich` will simply be a copy of the
     // data in memory, and...
     anotherSandwich.status = "Eaten!";
-    // ...will just modify the temporary variable and have no effect 
+    // ...will just modify the temporary variable and have no effect
     // on `sandwiches[_index + 1]`. But you can do this:
     sandwiches[_index + 1] = anotherSandwich;
     // ...if you want to copy the changes back into blockchain storage.
@@ -130,6 +130,6 @@ When a zombie feeds on some other lifeform, its DNA will combine with the other 
 
 3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
 
-You should have 4 lines of code so far, including the line with the closing `}`. 
+You should have 4 lines of code so far, including the line with the closing `}`.
 
 We'll continue fleshing out this function in the next chapter!

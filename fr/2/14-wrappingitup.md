@@ -1,6 +1,6 @@
 ---
 title: Wrapping It Up
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   saveZombie: true
   zombieBattle:
@@ -34,7 +34,7 @@ let kittyId = 1;
 // To get the CryptoKitty's image, we need to query their web API. This
 // information isn't stored on the blockchain, just their webserver.
 // If everything was stored on a blockchain, we wouldn't have to worry
-// about the server going down, them changing their API, or the company 
+// about the server going down, them changing their API, or the company
 // blocking us from loading their assets if they don't like our zombie game ;)
 let apiUrl = "https://api.cryptokitties.co/kitties/" + kittyId
 $.get(apiUrl, function(data) {

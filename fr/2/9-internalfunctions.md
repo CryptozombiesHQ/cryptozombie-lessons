@@ -1,6 +1,6 @@
 ---
 title: More on Function Visibility
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol

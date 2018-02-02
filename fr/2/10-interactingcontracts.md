@@ -1,6 +1,6 @@
 ---
 title: What Do Zombies Eat?
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -129,7 +129,7 @@ contract LuckyNumber {
 
 This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
 
 First we'd have to define an **_interface_** of the `LuckyNumber` contract:
 

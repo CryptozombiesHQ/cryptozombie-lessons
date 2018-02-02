@@ -1,6 +1,6 @@
 ---
 title: Mappings and Addresses
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -26,7 +26,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -63,7 +63,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));

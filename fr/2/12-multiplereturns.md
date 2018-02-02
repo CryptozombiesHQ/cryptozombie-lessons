@@ -1,6 +1,6 @@
 ---
 title: Handling Multiple Return Values
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol

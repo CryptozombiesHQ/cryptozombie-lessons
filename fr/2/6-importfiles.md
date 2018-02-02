@@ -1,6 +1,6 @@
 ---
 title: Import
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
     language: sol
@@ -83,4 +83,4 @@ So if we had a file named `someothercontract.sol` in the same directory as this 
 
 Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 
+1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`.
