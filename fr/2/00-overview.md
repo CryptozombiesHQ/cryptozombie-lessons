@@ -1,5 +1,5 @@
 ---
-title: Les Zombies Attaquent Leurs Victimes
+title: Les Zombies attaquent leurs victimes
 header: Alors, vous êtes arrivé à la Leçon 2 !
 roadmap: roadmap2.jpg
 ---

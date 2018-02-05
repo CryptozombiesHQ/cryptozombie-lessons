@@ -1,5 +1,5 @@
 ---
-title: Storage vs Memory
+title: Stockage vs mémoire
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -12,7 +12,7 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // Start here
+          // commencez ici
 
         }
       "zombiefactory.sol": |
@@ -69,14 +69,13 @@ material:
       }
 ---
 
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+En Solidity, il y a deux endroits pour stocker les variables - dans le `stockage` (`storage`) ou dans la `mémoire` (`memory`).
 
-**_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+Le **_stockage_** est utilisé pour les variables stockées de manière permanente dans la blockchain. Les variables **_mémoires_** sont temporaires, et effacées entre les appels de fonction extérieure de votre contrat. C'est un peu comme le disque dur et la mémoire vive de votre ordinateur.
 
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
+La plupart du temps, vous n'aurez pas besoin d'utiliser ses mots clés car Solidity gère ça tout seul. les variables d'état (déclarées en dehors des fonctions) sont par défaut `storage` et écrites de manière permanente dans la blockchain, alors que les variables déclarées à l'intérieur des fonctions sont `memory` et disparaissent quand l'appel à la fonction est terminé.
 
-However, there are times when you do need to use these keywords, namely when dealing with **_structs_** and **_arrays_** within functions:
-
+Cependant, il peut arriver que vous ayez besoin d'utiliser ses mots clés, surtout quand vous utilisez des **_structures_** et des **_tableaux_** à l'intérieur de fonctions :
 ```
 contract SandwichFactory {
   struct Sandwich {
@@ -89,47 +88,47 @@ contract SandwichFactory {
   function eatSandwich(uint _index) public {
     // Sandwich mySandwich = sandwiches[_index];
 
-    // ^ Seems pretty straightforward, but solidity will give you a warning
-    // telling you you should explicitly declare `storage` or `memory` here.
+    // ^ Cela pourrait paraître simple, mais Solidity renverra un avertissement
+    // vous indiquant que vous devriez déclarer explicitement `storage` ou `memory` ici.
 
-    // So instead, you should declare with the `storage` keyword, like:
+    // Vous devriez donc déclarez avec le mot clé `storage`, comme ceci :
     Sandwich storage mySandwich = sandwiches[_index];
-    // ...in which case `mySandwich` is a pointer to `sandwiches[_index]`
-    // in storage, and...
+    // ...dans ce cas, `mySandwich` est un pointeur vers `sandwiches[_index]`
+    // dans le stockage et...
     mySandwich.status = "Eaten!";
-    // ...this will permanently change `sandwiches[_index]` on the blockchain.
+    // ... changera définitivement `sandwiches[_index]` sur la blockchain.
 
-    // If you just want a copy, you can use `memory`:
+    // Si vous voulez juste une copie, vous pouvez utiliser `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...in which case `anotherSandwich` will simply be a copy of the
-    // data in memory, and...
+    // ...dans ce cas, `anotherSandwich` sera simplement une copie des
+    // données dans la mémoire et...
     anotherSandwich.status = "Eaten!";
-    // ...will just modify the temporary variable and have no effect
-    // on `sandwiches[_index + 1]`. But you can do this:
+    // ... modifiera simplement la variable temporaire et n'aura pas
+    // d'effet sur `sandwiches[_index + 1]`. Mais vous pouvez faire ceci :
     sandwiches[_index + 1] = anotherSandwich;
-    // ...if you want to copy the changes back into blockchain storage.
+    // ...si vous voulez copier les modifications dans le stockage de la blockchain.
   }
 }
 ```
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+Ne vous inquiétez pas si nous ne comprenez pas complètement quand utiliser l'un ou l'autre pour l'instant - au cours du tutoriel, nous vous indiquerons quand utiliser `storage` et quand utiliser `memory`, et le compilateur Solidity vous avertira aussi pour vous indiquer quand vous devriez utiliser un de ces mots clés.
 
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
+Pour l'instant, vous avez juste besoin de retenir qu'il y aura des cas où vous allez avoir besoin d'utiliser `storage` et `memory` !
 
-# Put it to the test
+# A votre tour
 
-It's time to give our zombies the ability to feed and multiply!
+Il est temps de donner à nos zombies la capacités de se nourrir et de se multiplier !
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
+Quand un zombie se nourri d'une autre forme de vie, son ADN se combine avec l'autre forme de vie pour créer un nouveau zombie.
 
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
+1. Créez une fonction appelée `feedAndMultiply` qui aura  deux paramètres : `_zombieId` (un `uint`) et `_targetDna` (aussi un `uint`). Cette fonction devra être `public`.
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2. Nous ne voulons pas que d'autre personne puisse nourrir notre zombie ! Nous allons vérifier que nous bien le propriétaire de ce zombie. Ajoutez une déclaration `require` pour vérifier que `msg.sender` est égal au propriétaire du zombie (de la même manière que dans la fonction `createRandomZombie`).
 
- > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
+> Remarque : De la même manière, parce que notre validation de réponse est basique, il faudra que `msg.sender` soit en premier, sinon cela ne sera pas validé. Normalement quand vous codez, vous pouvez choisir l'ordre que vous voulez, les 2 étant justes.
 
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. Nous allons avoir besoin de l'ADN de ce zombie. La prochaine chose que notre fonction devra faire c'est de déclarer un `Zombie` local nommé `myZombie` (qui sera un pointeur `storage`). Définissez cette variable égale à l'index `_zombieId` de notre tableau `zombies`.
 
-You should have 4 lines of code so far, including the line with the closing `}`.
+Vous devriez avoir 4 lignes de code pour l'instant, en comptant la ligne de fin `}`.
 
-We'll continue fleshing out this function in the next chapter!
+Nous continuerons de remplir cette fonction dans le prochain chapitre !

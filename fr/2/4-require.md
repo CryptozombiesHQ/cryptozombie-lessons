@@ -1,5 +1,5 @@
 ---
-title: Require
+title: Require (Exige)
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -37,7 +37,7 @@ material:
           }
 
           function createRandomZombie(string _name) public {
-              // start here
+              // commencez ici
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
           }
@@ -85,35 +85,34 @@ material:
       }
 ---
 
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+Dans la leçon 1, nous avons fait en sorte que les utilisateurs puissent créer de nouveaux zombies en appelant `createRandomZombie` et en rentrant leur nom. Cependant, si les utilisateurs continuaient d'appeler cette fonction pour créer à l'infini des zombies dans leur armée, le jeu ne serait pas vraiment amusant.
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+Nous allons faire en sorte que chaque jour puisse appeler cette fonction une seule fois seulement. Ainsi, les nouveaux joueurs vont l'appeler quand ils commenceront le jeu pour créer le premier zombie de leur armée.
 
-How can we make it so this function can only be called once per player?
+Comment pouvons-nous faire pour que cette fonction soit appelée seulement une fois par joueur ?
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
-
+Pour cela, nous allons utiliser `require`. `require` va faire en sorte que la fonction s’arrête et renvoie une erreur si certaines conditions ne sont pas respectées :
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-  // (Side note: Solidity doesn't have native string comparison, so we
-  // compare their keccak256 hashes to see if the strings are equal)
+  // Regarde si _name est égal à "Vitalik". Renvoie une erreur et quitte si ce n'est pas le cas.
+  // (Remarque : Solidity n'a pas de comparateur de `string` nativement,
+  // nous comparons donc leur hachages keccak256 pour voir si les `string` sont égaux)
   require(keccak256(_name) == keccak256("Vitalik"));
-  // If it's true, proceed with the function:
+  // Si c'est vrai, on continue avec la fonction :
   return "Hi!";
 }
 ```
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+Si vous appelez la fonction avec `sayHiToVitalik("Vitalik")`, elle va renvoyer "Hi!". Si vous l'appelez avec un autre argument, elle va renvoyer une erreur et ne pas s’exécuter.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+Ainsi `require` est pratique pour vérifier que certaines conditions soient vraies avant d'exécuter une fonction.
 
-# Put it to the test
+# A votre tour
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+Dans notre jeu de zombie, nous ne voulons pas qu'un utilisateur puisse créer une infinité de zombie pour son armée en appelant continuellement `createRandomZombie` - le jeu ne serait pas très amusant.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+Nous allons utiliser `require` pour être sur que la fonction s'exécute seulement une fois pas utilisateur, quand il crée leur premier zombie.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
+1. Ajouter une déclaration `require` au début de `createRandomZombie`. La fonction devra vérifier que `ownerZombieCount[msg.sender]` soit égal à `0`, et renvoyer une erreur au cas contraire.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> Remarque : En Solidity, le terme que vous mettez en premier n'a pas d'importance - cela revient au même. Cependant, notre vérificateur de réponse étant vraiment basique, il acceptera seulement une bonne réponse - il faudra que le `ownerZombieCount[msg.sender]` soit en premier.

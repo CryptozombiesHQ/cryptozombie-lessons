@@ -1,5 +1,5 @@
 ---
-title: Import
+title: Importation
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -8,7 +8,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
-        // put import statement here
+        // mettre la déclaration d'importation ici
 
         contract ZombieFeeding is ZombieFactory {
 
@@ -63,11 +63,11 @@ material:
 
 ---
 
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
+Vous remarquerez que nous avons fait un peu de ménage dans notre code à droite ! vous avez maintenant des onglets en haut de votre éditeur. Cliquez sur les onglets pour voir.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
+Notre code devenant plutôt long, nous l'avons donc séparer en plusieurs fichier pour mieux le gérer. C'est comme cela que vous devriez gérer les projets Solidity avec beaucoup de lignes de code.
 
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+Quand vous avez plusieurs fichiers et que vous voulez importer un fichier dans un autre, Solidity utilise le mot clé `import` (importation) :
 
 ```
 import "./someothercontract.sol";
@@ -77,10 +77,10 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+Nous avons donc un fichier nommé `someothercontract.sol` dans le même répertoire que ce contrat (c'est ce que `./` veut dire), il sera importé par le compilateur.
 
-# Put it to the test
+# A votre tour
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
+Maintenant que nous avons une structure avec plusieurs fichiers, nous allons avoir besoin d'utiliser `import` pour lire le contenu de l'autre fichier :
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`.
+1. Importer `zombiefactory.sol` dans notre nouveau fichier `zombiefeeding.sol`.

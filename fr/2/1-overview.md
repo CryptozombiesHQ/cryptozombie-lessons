@@ -20,7 +20,7 @@ Comment allons nous créer de nouveaux zombie ? En faisant manger d'autres forme
 
 ## Alimentation des Zombies
 
-Quand un zombie mange, il infecte l'hôte avec un virus. The virus transforme l'hôte en un nouveau zombie qui va rejoindre votre armée. L'ADN du nouveau zombie va être calculée à partir de l'ADN du zombie et de l'ADN de l'hôte.
+Quand un zombie mange, il infecte l'hôte avec un virus. Le virus transforme l'hôte en un nouveau zombie qui va rejoindre votre armée. L'ADN du nouveau zombie va être calculée à partir de l'ADN du zombie et de l'ADN de l'hôte.
 
 Et qu'est ce que les zombie préfèrent manger ?
 

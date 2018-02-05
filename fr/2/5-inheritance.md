@@ -1,5 +1,5 @@
 ---
-title: Inheritance
+title: Héritage
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -44,7 +44,7 @@ material:
 
       }
 
-      // Start here
+      // commencez ici
 
     answer: >
       pragma solidity ^0.4.19;
@@ -93,9 +93,9 @@ material:
 
 ---
 
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Le code de notre jeu commence à être un peu long. A la place de faire un contrat vraiment long, il vaut mieux parfois séparer la logique de votre code en plusieurs contrats pour mieux l'organiser.
 
-One feature of Solidity that makes this more manageable is contract **_inheritance_**:
+Une fonctionnalités de Solidity qui rend les contrats plus facile à gérer est l'**_héritage_** :
 
 ```
 contract Doge {
@@ -111,12 +111,13 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
 
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
+`BabyDoge` **_hérite_**  de `Doge`. Cela veut dire que si vous compilez et déployez `BabyDoge`, il aura accès à `catchphrase()` et à `anotherCatchphrase()` (et n'importe quelle fonction publique que nous définirions dans `Doge`).
 
-# Put it to the test
+Cela peut être utiliser pour les héritages logiques (comme avec les sous-classes, un `Chat` est un `Animal`). Mais cela peut aussi simplement être utilisé pour organiser votre code en groupant les logiques similaires en différentes classes.
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own class that inherits all the methods from `ZombieFactory`.
+# A votre tour
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+Dans les prochains chapitres, nous allons implémenter les fonctionnalités pour nourrir et multiplier nos zombies. Mettons cette logique dans sa propre classe qui hérite de toutes les méthodes de `ZombieFactory`.
+
+1. Créez un contrat nommé `ZombieFeeding` en dessous de `ZombieFactory`. Ce contrat devra hériter de notre contrat `ZombieFactory`.

@@ -1,5 +1,5 @@
 ---
-title: Mappage et Adresses
+title: Mappage et adresses
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -84,7 +84,7 @@ Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mappage` 
 
 ## Adresses
 
-La blockchain Ethereum est constitué de **_comptes_**, un peu comme des des comptes en banque. Un compte à un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
+La blockchain Ethereum est constituée de **_comptes_**, un peu comme des des comptes en banque. Un compte à un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
 
 Chaque compte à une `adresse`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
 
