@@ -76,5 +76,4 @@ Outros contracts poderão ler (mas não escrever) este array. Isso é um padrão
 Nós queremos armazenar um exército de zumbis em nosso aplicativo. E queremos mostrar todos os nossos zumbis para outros aplicativos, então queremos que seja público.
 
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
 1. Crie um array público de `Zombie` **_structs_**, e nomei-o como `zombies`

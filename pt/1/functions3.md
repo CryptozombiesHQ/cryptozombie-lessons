@@ -97,6 +97,6 @@ Nós vamos precisar de uma função de ajuda para gerar números de DNA aleatór
 
 1. Crie uma função `private` chamada `_generateRandomDna`. Que receberá um parâmetro chamado `_str` (uma `string`), e retorna um `uint`.
 
-2. Esta função irá observar algumas das nossas variáveis no contrato, mas não irá modificá-las, então marque as mesmas como `view`.
+2. Esta função irá observar algumas das nossas variáveis no contrato, mas não irá modificá-las, então marque-a como `view`.
 
 3. O corpo da função deve ficar vazio por enquanto - iremos trabalhar nisto mais tarde.
