@@ -1,5 +1,5 @@
 ---
-title: More on Function Visibility
+title: Plus sur la visibilité des fonctions
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -25,7 +25,7 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            // edit function definition below
+            // éditer la définition de fonction ci-dessous
             function _createZombie(string _name, uint _dna) private {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
@@ -102,21 +102,21 @@ material:
       }
 ---
 
-**The code in our previous lesson has a mistake!**
+**Le code dans notre leçon précédente avait une erreur !**
 
-If you try compiling it, the compiler will throw an error.
+Si vous essayer de le compiler, le compilateur renverra une erreur.
 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+Le problème est que nous essayons d'appeler la fonction `_createZombie` à l'intérieur de `ZombieFeeding`, mais `_createZombie` est une fonction `private` de `ZombieFactory`. Cela veut dire que aucun contrat qui hérite de `ZombieFactory` peut y accéder.
 
-## Internal and External
+## Interne et Externe
 
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
+En plus de `public` et `private`, Solidity a deux sortes de visibilité pour les fonctions : `internal` (interne) et `external` (externe).
 
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
+`internal` est similaire à `private`, à l'exception qu'il est aussi accessible aux contrats qui héritent de ce contrat. **(On dirait que c'est ce que l'on veut!)**.
 
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
+`extrenal` est similaire `public`, à l'exception que ces fonctions peuvent SEULEMENT être appelées à l'extérieur du contrat - elles ne peuvent pas être appelées par d'autres fonctions à l'intérieur du contrat. Nous parlerons plus tard de pourquoi utiliser `external` plutôt que `public`.
 
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+Pour déclarer des fonctions `internal` ou `external`, la syntaxe est la même que pour `private` et `public` :
 
 ```
 contract Sandwich {
@@ -132,14 +132,14 @@ contract BLT is Sandwich {
 
   function eatWithBacon() public returns (string) {
     baconSandwichesEaten++;
-    // We can call this here because it's internal
+    // Nous pouvons appeler cette fonction car elle est `internal`
     eat();
   }
 }
 ```
 
-# Put it to the test
+# A votre tour
 
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+1. Changez `_createZombie()` de `private` à `internal` pour que les autres contrats puissent y accéder.
 
-  We've already focused you back to the proper tab, `zombiefactory.sol`.
+  Nous avons déjà selectionné le bon onglet, `zombiefactory.sol`.

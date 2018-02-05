@@ -1,5 +1,5 @@
 ---
-title: Using an Interface
+title: Utiliser une interface
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -28,7 +28,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // Initialize kittyContract here using `ckAddress` from above
+          // initialisez kittyContract ici en utilisant `ckAddress` ci-dessus
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -114,35 +114,34 @@ material:
       }
 ---
 
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
+Continuons notre exemple précédent avec `NumberInterface`, une fois que nous avons défini l'interface :
 
 ```
 contract NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```
-
-We can use it in a contract as follows:
+Nous pouvons l'utiliser dans un contrat comme ceci :
 
 ```
 contract MyContract {
   address NumberInterfaceAddress = 0xab38...
-  // ^ The address of the FavoriteNumber contract on Ethereum
+  // ^ L'adresse du contrat FavoriteNumber sur Ethereum
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
-  // Now `numberContract` is pointing to the other contract
+  // Mainteant `numberContract` pointe vers l'autre contrat
 
   function someFunction() public {
-    // Now we can call `getNum` from that contract:
+    //Nous pouvons maintenant appeler `getNum` à partir de ce contrat :
     uint num = numberContract.getNum(msg.sender);
-    // ...and do something with `num` here
+    // ...et faire quelque chose avec ce `num`
   }
 }
 ```
 
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
+De cette manière, votre contrat peut interagir avec n'importe quel autre contrat sur la blockchain Ethereum, tant qu'ils exposent leurs fonctions comme `public` ou `external`.
 
-# Put it to the test
+# A votre tour
 
-Let's set up our contract to read from the CryptoKitties smart contract!
+Nous allons configurer notre contrat pour qu'il puisse lire le smart contract CryptoKitties !
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1. J'ai sauvegardé l´adresse du contrat CryptoKitties dans le code pour vous, sous une variable appelée `ckAddress`. A la prochaine ligne, créer une `KittyInterface` nommée `kittyContract`, et initialisez la avec `ckAddress` - de la même manière que nous avons fait avec `numberContract` au dessus.

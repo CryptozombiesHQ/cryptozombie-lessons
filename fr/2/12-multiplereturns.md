@@ -1,5 +1,5 @@
 ---
-title: Handling Multiple Return Values
+title: Gérer plusieurs valeurs de retour
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -38,7 +38,7 @@ material:
             _createZombie("NoName", newDna);
           }
 
-          // define function here
+          // definissez la fonction ici
 
         }
       "zombiefactory.sol": |
@@ -122,7 +122,7 @@ material:
       }
 ---
 
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
+Cette fonction `getKitty` est le premier exemple que nous avons vu qui retourne plusieurs valeurs. Nous allons voir comment gérer cela :
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -133,30 +133,30 @@ function processMultipleReturns() external {
   uint a;
   uint b;
   uint c;
-  // This is how you do multiple assignment:
+  // C'est comme ca que vous faites une affectation multiple :
   (a, b, c) = multipleReturns();
 }
 
-// Or if we only cared about one of the values:
+// Ou si nous voulons seulement une des valeurs ci dessus :
 function getLastReturnValue() external {
   uint c;
-  // We can just leave the other fields blank:
+  // Nous pouvons laisser les autres champs vides :
   (,,c) = multipleReturns();
 }
 ```
 
-# Put it to the test
+# A votre tour
 
-Time to interact with the CryptoKitties contract!
+Il est temps d'interagir avec le contrat CryptoKitties !
 
-Let's make a function that gets the kitty genes from the contract:
+Nous allons créer une fonction qui récupère les gènes d'un chaton à partir du contrat :
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1. Créez une fonction appelée `feedOnKitty`. Elle prendra 2 paramètres `uint`, `_zombieId` et `_kittyId` et elle devra être `public`.
 
-2. The function should first declare a `uint` named `kittyDna`.
+2. La fonction devra d'abord déclarer un `uint` nommé `kittyDna`.
 
-  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+  > Remarque : Dans notre `KittyInterface`, `genes` est un `uint256` - mais si vous vous rappelez de la leçon 1, `uint` est un alias pour `uint256` - c'est la même chose.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3. La fonction devra ensuite appeler la fonction `kittyContract.getKitty` avec `_kittyId` et stocker les `genes` dans `kittyDna`. N'oubliez pas - `getKitty` retourne une tonne de variables. (10 pour être précis - je suis gentil, je les ai comptées pour vous !). Mais nous voulons récupérer seulement la dernière, `genes`. Comptez vos virgules soigneusement !
 
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+4. Enfin, la fonction devra appeler `feedAndMultiply` avec `_zombieId` et `kittyDna`.

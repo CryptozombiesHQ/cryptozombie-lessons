@@ -1,5 +1,5 @@
 ---
-title: "Bonus: Kitty Genes"
+title: "Bonus : gènes de chatton"
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -30,20 +30,20 @@ material:
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // Modify function definition here:
+          // modifiez la définition de la fonction ici :
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            // Add an if statement here
+            // ajoutez une déclaration `if` ici
             _createZombie("NoName", newDna);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            // And modify function call here:
+            // et modifiez l'appel de la fonction ici :
             feedAndMultiply(_zombieId, kittyDna);
           }
 
@@ -133,40 +133,40 @@ material:
       }
 ---
 
-Our function logic is now complete... but let's add in one bonus feature.
+La logique de notre fonction est terminée... mais nous allons ajouter une fonctionnalité bonus.
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+Nous allons faire que les zombies créés à partir de chattons aient une caractéristique unique, qui montrera qu'ils sont des zombie-chats.
 
-To do this, we can add some special kitty code in the zombie's DNA.
+Pour cela, nous allons ajouter un code spécial chatton à l'ADN du zombie.
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics.
+Si vous vous rappelez de la leçon 1, nous n'utilisons seulement les 12 premiers chiffres de notre ADN à 16 chiffres pour déterminer l'apparence du zombie. Nous allons utiliser les 2 derniers chiffres inutilisés pour gérer les caractéristiques "spéciales".
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+Les deux derniers chiffres de l'ADN d'un zombie-chat sont `99` (car les chats ont 9 vies). Dans notre code, nous allons dire **si** un zombie provient d'un chat, alors ces deux derniers chiffres d'ADN seront `99`.
 
-## If statements
+## déclaration `if` (si)
 
-If statements in Solidity look just like javascript:
+Les déclaration `if` en Solidity sont les mêmes qu'en Javascript :
 
 ```
 function eatBLT(string sandwich) public {
-  // Remember with strings, we have to compare their keccak256 hashes
-  // to check equality
+  // N'oubliez pas, avec les `string`, nous devons comparer
+  // leurs hachages keccak256 pour vérifier l'égalité
   if (keccak256(sandwich) == keccak256("BLT")) {
     eat();
   }
 }
 ```
 
-# Put it to the test
+# A votre tour
 
-Let's implement cat genes in our zombie code.
+Nous allons implémenter les gènes de chat dans notre code zombie.
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
+1. Premièrement, changez la définition de fonction de `feedAndMultiply` qu'elle prenne un 3ème paramètres : un `string` nommé `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
+2. Ensuite, après avoir calculé le nouvel ADN zombie, rajoutez un déclaration `if` pour comparer le hachage `keccak256` de `_species` et la chaîne de caractère `"kitty"`.
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+3. Dans cette déclaration `if`, nous voulons remplacer les 2 derniers chiffres de l'ADN par `99`. Une façon de le faire et d'utiliser cette logique : `newDna = newDna - newDna % 100 + 99;`.
 
-  > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+  > Explication : Si `newDna` est `334455`. Alors `newDna % 100` est `55`, donc `newDna - newDna % 100` est `334400`. Enfin on ajoute `99` pour avoir `334499`.
 
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+4. Enfin, nous avons besoin de changer l'appel de la fonction à l'intérieur de `feedOnKitty`. Quand elle appelle `feedAndMultiply`, ajoutez l'argument `"kitty"` à la fin.
