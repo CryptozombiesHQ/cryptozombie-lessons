@@ -69,13 +69,14 @@ material:
       }
 ---
 
-En Solidity, il y a deux endroits pour stocker les variables - dans le `stockage` (`storage`) ou dans la `mémoire` (`memory`).
+En Solidity, il y a deux endroits pour stocker les variables - dans le `storage` (stockage) ou dans la `memory` (mémoire).
 
-Le **_stockage_** est utilisé pour les variables stockées de manière permanente dans la blockchain. Les variables **_mémoires_** sont temporaires, et effacées entre les appels de fonction extérieure de votre contrat. C'est un peu comme le disque dur et la mémoire vive de votre ordinateur.
+Le **_stockage_** est utilisé pour les variables stockées de manière permanente dans la blockchain. Les variables **_mémoires_** sont temporaires, et effacées entre les appels de fonction extérieure à votre contrat. C'est un peu comme le disque dur et la mémoire vive de votre ordinateur.
 
-La plupart du temps, vous n'aurez pas besoin d'utiliser ses mots clés car Solidity gère ça tout seul. les variables d'état (déclarées en dehors des fonctions) sont par défaut `storage` et écrites de manière permanente dans la blockchain, alors que les variables déclarées à l'intérieur des fonctions sont `memory` et disparaissent quand l'appel à la fonction est terminé.
+La plupart du temps, vous n'aurez pas besoin d'utiliser ces mots clés car Solidity gère ça tout seul. les variables d'état (déclarées en dehors des fonctions) sont par défaut `storage` et écrites de manière permanente dans la blockchain, alors que les variables déclarées à l'intérieur des fonctions sont `memory` et disparaissent quand l'appel à la fonction est terminé.
 
 Cependant, il peut arriver que vous ayez besoin d'utiliser ses mots clés, surtout quand vous utilisez des **_structures_** et des **_tableaux_** à l'intérieur de fonctions :
+
 ```
 contract SandwichFactory {
   struct Sandwich {
@@ -123,7 +124,7 @@ Quand un zombie se nourri d'une autre forme de vie, son ADN se combine avec l'au
 
 1. Créez une fonction appelée `feedAndMultiply` qui aura  deux paramètres : `_zombieId` (un `uint`) et `_targetDna` (aussi un `uint`). Cette fonction devra être `public`.
 
-2. Nous ne voulons pas que d'autre personne puisse nourrir notre zombie ! Nous allons vérifier que nous bien le propriétaire de ce zombie. Ajoutez une déclaration `require` pour vérifier que `msg.sender` est égal au propriétaire du zombie (de la même manière que dans la fonction `createRandomZombie`).
+2. Nous ne voulons pas que d'autres personnes puissent nourrir notre zombie ! Nous allons vérifier que nous sommes bien le propriétaire de ce zombie. Ajoutez une déclaration `require` pour vérifier que `msg.sender` est égal au propriétaire du zombie (de la même manière que dans la fonction `createRandomZombie`).
 
 > Remarque : De la même manière, parce que notre validation de réponse est basique, il faudra que `msg.sender` soit en premier, sinon cela ne sera pas validé. Normalement quand vous codez, vous pouvez choisir l'ordre que vous voulez, les 2 étant justes.
 

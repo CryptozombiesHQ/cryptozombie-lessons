@@ -63,9 +63,9 @@ material:
 
 ---
 
-Vous remarquerez que nous avons fait un peu de ménage dans notre code à droite ! vous avez maintenant des onglets en haut de votre éditeur. Cliquez sur les onglets pour voir.
+Vous remarquerez que nous avons fait un peu de ménage dans notre code à droite ! Vous avez maintenant des onglets en haut de votre éditeur. Cliquez sur les onglets pour voir.
 
-Notre code devenant plutôt long, nous l'avons donc séparer en plusieurs fichier pour mieux le gérer. C'est comme cela que vous devriez gérer les projets Solidity avec beaucoup de lignes de code.
+Notre code devenant plutôt long, nous l'avons donc séparé en plusieurs fichiers pour mieux le gérer. C'est comme cela que vous devriez gérer les projets Solidity qui ont beaucoup de lignes de code.
 
 Quand vous avez plusieurs fichiers et que vous voulez importer un fichier dans un autre, Solidity utilise le mot clé `import` (importation) :
 

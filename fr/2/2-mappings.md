@@ -1,5 +1,5 @@
 ---
-title: Mappage et adresses
+title: Mappages et adresses
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -80,13 +80,13 @@ material:
 
 Rendons notre jeu multijoueur en attribuant aux zombies de notre base de donnée un propriétaire.
 
-Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mappage` et `adresse`.
+Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` (mappage) et `address` (adresse).
 
 ## Adresses
 
-La blockchain Ethereum est constituée de **_comptes_**, un peu comme des des comptes en banque. Un compte à un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
+La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte à un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
 
-Chaque compte à une `adresse`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
+Chaque compte à une `address`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
@@ -97,25 +97,25 @@ Nous entrerons dans les détails des adresses dans une prochaine leçon, pour l'
 Nous pouvons donc l'utiliser comme un ID unique pour définir l'appartenance de nos zombies. Quand un utilisateur crée de nouveaux zombies en interagissant avec notre application, nous pourrons définir l'appartenance de ces zombies à l'adresse Ethereum utilisée pour appeler la fonction.
 
 
-## Mappage
+## Mappages
 
-Dans la Leçon 1 nous avec vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autres façon d'organiser des données en Solidity.
+Dans la Leçon 1 nous avec vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
 
-Voici un exemple de `mappage` :
+Voici un exemple de `mapping` :
 
 ```
-// Pour une application financière , stockage d'un uint qui correspond à la balance d'un compte utilisateur :
+// Pour une application financière , stockage d'un `uint` qui correspond à la balance d'un compte utilisateur :
 mapping (address => uint) public accountBalance;
 // Ou peut être utilisé pour stocker puis rechercher le nom d'utilisateur en fonction d'un userId.
 mapping (uint => string) userIdToName;
 ```
 
-Un mappage est fondamentalement un stockage de valeur-clé pour stocker et rechercher des données. Dans le premier exemple, la clé est une `adresse` et la valeur est un `uint`, et dans le second exemple, la clé est un `uint` et la valeur une `chaine de caractère`.
+Un mappage est fondamentalement un stockage de valeur-clé pour stocker et rechercher des données. Dans le premier exemple, la clé est une `address` et la valeur est un `uint`, et dans le second exemple, la clé est un `uint` et la valeur un `string`.
 
 
 # A votre tour
 
-Pour savoir à qui appartient un zombie. Nous allons utiliser 2 mappages : un qui va stocker l'adresse associé à un zombie, et l'autre qui va stocker combien de zombies un utilisateur possède.
+Pour savoir à qui appartient un zombie. Nous allons utiliser 2 mappages : un qui va stocker l'adresse associée à un zombie, et l'autre qui va stocker combien de zombies un utilisateur possède.
 
 1. Créez un mappage appelé `zombieToOwner`. La clé est un `uint` (nous stockerons et rechercherons le zombie avec son id) et la valeur est une `address`.
 Ce mappage sera `public`.

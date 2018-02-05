@@ -1,5 +1,5 @@
 ---
-title: "Bonus : gènes de chatton"
+title: "Bonus : gènes de chaton"
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -135,9 +135,9 @@ material:
 
 La logique de notre fonction est terminée... mais nous allons ajouter une fonctionnalité bonus.
 
-Nous allons faire que les zombies créés à partir de chattons aient une caractéristique unique, qui montrera qu'ils sont des zombie-chats.
+Nous allons faire que les zombies créés à partir de chatons aient une caractéristique unique, qui montrera qu'ils sont des zombie-chats.
 
-Pour cela, nous allons ajouter un code spécial chatton à l'ADN du zombie.
+Pour cela, nous allons ajouter un code spécial chaton à l'ADN du zombie.
 
 Si vous vous rappelez de la leçon 1, nous n'utilisons seulement les 12 premiers chiffres de notre ADN à 16 chiffres pour déterminer l'apparence du zombie. Nous allons utiliser les 2 derniers chiffres inutilisés pour gérer les caractéristiques "spéciales".
 
@@ -161,11 +161,11 @@ function eatBLT(string sandwich) public {
 
 Nous allons implémenter les gènes de chat dans notre code zombie.
 
-1. Premièrement, changez la définition de fonction de `feedAndMultiply` qu'elle prenne un 3ème paramètres : un `string` nommé `_species`
+1. Premièrement, changez la définition de la fonction `feedAndMultiply` pour qu'elle prenne un 3ème paramètre : un `string` nommé `_species`
 
-2. Ensuite, après avoir calculé le nouvel ADN zombie, rajoutez un déclaration `if` pour comparer le hachage `keccak256` de `_species` et la chaîne de caractère `"kitty"`.
+2. Ensuite, après avoir calculé le nouvel ADN zombie, rajoutez une déclaration `if` pour comparer le hachage `keccak256` de `_species` et la chaîne de caractère `"kitty"`.
 
-3. Dans cette déclaration `if`, nous voulons remplacer les 2 derniers chiffres de l'ADN par `99`. Une façon de le faire et d'utiliser cette logique : `newDna = newDna - newDna % 100 + 99;`.
+3. Dans cette déclaration `if`, nous voulons remplacer les 2 derniers chiffres de l'ADN par `99`. Une façon de le faire est d'utiliser cette logique : `newDna = newDna - newDna % 100 + 99;`.
 
   > Explication : Si `newDna` est `334455`. Alors `newDna % 100` est `55`, donc `newDna - newDna % 100` est `334400`. Enfin on ajoute `99` pour avoir `334499`.
 

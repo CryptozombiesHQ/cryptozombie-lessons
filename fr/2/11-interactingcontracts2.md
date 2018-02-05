@@ -128,7 +128,7 @@ contract MyContract {
   address NumberInterfaceAddress = 0xab38...
   // ^ L'adresse du contrat FavoriteNumber sur Ethereum
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
-  // Mainteant `numberContract` pointe vers l'autre contrat
+  // Maintenant `numberContract` pointe vers l'autre contrat
 
   function someFunction() public {
     //Nous pouvons maintenant appeler `getNum` à partir de ce contrat :

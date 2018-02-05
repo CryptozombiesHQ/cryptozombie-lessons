@@ -87,7 +87,7 @@ material:
 
 Dans la leçon 1, nous avons fait en sorte que les utilisateurs puissent créer de nouveaux zombies en appelant `createRandomZombie` et en rentrant leur nom. Cependant, si les utilisateurs continuaient d'appeler cette fonction pour créer à l'infini des zombies dans leur armée, le jeu ne serait pas vraiment amusant.
 
-Nous allons faire en sorte que chaque jour puisse appeler cette fonction une seule fois seulement. Ainsi, les nouveaux joueurs vont l'appeler quand ils commenceront le jeu pour créer le premier zombie de leur armée.
+Nous allons faire en sorte que chaque joueur puisse appeler cette fonction une seule fois seulement. Ainsi, les nouveaux joueurs vont l'appeler quand ils commenceront le jeu pour créer le premier zombie de leur armée.
 
 Comment pouvons-nous faire pour que cette fonction soit appelée seulement une fois par joueur ?
 
@@ -96,14 +96,14 @@ Pour cela, nous allons utiliser `require`. `require` va faire en sorte que la fo
 function sayHiToVitalik(string _name) public returns (string) {
   // Regarde si _name est égal à "Vitalik". Renvoie une erreur et quitte si ce n'est pas le cas.
   // (Remarque : Solidity n'a pas de comparateur de `string` nativement,
-  // nous comparons donc leur hachages keccak256 pour voir si les `string` sont égaux)
+  // nous comparons donc leurs hachages keccak256 pour voir si les `string` sont égaux)
   require(keccak256(_name) == keccak256("Vitalik"));
   // Si c'est vrai, on continue avec la fonction :
   return "Hi!";
 }
 ```
 
-Si vous appelez la fonction avec `sayHiToVitalik("Vitalik")`, elle va renvoyer "Hi!". Si vous l'appelez avec un autre argument, elle va renvoyer une erreur et ne pas s’exécuter.
+Si vous appelez la fonction avec `sayHiToVitalik("Vitalik")`, elle va renvoyer "Hi!". Si vous l'appelez avec un autre argument, elle va renvoyer une erreur et ne elle ne va pas s’exécuter.
 
 Ainsi `require` est pratique pour vérifier que certaines conditions soient vraies avant d'exécuter une fonction.
 
@@ -111,7 +111,7 @@ Ainsi `require` est pratique pour vérifier que certaines conditions soient vrai
 
 Dans notre jeu de zombie, nous ne voulons pas qu'un utilisateur puisse créer une infinité de zombie pour son armée en appelant continuellement `createRandomZombie` - le jeu ne serait pas très amusant.
 
-Nous allons utiliser `require` pour être sur que la fonction s'exécute seulement une fois pas utilisateur, quand il crée leur premier zombie.
+Nous allons utiliser `require` pour être sur que la fonction s'exécute seulement une fois pas utilisateur, quand il crée son premier zombie.
 
 1. Ajouter une déclaration `require` au début de `createRandomZombie`. La fonction devra vérifier que `ownerZombieCount[msg.sender]` soit égal à `0`, et renvoyer une erreur au cas contraire.
 

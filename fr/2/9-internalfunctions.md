@@ -106,15 +106,15 @@ material:
 
 Si vous essayer de le compiler, le compilateur renverra une erreur.
 
-Le problème est que nous essayons d'appeler la fonction `_createZombie` à l'intérieur de `ZombieFeeding`, mais `_createZombie` est une fonction `private` de `ZombieFactory`. Cela veut dire que aucun contrat qui hérite de `ZombieFactory` peut y accéder.
+Le problème est que nous essayons d'appeler la fonction `_createZombie` à l'intérieur de `ZombieFeeding`, mais `_createZombie` est une fonction `private` de `ZombieFactory`. Cela veut dire que aucun contrat qui hérite de `ZombieFactory` ne peut y accéder.
 
-## Interne et Externe
+## Interne et externe
 
-En plus de `public` et `private`, Solidity a deux sortes de visibilité pour les fonctions : `internal` (interne) et `external` (externe).
+En plus de `public` et `private`, Solidity a deux autres visibilité pour les fonctions : `internal` (interne) et `external` (externe).
 
-`internal` est similaire à `private`, à l'exception qu'il est aussi accessible aux contrats qui héritent de ce contrat. **(On dirait que c'est ce que l'on veut!)**.
+`internal` est similaire à `private`, à l'exception qu'elle est aussi accessible aux contrats qui héritent de ce contrat. **(On dirait que c'est ce que l'on veut!)**.
 
-`extrenal` est similaire `public`, à l'exception que ces fonctions peuvent SEULEMENT être appelées à l'extérieur du contrat - elles ne peuvent pas être appelées par d'autres fonctions à l'intérieur du contrat. Nous parlerons plus tard de pourquoi utiliser `external` plutôt que `public`.
+`extrenal` est similaire `public`, à l'exception que ces fonctions peuvent SEULEMENT être appelées à l'extérieur du contrat - elles ne peuvent pas être appelées par d'autres fonctions à l'intérieur du contrat. Nous expliquerons plus tard pourquoi utiliser `external` plutôt que `public`.
 
 Pour déclarer des fonctions `internal` ou `external`, la syntaxe est la même que pour `private` et `public` :
 
@@ -142,4 +142,4 @@ contract BLT is Sandwich {
 
 1. Changez `_createZombie()` de `private` à `internal` pour que les autres contrats puissent y accéder.
 
-  Nous avons déjà selectionné le bon onglet, `zombiefactory.sol`.
+  Nous avons déjà sélectionné le bon onglet, `zombiefactory.sol`.

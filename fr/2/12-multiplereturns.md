@@ -38,7 +38,7 @@ material:
             _createZombie("NoName", newDna);
           }
 
-          // definissez la fonction ici
+          // définissez la fonction ici
 
         }
       "zombiefactory.sol": |
@@ -133,7 +133,7 @@ function processMultipleReturns() external {
   uint a;
   uint b;
   uint c;
-  // C'est comme ca que vous faites une affectation multiple :
+  // C'est comme ça que vous faites une affectation multiple :
   (a, b, c) = multipleReturns();
 }
 

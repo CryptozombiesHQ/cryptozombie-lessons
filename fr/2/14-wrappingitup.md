@@ -13,11 +13,11 @@ material:
 
 Et voila, vous avez terminé la leçon 2 !
 
-Vous pouvez voir comment cela fonctionne avec la démo à droite. Allez-y, je sais que nous avez hâte d'arriver en bas de cette page 😉. Cliquez sur un chatton pour l'attaquer et regardez le nouveau zombie que vous obtiendrez !
+Vous pouvez voir comment cela fonctionne avec la démo à droite. Allez-y, je sais que nous avez hâte d'arriver en bas de cette page 😉. Cliquez sur un chaton pour l'attaquer et regardez le nouveau zombie que vous obtiendrez !
 
 ## Implémentation Javascript
 
-Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, and qui a accès à tous les fonctions publiques des deux contrats.
+Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à tous les fonctions publiques des deux contrats.
 
 Voici un exemple d'interaction avec notre contrat déployé utilisant Javascript et web3.js:
 
@@ -27,7 +27,7 @@ var ZombieFeedingContract = web3.eth.contract(abi)
 var contractAddress = /* l'adresse de notre contrat sur Ethereum une fois déployé */
 var ZombieFeeding = ZombieFeedingContract.at(contractAddress)
 
-// En supposant que nous avons l'ADN de notre zombie et l'ID du chatton que l'on veut attaquer
+// En supposant que nous ayons l'ADN de notre zombie et l'ID du chaton que l'on veut attaquer
 let zombieId = 1;
 let kittyId = 1;
 
@@ -35,7 +35,7 @@ let kittyId = 1;
 // Cette information n'est pas stockée sur la blockchain, seulement sur leur
 // serveur web. Si tout était stocké sur la blockchain, nous n'aurions pas
 // besoin de s'inquiéter que les serveurs tombent en panne, qu'ils changent leur
-// API et que la compagnie décide de nous bloquer l'accès à leurs images s'ils
+// API ou que la compagnie décide de nous bloquer l'accès à leurs images s'ils
 // n'aiment pas notre jeu de zombie ;)
 let apiUrl = "https://api.cryptokitties.co/kitties/" + kittyId
 $.get(apiUrl, function(data) {
@@ -43,13 +43,13 @@ $.get(apiUrl, function(data) {
   // faire quelque chose pour afficher l'image
 })
 
-// Quand l'utilisateur clique sur un chatton :
+// Quand l'utilisateur clique sur un chaton :
 $(".kittyImage").click(function(e) {
   // Appeler la fonction `feedOnKitty` de notre contrat
   ZombieFeeding.feedOnKitty(zombieId, kittyId)
 })
 
-// Écouter pour un évènement NewZombie de notre contrat pour l'afficher :
+// Écoute un évènement NewZombie de notre contrat pour l'afficher :
 ZombieFactory.NewZombie(function(error, result) {
   if (error) return
   // Cette fonction va afficher le zombie, comme dans la leçon 1 :
@@ -61,6 +61,6 @@ ZombieFactory.NewZombie(function(error, result) {
 
 Choisissez un chaton que vous voulez donner à manger. L'ADN de votre zombie et celui du chaton vont se mélanger, et vous aurez un nouveau zombie dans votre armée !
 
-Vous avez vu ces jolies jambes de chat sur votre nouveau zombie ? C'est grâce au chiffres `99` à la fin de notre ADN 😉
+Vous avez vu ces jolies jambes de chat sur votre nouveau zombie ? C'est grâce aux chiffres `99` à la fin de notre ADN 😉
 
-Vous pouvez recommencer si vous le souhaitez. Quand vous avez un zombie qui vous plait (vous n'en aurez qu'un), continuez et passez au prochain chapitre pour terminer la leçon 2 !
+Vous pouvez recommencer si vous le souhaitez. Quand vous avez un zombie qui vous plaît (vous n'en aurez qu'un), continuez et passez au prochain chapitre pour terminer la leçon 2 !

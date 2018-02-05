@@ -95,7 +95,7 @@ material:
 
 Le code de notre jeu commence à être un peu long. A la place de faire un contrat vraiment long, il vaut mieux parfois séparer la logique de votre code en plusieurs contrats pour mieux l'organiser.
 
-Une fonctionnalités de Solidity qui rend les contrats plus facile à gérer est l'**_héritage_** :
+Une des fonctionnalités de Solidity qui rend les contrats plus facile à gérer est l'**_héritage_** :
 
 ```
 contract Doge {

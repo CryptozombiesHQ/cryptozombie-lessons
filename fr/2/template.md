@@ -1,5 +1,5 @@
 ---
-title: TYpes de Données
+title: Types de données
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:

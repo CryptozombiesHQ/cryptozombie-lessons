@@ -78,7 +78,7 @@ material:
 
 Nous allons finir d'écrire la fonction `feedAndMultiply`.
 
-La formule pour calculer l'ADN d'un nouveau zombie est simple : c'est simplement la moyenne entre l'ADN du zombie que se nourrit et l'ADN de sa proie.
+La formule pour calculer l'ADN d'un nouveau zombie est simple : c'est simplement la moyenne entre l'ADN du zombie qui se nourrit et l'ADN de sa proie.
 
 Par exemple :
 
@@ -90,13 +90,13 @@ function testDnaSplicing() public {
   // ^ sera égal à 3333333333333333
 }
 ```
-Plus tard, nous pourrons faire une formule plus compliquée, comme ajouter un peu de hasard à l'ADN du nouveau zombie. Mais pour l'instant, on va garder ca simple - nous pourrons toujours y revenir plus tard.
+Plus tard, nous pourrons faire une formule plus compliquée, comme ajouter un peu de hasard à l'ADN du nouveau zombie. Mais pour l'instant, on va garder ça simple - nous pourrons toujours y revenir plus tard.
 
 # A votre tour
 
 1. Pour commencer, nous devons nous assurer que `_targetDna` n'est pas plus long que 16 chiffres. Pour cela, nous pouvons définir `_targetDna` égal à `_targetDna % dnaModulus` pour ne garder que les 16 derniers chiffres.
 
-2. Ensuite, notre fonction devra déclarer un `uint` appelé `newDna`, et qu'il soit égal à la moyenne de l'ADN de `myZombie` et de `_targetDna` (comme dans l'exemple ci-dessus).
+2. Ensuite, notre fonction devra déclarer un `uint` appelé `newDna`, et faire en sorte qu'il soit égal à la moyenne de l'ADN de `myZombie` et de `_targetDna` (comme dans l'exemple ci-dessus).
 
 > Remarque : Vous pouvez accéder aux propriétés de `myZombie` en utilisant `myZombie.name` et `myZombie.dna`
 
