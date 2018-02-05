@@ -39,36 +39,36 @@ material:
       }
 ---
 
-Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array en anglais). il y a deux sortes de tableaux dans Solidity : les tableaux  **_fixes_** et les tableaux **_dynamiques_** :
+Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array). il y a deux sortes de tableaux dans Solidity : les tableaux  **_fixes_** et les tableaux **_dynamiques_** :
 
 ```
 // Tableau avec une longueur fixe de 2 éléments :
 uint[2] fixedArray;
-// Un autre Tableau fixe, qui peut contenir 5 chaînes de caractères (string en anglais) :
+// Un autre Tableau fixe, qui peut contenir 5 `string` :
 string[5] stringArray;
 // un Tableau dynamique, il n'a pas de taille fixe, il peut continuer de grandir :
 uint[] dynamicArray;
 ```
 
-Vous pouvez aussi créer un tableau de **_structs_**. En utilisant la structure Person du chapitre précédent :
+Vous pouvez aussi créer un tableau de **_structure_**. En utilisant la structure Person du chapitre précédent :
 
 ```
 Person[] people; // Tableau dynamique, on peut en rajouter sans limite.
 ```
 
-Rappelez-vous que les variables d'état sont stockées définitivement dans la blockchain. Il peut donc être utile de créer des tableaux dynamique de structures de ce type pour stocker des données structurées dans votre contrat, un peu comme une base de données.
+Vous vous rappelez que les variables d'état sont stockées définitivement dans la blockchain ? Il peut donc être utile de créer des tableaux dynamique de structure pour stocker des données structurées dans votre contrat, un peu comme une base de données.
 
-## Tableaux Public
+## Tableaux publics
 
-Vous pouvez déclarer un tableau comme `public`, et Solidity créera automatiquement une méthode **_ getter _**. La syntaxe ressemble à:
+Vous pouvez déclarer un tableau comme `public`, et Solidity créera automatiquement une méthode **_d'accès_**. La syntaxe ressemble à :
 
 ```
 Person[] public people;
 ```
-Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc un modèle utile pour stocker des données publiques dans votre contrat.
+Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc une façon utile pour stocker des données publiques dans votre contrat.
 
 # A votre tour
 
 Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications, cette armée devra donc être publique.
 
-1. Créez un tableau public de **_structs_** `Zombie`, et appelez le `zombies`.
+1. Créez un tableau public de **_structures_** `Zombie`, et appelez le `zombies`.
