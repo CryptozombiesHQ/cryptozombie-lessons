@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 Em nossa aplicação, nós vamos precisar criar alguns zumbis. Vamos criar a função para isso:
 
-1. Crie uma função chamada `createZombie`. Esta deve receber dois argumentos: **__name_** (uma `string`), e **__data_** (uma `uint`).
+1. Crie uma função chamada `createZombie`. Esta deve receber dois argumentos: **__name_** (uma `string`), e **__dna_** (uma `uint`).
 
 Deixe o corpo da função vazia por enquanto - nós vamos preenchê-lo mais tarde.
