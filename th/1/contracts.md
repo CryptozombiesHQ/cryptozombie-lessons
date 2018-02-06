@@ -8,7 +8,7 @@ material:
       pragma solidity //1. ระบุเวอร์ชั่นของ Solidity ตรงนี้
 
       //2. สร้างContract ตรงนี้
-    คำตอบ: > 
+    answer: > 
       pragma solidity ^0.4.19;
 
 
