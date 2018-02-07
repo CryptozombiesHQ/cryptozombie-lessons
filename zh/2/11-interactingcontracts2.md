@@ -126,20 +126,20 @@ contract NumberInterface {
 
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38...; 
-  // ^ The address of the FavoriteNumber contract on Ethereum
+  address NumberInterfaceAddress = 0xab38...;
+  // ^ 这是FavoriteNumber合约在以太坊上的地址
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
-  // Now `numberContract` is pointing to the other contract
+  // 现在变量 `numberContract` 指向另一个合约对象
 
   function someFunction() public {
-    // Now we can call `getNum` from that contract:
+    // 现在我们可以调用在那个合约中声明的 `getNum`函数:
     uint num = numberContract.getNum(msg.sender);
-    // ...and do something with `num` here
+    // ...在这儿使用 `num`变量做些什么
   }
 }
 ```
 
-通过这种方式，只要将您合约的可见性设置为“公共”或“外部”，它们就可以与以太坊区块链上的任何其他合同进行交互。
+通过这种方式，只要将您合约的可见性设置为`public`(公共)或`external`(外部)，它们就可以与以太坊区块链上的任何其他合约进行交互。
 
 # 实战演习
 

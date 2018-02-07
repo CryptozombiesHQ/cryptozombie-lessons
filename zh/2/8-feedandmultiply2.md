@@ -1,5 +1,5 @@
 ---
-title: Zombie DNA
+title: (僵尸的DNA)Zombie DNA
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -78,7 +78,7 @@ material:
 
 我们来把 `feedAndMultiply` 函数写完吧。
 
-获取新的僵尸DNA的公式很简单：计算猎食僵尸DNA和猎食目标DNA之间的平均值。
+获取新的僵尸DNA的公式很简单：计算猎食僵尸DNA和被猎僵尸DNA之间的平均值。
 
 例如：
 
@@ -97,7 +97,7 @@ function testDnaSplicing() public {
 
 1. 首先我们确保 `_targetDna` 不长于16位。要做到这一点，我们可以设置 `_targetDna` 为 `_targetDna％dnaModulus` ，并且只取其最后16位数字。
 
-2. 接下来为我们的函数声明一个名叫 `newDna` 的 `uint`，并将其值设置为 `myZombie`的 DNA 和 `_targetDna` 的平均值（如上例所示）。
+2. 接下来为我们的函数声明一个名叫 `newDna` 的 `uint`类型的变量，并将其值设置为 `myZombie`的 DNA 和 `_targetDna` 的平均值（如上例所示）。
  
 >注意：您可以用 `myZombie.name` 或 `myZombie.dna` 访问 `myZombie` 的属性。
 

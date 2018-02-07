@@ -85,17 +85,17 @@ material:
       }
 ---
 
-在第一课中，我们成功让用户通过调用 `createRandomZombie` 并输入一个名字来创建新的僵尸。 但是，如果用户能持续调用这个函数来创建出无限多个僵尸加入他们的军团，这游戏就太没意思了！
+在第一课中，我们成功让用户通过调用 `createRandomZombie`函数 并输入一个名字来创建新的僵尸。 但是，如果用户能持续调用这个函数来创建出无限多个僵尸加入他们的军团，这游戏就太没意思了！
 
-于是，我们作出限定：每个玩家仅允许一次调用随机创建函数。 这样一来，新玩家可以在刚开始玩游戏时通过调用它，为其军团创建初始僵尸。
+于是，我们作出限定：每个玩家只能调用一次这个函数。 这样一来，新玩家可以在刚开始玩游戏时通过调用它，为其军团创建初始僵尸。
 
-我们怎样才能限定每个玩家只调用一次随机创建函数呢？
+我们怎样才能限定每个玩家只调用一次这个函数呢？
 
-答案是使用`require`。 `require`使得函数在某些状况下运行时候抛出错误，并停止继续执行：
+答案是使用`require`。 `require`使得函数在执行过程中，当不满足某些条件时抛出错误，并停止继续执行：
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // 比较 _name 是否等于 "Vitalik". 如果成立，抛出异常并终止程序
+  // 比较 _name 是否等于 "Vitalik". 如果不成立，抛出异常并终止程序
   // (敲黑板: Solidity 并不支持原生的字符串比较, 我们只能通过比较
   // 两字符串的 keccak256 哈希值来进行判断)
   require(keccak256(_name) == keccak256("Vitalik"));
@@ -105,8 +105,7 @@ function sayHiToVitalik(string _name) public returns (string) {
 ```
 
 
-如果你使用参数 `sayHiToVitalik（“Vitalik”）` 调用创建函数
-，它会返回“Hi！”。而如果调用时候使用了其他参数，它则会抛出错误并停止继续执行。
+如果你这样调用函数 `sayHiToVitalik（“Vitalik”）` ,它会返回“Hi！”。而如果调用的时候使用了其他参数，它则会抛出错误并停止继续执行。
 
 因此，在调用一个函数之前，用 `require` 验证前置条件是非常有必要的。
 
@@ -116,8 +115,8 @@ function sayHiToVitalik(string _name) public returns (string) {
 
 我们使用了 `require` 来确保这个函数只有在每个用户第一次调用它的时候执行，用以创建初始僵尸。
 
-1. 在 `createRandomZombie` 的前面放置 `require` 语句。 使得函数先检查 `ownerZombieCount [msg.sender]` 是否等于 `0` ，不然就抛出一个错误。
+1. 在 `createRandomZombie` 的前面放置 `require` 语句。 使得函数先检查 `ownerZombieCount [msg.sender]` 的值为 `0` ，不然就抛出一个错误。
 
 >注意：在 Solidity 中，关键词放置的顺序并不重要
-- 虽然参数的两个位置是等效的。 但是，由于我们的答案检查器比较呆板，它只能认定其中一个为正确答案 
-- 于是在这里，我们就约定把`ownerZombieCount [msg.sender]`放前面吧 
+- 虽然参数的两个位置是等效的。 但是，由于我们的答案检查器比较呆板，它只能认定其中一个为正确答案
+- 于是在这里，我们就约定把`ownerZombieCount [msg.sender]`放前面吧
