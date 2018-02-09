@@ -4,6 +4,7 @@ import pt from './pt'
 import jp from './jp'
 import th from './th'
 import th from './fr'
+import ru from './ru'
 
 export default {
   en, // English (source for all translations)
@@ -11,5 +12,6 @@ export default {
   pt,
   jp,
   th,
-  fr
+  fr,
+  ru
 }
