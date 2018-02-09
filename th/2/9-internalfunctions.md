@@ -1,5 +1,5 @@
 ---
-title: More on Function Visibility
+title: เนื้อหาเรื่อง Function Visibility เพิ่มเติม
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -106,15 +106,15 @@ material:
 
 เมื่อเราพยายามที่จะคอมไพล์มันออกมา จะเห็นได้ว่าจะเกิด error ขึ้น
 
-สาเหตุคือเมื่อเราพยายามที่จะเรียกฟังก์ชั่น `_createZombie` จากภายใน `ZombieFeeding` แต่เนื่องจากฟังก์ชั่น `_createZombie` นั้นมีค่าเป็น `private` ซึ่งอยู่ภายใน `ZombieFactory` แปลว่า contract ใด ๆ ที่มีการ inherit มาจาก `ZombieFactory` จะไม่สามารถเข้าถึงได้
+สาเหตุคือเมื่อเราพยายามที่จะเรียกฟังก์ชั่น `_createZombie` จากภายใน `ZombieFeeding` แต่เนื่องจากฟังก์ชั่น `_createZombie` นั้นมีค่าเป็น `private` ซึ่งอยู่ภายใน `ZombieFactory` แปลว่า contract ใดๆ ที่มีการ inherit มาจาก `ZombieFactory` จะไม่สามารถเข้าถึงได้
 
 ## Internal และ External
 
-นอกจาก `public` และ `private` Solidity ยังมีค่าการมองเห็น (visibility) อีก 2 ค่า: `internal` และ `external`.
+นอกจาก `public` และ `private` Solidity ยังมีค่าการมองเห็น (visibility) อีก 2 ค่า: `internal` และ `external`
 
-`internal` เหมือนกับ `private` เว้นเพียงแต่มันยังสามารถเข้าถึง contract อื่น ๆ ที่มีการ inherit มาจาก contract ปัจจุบัน **(เอ... เหมือนจะเป็นสิ่งที่เรากำลังต้องการอยู่เสียด้วย!)**.
+`internal` เหมือนกับ `private` เว้นเพียงแต่มันยังสามารถเข้าถึง contract อื่น ๆ ที่มีการ inherit มาจาก contract ปัจจุบัน **(เอ... เหมือนจะเป็นสิ่งที่เรากำลังต้องการอยู่ด้วยสิ!)**.
 
-`external` นั้นคล้ายกับ `public`เพียงแต่ว่าฟังก์ชั่นต่าง ๆ จะสามารถถูกเรียกได้เฉพาะจากด้านนอกของ contract เท่านั้น — ฟังก์ชั่นเหล่านี้ไม่สามารถถูกเรียกโดยฟังก์ชั่นอื่น ๆ ที่อยู่ภายใน contract ซึ่งจะมาคุยกันว่ากรณีใดที่จะต้องใช้ `external` หรือ `public` ในภายหลัง
+`external` นั้นคล้ายกับ `public`เพียงแต่ว่าฟังก์ชั่นต่างๆ จะสามารถถูกเรียกได้เฉพาะจากด้านนอกของ contract เท่านั้น — ฟังก์ชั่นเหล่านี้ไม่สามารถถูกเรียกโดยฟังก์ชั่นอื่นๆ ที่อยู่ภายใน contract ซึ่งจะมาคุยกันว่ากรณีใดที่จะต้องใช้ `external` หรือ `public` ในภายหลัง
 
 ในการประกาศฟังก์ชั่น `internal` หรือ `external`  syntax ที่ใช้จะเหมือนกันกับใน `private` และ `public`ทุกประการ:
 
