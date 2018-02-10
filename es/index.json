@@ -145,93 +145,94 @@
         "eyeColorGeneLabel": "Gen para el color de ojos:",
         "clothesColorGeneLabel": "Gen para el color de la ropa:",
         "nameInputPlaceholder": "Introduce un nuevo nombre",
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "CriptoZombi de Nivel 1"
     },
     "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+        "IOTAslain": "¡Nos hemos cargado a IOTA en la batalla!",
+        "winCount": "Victorias de tu Zombi:",
+        "iotaLose": "Derrotas de IOTA",
+        "newZombie": "Creado un nuevo Zombi"
     },
     "sharePage": {
-        "pageTitle": "Check out my CryptoZombie {zombieName}!",
-        "presents": "Presents",
-        "zombieDesc": "{name}, a Level {levelNum} CryptoZombie",
+        "pageTitle": "Echa un vistazo a mi CriptoZombi {zombieName}!",
+        "presents": "Presenta",
+        "zombieDesc": "{name}, CriptoZombi de Nivel {levelNum} ",
         "lesson1": {
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "randomZombieGenerator": "random zombie generator",
+            "zombieDesc": "CriptoZombi de Nivel 1",
+            "randomZombieGenerator": "generador aleatorio de zombis",
             "achievementPreamble": [
-                "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "Tu amigo ha aprendido los fundamentos del desarrollo de juegos en Ethereum, ha creado {zombieName}, un CriptoZombi de Nivel 1 como prueba!",
+                "Para terminar la lección 1 de CriptoZombis, tu amigo desarrolló un {randomZombieGenerator} y aprendió sobre:"
             ],
             "achievements": [
-                "How to write Ethereum smart contracts",
-                "Programming in Solidity, Ethereum's smart contract programming language",
-                "Building games on Ethereum"
+                "Cómo crear contratos inteligentes con Solidity",
+                "Programar con Solidity, El lenguage de contratos inteligentes de Ethereum",
+                "Construir juegos en Ethereum"
             ],
-            "tryItOut": "Give the random zombie generator a try.",
-            "below": "below",
-            "above": "above",
-            "zombieGeneratorText": "{tryItOut} Enter a name in the box {below}{above} to generate a new zombie!",
-            "nameInputPlaceholder": "Enter a name to generate a zombie",
+            "tryItOut": "Prueba el generador aleatorio de zombis.",
+            "below": "debajo",
+            "above": "encima",
+            "zombieGeneratorText": "{tryItOut} Introduce un nombre {below}{above} para generar un nuevo zombi!",
+            "nameInputPlaceholder": "Introduce un nombre para generar un zombi",
             "callToAction": [
-                "Want to build your own CryptoZombie and join the ranks?",
+                "Quieres crear tu propio CriptoZombi y unirte a los rankings?",
+                "¡Aprende a construir tus propios juegos en Ethereum GRATIS con CriptoZombis! Empieza ahora:"
                 "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
             ]
         },
         "lesson2": {
-            "zombieCardBattle": "Zombie Card Battle",
-            "love": "love",
+            "zombieCardBattle": "Batalla de Cartas Zombi",
+            "love": "me encanta",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 2, and upgraded {zombieName} to a CryptoKitty slayer!",
-                "A CryptoKitty Slayer?!",
-                "It turns out CryptoZombies {love} to feed on CryptoKitties.",
-                "When a CryptoZombie feeds on a CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
-                "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
-                "Solidity Concepts Mastered",
-                "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
+                "Tu amigo ha completado la Lección 2 de CriptoZombis, y ha mejorado {zombieName} a asesino de CriptoGatos!"
+                "¡¿Un asesino de CriptoGatos?!",
+                "Resulta que los CriptoZombis les ecanta alimentarse de CriptoGatos",
+                "Cuando un CriptoZombi se desayuna un CriptoGato, sus ADNs se mezclan y el CriptoGato se transforma en un ZombiGato",
+                "¡Adelante, elige un CriptoGato para atacarlo, y descrubre que tipo de ZombiGato consigues!",
+                "Conceptos de Solidity Dominados",
+                "Para poder completar la Lección 2 en la Escuela de Código de CriptoZombis, tu amigo construyó una {zombieCardBattle} y aprendió sobre:"
             ],
             "achievements": [
-                "The basics of making a multi-player game",
-                "Interacting with other contracts on the Ethereum network",
-                "Organizing larger Solidity projects into multiple contracts"
+                "Los fundamentos de hacer un juego multi-jugador",
+                "Interactuar con otros contratos en la red Ethereum",
+                "Organizar proyectos grandes de Solidity en varios contratos"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombies and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+              "Quieres crear tu propio CriptoZombi y unirte a los rankings?",
+              "¡Aprende a construir tus propios juegos en Ethereum GRATIS con CriptoZombis! Empieza ahora:"
             ]
         },
         "lesson3": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 3, and upgraded their zombie army!",
-                "In order to complete Lesson 3 of CryptoZombies, your friend learned about:"
+                "¡Tu amigo ha completado la Lección 3 de CriptoZombis, y mejorado su ejército de zombis!",
+                "Para terminar la Lección 3 de CriptoZombis, tu amigo aprendió sobre:"
             ],
             "achievements": [
-                "How to build updatable smart contracts",
-                "Securing contracts with contract ownership",
-                "Gas and gas optimization on Ethereum",
-                "Function modifiers and security checks"
+                "Cómo construir contratos inteligentes imparables",
+                "Protegiendo contractos con propiedad de contratos",
+                "Gas y optimización de gas en Ethereum",
+                "Modificadores para funciones y controles de seguridad"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+              "Quieres crear tu propio CriptoZombi y unirte a los rankings?",
+              "¡Aprende a construir tus propios juegos en Ethereum GRATIS con CriptoZombis! Empieza ahora:"
             ]
         },
         "lesson4": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+                "¡Tu amigo ha completado la Lección 4 de CriptoZombis, y ha vencido al diabólico zombi IOTA!",
+                "¡Adelante, inténtalo por tí mismo en la parte izquierda. Usa el ejército de tu amigo para entrar en la batalla!",
+                "Para terminar la Lección 4 de CriptoZombis, tu amigo aprendió sobre:"
             ],
             "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
+                "Funciones pagables, y cómo ganar dinero con tus juegos basados en Ethereum",
+                "Retirar ETH del contrato inteligente",
+                "Generador aleatorio de números y seguridad en Ethereum",
+                "¡Y más cosas!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+              "Quieres crear tu propio CriptoZombi y unirte a los rankings?",
+              "¡Aprende a construir tus propios juegos en Ethereum GRATIS con CriptoZombis! Empieza ahora:"
             ]
         }
     }
