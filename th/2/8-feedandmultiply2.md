@@ -1,5 +1,5 @@
 ---
-title: Zombie DNA
+title:  DNA ซอมบี้
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -80,7 +80,7 @@ material:
 
 สูตรสำหรับการคำนวณ DNA ในซอมบี้ตัวใหม่นั้นไม่ยุ่งยากเลย: คือการใช้ค่าเฉลี่ยระหว่าง DNA ของซอมบี้ตัวที่กิน กับ DNA ของเหยื่อ 
 
-For example:
+เช่น:
 
 ```
 function testDnaSplicing() public {

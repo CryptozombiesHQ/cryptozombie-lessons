@@ -1,5 +1,5 @@
 ---
-title: Using an Interface
+title: การใช้ Interface
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -143,6 +143,6 @@ contract MyContract {
 
 # มาทดสอบกันเถอะ
 
-มาสร้าง contract ที่เอาไว้อ่าน CryptoKitties smart contract กันดีกว่า!
+มาสร้าง contract ที่เอาไว้อ่าน smart contract ของน้องแมว CryptoKitties กันดีกว่า!
 
 1. เราได้บันทึก address ที่เป็นของ contract ชื่อว่า CryptoKitties ไว้ให้แล้ว โดยจะอยู่ในส่วนของตัวแปรที่ชื่อ `ckAddress` ในโค้ดบรรทัดต่อไป ให้สร้าง `KittyInterface` ที่มีชื่อว่า `kittyContract` และตั้งค่าเริ่มต้นของ interface นี้โดยใช้ `ckAddress` — ทำแบบเดียวกันกับใน `numberContract` ที่แสดงไว้ข้างต้น
