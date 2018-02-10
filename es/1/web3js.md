@@ -73,4 +73,4 @@ Lo que nuestro código javascript hace es recoger los valores generados en `zomb
 
 ¡Adelante, escribe tu nombre en la caja de la derecha y mira a ver que tipo de zombi recibes!
 
-**Una vez que tengas un zombi con el que estés contento, haz clic en "Capítulo Siguiente" para guardarlo y completar la lección 1**
+**Una vez que tengas un zombi con el que estés contento, haz clic en "Capítulo Siguiente" para guardarlo y completar la Lección 1**
