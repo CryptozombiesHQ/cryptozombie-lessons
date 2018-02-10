@@ -45,7 +45,7 @@ material:
       }
 ---
 
-Une déclaration de fonction en Solidity ressemble à ça :
+Une déclaration de fonction (function) en Solidity ressemble à ça :
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -54,7 +54,7 @@ function eatHamburgers(string _name, uint _amount) {
 ```
 C'est une fonction appelée `eatHamburgers` qui prend 2 paramètres : un `string` et un `uint`. Le corps de la fonction est vide pour l'instant.
 
-> Remarque: Par convention (mais ce n'est pas obligatoire), les noms des arguments des fonctions commencent avec un trait de soulignement (`_`) afin de les différencier des variables globales. Nous utiliserons cette convention tout au long de notre tutoriel.
+> Remarque: Par convention (mais ce n'est pas obligatoire), les noms des paramètres des fonctions commencent avec un trait de soulignement (`_`) afin de les différencier des variables globales. Nous utiliserons cette convention tout au long de notre tutoriel.
 
 Vous pouvez appeler la fonction comme cela :
 

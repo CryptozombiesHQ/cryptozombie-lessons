@@ -1,5 +1,5 @@
 ---
-title: Keccak256 et Conversion de type
+title: Keccak256 et conversion de type
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -56,9 +56,9 @@ material:
       }
 ---
 
-Nous voulons que notre fonction `_generateRandomDna` retourne un `uint` (presque) aléatoire. Comment pouvons-nous faire cela ?
+Comment faire pour que notre fonction `_generateRandomDna` retourne un `uint` (presque) aléatoire ?
 
-Ethereum a la fonction de hachage `keccak256` intégrée, qui est une version de SHA3. Une fonction de hachage permet fondamentalement de lier une chaîne d'entrée à un nombre hexadécimal aléatoire de 256 bits. Le moindre changement dans la chaîne provoquera un grand changement dans le hachage.
+Ethereum a la fonction de hachage `keccak256` intégrée, qui est une variante de SHA3. Une fonction de hachage permet fondamentalement de lier une chaîne d'entrée à un nombre hexadécimal aléatoire de 256 bits. Le moindre changement dans la chaîne provoquera un grand changement dans le hachage.
 
 Cela sert à beaucoup de chose pour Ethereum, mais pour l'instant nous allons simplement l'utiliser pour générer un nombre pseudo-aléatoire.
 
@@ -70,9 +70,9 @@ keccak256("aaaab");
 //b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
 keccak256("aaaac");
 ```
-Comme vous pouvez le voir, les valeurs retournées sont complètement différentes alors qu'il y a seulement 1 caractère de changer à l'argument d'entrée.
+Comme vous pouvez le voir, les valeurs retournées sont complètement différentes alors qu'il y a seulement 1 caractère de changé à l'argument d'entrée.
 
-> Remarque: La génération de nombres aléatoires **sécurisés** dans la blockchain est un problème très complexe. Notre méthode ici n'est pas sécurisée, mais comme la sécurité n'est pas la grande priorité de notre ADN Zombie, cela sera suffisante pour notre usage.
+> Remarque: La génération de nombres aléatoires **sécurisés** dans la blockchain est un problème très complexe. Notre méthode ici n'est pas sécurisée, mais comme la sécurité n'est pas la grande priorité de notre ADN Zombie, cela sera suffisant pour notre usage.
 
 ## Conversion de type
 
