@@ -118,33 +118,33 @@
         }
     },
     "zombieBattle": {
-        "yourTurn": "Your Turn",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "New {species} Generated!",
-        "catZombie": "Cat-Zombie",
-        "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "New {species}'s DNA",
-        "cryptoKitty": "CryptoKitty",
-        "human": "Human",
-        "tryAnotherCombo": "Try Another Combination"
+        "yourTurn": "Tu Turno",
+        "zombieDna": "ADN de {name}",
+        "newZombieGenerated": "Generado nuev@ {species} !",
+        "catZombie": "ZombiGato",
+        "mutantZombie": "Zombi-Mutante",
+        "newSpeciesDna": "ADN del nuevo {species}",
+        "cryptoKitty": "CriptoGatito",
+        "human": "Humano",
+        "tryAnotherCombo": "Prueba otra combinación"
     },
     "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "CriptoZombi de Nivel 1"
     },
     "zombieDeck": {
-        "zombieDesc": "A Level {levelNum} CryptoZombie",
-        "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
-        "save": "Save",
-        "yourDeck": "Your Deck"
+        "zombieDesc": "Un CriptoZombi de Nivel {levelNum}",
+        "nameInputPlaceholder": "Dale a {name} un nuevo nombre y presional 'Guardar'",
+        "save": "Guardar",
+        "yourDeck": "Tu Baraja"
     },
     "zombieResult": {
-        "headGeneLabel": "Head Gene:",
-        "eyeGeneLabel": "Eye Gene:",
-        "shirtGeneLabel": "Shirt Gene:",
-        "skinColorGeneLabel": "Skin Color Gene:",
-        "eyeColorGeneLabel": "Eye Color Gene:",
-        "clothesColorGeneLabel": "Clothes Color Gene:",
-        "nameInputPlaceholder": "Enter a name here",
+        "headGeneLabel": "Gen de Cabeza:",
+        "eyeGeneLabel": "Gen de Ojos:",
+        "shirtGeneLabel": "Gen de Camiseta:",
+        "skinColorGeneLabel": "Gen para color de piel:",
+        "eyeColorGeneLabel": "Gen para el color de ojos:",
+        "clothesColorGeneLabel": "Gen para el color de la ropa:",
+        "nameInputPlaceholder": "Introduce un nuevo nombre",
         "defaultZombieDesc": "A Level 1 CryptoZombie"
     },
     "battleArena": {
