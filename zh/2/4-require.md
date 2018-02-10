@@ -1,5 +1,5 @@
 ---
-title:Require
+title: Require
 actions: ['checkAnswer', 'hints']
 material:
   editor:
