@@ -127,7 +127,7 @@ contract NumberInterface {
 ```
 contract MyContract {
   address NumberInterfaceAddress = 0xab38... 
-  // ^ 이더리움 상의 FavoriteNumber 컨트랙트 주소이다 
+  // ^ 이더리움상의 FavoriteNumber 컨트랙트 주소이다 
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
   // 이제 `numberContract`는 다른 컨트랙트를 가리키고 있다. Now `numberContract` is pointing to the other contract
 
@@ -139,7 +139,7 @@ contract MyContract {
 }
 ```
 
-이런 식으로 자네의 컨트랙트가 이더리움 블록체인 상의 다른 어떤 컨트랙트와도 상호작용할 수 있네. 물론 상호작용하는 함수가 `public`이나 `external`로 선언되어 있어야 하지. 
+이런 식으로 자네의 컨트랙트가 이더리움 블록체인상의 다른 어떤 컨트랙트와도 상호작용할 수 있네. 물론 상호작용하는 함수가 `public`이나 `external`로 선언되어 있어야 하지. 
 
 # 직접 해보기
 
