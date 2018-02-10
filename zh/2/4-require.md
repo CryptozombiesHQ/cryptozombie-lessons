@@ -1,5 +1,5 @@
 ---
-title: 需求（Require）
+title:Require
 actions: ['checkAnswer', 'hints']
 material:
   editor:
