@@ -91,7 +91,7 @@ material:
 
 我们怎样才能限定每个玩家只调用一次这个函数呢？
 
-答案是使用`require`。 `require`使得函数在执行过程中，当不满足某些条件时抛出错误，并停止继续执行：
+答案是使用`require`。 `require`使得函数在执行过程中，当不满足某些条件时抛出错误，并停止执行：
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
@@ -105,7 +105,7 @@ function sayHiToVitalik(string _name) public returns (string) {
 ```
 
 
-如果你这样调用函数 `sayHiToVitalik（“Vitalik”）` ,它会返回“Hi！”。而如果调用的时候使用了其他参数，它则会抛出错误并停止继续执行。
+如果你这样调用函数 `sayHiToVitalik（“Vitalik”）` ,它会返回“Hi！”。而如果调用的时候使用了其他参数，它则会抛出错误并停止执行。
 
 因此，在调用一个函数之前，用 `require` 验证前置条件是非常有必要的。
 
