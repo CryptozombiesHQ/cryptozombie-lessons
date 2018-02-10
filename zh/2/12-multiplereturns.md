@@ -137,7 +137,7 @@ function processMultipleReturns() external {
   (a, b, c) = multipleReturns();
 }
 
-// 或者如果我们只想返回变量中的一个值:
+// 或者如果我们只想返回其中一个变量:
 function getLastReturnValue() external {
   uint c;
   // 可以对其他字段留空:
