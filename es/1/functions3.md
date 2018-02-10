@@ -1,5 +1,5 @@
 ---
-title: More on Functions
+title: Más sobre Funciones
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // start here
+          // empieza aquí
 
       }
     answer: >
@@ -44,7 +44,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
 
@@ -53,33 +53,33 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+En este capítulo aprenderemos sobre los **_valores de retorno_** de una función, y sobre modificadores de funciones.
 
-## Return Values
+## Valores de Retorno
 
-To return a value from a function, the declaration looks like this:
+Para devolver un valor desde una función, la declaración es la siguiente:
 
 ```
-string greeting = "What's up dog";
+string greeting = "Qué tal viejo!";
 
 function sayHello() public returns (string) {
   return greeting;
 }
 ```
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+En Solidity, la declaración de la función contiene al final tipo de dato del valor de retorno (en nuestro caso `string`).
 
-## Function modifiers
+## Modificadores de Función
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+La función de arriba no cambia el estado en Solidity, esto es que no cambia ningún valor o escribe nada.
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+En este caso podríamos declararla como función **_view_**, que significa que solo puede ver los datos pero no los modificarlos:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity también contiene funciones **_pure_**, que significa que ni siquiera accedes a los datos de la aplicación. Por ejemplo:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,16 +87,16 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como **_pure_**.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> Nota: No e siempre fácil recordar marcar una funcioón como pure o view, por suerte el compilador de Solidity es muy bueno avisándonos de cuándo debemos usar estos modificadores de función.
 
-# Put it to the test
+# Vamos a probarlo
 
-We're going to want a helper function that generates a random DNA number from a string.
+Necesitaremos una función que nos ayude a generar un número aleatorio para el ADN a partir de una cadena de texto.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Crear una función `private` que se llame `_generateRandomDna`. Recibirá un parámetro llamado `_str` (de tipo `string`), y devolverá un `uint`.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. Esta función tendrá que ver algunas de las variables de nuestro contrato, pero no modificará ninguna, así que la marcaremos como `view`.
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. El cuerpo de la función debería estar vacio por ahora, lo rellenaremos más tarde.

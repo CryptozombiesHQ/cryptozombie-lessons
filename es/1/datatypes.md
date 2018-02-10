@@ -1,5 +1,5 @@
 ---
-title: State Variables & Integers
+title: Variables de Estado y Números Enteros
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //start here
+          // empieza aquí
 
       }
     answer: >
@@ -23,28 +23,28 @@ material:
       }
 ---
 
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+¡Buen trabajo! Ahora que tenemos una capa para nuestro contrato, aprendamos cómo maneja las variables Solidity.
 
-**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+Las **_Variables de estado_** se guardan permanentemente en el almacenamiento del contrato. Esto significa que se escriben en la cadena de bloques de Ethereum. Piensa en ellos como en escribir en una base de datos.
 
-##### Example:
+##### Ejemplo:
 ```
 contract Example {
-  // This will be stored permanently in the blockchain
+  // Esto se guardará permanentemente en la cadena de bloques
   uint myUnsignedInteger = 100;
 }
 ```
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+En este contrato de ejemplo, hemos creado un `uint` llamado `myUnsignedInteger` y le hemos dado el valor 100.
 
-## Unsigned Integers: `uint`
+## Enteros sin Signo: `uint`
 
-The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
+El tipo de dato `uint` es un entero sin signo, esto es **su valor siempre debe ser no-negativo**. Hay también un tipo de dato `int` para números enteros con signo.
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> Nota: En Solidity, `uint` es realmente un alias para `uint256`, un número entero de 256-bits. Puedes declarar uints con menos bits — `uint8`, `uint16`, `uint32`, etc.. Pero por lo general usaremos `uint` excepto en casos específicos, de los que hablaremos en otras lecciones más adelante.
 
-# Put it to the test
+# Vamos a probarlo
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+El ADN de nuestro Zombi va a estar determinado por un número de 16 dígitos.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+Declara una variable de tipo `uint` llamada `dnaDigits`, y asígnale el valor `16`.

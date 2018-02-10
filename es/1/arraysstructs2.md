@@ -1,5 +1,5 @@
 ---
-title: Working With Structs and Arrays
+title: Trabajando con estructuras y arrays
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -20,7 +20,7 @@ material:
           Zombie[] public zombies;
 
           function createZombie(string _name, uint _dna) {
-              // start here
+              // empieza aquí
           }
 
       }
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### Creating New Structs
+### Creando nuevas Estructuras (Structs)
 
-Remember our `Person` struct in the previous example?
+¿Recuerdas las estructura `Person` en el ejemplo anterior?
 
 ```
 struct Person {
@@ -60,35 +60,35 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Ahora aprenderemos como crear un nuevo `Person` y añadirlo a nuestro array `people`.
 
 ```
-// create a New Person:
+// crear un nuevo `Person`
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// añadir esta persona a nuestro array
 people.push(satoshi);
 ```
 
-We can also combine these together and do them in one line of code to keep things clean:
+Podemos combinar tambien estas dos cosas para hacerlas en una sola línea y dejarlo más bonito:
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+Date cuenta que `array.push()` añade algo al **final** del array, así que los elementos siguen el orden de añadido. Observa este ejemplo:
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// el array `numbers` es ahora [5, 10, 15]
 ```
 
-# Put it to the test
+# Vamos a probarlo
 
-Let's make our createZombie function do something!
+¡Hagamos hacer algo a nuestra función `createZombie`!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. Rellena el cuerpo de la función para que cree un nuevo `Zombie` y añádelo al array `zombies`. El nombre (`name`) y ADN (`dna`) del nuevo Zombi debería venir de los argumentos pasados a la función.
+2. Hagámoslo en una sola línea de código para que quede bonito.

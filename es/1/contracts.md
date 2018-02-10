@@ -1,14 +1,14 @@
 ---
-title: "Contracts"
+title: "Contratos"
 actions: ['checkAnswer', 'hints']
-material: 
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. Poner la versión de Solidity aquí
 
-      //2. Create contract here
-    answer: > 
+      //2. Crear el contrato aquí
+    answer: >
       pragma solidity ^0.4.19;
 
 
@@ -17,40 +17,40 @@ material:
       }
 ---
 
-Starting with the absolute basics:
+Empecemos con lo más fundamental:
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+El código Solidity está encapsulado en **contratos**. Un `contrato` es el bloque de construcción más básico de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
 
-An empty contract named `HelloWorld` would look like this:
+Un contrato vacio llamado `HolaMundo` se asimejaría a esto:
 
 ```
-contract HelloWorld {
+contract HolaMundo {
 
 }
 ```
 
-## Version Pragma
+## Versión Pragma
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar con tu código.
 
-It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
+Esta declaración se asemeja a esto: `pragma solidity ^0.4.19;` (para usar la última versión del compilador de Solidity actual, la 0.4.19).
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
 
 ```
 pragma solidity ^0.4.19;
 
-contract HelloWorld {
+contract HolaMundo {
 
 }
 ```
 
-# Put it to the test
+# Vamos a probarlo
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory` (Fábrica de Zombis).
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
+1. En la caja de la derecha, haz lo necesario para que el contrato use la versión de Solidity `0.4.19`.
 
-2. Create an empty contract called `ZombieFactory`.
+2. Crea un contrato vacio que se llame `ZombieFactory`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+Cuando hayas terminado, haz clic en "comprobar respuesta" abajo. Si te quedas atascado, haz clic en "pistas".
