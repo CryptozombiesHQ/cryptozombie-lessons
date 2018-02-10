@@ -10,13 +10,13 @@ material:
     answer: 1
 ---
 
-Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
+¡Nuestro contrato en Solidity está completo! Ahora tenemos que escribir una aplicación de usuario en javascript para interactuar con él.
 
-Ethereum has a Javascript library called **_Web3.js_**.
+Ethereum tiene una librería Javascript llamada **_Web3.js_**.
 
-In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
+En lecciones posteriores veremos en detalle como publicar un contrato y como configurar Web3.js. Pero por ahora vamos solamente a ver un ejemplo de código de cómo Web3.js interactuaría con nuestro contrato.
 
-Don't worry if this doesn't all make sense yet.
+No te preocupes si esto no tiene mucho sentido para tí todavía.
 
 ```
 // Here's how we would access our contract:
@@ -67,11 +67,11 @@ function generateZombie(id, name, dna) {
   return zombieDetails
 }
 ```
+Lo que nuestro código javascript hace es recoger los valores generados en `zombieDetails` más arriba, y usar un poco de magia Javascript en el navegador (usamos Vue.js) para intercambiar las imágenes y aplicar filtros CSS. Te daremos todo el código para hacer esto en una lección posterior.
 
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
+# Pruébalo!
 
-# Give it a try!
+¡Adelante, escribe tu nombre en la caja de la derecha y mira a ver que tipo de zombi recibes!
 
-Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
-
+**Una vez que tengas un zombi con el que estás contento, haz clic en "Capítulo Siguiente" para guardarlo y completar la lección 1**
 **Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**
