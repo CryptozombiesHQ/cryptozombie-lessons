@@ -1,5 +1,5 @@
 ---
-title: 更多关于函数可见性(More on Function Visibility)
+title: 更多关于函数可见性
 actions: ['checkAnswer', 'hints']
 material:
   editor:
