@@ -1,5 +1,5 @@
 ---
-title: Fonctions Privées / Publiques
+title: Fonctions privées / publiques
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
