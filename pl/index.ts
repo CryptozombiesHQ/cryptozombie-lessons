@@ -24,7 +24,7 @@
 // import overview from './2/1-overview.md'
 // import mappings from './2/2-mappings.md'
 // import msgsender from './2/3-msgsender.md'
-// import require from './2/4-require.md'
+// import l2_require from './2/4-require.md'
 // import inheritance from './2/5-inheritance.md'
 // import importfiles from './2/6-importfiles.md'
 // import storage from './2/7-storage.md'
@@ -97,7 +97,7 @@ export default {
   //   overview,
   //   mappings,
   //   msgsender,
-  //   require,
+  //   l2_require,
   //   inheritance,
   //   importfiles,
   //   storage,
