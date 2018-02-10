@@ -1,5 +1,5 @@
 ---
-title: (僵尸的DNA)Zombie DNA
+title: 僵尸的DNA
 actions: ['checkAnswer', 'hints']
 material:
   editor:
