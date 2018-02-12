@@ -48,7 +48,9 @@ function generateZombie(id, name, dna) {
   let zombieDetails = {
     // 前两位数构成头部.我们可能有7种头部, 所以 % 7
     // 得到的数在0-6,再加上1,数的范围变成1-7
-    // 通过这样计算：headChoice: dnaStr.substring(0, 2) % 7 + 1，我们得到的图片名称从head1.png 到 head7.png
+    // 通过这样计算：
+    headChoice: dnaStr.substring(0, 2) % 7 + 1，
+    // 我们得到的图片名称从head1.png 到 head7.png
 
     // 接下来的两位数构成眼睛, 眼睛变化就对11取模:
     eyeChoice: dnaStr.substring(2, 4) % 11 + 1,

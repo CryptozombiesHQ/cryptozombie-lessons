@@ -1,5 +1,5 @@
 ---
-title: More on Function Visibility
+title: 更多关于函数可见性
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -141,5 +141,5 @@ contract BLT is Sandwich {
 # 实战演习
 
 1. 将 `_createZombie()` 函数的属性从 `private` 改为 `internal` ， 使得其他的合约也能访问到它。
- 
+
    我们已经成功把你的注意力集中在到`zombiefactory.sol`这个选项卡上啦。
