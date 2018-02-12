@@ -88,12 +88,12 @@ uint8 c = a * b;
 uint8 c = a * uint8(b);
 ```
 
-En el código de arriba. `a * b` devuelve un `uint`, pero estábamos intentando guardarlo como `uint8`, lo que podría causar problemas. Casteándolo a `uint8` funcionarà y el compilador no nos dará error.
+En el código de arriba. `a * b` devuelve un `uint`, pero estábamos intentando guardarlo como `uint8`, lo que podría causar problemas. Casteándolo a `uint8` funcionará y el compilador no nos dará error.
 
 # Vamos a probarlo
 
 Vamos a rellenar el cuerpo de la función `_generateRandomDna` , esto es lo que deberíamos hacer:
 
-1. La primera línea de código debería tomar el hash `keccak256` de `_str` para generar un hexadecimal cuasi-aleatorio, forzar el tipo como `uint`, y por último guardar el resultado en un `uint` llamado `rand`.
+1. La primera línea de código debería tomar el hash `keccak256` de `_str` para generar un hexadecimal cuasialeatorio, forzar el tipo como `uint`, y por último guardar el resultado en un `uint` llamado `rand`.
 
 2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). Así que la segunda línea de código debería devolver el módulo del valor de arriba (`%`) `dnaModulus`.
