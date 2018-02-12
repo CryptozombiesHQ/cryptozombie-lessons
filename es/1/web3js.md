@@ -20,7 +20,7 @@ No te preocupes si esto no tiene mucho sentido para tí todavía.
 
 ```
 // Así es como accederiamos a nuestro contrato:
-var abi = /* abi generado por el compiladorr */
+var abi = /* abi generado por el compilador */
 var ZombieFactoryContract = web3.eth.contract(abi)
 var contractAddress = /* nuestra dirección del contrato en Ethereum después de implementarlo */
 var ZombieFactory = ZombieFactoryContract.at(contractAddress)

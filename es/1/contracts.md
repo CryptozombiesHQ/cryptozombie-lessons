@@ -21,7 +21,7 @@ Empecemos con lo más fundamental:
 
 El código Solidity está encapsulado en **contratos**. Un `contrato` es el bloque de construcción más básico de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
 
-Un contrato vacio llamado `HolaMundo` se asimejaría a esto:
+Un contrato vacio llamado `HolaMundo` se parecería a esto:
 
 ```
 contract HolaMundo {

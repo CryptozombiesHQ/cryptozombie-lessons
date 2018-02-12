@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // declara en evento aquí
+          // declara nuestro evento aquí
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;

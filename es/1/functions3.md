@@ -73,7 +73,7 @@ En Solidity, la declaración de la función contiene al final tipo de dato del v
 
 La función de arriba no cambia el estado en Solidity, esto es que no cambia ningún valor o escribe nada.
 
-En este caso podríamos declararla como función **_view_**, que significa que solo puede ver los datos pero no los modificarlos:
+En este caso podríamos declararla como función **_view_**, que significa que solo puede ver los datos pero no modificarlos:
 
 ```
 function sayHello() public view returns (string) {
