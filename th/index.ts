@@ -18,13 +18,13 @@ import puttingittogether from './1/puttingittogether.md'
 import events from './1/events.md'
 import web3js from './1/web3js.md'
 import lessoncomplete from './1/lessoncomplete.md'
-/*
+
 // lesson2
 import l2_overview from './2/00-overview.md'
 import overview from './2/1-overview.md'
 import mappings from './2/2-mappings.md'
 import msgsender from './2/3-msgsender.md'
-import require from './2/4-require.md'
+import l2_require from './2/4-require.md'
 import inheritance from './2/5-inheritance.md'
 import importfiles from './2/6-importfiles.md'
 import storage from './2/7-storage.md'
@@ -36,7 +36,7 @@ import multiplereturns from './2/12-multiplereturns.md'
 import kittygenes from './2/13-kittygenes.md'
 import wrappingitup from './2/14-wrappingitup.md'
 import lesson2complete from './2/15-lessoncomplete.md'
-
+/*
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
@@ -75,13 +75,13 @@ export default {
     events,
     web3js,
     lessoncomplete
-  ],/*
+  ],
   2: [
     l2_overview,
     overview,
     mappings,
     msgsender,
-    require,
+    l2_require,
     inheritance,
     importfiles,
     storage,
@@ -93,7 +93,7 @@ export default {
     kittygenes,
     wrappingitup,
     lesson2complete
-  ],
+  ]/*,
   3: [
     l3_overview,
     l3_ch1,

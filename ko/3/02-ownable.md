@@ -1,6 +1,6 @@
 ---
 title: 소유 가능한 컨트랙트
-actions: ['정답 확인하기', '힌트 보기']
+actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:

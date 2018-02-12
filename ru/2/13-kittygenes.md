@@ -1,6 +1,6 @@
 ---
-title: Бонус: гены котика
-actions: [['Проверить', 'Подсказать']
+title: "Бонус: гены котика"
+actions: ['Проверить', 'Подсказать']
 material:
   editor:
     language: sol

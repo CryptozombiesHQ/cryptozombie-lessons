@@ -1,6 +1,6 @@
 ---
-title: 'View' 함수를 사용해 가스 절약하기
-actions: ['정답 확인하기', '힌트 보기']
+title: "'View' 함수를 사용해 가스 절약하기"
+actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
