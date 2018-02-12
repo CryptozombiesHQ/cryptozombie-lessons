@@ -4,7 +4,7 @@ header: ¡Bienvenido, humano!
 roadmap: roadmap.jpg
 ---
 
-¿Parece que crees tener lo que hay que tener para convertirte en un **CryptoZombie**, eh?
+¿Parece que crees tener lo que se necesita para convertirte en un **CryptoZombie**, eh?
 
 Este curso te enseñará cómo **crear un juego en Ethereum**.
 
