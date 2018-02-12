@@ -89,7 +89,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como **_pure_**.
 
-> Nota: No es siempre fácil recordar marcar una función como pure o view, por suerte el compilador de Solidity es muy bueno avisándonos de cuándo debemos usar estos modificadores de función.
+> Nota: No siempre es fácil recordar marcar una función como pure o view, por suerte el compilador de Solidity es muy bueno avisándonos de cuándo debemos usar estos modificadores de función.
 
 # Vamos a probarlo
 
