@@ -1,6 +1,6 @@
 ---
 title: 함수 제어자 톺아보기
-actions: ['정답 확인하기', '힌트 보기']
+actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:

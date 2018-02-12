@@ -1,6 +1,6 @@
 ---
 title: Public 함수 & 보안
-actions: ['정답 확인하기', '힌트 보기']
+actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:

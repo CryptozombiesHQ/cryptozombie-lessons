@@ -1,6 +1,6 @@
 ---
 title: 마무리하기
-actions: ['정답 확인하기', '힌트 보기']
+actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   saveZombie: false
