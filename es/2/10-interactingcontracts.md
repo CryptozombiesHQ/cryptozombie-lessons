@@ -1,5 +1,5 @@
 ---
-title: What Do Zombies Eat?
+title: ¿Qué Comen Los Zombis?
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -10,7 +10,7 @@ material:
 
         import "./zombiefactory.sol";
 
-        // Create KittyInterface here
+        // Crea la KittyInterface aquí
 
         contract ZombieFeeding is ZombieFactory {
 
@@ -95,23 +95,23 @@ material:
       }
 ---
 
-It's time to feed our zombies! And what do zombies like to eat most?
+¡Es hora de alimentar a nuestros zombis! Y ¿Qué es lo que más les gusta comer?
 
-Well it just so happens that CryptoZombies love to eat...
+Bueno lo que pasa es que lo que los CryptoZombies aman comer es...
 
-**CryptoKitties!** 😱😱😱
+**¡CryptoKitties!** 😱😱😱
 
-(Yes, I'm serious 😆 )
+(Si, es enserio 😆 )
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+Para hacer seto necesitamos leer el kittyDna de el contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
+No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty. Solo vamos a *leer* los datos de los CryptoKitties, no podemos borrarlos 😉
 
-## Interacting with other contracts
+## Interactuando con otros contratos
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+Para que nuestro contrato pueda hablar a otro contrato de la blockchain que no poseemos, necesitamos definir una **_interfaz_**.
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+Vamos a ver un simple ejemplo. Digamos que hay un contrato en la blockchain tal que así:
 
 ```
 contract LuckyNumber {
@@ -127,11 +127,11 @@ contract LuckyNumber {
 }
 ```
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+Este seria un simple contrato donde cualquiera puede guardar su número de la suerte, y este estará asociado a su dirección de Ethereum. De esta forma cualquiera podría ver el número de la suerte de una persona usando su dirección.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+Ahora digamos que tenemos un contrato externo que quiere leer la información de este contrato usando la función `getNum`. 
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+Primero debemos usar una **_interfaz_** del contrato `LuckyNumber`:
 
 ```
 contract NumberInterface {
@@ -139,21 +139,21 @@ contract NumberInterface {
 }
 ```
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+Ten en cuenta que esto se asemeja a definir un contrato, con alguna diferencia. Primero, solo declaramos las funciones con las que queremos interactuar - en este caso `getNum` — y no mencionamos ninguna otra función o variables de estado.
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+Segundo, no definimos el cuerpo de la función. En vez de usar las llaves (`{` y `}`), solamente terminaremos la función añadiendo un punto y coma al final de la declaración (`;`).
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+Sería como definir el esqueleto del contrato. Así es como conoce el compilador a las interfaces.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+Incluyendo esta interfaz en el código de tu dapp nuestro contrato sabe como son las funciones de otro contrato, como llamarlas, y que tipo de respuesta recibiremos.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+Entraremos en como llamar a las funciones de otros contratos en la siguiente lección, por ahora vamos a declarar nuestra interfaz para el contrato de CryptoKitties.
 
-# Put it to the test
+# Vamos a probarlo
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+Hemos mirado el código fuente de CryptoKitties por tí, y hemos encontrado una functión llamada `getKitty` que devuelve todos los datos de un kitty, incluyendo sus "genes" (¡que es lo que nuestro juego de zombis necesita para crear un nuevo zombi!).
 
-The function looks like this:
+La función es así:
 
 ```
 function getKitty(uint256 _id) external view returns (
@@ -170,7 +170,7 @@ function getKitty(uint256 _id) external view returns (
 ) {
     Kitty storage kit = kitties[_id];
 
-    // if this variable is 0 then it's not gestating
+    // si esta variable es 0 entonces no se esta gestando
     isGestating = (kit.siringWithId != 0);
     isReady = (kit.cooldownEndBlock <= block.number);
     cooldownIndex = uint256(kit.cooldownIndex);
@@ -184,10 +184,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+La función parece algo diferente de las que hemos usado. Puedes ver que devuelve... una lista de diferentes valores. Si vienes de un lenguaje de programación como Javascript, esto es diferente - en Solidity puedes devolver más de un valor en una función.
 
-Now that we know what this function looks like, we can use it to create an interface:
+Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. Define una interfaz llamada `KittyInterface`. Recuerda, es como crear un nuevo contrato - usamos la palabra clave `contract`.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. Dentro de la interfaz, define la función `getKitty` (que debería ser un copia/pega de la función de arriba, pero con un punto y coma después de la definición de `returns`, en vez de todo lo que hay dentro de las llaves.

@@ -1,5 +1,5 @@
 ---
-title: Inheritance
+title: Herencia
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -44,7 +44,7 @@ material:
 
       }
 
-      // Start here
+      // Empieza aquí
 
     answer: >
       pragma solidity ^0.4.19;
@@ -93,9 +93,9 @@ material:
 
 ---
 
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Nuestro código está haciendose un poco largo. Mejor que hacer un contrato extremandamente largo, a veces tiene sentido separar la lógica de nuestro código en multiples contratos para organizar el código.
 
-One feature of Solidity that makes this more manageable is contract **_inheritance_**:
+Una característica de Solidity que hace más manejable esto es la **_herencia_** de los contratos:
 
 ```
 contract Doge {
@@ -111,12 +111,12 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
+`BabyDoge` **_hereda_** de `Doge`. Eso significa que si compilas y ejecutas `BabyDoge`, este tendrá acceso tanto a `catchphrase()` como a `anotherCatchphrase()` (y a cualquier otra función publica que definamos en `Doge`).
+ 
+Esto puede usarse como una herencia lógica (como una subclase, un `Gato` es un `Animal`). Pero también puede usarse simplemente para organizar tu código agrupando lógica similar en diferentes clases.
 
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
+# Vamos a probarlo
 
-# Put it to the test
+En los siguientes capítulos, vamos a implementar la funcionalidad para que nuestros zombis se alimenten y se multipliquen. Vamos a añadir esa lógica en su propia clase que herede de `ZombieFactory`.
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own class that inherits all the methods from `ZombieFactory`.
-
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. Crea un contrato llamado `ZombieFeeding` debajo de `ZombieFactory`. Este contrato heredará de nuestro contrato `ZombieFactory`.

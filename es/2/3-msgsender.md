@@ -26,7 +26,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              // start here
+              // empieza aquí
               NewZombie(id, _name, _dna);
           }
 
@@ -82,52 +82,52 @@ material:
       }
 ---
 
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
+Ahora que tenemos nuestros mapeos para seguir el rastro del propietario de un zombi, queremos actualizar el metodo `_createZombie` para que los utilice.
 
-In order to do this, we need to use something called `msg.sender`.
+Para poder hacer esto, necesitamos algo llamdo `msg.sender`.
 
 ## msg.sender
 
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
+En Solidity, hay una serie de variables globales que están disponiblespara todas las funciones. Una de estas es `msg.sender`, que hace referencia a la `dirección` de la persona (o el contrato inteligente) que ha llamado a esa función.
 
-> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
+> Nota: En Solidity, la ejecución de una función necesita empezar con una llamada exterior. Un contrato se sentará en la blockchain sin hacer nada esperando a que alguien llame a una de sus funciones. Así que siempre habrá un `msg.sender`.
 
-Here's an example of using `msg.sender` and updating a `mapping`:
+Aquí tenemos un ejemplo de como usar `msg.sender` y actualizar un `mapping`:
 
 ```
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
-  // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
+  // Actualiza tu mapeo `favoriteNumber` para guardar `_myNumber` dentro de `msg.sender`
   favoriteNumber[msg.sender] = _myNumber;
-  // ^ The syntax for storing data in a mapping is just like with arrays
+  // ^ La sintaxis para guardar datos en un mapeo es como en los arrays
 }
 
 function whatIsMyNumber() public view returns (uint) {
-  // Retrieve the value stored in the sender's address
-  // Will be `0` if the sender hasn't called `setMyNumber` yet
+  // Conseguimos el valor guardado en la dirección del emisor
+  // Será `0` si el emisor no ha llamado a `setMyNumber` todavía
   return favoriteNumber[msg.sender];
 }
 ```
 
-In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
+En este trivial ejemplo, cualquier apuede llamar a `setMyNumber` y guardar un `uint` en nuestro contrato, que estara atado a su dirección. Entonces, cuando llamen a `whatIsMyNumber`, debería devolverles el `uint` que han guardado.
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+Usando `msg.sender` te da la seguridad de la blockchain de Ethereum  — la única forma de que otra persona edite la información de esta sería robandole la clave privada asociada a la dirección Ethereum.
 
-# Put it to the test
+# Vamos a probarlo
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+Vamos a actualizar nuestro método `_createZombie` de la Lección para asignar la propiedad de un zombi a el que haya llamado a la función.
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1. Primero, después de recibir la `id` del nuevo zombi, actualizamos nuestro mapeo `zombieToOwner` para que guarde `msg.sender` bajo esa `id`.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`. 
+2. Segundo, incrementamos `ownerZombieCount` para este `msg.sender`. 
 
-In Solidity, you can increase a `uint` with `++`, just like in javascript:
+En Solidity, puedes incrementar un `uint` con `++`, así como en javascript:
 
 ```
 uint number = 0;
 number++;
-// `number` is now `1`
+// `number` es ahora `1`
 ```
 
-Your final answer for this chapter should be 2 lines of code.
+Tu resultado final para este capítulo debería tener 2 líneas de código.

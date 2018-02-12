@@ -1,5 +1,5 @@
 ---
-title: Import
+title: Importar
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -8,7 +8,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
-        // put import statement here
+        // añade la sentencia import aquí
 
         contract ZombieFeeding is ZombieFactory {
 
@@ -63,11 +63,11 @@ material:
 
 ---
 
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
+¡Guau! Notarás que hemos limpiado el código de la derecha, ahora tienes unas pestañas en la parte superior de tu editor. Adelante, clica entre las pestañas para probarlo.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
+Nuestro código estaba quedando algo largo, por eso lo hemos dividido en multiples archivos haciendolo así más manejable. Así es como normalmente deberás guardar tu código base en tus proyectos de Solidity.
 
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+Cuando tienes multiples archivos y quieres importar uno dentro de otro, Solidity usa la palabra clave `import`:
 
 ```
 import "./someothercontract.sol";
@@ -77,10 +77,10 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+Entonces si tenemos un fichero llamado `someothercontract.sol` en el mismo directorio que este contrato (eso es lo que significa `./`), será importado por el compilador.
 
-# Put it to the test
+# Vamos a probarlo
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
+Ahora que tenemos una estructura de multiples ficheros, necesitamos usar `import` para leer el contenido del otro fichero:
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 
+1. Importa `zombiefactory.sol` en nuestro nuevo fichero, `zombiefeeding.sol`. 

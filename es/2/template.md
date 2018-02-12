@@ -1,5 +1,5 @@
 ---
-title: Data Types
+title: Tipo de Datos
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -8,12 +8,12 @@ material:
     answer: >
 ---
 
-Solidity's code is encapsulated in contracts. A contract is basically...
+El código de Solidity está encapsulado en contratos. Un contrato es básicamente...
 
 ```
 contract HelloWorld
 
 ```
 
-# Put it to the test
+# Vamos a probarlo
 
