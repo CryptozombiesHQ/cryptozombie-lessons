@@ -1,8 +1,8 @@
-# CryptoZombies - İçerik Yerelleştirme
+# CryptoZombies - Content Localization
 
-Bu depo CryptoZombies'i diğer dillere çevirmek için kullanılır.
+This repository is used to translate CryptoZombies to other languages.
 
-Tüm çeviriler için kullanılması gereken kaynak içeriği `en` klasörünün içindedir.
+The source content that should be used for all translations is in the `en` directory.
 
 ```
 en/
@@ -12,33 +12,33 @@ en/
   index.json - strings used in the UI
   share-template-msgs.json - strings used on the share page
 ```
- 
-`index.json` ve `share-template-msgs.json` içindeki satırlar parametreler içerebilir,
-bunlar satırlar kullanıcıya gösterilmeden önce enjekte edilecektir. Mantıklıysa
-kaynak satırlarında sunulan parametreler çevrilen satırlarda herhangi bir pozisyonda
-görünebilir veya tamamen çıkarılır.
 
->NOT: Söz dizimi iki `.json` dosyası arasında farklılık gösteren parametreleri
->      temsil etmek için kullanılır. `share-template-msgs.json` parametreleri
->      `{{ .ParameterName }}` kullanılarak belirtilirken, `index.json` parametreleri
->      `{parameterName}` kullanılarak belirtilir.
+Strings in `index.json` and `share-template-msgs.json` can contain parameters,
+these will be injected before the strings are displayed to the user. Parameters
+that are present in the source strings may appear in any position in the
+translated strings, or omitted entirely if it makes sense to do so.
 
-## Yeni bir dil için lokalize etme
-1. Yeni bir branch oluşturun `master`.
-2. Yerel koddan sonra isimlendirilen yeni bir klasör oluşturun, örn. `jp` (Japonca için), `zh` (Çince için).
-3. İçeriği çevirin.
-4. Yeni klasöre `index.ts` ekleyin.
-5. Kök klasördeki `index.ts`yi güncelleyin .
-6. `master`a bir pull request bildirin.
+>NOTE: The syntax used to represent parameters differs between the two `.json`
+>      files. In `index.json` parameters are specified using `{parameterName}`,
+>      while in `share-template-msgs.json` parameters are specified using
+>      `{{ .ParameterName }}`.
 
-## Kaynak İçeriği veya Lokalize Edilmiş İçeriği Düzenleme
-1. Yeni bir branch oluşturun `master`.
-2. Düzenle düzenle düzenle.
-3. `master`a bir pull request bildirin.
+## Localizing for a new language
+1. Create a new branch off `master`.
+2. Create a new folder named after the locale code, e.g. `jp` (for Japanese), `zh` (for Chinese).
+3. Translate the content.
+4. Add `index.ts` to the new folder.
+5. Update `index.ts` in the root folder.
+6. Submit a PR against `master`.
+
+## Fixing Source Content or Localized Content
+1. Create a new branch off `master`.
+2. Fix fix fix.
+3. Submit a PR against `master`.
 
 
 
-## Lisans
+## License
 
-Katkı sağlayanlar yaptıkları her katkı için Loom Network arkasında telif atamalıdırlar.
-Loom Network orijinal içerikten her türetilen çalışma mülkiyetini elinde tutar.
+Contributors must assign copyright back to Loom Network for any contributions they make.
+Loom Network retains ownership of any derivative work created from original content.
