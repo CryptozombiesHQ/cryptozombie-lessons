@@ -216,7 +216,7 @@ material:
 
 ---
 
-いい感じだぞ！今度はバトルのロジックを理解しよう。
+いい感じだ！今度はバトルのロジックを理解しよう。
 
 あるレベルのランダム性は、全ての良いゲームにとって必要だ。ではSoidityにおいてどのように乱数を生成するのだろうか。
 
@@ -244,7 +244,7 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 ### この方法は、不誠実なノードの攻撃に対して脆弱である
 
-イーサリアムでは、コントラクトの関数を呼び出す際、ネットワーク上の一つまたは複数のノードに **_トランザクション_** として送信する。In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+イーサリアムでは、コントラクトの関数を呼び出す際、ネットワーク上の一つまたは複数のノードに **_トランザクション_** として送信する。ネットワーク上のノードはトランザクションの束を集め、In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
 
 Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
 
