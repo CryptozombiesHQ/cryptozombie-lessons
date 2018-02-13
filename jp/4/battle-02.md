@@ -1,6 +1,6 @@
 ---
-title: Random Numbers
-actions: ['checkAnswer', 'hints']
+title: 乱数
+actions: ['答え合わせ', 'hints']
 requireLogin: true
 material:
   editor:
@@ -216,19 +216,19 @@ material:
 
 ---
 
-Great! Now let's figure out the battle logic.
+いい感じだぞ！今度はバトルのロジックを理解しよう。
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+あるレベルのランダム性は、全ての良いゲームにとって必要だ。ではSoidityにおいてどのように乱数を生成するのだろうか。
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+それは不可能だ、というのがリアルな答えだ。少なくとも、それを安全に行うことはできない。
 
-Let's look at why.
+何故なのか見てみよう。
 
-## Random number generation via `keccak256`
+## `keccak256`経由での乱数生成
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+Solidityにおけるベストなランダム性のソースは、`keccak256`ハッシュ関数である。
 
-We could do something like the following to generate a random number:
+次のようにして乱数を生成するのだ。
 
 ```
 // Generate a random number between 1 and 100:
@@ -238,13 +238,13 @@ randNonce++;
 uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 ```
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
+このコードが行うのは、`now`のタイムスタンプと`msg.sender`、そして増加する値`nonce`(一度のみ使用される数字なので同じ入力パラメーター値を持つハッシュ関数が二度実行されることはない）の受け取りだ。 
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+`keccak`でこれら入力値をランダムなハッシュ値に変換、そしてそのハッシュ値を`uint`型に変換したら、その末尾２桁のみ残すように`% 100`をする。こうして0から99の間の、完全にランダムな数値を生成するのだ。
 
-### This method is vulnerable to attack by a dishonest node
+### この方法は、不誠実なノードの攻撃に対して脆弱である
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+イーサリアムでは、コントラクトの関数を呼び出す際、ネットワーク上の一つまたは複数のノードに **_トランザクション_** として送信する。In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
 
 Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
 
