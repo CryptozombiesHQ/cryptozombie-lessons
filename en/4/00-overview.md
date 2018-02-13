@@ -1,5 +1,5 @@
 ---
-title: ゾンビのバトルシステム
+title: Zombie Battle System
 header: "レッスン４：ゾンビのバトルシステム"
 roadmap: roadmap4.jpg
 ---
