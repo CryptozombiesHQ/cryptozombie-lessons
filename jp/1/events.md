@@ -107,5 +107,5 @@ YourContract.IntegersAdded(function(error, result) {
 
 2. `_createZombie`関数を編集し、`zombies`配列に新しいゾンビを追加したら `NewZombie`イベントが発生させよ。
 
-3. ゾンビの`id`が必要だ。`array.push()`は新しい長さの`uint`配列を返し、配列の最初のインデックスは0であるから、`array.push() - 1` が追加したゾンビのインデックスだ。そこで、`zombies.push() - 1`結果を`id`という名前の`uint`に格納し、次の行で作成する`NewZombie`イベントで使用できるようにせよ。
+3. ゾンビの`id`が必要だ。`array.push()`は新しい配列の長さ（要素数）を`uint`で返す。配列の最初のインデックスは0であるから、`array.push() - 1` が追加したゾンビのインデックスだ。そこで、`zombies.push() - 1`結果を`id`という名前の`uint`に格納し、次の行で作成する`NewZombie`イベントで使用できるようにせよ。
 
