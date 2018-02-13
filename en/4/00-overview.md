@@ -1,13 +1,13 @@
 ---
 title: Zombie Battle System
-header: "レッスン４：ゾンビのバトルシステム"
+header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
 ---
 
-人間よ、その時がやってきた・・・
+The time has come, human...
 
-お主のゾンビたちを闘わせるのだ！
+Time to make your zombies FIGHT!
 
-だがな、ゾンビの闘いは気弱な奴には向いていない・・・
+But zombie battles aren't for the faint of heart...
 
-このレッスンでは、前のチャプターでお主が学んだたくさんのコンセプトを組み合わせながら、ゾンビバトルの機能を作り上げていくのだ。 **payable** 関数と、プレイヤーから金銭を受け取れるDAppsの作り方も教えていくからな。
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.
