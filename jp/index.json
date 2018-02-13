@@ -98,6 +98,23 @@
             ],
             "zombieDesc": "クリプトゾンビ　レベル 3",
             "shareLinkText": "#CryptZombiesのレッスン3が終わったよ！作ったゾンビ軍団はこんな感じ:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Achievements Unlocked:",
+            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "header": [
+                "Congratulations! You have completed {lesson4} of CryptoZombies!",
+                "Show off your zombie army to your friends!",
+                "Share this URL so your friends can check out your army:"
+            ],
+            "footer": [
+                "Lesson 5 coming in 1-2 weeks",
+                "You'll get an email from us as soon as it's ready.",
+                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+            ],
+            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
         }
     },
     "zombieBattle": {
@@ -129,6 +146,12 @@
         "clothesColorGeneLabel": "服の色の遺伝子:",
         "nameInputPlaceholder": "名前を入力",
         "defaultZombieDesc": "クリプトゾンビ レベル1"
+    },
+    "battleArena": {
+        "IOTAslain": "IOTA has been slain in battle!",
+        "winCount": "Your Zombie's Win Count:",
+        "iotaLose": "IOTA's Loss Count",
+        "newZombie": "New Zombie Created"
     },
     "sharePage": {
         "pageTitle": "これが作ったクリプトゾンビ {zombieName}！",
@@ -192,6 +215,23 @@
             "callToAction": [
                 "クリプトゾンビを作ってランキングに参加しますか？",
                 "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
+            ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
+                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
+                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Payable functions, and how to earn money from your Ethereum-based games",
+                "Withdrawing ETH from smart contracts",
+                "Random number generation & security on Ethereum",
+                "And more!"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
             ]
         }
     }
