@@ -1,37 +1,37 @@
 ---
 en:
-  ogdescription: CryptoZombies is an interactive code school that teaches you to write smart contracts in Solidity through building your own crypto-collectables game.
-  ogtitle: CryptoZombies - Learn to code games on Ethereum. Powered by Loom Network
-  langshort: EN #should be recognizable in local languages, like chinese would be 中文
-  learn_title: Learn to Code Ethereum DApps By Building Your Own Game
-  learn_desc: CryptoZombies is an interactive code school that teaches you to write smart contracts in Solidity through building your own crypto-collectables game.
-  get_started: Get Started, It's Free
-  learn_more: Learn More
-  what_title: What is CryptoZombies?
-  what_desc1: CryptoZombies is a free, interactive code school that teaches you to build games on Ethereum.
-  what_desc2: The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.
-  collect_title: Earn Crypto-Collectibles
-  collect_desc1: Earn crypto-collectible Zombies and bonuses by completing coding lessons.
-  collect_desc2: After completing all lessons and deploying your DApp, pit your zombie army against other players' zombies in one of the world's first blockchain-based games! Half code-school, half MMO crypto-collectible strategy game.
-  collect_desc3: What are you waiting for? Click the button below to dive into lesson 1 and build your first DApp. It's free!
-  start_title: Get Started Now  
-  int_title: Interactive Coding Lessons
-  inbrowser_desc: In-browser step-by-step lessons take you from the very basics of Solidity to creating your own fully-functional blockchain-based game. Even by the end of Lesson 1 (which can be completed in one sitting), you'll know enough to officially call yourself a Solidity developer!
-  zombie_title: Build a Zombie Army
-  zombie_desc: In Lesson 1, you will build a Zombie Factory to build your army. Every Zombie you create will have randomly generated DNA and have his own unique appearance. Further lessons (1 released each week) will add more functionality to your game, like the ability to battle other people's zombies!
-  who_made: Who Made CryptoZombies and Why Is It Free?
-  who_made1: CryptoZombies was made by the team at 
-  who_made2: . We're building a platform for running large-scale applications on Ethereum sidechains.
-  who_made3: We think blockchains are capable of a lot more than just payments, and we want to get more developers thinking outside the box and trying to build large-scale DApps. Games are one of the areas where we think blockchain will really revolutionize things. So we built CryptoZombies to help educate and inspire the next generation of blockchain game devs.
-  find_us: Aside from CryptoZombies, we're working on some really cool projects. If you'd like to follow us, get in touch for a project, or just say hi, you can find us on
-  and_our: and our
-  email_us_at: ", or email us at"
-  footer_network: Network
-  footer_info: Information
-  footer_contact: Contact
-  footer_contact_jobs: Jobs
+  ogdescription: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Güvenilirlik içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
+  ogtitle: CryptoZombies - Ethereum’da oyunlar kodlamayı öğren. Loom Network tarafından çalıştırılıyor.
+  langshort: TR #should be recognizable in local languages, like chinese would be 中文
+  learn_title: Kendi Oyununuzu Yaparak Ethereum DApps Kodlamayı Öğrenin. 
+  learn_desc: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Güvenilirlik içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
+  get_started: Başlangıç, Ücretsizdir
+  learn_more: Daha Fazla Öğren
+  what_title: CryptoZombies nedir? 
+  what_desc1: CryptoZombies ücretsiz, size Ethereum'da oyun yapmayı öğreten interaktif bir kodlama okuludur.
+  what_desc2: Bu kurs yeni başlayanların Güvenirliği için oluşturulmuştur ve mutlak temellerle başlar. Yani daha önce Güvenirlik ile hiç kodlama yapmadıysanız, endişelenmeyin — adım adım ilerleyeceğiz.
+  collect_title: Kripto-Koleksiyonu kazan.
+  collect_desc1: Kodlama derslerini tamamlayarak kripto-koleksiyonu Zombileri ve bonusları kazan. 
+  collect_desc2: Tüm dersleri tamamladıktan sonra ve DApp’iniz yayıldıktan sonra, dünyanın ilk blok zinciri tabanlı oyunlarının birinde zombi ordunuzu diğer oyucularınkilerin karşısına koyun.  
+  collect_desc3: Sizi ne bekliyor? Ders 1’e atlamak ve ilk DApp’nizi yapmak için aşağıdaki butona tıkla. Ücretsizdir!
+  start_title: Şimdi Başla  
+  int_title: İnteraktif Kodlama Dersleri
+  inbrowser_desc: Tarayıcıda adım adım Güvenirliğin en temelinden kendi tam fonksiyonel blok zinciri tabanlı oyununuzu yapmaya kadar karşılaşacaksınız. Hatta Ders 1’in sonunda (bir oturuşta tamamlanabilen), kendinize bir resmi Güvenirlik geliştiricisi aramayı yeterince bileceksiniz!
+  zombie_title: Bir Zombi Ordusu Yap
+  zombie_desc: Ders 1’de, ordunuzu yapmak için bir Zombi Fabrikası inşa edeceksiniz. Oluşturduğunuz her Zombi rastgele üretilen DNA’ya ve kendi benzersiz görünümüne sahip olacak. İleriki dersler (her hafta 1 yayınlanır) diğer insanların zombileriyle savaşma yeteneği gibi, oyununuza daha fazla fonksiyonellik ekleyecek!  
+  who_made: CryptoZombieleri kim yaptı ve Neden Ücretsiz? 
+  who_made1: CryptoZombies takım tarafından yapıldı 
+  who_made2: . Ethereum yan zincirlerinde uzun ölçekli uygulamalar çalıştırmak için bir platform yapıyoruz.
+  who_made3: Bizce blok zincirleri ödemelerden faha fazla yeteneklidir ve daha fazla geliştirici düşüncesini kutunun dışına almak istiyoruz ve büyük ölçekli DApps yapmaya çalışıyoruz. Oyuncular,  blok zincirinin gerçekten devrim yapacağı şeyler düşündüğümüz alanlardan biridir. Böylece blok zincirinin sonraki nesil oyun geliştiricilerini eğitmek ve ilham vermek için CryptoZombies’i yaptık. 
+  find_us: CryptoZombies dışında, gerçekten bazı iyi projeler üzerinde çalışıyoruz. Bizi takip etmek isterseniz, bir proje için iletişime geçin veya sadece merhaba deyin, bizi şurada bulabilirsiniz
+  and_our: ve bizim 
+  email_us_at: ", veya bize email atın"
+  footer_network: Ağ
+  footer_info: Bilgi
+  footer_contact: Kontrat
+  footer_contact_jobs: İşler
   footer_email: Email
-  footer_about: About
-  footer_desc: CryptoZombies.io is a free teaching platform to teach existing developers or complete newcomers the ins and out of programming for the Blockchain. Powered by Loom Network - a platform for building commerical scale apps on Ethereum.
-  telegram_open_chat: Open Chat
+  footer_about: Hakkında
+  footer_desc: CryptoZombies.io mevcut geliştiricilere ders veren veya yeni başlayanları Blok Zinciri için girdisi çıktısıyla tamamlayan ücretsiz bir öğretim platformudur. Loom Network tarafından çalıştırılıyor – Ethereum’da ticari ölçekte uygulamalar yapmak için bir platform.
+  telegram_open_chat: Chati Aç
   telegram_link: https://t.me/loomnetwork
