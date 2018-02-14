@@ -1,5 +1,5 @@
 ---
-title: 攻撃へ戻れ!
+title: attackへ戻ろう!
 actions: ['答え合わせ', 'hints']
 requireLogin: true
 material:
