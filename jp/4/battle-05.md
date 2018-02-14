@@ -261,6 +261,6 @@ material:
 
 ## さあテストだ
 
-1. `changeName()`をアップデートし、`ownerOf`を使用せよ。
+1. `changeName()`関数をアップデートし、`ownerOf`を使用せよ。
 
-2. `changeDna()`をアップデートし、`ownerOf`を使用せよ。
+2. `changeDna()`関数をアップデートし、`ownerOf`を使用せよ。
