@@ -1,5 +1,5 @@
 ---
-title: onlyOwner Function Modifier
+title: Modificateur de fonction onlyOwner
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modify this function:
+          // Modifiez cette fonction :
           function setKittyContractAddress(address _address) external {
             kittyContract = KittyInterface(_address);
           }
@@ -183,26 +183,26 @@ material:
       }
 ---
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
+Maintenant que notre contrat de base `ZombieFactory` hérite de `Ownable`, nous pouvons utiliser le modificateur de fonction `onlyOwner` aussi dans `ZombieFeeding`.
 
-This is because of how contract inheritance works. Remember:
+C'est grâce à la façon dont l'héritage fonction. Souvenez-vous :
 
 ```
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+Ainsi `ZombieFeeding` est aussi `Ownable`, et peut accéder les fonctions / évènements / modificateurs du contrat `Ownable`. Cela s'appliquera aussi à n'importe quel contrat qui héritera de `ZombieFeeding`.
 
-## Function Modifiers
+## Modificateurs de fonction
 
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
+Un modificateur de fonction ressemble à une fonction, mais utilise le mot clé `modifier` (modificateur) à la place de `function`. Et il ne peut pas être directement appelé comme une fonction - à la place, nous pouvons rajouter le nom du modificateur à la fin de la définition d'une fonction pour changer le fonctionnement de cette fonction.
 
-Let's take a closer look by examining `onlyOwner`:
+Regardons cela de plus près avec `onlyOwner` :
 
 ```
 /**
- * @dev Throws if called by any account other than the owner.
+ * @dev Abandonne si appelé par un compte autre que le `owner`.
  */
 modifier onlyOwner() {
   require(msg.sender == owner);
@@ -210,31 +210,31 @@ modifier onlyOwner() {
 }
 ```
 
-We would use this modifier as follows:
+Nous allons utiliser ce modificateur comme suit :
 
 ```
 contract MyContract is Ownable {
   event LaughManiacally(string laughter);
 
-  // Note the usage of `onlyOwner` below:
+  // Vous remarquerez l'usage de `onlyOwner` ci-dessous :
   function likeABoss() external onlyOwner {
     LaughManiacally("Muahahahaha");
   }
 }
 ```
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+Vous avez vu le modificateur `onlyOwner` sur la fonction `likeABoss`? Quand vous appelez `likeABoss`, le code de `onlyOwner` s'exécute **en premier**. Puis, quand il arrive à la déclaration `_;` dans `onlyOwner`, il continu avec le code de `likeABoss`.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+Il peut y avoir d'autres raisons d'utiliser des modificateurs, mais le cas d'utilisation le plus courant est pour rajouter facilement une vérification `require` avant l'exécution d'une fonction.
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+Dans le cas de `onlyOwner`, rajouter ce modificateur à une fonction fera en sorte que **seulement** le **propriétaire** du contrat (vous, si vous l'avez déployé) pourra appeler cette fonction.
 
->Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
+> Remarque : Donner des privilèges spéciaux au propriétaire du contrat comme là est souvent nécessaire, cependant cela pourrait aussi être utilisé malicieusement. Par exemple, le propriétaire pourrait ajouter une fonction de porte dérobée qui lui permettrait de transférer n'importe quel zombie à lui-même !
 
->So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
+> C'est donc important de se rappeler que ce n'est pas parce qu'une DApp est sur Ethereum que cela veut dire qu'elle est décentralisée - vous devez lire le code source en entier pour vous assurez que le propriétaire n'a pas de privilèges qui pourraient vous inquiéter. En tant que développeur, il existe une balance entre garder le contrôle d'un DApp pour corriger de potentiels bugs, et construire une plateforme sans propriétaire en laquelle vos utilisateur peuvent avoir confiance pour sécuriser leurs données.
 
-## Put it to the test
+## A votre tour
 
-Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
+Maintenant nous pouvons restreindre l'accès à `setKittyContractAddress` pour que nous soyons le seul à pouvoir le modifier plus tard.
 
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+1. Rajouter le modificateur `onlyOwner` à `setKittyContractAddress`.

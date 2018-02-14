@@ -1,5 +1,5 @@
 ---
-title: Zombie Modifiers
+title: Modificateur de Zombie
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -18,7 +18,7 @@ material:
             _;
           }
 
-          // Start here
+          // Commencez ici
 
         }
       "zombiefeeding.sol": |
@@ -177,37 +177,38 @@ material:
       }
 ---
 
-Now let's use our `aboveLevel` modifier to create some functions.
+Maintenant, utilisons notre modificateur `aboveLevel` pour créer quelques fonctions.
 
-Our game will have some incentives for people to level up their zombies:
+Notre jeu aura quelques incitatifs pour que les gens fassent gagner des niveaux à leur zombies :
 
-- For zombies level 2 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+- Pour les zombies de niveau 2 ou plus, les utilisateurs pourront changer leur nom.
+- Pour les zombies de niveau 20 ou plus, les utilisateurs pour leur donner un ADN personnalisé.
 
-We'll implement these functions below. Here's the example code from the previous lesson for reference:
+Nous implémenterons ces fonctions ci-dessous. Voici un exemple de code d'une leçon précédente en référence :
 
 ```
-// A mapping to store a user's age:
+// Un mappage pour stocker l'age d'un utilisateur :
 mapping (uint => uint) public age;
 
-// Require that this user be older than a certain age:
+// Un modificateur qui nécessite que l'utilisateur soit plus âgé qu'un certain age :
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// Must be older than 16 to drive a car (in the US, at least)
+// Doit avoir plus de 16 ans pour conduire une voiture (du moins, au US).
+// Nous pouvons appeler le modificateur `olderThan` avec des arguments, comme :
 function driveCar(uint _userId) public olderThan(16, _userId) {
-  // Some function logic
+  // Logique de la fonction
 }
 ```
 
-## Put it to the test
+## A votre tour
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+1. Créez une fonction appelée `changeName` qui aura 2 paramètres : `_zombieId` (un `uint`), et `_newName` (un `string`), et la rendre `external`. Elle devra avoir le modificateur `aboveLevel`, et lui passer `2` pour l'argument `_level`. (N'oubliez pas de lui passer aussi le `_zombieId`).
 
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
+2. Dans cette fonction, premièrement nous allons vérifier que `msg.sender` est égal à `zombieToOwner[_zombieId]`. Utilisez une déclaration `require`.
 
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+3. Ensuite la fonction devra définir `zombies[_zombieId].name` égal à `_newName`.
 
-3. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
+4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et contenu seront presque identique à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sur, elle devra definir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.

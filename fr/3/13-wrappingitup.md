@@ -1,5 +1,5 @@
 ---
-title: Wrapping It Up
+title: Conclusion
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -11,21 +11,22 @@ material:
     answer: 1
 ---
 
-Congratulations! That concludes Lesson 3.
+Félicitations ! Vous avez terminé la Leçon 3.
 
-## Let's recap:
 
-- We've added a way to update our CryptoKitties contracts
-- We've learned to protect core functions with `onlyOwner`
-- We've learned about gas and gas optimization
-- We added levels and cooldowns to our zombies
-- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
-- And finally, we now have a function to return a user's zombie army
+## Récapitulons :
 
-## Claim your reward
+- Nous avons ajouté un moyen de mettre à jour notre contrat CryptoKitties
+- Nous avons appris à protéger les fonctions principales avec `onlyOwner`
+- Nous avons appris ce qu'est le gas et son optimisation
+- Nous avons ajouté niveau et compte à rebours à nos zombies
+- Nous avons maintenant des fonctions pour mettre à jour le nom d'un zombie et son ADN une fois que le zombie à un certain niveau
+- Et enfin, nous avons maintenant une fonction pour renvoyer l'armée de zombie d'un utilisateur
 
-As a reward for completing Lesson 3, both of your zombies have leveled up!
+## Voici votre récompense
 
-And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
+Comme récompense pour avoir terminé la Leçon 3, vos zombies ont gagné un niveau !
 
-Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
+Et maintenant que NoName (le zombie-chat que vous avez créé à la Leçon 2), est passé au niveau 2, vous pouvez appeler `changeName` pour lui donner un nom. C'est fini NoName !
+
+Allez-y et donnez un nom à NoName, puis passez au prochain chapitre pour terminer la leçon.
