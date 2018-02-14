@@ -1,6 +1,6 @@
 ---
-title: Zombie Wins and Losses
-actions: ['checkAnswer', 'hints']
+title: ゾンビの勝敗
+actions: ['答え合わせ', 'hints']
 requireLogin: true
 material:
   editor:
@@ -270,7 +270,7 @@ Each has its own benefits and tradeoffs depending on how we intend on interactin
 
 So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
 
-## Put it to the test
+## さあテストだ
 
 1. Modify our `Zombie` struct to have 2 more properties:
 
