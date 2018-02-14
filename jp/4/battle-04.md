@@ -298,7 +298,7 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 ## さあテストだ
 
-このロジックを最初に使った場所である`zombiefeeding.sol`に戻ってきた。ロジックをリファクターして独自の`modifier`に入れてみよう。
+このロジックを最初に使った場所である`zombiefeeding.sol`に戻ろう。ロジックをリファクターして独自の`modifier`に入れていくぞ。
 
 1. `ownerOf`という`modifier`を作成せよ。これは１つの引数`_zombieId`（`uint`）を受け取る。
 
