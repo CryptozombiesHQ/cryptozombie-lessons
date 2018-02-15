@@ -1,6 +1,6 @@
 ---
-title: Zombie Battles
-actions: ['checkAnswer', 'hints']
+title: ゾンビ・バトル
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -207,18 +207,18 @@ material:
       }
 ---
 
-Now that we've learned about payable functions and contract balances, it's time to add functionality for zombie battles!
+payable関数とコントラクトの残高について学習してきたが、いよいよゾンビバトルの機能を追加するときだ！
 
-Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
+これまでのチャプターでのフォーマット通り、コードを整理するために攻撃機能用の新規ファイルとコントラクトを作成し、前出のコントラクトをインポートさせよう。 
 
-## Put it to the test
+## さあテストだ
 
-Let's review creating a new contract. Repetition leads to mastery!
+新規コントラクトの作成について復習しよう。繰り返しは習得に繋がるぞ！
 
-If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
+もしこの構文を覚えられなかったら、`zombiehelper.sol`でチェックするのだ。だがまずはお主の知識を試すためにも、チラ見せずにやってみよ。
 
-1. Declare at the top of the file that we're using Solidity version `^0.4.19`.
+1. ファイル冒頭にSolidity version `^0.4.19`を用いることを宣言せよ。
 
-2. `import` from `zombiehelper.sol`.
+2. `zombiehelper.sol`を`import`せよ。
 
-3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.
+3. `ZombieBattle`という名の新規`contract`を宣言せよ。これは`ZombieHelper`を継承する。コントラクト本文は、今はまだ空のままにしておくのだ。

@@ -1,6 +1,6 @@
 ---
-title: Back to Attack!
-actions: ['checkAnswer', 'hints']
+title: Attackへ戻ろう!
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -18,9 +18,9 @@ material:
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // 1. Add modifier here
-          function attack(uint _zombieId, uint _targetId) external {
-            // 2. Start function definition here
+          // 1. modifierをここに加えるのだ
+          function attack(uint _zombieId, uint _targetId) external {
+            // 2. 関数定義をここから始めよ
           }
         }
       "zombiehelper.sol": |
@@ -230,18 +230,18 @@ material:
       }
 ---
 
-Enough refactoring — back to `zombieattack.sol`.
+リファクタリングは十分できた、`zombieattack.sol`へ戻ろう。
 
-We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
+`attack`関数の定義を続けていくが、今度は`ownerOf`修飾詞も使うからな。
 
-## Put it to the test
+## さあテストだ
 
-1. Add the `ownerOf` modifier to `attack` to make sure the caller owns `_zombieId`.
+1. `ownerOf`修飾詞を`attack`関数に加え、関数を呼び出した者が`_zombieId`を所有しているか確認せよ。
 
-2. The first thing our function should do is get a `storage` pointer to both zombies so we can more easily interact with them:
+2. まず最初に、我々の関数は両方のゾンビに`storage`のポインタをゲットしなくてはならない。そうするとより簡単にそれらとやり取りできる。
 
-  a. Declare a `Zombie storage` named `myZombie`, and set it equal to `zombies[_zombieId]`.
+  a. `myZombie`という名の`Zombie storage`を宣言せよ。そしてそれが`zombies[_zombieId]`と等しくなるよう設定するのだ。
 
-  b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
+  b. `enemyZombie`という名の`Zombie storage`を宣言し、そしてそれが`zombies[_targetId]`と等しくなるよう設定せよ。
 
-3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. バトルの結果を決めるために、0から99のランダムな数字を使っていく。そのため`rand`という名前の`uint`を宣言し、これが引数を100とした`randMod`関数と同等であるよう設定せよ。

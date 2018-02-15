@@ -7,13 +7,13 @@
         "syncing": "同期中...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
+            "openChat": "チャットに参加",
             "action": "Telegramに参加する",
             "link": "https://t.me/loomnetworkJP"
         },
         "twitter": {
             "name": "Twitter",
-            "link": "https://twitter.com/loomnetwork"
+            "link": "https://twitter.com/LoomJp"
         }
     },
     "editor": {
@@ -64,7 +64,7 @@
             ],
             "footer": "レッスン 2に進む前に進捗を保存するのだぞ。",
             "zombieDesc": "クリプトゾンビ　レベル 1",
-            "shareLinkText": "#CryptoZombiesのレッスン 1を終えて#イーサリアムでゲームを構築する基本を学んだのでシェアするよ。 これが作った最初のゾンビ！"
+            "shareLinkText": "#CryptoZombies のレッスン1を終えて#イーサリアム でゲームを構築する基本を学んだのでシェアするよ。 これが作った最初のゾンビ！"
         },
         "lesson2": {
             "header": [
@@ -81,7 +81,7 @@
                 "準備ができたら、下のボタンを押すとレッスン3に進みます："
             ],
             "zombieDesc": "クリプトゾンビ　レベル 2",
-            "shareLinkText": "#クリプトゾンビのレッスン2が終わったよ！#クリプトキティを捕食させることができたのと、#イーサリアムの開発がかなりわかってきたよ。これがクリプトキティーズを捕食したゾンビ："
+            "shareLinkText": "#クリプトゾンビ のレッスン2が終わったよ！#CryptoKitties を捕食させることができたのと、#イーサリアム の開発がかなりわかってきたよ。これがクリプトキティーズを捕食したゾンビ："
         },
         "lesson3": {
             "achievementsUnlocked": "次の課題が解除されました：",
@@ -97,24 +97,24 @@
                 "準備ができたら、下のボタンを押すとレッスン4に進みます："
             ],
             "zombieDesc": "クリプトゾンビ　レベル 3",
-            "shareLinkText": "#CryptZombiesのレッスン3が終わったよ！作ったゾンビ軍団はこんな感じ:"
+            "shareLinkText": "#CryptZombies のレッスン3が終わったよ！作ったゾンビ軍団はこんな感じ:"
         },
         "lesson4": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "achievementsUnlocked": "次の課題が解除されました：",
+            "zombieUpgraded": "{zombieName} のレベルが {levelNum}にアップしました!",
+            "newZombieAdded": "ゾンビ軍団に新たにレベル１のゾンビを追加しました!",
             "header": [
-                "Congratulations! You have completed {lesson4} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "よくやった! これでCryptoZombiesの{lesson4}は終了だ!",
+                "作ったゾンビ軍団を友達にみせてやろう！",
+                "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
             ],
             "footer": [
-                "Lesson 5 coming in 1-2 weeks",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+                "Lesson5は準備中です。",
+                "準備出来次第、Eメールでお知らせします。",
+                "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "zombieDesc": "クリプトゾンビ レベル{levelNum} ",
+            "shareLinkText": "#CryptoZombies のLesson4が終わったよ！敵のIOTAゾンビをやっつけたよ！みんなもやってみて! "
         }
     },
     "zombieBattle": {
@@ -148,10 +148,10 @@
         "defaultZombieDesc": "クリプトゾンビ レベル1"
     },
     "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+        "IOTAslain": "IOTAは闘いに敗れました!",
+        "winCount": "あなたのゾンビのWin Count:",
+        "iotaLose": "IOTAのLoss Count",
+        "newZombie": "新たなゾンビが生まれました"
     },
     "sharePage": {
         "pageTitle": "これが作ったクリプトゾンビ {zombieName}！",
@@ -204,7 +204,7 @@
         "lesson3": {
             "achievementPreamble": [
                 "友達がクリプトゾンビのレッスン3を終了してゾンビ軍団をアップグレードしました！",
-                "レッスン3を終了するためには、友達は以下を学ぶ必要があります："
+                "レッスン3を終了するために、友達は以下を学びました："
             ],
             "achievements": [
                 "更新できるスマートコントラクトの開発方法",
@@ -219,19 +219,19 @@
         },
         "lesson4": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+                "友達がクリプトゾンビのレッスン４を終了して敵のIOTAゾンビをやっつけました!",
+                "左側で、友達のゾンビ軍団を使ってバトルに参加してみよう！",
+                "レッスン4を終了するために、友達は以下を学びました:"
             ],
             "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
+                "Payable関数と、イーサリアム上ゲームからお金を得る方法",
+                "スマート・コントラクトからのETHの引き出し",
+                "乱数生成と、イーサリアム上のセキュリティ",
+                "などなど!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "クリプトゾンビ軍団を作ってランキングに参加しますか？",
+                "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
             ]
         }
     }

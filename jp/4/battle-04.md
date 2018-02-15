@@ -1,6 +1,6 @@
 ---
-title: Refactoring Common Logic
-actions: ['checkAnswer', 'hints']
+title: 共通ロジックのリファクタリング
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // 1. Create modifier here
+          // 1. modifierをここに作成するのだ
 
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
@@ -44,10 +44,10 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. Add modifier to function definition:
+          // 2. 関数定義にmodifierを加えよ
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. Remove this line
-            require(msg.sender == zombieToOwner[_zombieId]);
+            // 3. この一行を削除するのだ
+            require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
@@ -276,34 +276,34 @@ material:
       }
 ---
 
-Whoever calls our `attack` function — we want to make sure the user actually owns the zombie they're attacking with. It would be a security concern if you could attack with someone else's zombie!
+`attack`関数を呼び出す全てのユーザーが、攻撃に使っているゾンビを実際に所有しているのか確認したい。もし他の誰かのゾンビを使って攻撃できてしまったら、セキュリティが心配だからな！
 
-Can you think of how we would add a check to see if the person calling this function is the owner of the `_zombieId` they're passing in?
+この関数を呼び出している人物が、関数に渡された`_zombieId`のオーナーなのかを見るために、どうやってチェックするかお主は思いつくだろうか？
 
-Give it some thought, and see if you can come up with the answer on your own.
+よく考えてみて、自分で答えを思いつくか確かめるのだ。
 
-Take a moment... Refer to some of our previous lessons' code for ideas...
+時間を置いてから、、、これまでのレッスン中のコードを参照してくれ。
 
-Answer below, don't continue until you've given it some thought.
+答えは下に書いてあるが、よく考えるまで続きはやるんじゃないぞ。
 
-## The answer
+## 答えはこうだ
 
-We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
+これまでのレッスンでこのチェックは何度もやっている。`changeName()`、`changeDna()`、`feedAndMultiply()`において、我々は以下のチェックを使ってきた。
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own `modifier` to clean up our code and avoid repeating ourselves.
+我々の`attack`関数にもこれと同じロジックが必要だ。何度も同じロジックを使っているから、コードを綺麗にして繰り返しを避けるために、このロジックを独自の`modifier`に格納してみよう。
 
-## Put it to the test
+## さあテストだ
 
-We're back to `zombiefeeding.sol`, since this is the first place we used that logic. Let's refactor it into its own `modifier`.
+このロジックを最初に使った場所である`zombiefeeding.sol`に戻ろう。ロジックをリファクターして独自の`modifier`に入れていくぞ。
 
-1. Create a `modifier` called `ownerOf`. It will take 1 argument, `_zombieId` (a `uint`).
+1. `ownerOf`という`modifier`を作成せよ。これは１つの引数`_zombieId`（`uint`）を受け取る。
 
-  The body should `require` that `msg.sender` is equal to `zombieToOwner[_zombieId]`, then continue with the function. You can refer to `zombiehelper.sol` if you don't remember the syntax for a modifier.
+  本文では、`msg.sender`が`zombieToOwner[_zombieId]`と同等であるように`require`（要求）し、そうであれば関数を続けるようにせよ。もし修飾詞の構文を覚えていなければ、`zombiehelper.sol`を参照してよい。
 
-2. Change the function definition of `feedAndMultiply` such that it uses the modifier `ownerOf`.
+2. `feedAndMultiply`の関数定義を変更し、`ownerOf`修飾詞を使うようにせよ。
 
-3. Now that we're using a `modifier`, you can remove the line `require(msg.sender == zombieToOwner[_zombieId]);`
+3. 今は`modifier`を使っているので、以下の一行は削除するのだ。`require(msg.sender == zombieToOwner[_zombieId]);`

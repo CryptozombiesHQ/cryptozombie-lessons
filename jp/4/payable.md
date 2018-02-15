@@ -1,6 +1,6 @@
 ---
-title: Payable
-actions: ['checkAnswer', 'hints']
+title: Payable関数
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -13,14 +13,14 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. Define levelUpFee here
+          // 1. ここにlevelUpFeeを定義するのだ
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. Insert levelUp function here
+          // 2. levelUp関数をここに入力せよ
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -229,33 +229,33 @@ material:
       }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+これまで我々は **_関数修飾詞_** をかなりたくさん扱ってきた。だが全部覚えるのは難しいかもしれないから、素早く復習していくぞ。
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+1. いつどこで関数を呼び出すかをコントロールする可視性修飾詞というものがある。`private`修飾詞はコントラクト内の別の関数からのみ呼び出されるという意味だ。`internal`修飾詞は`private`修飾詞に似ているが、そのコントラクトを継承したコントラクトからも呼び出す事ができる。`external`修飾詞はコントラクト外からだけ呼び出す事ができて、最後に`public`修飾詞だが、これはコントラクト内部・外部どちらからでも呼び出せるぞ。
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+2. 状態修飾詞といって、関数がブロックチェーンとどのように作用し合うのか示してくれるものもある。`view`修飾詞は関数が動作しても、なんのデータも保存または変更されないということだ。`pure`修飾詞は、関数がブロックチェーンにデータを保存しないだけでなく、ブロックチェーンからデータを読み込むこともないと表しているぞ。どちらも、コントラクト外部から呼び出された場合はガスは必要ない。（ただし、コントラクト内にある別の関数から呼び出されるとガスが必要となるからな。）
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
+3. それからカスタムの`modifier`、例えばレッスン３で学んだ`onlyOwner` や `aboveLevel`というものがある。我々は、これら修飾詞の関数への影響の仕方を決定するための、カスタムした理論を定義することが可能だ。
 
-These modifiers can all be stacked together on a function definition as follows:
+これらの修飾詞は、全て以下のように一つの関数定義に組み込むことができる。
 
 ```
 function test() external view onlyOwner anotherModifier { /* ... */ }
 ```
 
-In this chapter, we're going to introduce one more function modifier: `payable`.
+このチャプターでは、さらにもう一つ`payable`という関数修飾詞を紹介して行くからな。
 
-## The `payable` Modifier
+## `payable`修飾詞
 
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether. 
+`payable`関数は、solidityとEthereumをこんなにもクールにしているものの１つといえる。Etherを受け取ることができる特別なタイプの関数なんだ。 
 
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
+ちょっとじっくりと考えてみよう。お主達が通常のウェブサーバー上でAPI関数を呼び出すとき、ファンクション・コール(関数呼び出し)に併せてUSドルを送ることはできない。ビットコインでもダメだ。
 
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
+だがイーサリアムでは、お金(Ether)もデータ(トランザクションの内容)も、コントラクト・コード自体も全てイーサリアム上にあるから、ファンクション・コール**及び**お金の支払いが同時に可能だ。
 
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
+関数を実行するため、コントラクトへいくらかの支払いを要求するというようなすごく面白いこともできてしまうのだ。
 
-## Let's look at an example
+## 例を見てみよう
 ```
 contract OnlineStore {
   function buySomething() external payable {
@@ -267,30 +267,30 @@ contract OnlineStore {
 }
 ```
 
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
+ここの`msg.value`は、コントラクトにどのくらいEtherが送られたかを見るやり方で、`ether`は組み込み単位だ。
 
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
+ではここでweb3.js（DAppのJavaScriptフロントエンドだ）から以下のように関数を呼び出した場合何が起こるだろうか。
 
 ```
 // Assuming `OnlineStore` points to your contract on Ethereum:
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
+`value`の部分を見て欲しい。ここではjavascriptのファンクション・コールで`ether`をどのくらい送るかを定めている(0.001etherだ）。もしトランザクションを封筒のようなものと考えると、ファンクション・コールに渡すパラメーターは、封筒の中に入れた手紙の内容だ。そして`value`を追加するのは、封筒の中に現金を入れるようなものだ。受取人に手紙とお金が一緒に届けられるからな。
 
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
+>注：関数にpayable修飾詞がなく、Etherを上記のように送ろうとする場合、その関数はトランザクションを拒否します。
 
 
-## Putting it to the Test
+## それではテストだ
 
-Let's create a `payable` function in our zombie game.
+我々のゾンビゲームで`payable`関数を作ってみよう。
 
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH will get stored in the contract, which you own — this a simple example of how you could make money on your games!
+例えばこのゲームで、ユーザーがETHを支払って自分のゾンビをレベルアップできる機能があるとしよう。そのETHはお主が所有するコントラクト内に溜まっていくから、ゲームでお金を稼げる一番簡単な例だ！
 
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
+1. `levelUpFee`という名前の`uint`を定義し、それが`0.001 ether`と同様になるよう設定せよ。
 
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
+2. `levelUp`という名前の関数を作成せよ。これに一つのパラメーター`_zombieId`（`uint`）を渡せ。また`external`かつ`payable`とせよ。
 
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
+3. 最初に`msg.value`が`levelUpFee`と同等であることを、この関数が要求（`require`）するようにせよ。
 
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.
+4. そしたらゾンビの`level`を増やすのだ。やり方はこうだ。 `zombies[_zombieId].level++`

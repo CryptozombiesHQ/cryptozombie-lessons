@@ -1,6 +1,6 @@
 ---
-title: Random Numbers
-actions: ['checkAnswer', 'hints']
+title: 乱数
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -10,8 +10,8 @@ material:
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
-          // Start here
-        }
+          // ここから始めるのだ
+        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -216,64 +216,64 @@ material:
 
 ---
 
-Great! Now let's figure out the battle logic.
+いい感じだ！今度はバトルのロジックを理解しよう。
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+あるレベルのランダム性は、全ての良いゲームにとって必要だ。ではSoidityにおいてどのように乱数を生成するのだろうか。
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+それは不可能だ、というのがリアルな答えだ。少なくとも、それを安全に行うことはできない。
 
-Let's look at why.
+何故なのか見てみよう。
 
-## Random number generation via `keccak256`
+## `keccak256`経由での乱数生成
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+Solidityにおけるベストなランダム性のソースは、`keccak256`ハッシュ関数である。
 
-We could do something like the following to generate a random number:
+次のようにして乱数を生成するのだ。
 
 ```
-// Generate a random number between 1 and 100:
+// 1から100までの乱数を生成せよ:
 uint randNonce = 0;
 uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
 randNonce++;
 uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 ```
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
+このコードが行うのは、`now`のタイムスタンプと`msg.sender`、そして増加する値`nonce`(一度のみ使用される数字なので同じ入力パラメーター値を持つハッシュ関数が二度実行されることはない）の受け取りだ。 
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+`keccak`でこれら入力値をランダムなハッシュ値に変換、そしてそのハッシュ値を`uint`型に変換したら、その末尾２桁のみ残すように`% 100`をする。こうして0から99の間の、完全にランダムな数値を生成するのだ。
 
-### This method is vulnerable to attack by a dishonest node
+### この方法は、不誠実なノードの攻撃に対して脆弱である
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+イーサリアムでは、コントラクトの関数を呼び出す際、ネットワーク上の一つまたは複数のノードに **_トランザクション_** として送信し、ネットワーク上のノードはトランザクションの束を集め、Proof of Work (PoW、仕事の証明)として計算集約的数学の問題を一番速く解こうとする。そして彼らのProof of Work (PoW、仕事の証明)も併せたトランザクションのグループを **_ブロック_** としてネットワークの残りのノードに発行する。
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+一度あるノードがPowを解いてしまうと、他のノードはそのPowを解くのをやめ、トランザクションリストが有効であることを確認してブロックを承認し、さらに次のブロックを解くことに取り掛かる。
 
-**This makes our random number function exploitable.**
+**これは我々の乱数関数のセキュリティーホールとなる**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+例えばコイン・トスのコントラクトがあるとしよう。表ならお主のお金は２倍になり、裏なら全てのお金を失うというルールだ。表裏を決定するのに、上でやった乱数関数を使うとしよう。(`random >= 50`なら表、`random < 50`なら裏)
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+もしわしがノードを立てているとしたら、 **自分のノードだけに向けて** トランザクションを発行できる。そうするとコイン・トスの関数を動かして勝ち負けを見て、わしの解いている次のブロックにそのトランザクションが含まれないよう選択することができてしまう。コイン・トスに勝って次のブロックを解き、利益を出すまでこれを無期限で行うことが可能だ。
 
-## So how do we generate random numbers safely in Ethereum?
+##ではイーサリアムではどうやって安全に乱数を生成するのだろう？
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside the Ethereum blockchain.
+ブロックチェーンの全内容が全ての参加者に見えているため、これは難しい問題である。そしてその解決法はこのチュートリアルの範囲を超えている。 <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>このStackOverflowのスレッド</a> を読んでアイディアをいくつか見て見ると良いぞ。 そこに一つ、イーサリアムのブロックチェーン外部から乱数関数にアクセスするために **_oracle_** を使うアイディアがある。
 
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+もちろん、ネットワーク上の数万ものイーサリアム・ノードが次のブロックを解こうと競っているのだから、わしが次のブロックを解く勝率は極めて低い。これで利益があるようにするには、たくさんの時間と計算リソースが必要だからな。だがその報酬が十分に高ければ（コイン・トス関数に＄100,000,000賭けられたらといったことだ）、わしにとって攻撃する価値が出てくる。
 
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
+こういうわけでこの乱数生成関数はイーサリアム上では安全ではないが、実際に我われの乱数関数が大金を危険にさらさない限りは、ゲームのユーザーは攻撃する十分なリソースを持つことはないだろう。
 
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
+なぜならこのチュートリアルではデモ目的にシンプルなゲームを作っているだけだし、危険にさらされる実際のお金もない。完全に安全ではないと知っていても、乱数生成関数は実行が簡単だし、これを使うことのトレード・オフを受け入れていこう。
 
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+あとのレッスンでは、**_oracles_** （イーサリアム外部からデータをプルする安全な方法だ）を使って、ブロックチェーン外部から安全な乱数を生成するのもやっていくからな。
 
-## Put it to the test
+##さあテストだ
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+攻撃に対して完璧に安全ではなかったとしても、バトル結果の決定に使える乱数関数を実行しよう。
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
+1. コントラクトに、`randNonce`という`uint`を与え、`0`に同等となるよう設定せよ。
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. `randMod` (random-modulus)という関数を作成せよ。これは`_modulus`という名の`uint`を受け取る`internal`関数であり、`uint`を返す（`returns`）。
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
+3. この関数はまずThe function should first increment `randNonce`を実行する。(`randNonce++`という構文を使うのだ)。
 
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+4. 最後に、`now`、`msg.sender`そして`randNonce`の`keccak256`ハッシュ値の型変換を`uint`に計算し、その値を`% _modulus`して`return`せよ。これはコード１行で行うこと。（ふう、説明しにくかったぞ。もしわからなかったら、上で乱数を生成した例をちょっと見てくれ。よく似たロジックだ。）

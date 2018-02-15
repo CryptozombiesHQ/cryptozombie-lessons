@@ -1,6 +1,6 @@
 ---
-title: Zombie Loss 😞
-actions: ['checkAnswer', 'hints']
+title: ゾンビの敗北😞
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -27,7 +27,7 @@ material:
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // start here
+            } // ここから始めよ
           }
         }
       "zombiehelper.sol": |
@@ -249,13 +249,13 @@ material:
       }
 ---
 
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+お主達のゾンビが勝利したら何が起こるかをコーディングしてきたな。今度は **敗北** したらどうなるかを理解していこう。
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+我々のゲームでは、ゾンビが負けてもレベルダウンしない。単純に`lossCount`に負けを追加し、さらにクールダウンが始まるため、また攻撃をするのに一日待たなくてはならない。
 
-To implement this logic, we'll need an `else` statement.
+このロジックを実行するには、`else`ステートメントが必要となるぞ。
 
-`else` statements are written just like in JavaScript and many other languages:
+`else`ステートメントはJavaScriptやその他多くの言語のように書かれる。
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
@@ -265,14 +265,14 @@ if (zombieCoins[msg.sender] > 100000000) {
 }
 ```
 
-## Put it to the test
+## さあテストだ
 
-1. Add an `else` statement. If our zombie loses:
+1. `else`ステートメントを追加せよ。もし我々のゾンビが負けたら、
 
-  a. Increment `myZombie`'s `lossCount`.
+  a. `myZombie`の`lossCount`を増やせ。
 
-  b. Increment `enemyZombie`'s `winCount`.
+  b. `enemyZombie`の`winCount`を増やせ。
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
+2. このelseステートメント外で、`myZombie`にある`_triggerCooldown`関数を動かすのだ。こうするとゾンビは一日一回だけ攻撃できるようになる。
 
 

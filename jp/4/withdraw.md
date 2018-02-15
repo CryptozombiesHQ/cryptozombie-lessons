@@ -1,6 +1,6 @@
 ---
-title: Withdraws
-actions: ['checkAnswer', 'hints']
+title: Withdraws関数
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -20,9 +20,9 @@ material:
             _;
           }
 
-          // 1. Create withdraw function here
+          // 1. ここにwithdraw関数を作成するのだ
 
-          // 2. Create setLevelUpFee function here
+          // 2. ここにsetLevelUpFee関数を作成せよ
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -244,11 +244,11 @@ material:
       }
 ---
 
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
+前のチャプターで、Etherをコントラクトにどうやって送るかを学んだ。では送ったあとに何が起こるのか？
 
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract. 
+コントラクトに送られたEthは、コントラクトのイーサリアム・アカウントに貯められる。コントラクトからEtherを引き出す関数を追加しない限りはそこに閉じ込められたままになってしまうのだ。 
 
-You can write a function to withdraw Ether from the contract as follows:
+Etherをコントラクトから引き出す関数は、次のように書くぞ。
 
 ```
 contract GetPaid is Ownable {
@@ -258,29 +258,29 @@ contract GetPaid is Ownable {
 }
 ```
 
-Note that we're using `owner` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
+インポートされていることを想定して、`owner`と`onlyOwner`修飾詞を`Ownable`コントラクトから用いていることに注目してくれ。
 
-You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
+`transfer`関数を使ってEtherをあるアドレスに送ることができ、`this.balance`はコントラクトに溜まっている残高の総量を返す。なのでもし100人のユーザーが１Etherを我々のコントラクトに支払ったとしたら、`this.balance`は100Etherに等しくなるはずだ。
 
-You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
+`transfer`を使えば、どんなイーサリアムのアドレスにも送金可能だ。例えば下にあるように、あるアイテムに対する支払いが多すぎた場合に、Etherを`msg.sender`に送り返す関数を作ることだってできるのだ。
 
 ```
 uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-Or in a contract with a buyer and a seller, you could save the seller's address in storage, then when someone purchases his item, transfer him the fee paid by the buyer: `seller.transfer(msg.value)`.
+または購入者と販売者間のコントラクトにおいて、販売者のアドレスをストレージに保存しておいて、誰かが販売者のアイテムを購入する際に、購入者が支払った料金を販売者に送金することも可能となる。やり方はこうだ。`seller.transfer(msg.value)`
 
-These are some examples of what makes Ethereum programming really cool — you can have decentralized marketplaces like this that aren't controlled by anyone.
+これらは、イーサリアムのプログラミングを本当にクールにしている一例だ。こんな感じで、誰にもコントロールされない分散型マーケットプレイスが持てるんだからな。
 
-## Putting it to the Test
+## さあテストだ
 
-1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
+1. 我々のコントラクト内に、上記の`GetPaid`の例と同一の`withdraw`の関数を作成せよ。
 
-2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
+2. Etherの価格は昨年で１０倍以上上昇した。この問題作成時0.001 ETHはおよそ1＄だが、もしまたEtherが１０倍の価格になったとしたら、0.001 ETHは10＄になり我々のゲームはかなり高価になる。
 
-  So it's a good idea to create a function that allows us as the owner of the contract to set the `levelUpFee`.
+  そこで一ついいアイディアがある。コントラクトの所有者として、我々が`levelUpFee`を設定できるような関数を作成するのだ。
 
-  a. Create a function called `setLevelUpFee` that takes one argument, `uint _fee`, is `external`, and uses the modifier `onlyOwner`.
+  a. 一つの引数`uint _fee`を受け取る`setLevelUpFee`という名の関数を作成せよ。これは`external`であり、`onlyOwner`修飾詞を用いることとする。
 
-  b. The function should set `levelUpFee` equal to `_fee`.
+  b. 作成した関数に`levelUpFee`を設定し、`_fee`と同等となるようにせよ。

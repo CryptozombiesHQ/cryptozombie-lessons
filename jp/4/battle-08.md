@@ -1,6 +1,6 @@
 ---
-title: Zombie Victory 😄
-actions: ['checkAnswer', 'hints']
+title: ゾンビの勝利😄
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -22,8 +22,8 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            // Start here
-          }
+            // ここから始めるのだ
+          }
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -240,20 +240,20 @@ material:
       }
 ---
 
-Now that we have a `winCount` and `lossCount`, we can update them depending on which zombie wins the fight.
+`winCount`と`lossCount`ができたから、どのゾンビが闘いに勝つかによってこれらをアップデートできるようになった。
 
-In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
+チャプター6では、0から100の乱数を計算したな。では今度はその乱数を使って、誰が闘いに勝つかを決めて、それに従って成績を更新してみよう。
 
-## Put it to the test
+## さあテストだ
 
-1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attackVictoryProbability`.
+1. `if`ステートメントを作成し、`rand`変数が`attackVictoryProbability`変数 **_より少ないか同等_** であるかチェックするようにせよ。
 
-2. If this condition is true, our zombie wins! So:
+2. もしこの条件が真であれば、我らがゾンビの勝利だ！従って、
 
-  a. Increment `myZombie`'s `winCount`.
+  a. `myZombie`の`winCount`を増やせ。
 
-  b. Increment `myZombie`'s `level`. (Level up!!!!!!!)
+  b. `myZombie`の`level`を増やせ。 (レベルアップだ!!!!!!!)
 
-  c. Increment `enemyZombie`'s `lossCount`. (Loser!!!!!! 😫 😫 😫)
+  c. `enemyZombie`の`lossCount`を増やせ。 (敗者だ!!!!!! 😫 😫 😫)
 
-  d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).
+  d. `feedAndMultiply`関数を動かすのだ。関数を呼び出す構文を見るには、`zombiefeeding.sol`をチェックせよ。三番目の引数（`_species`）に、`"zombie"`の文字列を渡せ。（今はまだ何も起こらないのだが、後でゾンビをベースとして新たなゾンビを生みだす機能を追加できるからな。）

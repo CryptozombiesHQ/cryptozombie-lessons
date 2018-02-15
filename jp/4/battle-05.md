@@ -1,6 +1,6 @@
 ---
-title: More Refactoring
-actions: ['checkAnswer', 'hints']
+title: さらなるリファクタリング
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -28,14 +28,14 @@ material:
             levelUpFee = _fee;
           }
 
-          // 1. Modify this function to use `ownerOf`:
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          // 1. この関数を`ownerOf`を使うように修正するのだ
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          // 2. Do the same with this function:
-          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          // 2. この関数も同じようにせよ
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
           }
@@ -257,10 +257,10 @@ material:
       }
 ---
 
-We have a couple more places in `zombiehelper.sol` where we need to implement our new `modifier` `ownerOf`.
+`zombiehelper.sol`の中で数カ所、新たな`modifier`と`ownerOf`の実行が必要な所がある。
 
-## Put it to the test
+## さあテストだ
 
-1. Update `changeName()` to use `ownerOf`
+1. `changeName()`関数をアップデートし、`ownerOf`を使用せよ。
 
-2. Update `changeDna()` to use `ownerOf`
+2. `changeDna()`関数をアップデートし、`ownerOf`を使用せよ。

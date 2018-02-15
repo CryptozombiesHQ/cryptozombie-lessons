@@ -1,6 +1,6 @@
 ---
-title: Zombie Fightin'
-actions: ['checkAnswer', 'hints']
+title: ゾンビが闘う
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
@@ -11,15 +11,15 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Create attackVictoryProbability here
+          // ここにattackVictoryProbabilityを作成せよ
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // Create new function here
-        }
+          // ここに新たな関数を作成せよ
+        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -227,23 +227,23 @@ material:
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+今、コントラクトにランダム性のソースができた。これはゾンビバトルの結果を計算するのに使用可能だ。
 
-Our zombie battles will work as follows:
+我々のゾンビバトルは次のような仕組みだ。
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+- お主は自分のゾンビから一体を選び,さらに攻撃する相手のゾンビを選ぶ。
+- 攻撃するゾンビは勝率70％、守備するゾンビは30％の勝率となる。
+- 全ゾンビ（攻撃するものも守備するものも）が、`winCount`と`lossCount`を持ち、これらはバトル結果次第で増えていく。
+- もし攻撃するゾンビが勝ったら、レベルアップして新たなゾンビを産む。
+- もし攻撃するゾンビが負けた場合は、何も起こらない（`lossCount`の増加を除く).
+- 勝っても負けても、攻撃するゾンビのクールダウン時間は開始される。
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+実行すべきロジックがたくさんあるから、今後のチャプターで細かく分けてやっていこう。
 
-## Put it to the test
+## さあテストだ
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+1. 我々のコントラクトに`attackVictoryProbability`という`uint`を与え、それが`70`と等しくなるようにせよ。
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+2. `attack`という関数を作成せよ。これは`_zombieId` (`uint`) と`_targetId` (`uint`）の２つのパラーメーターを受けとり、`external`関数であるとせよ。
 
-Leave the function body empty for now.
+今のところは関数本体は空のままにしておけ。

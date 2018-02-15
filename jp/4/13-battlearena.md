@@ -1,6 +1,6 @@
 ---
 title: battle arena
-actions: ['checkAnswer', 'hints']
+actions: ['答え合わせ', 'ヒント']
 material:
   saveZombie: false
   battleArena:
@@ -11,11 +11,11 @@ material:
     answer: 1
 ---
 
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+レッスン１で作った関数は、受け取った名前からランダムなゾンビを生成し、そいつをブロックチェーン上にある我らがアプリのゾンビ・データベースに追加するんだったな。
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+レッスン２では、このアプリをもっとゲームっぽくしていこう。複数プレイヤーにして、ゾンビの生成も、単にランダムに行うよりも楽しい方法にするからな。
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+どうやって新たなゾンビを生成するのか？我々のHow will we create new zombies? By having our zombies "feed" on other lifeforms!
 
 ## Zombie Feeding
 
