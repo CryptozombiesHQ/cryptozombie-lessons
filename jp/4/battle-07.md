@@ -262,24 +262,23 @@ material:
       }
 ---
 
-我々のゾンビゲームのために、ゾンビたちがバトルを何回勝ち負けしたかをトラックしていきたい。これで「ゾンビのスコアボード」をゲーム状況にて維持していくことが可能だ。
-このデータをDApp
-We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
+今度はゾンビゲーム用に、ゾンビたちがバトルを何回勝ち負けしたかをトラックしていくからな。これで「ゾンビのスコアボード」をゲーム状況にて維持していくことが可能だ。
+我々のDAppではこのデータをいくつかの方法で保存していくことができる。個別のマッピング、スコアボードの構造体、もしくは`Zombie`構造体自体の中といったところでな。
 
-Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
+これらの方法はそれぞれに利点とトレードオフがあるが、それは我々がどのようにデータとやりとりするつもりなのか次第といったところだ。このチュートリアルでは簡潔にしたいので、`Zombie`構造体でバトルの成績を保存していき、`winCount`と`lossCount`と呼んでいこう。
 
-So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
+それでは`zombiefactory.sol`に戻って、`Zombie`構造体にこれらプロパティを追加しよう。
 
 ## さあテストだ
 
-1. Modify our `Zombie` struct to have 2 more properties:
+1. `Zombie`構造体を修正し、さらに２つのプロパティを持つようにせよ。
 
-  a. `winCount`, a `uint16`
+  a. `uint16`である`winCount`
 
-  b. `lossCount`, also a `uint16`
+  b. 同じく`uint16`である`lossCount`
+  
+  >注: ここで思い出して欲しい。構造体内部に`uint`は格納可能であるが、使用する`uint`は最小に済ませたいのだ。`uint8`だと2の8乗は256なので、もし一日一回ゾンビが攻撃をした場合は一年以内にオーバーフローとなり得る。だが2の16乗は65536なので、ユーザーが179年にわたって毎日勝つか負けるかしない限り、これで大丈夫だ。
 
-  >Note: Remember, since we can pack `uint`s inside structs, we want to use the smallest `uint`s we can get away with. A `uint8` is too small, since 2^8 = 256 — if our zombies attacked once per day, they could overflow this within a year. But 2^16 is 65536 — so unless a user wins or loses every day for 179 years straight, we should be safe here.
+2. `Zombie`構造体に新たなプロパティができたから、今度は`_createZombie()`の関数定義を変えることが必要だ。
 
-2. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `_createZombie()`.
-
-  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.
+  ゾンビの作成定義を、新たなゾンビを`0`勝`0`敗で作成するように変更せよ。
