@@ -256,4 +256,4 @@ material:
 
   c. `enemyZombie`の`lossCount`を増やせ。 (敗者だ!!!!!! 😫 😫 😫)
 
-  d. `feedAndMultiply`関数を動かすのだ。関数を呼び出す構文を見るには、`zombiefeeding.sol`をチェックせよ。三番目の引数（`_species`）に、`"zombie"`の文字列を渡せ。（今はまだ何も起こらないのだが、後でゾンビをベースとした新たなゾンビを生みだす機能を追加できるからな。）
+  d. `feedAndMultiply`関数を動かすのだ。関数を呼び出す構文を見るには、`zombiefeeding.sol`をチェックせよ。三番目の引数（`_species`）に、`"zombie"`の文字列を渡せ。（今はまだ何も起こらないのだが、後でゾンビをベースとして新たなゾンビを生みだす機能を追加できるからな。）
