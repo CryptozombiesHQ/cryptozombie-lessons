@@ -1,0 +1,18 @@
+{
+    "1": {
+        "pageTitle": "Echalé un vistazo a mi CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "He completado la Lección 1 de CryptoZombies y he aprendido los elementos básicos de la programación de un juego basado en Ethereum. ¡Echalé un vistazo a mi primer ejército zombi!"
+    },
+    "2": {
+        "pageTitle": "¡Mi CryptoZombie {{ .ZombieName }} se ha comido un CryptoKitty y ha subido de nivel!",
+        "ogDesc": "He completado la Lección 2 de CryptoZombies, y he añadido un CryptoKitty reanimado a mi ejército zombi. ¡Vente y compruébalo!"
+    },
+    "3": {
+        "pageTitle": "¡Comprueba mi ejército de CryptoZombies!",
+        "ogDesc": "¡He completado la Lección 3 de CryptoZombies! Mi ejército zombi está creciendo..."
+    },
+    "4": {
+        "pageTitle": "¡Mi ejército de CryptoZombies ha derrotado al malvado zombi IOTA!",
+        "ogDesc": "¡He completado la Lección 4 de CryptoZombies, y he derrotado al malvado zombi IOTA! Vente a revivir la batalla..."
+    }
+}
