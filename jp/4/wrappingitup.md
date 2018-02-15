@@ -1,6 +1,6 @@
 ---
-title: Wrapping It Up
-actions: ['checkAnswer', 'hints']
+title: まとめ
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   saveZombie: true
@@ -11,18 +11,18 @@ material:
     answer: 1
 ---
 
-Congratulations! That concludes Lesson 4.
+よくやった! これでレッスン4は終わりだ。
 
-Go ahead and test out your battle function to the right!
+右のほうでお主のバトル関数をテストしてみるのだ！
 
-## Claim your reward
+## ご褒美だ
 
-After winning the battle:
+バトルに勝ったら、
 
-1. Your zombie will level up
+1. お主のゾンビはレベルアップし、
 
-2. Your zombie will increase his `winCount`
+2. `winCount`を増やす。
 
-3. You will spawn a new zombie to add to your army!
+3. 新たなゾンビを生み出して、お主のゾンビ軍団に加えるのだ！
 
-Go ahead and try the battle, then proceed to the next chapter to complete the lesson.
+バトルを試してみよ。その後次のチャプターへ進んでレッスンを終えるのだ。
