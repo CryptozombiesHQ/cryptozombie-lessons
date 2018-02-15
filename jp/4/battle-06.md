@@ -1,6 +1,6 @@
 ---
-title: attackへ戻ろう!
-actions: ['答え合わせ', 'hints']
+title: Attackへ戻ろう!
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
