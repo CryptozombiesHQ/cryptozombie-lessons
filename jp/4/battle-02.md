@@ -1,6 +1,6 @@
 ---
 title: 乱数
-actions: ['答え合わせ', 'hints']
+actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
   editor:
