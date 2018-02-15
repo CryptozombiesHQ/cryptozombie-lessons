@@ -24,7 +24,7 @@ import l2_overview from './2/00-overview.md'
 import overview from './2/1-overview.md'
 import mappings from './2/2-mappings.md'
 import msgsender from './2/3-msgsender.md'
-import require from './2/4-require.md'
+import l2_require from './2/4-require.md'
 import inheritance from './2/5-inheritance.md'
 import importfiles from './2/6-importfiles.md'
 import storage from './2/7-storage.md'
@@ -36,7 +36,7 @@ import multiplereturns from './2/12-multiplereturns.md'
 import kittygenes from './2/13-kittygenes.md'
 import wrappingitup from './2/14-wrappingitup.md'
 import lesson2complete from './2/15-lessoncomplete.md'
-
+/*
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
@@ -69,7 +69,7 @@ import l4_ch8 from './4/battle-08.md'
 import l4_ch9 from './4/battle-09.md'
 import l4_ch10 from './4/wrappingitup.md'
 import l4_complete from './4/lessoncomplete.md'
-
+*/
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -97,7 +97,7 @@ export default {
     overview,
     mappings,
     msgsender,
-    require,
+    l2_require,
     inheritance,
     importfiles,
     storage,
@@ -109,7 +109,7 @@ export default {
     kittygenes,
     wrappingitup,
     lesson2complete
-  ],
+  ]/*,
   3: [
     l3_overview,
     l3_ch1,
@@ -142,5 +142,5 @@ export default {
     l4_ch9,
     l4_ch10,
     l4_complete
-  ]
+  ]*/
 }
