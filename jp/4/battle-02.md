@@ -231,7 +231,7 @@ Solidityにおけるベストなランダム性のソースは、`keccak256`ハ�
 次のようにして乱数を生成するのだ。
 
 ```
-// Generate a random number between 1 and 100:
+// 1から100までの乱数を生成せよ:
 uint randNonce = 0;
 uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
 randNonce++;
