@@ -185,13 +185,13 @@ Avez-vous trouvé la faille de sécurité dans le chapitre précédent ?
 
 Nous voulons être capable de mettre à jour cette adresse de notre contrat, mais nous ne voulons pas que tout le monde puisse le faire.
 
-Pour gérer une situation comme celle-là, il y a une pratique courante qui consiste à rendre les contrats `Ownable` (avec propriétaire) -ce qui veut dire qu'ils ont un propriétaire (vous) avec des privilèges spéciaux.
+Pour gérer une situation comme celle-là, il y a une pratique courante qui consiste à rendre les contrats `Ownable` (avec propriétaire) - ce qui veut dire qu'ils ont un propriétaire (vous) avec des privilèges spéciaux.
 
 ## Le contrat `Ownable` d'OpenZeppelin
 
-Ci-dessous vous trouverez le contrat `Ownable` issue de la bibliothèque Solidity d'**_OpenZeppelin_**. OpenZeppelin est une bibliothèque de smart contracts sécurisés et approuvés par la communauté que vous pouvez utiliser dans votre propre DApps. Après cette leçon, alors que vous allez attendre avec impatience la sortie de la Leçon 4, nous vous recommandons fortement d'aller voir leur site internet pour en apprendre d'avantage !
+Ci-dessous vous trouverez le contrat `Ownable` issue de la bibliothèque Solidity d'**_OpenZeppelin_**. OpenZeppelin est une bibliothèque de smart contracts sécurisés et approuvés par la communauté que vous pouvez utiliser dans vos propres DApps. Après cette leçon, alors que vous allez attendre avec impatience la sortie de la Leçon 4, nous vous recommandons fortement d'aller voir leur site internet pour en apprendre d'avantage !
 
-Lisez-le contrat ci-dessous. Vous allez voir des choses que nous n'avons pas encore apprises, mais ne vous inquiétez pas, nous en parlerons plus tard.
+Lisez-le contrat ci-dessous. Vous allez voir des choses que nous ne connaissons pas encore, mais ne vous inquiétez pas, nous en parlerons plus tard.
 
 ```
  /**
@@ -205,7 +205,7 @@ contract Ownable {
 
    /**
     * @dev Le constructeur Ownable défini le `owner` (propriétaire) original du contrat égal
-    * à l'adresse du compte expéditeur.
+    * à l'adresse du compte expéditeur (msg.sender).
     */
   function Ownable() public {
     owner = msg.sender;
@@ -220,7 +220,7 @@ contract Ownable {
   }
 
    /**
-    * @dev Permet le propriétaire actuel de transférer le contrôle du contrat
+    * @dev Permet au propriétaire actuel de transférer le contrôle du contrat
     * à un `newOwner` (nouveau propriétaire).
     * @param newOwner C'est l'adresse du nouveau propriétaire
     */
@@ -234,8 +234,8 @@ contract Ownable {
 
 Quelques nouveautés que nous n'avions pas encore vues :
 
-- Constructeurs : `function Ownable()` est un **_constructor_**, qui est une fonction spéciale optionnelle qui a le même nom que le contrat. Elle sera exécuté seulement une fois, lorsque le contrat est créé.
-- Modificateurs de fonction : `modifier onlyOwner()`. Les modificateurs sont comme des demi-fonctions qui permettent de modifier d'autres fonctions, souvent pour vérifier des conditions avant l'exécution. Dans ce cas, `onlyOwner` peut être utiliser pour limiter l'accès pour que **seulement** (only) le **propriétaire** (owner) du contrat puisse exécuter cette fonction. Nous parlerons plus des modificateurs de fonction dans le prochain chapitre, et ce que cet étrange `_;` fait.
+- Constructeurs : `function Ownable()` est un **_constructor_** (constructeur), c'est une fonction spéciale optionnelle qui a le même nom que le contrat. Elle sera exécuté seulement une fois, lorsque le contrat est créé.
+- Modificateurs de fonction : `modifier onlyOwner()`. Les modificateurs sont comme des demi-fonctions qui permettent de modifier d'autres fonctions, souvent pour vérifier des conditions avant l'exécution. Dans ce cas, `onlyOwner` peut être utiliser pour limiter l'accès pour que **seulement** (only) le **propriétaire** (owner) du contrat puisse exécuter cette fonction. Nous parlerons plus en détail des modificateurs de fonction dans le prochain chapitre, et ce que cet étrange `_;` fait.
 - Mot-clé `indexed` : ne vous inquiétez pas pour celui là, nous n'en avons pas encore besoin.
 
 Pour résumer le contrat `Ownable` fait fondamentalement ceci :

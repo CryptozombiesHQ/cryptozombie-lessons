@@ -204,11 +204,11 @@ material:
       }
 ---
 
-Dans le chapitre précédent, nous avons dit qu'il peut arriver que vous utilisez une boucle `for` pour remplir le contenu d'un tableau dans une fonction au lieu de simplement le stocker dans le `storage`.
+Dans le chapitre précédent, nous avons dit qu'il peut être préférable d'utiliser une boucle `for` pour remplir le contenu d'un tableau dans une fonction au lieu de simplement le stocker dans le `storage`.
 
 Voyons voir pourquoi.
 
-Pour notre fonction `getZombiesByOwner`, une implémentation naive serait de stocker un `mapping` de propriétaires d'armées de zombies dans le contrat `ZombieFactory` :
+Pour notre fonction `getZombiesByOwner`, une implémentation naïve serait de stocker un `mapping` de propriétaires d'armées de zombies dans le contrat `ZombieFactory` :
 
 ```
 mapping (address =>uint[]) public ownerToZombies
@@ -227,24 +227,24 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 Il serait tentant de faire comme cela par simplicité. Mais regardons ce qu'il arriverait si nous ajoutions plus tard une fonction pour transférer un zombie d'un propriétaire à un autre (Ce que nous allons certainement vouloir dans une prochaine leçon !).
 
 La fonction de transfert devra :
-1. Ajouter le zombie au tableau `ownerToZombies` du nouveau propriétaire.
+1. Ajouter le zombie au tableau `ownerToZombies` du nouveau propriétaire
 2. Enlever le zombie du tableau `ownerToZombies` de l'ancien propriétaire
 3. Décaler chaque zombie du tableau de l'ancien propriétaire d'une place pour boucher le trou, et enfin
 4. Réduire la taille du tableau de 1.
 
-L'étape 3 serait extrêmement coûteuse en gas, vu que nous aurions besoin de réécrire chaque zombie décalés. Si un propriétaire a 20 zombies, et échange le premier, nous devrions faire 19 écritures pour garder l'ordre du tableau.
+L'étape 3 serait extrêmement coûteuse en gas, vu que nous aurions besoin de réécrire chaque zombie décalé. Si un propriétaire a 20 zombies, et échange le premier, nous devrions faire 19 écritures pour garder l'ordre du tableau.
 
 Puisque écrire dans le stockage est une des opérations les plus chères en Solidity, chaque appel à cette fonction de transfert serait extrêmement coûteuse en gas. Et encore pire, cela coûterait un montant de gas différent à chaque appel, en fonction de combien de zombie l'utilisateur a dans son armée et de l'index du zombie transféré. L'utilisateur ne serait pas combien de gas envoyer.
 
-> Remarque : Bien sûr, nous pourrions juste bouger le dernier zombie du tableau pour combler le trou et réduire la taille du tableau de 1. Mais nous changerions l'ordre de notre armée de zombie à chaque transfer.
+> Remarque : Bien sûr, nous pourrions juste bouger le dernier zombie du tableau pour combler le trou et réduire la taille du tableau de 1. Mais nous changerions l'ordre de notre armée de zombie à chaque transfert.
 
-Comme les fonctions `view` ne coûtent pas de gas quand elles sont appelée extérieurement, nous pouvons simplement utiliser une boucle `for` dans `getZombiesByOwner` pour parcourir le tableau entier de zombie et construire un tableau de zombie qui appartiennent à un utilisateur spécifique. Ainsi notre fonction `transfer` sera beaucoup moins coûteuse, puisque nous n'aurons pas besoin de réorganiser un tableau dans le stockage, et bien qu'étant contre-intuitivement cette approche est moins chère globalement.
+Comme les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieurement, nous pouvons simplement utiliser une boucle `for` dans `getZombiesByOwner` pour parcourir le tableau entier de zombie et construire un tableau de zombies qui appartiennent à un utilisateur spécifique. Ainsi notre fonction `transfer` sera beaucoup moins coûteuse, puisque nous n'aurons pas besoin de réorganiser un tableau dans le stockage, et bien qu'étant contre-intuitive cette approche est moins chère globalement.
 
 ## Utiliser des boucles `for`
 
 La syntaxe des boucles `for` en Solidity est similaire qu'en JavaScript.
 
-Voici un exmeple où nous voulons faire un tableau de nombre pairs :
+Voici un exemple où nous voulons faire un tableau de nombre pairs :
 
 ```
 function getEvens() pure external returns(uint[]) {

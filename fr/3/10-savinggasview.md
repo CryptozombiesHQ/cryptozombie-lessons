@@ -192,9 +192,9 @@ material:
       }
 ---
 
-Excellent ! Nous avons maintenant des aptitudes spéciales pour nos zombies avec un niveau supérieur, afin de motiver les utilisateurs à leurs faire gagner des niveaux. Nous pourrons en ajouter plus par la suite si nous le désirons.
+Excellent ! Nous avons maintenant des aptitudes spéciales pour nos zombies de niveau supérieur, afin de motiver les utilisateurs à leurs faire gagner des niveaux. Nous pourrons en ajouter plus par la suite si nous le désirons.
 
-Nous allons ajouter une fonction de plus : notre DApp a besoin d'une fonction pour voir l'armée de zombie d'un utilisateur - nous allons l'appeler `getZombiesByOwner`.
+Nous allons ajouter une fonction de plus : notre DApp a besoin d'une fonction pour voir toute l'armée de zombie d'un utilisateur - nous allons l'appeler `getZombiesByOwner`.
 
 Cette fonction permettra seulement de lire des données depuis la blockchain, cela sera donc une fonction `view`. Ce qui nous amène à un sujet important à propos de l'optimisation de gas :
 
@@ -210,13 +210,13 @@ Nous parlerons de comment configurer web3.js avec notre propre nœud plus tard. 
 
 ## A votre tour
 
-Nous allons implémenter une fonction qui retournera l'armée de zombie d'un utilisateur. Nous pourrons plus tard appeler cette fonction à partir de `web3.js` si nous vous afficher le profil d'un utilisateur avec son armée.
+Nous allons implémenter une fonction qui retournera toute l'armée de zombie d'un utilisateur. Nous pourrons plus tard appeler cette fonction à partir de `web3.js` si nous voulons afficher le profil d'un utilisateur avec son armée.
 
 La logique de cette fonction est un peu compliqué, il nous faudra plusieurs chapitres pour l'implémenter.
 
 1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre, une `adress` appelée `_owner`.
 
-2. Ce sera une fonction `external`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte du gas.
+2. Ce sera une fonction `external`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte de gas.
 
 3. La fonction devra retourner un `uint[]` (un tableau de `uint`).
 

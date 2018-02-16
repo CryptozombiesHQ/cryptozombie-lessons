@@ -147,7 +147,7 @@ Pour commencer, une fois que vous avez déployé un contrat Ethereum, il est **_
 
 Le code que vous allez déployer initialement pour un contrat restera de manière permanente sur la blockchain. C'est pour cela que la sécurité est une préoccupation si importante en Solidity. S'il y a une faille dans le code de votre contrat, il n'y aucun moyen pour vous de le patcher plus tard. Vous devrez dire à vos utilisateurs d'utiliser une adresse de contrat différente qui a le correctif.
 
-Mais c'est aussi une des fonctionnalités des smart contracts. Le code est immuable. Si vous lisez et vérifiez le code d'un smart contrat, vous pouvez être sûr que chaque fois que vous appellerez une fonction, cela fera exactement ce que le code dit que ça doit faire. Personne ne pourra changer cette fonction plus tard et vous n'aurez pas de résultats inattendus.
+Mais c'est aussi une des fonctionnalités des smart contracts. Le code est immuable. Si vous lisez et vérifiez le code d'un smart contract, vous pouvez être sûr que chaque fois que vous appellerez une fonction, cela fera exactement ce que le code dit de faire. Personne ne pourra changer cette fonction plus tard et vous n'aurez pas de résultats inattendus.
 
 
 ## Dépendances externes
@@ -158,7 +158,7 @@ C'est peu probable, mais si cela arrive cela rendrait notre DApp complètement i
 
 Pour cette raison, c'est souvent utile d'avoir des fonctions qui vous permettent de mettre à jour des portions clés de la DApp.
 
-Par exemple, au lieu d'écrire en dur l'adresse du contrat CryptoKitties dans notre DApp, nous devrions sûrement avoir une fonction `setKittyContractAddress` qui nous permet de changer cette adresse dans le future au cas où quelque chose arrive au contrat CryptoKitties.
+Par exemple, au lieu d'écrire en dur l'adresse du contrat CryptoKitties dans notre DApp, nous devrions sûrement avoir une fonction `setKittyContractAddress` qui nous permet de changer cette adresse dans le futur au cas où quelque chose arriverait au contrat CryptoKitties.
 
 
 ## A votre tour
@@ -167,10 +167,10 @@ Mettons à jour notre code de la Leçon 2 pour pouvoir changer l'adresse du cont
 
 1. Supprimez la ligne de code où nous avons écrit en dur `ckAddress`.
 
-2. Changez la ligne où nous avons créé `kittyContract` pour simplement déclarer une variable - c.-à.-d. ne pas le rendre égal à quelque chose.
+2. Changez la ligne où nous avons créé `kittyContract` pour simplement déclarer une variable - c.-à.-d. ne pas la rendre égal à quelque chose.
 
 3. Créez une fonction appelée `setKittyContractAddress` qui aura un paramètre, `_address` (une `address`), et qui devra être une fonction `external`.
 
-4. Dans la fonction, ajouter une ligne de code qui définit `kittyContract` égal à `KittyInterface(_address)`.
+4. Dans la fonction, ajoutez une ligne de code qui définit `kittyContract` égal à `KittyInterface(_address)`.
 
-> Remarque : Si vous remarquer une faille de sécurité avec cette fonction, ne vous inquiétez pas - nous allons la corriger dans le prochain chapitre ;)
+> Remarque : Si vous remarquez une faille de sécurité avec cette fonction, ne vous inquiétez pas - nous allons la corriger dans le prochain chapitre ;)

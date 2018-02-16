@@ -172,11 +172,11 @@ material:
       }
 ---
 
-Super ! Notre zombie a maintenant un compte à rebour fonctionnel.
+Super ! Notre zombie a maintenant un compte à rebours fonctionnel.
 
 Maintenant, nous allons ajouter des fonctions d'aide additionnelles. Nous avons créé un nouveau fichier `zombiehelper.sol`, qui importe `zombiefeeding.sol`. Cela va nous aider à garder le code organisé.
 
-Nous allons faire ne sorte que les zombies acquièrent des aptitudes spéciales à partir d'un certain niveau. Pour cela, nous devons d'abord en apprendre un peu plus sur les modificateurs de fonction.
+Nous allons faire en sorte que les zombies acquièrent des aptitudes spéciales à partir d'un certain niveau. Pour cela, nous devons d'abord en apprendre un peu plus sur les modificateurs de fonction.
 
 
 ## Modificateurs de fonction avec arguments
@@ -184,16 +184,16 @@ Nous allons faire ne sorte que les zombies acquièrent des aptitudes spéciales 
 Précédemment nous avons vu l'exemple simple de `onlyOwner`. Mais les modificateurs de fonction peuvent aussi prendre des arguments, par exemple :
 
 ```
-// Un mappage pour stocker l'age d'un utilisateur :
+// Un mappage pour stocker l'âge d'un utilisateur :
 mapping (uint => uint) public age;
 
-// Un modificateur qui nécessite que l'utilisateur soit plus âgé qu'un certain age :
+// Un modificateur qui nécessite que l'utilisateur soit plus âgé qu'un certain âge :
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// Doit avoir plus de 16 ans pour conduire une voiture (du moins, au US).
+// Doit avoir plus de 16 ans pour conduire une voiture (du moins, aux US).
 // Nous pouvons appeler le modificateur `olderThan` avec des arguments, comme :
 function driveCar(uint _userId) public olderThan(16, _userId) {
   // Logique de la fonction

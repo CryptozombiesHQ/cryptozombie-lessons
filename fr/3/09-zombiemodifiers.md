@@ -1,5 +1,5 @@
 ---
-title: Modificateur de Zombie
+title: Modificateur de zombie
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -187,10 +187,10 @@ Notre jeu aura quelques incitatifs pour que les gens fassent gagner des niveaux 
 Nous implémenterons ces fonctions ci-dessous. Voici un exemple de code d'une leçon précédente en référence :
 
 ```
-// Un mappage pour stocker l'age d'un utilisateur :
+// Un mappage pour stocker l'âge d'un utilisateur :
 mapping (uint => uint) public age;
 
-// Un modificateur qui nécessite que l'utilisateur soit plus âgé qu'un certain age :
+// Un modificateur qui nécessite que l'utilisateur soit plus âgé qu'un certain âge :
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
@@ -211,4 +211,4 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 3. Ensuite la fonction devra définir `zombies[_zombieId].name` égal à `_newName`.
 
-4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et contenu seront presque identique à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sur, elle devra definir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.
+4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et son contenu seront presque identiques à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sur, elle devra définir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.

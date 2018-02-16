@@ -1,5 +1,5 @@
 ---
-title: Time Units
+title: Unités de temps
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -183,7 +183,7 @@ material:
       }
 ---
 
-La propriété `level` est plutôt explicite. Plus tard, quand nous créerons le système de combat, les zombies avec le plus de victoire vont monter en niveau avec le temps et aurons accès à plus d'aptitudes.
+La propriété `level` est plutôt explicite. Plus tard, quand nous créerons le système de combat, les zombies avec le plus de victoires vont monter en niveau avec le temps et auront accès à plus d'aptitudes.
 
 La propriété `readyTime` demande un peu plus d'explication. Le but est d'ajouter un "temps de recharge", une durée qu'un zombie doit attendre après avoir mangé ou attaqué avant de pouvoir manger / attaquer de nouveau. Sans ça, un zombie pourrait attaquer et se multiplier 1000 fois par jour, ce qui rendrait le jeu trop facile.
 
@@ -191,11 +191,11 @@ Afin de savoir combien de temps un zombie doit attendre avant d'attaquer de nouv
 
 ## Unités de temps
 
-Solidity fourni nativmment des unités pour gérer le temps.
+Solidity fourni nativement des unités pour gérer le temps.
 
 La variable `now` (maintenant) va retourner l'horodatage actuel unix (le nombre seconde écoulées depuis le 1er janvier 1970). L'horodatage unix au moment où j'écris cette phrase est `1515527488`.
 
-> Remarque : L'horodatage unix est traditionnellement stocké dans un nombre 32-bit. Cela mènera au problème "Année 2038", quand l'horodatage unix 32-bits aura débordé et cassera beaucoup de système existant. Si nous voulons que notre DApp continue de marcher dans 20 ans, nous pouvons utiliser un nombre 64-bit à la place - mais nos utilisateurs auront besoin de dépenser plus de gas pour utiliser notre DApp pendant ce temps. Décisions de conception !
+> Remarque : L'horodatage unix est traditionnellement stocké dans un nombre 32-bit. Cela mènera au problème "Année 2038", quand l'horodatage unix 32-bits aura débordé et cassera beaucoup de système existant. Si nous voulons que notre DApp continue de marcher dans 20 ans, nous pouvons utiliser un nombre 64-bit à la place - mais nos utilisateurs auront besoin de dépenser plus de gas pour utiliser notre DApp pendant ce temps. Décision de conception !
 
 Solidity a aussi des unités de temps `seconds` (secondes), `minutes`, `hours` (heures), `days` (jours) et `years` (ans). Ils vont se convertir en un `uint` correspondant au nombre de seconde de ce temps. Donc `1 minutes` est `60`, `1 hours` est `3600` (60 secondes x 60 minutes), `1 days` est `86400` (24 heures x 60 minutes x 60 seconds), etc.
 
@@ -209,9 +209,9 @@ function updateTimestamp() public {
   lastUpdated = now;
 }
 
-// Retournera  `true` si 5 minutes se sont écoulées
+// Retournera `true` si 5 minutes se sont écoulées
 // depuis que `updateTimestamp` a été appelé, `false`
-// si 5 minutes ne sont pas passées
+// si 5 minutes ne se sont pas passées
 function fiveMinutesHavePassed() public view returns (bool) {
   return (now >= (lastUpdated + 5 minutes));
 }
@@ -221,11 +221,11 @@ Nous pouvons utiliser ces unités de temps pour notre fonctionnalité `cooldown`
 
 ## A votre tour
 
-Ajoutons un temps de recharge à notre DApp, afin que les zombies aient besoin d'attendre **1 jour** avant d'attaquer et se nourrir à nouveau.
+Ajoutons un temps de recharge à notre DApp, afin que les zombies aient besoin d'attendre **1 jour** avant d'attaquer ou se nourrir à nouveau.
 
 1. Déclarez un `uint` appelé `cooldownTime` égal à `1 days`. (Pardonnez la mauvaise grammaire - si vous la mettez égale à "1 day", cela ne compilera pas !)
 
-2. Vu que nous avons ajouté `level` et `readyTime` à notre structure `Zombie` dans le chapitre précédent, nous devons mettre à jour `_createZombie()` pour utiliser le bon nombre d'arguments quand nous créerons une nouvelle structure `Zombie`.
+2. Vu que nous avons ajouté `level` et `readyTime` à notre structure `Zombie` dans le chapitre précédent, nous devons mettre à jour `_createZombie()` pour utiliser le bon nombre d'arguments quand nous créons une nouvelle structure `Zombie`.
 
   Mettez à jour la ligne de code `zombies.push` en ajoutant 2 arguments : `1` (pour `level`), et `uint32(now + cooldownTime)` (pour `readyTime`).
 

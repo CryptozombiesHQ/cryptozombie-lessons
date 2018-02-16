@@ -21,7 +21,7 @@ material:
             struct Zombie {
                 string name;
                 uint dna;
-                // Ajouter de nouvelles données ici
+                // Ajoutez les nouvelles données ici
             }
 
             Zombie[] public zombies;
@@ -181,33 +181,33 @@ material:
 
 Super ! Maintenant nous savons comment mettre à jour des portions clés de notre DApp tout en empêchant que d'autres personnes modifient notre contrat.
 
-Nous allons voir une autre chose qui différencie Solidity des autres lnagages de programmation :
+Nous allons voir une autre chose qui différencie Solidity des autres langages de programmation :
 
 ## Gas (gaz) - le carburant des DApps Ethereum
 
-En Solidity, vos utilisateurs devront payer à chaque fois qu'ils exécutent une fonction de votre DApp avec une monnaie appelée **_gas_**. Les utilisateurs achètent du gas avec  de l'Ether (la monnaie d'Ethereum), vos utilisateurs doivent dépenser de l'ETH pour exécuter des fonctions de votre DApp.
+En Solidity, vos utilisateurs devront payer à chaque fois qu'ils exécutent une fonction de votre DApp avec une monnaie appelée **_gas_**. Les utilisateurs achètent du gas avec de l'Ether (la monnaie d'Ethereum), vos utilisateurs doivent donc dépenser de l'ETH pour exécuter des fonctions de votre DApp.
 
-La quantité de gas requit pour exécuter une fonction dépend de la complexité de cette fonction. Chaque opération individuelle à un **_gas cost_** (coût de gaz) basé approximativement sur la quantité de ressources informatiques nécesssaires pour effectuer l'opération (ex: écrire dans le storage est beaucoup plus cher que d'ajouter deux entiers). Le **_gas cost_** total de votre fonction est la somme du coût de chaque opération individuelle.
+La quantité de gas requit pour exécuter une fonction dépend de la complexité de cette fonction. Chaque opération individuelle à un **_coût en gas_** basé approximativement sur la quantité de ressources informatiques nécessaires pour effectuer l'opération (ex: écrire dans le storage est beaucoup plus cher que d'ajouter deux entiers). Le **_coût en gas_** total de votre fonction est la somme du coût de chaque opération individuelle.
 
-Parce qu'exécuter des fonctions coûte de l'argent réél pour les utilisateurs, l'optimisation de code est encore plus importante en Solidity que pour les autres langages de programmation. Si votre code est négligé, vos utilisateurs devrons payer plus cher pour exécuter vos fonctions - et cela pourrait résulter en des millions de dollars de frais inutiles sur des milliers d'utilisateurs.
+Parce qu'exécuter des fonctions coûte de l'argent réel pour les utilisateurs, l'optimisation de code est encore plus importante en Solidity que pour les autres langages de programmation. Si votre code est négligé, vos utilisateurs devront payer plus cher pour exécuter vos fonctions - et cela pourrait résulter en des millions de dollars de frais inutiles répartis sur des milliers d'utilisateurs.
 
 ## Pourquoi le gas est nécessaire ?
 
-Ethereum est comme un ordinateur gros, lent, mais extrêmement sécurisé. Quand vous exécuter une fonction, chaque nœud du réseau doit exécuter la même fonction pour vérifier le résultat - c'est ces milliers de noeuds vérifiant chaque exécution de fonction qui rend Ethereum décentralisé et les données immuables et résistant à la censure.
+Ethereum est comme un ordinateur gros et lent, mais extrêmement sécurisé. Quand vous exécuter une fonction, chaque nœud du réseau doit exécuter la même fonction pour vérifier le résultat - c'est ces milliers de nœuds vérifiant chaque exécution de fonction qui rendent Ethereum décentralisé et les données immuables et résistantes à la censure.
 
-Les créateurs d'Ethereum ont voulu être sur que personne ne pourrait bloquer le réseau avec une boucle infinie, ou s'accaparer toutes les ressources du réseau avec des calculs vraiment complexes. C'est pour cela que les transactions ne sont pas gratuites, et que les utilisateurs doivent payer pour faire des calculs et pour le stockage.
+Les créateurs d'Ethereum ont voulu être sur que personne ne pourrait bloquer le réseau avec une boucle infinie, ou s'accaparer de toutes les ressources du réseau avec des calculs vraiment complexes. C'est pour cela que les transactions ne sont pas gratuites, et que les utilisateurs doivent payer pour faire des calculs et pour le stockage.
 
-> Remarque : Ce n'est pas forcément vrai pour des sidechains, comme celles que les auteurs de CryptoZombies construisent à Loom Network. Cela ne ferait pas de sens de faire tourner un jeu comme World of Warcraft directement sur le réseau principal Ethereum - le coût de gas serait excessivement cher. Mais il pourrait tourner sur une sidechain avec un algorithme de consensus différent. Nous parlerons dans une prochaine leçon des types de DApps que vous voudriez deployer sur des sidechains ou sur le réseau principal Ethereum.
+> Remarque : Ce n'est pas forcément vrai pour des sidechains, comme celles que les auteurs de CryptoZombies construisent à Loom Network. Cela ne ferait pas de sens de faire tourner un jeu comme World of Warcraft directement sur le réseau principal Ethereum - le coût en gas serait excessivement cher. Mais il pourrait tourner sur une sidechain avec un algorithme de consensus différent. Nous parlerons dans une prochaine leçon des types de DApps que vous voudriez déployer sur des sidechains ou sur le réseau principal Ethereum.
 
 ## Emboîtement de structure pour économiser du gas
 
-Dans la Leçon 1, nous avons dit qu'il existait  d'autres type de `uint` : `uint8`, `uint16`, `uint32`, etc.
+Dans la Leçon 1, nous avons dit qu'il existait d'autres types de `uint` : `uint8`, `uint16`, `uint32`, etc.
 
 Normalement, il n'y a pas d’intérêt à utiliser ces sous-types car Solidity réserve 256 bits de stockage indépendamment de la taille du `uint`. Par exemple, utiliser un `uint8` à la place d'un `uint` (`uint256`) ne vous fera pas gagner de gas.
 
 Mais il y a une exception : dans les `struct`.
 
-Si vous avez plusieurs `uint` dans une structure, utiliser des plus petits `uint` quand c'est possible permettra à Solidity d'emboîter ces variables ensemble pour qu'elle prenne moins de stockage. Par exemple :
+Si vous avez plusieurs `uint` dans une structure, utiliser des plus petits `uint` quand c'est possible permettra à Solidity d'emboîter ces variables ensemble pour qu'elles prennent moins de place. Par exemple :
 
 ```
 struct NormalStruct {
@@ -227,17 +227,17 @@ NormalStruct normal = NormalStruct(10, 20, 30);
 MiniMe mini = MiniMe(10, 20, 30);
 ```
 
-Pour cette raison, à l'intérieur d'une structure, il sera préférable d'utiliser le plus petit sous-types possible.
+Pour cette raison, à l'intérieur d'une structure, il sera préférable d'utiliser le plus petit sous-type possible.
 
 Il sera aussi important de grouper les types de données (c.-à.-d. les mettre à coté dans la structure)
-afin que Solidity pour minimiser le stockage nécessaire. Par exemple, une structure avec des champs
+afin que Solidity puisse minimiser le stockage nécessaire. Par exemple, une structure avec des champs
 `uint c; uint32 a; uint32 b;` coûtera moins cher qu'une structure avec les champs `uint32 a; uint c; uint32 b;`
-car les champs `uint32` seront regrouper ensemble.
+car les champs `uint32` seront regroupés ensemble.
 
 
-## A votre tourner
+## A votre tour
 
-Dans cette leçon, nous allons ajouter 2 nouvelles fonctionnalités à nos zombies : `level` (niveau) et `readyTime` (temps de disponibilité) - le dernier sera utilisé pour implémenter un compte à rebours pour limiter le fréquence à laquelle un zombie peut être nourri.
+Dans cette leçon, nous allons ajouter 2 nouvelles fonctionnalités à nos zombies : `level` (niveau) et `readyTime` (temps de disponibilité) - le dernier sera utilisé pour implémenter un compte à rebours pour limiter la fréquence à laquelle un zombie peut être nourri.
 
 Revenons à `zombiefactory.sol`.
 

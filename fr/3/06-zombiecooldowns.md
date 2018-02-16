@@ -1,5 +1,5 @@
 ---
-title: Compte à rebours Zombie
+title: Compte à rebours zombie
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -221,7 +221,7 @@ function _doStuff(Zombie storage _zombie) internal {
 }
 ```
 
-De cette manière, nous pouvons donner une référence à notre zombie à une fonction au lieu de donner l'ID zombie et le rechercher.
+De cette manière, nous pouvons donner une référence à notre zombie à une fonction au lieu de donner l'Id zombie et le rechercher.
 
 ## A votre tour
 

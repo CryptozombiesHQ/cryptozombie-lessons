@@ -196,19 +196,19 @@ material:
       }
 ---
 
-Une des opérations les plus coûteuse en Solidity et d'utiliser `storage` - particulièrement quand on écrit.
+Une des opérations les plus coûteuse en Solidity est d'utiliser `storage` - particulièrement quand on écrit.
 
-C'est parce qu'à chauqe fois que vous écrivez ou changer un bout d'information, c'est écrit de manière permanente sur la blockchain. Pour toujours ! Des milliers de noeuds à travers le monde vous stocker cette information sur leur disques durs, et cette quantité d'information continue de grandir au fur et à mesure que la blockchain grandie. Et il y a un prix à cela.
+C'est parce qu'à chaque fois que vous écrivez ou changez un bout d'information, c'est écrit de manière permanente sur la blockchain. Pour toujours ! Des milliers de nœuds à travers le monde vont stocker cette information sur leurs disques durs, et cette quantité d'information continue de grandir au fur et à mesure que la blockchain grandie. Et il y a un prix à cela.
 
 Afin de réduire les coûts, vous voulez éviter d'écrire des données en stockage à part quand c'est absolument nécessaire. Par moment cela peut impliquer une logique de programmation qui à l'air inefficace - comme reconstruire un tableau dans la `memory` à chaque fois que la fonction est appelée au lieu de sauvegarder ce tableau comme une variable afin de le retrouver rapidement.
 
-Dans la plupart des langage de programmation, faire une boucle sur un grand ensemble de données est coûteux. Mais en Solidity, c'est beaucoup moins cher que d'utiliser `storage` s'il y a une fonction `external view`, puisque `view` ne coûte aucun gas. (Et les gas coûte rééllement de l'argent pour vos utilisateurs!).
+Dans la plupart des langages de programmation, faire une boucle sur un grand ensemble de données est coûteux. Mais en Solidity, c'est beaucoup moins cher que d'utiliser `storage` s'il y a une fonction `external view`, puisque `view` ne coûte aucun gas. (Et les gas coûte réellement de l'argent pour vos utilisateurs !).
 
 Nous allons voir les boucles `for` (pour) dans le prochain chapitre, mais pour l'instant, nous allons voir comment déclarer nos tableaux dans la mémoire.
 
 ## Déclarer des tableaux dans la mémoire
 
-Vous pouvez utiliser le mot clé `memory` avec des tableaux afin de créer un nouveau tableau dans une fonction sans avoir besoin de l'écrire dans le stockage. Le tableau existera seulement jusqu'à la fin de l'appel de la fonction, et cela sera beaucoup plus économique, d'un point de vue du gas, que de mettre à jour un tableau dans `storage` - cela sera gratuit si c'est une fonction `view` appelée extérieurement.
+Vous pouvez utiliser le mot clé `memory` avec des tableaux afin de créer un nouveau tableau dans une fonction sans avoir besoin de l'écrire dans le stockage. Le tableau existera seulement jusqu'à la fin de l'appel de la fonction, et cela sera beaucoup plus économique, d'un point de vue du gas, que de mettre à jour un tableau dans `storage` - c'est gratuit si c'est une fonction `view` appelée extérieurement.
 
 Voici comment déclarer un tableau dans la mémoire :
 
@@ -224,10 +224,10 @@ function getArray() external pure returns(uint[]) {
   return values;
 }
 ```
-C'est un exemple simple pour vous montrer la syntaxe, mais dans le prochain chapitre, nous verrons comment le combiner avec une boucle `for` dans un réél cas d'usage.
+C'est un exemple simple pour vous montrer la syntaxe, mais dans le prochain chapitre, nous verrons comment le combiner avec une boucle `for` avec un cas d'usage réel.
 
-> Remarque : Les tableaux mémoires **doivent** être créés avec un argument de longueur (dans cet exemple, `3`). Ils ne peuvent encore pas être redimensionnés avec
-`array.push()`, mais cela pourrait changer dans les prochains version de Solidity.
+> Remarque : Les tableaux mémoires **doivent** être créés avec un argument de longueur (dans cet exemple, `3`). Ils ne peuvent pas encore être redimensionnés avec
+`array.push()`, mais cela pourrait changer dans les prochaines versions de Solidity.
 
 ## A votre tour
 

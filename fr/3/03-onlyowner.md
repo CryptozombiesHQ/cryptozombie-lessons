@@ -192,7 +192,7 @@ ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
 
-Ainsi `ZombieFeeding` est aussi `Ownable`, et peut accéder les fonctions / évènements / modificateurs du contrat `Ownable`. Cela s'appliquera aussi à n'importe quel contrat qui héritera de `ZombieFeeding`.
+Ainsi `ZombieFeeding` est aussi `Ownable`, et peut accéder aux fonctions / évènements / modificateurs du contrat `Ownable`. Cela s'appliquera aussi à n'importe quel contrat qui héritera de `ZombieFeeding`.
 
 ## Modificateurs de fonction
 
@@ -231,10 +231,10 @@ Dans le cas de `onlyOwner`, rajouter ce modificateur à une fonction fera en sor
 
 > Remarque : Donner des privilèges spéciaux au propriétaire du contrat comme là est souvent nécessaire, cependant cela pourrait aussi être utilisé malicieusement. Par exemple, le propriétaire pourrait ajouter une fonction de porte dérobée qui lui permettrait de transférer n'importe quel zombie à lui-même !
 
-> C'est donc important de se rappeler que ce n'est pas parce qu'une DApp est sur Ethereum que cela veut dire qu'elle est décentralisée - vous devez lire le code source en entier pour vous assurez que le propriétaire n'a pas de privilèges qui pourraient vous inquiéter. En tant que développeur, il existe une balance entre garder le contrôle d'un DApp pour corriger de potentiels bugs, et construire une plateforme sans propriétaire en laquelle vos utilisateur peuvent avoir confiance pour sécuriser leurs données.
+> C'est donc important de se rappeler que ce n'est pas parce qu'une DApp est sur Ethereum que cela veut dire qu'elle est décentralisée - vous devez lire le code source en entier pour vous assurez que le propriétaire n'a pas de privilèges qui pourraient vous inquiéter. En tant que développeur, il existe un équilibre entre garder le contrôle d'un DApp pour corriger de potentiels bugs, et construire une plateforme sans propriétaire en laquelle vos utilisateurs peuvent avoir confiance pour sécuriser leurs données.
 
 ## A votre tour
 
 Maintenant nous pouvons restreindre l'accès à `setKittyContractAddress` pour que nous soyons le seul à pouvoir le modifier plus tard.
 
-1. Rajouter le modificateur `onlyOwner` à `setKittyContractAddress`.
+1. Rajoutez le modificateur `onlyOwner` à `setKittyContractAddress`.
