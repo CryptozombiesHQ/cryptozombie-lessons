@@ -23,7 +23,7 @@ Cuando un zombi se alimenta, infecta al huésped con un viros. El virus conviert
 
 ¿Y qué es lo que más les gusta a los zombis?
 
-Para saber esto... ¡Tendrás que completa la lección 2!
+Para saber esto... ¡Tendrás que completar la lección 2!
 
 # Vamos a probarlo
 

@@ -114,7 +114,7 @@ material:
       }
 ---
 
-Continuando con nuestro anterior ejemplo de `NumberInterface`, una vez hemos definido la interfaz como:
+Continuando con nuestro ejemplo anterior de `NumberInterface`, una vez hemos definido la interfaz como:
 
 ```
 contract NumberInterface {
@@ -127,7 +127,7 @@ Podemos usarla en el contrato de esta manera:
 ```
 contract MyContract {
   address NumberInterfaceAddress = 0xab38... 
-  // ^ LA direccón del contrato FavoriteNumber en Ethereum
+  // ^ La dirección del contrato FavoriteNumber en Ethereum
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
   // Ahora `numberContract` está apuntando al otro contrato
 
