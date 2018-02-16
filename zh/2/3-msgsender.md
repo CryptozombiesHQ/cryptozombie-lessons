@@ -88,9 +88,9 @@ material:
 
 ## msg.sender
 
-在 Solidity 中，有一些全局变量可以被所有功能调用。 其中一个就是 `msg.sender`，它指的是当前调用者（或智能合约）的 `address`。
+在 Solidity 中，有一些全局变量可以被所有函数调用。 其中一个就是 `msg.sender`，它指的是当前调用者（或智能合约）的 `address`。
 
->注意：在 Solidity 中，功能执行始终需要从外部调用者开始。 一个合约只会在区块链上什么也不做，除非有人调用其中的函数。调用者就是 `msg.sender`。
+>注意：在 Solidity 中，功能执行始终需要从外部调用者开始。 一个合约只会在区块链上什么也不做，除非有人调用其中的函数。所以 `msg.sender`总是存在的。
 
 以下是使用 `msg.sender` 来更新 `mapping` 的例子：
 
@@ -98,14 +98,14 @@ material:
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
-  // 更新我们的 `favoriteNumber` 映射来将 `_myNumber` 存储给 `msg.sender`
+  // 更新我们的 `favoriteNumber` 映射来将 `_myNumber`存储在 `msg.sender`名下
   favoriteNumber[msg.sender] = _myNumber;
-  // ^ 存储数据至映射的方法和数组一样
+  // 存储数据至映射的方法和将数据存储在数组相似
 }
 
 function whatIsMyNumber() public view returns (uint) {
-  // 拿到存贮在调用者里的值
-  // 若调用者还没调 setMyNumber， 则值为 `0`
+  // 拿到存储在调用者地址名下的值
+  // 若调用者还没调用 setMyNumber， 则值为 `0`
   return favoriteNumber[msg.sender];
 }
 ```

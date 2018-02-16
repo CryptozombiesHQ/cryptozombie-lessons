@@ -28,7 +28,7 @@ material:
           }
 
       }
-    คำตอบ: >
+    answer: >
       pragma solidity ^0.4.19;
 
 
