@@ -70,7 +70,7 @@ Person satoshi = Person(172, "Satoshi");
 people.push(satoshi);
 ```
 
-Podemos combinar tambien estas dos cosas para hacerlas en una sola línea y dejarlo más bonito:
+También podemos combinar estas dos cosas para hacerlas en una sola línea y mantener el código limpio:
 
 ```
 people.push(Person(16, "Vitalik"));
