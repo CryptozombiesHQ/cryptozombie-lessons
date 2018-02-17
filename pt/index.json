@@ -193,6 +193,23 @@
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
                 "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "O seu amigo completou a Lição 4 do CryptoZombies, e derrotou o maligno zumbi IOTA!",
+                "Vá em frente e tente você mesmo a esquerda. Use o exército do seu amigo para começar a batalha!",
+                "Para completar a Lição 4 do CryptoZombies, seu amigo aprendeu sobre:"
+            ],
+            "achievements": [
+                "Função pagáveis, e como ganhar dinheiro com os seus jogos em Ethereum",
+                "Sacar o ETH dos smart contracts",
+                "Números aleatórios & segurança no Ethereum",
+                "E mais!"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
         }
     }
 }
