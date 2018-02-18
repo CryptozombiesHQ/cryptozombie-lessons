@@ -227,7 +227,7 @@ function getArray() external pure returns(uint[]) {
 
 Esto es un ejemplo trivial para enseñarte a cómo usar la sintaxis, pero en el próximo capítulo veremos como combinarlo con bucles `for` para usarlo en casos de uso reales.
 
->Nota: los arrays de tipo memory **deben** ser creados con una longitud como argumento (en este ejemplo, `3`). ACtualmente no pueden ser redimensionados como los arrays storage pueden serlo usando `array.push()`, de todas maneras esto podría cambiar en futuras versiones de Solidity.
+>Nota: los arrays de tipo memory **deben** ser creados con una longitud como argumento (en este ejemplo, `3`). Actualmente no pueden ser redimensionados como los arrays storage pueden serlo usando `array.push()`, de todas maneras esto podría cambiar en futuras versiones de Solidity.
 
 ## Vamos a probarlo
 

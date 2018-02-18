@@ -234,7 +234,7 @@ contract Ownable {
 Alguna de las cosas que no hemos visto todavía:
 
 - Constructores: `function Ownable()` es un **_constructor_**, que es una función especial opcional que tiene el mismo nombre que el contrato. Será ejecutada una única vez, cuando el contrato sea creado por primera vez.
-- Modificadores de Funciones: `modifier onlyOwner()`. Los modificadores son como semifunciones que son usadas para modificar otras funciones, normalmente para comprobar algunos requisitos antes de la ejecución. En este caso, `onlyOwner` puede ser usada para limitar el acceso y que **solo** el **dueño** del contrato pueda correr ejecutar función. Hablaremos sobre los modificadores en el siguiente capítulo, y que hace ese extraño `_;`.
+- Modificadores de Funciones: `modifier onlyOwner()`. Los modificadores son como semifunciones que son usadas para modificar otras funciones, normalmente para comprobar algunos requisitos antes de la ejecución. En este caso, `onlyOwner` puede ser usada para limitar el acceso y que **solo** el **dueño** del contrato pueda ejecutar función. Hablaremos sobre los modificadores en el siguiente capítulo, y que hace ese extraño `_;`.
 - Palabra clave `indexed`: no te preocupes por esto, no lo necesitamos todavía.
 
 Basicamente `Ownable` hace lo siguiente:

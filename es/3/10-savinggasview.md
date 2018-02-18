@@ -202,7 +202,7 @@ Esta función solo necesita leer datos de la blockchain, por lo que podemos hace
 
 Las funciones `view` no cuestan gas cuando son llamadas externamente por un usuario.
 
-Esto es debido a que las funciones `view` no cambina nada en la blockchain - solo leen datos. Así que marcar una función con `view` le dice a `web3.js` que solo necesita consultar a tu nodo local de Ethereum para ejecutar la función, y que no necesita crear ninguna transacción en la blockchain (la cual debería ejecutarse por todos y cada uno de los nodos, y costaría gas).
+Esto es debido a que las funciones `view` no cambia nada en la blockchain - solo leen datos. Así que marcar una función con `view` le dice a `web3.js` que solo necesita consultar a tu nodo local de Ethereum para ejecutar la función, y que no necesita crear ninguna transacción en la blockchain (la cual debería ejecutarse por todos y cada uno de los nodos, y costaría gas).
 
 Hablaremos sobre configurar web3.js en tu propio nodo mas tarde. Por ahora la mayor ventaja es que puedes optimizar el uso de gas de tu DApp haciendo que tus usuarios utilicen funciones `external view` siempre que sea posible.
 

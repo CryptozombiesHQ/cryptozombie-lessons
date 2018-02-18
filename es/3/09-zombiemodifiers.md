@@ -204,7 +204,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 ## Vamos a probarlo
 
-1. Crea una función llamada `changeName`. Esta recibirá 2 argumentos: `_zombieId` (un `uint`), y `_newName` (un `string`), y hazla `external`. Esta deberá tener el modificador `aboveLevel`, y le pasará `2` com parámetro `_level`. (No te olvides de pasarle el `_zombieId` también).
+1. Crea una función llamada `changeName`. Esta recibirá 2 argumentos: `_zombieId` (un `uint`), y `_newName` (un `string`), y hazla `external`. Esta deberá tener el modificador `aboveLevel`, y le pasará `2` como parámetro `_level`. (No te olvides de pasarle el `_zombieId` también).
 
 2. En esta función, primero tenemos que verificar que el `msg.sender` es igual a `zombieToOwner[_zombieId]`. Utiliza una sentencia `require`.
 

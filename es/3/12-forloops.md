@@ -225,7 +225,7 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 
 Este planteamiento es tentador por su simplicidad. Pero vamos a ver que pasa si más tarde añadimos una función para transferir un zombi de un dueño a otro (¡cosa que querremos hacer en una lección próxima!).
 
-Esa función de transferencia necesitarña que:
+Esa función de transferencia necesitaría que:
 1. Añadir el zombi al array `ownerToZombies` del nuevo dueño,
 2. Eliminar el zombi del array `ownerToZombies` del antiguo dueño,
 3. Mover todos los zombis en el array del antiguo dueño para rellenar el hueco que hemos dejado, y
@@ -237,7 +237,7 @@ Como escribir en storage es una de las operaciones más caras en Solidity, cada 
 
 > Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. Pero cambiaremos el orden de nuestro ejército cada vez que hagamos una transferencia de zombi.
 
-Debido a que las funciones `view` no consumen gas cuando son llamadas externamente, podemos simplementu usar un bucle loop en `getZombiesByOwner` para iterar en el array de zombis y construir un array de zombis que pertenezcan a un usuario específico. Con esto nuestra función de `transferencia` será mucho más barata, ya que no necesitamos reordenar ningún array en storage, y porque este enfoque ligeramente contraintuitivo es integramente más barato.
+Debido a que las funciones `view` no consumen gas cuando son llamadas externamente, podemos simplemente usar un bucle loop en `getZombiesByOwner` para iterar en el array de zombis y construir un array de zombis que pertenezcan a un usuario específico. Con esto nuestra función de `transferencia` será mucho más barata, ya que no necesitamos reordenar ningún array en storage, y porque este enfoque ligeramente contraintuitivo es integramente más barato.
 
 ## Usando los bucles `for`
 

@@ -22,7 +22,7 @@ material:
 - Ahora tenemos funciones para actualizar el nombre y el ADN del zombi una vez que llega a un cierto nivel
 - Y finalmente, ahora tenemos una función que devuelve el ejército de un usuario
 
-## Reclama tu prermio
+## Reclama tu premio
 
 Como premio por completar la Lección 3, ¡ambos zombis han subido de nivel!
 
