@@ -1,5 +1,5 @@
 ---
-title: Immutability of Contracts
+title: Inmutabilidad de los Contratos
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -28,12 +28,12 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // 1. Remove this:
+          // 1. Eliminar esto:
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
+          // 2. Cambiar esto por únicamnete la declaración:
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // 3. Add setKittyContractAddress method here
+          // 3. Añadir el método setKittyContractAddress aquí
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -141,34 +141,34 @@ material:
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript.  But there are a number of ways that Ethereum DApps are actually quite different from normal applications.
+Hasta ahora, Solidity se ha parecido bastante a otros lenguajes como JavaScript. Pero hay unas cuantas maneras en las que las DApps de Ethereum son diferentes a las aplicaciones normales.
 
-To start with, after you deploy a contract to Ethereum, it’s **_immutable_**, which means that it can never be modified or updated again.
+Para empezar, despues de implementar un contrato en Ethereum, es **_inmutable_**, lo que significa que nunca va a ser modificado o actualizado de nuevo.
 
-The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
+El código inicial que implementes en el contrato es el que va a permanecer, permanentemente, en la blockchain. Esto es debido a que una de las mayores preocupaciones de Solidity es la seguridad. Si hay un error en el código del contrato, no hay forma de solucionarlo más adelante. Tendrás que decirles a tus usuarios que empiecen a usar otra dirección de contrato inteligente que incluya ese arreglo.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+Pero es también una característica de los contratos inteligentes. El código es la ley. Si lees el código de un contrato inteligente y lo verificas, vas a estar totalmente seguro de que cada vez que lo llames va a hacer exactamente lo que el código dice que va a hacer. Nadie va a poder más adelante cambiar la función y que te devuelva resultados inesperados.
 
-## External dependencies
+## Dependencias externas
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp.  But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+En la Lección 2, hardcodeamos la dirección del contrato de CryptoKitties en nuestra DApp. Pero ¿qué pasa si el contrato de CryptoKitties tiene un error y alguien destruye todos los gatitos?
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+Es improbable, pero si esto pasase dejaría nuestra DApp completamente inservible - nuestra DApp apuntará a una dirección hardcodeada que no devolverá gatitos nunca más. Nuestros zombis no podrán alimentarse de gatitos, y no podremos modificar nuestro contrato para solucionarlo.
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+Por este motivo, a veces tiene sentido programar funciones que te permitan actualizar partes de nuestra DApp.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+Por ejemplo, en vez de hardcodear la dirección del contrato de CryptoKitties en nuestra DApp, probablemente deberíamos tener una función `setKittyContractAddress` que nos deje cambiar esta dirección en el futuro en caso de que algo ocurra con el contrato de CryptoKitties.
 
-## Put it to the test
+## Vamos a probarlo
 
-Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
+Vamos a actualizar nuestro código de la Lección 2 para que sea capaz de cambiar la dirección del contrato de CryptoKitties.
 
-1. Delete the line of code where we hard-coded `ckAddress`.
+1. Borra la línea hardcodeada donde definíamos `ckAddress`.
 
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
+2. Cambia la línea donde creamos el `kittyContract` y únicamente declara la variable —  es decir, no la inicializes a nada.
 
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
+3. Crea una función llamada `setKittyContractAddress`. Esta recibirá un argumento, `_address` (un `address`), y deberá ser una función `external`.
 
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
+4. Dentro de la función, añade una línea de código que inicialize `kittyContract` a `KittyInterface(_address)`.
 
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+> Nota: Si notas un agujero de seguridad en esta función, no te preocupes - lo arreglaremos en el próximo capítulo ;)
