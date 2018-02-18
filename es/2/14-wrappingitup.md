@@ -44,14 +44,14 @@ $.get(apiUrl, function(data) {
 
 // When the user clicks on a kitty:
 $(".kittyImage").click(function(e) {
-  // Llama al mmétodo `feedOnKitty` de tu contrato
+  // Llama al método `feedOnKitty` de tu contrato
   ZombieFeeding.feedOnKitty(zombieId, kittyId)
 })
 
 // Escuchamos el evento del NewZombie de nuestro contrato para que podamos mostrarlo:
 ZombieFactory.NewZombie(function(error, result) {
   if (error) return
-  // ESta función mostrará el zombi, como en la lección 1:
+  // Esta función mostrará el zombi, como en la lección 1:
   generateZombie(result.zombieId, result.name, result.dna)
 })
 ```
