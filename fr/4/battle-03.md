@@ -1,5 +1,5 @@
 ---
-title: Zombie Fightin'
+title: Combat de zombie
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -11,14 +11,14 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Create attackVictoryProbability here
+          // Créez attackVictoryProbability ici
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // Create new function here
+          // Créez une nouvelle fonction ici
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -227,23 +227,23 @@ material:
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+Maintenant que nous avons une source d'aléatoire dans notre contrat, nous pouvons l'utiliser pour nos combats de zombie pour calculer le résultat.
 
-Our zombie battles will work as follows:
+Les combats de zombie marchent ainsi :
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+- Vous choisissez un de vos zombies, et un zombie adversaire à attaquer.
+- Si vous êtes le zombie attaquant, vous avez 70% de chance de gagner. Le zombie qui se défend à 30% de chance de gagner.
+- Tous les zombies (attaquant et défendant) auront un `winCount` (compte de victoire) et `lossCount` (compte de défaite) qui va changer en fonction du résultat du combat.
+- Si le zombie attaquant gagne, il gagne un niveau et fait naître un nouveau zombie.
+- Si il perd, rien ne se passe (à part son `lossCount` qui augmente).
+- Qu'il gagne ou perdre, le compte à rebours de repos du zombie attaquant est remis déclenché.
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+Cela fait beaucoup de logique à implémenter, nous allons donc le faire en plusieurs fois au cours des prochains chapitres.
 
-## Put it to the test
+## A votre tour
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+1. Donnez au contrat une variable `uint` appelée `attackVictoryProbability` égale à `70`.
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+2. Créez une fonction appelée `attack` qui aura deux paramètres : `_zombieId` (un `uint`) et `_targetId` (aussi un `uint`). Elle devra être `external`.
 
-Leave the function body empty for now.
+Laissez le corps de la fonction vide pour l'instant.

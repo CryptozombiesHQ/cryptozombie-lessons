@@ -1,5 +1,5 @@
 ---
-title: Back to Attack!
+title: De retour à l'attaque !
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -18,9 +18,9 @@ material:
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // 1. Add modifier here
+          // 1. Ajoutez le modificateur ici
           function attack(uint _zombieId, uint _targetId) external {
-            // 2. Start function definition here
+            // 2. Commencez la définition de la fonction ici
           }
         }
       "zombiehelper.sol": |
@@ -230,18 +230,18 @@ material:
       }
 ---
 
-Enough refactoring — back to `zombieattack.sol`.
+Fini de faire de la refonte - reprenons notre `zombieattack.sol`.
 
-We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
+Nous allons continuer de définir notre fonction `attack`, maintenant que nous pouvons utiliser notre modificateur `ownerOf`.
 
-## Put it to the test
+## A votre tour
 
-1. Add the `ownerOf` modifier to `attack` to make sure the caller owns `_zombieId`.
+1. Ajoutez le modificateur `ownerOf` à `attack`, pour être sûr que l'appelant possède `_zombieId`.
 
-2. The first thing our function should do is get a `storage` pointer to both zombies so we can more easily interact with them:
+2. La première chose que notre fonction doit faire, c'est d'obtenir un pointeur `storage` de nos deux zombies pour intéragir plus facilement avec eux :
 
-  a. Declare a `Zombie storage` named `myZombie`, and set it equal to `zombies[_zombieId]`.
+  a. Déclarez un `Zombie storage` appelé `myZombie` égal à `zombies[_zombieId]`.
 
-  b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
+  b. Déclarez un `Zombie storage` appelé `enemyZombie` égal à `zombies[_targetId]`.
 
-3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. Nous allons utliser un nombre aléatoire entre 0 et 99 pour déterminer le résultat du combat. Déclarez un `uint` appelé `rand` égal au résultat de la fonction `randMod` avec comme argument `100`.

@@ -1,5 +1,5 @@
 ---
-title: Zombie Wins and Losses
+title: Victoires et défaites de zombie
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -24,7 +24,7 @@ material:
               uint dna;
               uint32 level;
               uint32 readyTime;
-              // 1. Add new properties here
+              // 1. Ajoutez de nouvelles propriétés ici
             }
 
             Zombie[] public zombies;
@@ -33,7 +33,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 2. Modify new zombie creation here:
+                // 2. Modifiez la création d'un nouveau zombie ici
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
@@ -262,24 +262,24 @@ material:
       }
 ---
 
-For our zombie game, we're going to want to keep track of how many battles our zombies have won and lost. That way we can maintain a "zombie leaderboard" in our game state.
+Pour notre jue de zombie, nous allons vouloir comptabiliser le nombre de victoire et de défaite de nos zombies. Ainsi nous pourrons avoir un "classement zombie" dans notre jeu.
 
-We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
+Nous pouvons stocker ces données de plusieurs façons dans notre DApp - un mappage indivuel, une structure classement, ou directement dans la structure `Zombie`.
 
-Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
+Chaque méthode a ses avantages et ses inconvénients,  dépendamment de comment nous voulons interagir avec ces données. Pour ce tutoriel, nous allons stocker les statistiques dans notre structure `Zombie` par simplicité, et les appeler `winCount` et `lossCount`.
 
-So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
+Revenons à `zombiefactory.sol`, et ajoutons ces propriétés à notre structure `Zombie`.
 
-## Put it to the test
+## A votre tour
 
-1. Modify our `Zombie` struct to have 2 more properties:
+1. Modifiez la structure`Zombie` en lui ajoutant 2 propriétés :
 
-  a. `winCount`, a `uint16`
+  a. `winCount`, un `uint16`
 
-  b. `lossCount`, also a `uint16`
+  b. `lossCount`, aussi un `uint16`
 
-  >Note: Remember, since we can pack `uint`s inside structs, we want to use the smallest `uint`s we can get away with. A `uint8` is too small, since 2^8 = 256 — if our zombies attacked once per day, they could overflow this within a year. But 2^16 is 65536 — so unless a user wins or loses every day for 179 years straight, we should be safe here.
+  > Remarque : Rappelez-vous, puisque nous pouvons combiner les `uint`s dans une structure, nous voulons utliser le plus petit `uint` possible. un `uint8` serait trop petit, car 2^8 = 256 - si nos zombies attaquent tous les jours, en un an ce serait dépassé. Mais 2^16 = 65536 - alors à moins qu'un utilisateur ne fasse que gagner ou que perdre chaque jour pendant 179 ans, nous sommes tranquille.
 
-2. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `_createZombie()`.
+2. Maintenant que nous avons de nouvelles propriétés pour notre structure `Zombie`, nous devons changer la définition de notre fonction `_createZombie()`.
 
-  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.
+  Changez la définition de création de zombie pour que chaque nouveau zombie créés est `0` victoire et `0` défaite.

@@ -1,5 +1,5 @@
 ---
-title: Zombie Victory 😄
+title: Victoire zombie 😄
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -22,7 +22,7 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            // Start here
+            // Commencez ici
           }
         }
       "zombiehelper.sol": |
@@ -240,20 +240,21 @@ material:
       }
 ---
 
-Now that we have a `winCount` and `lossCount`, we can update them depending on which zombie wins the fight.
+Maintenant que nous avons un `winCount` et un `lossCount`, nous pouvons les mettre à jour en fonction du zombie qui gagne le combat.
 
-In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
+Au chapitre 6 nous avons calculé un nombre aléatoire entre 0 et 100. Nous allons utliser ce nombre pour déterminer le vainceur du combat, et mettre à jour en conséquence.
 
-## Put it to the test
 
-1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attackVictoryProbability`.
+## A votre tour
 
-2. If this condition is true, our zombie wins! So:
+1. Créez une déclaration `if` qui va vérifier si `rand` est **_plus petit ou égal_** à `attackVictoryProbability`.
 
-  a. Increment `myZombie`'s `winCount`.
+2. Si c'est le cas, nos zombie gagne ! Donc :
 
-  b. Increment `myZombie`'s `level`. (Level up!!!!!!!)
+  a. Incrémentez `winCount` de `myZombie`.
 
-  c. Increment `enemyZombie`'s `lossCount`. (Loser!!!!!! 😫 😫 😫)
+  b. Incrémentez le `level` de `myZombie`. (Nouveau niveau !!!!!!!)
 
-  d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).
+  c. Incrémentez le `lossCount` de `enemyZombie`. (Perdant !!!!!! 😫 😫 😫)
+
+  d. Exécuter la fonction `feedAndMultiply`. Regardez `zombiefeeding.sol` pour voir la syntaxe pour l'appeler. Pour le 3ème argument (`_species_`), mettez `"zombie"`. (Cela ne fait rien pour l'instant, mais plus tard nous pourrons ajouter des fonctionnalités supplémentaire pour les zombies générés à partir d'autres zombies).

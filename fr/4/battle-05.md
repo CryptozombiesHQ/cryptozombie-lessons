@@ -1,5 +1,5 @@
 ---
-title: More Refactoring
+title: Plus de refonte
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -28,13 +28,13 @@ material:
             levelUpFee = _fee;
           }
 
-          // 1. Modify this function to use `ownerOf`:
+          // 1. Modifiez cette fonction pour utiliser `ownerOf` :
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          // 2. Do the same with this function:
+          // 2. Faites la même chose avec cette fonction :
           function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
@@ -257,10 +257,10 @@ material:
       }
 ---
 
-We have a couple more places in `zombiehelper.sol` where we need to implement our new `modifier` `ownerOf`.
+Il y a encore quelques endroits dans `zombiehelper.sol` où nous devons implémenter notre `modifier` `ownerOf`.
 
-## Put it to the test
+## A votre tour
 
-1. Update `changeName()` to use `ownerOf`
+1. Mettez à jour `changeName()` pour utiliser `ownerOf`
 
-2. Update `changeDna()` to use `ownerOf`
+2. Mettez à jour `changeDna()` pour utiliser `ownerOf`

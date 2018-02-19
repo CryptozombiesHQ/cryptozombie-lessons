@@ -1,5 +1,5 @@
 ---
-title: Zombie Loss 😞
+title: Défaite zombie 😞
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -27,7 +27,7 @@ material:
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // start here
+            } // Commencez ici
           }
         }
       "zombiehelper.sol": |
@@ -249,28 +249,28 @@ material:
       }
 ---
 
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+Maintenant que nous avons codé ce qu'il se passe quand notre zombie gagne, voyons voir ce qu'il arrive quand il **perd**.
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leur compte `lossCount`, et leur compte à rebours est déclenché afin qu'ils attendent un jour pour attaquer de nouveau.
 
-To implement this logic, we'll need an `else` statement.
+Pour implémenter cette logique, nous allons avoir besoin de la déclaration `else` (sinon) :
 
-`else` statements are written just like in JavaScript and many other languages:
+Les déclarations `else` s'écrivent comme en JavaScript et beaucoup d'autres langages.
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
-  // You rich!!!
+  // Vous êtes riches !!!
 } else {
-  // We require more ZombieCoins...
+  // Nous avons besoin de plus de ZombieCoins...
 }
 ```
 
-## Put it to the test
+## A votre tour
 
-1. Add an `else` statement. If our zombie loses:
+1. Ajoutez une déclaration `else`. Si notre zombie perd :
 
-  a. Increment `myZombie`'s `lossCount`.
+  a. Incrémentez `lossCount` de `myZombie`.
 
-  b. Increment `enemyZombie`'s `winCount`.
+  b. Incrémentez `winCount` de `enemyZombie`.
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
+2. En dehors de la déclaration `else`, exécuter la fonction `_triggerCooldown` sur `myZombie`. De cette manière le zombie ne peut attaquer qu'une fois par jour.
