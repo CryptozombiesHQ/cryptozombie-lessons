@@ -1,6 +1,6 @@
 ---
 title: Back to Attack!
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:

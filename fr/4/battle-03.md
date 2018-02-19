@@ -1,6 +1,6 @@
 ---
 title: Zombie Fightin'
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:

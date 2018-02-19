@@ -1,6 +1,6 @@
 ---
 title: Refactoring Common Logic
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:

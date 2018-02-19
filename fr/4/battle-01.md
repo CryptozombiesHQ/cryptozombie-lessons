@@ -1,6 +1,6 @@
 ---
-title: Zombie Battles
-actions: ['checkAnswer', 'hints']
+title: Batailles de zombies
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -207,18 +207,18 @@ material:
       }
 ---
 
-Now that we've learned about payable functions and contract balances, it's time to add functionality for zombie battles!
+Maintenant que nous en savons plus sur les fonctions payables et les balances de contrat, il est temps d'ajouter des fonctionnalités pour nos combats de zombies !
 
-Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
+Pour reprendre le format des chapitres précédents, nous allons organiser notre code en créant un nouveau fichier / contrat pour la fonctionnalité d'attaque qui importera de notre contrat précédent.
 
-## Put it to the test
+## A votre tour
 
-Let's review creating a new contract. Repetition leads to mastery!
+Passons en revue la création d'un nouveau contrat. La répétition conduit à la maîtrise !
 
-If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
+Si vous ne vous rappelez plus de la syntaxe pour le faire, regardez `zombiehelper.sol` - mais essayer de le faire sans regarder en premier pour tester vos connaissances.
 
-1. Declare at the top of the file that we're using Solidity version `^0.4.19`.
+1. En haut du fichier, indiquez que nous utilisons la version `^0.4.19` de Solidity.
 
-2. `import` from `zombiehelper.sol`.
+2. Importez avec `import` depuis `zombiehelper.sol`.
 
-3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.
+3. Déclarez un nouveau `contract` appelé `ZombieBattle` qui hérite de `ZombieHelper`. Laissez le corps du contrat vide pour l'instant.

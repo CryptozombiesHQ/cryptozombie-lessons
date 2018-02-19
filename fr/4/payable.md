@@ -1,6 +1,6 @@
 ---
 title: Payable
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -13,14 +13,14 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. Define levelUpFee here
+          // 1. Definissez levelUpFee ici
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. Insert levelUp function here
+          // 2. AJoutez la fonction levelUp ici
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -229,68 +229,69 @@ material:
       }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+Jusqu'à présent, nous avons vu un certain nombres de **_modificateurs de fonction_**. Il n'est pas forcément évident de se rappeler de tout, nous allons donc revoir cela rapidement :
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+1. Nous avons des modificateurs de visibilité qui contrôlent quand et depuis où la fonction peut être appelée : `private` veut dire que la fonction ne peut être appelée que par les autres fonctions à l'intérieur du contrat; `internal` est comme `private` mais en plus, elle peut être appelée par les contrats qui héritent de celui-ci; `external` ne peut être appelée que depuis l'extérieur du contrat; et enfin `public` qui peut être appelée depuis n'importe où, depuis l'intérieur et l'extérieur.
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+2. Il existent aussi des modificateurs d'états, qui nous indiquent comment la fonction intéragie avec la BlockChain : `view` nous indique qu'en exécutant cette fonction, aucune donnée ne saura sauvegardée/modifiée. `pure` nous indique que non seulement aucune donnée ne saura sauvée sur la BlockChain, mais qu'en plus aucune donnée de la BlockChain ne sera lue. Ces 2 fonctions ne coûtent pas de gas si elles sont appelées depuis l'extérieur du contrat (mais elle coûtent du gas si elles sont appelées intérieurement par une autre fonction).
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
+3. Ensuite nous avons les modificateurs personnalisés, que nous avons étudiés à la leçon 3 : `onlyOwner` et `aboveLevel` par exemple. Nous avons pu déterminer des logiques personnalisés pour ceux-ci, afin de choisir de quelles manières ils affectent une fonction.
 
-These modifiers can all be stacked together on a function definition as follows:
+On peut aussi ajouter plusieurs modificateurs à la définition d'une fonction :
 
 ```
 function test() external view onlyOwner anotherModifier { /* ... */ }
 ```
 
-In this chapter, we're going to introduce one more function modifier: `payable`.
+Dans ce chapitre, nous allons voir un nouveau modificateur de fonction: `payable`.
 
-## The `payable` Modifier
 
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether. 
+## Le modificateur `payable`
 
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
+Une des choses qui rend Solidity et Ethereum vraiment cool est le modificateur `payable`, une fonction `payable` est une fonction spéciale qui peut recevoir des Ether.
 
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
+Réfléchissons une minute. Quand vous faites un appel à une fonction API sur un serveur normal, vous ne pouvez pas envoyer des dollars US en même temps - pas plus que des Bitcoin.
 
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
+  Mais en Ethereum, puisque la monnaie (_Ether_), les données (*charge utile de la transaction*) et le code sur contrat lui-même sont directement sur Ethereum, il est possible pour vous d'appeler une fonction **et** de payer le contrat en même temps.
 
-## Let's look at an example
+Cela permet un fonctionnement vraiment intéressant, comme demander un certain paiement au contrat pour pouvoir exécuter une fonction.
+
+## Prenons un exemple
 ```
 contract OnlineStore {
   function buySomething() external payable {
-    // Check to make sure 0.001 ether was sent to the function call:
+    // Vérifie que 0.001 ether a bien été envoyé avec l'appel de la fonction :
     require(msg.value == 0.001 ether);
-    // If so, some logic to transfer the digital item to the caller of the function:
+    // Si c'est le cas, transférer l'article digital au demandeur de la fonction :
     transferThing(msg.sender);
   }
 }
 ```
 
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
+Ici, `msd.value` est la façon de voir combien d'Ether ont été envoyés au contrat, et `ether` est une unité intégrée.
 
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
+Quelqu'un va appeler la fonction depuis web3.js (depuis l'interface utilisateur JavaScript de la DApp) de cette manière là :
 
 ```
-// Assuming `OnlineStore` points to your contract on Ethereum:
+// En supposant que `OnlineStore` pointe vers le contrat Ethereum :
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
+On remarque le champs `value` (valeur), où l'appel de la fonction javascript indique combien d'`ether` envoyer (0.001). Si vous immaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction sont le contenant de la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donné au même moment au destinataire.
 
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
+> Remarque : Si une fonction n'est pas marquée `payable` et que vous essayez de lui envoyer des Ether, la fonction rejettera votre transaction.
 
 
-## Putting it to the Test
+## A votre tour
 
-Let's create a `payable` function in our zombie game.
+Nous allons créer une fonction `payable` pour notre jeu de zombie.
 
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH will get stored in the contract, which you own — this a simple example of how you could make money on your games!
+Disons que notre jeu permet aux utilisateurs de faire passer un niveau à leurs zombies en payant des ETH. Les ETH seront stockés dans le contrat, que vous possédez - c'est un exemple simple de comment faire de l'argent avec vos jeux !
 
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
+1. Définissez un `uint` appelé `levelUpFee` égal à `0.001 ether`.
 
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
+2. Créez une fonction appelée `levelUp`. Elle aura un paramètre, `_zombieId`, un `uint`. Elle devra être `external` et `payable`.
 
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
+3. La fonction devra d'abord utiliser un `require` pour vérifier que `msg.value` soit égal à `levelUpFee`.
 
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.
+4. Elle devra ensuite incrémenter le `level` du zombie : `zombies[_zombieId].level++`.

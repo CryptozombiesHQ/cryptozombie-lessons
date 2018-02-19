@@ -1,6 +1,6 @@
 ---
 title: Zombie Loss 😞
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -274,5 +274,3 @@ if (zombieCoins[msg.sender] > 100000000) {
   b. Increment `enemyZombie`'s `winCount`.
 
 2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
-
-

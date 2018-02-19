@@ -1,6 +1,6 @@
 ---
 title: Zombie Wins and Losses
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:

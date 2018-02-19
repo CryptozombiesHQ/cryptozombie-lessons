@@ -1,6 +1,6 @@
 ---
-title: Withdraws
-actions: ['checkAnswer', 'hints']
+title: Retraits
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -20,9 +20,9 @@ material:
             _;
           }
 
-          // 1. Create withdraw function here
+          // 1. Créez une fonction withdraw ici
 
-          // 2. Create setLevelUpFee function here
+          // 2. Crées une fonction setLevelUpFee ici
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -244,11 +244,11 @@ material:
       }
 ---
 
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
+Dans le chapitre précédent, nous avons vu comment envoyer des Ether à un contrat. Qu'arrive-t-il une fois que vous les avez envoyés ?
 
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract. 
+Après avoir envoyé des Ether à un contrat, ils sont stockés dans le compte Ethereum du contrat, et seront bloqués ici - à part si vous ajoutez une fonction pour retirer les Ether du contrat.
 
-You can write a function to withdraw Ether from the contract as follows:
+Vous pouvez écrire une fonction pour retirer des Ether du contrat de cette manière :
 
 ```
 contract GetPaid is Ownable {
@@ -258,29 +258,29 @@ contract GetPaid is Ownable {
 }
 ```
 
-Note that we're using `owner` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
+Vous remarquerez que nous utilisons `owner` et `onlyOwner` du contrat `Ownable`, en supposant qu'il a été importé.
 
-You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
+Vous pouvez transférer des Ether à une adresse en utilisant la fonction `transfer`, et `this.balance` retournera la balance totale stockée sur le contrat. Si 100 utilisateurs ont payé 1 Ether à votre contrat, `this.balance` sera égal à 100 Ether.
 
-You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
+Vous pouvz utilisez `transfer` pour envoyer des fonds à n'importe quelle adresse Ethereum. Par exemple, vous pouvez avoir une fonction qui renvoie les Ether à `msg.sender` s'il paye trop cher pour un article :
 
 ```
 uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-Or in a contract with a buyer and a seller, you could save the seller's address in storage, then when someone purchases his item, transfer him the fee paid by the buyer: `seller.transfer(msg.value)`.
+Ou dans un contrat avec un acheteur et un vendeur, vous pouvez stocker l'adresse du vendeur, et quand quelqu'un achète son article, lui envoyer les frais payés par l'acheteur : `seller.transfer(msg.value)`.
 
-These are some examples of what makes Ethereum programming really cool — you can have decentralized marketplaces like this that aren't controlled by anyone.
+Ce sont quelques exemples de ce qui rend la programmation Ethereum vraiment cool - vous pouvez avoir des marchés décentralisés qui ne sont contrôlés par personne.
 
-## Putting it to the Test
+## A votre tour
 
-1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
+1. Créez une fonction `withdraw` dans notre contrat, qui devra être identique à l'exemple `GetPaid` ci-dessus.
 
-2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
+2. Le prix de l'Ether a été multiplié par plus de 10 l'année dernière. Donc si 0.001 ether est environ 1$ au moment où j'écris ces lignes, si c'est encore multiplié par 10, 0.001 ETH seront 10$ et notre jeu deviendra beaucoup plus cher.
 
-  So it's a good idea to create a function that allows us as the owner of the contract to set the `levelUpFee`.
+  C'est donc une bonne idée de créer une fonction qui nous permet en tant que propriétaire de changer le `levelUpFee`.
 
-  a. Create a function called `setLevelUpFee` that takes one argument, `uint _fee`, is `external`, and uses the modifier `onlyOwner`.
+  a. Créez une fonction appelée `setLevelUpFee` avec un paramètre, un `uint` `_fee`, elle sera `external` et utilisera le modificateur `onlyOwner`.
 
-  b. The function should set `levelUpFee` equal to `_fee`.
+  b. Cette fonction devra définir le `levelUpFee` égal à `_fee`.
