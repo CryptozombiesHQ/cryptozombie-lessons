@@ -1,5 +1,5 @@
 ---
-title: For Loops
+title: Bucles For
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -30,7 +30,7 @@ material:
 
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
             uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            // Start here
+            // Empieza aquí
             return result;
           }
 
@@ -203,18 +203,17 @@ material:
 
       }
 ---
+En el capítulo anterior, mencionamos que a veces queremos usar bucles `for` para construir contenido dentro de un array en una función antes que simplemente guardar el array en storage.
 
-In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage. 
+Vamos a ver el por qué.
 
-Let's look at why.
-
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
+Para nuestra función `getZombiesByOwner`, una implementación nativa sería guardar un `mapping` de dueños para los ejércitos zombis en el contrato `ZombieFactory`:
 
 ```
 mapping (address =>uint[]) public ownerToZombies
 ```
 
-Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
+De esta forma cada vez que creemos un nuevo zombi, simplemente tenemos que usar `ownerToZombies[owner].push(zombieId)` para añadirlo al ejército de zombis de ese usuario. Y `getZombiesByOwner` sería una función tan sencilla como:
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -222,42 +221,42 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 }
 ```
 
-### The problem with this approach
+### El problema con este enfoque:
 
-This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
+Este planteamiento es tentador por su simplicidad. Pero vamos a ver que pasa si más tarde añadimos una función para transferir un zombi de un dueño a otro (¡cosa que querremos hacer en una lección próxima!).
 
-That transfer function would need to:
-1. Push the zombie to the new owner's `ownerToZombies` array,
-2. Remove the zombie from the old owner's `ownerToZombies` array,
-3. Shift every zombie in the older owner's array up one place to fill the hole, and then
-4. Reduce the array length by 1.
+Esa función de transferencia necesitaría que:
+1. Añadir el zombi al array `ownerToZombies` del nuevo dueño,
+2. Eliminar el zombi del array `ownerToZombies` del antiguo dueño,
+3. Mover todos los zombis en el array del antiguo dueño para rellenar el hueco que hemos dejado, y
+4. Reducir el largo del array en 1.
 
-Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
+El paso 3 costará demasiado gas, debido a que tenemos que hacer una escritura por cada zombi que queramos mover. Si un usuario tiene 20 zombis y cambia el primero de todos, tenemos que hacer 19 escrituras para mantener el orden del array.
 
-Since writing to storage is one of the most expensive operations in Solidity, every call to this transfer function would be extremely expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
+Como escribir en storage es una de las operaciones más caras en Solidity, cada llamada a la función de transferencia será exteremadamente cara en cuanto al gas. Y lo peor, la función costará diferente cantidad de gas cada vez que se llame, dependiendo de cuantos zombis tenga el usuario en su ejército y la cantidad de zombis a mover. Así que el usuario no sabrá cuanto gas enviar.
 
-> Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
+> Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. Pero cambiaremos el orden de nuestro ejército cada vez que hagamos una transferencia de zombi.
 
-Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
+Debido a que las funciones `view` no consumen gas cuando son llamadas externamente, podemos simplemente usar un bucle loop en `getZombiesByOwner` para iterar en el array de zombis y construir un array de zombis que pertenezcan a un usuario específico. Con esto nuestra función de `transferencia` será mucho más barata, ya que no necesitamos reordenar ningún array en storage, y porque este enfoque ligeramente contraintuitivo es integramente más barato.
 
-## Using `for` loops
+## Usando los bucles `for`
 
-The syntax of `for` loops in Solidity is similar to JavaScript.
+La sintaxis de los bucles `for` en Solidity es similar a JavaScript.
 
-Let's look at an example where we want to make an array of even numbers:
+Vamos a ver un ejemplo donde queremos hacer un array de números pares:
 
 ```
 function getEvens() pure external returns(uint[]) {
   uint[] memory evens = new uint[](5);
-  // Keep track of the index in the new array:
+  // Guardamos el índice del nuevo array:
   uint counter = 0;
-  // Iterate 1 through 10 with a for loop:
+  // Iteramos del 1 al 10 con un bucle for:
   for (uint i = 1; i <= 10; i++) {
-    // If `i` is even...
+    // Si `i` es par...
     if (i % 2 == 0) {
-      // Add it to our array
+      // Añadelo a nuestro array
       evens[counter] = i;
-      // Increment counter to the next empty index in `evens`:
+      // Incrementamos el contador al nuevo índice vacío de `evens`:
       counter++;
     }
   }
@@ -265,20 +264,20 @@ function getEvens() pure external returns(uint[]) {
 }
 ```
 
-This function will return an array with the contents `[2, 4, 6, 8, 10]`.
+La función devolverá un array con este contenido `[2, 4, 6, 8, 10]`.
 
-## Put it to the test
+## Vamos a probarlo
 
-Let's finish our `getZombiesByOwner` function by writing a `for` loop that iterates through all the zombies in our DApp, compares their owner to see if we have a match, and pushes them to our `result` array before returning it.
+Vamos a terminar nuestra función `getZombiesByOwner` escribiendo un bucle `for` que itere todos los zombis de nuestra DApp, comparando su dueño para que cuando coincida con el buscamos, lo añada al array `result` antes de devolverlo.
 
-1. Declare a `uint` called `counter` and set it equal to `0`. We'll use this variable to keep track of the index in our `result` array.
+1. Declara un `uint` llamado `counter` e inicializalo a `0`. Usaremos esta variable para mantener el control del índice en nuestro array `result`.
 
-2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
+2. Declara un bucle `for` que empiece en `uint i = 0` y vaya hasta `i < zombies.length`. Este iterará todos los zombis de nuestro array.
 
-3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
+3. Dentro del bucle `for`, crea una sentencia `if` que compruebe si `zombieToOwner[i]` es igual a `_owner`. Esto comparará dos direcciones para ver si son iguales.
 
-4. Inside the `if` statement:
-   1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
-   2. Increment `counter` by 1 (see the `for` loop example above).
+4. Dentro de la sentencia `if`:
+   1. Añadimos la ID del zombi a nuestro array `result` haciendo que `result[counter]` sea igual a `i`.
+   2. Incrementamos `counter` en 1 (mira el bucle `for` del ejemplo de arriba).
 
-That's it — the function will now return all the zombies owned by `_owner` without spending any gas.
+Eso es - la función ahora devolverá todos los zombis del usuario `_owner` sin gastar nada de gas.

@@ -1,5 +1,5 @@
 ---
-title: Zombie Cooldowns
+title: Enfriamiento de los Zombis
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -34,9 +34,9 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Define `_triggerCooldown` function here
+          // 1. Define la función `_triggerCooldown` aquí
 
-          // 2. Define `_isReady` function here
+          // 2. Define la función `_isReady` aquí
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -197,38 +197,38 @@ material:
       }
 ---
 
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
+Ahora que tenemos la propiedad `readyTime` en nuestra estructura `Zombie`, vamos a pasar a `zombiefeeding.sol` e implementar el contador de enfriamiento.
 
-We're going to modify our `feedAndMultiply` such that:
+Vamos a modificar nuestro `feedAndMultiply` de tal manera que:
 
-1. Feeding triggers a zombie's cooldown, and
+1. Alimentarse activa el enfriamiento del zombi, y
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+2. Los zombis no podrán alimentarse de gatitos hasta que su periodo de enfriamiento haya concluido
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+Esto hará que los zombis no se alimenten de gatitos ilimitados y se multipliquen durante todo el día. En el futuro, cuando añadamos la funcionalidad de batalla, haremos que el atacar a otros zombis también tenga su enfriamiento.
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+Primero, vamos a definir alguna función auxiliar que nos ajuste y verifique el `readyTime` del zombi.
 
-## Passing structs as arguments
+## Pasando estructuras como argumentos
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+Puedes pasar un puntero storage a una estructura como argumento a una función `private` o `internal`. Esto es práctico, por ejemplo, para pasar entre funciones la estructura de nuestro `Zombie`.
 
-The syntax looks like this:
+La sintaxis serí algo así:
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
-  // do stuff with _zombie
+  // hacer cosas con _zombie
 }
 ```
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+De esta manera podemos pasar una referencia a nuestro zombi en una función en vez de pasar la ID del zombi y comprobar cual es.
 
-## Put it to the test 
+## Vamos a probarlo
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
+1. Empieza definiendo una función `_triggerCooldown`. Esta tomará 1 argumento, `_zombie`, un puntero a `Zombie storage`. La función deberá ser `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. El cuerpo de la función deberá inicializar `_zombie.readyTime` a `uint32(now + cooldownTime)`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3. Luego, crea una función llamada `_isReady`. Esta función tambien recibirá un argumento `Zombie storage` llamado `_zombie`. Esta será una función `internal view`, y devolverá un `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. El cuerpo de la función deberá devolver `(_zombie.readyTime <= now)`, que evaluará si es `true` o `false`. Esta función nos dirá si ha pasado el suficiente tiempo desde la última vez que un zombi se alimentó.
