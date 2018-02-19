@@ -89,7 +89,7 @@
             "header": [
                 "Parabéns! Você completou a {lesson3} do CryptoZombies!",
                 "Mostre o seu exército de zumbis para os seus amigos!",
-                "Compartilhe esta URL para que os seus vejam o seu exército:"
+                "Compartilhe esta URL para que os seus amigos vejam o seu exército:"
             ],
             "footer": [
                 "Gostou do CryptoZombies? Conte para nós!",
@@ -98,6 +98,23 @@
             ],
             "zombieDesc": "Um CryptoZombie de Nível 3",
             "shareLinkText": "Eu acabei de completar a Lição 3 do #CryptoZombies! Olha só o meu exército de zumbi:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Conquistas Desbloqueadas:",
+            "zombieUpgraded": "{zombieName} foi melhorado para o Nível {levelNum}!",
+            "newZombieAdded": "Você adicionou um novo zumbi de Nível 1 ao seu exército!",
+            "header": [
+                "Parabéns! Você completou a {lesson4} do CryptoZombies!",
+                "Mostre o seu exército de zumbis para os seus amigos!",
+                "Compartilhe esta URL para que os seus amigos vejam o seu exército:"
+            ],
+            "footer": [
+                "Lição 5 dentro de 1-2 semanas",
+                "Você receberá um email nosso asim que estiver pronta.",
+                "Enquanto isso, junte-se a nós no {telegramLink}, ou siga-nos em nosso {twitterLink} para juntar-se a conversa!"
+            ],
+            "zombieDesc": "Um CryptoZombie de Nível {levelNum} ",
+            "shareLinkText": "Eu acabei de completar a Lição 4 do #CryptoZombies! e derrotei o maligno zumbi IOTA! tente você também:"
         }
     },
     "zombieBattle": {
