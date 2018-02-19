@@ -257,7 +257,7 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 ## 그럼 이더리움에서는 어떻게 난수를 안전하게 만들어낼 수 있을까?
 
-블록체인의 전체 내용은 모든 참여자에게 공개되므로, 이건 풀기 어려운 문제이고 그 해답은 이 튜토리얼에를 벗어나네. 해결 방법들에 대해 궁금하다면 <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>이 StackOverflow 글</a>을 읽어보게. 하나의 방법은 이더리움 블록체인의 외부에서 난수 함수에 접근할 수 있도록 **_오라클_**을 사용하는 것이네. 
+블록체인의 전체 내용은 모든 참여자에게 공개되므로, 이건 풀기 어려운 문제이고 그 해답은 이 튜토리얼에를 벗어나네. 해결 방법들에 대해 궁금하다면 <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>이 StackOverflow 글</a>을 읽어보게. 하나의 방법은 이더리움 블록체인 외부의 난수 함수에 접근할 수 있도록 **_오라클_**을 사용하는 것이네. 
 
 물론, 네트워크 상의 수만 개의 이더리움 노드들이 다음 블록을 풀기 위해 경쟁하고 있으니, 내가 다음 블록을 풀 확률은 매우 낮을 것이네. 위에서 말한 부당한 방법을 쓰는 것은 많은 시간과 연산 자원을 필요로 할 것이야 - 하지만 보상이 충분히 크다면(내가 천억 원을 걸 수 있다든지?), 공격할 만한 가치가 있을 것이네.
 
