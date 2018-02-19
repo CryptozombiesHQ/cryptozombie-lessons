@@ -1,11 +1,71 @@
 ---
-title: Enfriamiento de los Zombis
+title: 공격으로 돌아가자!
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
+      "zombieattack.sol": |
+        import "./zombiehelper.sol";
+
+        contract ZombieBattle is ZombieHelper {
+          uint randNonce = 0;
+          uint attackVictoryProbability = 70;
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          // 1. 여기에 제어자를 추가하게
+          function attack(uint _zombieId, uint _targetId) external {
+            // 2. 여기서 함수 정의를 시작하게
+          }
+        }
+      "zombiehelper.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./zombiefeeding.sol";
+
+        contract ZombieHelper is ZombieFeeding {
+
+          uint levelUpFee = 0.001 ether;
+
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          function withdraw() external onlyOwner {
+            owner.transfer(this.balance);
+          }
+
+          function setLevelUpFee(uint _fee) external onlyOwner {
+            levelUpFee = _fee;
+          }
+
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
+            zombies[_zombieId].name = _newName;
+          }
+
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
+            zombies[_zombieId].dna = _newDna;
+          }
+
+          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+            uint[] memory result = new uint[](ownerZombieCount[_owner]);
+            uint counter = 0;
+            for (uint i = 0; i < zombies.length; i++) {
+              if (zombieToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+              }
+            }
+            return result;
+          }
+
+        }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
@@ -30,23 +90,33 @@ material:
 
           KittyInterface kittyContract;
 
+          modifier ownerOf(uint _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            _;
+          }
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Define la función `_triggerCooldown` aquí
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
 
-          // 2. Define la función `_isReady` aquí
+          function _isReady(Zombie storage _zombie) internal view returns (bool) {
+              return (_zombie.readyTime <= now);
+          }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
+            require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -54,7 +124,6 @@ material:
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
-
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
@@ -142,93 +211,37 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      import "./zombiehelper.sol";
 
-      import "./zombiefactory.sol";
+      contract ZombieBattle is ZombieHelper {
+        uint randNonce = 0;
+        uint attackVictoryProbability = 70;
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
-
-      contract ZombieFeeding is ZombieFactory {
-
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) external onlyOwner {
-          kittyContract = KittyInterface(_address);
+        function randMod(uint _modulus) internal returns(uint) {
+          randNonce++;
+          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
 
-        function _triggerCooldown(Zombie storage _zombie) internal {
-          _zombie.readyTime = uint32(now + cooldownTime);
-        }
-
-        function _isReady(Zombie storage _zombie) internal view returns (bool) {
-            return (_zombie.readyTime <= now);
-        }
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
+        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
           Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(_species) == keccak256("kitty")) {
-            newDna = newDna - newDna % 100 + 99;
-          }
-          _createZombie("NoName", newDna);
+          Zombie storage enemyZombie = zombies[_targetId];
+          uint rand = randMod(100);
         }
-
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
-        }
-
       }
 ---
 
-Ahora que tenemos la propiedad `readyTime` en nuestra estructura `Zombie`, vamos a pasar a `zombiefeeding.sol` e implementar el contador de enfriamiento.
+구조는 충분히 개선한 것 같군 - `zombieattack.sol`로 돌아가세.
 
-Vamos a modificar nuestro `feedAndMultiply` de tal manera que:
+이제 `ownerOf` 제어자도 사용할 수 있으니, 우린 `attack` 함수를 계속 정의해나갈 것이네. 
 
-1. Alimentarse activa el enfriamiento del zombi, y
+## 직접 해보기
 
-2. Los zombis no podrán alimentarse de gatitos hasta que su periodo de enfriamiento haya concluido
+1. 함수를 호출하는 사람이 `_zombieId`를 소유하고 있는지 확인하기 위해 `attack` 함수에 `ownerOf` 제어자를 추가하게.
 
-Esto hará que los zombis no se alimenten de gatitos ilimitados y se multipliquen durante todo el día. En el futuro, cuando añadamos la funcionalidad de batalla, haremos que el atacar a otros zombis también tenga su enfriamiento.
+2. 우리 함수에서 처음으로 해야 할 것은 두 좀비의 `storage` 포인터를 얻어서 그들과 상호작용 하기 쉽도록 하는 것이네.
 
-Primero, vamos a definir alguna función auxiliar que nos ajuste y verifique el `readyTime` del zombi.
-
-## Pasando estructuras como argumentos
-
-Puedes pasar un puntero storage a una estructura como argumento a una función `private` o `internal`. Esto es práctico, por ejemplo, para pasar entre funciones la estructura de nuestro `Zombie`.
-
-La sintaxis serí algo así:
-
-```
-function _doStuff(Zombie storage _zombie) internal {
-  // hacer cosas con _zombie
-}
-```
-
-De esta manera podemos pasar una referencia a nuestro zombi en una función en vez de pasar la ID del zombi y comprobar cual es.
-
-## Vamos a probarlo
-
-1. Empieza definiendo una función `_triggerCooldown`. Esta tomará 1 argumento, `_zombie`, un puntero a `Zombie storage`. La función deberá ser `internal`.
-
-2. El cuerpo de la función deberá inicializar `_zombie.readyTime` a `uint32(now + cooldownTime)`.
-
-3. Luego, crea una función llamada `_isReady`. Esta función tambien recibirá un argumento `Zombie storage` llamado `_zombie`. Esta será una función `internal view`, y devolverá un `bool`.
-
-4. El cuerpo de la función deberá devolver `(_zombie.readyTime <= now)`, que evaluará si es `true` o `false`. Esta función nos dirá si ha pasado el suficiente tiempo desde la última vez que un zombi se alimentó.
+  a. `Zombie storage`를 `myZombie`라는 이름으로 선언하고, 여기에 `zombies[_zombieId]`를 대입하게.
+  
+  b. `Zombie storage`를 `enemyZombie`라는 이름으로 선언하고, 여기에 `zombies[_targetId]`를 대입하게.
+  
+3. 우린 전투의 결과를 결정하기 위해 0과 99 사이의 난수를 사용할 것이네. 그러니 `uint`를 `rand`라는 이름으로 선언하고, 여기에 `randMod` 함수에 `100`을 인수로 사용한 값을 대입하게.

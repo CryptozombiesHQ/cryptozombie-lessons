@@ -97,7 +97,7 @@ Mas tarde haremos nuestra fórmula más complicada si queremos, añadiendole por
 
 1. Primero necesitamos estar seguro que el `_targetDna` no es mayor de 16 dígitos. Para ello, podemos fijar que el valor de `_targetDna` sea igual a `_targetDna % dnaModulus` para que únicamente guarde los últimos 16 dígitos.
 
-2. Después nuestra función deberá declarar un `uint` llamado `newDna`, y fijarle el valor del promedio entre el ADN de `myZombie` y el ADN de `_targetDna` (como en el ejmplo anterior).
+2. Después nuestra función deberá declarar un `uint` llamado `newDna`, y fijarle el valor del promedio entre el ADN de `myZombie` y el ADN de `_targetDna` (como en el ejemplo anterior).
 
   > Nota: Puedes acceder a las propiedades de `myZombie` usando `myZombie.name` y `myZombie.dna`
 

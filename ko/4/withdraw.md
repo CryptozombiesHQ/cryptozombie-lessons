@@ -1,17 +1,11 @@
 ---
-title: Random Numbers
+title: 출금
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      "zombieattack.sol": |
-        import "./zombiehelper.sol";
-
-        contract ZombieBattle is ZombieHelper {
-          // Start here
-        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -26,13 +20,9 @@ material:
             _;
           }
 
-          function withdraw() external onlyOwner {
-            owner.transfer(this.balance);
-          }
+          // 1. 여기에 withdraw 함수를 생성하게
 
-          function setLevelUpFee(uint _fee) external onlyOwner {
-            levelUpFee = _fee;
-          }
+          // 2. 여기에 setLevelUpFee를 생성하게
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -203,77 +193,94 @@ material:
 
         }
     answer: >
-      import "./zombiehelper.sol";
+      pragma solidity ^0.4.19;
 
-      contract ZombieBattle is ZombieHelper {
-        uint randNonce = 0;
+      import "./zombiefeeding.sol";
 
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+      contract ZombieHelper is ZombieFeeding {
+
+        uint levelUpFee = 0.001 ether;
+
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
         }
-      }
 
+        function withdraw() external onlyOwner {
+          owner.transfer(this.balance);
+        }
+
+        function setLevelUpFee(uint _fee) external onlyOwner {
+          levelUpFee = _fee;
+        }
+
+        function levelUp(uint _zombieId) external payable {
+          require(msg.value == levelUpFee);
+          zombies[_zombieId].level++;
+        }
+
+        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
+          zombies[_zombieId].name = _newName;
+        }
+
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
+          zombies[_zombieId].dna = _newDna;
+        }
+
+        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          uint[] memory result = new uint[](ownerZombieCount[_owner]);
+          uint counter = 0;
+          for (uint i = 0; i < zombies.length; i++) {
+            if (zombieToOwner[i] == _owner) {
+              result[counter] = i;
+              counter++;
+            }
+          }
+          return result;
+        }
+
+      }
 ---
 
-Great! Now let's figure out the battle logic.
+이전 챕터에서, 우린 컨트랙트에 이더를 보내는 방법을 배웠네. 그럼 이더를 보낸 다음에는 어떤 일이 일어날까?
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+자네가 컨트랙트로 이더를 보내면, 해당 컨트랙트의 이더리움 계좌에 이더가 저장되고 거기에 갇히게 되지 - 자네가 컨트랙트로부터 이더를 인출하는 함수를 만들지 않는다면 말이야.
 
-The real answer here is, you can't. Well, at least you can't do it safely.
-
-Let's look at why.
-
-## Random number generation via `keccak256`
-
-The best source of randomness we have in Solidity is the `keccak256` hash function.
-
-We could do something like the following to generate a random number:
+자네는 다음과 같이 컨트랙트에서 이더를 인출하는 함수를 작성할 수 있네:
 
 ```
-// Generate a random number between 1 and 100:
-uint randNonce = 0;
-uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
-randNonce++;
-uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
+contract GetPaid is Ownable {
+  function withdraw() external onlyOwner {
+    owner.transfer(this.balance);
+  }
+}
 ```
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
+우리가 `Ownable` 컨트랙트를 import 했다고 가정하고 `owner`와 `onlyOwner`를 사용하고 있다는 것을 참고하게.
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+자네는 `transfer` 함수를 사용해서 이더를 특정 주소로 전달할 수 있네. 그리고 `this.balance`는 컨트랙트에 저장돼있는 전체 잔액을 반환하지. 그러니 100명의 사용자가 우리의 컨트랙트에 1이더를 지불했다면, `this.balance`는 100이더가 될 것이네.
 
-### This method is vulnerable to attack by a dishonest node
+자네는 `transfer` 함수를 써서 특정한 이더리움 주소에 돈을 보낼 수 있네. 예를 들어, 만약 누군가 한 아이템에 대해 초과 지불을 했다면, 이더를 `msg.sender`로 되돌려주는 함수를 만들 수도 있네:
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+```
+uint itemFee = 0.001 ether;
+msg.sender.transfer(msg.value - itemFee);
+```
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+혹은 구매자와 판매자가 존재하는 컨트랙트에서, 판매자의 주소를 storage에 저장하고, 누군가 판매자의 아이템을 구매하면 구매자로부터 받은 요금을 그에게 전달할 수도 있겠지: `seller.transfer(msg.value)`.
 
-**This makes our random number function exploitable.**
+이런 것들이 이더리움 프로그래밍을 아주 멋지게 만들어주는 예시들이네 - 자네는 이것처럼 누구에게도 제어되지 않는 분산 장터들을 만들 수도 있네.
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+## 직접 해보기
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+1. 우리 컨트랙트에 `withdraw` 함수를 생성하게. 이 함수는 위에서 본 `GetPaid` 예제와 동일해야 하네.
 
-## So how do we generate random numbers safely in Ethereum?
+2. 이더의 가격은 과거에 비해 10배 이상 뛰었네. 그러니 지금 이 글을 쓰는 시점에서는 0.001이더가 1달러 정도 되지만, 만약 이게 다시 10배가 되면 0.001 ETH는 10달러가 될 것이고 우리의 게임은 더 비싸질 것이네.
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside of the Ethereum blockchain.
-
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
-
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
-
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
-
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
-
-## Put it to the test
-
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
-
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
-
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
-
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
-
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+  그러니 컨트랙트의 소유자로서 우리가 `levelUpFee`를 설정할 수 있도록 하는 함수를 만드는 것이 좋겠지.
+  
+  a. `setLevelupFee`라는 이름의, `uint _fee`를 하나의 인자로 받고 `external`이며 `onlyOwner` 제어자를 사용하는 함수를 생성하게.
+  
+  b. 이 함수는 `levelUpFee`를 `_fee`로 설정해야 하네.

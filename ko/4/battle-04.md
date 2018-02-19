@@ -1,5 +1,5 @@
 ---
-title: Enfriamiento de los Zombis
+title: 공통 로직 구조 개선하기(Refactoring)
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -30,29 +30,103 @@ material:
 
           KittyInterface kittyContract;
 
+          // 1. 여기에 제어자를 생성하게
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Define la función `_triggerCooldown` aquí
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
 
-          // 2. Define la función `_isReady` aquí
+          function _isReady(Zombie storage _zombie) internal view returns (bool) {
+              return (_zombie.readyTime <= now);
+          }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          // 2. 함수 정의 부분에 제어자를 추가하게:
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+            // 3. 이 줄을 지우게
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
+            require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
             feedAndMultiply(_zombieId, kittyDna, "kitty");
+          }
+        }
+      "zombieattack.sol": |
+        import "./zombiehelper.sol";
+
+        contract ZombieBattle is ZombieHelper {
+          uint randNonce = 0;
+          uint attackVictoryProbability = 70;
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          function attack(uint _zombieId, uint _targetId) external {
+          }
+        }
+      "zombiehelper.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./zombiefeeding.sol";
+
+        contract ZombieHelper is ZombieFeeding {
+
+          uint levelUpFee = 0.001 ether;
+
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          function withdraw() external onlyOwner {
+            owner.transfer(this.balance);
+          }
+
+          function setLevelUpFee(uint _fee) external onlyOwner {
+            levelUpFee = _fee;
+          }
+
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
+          }
+
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            zombies[_zombieId].name = _newName;
+          }
+
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            zombies[_zombieId].dna = _newDna;
+          }
+
+          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+            uint[] memory result = new uint[](ownerZombieCount[_owner]);
+            uint counter = 0;
+            for (uint i = 0; i < zombies.length; i++) {
+              if (zombieToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+              }
+            }
+            return result;
           }
 
         }
@@ -165,6 +239,11 @@ material:
 
         KittyInterface kittyContract;
 
+        modifier ownerOf(uint _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
+          _;
+        }
+
         function setKittyContractAddress(address _address) external onlyOwner {
           kittyContract = KittyInterface(_address);
         }
@@ -177,15 +256,16 @@ material:
             return (_zombie.readyTime <= now);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
           Zombie storage myZombie = zombies[_zombieId];
+          require(_isReady(myZombie));
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           if (keccak256(_species) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
+          _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -193,42 +273,37 @@ material:
           (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
           feedAndMultiply(_zombieId, kittyDna, "kitty");
         }
-
       }
 ---
 
-Ahora que tenemos la propiedad `readyTime` en nuestra estructura `Zombie`, vamos a pasar a `zombiefeeding.sol` e implementar el contador de enfriamiento.
+누가 우리의 `attack` 함수를 실행하든지 - 우리는 사용자가 공격에 사용하는 좀비를 실제로 소유하고 있다는 것을 확실히 하고 싶네. 만약 자네가 다른 사람의 좀비를 사용해서 공격할 수 있다면 보안에 문제가 되는 부분일 것이야!
 
-Vamos a modificar nuestro `feedAndMultiply` de tal manera que:
+함수를 호출하는 사람이 그가 사용한 `_zombieId`의 소유자인지 확인할 방법을 생각해낼 수 있겠는가?
 
-1. Alimentarse activa el enfriamiento del zombi, y
+좀 더 생각해보면서, 자네 스스로 답을 생각해낼 수 있는지 학인해보게.
 
-2. Los zombis no podrán alimentarse de gatitos hasta que su periodo de enfriamiento haya concluido
+시간을 가지고... 아이디어를 위해 지난 레슨들을 참고해보게...
 
-Esto hará que los zombis no se alimenten de gatitos ilimitados y se multipliquen durante todo el día. En el futuro, cuando añadamos la funcionalidad de batalla, haremos que el atacar a otros zombis también tenga su enfriamiento.
+해결책은 아래에 있지만, 생각이 나기 전에는 보지 말도록 하게.
 
-Primero, vamos a definir alguna función auxiliar que nos ajuste y verifique el `readyTime` del zombi.
+## 해결책
 
-## Pasando estructuras como argumentos
-
-Puedes pasar un puntero storage a una estructura como argumento a una función `private` o `internal`. Esto es práctico, por ejemplo, para pasar entre funciones la estructura de nuestro `Zombie`.
-
-La sintaxis serí algo así:
+우린 이전 레슨들에서 이런 종류의 확인을 여러 번 해왔었네. `changeName()`, `changeDna()`, `feedMultiply()`에서, 우리는 다음과 같은 방식을 썼네:
 
 ```
-function _doStuff(Zombie storage _zombie) internal {
-  // hacer cosas con _zombie
-}
+require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-De esta manera podemos pasar una referencia a nuestro zombi en una función en vez de pasar la ID del zombi y comprobar cual es.
+우리의 `attack` 함수에도 똑같은 내용을 적용할 필요가 있네. 동일한 내용을 여러 번 사용하고 있으니, 코드를 정리하고 반복을 피할 수 있도록 이 내용을 이것만의 `modifier`로 옮기도록 하세.
 
-## Vamos a probarlo
+## 직접 해보기
 
-1. Empieza definiendo una función `_triggerCooldown`. Esta tomará 1 argumento, `_zombie`, un puntero a `Zombie storage`. La función deberá ser `internal`.
+`zombiefeeding.sol`을 다시 보도록 하겠네. 저 내용을 처음으로 썼던 곳이니 말이야. 확인 부분을 그 부분만의 `modifier`로 만들어 구조를 개선하겠네.
 
-2. El cuerpo de la función deberá inicializar `_zombie.readyTime` a `uint32(now + cooldownTime)`.
+1. `modifier`를 `onwerOf`라는 이름으로 만들게. 이 제어자는 `_zombieId`(`uint`)를 1개의 인수로 받을 것이네.
 
-3. Luego, crea una función llamada `_isReady`. Esta función tambien recibirá un argumento `Zombie storage` llamado `_zombie`. Esta será una función `internal view`, y devolverá un `bool`.
+  제어자 내용에서는 `msg.sender`와 `zombieToOwner[_zombieId]`가 같은지 `require`로 확인하고, 함수를 실행해야 하네. 제어자의 문법이 기억이 나지 않는다면 `zombiehelper.sol`을 참고하면 되네.
+  
+2. `feedAndMultiply`의 함수 정의 부분을 `ownerOf` 제어자를 사용하도록 바꾸게.
 
-4. El cuerpo de la función deberá devolver `(_zombie.readyTime <= now)`, que evaluará si es `true` o `false`. Esta función nos dirá si ha pasado el suficiente tiempo desde la última vez que un zombi se alimentó.
+3. 이제 `modifier`를 사용하게 됐으니, `require(msg.sender == zombieToOwner[_zombieId]);` 줄을 지워도 되네.

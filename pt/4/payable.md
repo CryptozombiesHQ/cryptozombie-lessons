@@ -1,17 +1,11 @@
 ---
-title: Random Numbers
-actions: ['checkAnswer', 'hints']
+title: Pagáveis
+actions: ['verificarResposta', 'dicas']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      "zombieattack.sol": |
-        import "./zombiehelper.sol";
-
-        contract ZombieBattle is ZombieHelper {
-          // Start here
-        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -19,25 +13,14 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          uint levelUpFee = 0.001 ether;
+          // 1. Defina levelUpFee aqui
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          function withdraw() external onlyOwner {
-            owner.transfer(this.balance);
-          }
-
-          function setLevelUpFee(uint _fee) external onlyOwner {
-            levelUpFee = _fee;
-          }
-
-          function levelUp(uint _zombieId) external payable {
-            require(msg.value == levelUpFee);
-            zombies[_zombieId].level++;
-          }
+          // 2. Crie a função levelUp aqui
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -203,77 +186,110 @@ material:
 
         }
     answer: >
-      import "./zombiehelper.sol";
+      pragma solidity ^0.4.19;
 
-      contract ZombieBattle is ZombieHelper {
-        uint randNonce = 0;
+      import "./zombiefeeding.sol";
 
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+      contract ZombieHelper is ZombieFeeding {
+
+        uint levelUpFee = 0.001 ether;
+
+        modifier aboveLevel(uint _level, uint _zombieId) {
+          require(zombies[_zombieId].level >= _level);
+          _;
         }
-      }
 
+        function levelUp(uint _zombieId) external payable {
+          require(msg.value == levelUpFee);
+          zombies[_zombieId].level++;
+        }
+
+        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
+          zombies[_zombieId].name = _newName;
+        }
+
+        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
+          require(msg.sender == zombieToOwner[_zombieId]);
+          zombies[_zombieId].dna = _newDna;
+        }
+
+        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          uint[] memory result = new uint[](ownerZombieCount[_owner]);
+          uint counter = 0;
+          for (uint i = 0; i < zombies.length; i++) {
+            if (zombieToOwner[i] == _owner) {
+              result[counter] = i;
+              counter++;
+            }
+          }
+          return result;
+        }
+
+      }
 ---
 
-Great! Now let's figure out the battle logic.
+Até agora, nós cobrimos algumas **_funções modificadoras_**. Pode até ser difícil tentar lembrar de tudo, então vamos para uma rápida revisão:
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+1. Temos os modificadores de visibilidade que controlam quando em onde a função pode ser chamada: `private` significa que somente pode ser chamada de outras funções dentro do contrato; `internal` é como `private` mas também pode ser chamada por contratos que herdaram este contrato; `external` pode ser chamada somente de fora do contrato; e finalmente `public` que pode ser chamada de qualquer lugar, tanto internamente quando externamente.
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+2. Nós também temos os modificadores de estado, que nós dizem como as funções interagem com o Blockchain: `view` nos diz que ao rodar a função, nenhum dado será salvo/alterado. `pure` nos diz que não somente a função não irá salvar algum dado na blockchain, mas também que não irá ler qualquer dado da blockchain. Ambas não custam qualquer gas para chamar se forem chamadas externamente ao contrato (mas irão custar se chamadas internamente por outra função).
 
-Let's look at why.
+3. Então nós temos os `modifiers` (modificadores personalizáveis), que aprendemos sobre na Lição 3: `onlyOwner` e `aboveLevel` por exemplo. Para esses podemos definir uma lógica customizada para determinar como eles irão afetar a função.
 
-## Random number generation via `keccak256`
-
-The best source of randomness we have in Solidity is the `keccak256` hash function.
-
-We could do something like the following to generate a random number:
+Tais modificadores podem ser empilhados juntos na definição da função, conforme exemplo:
 
 ```
-// Generate a random number between 1 and 100:
-uint randNonce = 0;
-uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
-randNonce++;
-uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
+function test() external view onlyOwner anotherModifier { /* ... */ }
 ```
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
+Neste capítulo, iremos introduzir mais um modificador de função: `payable`.
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+## O Modificador `payable`
 
-### This method is vulnerable to attack by a dishonest node
+Funções `payable` são parte do que faz o Solidity e Ethereum tão legais - eles são um tipo de função especial que podem receber Ether.
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+Vamos imaginar por um minuto. Quando você chama uma função em API em um servidor web, você não pode enviar Dólares junto com a sua função — também não pode enviar Bitcoin.
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+Mas em Ethereum, por que ambos o dinheiro (_Ether_), e o dado (*corpo da transação*), e o código do contrato todos estão contidos em Ethereum, é possível para você chamar uma função **e** pagar algum dinheiro para um contrato a qualquer momento.
 
-**This makes our random number function exploitable.**
+Isto permite um lógica realmente bem interessante, como exigir um certo pagamento para que o contrato execute uma função.
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+## Vejamos um exemplo
+```
+contract OnlineStore {
+  function buySomething() external payable {
+    // Verifica para ter certeza que 0.001 ether foi enviado:
+    require(msg.value == 0.001 ether);
+    // Se enviado, transfira um item digital para o chamador da função
+    transferThing(msg.sender);
+  }
+}
+```
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Aqui, `msg.value` é a forma para ver quanto Ether foi enviado para o contrato, e `ether` é uma unidade interna.
 
-## So how do we generate random numbers safely in Ethereum?
+O que aconteceu aqui é que alguém queria chamar uma função da web3.js (de alguma interface JavaScript da DApp) conforme exemplo:
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside of the Ethereum blockchain.
+```
+// Assumindo que `OnlineStore` aponta para o seu contrato no Ethereum:
+OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
+```
 
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+Perceba o campo `value` (valor), onde a função javascript irá especificar quanto `ether` à enviar (0.001). Se você pensar que a transação é como um envelope, e os parâmetros que você envia para a chamada da função são os conteúdos da carta que você colocou dentro, então adicionar o `value` é como colocar dinheiro dentro do envelope - a carta e o dinheiro serão entregues juntos ao destinatário.
 
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
+>Nota: Se a função não for marcada como `payable` e você tentar enviar Ether como feito acima, a função irá rejeitar a sua transação.
 
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
+## Vamos testar
 
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+Vamos criar uma função `payable` em nosso jogo de zumbi.
 
-## Put it to the test
+Digamos que nosso jogo tem uma característica onde os usuários podem pagar ETH para aumentar os níveis dos zumbis. O ETH será guardado no contrato, que pertence a você - este é um simples exemplo de como você pode ganhar dinheiro com os seus jogos!
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+1. Defina um `uint` chamado `levelUpFee`, e atribua igual a `0.001 ether`.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
+2. Crie uma função chamada `levelUp`. Que terá um parâmetro, `_zombieId`, um `uint`. E que deverá ser `external` e `payable`.
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+3. A função primeiro deverá exigir com o `require` que o `msg.value` seja igual ao `levelUpFee`.
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
-
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+4. Então deverá incrementar o nível `level` do zumbi: `zombies[_zombieId].level++`.

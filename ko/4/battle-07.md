@@ -1,5 +1,5 @@
 ---
-title: Unidades de Tiempo
+title: 좀비 승리와 패배
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -17,13 +17,14 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
-            // 1. Define `cooldownTime` aquí
+            uint cooldownTime = 1 days;
 
             struct Zombie {
-                string name;
-                uint dna;
-                uint32 level;
-                uint32 readyTime;
+              string name;
+              uint dna;
+              uint32 level;
+              uint32 readyTime;
+              // 1. 여기에 새로운 속성을 추가하게
             }
 
             Zombie[] public zombies;
@@ -32,8 +33,8 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 2. Actualiza la siguiente línea:
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
+                // 2. 여기서 새로운 좀비의 생성을 수정하게:
+                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -50,6 +51,67 @@ material:
                 randDna = randDna - randDna % 100;
                 _createZombie(_name, randDna);
             }
+
+        }
+      "zombieattack.sol": |
+        import "./zombiehelper.sol";
+
+        contract ZombieBattle is ZombieHelper {
+          uint randNonce = 0;
+          uint attackVictoryProbability = 70;
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+            Zombie storage myZombie = zombies[_zombieId];
+            Zombie storage enemyZombie = zombies[_targetId];
+            uint rand = randMod(100);
+          }
+        }
+      "zombiehelper.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./zombiefeeding.sol";
+
+        contract ZombieHelper is ZombieFeeding {
+
+          uint levelUpFee = 0.001 ether;
+
+          modifier aboveLevel(uint _level, uint _zombieId) {
+            require(zombies[_zombieId].level >= _level);
+            _;
+          }
+
+          function withdraw() external onlyOwner {
+            owner.transfer(this.balance);
+          }
+
+          function setLevelUpFee(uint _fee) external onlyOwner {
+            levelUpFee = _fee;
+          }
+
+          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
+            zombies[_zombieId].name = _newName;
+          }
+
+          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
+            zombies[_zombieId].dna = _newDna;
+          }
+
+          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+            uint[] memory result = new uint[](ownerZombieCount[_owner]);
+            uint counter = 0;
+            for (uint i = 0; i < zombies.length; i++) {
+              if (zombieToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+              }
+            }
+            return result;
+          }
 
         }
       "zombiefeeding.sol": |
@@ -76,19 +138,33 @@ material:
 
           KittyInterface kittyContract;
 
+          modifier ownerOf(uint _zombieId) {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            _;
+          }
+
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
+
+          function _isReady(Zombie storage _zombie) internal view returns (bool) {
+              return (_zombie.readyTime <= now);
+          }
+
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
+            require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -96,7 +172,6 @@ material:
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
-
         }
       "ownable.sol": |
         /**
@@ -117,6 +192,7 @@ material:
             owner = msg.sender;
           }
 
+
           /**
            * @dev Throws if called by any account other than the owner.
            */
@@ -124,6 +200,7 @@ material:
             require(msg.sender == owner);
             _;
           }
+
 
           /**
            * @dev Allows the current owner to transfer control of the contract to a newOwner.
@@ -154,6 +231,8 @@ material:
             uint dna;
             uint32 level;
             uint32 readyTime;
+            uint16 winCount;
+            uint16 lossCount;
           }
 
           Zombie[] public zombies;
@@ -162,7 +241,7 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-              uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
+              uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               NewZombie(id, _name, _dna);
@@ -183,54 +262,25 @@ material:
       }
 ---
 
-La propiedad `level` es autoexplicativa. Más adelante, cuando creemos el sistema de batalla, los zombis que ganen más batallas subirán de nivel y tendrán acceso a más habilidades.
+우리의 좀비 게임에서, 우린 좀비들이 얼마나 많이 이기고 졌는지를 추적하고 싶게 될 것이네. 이렇게 하면 우리는 게임 상에서 "좀비 순위표"를 유지할 수 있게 되지.
 
-La propiedad `readyTime` requiere algo más de explicación. El objetivo es añadir un "periodo de enfriamento", una cantidad de tiempo que el zombi debe esperar después de atacar o alimentarse antes de poder volver a hacerlo. Sin esto, el zombi podría atacar y multiplicarse 1.000 veces al día, lo que haría muy fácil el juego.
+우린 DApp에서 다양한 방식으로 이 데이터를 저장할 수 있네 - 개별적인 매핑으로, 순위표 구조체로, 혹은 `Zombie` 구조체 자체에 넣을 수도 있네.
 
-Para controlar el tiempo que necesita esperar un zombi antes de volver a atacar, podemos usar las unidades de tiempo de Solidity.
+우리가 이 데이터로 어떻게 상호작용 할 것인지에 따라 각각의 방식 모두 장단점이 있네. 이 튜토리얼에서는, 간결함을 유지할 수 있도록 `Zombie` 구조체에 상태를 저장하도록 하고, 이들을 `winCount`와 `lossCount`로 이름짓도록 하겠네.
 
-## Unidades de tiempo
+이제 `zombiefactory.sol`로 돌아가서 우리 `Zombie` 구조체에 이 속성들을 추가하게.
 
-Solidity proporciona algunas unidades nativas para trabajar con el tiempo.
+## 직접 해보기
 
-La variable `now` devolverá el actual tiempo unix (la cantidad de segundos que han pasado desde el 1 de Enero de 1970). El tiempo unix cuando escribía esto es `1515527488`.
+1. `Zombie` 구조체가 2개의 속성을 더 가지도록 수정하게:
 
->Nota: El tiempo unix es tradicionalmente guardado en un número de 32 bits. Esto nos llevará a el problema del "Año 2038", donde las variables timestamp de tipo unix desbordarán y dejará inservibles muchos sistemas antiguos. Así que si queremos que nuestra DApp siga funcionando después de 20 años, podemos usar un número de 64 bits - pero de mientras nuestros usuarios tendrán que gastar más gas para usar nuestra DApp. ¡Decisiones de diseño!
+  a. `winCount`, `uint16` 타입
 
-Solidity también contiene `segundos`, `minutos`, `horas`, `días`, `semanas` y `años` como unidades de tiempo. Estos convertirán a un `uint` la cantidad de segundos que contengan esos números. Es decir `1 minuto` son `60`, `1 hora` son `3600` (60 segundos x 60 minutos), `1 día` son `86400` (24 horas x 60 minutos x 60 segundos), etc.
+  b. `lossCount`, 역시 `uint16` 타입
 
-Aquí un ejemplo de como estas unidades pueden ser útiles:
+  >참고: 기억하게, 구조체 안에서 `uint`들을 압축(pack)할 수 있으니, 우리가 다룰 수 있는 가장 작은 `uint` 타입을 사용하는 것이 좋을 것이네. `uint8`은 너무 작을 것이네. 2^8 = 256이기 때문이지 - 만약 우리 좀비가 하루에 한 번씩 공격한다면, 일 년 안에 데이터 크기가 넘쳐버릴 수 있을 것이네. 하지만 2^16은 65536이네 - 그러니 한 사용자가 매일 179년 동안 이기거나 지지 않는다면, 이걸로 안전할 것이네.
+  
+2. 이제 우리는 `Zombie` 구조체에 새로운 속성들을 가지게 되었으니, `_createZombie()`의 함수 정의 부분을 수정해야 할 필요가 있네.
 
-```
-uint lastUpdated;
-
-// Ajustamos `lastUpdated` a `now`
-function updateTimestamp() public {
-  lastUpdated = now;
-}
-
-// Devolverá `true` si han pasado 5 minutos desde que `updateTimestamp`
-// fue llamado, `false` si no han pasdo 5 minutos todavía
-function fiveMinutesHavePassed() public view returns (bool) {
-  return (now >= (lastUpdated + 5 minutes));
-}
-```
-
-Puedes usar estas unidades de tiempo para la característica de `enfriamiento` de nuestro Zombi.
-
-
-## Vamos a probarlo
-
-Vamos a añadir un tiempo de enfriamiento a nuestra DApp, y hacer que los zombis tengan que esperar **1 día** antes de volver atacar o alimentarse.
-
-1. Declara un `uint` llamado `cooldownTime`, inicializalo a `1 days`. (Olvídate de la gramática pobre - si lo inicializas a "1 day", ¡No va a compilar!)
-
-2. Como añadimos `level` y `readyTime` a nuestra estructura `Zombie` en el anterior capítulo, necesitamos actualizar `_createZombie()` para usar el número correcto de argumentos cuando creemos una nueva estructura `Zombie`.
-
-  Actualiza la línea `zombies.push` para añadir 2 argumentos más: `1` (para `level`), y `uint32(now + cooldownTime)` (para `readyTime`).
-
->Nota: El `uint32(...)` es necesario porque `now` devuelve un `uint256` por defecto. Así que necesitamos convertirlo explícitamente a `uint32`.
-
-`now + cooldownTime` será igual al tiempo unix (en segundos) más el numero en segundos de 1 día — que será igual que el tiempo unix en segundos de 1 día a partir de hoy. Más adelante podemos comparar si el `readyTime` del zombi es mayor a `now` para ver si ha pasado el suficiente tiempo para poder volver a usarlo.
-
-En el próximo capítulo implementaremos la funcionalidad para limitar las acciones basadas en `readyTime`.
+  각각의 새로운 좀비가 `0`승 `0`패를 가지고 생성될 수 있도록 좀비 생성의 정의 부분을 변경하게.
+  

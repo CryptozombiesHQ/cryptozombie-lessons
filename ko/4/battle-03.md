@@ -1,5 +1,5 @@
 ---
-title: Random Numbers
+title: 좀비 싸움
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -10,7 +10,15 @@ material:
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
-          // Start here
+          uint randNonce = 0;
+          // 여기에 attackVictoryProbabillity를 만들게
+
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce++;
+            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          }
+
+          // 여기에 새로운 함수를 만들게
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -207,73 +215,35 @@ material:
 
       contract ZombieBattle is ZombieHelper {
         uint randNonce = 0;
+        uint attackVictoryProbability = 70;
 
         function randMod(uint _modulus) internal returns(uint) {
           randNonce++;
           return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
-      }
 
+        function attack(uint _zombieId, uint _targetId) external {
+        }
+      }
 ---
 
-Great! Now let's figure out the battle logic.
+이제 우리의 컨트랙트에 어느 정도 예측이 불가능하도록 하는 성질이 생겼으니, 좀비 전투에서 결과를 계산할 때 이를 사용할 수 있네.
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+좀비 전투는 다음과 같이 진행될 것이네:
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+- 자네가 자네 좀비 중 하나를 고르고, 상대방의 좀비를 공격 대상으로 선택하네.
+- 자네가 공격하는 쪽의 좀비라면, 자네는 70%의 승리 확률을 가지네. 방어하는 쪽의 좀비는 30%의 승리 확률을 가질 것이네.
+- 모든 좀비들(공격, 방어 모두)은 전투 결과에 따라 증가하는 `winCount`와 `lossCount`를 가질 것이네.
+- 공격하는 쪽의 좀비가 이기면, 좀비의 레벨이 오르고 새로운 좀비가 생기네.
+- 좀비가 지면, 아무것도 일어나지 않네(좀비의 `lossCount`가 증가하는 것 빼고 말이야).
+- 좀비가 이기든 지든, 공격하는 쪽 좀비의 재사용 대기시간이 활성화될 것이네.
 
-Let's look at why.
+구현할 내용이 많으니, 다음 챕터로 진행하면서 나눠서 구현할 것이네.
 
-## Random number generation via `keccak256`
+## 직접 해보기
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+1. 컨트랙트에 `attackVictoryProbabillity`라는 이름의 `uint` 변수를 추가하고, 여기에 `70`을 대입하게.
 
-We could do something like the following to generate a random number:
+2. `attack`이라는 이름의 함수를 생성하게. 이 함수는 두 개의 매개변수를 받을 것이네: `_zombieId`(`uint`)와 `_targetId`(`uint`)이네. 이 함수는 `external`이어야 하네.
 
-```
-// Generate a random number between 1 and 100:
-uint randNonce = 0;
-uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
-randNonce++;
-uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
-```
-
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
-
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
-
-### This method is vulnerable to attack by a dishonest node
-
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
-
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
-
-**This makes our random number function exploitable.**
-
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
-
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
-
-## So how do we generate random numbers safely in Ethereum?
-
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside of the Ethereum blockchain.
-
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
-
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
-
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
-
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
-
-## Put it to the test
-
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
-
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
-
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
-
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
-
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+지금은 함수의 내용을 비워두도록 하게.
