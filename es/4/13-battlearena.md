@@ -1,5 +1,5 @@
 ---
-title: battle arena
+título: La arena de batalla
 actions: ['checkAnswer', 'hints']
 material:
   saveZombie: false
@@ -11,24 +11,24 @@ material:
     answer: 1
 ---
 
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+En la lección 1, creamos una función que lleva un nombre, lo usa para generar un zombie aleatorio, y agrega al zombie a la base de datos de zombies de nuestra aplicación en la blockchain.
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+En la lección 2, vamos a hacer que nuestra aplicación sea lo mas parecida a un juego: Vamos a hacerlo multijugador, y además agregaremos una manera mas divertida de crear zombies en lugar de solo generarlos al azar.
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+¿Cómo vamos a crear nuevos zombies? Haciendo que nuestros zombies se "alimenten" de otras formas de vida!
 
-## Zombie Feeding
+## Alimentando a los Zombie
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+Cuando un zombie se alimenta, infecta al huesped con un virus. El virus luego convierte al huesped en un nuevo zombie que se une a tu ejercito. El ADN del nuevo zombie se calculará a partir del ADN del zombie anterior y el ADN del huesped.
 
-And what do our zombies like to feed on most?
+¿Y con qué es que a nuestros zombies les gusta alimentarse más?
 
-To find that out... You'll have to complete lesson 2!
+Para descubrirlo... Tendras que terminar la lección 2!
 
-# Put it to the test
+# Pongamoslo a prueba
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
+Hay una demostración simple de alimentación a la derecha. ¡Haga clic en el humano para ver que ocurre cuando tu zombie se alimenta!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+Usted puede ver que el ADN del nuevo zombie esta determinado por el ADN del zombie original, asi como el ADN del huesped.
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+Cuando este listo, haga clic en "Siguiente capítulo" para continuar, y comencemos haciendo que nuestro juego sea multijugador.
