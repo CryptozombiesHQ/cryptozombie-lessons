@@ -246,7 +246,7 @@ material:
 
 Dans le chapitre précédent, nous avons vu comment envoyer des Ether à un contrat. Qu'arrive-t-il une fois que vous les avez envoyés ?
 
-Après avoir envoyé des Ether à un contrat, ils sont stockés dans le compte Ethereum du contrat, et seront bloqués ici - à part si vous ajoutez une fonction pour retirer les Ether du contrat.
+Après avoir envoyé des Ether à un contrat, ils sont stockés dans le compte Ethereum du contrat, et resteront ici - à part si vous ajoutez une fonction pour retirer les Ether du contrat.
 
 Vous pouvez écrire une fonction pour retirer des Ether du contrat de cette manière :
 
@@ -262,14 +262,14 @@ Vous remarquerez que nous utilisons `owner` et `onlyOwner` du contrat `Ownable`,
 
 Vous pouvez transférer des Ether à une adresse en utilisant la fonction `transfer`, et `this.balance` retournera la balance totale stockée sur le contrat. Si 100 utilisateurs ont payé 1 Ether à votre contrat, `this.balance` sera égal à 100 Ether.
 
-Vous pouvz utilisez `transfer` pour envoyer des fonds à n'importe quelle adresse Ethereum. Par exemple, vous pouvez avoir une fonction qui renvoie les Ether à `msg.sender` s'il paye trop cher pour un article :
+Vous pouvez utilisez `transfer` pour envoyer des fonds à n'importe quelle adresse Ethereum. Par exemple, vous pouvez avoir une fonction qui renvoie les Ether à `msg.sender` s'il paye trop cher pour un article :
 
 ```
 uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-Ou dans un contrat avec un acheteur et un vendeur, vous pouvez stocker l'adresse du vendeur, et quand quelqu'un achète son article, lui envoyer les frais payés par l'acheteur : `seller.transfer(msg.value)`.
+Ou dans un contrat avec un acheteur et un vendeur, vous pouvez stocker l'adresse du vendeur, et quand quelqu'un achète son article, lui envoyer le montant payés par l'acheteur : `seller.transfer(msg.value)`.
 
 Ce sont quelques exemples de ce qui rend la programmation Ethereum vraiment cool - vous pouvez avoir des marchés décentralisés qui ne sont contrôlés par personne.
 
@@ -277,7 +277,7 @@ Ce sont quelques exemples de ce qui rend la programmation Ethereum vraiment cool
 
 1. Créez une fonction `withdraw` dans notre contrat, qui devra être identique à l'exemple `GetPaid` ci-dessus.
 
-2. Le prix de l'Ether a été multiplié par plus de 10 l'année dernière. Donc si 0.001 ether est environ 1$ au moment où j'écris ces lignes, si c'est encore multiplié par 10, 0.001 ETH seront 10$ et notre jeu deviendra beaucoup plus cher.
+2. Le prix de l'Ether a été multiplié par plus de 10 l'année dernière. Donc si 0.001 ether vaut environ 1$ au moment où j'écris ces lignes, si c'est encore multiplié par 10, 0.001 ETH vaudront 10$ et notre jeu deviendra beaucoup plus cher.
 
   C'est donc une bonne idée de créer une fonction qui nous permet en tant que propriétaire de changer le `levelUpFee`.
 

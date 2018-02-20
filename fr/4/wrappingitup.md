@@ -26,4 +26,4 @@ Après avoir gagné le combat :
 
 3. Vous aurez un nouveau zombie à votre armée !
 
-Allez-y et essayer le combat, puis passez au prochain chapitre pour terminer la leçon.
+Allez-y et essayez le combat, puis passez au prochain chapitre pour terminer la leçon.

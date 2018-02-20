@@ -1,5 +1,5 @@
 ---
-title: Batailles de zombies
+title: Combats de zombies
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -209,13 +209,13 @@ material:
 
 Maintenant que nous en savons plus sur les fonctions payables et les balances de contrat, il est temps d'ajouter des fonctionnalités pour nos combats de zombies !
 
-Pour reprendre le format des chapitres précédents, nous allons organiser notre code en créant un nouveau fichier / contrat pour la fonctionnalité d'attaque qui importera de notre contrat précédent.
+Pour reprendre le format des chapitres précédents, nous allons organiser notre code en créant un nouveau fichier / contrat pour la fonctionnalité d'attaque qui importera notre contrat précédent.
 
 ## A votre tour
 
 Passons en revue la création d'un nouveau contrat. La répétition conduit à la maîtrise !
 
-Si vous ne vous rappelez plus de la syntaxe pour le faire, regardez `zombiehelper.sol` - mais essayer de le faire sans regarder en premier pour tester vos connaissances.
+Si vous ne vous rappelez plus de la syntaxe pour le faire, regardez `zombiehelper.sol` - mais essayez de le faire sans regarder en premier pour tester vos connaissances.
 
 1. En haut du fichier, indiquez que nous utilisons la version `^0.4.19` de Solidity.
 

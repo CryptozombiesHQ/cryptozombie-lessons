@@ -238,10 +238,10 @@ Nous allons continuer de définir notre fonction `attack`, maintenant que nous p
 
 1. Ajoutez le modificateur `ownerOf` à `attack`, pour être sûr que l'appelant possède `_zombieId`.
 
-2. La première chose que notre fonction doit faire, c'est d'obtenir un pointeur `storage` de nos deux zombies pour intéragir plus facilement avec eux :
+2. La première chose que notre fonction doit faire, c'est d'obtenir un pointeur `storage` de nos deux zombies pour interagir plus facilement avec eux :
 
   a. Déclarez un `Zombie storage` appelé `myZombie` égal à `zombies[_zombieId]`.
 
   b. Déclarez un `Zombie storage` appelé `enemyZombie` égal à `zombies[_targetId]`.
 
-3. Nous allons utliser un nombre aléatoire entre 0 et 99 pour déterminer le résultat du combat. Déclarez un `uint` appelé `rand` égal au résultat de la fonction `randMod` avec comme argument `100`.
+3. Nous allons utiliser un nombre aléatoire entre 0 et 99 pour déterminer le résultat du combat. Déclarez un `uint` appelé `rand` égal au résultat de la fonction `randMod` avec comme argument `100`.

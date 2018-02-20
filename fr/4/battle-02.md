@@ -220,9 +220,9 @@ Super ! Maintenant essayons de comprendre la logique de combat.
 
 Tous les bons jeux ont besoin d'une part d'aléatoire. Comment pouvons-nous générer des nombres aléatoires en Solidity ?
 
-La vraie réponse est que vous ne pouvez pas. Du moins, nous ne pouvez pas le faire de manière sûre.
+La vraie réponse est qu'on ne peut pas. Du moins, nous ne pouvons pas le faire de manière sûre.
 
-Voyons voir pourquoi
+Voyons voir pourquoi.
 
 ## La génération de nombre aléatoire avec `keccak256`
 
@@ -237,21 +237,21 @@ uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
 randNonce++;
 uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 ```
-Cela prendra l'horodatage de `now`, le `msg.sender`, et incrémentera `nonce` (un nombre qui est utilisé seulement une fois, pour ne pas exécuter la même fonction avec les même paramètres plusieurs fois).
+Cela prendrait l'horodatage de `now`, le `msg.sender`, et incrémenterait `nonce` (un nombre qui est utilisé seulement une fois, pour ne pas exécuter la même fonction avec les même paramètres plusieurs fois).
 
-Ensuite, cela utilisera le `keccak` pour convertir ces paramètres en un hachage aléatoire, puis le convertir en un `uint` et utiliser `% 100` pour prendre seulement les 2 derniers chiffres, pour avoir un nombre aléatoire entre 0 et 99.
+Ensuite, cela utilisera le `keccak` pour convertir ces paramètres en un hachage aléatoire, le convertir en un `uint` et utiliser `% 100` pour prendre seulement les 2 derniers chiffres, afin d'avoir un nombre aléatoire entre 0 et 99.
 
 ### Cette méthode est vulnérable aux attaques d'un nœud malhonnête.
 
-En Ethereum, quand vous appelez la fonction d'un contrat, vous diffuser une **_transaction_** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW comme un **_bloc_** au reste du réseau.
+En Ethereum, quand vous appelez la fonction d'un contrat, vous diffuser une **_transaction_** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW dans un **_bloc_** au reste du réseau.
 
-Quand un nœud à résolu un PoW, les autres nœuds arrêtent d'essayer de résoudre le PoW, ils vérifient que la liste des transactions de l'autre nœud sont valides, acceptent le bloc et passent à la résolution du bloc suivant.
+Quand un nœud a résolu un PoW, les autres nœuds arrêtent d'essayer de résoudre le PoW, ils vérifient que la liste des transactions de l'autre nœud soit valide, acceptent le bloc et passent à la résolution du bloc suivant.
 
 **Cela rend notre fonction nombre aléatoire exploitable.**
 
-Imaginez que nous avons un contrat pile ou face - face vous doublez votre argent, pile vous perdez tout. Disons qu'il utilise la fonction ci-dessus pour déterminer si c'est pile ou face. (`random >= 50` c'est face, `random < 50` c'est pile).
+Imaginez que nous avons un contrat pile ou face - face vous doublez votre argent, pile vous perdez tout. Et qu'il utilise la fonction ci-dessus pour déterminer si c'est pile ou face. (`random >= 50` c'est face, `random < 50` c'est pile).
 
-Si j'avais un noeud, je pourrais publier une transaction **seulement à mon propre noeud** et ne pas la partager. Je pourrais exécuter le code de la fonction pile ou face pour voir si j'ai gagné - et si je perds, choisir de ne pas ajouter cette transaction dans le prochain bloc que je résoud. Je pourrais continuer indéfiniment jusqu'à ce que je gagne et résolve le bloc, et gagner de l'argent.
+Si j'ai un nœud, je pourrais publier une transaction **seulement à mon propre nœud** et ne pas la partager. Je pourrais exécuter le code de la fonction pile ou face pour voir si j'ai gagné - et si je perds, choisir de ne pas ajouter cette transaction dans le prochain bloc que je résous. Je pourrais continuer indéfiniment jusqu'à ce que je gagne et résolve le bloc, et gagner de l'argent.
 
 ## Comment faire pour générer des nombres aléatoires de manière sûre sur Ethereum ?
 
@@ -263,7 +263,7 @@ Même si cette fonction aléatoire N'EST PAS sécurisée sur Ethereum, en pratiq
 
 Puisque nous construisons simplement un jeu à des fin de démonstration dans ce tutoriel, et qu'il n'y a pas vraiment d'argent en jeu, nous allons accepter les compromis d'utiliser un générateur de nombre aléatoire simple à implémenter, sachant qu'il n'est pas totalement sûr.
 
-Dans une prochaine leçon, il se peut que nous verrons comment utiliser des **_oracles_** (un moyen sécurisé de récupérer des données en dehors d'Ethereum) pour générer une fonction aléatoire depuis l'extérieur de la blockchain.
+Dans une prochaine leçon, il se peut que nous voyons comment utiliser des **_oracles_** (un moyen sécurisé de récupérer des données en dehors d'Ethereum) pour générer une fonction aléatoire depuis l'extérieur de la blockchain.
 
 ## A votre tour
 
@@ -273,6 +273,6 @@ Nous allons implémenter une fonction de nombre aléatoire que nous pourrons uti
 
 2. Créez une fonction appelée `randMod` (Modulo aléatoire). Elle sera `internal`, aura un paramètre `uint` appelé `_modulus`, et renverra avec `returns` un `uint`.
 
-3. La fonction devra d'abord incrémenter `randNonce` (en utlisant la syntaxe `randNonce++`).
+3. La fonction devra d'abord incrémenter `randNonce` (en utilisant la syntaxe `randNonce++`).
 
 4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg,sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo `%_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).

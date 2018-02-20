@@ -242,19 +242,19 @@ material:
 
 Maintenant que nous avons un `winCount` et un `lossCount`, nous pouvons les mettre à jour en fonction du zombie qui gagne le combat.
 
-Au chapitre 6 nous avons calculé un nombre aléatoire entre 0 et 100. Nous allons utliser ce nombre pour déterminer le vainceur du combat, et mettre à jour en conséquence.
+Au chapitre 6 nous avons calculé un nombre aléatoire entre 0 et 100. Nous allons utiliser ce nombre pour déterminer le vainqueur du combat, et mettre à jour en conséquence.
 
 
 ## A votre tour
 
 1. Créez une déclaration `if` qui va vérifier si `rand` est **_plus petit ou égal_** à `attackVictoryProbability`.
 
-2. Si c'est le cas, nos zombie gagne ! Donc :
+2. Si c'est le cas, notre zombie gagne ! Donc :
 
   a. Incrémentez `winCount` de `myZombie`.
 
   b. Incrémentez le `level` de `myZombie`. (Nouveau niveau !!!!!!!)
 
-  c. Incrémentez le `lossCount` de `enemyZombie`. (Perdant !!!!!! 😫 😫 😫)
+  c. Incrémentez le `lossCount` de `enemyZombie`. (Le nul !!!!!! 😫 😫 😫)
 
-  d. Exécuter la fonction `feedAndMultiply`. Regardez `zombiefeeding.sol` pour voir la syntaxe pour l'appeler. Pour le 3ème argument (`_species_`), mettez `"zombie"`. (Cela ne fait rien pour l'instant, mais plus tard nous pourrons ajouter des fonctionnalités supplémentaire pour les zombies générés à partir d'autres zombies).
+  d. Exécutez la fonction `feedAndMultiply`. Regardez `zombiefeeding.sol` pour voir la syntaxe pour l'appeler. Pour le 3ème argument (`_species_`), mettez `"zombie"`. (Cela ne fait rien pour l'instant, mais plus tard nous pourrons ajouter des fonctionnalités supplémentaires pour les zombies générés à partir d'autres zombies).

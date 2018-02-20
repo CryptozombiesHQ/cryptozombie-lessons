@@ -262,9 +262,9 @@ material:
       }
 ---
 
-Pour notre jue de zombie, nous allons vouloir comptabiliser le nombre de victoire et de défaite de nos zombies. Ainsi nous pourrons avoir un "classement zombie" dans notre jeu.
+Pour notre jeu de zombie, nous allons vouloir comptabiliser le nombre de victoire et de défaite de nos zombies. Ainsi nous pourrons avoir un "classement zombie" dans notre jeu.
 
-Nous pouvons stocker ces données de plusieurs façons dans notre DApp - un mappage indivuel, une structure classement, ou directement dans la structure `Zombie`.
+Nous pouvons stocker ces données de plusieurs façons dans notre DApp - un mappage individuel, une structure classement, ou directement dans la structure `Zombie`.
 
 Chaque méthode a ses avantages et ses inconvénients,  dépendamment de comment nous voulons interagir avec ces données. Pour ce tutoriel, nous allons stocker les statistiques dans notre structure `Zombie` par simplicité, et les appeler `winCount` et `lossCount`.
 
@@ -278,8 +278,8 @@ Revenons à `zombiefactory.sol`, et ajoutons ces propriétés à notre structure
 
   b. `lossCount`, aussi un `uint16`
 
-  > Remarque : Rappelez-vous, puisque nous pouvons combiner les `uint`s dans une structure, nous voulons utliser le plus petit `uint` possible. un `uint8` serait trop petit, car 2^8 = 256 - si nos zombies attaquent tous les jours, en un an ce serait dépassé. Mais 2^16 = 65536 - alors à moins qu'un utilisateur ne fasse que gagner ou que perdre chaque jour pendant 179 ans, nous sommes tranquille.
+  > Remarque : Rappelez-vous, puisque nous pouvons combiner les `uint`s dans une structure, nous voulons utiliser le plus petit `uint` possible. un `uint8` serait trop petit, car 2^8 = 256 - si nos zombies attaquent tous les jours, en un an cela pourrait être dépassé. Mais 2^16 = 65536 - alors à moins qu'un utilisateur ne fasse que gagner ou que perdre chaque jour pendant 179 ans, nous sommes tranquilles.
 
 2. Maintenant que nous avons de nouvelles propriétés pour notre structure `Zombie`, nous devons changer la définition de notre fonction `_createZombie()`.
 
-  Changez la définition de création de zombie pour que chaque nouveau zombie créés est `0` victoire et `0` défaite.
+  Changez la définition de création de zombie pour que chaque nouveau zombie créé est `0` victoire et `0` défaite.

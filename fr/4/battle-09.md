@@ -251,11 +251,11 @@ material:
 
 Maintenant que nous avons codé ce qu'il se passe quand notre zombie gagne, voyons voir ce qu'il arrive quand il **perd**.
 
-Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leur compte `lossCount`, et leur compte à rebours est déclenché afin qu'ils attendent un jour pour attaquer de nouveau.
+Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leurs compteurs `lossCount`, et leurs comptes à rebours sont déclenchés afin qu'ils attendent un jour pour attaquer de nouveau.
 
 Pour implémenter cette logique, nous allons avoir besoin de la déclaration `else` (sinon) :
 
-Les déclarations `else` s'écrivent comme en JavaScript et beaucoup d'autres langages.
+Les déclarations `else` s'écrivent comme en JavaScript et comme dans beaucoup d'autres langages.
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
@@ -273,4 +273,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   b. Incrémentez `winCount` de `enemyZombie`.
 
-2. En dehors de la déclaration `else`, exécuter la fonction `_triggerCooldown` sur `myZombie`. De cette manière le zombie ne peut attaquer qu'une fois par jour.
+2. En dehors de la déclaration `else`, exécutez la fonction `_triggerCooldown` sur `myZombie`. De cette manière le zombie ne peut attaquer qu'une fois par jour.

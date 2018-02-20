@@ -44,7 +44,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. Ajouter le modificateur à la définition de fonction :
+          // 2. Ajouter le modificateur à la définition de la fonction :
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
             // 3. Enlevez cette ligne
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -276,11 +276,11 @@ material:
       }
 ---
 
-Quand quelqu'un appelle notre fonction `attack`, nous voulons nous assurer que cet utilisateur possède bien le zombie avec lequel il attaque. Ca serait un problème de sécurité si on pouvait attaquer avec le zombie d'un autre !
+Quand quelqu'un appelle notre fonction `attack`, nous voulons nous assurer que cet utilisateur possède bien le zombie avec lequel il attaque. Cela serait une faille de sécurité si on pouvait attaquer avec le zombie d'un autre !
 
-Avez vous une idée de la façon que nous pourrions vérifier si la personne qui appelle la fonction est bien le propriétaire du `_zombieId` qu'il utilise ?
+À votre avis, comment pourrions nous vérifier que la personne appelant la fonction est bien le propriétaire du `_zombieId` qu'il utilise ?
 
-Réfléchissez-y, et voyez si vous pouvez trouver une réponse tout seul.
+Réfléchissez-y, et voyez si vous arrivez à trouver une réponse tout seul.
 
 Prenez votre temps, vous pouvez regarder le code des versions précédentes pour avoir des idées...
 
@@ -288,19 +288,19 @@ La réponse se trouve ci-dessous, réfléchissez par vous même avant de continu
 
 ## La réponse
 
-Nous avons déjà effectué cette vérification plusieurs fois dans les leçons précédentes. Dans `changeName()`, `changeDna()`, et `feedAndMultiply()`, nous avons utilisez la vérification suivante :
+Nous avons déjà effectué cette vérification plusieurs fois dans les leçons précédentes. Dans `changeName()`, `changeDna()`, et `feedAndMultiply()`, nous avons utilisé la vérification suivante :
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-C'est la même logique dont nous allons avoir besoin pour notre fonction `attack`. Puisque nous utilisons la même logique plusieurs fois, nous allons créer un modificateur pour nettoyer notre code et éviter de trop se répéter.
+C'est la même logique dont nous allons avoir besoin pour notre fonction `attack`. Puisque nous utilisons la même logique plusieurs fois, nous allons créer un modificateur pour clarifier notre code et éviter de trop se répéter.
 
 ## A votre tour
 
 Nous sommes de retour à `zombiefeeding.sol`, puisque c'est le premier endroit où nous utilisons cette logique. Nous allons mettre la logique dans son propre `modifier`.
 
-1. Créez un `modifier` appelée `ownerOf` qui aura un paramètre, `_zombieId` (un `uint`).
+1. Créez un `modifier` appelé `ownerOf` qui aura un paramètre, `_zombieId` (un `uint`).
 
   Le corps devra vérifier avec `require` que `msg.sender` soit égal à `zombieToOwner[_zombieId]`, puis continuer avec la fonction. Vous pouvez regarder la fonction `zombiehelper.sol` si vous ne vous rappelez plus de la syntaxe d'un modificateur.
 
