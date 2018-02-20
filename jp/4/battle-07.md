@@ -24,8 +24,8 @@ material:
               uint dna;
               uint32 level;
               uint32 readyTime;
-              // 1. 新たなプロパティをここに追加するのだ
-            }
+              // 1. 新たなプロパティをここに追加するのだ
+            }
 
             Zombie[] public zombies;
 
@@ -33,7 +33,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 2. 新たなゾンビ生成をここで修正せよ
+                // 2. 新たなゾンビ生成をここで修正せよ
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;

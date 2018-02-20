@@ -18,9 +18,9 @@ material:
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // 1. modifierをここに加えるのだ
-          function attack(uint _zombieId, uint _targetId) external {
-            // 2. 関数定義をここから始めよ
+          // 1. modifierをここに加えるのだ
+          function attack(uint _zombieId, uint _targetId) external {
+            // 2. 関数定義をここから始めよ
           }
         }
       "zombiehelper.sol": |

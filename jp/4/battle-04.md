@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // 1. modifierをここに作成するのだ
+          // 1. modifierをここに作成するのだ
 
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
@@ -44,10 +44,10 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. 関数定義にmodifierを加えよ
+          // 2. 関数定義にmodifierを加えよ
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. この一行を削除するのだ
-            require(msg.sender == zombieToOwner[_zombieId]);
+            // 3. この一行を削除するのだ
+            require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;

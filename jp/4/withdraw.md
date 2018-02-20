@@ -20,9 +20,9 @@ material:
             _;
           }
 
-          // 1. ここにwithdraw関数を作成するのだ
+          // 1. ここにwithdraw関数を作成するのだ
 
-          // 2. ここにsetLevelUpFee関数を作成せよ
+          // 2. ここにsetLevelUpFee関数を作成せよ
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
