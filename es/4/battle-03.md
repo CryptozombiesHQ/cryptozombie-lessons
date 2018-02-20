@@ -1,5 +1,5 @@
 ---
-title: Zombie Fightin'
+titulo: Pelea de Zombie
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -227,23 +227,23 @@ material:
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+Ahora que tenemos una fuente de algunos aleatorios en nuestro contrato, podemos utilizarlo en nuestras batallas zombies para calcular el desenlace.
 
-Our zombie battles will work as follows:
+Nuestras batallas zombies trabajaran como continua:
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+- Tu escoges a uno de tus zombies, y escoges a un zombie oponente para atacar.
+- Si tu eres el zombi,e que ataca tendras el 70% de chance de ganar. El zombie que defiende tendra el 30% de chance de ganar.
+- Todos los zombies (atacantes y defensores) tendran un contador de battalas `winCount` y `lossCount` que se incrementaran dependiendo del desenlace de la batalla.
+- Si el zombie atacante gana, sube de nivel y engendra un nuevo zombie.
+- Si este pierde, no sucede nada (exceptuando el incremento del contandor `lossCount`).
+- Sin importar si gana o pierde, el contador de tiempo de enfriamiento sera activado.
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+Esto es  mucha logica para implementar, asi que lo haremos por pedazos a través de los siguientes capitulos.
 
-## Put it to the test
+## Pongamoslo a prueba
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+1. Dale a nuestro contrato una variable `uint` llamada `attackVictoryProbability`, y configuremosla que sea igual a `70`.
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+2. Creemos una funcion llamada `attack`. Esta tomara dos paramentros: `_zombieId` (un `uint`) y `_targetId` (tambien un `uint`). Debe ser una funcion `external`.
 
-Leave the function body empty for now.
+Deje el cuerpo de la funcion vacio por ahora.

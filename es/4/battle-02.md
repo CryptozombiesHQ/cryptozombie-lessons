@@ -1,5 +1,5 @@
 ---
-title: Random Numbers
+titulo: Numeros Aleatorios
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -216,19 +216,19 @@ material:
 
 ---
 
-Great! Now let's figure out the battle logic.
+Magnifico! Ahora descubramos la logica de la batalla
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+Todos los buenos juegos requieren cierto nivel de aleatoridad. Entonces como generamos numeros aleatorios en Solidity?
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+La verdadera respuesta es que aqui, no puedes. Bueno, al menos no puedes hacerlo de forma segura.
 
-Let's look at why.
+Veamos por qué.
 
-## Random number generation via `keccak256`
+## Generacion de numeros aleatorios a traves de `keccak256`
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+La mejor fuente de aleatoridad que tenemos en Solidity es la funcion hash `keccak256`.
 
-We could do something like the following to generate a random number:
+Podriamos hacer algo como lo siguiente para generar un numero aleatorio: 
 
 ```
 // Generate a random number between 1 and 100:
@@ -238,42 +238,42 @@ randNonce++;
 uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 ```
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice). 
+Lo que esto haria es tomar la marca de tiempo de `now`, `msg.sender`, y un incremento `nonce` (un numero que solo se usa una vez, por lo que no ejecutamos la misma funcion hash con el mismo parametro de entrada dos veces). 
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+Entonces usaria `keccak` para convertir estas entradas a una funcion de hash aleatoria  a to convert these inputs to a random hash, convierta esa funcion hash a un `uint`, y luego use `% 100` para tomar solo los ultimos 2 digitos, dandonos un numero totalmente aleatorio entre 0 y 99.
 
-### This method is vulnerable to attack by a dishonest node
+### Este metodo es vulnerable al ataque de un nodo deshonesto
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+En Ethereum, cuando llamas a una funcion en un contrato, lo transmites a un nodo o nodos en la red como **_transaccion_**. Los nodos de la red recopilan un monton de transacciones, intente ser el primero en resolver un problema matematico intensivo computacionalmente como una "Prueba de Trabajo", y luego publique ese grupo de transacciones junto con su Prueba de Trabajo (PoW) como un **_bloqueo_** para el resto de la red.
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+Una vez el nodo haya resuelto la PoW, los otros nodos dejan de intentar la PoW, verificar que la lista de transacciones del otro nodo sea valida, y luego acepte el bloque y siga intentando resolver el siguiente bloque.
 
-**This makes our random number function exploitable.**
+**Esto hace que nuestra funcion de numeros aleatorios sea explotable.**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Digamos que teniamos un contrato de lanzamiento de moneda — te dirige el doble de tu dinero, se pierde todo. Digamos que uso la funcion aleatoria anterior para determinar cabezas o colas. (`random >= 50` son cabezas, `random < 50` son colas).
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Si yo fuera un nodo, yo podria publicar una transaccion **solo a mi propio nodo** y no compartirlo. Yo podria luego ejecutar la funcion de lanzamiento de moneda para ver si gano — y si pierdo, elijo no incluir esa transaccion en el proximo bloque que estoy resolviendo. Pude seguir haciendo esto indefinidamente hasta que finalmente gane el lazamiento de moneda y resolvi el siguiente bloque, y obtuve beneficios.
 
-## So how do we generate random numbers safely in Ethereum?
+## Entonces como generamos numeros aleatorios de forma segura en Ethereum?
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside the Ethereum blockchain.
+Porque todo el contenido de la blockchain es visible para todos los participantes, es este un problema dificil, y su solucion esta mas alla del alcance de este tutorial. Puedes leer <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> para algunas ideas. Una idea seria usar un **_oraculo_** para acceder a una funcion de numero aleatorio fuera del blockchain de Ethereum.
 
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+Por supuesto, dado que decenas de miles de nodos de Ethereum en la red compiten para resolver el siguiente bloque, mis probabilidades de resolver el siguiente bloque son extremadamente bajas. Esto me tomaria mucho tiempo o recursos informáticos para explotar de manera rentable — pero si la recompensa fuera lo suficientemente alta (como si pudiera apostar $100,000,000 en la funcion lanzamiento de moneda), valdria la pena para mi atacar.
 
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
+Entonces aunque esta generacion de numeros aleatorios NO es segura en Ethereum, en la practica a no ser que nuestra funcion aleatoria tenga mucho dinero en la línea , los usuarios de tu juego probablemente no tendran recursos suficientes para atacarlo.
 
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
+Porque estamos simplemente construyendo un juego simple para propositos demostrativos en este tutorial y no hay un gasto dinero real, vamos a aceptar el intercambio de un generador de numeros aleatorios, que es simple de implementar, a pesar de que este no sea totalmente seguro.
 
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+En una futura leccion, podemos cubrir usando **_oraculos_** (una manera segura de extraer datos desde fuera de Ethereum) para generear numeros aleatorios seguros desde fuera de la blockchain.
 
-## Put it to the test
+## Pongamoslo a prueba
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+Vamos a implementar una funcion de numeros aleatorios que podamos usar para determinar el resultado de nuestras batallas, incluso si no es totalmente seguro nuestro ataque.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
+1. Dale a nuestro contrato un `uint` llamado `randNonce`, y configuralo igual a `0`.
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. Crea una funcion llamada `randMod` (modulo aleatorio). Sera una funcion `internal` que toma un `uint` llamado `_modulus`, y `returns` un `uint`.
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
+3. La funcion primero debe incrementar `randNonce` (usando la sintaxis `randNonce++`).
 
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+4. Finalmente, deberia (en una linea de codigo) calcular la conversion de tipo`uint` del hash `keccak256` de `now`, `msg.sender`, y `randNonce` — y `return` ese valor `% _modulus`. (Uff! Eso fue un bocado. Si no siguiste eso, simplemente eche un vistazo donde generamos un numero aleatorio — la logica es muy similar).
