@@ -22,8 +22,8 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            // ここから始めるのだ
-          }
+            // ここから始めるのだ
+          }
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
