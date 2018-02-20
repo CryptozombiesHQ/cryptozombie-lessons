@@ -1,5 +1,5 @@
 ---
-titulo: Refactorizando la logica comun
+title: Refactoring Common Logic
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -276,34 +276,34 @@ material:
       }
 ---
 
-Quien quiera que llame a nuestra funcion `attack` — queremos asegurarnos que el usuario realmente sea dueno del zombie con el que esta atacando. Seria una consideracion de seguridad si uno pudiese atacar con el zombie de otra persona!
+Whoever calls our `attack` function — we want to make sure the user actually owns the zombie they're attacking with. It would be a security concern if you could attack with someone else's zombie!
 
-Puedes pensar en como podriamos anadir una revision para ver si la persona que esta llamando a la funcion es el dueno del `_zombieId` que estan utilizando?
+Can you think of how we would add a check to see if the person calling this function is the owner of the `_zombieId` they're passing in?
 
-Piensalo un poco, y ves si puedes conseguir la respuesta por ti mismo.
+Give it some thought, and see if you can come up with the answer on your own.
 
-Toma un momento... Revise algunos codigos de las lecciones anteriores para algunas ideas...
+Take a moment... Refer to some of our previous lessons' code for ideas...
 
-Responde acontinuacion, no continues hasta que hayas pensado en ello.
+Answer below, don't continue until you've given it some thought.
 
-## La respuesta
+## The answer
 
-Hemos hecho este tipo de chequeos en lecciones anteriores. En `changeName()`, `changeDna()`, y `feedAndMultiply()`, usamos el siguiente chequeo:
+We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-Esta es la misma logica que necesitaremos para nuestra funcion `attack`. Debido a que estamos utilizando la misma logica multiples veces, vamoso a mover esto en su propio `modifier` para limpiar nuestro codigo y evitar repetir lo que ya hemos dicho.
+This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own `modifier` to clean up our code and avoid repeating ourselves.
 
-## Pongamoslo a prueba
+## Put it to the test
 
-Estamos de vuelta con `zombiefeeding.sol`, ya que este es el primer lugar en el que usamos esta logica. Vamos a refactorizar hacia su propio `modifier`.
+We're back to `zombiefeeding.sol`, since this is the first place we used that logic. Let's refactor it into its own `modifier`.
 
-1. Creemos un modificador `modifier` llamado `ownerOf`. Tomara un argumento, `_zombieId` (un `uint`).
+1. Create a `modifier` called `ownerOf`. It will take 1 argument, `_zombieId` (a `uint`).
 
-  El cuerpo debe `require` que `msg.sender` sea igual a `zombieToOwner[_zombieId]`, y despues se continue con la funcion. Tu puedes revisar a `zombiehelper.sol` si no te recuerdas la sintaxis para los modificadores.
+  The body should `require` that `msg.sender` is equal to `zombieToOwner[_zombieId]`, then continue with the function. You can refer to `zombiehelper.sol` if you don't remember the syntax for a modifier.
 
-2. Cambiemos la definicion de la funcion `feedAndMultiply` tal que utilice el modificador `ownerOf`.
+2. Change the function definition of `feedAndMultiply` such that it uses the modifier `ownerOf`.
 
-3. Ahora que estamos utilizando un `modifier`, podemos remover de la linea `require(msg.sender == zombieToOwner[_zombieId]);`
+3. Now that we're using a `modifier`, you can remove the line `require(msg.sender == zombieToOwner[_zombieId]);`

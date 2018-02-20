@@ -1,5 +1,5 @@
 ---
-titulo: Mas Refactorizacion
+title: More Refactoring
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -257,10 +257,10 @@ material:
       }
 ---
 
-Tenemos un par de lugares en `zombiehelper.sol` donde necesitamos implementar nuestro nuevo `modifier` `ownerOf`.
+We have a couple more places in `zombiehelper.sol` where we need to implement our new `modifier` `ownerOf`.
 
-## Pongamoslo a prueba
+## Put it to the test
 
-1. Actualice `changeName()` para usar `ownerOf`
+1. Update `changeName()` to use `ownerOf`
 
-2. Actualice `changeDna()` para usar `ownerOf`
+2. Update `changeDna()` to use `ownerOf`
