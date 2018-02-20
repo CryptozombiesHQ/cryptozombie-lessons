@@ -114,8 +114,8 @@ mapping (uint => string) userIdToName;
 
 # 实战演习
 
-为了存储僵尸的所有权，我们会使用到两个映射：一个记录僵尸拥有者的地址，另一个记录某 ID 所拥有僵尸的数量。
+为了存储僵尸的所有权，我们会使用到两个映射：一个记录僵尸拥有者的地址，另一个记录某地址所拥有僵尸的数量。
 
-1.创建一个叫做 `zombieToOwner` 的映射。其键是一个`uint`（我们将根据它的 id 存储和查找僵尸），值为 `adress`。映射属性为`public`。
+1.创建一个叫做 `zombieToOwner` 的映射。其键是一个`uint`（我们将根据它的 id 存储和查找僵尸），值为 `address`。映射属性为`public`。
 
 2.创建一个名为 `ownerZombieCount` 的映射，其中键是 `address`，值是 `uint`。
