@@ -1,5 +1,5 @@
 ---
-title: Manipuler des Structures et des Tableaux
+title: Manipuler des structures et des tableaux
 actions: ['vérifierLaRéponse', 'indice']
 material:
   editor:
@@ -47,7 +47,7 @@ material:
       }
 ---
 
-### Creer de nouvelles Structures
+### Créer de nouvelles structures
 
 Vous vous rappelez de notre structure `Person` dans l'exemple précédent ?
 
@@ -69,7 +69,7 @@ Person satoshi = Person(172, "Satoshi");
 // L'ajouter au tableau :
 people.push(satoshi);
 ```
-Pour garder un code plus concis, on peut aussi écrire cela en une ligne en combinant les déclarations :
+Pour avoir un code plus concis, on peut aussi écrire cela en une ligne en combinant les déclarations :
 
 ```
 people.push(Person(16, "Vitalik"));
@@ -89,6 +89,6 @@ numbers.push(15);
 
 Faisons faire quelque chose à notre fonction createZombie !
 
-1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau` zombies`. Les noms `name` et `dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
+1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau `zombies`. Les noms `name` et `dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
 
-2. Faisons-le en une ligne de code pour garder les choses concises.
+2. Faites-le en une ligne de code pour garder les choses concises.

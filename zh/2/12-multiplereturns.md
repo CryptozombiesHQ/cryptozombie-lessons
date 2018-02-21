@@ -137,10 +137,10 @@ function processMultipleReturns() external {
   (a, b, c) = multipleReturns();
 }
 
-// Or if we only cared about one of the values:
+// 或者如果我们只想返回其中一个变量:
 function getLastReturnValue() external {
   uint c;
-  // We can just leave the other fields blank:
+  // 可以对其他字段留空:
   (,,c) = multipleReturns();
 }
 ```

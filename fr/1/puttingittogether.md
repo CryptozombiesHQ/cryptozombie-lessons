@@ -64,7 +64,7 @@ material:
       }
 ---
 
-Nous avons bientôt terminé notre générateur de Zombie aléatoire ! Créons une fonction publique qui va regrouper le tout.
+Nous avons bientôt terminé notre générateur de Zombie aléatoire ! Créons une fonction publique qui va regrouper tout ça.
 
 Nous allons créer une fonction publique qui prend un paramètre, le nom du zombie, et utilise ce nom pour créer un zombie avec un ADN aléatoire.
 

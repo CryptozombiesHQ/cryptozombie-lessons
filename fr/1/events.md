@@ -73,11 +73,11 @@ material:
       }
 ---
 
-Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _**.
+Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _** (event).
 
 Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
 
-Exemple:
+Exemple :
 
 ```
 // déclaration de l'évènement
@@ -85,7 +85,7 @@ event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // déclanchement de l'évènement pour indiquer à l'application que la fonction a été appelée :
+  // déclenchement de l'évènement pour indiquer à l'application que la fonction a été appelée :
   IntegersAdded(_x, _y, result);
   return result;
 }

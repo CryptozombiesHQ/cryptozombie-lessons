@@ -88,7 +88,7 @@ material:
 
 ## msg.sender
 
-Solidityには全ての関数で利用できるグローバル変数が用意してある。`msg.sender`もその一つだ。これを使用すると、その関数を呼び出したユーザー（またはスーマトコントラクト）の `address`を参照できるのだ。
+Solidityには全ての関数で利用できるグローバル変数が用意してある。`msg.sender`もその一つだ。これを使用すると、その関数を呼び出したユーザー（またはスマートコントラクト）の `address`を参照できるのだ。
 
 > 注：Solidityは、常に外部の呼び出し元から関数を実行しなければならないという決まりがある。その関数を呼び出すまでは、コントラクトはブロックチェーン上で何もせずに、ただそこにあるだけなのだ。だから何かをするときには常に`msg.sender`を使用するのだ。
 
@@ -98,7 +98,7 @@ Solidityには全ての関数で利用できるグローバル変数が用意し
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
-  // ここでは`favoriteNumber` mappingを更新して、 `msg.sender`下で`_myNumber`を格納するぞ。
+  // ここでは`favoriteNumber` mappingを更新して、`msg.sender`下に`_myNumber`を格納するぞ。
   favoriteNumber[msg.sender] = _myNumber;
   // mappingにデータを格納するのは、こう書くのだ
 }
@@ -118,7 +118,7 @@ function whatIsMyNumber() public view returns (uint) {
 
 レッスン1から使っている`_createZombie`メソッドを更新して、ゾンビのオーナーシップを関数を呼び出した奴に割り当てるようにしたい。
 
-1. まず、新しいゾンビの`id`を取得した後に、`zombieToOwner`マッピングを `id`下の`msg.sender`に格納せよ。
+1. まず最初は、新しいゾンビの`id`を取得して、`id`下に`msg.sender`を格納して`zombieToOwner`マッピングを更新せよ。
 
 2. 次に、この`msg.sender`で`ownerZombieCount`を増やせ。
 
