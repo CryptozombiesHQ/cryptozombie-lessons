@@ -28,6 +28,11 @@ material:
             levelUpFee = _fee;
           }
 
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
+          }
+
           // 1. Modify this function to use `ownerOf`:
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
