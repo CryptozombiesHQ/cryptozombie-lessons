@@ -204,11 +204,12 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 ## それではテストだ
 
-1. `changeName`という関数を作成せよ。引数は`_zombieId` (`uint`)と、`_newName` (`string`)の2つとする。また`external`で宣言せよ。`aboveLevel`修飾子を持ち、`_level`パラメーターに2を渡すこと。（ `_zombieId`にも渡すようにな！）
+1. `changeName`という関数を作成せよ。引数は`_zombieId` (`uint`)と、`_newName` (`string`)の2つとする。また`external`で宣言せよ。関数は`aboveLevel`修飾子を持ち、`_level`パラメーターに2を渡すこと。（ `_zombieId`も忘れずに渡すようにな！）
+
 
 2. この関数では、 `msg.sender`が`zombieToOwner[_zombieId]`と同じであるかどうかを確認せよ。`require`ステートメントを使用すること。
 
-3. さらに、`zombies[_zombieId].name` を`_newName`と同様に設定せよ。
+3. さらに`zombies[_zombieId].name` を`_newName`と同等になるよう設定せよ。
 
 4. `changeName`下に`changeDna`という名前の別の関数を作成せよ。定義および内容は`changeName`と同様とするが、2番目の引数を`_newDna` (`uint`)とし、`aboveLevel`の`_level`パラメーターに`20`を渡すこと。もちろん、ゾンビの名前を設定する代わりに、ゾンビの `dna`を `_newDna`に設定すること。
 
