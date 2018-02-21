@@ -1,5 +1,5 @@
 ﻿---
-título: Refactorizando la lógica común
+Capítulo: Refactorizando la lógica común
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -276,15 +276,15 @@ material:
       }
 ---
 
-Quien quiera que llame a nuestra función `attack` — queremos asegurarnos que el usuario realmente sea dueño del zombie con el que está atacando. ¡Sería una consideración de seguridad si uno pudiese atacar con el zombie de otra persona!
+Quien quiera que llame a nuestra función `attack` — queremos asegurarnos que el usuario realmente sea dueño del zombie con el que está atacando. ¡Sería una consideración de seguridad si uno pudiese atacar con el zombie de otra persona!
 
-¿Puedes pensar en como podríamos añadir una revisión para ver si la persona que esta llamando a la función es el dueño del `_zombieId` que estan utilizando?
+¿Puedes pensar en cómo podríamos añadir una revisión para ver si la persona que está llamando a la función es el dueño del `_zombieId` que estan utilizando?
 
-Piensalo un poco, y ves si puedes conseguir la respuesta por tí mismo.
+Piénsalo un poco, y ves si puedes conseguir la respuesta por ti mismo.
 
 Toma un momento... Revise algunos códigos de las lecciones anteriores para algunas ideas...
 
-Responde a continuación, no continues hasta que hayas pensado en ello.
+Responde a continuación, no continúes hasta que hayas pensado en ello.
 
 ## La respuesta
 
@@ -302,9 +302,8 @@ Estamos de vuelta con `zombiefeeding.sol`, ya que este es el primer lugar en el 
 
 1. Creemos un modificador `modifier` llamado `ownerOf`. Tomará un argumento, `_zombieId` (un `uint`).
 
-  El cuerpo debe `require` que `msg.sender` sea igual a `zombieToOwner[_zombieId]`, y después se continue con la función. Tu puedes revisar a `zombiehelper.sol` si no te recuerdas la sintaxis para los modificadores.
+  El cuerpo debe `require` que `msg.sender` sea igual a `zombieToOwner[_zombieId]`, y después se continúe con la función. Tu puedes revisar a `zombiehelper.sol` si no te recuerdas la sintaxis para los modificadores.
 
 2. Cambiemos la definición de la función `feedAndMultiply` tal que utilice el modificador `ownerOf`.
 
 3. Ahora que estamos utilizando un `modifier`, podemos remover de la línea `require(msg.sender == zombieToOwner[_zombieId]);`
- 

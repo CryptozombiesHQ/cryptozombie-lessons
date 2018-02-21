@@ -1,5 +1,5 @@
 ﻿---
-título: Números Aleatorios
+Capítulo: Números Aleatorios
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -218,15 +218,15 @@ material:
 
 ¡Magnífico! Ahora descubramos la lógica de la batalla.
 
-Todos los buenos juegos requieren cierto nivel de aleatoridad. ¿Entonces como generamos números aleatorios en Solidity?
+Todos los buenos juegos requieren cierto nivel de aleatoriedad. ¿Entonces como generamos números aleatorios en Solidity?
 
 La verdadera respuesta es que aquí, no puedes. Bueno, al menos no puedes hacerlo de forma segura.
 
-Veamos ¿por qué?.
+Veamos ¿por qué?
 
-## Generación de números aleatorios a traves de `keccak256`
+## Generación de números aleatorios a través de `keccak256`
 
-La mejor fuente de aleatoridad que tenemos en Solidity es la función hash `keccak256`.
+La mejor fuente de aleatoriedad que tenemos en Solidity es la función hash `keccak256`.
 
 Podríamos hacer algo como lo siguiente para generar un número aleatorio: 
 
@@ -240,19 +240,19 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 Lo que esto haría es tomar la marca de tiempo de `now`, `msg.sender`, y un incremento `nonce` (un número que solo se usa una vez, por lo que no ejecutamos la misma función hash con el mismo parámetro de entrada dos veces). 
 
-Entonces usaría `keccak` para convertir estas entradas a una función de hash aleatoria, convierta esa función hash a un `uint`, y luego use `% 100` para tomar sólo los últimos 2 digitos, dándonos un número totalmente aleatorio entre 0 y 99.
+Entonces usaría `keccak` para convertir estas entradas a una función de hash aleatoria, convierta esa función hash a un `uint`, y luego use `% 100` para tomar sólo los últimos 2 dígitos, dándonos un número totalmente aleatorio entre 0 y 99.
 
 ### Este método es vulnerable al ataque de un nodo deshonesto
 
-En Ethereum, cuando llamas a una función en un contrato, lo transmites a un nodo o nodos en la red como **_transacción_**. Los nodos de la red recopilan un montón de transacciones, intente ser el primero en resolver un problema matemático intensivo computacionalmente como una "Prueba de Trabajo", y luego publique ese grupo de transacciones junto con su Prueba de Trabajo (PoW) como un **_bloqueo_** para el resto de la red.
+En Ethereum, cuando llamas a una función en un contrato, los transmites a un nodo o nodos en la red como **_transacción_**. Los nodos de la red recopilan un montón de transacciones, intente ser el primero en resolver un problema matemático intensivo computacionalmente como una "Prueba de Trabajo", y luego publiqué ese grupo de transacciones junto con su Prueba de Trabajo (PoW) como un **_bloqueo_** para el resto de la red.
 
 Una vez el nodo haya resuelto la PoW, los otros nodos dejan de intentar la PoW, verificar que la lista de transacciones del otro nodo sea válida, y luego acepte el bloque y siga intentando resolver el siguiente bloque.
 
-**Esto hace que nuestra función de numeros aleatorios sea explotable.**
+**Esto hace que nuestra función de números aleatorios sea explotable. **
 
-Digamos que teniamos un contrato de lanzamiento de moneda — te dirige el doble de tu dinero, se pierde todo. Digamos que uso la función aleatoria anterior para determinar cabezas o colas. (`random >= 50` son cabezas, `random < 50` son colas).
+Digamos que teníamos un contrato de lanzamiento de moneda — te dirige el doble de tu dinero, se pierde todo. Digamos que uso la función aleatoria anterior para determinar cabezas o colas. (`random >= 50` son cabezas, `random < 50` son colas).
 
-Si yo fuera un nodo, yo podria publicar una transacción **solo a mi propio nodo** y no compartirlo. Yo podría luego ejecutar la función de lanzamiento de moneda para ver si gano — y si pierdo, elijo no incluir esa transacción en el próximo bloque que estoy resolviendo. Puede seguir haciendo esto indefinidamente hasta que finalmente gane el lanzamiento de moneda y resolver el siguiente bloque, y obtuve beneficios.
+Si yo fuera un nodo, yo podría publicar una transacción **solo a mi propio nodo** y no compartirlo. Yo podría luego ejecutar la función de lanzamiento de moneda para ver si gano — y si pierdo, elijo no incluir esa transacción en el próximo bloque que estoy resolviendo. Puede seguir haciendo esto indefinidamente hasta que finalmente gane el lanzamiento de moneda y resolver el siguiente bloque, y obtuve beneficios.
 
 ## Entonces ¿cómo generamos números aleatorios de forma segura en Ethereum?
 
@@ -260,20 +260,20 @@ Porque todo el contenido de la blockchain es visible para todos los participante
 
 Por supuesto, dado que decenas de miles de nodos de Ethereum en la red compiten para resolver el siguiente bloque, mis probabilidades de resolver el siguiente bloque son extremadamente bajas. Esto me tomaría mucho tiempo o recursos informáticos para explotar de manera rentable — pero si la recompensa fuera lo suficientemente alta (como si pudiera apostar $100,000,000 en la función lanzamiento de moneda), valdría la pena para mi atacar.
 
-Entonces aunque esta generación de números aleatorios NO es segura en Ethereum, en la práctica a no ser que nuestra función aleatoria tenga mucho dinero en la línea , los usuarios de tu juego probablemente no tendrán recursos suficientes para atacarlo.
+Entonces, aunque esta generación de números aleatorios NO es segura en Ethereum, en la práctica a no ser que nuestra función aleatoria tenga mucho dinero en la línea, los usuarios de tu juego probablemente no tendrán recursos suficientes para atacarlo.
 
-Porque estamos simplemente construyendo un juego simple para propositos demostrativos en este tutorial y no hay un gasto de dinero real, vamos a aceptar el intercambio de un generador de números aleatorios, que es simple de implementar, a pesar de que este no sea totalmente seguro.
+Porque estamos simplemente construyendo un juego simple para propósitos demostrativos en este tutorial y no hay un gasto de dinero real, vamos a aceptar el intercambio de un generador de números aleatorios, que es simple de implementar, a pesar de que este no sea totalmente seguro.
 
-En una futura lección, podemos cubrir usando **_oráculos_** (una manera segura de extraer datos desde fuera de Ethereum) para generear números aleatorios seguros desde fuera de la blockchain.
+En una futura lección, podemos cubrir usando **_oráculos_** (una manera segura de extraer datos desde fuera de Ethereum) para generar números aleatorios seguros desde fuera de la blockchain.
 
-## Pongamoslo a prueba
+## Pongámoslo a prueba
 
 Vamos a implementar una función de números aleatorios que podamos usar para determinar el resultado de nuestras batallas, incluso si no es totalmente seguro nuestro ataque.
 
-1. Dale a nuestro contrato un `uint` llamado `randNonce`, y configuralo igual a `0`.
+1. Dale a nuestro contrato un `uint` llamado `randNonce`, y configúralo igual a `0`.
 
 2. Crea una función llamada `randMod` (modulo aleatorio). Será una función `internal` que toma un `uint` llamado `_modulus`, y `returns` un `uint`.
 
 3. La función primero debe incrementar `randNonce` (usando la sintaxis `randNonce++`).
 
-4. Finalmente, debería (en una linea de codigo) calcular la conversión de tipo`uint` del hash `keccak256` de `now`, `msg.sender`, y `randNonce` — y `return` ese valor `% _modulus`. (Uff! Eso fue un bocado. Si no siguiste eso, simplemente eche un vistazo donde generamos un numero aleatorio — la logica es muy similar).
+4. Finalmente, debería (en una línea de codigo) calcular la conversión de tipo `uint` del hash `keccak256` de `now`, `msg.sender`, y `randNonce` — y `return` ese valor `% _modulus`. (Uff! Eso fue un bocado. Si no seguiste eso, simplemente eche un vistazo donde generamos un numero aleatorio — la lógica es muy similar).

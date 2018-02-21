@@ -1,5 +1,5 @@
 ﻿---
-título: Pelea de Zombie
+Capítulo: Pelea de Zombie
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -232,18 +232,18 @@ Ahora que tenemos una fuente de algunos aleatorios en nuestro contrato, podemos 
 Nuestras batallas zombies trabajaran como continúa:
 
 - Tu escoges a uno de tus zombies, y escoges a un zombie oponente para atacar.
-- Si tu eres el zombie que ataca tendras el 70% de chance de ganar. El zombie que defiende tendra el 30% de chance de ganar.
-- Todos los zombies (atacantes y defensores) tendran un contador de battalas `winCount` y `lossCount` que se incrementaran dependiendo del desenlace de la batalla.
+- Si tú eres el zombie que ataca tendrás el 70% de chance de ganar. El zombie que defiende tendrá el 30% de chance de ganar.
+- Todos los zombies (atacantes y defensores) tendrán un contador de battalas `winCount` y `lossCount` que se incrementaran dependiendo del desenlace de la batalla.
 - Si el zombie atacante gana, sube de nivel y engendra un nuevo zombie.
 - Si este pierde, no sucede nada (exceptuando el incremento del contandor `lossCount`).
 - Sin importar si gana o pierde, el contador de tiempo de enfriamiento será activado.
 
-Esto es mucha logica para implementar, así que lo haremos por pedazos a través de los siguientes capítulos.
+Esto es mucha lógica para implementar, así que lo haremos por pedazos a través de los siguientes capítulos.
 
-## Pongamoslo a prueba
+## Pongámoslo a prueba
 
 1. Dale a nuestro contrato una variable `uint` llamada `attackVictoryProbability`, y configuremosla que sea igual a `70`.
 
-2. Creemos una función llamada `attack`. Esta tomará dos paramentros: `_zombieId` (un `uint`) y `_targetId` (tambien un `uint`). Debe ser una función `external`.
+2. Creemos una función llamada `attack`. Esta tomará dos parámetros: `_zombieId` (un `uint`) y `_targetId` (tambien un `uint`). Debe ser una función `external`.
 
-Deje el cuerpo de la función vacio por ahora.
+Deje el cuerpo de la función vacío por ahora.
