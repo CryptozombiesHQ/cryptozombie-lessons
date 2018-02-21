@@ -243,8 +243,8 @@ material:
           } else {
             myZombie.lossCount++;
             enemyZombie.winCount++;
+            _triggerCooldown(myZombie);
           }
-          _triggerCooldown(myZombie);
         }
       }
 ---
@@ -273,6 +273,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   b. Increment `enemyZombie`'s `winCount`.
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
-
-
+  c. Run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)
