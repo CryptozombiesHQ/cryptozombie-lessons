@@ -1,5 +1,5 @@
 ---
-title: Zombie Wins and Losses
+title: Victorias y Derrotas Zombie
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -262,24 +262,24 @@ material:
       }
 ---
 
-For our zombie game, we're going to want to keep track of how many battles our zombies have won and lost. That way we can maintain a "zombie leaderboard" in our game state.
+Para nuestro juego zombie querremos contabilizar cuantas batallas han ganado o perdido nuestros zombies. De esta manera podemos mantener un "tabla de posiciones zombie" en nuestro estado de juego. 
 
-We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
+Podríamos almacenar estos datos de diferentes maneras en nuestro DApp — como mapeos individuales, como Estructuras de la tabla de posiciones o en la misma estructura `Zombie`.
 
-Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
+Cada uno tiene sus propios beneficios y riesgos dependiendo en cómo planeamos interactuar con los datos. En este tutorial vamos a almacenar las estadísticas en nuestra estructura `Zombie` para mayor sencillez y las llamaremos `winCount` y `lossCount`.
 
-So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
+Así que regresemos a `zombiefactory.sol` y añadamos estas propiedades a nuestra estructura `Zombie`.
 
-## Put it to the test
+## Pongalo a prueba
 
-1. Modify our `Zombie` struct to have 2 more properties:
+1. Modifique nuestra estructura `Zombie` para que tenga 2 propiedades más:
 
-  a. `winCount`, a `uint16`
+  a. `winCount`, un `uint16`
 
-  b. `lossCount`, also a `uint16`
+  b. `lossCount`, también es un `uint16`
 
-  >Note: Remember, since we can pack `uint`s inside structs, we want to use the smallest `uint`s we can get away with. A `uint8` is too small, since 2^8 = 256 — if our zombies attacked once per day, they could overflow this within a year. But 2^16 is 65536 — so unless a user wins or loses every day for 179 years straight, we should be safe here.
+  >Nota: Recuerde, ya que podemos insertar `uint`s dentro de las estructuras, querremos utilizar los `uint`s más pequeños que podamos. Un `uint8` es muy pequeño, dado que 2^8 = 256 — si nuestros zombies son atacados una vez al día, podrían rebasar esto en un año. Pero 2^16 es 65536 — así que, a menos que un usuario gane o pierda todos los días por 179 años seguidos, estamos seguros. 
 
-2. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `_createZombie()`.
+2. Ahora que tenemos nuevas propiedades en nuestra estructura `Zombie`, necesitamos cambiar nuestra definición de función en `_createZombie()`.
 
-  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.
+  Cambie la definición de creación de zombie para que genere cada zombie nuevo con `0` victorias y `0` derrotas.
