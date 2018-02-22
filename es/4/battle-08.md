@@ -256,4 +256,4 @@ En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemo
 
   c. Incrementa el `lossCount` del `enemyZombie`. (¡¡¡Perdedor!!! 😫 😫 😫)
 
-  d. Ejecute la función `feedAndMultiply`. Consulte `zombiefeeding.sol` para que vea la sintaxis para llamarlo. Para el 3er argumento (`_species`), pase la cadena de caracteres `"zombie"`. (Esto no hace nada ahora mismo, pero luego podríamos añadir un poco más de funcionalidad para generar zombies tipo "zombie-based" si lo deseamos)
+  d. Ejecute la función `feedAndMultiply`. Revise `zombiefeeding.sol` para que vea la sintaxis para llamarlo. Para el 3er argumento (`_species`), pase la cadena de caracteres `"zombie"`. (Esto no hace nada ahora mismo, pero luego podríamos añadir un poco más de funcionalidad para generar zombies tipo "zombie-based" si lo deseamos)
