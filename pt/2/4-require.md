@@ -85,7 +85,7 @@ material:
       }
 ---
 
-Na lição 1, possibilitamos os usuários de criar novos zumbis chamando a função `createRandomZombie` e colocando um nome. Porém, se os usuário continuarem chamando esta função e de forma ilimitada criando zumbis em seus exércitos, o jogo não teria tanta graça.
+Na lição 1, possibilitamos os usuários de criar novos zumbis chamando a função `createRandomZombie` e colocando um nome. Porém, se os usuários continuarem chamando esta função e de forma ilimitada criando zumbis em seus exércitos, o jogo não teria tanta graça.
 
 Vamos fazer assim, cada jogador só pode chamar esta função uma vez. Desta maneira novos jogadores irão chamar só quando começarem o jogo pela primeira vez, para criar o primeiro zumbi do exército.
 
@@ -95,7 +95,7 @@ Para isso nós vamos usar o `require` (requerer). `require` faz com que a funç�
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // Compara se _name é igual à "Vitalik". Lança um erro se termina se não for verdade.
+  // Compara se _name é igual à "Vitalik". Lança um erro e termina se não for verdade.
   // (Lembrete: Solidity não tem uma forma nativa de comparar strings, então
   // temos que comparar os hashes keccak256 para verificar a igualdade)
   require(keccak256(_name) == keccak256("Vitalik"));
