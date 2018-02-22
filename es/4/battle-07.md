@@ -282,4 +282,4 @@ Así que regresemos a `zombiefactory.sol` y añadamos estas propiedades a nuestr
 
 2. Ahora que tenemos nuevas propiedades en nuestra estructura `Zombie`, necesitamos cambiar nuestra definición de función en `_createZombie()`.
 
-  Cambie la definición de creación de zombie para que genere cada zombie nuevo con `0` victorias y `0` derrotas.
+  Cambie la definición de creación de zombie para generar cada zombie nuevo con `0` victorias y `0` derrotas.
