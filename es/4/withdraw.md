@@ -246,11 +246,11 @@ material:
 
 In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
 
-En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. AEntonces ¿Qué ocurre cuando lo envía?
+En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre cuando lo envía?
 
 After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract.
 
-Luego de enviar Ether a un contrato, este se almacena en la cuenta de Etehreum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato
+Luego de enviar Ether a un contrato, este se almacena en la cuenta de Ethereum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato
 
 You can write a function to withdraw Ether from the contract as follows:
 
