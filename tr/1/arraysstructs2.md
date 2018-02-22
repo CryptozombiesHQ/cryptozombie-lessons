@@ -1,6 +1,6 @@
 ---
-title: Working With Structs and Arrays
-actions: ['checkAnswer', 'hints']
+title: Yapılarla ve Sıralamalarla çalışmak
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -47,9 +47,9 @@ material:
       }
 ---
 
-### Creating New Structs
+### Yeni Yapılar Oluşturmak
 
-Remember our `Person` struct in the previous example?
+Önceki örnekteki bizim `Person` yapısını hatırlıyor musun?
 
 ```
 struct Person {
@@ -60,35 +60,35 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Şimdi yeni `Person`ların nasıl oluşturulacağını ve onlara `people` sıralamamızı eklemeyi öğreneceğiz.
 
 ```
-// create a New Person:
+// Yeni bir Person oluştur:
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// Bu kişiye bir Sıralama ekle:
 people.push(satoshi);
 ```
 
-We can also combine these together and do them in one line of code to keep things clean:
+Ayrıca, bunları birlikte kombine edebilir ve gidişatı temiz tutmak için bir satır kod yapabiliriz:
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+`array.push()`un sıralamanın **sonuna** birşey eklediğine dikkat edin, yani öğeler onlara ekleediğimiz sıradadır. Aşağıdaki örneğe bakın:
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// sayılar şimdi [5, 10, 15]'e eşittir
 ```
 
-# Put it to the test
+# Teste koy
 
-Let's make our createZombie function do something!
+Hadi birşey yapan kendi createZombie fonksiyonumuzu yapalım!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. Fonksiyon gövdesini doldurun böylece yeni bir `Zombie` oluşturur ve ona `zombies` sıralaması ekler. Yeni Zombi için `name` ve `dna` fonksiyon argümanlarından gelmelidir.
+2. Gidişatı temiz tutmak için hadi bunu bir kod satırında yapalım. 
