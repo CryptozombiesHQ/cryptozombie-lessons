@@ -1,6 +1,6 @@
 ---
 title: "Kontratlar"
-actions: ['cevapKontrol', 'hints']
+actions: ['cevapKontrol', 'ipuçları']
 material: 
   editor:
     language: sol
