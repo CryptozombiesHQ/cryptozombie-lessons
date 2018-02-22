@@ -238,7 +238,7 @@ Nuestras batallas zombie funcionarán de la siguiente manera:
 - Si pierde, no ocurre nada (solamente incrementa su `lossCount`)
 - Sea que gane o que pierda, el tiempo de enfriamiento o recarga del zombie que ataca empezará a correr.
 
-Esto es mucha lógica a implementar así que lo haremos por partes en los siguientes capitulos.
+Esto es mucha lógica a implementar así que lo haremos por partes en los siguientes capítulos.
 
 +## Pongalo a prueba
 
