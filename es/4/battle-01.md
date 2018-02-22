@@ -207,7 +207,7 @@ material:
       }
 ---
 
-Ahora que hemos aprendido sobre funciones pagaderas y balances de contrato, es hora de añadir funcionalidad para las batallas zombie!
+Ahora que hemos aprendido sobre funciones payable y balances de contrato ¡Es hora de añadir funcionalidad para las batallas zombie!
 
 Siguiendo el formato de capitulos pasados, organizaremos nuestro código creando un nuevo archivo / contrato para la funcionalidad de ataque que se importa desde nuestro contrato anterior.
 
