@@ -39,37 +39,37 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+Bir şeyin bir koleksiyonunu istediğinizde, bir **_sıralama_** (array) kullanabilirsiniz. Solidity'de iki tür sıralama vardır: **_sabit_** sıralamalar ve **_dinamik_** sıralamalar:
 
 ```
-// Array with a fixed length of 2 elements:
+// İki öğeli sabit uzunlukta sıralama:
 uint[2] fixedArray;
-// another fixed Array, can contain 5 strings:
+// diğer sabitlenmiş Sıralama, 5 dizi içerebilir: 
 string[5] stringArray;
-// a dynamic Array - has no fixed size, can keep growing:
+// bir dinamik Sıralama - sabit bir boyutu yok, büyümeyi sürdürebilir:
 uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+**_Yapılar_**'ın bir sıralamasını da oluşturabilirsiniz. Önceki bölümün `Person` yapısını kullanarak: 
 
 ```
-Person[] people; // dynamic Array, we can keep adding to it
+Person[] people; // dinamik Sıralama, ona eklemeyi sürdürebiliriz.
 ```
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Durum değişkenlerinin blok zincirinde kalıcı olarak saklandığını hatırlıyor musun? Yani bunun gibi yapıların bir dinamik sıralamasını oluşturmak, yapılandırılmış verinin bir veritabanı türü gibi kontratınızda saklanması için kullanışlı olabilir.
 
-## Public Arrays
+## Genel Sıralamalar
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+Bir sıralamayı `public` olarak ilan edebilirsiniz ve Solidity otomatik olarak onun için bir **_gaz alıcı_** oluşturacak. Söz dizimi şöyle görünüyor: 
 
 ```
 Person[] public people;
 ```
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+Diğer kontratlar daha sonra bu diziyi okuyabilir (ancak yazamaz). Bu genel verilerin kontratınıza depolanması için yararlı bir model.
 
-# Put it to the test
+# Teste koy
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+Uygulamamızda bir zombi ordusu depolamak isteyeceğiz. Ve zombilerimizi tüm diğer uygulamalara göstermek isteyeceğiz, böylece onun genel olmasını isteyeceğiz.
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+1. `Zombie` **_yapıları_**'nın bir genel sıralamasını oluştur ve onu `zombies` olarak isimlendir.
