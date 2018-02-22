@@ -306,4 +306,4 @@ El cuerpo debería `require` (requerir) que `msg.sender` sea igual a `zombieToOw
 
 2. Cambie la definición de función de `feedAndMultiply` de manera que utilice el modificador `ownerOf`.
 
-3. Ahora que estamos utilizando un `modifier`, puede eliminar la linea `require(msg.sender == zombieToOwner[_zombieId]);`
+3. Ahora que estamos utilizando un `modifier`, puede eliminar la línea `require(msg.sender == zombieToOwner[_zombieId]);`
