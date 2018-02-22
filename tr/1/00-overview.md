@@ -1,7 +1,7 @@
 ---
-başlık: Zombi Fabrikası Yapmak
-üst bilgi: Hoş geldin, insan!
-yol haritası: roadmap.jpg
+title: Zombi Fabrikası Yapmak
+header: Hoş geldin, insan!
+roadmap: roadmap.jpg
 ---
 
 Sanki bir **CryptoZombie**ye başlamak için ne gerektiğini düşünüyorsun, ha?
