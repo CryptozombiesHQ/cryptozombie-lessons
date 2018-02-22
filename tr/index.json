@@ -166,7 +166,7 @@
             ], 
             "achievements": [
                 "Ethereum akıllı kontratların nasıl yazıldığı",
-                "Güvenirlikli programlama, Ethereum'un akıllı kontratlar programlama dili",
+                "Solidity programlama, Ethereum'un akıllı kontratlar programlama dili",
                 "Ethereum'da oyunlar yapılıyor"
             ],
             "tryItOut": "Rastgele zombi oluşturucu deneyin.",
@@ -188,7 +188,7 @@
                 "CryptoZombiler {love} CryptoKittilerle beslenmek için çıkar.",
                 "CryptoZombie bir CryptoKitty'de beslendiğinde DNA'ları karışır ve CryptoKitty bir CryptoZombie gibi yeniden canlanmaya başlar.",
                 "Devam et, saldırmak için bir CryptoKitty seç ve ne tür bir CatZombie alacağına bak!",
-                "Güvenirlik Konseptleri Ustası",
+                "Solidity Konseptleri Ustası",
                 "CryptoZombiler Kod Okulu'nun Ders 2'sini tamamlamak için arkadaşınız bir {zombieCardBattle} yaptı ve onu öğrendi:"
             ], 
             "achievements": [
