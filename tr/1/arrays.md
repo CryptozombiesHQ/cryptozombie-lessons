@@ -1,6 +1,6 @@
 ---
-title: Arrays
-actions: ['checkAnswer', 'hints']
+title: Sıralamalar
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
