@@ -1,5 +1,5 @@
 ---
-title: Zombie Loss 😞
+title: Derrota Zombie 😞
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -249,13 +249,13 @@ material:
       }
 ---
 
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+Ahora que hemos codificado lo que ocurre cuando su zombie gana, descifremos lo que ocurre cuando **pierde**.
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+En nuestro juego, cuando los zombies pierden su nivel no disminuye — simplemente añaden una derrota a su `lossCount` y su tiempo de enfriamiento o recarga se activa para que tengan que esperar un día antes de volver a atacar.
 
-To implement this logic, we'll need an `else` statement.
+Para implementar está lógica necesitaremos un statement `else`.
 
-`else` statements are written just like in JavaScript and many other languages:
+Los statements `else` se escriben como en JavaScript y muchos otros lenguajes:
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
@@ -265,14 +265,14 @@ if (zombieCoins[msg.sender] > 100000000) {
 }
 ```
 
-## Put it to the test
+## Pongalo a prueba
 
-1. Add an `else` statement. If our zombie loses:
+1. Añada un statement `else`. Si nuestro zombie pierde:
 
-  a. Increment `myZombie`'s `lossCount`.
+  a. Incrementa el `lossCount` de `myZombie`.
 
-  b. Increment `enemyZombie`'s `winCount`.
+  b. Incrementa el `winCount` del `enemyZombie`.
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
+2. Fuera del statement "else", ejecute la función `_triggerCooldown` en `myZombie`. De esta manera el zombie sólo puede atacar una vez al día.
 
 
