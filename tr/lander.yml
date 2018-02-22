@@ -1,22 +1,22 @@
 ---
 tr:
-  ogdescription: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Güvenilirlik içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
+  ogdescription: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Solidity içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
   ogtitle: CryptoZombies - Ethereum’da oyunlar kodlamayı öğren. Loom Network tarafından çalıştırılıyor.
   langshort: TR #should be recognizable in local languages, like chinese would be 中文
   learn_title: Kendi Oyununuzu Yaparak Ethereum DApps Kodlamayı Öğrenin. 
-  learn_desc: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Güvenilirlik içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
+  learn_desc: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Solidity içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
   get_started: Başlangıç, Ücretsizdir
   learn_more: Daha Fazla Öğren
   what_title: CryptoZombies nedir? 
   what_desc1: CryptoZombies ücretsiz, size Ethereum'da oyun yapmayı öğreten interaktif bir kodlama okuludur.
-  what_desc2: Bu kurs yeni başlayanların Güvenirliği için oluşturulmuştur ve mutlak temellerle başlar. Yani daha önce Güvenirlik ile hiç kodlama yapmadıysanız, endişelenmeyin — adım adım ilerleyeceğiz.
+  what_desc2: Bu kurs yeni başlayanların Solidity için oluşturulmuştur ve mutlak temellerle başlar. Yani daha önce Solidity ile hiç kodlama yapmadıysanız, endişelenmeyin — adım adım ilerleyeceğiz.
   collect_title: Kripto-Koleksiyonu kazan.
   collect_desc1: Kodlama derslerini tamamlayarak kripto-koleksiyonu Zombileri ve bonusları kazan. 
   collect_desc2: Tüm dersleri tamamladıktan sonra ve DApp’iniz yayıldıktan sonra, dünyanın ilk blok zinciri tabanlı oyunlarının birinde zombi ordunuzu diğer oyucularınkilerin karşısına koyun.  
   collect_desc3: Sizi ne bekliyor? Ders 1’e atlamak ve ilk DApp’nizi yapmak için aşağıdaki butona tıkla. Ücretsizdir!
   start_title: Şimdi Başla  
   int_title: İnteraktif Kodlama Dersleri
-  inbrowser_desc: Tarayıcıda adım adım Güvenirliğin en temelinden kendi tam fonksiyonel blok zinciri tabanlı oyununuzu yapmaya kadar karşılaşacaksınız. Hatta Ders 1’in sonunda (bir oturuşta tamamlanabilen), kendinize bir resmi Güvenirlik geliştiricisi aramayı yeterince bileceksiniz!
+  inbrowser_desc: Tarayıcıda adım adım Solidity'nin en temelinden kendi tam fonksiyonel blok zinciri tabanlı oyununuzu yapmaya kadar karşılaşacaksınız. Hatta Ders 1’in sonunda (bir oturuşta tamamlanabilen), kendinize bir resmi Solidity geliştiricisi aramayı yeterince bileceksiniz!
   zombie_title: Bir Zombi Ordusu Yap
   zombie_desc: Ders 1’de, ordunuzu yapmak için bir Zombi Fabrikası inşa edeceksiniz. Oluşturduğunuz her Zombi rastgele üretilen DNA’ya ve kendi benzersiz görünümüne sahip olacak. İleriki dersler (her hafta 1 yayınlanır) diğer insanların zombileriyle savaşma yeteneği gibi, oyununuza daha fazla fonksiyonellik ekleyecek!  
   who_made: CryptoZombieleri kim yaptı ve Neden Ücretsiz? 
