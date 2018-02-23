@@ -1,6 +1,6 @@
 ---
-title: Keccak256 and Typecasting
-actions: ['checkAnswer', 'hints']
+title: Keccak256 ve Typecasting
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -56,13 +56,13 @@ material:
       }
 ---
 
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+`_generateRandomDna` fonksiyonumuzun rastgele bir (yarım) `uint` getirmesini istiyoruz. Bunu nasıl başarabiliriz?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
+Ethereum'un yapılmış SHA3'ün bir sürümü `keccak256` hash fonksiyonu vardır. Bir hash fonksiyonu temel olarak rastgele bir 256-bit onaltılı sayı içine bir giriş dizisi planlar. Dizideki az bir değişiklik hashdeki büyük bir değişime neden olur.
 
-It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
+Ethereum'daki birçok amaç için kullanışlıdır fakat şu an için onu sözde rastgele sayı oluşturmak için kullanacağız.
 
-Example:
+Örnek:
 
 ```
 //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
@@ -71,13 +71,13 @@ keccak256("aaaab");
 keccak256("aaaac");
 ```
 
-As you can see, the returned values are totally different despite only a 1 character change in the input.
+Gördüğünüz gibi, getirilen değerler girişte sadece bir 1 karakter değişmesine rağmen tamamen farklıdır.
 
-> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Not: Blok zincirinde rastgele sayı oluşturmayı **güven altına almak** çok zor bir problemdir. Buradaki yöntemimiz güvensizdir fakat Zombi DNA'mız için güvenlik yüksek önceliğimiz olmadığından, amaçlarımız için yeterince iyi olacaktır.
 
 ## Typecasting
-
-Sometimes you need to convert between data types. Take the following example:
+ 
+Bazen veri tipleri arasında dönüşüm yapmanız gerekir. Aşağıdaki örneği alın:
 
 ```
 uint8 a = 5;
@@ -88,12 +88,12 @@ uint8 c = a * b;
 uint8 c = a * uint8(b); 
 ```
 
-In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
+Yukarıda, `a * b` bir `uint` getirir fakat onu otansiyel problemlere neden olabilen bir `uint8` olarak depolamaya çalışıyoruz. Bir `uint8` olarak çıkararak o çalışır ve derleyici bir hata vermeyecektir.
 
-# Put it to the test
+# Teste koy
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+Hadi `_generateRandomDna` fonksiyonumuzun gövdesini dolduralım! İşte yapılması gereken şey:
 
-1. The first line of code should take the `keccak256` hash of `_str` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. Kodun ilk satırı sözde rastgele bir onaltılı oluşturmak için `_str`nin `keccak256` hashini almalıdır, bir `uint` olarak typecastleyin ve son olarak `rand` denilen bir `uint` içinde sonucu depolayın.
 
-2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
+2. DNA'mızın sadece 16 basamak uzunluğunda olmasını istiyoruz (`dnaModulus`u hatırladınız mı?). Yani kodun ikinci satırı yukardaki değer modulusu (`%`) `dnaModulus`u `return` yapmalı.
