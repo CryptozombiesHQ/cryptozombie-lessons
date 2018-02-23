@@ -1,6 +1,6 @@
 ---
-title: Putting It Together
-actions: ['checkAnswer', 'hints']
+title: Bir Araya Getirmek
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -64,16 +64,16 @@ material:
       }
 ---
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+Rastgeler Zombi oluşturucumuzu bitirmeye yaklaştık! Herşeyi birbirine bağlayan genel bir fonksiyon oluşturalım.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+Rastgele DNA'lı bir zombi oluşturmak için bir giriş, zombinin ismini alan ve ismi kullanan bir genel fonksiyon oluşturacağız. 
 
-# Put it to the test
+# Teste koy
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+1. `createRandomZombie` isimli bir `public` fonksiyon oluştur. `_name` (bir `string`) isimli bir parametre alacak. _(Not: Tıpkı önceki fonksiyonu `private` olarak ifade ettiğiniz gibi bu fonksiyonu `public` ifade edin)_
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. Fonksiyonun ilk satırı `_name` üzerinde `_generateRandomDna` fonksiyonunu çalıştırmalı ve `randDna` isimli bir `uint` içinde onu depolamalıdır.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. İkinci satır `_createZombie` fonksiyonunu çalıştırmalı ve `_name` ve `randDna` vermeli.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. Çözüm fonksiyon kodunun 4 satırı olmalı (kapanış dahil `}`.
