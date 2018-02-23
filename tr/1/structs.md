@@ -1,6 +1,6 @@
 ---
-title: Structs
-actions: ['checkAnswer', 'hints']
+title: Yapılar
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
+Bazen daha karışık bir veri türüne ihtiyacınız olur. Bunun için, Solidity **_yapılar_** sağlar:
 
 ```
 struct Person {
@@ -42,14 +42,14 @@ struct Person {
 
 ```
 
-Structs allow you to create more complicated data types that have multiple properties.
+Yapılar çoklu özelliklere sahip daha komplike veri türlerini oluşturmanıza izin verir.
 
-> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+> Yeni bir tür `string` sunduğumuza dikkat edin. Diziler keyfi uzunlukta UTF-8 verisi için kullanılır. Örn. `string greeting = "Merhaba Dünya!"`
 
-# Put it to the test
+# Teste koy
 
-In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
+Uygulamamızda, bazı zombiler oluşturmak isteyeceğiz! Ve zombilerin çoklu özellikleri olacak, yani bu bir yapı için mükemmel bir kullanım durumudur.
 
-1. Create a `struct` named `Zombie`.
+1. `Zombie` isimli bir `struct` oluştur.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
+2. `Zombie` yapımız 2 özelliğe sahip olacak: `name` (bir `string`), ve `dna` (bir `uint`).
