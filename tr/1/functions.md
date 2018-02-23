@@ -1,6 +1,6 @@
 ---
-title: Function Declarations
-actions: ['checkAnswer', 'hints']
+title: Fonksiyon İfadeleri
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -45,7 +45,7 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+Solidity'de bir fonksiyon ifadesi aşağıdaki gibidir:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -53,20 +53,20 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+Bu iki parametreli `eatHamburgers` isminde bir fonksiyondur: bir `string` ve bir `uint`. Şimdilik fonksiyonun gövdesi boş.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Not: Onları global değişkenlerden ayırt etmek için fonksiyon parametresi değişken isimlerine bir alt çizgi (`_`) ile başlamak bir düzendir (fakat gerekli değildir). Eğitimimiz boyunca bu düzeni kullanacağız.
 
-You would call this function like so:
+Bu fonksiyonu şöyle çağırırsınız:
 
 ```
 eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+# Teste koy
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+Uygulamamızda, bazı zombiler oluşturabilmeye ihtiyacımız olacak. Bunun için bir fonksiyon oluşturalım.
 
-1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. `createZombie` isimli bir fonksiyon oluşturun. İki parametre içermeli: **__isim_** (bir `string`), ve **__dna_** (bir `uint`).
 
-Leave the body empty for now — we'll fill it in later.
+Şimdilik gövdeyi boş bırakın — onu daha sonra dolduracağız.
