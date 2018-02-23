@@ -1,6 +1,6 @@
 ---
-title: Math Operations
-actions: ['checkAnswer', 'hints']
+title: Matematiksel İşlemler
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -26,22 +26,22 @@ material:
 
 ---
 
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+Solidity'de matematik oldukça anlaşılırdır. Aşağıdaki işlemler çoğu programlama dilinde aynıdır:
 
-* Addition: `x + y`
-* Subtraction: `x - y`,
-* Multiplication: `x * y`
-* Division: `x / y`
-* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+* Toplama: `x + y`
+* Çıkarma: `x - y`,
+* Çarpma: `x * y`
+* Bölme: `x / y`
+* Modül / artan: `x % y` _(örneğin, `13 % 5`  `3`tür, çünkü 13'ü 5'e bölerseniz, kalan 3'tür)_
 
-Solidity also supports an **_exponential operator_** (i.e. "x to the power of y", x^y):
+Solidity ayrıca bir  **_üstel operatör_** destekler (örn. "x'in y üstü", x^y):
 
 ```
-uint x = 5 ** 2; // equal to 5^2 = 25
+uint x = 5 ** 2; //  5^2 = 25'e eşittir
 ```
 
-# Put it to the test
+# Teste koy
+Bu yol
+Zombimizin DNA'sının sadece 16 karakter olduğundan emin olmak için, 10^16'ya eşit başka bir `uint` yapalım. Böylelikle sonrada bir tamsayıyı 16 basamağa kısaltmak modulus `%` kullanabiliriz.
 
-To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
-
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. `dnaModulus` isimli bir `uint` oluştur ve **10'un `dnaDigits` üstüne** eşit ayarla.
