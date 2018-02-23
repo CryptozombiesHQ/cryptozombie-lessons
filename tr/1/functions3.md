@@ -1,6 +1,6 @@
 ---
-title: More on Functions
-actions: ['checkAnswer', 'hints']
+title: Fonksiyonlar Hakkında Dahası
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -53,33 +53,33 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+Bu bölümde, Fonksiyon **_değerleri getirmeyi_** ve fonksiyon değiştiricileri öğreneceğiz.
 
-## Return Values
+## Değerleri Getirme
 
-To return a value from a function, the declaration looks like this:
+Bir fonksiyondan bir değer getirmek için, ifade şuna benzer:
 
 ```
-string greeting = "What's up dog";
+string greeting = "Naber köpek";
 
 function sayHello() public returns (string) {
   return greeting;
 }
 ```
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+Solidity'de, fonksiyon ifadesi değer getirme türü içerir (bu durumda `string`).
 
-## Function modifiers
+## Fonksiyon değiştiriciler
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+Yukardaki fonksiyon aslında Solidity'de durumu değiştirmez — örn. bir değeri değiştirmez veya hiçbir şey yazmaz.
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+Yani bu durumda onu, veriyi görüntüleyen fakat değiştirmeyen anlamında **_görüntü_** fonksiyonu olarak ifade edebilirdik:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity ayrıca uygulamadaki bir veriye tam erişemediğiniz anlamına gelen **_saf_** fonksiyonlar içerir. Aşağıdaki duruma bakın:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,16 +87,16 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+Bu fonksiyon uygulamanın durumundan tam okumuyor — getirdiği değer sadece kendi fonksiyon parametrelerine bağlıdır. Yani bu durumda fonksiyonu **_saf_** olarak ifade edebiliriz.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> Not: Fonksiyonların ne zaman saf/görüntü olarak işaretleneceğini hatırlamak zor olabilir. Neyse ki Solidity derleyicisi, bu değiştiricilerden birini ne zaman kullanmanız gerektiğini bildiren uyarıların verilmesi konusunda iyidir.
 
-# Put it to the test
+# Teste koy
 
-We're going to want a helper function that generates a random DNA number from a string.
+Bir diziden rastgele bir DNA sayısı oluşturan yardımcı bir fonksiyon isteyeceğiz.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. `_generateRandomDna` denilen `private` bir fonksiyon oluşturun. `_str` (bir `string`) isimli bir parametre alacak ve bir `uint` getirecek.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. Bu fonksiyon kontratlarımızın değişkenlerinin bazılarını görecek fakat onları değiştirmeyecek, yani onu `view` olarak işaretleyin.
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. Fonksiyon gövdesi bu sırada boş olmalıdır — onu daha sonra dolduracağız.
