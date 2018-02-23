@@ -1,6 +1,6 @@
 ---
-title: Private / Public Functions
-actions: ['checkAnswer', 'hints']
+title: Özel / Genel Fonksiyonlar
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -47,11 +47,11 @@ material:
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+Solidity'de, fonksiyonlar varsayılan olarak `public`tir . Bu, herhangi birinin (veya bir diğer kontratın) kontratınızın fonksiyonunu çağırabileceği ve kendi koduna uygulayabileceği anlamına gelir.
 
-Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Açıkça bu her zaman istenilir değildir ve ve saldırı için kontratınızı zayıf yapabilir. Dolayısıyla fonksiyonlarınızı varsayılan olarak `private` işaretlemek ve daha sonra sadece dünyaya teşhir etmek istediğiniz fonksiyonları `public` yapmak iyi uygulamadır.
 
-Let's look at how to declare a private function:
+Özel bir fonksiyonun nasıl belirleneceğine bakalım:
 
 ```
 uint[] numbers;
@@ -61,12 +61,12 @@ function _addToArray(uint _number) private {
 }
 ```
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+Bu, kontratımızın içindeki yalnızca diğer fonksiyonların bu fonksiyonu çağırabileceği ve `numbers` dizisi ekleyebileceği anlamına gelir.
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+Gördüğünüz gibi, fonksiyon isminden sonra `private` anahtar kelimesini kullanıyoruz. And as with function parameters, Ve fonksiyon parametrelerinde olduğu gibi, özel fonksiyon isimlerini bir alt çizgi (`_`) ile başlatmak gelenektir.
 
-# Put it to the test
+# Teste koy
+ 
+Kontratımızın `createZombie` fonksiyonu şu anda varsayılan olarak geneldir — bu, herhangi birinin onu çağırabildiği ve kontratımızda yeni bir Zombi oluşturabildiği anlamına gelir! Hadi onu özel yapalım.
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
-
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. `createZombie`yi değiştirin yani o bir özel fonksiyondur. Düzeni isimlendirmeyi unutmayın!
