@@ -1,6 +1,6 @@
 ---
-title: Events
-actions: ['checkAnswer', 'hints']
+title: Etkinlikler
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -73,11 +73,11 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
+Kontratımız neredeyse bitti! Hadi şimdi bir **_etkinlik_** ekleyelim.
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+**_Etkinlikler_** kontratınız için blok zincirinde olan birşeyin uygulamanızın başlangıç aşamasına iletilmesi için belirli etkinlikler için ‘dinlenebilen’ ve olduğunda harekete geçebilen bir yoldur.
 
-Example:
+Örnek:
 
 ```
 // declare the event
@@ -85,26 +85,26 @@ event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // fire an event to let the app know the function was called:
+  // uygulamanın fonksiyonu çağırdığı bildirmek için bir etkinlik ateşle: 
   IntegersAdded(_x, _y, result);
   return result;
 }
 ```
 
-Your app front-end could then listen for the event. A javascript implementation would look something like: 
+Uygulamanızın başlangıç aşaması daha sonra etkinliği dinleyebilir. Bir javascript uygulaması şöyle görünür: 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
-  // do something with result
+  // sonuç ile birşey yap
 }
 ```
 
-# Put it to the test
+# Teste koy
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+Başlangıç aşamasının yeni oluşturulmuş bir zombiyi her zaman bilmesine izin vermek için bir etkinlik istiyoruz, böylece uygulama onu görüntüleyebilir.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. `NewZombie` denilen bir `event` ilan et. `zombieId` (bir `uint`), `name` (bir `string`), ve `dna` (bir `uint`) geçmeli.
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
-
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+2. `zombies` sıralamamıza yeni Zombi ekledikten sonra `NewZombie` etkinliği ateşlemek için `_createZombie` fonksiyonunu değiştir. 
+ 
+3. Zombinin `id` sine ihtiyacınız olacak. `array.push()` yeni sıralama uzunluğunun bir `uint`ni getirir - ve indeks 0'a sahip bir sıralamadaki ilk öğeden dolayı, `array.push() - 1` eklediğimiz zombinin indeksi olacak. `id` denilen bir `uint` içinde `zombies.push() - 1` sonucunu saklayın, böylece sonraki satırda `NewZombie` etkinliği içinde bunu kullanabilirsiniz.
