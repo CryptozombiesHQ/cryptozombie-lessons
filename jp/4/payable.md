@@ -13,14 +13,14 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. ここにlevelUpFeeを定義するのだ
+          // 1. ここにlevelUpFeeを定義するのだ
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. levelUp関数をここに入力せよ
+          // 2. levelUp関数をここに入力せよ
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);

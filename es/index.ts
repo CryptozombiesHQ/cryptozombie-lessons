@@ -36,7 +36,7 @@ import multiplereturns from './2/12-multiplereturns.md'
 import kittygenes from './2/13-kittygenes.md'
 import wrappingitup from './2/14-wrappingitup.md'
 import lesson2complete from './2/15-lessoncomplete.md'
-/*
+
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
@@ -53,7 +53,7 @@ import l3_ch11 from './3/11-savinggasstorage.md'
 import l3_ch12 from './3/12-forloops.md'
 import l3_ch13 from './3/13-wrappingitup.md'
 import l3_complete from './3/14-lessoncomplete.md'
-
+/*
 // lesson4
 import l4_overview from './4/00-overview.md'
 import l4_payable from './4/payable.md'
@@ -109,7 +109,7 @@ export default {
     kittygenes,
     wrappingitup,
     lesson2complete
-  ]/*,
+  ],
   3: [
     l3_overview,
     l3_ch1,
@@ -126,7 +126,7 @@ export default {
     l3_ch12,
     l3_ch13,
     l3_complete
-  ],
+  ]/*,
   4: [
     l4_overview,
     l4_payable,

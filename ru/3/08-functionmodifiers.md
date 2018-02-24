@@ -1,6 +1,6 @@
 ---
-title: Zombie Modifiers
-actions: ['checkAnswer', 'hints']
+title: Еще о модификаторах функций
+actions: ['Проверить', 'Подсказать']
 requireLogin: true
 material:
   editor:
@@ -13,12 +13,7 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          modifier aboveLevel(uint _level, uint _zombieId) {
-            require(zombies[_zombieId].level >= _level);
-            _;
-          }
-
-          // เริ่มที่ตรงนี้
+          // Начало здесь
 
         }
       "zombiefeeding.sol": |
@@ -49,15 +44,25 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
+
+          function _isReady(Zombie storage _zombie) internal view returns (bool) {
+              return (_zombie.readyTime <= now);
+          }
+
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
+            require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -164,51 +169,44 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].name = _newName;
-        }
-
-        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].dna = _newDna;
-        }
-
       }
 ---
 
-ได้เวลาใช้ modifier `aboveLevel` ในการสร้างฟังก์ชั่นกันแล้ว
+Круто! Теперь у зомби есть работающий таймер перезарядки.
 
-เกมนี้จะต้องมีแรงจูงใจบางอย่างที่จะทำให้ผู้เล่นอยากให้ซอมบี้ของตัวเองมีเลเวลเพิ่มขึ้น:
+Добавим вспомогательные методы. Мы создали для тебя новый файл `zombiehelper.sol`, который импортирует `zombiefeeding.sol`. Это поможет организовать код.
 
-- สำหรับซอมบี้ที่มีเลเวล 2 ขึ้นไป ผู้เล่นจะสามารถเปลี่ยนชื่อของตัวเองได้
+Сделаем так, чтобы зомби получали особые способности по достижении определенного уровня. Но для этого сначала нужно побольше узнать о модификаторах функций.
 
-- สำหรับซอมบี้ที่มีเลเวล 20 ขึ้นไป ผู้เล่นจะสามารถปรับแต่ง DNA ได้
+## Модификаторы функций с аргументами
 
-เราจะทำการอิมพลีเมนท์ฟังก์ชั่นด้านล่าง โดยจะให้ตัวอย่างโค้ดจากในบทที่แล้วไว้เป็นตัวอย่าง:
+До этого мы рассматривали `onlyOwner`, но модификаторы функций также могут брать аргументы, например:
 
 ```
-// mapping ที่จะเอาไว้เก็บอายุของผู้ใช้:
+// Карта соответствий для хранения информации о возрасте пользователей:
 mapping (uint => uint) public age;
 
-// ต้องการให้ผู้ใช้มีอายุมากกว่าอายุที่ได้กำหนดไว้:
+// Модификатор требует, чтобы пользователь был старше определенного возраста:
+Modifier that requires this user to be older than a certain age:
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
 }
 
-// ต้องอายุ 16 ปีขึ้นไปถึงจะขับรถได้ (ในอเมริกา)
+// Должен быть старше 16 лет, чтобы водить авто (по крайней мере в Штатах)
+// Вызовем модификатор `olderThan` следующим образом:
 function driveCar(uint _userId) public olderThan(16, _userId) {
-  // ใส่ function logic บางอย่างลงไป
+  // Логика функции
 }
 ```
+Видишь, модификатор `oldThan` берет аргументы так же, как функция, а функция `driveCar` отдает аргументы модификатору.
 
-## ได้เวลาทดสอบแล้ว
+Создадим свой `modifier`, который использует свойство зомби `level`, чтобы ограничить доступ к особым возможностям.
 
-1. สร้างฟังก์ชั่นชื่อว่า `changeName` ที่จะรับ 2 argument: `_zombieId` (ชนิด `uint`) และ `_newName` (ชนิด `string`) และทำให้มันเป็นแบบ `external`ฟังก์ชั่นนี้ควรมี modifier ชื่อ `aboveLevel` และควรใส่ค่า  `2` ลงในส่วนของพารามิเตอร์ `_level` (อย่าลืมใส่พารามิเตอร์ `_zombieId`ด้วย)
+## Проверь себя
 
-2. ในฟังก์ชั่นนี้ ก่อนอื่นเราจะต้องทำการยืนยันความถูกต้องว่า `msg.sender` มีค่าเท่ากับ `zombieToOwner[_zombieId]` โดยการใช้ `require` statement
+1. Создай модификатор `aboveLevel` в `ZombieHelper`. Он берет 2 аргумента: `_level` (`uint`) и `_zombieId` (тоже `uint`).
 
-3. ต่อมาฟังก์ชั่นจะต้องตั้งค่า `zombies[_zombieId].name` ให้เท่ากับ`_newName`
+2. Тело функции должно проверять, что `zombies[_zombieId].level` больше или равно `_level`.
 
-3. สร้างอีกฟังก์ชั่นหนึ่งขึ้นมาโดยใช้ชื่อว่า `changeDna` ไว้ด้านล่างฟังก์ชั่น `changeName` เนื้อหาและความหมายต่างๆ เหมือนกับของใน `changeName` เว้นแต่ argument ที่ 2 นั้นจะต้องเปลี่ยนให้เป็น `_newDna` (ชนิด `uint`) แทน และควรมีค่า `20` ในส่วนของพารามิเตอร์ `_level` บน `aboveLevel` นอกจากนี้ตัวจะต้องมีการตั้งค่า`dna` ไปเป็น `_newDna`แทนที่จะเป็นการตั้งชื่อของซอมบี้
+3. Не забудь задать в последней строчке модификатора вызов оставшейся части функции с помощью `_;`.

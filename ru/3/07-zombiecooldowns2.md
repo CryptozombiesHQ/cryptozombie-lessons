@@ -1,6 +1,6 @@
 ---
-title: 共通ロジックのリファクタリング
-actions: ['答え合わせ', 'ヒント']
+title: Открытые функции и безопасность
+actions: ['Проверить', 'Подсказать']
 requireLogin: true
 material:
   editor:
@@ -30,8 +30,6 @@ material:
 
           KittyInterface kittyContract;
 
-          // 1. modifierをここに作成するのだ
-
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
           }
@@ -44,89 +42,24 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. 関数定義にmodifierを加えよ
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. この一行を削除するのだ
+          // 1. Эту функцию сделай внутренней
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            require(_isReady(myZombie));
+            // 2. Здесь добавь проверку `_isReady` 
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            _triggerCooldown(myZombie);
+            // 3. Вызови `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
             feedAndMultiply(_zombieId, kittyDna, "kitty");
-          }
-        }
-      "zombieattack.sol": |
-        import "./zombiehelper.sol";
-
-        contract ZombieBattle is ZombieHelper {
-          uint randNonce = 0;
-          uint attackVictoryProbability = 70;
-
-          function randMod(uint _modulus) internal returns(uint) {
-            randNonce++;
-            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
-          }
-
-          function attack(uint _zombieId, uint _targetId) external {
-          }
-        }
-      "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./zombiefeeding.sol";
-
-        contract ZombieHelper is ZombieFeeding {
-
-          uint levelUpFee = 0.001 ether;
-
-          modifier aboveLevel(uint _level, uint _zombieId) {
-            require(zombies[_zombieId].level >= _level);
-            _;
-          }
-
-          function withdraw() external onlyOwner {
-            owner.transfer(this.balance);
-          }
-
-          function setLevelUpFee(uint _fee) external onlyOwner {
-            levelUpFee = _fee;
-          }
-
-          function levelUp(uint _zombieId) external payable {
-            require(msg.value == levelUpFee);
-            zombies[_zombieId].level++;
-          }
-
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            zombies[_zombieId].name = _newName;
-          }
-
-          function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            zombies[_zombieId].dna = _newDna;
-          }
-
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            uint counter = 0;
-            for (uint i = 0; i < zombies.length; i++) {
-              if (zombieToOwner[i] == _owner) {
-                result[counter] = i;
-                counter++;
-              }
-            }
-            return result;
           }
 
         }
@@ -239,11 +172,6 @@ material:
 
         KittyInterface kittyContract;
 
-        modifier ownerOf(uint _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          _;
-        }
-
         function setKittyContractAddress(address _address) external onlyOwner {
           kittyContract = KittyInterface(_address);
         }
@@ -256,7 +184,8 @@ material:
             return (_zombie.readyTime <= now);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+          require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
           require(_isReady(myZombie));
           _targetDna = _targetDna % dnaModulus;
@@ -273,37 +202,22 @@ material:
           (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
           feedAndMultiply(_zombieId, kittyDna, "kitty");
         }
+
       }
 ---
 
-`attack`関数を呼び出す全てのユーザーが、攻撃に使っているゾンビを実際に所有しているのか確認したい。もし他の誰かのゾンビを使って攻撃できてしまったら、セキュリティが心配だからな！
+Модифицируем `feedAndMultiply`, чтобы она учитывала таймер перезарядки.
 
-この関数を呼び出している人物が、関数に渡された`_zombieId`のオーナーなのかを見るために、どうやってチェックするかお主は思いつくだろうか？
+Если помнишь, в прошлом уроке мы сделали эту функцию открытой. Для безопасности очень важно проверить все `public` и `external` функции и представить, как пользователи могли бы ими злоупотребить. Не забудь, чтоб если у функции нет модификатора вроде `onlyOwner`, любой пользователь может вызывать ее и задавать любые данные.
 
-よく考えてみて、自分で答えを思いつくか確かめるのだ。
+Если взглянуть еще раз на эту конкретную функцию, видно, что пользователь может вызвать ее напрямую и задать любые `_targetDna` или `_species`. А мы хотим, чтобы пользователи играли по нашим правилам!
 
-時間を置いてから、、、これまでのレッスン中のコードを参照してくれ。
+Внимательно изучив код, мы видим, что эта функция нужна только для `feedOnKitty()`, поэтому самый простой способ обезопасить ее — сделать внутренней.
 
-答えは下に書いてあるが、よく考えるまで続きはやるんじゃないぞ。
+## Проверь себя
 
-## 答えはこうだ
+1. На данный момент `feedAndMultiply` является `public` функцией. Для безопасности контракта сделаем ее `internal`. Мы не хотим, чтобы пользователь мог вызвать эту функцию для любой ДНК.
 
-これまでのレッスンでこのチェックは何度もやっている。`changeName()`、`changeDna()`、`feedAndMultiply()`において、我々は以下のチェックを使ってきた。
+2. Сделаем так, чтобы `feedAndMultiply` учитывала `cooldownTime`. После поиска `myZombie` добавим оператор `require`, который проверяет `_isReady ()` и отдает ему `myZombie`. Таким образом пользователь сможет выполнить эту функцию только в том случае, если время перезарядки зомби истекло.
 
-```
-require(msg.sender == zombieToOwner[_zombieId]);
-```
-
-我々の`attack`関数にもこれと同じロジックが必要だ。何度も同じロジックを使っているから、コードを綺麗にして繰り返しを避けるために、このロジックを独自の`modifier`に格納してみよう。
-
-## さあテストだ
-
-このロジックを最初に使った場所である`zombiefeeding.sol`に戻ろう。ロジックをリファクターして独自の`modifier`に入れていくぞ。
-
-1. `ownerOf`という`modifier`を作成せよ。これは１つの引数`_zombieId`（`uint`）を受け取る。
-
-  本文では、`msg.sender`が`zombieToOwner[_zombieId]`と同等であるように`require`（要求）し、そうであれば関数を続けるようにせよ。もし修飾詞の構文を覚えていなければ、`zombiehelper.sol`を参照してよい。
-
-2. `feedAndMultiply`の関数定義を変更し、`ownerOf`修飾詞を使うようにせよ。
-
-3. 今は`modifier`を使っているので、以下の一行は削除するのだ。`require(msg.sender == zombieToOwner[_zombieId]);`
+3. В конце функции вызовем `_triggerCooldown(myZombie)`, чтобы функция питания запускала время перезарядки зомби.

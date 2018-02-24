@@ -1,6 +1,6 @@
 ---
-title: Public Functions & Security
-actions: ['checkAnswer', 'hints']
+title: Модификатор функции onlyOwner (единственный владелец)
+actions: ['Проверить', 'Подсказать']
 requireLogin: true
 material:
   editor:
@@ -30,30 +30,20 @@ material:
 
           KittyInterface kittyContract;
 
-          function setKittyContractAddress(address _address) external onlyOwner {
+          // Модифицируй функцию:
+          function setKittyContractAddress(address _address) external {
             kittyContract = KittyInterface(_address);
           }
 
-          function _triggerCooldown(Zombie storage _zombie) internal {
-            _zombie.readyTime = uint32(now + cooldownTime);
-          }
-
-          function _isReady(Zombie storage _zombie) internal view returns (bool) {
-              return (_zombie.readyTime <= now);
-          }
-
-          // 1. ทำฟังก์ชั่นนี้ให้เป็นแบบ internal
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. ทำการสร้างตัวเช็คสำหรับ `_isReady` ตรงนี้
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. เรียกใช้ `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -74,13 +64,10 @@ material:
 
             uint dnaDigits = 16;
             uint dnaModulus = 10 ** dnaDigits;
-            uint cooldownTime = 1 days;
 
             struct Zombie {
-              string name;
-              uint dna;
-              uint32 level;
-              uint32 readyTime;
+                string name;
+                uint dna;
             }
 
             Zombie[] public zombies;
@@ -89,7 +76,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
+                uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 NewZombie(id, _name, _dna);
@@ -176,25 +163,15 @@ material:
           kittyContract = KittyInterface(_address);
         }
 
-        function _triggerCooldown(Zombie storage _zombie) internal {
-          _zombie.readyTime = uint32(now + cooldownTime);
-        }
-
-        function _isReady(Zombie storage _zombie) internal view returns (bool) {
-            return (_zombie.readyTime <= now);
-        }
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
-          require(_isReady(myZombie));
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
           if (keccak256(_species) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
-          _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -206,18 +183,58 @@ material:
       }
 ---
 
-ถึงเวลาของการปรับแต่ง `feedAndMultiply` เพื่อให้มีการรับค่า cooldown timer เข้าไปกันแล้วล่ะ
+Теперь базовый контракт `ZombieFactory` наследует `Ownable` и мы можем использовать модификатор `onlyOwner` в `ZombieFeeding`.
 
-เมื่อกลับไปปดูที่ตัวฟังก์ชั่นนี้จะพบว่าเราได้ตั้งค่าให้มันเป็น `public` ในบทที่แล้ว ซึ่งเราควรฝึกการมองถึงความปลอดภัยเอาไว้สักหน่อย โดยการเข้าตรวจสอบทุกๆ ฟังก์ชั่นที่เป็นแบบ `public` และ `external` ว่าอาจจะเกิดการล่วงละเมิดจากผู้ใช้ได้โดยทางใดบ้าง จำไว้ว่า — แม้ว่าฟังก์ชั่นนี้จะไม่มีตัว modifier เช่น `onlyOwner` แต่ผู้ใช้ก็ยังสามารถเรียกและเพิ่มข้อมูลต่างๆ เข้าไปได้อยู่ดี
+Запомни, как работает наследование в контрактах:
 
-ลองมาตรวจสอบฟังก์ชั่นแบบนี้ดูอีกครั้งก็จะพบว่า ผู้ใช้จะสามารถเรียกใช้ฟังก์ชั่นได้ด้วยตัวเอง และทำการใส่ค่า `_targetDna` หรือ `_species` ใดๆ ก็ตามที่ตัวเองอยากจะได้ลงไป —ซึ่งเราไม่ต้องการเช่นนั้น พวกเธอต้องทำตามกฎสิ!
+```
+ZombieFeeding is ZombieFactory
+ZombieFactory is Ownable
+```
 
-พิจารณาลงไปอีกจะเห็นว่า ฟังก์ชั่นนี้จำเป็นจะต้องถูกเรียกเพียงแค่ `feedOnKitty()`เพราะฉะนั้นวิธีที่ง่ายที่สุดในการป้องกันก็คือการตั้งให้มันมีค่าเป็น `internal`.
+Таким образом, `ZombieFeeding` также и `Ownable`, он может получить доступ к функциям, событиям и модификаторам контракта `Ownable`. Это относится к любым контрактам, которые будут наследовать `ZombieFeeding` в будущем.
 
-## ทดสอบกันเถอะ
+## Модификаторы функций
 
-1. ในตอนนี้ `feedAndMultiply` เป็นฟังก์ชั่น `public` อยู่ เราจึงต้องมาทำให้มันเป็น `internal` เพื่อให้ contract นั้นมีความปลอดภัยมากขึ้น เราไม่ต้องการให้ผู้ใช้สามารถใส่ค่า DNA เองได้ตามใจชอบนั่นเอง
+Модификатор функции выглядит точно так же, как сама функция, но использует ключевое слово `modifier` вместо `function`. Его нельзя вызвать напрямую, как функцию - вместо этого мы можем добавить модификатор в конце определения функции и изменить ее поведение.
 
-2. มาทำให้ `feedAndMultiply` มีการรับค่า `cooldownTime` เข้าไปกัน อันดับแรกให้ไปดูที่ `myZombie` ให้ทำการเพิ่ม `require` statement ที่จะสามารถเช็ค `_isReady()` และเพิ่ม `myZombie` เข้าไป วิธีนี้จะทำให้ผู้ใช้ execute ฟังก์ชั่นได้แค่หลังจากที่หมดช่วงเวลา cooldown ไปแล้ว
+Рассмотрим на примере `onlyOwner`:
 
-3. ในตอนท้ายสุดของฟังก์ชั่นให้เรียกใช้ `_triggerCooldown(myZombie)` เพื่อให้การออกล่านั้นส่งผลต่อ cooldown time ของเจ้าซอมบี้
+```
+/**
+ * @dev Throws if called by any account other than the owner.
+ */
+modifier onlyOwner() {
+  require(msg.sender == owner);
+  _;
+}
+```
+
+Используем модификатор:
+
+```
+contract MyContract is Ownable {
+  event LaughManiacally(string laughter);
+
+  // Обрати внимание на использование `onlyOwner` ниже:
+  function likeABoss() external onlyOwner {
+    LaughManiacally("Muahahahaha");
+  }
+}
+```
+
+Видишь модификатор `onlyOwner` в функции `likeABoss`? Когда ты вызываешь `likeABoss`, **в первую очередь** выполняется код внутри `onlyOwner`. Затем, когда он доходит до оператора `_;` в `onlyOwner`, он возвращается и выполняет код внутри `likeABoss`.
+
+Хотя есть и другие способы использования модификаторов, одним из наиболее распространенных вариантов является добавление быстрой проверки `require` перед выполнением функции.
+
+Добавление модификатора `onlyOwner` в функцию делает так, что только **единственный владелец**, например ты, может вызвать эту функцию.
+
+> Примечание: предоставление владельцу особой власти над подобным контрактом часто необходимо. Но властью можно злоупотреблять: например, владелец может оставить бэкдор, который переведет всех зомби на его адрес!
+
+> Важно помнить, что DApp на Ethereum не означает децентрализацию по умолчанию. Читай исходники, чтобы убедиться, что Когда не содержит средств передачи контроля другому владельцу. Разработчику необходимо найти баланс между контролем над DApp для исправления багов, и созданием децентрализованной платформы, которой пользователи могут доверять.
+
+## Проверь себя
+
+Теперь мы можем запретить доступ к `setKittyContractAddress`, чтобы никто не могу его изменить в будущем.
+
+1. Добавь модификатор `onlyOwner` к `setKittyContractAddress`.

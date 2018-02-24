@@ -10,8 +10,8 @@ material:
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
-          // ここから始めるのだ
-        }
+          // ここから始めるのだ
+        }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
 
@@ -218,7 +218,7 @@ material:
 
 いい感じだ！今度はバトルのロジックを理解しよう。
 
-あるレベルのランダム性は、全ての良いゲームにとって必要だ。ではSoidityにおいてどのように乱数を生成するのだろうか。
+あるレベルのランダム性は、全ての良いゲームにとって必要だ。ではSolidityにおいてどのように乱数を生成するのだろうか。
 
 それは不可能だ、というのがリアルな答えだ。少なくとも、それを安全に行うことはできない。
 

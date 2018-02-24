@@ -27,7 +27,7 @@ material:
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // ここから始めよ
+            } // ここから始めよ
           }
         }
       "zombiehelper.sol": |

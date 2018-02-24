@@ -96,7 +96,7 @@ material:
 ```
 function sayHiToVitalik(string _name) public returns (string) {
   // まず_nameが"Vitalik"と同じかどうか比較する。真でなければエラーを吐いて終了させる。
-  // （注：Solidtyはネイティブで文字列比較ができない。そこで文字列の比較を
+  // （注：Solidityはネイティブで文字列比較ができない。そこで文字列の比較を
   // するためにkeccak256 を使ってハッシュ同士を比較する方法を使うのだ。
   require(keccak256(_name) == keccak256("Vitalik"));
   // もし真ならば、関数を処理する：
