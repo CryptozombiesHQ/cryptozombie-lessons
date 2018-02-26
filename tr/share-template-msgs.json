@@ -1,0 +1,18 @@
+{
+    "1": {
+        "pageTitle": "CryptoZombie'me göz at {{ .ZombieName }}!",
+        "ogDesc": "CryptoZombies Ders 1'i tamamladım ve Ethereumda'da bir oyun kodlamanın temellerini öğrendim. Ordumdaki ilk zombiye bir bakalım!"
+    },
+    "2": {
+        "pageTitle": "CryptoZombiem {{ .ZombieName }} bir CryptoKitty yedi ve seviye atladı!",
+        "ogDesc": "CryptoZombies Ders 2'yi tamamladım ve zombi orduma bir tekrar canlanan CryptoKitty ekledim. Gel bak"
+    },
+    "3": {
+        "pageTitle": "CryptoZombie Orduma göz at!",
+        "ogDesc": "CryptoZombies Ders 3'ü tamamladım! Zombi ordum büyüyor..."
+    },
+    "4": {
+        "pageTitle": "CryptoZombiem kötü IOTA zombiyi mağlup etti!",
+        "ogDesc": "CryptoZombies Ders 4'ü tamamladım! ve kötü IOTA zombiyi bağlup ettim! Gel savaşı yeniden yaşayalım..."
+    }
+} 
