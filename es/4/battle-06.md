@@ -1,5 +1,5 @@
 ---
-title: Back to Attack!
+title: ¡De Vuelta al Ataque!
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -230,18 +230,18 @@ material:
       }
 ---
 
-Enough refactoring — back to `zombieattack.sol`.
+Suficiente refactorización — regresemos a `zombieattack.sol`.
 
-We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
+Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el modificador `ownerOf` para ser utilizado.
 
-## Put it to the test
+## Pongalo a prueba
 
-1. Add the `ownerOf` modifier to `attack` to make sure the caller owns `_zombieId`.
+1. Añada el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`. 
 
-2. The first thing our function should do is get a `storage` pointer to both zombies so we can more easily interact with them:
+2. Lo primero que nuestra función debería hacer es conseguirles un puntero de `storage` a ambos zombies para poder interactuar con ellos más facilmente:
 
-  a. Declare a `Zombie storage` named `myZombie`, and set it equal to `zombies[_zombieId]`.
+  a. Anuncie un `Zombie storage` llamado `myZombie` y configurelo como igual a `zombies[_zombieId]`.
 
-  b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
+  b. Anuncie un `Zombie storage` llamado `enemyZombie` y configurelo como igual a `zombies[_targetId]`.
 
-3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. Entonces anuncie un `uint` llamado `rand` y configurelo para que sea igual al resultado de la función `randMod` con `100` como un argumento.
