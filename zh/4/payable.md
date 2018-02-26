@@ -281,7 +281,7 @@ OnlineStore.buySomething().send(from: web3.eth.defaultAccount, value: web3.utils
 >注意： 如果一个函数没标记为`payable`， 而你尝试利用上面的方法发送以太，函数将拒绝你的事务。
 
 
-## 测试一把
+## 实战演习
 
 我们来在僵尸游戏里面创建一个`payable` 函数。
 

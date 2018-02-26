@@ -259,7 +259,7 @@ material:
 
 在 `zombiehelper.sol`里有几处地方，需要我们实现我们新的 `modifier`—— `ownerOf`。
 
-## 测试一把
+## 实战演习
 
 1. 修改 `changeName()` 使其使用 `ownerOf`
 
