@@ -214,7 +214,7 @@ Nous allons implémenter une fonction qui retournera toute l'armée de zombie d'
 
 La logique de cette fonction est un peu compliqué, il nous faudra plusieurs chapitres pour l'implémenter.
 
-1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre, une `adress` appelée `_owner`.
+1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre, une `address` appelée `_owner`.
 
 2. Ce sera une fonction `external`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte de gas.
 
