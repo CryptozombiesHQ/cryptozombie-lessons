@@ -296,7 +296,7 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 这和我们 `attack` 函数将要用到的检查逻辑是相同的。 正因我们要多次调用这个检查逻辑，让我们把它移到它自己的 `modifier` 中来清理代码并避免重复编码。
 
-## 测试一把
+## 实战演习
 
 我们回到了 `zombiefeeding.sol`， 因为这是我们第一次调用检查逻辑的地方。让我们把它重构进它自己的 `modifier`。
 

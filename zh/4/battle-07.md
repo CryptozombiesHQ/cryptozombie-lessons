@@ -270,7 +270,7 @@ material:
 
 我们跳回 `zombiefactory.sol`, 将这些属性添加进 `Zombie` 结构体.
 
-## 测试一把
+## 实战演习
 
 1. 修改 `Zombie` 结构体，添加两个属性:
 

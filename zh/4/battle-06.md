@@ -234,7 +234,7 @@ material:
 
 继续来完善我们的 `attack` 函数， 现在我们有了 `ownerOf` 修饰符来用了。
 
-## 测试一把
+## 实战演习
 
 1. 将 `ownerOf` 修饰符添加到 `attack` 来确保调用者拥有`_zombieId`.
 
