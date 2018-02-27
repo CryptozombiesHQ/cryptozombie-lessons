@@ -29,7 +29,7 @@ material:
           }
 
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
-            // Start here
+            // 在这里开始
           }
 
         }

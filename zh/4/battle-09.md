@@ -27,7 +27,7 @@ material:
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // start here
+            } // 在这里开始
           }
         }
       "zombiehelper.sol": |
@@ -272,5 +272,3 @@ if (zombieCoins[msg.sender] > 100000000) {
   b. 增加 `enemyZombie` 的 `winCount`。
 
 2. 在 `else` 之后， 对 `myZombie` 运行 `_triggerCooldown` 方法。这让每个僵尸每天只能参战一次。
-
-
