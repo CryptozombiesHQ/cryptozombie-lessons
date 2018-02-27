@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modify this function:
+          // 修改这个函数:
           function setKittyContractAddress(address _address) external {
             kittyContract = KittyInterface(_address);
           }
@@ -231,9 +231,9 @@ contract MyContract is Ownable {
 >注意：主人对合约享有的特权当然是正当的，不过也可能被恶意使用。比如，万一，主人添加了个后门，允许他偷走别人的僵尸呢？
 
 >所以非常重要的是，部署在以太坊上的 DApp，并不能保证它真正做到去中心，你需要阅读并理解它的源代码，才能防止其中没有被部署者恶意植入后门；作为开发人员，如何做到既要给自己留下修复 bug 的余地，又要尽量地放权给使用者，以便让他们放心你，从而愿意把数据放在你的 DApp 中，这确实需要个微妙的平衡。
- 
+
 ## 实战演习
 
-现在我们可以限制第三方对 `setKittyContractAddress `的访问，除了我们自己，谁都无法去修改它。 
+现在我们可以限制第三方对 `setKittyContractAddress `的访问，除了我们自己，谁都无法去修改它。
 
 1. 将 `onlyOwner` 函数修饰符添加到 `setKittyContractAddress` 中。

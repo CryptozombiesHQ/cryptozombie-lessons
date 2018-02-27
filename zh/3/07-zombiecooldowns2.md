@@ -42,18 +42,18 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 1. Make this function internal
+          // 1. 使这个函数的可见性为 internal
           function feedAndMultiply(uint _zombieId, uint _targetDna, string species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. Add a check for `_isReady` here
+            // 2. 在这里为 `_isReady` 增加一个检查
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. Call `triggerCooldown`
+            // 3. 调用 `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {

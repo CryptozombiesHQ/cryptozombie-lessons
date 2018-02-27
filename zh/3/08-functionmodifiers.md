@@ -13,7 +13,7 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // Start here
+          // 在这里开始
 
         }
       "zombiefeeding.sol": |
@@ -201,7 +201,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 ```
 看到了吧， `olderThan` 修饰符可以像函数一样接收参数，是“宿主”函数 `driveCar` 把参数传递给它的修饰符的。
 
-来，我们自己生产一个修饰符，通过传入的`level`参数来限制僵尸使用某些特殊功能。 
+来，我们自己生产一个修饰符，通过传入的`level`参数来限制僵尸使用某些特殊功能。
 
 ## 实战演习
 

@@ -30,7 +30,7 @@ material:
 
           function getZombiesByOwner(address _owner) external view returns(uint[]) {
             uint[] memory result = new uint[](ownerZombieCount[_owner]);
-            // Start here
+            // 在这里开始
             return result;
           }
 

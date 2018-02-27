@@ -9,9 +9,9 @@ material:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
 
-        // 1. Import here
+        // 1. 在这里导入
 
-        // 2. Inherit here:
+        // 2. 在这里继承:
         contract ZombieFactory {
 
             event NewZombie(uint zombieId, string name, uint dna);
@@ -187,7 +187,7 @@ material:
 
 要对付这样的情况，通常的做法是指定合约的“所有权” - 就是说，给它指定一个主人（没错，就是您），只有主人对它享有特权。
 
-## OpenZeppelin 家 `Ownable` 的合约
+## OpenZeppelin库的`Ownable` 合约
 
 下面是一个 `Ownable` 合约的例子： 来自** _ OpenZeppelin _ ** Solidity 库的 `Ownable` 合约。 OpenZeppelin 是主打安保和社区审查的智能合约库，您可以在自己的 DApps中引用。等把这一课学完，您不要催我们发布下一课，最好利用这个时间把 OpenZeppelin 的网站看看，保管您会学到很多东西！
 
@@ -257,4 +257,3 @@ contract Ownable {
 1.在程序中导入 `ownable.sol` 的内容。 如果您不记得怎么做了，参考下 `zombiefeeding.sol`。
 
 2.修改 `ZombieFactory` 合约， 让它继承自 `Ownable`。  如果您不记得怎么做了，看看 `zombiefeeding.sol`。
-

@@ -24,7 +24,7 @@ material:
               uint dna;
               uint32 level;
               uint32 readyTime;
-              // 1. Add new properties here
+              // 1. 在这里添加新的属性
             }
 
             Zombie[] public zombies;
@@ -33,7 +33,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 2. Modify new zombie creation here:
+                // 2. 在这里修改修改新僵尸的创建:
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;

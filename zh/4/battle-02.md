@@ -10,7 +10,7 @@ material:
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
-          // Start here
+          // 在这里开始
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;

@@ -20,9 +20,9 @@ material:
             _;
           }
 
-          // 1. Create withdraw function here
+          // 1. 在这里创建 withdraw 函数
 
-          // 2. Create setLevelUpFee function here
+          // 2. 在这里创建 setLevelUpFee 函数 
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -246,7 +246,7 @@ material:
 
 在上一章，我们学习了如何向合约发送以太，那么在发送之后会发生什么呢？
 
-在你发送以太之后，它将被存储进以合约的以太坊账户中， 并冻结在哪里 —— 除非你添加一个函数来从合约中把以太提现。 
+在你发送以太之后，它将被存储进以合约的以太坊账户中， 并冻结在哪里 —— 除非你添加一个函数来从合约中把以太提现。
 
 你可以写一个函数来从合约中提现以太，类似这样：
 

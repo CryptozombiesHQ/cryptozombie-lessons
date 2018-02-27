@@ -22,7 +22,7 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            // Start here
+            // 在这里开始
           }
         }
       "zombiehelper.sol": |

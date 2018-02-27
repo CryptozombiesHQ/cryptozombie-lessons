@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // 1. Create modifier here
+          // 1. 在这里创建 modifier
 
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
@@ -44,9 +44,9 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. Add modifier to function definition:
+          // 2. 在函数定义时增加 modifier :
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. Remove this line
+            // 3. 移除这一行
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
@@ -278,7 +278,7 @@ material:
 
 不管谁调用我们的 `attack` 函数 —— 我们想确保用户的确拥有他们用来攻击的僵尸。如果你能用其他人的僵尸来攻击将是一个很大的安全问题。
 
-你能想一下我们如何添加一个检查步骤来看看调用这个函数的人就是他们传入的 `_zombieId` 的拥有者么？ 
+你能想一下我们如何添加一个检查步骤来看看调用这个函数的人就是他们传入的 `_zombieId` 的拥有者么？
 
 想一想，看看你能不能自己找到一些答案。
 
