@@ -246,7 +246,7 @@ material:
 
 ## 직접 해보기
 
-1. `rand`가 `attackVictoryProbabillity`와 **_같거나 더 작은지_** 확인하는 `if` 문장을 만들게.
+1. `rand`가 `attackVictoryProbability`와 **_같거나 더 작은지_** 확인하는 `if` 문장을 만들게.
 
 2. 만약 이 조건이 참이라면, 우리 좀비가 이기게 되네! 그렇다면:
 
