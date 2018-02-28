@@ -211,7 +211,7 @@ material:
 
 ## structを引数として渡す
 
-storageのポインタは、`private` や `internal`関数の引数として、structに渡すことができる。これは便利だか覚えておくようにな。例えば、`Zombie`structを関数間に渡すことも可能だ。
+storageのポインタは、`private` や `internal`関数の引数として、structに渡すことができる。これは便利だから覚えておくようにな。例えば、`Zombie`structを関数間に渡すことも可能だ。
 
 こんな風に書けばいい：
 
