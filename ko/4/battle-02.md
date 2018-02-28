@@ -277,4 +277,4 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 3. 해당 함수는 먼저 `randNonce`를 하나 증가시킬 것이네(`randNonce++` 문법을 사용하게).
 
-4. 마지막으로, (한 줄의 코드로)`now`, `msg.sender`, `randNonce`의 `keccak256` 해시 값을 계산하고 `uint`로 변환해야 하네 - 그리고 그 값 `% _moduls`를 한 후 `return`해야 하네(후, 내용이 아주 장황헀군. 잘 이해가 안 된다면, 위에서 우리가 난수를 만들었던 예시를 보게 - 구조가 매우 유사하네).
+4. 마지막으로, (한 줄의 코드로)`now`, `msg.sender`, `randNonce`의 `keccak256` 해시 값을 계산하고 `uint`로 변환해야 하네 - 그리고 그 값 `% _modulus`를 한 후 `return`해야 하네(후, 내용이 아주 장황헀군. 잘 이해가 안 된다면, 위에서 우리가 난수를 만들었던 예시를 보게 - 구조가 매우 유사하네).
