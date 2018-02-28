@@ -300,7 +300,7 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 `zombiefeeding.sol`을 다시 보도록 하겠네. 저 내용을 처음으로 썼던 곳이니 말이야. 확인 부분을 그 부분만의 `modifier`로 만들어 구조를 개선하겠네.
 
-1. `modifier`를 `onwerOf`라는 이름으로 만들게. 이 제어자는 `_zombieId`(`uint`)를 1개의 인수로 받을 것이네.
+1. `modifier`를 `ownerOf`라는 이름으로 만들게. 이 제어자는 `_zombieId`(`uint`)를 1개의 인수로 받을 것이네.
 
   제어자 내용에서는 `msg.sender`와 `zombieToOwner[_zombieId]`가 같은지 `require`로 확인하고, 함수를 실행해야 하네. 제어자의 문법이 기억이 나지 않는다면 `zombiehelper.sol`을 참고하면 되네.
   
