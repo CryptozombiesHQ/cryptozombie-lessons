@@ -1,6 +1,6 @@
 ---
-title: Handling Multiple Return Values
-actions: ['checkAnswer', 'hints']
+title: Çoklu Değişken Getirme Kullanımı
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -122,7 +122,7 @@ material:
       }
 ---
 
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
+Bu `getKitty` fonksiyonu çoklu değişkenlerin getirilmesini gördüğümüz ilk örnek. Nasıl kullanıldığına bir bakalım:
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -145,18 +145,18 @@ function getLastReturnValue() external {
 }
 ```
 
-# Put it to the test
+# Teste koy
 
-Time to interact with the CryptoKitties contract!
+CryptoKitties kontrat ile etkileşim zamanı!
 
-Let's make a function that gets the kitty genes from the contract:
+Kontrattan kitty genlerini alan bir fonksiyon yapalım:
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1. `feedOnKitty` denilen bir fonksiyon yapın. 2 `uint` parametresi alacak, `_zombieId` ve `_kittyId` ve bir `public` fonksiyon olması lazım.
 
-2. The function should first declare a `uint` named `kittyDna`.
+2. Fonksiyon ilk olarak `kittyDna` isimli bir `uint` ifade etmeli.
 
-  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+  > Dikkat: `KittyInterface`'mizde, `genes` bir `uint256`'dir — fakat ders 1'de hatırlarsanız, `uint` `uint256` için bir takma isimdir — onlar aynı şeydir.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3. Fonksiyon daha sonra `_kittyId` ile `kittyContract.getKitty` fonksiyonunu çağırmalı ve `genes`i `kittyDna`'da depolamalı. Hatırlayın — `getKitty` defalarca değişken getirir. (Tam olarak 10 — İyiyim, senin için saydım!). Fakat önemsediğimiz sonuncusu, `genes`. Virgüllerini dikkatli say!
 
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+4. Son olarak, fonksiyon `feedAndMultiply`'i çağırmalı ve `_zombieId` ve `kittyDna`nın ikisine de geçmeli.
