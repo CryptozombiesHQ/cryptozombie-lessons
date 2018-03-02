@@ -402,7 +402,7 @@ But I hear you — sometimes a single line is not enough. You are born a writer,
 Thus we also have multi-line comments:
 
 ```
-contract CryptoZombies { 
+contract CryptoZombies {
   /* This is a multi-lined comment. I'd like to thank all of you
     who have taken your time to try this programming course.
     I know it's free to all of you, and it will stay free
@@ -462,4 +462,4 @@ Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
 2. `@author` — Your name!
 
-3. `@dev` — E.g. Compliant with OppenZeppelin's implementation of the ERC721 spec draft
+3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft
