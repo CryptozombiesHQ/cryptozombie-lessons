@@ -1,6 +1,6 @@
 ---
-title: Mappings and Addresses
-actions: ['checkAnswer', 'hints']
+title: Haritalandırma ve Adresler
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -78,43 +78,43 @@ material:
       }
 ---
 
-Let's make our game multi-player by giving the zombies in our database an owner.
+Veritabanımızda zombiler vererek oyunumuzu çok oyunculu yapalım.
 
-To do this, we'll need 2 new data types: `mapping` and `address`.
+To do this, Bunu yapmak için, 2 yeni veri türüne ihtiyacımı olacak: `mapping` ve `address`.
 
-## Addresses
+## Addresler
 
-The Ethereum blockchain is made up of **_accounts_**, which you can think of like bank accounts. An account has a balance of **_Ether_** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
+Ethereum blok zinciri banka hesapları gibi düşünebileceğiniz **_hesaplardan_**. Bir hesabın **_Ether_** (Ethereum blok zincirinde kullanılan para birimi) bakiyesi vardır ve banka hesabınızın diğer banka hespalarına elektronik para transferi yapabildiği gibi diğer hesaplara Ether ödemeleri gönderebilir ve alabilirsiniz. 
 
-Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
+Her hesap bir banka hesap numarası gibi düşünebileceğiniz bir `address'`'e sahiptir. O, hesabı işaret eden özel bir tanımlayıcıdır ve bunun gibi görünür: 
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 😉 )
+(Bu adres CryptoZombies takımına aittir. CryptoZombies ile eğleniyorsanız, bize biraz Ether gönderebilirsiniz! 😉 )
 
-We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
+Sonraki bir derste adreslerin asıl meselesine geleceğiz fakat şimdilik sadece **bir adresin belirli birkullanıcıya ait olduğunu** anlamanız gerekiyor (veya bir akıllı kontrata).
 
-So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+Yani, zombilerimizin sahipliği için onu bir özel kimlik olarak kullanabiliriz. Bir kullanıcı uygulamamızla etkileşerek yeni zombiler oluşturduğunda, fonksiyon olarak çağrulan Ethereum adresine bu zombilerin sahipliğini ayarlayacağız.
 
-## Mappings
+## Haritalandırmalar
 
-In Lesson 1 we looked at **_structs_** and **_arrays_**. **_Mappings_** are another way of storing organized data in Solidity.
+Ders 1'de **_yapılar_** ve **_sıralamalar_**'a baktık. **_Haritalandırmalar_** Solidiy'de organize edilen verilerin depolanmasının başka bir yoludur.
 
-Defining a `mapping` looks like this:
+Bunun gibi bir `mapping` tanımlamak:
 
 ```
-// For a financial app, storing a uint that holds the user's account balance:
+// Bir finansal uygulama için, kullanıcının hesap bakiyesini tutan bir uint depolamak:
 mapping (address => uint) public accountBalance;
-// Or could be used to store / lookup usernames based on userId
+// userId'ye bağlı kullanıcı adlarını depolamak/ aramak için kullanılabilir
 mapping (uint => string) userIdToName;
 ```
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+Bir haritalandırma özellikle veri depolamak ve aramak için bir anahtar değerdir. İlk örnekte, anahtar bir `address`'tir ve değer bir `uint`'tir ve ikinci örnekte anahtar bir `uint` ve değer bir `string`'tir.
 
-# Put it to the test
+# Teste koy
 
-To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
+Zombi sahipliği depolamak için, iki haritalandırma kullanacağız: biri sahibi onunan zombinin adresinin izini sürdürür ve diğeri sahibin kaç zombisinin olduğunun izini takip eder.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1. `zombieToOwner` denilen bir haritalandırma oluşturun. Anahtar bir `uint` (kendi kimliğine bağlı zombiyi depolayacağız ve araştıracağız) ve bir `address` değeri olacak. Bu haritalandırmayı `public` yapalım.
 
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+2. Anahtarın bir `address` ve bir `uint` değeri olduğu `ownerZombieCount` denilen bir haritalandırma oluşturun.
