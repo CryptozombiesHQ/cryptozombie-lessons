@@ -18,7 +18,7 @@ import puttingittogether from './1/puttingittogether.md'
 import events from './1/events.md'
 import web3js from './1/web3js.md'
 import lessoncomplete from './1/lessoncomplete.md'
-
+/*
 // lesson2
 import l2_overview from './2/00-overview.md'
 import overview from './2/1-overview.md'
@@ -69,7 +69,7 @@ import l4_ch8 from './4/battle-08.md'
 import l4_ch9 from './4/battle-09.md'
 import l4_ch10 from './4/wrappingitup.md'
 import l4_complete from './4/lessoncomplete.md'
-
+*/
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -91,7 +91,7 @@ export default {
     events,
     web3js,
     lessoncomplete
-  ],
+  ]/*,
   2: [
     l2_overview,
     overview,
@@ -142,5 +142,5 @@ export default {
     l4_ch9,
     l4_ch10,
     l4_complete
-  ]
+  ]*/
 }
