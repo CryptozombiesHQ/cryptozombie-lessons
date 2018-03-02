@@ -1,6 +1,6 @@
 ---
-title: Require
-actions: ['checkAnswer', 'hints']
+title: İstek
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -85,14 +85,13 @@ material:
       }
 ---
 
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+Ders 1'de, onu kullanıcıların `createRandomZombie` çağırarak ve bir isim girerek oluşturabileceği şekilde yaptık. Ancak, kullanıcılar ordularında sınırsız zombi oluşturmak için bu fonksiyonu çağırmayı sürdürebilseydi, oyun çok eğlenceli olmazdı.
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+Onu, her oyuncunun bu fonksiyonu bir kez çağırabileceği şekilde yapalım. Bu yolla yeni oyuncular ordularındaki ilk zombiyi oluşturmak için oyunu ilk başlattıklarında onu çağıracaklar.
 
-How can we make it so this function can only be called once per player? 
+Bu fonksiyonu oyuncu başına sadece bir kez çağrılabileceği şekilde nasıl yaparız? 
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
-
+Bunun için `require` kullanırız. `require` onu bir şart doğru değilse fonksiyonun hata fırlatacağı ve uygulamayı durduracağı şekilde yapar:
 ```
 function sayHiToVitalik(string _name) public returns (string) {
   // Compares if _name equals "Vitalik". Throws an error and exits if not true.
@@ -104,16 +103,16 @@ function sayHiToVitalik(string _name) public returns (string) {
 }
 ```
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+Bu fonksiyonu `sayHiToVitalik("Vitalik")` ile çağırırsanız, "Merhaba!" getirecektir. Onu herhangi bir diğer giriş ile çağırırsanız, bir hata çıkaracak ve uygulamayacaktır.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+Böylelikle `require`, bir fonksiyonun çalışmasından önce doğru olması gereken belirli koşulları doğrulamak için oldukça kullanışlıdır.
 
-# Put it to the test
+# Teste koy
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+Zombi oyunumuzda, bir kullanıcının aralıksız olarak `createRandomZombie` çağırmasıyla zombi ordularında sınırsız zombi oluşturabilmelerini istemiyoruz — bu oyunu daha eğlenceli yapmaz.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+İlk zombilerini oluşturduklarında, bu fonksiyonun kullanıcı başına bir kere uygulandığından emin olmak için `require` kullanalım.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
+1. `createRandomZombie` başlangıcında bir `require` koşulu koyun. Fonksiyon `ownerZombieCount[msg.sender]`'in `0`'a eşit olduğundan emin olmak için denetlemeli ve aksi takdirde hata çıkarır.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> Not: Solidity'de, ilk hangi terimi koyduğunuzun önemi yoktur — her iki sıra da eşdeğerdir. Ancak, cevap tarayıcımız gayet temel olduğundan, sadece bir cevabı doğru olarak kabul edecektir — `ownerZombieCount[msg.sender]`'in ilk gelmesi için bekliyor.
