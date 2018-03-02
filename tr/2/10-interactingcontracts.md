@@ -1,6 +1,6 @@
 ---
-title: What Do Zombies Eat?
-actions: ['checkAnswer', 'hints']
+title: Zombiler Ne Yer?
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -10,7 +10,7 @@ material:
 
         import "./zombiefactory.sol";
 
-        // Create KittyInterface here
+        // Burada KittyInterface oluştur
 
         contract ZombieFeeding is ZombieFactory {
 
@@ -95,23 +95,23 @@ material:
       }
 ---
 
-It's time to feed our zombies! And what do zombies like to eat most?
+Zombilerimizi besleme zamanı! Ve zombilerimiz en fazla ne yemeyi sever?
 
-Well it just so happens that CryptoZombies love to eat...
+Peki bu sadece CryptoZombie'lerin yemeyi sevmesi olur...
 
 **CryptoKitties!** 😱😱😱
 
-(Yes, I'm serious 😆 )
+(Evet, Ciddiyim 😆 )
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+Bunu yapmak için CryptoKitties akıllı kontratından kittyDna'yı okumamız gerekecek. CryptoKitties verileri blok zincirinde açık olarak depolandığından bunu yapabiliriz. Blok zinciri çok iyi değil mi?!
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
+Endişelenme — oyunumuz aslında herhangi birinin CryptoKitty'sine zarar vermeyecek. Biz sadece CryptoKitties vereilerini *okuyoruz*, aslında onu silemeyiz 😉
 
-## Interacting with other contracts
+## Diğer kontratlarla etkileşime girmek
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+Blok zincirinde sahip olmadığımız başka bir kontratla kontratımızın görüşmesi için, ilk olarak bir **_arayüz_** belirlememiz gerek.
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+Bir basit örneği inceleyelim. Blok zincirinde bunun gibi bir kontratın olduğunu farz edelim:
 
 ```
 contract LuckyNumber {
@@ -127,11 +127,11 @@ contract LuckyNumber {
 }
 ```
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+Bu, herhangi birinin şanslı numarasını depolayabileceği basit bir kontrat olurdu ve onların Ethereum adresleriyle ilişkili olacaktı. Daha sonra başka biri onların adresini kullanarak kişinin şanslı numarasını arayabilirdi.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+Şimdi `getNum` fonksiyonunu kullanarak bu kontratta verileri okumak istediğimiz harici bir kontrat yaptığımızı farz edelim.
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+İlk olarak `LuckyNumber` kontratın bir **_arayüzünü_** tanımlamamız gerekirdi:
 
 ```
 contract NumberInterface {
@@ -139,21 +139,21 @@ contract NumberInterface {
 }
 ```
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+Bunun birkaç değişiklik ile bir kontrat tanımlıyor gibi göründüğüne dikkat edin. For one, Bilhassa, sadece etkileşime sokacağımız fonksiyonları bildiriyoruz — bu durumda `getNum` — ve diğer fonksyonların herhangi birinden ve durum değişkenlerinden söz etmiyoruz.
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+İkinci olarak, fonksiyon gövdesini tanımlamıyoruz. Kıvırcık parantez yerine (`{` ve `}`), fonksiyon tanımını basitçe bir noktalı virgül (`;`) ile bitiriyoruz.
+ 
+Yani bir tür kontrat iskeleti gibi görünüyor. Bu, derleyicinin onun bir arayüz olduğunu nasıl tanıyacağıdır.
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+Bu arayüzü dapp's kodumuza ekleyerek our kontratımız diğer kontratın fonksiyonunun ne gibi gözüktüğünü, onları nasıl çağıracağını, beklemek için yanıt türünü bilir.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+Aslında diğer kontratın fonksiyonlarını çağırmayı diğer derste öğreneceğiz fakat şimdilik CryptoKitties kontratı için arayüzümüzü bildirelim.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+# Teste koy
 
-# Put it to the test
+CryptoKitties kaynak kodunu sizin için araştırdık ve "genler" (zombi oyunumuzun yeni bir zombi oluşturmak için ihtiyacı olan şey!) dahil tüm kitty'nin verilerini getiren `getKitty` denilen bir fonksiyon bulduk.
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
-
-The function looks like this:
+Fonksiyon şunun gibi gözüküyor:
 
 ```
 function getKitty(uint256 _id) external view returns (
@@ -184,10 +184,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+Fonksiyon alışık olduğumuzdan biraz farklı gözüküyor. Bir grup farklı değer getirdiğini... görebilirsiniz. Javascript gibi bir programlama dilinden geliyorsanız, bu farklıdır — Solidity'de bir fonksiyondan birden fazla değer getirebilirsiniz.
 
-Now that we know what this function looks like, we can use it to create an interface:
+Şimdi bu foksiyonun nasıl göründüğünü biliyoruz, onu bir arayüz oluşturmak için kullanabiliriz:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. `KittyInterface` denilen bir arayüz belirleyin. Hatırla, bu yeni bir kontrat oluşturmak gibidir — `contract` anahtar kelimesini kullanırız.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. Arayüz içinde, `getKitty` fonksiyonu tanımlayın (kıvırcık parantezler içindeki herşeyin yerine, yukardaki fonksiyonun bir kopyala/yapıştırı olan fakat  `returns` ifadesinden sonra bir noktalı virgül ile. 
