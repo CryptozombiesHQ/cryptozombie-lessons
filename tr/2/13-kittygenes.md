@@ -133,19 +133,19 @@ material:
       }
 ---
 
-Our function logic is now complete... but let's add in one bonus feature.
+Fonksiyon mantığımız şimdi tamam... fakat bir bonus özellik daha ekleyelim.
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+Onu, kittie'lerden yapılan zombilerin cat-zombieler olduğunu gösteren bir benzersiz özelliğe sahip olacak şekilde yapalım.
 
-To do this, we can add some special kitty code in the zombie's DNA.
+Bunu yapmak için, zombinin DNA'sına özel bir kitty kodu ekleyebiliriz.
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics. 
+Ders 1'den hatırlarsanız, şu anda zombi görünümünü belirlemek için 16 haneli DNA'mızın ilk 12 basamağını kullanıyoruz. O halde "özel" karakterleri kullanmak için kullanılmayan son 2 basamağı kullanalım.
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+Cat-zombielerin DNA'sının son iki basamağının `99` olduğunu farz edeceğiz. (kedilerin 9 canı olduğundan). Yani kodumuzda, bir zombi bir kediden geliyorsa `if`, o zaman DNA'nın son iki basamağını `99` diyeceğiz.
 
-## If statements
+## If ifadeleri
 
-If statements in Solidity look just like javascript:
+Solidity'de if ifadeleri javascriptteki gibidir:
 
 ```
 function eatBLT(string sandwich) public {
@@ -157,16 +157,16 @@ function eatBLT(string sandwich) public {
 }
 ```
 
-# Put it to the test
+# Teste koy
 
-Let's implement cat genes in our zombie code.
+Hadi zombi kodumuzdaki kedi genlerini uygulayalım.
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
+1. Öncelikle, `feedAndMultiply` için fonksiyon tanımını değiştirelim böylece o 3. bir argüman alır: `_species` isimli bir `string` 
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
+2. Daha sonra, yeni zombinin DNA'sını hesapladıktan sonra, `_species`'in `keccak256` hashlerini ve `"kitty"` dizisini karşılaştıran bir `if` ifadesi ekleyelim
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+3. `if` ifadesinin içinde, DNA'nın son iki basamağını `99` ile değiştirmek istiyoruz. Bunu yapmanın bir yolu mantık kullanmak: `newDna = newDna - newDna % 100 + 99;`.
 
-  > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+  > Açıklama: Varsayalım `newDna` `334455`'tir. O zaman `newDna % 100` `55`'tir, yani `newDna - newDna % 100` `334400`'dır. Son olarak  `334499` almak için `99` ekleyin.
 
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+4. Son olarak, `feedOnKitty` içinde fonksiyon çağrımını değiştirmemiz gerekiyor. `feedAndMultiply`'i çağırdığında, sonlandırmak için `"kitty"` parametresi ekler.
