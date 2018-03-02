@@ -1,6 +1,6 @@
 ---
-title: Using an Interface
-actions: ['checkAnswer', 'hints']
+title: Bir Arayüz Kullanımı
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -114,7 +114,7 @@ material:
       }
 ---
 
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
+Önceki örneğimiz `NumberInterface` ile devam ediyor, arayüzü aşu şekilde tanımladığımızda:
 
 ```
 contract NumberInterface {
@@ -122,7 +122,7 @@ contract NumberInterface {
 }
 ```
 
-We can use it in a contract as follows:
+Aşağıdaki gibi onu bir kontratta kullanabiliriz:
 
 ```
 contract MyContract {
@@ -139,10 +139,10 @@ contract MyContract {
 }
 ```
 
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
+Böylece, bu fonksiyonu `public` veya `external` olarak ortaya koydukları sürece kontratınız Ethereum blok zincirinde herhangi bir kontratile etkileşime girebilir. 
 
-# Put it to the test
+# Teste koy
 
-Let's set up our contract to read from the CryptoKitties smart contract!
+Kontratımızı CryptoKitties akıllı kontrattan okumak için ayarlayalım!
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1. `ckAddress` isimli bir değişken altında kod içinde CryptoKitties kontratın adresini sizin için kaydettim. Sonraki satırda, `kittyContract` isimli bir `KittyInterface` oluşturun ve onu `ckAddress` ile başlatın — yukarıda `numberContract` ile yaptığımız gibi.
