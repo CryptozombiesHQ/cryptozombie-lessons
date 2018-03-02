@@ -1,6 +1,6 @@
 ---
-title: Lesson 2 Overview
-actions: ['checkAnswer', 'hints']
+title: Ders 2 Genel Bakış
+actions: ['cevapKontrol', 'ipuçları']
 material:
   saveZombie: false
   zombieBattle:
@@ -11,24 +11,24 @@ material:
     answer: 1
 ---
 
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+Ders 1'de, bir isim alan, rastgele bir zombi türetmek için onu kullanan ve bu zombiyi blok zincirindeki uygulamamızın zombi veritabanına ekleyen bir fonksiyon oluşturduk.
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+Ders 2'de, uygulamamızı biraz daha oyun gibi yapacağız: Onu çok oyunculu yapacağız ve sadece onları rastgele türetmek yerine zombileri oluşturmak için daha eğlenceli bir yol da ekliyor olacağız.
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+Nasıl yeni zombiler oluşturacağız? Zombilerimizi diğer yaşam formlarında "besleyerek"!
 
-## Zombie Feeding
+## Zombi Beslemek
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+Bir zombi beslendiğinde, bir virüs ile host bulaştırır. Virüs daha sonra hostu, ordunuza katılan yeni bir zombi haline getirir. Yeni zombinin DNA'sı önceki zombinin DNA'sı ve hostun DNA'sından hesaplanır.
 
-And what do our zombies like to feed on most?
+Ve zombilerimiz en fazla neyle beslenmeyi sever? 
 
-To find that out... You'll have to complete lesson 2!
+Bunu bulmak içib... Ders 2'yi tamamlamanız gerekecek!
 
-# Put it to the test
+# Teste koy
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
+Doğru beslemek için basit bir demo var. Zombiniz beslendiğinde ne olduğunu görmek için bir insana tıkla!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+Yeni zombi DNA'sının hostun DNA'sından olduğu gibi orijinal zombinizin DNA'sından da belirlendiğini görebilirsiniz.
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+Hazır olduğunuzda, ilerlemek için "Sonraki bölüm"e tıklayın ve oyunumuzu çoklu oyunculu yaparak başlatalım. 
