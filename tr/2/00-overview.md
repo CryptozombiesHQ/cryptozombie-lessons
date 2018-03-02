@@ -1,12 +1,12 @@
 ---
-title: Zombies Attack Their Victims
-header: So, you've made it to Lesson 2!
+title: Zombiler Kurbanlarına Saldırır
+header: Yani, bunu Ders 2'de yaptın!
 roadmap: roadmap2.jpg
 ---
 
-Impressive, human! You're a better coder than I thought.
+Etkileyici, insan! Düşündüğümden daha iyi bir kodlayıcısın.
 
-Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
+Ders 2 size **zombi ordunuzun diğer yaşam formlarında beslenerek nasıl çoğalacağını** öğretecek.
 
-In this lesson we will cover some more advanced Solidity concepts, so it's highly
-recommended that you complete Lesson 1 before starting.
+Bu derste daha gelişmiş Solidity kavramlarını ele alacağız, bu nedenle başlamadan
+önce Ders 1'i tamamlamanız kesinlikle önerilir.
