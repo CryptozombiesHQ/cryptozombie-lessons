@@ -1,6 +1,6 @@
 ---
-title: Inheritance
-actions: ['checkAnswer', 'hints']
+title: Miras
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -44,7 +44,7 @@ material:
 
       }
 
-      // Start here
+      // Buradan başlayın
 
     answer: >
       pragma solidity ^0.4.19;
@@ -93,9 +93,9 @@ material:
 
 ---
 
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Oyun kodumuz oldukça uzun. Son derece uzun bir kontrat yapmaktansa, bazen kodu organize etmek için kod mantığınızı çoğlu kontratlara bölmek onu anlamlı yapar.
 
-One feature of Solidity that makes this more manageable is contract **_inheritance_**:
+Bunu daha yönetilebilir yapan Solidity'nin bir özelliği de kontrat **_mirası_**:
 
 ```
 contract Doge {
@@ -111,12 +111,12 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
+`Doge`'den  `BabyDoge` **_mirasları_**. Bu, `BabyDoge`'u derleyip açarsanız hem `catchphrase()` hem de `anotherCatchphrase()` erişimine sahip olacağı anlamına gelir (ve `Doge`'da belirtebileceğimiz her bir diğer genel fonksiyonlar).
 
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different classes.
+Bu mantıklı miras için kullanılılabilir (bir alt sınıfla olduğu gibi, bir `Cat` bir `Animal`'dır). Fakat ayrıca farklı sınıflar içine benzer mantığı birlikte gruplayarak kodunuzu organize etmek için basitçe kullanılabilir.
 
-# Put it to the test
+# Teste koy
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own class that inherits all the methods from `ZombieFactory`.
+Sonraki bölümlerde, zombilerimizi besleyip çoğaltmak için işlevselliği uyguluyor olacağız. Hadi `ZombieFactory`'den tüm yöntemleri miras alan kendi sahip olduğu sınıf içine bu mantığı koyalım.
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. `ZombieFactory` altında `ZombieFeeding` denilen bir kontrat yapın. Bu kontrat `ZombieFactory` kontratımızdan miras alıyor olmalı.
