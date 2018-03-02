@@ -141,11 +141,11 @@ material:
       }
 ---
 
-Solidity, or BlockChain programming in general, has alot in common with the kind of programming done for the aerospace industry. That is, if you make a mistake, the plane falls from the sky, the rockets can't reach the moon, and [all your money gets stuck forever](https://medium.com/chain-cloud-company-blog/parity-multisig-hack-again-b46771eaa838).
+Solidity, or BlockChain programming in general, has a lot in common with the kind of programming done for the aerospace industry. That is, if you make a mistake, the plane falls from the sky, the rockets can't reach the moon, and [all your money gets stuck forever](https://medium.com/chain-cloud-company-blog/parity-multisig-hack-again-b46771eaa838).
 
 So it becomes really really important that you double, triple check everything and make every effort to clarify the meaning and the intention behind each line of code.
 
-This is why we are taking time to go over `comments` and their importance in Solidity programming. 
+This is why we are taking time to go over `comments` and their importance in Solidity programming.
 
 ## Commenting with Style:
 
@@ -158,23 +158,23 @@ Just add double `//` anywhere and you're commenting. It's so easy that you shoul
 ```
 contract CryptoZombies {
   /*
-    This is a multi-lined comment. I'd like to thank all of you who have taken your time to try this programming course. I know it's free to all of you, and it will stay free forever, but we still put our heart and soul into making this as good as it can be. 
+    This is a multi-lined comment. I'd like to thank all of you who have taken your time to try this programming course. I know it's free to all of you, and it will stay free forever, but we still put our heart and soul into making this as good as it can be.
 
     Know that this is still the beginning of Blockchain development. We've come very far but there are so many ways to make this community better. If we made a mistake somewhere, you can make a pull request here: https://github.com/loomnetwork/cryptozombie-lessons
 
-    Or if you have some ideas, comments, or just want to say hi - drop by our Telegram. 
+    Or if you have some ideas, comments, or just want to say hi - drop by our Telegram.
   */
 }
 ```
 
-But sometimes the written language is not precise enough, or you want to make it really easy for others to read, then it's time to add real documentation. 
+But sometimes the written language is not precise enough, or you want to make it really easy for others to read, then it's time to add real documentation.
 
-In this community, the general trend is to use `Doxygen` style tags. These tags are just a special way of writting comments that are clearer and machine readable. It makes it easier to generate documentation for others.
+In this community, the general trend is to use `Doxygen` style tags. These tags are just a special way of writing comments that are clearer and machine readable. It makes it easier to generate documentation for others.
 
 ```
 /** @title A basic math operation. */
 contract multiply {
-    /** 
+    /**
       * @param x the first variable.
       * @param y the second variable.
       * @return z The answer.
