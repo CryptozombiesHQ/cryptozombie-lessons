@@ -1,6 +1,6 @@
 ---
 title: Import
-actions: ['checkAnswer', 'hints']
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -63,11 +63,11 @@ material:
 
 ---
 
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
+Whoa! Doğrulamak için kodu bitirdiğimi fark edeceksin ve şimdi düzenleyicinizin üstünde sekmeleriniz var. Devam edin, denemek için sekmelerin arasına tıklayın.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
+Kodumuz oldukça uzun sürdü, bu nedenle onu daha yönetilebilir yapmak için onu çoklu dosyalara ayırdık. Bu normalde Solidity projelerinizde uzun kod temellileri nasıl uygulayacağınızdır.
 
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+Çoklu dosyalarınız olduğunda ve birini diğeri içine import etmek istediğinizde, Solidity `import` anahtar kelimesini kullanır:
 
 ```
 import "./someothercontract.sol";
@@ -77,10 +77,10 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+Yani bu kontrat gibi aynı dizin içinde `someothercontract.sol` isimli bir dosyamız olsaydı (bu `./` anlamının ne olduğudur), derleyici tarafından importlanırdı.
 
-# Put it to the test
+# Teste koy
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
+Şimdi bir çoklu dosya yapısı kurduk, diğer dosyaların içeriklerini okumak için `import` kullanmamız gerekiyor:
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 
+1. `zombiefactory.sol`'i yeni dosyanmız `zombiefeeding.sol`'a aktar. 
