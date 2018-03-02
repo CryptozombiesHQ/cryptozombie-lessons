@@ -1,6 +1,6 @@
 ---
-title: Lesson 2 Complete!
-actions: ['checkAnswer', 'hints']
+title: Ders 2 Tamamlandı!
+actions: ['cevapKontrol', 'ipuçları']
 material:
   lessonComplete:
     answer: 1
