@@ -22,19 +22,19 @@
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "教程 {lessonNum}: {title}",
-        "signIn": "登陆后同步进度",
+        "signIn": "登录后同步进度",
         "progressLoaded": "进度已同步"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "隆重宣布",
         "title": "教程 {lessonNum}: {title}",
-        "signInPrompt": "从这章开始需要同步以前建立的僵尸，请注册或者登陆:",
-        "signInButton": "登陆",
-        "levelUpText": "这段课程我们会用到之前建立僵尸",
-        "missingZombieText": "亲，没有查到课程{lessonNum}的僵尸。如果没有完成的话请现在去完成:",
+        "signInPrompt": "从这章开始需要同步以前生成的僵尸，请注册或者登录:",
+        "signInButton": "登录",
+        "levelUpText": "这段课程我们会用到之前生成的僵尸",
+        "missingZombieText": "亲，没有检测到课程{lessonNum}的僵尸。如果没有完成的话请现在去完成:",
         "fixMissingZombieText": "如果已经完成了第{lessonNum}课程，这个提醒可能是错误的，你可以跳回到之前的课程{generateNewZombie}，进度会保留。",
-        "generateNewZombieLink": "从新同步僵尸",
+        "generateNewZombieLink": "重新同步僵尸",
         "areYouReady": "少年，准备开始了吗?",
         "resumeLesson": "跳到云尖， 第{lessonNum}课"
     },
@@ -53,68 +53,84 @@
     },
     "lessonComplete": {
         "shareLinksAction": "点击一下按钮后分享:",
-        "signIn": "登陆后同步进度",
+        "signIn": "登录后同步进度",
         "goToNextLesson": "去下一个课程",
         "lesson1": {
             "header": [
-                "太棒啦！你完成了CryptoZombies的第一个课程!",
+                "太棒啦！你完成了 CryptoZombies 的第一个课程!",
                 "你离自己编译区块链游戏跨出了很大的一步。",
                 "跟你的朋友们晒一晒你新的僵尸吧！",
                 "这是你的僵尸的永久地址:"
             ],
             "footer": "去下一课程之前，请保存进度。",
-            "zombieDesc": "CryptoZombie一级",
-            "shareLinkText": "我刚完成了#CryptoZombies的第一课！学会了如何在#Ethereum上搭建游戏。看我的部队里的第一个僵尸!"
+            "zombieDesc": "CryptoZombie 一级",
+            "shareLinkText": "我刚完成了#CryptoZombies 的第一课！学会了如何在#Ethereum 上搭建游戏。看我的部队里的第一个僵尸!"
         },
         "lesson2": {
             "header": [
-                "你好棒！太棒啦！你完成了CryptoZombies的{lesson2}!",
+                "你好棒！太棒啦！你完成了 CryptoZombies 的{lesson2}!",
                 "成功解锁了:",
                 "{zombieName}被升级到二级!",
                 "无名～ 僵尸已加入你的部队! (别担心，第三节课里你会有机会改它的名字)",
-                "晒一晒你的CryptoKitty-猎杀者！和你的朋友们分享！",
-                "这是你的僵尸的永久地址，让你的朋友跟你一起猎杀CryptoKitties:"
+                "晒一晒你的 CryptoKitty-猎杀者！和你的朋友们分享！",
+                "这是你的僵尸的永久地址，让你的朋友跟你一起猎杀 CryptoKitties:"
             ],
             "footer": [
-                "喜欢CryptoZombies? 跟我们打声招呼!",
+                "喜欢 CryptoZombies? 跟我们打声招呼!",
                 "我们大家都在{telegramLink}, 或者可以查看{twitterLink}",
                 "少年！第三节课等待你:"
             ],
-            "zombieDesc": "CryptoZombie二级",
-            "shareLinkText": "我刚完成了#CryptoZombies的第二课！我的僵尸猎杀了一个在以太坊上的CryptoKitty。看他们对打吧!"
+            "zombieDesc": "CryptoZombie 二级",
+            "shareLinkText": "我刚完成了#CryptoZombies 的第二课！我的僵尸猎杀了一个在以太坊上的 CryptoKitty。看他们对打吧!"
         },
         "lesson3": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+            "achievementsUnlocked": "成就解锁了:",
+            "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
             "header": [
-                "Congratulations! You have completed {lesson3} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "恭喜! 你完成了 CryptoZombies 的第 {levelNum}! 课",
+                "向你的朋友们炫耀你的僵尸吧",
+                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
             ],
             "footer": [
-                "喜欢CryptoZombies? 跟我们打声招呼!",
+                "喜欢 CryptoZombies? 跟我们打声招呼!",
                 "我们大家都在{telegramLink}, 或者可以查看{twitterLink}",
                 "少年！踏上你的第四课之路吧："
             ],
-            "zombieDesc": "A Level 3 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 3! Check out my zombie army:"
+            "zombieDesc": "一个 3 级 CryptoZombie",
+            "shareLinkText": "我刚完成了 #CryptoZombies 第三课! 快来围观我的僵尸大军："
         },
         "lesson4": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "achievementsUnlocked": "成就解锁了:",
+            "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
+            "newZombieAdded": "你又给你的僵尸大军征集到了一个 1 级僵尸!",
             "header": [
-                "Congratulations! You have completed {lesson4} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "恭喜! 你完成了 CryptoZombies 的第 {lesson4}! 课",
+                "向你的朋友们炫耀你的僵尸吧",
+                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
             ],
             "footer": [
-                "Lesson 5 coming in 1-2 weeks",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+                "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
+                "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
+                "准备好了的话，点击下面的按钮进入第五课："
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "zombieDesc": "一个 {levelNum} 级CryptoZombie",
+            "shareLinkText": "我刚完成了 #CryptoZombies 的第四课, 并打败了邪恶的 IOTA 僵尸，来试试你的本领吧:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "成就解锁了:",
+            "newZombieAdded": "你得到了 {zombieName}, 一个 {levelNum}级别的 CryptoZombie!",
+            "header": [
+                "恭喜! 你完成了 CryptoZombies 的第 {lesson5}! 课",
+                "向你的朋友们炫耀你的僵尸吧",
+                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
+            ],
+            "footer": [
+                "第六课将在不久后发布",
+                "一旦发布你就会收到我们的邮件通知",
+                "现在，请加入我们的 {telegramLink}，或者成为我们的{twitterLink} 粉丝吧"
+            ],
+            "zombieDesc": "一个 {levelNum} 级别 CryptoZombie",
+            "shareLinkText": "我刚完成了 #CryptoZombies 的第五课还得到了一个10级的 CryptoZombie! 来看看我的僵尸大军："
         }
     },
     "zombieBattle": {
@@ -180,13 +196,13 @@
             ]
         },
         "lesson2": {
-            "zombieCardBattle": "Zombie Card Battle",
+            "zombieCardBattle": "僵尸卡牌大战",
             "love": "love",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 2, and upgraded {zombieName} to a CryptoKitty slayer!",
-                "A CryptoKitty Slayer?!",
-                "It turns out CryptoZombies {love} to feed on CryptoKitties.",
-                "When a CryptoZombie feeds on a CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
+                "你朋友刚完成了 CryptoZombies 的第二课, 并将 {zombieName} 升级成了一个 CryptoKitty 杀手!",
+                "一个 CryptoKitty 杀手?!",
+                "看起来我们的 CryptoZombies {love} 猎食 CryptoKitties.",
+                "当一个 CryptoZombie 猎 CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
                 "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
                 "Solidity Concepts Mastered",
                 "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
@@ -228,6 +244,24 @@
                 "Withdrawing ETH from smart contracts",
                 "Random number generation & security on Ethereum",
                 "And more!"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
+                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
+                "Solidity libraries and how to use them",
+                "The SafeMath library and preventing uint overflows and underflows",
+                "Commenting your Solidity code and the natspec standard"
             ],
             "callToAction": [
                 "Want to build your own CryptoZombie army and join the ranks?",
