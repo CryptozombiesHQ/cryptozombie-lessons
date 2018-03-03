@@ -189,7 +189,7 @@ mapping (uint => uint) public age;
 
 // 限定用户年龄的修饰符
 modifier olderThan(uint _age, uint _userId) {
-  require (age[_userId] >= _age);
+  require(age[_userId] >= _age);
   _;
 }
 

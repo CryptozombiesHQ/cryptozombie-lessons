@@ -173,6 +173,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -232,6 +233,11 @@ material:
 
         function setLevelUpFee(uint _fee) external onlyOwner {
           levelUpFee = _fee;
+        }
+
+        function levelUp(uint _zombieId) external payable {
+          require(msg.value == levelUpFee);
+         zombies[_zombieId].level++;
         }
 
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
