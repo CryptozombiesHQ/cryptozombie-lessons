@@ -16,7 +16,7 @@ material:
           uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
-            // Here's one!
+            // 这儿有一个
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
@@ -26,13 +26,13 @@ material:
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
             if (rand <= attackVictoryProbability) {
-              // Here's 3 more!
+              // 这里有三个
               myZombie.winCount++;
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
             } else {
-              // ...annnnd another 2!
+              // 这儿还有俩哦
               myZombie.lossCount++;
               enemyZombie.winCount++;
               _triggerCooldown(myZombie);
@@ -242,6 +242,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control

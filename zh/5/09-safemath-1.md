@@ -10,11 +10,11 @@ material:
         pragma solidity ^0.4.19;
 
         import "./ownable.sol";
-        // 1. Import here
+        // 1. 在这里引入
 
         contract ZombieFactory is Ownable {
 
-          // 2. Declare using safemath here
+          // 2. 在这里定义 using safemath 
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -234,6 +234,7 @@ material:
           }
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control

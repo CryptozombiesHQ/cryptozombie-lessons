@@ -13,7 +13,7 @@ material:
         import "./erc721.sol";
         import "./safemath.sol";
 
-        /// TODO: Replace this with natspec descriptions
+        /// TODO: 把这里变成 natspec  标准的注释把
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
