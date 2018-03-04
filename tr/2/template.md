@@ -1,6 +1,6 @@
 ---
-title: Data Types
-actions: ['checkAnswer', 'hints']
+title: Veri Türleri
+actions: ['cevapKontrol', 'ipuçları']
 material:
   editor:
     language: sol
@@ -8,12 +8,12 @@ material:
     answer: >
 ---
 
-Solidity's code is encapsulated in contracts. A contract is basically...
+Solidity'nin kodu kontratlarda kapsüllenmiştir. Bir kontrat temel olarak...
 
 ```
 contract HelloWorld
 
 ```
 
-# Put it to the test
+# Teste koy
 
