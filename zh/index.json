@@ -7,7 +7,7 @@
         "syncing": "正在同步...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
+            "openChat": "加入群聊",
             "action": "加入我们的Telegram",
             "link": "https://t.me/loomnetworkCN"
         },
@@ -164,10 +164,10 @@
         "defaultZombieDesc": "CryptoZombie一级"
     },
     "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+        "IOTAslain": "IOTA 在战斗中被打败了!",
+        "winCount": "你的僵尸的战胜次数：",
+        "iotaLose": "IOTA 的战败次数：",
+        "newZombie": "新僵尸生成了"
     },
     "sharePage": {
         "pageTitle": "看我的CryptoZombie {zombieName}!",
@@ -202,70 +202,70 @@
                 "你朋友刚完成了 CryptoZombies 的第二课, 并将 {zombieName} 升级成了一个 CryptoKitty 杀手!",
                 "一个 CryptoKitty 杀手?!",
                 "看起来我们的 CryptoZombies {love} 猎食 CryptoKitties.",
-                "当一个 CryptoZombie 猎 CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
-                "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
-                "Solidity Concepts Mastered",
-                "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
+                "当一个 CryptoZombie 猎食 CryptoKitty 后, 它们的 DNA 就会混合在一起，然后 CryptoKitty 就变成了变种 CryptoZombie.",
+                "继续玩儿，点击一个 CryptoKitty 去攻击, 然后看看你得到了什么猫僵尸！",
+                "Solidity 概念掌握啦",
+                "为了完成 CryptoZombies 的第二课, 你的朋友创建了一个 {zombieCardBattle} 并学会了："
             ],
             "achievements": [
-                "The basics of making a multi-player game",
-                "Interacting with other contracts on the Ethereum network",
-                "Organizing larger Solidity projects into multiple contracts"
+                "编写多人以太坊游戏的基础",
+                "与以太坊上的其他合约交互",
+                "将代码分成多个合约来管理较大的 Solidity 工程"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombies and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "想建立你自己的 CryptoZombies 并加入排行么？",
+                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
             ]
         },
         "lesson3": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 3, and upgraded their zombie army!",
-                "In order to complete Lesson 3 of CryptoZombies, your friend learned about:"
+                "你朋友完成了 CryptoZombies 第三课， 还把僵尸大军升级了！",
+                "为了完成 CryptoZombies 第三课， 你朋友学到了："
             ],
             "achievements": [
-                "How to build updatable smart contracts",
-                "Securing contracts with contract ownership",
-                "Gas and gas optimization on Ethereum",
-                "Function modifiers and security checks"
+                "如何编写可更新的智能合约",
+                "用合约拥有权来保护合约",
+                "Gas 和 如何在以太坊上节约 gas 花费",
+                "方法修饰器和安全检查"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "想建立你自己的 CryptoZombies 并加入排行么？",
+                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
             ]
         },
         "lesson4": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+                "你朋友完成了 CryptoZombies 第四课， 还打败了 IOTA 僵尸!",
+                "放心大胆在左边用你朋友的僵尸来一场大战吧",
+                "为了完成 CryptoZombies 第四课， 你朋友学到了："
             ],
             "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
+                "可支付方法，以及如何利用以太坊游戏盈利",
+                "从智能合约中提取一台",
+                "随机数生成器 以及 以太坊上的安全知识",
+                "此外还有更多！"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "想建立你自己的 CryptoZombies 并加入排行么？",
+                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
             ]
         },
         "lesson5": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+                "你朋友完成了 CryptoZombies 第五课， 还得到了一个10级的僵尸",
+                "围观一下左边你朋友的僵尸大军，很震撼吧?",
+                "为了完成 CryptoZombies 第五课， 你朋友学到了："
             ],
             "achievements": [
-                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
-                "Solidity libraries and how to use them",
-                "The SafeMath library and preventing uint overflows and underflows",
-                "Commenting your Solidity code and the natspec standard"
+                "代币， ERC721 标准，以及创建可交易的代币或者物件",
+                "Solidity 库以及如何使用",
+                "SafeMath 库以及如何防止溢出和下溢",
+                "natspec 标准以及如何给 Solidity 添加注释"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "想建立你自己的 CryptoZombies 并加入排行么？",
+                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
             ]
         }
     }
