@@ -10,6 +10,4 @@ public/
 build/
 .tmp
 .idea/
-/.vs/VSWorkspaceState.json
-/.vs/slnx.sqlite
-/.vs/ProjectSettings.json
+/.vs/
