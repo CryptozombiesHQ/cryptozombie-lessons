@@ -126,7 +126,7 @@ Quando um zumbi se alimenta de outra forma de vida, o seu DNA irá combinar com 
 
 2. Nós não queremos que qualquer um alimente nossos zumbis! Então primeiro, vamos ter certeza que temos posse deste zumbi. Adicione uma declaração `require` para ter certeza que `msg.sender` é igual ao dono do zumbi (similar a que fizemos antes na função `createRandomZombie`).
 
- > Nota: Novamente, devido ao nosso verificador de respostas ser simples, ele espera que o `msg.sender` venha primeiro e irá marcar errado se você trocar a ordem. Mas normalmente quando você estiver escrevendo seus códigos, você pode usar da forma que quiser - ambas são corretas.
+ > Nota: Novamente, devido ao nosso verificador de respostas ser simples, ele espera que o `msg.sender` venha primeiro e irá marcar errado se você trocar a ordem. Mas normalmente quando você estiver escrevendo os seus códigos, você pode usar da forma que quiser - ambas são corretas.
 
 3. Precisamos obter o DNA deste zumbi. Então a próxima coisa em nossa função deve ser declarar um `Zombie` local chamado `myZombie` (que será um ponteiro `storage`). Defina esta variável para ser igual ao index `_zombieId` em nossos array `zombies`.
 
