@@ -70,6 +70,23 @@ import l4_ch9 from './4/battle-09.md'
 import l4_ch10 from './4/wrappingitup.md'
 import l4_complete from './4/lessoncomplete.md'
 
+// lesson5
+import l5_overview from './5/00-overview.md'
+import l5_ch1 from './5/01-erc721-1.md'
+import l5_ch2 from './5/02-erc721-2.md'
+import l5_ch3 from './5/03-erc721-3.md'
+import l5_ch4 from './5/04-erc721-4.md'
+import l5_ch5 from './5/05-erc721-5.md'
+import l5_ch6 from './5/06-erc721-6.md'
+import l5_ch7 from './5/07-erc721-7.md'
+import l5_ch8 from './5/08-erc721-8.md'
+import l5_ch9 from './5/09-safemath-1.md'
+import l5_ch10 from './5/10-safemath-2.md'
+import l5_ch11 from './5/11-safemath-3.md'
+import l5_ch12 from './5/12-safemath-4.md'
+import l5_ch13 from './5/13-comments.md'
+import l5_ch14 from './5/14-wrappingitup.md'
+import l5_complete from './5/15-lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -142,5 +159,24 @@ export default {
     l4_ch9,
     l4_ch10,
     l4_complete
-  ]
+  ],
+
+  5: [
+    l5_overview,
+    l5_ch1,
+    l5_ch2,
+    l5_ch3,
+    l5_ch4,
+    l5_ch5,
+    l5_ch6,
+    l5_ch7,
+    l5_ch8,
+    l5_ch9,
+    l5_ch10,
+    l5_ch11,
+    l5_ch12,
+    l5_ch13,
+    l5_ch14,
+    l5_complete
+  ],
 }
