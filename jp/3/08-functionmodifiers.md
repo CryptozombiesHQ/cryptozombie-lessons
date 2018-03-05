@@ -208,7 +208,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 1. `ZombieHelper`で、 `aboveLevel`という`modifier` を作成せよ。また、`_level` (`uint`) と `_zombieId` (`uint`)の2つの引数を取得するように設定せよ。
 
-2. その中で、 `zombies[_zombieId].level`が、`_level`よりも大きいことを確認できるようにせよ。
+2. その中で、 `zombies[_zombieId].level`が、`_level`以上であるを確認できるようにせよ。
 
 3. 修飾子の 最後に`_;`をつけて残りの関数を呼び出すことを忘れるなよ。
 
