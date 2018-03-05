@@ -1,6 +1,6 @@
 ---
 title: SafeMath Part 4
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -45,7 +45,7 @@ material:
         import "./zombieattack.sol";
         import "./erc721.sol";
         import "./safemath.sol";
-        
+
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;

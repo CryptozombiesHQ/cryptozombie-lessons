@@ -1,6 +1,6 @@
 ---
 title: Lesson 5 Complete!
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 material:
   lessonComplete:
     answer: 1

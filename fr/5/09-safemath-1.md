@@ -1,6 +1,6 @@
 ---
 title: Preventing Overflows
-actions: ['checkAnswer', 'hints']
+actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
   editor:
@@ -61,7 +61,7 @@ material:
 
         import "./zombieattack.sol";
         import "./erc721.sol";
-        
+
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           mapping (uint => address) zombieApprovals;
