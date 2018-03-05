@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 3
+title: 预防溢出
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -10,13 +10,11 @@ material:
         pragma solidity ^0.4.19;
 
         import "./ownable.sol";
-        import "./safemath.sol";
+        // 1. 在这里引入
 
         contract ZombieFactory is Ownable {
 
-          using SafeMath for uint256;
-          // 1. Declare using SafeMath32 for uint32
-          // 2. Declare using SafeMath16 for uint16
+          // 2. 在这里定义 using safemath 
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -39,11 +37,8 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-            // Note: We chose not to prevent the year 2038 problem... So don't need
-            // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
             zombieToOwner[id] = msg.sender;
-            // 3. Let's use SafeMath's `add` here:
             ownerZombieCount[msg.sender]++;
             NewZombie(id, _name, _dna);
           }
@@ -66,11 +61,8 @@ material:
 
         import "./zombieattack.sol";
         import "./erc721.sol";
-        import "./safemath.sol";
         
         contract ZombieOwnership is ZombieAttack, ERC721 {
-
-          using SafeMath for uint256;
 
           mapping (uint => address) zombieApprovals;
 
@@ -83,8 +75,8 @@ material:
           }
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
-            ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
-            ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
+            ownerZombieCount[_to]++;
+            ownerZombieCount[_from]--;
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
           }
@@ -242,6 +234,7 @@ material:
           }
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -329,74 +322,6 @@ material:
             return c;
           }
         }
-
-        /**
-         * @title SafeMath32
-         * @dev SafeMath library implemented for uint32
-         */
-        library SafeMath32 {
-
-          function mul(uint32 a, uint32 b) internal pure returns (uint32) {
-            if (a == 0) {
-              return 0;
-            }
-            uint32 c = a * b;
-            assert(c / a == b);
-            return c;
-          }
-
-          function div(uint32 a, uint32 b) internal pure returns (uint32) {
-            // assert(b > 0); // Solidity automatically throws when dividing by 0
-            uint32 c = a / b;
-            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-            return c;
-          }
-
-          function sub(uint32 a, uint32 b) internal pure returns (uint32) {
-            assert(b <= a);
-            return a - b;
-          }
-
-          function add(uint32 a, uint32 b) internal pure returns (uint32) {
-            uint32 c = a + b;
-            assert(c >= a);
-            return c;
-          }
-        }
-
-        /**
-         * @title SafeMath16
-         * @dev SafeMath library implemented for uint16
-         */
-        library SafeMath16 {
-
-          function mul(uint16 a, uint16 b) internal pure returns (uint16) {
-            if (a == 0) {
-              return 0;
-            }
-            uint16 c = a * b;
-            assert(c / a == b);
-            return c;
-          }
-
-          function div(uint16 a, uint16 b) internal pure returns (uint16) {
-            // assert(b > 0); // Solidity automatically throws when dividing by 0
-            uint16 c = a / b;
-            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-            return c;
-          }
-
-          function sub(uint16 a, uint16 b) internal pure returns (uint16) {
-            assert(b <= a);
-            return a - b;
-          }
-
-          function add(uint16 a, uint16 b) internal pure returns (uint16) {
-            uint16 c = a + b;
-            assert(c >= a);
-            return c;
-          }
-        }
       "erc721.sol": |
         contract ERC721 {
           event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
@@ -417,8 +342,6 @@ material:
       contract ZombieFactory is Ownable {
 
         using SafeMath for uint256;
-        using SafeMath32 for uint32;
-        using SafeMath16 for uint16;
 
         event NewZombie(uint zombieId, string name, uint dna);
 
@@ -443,7 +366,7 @@ material:
         function _createZombie(string _name, uint _dna) internal {
           uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
           zombieToOwner[id] = msg.sender;
-          ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
+          ownerZombieCount[msg.sender]++;
           NewZombie(id, _name, _dna);
         }
 
@@ -462,47 +385,62 @@ material:
       }
 ---
 
-Great, now our ERC721 implementation is safe from overflows & underflows!
+恭喜你，我们完成了 ERC721 的实现。
 
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
+并不是很复杂，对吧？很多类似的以太坊概念，当你只听人们谈论它们的时候，会觉得很复杂。所以最简单的理解方式就是你自己来实现它。
 
-For example, in ZombieAttack we have:
+不过要记住那只是最简单的实现。还有很多的特性我们也许想加入到我们的实现中来，比如一些额外的检查，来确保用户不会不小心把他们的僵尸转移给`0` 地址（这被称作 “烧币”, 基本上就是把代币转移到一个谁也没有私钥的地址，让这个代币永远也无法恢复）。
+或者在 DApp 中加入一些基本的拍卖逻辑。（你能想出一些实现的方法么？）
+
+但是为了让我们的课程不至于离题太远，所以我们只专注于一些基础实现。如果你想学习一些更深层次的实现，可以在这个教程结束后，去看看 OpenZeppelin 的 ERC721 合约。
+
+### 合约安全增强: 溢出和下溢
+
+我们将来学习你在编写智能合约的时候需要注意的一个主要的安全特性：防止溢出和下溢。
+
+什么是 **_溢出_** (**_overflow_**)?
+
+假设我们有一个 `uint8`, 只能存储8 bit数据。这意味着我们能存储的最大数字就是二进制 `11111111` (或者说十进制的 2^8 - 1 = 255).
+
+来看看下面的代码。最后 `number` 将会是什么值？
 
 ```
-myZombie.winCount++;
-myZombie.level++;
-enemyZombie.lossCount++;
+uint8 number = 255;
+number++;
 ```
 
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
+在这个例子中，我们导致了溢出 — 虽然我们加了1， 但是 `number` 出乎意料地等于 `0`了。  (如果你给二进制 `11111111` 加1, 它将被重置为 `00000000`，就像钟表从 `23:59` 走向 `00:00`)。
 
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
+下溢(`underflow`)也类似，如果你从一个等于 `0` 的 `uint8` 减去 `1`, 它将变成 `255` (因为 `uint` 是无符号的，其不能等于负数)。
+
+虽然我们在这里不使用 `uint8`，而且每次给一个 `uint256` 加 `1` 也不太可能溢出  (2^256 真的是一个很大的数了)，在我们的合约中添加一些保护机制依然是非常有必要的，以防我们的 DApp 以后出现什么异常情况。
+
+### 使用 SafeMath
+
+为了防止这些情况，OpenZeppelin 建立了一个叫做 SafeMath 的 **_库_**(**_library_**)，默认情况下可以防止这些问题。
+
+不过在我们使用之前…… 什么叫做库?
+
+一个**_库_** 是 Solidity 中一种特殊的合约。其中一个有用的功能是给原始数据类型增加一些方法。
+
+比如，使用 SafeMath 库的时候，我们将使用 `using SafeMath for uint256` 这样的语法。 SafeMath 库有四个方法 — `add`， `sub`， `mul`， 以及 `div`。现在我们可以这样来让 `uint256` 调用这些方法：
 
 ```
-function add(uint256 a, uint256 b) internal pure returns (uint256) {
-  uint256 c = a + b;
-  assert(c >= a);
-  return c;
-}
+using SafeMath for uint256;
 
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+uint256 a = 5;
+uint256 b = a.add(3); // 5 + 3 = 8
+uint256 c = a.mul(2); // 5 * 2 = 10
 ```
 
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
+我们将在下一章来学习这些方法，不过现在我们先将 SafeMath 库添加进我们的合约。
 
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
+## 实战演习
 
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
+我们已经帮你把 OpenZeppelin 的 `SafeMath` 库包含进 `safemath.sol`了，如果你想看一下代码的话，现在可以看看，不过我们下一章将深入进去。
 
-Now we need to implement it in ZombieFactory.
+首先我们来告诉我们的合约要使用 SafeMath。我们将在我们的 `ZombieFactory` 里调用，这是我们的基础合约 — 这样其他所有继承出去的子合约都可以使用这个库了。
 
-## Putting it to the Test
+1. 将 `safemath.sol` 引入到 `zombiefactory.sol`.
 
-Assignment:
-
-1. Declare that we're using `SafeMath32` for `uint32`.
-
-2. Declare that we're using `SafeMath16` for `uint16`.
-
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
+2. 添加定义： `using SafeMath for uint256;`.

@@ -29,8 +29,8 @@ material:
           }
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
-            ownerZombieCount[_to] = ownerZombieCount[_to].add(1)
-            ownerZombieCount[msg.sender] = ownerZombieCountmsg.sender[].sub(1)
+            ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
+            ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
           }
@@ -358,8 +358,8 @@ material:
         }
 
         function _transfer(address _from, address _to, uint256 _tokenId) private {
-          ownerZombieCount[_to] = ownerZombieCount[_to].add(1)
-          ownerZombieCount[msg.sender] = ownerZombieCountmsg.sender[].sub(1)
+          ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
+          ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
           zombieToOwner[_tokenId] = _to;
           Transfer(_from, _to, _tokenId);
         }
@@ -402,7 +402,7 @@ But I hear you — sometimes a single line is not enough. You are born a writer,
 Thus we also have multi-line comments:
 
 ```
-contract CryptoZombies { 
+contract CryptoZombies {
   /* This is a multi-lined comment. I'd like to thank all of you
     who have taken your time to try this programming course.
     I know it's free to all of you, and it will stay free
@@ -462,4 +462,4 @@ Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
 2. `@author` — Your name!
 
-3. `@dev` — E.g. Compliant with OppenZeppelin's implementation of the ERC721 spec draft
+3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft

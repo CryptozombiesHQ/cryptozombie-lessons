@@ -1,73 +1,19 @@
 ---
-title: SafeMath Part 3
+title: 注释
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
-
-        import "./ownable.sol";
-        import "./safemath.sol";
-
-        contract ZombieFactory is Ownable {
-
-          using SafeMath for uint256;
-          // 1. Declare using SafeMath32 for uint32
-          // 2. Declare using SafeMath16 for uint16
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-          uint cooldownTime = 1 days;
-
-          struct Zombie {
-            string name;
-            uint dna;
-            uint32 level;
-            uint32 readyTime;
-            uint16 winCount;
-            uint16 lossCount;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) internal {
-            // Note: We chose not to prevent the year 2038 problem... So don't need
-            // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
-            uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
-            zombieToOwner[id] = msg.sender;
-            // 3. Let's use SafeMath's `add` here:
-            ownerZombieCount[msg.sender]++;
-            NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-            uint rand = uint(keccak256(_str));
-            return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-            require(ownerZombieCount[msg.sender] == 0);
-            uint randDna = _generateRandomDna(_name);
-            randDna = randDna - randDna % 100;
-            _createZombie(_name, randDna);
-          }
-
-        }
       "zombieownership.sol": |
         pragma solidity ^0.4.19;
 
         import "./zombieattack.sol";
         import "./erc721.sol";
         import "./safemath.sol";
-        
+
+        /// TODO: 把这里变成 natspec  标准的注释把
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -84,7 +30,7 @@ material:
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
             ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
-            ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
+            ownerZombieCount[msg.sender] = ownerZombieCountmsg.sender[].sub(1);
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
           }
@@ -241,6 +187,56 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
+      "zombiefactory.sol": |
+        pragma solidity ^0.4.19;
+
+        import "./ownable.sol";
+        import "./safemath.sol";
+
+        contract ZombieFactory is Ownable {
+
+          using SafeMath for uint256;
+
+          event NewZombie(uint zombieId, string name, uint dna);
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+          uint cooldownTime = 1 days;
+
+          struct Zombie {
+            string name;
+            uint dna;
+            uint32 level;
+            uint32 readyTime;
+            uint16 winCount;
+            uint16 lossCount;
+          }
+
+          Zombie[] public zombies;
+
+          mapping (uint => address) public zombieToOwner;
+          mapping (address => uint) ownerZombieCount;
+
+          function _createZombie(string _name, uint _dna) internal {
+            uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
+            zombieToOwner[id] = msg.sender;
+            ownerZombieCount[msg.sender]++;
+            NewZombie(id, _name, _dna);
+          }
+
+          function _generateRandomDna(string _str) private view returns (uint) {
+            uint rand = uint(keccak256(_str));
+            return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string _name) public {
+            require(ownerZombieCount[msg.sender] == 0);
+            uint randDna = _generateRandomDna(_name);
+            randDna = randDna - randDna % 100;
+            _createZombie(_name, randDna);
+          }
+
+        }
       "ownable.sol": |
         /**
          * @title Ownable
@@ -329,74 +325,6 @@ material:
             return c;
           }
         }
-
-        /**
-         * @title SafeMath32
-         * @dev SafeMath library implemented for uint32
-         */
-        library SafeMath32 {
-
-          function mul(uint32 a, uint32 b) internal pure returns (uint32) {
-            if (a == 0) {
-              return 0;
-            }
-            uint32 c = a * b;
-            assert(c / a == b);
-            return c;
-          }
-
-          function div(uint32 a, uint32 b) internal pure returns (uint32) {
-            // assert(b > 0); // Solidity automatically throws when dividing by 0
-            uint32 c = a / b;
-            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-            return c;
-          }
-
-          function sub(uint32 a, uint32 b) internal pure returns (uint32) {
-            assert(b <= a);
-            return a - b;
-          }
-
-          function add(uint32 a, uint32 b) internal pure returns (uint32) {
-            uint32 c = a + b;
-            assert(c >= a);
-            return c;
-          }
-        }
-
-        /**
-         * @title SafeMath16
-         * @dev SafeMath library implemented for uint16
-         */
-        library SafeMath16 {
-
-          function mul(uint16 a, uint16 b) internal pure returns (uint16) {
-            if (a == 0) {
-              return 0;
-            }
-            uint16 c = a * b;
-            assert(c / a == b);
-            return c;
-          }
-
-          function div(uint16 a, uint16 b) internal pure returns (uint16) {
-            // assert(b > 0); // Solidity automatically throws when dividing by 0
-            uint16 c = a / b;
-            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-            return c;
-          }
-
-          function sub(uint16 a, uint16 b) internal pure returns (uint16) {
-            assert(b <= a);
-            return a - b;
-          }
-
-          function add(uint16 a, uint16 b) internal pure returns (uint16) {
-            uint16 c = a + b;
-            assert(c >= a);
-            return c;
-          }
-        }
       "erc721.sol": |
         contract ERC721 {
           event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
@@ -411,98 +339,123 @@ material:
     answer: |
       pragma solidity ^0.4.19;
 
-      import "./ownable.sol";
+      import "./zombieattack.sol";
+      import "./erc721.sol";
       import "./safemath.sol";
 
-      contract ZombieFactory is Ownable {
+      contract ZombieOwnership is ZombieAttack, ERC721 {
 
         using SafeMath for uint256;
-        using SafeMath32 for uint32;
-        using SafeMath16 for uint16;
 
-        event NewZombie(uint zombieId, string name, uint dna);
+        mapping (uint => address) zombieApprovals;
 
-        uint dnaDigits = 16;
-        uint dnaModulus = 10 ** dnaDigits;
-        uint cooldownTime = 1 days;
-
-        struct Zombie {
-          string name;
-          uint dna;
-          uint32 level;
-          uint32 readyTime;
-          uint16 winCount;
-          uint16 lossCount;
+        function balanceOf(address _owner) public view returns (uint256 _balance) {
+          return ownerZombieCount[_owner];
         }
 
-        Zombie[] public zombies;
-
-        mapping (uint => address) public zombieToOwner;
-        mapping (address => uint) ownerZombieCount;
-
-        function _createZombie(string _name, uint _dna) internal {
-          uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
-          zombieToOwner[id] = msg.sender;
-          ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
-          NewZombie(id, _name, _dna);
+        function ownerOf(uint256 _tokenId) public view returns (address _owner) {
+          return zombieToOwner[_tokenId];
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
-          uint rand = uint(keccak256(_str));
-          return rand % dnaModulus;
+        function _transfer(address _from, address _to, uint256 _tokenId) private {
+          ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
+          ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
+          zombieToOwner[_tokenId] = _to;
+          Transfer(_from, _to, _tokenId);
         }
 
-        function createRandomZombie(string _name) public {
-          require(ownerZombieCount[msg.sender] == 0);
-          uint randDna = _generateRandomDna(_name);
-          randDna = randDna - randDna % 100;
-          _createZombie(_name, randDna);
+        function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
+          _transfer(msg.sender, _to, _tokenId);
         }
 
+        function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
+          zombieApprovals[_tokenId] = _to;
+          Approval(msg.sender, _to, _tokenId);
+        }
+
+        function takeOwnership(uint256 _tokenId) public {
+          require(zombieApprovals[_tokenId] == msg.sender);
+          address owner = ownerOf(_tokenId);
+          _transfer(owner, msg.sender, _tokenId);
+        }
       }
 ---
 
-Great, now our ERC721 implementation is safe from overflows & underflows!
+僵尸游戏的 Solidity 终于完成啦。
 
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
+在以后的课程中，我们将学习如何将游戏部署到以太坊，以及如何和 Web3.js 交互。
 
-For example, in ZombieAttack we have:
+不过在你离开第五课之前，我们来谈谈如果 **给你的代码添加注释**.
 
-```
-myZombie.winCount++;
-myZombie.level++;
-enemyZombie.lossCount++;
-```
+## 注释语法
 
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
-
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
+Solidity 里的注释和 JavaScript 相同。在我们的课程中你已经看到了不少单行注释了：
 
 ```
-function add(uint256 a, uint256 b) internal pure returns (uint256) {
-  uint256 c = a + b;
-  assert(c >= a);
-  return c;
+// 这是一个单行注释，可以理解为给自己或者别人看的笔记
+```
+
+只要在任何地方添加一个 `//` 就意味着你在注释。如此简单所以你应该经常这么做。
+
+不过我们也知道你的想法：有时候单行注释是不够的。毕竟你生来话痨。
+
+所以我们有了多行注释：
+
+```
+contract CryptoZombies { 
+  /* 这是一个多行注释。我想对所有花时间来尝试这个编程课程的人说声谢谢。
+  它是免费的，并将永远免费。但是我们依然倾注了我们的心血来让它变得更好。
+
+   要知道这依然只是区块链开发的开始而已，我们已经走了很远，
+   不过依然有很多种方式来让我们的社区变得更好。
+   如果我们在哪个地方出了错，欢迎在我们的 github 提交PR或者issue来帮助我们改进：
+    https://github.com/loomnetwork/cryptozombie-lessons
+
+    或者，如果你有任何的想法、建议甚至仅仅想和我们打声招呼，欢迎来我们的电报群：
+     https://t.me/loomnetworkcn
+  */
 }
-
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
 ```
 
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
+特别是，最好为你合约中每个方法添加注释来解释它的预期行为。这样其他开发者（或者你自己，在6个月以后再回到这个项目中）可以很快地理解你的代码而不需要逐行阅读所有代码。
 
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
+Solidity 社区所使用的一个标准是使用一种被称作 **_natspec_** 的格式，看起来像这样：
 
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
+```
+/// @title 一个简单的基础运算合约
+/// @author H4XF13LD MORRIS 💯💯😎💯💯
+/// @notice 现在，这个合约只添加一个乘法
+contract Math {
+  /// @notice 两个数相乘
+  /// @param x 第一个 unit
+  /// @param y  第二个 uint
+  /// @return z  (x * y) 的结果
+  /// @dev 现在这个方法不检查溢出
+  function multiply(uint x, uint y) returns (uint z) {
+    // 这只是个普通的注释，不会被 natspec 解释
+    z = x * y;
+  }
+}
+```
 
-Now we need to implement it in ZombieFactory.
+`@title`（标题） 和 `@author` （作者）很直接了.
 
-## Putting it to the Test
+`@notice` （须知）向 **用户** 解释这个方法或者合约是做什么的。 `@dev` （开发者） 是向开发者解释更多的细节。
 
-Assignment:
+`@param` （参数）和 `@return` （返回） 用来描述这个方法需要传入什么参数以及返回什么值。
 
-1. Declare that we're using `SafeMath32` for `uint32`.
+注意你并不需要每次都用上所有的标签，它们都是可选的。不过最少，写下一个 `@dev` 注释来解释每个方法是做什么的。
 
-2. Declare that we're using `SafeMath16` for `uint16`.
+## 实战演习
 
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
+如果你还没注意到：CryptoZombies 的答案检查器在工作的时候将忽略所有的注释。所以这一章我们其实无法检查你的 natspec 注释了。全靠你自己咯。
+
+不过，到现在你应该已经是一个 Solidity 小能手了。我们就假定你已经学会这些了。
+
+大胆去做些尝试把，给 `ZombieOwnership` 加上一些 natspec 标签:
+
+1. `@title` —例如：一个管理转移僵尸所有权的合约
+
+2. `@author` — 你的名字
+
+3. `@dev` — 例如：符合 OpenZeppelin 对 ERC721 标准草案的实现

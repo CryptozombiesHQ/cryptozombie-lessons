@@ -1,5 +1,5 @@
 ---
-title: "奖励: Kitty 基因"
+title: "Bonus: Kitty Genes"
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -133,39 +133,40 @@ material:
       }
 ---
 
-我们的功能逻辑主体已经完成了...现在让我们来添一个奖励功能吧。
+Fonksiyon mantığımız şimdi tamam... fakat bir bonus özellik daha ekleyelim.
 
-这样吧，给从小猫制造出的僵尸添加些特征，以显示他们是猫僵尸。
+Onu, kittie'lerden yapılan zombilerin cat-zombieler olduğunu gösteren bir benzersiz özelliğe sahip olacak şekilde yapalım.
 
-要做到这一点，咱们在新僵尸的DNA中添加一些特殊的小猫代码。
+Bunu yapmak için, zombinin DNA'sına özel bir kitty kodu ekleyebiliriz.
 
-还记得吗，第一课中我们提到，我们目前只使用16位DNA的前12位数来指定僵尸的外观。所以现在我们可以使用最后2个数字来处理“特殊”的特征。
+Ders 1'den hatırlarsanız, şu anda zombi görünümünü belirlemek için 16 haneli DNA'mızın ilk 12 basamağını kullanıyoruz. O halde "özel" karakterleri kullanmak için kullanılmayan son 2 basamağı kullanalım.
 
-这样吧，把猫僵尸DNA的最后两个数字设定为`99`（因为猫有9条命）。所以在我们这么来写代码：`如果`这个僵尸是一只猫变来的，就将它DNA的最后两位数字设置为`99`。
+Cat-zombielerin DNA'sının son iki basamağının `99` olduğunu farz edeceğiz. (kedilerin 9 canı olduğundan). Yani kodumuzda, bir zombi bir kediden geliyorsa `if`, o zaman DNA'nın son iki basamağını `99` diyeceğiz.
 
+## If ifadeleri
 
-## if 语句
+Solidity'de if ifadeleri javascriptteki gibidir:
 
-if语句的语法在 Solidity 中，与在 JavaScript 中差不多：
 ```
 function eatBLT(string sandwich) public {
-  // 看清楚了，当我们比较字符串的时候，需要比较他们的 keccak256 哈希码
+  // Remember with strings, we have to compare their keccak256 hashes
+  // to check equality
   if (keccak256(sandwich) == keccak256("BLT")) {
     eat();
   }
 }
 ```
 
-# 实战演习
+# Teste koy
 
-让我们在我们的僵尸代码中实现小猫的基因。
+Hadi zombi kodumuzdaki kedi genlerini uygulayalım.
 
-1. 首先，我们修改下 `feedAndMultiply` 函数的定义，给它传入第三个参数：一条名为 `_species` 的字符串。
+1. Öncelikle, `feedAndMultiply` için fonksiyon tanımını değiştirelim böylece o 3. bir argüman alır: `_species` isimli bir `string` 
 
-2. 接下来，在我们计算出新的僵尸的DNA之后，添加一个 `if` 语句来比较 `_species` 和字符串 `"kitty"` 的 `keccak256` 哈希值。
+2. Daha sonra, yeni zombinin DNA'sını hesapladıktan sonra, `_species`'in `keccak256` hashlerini ve `"kitty"` dizisini karşılaştıran bir `if` ifadesi ekleyelim
 
-3.  在 `if` 语句中，我们用 `99` 替换了新僵尸DNA的最后两位数字。可以这么做：`newDna = newDna - newDna％100 + 99;`。
+3. `if` ifadesinin içinde, DNA'nın son iki basamağını `99` ile değiştirmek istiyoruz. Bunu yapmanın bir yolu mantık kullanmak: `newDna = newDna - newDna % 100 + 99;`.
 
-    >解释：假设 `newDna` 是 `334455`。那么 `newDna％100` 是 `55`，所以 `newDna - newDna％100` 得到 `334400`。最后加上 `99` 可得到 `334499`。
+  > Açıklama: Varsayalım `newDna` `334455`'tir. O zaman `newDna % 100` `55`'tir, yani `newDna - newDna % 100` `334400`'dır. Son olarak  `334499` almak için `99` ekleyin.
 
-4. 最后，我们修改了 `feedOnKitty` 中的函数调用。当它调用 `feedAndMultiply` 时，增加 `“kitty”` 作为最后一个参数。
+4. Son olarak, `feedOnKitty` içinde fonksiyon çağrımını değiştirmemiz gerekiyor. `feedAndMultiply`'i çağırdığında, sonlandırmak için `"kitty"` parametresi ekler.

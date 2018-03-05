@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 3
+title: SafeMath 第三部分
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -15,8 +15,8 @@ material:
         contract ZombieFactory is Ownable {
 
           using SafeMath for uint256;
-          // 1. Declare using SafeMath32 for uint32
-          // 2. Declare using SafeMath16 for uint16
+          // 1. 为 uint32 声明 使用 SafeMath32
+          // 2. 为 uint16 声明 使用 SafeMath16
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -39,11 +39,11 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-            // Note: We chose not to prevent the year 2038 problem... So don't need
-            // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
+            // 注意: 我们选择不处理2038年问题，所以不用担心 readyTime 的溢出
+            // 反正在2038年我们的APP早完蛋了
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
             zombieToOwner[id] = msg.sender;
-            // 3. Let's use SafeMath's `add` here:
+            // 3. 在这里使用 SafeMath 的 `add` 方法:
             ownerZombieCount[msg.sender]++;
             NewZombie(id, _name, _dna);
           }
@@ -242,6 +242,7 @@ material:
           }
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -462,11 +463,11 @@ material:
       }
 ---
 
-Great, now our ERC721 implementation is safe from overflows & underflows!
+太好了，这下我们的 ERC721 实现不会有溢出或者下溢了。
 
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
+回头看看我们在之前课程写的代码，还有其他几个地方也有可能导致溢出或下溢。
 
-For example, in ZombieAttack we have:
+比如， 在 ZombieAttack 里面我们有：
 
 ```
 myZombie.winCount++;
@@ -474,9 +475,9 @@ myZombie.level++;
 enemyZombie.lossCount++;
 ```
 
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
+我们同样应该在这些地方防止溢出。（通常情况下，总是使用 SafeMath 而不是普通数学运算是个好主意，也许在以后 Solidity 的新版本里这点会被默认实现，但是现在我们得自己在代码里实现这些额外的安全措施）。
 
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
+不过我们遇到个小问题 — `winCount` 和 `lossCount` 是 `uint16`， 而 `level` 是 `uint32`。 所以如果我们用这些作为参数传入 SafeMath 的 `add` 方法。 它实际上并不会防止溢出，因为它会把这些变量都转换成 `uint256`:
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -485,24 +486,24 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
   return c;
 }
 
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+// 如果我们在`uint8` 上调用 `.add`。它将会被转换成 `uint256`.
+// 所以它不会在 2^8 时溢出，因为 256 是一个有效的 `uint256`.
 ```
 
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
+这就意味着，我们需要再实现两个库来防止 `uint16` 和 `uint32` 溢出或下溢。我们可以将其命名为 `SafeMath16` 和 `SafeMath32`。
 
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
+代码将和 SafeMath 完全相同，除了所有的 `uint256` 实例都将被替换成 `uint32` 或 `uint16`。
 
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
+我们已经将这些代码帮你写好了，打开 `safemath.sol` 合约看看代码吧。
 
-Now we need to implement it in ZombieFactory.
+现在我们需要在 ZombieFactory 里使用它们。
 
 ## Putting it to the Test
 
-Assignment:
+分配：
 
-1. Declare that we're using `SafeMath32` for `uint32`.
+1. 声明我们将为 `uint32` 使用`SafeMath32`。
 
-2. Declare that we're using `SafeMath16` for `uint16`.
+2. 声明我们将为 `uint16` 使用`SafeMath16`。
 
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
+3. 在 ZombieFactory 里还有一处我们也应该使用 SafeMath 的方法， 我们已经在那里留了注释提醒你。

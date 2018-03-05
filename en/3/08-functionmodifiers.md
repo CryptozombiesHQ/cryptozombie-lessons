@@ -188,7 +188,7 @@ mapping (uint => uint) public age;
 
 // Modifier that requires this user to be older than a certain age:
 modifier olderThan(uint _age, uint _userId) {
-  require (age[_userId] >= _age);
+  require(age[_userId] >= _age);
   _;
 }
 
