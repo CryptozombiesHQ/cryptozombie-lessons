@@ -21,8 +21,8 @@ material:
             struct Zombie {
                 string name;
                 uint dna;
-                // 在这里添加数据
-            }
+                //在这里添加数据
+            }
 
             Zombie[] public zombies;
 
