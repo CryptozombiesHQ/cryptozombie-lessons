@@ -1,5 +1,5 @@
 ---
-title: Comments
+title: Commentaires
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -13,7 +13,7 @@ material:
         import "./erc721.sol";
         import "./safemath.sol";
 
-        /// TODO: Replace this with natspec descriptions
+        /// TODO : A remplacez avec par des cescriptions natspec
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -381,85 +381,88 @@ material:
       }
 ---
 
-The Solidity code for our zombie game is finally finished!
+Le code Solidity de notre jeu zombie est enfin terminé !
 
-In the next lessons, we'll look at how to deploy the code to Ethereum, and how to interact with it with Web3.js.
+Dans les prochaines leçons, nous allons regarder comment déployer le code sur Ethereum, et comment interagir avec en utilisant Web3.js.
 
-But one final thing before we let you go in Lesson 5: Let's talk about **commenting your code**.
+Mais il reste une dernière chose dans la Leçon 5 avec de vous laisser partir : Nous allons voir comment **commenter votre code**.
 
-## Syntax for comments
 
-Commenting in Solidity is just like JavaScript. You've already seen some examples of single line comments throughout the CryptoZombies lessons:
+## Syntaxe pour commenter
+
+commenter en Solidity est la même chose qu'en JavaScript. Vous avez déjà vu quelques exemples de commentaire sur une seule ligne au cours des leçons de CryptoZombies :
 
 ```
-// This is a single-line comment. It's kind of like a note to self (or to others)
+// Ceci est un commentaire sur une seule ligne. C'est une note pour nous-même (ou pour les autres)
 ```
 
-Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time.
+Il suffit d'ajouter un `//` n'importe où et vous pouvez commentez. C'est tellement simple que vous devriez le faire tout le temps.
 
-But I hear you — sometimes a single line is not enough. You are born a writer, after all!
+Mais je sais — parfois une seule ligne n'est pas assez. Vous êtes un écrivain né, après tout !
 
-Thus we also have multi-line comments:
+C'est pourquoi il existe aussi des commentaires multi-ligne :
+
 
 ```
 contract CryptoZombies {
-  /* This is a multi-lined comment. I'd like to thank all of you
-    who have taken your time to try this programming course.
-    I know it's free to all of you, and it will stay free
-    forever, but we still put our heart and soul into making
-    this as good as it can be.
+  /* Ceci est un commentaire multi-ligne. Je voudrais tous vous
+    remercier d'avoir pris le temps de faire ce cours de programmation.
+    Je sais que c'est accessible gratuitement, et ça le restera toujours,
+    mais nous avons quand même mis toute notre énergie pour que ce cours
+    soit le meilleur possible.
 
-    Know that this is still the beginning of Blockchain development.
-    We've come very far but there are so many ways to make this
-    community better. If we made a mistake somewhere, you can
-    help us out and open a pull request here:
+    Nous en sommes simplement au début de la programmation sur Blockchain.
+    Nous avons déjà bien avancé, mais il y a tellement de façon de rendre
+    cette communauté meilleure. Si nous avons fait une erreur quelque part,
+    vous pouvez nous aider avec une pull request ici :
     https://github.com/loomnetwork/cryptozombie-lessons
 
-    Or if you have some ideas, comments, or just want to say
-    hi - drop by our Telegram community at https://t.me/loomnetwork
+    Ou si vous avez des idées, commentaires, ou si vous voulez
+    tout simplement dire bonjour - rejoignez-nous sur notre communauté
+    Telegram à https://t.me/loomnetwork
   */
 }
 ```
 
-In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
+C'est particulièrement une bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire tous le code.
 
-The standard in the Solidity community is to use a format called **_natspec_**, which looks like this:
+Le standard dans la communauté Solidity est d'utiliser un format appelé **_natspec_**, qui ressemble à ça :
 
 ```
-/// @title A contract for basic math operations
+/// @title Un contract pour des opérations mathématiques basiques
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
-/// @notice For now, this contract just adds a multiply function
+/// @notice Pour l'instant, ce contrat rajouter simpelment une fonction multiplication
 contract Math {
-  /// @notice Multiplies 2 numbers together
-  /// @param x the first uint.
-  /// @param y the second uint.
-  /// @return z the product of (x * y)
-  /// @dev This function does not currently check for overflows
+  /// @notice Multiplie 2 nombres ensemble
+  /// @param x le premier uint.
+  /// @param y le deuxième uint.
+  /// @return z le résultat de (x * y)
+  /// @dev Cette fonction ne vérifie pas les débordement pour l'instant
   function multiply(uint x, uint y) returns (uint z) {
-    // This is just a normal comment, and won't get picked up by natspec
+    // C'est un commentaire normal, qui ne sera pas pris en compte par natspec
     z = x * y;
   }
 }
 ```
 
-`@title` and `@author` are straightforward.
+`@title` (titre) and `@author` (auteur) sont plutôt évidents.
 
-`@notice` explains to a **user** what the contract / function does. `@dev` is for explaining extra details to developers.
+`@notice` explique à un **utilisateur** ce que le contrat / fonction fait. `@dev` est pour donner plus de détails aux développeurs.
 
-`@param` and `@return` are for describing what each parameter and return value of a function are for.
+`@param` et `@return` servent à décrirent chaque paramètres et ce que la fonction renvoie.
 
-Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a `@dev` note explaining what each function does.
+Vous n'avez pas tout le temps besoin d'utiliser tous ces tags pour chaque fonction — tous les tags sont optionnels. Au minimum, laissez une note `@dev` pour expliquer ce que chaque fonction fait.
 
-# Put it to the test
+# A votre tour
 
-If you haven't noticed by now, the CryptoZombies answer-checker ignores comments when it checks your answers. So we can't actually check your natspec code for this chapter ;)
+Si vous ne l'avex pas encore remarqué, le vérificateur de réponse de CryptoZombies ignore les commentaires quand il vérifie vos réponses. Nous ne pouvons donc pas vérifier votre code natspec dans ce chapitre ;)
 
-However, by now you're a Solidity whiz — we're just going to assume you've got this!
+Cependant, maintenant que vous êtes un expert Solidity — nous allons supposer que vous l'avez fait !
 
-Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
+Essayez d'ajouter des tags natspec à `ZombieOwnership`:
 
-1. `@title` — E.g. A contract that manages transfering zombie ownership
+1. `@title` — Par exemple : Un contrat qui permet de gère le transfère de propriété d'un zombie
 
-2. `@author` — Your name!
+2. `@author` — Votre nom !
 
-3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft
+3. `@dev` — Par exemple : Conforme aux spécificités provisoires de l'implémentation ERC721 d'OpenZeppelin

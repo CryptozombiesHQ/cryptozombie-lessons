@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 4
+title: SafeMath partie 4
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -16,7 +16,7 @@ material:
           uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
-            // Here's one!
+            // En voila un !
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
@@ -26,13 +26,13 @@ material:
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
             if (rand <= attackVictoryProbability) {
-              // Here's 3 more!
+              // Et 3 de plus !
               myZombie.winCount++;
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
             } else {
-              // ...annnnd another 2!
+              // ...eeeet encore 2 !
               myZombie.lossCount++;
               enemyZombie.winCount++;
               _triggerCooldown(myZombie);
@@ -372,10 +372,10 @@ material:
       }
 ---
 
-Great, now we can implement SafeMath on all the types of `uint`s we used in our DApp!
+Bien, maintenant nous pouvons implémenter SafeMath pour tous les types de `uint` que nous utilisons dans notre DApp !
 
-Let's fix all those potential issues in `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 😉).
+Corrigeons toutes les problèmes potentiels dans `ZombieAttack`. (Il y en avait aussi un dans `zombies[_zombieId].level++;` qui devait être corrigé dans `ZombieHelper`, mais on s'en est chargé pour vous, ça fait un chapitre de moins 😉).
 
-## Putting it to the Test
+## A votre tour
 
-Go ahead and implement SafeMath methods on all the `++` increments in `ZombieAttack`. We've left comments in the code to make them easy to find.
+Implémentez les méthodes SafeMath pour tous les incrémentations `++` de `ZombieAttack`. Nous avons mis des commentaires pour vous aider à les trouver.

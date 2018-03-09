@@ -1,5 +1,5 @@
 ---
-title: Lesson 5 Complete!
+title: Lesson 5 terminée !
 actions: ['vérifierLaRéponse', 'indice']
 material:
   lessonComplete:
