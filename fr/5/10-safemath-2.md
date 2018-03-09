@@ -310,7 +310,7 @@ material:
           }
 
           /**
-          * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+          * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
           */
           function sub(uint256 a, uint256 b) internal pure returns (uint256) {
             assert(b <= a);
@@ -426,7 +426,7 @@ test = test.mul(3); // test est maintenant égal à 6
 test = test.add(5); // test est maintenant égal à 11
 ```
 
-Vous remarquerez que `mul` et `add` ont chacunes besoin de 2 arguments, mais quand on déclare `using SafeMath for uint`, le `uint` qui appelle la fonction (`test`) est automatiquement passé comme premier argument.
+Vous remarquerez que `mul` et `add` ont chacune besoin de 2 arguments, mais quand on déclare `using SafeMath for uint`, le `uint` qui appelle la fonction (`test`) est automatiquement passé comme premier argument.
 
 Regardons le code de `add` pour voir ce que fait SafeMath :
 
@@ -438,11 +438,11 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 }
 ```
 
-`add` ajoute simplement 2 `uint` comme `+`, mais elle contient aussi une déclaration `assert` (affirme) pour vérifier que la somme est plus grande que `a`. Cela protège nous d'un débordement.
+`add` ajoute simplement 2 `uint` comme `+`, mais elle contient aussi une déclaration `assert` (affirme) pour vérifier que la somme est plus grande que `a`. Cela nous protège d'un débordement.
 
-`assert` est pareil que `require`, et va renvoyer une erreur si ce n'est pas vérifier. La différence entre `assert` et `require` c'est que `require` va rembourser l'utilisateur du gas restant quand la fonction échoue, alors que `assert` non. La plupart du temps vous allez vouloir utiliser `require` dans votre code, `assert` est plutôt utiliser quand quelque chose a vraiment mal tourné avec le code (comme un débordement d'`uint`).
+`assert` est la même chose que `require`, et va renvoyer une erreur si ce n'est pas vérifié. La différence entre `assert` et `require` c'est que `require` va rembourser l'utilisateur du gas restant quand la fonction échoue, alors que `assert` non. La plupart du temps vous allez vouloir utiliser `require` dans votre code, `assert` est plutôt utilisé quand quelque chose a vraiment mal tourné avec le code (comme un débordement d'`uint`).
 
-Pour résumer, `add`, `sub`, `mul`, et `div` de SafeMath sont des fonctions qui font les 4 opérateurs mathématiques basiques, et qui renvoient une erreur en cas de débordement
+Pour résumer, `add`, `sub`, `mul`, et `div` de SafeMath sont des fonctions qui font les 4 opérations mathématiques basiques, et qui renvoient une erreur en cas de débordement
 
 ### Utiliser SafeMath dans notre code
 

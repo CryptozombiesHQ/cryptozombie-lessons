@@ -6,7 +6,7 @@ roadmap: roadmap5.jpg
 
 Ouf ! Ça commence à chauffer ici...
 
-Dans cette leçon, nous allons voir des choses un peu plus complexes.
+Dans cette leçon, nous allons apprendre des choses un peu plus complexes.
 
 Nous allons parler des **jetons (tokens)**, du standard **ERC721**, et des **actifs crypto-collectibles**.
 

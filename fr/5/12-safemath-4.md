@@ -313,7 +313,7 @@ material:
           }
 
           /**
-          * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+          * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
           */
           function sub(uint256 a, uint256 b) internal pure returns (uint256) {
             assert(b <= a);
@@ -374,8 +374,8 @@ material:
 
 Bien, maintenant nous pouvons implémenter SafeMath pour tous les types de `uint` que nous utilisons dans notre DApp !
 
-Corrigeons toutes les problèmes potentiels dans `ZombieAttack`. (Il y en avait aussi un dans `zombies[_zombieId].level++;` qui devait être corrigé dans `ZombieHelper`, mais on s'en est chargé pour vous, ça fait un chapitre de moins 😉).
+Corrigeons tous les problèmes potentiels dans `ZombieAttack`. (Il y en avait aussi un dans `zombies[_zombieId].level++;` qui devait être corrigé dans `ZombieHelper`, mais on s'en est chargé pour vous, ça fait un chapitre de moins 😉).
 
 ## A votre tour
 
-Implémentez les méthodes SafeMath pour tous les incrémentations `++` de `ZombieAttack`. Nous avons mis des commentaires pour vous aider à les trouver.
+Implémentez les méthodes SafeMath pour toutes les incrémentations `++` de `ZombieAttack`. Nous avons mis des commentaires pour vous aider à les trouver.

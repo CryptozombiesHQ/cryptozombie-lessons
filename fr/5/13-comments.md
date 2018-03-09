@@ -13,7 +13,7 @@ material:
         import "./erc721.sol";
         import "./safemath.sol";
 
-        /// TODO : A remplacez avec par des cescriptions natspec
+        /// TODO : A remplacez avec par des descriptions natspec
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -309,7 +309,7 @@ material:
           }
 
           /**
-          * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+          * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
           */
           function sub(uint256 a, uint256 b) internal pure returns (uint256) {
             assert(b <= a);
@@ -390,7 +390,7 @@ Mais il reste une dernière chose dans la Leçon 5 avec de vous laisser partir :
 
 ## Syntaxe pour commenter
 
-commenter en Solidity est la même chose qu'en JavaScript. Vous avez déjà vu quelques exemples de commentaire sur une seule ligne au cours des leçons de CryptoZombies :
+Commenter en Solidity est la même chose qu'en JavaScript. Vous avez déjà vu quelques exemples de commentaire sur une seule ligne au cours des leçons de CryptoZombies :
 
 ```
 // Ceci est un commentaire sur une seule ligne. C'est une note pour nous-même (ou pour les autres)
@@ -424,14 +424,14 @@ contract CryptoZombies {
 }
 ```
 
-C'est particulièrement une bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire tous le code.
+C'est particulièrement une bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
 
 Le standard dans la communauté Solidity est d'utiliser un format appelé **_natspec_**, qui ressemble à ça :
 
 ```
-/// @title Un contract pour des opérations mathématiques basiques
+/// @title Un contrat pour des opérations mathématiques basiques
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
-/// @notice Pour l'instant, ce contrat rajouter simpelment une fonction multiplication
+/// @notice Pour l'instant, ce contrat rajouter simplement une fonction multiplication
 contract Math {
   /// @notice Multiplie 2 nombres ensemble
   /// @param x le premier uint.
@@ -449,13 +449,13 @@ contract Math {
 
 `@notice` explique à un **utilisateur** ce que le contrat / fonction fait. `@dev` est pour donner plus de détails aux développeurs.
 
-`@param` et `@return` servent à décrirent chaque paramètres et ce que la fonction renvoie.
+`@param` et `@return` servent à décrire chaque paramètres et ce que la fonction renvoie.
 
 Vous n'avez pas tout le temps besoin d'utiliser tous ces tags pour chaque fonction — tous les tags sont optionnels. Au minimum, laissez une note `@dev` pour expliquer ce que chaque fonction fait.
 
 # A votre tour
 
-Si vous ne l'avex pas encore remarqué, le vérificateur de réponse de CryptoZombies ignore les commentaires quand il vérifie vos réponses. Nous ne pouvons donc pas vérifier votre code natspec dans ce chapitre ;)
+Si vous ne l'avez pas encore remarqué, le vérificateur de réponse de CryptoZombies ignore les commentaires quand il vérifie vos réponses. Nous ne pouvons donc pas vérifier votre code natspec dans ce chapitre ;)
 
 Cependant, maintenant que vous êtes un expert Solidity — nous allons supposer que vous l'avez fait !
 

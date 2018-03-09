@@ -314,7 +314,7 @@ material:
           }
 
           /**
-          * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+          * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
           */
           function sub(uint256 a, uint256 b) internal pure returns (uint256) {
             assert(b <= a);
@@ -465,7 +465,7 @@ material:
 
 Bien, maintenant notre implémentation ERC721 est protégée des débordements !
 
-Si nous regardons le code que nous avons déjà écrit dans les leçons précédentes, il y a d'autres endroits dans notre code qui pourrait être vulnérables de débordements.
+Si nous regardons le code que nous avons déjà écrit dans les leçons précédentes, il y a d'autres endroits dans notre code qui pourraient être vulnérables aux débordements.
 
 Par exemple, dans ZombieAttack nous avons :
 
@@ -475,9 +475,9 @@ myZombie.level++;
 enemyZombie.lossCount++;
 ```
 
-Nous devrions empêcher les débordements ici par précaution. (C'est une bonne idée en général de simplement utiliser SafeMath à la place des opérateurs mathématiques de base. Peut-être que dans une future version de Solidity cela sera implémenter par défaut, mais pour l'instant nous devons nous prendre des précautions supplémentaires dans notre code.)
+Nous devrions empêcher les débordements ici par précaution. (C'est une bonne idée en général de simplement utiliser SafeMath à la place des opérateurs mathématiques de base. Peut-être que dans une future version de Solidity cela sera implémenté par défaut, mais pour l'instant nous devons prendre des précautions supplémentaires dans notre code.)
 
-Dans tous les cas, nous avons un petit problème — `winCount` et `lossCount` sont des `uint16`s, et `level` est un `uint32`. Si nous voulions utiliser la méthode `add` de SafeMath's `add` avec ces arguements, cela ne les protégerait pas d'un débordement vu qu'ils seraient converti en `uint256` :
+Dans tous les cas, nous avons un petit problème — `winCount` et `lossCount` sont des `uint16`s, et `level` est un `uint32`. Si nous voulions utiliser la méthode `add` de SafeMath avec ces arguments, cela ne les protégerait pas d'un débordement vu qu'ils seraient converti en `uint256` :
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
