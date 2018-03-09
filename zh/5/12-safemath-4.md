@@ -373,7 +373,7 @@ material:
       }
 ---
 
-真棒，现在我们已经为我们的DApp 里面用到的 `uint` 数据类型都实现了 SafeMath 了。
+真棒，现在我们已经为我们的 DApp 里面用到的 `uint` 数据类型都实现了 SafeMath 了。
 
 让我们把 `ZombieAttack` 里所有潜在的问题都修复了吧。 （其实在 `ZombieHelper` 里也有一处 `zombies[_zombieId].level++;` 需要修复，不过我们已经帮你做好了，这样我们就不用再来一章了 😉）。
 
