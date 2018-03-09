@@ -145,7 +145,7 @@ Até agora, Solidity pareceu bastante similar a outras linguagens como Javascrip
 
 Para começar, após você implantar um contrato em Ethereum, este é **_imutável_**, quer dizer que ele nunca poder ser modificado ou melhorado novamente.
 
-O código que você implantou para um contrato esta lá permanentemente, para sempre, na blockchain. Esta é uma das razões na qual a segurança em Solidity é uma grande preocupação. Se houver ma falha no código do contrato, não há maneira de remendar depois. Você precisará dizer aos seus usuários para começarem a usar um outro smart contract que tem a correção.
+O código que você implantou para um contrato esta lá permanentemente, para sempre, na blockchain. Esta é uma das razões na qual a segurança em Solidity é uma grande preocupação. Se houver uma falha no código do contrato, não há maneira de remendar depois. Você precisará dizer aos seus usuários para começarem a usar um outro smart contract que tem a correção.
 
 Mais isto também é uma parte essencial dos smart contracts. O código é a lei. Se você ler o código do smart contract e verificá-lo, você pode ter certeza que toda vez que chamar aquela função sempre irá acontecer exatamente aquilo que o código diz. Ninguém pode mudar essa função depois e retornar resultados inesperados.
 
@@ -161,7 +161,7 @@ Por exemplo, ao invés de ter um código fixo com o endereço do contrato dos Cr
 
 ## Vamos testar
 
-Vamos atualizar o nosso código para a Lição 2 para permitir a mudança do endereço do contrato do CryptoKitties.
+Vamos atualizar o nosso código da Lição 2 para permitir a mudança do endereço do contrato do CryptoKitties.
 
 1. Remova a linha de código onde esta fixo a variável `ckAddress`.
 

@@ -109,12 +109,28 @@
                 "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
             ],
             "footer": [
-                "Lesson5は準備中です。",
-                "準備出来次第、Eメールでお知らせします。",
-                "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
+                "CryptoZombiesはいかがでしたか？ご感想をこちらで受け付けています",
+                "{telegramLink}に参加するか,  {twitterLink}をフォロー",
+                "準備ができたら、下のボタンを押すとレッスン5に進みます："
             ],
             "zombieDesc": "クリプトゾンビ レベル{levelNum} ",
             "shareLinkText": "#CryptoZombies のLesson4が終わったよ！敵のIOTAゾンビをやっつけたよ！みんなもやってみて! "
+        },
+        "lesson5": {
+            "achievementsUnlocked": "次の課題が解除されました：",
+            "newZombieAdded": "{zombieName} のレベルが {levelNum}にアップしました!",
+            "header": [
+                "よくやった! これでCryptoZombiesの{lesson4}は終了だ!",
+                "作ったゾンビ軍団を友達にみせてやろう！",
+                "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
+            ],
+            "footer": [
+              "Lesson6は準備中です。",
+              "準備出来次第、Eメールでお知らせします。",
+              "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
+            ],
+            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
         }
     },
     "zombieBattle": {
@@ -232,6 +248,24 @@
             "callToAction": [
                 "クリプトゾンビ軍団を作ってランキングに参加しますか？",
                 "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから："
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} クリプトゾンビ",
+            "achievementPreamble": [
+                "友達がクリプトゾンビのレッスン５を終了してレベル10のゾンビを獲得しました！",
+                "左側で、友達のゾンビ軍団をチェックしよう！すっごく怖いよね?",
+                "レッスン5を終了するために、友達は以下を学びました："
+            ],
+            "achievements": [
+                "トークン、ERC721規格、トレード可能な資産/ゾンビ",
+                "Solidityのライブラリとその使い方",
+                "SafeMath関数を使ったオーバーフローとアンダーフロー対策",
+                "Solidityコード中のコメントとnatspecスタンダード"
+            ],
+            "callToAction": [
+                "クリプトゾンビ軍団を作ってランキングに参加しますか？",
+                "CryptoZombiesでは、イーサリアムでゲームを開発する方法を無料で公開しています！スタートはこちらから:"
             ]
         }
     }
