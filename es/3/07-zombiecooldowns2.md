@@ -220,4 +220,4 @@ Si nos damos cuento, esta función solo necesita ser llamada por `feedOnKitty()`
 
 2. Vamos a hacer que `feedAndMultiply` utilice nuestro `cooldownTime` en la cuenta. Primero, despues de buscar `myZombie`, vamos a añadirle una sentencia `require` que compruebe `_isReady()` y le pase `myZombie`. De esta manera el usuario solo podrá ejecutar esta función si el enfriamiento del zombi ha terminado.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+3. Al final de la función, vamos a llamar a `_triggerCooldown(myZombie)` para que al alimentarse ejecute el trigger del enfriamiento del zombi.

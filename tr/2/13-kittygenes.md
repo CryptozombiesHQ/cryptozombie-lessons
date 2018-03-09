@@ -1,7 +1,6 @@
 ---
-title: Comments
+title: "Bonus: Kitty Genes"
 actions: ['checkAnswer', 'hints']
-requireLogin: true
 material:
   editor:
     language: sol
@@ -28,28 +27,24 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // 1. Remove this:
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // 3. Add setKittyContractAddress method here
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          // Modify function definition here:
+          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
-              newDna = newDna - newDna % 100 + 99;
-            }
+            // Add an if statement here
             _createZombie("NoName", newDna);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            feedAndMultiply(_zombieId, kittyDna, "kitty");
+            // And modify function call here:
+            feedAndMultiply(_zombieId, kittyDna);
           }
 
         }
@@ -115,11 +110,8 @@ material:
 
       contract ZombieFeeding is ZombieFactory {
 
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) external {
-          kittyContract = KittyInterface(_address);
-        }
+        address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+        KittyInterface kittyContract = KittyInterface(ckAddress);
 
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
           require(msg.sender == zombieToOwner[_zombieId]);
@@ -141,46 +133,40 @@ material:
       }
 ---
 
-Solidity, or BlockChain programming in general, has alot in common with the kind of programming done for the aerospace industry. That is, if you make a mistake, the plane falls from the sky, the rockets can't reach the moon, and [all your money gets stuck forever](https://medium.com/chain-cloud-company-blog/parity-multisig-hack-again-b46771eaa838).
+Fonksiyon mantığımız şimdi tamam... fakat bir bonus özellik daha ekleyelim.
 
-So it becomes really really important that you double, triple check everything and make every effort to clarify the meaning and the intention behind each line of code.
+Onu, kittie'lerden yapılan zombilerin cat-zombieler olduğunu gösteren bir benzersiz özelliğe sahip olacak şekilde yapalım.
 
-This is why we are taking time to go over `comments` and their importance in Solidity programming. 
+Bunu yapmak için, zombinin DNA'sına özel bir kitty kodu ekleyebiliriz.
 
-## Commenting with Style:
+Ders 1'den hatırlarsanız, şu anda zombi görünümünü belirlemek için 16 haneli DNA'mızın ilk 12 basamağını kullanıyoruz. O halde "özel" karakterleri kullanmak için kullanılmayan son 2 basamağı kullanalım.
+
+Cat-zombielerin DNA'sının son iki basamağının `99` olduğunu farz edeceğiz. (kedilerin 9 canı olduğundan). Yani kodumuzda, bir zombi bir kediden geliyorsa `if`, o zaman DNA'nın son iki basamağını `99` diyeceğiz.
+
+## If ifadeleri
+
+Solidity'de if ifadeleri javascriptteki gibidir:
 
 ```
-// This is a single-line comment. It's kind of like a note to self (or to others)
-```
-
-Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time. But I hear you, sometimes a single line is not enough, you are born a writer:
-
-```
-contract CryptoZombies {
-  /*
-    This is a multi-lined comment. I'd like to thank all of you who have taken your time to try this programming course. I know it's free to all of you, and it will stay free forever, but we still put our heart and soul into making this as good as it can be. 
-
-    Know that this is still the beginning of Blockchain development. We've come very far but there are so many ways to make this community better. If we made a mistake somewhere, you can make a pull request here: https://github.com/loomnetwork/cryptozombie-lessons
-
-    Or if you have some ideas, comments, or just want to say hi - drop by our Telegram. 
-  */
+function eatBLT(string sandwich) public {
+  // Remember with strings, we have to compare their keccak256 hashes
+  // to check equality
+  if (keccak256(sandwich) == keccak256("BLT")) {
+    eat();
+  }
 }
 ```
 
-But sometimes the written language is not precise enough, or you want to make it really easy for others to read, then it's time to add real documentation. 
+# Teste koy
 
-In this community, the general trend is to use `Doxygen` style tags. These tags are just a special way of writting comments that are clearer and machine readable. It makes it easier to generate documentation for others.
+Hadi zombi kodumuzdaki kedi genlerini uygulayalım.
 
-```
-/** @title A basic math operation. */
-contract multiply {
-    /** 
-      * @param x the first variable.
-      * @param y the second variable.
-      * @return z The answer.
-      */
-    function multiply(uint x, uint y) returns (uint z) {
-        z = x * y;
-    }
-}
-```
+1. Öncelikle, `feedAndMultiply` için fonksiyon tanımını değiştirelim böylece o 3. bir argüman alır: `_species` isimli bir `string` 
+
+2. Daha sonra, yeni zombinin DNA'sını hesapladıktan sonra, `_species`'in `keccak256` hashlerini ve `"kitty"` dizisini karşılaştıran bir `if` ifadesi ekleyelim
+
+3. `if` ifadesinin içinde, DNA'nın son iki basamağını `99` ile değiştirmek istiyoruz. Bunu yapmanın bir yolu mantık kullanmak: `newDna = newDna - newDna % 100 + 99;`.
+
+  > Açıklama: Varsayalım `newDna` `334455`'tir. O zaman `newDna % 100` `55`'tir, yani `newDna - newDna % 100` `334400`'dır. Son olarak  `334499` almak için `99` ekleyin.
+
+4. Son olarak, `feedOnKitty` içinde fonksiyon çağrımını değiştirmemiz gerekiyor. `feedAndMultiply`'i çağırdığında, sonlandırmak için `"kitty"` parametresi ekler.

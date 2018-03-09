@@ -11,7 +11,7 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // 여기에 attackVictoryProbabillity를 만들게
+          // 여기에 attackVictoryProbability를 만들게
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
@@ -242,7 +242,7 @@ material:
 
 ## 직접 해보기
 
-1. 컨트랙트에 `attackVictoryProbabillity`라는 이름의 `uint` 변수를 추가하고, 여기에 `70`을 대입하게.
+1. 컨트랙트에 `attackVictoryProbability`라는 이름의 `uint` 변수를 추가하고, 여기에 `70`을 대입하게.
 
 2. `attack`이라는 이름의 함수를 생성하게. 이 함수는 두 개의 매개변수를 받을 것이네: `_zombieId`(`uint`)와 `_targetId`(`uint`)이네. 이 함수는 `external`이어야 하네.
 

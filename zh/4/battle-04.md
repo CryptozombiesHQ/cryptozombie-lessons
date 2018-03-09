@@ -66,6 +66,7 @@ material:
           }
         }
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -176,6 +177,8 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
+
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control

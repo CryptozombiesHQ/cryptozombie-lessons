@@ -109,12 +109,28 @@
                 "Share this URL so your friends can check out your army:"
             ],
             "footer": [
-                "Lesson 5 coming in 1-2 weeks",
+                "Enjoying CryptoZombies? Let us know!",
+                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
+                "When you're ready, click the button below to access Lesson 5:"
+            ],
+            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "Achievements Unlocked:",
+            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+            "header": [
+                "Congratulations! You have completed {lesson5} of CryptoZombies!",
+                "Show off your zombie army to your friends!",
+                "Share this URL so your friends can check out your full zombie army:"
+            ],
+            "footer": [
+                "Lesson 6 will be out in the next few weeks!",
                 "You'll get an email from us as soon as it's ready.",
                 "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
         }
     },
     "zombieBattle": {
@@ -228,6 +244,24 @@
                 "Withdrawing ETH from smart contracts",
                 "Random number generation & security on Ethereum",
                 "And more!"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
+                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
+                "Solidity libraries and how to use them",
+                "The SafeMath library and preventing uint overflows and underflows",
+                "Commenting your Solidity code and the natspec standard"
             ],
             "callToAction": [
                 "Want to build your own CryptoZombie army and join the ranks?",

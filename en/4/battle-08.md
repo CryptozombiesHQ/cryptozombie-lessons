@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -220,6 +222,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {

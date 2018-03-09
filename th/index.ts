@@ -36,7 +36,7 @@ import multiplereturns from './2/12-multiplereturns.md'
 import kittygenes from './2/13-kittygenes.md'
 import wrappingitup from './2/14-wrappingitup.md'
 import lesson2complete from './2/15-lessoncomplete.md'
-/*
+
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
@@ -53,7 +53,7 @@ import l3_ch11 from './3/11-savinggasstorage.md'
 import l3_ch12 from './3/12-forloops.md'
 import l3_ch13 from './3/13-wrappingitup.md'
 import l3_complete from './3/14-lessoncomplete.md'
-*/
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -93,7 +93,7 @@ export default {
     kittygenes,
     wrappingitup,
     lesson2complete
-  ]/*,
+  ],
   3: [
     l3_overview,
     l3_ch1,
@@ -110,5 +110,5 @@ export default {
     l3_ch12,
     l3_ch13,
     l3_complete
-  ]*/
+  ]
 }
