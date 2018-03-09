@@ -126,7 +126,7 @@ export default {
     l3_ch12,
     l3_ch13,
     l3_complete
-  ]/*,
+  ],
   4: [
     l4_overview,
     l4_payable,
@@ -142,5 +142,5 @@ export default {
     l4_ch9,
     l4_ch10,
     l4_complete
-  ]*/
+  ]
 }
