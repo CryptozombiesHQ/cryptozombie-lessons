@@ -1,5 +1,5 @@
 ---
-title: Preventing Overflows
+title: Prévenir les débordements
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -10,11 +10,11 @@ material:
         pragma solidity ^0.4.19;
 
         import "./ownable.sol";
-        // 1. Import here
+        // 1. Importez ici
 
         contract ZombieFactory is Ownable {
 
-          // 2. Declare using safemath here
+          // 2. Declarez que l'on utilise safemath ici
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -384,44 +384,44 @@ material:
       }
 ---
 
-Congratulations, that completes our ERC721 implementation!
+Félicitations, cela complète notre implémentation ERC721 !
 
-That wasn't so tough, was it? A lot of this Ethereum stuff sounds really complicated when you hear people talking about it, so the best way to understand it is to actually go through an implementation of it yourself.
+Ce n'était pas si dur que ça, n'est-ce pas ? Beaucoup de chose en Ethereum paraisse compliquées quand on en entend parler, et la meilleure façon de le comprendre et de faire une implémentation soi-même.
 
-Keep in mind that this is only a minimal implementation. There are extra features we may want to add to our implementation, such as some extra checks to make sure users don't accidentally transfer their zombies to address `0` (which is called "burning" a token — basically it's sent to an address that no one has the private key of, essentially making it unrecoverable). Or to put some basic auction logic in the DApp itself. (Can you think of some ways we could implement that?)
+Garder en tête que c'était une implémentation minimale. Ils y a d'autres fonctionnalités que nous voudrions ajouter à notre implémentation, comme s'assurer que que les utilisateurs ne transfèrent pas accidentellement leurs zombies à l'adresse `0` (on appelle ça brûler un token - l'envoyer à une adresse dont personne n'a la clé privée, le rendant irrécupérable). Ou rajouter une logique d'enchère sur notre DApp. (Est-ce que vous voyez une façon de faire ça ?)
 
-But we wanted to keep this lesson manageable, so we went with the most basic implementation. If you want to see an example of a more in-depth implementation, you can take a look at the OpenZeppelin ERC721 contract after this tutorial.
+Mais nous voulons garder cette leçon simple, nous avons opté pour l'implémentation la plus basique. Si vous voulez voir un exemple d'une implémentation plus détaillée, vous pouvez regarder le contrat ERC721 d'OpenZeppelin après ce tutoriel.
 
-### Contract security enhancements: Overflows and Underflows
+### Améliorations de la sécurité des contrats : débordements par le haut et par le bas
 
-We're going to look at one major security feature you should be aware of when writing smart contracts: Preventing overflows and underflows.
+Nous allons voir une fonctionnalité de sécurité majeure à prendre en compte quand vous écrivez des smart contracts : Prévenir les débordements.
 
-What's an **_overflow_**?
+C'est quoi un **_débordement_** ?
 
-Let's say we have a `uint8`, which can only have 8 bits. That means the largest number we can store is binary `11111111` (or in decimal, 2^8 - 1 = 255).
+Imaginez un `uint8`, qui peut seulement avoir 8 bits. Ce qui veut dire que le binaire du plus nombre que l'on peut stocker est `11111111` (ou en décimal, 2^8 -1 = 255).
 
-Take a look at the following code. What is `number` equal to at the end?
+Regardez le code suivant. A quoi est égal `number` à la fin ?
 
 ```
 uint8 number = 255;
 number++;
 ```
 
-In this case, we've caused it to overflow — so `number` is counterintuitively now equal to `0` even though we increased it. (If you add 1 to binary `11111111`, it resets back to `00000000`, like a clock going from `23:59` to `00:00`).
+Dans ce cas, nous avonz causé un débordement par le haut - `number` est contre-intuitivement égal à `0` maintenant même si on l'a augmenté. (Si vous ajouter 1 au binaire `1111111`, il repart à `00000000`, comme une horloge qui passe de `23:59` à `00:00`).
 
-An underflow is similar, where if you subtract `1` from a `uint8` that equals `0`, it will now equal `255` (because `uint`s are unsigned, and cannot be negative).
+Un débordement par le bas est similaire, si vous soustrayez `1` d'un `uint8` égal `0`, le résultat se `255` (car les `uint` sont non signés et ne peuvent pas être négatifs).
 
-While we're not using `uint8` here, and it seems unlikely that a `uint256` will overflow when incrementing by `1` each time (2^256 is a really big number), it's still good to put protections in our contract so that our DApp never has unexpected behavior in the future.
+Nous n'utilisons pas de `uint8` ici, et il paraît peut probable qu'un `uint256` débordera avec des incrémentations de `1` par `1` (2^256 est vraiment un nombre immense), c'est toujours bon de mettre de protéger notre contrat afin que notre DApp n'est pas des comportements inattendus dans le futur.
 
-### Using SafeMath
+### Utiliser SafeMath
 
-To prevent this, OpenZeppelin has created a **_library_** called SafeMath that prevents these issues by default.
+Pour prévenir cela, OpenZeppelin a créé une **_bibliothèque_** appelée SafeMath qui empêche ces problèmes.
 
-But before we get into that... What's a library?
+Mais d'abord, c'est quoi une bibliothèque ?
 
-A **_library_** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
+Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leur fonctionnalités et que cela permet de rajouter des fonctions à un type de données natives.
 
-For example, with the SafeMath library, we'll use the syntax `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
+Par exemple. avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath à 4 fonctions — `add`, `sub`, `mul`, et `div`. Et maintenant nous ponvons utiliser ses fonctions à partir d'un `uint256` en faisant :
 
 ```
 using SafeMath for uint256;
@@ -431,14 +431,14 @@ uint256 b = a.add(3); // 5 + 3 = 8
 uint256 c = a.mul(2); // 5 * 2 = 10
 ```
 
-We'll look at what these functions do in the next chapter, but for now let's add the SafeMath library to our contract.
+Nous verons ce que font ces fonctions dans le prochain chapitre, pour l'instant, nous allons ajouter la bibliothèque SafeMath à notre contrat.
 
-## Putting it to the Test
+## A votre tour
 
-We've already included OpenZeppelin's `SafeMath` library for you in `safemath.sol`. You can take a quick peek at the code now if you want to, but we'll be looking at it in depth in the next chapter.
+Nous avons déjà rajouté la bibliothèque `SafeMath` d'OpenZeppelin pour vous dans `safemath.sol`. Vous pouvez regarder le code si vous voulez, mais nous allons l'étudier en détails dans le prochain chapitre.
 
-First let's tell our contract to use SafeMath. We'll do this in ZombieFactory, our very base contract — that way we can use it in any of the sub-contracts that inherit from this one.
+Pour l'instant, nous allons faire que notre contrat utilise SafeMath. Nous allons le faire dans ZombieFactory, nous contrat de base - de cette manière nous pourrons l'utiliser dans tous les sous-contrats qui en hérite.
 
-1. Import `safemath.sol` into `zombiefactory.sol`.
+1. Importez `safemath.sol` dans `zombiefactory.sol`.
 
-2. Add the declaration `using SafeMath for uint256;`.
+2. Ajoutez la declaration `using SafeMath for uint256;`.

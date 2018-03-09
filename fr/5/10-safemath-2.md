@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 2
+title: SafeMath partie 2
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -28,9 +28,9 @@ material:
           }
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
-            // 1. Replace with SafeMath's `add`
+            // 1. Remplacez par `add` de SafeMath
             ownerZombieCount[_to]++;
-            // 2. Replace with SafeMath's `sub`
+            // 2. Remplacez par `sub` de SafeMath
             ownerZombieCount[_from]--;
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
@@ -382,7 +382,7 @@ material:
       }
 ---
 
-Let's take a look at the code behind SafeMath:
+Regardons le code de SafeMath :
 
 ```
 library SafeMath {
@@ -416,19 +416,19 @@ library SafeMath {
 }
 ```
 
-First we have the `library` keyword — libraries are similar to `contract`s but with a few differences. For our purposes, libraries allow us to use the `using` keyword, which automatically tacks on all of the library's methods to another data type:
+Tout d'abord, nous avons le mot-clé `library` (bibliothèque) - les bibliothèques sont similaires aux contrats avec quelques différences. Dans ce cas là, les bibliothèques nous permettent d'utiliser le mot-clé `using` (utiliser), qui va automatiquement rajouter toutes les méthodes de cette bibliothèque à un autre type de donnée :
 
 ```
 using SafeMath for uint;
-// now we can use these methods on any uint
+// Nous pouvons maintenant utiliser ces méthodes pour n'importe quel uint
 uint test = 2;
-test = test.mul(3); // test now equals 6
-test = test.add(5); // test now equals 11
+test = test.mul(3); // test est maintenant égal à 6
+test = test.add(5); // test est maintenant égal à 11
 ```
 
-Note that the `mul` and `add` functions each require 2 arguments, but when we declare `using SafeMath for uint`, the `uint` we call the function on (`test`) is automatically passed in as the first argument.
+Vous remarquerez que `mul` et `add` ont chacunes besoin de 2 arguments, mais quand on déclare `using SafeMath for uint`, le `uint` qui appelle la fonction (`test`) est automatiquement passé comme premier argument.
 
-Let's look at the code behind `add` to see what SafeMath does:
+Regardons le code de `add` pour voir ce que fait SafeMath :
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -438,32 +438,33 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 }
 ```
 
-Basically `add` just adds 2 `uint`s like `+`, but it also contains an `assert` statement to make sure the sum is greater than `a`. This protects us from overflows.
+`add` ajoute simplement 2 `uint` comme `+`, mais elle contient aussi une déclaration `assert` (affirme) pour vérifier que la somme est plus grande que `a`. Cela protège nous d'un débordement.
 
-`assert` is similar to `require`, where it will throw an error if false. The difference between `assert` and `require` is that `require` will refund the user the rest of their gas when a function fails, whereas `assert` will not. So most of the time you want to use `require` in your code; `assert` is typically used when something has gone horribly wrong with the code (like a `uint` overflow).
+`assert` est pareil que `require`, et va renvoyer une erreur si ce n'est pas vérifier. La différence entre `assert` et `require` c'est que `require` va rembourser l'utilisateur du gas restant quand la fonction échoue, alors que `assert` non. La plupart du temps vous allez vouloir utiliser `require` dans votre code, `assert` est plutôt utiliser quand quelque chose a vraiment mal tourné avec le code (comme un débordement d'`uint`).
 
-So, simply put, SafeMath's `add`, `sub`, `mul`, and `div` are functions that do the basic 4 math operations, but throw an error if an overflow or underflow occurs.
+Pour résumer, `add`, `sub`, `mul`, et `div` de SafeMath sont des fonctions qui font les 4 opérateurs mathématiques basiques, et qui renvoient une erreur en cas de débordement
 
-### Using SafeMath in our code.
+### Utiliser SafeMath dans notre code
 
-To prevent overflows and underflows, we can look for places in our code where we use `+`, `-`, `*`, or `/`, and replace them with `add`, `sub`, `mul`, `div`.
+Pour prévenir les débordements, nous pouvons voir les endroits dans notre code où nous utilisons `+`, `-`, `*`, ou `/`,
+et les remplacer par `add`, `sub`, `mul`, `div`.
 
-Ex. Instead of doing:
+Ex. A lieu d'écrire :
 
 ```
 myUint++;
 ```
 
-We would do:
+On va écrire :
 
 ```
 myUint = myUint.add(1);
 ```
 
-## Putting it to the Test
+## A votre tour
 
-We have 2 places in `ZombieOwnership` where we used math operations. Let's swap them out with SafeMath methods.
+Il y a 2 endroits dans `ZombieOwnership` où nous utilisons des opérateurs mathématiques. Nous allons les changer avec des méthodes SafeMath.
 
-1. Replace `++` with a SafeMath method.
+1. Remplacez `++` par une méthode SafeMath.
 
-2. Replace `--` with a SafeMath method.
+2. Remplacez `--` par une méthode SafeMath.

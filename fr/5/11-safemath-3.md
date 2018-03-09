@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 3
+title: SafeMath partie 3
 actions: ['vérifierLaRéponse', 'indice']
 requireLogin: true
 material:
@@ -15,8 +15,8 @@ material:
         contract ZombieFactory is Ownable {
 
           using SafeMath for uint256;
-          // 1. Declare using SafeMath32 for uint32
-          // 2. Declare using SafeMath16 for uint16
+          // 1. Déclarez using SafeMath32 for uint32
+          // 2. Déclarez using SafeMath16 for uint16
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -39,11 +39,12 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-            // Note: We chose not to prevent the year 2038 problem... So don't need
-            // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
+            // Remarque : Nous avons choisi de ne pas prendre en compte le problème année 2038...
+            // Donc pas la peine de s’inquiéter d'un débordement de readyTime.
+            // Notre app est foutue en 2038 dans tous les cas ;)
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
             zombieToOwner[id] = msg.sender;
-            // 3. Let's use SafeMath's `add` here:
+            // 3. Utilisons `add` de SafeMath ici :
             ownerZombieCount[msg.sender]++;
             NewZombie(id, _name, _dna);
           }
@@ -462,11 +463,11 @@ material:
       }
 ---
 
-Great, now our ERC721 implementation is safe from overflows & underflows!
+Bien, maintenant notre implémentation ERC721 est protégée des débordements !
 
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
+Si nous regardons le code que nous avons déjà écrit dans les leçons précédentes, il y a d'autres endroits dans notre code qui pourrait être vulnérables de débordements.
 
-For example, in ZombieAttack we have:
+Par exemple, dans ZombieAttack nous avons :
 
 ```
 myZombie.winCount++;
@@ -474,9 +475,9 @@ myZombie.level++;
 enemyZombie.lossCount++;
 ```
 
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
+Nous devrions empêcher les débordements ici par précaution. (C'est une bonne idée en général de simplement utiliser SafeMath à la place des opérateurs mathématiques de base. Peut-être que dans une future version de Solidity cela sera implémenter par défaut, mais pour l'instant nous devons nous prendre des précautions supplémentaires dans notre code.)
 
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
+Dans tous les cas, nous avons un petit problème — `winCount` et `lossCount` sont des `uint16`s, et `level` est un `uint32`. Si nous voulions utiliser la méthode `add` de SafeMath's `add` avec ces arguements, cela ne les protégerait pas d'un débordement vu qu'ils seraient converti en `uint256` :
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -485,24 +486,24 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
   return c;
 }
 
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+// Si nous appelons `.add` sur un `uint8`, il est converti en `uint256`.
+// Il ne débordera pas à 2^8, car 256 est un `uint256` valide.
 ```
 
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
+Cela veut dire que nous allons devoir implémenter 2 bibliothèques de plus pour empêcher les débordements de nos `uint16`s et `uint32`s. Nous pouvons les appeler `SafeMath16` et `SafeMath32`.
 
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
+Le code sera exactement le même que SafeMath, à l'exception des instances `uint256` qui seront remplacées par `uint32` ou `uint16`.
 
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
+Nous avons pris de l'avant et avons implémenté ce code pour vous — vous pouvez voir le code dans `safemath.sol`.
 
-Now we need to implement it in ZombieFactory.
+Maintenant nous devons l'implémenter dans ZombieFactory.
 
-## Putting it to the Test
+## A votre tour
 
-Assignment:
+Mission :
 
-1. Declare that we're using `SafeMath32` for `uint32`.
+1. Déclarez que nous utilisons `SafeMath32` pour les `uint32`.
 
-2. Declare that we're using `SafeMath16` for `uint16`.
+2. Déclarez que nous utilisons `SafeMath16` pour les `uint16`.
 
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
+3. Il y a une ligne de plus dans ZombieFactory où nous devrions utiliser une méthode SafeMath. Nous avons laissé un commentaire pour indiquer où.
