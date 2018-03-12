@@ -1,7 +1,7 @@
 ---
 title: Боевая система Зомби
 header: "Урок 4: Боевая система Зомби"
-roadmap: roadmap3.png
+roadmap: roadmap4.jpg
 ---
 
 Час настал, человек...
