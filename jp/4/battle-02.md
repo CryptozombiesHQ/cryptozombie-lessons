@@ -274,6 +274,6 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 2. `randMod` (random-modulus)という関数を作成せよ。これは`_modulus`という名の`uint`を受け取る`internal`関数であり、`uint`を返す（`returns`）。
 
-3. この関数はまずThe function should first increment `randNonce`を実行する。(`randNonce++`という構文を使うのだ)。
+3. この関数はまず`randNonce`を増やさなくてはならない。(`randNonce++`という構文を使うのだ)。
 
 4. 最後に、`now`、`msg.sender`そして`randNonce`の`keccak256`ハッシュ値の型変換を`uint`に計算し、その値を`% _modulus`して`return`せよ。これはコード１行で行うこと。（ふう、説明しにくかったぞ。もしわからなかったら、上で乱数を生成した例をちょっと見てくれ。よく似たロジックだ。）
