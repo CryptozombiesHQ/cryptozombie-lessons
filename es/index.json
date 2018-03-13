@@ -115,6 +115,22 @@
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
             "shareLinkText": "¡He completado la Lección 4 de #CryptoZombies, y he derrotado al malvado zombi IOTA! Pruébalo tu mismo:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "Logros Desbloqueados:",
+            "newZombieAdded": "Has recibido {zombieName}, un CryptoZombie de nivel {levelNum}!",
+            "header": [
+                "¡Enhorabuena! ¡Has completado la {lesson5} de CryptoZombies!",
+                "¡Enseña el ejército zombi a tus amigos!",
+                "Comparte esta URL para que tus amigos puedan ver tu ejército:"
+            ],
+            "footer": [
+                "¡Lección 6 estará disponible en pocas semanas!",
+                "Recibirás un email nuestro tan pronto esté disponible.",
+                "Mientras tanto. ¡Únete a nosotros en {telegramLink}, o síguenos en {twitterLink} para unirte a la conversación!"
+            ],
+            "zombieDesc": "Un CryptoZombie de nivel {levelNum}",
+            "shareLinkText": "¡He completado la Lección 5 de #CryptoZombies y tengo un CryptoZombie de nivel 10! Écha un vistazo a mi ejército:"
         }
     },
     "zombieBattle": {
@@ -228,6 +244,24 @@
                 "Retirar ETH de los contratos inteligentes",
                 "Generar numeros aleatorios y la seguridad en Ethereum",
                 "¡Y más!"
+            ],
+            "callToAction": [
+                "¿Quiéres crear tu propio CryptoZombie y añadirlo a tus filas?",
+                "¡Aprende como crear tus propios juegos en Ethereum GRATIS con CryptoZombies! Empieza ahora:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "¡Tu amigo ha completado la Lección 5 de CryptoZombies y ha recibido un CryptoZombie de nivel 10!",
+                "Mira el ejército de zombis de tu amigo a la izquierda. Bastante formidable, ¿eh?",
+                "Al completar la Lección 5 de CryptoZombies, tu amigo aprendió sobre:"
+            ],
+            "achievements": [
+                "Tokens, el estándar ERC721 y crear tokens / activos comerciables",
+                "Librerías de Solidity y cómo usarlas",
+                "La librería SafeMath y prevenir desbordamientos",
+                "Comentar el código en Solidity y el estándar natspec"
             ],
             "callToAction": [
                 "¿Quiéres crear tu propio CryptoZombie y añadirlo a tus filas?",
