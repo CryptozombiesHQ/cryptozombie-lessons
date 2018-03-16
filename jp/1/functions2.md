@@ -57,7 +57,7 @@ Solidityでは、関数はデフォルトで`public`になっている。要す�
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 このように書くと、この関数はコントラクト内の他の関数からだけ呼び出して、`numbers`配列に格納できる。

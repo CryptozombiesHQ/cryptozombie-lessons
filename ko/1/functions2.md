@@ -57,7 +57,7 @@ private 함수를 선언하는 방법을 살펴보도록 하겠네:
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 

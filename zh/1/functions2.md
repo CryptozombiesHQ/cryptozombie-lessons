@@ -57,7 +57,7 @@ Solidity 定义的函数的属性默认为`公共`。 这就意味着任何一�
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 

@@ -57,7 +57,7 @@ Açıkça bu her zaman istenilir değildir ve ve saldırı için kontratınızı
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 

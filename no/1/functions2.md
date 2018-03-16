@@ -57,7 +57,7 @@ La oss se på hvordan en deklarerer en  privat funksjon:
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 
