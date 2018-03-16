@@ -57,7 +57,7 @@ Voici comment déclarer une fonction privée :
 uint[] numbers;
 
 function _addToArray(uint _number) private {
-  numbers.push(_number) {
+  numbers.push(_number);
 }
 ```
 Cela veut dire que seulement les autres fonctions de notre contrat pourront appeler cette fonction et ajouter quelque chose au tableau `array`.
