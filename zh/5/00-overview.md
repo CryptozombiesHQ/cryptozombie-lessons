@@ -1,6 +1,6 @@
 ---
-title: ERC721 标准和电子收集物
-header: "Lesson 5: ERC721 标准和电子收集物"
+title: ERC721 标准和加密收藏品
+header: "Lesson 5: ERC721 标准和加密收藏品"
 roadmap: roadmap5.jpg
 ---
 

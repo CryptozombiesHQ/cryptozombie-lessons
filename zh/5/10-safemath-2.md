@@ -28,9 +28,9 @@ material:
           }
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
-            // 1. Replace with SafeMath's `add`
+            // 1. 替换成 SafeMath 的 `add`
             ownerZombieCount[_to]++;
-            // 2. Replace with SafeMath's `sub`
+            // 2. 替换成 SafeMath 的 `sub`
             ownerZombieCount[_from]--;
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
