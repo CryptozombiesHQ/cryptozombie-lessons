@@ -20,9 +20,9 @@ material:
             _;
           }
 
-          // 1. Create withdraw function here
+          // 1. Crear la función withdraw aquí
 
-          // 2. Create setLevelUpFee function here
+          // 2. Crear la función setLevelUpFee aquí
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -244,15 +244,9 @@ material:
       }
 ---
 
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
-
 En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre cuando lo envía?
 
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract.
-
 Luego de enviar Ether a un contrato, este se almacena en la cuenta de Ethereum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato
-
-You can write a function to withdraw Ether from the contract as follows:
 
 Puede escribir una función para retirar Ether del contrato de la siguiente forma:
 
