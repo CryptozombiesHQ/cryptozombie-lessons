@@ -11,7 +11,7 @@ material:
 
         import "./zombiehelper.sol";
 
-        contract ZombieBattle is ZombieHelper {
+        contract ZombieAttack is ZombieHelper {
           uint randNonce = 0;
           uint attackVictoryProbability = 70;
 
@@ -345,7 +345,7 @@ material:
 
       import "./zombiehelper.sol";
 
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
         uint randNonce = 0;
         uint attackVictoryProbability = 70;
 
