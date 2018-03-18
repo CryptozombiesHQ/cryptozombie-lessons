@@ -110,9 +110,9 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-Dans cet exemple trivial, n'importe qui pourrait appelé `setMyNumber` et stocker un `uint` dans notre contrat, qui serait lié à leur adresse. Ils pourraient ensuite appeler `whatIsMyNumber`, et ils auraient en retour le `uint` qu'ils ont stocké.
+Dans cet exemple trivial, n'importe qui pourrait appeler `setMyNumber` et stocker un `uint` dans notre contrat, qui serait lié à leur adresse. Ils pourraient ensuite appeler `whatIsMyNumber`, et ils auraient en retour le `uint` qu'ils ont stocké.
 
-Utiliser `msg,sender` apporte de la sécurité à la blockchain Ethereum - la seule manière pour quelqu'un de modifier les données d'un autre serait de lui voler sa clé privée associée à son adresse Ethereum.
+Utiliser `msg.sender` apporte de la sécurité à la blockchain Ethereum - la seule manière pour quelqu'un de modifier les données d'un autre serait de lui voler sa clé privée associée à son adresse Ethereum.
 
 
 # A votre tour
