@@ -129,8 +129,8 @@
               "準備出来次第、Eメールでお知らせします。",
               "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
+            "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
+            "shareLinkText": "#CryptoZombies のLesson5が終わってレベル10のゾンビをゲットしたよ！作ったゾンビ軍団をチェックしてみて！"
         }
     },
     "zombieBattle": {
