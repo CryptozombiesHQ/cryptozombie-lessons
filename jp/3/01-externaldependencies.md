@@ -165,7 +165,7 @@ material:
 
 1. ハードコードした`ckAddress`の行を削除せよ
 
-2. 変数を宣言のために`kittyContract`を作成した行を変更せよ。
+2. `kittyContract`を作成した行を、単なる変数の宣言に変更せよ(変数に何もセットしてはならない)
 
 3. `setKittyContractAddress`という関数を作成せよ。引数を`_address` ( `address`)とすること。また`external`関数で設定せよ。
 
