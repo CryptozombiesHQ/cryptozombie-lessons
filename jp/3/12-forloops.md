@@ -273,7 +273,7 @@ function getEvens() pure external returns(uint[]) {
 
 1. `counter`という`uint`を宣言し、`0`を設定せよ。この変数を使用して、`result`配列のインデックスをトラックせよ。
 
-2.`uint i = 0`から始めて、`i < zombies.length`までループする、`for`ループを宣言せよ。ループは配列内の全てのゾンビ全てを含むまで続行させるように。
+2. `uint i = 0`から始めて、`i < zombies.length`までループする、`for`ループを宣言せよ。ループは配列内のゾンビ全てを含むまで続行させるように。
 
 3. `for`ループ内に`if`ステートメントを作成し、 `zombieToOwner[i]`が `_owner`と一致するか判定せよ。判定は、それぞれのアドレスを比較すればよいのだ
 
