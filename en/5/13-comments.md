@@ -60,7 +60,7 @@ material:
           uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
-            randNonce++;
+            randNonce = randNonce.add(1);
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
@@ -69,13 +69,13 @@ material:
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
             if (rand <= attackVictoryProbability) {
-              myZombie.winCount++;
-              myZombie.level++;
-              enemyZombie.lossCount++;
+              myZombie.winCount = myZombie.winCount.add(1);
+              myZombie.level = myZombie.level.add(1);
+              enemyZombie.lossCount = enemyZombie.lossCount.add(1);
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
             } else {
-              myZombie.lossCount++;
-              enemyZombie.winCount++;
+              myZombie.lossCount = myZombie.lossCount.add(1);
+              enemyZombie.winCount = enemyZombie.winCount.add(1);
               _triggerCooldown(myZombie);
             }
           }
@@ -104,7 +104,7 @@ material:
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
-            zombies[_zombieId].level++;
+            zombies[_zombieId].level = zombies[_zombieId].level.add(1);
           }
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) onlyOwnerOf(_zombieId) {
@@ -196,6 +196,8 @@ material:
         contract ZombieFactory is Ownable {
 
           using SafeMath for uint256;
+          using SafeMath32 for uint32;
+          using SafeMath16 for uint16;
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -321,6 +323,74 @@ material:
           */
           function add(uint256 a, uint256 b) internal pure returns (uint256) {
             uint256 c = a + b;
+            assert(c >= a);
+            return c;
+          }
+        }
+
+        /**
+         * @title SafeMath32
+         * @dev SafeMath library implemented for uint32
+         */
+        library SafeMath32 {
+
+          function mul(uint32 a, uint32 b) internal pure returns (uint32) {
+            if (a == 0) {
+              return 0;
+            }
+            uint32 c = a * b;
+            assert(c / a == b);
+            return c;
+          }
+
+          function div(uint32 a, uint32 b) internal pure returns (uint32) {
+            // assert(b > 0); // Solidity automatically throws when dividing by 0
+            uint32 c = a / b;
+            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+            return c;
+          }
+
+          function sub(uint32 a, uint32 b) internal pure returns (uint32) {
+            assert(b <= a);
+            return a - b;
+          }
+
+          function add(uint32 a, uint32 b) internal pure returns (uint32) {
+            uint32 c = a + b;
+            assert(c >= a);
+            return c;
+          }
+        }
+
+        /**
+         * @title SafeMath16
+         * @dev SafeMath library implemented for uint16
+         */
+        library SafeMath16 {
+
+          function mul(uint16 a, uint16 b) internal pure returns (uint16) {
+            if (a == 0) {
+              return 0;
+            }
+            uint16 c = a * b;
+            assert(c / a == b);
+            return c;
+          }
+
+          function div(uint16 a, uint16 b) internal pure returns (uint16) {
+            // assert(b > 0); // Solidity automatically throws when dividing by 0
+            uint16 c = a / b;
+            // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+            return c;
+          }
+
+          function sub(uint16 a, uint16 b) internal pure returns (uint16) {
+            assert(b <= a);
+            return a - b;
+          }
+
+          function add(uint16 a, uint16 b) internal pure returns (uint16) {
+            uint16 c = a + b;
             assert(c >= a);
             return c;
           }
