@@ -88,7 +88,7 @@ import l5_ch13 from './5/13-comments.md'
 import l5_ch14 from './5/14-wrappingitup.md'
 import l5_complete from './5/15-lessoncomplete.md'
 
-// lesson5
+// lesson6
 import l6_overview from './6/00-overview.md'
 import l6_ch1 from './6/01-intro-web3.md'
 import l6_ch2 from './6/02-web3-providers.md'
