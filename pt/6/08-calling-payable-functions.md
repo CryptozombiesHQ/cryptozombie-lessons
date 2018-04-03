@@ -29,10 +29,10 @@ material:
                 cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
 
                 var accountInterval = setInterval(function() {
-                  // Check if account has changed
+                  // Verifique se a conta foi alterada
                   if (web3.eth.accounts[0] !== userAccount) {
                     userAccount = web3.eth.accounts[0];
-                    // Call a function to update the UI with the new account
+                    // Chamar a função para atualizar a interface do usuário com a nova conta
                     getZombiesByOwner(userAccount)
                     .then(displayZombies);
                   }
@@ -42,41 +42,41 @@ material:
               function displayZombies(ids) {
                 $("#zombies").empty();
                 for (id of ids) {
-                  // Look up zombie details from our contract. Returns a `zombie` object
-                  getZombieDetails(id)
-                  .then(function(zombie) {
-                    // Using ES6's "template literals" to inject variables into the HTML.
-                    // Append each one to our #zombies div
-                    $("#zombies").append(`<div class="zombie">
-                      <ul>
-                        <li>Name: ${zombie.name}</li>
-                        <li>DNA: ${zombie.dna}</li>
-                        <li>Level: ${zombie.level}</li>
-                        <li>Wins: ${zombie.winCount}</li>
-                        <li>Losses: ${zombie.lossCount}</li>
-                        <li>Ready Time: ${zombie.readyTime}</li>
-                      </ul>
-                    </div>`);
+                  // Busca os detalhes de zumbis do nosso contrato. Retorna um objeto `zumbi`
+                  getZombieDetails (id)
+                  .then(function(zumbi) {
+                    // Usando os "template literals" do ES6 para injetar variáveis ​​no HTML.
+                    // Anexa cada um ao nosso div #zombies
+                    $("#zombies").append(`<div class="zombie">
+                      <ul>
+                        <li>Nome: ${zombie.name}</li>
+                        <li>DNA: ${zombie.dna}</li>
+                        <li>Nível: ${zombie.level}</li>
+                        <li>Vitórias: ${zombie.winCount}</li>
+                        <li>Perdas: ${zombie.lossCount}</li>
+                        <li>Ready Time: ${zombie.readyTime}</li>
+                      </ul>
+                    </div>`);
                   });
                 }
               }
 
               function createRandomZombie(name) {
-                // This is going to take a while, so update the UI to let the user know
-                // the transaction has been sent
-                $("#txStatus").text("Creating new zombie on the blockchain. This may take a while...");
-                // Send the tx to our contract:
-                return CryptoZombies.methods.createRandomZombie(name)
-                .send({ from: userAccount })
-                .on("receipt", function(receipt) {
-                  $("#txStatus").text("Successfully created " + name + "!");
-                  // Transaction was accepted into the blockchain, let's redraw the UI
-                  getZombiesByOwner(userAccount).then(displayZombies);
-                })
-                .on("error", function(error) {
-                  // Do something to alert the user their transaction has failed
-                  $("#txStatus").text(error);
-                });
+                // Isso vai demorar um pouco, então atualize a interface do usuário para que o usuário saiba
+                // a transação foi enviada
+                $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
+                // Envie o tx para nosso contrato:
+                return CryptoZombies.methods.createRandomZombie(name)
+                .send({from: userAccount})
+                .on("receipt", function (receipt) {
+                  $ ("#txStatus").text("Criado com sucesso" + name + "!");
+                  // A transação foi aceita no blockchain, vamos redesenhar a interface do usuário
+                  getZombiesByOwner(userAccount).then(displayZombies);
+                })
+                .on ("error", function (error) {
+                  // Faça algo para alertar o usuário sobre a falha da transação
+                  $("#txStatus").text(erro);
+                });
               }
 
               function feedOnKitty(zombieId, kittyId) {
@@ -108,16 +108,17 @@ material:
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })

@@ -388,7 +388,7 @@ material:
 
 A primeira coisa que precisamos é de um **_Web3 Provider_**.
 
-Lembre-se, o Ethereum é composto de **_nodes_** que compartilham uma cópia dos mesmos dados. Definir um provedor Web3 em Web3.js informa ao nosso código **em que nó** devemos falar para lidar com nossas leituras e escritas. É como definir a URL do servidor da Web remoto para suas chamadas de API em um aplicativo da web tradicional.
+Lembre-se, o Ethereum é composto de **_nodes_** (nós) que compartilham uma cópia dos mesmos dados. Definir um provedor Web3 em Web3.js informa ao nosso código **em que nó** devemos falar para lidar com nossas leituras e escritas. É como definir a URL do servidor da Web remoto para suas chamadas de API em um aplicativo da web tradicional.
 
 Você poderia hospedar seu próprio nó Ethereum como um provedor. No entanto, há um serviço de terceiros que facilita a sua vida, para que você não precise manter seu próprio nó Ethereum para fornecer um DApp para seus usuários — **_Infura_**.
 

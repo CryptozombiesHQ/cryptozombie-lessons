@@ -28,10 +28,10 @@ material:
                 cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
 
                 var accountInterval = setInterval(function() {
-                  // Check if account has changed
+                  // Verifique se a conta foi alterada
                   if (web3.eth.accounts[0] !== userAccount) {
                     userAccount = web3.eth.accounts[0];
-                    // Call a function to update the UI with the new account
+                    // Chamar a função para atualizar a interface do usuário com a nova conta
                     getZombiesByOwner(userAccount)
                     .then(displayZombies);
                   }
@@ -56,16 +56,17 @@ material:
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })

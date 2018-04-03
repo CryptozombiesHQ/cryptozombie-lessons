@@ -36,16 +36,17 @@ material:
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })
@@ -454,9 +455,9 @@ myContract.methods.myMethod(123).call()
 
 `send` criará uma transação e alterará os dados no blockchain. Você precisará usar `send` para quaisquer funções que não sejam `view` ou `pure`.
 
-> **Nota:** `send` uma transação exigirá que o usuário pague o gas, e irá abrir seu Metamask para solicitar uma transação. Quando usamos o Metamask como nosso provedor web3, tudo isso acontece automaticamente quando chamamos `send()`, e não precisamos fazer nada especial em nosso código. Muito legal!
+> **Nota:** `send` irá enviar uma transação e exigirá que o usuário pague o gas, e irá abrir seu Metamask para solicitar uma transação. Quando usamos o Metamask como nosso provedor web3, tudo isso acontece automaticamente quando chamamos `send()`, e não precisamos fazer nada especial em nosso código. Muito legal!
 
-Usando o Web3.js, você deveria "enviar" uma transação chamando uma função chamada "myMethod" com o parâmetro "123" da seguinte forma:
+Usando o Web3.js, você poderia "enviar" uma transação chamando uma função chamada "myMethod" com o parâmetro "123" da seguinte forma:
 
 ```
 myContract.methods.myMethod(123).send()
@@ -478,7 +479,7 @@ Em Solidity, quando você declara uma variável `public`, ela cria automaticamen
 
 Aqui está como nós escreveríamos uma função JavaScript em nosso front-end que pegaria um id de zumbi, consultaria nosso contrato para aquele zumbi e retornaria o resultado:
 
-> Nota: Todos os exemplos de código que estamos usando nesta lição estão usando ** versão 1.0 ** do Web3.js, que usa promessas em vez de retornos de chamada. Muitos outros tutoriais que você verá on-line estão usando uma versão mais antiga do Web3.js. A sintaxe mudou muito com a versão 1.0, então se você estiver copiando código de outros tutoriais, verifique se eles estão usando a mesma versão que você!
+> Nota: Todos os exemplos de código que estamos usando nesta lição estão usando ** versão 1.0 ** do Web3.js, que usa `promises` em vez de `callbacks`. Muitos outros tutoriais que você verá on-line estão usando uma versão mais antiga do Web3.js. A sintaxe mudou muito com a versão 1.0, então se você estiver copiando código de outros tutoriais, verifique se eles estão usando a mesma versão que você!
 
 ```
 function getZombieDetails(id) {
@@ -517,7 +518,7 @@ Poderíamos então ter alguma lógica de front-end para analisar esse objeto e e
 
 ## Vamos testar
 
-Nós seguimos adiante e copiamos `getZombieDetails` no código para você.
+Nos adiantamos e copiamos `getZombieDetails` no código para você.
 
 1. Vamos criar uma função semelhante para `zombieToOwner`. Se você se lembra de `ZombieFactory.sol`, nós tínhamos um mapeamento parecido com:
 

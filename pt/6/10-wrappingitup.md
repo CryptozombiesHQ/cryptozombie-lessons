@@ -19,7 +19,7 @@ Como recompensa, você tem o seu próprio zumbi `The Phantom of Web3`! Nível 3.
 
 Esta lição foi intencionalmente básica. Queríamos mostrar a lógica principal de que você precisaria para interagir com seu smart contract, mas não queríamos gastar muito tempo para fazer uma implementação completa, já que a parte Web3.js do código é bastante repetitiva , e nós não estaríamos introduzindo novos conceitos, fazendo esta lição por mais tempo.
 
-Então, deixamos esta implementação básica. Aqui está uma lista de idéias para as coisas que gostaríamos de implementar, a fim de tornar o nosso front-end uma implementação completa para o nosso jogo de zumbis, se você quer correr com isso e construí-lo por conta própria:
+Então, deixamos esta implementação básica. Aqui está uma lista de idéias para as coisas que gostaríamos de implementar, a fim de tornar o nosso front-end uma implementação completa para o nosso jogo de zumbis, se você quer continuar com isso e construí-lo por conta própria:
 
 1. Implementando funções para `attack`, `changeName`, `changeDna`, e as funções ERC721 `transfer`, `ownerOf`, `balanceOf`, etc. A implementação destas funções seria idêntica a todas as outras `send` transações que cobrimos.
 
@@ -51,7 +51,7 @@ Então, deixamos esta implementação básica. Aqui está uma lista de idéias p
 
 9. Provavelmente, também queremos implementar algum tipo de camada de cache de front-end, de modo que nem sempre estamos batendo na Infura com pedidos para os mesmos dados. (Nossa implementação atual de `displayZombies` chama `getZombieDetails` para cada único zumbi toda vez que atualizamos a interface — mas realisticamente só precisamos chamar isso para o novo zumbi que foi adicionado ao nosso exército).
 
-10. Uma sala de bate-papo em tempo real para que você pudesse falar mal dos outros jogadores enquanto esmaga seu exército de zumbis? Sim plz.
+10. Uma sala de bate-papo em tempo real para que você pudesse falar mal dos outros jogadores enquanto esmaga seu exército de zumbis? Sim por favor.
 
 Isso é apenas um começo — tenho certeza de que poderíamos criar ainda mais recursos — e já é uma lista enorme.
 

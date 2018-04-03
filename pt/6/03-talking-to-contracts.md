@@ -19,20 +19,21 @@ material:
           <body>
 
             <script>
-              // 2. Começe aqui
+              // 2. Comece aqui
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })
@@ -867,19 +868,19 @@ O Web3.js precisará de duas coisas para conversar com seu contrato: o **_endere
 
 ## Endereço do contrato
 
-Depois de terminar de escrever seu smart contract, você irá compilá-lo e implantá-lo no Ethereum. Vamos abordar **a implantação** na **próxima lição**, mas como esse é um processo bem diferente de escrever código, decidimos sair do fim e cobrir o Web3.js primeiro.
+Depois de terminar de escrever seu smart contract, você irá compilá-lo e implantá-lo no Ethereum. Vamos abordar **a implantação** na **próxima lição**, mas como esse é um processo bem diferente de escrever código, decidimos mudar a ordem e cobrir o Web3.js primeiro.
 
-Depois de implantar o seu contrato, ele recebe um endereço fixo na Ethereum, onde viverá para sempre. Se você se lembra da lição 2, o endereço do contrato CryptoKitties na rede social Ethereum é `YOUR_CONTRACT_ADDRESS`.
+Depois de implantar o seu contrato, ele recebe um endereço fixo no Ethereum, onde viverá para sempre. Se você se lembra da lição 2, o endereço do contrato CryptoKitties na rede social Ethereum é `YOUR_CONTRACT_ADDRESS`.
 
 Você precisará copiar esse endereço após a implantação para conversar com seu smart contract.
 
 ## Contrato ABI
 
-A outra coisa que o Web3.js precisará falar com o seu contrato é o seu **_ABI_**.
+A outra coisa que o Web3.js precisará para falar com o seu contrato é o seu **_ABI_**.
 
-ABI significa Application Binary Interface (Interface Binaria da Aplicação). Basicamente, é uma representação dos métodos de seus contratos no formato JSON que informa ao Web3.js como formatar chamadas de função de uma maneira que seu contrato entenderá.
+ABI significa Application Binary Interface (Interface Binária da Aplicação). Basicamente, é uma representação dos métodos de seus contratos no formato JSON que informa ao Web3.js como formatar chamadas de função de uma maneira que seu contrato entenderá.
 
-Quando você compilar seu contrato para implantar na Ethereum (que abordaremos na Lição 7), o compilador Solidity lhe dará a ABI, então você precisará copiar e salvar isso mais o endereço do contrato.
+Quando você compilar seu contrato para implantar no Ethereum (que abordaremos na Lição 7), o compilador Solidity lhe dará a ABI, então você precisará copiar e salvar isso mais o endereço do contrato.
 
 Como ainda não abordamos a implantação, para esta lição compilamos a ABI para você e a colocamos em um arquivo chamado `cryptozombies_abi.js`, armazenado em uma variável chamada`cryptozombiesABI`.
 
@@ -900,8 +901,8 @@ var myContract = new web3js.eth.Contract (myABI, myContractAddress);
 
 2. No início de nossa tag `<script>` no `<body>`, declare um `var` chamado `cryptoZombies`, mas não o atribua nenhum valor. Mais tarde, usaremos essa variável para armazenar nosso contrato instanciado.
 
-3. Em seguida, crie uma função `startApp ()`. Nós vamos preencher o corpo nos próximos 2 passos.
+3. Em seguida, crie uma função `startApp()`. Nós vamos preencher o corpo nos próximos 2 passos.
 
-4. A primeira coisa que `startApp ()` deve fazer é declarar um `var` chamado `cryptoZombiesAddress` e defini-lo como a string `"YOUR_CONTRACT_ADDRESS"` (este é o endereço do contrato CryptoZombies na rede principal).
+4. A primeira coisa que `startApp()` deve fazer é declarar um `var` chamado `cryptoZombiesAddress` e defini-lo como a string `"YOUR_CONTRACT_ADDRESS"` (este é o endereço do contrato CryptoZombies na rede principal).
 
 5. Por fim, vamos instanciar nosso contrato. Defina `cryptoZombies` com a instância de um novo `web3js.eth.Contract` como fizemos no código de exemplo acima. (Usando `cryptoZombiesABI`, que é importado com nossa tag de script, e `cryptoZombiesAddress` de cima).

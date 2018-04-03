@@ -29,10 +29,10 @@ material:
                 cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
 
                 var accountInterval = setInterval(function() {
-                  // Check if account has changed
+                  // Verifique se a conta foi alterada
                   if (web3.eth.accounts[0] !== userAccount) {
                     userAccount = web3.eth.accounts[0];
-                    // Call a function to update the UI with the new account
+                    // Chamar a função para atualizar a interface do usuário com a nova conta
                     getZombiesByOwner(userAccount)
                     .then(displayZombies);
                   }
@@ -42,21 +42,21 @@ material:
               function displayZombies(ids) {
                 $("#zombies").empty();
                 for (id of ids) {
-                  // Look up zombie details from our contract. Returns a `zombie` object
-                  getZombieDetails(id)
-                  .then(function(zombie) {
-                    // Using ES6's "template literals" to inject variables into the HTML.
-                    // Append each one to our #zombies div
-                    $("#zombies").append(`<div class="zombie">
-                      <ul>
-                        <li>Name: ${zombie.name}</li>
-                        <li>DNA: ${zombie.dna}</li>
-                        <li>Level: ${zombie.level}</li>
-                        <li>Wins: ${zombie.winCount}</li>
-                        <li>Losses: ${zombie.lossCount}</li>
-                        <li>Ready Time: ${zombie.readyTime}</li>
-                      </ul>
-                    </div>`);
+                  // Busca os detalhes de zumbis do nosso contrato. Retorna um objeto `zumbi`
+                  getZombieDetails (id)
+                  .then(function(zumbi) {
+                    // Usando os "template literals" do ES6 para injetar variáveis ​​no HTML.
+                    // Anexa cada um ao nosso div #zombies
+                    $("#zombies").append(`<div class="zombie">
+                      <ul>
+                        <li>Nome: ${zombie.name}</li>
+                        <li>DNA: ${zombie.dna}</li>
+                        <li>Nível: ${zombie.level}</li>
+                        <li>Vitórias: ${zombie.winCount}</li>
+                        <li>Perdas: ${zombie.lossCount}</li>
+                        <li>Ready Time: ${zombie.readyTime}</li>
+                      </ul>
+                    </div>`);
                   });
                 }
               }
@@ -77,16 +77,17 @@ material:
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })
@@ -556,7 +557,7 @@ Existem algumas diferenças importantes das funções `call`:
 
 2. Enviar (`send`) uma transação custa gas
 
-3. Haverá um atraso significativo de quando o usuário enviar uma transação e quando a transação entrar em vigor no blockchain. Isso ocorre porque temos que esperar que a transação seja incluída em um bloco, e o tempo para isso no Ethereum é, em média, de 15 segundos. Se houver muitas transações pendentes na Ethereum ou se o usuário enviar um preço de gas muito baixo, nossa transação pode ter que esperar vários bloqueios para ser incluída, e isso pode levar alguns minutos.
+3. Haverá um atraso significativo de quando o usuário enviar uma transação e quando a transação entrar em vigor no blockchain. Isso ocorre porque temos que esperar que a transação seja incluída em um bloco, e o tempo para isso no Ethereum é, em média, de 15 segundos. Se houver muitas transações pendentes na Ethereum ou se o usuário enviar um preço de gas muito baixo, nossa transação pode ter que esperar vários blocos para ser incluída, e isso pode levar alguns minutos.
 
   Assim, precisaremos de lógica em nosso aplicativo para lidar com a natureza assíncrona desse código.
 
@@ -600,7 +601,7 @@ function createRandomZombie(name) {
 Nossa função envia (`send`) uma transação para nosso provedor Web3 e acorrenta alguns ouvintes de eventos:
 
 - 'receipt' será disparado quando a transação for incluída em um bloco na Ethereum, o que significa que nosso zumbi foi criado e salvo em nosso contrato
-- `error` será disparado se houver um problema que impediu que a transação seja incluída em um bloco, como o usuário não envia gas suficiente. Queremos informar o usuário em nossa interface do usuário de que a transação não foi realizada para que ele possa tentar novamente.
+- `error` será disparado se houver um problema que impediu que a transação seja incluída em um bloco, como o usuário não enviando gas suficiente. Queremos informar o usuário em nossa interface do usuário de que a transação não foi realizada para que ele possa tentar novamente.
 
 > Nota: Você pode, opcionalmente, especificar `gas` e `gasPrice` quando você chamar `send`, por exemplo `.send ({from: userAccount, gas: 3000000})`. Se você não especificar isso, o MetaMask permitirá que o usuário escolha esses valores.
 

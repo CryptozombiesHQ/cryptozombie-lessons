@@ -43,16 +43,17 @@ material:
 
               window.addEventListener('load', function() {
 
-                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                // Verificando se o Web3 foi injetado pelo navegador (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
-                  // Use Mist/MetaMask's provider
+                  // Use o provedor de Mist/MetaMask
                   web3js = new Web3(web3.currentProvider);
                 } else {
-                  // Handle the case where the user doesn't have Metamask installed
-                  // Probably show them a message prompting them to install Metamask
+                  // Caso o usuário não tem web3. Provavelmente
+                  // mostre a ele uma mensagem dizendo-lhe para instalar o Metamask
+                  // afim de usar nosso aplicativo.
                 }
 
-                // Now you can start your app & access web3 freely:
+                // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
                 startApp()
 
               })
@@ -470,7 +471,7 @@ Podemos ver qual conta está atualmente ativa na variável injetada `web3` via:
 var userAccount = web3.eth.accounts[0]
 ```
 
-Como o usuário pode alternar a conta ativa a qualquer momento no MetaMask, nosso aplicativo precisa monitorar essa variável para ver se ela foi alterada e atualizar a interface do usuário de acordo. Por exemplo, se a página inicial do usuário exibir seu exército de zumbis, quando ele mudar de conta no MetaMask, vamos querer atualizar a página para mostrar ao exército de zumbis a nova conta que ele selecionou.
+Como o usuário pode alternar a conta ativa a qualquer momento no MetaMask, nosso aplicativo precisa monitorar essa variável para ver se ela foi alterada e atualizar a interface do usuário de acordo. Por exemplo, se a página inicial do usuário exibir seu exército de zumbis, quando ele mudar de conta no MetaMask, vamos querer atualizar a página para mostrar ao exército de zumbis para a nova conta que ele selecionou.
 
 Podemos fazer isso com um loop `setInterval` da seguinte forma:
 

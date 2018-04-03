@@ -378,8 +378,8 @@ Lembre-se, a rede Ethereum é composta de nós, cada um contendo uma cópia do b
 Os nós do Ethereum só falam uma linguagem chamada **_JSON-RPC_**, que não é muito legível por humanos. Uma consulta para informar ao nó que você deseja chamar uma função em um contrato é algo como isto:
 
 ```
-// É... Boa sorte escrevendo toda a sua função chama assim!
-// Scroll right ==>
+// É... Boa sorte escrevendo toda a sua chamada de função desta maneira!
+// Role para a direita ==>
 {"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"}],"id":1}
 ```
 
@@ -396,23 +396,22 @@ Vamos explicar a sintaxe em detalhes nos próximos capítulos, mas primeiro vamo
 
 ## Começando
 
-Depending on your project's workflow, you can add Web3.js to your project using most package tools:
 Dependendo do fluxo de trabalho do seu projeto, você pode adicionar Web3.js ao seu projeto usando as gerenciador de pacotes mais conhecidos:
 
 ```
-// Using NPM
+// Usando NPM
 npm install web3
 
-// Using Yarn
+// Usando Yarn
 yarn add web3
 
-// Using Bower
+// Usando Bower
 bower install web3
 
 // ...etc.
 ```
 
-Ou você pode simplesmente baixar o arquivo `.js` minificado do <a href="https://github.com/ethereum/web3.js/blob/1.0/dist/web3.min.js" target=_blank>github</a> e inclua no seu projeto:
+Ou você pode simplesmente baixar o arquivo `.js` minificado do <a href="https://github.com/ethereum/web3.js/blob/1.0/dist/web3.min.js" target=_blank>github</a> e incluir no seu projeto:
 
 ```
 <script language="javascript" type="text/javascript" src="web3.min.js"></script>
@@ -422,7 +421,6 @@ Como não queremos fazer muitas suposições sobre seu ambiente de desenvolvimen
 
 ## Vamos testar
 
-We've created a shell of an HTML project file for you, `index.html`. Let's assume we have a copy of `web3.min.js` in the same folder as `index.html`.
 Nós criamos um arquivo de projeto HTML para você, `index.html`. Vamos supor que temos uma cópia do `web3.min.js` na mesma pasta que o `index.html`.
 
 1. Vá em frente e copie/cole a tag de script acima em nosso projeto para que possamos usar o `web3.js`
