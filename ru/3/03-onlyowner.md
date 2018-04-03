@@ -235,6 +235,6 @@ contract MyContract is Ownable {
 
 ## Проверь себя
 
-Теперь мы можем запретить доступ к `setKittyContractAddress`, чтобы никто не могу его изменить в будущем.
+Теперь мы можем запретить доступ к `setKittyContractAddress`, чтобы никто не мог его изменить в будущем.
 
 1. Добавь модификатор `onlyOwner` к `setKittyContractAddress`.
