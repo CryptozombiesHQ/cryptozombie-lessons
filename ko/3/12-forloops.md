@@ -211,7 +211,7 @@ material:
 `getZombiesByOwner`를 구현할 때, 기초적인 구현 방법은 `ZombieFactory` 컨트랙트에서 소유자의 좀비 군대에 대한 `mapping`을 만들어 저장하는 것일 걸세.
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 그리고나서 새로운 좀비를 만들 때마다, 해당 소유자의 좀비 배열에 `ownerToZombies[owner].push(zombieId)`를 사용해서 새 좀비를 추가하겠지. `getZombiesByOwner` 함수는 굉장히 이해하기 쉬운 함수가 될 게야:
@@ -280,5 +280,5 @@ function getEvens() pure external returns(uint[]) {
 4. `if` 문장 안에서:
    1. `result[counter]`에 `i`를 대입해서 `result` 배열에 좀비의 ID를 추가하게.
    2. `counter`를 1 증가시키게(위의 `for` 반복문 예시를 참고하게).
-   
+
 이게 끝이라네 - 이 함수는 이제 `_owner`가 소유한 모든 좀비를 가스를 소모하지 않고 반환하게 될 것이네.

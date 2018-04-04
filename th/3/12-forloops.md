@@ -211,7 +211,7 @@ material:
 สำหรับฟังก์ชั่น `getZombiesByOwner` การอิมพลีเมนท์แบบทื่อๆ จะเป็นเพียงการบรรจุ`mapping` ของเจ้าของลงไปยังกองทัพซอมบี้ ภายใน contract `ZombieFactory` :
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 ดังนั้นทุกครั้งที่เราสร้างซอมบี้ขึ้นมาใหม่ เราก็เพียงแค่ใช้ `ownerToZombies[owner].push(zombieId)` เพื่อเพิ่มมันลงไปใน array ซอมบี้ของเจ้าของนี้ และ `getZombiesByOwner` ก็จะเป็นฟังก์ชั่นที่ค่อนข้างตรงไปตรงมาอย่างมาก:
@@ -240,7 +240,7 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 
 เมื่อฟังก์ชั่น `view` ไม่ทำให้เสีย gas เมื่อถูกเรียกจากภายนอก เราจึงสามารถใช้ for-loop ภายใน `getZombiesByOwner` เพื่อทำ array ซอมบี้ขึ้นซ้ำๆ และสร้าง array ของซอมบี้ที่ขึ้นอยู่กับเจ้าของหนึ่งๆ  ดังนั้นฟังก์ชั่น `transfer` ของเราจะถูกลงอย่างมาก เมื่อเราไม่จำเป็นต้องทำการจัดลำดับ array ใหม่ภายในหน่วยจัดเก็บข้อมูล นอกจากนี้ยังค่อนข้างทำให้การนับมีความง่ายขึ้น(counter-intuitively)และถูกลงอีกด้วยในวิธีนี้
 
-## การใช้ loop `for` 
+## การใช้ loop `for`
 
 Syntax ของ loops `for` ใน Solidity ก็จะคล้าย ๆ กับใน JavaScript
 

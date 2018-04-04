@@ -211,7 +211,7 @@ material:
 `getZombiesByOwner`関数をそのまま使うと、ゾンビ軍団のオーナーの`mapping`が`ZombieFactory` コントラクトに保存されることになる。詳しく説明しよう：
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 新しいゾンビを作る度に、`ownerToZombies[owner].push(zombieId)`を使ってオーナーのゾンビ配列に追加していくだけだ。`getZombiesByOwner` は非常に簡単な関数だ：

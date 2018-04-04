@@ -211,7 +211,7 @@ Voyons voir pourquoi.
 Pour notre fonction `getZombiesByOwner`, une implémentation naïve serait de stocker un `mapping` de propriétaires d'armées de zombies dans le contrat `ZombieFactory` :
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 Et à chaque fois que l'on créerait un nouveau zombie, nous utiliserions simplement `ownerToZombies[owner].push(zombieId)` pour l'ajouter au tableau de zombie de son propriétaire. Et `getZombiesByOwner` serait une fonction toute simple :

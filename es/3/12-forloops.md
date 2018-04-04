@@ -210,7 +210,7 @@ Vamos a ver el por qué.
 Para nuestra función `getZombiesByOwner`, una implementación nativa sería guardar un `mapping` de dueños para los ejércitos zombis en el contrato `ZombieFactory`:
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 De esta forma cada vez que creemos un nuevo zombi, simplemente tenemos que usar `ownerToZombies[owner].push(zombieId)` para añadirlo al ejército de zombis de ese usuario. Y `getZombiesByOwner` sería una función tan sencilla como:
