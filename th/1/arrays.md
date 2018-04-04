@@ -47,7 +47,7 @@ uint[2] fixedArray;
 // หรือจะเป็น fixed Array ที่สามารถมีข้อมูลชนิด Strings ได้ 5 ตัวก็จะเขียนได้ว่า:
 string[5] stringArray ;
 // Dynamic Array – จะไม่จำกัดขนาดที่แน่นอน ซึ่งแปลว่า array ชนิดนี้สามารถมีขนาดเพิ่มได้เรื่อยๆ :
-unit[] dynamicArray;
+uint[] dynamicArray;
 ```
 
 เราสามารถที่จะสร้าง array ของ **_structs_** โดยใช้ `Person`‘ struct ที่อยู่ในบทก่อนหน้าได้เลย
