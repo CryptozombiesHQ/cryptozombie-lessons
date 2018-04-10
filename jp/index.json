@@ -131,7 +131,7 @@
             ],
             "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
             "shareLinkText": "#CryptoZombies のLesson5が終わってレベル10のゾンビをゲットしたよ！作ったゾンビ軍団をチェックしてみて！"
-        }
+        },
         "lesson6": {
             "achievementsUnlocked": "次の課題が解除されました：",
             "newZombieAdded": "{zombieName} のレベルが {levelNum}にアップしました!",

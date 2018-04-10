@@ -88,6 +88,18 @@ import l5_ch13 from './5/13-comments.md'
 import l5_ch14 from './5/14-wrappingitup.md'
 import l5_complete from './5/15-lessoncomplete.md'
 
+import l6_overview from './6/00-overview.md'
+import l6_ch1 from './6/01.md'
+import l6_ch2 from './6/02.md'
+import l6_ch3 from './6/03.md'
+import l6_ch4 from './6/04.md'
+import l6_ch5 from './6/05.md'
+import l6_ch6 from './6/06.md'
+import l6_ch7 from './6/07.md'
+import l6_ch8 from './6/08.md'
+import l6_ch9 from './6/09.md'
+import l6_ch10 from './6/10-wrappingitup.md'
+import l6_complete from './6/lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -178,5 +190,19 @@ export default {
     l5_ch13,
     l5_ch14,
     l5_complete
+  ],
+  6: [
+    l6_overview,
+    l6_ch1,
+    l6_ch2,
+    l6_ch3,
+    l6_ch4,
+    l6_ch5,
+    l6_ch6,
+    l6_ch7,
+    l6_ch8,
+    l6_ch9,
+    l6_ch10,
+    l6_complete,
   ],
 }
