@@ -53,7 +53,7 @@ material:
 
 因为这将需要大量的前端代码来实现全部的界面（HTML， CSS， JavaScript 以及诸如 React 和 Vue.js 这样的框架）。光实现一个这样的前端界面也许会花费多达10节课，所以我们将这个光荣的任务交给你自己去完成。
 
-> 注意：尽管智能合约是去中心化的。这个用来和DApp交互的前端界面依然需要放在我们中心化的网络服务器上。不过，有了我们正在内测的<a href="https://medium.com/loom-network/loom-network-is-live-scalable-ethereum-dapps-coming-soon-to-a-dappchain-near-you-29d26da00880" target=_blank>Loom Network</a> SDK，很快你就可以在应用自己的DApp链上运行前端界面而不是中心化的网络服务器。这样在以太坊和 Loom DApp 链上，你的整个应用都100%运行在区块链上了。
+> 注意：尽管智能合约是去中心化的。这个用来和DApp交互的前端界面依然需要放在我们中心化的网络服务器上。不过，有了我们正在内测的<a href="https://medium.com/loom-network-chinese/3d0d686163df" target=_blank>Loom Network</a> SDK，很快你就可以在应用自己的DApp链上运行前端界面而不是中心化的网络服务器。这样在以太坊和 Loom DApp 链上，你的整个应用都100%运行在区块链上了。
 
 ## 总结
 
