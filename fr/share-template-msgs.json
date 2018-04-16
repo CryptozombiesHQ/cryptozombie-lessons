@@ -18,5 +18,9 @@
     "5": {
         "pageTitle": "Mon armée de CryptoZombie s'agrandit !",
         "ogDesc": "Je viens de finir la Leçon 5 de CryptoZombies, et j'ai eu un zombie H4XF13LD MORRIS 💯💯😎💯💯 de niveau 10 !"
+    },
+    "6": {
+        "pageTitle": "Découvrez 'Le fantôme de Web3', mon CryptoZombie de niveau 3.0 !",
+        "ogDesc": "Je viens de finir la Leçon 6 de CryptoZombies, et j'ai appris à utiliser Web3.js, MetaMask, et Infura pour construire ma propre DApp !"
     }
 }
