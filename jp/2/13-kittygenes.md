@@ -145,7 +145,7 @@ material:
 
 ## If ステートメント
 
-SolidityのIfステートメントはjavascript と同じようなものだ；
+SolidityのIfステートメントはJavaScript と同じようなものだ；
 
 ```
 function eatBLT(string sandwich) public {

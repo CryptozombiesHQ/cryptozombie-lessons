@@ -122,7 +122,7 @@ function whatIsMyNumber() public view returns (uint) {
 
 2. 次に、この`msg.sender`で`ownerZombieCount`を増やせ。
 
-Solidityでは、 `++`を使えば`uint`を増やせるぞ。javascriptと同じだ。
+Solidityでは、 `++`を使えば`uint`を増やせるぞ。JavaScriptと同じだ。
 
 ```
 uint number = 0;
