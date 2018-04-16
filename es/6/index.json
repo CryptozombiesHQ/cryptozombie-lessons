@@ -127,8 +127,8 @@
             ],
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
-                "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 6:
++                "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
++                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 6:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
             "shareLinkText": "¡He completado la Lección 5 de #CryptoZombies, y he derrotado al malvado zombi IOTA! Pruébalo tu mismo:"
