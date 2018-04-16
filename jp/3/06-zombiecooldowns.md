@@ -211,26 +211,24 @@ material:
 
 ## structを引数として渡す
 
-storageのポインタは、`private` や `internal`関数の引数として、structに渡すことができる。これは便利だから覚えておくようにな。例えば、`Zombie`structを関数間に渡すことも可能だ。
+structへのstorageポインタは、`private`や`internal`関数の引数として渡すことができる。これは便利だから覚えておくようにな。例えば、`Zombie`structを関数に渡すことも可能だ。
 
 こんな風に書けばいい：
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
-  //  _zombieで処理する
+  //  _zombieを処理する
 }
 ```
 
 こうすれば、ゾンビIDを渡して探す代わりに、関数にゾンビの参照そのものを渡すことが可能だ。
 
-## それではテストだ 
+## それではテストだ
 
-1. `_triggerCooldown`の定義から始めよ。引数`_zombie`と、`Zombie storage` ポインタを取得せよ。この関数は`internal`で宣言せよ。
+1. `_triggerCooldown`の定義から始めよ。この関数は引数として`Zombie storage`ポインタの`_zombie`を取る。この関数は`internal`で宣言せよ。
 
-2. 関数の本体は、`_zombie.readyTime` を `uint32(now + cooldownTime)`で設定せよ。
+2. 関数の本体では、`_zombie.readyTime`に`uint32(now + cooldownTime)`を設定せよ。
 
-3. 次に`_isReady`という関数を作成せよ。この関数は `_zombie`という名前の`Zombie storage`引数を取得する。`internal view`として、`bool`を返すように設定せよ。
+3. 次に`_isReady`という関数を作成せよ。この関数も`_zombie`という名前の`Zombie storage`引数を取る。`internal view`として、`bool`を返すように設定せよ。
 
-4. 関数本体は`(_zombie.readyTime <= now)`を返すように設定し、`true`または`false`で判定せよ。この関数はゾンビが最後に捕食してから十分な時間が経過したか否かを判定するものだ。
-
-
+4. 関数本体は`(_zombie.readyTime <= now)`を返すように書け。これは`true`または`false`として評価される。この関数はゾンビが最後に捕食してから十分な時間が経過したか否かを判定するものだ。
