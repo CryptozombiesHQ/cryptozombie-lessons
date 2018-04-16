@@ -261,6 +261,29 @@
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
                 "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
+        },
+        "lesson6": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Seu amigo completou a Lição 6 do CryptoZombies, e recebeu um CryptoZombie de nível 3.0 `The Phantom of Web3!"
+                "Olhá só o exército zumbi do seu amigo. Muito bom, né?",
+                "Ao completar a Lição 6 do CryptoZombies, seu amigo aprendeu sobre:"
+            ],
+            "achievements": [
+                "Building web front-ends for Ethereum smart contracts using Web3.js",
+                "Using MetaMask and Infura to build user-facing DApps",
+                "Listening to smart contract events and showing users real-time updates",
+                "And more!"
+
+                "Construindo front-end web para smart contract do Ethereum usando Web3.js",
+                "Utilizar MetaMask e Infura para construir DApps voltado para o usuário",
+                "Escutar eventos de smart contract e exibindo aos usuários atualizações em tempo real",
+                "E mais!"
+            ],
+            "callToAction": [
+                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
+            ]
         }
     }
 }
