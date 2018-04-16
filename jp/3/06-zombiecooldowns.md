@@ -225,7 +225,7 @@ function _doStuff(Zombie storage _zombie) internal {
 
 ## それではテストだ 
 
-1.`_triggerCooldown`の定義から始めよ。引数`_zombie`と、`Zombie storage` ポインタを取得せよ。この関数は`internal`で宣言せよ。
+1. `_triggerCooldown`の定義から始めよ。引数`_zombie`と、`Zombie storage` ポインタを取得せよ。この関数は`internal`で宣言せよ。
 
 2. 関数の本体は、`_zombie.readyTime` を `uint32(now + cooldownTime)`で設定せよ。
 
