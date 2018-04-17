@@ -115,6 +115,22 @@
             ],
             "zombieDesc": "레벨 {levelNum} 크립토좀비",
             "shareLinkText": "제가 방금 #CryptoZombies 레슨 4를 마치고, 사악한 IOTA 좀비를 물리쳤어요! 한번 직접 해보세요:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "도전과제 완료:",
+            "newZombieAdded": "레벨 {levelNum}의 크립토좀비인 {zombieName}를 얻었네!",
+            "header": [
+                "축하하네! 크립토좀비 {lesson5}를 마쳤네!",
+                "자네의 좀비를 자네 친구들에게 자랑하게!",
+                "이 URL를 공유해서 친구들이 자네의 전체 군대를 확인할 수 있도록 해보게:"
+            ],
+            "footer": [
+                "크립토좀비를 즐기고 있나? 우리에게 알려주게!",
+                "{telegramLink} 대화 방에 참가하거나 {twitterLink}에서 우리를 팔로우하게",
+                "준비가 되면 아래 버튼을 클릭하여 레슨 6을 진행하게:"
+            ],
+            "zombieDesc": "레벨 {levelNum} 크립토좀비",
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 5를 마치고, 레벨 10 크립토좀비를 얻었어요! 제 좀비 군단을 확인해보세요:"
         }
     },
     "zombieBattle": {
