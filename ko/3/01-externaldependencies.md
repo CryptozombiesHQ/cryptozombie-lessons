@@ -167,7 +167,7 @@ material:
 
 2. 우리가 `kittyContract`를 생성했던 줄을 변수 선언만 하도록 변경하게 - 어떤 것도 대입을 하지 않도록 하게.
 
-3. `setKittyContractAddress`라는 이름의 함수를 생성하게. 이 함수는 `address` 타입의 변수 `address`를 하나의 인자로 받고, `external` 함수여야 하네.
+3. `setKittyContractAddress`라는 이름의 함수를 생성하게. 이 함수는 `address` 타입의 변수 `_address`를 하나의 인자로 받고, `external` 함수여야 하네.
 
 4. 함수 내에서, `kittyContract`에 `KittyInterface(_address)`를 대입하는 한 줄의 코드를 작성하게.
 
