@@ -174,19 +174,19 @@ material:
 
 見事だ！ゾンビにクールダウンタイマーの機能がついたぞ。
 
-さらに続けていくぞ。次はヘルパーメソッドの追加だ。`zombiefeeding.sol`をインポートするための`zombiehelper.sol`というファイルを作成したのを覚えているか。コードを整理させるために利用したものだ。
+さらにいくつかのヘルパーメソッドを追加していこう。`zombiehelper.sol`というファイルを新しく作って、`zombiefeeding.sol`をimportしておいた。コードの整理に役立つだろう。
 
 今後、ゾンビが一定のレベルに達したら、何か特別な能力を身につけるようにするつもりだ。しかしそのためには関数修飾子についてもう少し説明してやらないといけないのだ。
 
 ## 引数を持つ関数修飾子
 
-前に`onlyOwner`の簡単な例を見せただろ。関数修飾子も引数を持つのだ。例を出すぞ：
+前に`onlyOwner`の簡単な例を見せただろ。ここでは引数を取る関数修飾子について説明しよう。例を出すぞ：
 
 ```
 // ユーザーの年齢を格納するマッピングだ：
 mapping (uint => uint) public age;
 
-// 一定の年齢よりユーザーの年齢が高いことを要件とする修飾子だ：
+// ユーザーの年齢が一定の年齢より高いことを要件とする関数修飾子だ：
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
@@ -199,17 +199,14 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 }
 ```
 
-`olderThan`修飾子は関数のように引数を取得できる。 `driveCar` 関数はその引数を修飾子に渡すぞ。
+`olderThan`修飾子が関数のように引数を取得できることが分かっただろ。その引数は`driveCar`関数から渡されていることも。
 
-では、我々独自の`modifier`を作り、 ゾンビの`level`プロパティを制限して特殊能力へのアクセスを制限するぞ。
-
+では、我々独自の`modifier`を作り、ゾンビの`level`プロパティの値により特殊能力を制限するぞ。
 
 ## それではテストだ
 
-1. `ZombieHelper`で、 `aboveLevel`という`modifier` を作成せよ。また、`_level` (`uint`) と `_zombieId` (`uint`)の2つの引数を取得するように設定せよ。
+1. `ZombieHelper`で、 `aboveLevel`という`modifier` を作成せよ。`_level` (`uint`) と `_zombieId` (`uint`) の2つの引数を取るようにせよ。
 
-2. その中で、 `zombies[_zombieId].level`が、`_level`よりも大きいことを確認できるようにせよ。
+2. その中で、`zombies[_zombieId].level`が`_level`以上であることを確認せよ。
 
 3. 修飾子の 最後に`_;`をつけて残りの関数を呼び出すことを忘れるなよ。
-
-

@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -22,7 +24,7 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
-            // Start here
+            // 在这里开始
           }
         }
       "zombiehelper.sol": |
@@ -173,6 +175,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -213,6 +216,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+      
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -242,7 +247,7 @@ material:
 
 在第六章我们计算出来一个0到100的随机数。现在让我们用那个数来决定那谁赢了战斗，并以此更新我们的状态。
 
-## 测试一把
+## 实战演习
 
 1. 创建一个 `if` 语句来检查 `rand` 是不是 **_小于或者等于_** `attackVictoryProbability`。
 

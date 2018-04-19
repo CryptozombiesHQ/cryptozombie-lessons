@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -27,7 +29,7 @@ material:
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-            } // start here
+            } // 在这里开始
           }
         }
       "zombiehelper.sol": |
@@ -178,6 +180,8 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
+
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -218,6 +222,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+      
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -241,8 +247,8 @@ material:
           } else {
             myZombie.lossCount++;
             enemyZombie.winCount++;
+            _triggerCooldown(myZombie);
           }
-          _triggerCooldown(myZombie);
         }
       }
 ---
@@ -263,7 +269,7 @@ if (zombieCoins[msg.sender] > 100000000) {
 }
 ```
 
-## 测试一把
+## 实战演习
 
 1. 添加一个 `else` 语句。 若我们的僵尸输了：
 
@@ -271,6 +277,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   b. 增加 `enemyZombie` 的 `winCount`。
 
-2. 在 `else` 之后， 对 `myZombie` 运行 `_triggerCooldown` 方法。这让每个僵尸每天只能参战一次。
-
-
+2. 在 `else` 最后， 对 `myZombie` 运行 `_triggerCooldown` 方法。这让每个僵尸每天只能参战一次。

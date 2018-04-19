@@ -7,18 +7,20 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Create attackVictoryProbability here
+          // 在这里创建 attackVictoryProbability
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // Create new function here
+          // 在这里创建新函数
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -171,6 +173,8 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
+
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -211,6 +215,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+      
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -240,7 +246,7 @@ material:
 
 这有一大堆的逻辑需要处理，我们将把这些步骤分解到接下来的课程中去。
 
-## 测试一把
+## 实战演习
 
 1. 给我们合约一个 `uint` 类型的变量，命名为 `attackVictoryProbability`, 将其值设定为 `70`。
 

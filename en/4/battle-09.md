@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -50,6 +52,11 @@ material:
 
           function setLevelUpFee(uint _fee) external onlyOwner {
             levelUpFee = _fee;
+          }
+
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
           }
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
@@ -220,6 +227,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -243,8 +252,8 @@ material:
           } else {
             myZombie.lossCount++;
             enemyZombie.winCount++;
+            _triggerCooldown(myZombie);
           }
-          _triggerCooldown(myZombie);
         }
       }
 ---
@@ -273,6 +282,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   b. Increment `enemyZombie`'s `winCount`.
 
-2. Outside of the else statement, run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day.
-
-
+  c. Run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)

@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -18,9 +20,9 @@ material:
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // 1. Add modifier here
+          // 1. 在这里增加 modifier
           function attack(uint _zombieId, uint _targetId) external {
-            // 2. Start function definition here
+            // 2. 在这里开始定义函数
           }
         }
       "zombiehelper.sol": |
@@ -171,6 +173,8 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
+
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -211,6 +215,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+      
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -234,7 +240,7 @@ material:
 
 继续来完善我们的 `attack` 函数， 现在我们有了 `ownerOf` 修饰符来用了。
 
-## 测试一把
+## 实战演习
 
 1. 将 `ownerOf` 修饰符添加到 `attack` 来确保调用者拥有`_zombieId`.
 

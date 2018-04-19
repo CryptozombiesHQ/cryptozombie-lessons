@@ -28,13 +28,18 @@ material:
             levelUpFee = _fee;
           }
 
-          // 1. Modify this function to use `ownerOf`:
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
+          }
+
+          // 1. 使用 `ownerOf` 修改这个函数:
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          // 2. Do the same with this function:
+          // 2. 对这个函数做同样的事:
           function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
@@ -173,6 +178,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -234,6 +240,11 @@ material:
           levelUpFee = _fee;
         }
 
+        function levelUp(uint _zombieId) external payable {
+          require(msg.value == levelUpFee);
+         zombies[_zombieId].level++;
+        }
+
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
           zombies[_zombieId].name = _newName;
         }
@@ -259,7 +270,7 @@ material:
 
 在 `zombiehelper.sol`里有几处地方，需要我们实现我们新的 `modifier`—— `ownerOf`。
 
-## 测试一把
+## 实战演习
 
 1. 修改 `changeName()` 使其使用 `ownerOf`
 

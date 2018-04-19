@@ -13,14 +13,14 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // 1. Define levelUpFee here
+          // 1. 在这里定义 levelUpFee
 
           modifier aboveLevel(uint _level, uint _zombieId) {
             require(zombies[_zombieId].level >= _level);
             _;
           }
 
-          // 2. Insert levelUp function here
+          // 2. 在这里插入 levelUp 函数 
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -247,7 +247,7 @@ function test() external view onlyOwner anotherModifier { /* ... */ }
 
 ##  `payable` 修饰符
 
-`payable` 方法是让 Solidity 和以太坊变得如此酷的一部分 —— 它们是一种可以接收以太的特殊函数。 
+`payable` 方法是让 Solidity 和以太坊变得如此酷的一部分 —— 它们是一种可以接收以太的特殊函数。
 
 先放一下。当你在调用一个普通网站服务器上的API函数的时候，你无法用你的函数传送美元——你也不能传送比特币。
 
@@ -281,7 +281,7 @@ OnlineStore.buySomething().send(from: web3.eth.defaultAccount, value: web3.utils
 >注意： 如果一个函数没标记为`payable`， 而你尝试利用上面的方法发送以太，函数将拒绝你的事务。
 
 
-## 测试一把
+## 实战演习
 
 我们来在僵尸游戏里面创建一个`payable` 函数。
 

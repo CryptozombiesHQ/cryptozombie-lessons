@@ -70,7 +70,7 @@
             "header": [
                 "Parabéns! Você completou a Lição 2 do CryptoZombies!",
                 "Conquistas Desbloqueadas:",
-                "{zombieName} foi melhorado para o Nível 2z",
+                "{zombieName} foi melhorado para o Nível 2",
                 "Você adicionou NoName, um CatZombie para o seu exército! (Não se preocupe, você irá aprender como mudar o nome dele/dela na Lição 3)",
                 "Mostre o seu matador de CryptoKitty para os seus amigos!",
                 "Compartilhe esta URL para que os seus amigos também possam atacar CryptoKitties com o seu zombie:"
@@ -89,7 +89,7 @@
             "header": [
                 "Parabéns! Você completou a {lesson3} do CryptoZombies!",
                 "Mostre o seu exército de zumbis para os seus amigos!",
-                "Compartilhe esta URL para que os seus vejam o seu exército:"
+                "Compartilhe esta URL para que os seus amigos vejam o seu exército:"
             ],
             "footer": [
                 "Gostou do CryptoZombies? Conte para nós!",
@@ -98,6 +98,55 @@
             ],
             "zombieDesc": "Um CryptoZombie de Nível 3",
             "shareLinkText": "Eu acabei de completar a Lição 3 do #CryptoZombies! Olha só o meu exército de zumbi:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Conquistas Desbloqueadas:",
+            "zombieUpgraded": "{zombieName} foi melhorado para o Nível {levelNum}!",
+            "newZombieAdded": "Você adicionou um novo zumbi de Nível 1 ao seu exército!",
+            "header": [
+                "Parabéns! Você completou a {lesson4} do CryptoZombies!",
+                "Mostre o seu exército de zumbis para os seus amigos!",
+                "Compartilhe esta URL para que os seus amigos vejam o seu exército:"
+            ],
+            "footer": [
+                "Lição 5 dentro de 1-2 semanas",
+                "Você receberá um email nosso asim que estiver pronta.",
+                "Enquanto isso, junte-se a nós no {telegramLink}, ou siga-nos em nosso {twitterLink} para juntar-se a conversa!"
+            ],
+            "zombieDesc": "Um CryptoZombie de Nível {levelNum} ",
+            "shareLinkText": "Eu acabei de completar a Lição 4 do #CryptoZombies! e derrotei o maligno zumbi IOTA! tente você também:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "Conquistas Desbloqueadas:",
+            "newZombieAdded": "Você recebeu {zombieName}, um CryptoZombie de nível {levelNum}!",
+            "header": [
+                "Parabéns! Você completou a {lesson5} do CryptoZombies!",
+                "Mostre o seu exército de zumbis para os seus amigos!",
+                "Compartilhe esta URL para que os seus amigos vejam todo o seu exército zumbi:"
+            ],
+            "footer": [
+                "Lição 6 dentro de poucas semanas!",
+                "Você receberá um email nosso asim que estiver pronta.",
+                "Enquanto isso, junte-se a nós no {telegramLink}, ou siga-nos em nosso {twitterLink} para juntar-se a conversa!"
+            ],
+            "zombieDesc": "Um CryptoZombie de Nível {levelNum}",
+            "shareLinkText": "Eu acabei de completar a Lição 5 do #CryptoZombies e ganhei um CryptoZombie de nível 10! Olha só o meu exército de zumbi:"
+        },
+        "lesson6": {
+            "achievementsUnlocked": "Conquistas Desbloqueadas:",
+            "newZombieAdded": "Você recebeu {zombieName}, um CryptoZombie de nível {levelNum}!",
+            "header": [
+                "Parabéns! Você completou a {lesson6} do CryptoZombies!",
+                "Mostre o seu exército de zumbis para os seus amigos!",
+                "Compartilhe esta URL para que os seus amigos vejam todo o seu exército zumbi:"
+            ],
+            "footer": [
+                "Lição 7 dentro de poucas semanas!",
+                "Você receberá um email nosso asim que estiver pronta.",
+                "Enquanto isso, junte-se a nós no {telegramLink}, ou siga-nos em nosso {twitterLink} para juntar-se a conversa!"
+            ],
+            "zombieDesc": "Um CryptoZombie de Nível {levelNum}",
+            "shareLinkText": "Eu acabei de completar a Lição 6 do #CryptoZombies e ganhei um CryptoZombie 'The Phantom of Web3' de nível 3.0! Olha só o meu exército de zumbi:"
         }
     },
     "zombieBattle": {
@@ -152,7 +201,7 @@
             "zombieGeneratorText": "{tryItOut} Coloque um nome na caixa abaixo {below}{above} para gerar um zumbi!",
             "nameInputPlaceholder": "Coloque um nome para gerar um zumbi",
             "callToAction": [
-                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Quer criar o seu próprio exército CryptoZombie e juntar-se a classificação?",
                 "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
         },
@@ -174,7 +223,7 @@
                 "Organizar projetos grandes em Solidity em múltiplos contratos"
             ],
             "callToAction": [
-                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Quer criar o seu próprio exército CryptoZombie e juntar-se a classificação?",
                 "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
             ]
         },
@@ -188,6 +237,59 @@
                 "Assegurar contratos com contratos de posse",
                 "Gas e otimização do gas em Ethereum",
                 "Modificadores de funções e checagens de segurança"
+            ],
+            "callToAction": [
+                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
+            ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "O seu amigo completou a Lição 4 do CryptoZombies, e derrotou o maligno zumbi IOTA!",
+                "Vá em frente e tente você mesmo a esquerda. Use o exército do seu amigo para começar a batalha!",
+                "Para completar a Lição 4 do CryptoZombies, seu amigo aprendeu sobre:"
+            ],
+            "achievements": [
+                "Função pagáveis, e como ganhar dinheiro com os seus jogos em Ethereum",
+                "Sacar o ETH dos smart contracts",
+                "Números aleatórios & segurança no Ethereum",
+                "E mais!"
+            ],
+            "callToAction": [
+                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "O seu amigo completou a Lição 5 do CryptoZombies, e recebeu um CryptoZombie de Nível 10!",
+                "Olhá só o exército zumbi do seu amigo. Muito bom, né?",
+                "Para completar a Lição 5 do CryptoZombies, seu amigo aprendeu sobre:"
+            ],
+            "achievements": [
+                "Tokens, o padrão ERC721, e a criação de ativos/zumbis cambiáveis",
+                "Bibliotecas e como usá-las",
+                "A biblioteca SafeMath e prevenção de overflows e underflows em uint",
+                "Comentar o seu código Solidity e o padrão natspec"
+            ],
+            "callToAction": [
+                "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",
+                "Aprenda a criar os seus próprios jogos em Ethereum DE GRAÇA com CryptoZombies! Comece agora:"
+            ]
+        },
+        "lesson6": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Seu amigo completou a Lição 6 do CryptoZombies, e recebeu um CryptoZombie de nível 3.0 'The Phantom of Web3'!",
+                "Olhá só o exército zumbi do seu amigo. Muito bom, né?",
+                "Ao completar a Lição 6 do CryptoZombies, seu amigo aprendeu sobre:"
+            ],
+            "achievements": [
+                "Construir um front-end web para smart contract do Ethereum usando Web3.js",
+                "Utilizar MetaMask e Infura para construir DApps voltados para o usuário",
+                "Escutar eventos de smart contract e mostrar para os usuários atualizações em tempo real",
+                "E mais!"
             ],
             "callToAction": [
                 "Quer criar o seu próprio CryptoZombie e juntar-se a classificação?",

@@ -24,7 +24,7 @@ material:
               uint dna;
               uint32 level;
               uint32 readyTime;
-              // 1. Add new properties here
+              // 1. 在这里添加新的属性
             }
 
             Zombie[] public zombies;
@@ -33,7 +33,7 @@ material:
             mapping (address => uint) ownerZombieCount;
 
             function _createZombie(string _name, uint _dna) internal {
-                // 2. Modify new zombie creation here:
+                // 2. 在这里修改修改新僵尸的创建:
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
@@ -54,6 +54,8 @@ material:
 
         }
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -174,6 +176,8 @@ material:
           }
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
+        
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -270,7 +274,7 @@ material:
 
 我们跳回 `zombiefactory.sol`, 将这些属性添加进 `Zombie` 结构体.
 
-## 测试一把
+## 实战演习
 
 1. 修改 `Zombie` 结构体，添加两个属性:
 

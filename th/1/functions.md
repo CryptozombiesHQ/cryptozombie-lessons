@@ -22,7 +22,7 @@ material:
           // เริ่มตรงนี้
 
       }
-    คำตอบ: >
+    answer: >
       pragma solidity ^0.4.19;
 
 

@@ -211,7 +211,7 @@ La oss se på hvorfor.
 For vår `getZombiesByOwner`-funksjon vil en naiv implementering være å lagre en `mapping` av eiere til zombie-hærer i `ZombieFactory`-kontrakten:
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 Så hver gang vi lager en ny zombie, ville vi bare bruke `ownerToZombies[owner].push(zombieId)` for å legge den til den eierens zombie-array. Og `getZombiesByOwner` ville være en veldig enkel funksjon:

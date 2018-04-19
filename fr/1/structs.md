@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Il est possible que vous ayez besoin d'un type de données plus complexe. Pour cela, Solidity fournit les **_ structures _** :
+Il est possible que vous ayez besoin d'un type de données plus complexe. Pour cela, Solidity fournit les **_structures_** (struct) :
 
 ```
 struct Person {
@@ -44,7 +44,7 @@ struct Person {
 
 Les structures vous permettent de créer des types de données plus complexes avec plusieurs propriétés.
 
-> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères ont utilisées pour les données UTF-8 de longueur arbitraire. Ex. `string greeting = "Hello world!"`
+> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères sont utilisées pour les données UTF-8 de longueur arbitraire. Ex. `string greeting = "Hello world!"`
 
 # A votre tour
 
@@ -52,4 +52,4 @@ Dans notre application, nous allons vouloir créer des zombies ! Et les zombies 
 
 1. Créez une `struct` nommée `Zombie`.
 
-2. Notre structure `Zombie` aura 2 propriétés : : `name` (un `string`), et `dna` (un `uint`).
+2. Notre structure `Zombie` aura 2 propriétés : `name` (un `string`) et `dna` (un `uint`).

@@ -28,7 +28,7 @@ material:
             zombies[_zombieId].dna = _newDna;
           }
 
-          // Create your function here
+          // 在这里创建你的函数
 
         }
 
@@ -222,4 +222,3 @@ material:
 3. 函数需要返回一个`uint []`（`uint`数组）。
 
 先这么声明着，我们将在下一章中填充函数体。
-

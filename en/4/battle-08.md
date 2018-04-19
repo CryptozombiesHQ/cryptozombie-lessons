@@ -7,6 +7,8 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -45,6 +47,11 @@ material:
 
           function setLevelUpFee(uint _fee) external onlyOwner {
             levelUpFee = _fee;
+          }
+
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
           }
 
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
@@ -215,6 +222,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {

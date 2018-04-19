@@ -1,5 +1,5 @@
 ---
-title: Aperçu de la leçon
+title: Aperçu de la Leçon
 actions: ['vérifierLaRéponse', 'indice']
 skipCheckAnswer: true
 material:
@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-Dans la leçon 1, vous allez faire une "usine de zombies" afin d'avoir une armée de zombies.
+Dans la Leçon 1, vous allez faire une "Usine de Zombies" pour avoir une armée de zombies.
 
-* Notre usine maintiendra une base de données des zombies de notre armée
+* Notre usine maintiendra une base de données de tous les zombies de notre armée
 * Notre usine aura une fonction pour créer de nouveaux zombies
 * Chaque zombie aura une apparence aléatoire et unique
 
@@ -28,9 +28,9 @@ L'apparence du zombie va dépendre de son "ADN Zombie". L'ADN d'un Zombie est si
 
 Tout comme l'ADN réel, différentes parties de ce nombre représenteront différents traits. Les 2 premiers chiffres correspondent au type de tête du zombie, les 2 derniers chiffres aux yeux du zombie, etc.
 
-> Remarque : Pour ce tutoriel, nous avons fait simple, et nos zombies peuvent avoir seulement 7 types de têtes différentes (même si 2 chiffres permettent 100 options possibles). Plus tard, nous pourrions ajouter plus de types de têtes si nous voulions augmenter le nombre de variations de zombies.
+> Remarque : Pour ce tutoriel, nous avons fait simple, et nos zombies peuvent avoir seulement 7 types de têtes différentes (même si 2 chiffres permettent 100 options possibles). Plus tard, nous pourrions ajouter plus de types de têtes si nous voulions augmenter le nombre de zombies possibles.
 
-Par exemple, les 2 premiers chiffres de note ADN exemple sont `83`. Pour faire correspondre à un type de tête, nous devons faire `83 % 7 + 1` = 7. Ce Zombie aura donc le 7ième type de tête.
+Par exemple, les 2 premiers chiffres de notre ADN exemple sont `83`. Pour les faire correspondre à un type de tête, nous devons faire `83 % 7 + 1` = 7. Ce Zombie aura donc le 7ième type de tête.
 
 Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène pour la tête) sur la 7ème tête (le bonnet de Noël) pour voir à quel trait correspond le `83`.
 
@@ -39,4 +39,4 @@ Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène po
 
 1. Jouez avec les curseurs sur le côté droit de la page. Testez pour voir comment les différentes valeurs numériques influent sur les différents aspects de l'apparence du zombie.
 
-Allez, assez jouer. Lorsque vous êtes prêt à continuer, cliquez sur "Next Chapter" ci-dessous, et plongeons dans l'apprentissage de Solidity !
+Allez, assez jouer. Lorsque vous êtes prêt à continuer, cliquez sur "Chapitre Suivant" ci-dessous, et plongeons dans l'apprentissage de Solidity !

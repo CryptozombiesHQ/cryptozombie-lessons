@@ -7,10 +7,12 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+        
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
-          // Start here
+          // 在这里开始
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -163,6 +165,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -203,6 +206,8 @@ material:
 
         }
     answer: >
+      pragma solidity ^0.4.19;
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -256,15 +261,15 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 ## 所以我们该如何在以太坊上安全地生成随机数呢
 
-因为区块链的全部内容对所有参与者来说是透明的， 这就让这个问题变得很难，它的解决方法不在本课程讨论范围，你可以阅读 <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> 来获得一些主意。 一个方法是利用 **_oracle_** 来访问以太坊区块链之外的随机数函数。
+因为区块链的全部内容对所有参与者来说是透明的， 这就让这个问题变得很难，它的解决方法不在本课程讨论范围，你可以阅读 <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>这个 StackOverflow 上的讨论</a> 来获得一些主意。 一个方法是利用 **_oracle_** 来访问以太坊区块链之外的随机数函数。
 
 当然， 因为网络上成千上万的以太坊节点都在竞争解决下一个区块，我能成功解决下一个区块的几率非常之低。 这将花费我们巨大的计算资源来开发这个获利方法 — 但是如果奖励异常地高(比如我可以在硬币翻转函数中赢得 1个亿)， 那就很值得去攻击了。
 
 所以尽管这个方法在以太坊上不安全，在实际中，除非我们的随机函数有一大笔钱在上面，你游戏的用户一般是没有足够的资源去攻击的。
 
-因为在这个教程中，我们只是在编写一个简单的游戏来做演示，也没有真正的钱在里面，所以我们决定接受这个不足之处，使用这个简单的随机数生成函数。但是要记得它是不安全的。
+因为在这个教程中，我们只是在编写一个简单的游戏来做演示，也没有真正的钱在里面，所以我们决定接受这个不足之处，使用这个简单的随机数生成函数。但是要谨记它是不安全的。
 
-## 测试一把
+## 实战演习
 
 我们来实现一个随机数生成函数，好来计算战斗的结果。虽然这个函数一点儿也不安全。
 

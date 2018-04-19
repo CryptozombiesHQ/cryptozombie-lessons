@@ -1,6 +1,6 @@
 ---
 title: 僵尸作战系统
-header: "Lesson 4: Zombie Battle System"
+header: "Lesson 4: 僵尸作战系统"
 roadmap: roadmap3.png
 ---
 

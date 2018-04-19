@@ -13,7 +13,7 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // Start here
+          // 在这里开始
 
         }
       "zombiefeeding.sol": |
@@ -179,7 +179,7 @@ material:
 
 我们打算让僵尸在达到一定水平后，获得特殊能力。但是达到这个小目标，我们还需要学一学什么是“函数修饰符”。
 
-##带参数的函数修饰符
+## 带参数的函数修饰符
 
 之前我们已经读过一个简单的函数修饰符了：`onlyOwner`。函数修饰符也可以带参数。例如：
 
@@ -189,7 +189,7 @@ mapping (uint => uint) public age;
 
 // 限定用户年龄的修饰符
 modifier olderThan(uint _age, uint _userId) {
-  require (age[_userId] >= _age);
+  require(age[_userId] >= _age);
   _;
 }
 
@@ -201,7 +201,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 ```
 看到了吧， `olderThan` 修饰符可以像函数一样接收参数，是“宿主”函数 `driveCar` 把参数传递给它的修饰符的。
 
-来，我们自己生产一个修饰符，通过传入的`level`参数来限制僵尸使用某些特殊功能。 
+来，我们自己生产一个修饰符，通过传入的`level`参数来限制僵尸使用某些特殊功能。
 
 ## 实战演习
 

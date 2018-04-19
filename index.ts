@@ -3,7 +3,9 @@ import zh from './zh'
 import pt from './pt'
 import jp from './jp'
 import th from './th'
-import th from './fr'
+import fr from './fr'
+import ru from './ru'
+import es from './es'
 
 export default {
   en, // English (source for all translations)
@@ -11,5 +13,7 @@ export default {
   pt,
   jp,
   th,
-  fr
+  fr,
+  ru,
+  es
 }

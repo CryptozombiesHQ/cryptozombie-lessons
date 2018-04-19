@@ -90,7 +90,7 @@ contract SandwichFactory {
     // Sandwich mySandwich = sandwiches[_index];
 
     // ^ Seems pretty straightforward, but solidity will give you a warning
-    // telling you you should explicitly declare `storage` or `memory` here.
+    // telling you that you should explicitly declare `storage` or `memory` here.
 
     // So instead, you should declare with the `storage` keyword, like:
     Sandwich storage mySandwich = sandwiches[_index];

@@ -28,6 +28,11 @@ material:
             levelUpFee = _fee;
           }
 
+          function levelUp(uint _zombieId) external payable {
+            require(msg.value == levelUpFee);
+            zombies[_zombieId].level++;
+          }
+
           // 1. Modify this function to use `ownerOf`:
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -54,6 +59,8 @@ material:
 
         }
       "zombieattack.sol": |
+        pragma solidity ^0.4.19;
+
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -232,6 +239,11 @@ material:
 
         function setLevelUpFee(uint _fee) external onlyOwner {
           levelUpFee = _fee;
+        }
+        
+        function levelUp(uint _zombieId) external payable {
+          require(msg.value == levelUpFee);
+          zombies[_zombieId].level++;
         }
 
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {

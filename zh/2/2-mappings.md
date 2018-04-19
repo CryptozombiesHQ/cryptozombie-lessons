@@ -26,7 +26,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -63,7 +63,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -94,16 +94,16 @@ material:
 
 我们将在后面的课程中介绍地址的细节，现在你只需要了解**地址属于特定用户（或智能合约）的**。
 
-所以我们可以指定“地址”作为僵尸主人的 ID。当用户通过与我们的应用程序交互来创建新的僵尸时，新僵尸的所有权被设置到调用者的太坊地址名下。
+所以我们可以指定“地址”作为僵尸主人的 ID。当用户通过与我们的应用程序交互来创建新的僵尸时，新僵尸的所有权被设置到调用者的以太坊地址下。
 
 ## Mapping（映射）
 
-在第1课中，我们看了** _ structs _ ** 和 ** _ arrays _ **。 ** _映射_ **是另一种在 Solidity 中存储有组织数据的方法。
+在第1课中，我们看到了** _ 结构体 _ ** 和 ** _ 数组 _ **。 ** _映射_ **是另一种在 Solidity 中存储有组织数据的方法。
 
 映射是这样定义的：
 
 ```
-//对于金融应用程序，将用户的余额保存为一个 uint：
+//对于金融应用程序，将用户的余额保存在一个 uint类型的变量中：
 mapping (address => uint) public accountBalance;
 //或者可以用来通过userId 存储/查找的用户名
 mapping (uint => string) userIdToName;
@@ -114,9 +114,8 @@ mapping (uint => string) userIdToName;
 
 # 实战演习
 
-为了存储僵尸的所有权，我们会使用到两个映射：一个记录僵尸拥有者的地址，另一个记录某 ID 所拥有僵尸的数量。
+为了存储僵尸的所有权，我们会使用到两个映射：一个记录僵尸拥有者的地址，另一个记录某地址所拥有僵尸的数量。
 
-1.创建一个叫做 `zombieToOwner` 的映射。其键是一个`uint`（我们将根据它的 id 存储和查找僵尸），值为 `adress`。映射属性为`public`。
+1.创建一个叫做 `zombieToOwner` 的映射。其键是一个`uint`（我们将根据它的 id 存储和查找僵尸），值为 `address`。映射属性为`public`。
 
-2.创建一个名为 `ownerZombieCount` 的映射，其中键是一个 `address`，值是 `uint`。
-
+2.创建一个名为 `ownerZombieCount` 的映射，其中键是 `address`，值是 `uint`。

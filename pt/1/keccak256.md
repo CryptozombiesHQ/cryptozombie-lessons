@@ -84,10 +84,10 @@ Algumas vezes você precisa converter tipos diferentes. Pegue por exemplo o segu
 uint8 a = 5;
 uint b = 6;
 
-// throws an error because a * b returns a uint, not uint8:
+// lança um erro, porque a * b retorna um uint, não um uint8:
 uint8 c = a * b;
 
-// we have to typecast b as a uint8 to make it work:
+// nós temos de converter b em uint8 para isso funcionar:
 uint8 c = a * uint8(b); 
 ```
 
@@ -98,6 +98,6 @@ Logo acima, `a * b` retorna um `uint`, mas nós estamos tentando guardar o seu v
 Vamos preencher o corpo da nossa função `_generateRandomDna`!
 O que deve ser feito é:
 
-1. A primeira linha de código deve ter uma função de hash `keccak256` da `_str` para gerar um hexadecimal pseudo-aleatório, converta-o em um `uint`, e finalmente guarde o resultado em um `uint` chamado `rand`.
+1. A primeira linha de código deve ter uma pegar o hash `keccak256` de `_str` para gerar um hexadecimal pseudo-aleatório, converta-o em um `uint`, e finalmente guarde o resultado em um `uint` chamado `rand`.
 
-2. Nós queremos somente 16 dígitos de tamanho em nosso DNA (lembra do `dnaModulus`?). Então a segunda linha de código deve `return` (retornar) o valor modulus acima (`%`) `dnaModulus`.
+2. Nós queremos somente 16 dígitos de tamanho em nosso DNA (lembra do `dnaModulus`?). Então a segunda linha de código deve retornar `return` o módulo do valor acima (`%`) `dnaModulus`.

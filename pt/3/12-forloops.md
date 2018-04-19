@@ -211,7 +211,7 @@ Veremos o por quê.
 Para a nossa função `getZombiesByOwner`, uma implementação ingênua seria guardar os donos dos exércitos de zumbis em um storage (armazenamento) no contrato `ZombieFactory`:
 
 ```
-mapping (address =>uint[]) public ownerToZombies
+mapping (address => uint[]) public ownerToZombies
 ```
 
 Então toda vez que criamos um novo zumbi, seria simples usar `ownerToZombies[owner].push(zombieId)` para adicioná-lo no array do dono do zumbi. E `getZombiesByOwner` seria uma função bem simples:

@@ -19,9 +19,9 @@ material:
 
 Commençons par les bases :
 
-Un **contrats** permet d'encapsuler du code Solidity, c'est la composante fondamentale de toutes les applications Ethereum - toutes les variables et fonctions appartiennent à un contrat, et ce sera le point de départ de tous vos projets.
+Un **contrat** (contract) permet d'encapsuler du code Solidity, c'est la composante fondamentale de toutes applications Ethereum - toutes les variables et fonctions appartiennent à un contrat, et ce sera le point de départ de tous vos projets.
 
-Un contrat vide nommé `HelloWorld` ressemblerait à ceci:
+Un contrat vide nommé `HelloWorld` ressemblerait à ceci :
 
 ```
 contract HelloWorld {
@@ -29,9 +29,9 @@ contract HelloWorld {
 }
 ```
 
-## Pragma Version
+## Pragma version
 
-Tout code source de Solidity devrait commencer par un "pragma version" - une déclaration de la version du compilateur Solidity que ce code devra utiliser. Cela permet d'éviter d'éventuels problèmes liés aux changements introduits par des futures versions du compilateur.
+Tout code source en Solidity doit commencer par un "pragma version" - une déclaration de la version du compilateur Solidity que ce code devra utiliser. Cela permet d'éviter d'éventuels problèmes liés aux changements introduits par des futures versions du compilateur.
 
 Cela ressemble à ça : `pragma solidity ^0.4.19;` (la dernière version de Solidity au moment de la rédaction de cet article étant 0.4.19).
 
@@ -53,4 +53,4 @@ Pour commencer à créer notre armée de Zombies, créons un contrat de base app
 
 2. Créez un contrat vide appelé `ZombieFactory`.
 
-Lorsque vous avez terminé, cliquez sur "vérifier la réponse" ci-dessous. Si vous êtes bloqué, vous pouvez cliquer sur "indice".
+Lorsque vous avez terminé, cliquez sur "Vérifier La Réponse" ci-dessous. Si vous êtes bloqué, vous pouvez cliquer sur "Indice".
