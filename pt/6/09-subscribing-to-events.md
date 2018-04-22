@@ -97,7 +97,7 @@ material:
               function levelUp(zombieId) {
                 $("#txStatus").text("Leveling up your zombie...");
                 return CryptoZombies.methods.levelUp(zombieId)
-                .send({ from: userAccount, value: web3.utils.toWei("0.001") })
+                .send({ from: userAccount, value: web3.utils.toWei("0.001", "ether") })
                 .on("receipt", function(receipt) {
                   $("#txStatus").text("Power overwhelming! Zombie successfully leveled up");
                 })
@@ -565,7 +565,7 @@ material:
             function levelUp(zombieId) {
               $("#txStatus").text(""Upando seu zumbi..."");
               return CryptoZombies.methods.levelUp(zombieId)
-              .send({ from: userAccount, value: web3js.utils.toWei("0.001") })
+              .send({ from: userAccount, value: web3js.utils.toWei("0.001", "ether") })
               .on("receipt", function(receipt) {
                 $("#txStatus").text("Poder esmagador! Zumbi upado com sucesso");
               })
