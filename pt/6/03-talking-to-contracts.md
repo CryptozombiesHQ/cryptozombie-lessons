@@ -41,7 +41,7 @@ material:
           </body>
         </html>
       "cryptozombies_abi.js": |
-        var cryptozombiesABI = [
+        var cryptoZombiesABI = [
           {
             "constant": false,
             "inputs": [
