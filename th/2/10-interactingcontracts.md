@@ -67,7 +67,7 @@ material:
 
       import "./zombiefactory.sol";
 
-      contract KittyInterface {
+      interface KittyInterface {
         function getKitty(uint256 _id) external view returns (
           bool isGestating,
           bool isReady,
@@ -134,7 +134,7 @@ contract LuckyNumber {
 ก่อนอื่นเลยเราก็ต้อง define **_interface_** ของ contract ที่ชื่อ `LuckyNumber`  ซะก่อน:
 
 ```
-contract NumberInterface {
+interface NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```

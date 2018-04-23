@@ -67,7 +67,7 @@ material:
 
       import "./zombiefactory.sol";
 
-      contract KittyInterface {
+      interface KittyInterface {
         function getKitty(uint256 _id) external view returns (
           bool isGestating,
           bool isReady,
@@ -134,7 +134,7 @@ Now let's say we had an external contract that wanted to read the data in this c
 First we'd have to define an **_interface_** of the `LuckyNumber` contract:
 
 ```
-contract NumberInterface {
+interface NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```

@@ -10,7 +10,7 @@ material:
 
         import "./zombiefactory.sol";
 
-        contract KittyInterface {
+        interface KittyInterface {
           function getKitty(uint256 _id) external view returns (
             bool isGestating,
             bool isReady,
@@ -83,7 +83,7 @@ material:
 
       import "./zombiefactory.sol";
 
-      contract KittyInterface {
+      interface KittyInterface {
         function getKitty(uint256 _id) external view returns (
           bool isGestating,
           bool isReady,
@@ -117,7 +117,7 @@ material:
 มาต่อกันในส่วนของตัวอย่างที่ได้ทำไว้ก่อนหน้า `NumberInterface` หลังจากที่เราได้สร้าง interface หน้าตาดังนี้แล้ว:
 
 ```
-contract NumberInterface {
+interface NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
 ```
