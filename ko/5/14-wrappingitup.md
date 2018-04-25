@@ -1,6 +1,8 @@
 ---
-title: 마무리하기
-actions: ['checkAnswer', 'hints']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 skipCheckAnswer: true
 material:
@@ -11,28 +13,27 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 5.
 
-축하하네! 레슨 5가 끝났네.
+As a reward, we've transferred you your very own Level 10 **H4XF13LD MORRIS </p> 
 
-하나의 보상으로, 자네만의 레벨 10짜리 **H4XF13LD MORRIS 💯💯😎💯💯** 좀비를 자네에게 보내줬네!
+(Omg, the legendary **H4XF13LD MORRIS </p> 
 
-(오, 전설적인 **H4XF13LD MORRIS 💯💯😎💯💯** 좀비!!!!!!!)
+Now you have 4 zombies in your army.
 
-이제 자네의 군대에는 4마리의 좀비가 있네.
+Before you move on, you have the option to rename any of them if you'd like by clicking on them to the right and entering a new name. (Though I don't know why you would ever want to rename **H4XF13LD MORRIS </p> 
 
-계속 진행하기 전에, 우측의 좀비를 클릭하여 새로운 이름을 입력하면 좀비의 이름을 바꿀 수 있네(물론 자네가 **H4XF13LD MORRIS 💯💯😎💯💯** 좀비의 이름을 바꾸고 싶어하지는 않겠지. 명백히 최고의 이름이니까!).
+## Let's recap:
 
-## 요약하자면:
+In this lesson we learned about:
 
-이번 레슨에서 우리는 다음을 배웠네:
+- Tokens, the ERC721 standard, and tradable assets/zombies
+- Libraries and how to use them
+- How to prevent overflows and underflows using the SafeMath library
+- Commenting your code and the natspec standard
 
-- 토큰, ERC721 표준, 그리고 거래할 수 있는 자산/좀비
-- 라이브러리와 이를 사용하는 방법
-- SafeMath 라이브러리를 사용하여 오버플로우와 언더플로우를 막는 방법
-- 코드에 주석을 추가하는 방법과 natspec 표준
+This lesson concludes our game's Solidity code! (For now — we may add even more lessons in the future).
 
-이번 레슨에서 우리 게임의 솔리디티 코드를 완성했네! (지금으로서는 말이야 - 향후에 우리는 더 많은 레슨을 추가할 수도 있네).
+In the next 2 lessons, we're going to look at how to deploy your contracts and interact with them using ***web3.js*** (so you can build a front-end for your DApp).
 
-다음 2개의 레슨에서는, 자네의 컨트랙트를 배포하고 **_web3.js_**를 사용하여 그 컨트랙트와 상호작용 하는 방법을 다룰 것이네(자네 DApp의 프론트엔드를 만들 수 있도록 말이야).
-
-어서 자네가 원하는 대로 좀비들의 이름을 바꾸고, 이 레슨을 완료하기 위해 다음 챕터로 진행하게.
+Go ahead and rename any of your zombies if you like, then proceed to the next chapter to complete the lesson.
