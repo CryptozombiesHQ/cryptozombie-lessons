@@ -1,12 +1,10 @@
 ---
-title: Zumbis atacam suas vítimas
-header: Então, você chegou a Lição 2!
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-Impressionante, humano! Você é melhor programador(a) do que pensei.
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-A Lição 2 irá ensinar você como **multiplicar o seu exército zumbi alimentando-se de outras formas vida**.
-
-Nesta lição iremos abordar alguns conceitos mais avançados de Solidity,
-então é altamente recomendado que você complete a Lição 1 antes de começar.
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
