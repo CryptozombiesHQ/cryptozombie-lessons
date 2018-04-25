@@ -1,21 +1,22 @@
 ---
-title: Ders 1 Tamamlandı!
-actions: ['cevapKontrol', 'ipuçları']
+title: Lesson 1 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
 ---
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-Tebrikler! Ders 1'i tamamladınız ve ordunuzdaki ilk zombiyi oluşturdunuz.
+# Next Steps
 
-# Sonraki Adımlar
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-Oyunu daha da ileriye götürmek ve zombi ordunuzun büyümesini sürdürmek için her hafta yeni bir CryptoZombies dersi yayınlayacağız.
+### 1. Sign in to save your progress
 
-### 1. İlerlemenizi kaydetmek için oturum açın
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
-Sayfanın üstündeki "İlerlemeyi Kaydet" linkine tıklayarak ilerlemenizi kaydetmek için **_Oturum aç_**. Yeni bir ders eklediğimizde size bildireceğiz.
- 
-### 2. Zombinizi arkadaşlarınızla paylaşın
+### 2. Share your zombie with your friends
 
-Zombinizi Twitter falan **_Paylaşın_** (Görüntüler / linkler eklemek gerek) 
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
