@@ -1,11 +1,10 @@
 ---
-title: 좀비 공장 만들기
-header: 환영한다, 인간이여!
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
 ---
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
-그러니까 자네가 **크립토 좀비**가 되기 위한 자질을 갖추었다고 생각한단 말이지? 
+This course will teach you how to **build a game on Ethereum**.
 
-이 코스는 **이더리움 게임을 만드는** 방법을 가르쳐 줄 걸세. 
-
-이 코스는 솔리디티 초보자를 위해 설계되었지만 학습자가 자바스크립트 같은 언어로 프로그래밍한 경험이 있다고 가정하지. 
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
