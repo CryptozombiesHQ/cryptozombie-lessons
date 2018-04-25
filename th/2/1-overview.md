@@ -1,6 +1,8 @@
 ---
-title: ภาพรวมของบทที่ 2
-actions: ['checkAnswer', 'hints']
+title: Lesson 2 Overview
+actions:
+  - checkAnswer
+  - hints
 material:
   saveZombie: false
   zombieBattle:
@@ -10,25 +12,24 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
 
-ในบทที่ 1 เราได้สร้างฟังก์ชันที่สามารถรับข้อมูลในส่วนของชื่อ ซึ่งจะถูกนำไปใช้ในการสร้างซอมบี้ขึ้นมาในรูปแบบของการสุ่ม และเพิ่มซอมบี้ตัวนั้นเข้าไปใน database ที่อยู่ภายในแอพพลิเคชั่นซอมบี้ของเราบน blockchain
+In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
 
-ในบทที่ 2 เราจะทำให้แอพพลิเคชั่นนี้มีความคล้ายเกมมากขึ้น: เราจะทำให้เกมนี้สามารถเล่นได้พร้อมกันหลายๆ คน (multi-player) และเรายังจะเพิ่มลูกเล่นในการสร้างซอมบี้ให้มากขึ้นไปอีก โดยจะไม่สร้างจากเพียงแค่การสุ่มเท่านั้น 
+How will we create new zombies? By having our zombies "feed" on other lifeforms!
 
-สงสัยใช่ไหมว่าจะสร้างซอมบี้ตัวใหม่ขึ้นมาอย่างไร? โดยการให้มัน "กิน" สิ่งมีชีวิตอื่นยังไงล่ะ!
+## Zombie Feeding
 
-## ให้อาหารซอมบี้
+When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
 
-เมื่อซอมบี้กัดกินเหยื่อจะทำให้เจ้าเหยื่อตัวนั้นติดเชื้อไวรัสเข้าไป ไวรัสก็จะเปลี่ยนให้เหยื่อกลายเป็นซอมบี้พวกเดียวกัน และมาเข้าร่วมกองทัพซอมบี้ในที่สุด โดย DNA ของซอมบี้ตัวใหม่นั้นก็เกิดจากการผสมกันระหว่าง DNA ของซอมบี้ตัวเก่าและของเหยื่อนั่นเอง
+And what do our zombies like to feed on most?
 
-ซอมบี้ของเรานั้นชอบกินอะไรที่สุดกันนะ?
+To find that out... You'll have to complete lesson 2!
 
-เพื่อที่จะหาคำตอบ... คุณจะต้องสำเร็จบทเรียนที่ 2 เสียก่อน!
+# Put it to the test
 
-# มาทดสอบกัน
+There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
 
-เรามีตัวอย่างง่ายๆ ของการให้อาหารอยู่ทางด้านขวา ลองคลิกบนตัวคนเพื่อดูว่าจะเกิดอะไรขึ้นเมื่อซอมบี้กินอาหารดูสิ!
+You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
 
-เห็นได้ชัดว่า DNA ของซอมบี้ตัวใหม่จะถูกทำการวิเคราะห์จาก DNA ของซอมบี้ตัวเริ่มต้น เช่นเดียวกันกับ DNA ของเหยื่อ
-
-เมื่อพร้อมแล้วให้คลิก "บทต่อไป" เพื่อที่จะเข้าสู่การสร้าง multi-player เกมส์ ในบทต่อไป
+When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
