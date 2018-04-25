@@ -1,13 +1,12 @@
 ---
-title: ERC721 & 크립토 수집품
-header: "레슨 5: ERC721 & 크립토 수집품"
+title: ERC721 & Crypto-Collectibles
+header: "Lesson 5: ERC721 & Crypto-Collectibles"
 roadmap: roadmap5.jpg
 ---
+Whew! Things are starting to heat up in here...
 
-후! 이제 점점 더 달아오르기 시작하는군...
+In this lesson, we're going to get a bit more advanced.
 
-이번 레슨에서는, 조금 더 심화된 내용을 보게 될 것이네.
+We're going to talk about **tokens**, the **ERC721** standard, and **crypto-collectible assets**.
 
-우리는 **토큰**, **ERC721** 표준, 그리고 **크립토 수집품 자산(Crypto-collible assets)**에 대해 살펴볼 걸세.
-
-즉, **자네의 좀비를 자네 친구와 거래할 수 있게** 할 것이네.
+In other words, we're going to **make it so you can trade your zombies with your friends.**
