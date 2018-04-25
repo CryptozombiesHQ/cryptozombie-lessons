@@ -3,11 +3,10 @@ title: Zombie Battle System
 header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
 ---
+The time has come, human...
 
-และเวลานี้ก็มาถึงแล้ว เจ้ามนุษย์...
+Time to make your zombies FIGHT!
 
-เวลาที่จะให้ซอมบี้มาต่อสู้กันยังไงล่ะ !
+But zombie battles aren't for the faint of heart...
 
-แต่การต่อสู้ของซอมบี้ไม่เหมาะกับคนจิดใจอ่อนแอหรอกนะรู้ไว้ด้วย...
-
-ในบทนี้ เราจะมาทำการหลอมรวมคอนเซ็ปต์ต่าง ๆ ที่ได้เรียนรู้กันไปในบทก่อนหน้าในการสร้างฟังก์ชั่นต่อสู้ของซอมบี้ และยังจะได้เรียนรู้เกี่ยวกับฟังก์ชั่น **payable** อีกด้วย รวมถึงการสร้าง DApps อย่างไรให้สามารถรับเงินจากผู้เล่นได้
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.
