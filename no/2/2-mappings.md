@@ -1,121 +1,96 @@
 ---
-title: Mapping og Adresser
-actions: ['checkAnswer', 'hints']
+title: Mappings and Addresses
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          // deklarer mapping her
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              NewZombie(id, _name, _dna);
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      event NewZombie(uint zombieId, string name, uint dna);
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      // declare mappings here
+      
+      function _createZombie(string _name, uint _dna) private {
+      uint id = zombies.push(Zombie(_name, _dna)) - 1;
+      NewZombie(id, _name, _dna);
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              NewZombie(id, _name, _dna);
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+Let's make our game multi-player by giving the zombies in our database an owner.
 
-La oss lage vår multiplayer av spill ved å gi zombiene i vår database en eier.
+To do this, we'll need 2 new data types: `mapping` and `address`.
 
-For å gjøre dette trenger vi 2 nye datatyper:`mapping` og `address`.
+## Addresses
 
-## Adresser
+The Ethereum blockchain is made up of ***accounts***, which you can think of like bank accounts. An account has a balance of ***Ether*** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
 
-Ethereum blockchain består av **_accounts_**, som du kan tenke på som bankkontoer. En konto har en balanse mellom **_Ether_** (den valutaen som brukes i Ethereum-blokkkjeden), og du kan sende og motta Ether-betalinger til andre kontoer, akkurat som at bankkontoen din kan overføre penger til andre bankkontoer.
-
-Hver konto har en `address`, som du kan tenke på som et bankkontonummer. Det er en unik identifikator som peker på den kontoen, og det ser slik ut:
+Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(Denne adressen tilhører CryptoZombies-teamet. Hvis du setter pris på CryptoZombies, kan du sende oss noen Ether! 😉)
+(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 
 
-Vi vil komme inn i det nitty gritty av adresser i en senere leksjon, men for nå trenger du bare å forstå at **en adresse eies av en bestemt bruker** (eller en smart-kontrakt).
+We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
 
-Så vi kan bruke den som en unik ID for eierskap av våre zombier. Når en bruker oppretter nye zombier ved å samhandle med vår app, setter vi eierskap av de zombiene til Ethereum-adressen som kalte funksjonen.
+So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
 
-## Mapping
+## Mappings
 
-I Leksjon 1 så vi på  **_structs_** og **_arrays_**. **_Mappings_**er en annen måte å lagre organisert data på i Solidity.
+In Lesson 1 we looked at ***structs*** and ***arrays***. ***Mappings*** are another way of storing organized data in Solidity.
 
-Definere en `mapping` ser slik ut:
+Defining a `mapping` looks like this:
 
-```
-// For en finansiell app, lagrer du en uint som holder brukerens kontosaldo:
-mapping (address => uint) public accountBalance;
-// Eller kan brukes til å lagre / oppsøk brukernavn basert på userId
-mapping (uint => string) userIdToName;
-```
+    // For a financial app, storing a uint that holds the user's account balance:
+    mapping (address => uint) public accountBalance;
+    // Or could be used to store / lookup usernames based on userId
+    mapping (uint => string) userIdToName;
+    
 
-En mapping er i hovedsak et nøkkelverdi lager for lagring og oppsøking av data. I det første eksemplet er nøkkelen en `address` og verdien er en`uint`, og i det andre eksempelet er nøkkelen en `uint` og verdien en`string`.
+A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
 
+# Put it to the test
 
-# Test det
+To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
 
-For å lagre zombie eierskap, skal vi bruke to mappings: en som holder styr på adressen som eier en zombie, og en annen som holder styr på hvor mange zombier en eier har.
+1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
 
-1. Lag en mapping kalt `zombieToOwner`. Nøkkelen vil være en `uint` (vi lagrer og ser opp zombie basert på id) og verdien en`address`.La oss gjøre denne mappingen `public`.
-
-2. Lag en mapping kalt `ownerZombieCount`, hvor nøkkelen er en `address` og verdien er en `uint`.
+2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
