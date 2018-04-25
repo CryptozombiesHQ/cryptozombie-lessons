@@ -1,163 +1,131 @@
 ---
-title: Manipulação de Múltiplos Retornos
-actions: ['verificarResposta', 'dicas']
+title: Handling Multiple Return Values
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
+        
         contract KittyInterface {
-          function getKitty(uint256 _id) external view returns (
-            bool isGestating,
-            bool isReady,
-            uint256 cooldownIndex,
-            uint256 nextActionAt,
-            uint256 siringWithId,
-            uint256 birthTime,
-            uint256 matronId,
-            uint256 sireId,
-            uint256 generation,
-            uint256 genes
-          );
+        function getKitty(uint256 _id) external view returns (
+        bool isGestating,
+        bool isReady,
+        uint256 cooldownIndex,
+        uint256 nextActionAt,
+        uint256 siringWithId,
+        uint256 birthTime,
+        uint256 matronId,
+        uint256 sireId,
+        uint256 generation,
+        uint256 genes
+        );
         }
-
+        
         contract ZombieFeeding is ZombieFactory {
-
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          KittyInterface kittyContract = KittyInterface(ckAddress);
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            _createZombie("NoName", newDna);
-          }
-
-          // defina a função aqui
-
+        
+        address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+        KittyInterface kittyContract = KittyInterface(ckAddress);
+        
+        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        _createZombie("NoName", newDna);
+        }
+        
+        // define function here
+        
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) internal {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./zombiefactory.sol";
-
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
-
+      contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
-
-        address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        KittyInterface kittyContract = KittyInterface(ckAddress);
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna);
-        }
-
+      address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d; KittyInterface kittyContract = KittyInterface(ckAddress);
+      function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
+      function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna); }
       }
 ---
+This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
 
-A função `getKitty` é o primeiro exemplo que veremos retornando múltiplos valores. Vamos ver como manipulá-los:
+    function multipleReturns() internal returns(uint a, uint b, uint c) {
+      return (1, 2, 3);
+    }
+    
+    function processMultipleReturns() external {
+      uint a;
+      uint b;
+      uint c;
+      // This is how you do multiple assignment:
+      (a, b, c) = multipleReturns();
+    }
+    
+    // Or if we only cared about one of the values:
+    function getLastReturnValue() external {
+      uint c;
+      // We can just leave the other fields blank:
+      (,,c) = multipleReturns();
+    }
+    
 
-```
-function multipleReturns() internal returns(uint a, uint b, uint c) {
-  return (1, 2, 3);
-}
+# Put it to the test
 
-function processMultipleReturns() external {
-  uint a;
-  uint b;
-  uint c;
+Time to interact with the CryptoKitties contract!
 
-  // Esta é a forma como você faz múltiplas atribuições
-  (a, b, c) = multipleReturns();
-}
+Let's make a function that gets the kitty genes from the contract:
 
-// Ou se somente precisarmos de um dos valores:
-function getLastReturnValue() external {
-  uint c;
-  // Podemos deixar os outros campos em branco:
-  (,,c) = multipleReturns();
-}
-```
+1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
 
-# Vamos testar
+2. The function should first declare a `uint` named `kittyDna`.
+    
+    > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
 
-Hora de interagir com o contrato do CryptoKitties!
+3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
 
-Vamos criar uma função que obtêm os genes do gato direto do contrato:
-
-1. Crie uma função chamada `feedOnKitty`. Que receberá 2 parâmetros `uint`, `_zombieId` e `_kittyId`, e deve ser uma função `public`.
-
-2. A função deve primeiro declarar um `uint` chamado `kittyDna`.
-
-  > Nota: Em nossa `KittyInterface`, `genes` é um `uint256` - mas se você lembrar da lição 1, `uint` é um apelido para `uint256` - eles são a mesma coisa.
-
-3. A função então deve chamar a função `kittyContract.getKitty` com `_kittyId` e guardar `genes` em `kittyDna`. Lembre-se - `getKitty` retorna um monte de variáveis. (10 para ser exato - Como eu sou legal, contei pra você!). Mas tudo que precisamos é da última, `genes`. Conte as suas vírgulas cuidadosamente!
-
-4. Finalmente, a função deve chamar `feedAndMultiply`, e passar ambas `_zombieId` e `kittyDna`.
+4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
