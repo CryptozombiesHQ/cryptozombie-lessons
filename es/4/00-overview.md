@@ -1,13 +1,12 @@
 ---
-title: Sistema de Batalla Zombie
+title: Zombie Battle System
 header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
 ---
+The time has come, human...
 
-Ha llegado el momento, humano...
+Time to make your zombies FIGHT!
 
-¡Es hora de hacer que tus zombies PELEEN!
+But zombie battles aren't for the faint of heart...
 
-Pero las batallas zombie no son para aquellos con problemas de corazón...
-
-En esta lección vamos estar ensamblando muchos conceptos que ha aprendido en capítulos anteriores para construir una función de batalla zombie. También vamos a aprender sobre funciones **payable**, y cómo construir DApps que puedan aceptar dinero de los jugadores.
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.
