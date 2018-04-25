@@ -1,6 +1,8 @@
 ---
-title: Juntando Tudo
-actions: ['verificarResposta', 'dicas']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 skipCheckAnswer: true
 material:
@@ -11,28 +13,27 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 5.
 
-Parabéns! Isso concluí a Lição 5.
+As a reward, we've transferred you your very own Level 10 **H4XF13LD MORRIS </p> 
 
-Como uma recompensa, nós transferimos pra você o seu próprio zumbi de Nível 10 **H4XF13LD MORRIS 💯💯😎💯💯**
+(Omg, the legendary **H4XF13LD MORRIS </p> 
 
-(Meu deus, o lendário zumbi **H4XF13LD MORRIS 💯💯😎💯💯** !!!!111)
+Now you have 4 zombies in your army.
 
-Agora você tem 4 zumbis em seu exército.
+Before you move on, you have the option to rename any of them if you'd like by clicking on them to the right and entering a new name. (Though I don't know why you would ever want to rename **H4XF13LD MORRIS </p> 
 
-Antes de você ir, você tem a opção de renomear qualquer qualquer um, se você clicar neles a direita e entrar um novo nome. (Mas eu não sei por que você iria querer renomear **H4XF13LD MORRIS 💯💯😎💯💯**, sem dúvida o melhor nome já visto).
+## Let's recap:
 
-## Recapitulando:
+In this lesson we learned about:
 
-Nesta lição aprendemos sobre:
+- Tokens, the ERC721 standard, and tradable assets/zombies
+- Libraries and how to use them
+- How to prevent overflows and underflows using the SafeMath library
+- Commenting your code and the natspec standard
 
-- Tokens, o padrão ERC721, e ativos/zumbis cambiáveis
-- Bibliotecas e como usá-las
-- Como prevenir overflows e underflows usando a biblioteca SafeMath
-- Comentar o seu código e padrão natspec
+This lesson concludes our game's Solidity code! (For now — we may add even more lessons in the future).
 
-Esta lição conclui o código do nosso jogo em Solidity! (No momento – podemos adicionar ainda mais lições no futuro).
+In the next 2 lessons, we're going to look at how to deploy your contracts and interact with them using ***web3.js*** (so you can build a front-end for your DApp).
 
-Nas próximas duas lições, iremos ver como em como implantar os seus contratos e interagir com eles usando **_web3.j_** (então você pode criar um front-end para a sua DApp).
-
-Vá em frente e renomeie qualquer um dos seus zumbis se você quiser, então siga para o próximo capítulo para completar a lição.
+Go ahead and rename any of your zombies if you like, then proceed to the next chapter to complete the lesson.
