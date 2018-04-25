@@ -1,11 +1,10 @@
 ---
-title: Les Zombies attaquent leurs victimes
-header: Alors, vous êtes arrivé à la Leçon 2 !
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-Vous m'impressionnez humain ! Vous êtes un meilleur codeur que j'aurais pensé.
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-La Leçon 2 va vous apprendre à **multiplier votre armée de zombie en les nourrissant avec d'autres formes de vie**.
-
-Nous allons voir des concepts Solidity plus avancés, nous vous recommandons fortement d'avoir fini la Leçon 1 avant de commencer.
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
