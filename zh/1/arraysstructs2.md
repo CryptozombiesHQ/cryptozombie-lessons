@@ -1,94 +1,79 @@
 ---
-title: 使用结构体和数组
-actions: ['答案', '提示']
+title: Working With Structs and Arrays
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              // 这里开始
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function createZombie(string _name, uint _dna) {
+      // start here
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
+### Creating New Structs
 
-## 创建新的结构体
+Remember our `Person` struct in the previous example?
 
-还记得上个例子中的 `Person` 结构吗？
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    Person[] public people;
+    
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Now we're going to learn how to create new `Person`s and add them to our `people` array.
 
-Person[] public people;
-```
+    // create a New Person:
+    Person satoshi = Person(172, "Satoshi");
+    
+    // Add that person to the Array:
+    people.push(satoshi);
+    
 
-现在我们学习创建新的 `Person` 结构，然后把它加入到名为 `people` 的数组中.
+We can also combine these together and do them in one line of code to keep things clean:
 
-```
-// 创建一个新的Person:
-Person satoshi = Person(172, "Satoshi");
+    people.push(Person(16, "Vitalik"));
+    
 
-// 将新创建的satoshi添加进people数组:
-people.push(satoshi);
-```
+Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
 
-你也可以两步并一步，用一行代码更简洁:
+    uint[] numbers;
+    numbers.push(5);
+    numbers.push(10);
+    numbers.push(15);
+    // numbers is now equal to [5, 10, 15]
+    
 
-```
-people.push(Person(16, "Vitalik"));
-```
+# Put it to the test
 
-> 注：`array.push()` 在数组的 **尾部** 加入新元素 ，所以元素在数组中的顺序就是我们添加的顺序， 如:
+Let's make our createZombie function do something!
 
-```
-uint[] numbers;
-numbers.push(5);
-numbers.push(10);
-numbers.push(15);
-// numbers is now equal to [5, 10, 15]
-```
-
-# 实战演习
-
-让我们创建名为createZombie的函数来做点儿什么吧。
-
-1. 在函数体里新创建一个 `Zombie`， 然后把它加入 `zombies` 数组中。 新创建的僵尸的 `name` 和 `dna`，来自于函数的参数。
-2. 让我们用一行代码简洁地完成它。
+1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+2. Let's do it in one line of code to keep things clean.
