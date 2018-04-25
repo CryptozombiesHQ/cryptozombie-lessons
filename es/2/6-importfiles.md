@@ -1,86 +1,82 @@
 ---
-title: Importar
-actions: ['checkAnswer', 'hints']
+title: Import
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
-        // añade la sentencia import aquí
-
+        
+        // put import statement here
+        
         contract ZombieFeeding is ZombieFactory {
-
+        
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) private {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./zombiefactory.sol";
-
       contract ZombieFeeding is ZombieFactory {
-
       }
-
 ---
+Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
 
-¡Guau! Notarás que hemos limpiado el código de la derecha, ahora tienes unas pestañas en la parte superior de tu editor. Adelante, clica entre las pestañas para probarlo.
+Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
 
-Nuestro código estaba quedando algo largo, por eso lo hemos dividido en multiples archivos haciendolo así más manejable. Así es como normalmente deberás guardar tu código base en tus proyectos de Solidity.
+When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
 
-Cuando tienes multiples archivos y quieres importar uno dentro de otro, Solidity usa la palabra clave `import`:
+    import "./someothercontract.sol";
+    
+    contract newContract is SomeOtherContract {
+    
+    }
+    
 
-```
-import "./someothercontract.sol";
+So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
 
-contract newContract is SomeOtherContract {
+# Put it to the test
 
-}
-```
+Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
 
-Entonces si tenemos un fichero llamado `someothercontract.sol` en el mismo directorio que este contrato (eso es lo que significa `./`), será importado por el compilador.
-
-# Vamos a probarlo
-
-Ahora que tenemos una estructura de multiples ficheros, necesitamos usar `import` para leer el contenido del otro fichero:
-
-1. Importa `zombiefactory.sol` en nuestro nuevo fichero, `zombiefeeding.sol`. 
+1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`.
