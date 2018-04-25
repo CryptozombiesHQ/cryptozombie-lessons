@@ -1,8 +1,9 @@
 ---
-title: 레슨 2 완료!
-actions: ['정답 확인하기', '힌트 보기']
+title: Lesson 2 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
 ---
-
