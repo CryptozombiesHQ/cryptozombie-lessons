@@ -1,3 +1,15 @@
 files:
   - source: /en/1
     translation: /%two_letters_code%/1/%original_file_name%
+  - source: /en/2
+    translation: /%two_letters_code%/2/%original_file_name%
+  - source: /en/3
+    translation: /%two_letters_code%/3/%original_file_name%
+  - source: /en/4
+    translation: /%two_letters_code%/4/%original_file_name%
+  - source: /en/5
+    translation: /%two_letters_code%/5/%original_file_name%
+  - source: /en/6
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/*
+    translation: /%two_letters_code%/%original_file_name%
