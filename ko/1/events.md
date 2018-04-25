@@ -1,110 +1,87 @@
 ---
-title: 이벤트
-actions: ['정답 확인하기', '힌트 보기']
+title: Events
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          // 여기에 이벤트 선언
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-              // 여기서 이벤트 실행
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      // declare our event here
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      // and fire it here
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              NewZombie(id, _name, _dna);
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+Our contract is almost finished! Now let's add an ***event***.
 
-우리의 컨트랙트가 거의 완성되어 가는군! 이제 **_이벤트_**를 추가해 보세. 
+***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
-**_이벤트_**는 자네의 컨트랙트가 블록체인 상에서 자네 앱의 사용자 단에서 무언가 액션이 발생했을 때 의사소통하는 방법이지. 컨트랙트는 특정 이벤트가 일어나는지 "귀를 기울이고" 그 이벤트가 발생하면 행동을 취하지.
+Example:
 
-예시:
+    // declare the event
+    event IntegersAdded(uint x, uint y, uint result);
+    
+    function add(uint _x, uint _y) public {
+      uint result = _x + _y;
+      // fire an event to let the app know the function was called:
+      IntegersAdded(_x, _y, result);
+      return result;
+    }
+    
 
-```
-// 이벤트를 선언한다
-event IntegersAdded(uint x, uint y, uint result);
+Your app front-end could then listen for the event. A javascript implementation would look something like:
 
-function add(uint _x, uint _y) public {
-  uint result = _x + _y;
-  // 이벤트를 실행하여 앱에게 add 함수가 실행되었음을 알린다:
-  IntegersAdded(_x, _y, result);
-  return result;
-}
-```
+    YourContract.IntegersAdded(function(error, result) { 
+      // do something with result
+    }
+    
 
-그러면 자네 앱의 사용자 단은 해당 이벤트가 일어나는지 귀를 기울이지. 자바스크립트로 이를 구현하면 다음과 같네: 
+# Put it to the test
 
-```
-YourContract.IntegersAdded(function(error, result) { 
-  // 결과와 관련된 행동을 취한다
-}
-```
+We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
-# 직접 해보기
+1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
 
-좀비가 생성될 때마다 우리 앱의 사용자 단에서 이에 대해 알고, 이를 표시하도록 하는 이벤트가 있으면 좋겠네. 
+2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
 
-1. `NewZombie`라는 `event`를 선언한다. `zombieId` (`uint`형), `name` (`string`형), `dna` (`uint`형)을 인자로 전달받아야 한다.
-
-2. `_createZombie` 함수를 변경하여 새로운 좀비가 `zombies` 배열에 추가된 후에 `NewZombie` 이벤트를 실행하도록 한다.  
-
-3. 이벤트를 위해 좀비의 `id`가 필요할 것이다. `array.push()`는 배열의 새로운 길이를 `uint`형으로 반환한다. 배열의 첫 원소가 0이라는 인덱스를 갖기 때문에, `array.push() - 1`은 막 추가된 좀비의 인덱스가 될 것이다. `zombies.push() - 1`의 결과값을 `uint`형인 `id`로 저장하고 이를 다음 줄에서 `NewZombie` 이벤트를 위해 활용한다. 
+3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
