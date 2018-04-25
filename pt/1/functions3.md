@@ -1,102 +1,86 @@
 ---
-title: Mais Sobre Funções
-actions: ['verificarResposta', 'dicas']
+title: More on Functions
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
-
-          // comece aqui
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string _str) private view returns (uint) {
+      }
       }
 ---
+In this chapter, we're going to learn about Function ***return values***, and function modifiers.
 
-Neste capítulo vamos aprender sobre funções que **_retornam valores_**, e sobre modificadores de funções.
+## Return Values
 
-## Retornando Valores
+To return a value from a function, the declaration looks like this:
 
-Para retornar o valor de uma função, a declaração deve ser assim:
+    string greeting = "What's up dog";
+    
+    function sayHello() public returns (string) {
+      return greeting;
+    }
+    
 
-```
-string greeting = "Olá cachorro!";
+In Solidity, the function declaration contains the type of the return value (in this case `string`).
 
-function sayHello() public returns (string) {
-  return greeting;
-}
-```
+## Function modifiers
 
-Em Solidity, a declaração da função contém o tipo do valor de retorno (neste caso uma `string`).
+The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
 
-## Modificadores das Funções
+So in this case we could declare it as a ***view*** function, meaning it's only viewing the data but not modifying it:
 
-Na verdade a função acima não altera estado algum em Solidity - em outras palavras não altera qualquer valor ou escreve qualquer coisa.
+    function sayHello() public view returns (string) {
+    
 
-Neste caso nós podemos declará-la como uma função com palavra reservada `view` (observa), que significa: somente uma observação do dado, mas nenhuma alteração de fato.
+Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
 
-```
-function sayHello() public view returns (string) {
-```
+    function _multiply(uint a, uint b) private pure returns (uint) {
+      return a * b;
+    }
+    
 
-Em Solidity também existem funções **puras** usando a palavra reservada `pure`, que significa que nenhum dado será acessado na aplicação. Pense na seguinte situação:
+This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as ***pure***.
 
-```
-function _multiply(uint a, uint b) private pure returns (uint) {
-  return a * b;
-}
-```
+> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
 
-Esta função nem mesmo lê um estado da aplicação - os seus valores retornados dependem somente dos parâmetros da função. Então neste caso nós podemos declarar a função como **_pura_** usando a palavra reservada `pure`.
+# Put it to the test
 
-> Nota: Pode ser um tanto quanto complicado lembrar quando marcar a função como pura/observação (pure/view). Para a nossa sorte o compilador de Solidity faz um bom trabalho em avisar-nos quando devemos usar algum desses modificadores.
+We're going to want a helper function that generates a random DNA number from a string.
 
-# Vamos testar
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
-Nós vamos precisar de uma função de ajuda para gerar números de DNA aleatórios de uma string.
+2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
 
-1. Crie uma função `private` chamada `_generateRandomDna`. Que receberá um parâmetro chamado `_str` (uma `string`), e retorna um `uint`.
-
-2. Esta função irá observar algumas das nossas variáveis no contrato, mas não irá modificá-las, então marque-a como `view`.
-
-3. O corpo da função deve ficar vazio por enquanto - iremos trabalhar nisto mais tarde.
+3. The function body should be empty at this point — we'll fill it in later.
