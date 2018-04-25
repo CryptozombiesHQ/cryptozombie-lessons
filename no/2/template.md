@@ -1,19 +1,20 @@
 ---
-title: Data Typer
-actions: ['checkAnswer', 'hints']
+title: Data Types
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
-    startingCode: |
-    answer: >
+    0: |
+      
+    1: >
+      
 ---
+Solidity's code is encapsulated in contracts. A contract is basically...
 
-Solidity's koden er innkapslet i kontrakter. En kontrakt er i utgangspunktet ...
+    contract HelloWorld
+    
+    
 
-```
-contract HelloWorld 
-
-```
-
-# Test det
-
+# Put it to the test
