@@ -1,11 +1,10 @@
 ---
-title: Produksjon av en Zombie Factory
-header: Velkommen menneske!
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
 ---
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
-Så du tror du har det som trengs for å bli en **CryptoZombie**?
+This course will teach you how to **build a game on Ethereum**.
 
-Dette kurset vil lære deg hvordan man **lager et spill for Ethereum**.
-
-Det er laget for nybegynnere i Solidity, men det er forutintatt at du har noe kjennskap til programmering i andre programmeringsspråk(f.eks. Javascript).
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
