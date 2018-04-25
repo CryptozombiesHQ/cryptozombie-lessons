@@ -1,6 +1,8 @@
 ---
 title: Wrapping It Up
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: false
@@ -10,22 +12,21 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 3.
 
-ยินดีด้วยจ้า! จบบทที่ 3 แล้ว!
+## Let's recap:
 
-## มาสรุปกันดีกว่า:
+- We've added a way to update our CryptoKitties contracts
+- We've learned to protect core functions with `onlyOwner`
+- We've learned about gas and gas optimization
+- We added levels and cooldowns to our zombies
+- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
+- And finally, we now have a function to return a user's zombie army
 
-- เราได้เพิ่มวิธีการอัพเดท contract ชื่อ CryptoKitties ของเรา
-- เราได้เรียนรู้เกี่ยวกับการปกป้องฟังก์ชั่นส่วนแกนกลางด้วย `onlyOwner`
-- เราได้เรียนรู้เรื่อง gas รวมทั้ง gas optimization
-- เราได้ทำการเพิ่มคุณสมบัติ level และ cooldownWe ให้กับซอมบี้
-- ตอนนี้เรามีฟังก์ชั่นที่เอาไว้อัพเดทชื่อของซอมบี้ และ DNA เมื่อซอมบี้ได้ผ่านเลเวลที่ได้กำหนดไว้
-- และสุดท้ายเราได้ฟังก์ชั่นที่จะรีเทิร์นกองทัพซอมบี้ของผู้ใช้แล้ว
+## Claim your reward
 
-## มารับรางวัลไปเลย!
+As a reward for completing Lesson 3, both of your zombies have leveled up!
 
-รางวัลของการสำเร็จบทเรียนที่ 3 ก็คือ ซอมบี้ทั้ง 2 ตัวของคุณจะได้อัพเลเวล!
+And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
 
-และตอนนี้ NoName ( kitty-zombie ที่ได้สร้างขึ้นในบทเรียนที่ 2)ก็ได้เพิ่มเป็นเลเวล 2 ทำให้สามารถเรียกใช้ `changeName` เพื่อตั้งชื่อใหม่ให้กับซอมบี้แมวนี้ จะไม่ชื่อ NoName อีกต่อไป!
-
-มุ่งหน้ากันต่อและตั้งชื่อให้กับเจ้า NoName จากนั้นเราก็ไปยังบทตอนจบของบทที่ 3 กันได้เลย!
+Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
