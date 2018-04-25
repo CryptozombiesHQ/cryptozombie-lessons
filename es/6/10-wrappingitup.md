@@ -1,6 +1,8 @@
 ---
-title: Envolviéndolo todo
-actions: ['checkAnswer', 'hints']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: false
@@ -10,45 +12,60 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! You've successfully written your first Web3.js front-end that interacts with your smart contract.
 
-¡Felicidades! Has escrito con éxito tu primer front-end Web3.js que interactúa con tu contrato inteligente.
+As a reward, you get your very own `The Phantom of Web3` zombie! Level 3.0 (for Web 3.0 
 
-¡Como recompensa, obtienes tu propio zombie `The Phantom of Web3`! Nivel 3.0 (para Web 3.0 😉), completo con máscara de zorro. Miralo hacia la derecha.
+## Next Steps
 
-## Siguientes pasos
+This lesson was intentionally basic. We wanted to show you the core logic you would need in order to interact with your smart contract, but didn't want to take up too much time in order to do a full implementation since the Web3.js portion of the code is quite repetitive, and we wouldn't be introducing any new concepts by making this lesson any longer.
 
-Esta lección fue intencionalmente básica. Queríamos mostrarte la lógica central que necesitarías para interactuar con tu contrato inteligente, pero no queríamos tomar demasiado tiempo para realizar una implementación completa ya que la porción del código Web3.js es bastante repetitiva, y no estaríamos introduciendo ningún concepto nuevo haciendo que esta lección sea más larga.
+So we've left this implementation bare-bones. Here's a checklist of ideas for things we would want to implement in order to make our front-end a full implementation for our zombie game, if you want to run with this and build it on your own:
 
-Así que dejamos esta implementación en los huesos. Aquí hay una lista de ideas sobre las cosas que queremos implementar para hacer que nuestra interfaz sea una implementación completa para nuestro juego de zombies. Si quieres correr con esto y construirlo por tu cuenta:
+1. Implementing functions for `attack`, `changeName`, `changeDna`, and the ERC721 functions `transfer`, `ownerOf`, `balanceOf`, etc. The implementation of these functions would be identical to all the other `send` transactions we covered.
 
-1. Implementa dunciones para `attack`, `changeName`, `changeDna`, y las funciones ERC721 `transfer`, `ownerOf`, `balanceOf`, etc. La implementación de estas funciones sería idéntica a todas las demás transacciones `send` que cubrimos.
+2. Implementing an "admin page" where you can execute `setKittyContractAddress`, `setLevelUpFee`, and `withdraw`. Again, there's no special logic on the front-end here — these implementations would be identical to the functions we've already covered. You would just have to make sure you called them from the same Ethereum address that deployed the contract, since they have the `onlyOwner` modifier.
 
-2. Implementa una "página admin" donde puedas ejecutar `setKittyContractAddress`, `setLevelUpFee`, y `withdraw`. Otra vez, no hay una lógica especial en el front-end aquí — estas implementaciones serían idénticas a las funciones que ya hemos cubierto. Solamente deberías asegurarte de haberlas llamado desde le misma dirección de Ethereum que implementamos en el contrato, ya que tienen el modificador `onlyOwner`.
+3. There are a few different views in the app we would want to implement:
+    
+    a. An individual zombie page, where you can view info about a specific zombie with a permalink to it. This page would render the zombie's appearance, show its name, its owner (with a link to the user's profile page), its win/loss count, its battle history, etc.
+    
+    b. A user page, where you could view a user's zombie army with a permalink. You would be able to click on an individual zombie to view its page, and also click on a zombie to attack it if you're logged into MetaMask and have an army.
+    
+    c. A homepage, which is a variation of the user page that shows the current user's zombie army. (This is the page we started implementing in index.html).
 
-3. Hay algunas vistas diferentes en la aplicación que queremos implementar:
+4. Some method in the UI that allows the user to feed on CryptoKitties. We could have a button by each zombie on the homepage that says "Feed Me", then a text box that prompted the user to enter a kitty's ID (or a URL to that kitty, e.g. <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https://www.cryptokitties.co/kitty/578397</a>). This would then trigger our function `feedOnKitty`.
 
-  a. Una página zombie individual, donde puedes ver información sobre un zombie específico con un enlace permanente a él. Esta página mostraría la apariencia del zombi, mostraría su nombre, su dueño (con un enlace a la página de perfil del usuario), su recuento de victorias/derrotas, su historial de batalla, etc.
+5. Some method in the UI for the user to attack another user's zombie.
+    
+    One way to implement this would be when the user was browsing another user's page, there could be a button that said "Attack This Zombie". When the user clicked it, it would pop up a modal that contains the current user's zombie army and prompt them "Which zombie would you like to attack with?"
+    
+    The user's homepage could also have a button by each of their zombies that said "Attack a Zombie". When they clicked it, it could pop up a modal with a search field where they could type in a zombie's ID to search for it. Or an option that said "Attack Random Zombie", which would search a random number for them.
+    
+    We would also want to grey out the user's zombies whose cooldown period had not yet passed, so the UI could indicate to the user that they can't yet attack with that zombie, and how long they will have to wait.
 
-  b. Una página de usuario, donde puedes ver el ejército zombie de un usuario con un enlace permanente. Podrías hacer clic en un zombie individual para ver su página, y también hacer clic en un zombie para atacarlo si estás conectado a MetaMask y tienes un ejército.
+6. The user's homepage would also have options by each zombie to change name, change DNA, and level up (for a fee). Options would be greyed out if the user wasn't yet high enough level.
 
-  c. Una página de inicio, que es una variación de la página de usuario que muestra el ejército zombie del usuario actual. (Esta es la página que comenzamos a implementar en index.html).
+7. For new users, we should display a welcome message with a prompt to create the first zombie in their army, which calls `createRandomZombie()`.
 
-4. Algún método en la interfaz de usuario que permite al usuario alimentarse de CryptoKitties. Podríamos tener un botón por cada zombie en la página de inicio que diga "Feed Me", a continuación, un cuadro de texto que solicite al usuario ingresar la identificación de un "kitty" (o una URL a ese "kitty", ejemplo; <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https://www.cryptokitties.co/kitty/578397</a>). Esto dispararía nuestra función `feedOnKitty`.
-5. Algún método en la interfaz de usuario (UI) para que el usuario ataque al zombi de otro usuario. 
-  Una forma de implementar esto sería cuando el usuario esté navegando en la página de otro usuario, podría haber un botón que dijera "Atacar a este zombi". Cuando el usuario hiciera clic en él, aparecería un modal que contiene el ejército zombie del usuario actual y le indicara: "¿Con qué zombi te gustaría atacar?"
-  La página de inicio del usuario también podría tener un botón por cada uno de sus zombies que dijera "Atacar a un zombi".. Cuando se hiciera clic, podría aparecer un modal con un campo de búsqueda donde podrían escribir el ID de un zombie para buscarlo. O una opción diciendo "Atacar a un zombi random", que buscaría un número aleatorio para él.
-  También quisiéramos oscurecer a los zombis del usuario cuyo período de enfriamiento aún no haya pasado, para que la IU pueda indicar al usuario que aún no puede atacar con ese zombi, y cuánto tiempo tendrá que esperar.
-6. La página de inicio del usuario también tendría opciones para cambiar el nombre, cambiar el ADN y subir de nivel de cada zombi (por una tarifa). Las opciones se atenuarán si el usuario aún no tiene el nivel suficiente.
-7. Para los nuevos usuarios, debemos mostrar un mensaje de bienvenida con un mensaje para crear el primer zombie en su ejército, que llama a `createRandomZombie ()`.
-8. Probablemente querríamos agregar un evento `Attack` a nuestro contrato inteligente con la` dirección` del usuario como una propiedad `indexed`, como se discutió en el último capítulo. Esto nos permitiría crear notificaciones en tiempo real — podríamos mostrar al usuario una alerta emergente cuando uno de sus zombies fue atacado, para que pudieran ver al usuario/zombie que los atacó y tomar represalias.
-9. Probablemente también querríamos implementar algún tipo de capa de caché frontal, por lo que no siempre estamos volviendo loco a Infura con solicitudes de la misma información. (Nuestra implementación actual de `displayZombies` llama a` getZombieDetails` para cada zombie cada vez que actualizamos la interfaz — pero, en realidad, solo tenemos que llamar a estas funciones al nuevo zombie que se ha agregado a nuestro ejército).
-10. Una sala de chat en tiempo real para que puedas hablar mal de otros jugadores mientras aplastas a su ejército zombi :P
-Eso es solo un comienzo — Estoy seguro de que podríamos encontrar aún más características — y ya es una lista masiva.
-Dado que hay un montón de código de front-end que entraría en la creación de una interfaz completa como esta (HTML, CSS, JavaScript y un framework tipo React o Vue.js), construir todo este front-end probablemente sea un curso completo con 10 lecciones en sí mismo. Así que te dejamos la impresionante implementación para ti.
-> Nota: Aunque nuestro contrato inteligente está descentralizado, este front-end para interactuar con nuestro DApp estaría totalmente centralizado en nuestro servidor web en alguna parte.
->
-> No obstante, con el SDK que estamos construyendo en <a href="https://medium.com/loom-network/loom-network-is-live-scalable-ethereum-dapps-coming-soon-to-a-dappchain-near-you-29d26da00880" target=_blank>Loom Network</a>, pronto podrás servir front-ends como este desde su DAppChain en lugar de un servidor web centralizado. De esa manera entre Ethereum y el Loom DAppChain, toda tu aplicación se ejecutará al 100% en la blockchain.
-## Conclusión
-Esto concluye la Lección 6. ¡Ahora tienes todas las habilidades que necesitas para codificar un contrato inteligente y un front-end que permite a los usuarios interactuar con él!
-En la próxima lección, vamos a cubrir la última pieza que falta en este rompecabezas — desplegar tus contratos inteligentes a Ethereum.
-¡Sigue adelante y haz clic en "Capítulo siguiente" para reclamar tus recompensas!
+8. We'd probably want to add an `Attack` event to our smart contract with the user's `address` as an `indexed` property, as discussed in the last chapter. This would allow us to build real-time notifications — we could show the user a popup alert when one of their zombies was attacked, so they could view the user/zombie who attacked them and retaliate.
+
+9. We would probably also want to implement some sort of front-end caching layer so we aren't always slamming Infura with requests for the same data. (Our current implementation of `displayZombies` calls `getZombieDetails` for every single zombie every time we refresh the interface — but realistically we only need to call this for the new zombie that's been added to our army).
+
+10. A real-time chat room so you could trash talk other players as you crush their zombie army? Yes plz.
+
+That's just a start — I'm sure we could come up with even more features — and already it's a massive list.
+
+Since there's a lot of front-end code that would go into creating a full interface like this (HTML, CSS, JavaScript and a framework like React or Vue.js), building out this entire front-end would probably be an entire course with 10 lessons in itself. So we'll leave the awesome implementation to you.
+
+> Note: Even though our smart contract is decentralized, this front-end for interacting with our DApp would be totally centralized on our web-server somewhere.
+> 
+> However, with the SDK we're building at <a href="https://medium.com/loom-network/loom-network-is-live-scalable-ethereum-dapps-coming-soon-to-a-dappchain-near-you-29d26da00880" target=_blank>Loom Network</a>, soon you'll be able to serve front-ends like this from their own DAppChain instead of a centralized web server. That way between Ethereum and the Loom DAppChain, your entire app would run 100% on the blockchain.
+
+## Conclusion
+
+This concludes Lesson 6. You now have all the skills you need to code a smart contract and a front-end that allows users to interact with it!
+
+In the next lesson, we're going to be covering the final missing piece in this puzzle — deploying your smart contracts to Ethereum.
+
+Go ahead and click "Next Chapter" to claim your rewards!
