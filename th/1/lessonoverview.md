@@ -1,6 +1,8 @@
 ---
 title: Lesson Overview
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -9,33 +11,31 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
 
-ในบทที่ 1 คุณจะได้เรียนรู้การสร้าง “Zombie Factory” เพื่อที่จะสร้างกองทัพซอมบี้
+* Our factory will maintain a database of all zombies in our army
+* Our factory will have a function for creating new zombies
+* Each zombie will have a random and unique appearance
 
-* โรงงานหรือ factory ของเรานั้นจะเป็นเสมือน database ของซอมบี้ทั้งหมดในกองทัพ
-* ภายในโรงงานของเรานั้นจะมีฟังก์ชั่นไว้สำหรับสร้างซอมบี้
-* ซอมบี้แต่ละตัวจะมีหน้าตาที่แตกต่างกันไปได้
+In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 
-ในบทต่อๆ ไปจากนี้ เราจะทำการเพิ่มฟังก์ชั่นต่างๆ เข้าไป เช่น ทำให้ซอมบี้สามารถที่จะจู่โจมมนุษย์หรือซอมบี้ตัวอื่นๆ ได้! แต่ก่อนที่จะไปถึงจุดนั้น เราจะต้องทำการเรียนรู้ที่จะเพิ่มฟังก์ชั่นทั่วๆ ไปเสียก่อน
+## How Zombie DNA Works
 
-## การทำงานของ DNA ของซอมบี้
+The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
 
-รูปลักษณ์ของซอมบี้แต่ละตัวจะแตกต่างกันไปตาม “Zombie DNA” ซึ่งซอมบี้ DNA นี้ก็จะเป็นแค่ ข้อมูลinteger ความยาว 16 digit เท่านั้น เช่น:
+    8356281049284737
+    
 
-```
-8356281049284737
-```
+Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
 
-ซึ่งหลักการทำงานก็เหมือน DNA ในโลกความจริง คือในแต่ละส่วนของ DNA นั้นก็จะบอกลักษณะเฉพาะที่แตกต่างกันออกไป เช่น เลข 2 ตัวแรกใน DNA จะบอกข้อมูลว่าหัวซอมบี้เป็นลักษณะใด (head type), เลข2 ตัวต่อมาจะบอกลักษณะของตัวตา เป็นต้น
+> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
-> โน้ต: ในบทเรียนนี้เราต้องการที่จะทำทุกอย่างให้เรียบง่าย โดยหัวซอมบี้ของเราจะมีความแตกต่างกันได้ 7 แบบเท่านั้น (แม้ว่าโอกาสที่จะเกิดรูปแบบนั้นสามารถมีได้ถึง100ชนิดจากการเรียงเลข 2 ตัว) ในอนาคตหากเราอยากจะเพิ่มชนิดของลักษณะหัวซอมบี้ให้มีหลายตัวเลือกก็สามารถทำได้
+For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
 
-ตัวอย่างเช่น ตัวเลข 2 ตัวแรกในตัวอย่าง DNA ของเราด้านบนนั้นคือ `83` ในการที่จะทราบว่าชนิดของหัวซอมบี้ในเลขนี้คืออะไร เราต้องทำการนำ `83%7 + 1` =7 เราก็จะทราบได้ว่าซอมบี้ตัวนี้มีลักษณะหัวเป็นชนิดที่ 7 นั่นเอง
+In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
-ในตัวเลือกด้านขวา ให้เลื่อนเม้าส์ไปที่ `head gene` แล้วเลื่อนไปจนเจอ the 7th head (the Santa hat) เพื่อที่จะดูว่าลักษณะไหนตรงกับเลข `83`
+# Put it to the test
 
-# ทดสอบ
+1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
 
-1.	ลองเล่นกับSliderที่อยู่ด้านขวา โดยทำการทดลองใส่ตัวเลขต่างๆเพื่อดูว่าตัวเลขนี้จะไปตรงกับลักษณะของซอมบี้แบบไหน
-
-เมื่อเล่นจนพอใจแล้ว คลิกที่ “Next  Chapter” ด้านล่างเพื่อทำศึกษา Solidity ต่อไป!
+Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
