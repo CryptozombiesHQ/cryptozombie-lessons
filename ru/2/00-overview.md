@@ -1,11 +1,10 @@
 ---
-title: Зомби идут в атаку!
-header: Поздравляем, перед тобой Урок 2!
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-Потрясающе, человек! Ты пишешь код лучше, чем мы думали.
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-В Уроке 2 ты научишься, как **увеличить армию зомби, питаясь иными формами жизни**.
-
-В этом разделе мы освоим более продвинутые концепции Solidity, поэтому рекомендуем полностью завершить Урок 1.
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
