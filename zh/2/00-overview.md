@@ -1,9 +1,10 @@
 ---
-title: 僵尸攻击人类
-header: 你成功晋升到第二课啦！
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-厉害了，我的人类！ 你比我设想的更会编程！
-第二课中，你会学到如何通过猎食其他生物，扩张你的僵尸军团
-在这一课里，我们会使用到一些高级的 Solidity 概念，所以你一定要先完成第一课。
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
+
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
