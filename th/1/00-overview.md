@@ -1,7 +1,10 @@
 ---
-title: มาสร้างโรงงานซอมบี้กัน
+title: Making the Zombie Factory
 header: Welcome, human!
 roadmap: roadmap.jpg
 ---
-ในบทเรียนนี้จะสอนเกี่ยวกับการสร้างเกมบน Ethereum โดยแพลตฟอร์มนี้ถูกออกแบบขึ้นสำหรับผู้ใช้ Solidity มือใหม่ แต่อย่างไรก็ตามผู้ใช้จะต้องมีประสบการณ์ด้านการเขียนโปรแกรมอื่นๆ มาแล้วด้วยบ้าง (e.g. Javascript)
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
+This course will teach you how to **build a game on Ethereum**.
+
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
