@@ -1,56 +1,53 @@
 ---
-title: Контракты
-actions: ['Проверить', 'Подсказать']
-material: 
+title: "Contracts"
+actions:
+  - checkAnswer
+  - hints
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Здесь укажи версию Solidity
-
-      //2. Здесь создай контракт
-    answer: > 
+      pragma solidity //1. Enter solidity version here
+      
+      //2. Create contract here
+    answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
       }
 ---
+Starting with the absolute basics:
 
-Начнем с азов:
+Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-Код в Solidity помещают внутри **контрактов**. `contract` — это базовый блок для создания приложений на Ethereum. Все переменные и функции принадлежат контракту, он — отправная точка проекта.
+An empty contract named `HelloWorld` would look like this:
 
-Пустой контракт под названием `HelloWorld` (Привет, мир!) будет выглядеть так:
+    contract HelloWorld {
+    
+    }
+    
 
-```
-contract HelloWorld {
+## Version Pragma
 
-}
-```
+All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-## Версия pragma
+It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
-Любой код на Solidity начинается с «версии pragma» — объявления, с какой версией компилятора Solidity совместим код. Это делается для того, чтобы избежать проблем с будущими версиями компилятора, содержащими изменения и потенциально способными испортить код. 
+Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
 
-Вот так: `pragma solidity ^0.4.19;` (на момент написания кода используется версия Solidity 0.4.19).
+    pragma solidity ^0.4.19;
+    
+    contract HelloWorld {
+    
+    }
+    
 
-Соберем все вместе и получим скелет будущего контракта. Ты будешь начинать с этого каждый раз, когда создаешь новый проект:
+# Put it to the test
 
-```
-pragma solidity ^0.4.19;
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-contract HelloWorld {
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
-}
-```
+2. Create an empty contract called `ZombieFactory`.
 
-# Проверь себя
-
-Чтобы начать создавать армию зомби, напишем базовый контракт и назовем его `ZombieFactory` (Фабрика Зомби).
-
-1. В поле справа обозначь версию контракта Solidity как `0.4.19`.
-
-2. Создай пустой контракт с именем `ZombieFactory`(Фабрика Зомби).
-
-Когда закончишь, кликни «Проверить» внизу. Если затрудняешься, нажми «Подсказать».
+When you're finished, click "check answer" below. If you get stuck, you can click "hint".
