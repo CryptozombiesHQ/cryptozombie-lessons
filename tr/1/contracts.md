@@ -1,56 +1,53 @@
 ---
-title: "Kontratlar"
-actions: ['cevapKontrol', 'ipuçları']
-material: 
+title: "Contracts"
+actions:
+  - checkAnswer
+  - hints
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Solidity sürümünü buraya gir
-
-      //2. Burada kontrat oluştur
-    answer: > 
+      pragma solidity //1. Enter solidity version here
+      
+      //2. Create contract here
+    answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
       }
 ---
+Starting with the absolute basics:
 
-Mutlak temeller ile başlangıç:
+Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-Solidity'nin kodu **kontratlar**da kapsüllendi. Bir `contract` Ethereum uygulamalarının esas yapı taşıdır - bir kontrata ait tüm değişkenler ve fonksiyonlar, ve bu tüm projelerinizin başlangıç noktası olacak.
+An empty contract named `HelloWorld` would look like this:
 
-`HelloWorld` isimli boş bir kontrat şunun gibi gözükür:
+    contract HelloWorld {
+    
+    }
+    
 
-```
-contract HelloWorld {
+## Version Pragma
 
-}
-```
+All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-## Pragma Sürümü
-  
-Tüm solidity kaynak kodları bir "pragma sürümü" ile başlamalı — Solidity derleyici bu kod sürümünün bir beyanı kullanılmalı. Bu, potansiyel olarak kodunuzu bozacak değişiklikler getiren gelecekteki derleyici sürümleriyle ilgili sorunları önlemek içindir.
+It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
-Böyle görünüyor: `pragma solidity ^0.4.19;` (bu yazının yazıldığı tarihte solidiynin son sürümü için, 0.4.19).
+Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
 
-Bir araya getiriliyor, burada sade başlangıç kontratı var — ilk şey yeni bir projeye başladığın her zamanı yazacaksın:
+    pragma solidity ^0.4.19;
+    
+    contract HelloWorld {
+    
+    }
+    
 
-```
-pragma solidity ^0.4.19;
+# Put it to the test
 
-contract HelloWorld {
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-}
-```
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
-# Teste koy
+2. Create an empty contract called `ZombieFactory`.
 
-Zombi ordumuzu oluşturmaya başlamak için, hadi `ZombieFactory` denilen bir temel kontrat oluşturalım.
-
-1. Sağdaki kutuda, kontratımız '0.4.19' solidity sürümünü kullanıyor yapın.
-
-2. `ZombieFactory` denilen boş bir kontrat oluşturun.
-
-Bitirdiğinizde, aşağıda "cevabı kontrol et"e tıklayın. Takılırsanız "ipucu"na tıklayabilirsiniz.
+When you're finished, click "check answer" below. If you get stuck, you can click "hint".
