@@ -1,6 +1,8 @@
 ---
-title: Juntando Tudo
-actions: ['verificarResposta', 'dicas']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: false
@@ -10,22 +12,21 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 3.
 
-Parabéns! Isso conclui a Lição 3.
+## Let's recap:
 
-## Recapitulado:
+- We've added a way to update our CryptoKitties contracts
+- We've learned to protect core functions with `onlyOwner`
+- We've learned about gas and gas optimization
+- We added levels and cooldowns to our zombies
+- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
+- And finally, we now have a function to return a user's zombie army
 
-- Adicionamos uma maneira de atualizar nosso contratos CryptoKitties.
-- Aprendemos como proteger funções principais com `onlyOwner`
-- Aprendemos sobre gas e otimização do gas
-- Adicionamos níveis e esfriamentos para os nossos zumbis
-- Nós agora temos funções para atualizar o nome do zumbi e o DNA uma vez que o zumbi alcança um certo nível
-- E finalmente, nós temos uma função quer retorna o exército de zumbi de um usuário
+## Claim your reward
 
-## Reivindique a sua recompensa
+As a reward for completing Lesson 3, both of your zombies have leveled up!
 
-Como recompensa por completar a Lição 3, ambos os seus zumbis ganhar um nível!
+And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
 
-E agora esse NoName (o zumbi-gatinho que você criou no nível 2), foi atualizado para nível 2, você pode chamar `changeName` para dar-lhe um nome. Nunca mais NoName!
-
-Vé em frente e de um nome ao NoName, então prossiga para o próximo capítulo para completar a lição.
+Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
