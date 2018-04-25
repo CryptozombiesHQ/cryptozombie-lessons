@@ -1,47 +1,42 @@
 ---
-title: Математические операции
-actions: ['Проверить', 'Подсказать']
+title: Math Operations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          // Начало здесь
-
+      
+      uint dnaDigits = 16;
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
-
 ---
+Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
 
-Математика в Solidity довольна проста. Операции точно такие же, как в большинстве языков программирования:
+* Addition: `x + y`
+* Subtraction: `x - y`,
+* Multiplication: `x * y`
+* Division: `x / y`
+* Modulus / remainder: `x % y` *(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)*
 
-* Сложение: `x + y`
-* Вычитание: `x - y`,
-* Умножение: `x * y`
-* Деление: `x / y`
-* Модуль и остаток от деления: `x % y` _(например, `13 % 5` будет равно `3`, если разделить 13 на 5, в остатке 3)_
+Solidity also supports an ***exponential operator*** (i.e. "x to the power of y", x^y):
 
-Solidity поддерживает экспоненциальные операции **_exponential operator_** — возведение в степень (например "x в степени y", x^y):
+    uint x = 5 ** 2; // equal to 5^2 = 25
+    
 
-```
-uint x = 5 ** 2; // 5 в квадрате = 25
-```
+# Put it to the test
 
-# Проверь себя
+To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
 
-Чтобы убедиться, что ДНК зомби составляет всего 16 символов, создадим еще один `uint` со значением 10^16. Таким образом, мы сможем позже использовать оператор модуля `%` для сокращения целого числа до 16 цифр.
-
-1. Создай `uint` под названием `dnaModulus`, и задай его равным **10 в степени `dnaDigits`**.
+1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
