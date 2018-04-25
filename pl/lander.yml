@@ -1,8 +1,7 @@
----
-en:
+pl:
   ogdescription: CryptoZombies to interaktywny kurs który nauczy Cię pisać smart contracty w Solidity, zbudujesz swoją własną crypto grę.
   ogtitle: CryptoZombies - Naucz się pisać gry na Ethereum. Stworzone przez Loom Network
-  langshort: PL #should be recognizable in local languages, like chinese would be 中文
+  langshort: PL
   learn_title: Naucz się programować zdecentralizowane aplikacje (DApps) na Ethereum budując swoją własną grę
   learn_desc: CryptoZombies to interaktywny kurs który nauczy Cię pisać smart contracty w Solidity, zbudujesz swoją własną crypto grę.
   get_started: Zacznij za darmo
@@ -32,7 +31,6 @@ en:
   footer_contact_jobs: Praca
   footer_email: Email
   footer_about: O nas
-  footer_desc: CryptoZombies.io jest bezpłatną platformą która szkoli programistów, oraz zupełnuych nowicjuszy w technologi blockchain. Stworzona przez Loom Network - platforma służąca do budowania komercyjnych
-   , skalowalnych aplikacji na Ethereum.
+  footer_desc: CryptoZombies.io jest bezpłatną platformą która szkoli programistów, oraz zupełnuych nowicjuszy w technologi blockchain. Stworzona przez Loom Network - platforma służąca do budowania komercyjnych , skalowalnych aplikacji na Ethereum.
   telegram_open_chat: Open Chat
   telegram_link: https://t.me/loomnetwork
