@@ -1,55 +1,47 @@
 ---
-title: Yapılar
-actions: ['cevapKontrol', 'ipuçları']
+title: Structs
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          // start here
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
       }
 ---
+Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
 
-Bazen daha karışık bir veri türüne ihtiyacınız olur. Bunun için, Solidity **_yapılar_** sağlar:
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Structs allow you to create more complicated data types that have multiple properties.
 
-```
+> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
 
-Yapılar çoklu özelliklere sahip daha komplike veri türlerini oluşturmanıza izin verir.
+# Put it to the test
 
-> Yeni bir tür `string` sunduğumuza dikkat edin. Diziler keyfi uzunlukta UTF-8 verisi için kullanılır. Örn. `string greeting = "Merhaba Dünya!"`
+In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
 
-# Teste koy
+1. Create a `struct` named `Zombie`.
 
-Uygulamamızda, bazı zombiler oluşturmak isteyeceğiz! Ve zombilerin çoklu özellikleri olacak, yani bu bir yapı için mükemmel bir kullanım durumudur.
-
-1. `Zombie` isimli bir `struct` oluştur.
-
-2. `Zombie` yapımız 2 özelliğe sahip olacak: `name` (bir `string`), ve `dna` (bir `uint`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
