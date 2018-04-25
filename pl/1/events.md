@@ -1,110 +1,87 @@
 ---
-title: Events (zdarzenia)
-actions: ['sprawdźOdpowiedź', 'podpowiedzi']
+title: Events
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          // zadeklaruj event tutaj
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-              // i wywołaj go tutaj
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      // declare our event here
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      // and fire it here
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              NewZombie(id, _name, _dna);
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+Our contract is almost finished! Now let's add an ***event***.
 
-Nasz kontrakt jest prawie gotowy! Teraz dodajmy jeszcze **_event_**.
+***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
-**_Events(Zdarzenia)_** pozwalają Twojemu kontraktowi wysłać informacje do frontowej aplikacji. Frontowa aplikacja 'nasłuchuje', czy dane zdarzenie zaszło i jeśli tak jest to podejmuje stosowną akcje.
+Example:
 
-Przykład:
+    // declare the event
+    event IntegersAdded(uint x, uint y, uint result);
+    
+    function add(uint _x, uint _y) public {
+      uint result = _x + _y;
+      // fire an event to let the app know the function was called:
+      IntegersAdded(_x, _y, result);
+      return result;
+    }
+    
 
-```
-// deklaracja zdarzenia
-event IntegersAdded(uint x, uint y, uint result);
+Your app front-end could then listen for the event. A javascript implementation would look something like:
 
-function add(uint _x, uint _y) public {
-  uint result = _x + _y;
-  // wywołaj zdarzenie to aby powiedzieć aplikacji, że funkcja została wywołana:
-  IntegersAdded(_x, _y, result);
-  return result;
-}
-```
+    YourContract.IntegersAdded(function(error, result) { 
+      // do something with result
+    }
+    
 
-Twoja aplikacja frontowa może nasłuchiwać na zdarzenia. Javascript-owa implementacja powinna wyglądać następująco: 
+# Put it to the test
 
-```
-YourContract.IntegersAdded(function(error, result) { 
-  // wywałaj logikę tutaj
-}
-```
+We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
-# Zadanie do wykonania
+1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
 
-.
-Chcemy, aby nasza frontowa aplikacja, była informowana zawsze kiedy tworzy się nowy zombie. Dzięki temu będzie mogła go wyświetlić.
-1. Zadeklaruj `event` o nazwie `NewZombie`. Powinien składać się z: `zombieId` (`uint`), `name` (`string`), oraz `dna` (`uint`).
+2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
 
-2. Zmodyfikuj funkcje `_createZombie` aby wywoływała zdarzenie `NewZombie`  po dodaniu nowego zombie do tablicy `zombies` array. 
-
-3. Będziesz potrzebował `id` nowo stworzonego zombie. `array.push()` zwraca `uint` który jest równy długości tablicy. Jeśli założymy, że pierwszy index tablicy to  0, `array.push() - 1` będzie indexem zombie którego właśnie dodaliśmy. Zapisz wynik `zombies.push() - 1` w `uint` o nazwie `id`, dzięki czemu będziesz mugł go użyć w zdarzeniu `NewZombie` w następnej linijce.
+3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
