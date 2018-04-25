@@ -1,80 +1,60 @@
 ---
-title: Соберем все вместе
-actions: ['Проверить', 'Подсказать']
+title: Putting It Together
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          // Начало здесь
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
 
-Мы почти закончили с генератором случайных зомби! Давай создадим публичную функцию, которая объединит в себе все сделанное ранее.
+We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
 
-Создадим публичную функцию, которая получает на вход параметр имя зомби и использует его, чтобы создать зомби со случайной ДНК. 
+# Put it to the test
 
-# Проверь себя
+1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). *(Note: Declare this function `public` just as you declared previous functions `private`)*
 
-1. Создай `public` (публичную) функцию под названием `createRandomZombie` (создать случайного зомби). Она получает на вход параметр имя `_name`  (строку `string`). _(Примечание
-: задай эту функцию как `public` аналогично предыдущей `private` (частной))_
+2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
 
-2. Первая строчка в коде функции должна вызывать `_generateRandomDna`(сгенерировать случайную ДНК) в `_name` (имя), и сохранять ее в `uint` под названием `randDna` (случайная ДНК).
+3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
 
-3. Вторая строчка кода вызывает функцию `_createZombie` (создать зомби) и сообщает ей `_name`(имя) и `randDna` (случайную ДНК).
-
-4. Решение должно содержать в себе 4 строчки кода (включая закрывающую скобку `}` функции).
+4. The solution should be 4 lines of code (including the closing `}` of the function).
