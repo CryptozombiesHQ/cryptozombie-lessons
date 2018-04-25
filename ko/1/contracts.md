@@ -1,56 +1,53 @@
 ---
-title: "컨트랙트"
-actions: ['정답 확인하기', '힌트 보기']
-material: 
+title: "Contracts"
+actions:
+  - checkAnswer
+  - hints
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. 여기에 솔리디티 버전 적기
-
-      //2. 여기에 컨트랙트 생성
-    answer: > 
+      pragma solidity //1. Enter solidity version here
+      
+      //2. Create contract here
+    answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
       }
 ---
+Starting with the absolute basics:
 
-완전 기초부터 시작하기:
+Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-솔리디티 코드는 **컨트랙트** 안에 싸여 있지. `컨트랙트`는 이더리움 애플리케이션의 기본적인 구성 요소로, 모든 변수와 함수는 어느 한 컨트랙트에 속하게 마련이지. 컨트랙트는 자네의 모든 프로젝트의 시작 지점이라고 할 수 있지. 
+An empty contract named `HelloWorld` would look like this:
 
-비어 있는 `HelloWorld` 컨트랙트는 다음과 같네:
-
-```
-contract HelloWorld {
-
-}
-```
+    contract HelloWorld {
+    
+    }
+    
 
 ## Version Pragma
 
-모든 솔리디티 소스 코드는 "version pragma"로 시작해야 하는데, 이는 해당 코드가 이용해야 하는 솔리디티 버전을 선언하는 것이지. 이를 통해 이후에 새로운 컴파일러 버전이 나와도 기존 코드가 깨지지 않도록 예방하는 거지.
+All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-선언은 다음과 같이 하면 되네: `pragma solidity ^0.4.19;` (이 코스 집필 시 최신 버전이 0.4.19임).
+It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
-종합하자면 컨트랙트 초기 뼈대는 다음과 같네. 새로운 프로젝트를 시작할 때마다 이 뼈대를 제일 먼저 작성해야 하지:
+Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
 
-```
-pragma solidity ^0.4.19;
+    pragma solidity ^0.4.19;
+    
+    contract HelloWorld {
+    
+    }
+    
 
-contract HelloWorld {
+# Put it to the test
 
-}
-```
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-# 직접 해보기
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
-우리의 좀비 군대 생성을 시작하기 위해 `ZombieFactory`라는 기본 컨트랙트를 생성해 보세!
+2. Create an empty contract called `ZombieFactory`.
 
-1. 우측 박스에 우리 컨트랙트가 솔리디티 버전 `0.4.19`를 쓸 수 있도록 설정한다. 
-
-2. `ZombieFactory`라는 빈 컨트랙트를 생성한다.
-
-다 마쳤으면 아래 "정답 확인하기"를 클릭하게. 막히는 부분이 있으면 "힌트 보기"를 클릭할 수도 있네. 
+When you're finished, click "check answer" below. If you get stuck, you can click "hint".
