@@ -1,6 +1,8 @@
 ---
-title: ¡Lección 4 completada!
-actions: ['checkAnswer', 'hints']
+title: Lesson 4 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
