@@ -1,48 +1,42 @@
 ---
-title: Math Operations การดำเนินการทางคณิตศาสตร์
-actions: ['checkAnswer', 'hints']
+title: Math Operations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          //เริ่มที่ตรงนี้
-
+      
+      uint dnaDigits = 16;
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
-
 ---
+Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
 
-คณิตศาสตร์ใน Solidity นั้นค่อนข้างที่จะตรงตัว โดยโอเปอร์เรชั่นด้านล่างนี้จะเป็นได้ว่าจะคล้ายๆกับในภาษาโปรแกรมทั่วๆ ไป :
+* Addition: `x + y`
+* Subtraction: `x - y`,
+* Multiplication: `x * y`
+* Division: `x / y`
+* Modulus / remainder: `x % y` *(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)*
 
-* Addition (การบวก): `x + y`
-* Subtraction (การลบ): `x - y`,
-* Multiplication (การคูณ): `x * y`
-* Division (การหาร): `x / y`
-* Modulus / remainder (การหารเอาเศษ): `x % y`  (ตัวอย่างเช่น`13 % 5` จะได้ `3` ออกมาเป็นเศษและคำตอบของโอเปอร์เรชั่นนี้)_
+Solidity also supports an ***exponential operator*** (i.e. "x to the power of y", x^y):
 
-นอกจากนี้ Solidity ยังรองรับ **_exponential operator_**  อีกด้วย (เช่น x ยกกำลังy ,x^y):
+    uint x = 5 ** 2; // equal to 5^2 = 25
+    
 
-```
-uint x = 5 ** 2; // เท่ากับ 5^2 = 25
-```
+# Put it to the test
 
-# ทดสอบ
+To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
 
-เพื่อทำให้มั่นใจว่า DNA ซอมบี้ของเรานั้นจะมีความยาวแค่ 16 ตัว ลองมาทำการให้ `uint` มีค่าเท่ากับ 10^16 วิธีนี้จะทำให้เราสามารถนำ Modulus operator `%` มาใช้ทำให้ข้อมูลสั้นลงเป็น 16 ตัวได้
-
-1. สร้างข้อมูลชนิด `uint` โดยใช้ชื่อว่า `dnaModulus` และกำหนดค่าให้เท่ากับ **10ยกกำลังด้วย `dnaDigits`**
-
+1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
