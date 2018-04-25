@@ -1,146 +1,118 @@
 ---
-title: 함수 접근 제어자 더 알아보기
-actions: ['정답 확인하기', '힌트 보기']
+title: More on Function Visibility
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            // edit function definition below
-            function _createZombie(string _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        // edit function definition below
+        function _createZombie(string _name, uint _dna) private {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
+        
         contract ZombieFeeding is ZombieFactory {
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            _createZombie("NoName", newDna);
-          }
-
+        
+        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        _createZombie("NoName", newDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) internal {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) internal { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+**The code in our previous lesson has a mistake!**
 
-**지난 레슨의 코드에 실수가 있네!**
+If you try compiling it, the compiler will throw an error.
 
-자네가 코드를 컴파일하려고 하면 컴파일러가 에러 메시지를 출력할 거네. 
+The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
 
-문제는 `ZombieFeeding` 컨트랙트 내에서 `_createZombie` 함수를 호출하려고 했다는 거지. 그런데 `_createZombie` 함수는 `ZombieFactory` 컨트랙트 내의 `private` 함수이지. 즉, `ZombieFactory` 컨트랙트를 상속하는 어떤 컨트랙트도 이 함수에 접근할 수 없다는 뜻이지.   
+## Internal and External
 
-## Internal과 External
+In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
 
-`public`과 `private` 이외에도 솔리디티에는 `internal`과 `external`이라는 함수 접근 제어자가 있지.
+`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
 
-`internal`은 함수가 정의된 컨트랙트를 상속하는 컨트랙트에서도 접근이 가능하다 점을 제외하면 `private`과 동일하지. **(우리한테 필요한 게 바로 `internal`인 것 같군! 
+`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
 
-`external`은 함수가 컨트랙트 바깥에서만 호출될 수 있고 컨트랙트 내의 다른 함수에 의해 호출될 수 없다는 점을 제외하면 `public`과 동일하지. 나중에 `external`과 `public`이 각각 왜 필요한지 살펴 볼 것이네. 
+For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
 
-`interal`이나 `external` 함수를 선언하는 건 `private`과 `public` 함수를 선언하는 구문과 동일하네:
+    contract Sandwich {
+      uint private sandwichesEaten = 0;
+    
+      function eat() internal {
+        sandwichesEaten++;
+      }
+    }
+    
+    contract BLT is Sandwich {
+      uint private baconSandwichesEaten = 0;
+    
+      function eatWithBacon() public returns (string) {
+        baconSandwichesEaten++;
+        // We can call this here because it's internal
+        eat();
+      }
+    }
+    
 
-```
-contract Sandwich {
-  uint private sandwichesEaten = 0;
+# Put it to the test
 
-  function eat() internal {
-    sandwichesEaten++;
-  }
-}
-
-contract BLT is Sandwich {
-  uint private baconSandwichesEaten = 0;
-
-  function eatWithBacon() public returns (string) {
-    baconSandwichesEaten++;
-    // eat 함수가 internal로 선언되었기 때문에 여기서 호출이 가능하다 
-    eat();
-  }
-}
-```
-
-# 직접 해보기
-
-1. `_createZombie()` 함수를 `private`에서 `internal`로 바꾸어 선언하여 이 함수가 정의된 컨트랙트를 상속하는 컨트랙트에서도 접근 가능하도록 한다.
-
-  이미 `zombiefactory.sol` 탭이 활성화되어 있다.
-                                                      
+1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+    
+    We've already focused you back to the proper tab, `zombiefactory.sol`.
