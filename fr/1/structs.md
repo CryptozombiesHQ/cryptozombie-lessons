@@ -1,55 +1,47 @@
 ---
-title: Structures
-actions: ['vérifierLaRéponse', 'indice']
+title: Structs
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          // commencez ici
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
       }
 ---
+Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
 
-Il est possible que vous ayez besoin d'un type de données plus complexe. Pour cela, Solidity fournit les **_structures_** (struct) :
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Structs allow you to create more complicated data types that have multiple properties.
 
-```
+> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
 
-Les structures vous permettent de créer des types de données plus complexes avec plusieurs propriétés.
+# Put it to the test
 
-> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères sont utilisées pour les données UTF-8 de longueur arbitraire. Ex. `string greeting = "Hello world!"`
+In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
 
-# A votre tour
+1. Create a `struct` named `Zombie`.
 
-Dans notre application, nous allons vouloir créer des zombies ! Et les zombies ont plusieurs propriétés, une structure est parfaitement adapté pour ça.
-
-1. Créez une `struct` nommée `Zombie`.
-
-2. Notre structure `Zombie` aura 2 propriétés : `name` (un `string`) et `dna` (un `uint`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
