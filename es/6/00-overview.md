@@ -1,19 +1,18 @@
 ---
 title: App Front-ends & Web3.js
-header: "Lección 6: App Front-ends & Web3.js"
+header: "Lesson 6: App Front-ends & Web3.js"
 roadmap: roadmap6.png
 ---
+Huh, you've made it this far?!
 
-¡¿Has llegado muy lejos, eh?!
+You're no ordinary CryptoZombie...
 
-No eres un CryptoZombie ordinario...
+By completing Lesson 5, you've demonstrated that you have a pretty firm grasp of Solidity.
 
-Completando la lección 5, has demostrado que ya tienes una comprensión muy firme de Solidity.
+But no DApp is complete without a way for its users to interact with it...
 
-Pero ninguna DApp está completa sin que los usuarios puedan interactuar con ella...
+In this lesson, we're going to look at how to interact with your smart contract and build a basic front-end for your DApp using a library called **Web3.js**.
 
-En esta lección, vamos a aprender a como interactuar con un Contrato Inteligente y construir un front-end básico usando una librería llamada  **Web3.js**.
+Note that app front-ends are written in **JavaScript**, not Solidity. But since the focus of this course is on Ethereum / Solidity, we're assuming you are already comfortable building websites with HTML, JavaScript (including ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), and JQuery, and will not be spending time covering the basics of those languages.
 
-Ten en cuenta que los front-ends de las DApps están escritas en **JavaScript** y no Solidity. Pero dado que el enfoque de este curso está en Ethereum y Solidity, ya damos por hecho que ya te sientes cómodo construyendo sitios web con HTML, JavaScript (incluyendo ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), y JQuery, así que no vamos a perder mucho tiempo cubriendo lo básico de dichos lenguajes.
-
-Si aún no te sientes muy cómodo construyendo sitios web con HTML / Javascript, es muy recomendable que sigas cualquier tutorial sobre estos lenguajes de programación.
+If you are not already comfortable building websites with HTML / Javascript, you should complete a basic tutorial elsewhere before starting this lesson.
