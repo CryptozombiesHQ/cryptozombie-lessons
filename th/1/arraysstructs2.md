@@ -1,94 +1,79 @@
 ---
-title: ทำงานกับ Structs และ Arrays
-actions: ['checkAnswer', 'hints']
+title: Working With Structs and Arrays
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              // เริ่มที่ตรงนี้
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function createZombie(string _name, uint _dna) {
+      // start here
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
-### การสร้าง Structs ใหม่
-ย
-ังจำ struct ของเราที่ชื่อว่า `Person`
-ในตัวอย่างก่อนหน้าได้มั้ย?
+### Creating New Structs
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Remember our `Person` struct in the previous example?
 
-Person[] public people;
-```
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    Person[] public people;
+    
 
-ตอนนี้เราก็จะมาศึกษาว่าจะสามารถสร้าง `Person`  ขึ้นมาใหม่ได้อย่างไร และจะเพิ่มลงไปใน array ที่ชื่อว่า `people` ได้อย่างไร
+Now we're going to learn how to create new `Person`s and add them to our `people` array.
 
-```
-// สร้างPersonขึ้นมาใหม่:
-Person satoshi = Person(172, "Satoshi");
+    // create a New Person:
+    Person satoshi = Person(172, "Satoshi");
+    
+    // Add that person to the Array:
+    people.push(satoshi);
+    
 
-// เพิ่ม element Person ที่เราสร้างขึ้นนั้นลงไปใน Array:
-people.push(satoshi);
-```
+We can also combine these together and do them in one line of code to keep things clean:
 
-โดยเราสามาถนำมารวมกันให้เป็นคำสั่งภายในบรรทัดเดียว เพื่อความเรียบร้อยของโค้ดได้อีกด้วย:
+    people.push(Person(16, "Vitalik"));
+    
 
-```
-people.push(Person(16, "Vitalik"));
-```
+Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
 
-สังเกตได้ว่า  `array.push()` จะเป็นคำสั่งที่เพิ่มข้อมูลลงในส่วน **ท้าย** ของ array ดังนั้นก็จะทำให้ข้อมูลที่อยู่ใน array นั้นก็จะถูกเรียงตามลำดับที่เราเพิ่มเข้าไป ดูได้จากตัวอย่างดังต่อไปนี้
+    uint[] numbers;
+    numbers.push(5);
+    numbers.push(10);
+    numbers.push(15);
+    // numbers is now equal to [5, 10, 15]
+    
 
-```
-uint[] numbers;
-numbers.push(5);
-numbers.push(10);
-numbers.push(15);
-// ซึ่งจะทำให้ numbersในตอนนี้มีค่า [5, 10, 15]
-```
+# Put it to the test
 
-# มาลองทดสอบ
+Let's make our createZombie function do something!
 
-เริ่มจากการให้ ฟังก์ชั่น createZombie ของเราทำอะไรบางอย่างดู!
-
-1.	เติม function ในส่วนของ body โดยทำให้มันสร้าง new `Zombie` ใหม่ขึ้นมา จากนั้นก็ให้เพิ่มลงไปยัง array ที่ชื่อว่า `zombies` โดย `name` และ `dna` ที่เป็นข้อมูลของ new ‘Zombie’ นั้นควรถูกนำมาจาก function arguments
-2.	ทำโค้ดให้อยู่ในบรรทัดเดียวเพื่อความเรียบร้อย
+1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+2. Let's do it in one line of code to keep things clean.
