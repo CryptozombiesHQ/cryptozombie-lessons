@@ -1,8 +1,7 @@
----
 th:
   ogdescription: CryptoZombiesเป็นเหมือนโรงเรียนสอนการเขียนโค้ดที่จะสอนคุณเกี่ยวกับการสร้างsmart contractในSoilidityไปจนถึงการสร้างcrypto-collectables gameของคุณเอง
   ogtitle: CryptoZombies-เรียนรู้การโค้ดเกมต่างๆบนEthereum โดยได้รับการสนับสนุนจากLoom Network
-  langshort: ไทย #ควรถูกเข้าใจได้โดยภาษาท้องถิ่น เช่นหากเป็นภาษาจีนก็อาจเป็น 中文
+  langshort: ไทย
   learn_title: เรียนรู้การโค้ด Ethereum DAppsได้โดยการสร้างเกมของคุณขึ้นมาเอง
   learn_desc: CryptoZombiesเป็นเหมือนโรงเรียนสอนการเขียนโค้ดที่จะสอนคุณเกี่ยวกับการสร้างsmart contractในSoilidityไปจนถึงการสร้างcrypto-collectables gameของคุณเอง
   get_started: เริ่มต้นได้เลยโดยไม่ต้องเสียค่าใช้จ่าย
@@ -14,6 +13,7 @@ th:
   collect_desc1: รับCrypto-Collectibles Zombies และbonusเมื่อเรียนจบในแต่ละบท
   collect_desc2: หลังจากเรียนจบทุกบทและมีการสร้างDAppของคุณขึ้นมา,ให้กองทัพซอมบี้ของคุณต่อสู้กับซอมบี้ของคู่แข่งคนอื่นๆซึ่งจะเป็นหนึ่งในblockchain-based gameแรกของโลก!โดยจะเป็นครึ่ง code school ครึ่ง MMO crypto-collectible strategy game
   collect_desc3: จะรออะไรอยู่?คลิกที่ปุ่มด้านล่างเพื่อเริ่มบทเรียนแรกและสร้างDAppแรกของคุณขึ้น โดยที่ไม่ต้องเสียค่าใช้จ่ายใดๆ!
+  start_title: Get Started Now
   int_title: Interactive Coding Lessons
   inbrowser_desc: บทเรียนที่จะสอนแบบstep-by-stepบนbrowserจะสอนคุณเริ่มต้นจากขั้นตอนที่ง่ายที่สุดบนSolidityไปจนกระทั่งสามารถสร้างblockchain-baesd gameที่สมบูรณ์ขึ้นมาได้ แม้ว่าจะศึกษาจบไปเพียงแค่บทแรก(ซึ่งคุณสามารถทำได้ในเวลาอันสั้น)คุณจะมีความรู้มากเพียงพอที่จะเรียกตัวเองได้ว่าเป็นSolidity developer!
   zombie_title: สร้างกองทัพซอมบี้
