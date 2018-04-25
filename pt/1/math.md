@@ -1,47 +1,42 @@
 ---
-title: Operações Matemáticas
-actions: ['verificarResposta', 'dicas']
+title: Math Operations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          // comece aqui
-
+      
+      uint dnaDigits = 16;
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
-
 ---
+Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
 
-Matemática em Solidity é bem fácil. As seguintes operações são as mesmas na maioria das linguagens de programação:
+* Addition: `x + y`
+* Subtraction: `x - y`,
+* Multiplication: `x * y`
+* Division: `x / y`
+* Modulus / remainder: `x % y` *(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)*
 
-* Adição: `x + y`
-* Subtração: `x - y`,
-* Multiplicação: `x * y`
-* Divisão: `x / y`
-* Módulo / Resto: `x % y` _(por exemplo, `13 % 5` é `3`, porque se você dividir 5 por 13, 3 é o resto)_
+Solidity also supports an ***exponential operator*** (i.e. "x to the power of y", x^y):
 
-Solidity também suporta um **_operador exponencial_** (exemplo: "x elevado a potência de y", x^y):
+    uint x = 5 ** 2; // equal to 5^2 = 25
+    
 
-```
-uint x = 5 ** 2; // o mesmo que 5^2 = 25
-```
+# Put it to the test
 
-# Vamos testar
+To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
 
-Para ter certeza que o nosso DNA Zumbi é somente de 16 caracteres, vamos criar outro `uint` igual o valor de 10^16. Desta maneira mais tarde podemos usar o operador de módulo `%` para encurtar um inteiro para 16 dígitos.
-
-1. Crie um `uint` chamado `dnaModulus`, e defina-o igual a **10 elevado a potência de `dnaDigits`**
+1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
