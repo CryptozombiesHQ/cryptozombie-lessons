@@ -1,6 +1,8 @@
 ---
-title: Siste Finpuss
-actions: ['checkAnswer', 'hints']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: false
@@ -10,22 +12,21 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 3.
 
-Gratulerer! Det konkluderer leksjon 3.
+## Let's recap:
 
-## La oss se tilbake på det vi har lært:
+- We've added a way to update our CryptoKitties contracts
+- We've learned to protect core functions with `onlyOwner`
+- We've learned about gas and gas optimization
+- We added levels and cooldowns to our zombies
+- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
+- And finally, we now have a function to return a user's zombie army
 
-- Vi har lagt til en måte å oppdatere våre CryptoKitties-kontrakter på
-- Vi har lært å beskytte kjernefunksjoner med `onlyOwner`
-- Vi har lært om gas og gas-optimalisering
-- Vi har lagt til nivåer og nedkjølingstid til våre zombier
-- Vi har nå funksjoner for å oppdaterer en zombies navn og DNA når zombien kommer over et visst nivå
-- Og til slutt har vi nå en funksjon for å returnere brukerens zombie-hær
+## Claim your reward
 
-## Gjør krav på belønningen din
+As a reward for completing Lesson 3, both of your zombies have leveled up!
 
-Som en belønning for å fullføre leksjon 3, har begge dine zombier levlet opp!
+And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
 
-Og nå er NoName (kitty-zombiem du opprettet i leksjon 2) oppgradert til nivå 2, du kan kjøre `changeName` for å gi ham / henne et navn.
-
-Kom igjen, gi NoName et navn, og fortsett til neste kapittel for å fullføre leksjonen.
+Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
