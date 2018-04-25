@@ -1,6 +1,8 @@
 ---
-title: 레슨 2 개요 
-actions: ['정답 확인하기', '힌트 보기']
+title: Lesson 2 Overview
+actions:
+  - checkAnswer
+  - hints
 material:
   saveZombie: false
   zombieBattle:
@@ -10,25 +12,24 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
 
-지난 레슨에서 좀비의 이름을 받아서 랜덤으로 좀비를 생성한 다음, 이 좀비를 블록체인상의 우리 앱 좀비 데이터베이스에 추가하는 함수를 만들었지.  
+In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
 
-이번 레슨에서는 우리 앱을 좀 더 게임답게 만들 걸세: 앱을 멀티플레이어 게임으로 만들고, 좀비를 랜덤으로만 생성하지 않고 좀더 재미있는 방식으로 좀비를 생성할 것이네.  
+How will we create new zombies? By having our zombies "feed" on other lifeforms!
 
-어떻게 새로운 좀비를 생성할까? 좀비가 다른 생명체를 "먹도록" 해서!
+## Zombie Feeding
 
-## 좀비 먹이기
+When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
 
-좀비가 먹이를 먹으면 먹이는 바이러스에 감염되지. 이 바이러스는 먹이를 새로운 좀비로 바꾸어 좀비 군대의 일원이 되도록 하지. 새로운 좀비의 DNA는 이전 좀비의 DNA와 먹이의 DNA를 활용하여 계산될 것이네.  
+And what do our zombies like to feed on most?
 
-그럼 우리 좀비들이 가장 좋아하는 먹이가 무엇일까? 
+To find that out... You'll have to complete lesson 2!
 
-그걸 알고 싶으면... 레슨 2를 마쳐야 할 것이네! 
+# Put it to the test
 
-# 직접 해보기
+There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
 
-오른쪽에 보면 좀비가 먹이를 먹는 간단한 데모가 있지. 인간을 클릭해서 좀비가 먹이를 먹을 때 어떤 일이 일어나는지 보게! 
+You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
 
-새로운 좀비의 DNA는 원래 좀비의 DNA와 먹이의 DNA에 의해 결정된다는 것을 알 수 있지.
-
-준비가 되면, "다음 챕터"를 클릭해서 계속 진행하게. 우리 게임을 멀티 플레이어 게임으로 만드는 것부터 시작하도록 하지. 
+When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
