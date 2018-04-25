@@ -1,13 +1,12 @@
 ---
-title: ERC721 & Cripto-Colecionáveis
-header: "Lesson 5: ERC721 & Cripto-Colecionáveis"
+title: ERC721 & Crypto-Collectibles
+header: "Lesson 5: ERC721 & Crypto-Collectibles"
 roadmap: roadmap5.jpg
 ---
+Whew! Things are starting to heat up in here...
 
-Ufa! As coisas estão começando a esquentar aqui...
+In this lesson, we're going to get a bit more advanced.
 
-Nesta lição, Nós vamos ficar um pouco mais avançados.
+We're going to talk about **tokens**, the **ERC721** standard, and **crypto-collectible assets**.
 
-Vamos falar sobre **tokens**, e o padrão **ERC721**, e **ativos cripto-colecionáveis**.
-
-Em outras palavras, vamos fazer isso **para que você possa trocar zumbis com os seus amigos.**
+In other words, we're going to **make it so you can trade your zombies with your friends.**
