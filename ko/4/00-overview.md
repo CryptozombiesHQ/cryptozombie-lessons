@@ -1,13 +1,12 @@
 ---
-title: 좀비 전투 시스템
-header: "레슨 4: 좀비 전투 시스템"
+title: Zombie Battle System
+header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
 ---
+The time has come, human...
 
-때가 왔다, 인간이여...
+Time to make your zombies FIGHT!
 
-자네의 좀비가 싸.우.게. 만들 때 말이네!
+But zombie battles aren't for the faint of heart...
 
-하지만 좀비 전투는 심약한 인간들을 위한 것은 아니야...
-
-이번 레슨에서, 우린 좀비 전투 함수를 만들기 위해 이전 챕터들에서 자네가 지금껏 배워온 것들을 한데 모으게 될 것이네. 우린 또한 **payable** 함수와 DApp이 플레이어들로부터 돈을 받을 수 있게 하는 방법에 대해 배우게 될 게야.
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.
