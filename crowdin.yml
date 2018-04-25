@@ -12,4 +12,6 @@ files:
   - source: /en/6
     translation: /%two_letters_code%/6/%original_file_name%
   - source: /en/*
+    ignore:
+      - index.ts
     translation: /%two_letters_code%/%original_file_name%
