@@ -1,21 +1,22 @@
 ---
-title: Kapittel 1 ferdig!
-actions: ['checkAnswer', 'hints']
+title: Lesson 1 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
 ---
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-Gratulerer! Du har fullført kapittel 1, og du har laget din første zombie.
+# Next Steps
 
-# Neste steg
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-Dette er bare begynnelsen. Vi kommer til å slippe en ny CryptoZombies leksjon hver uke, for å bygge ut spillet videre og videre.
+### 1. Sign in to save your progress
 
-### 1. Logg inn for å lagre progressjonen din
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
-**_Logg inn_** for å lagre progressjonen din ved å klikke "Save Progress" linken på toppen av siden. Vi lar deg vite når neste leksjon blir tilgjengelig.
+### 2. Share your zombie with your friends
 
-### 2. Del zombien din til vennene dine
-
-**_Del_** zombien din via Twitter, blah blah, etc. (Need to insert images / links)
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
