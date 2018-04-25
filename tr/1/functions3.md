@@ -1,102 +1,86 @@
 ---
-title: Fonksiyonlar Hakkında Dahası
-actions: ['cevapKontrol', 'ipuçları']
+title: More on Functions
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
-
-          // start here
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string _str) private view returns (uint) {
+      }
       }
 ---
+In this chapter, we're going to learn about Function ***return values***, and function modifiers.
 
-Bu bölümde, Fonksiyon **_değerleri getirmeyi_** ve fonksiyon değiştiricileri öğreneceğiz.
+## Return Values
 
-## Değerleri Getirme
+To return a value from a function, the declaration looks like this:
 
-Bir fonksiyondan bir değer getirmek için, ifade şuna benzer:
+    string greeting = "What's up dog";
+    
+    function sayHello() public returns (string) {
+      return greeting;
+    }
+    
 
-```
-string greeting = "Naber köpek";
+In Solidity, the function declaration contains the type of the return value (in this case `string`).
 
-function sayHello() public returns (string) {
-  return greeting;
-}
-```
+## Function modifiers
 
-Solidity'de, fonksiyon ifadesi değer getirme türü içerir (bu durumda `string`).
+The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
 
-## Fonksiyon değiştiriciler
+So in this case we could declare it as a ***view*** function, meaning it's only viewing the data but not modifying it:
 
-Yukardaki fonksiyon aslında Solidity'de durumu değiştirmez — örn. bir değeri değiştirmez veya hiçbir şey yazmaz.
+    function sayHello() public view returns (string) {
+    
 
-Yani bu durumda onu, veriyi görüntüleyen fakat değiştirmeyen anlamında **_görüntü_** fonksiyonu olarak ifade edebilirdik:
+Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
 
-```
-function sayHello() public view returns (string) {
-```
+    function _multiply(uint a, uint b) private pure returns (uint) {
+      return a * b;
+    }
+    
 
-Solidity ayrıca uygulamadaki bir veriye tam erişemediğiniz anlamına gelen **_saf_** fonksiyonlar içerir. Aşağıdaki duruma bakın:
+This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as ***pure***.
 
-```
-function _multiply(uint a, uint b) private pure returns (uint) {
-  return a * b;
-}
-```
+> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
 
-Bu fonksiyon uygulamanın durumundan tam okumuyor — getirdiği değer sadece kendi fonksiyon parametrelerine bağlıdır. Yani bu durumda fonksiyonu **_saf_** olarak ifade edebiliriz.
+# Put it to the test
 
-> Not: Fonksiyonların ne zaman saf/görüntü olarak işaretleneceğini hatırlamak zor olabilir. Neyse ki Solidity derleyicisi, bu değiştiricilerden birini ne zaman kullanmanız gerektiğini bildiren uyarıların verilmesi konusunda iyidir.
+We're going to want a helper function that generates a random DNA number from a string.
 
-# Teste koy
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
-Bir diziden rastgele bir DNA sayısı oluşturan yardımcı bir fonksiyon isteyeceğiz.
+2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
 
-1. `_generateRandomDna` denilen `private` bir fonksiyon oluşturun. `_str` (bir `string`) isimli bir parametre alacak ve bir `uint` getirecek.
-
-2. Bu fonksiyon kontratlarımızın değişkenlerinin bazılarını görecek fakat onları değiştirmeyecek, yani onu `view` olarak işaretleyin.
-
-3. Fonksiyon gövdesi bu sırada boş olmalıdır — onu daha sonra dolduracağız.
+3. The function body should be empty at this point — we'll fill it in later.
