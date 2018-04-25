@@ -1,12 +1,10 @@
 ---
-title: Fazendo a Fábrica de Zumbi
-header: Bem vindo, humano!
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
 ---
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
-Então, você acha que tem o que é preciso para se tornar um **CryptoZombie**, hein?
+This course will teach you how to **build a game on Ethereum**.
 
-Este curso irá ensinar você como **construir um jogo no Ethereum**
-
-É projetado para iniciantes em Solidity, mas presume que você tem alguma experiência
-em programação em outra linguagem (exemplo: Javascript)
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
