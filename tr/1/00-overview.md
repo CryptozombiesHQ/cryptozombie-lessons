@@ -1,12 +1,10 @@
 ---
-title: Zombi Fabrikası Yapmak
-header: Hoş geldin, insan!
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
 ---
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
-Sanki bir **CryptoZombie**ye başlamak için ne gerektiğini düşünüyorsun, ha?
+This course will teach you how to **build a game on Ethereum**.
 
-Bu kurs size **Ethereum'da bir oyun yapmanın** nasıl olduğunu öğretecek.
-
-Güvenirlik için yeni başlayanlar için tasarlandı ancak başka bir dilde (örn. Javascript)
-biraz tecrübe sahibi olduğunuzu varsayar.
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
