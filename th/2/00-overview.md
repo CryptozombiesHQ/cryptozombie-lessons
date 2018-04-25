@@ -1,11 +1,10 @@
 ---
-title: ให้ซอมบี้ออกล่าเหยื่อ
-header: คุณก็ได้มาถึงบทเรียนที่ 2 แล้ว!
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-น่าทึ่งมาก ! คุณเก่งกว่าที่เรานึกไว้เสียอีก
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-ในบทเรียนที่ 2 เราจะเรียนเกี่ยวกับการ **เพิ่มจำนวนซอมบี้ในกองทัพของคุณโดยการกินสิ่งมีชีวิตอื่นเข้าไป**
-
-บทเรียนนี้จะครอบคลุมเนื้อหาเกี่ยวกับคอนเซปต์ของ Solidity ในขั้นที่สูงขึ้น ขอแนะนำว่าคุณควรเรียนเนื้อหาในบทที่ 1 มาก่อนแล้วนะ
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
