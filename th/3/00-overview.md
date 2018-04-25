@@ -3,13 +3,12 @@ title: Advanced Solidity Concepts
 header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap3.png
 ---
+Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...
 
-หนอยแน่... เรียนรู้ไวมากเลยทีเดียวนะเนี่ย ทักษะ Solidity ของคุณนี่น่ากลัวจริงจริ๊ง ...
+Now that you've got some experience coding Solidity under your belt, we're going to dive into some of the more technical aspects of Ethereum development.
 
-ตอนนี้เราเชื่อว่าคุณก็คงมีประสบการณ์การโค้ดบน Solidity อยู่พอสมควรแล้วล่ะเนอะ ดังนั้นจากนี้ไปเราจะต้องมาดำดิ่งเข้าสู่การพัฒนา Ethereum อย่างมืออาชีพกันได้แล้ว
+This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
 
-ในบทนี้ขอบอกไว้ก่อนเลยว่าเนื้อหาจะไม่หวือหวาหรือสนุกเหมือนที่ผ่านมาอีกต่อไป (อันนี้พูดจริงๆ นะ!) โดยเราจะให้คุณได้เรียนรู้เกี่ยวกับคอนเซปท์ที่มีความสำคัญอย่างมากในการสร้าง DApps ด้วยบทเรียนนี้ — ยกตัวอย่างเช่น **contract ownership, gas costs, code optimization, และ ความปลอดภัย (security)**.
+You've been warned — no kitties and rainbows in Lesson 3!
 
-เราเตือนคุณแล้วนะ — จะไม่มีน้องแมว kitties หรือว่าสายรุ้งน่ารักๆ อีกต่อไปในบทเรียนที่ 3!
-
-เนื้อหาจะเข้มข้นขึ้น - ประกอบไปด้วยความรู้เกี่ยวกับ Solidity ชุดใหญ่ เราแนะนำให้คุณทวนบทที่ 2 ให้ดีซะก่อน
+But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
