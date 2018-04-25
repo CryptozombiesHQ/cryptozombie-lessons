@@ -1,15 +1,14 @@
 ---
-title: 고급 솔리디티 개념
-header: "레슨 3: 고급 솔리디티 개념"
+title: Advanced Solidity Concepts
+header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap3.png
 ---
+Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...
 
-그르르... 내가 자네의 속도를 늦출 수는 없겠군.. 그렇지?? 자네의 솔리디티 스킬은 정말 무섭군, 인간이여...
+Now that you've got some experience coding Solidity under your belt, we're going to dive into some of the more technical aspects of Ethereum development.
 
-자네는 이제 기본적인 솔리디티 코딩 경험을 쌓았으니, 우리는 이더리움 개발의 조금 더 기술적인 측면을 파고들 것이네.
+This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
 
-이번 레슨은 조금 재미가 덜할 수도 있네. 하지만 여기서 **컨트랙트 소유권이나 가스 비용, 코드 최적화, 보안** 같은 실제 DApp을 만들 때 정말 중요한 개념들을 학습할 것이네. 
+You've been warned — no kitties and rainbows in Lesson 3!
 
-분명히 먼저 경고했네 - 귀여운 고양이나 무지개는 레슨 3에 없어!
-
-그러나 다양한 솔리디티 지식을 탄탄하게 쌓을 수 있지. 이걸 시작하기 전에 자네가 레슨 2를 먼저 끝내기를 강력히 추천하네.
+But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
