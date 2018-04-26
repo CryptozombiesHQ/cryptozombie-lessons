@@ -13,11 +13,11 @@ material:
 ---
 Quando si desidera effettuare una collezione di qualcosa, puoi utilizzare un***array***. Ci sono due tipi di array in Solidity: ***fixed*** arrays e ***dynamic*** arrays:
 
-    // Array with a fixed length of 2 elements:
+    // Array con una lunghezza fissa di due elementi:
     uint[2] fixedArray;
-    // another fixed Array, can contain 5 strings:
+    // Un altro Array fisso, può contenere cinque stringhe;
     string[5] stringArray;
-    // a dynamic Array - has no fixed size, can keep growing:
+    // Un Array dinamico - non ha una dimensione fissa, può continuare a crescere:
     uint[] dynamicArray;
     
 
