@@ -30,7 +30,7 @@ Ricordi che le variabili di stato sono contenute permanentemente nella blockchai
 
 ## Array Pubblici
 
-You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
+Puoi dichiarare un array come `pubblico`, e Solidity creerà automaticamente un metodo***getter***per esso. La sintassi sembra questa:
 
     Person[] public people;
     
