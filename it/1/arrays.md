@@ -7,31 +7,11 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
-      
-      contract ZombieFactory {
-      
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
-      
-      struct Zombie {
-      string name;
-      uint dna;
-      }
-      
-      // start here
-      
-      }
+      pragma solidity ^0.4.19; contract ZombieFactory { uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits; struct Zombie { string name; uint dna; } // inizia qui }
     answer: >
-      pragma solidity ^0.4.19;
-      
-      contract ZombieFactory {
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
-      }
+      pragma solidity ^0.4.19; contract ZombieFactory { uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits; struct Zombie { string name; uint dna; } Zombie[] public zombies; }
 ---
-When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
+Quando si desidera effettuare una collezione di qualcosa, puoi utilizzare un***array***. Ci sono due tipi di array in Solidity: ***fixed*** arrays e ***dynamic*** arrays:
 
     // Array with a fixed length of 2 elements:
     uint[2] fixedArray;
