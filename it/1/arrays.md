@@ -30,15 +30,15 @@ Ricordi che le variabili di stato sono contenute permanentemente nella blockchai
 
 ## Array Pubblici
 
-Puoi dichiarare un array come `pubblico`, e Solidity creerà automaticamente un metodo***getter***per esso. La sintassi sembra questa:
+Puoi dichiarare un array come `pubblico`, e Solidity creerà automaticamente un metodo ***getter*** per esso. La sintassi sembra questa:
 
     Person[] public people;
     
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+Gli altri contratti potrebbero essere quindi abilitati a leggere (ma non scrivere) in questo array. Quindi questo è un modello utile per immagazzinare dati pubblici nel tuo contratto.
 
-# Put it to the test
+# Facciamo un test
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+Vogliamo andare a memorizzare un esercito di zombie nella nostra app. E vorremmo mostrare tutti i nostri zombi ad altre app, quindi vorremmo che fosse pubblico.
 
 1. Create a public array of `Zombie` ***structs***, and name it `zombies`.
