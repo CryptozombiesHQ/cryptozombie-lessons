@@ -11,7 +11,7 @@ material:
     answer: >
       pragma solidity ^0.4.19; contract ZombieFactory { uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits; struct Zombie { string name; uint dna; } Zombie[] public zombies; }
 ---
-Quando si desidera effettuare una collezione di qualcosa, puoi utilizzare un***array***. Ci sono due tipi di array in Solidity: ***fixed*** arrays e ***dynamic*** arrays:
+Quando si desidera effettuare una collezione di qualcosa, puoi utilizzare un ***array***. Ci sono due tipi di array in Solidity: ***fixed*** arrays e ***dynamic*** arrays:
 
     // Array con una lunghezza fissa di due elementi:
     uint[2] fixedArray;
@@ -21,7 +21,7 @@ Quando si desidera effettuare una collezione di qualcosa, puoi utilizzare un***a
     uint[] dynamicArray;
     
 
-Puoi anche creare un array di***structs***. Usando la struct del capitolo precedente `Persona`:
+Puoi anche creare un array di ***structs***. Usando la struct del capitolo precedente `Persona`:
 
     Person[] people; // Array dinamico, possiamo continuare ad aggiungere ad esso
     
@@ -41,4 +41,4 @@ Gli altri contratti potrebbero essere quindi abilitati a leggere (ma non scriver
 
 Vogliamo andare a memorizzare un esercito di zombie nella nostra app. E vorremmo mostrare tutti i nostri zombi ad altre app, quindi vorremmo che fosse pubblico.
 
-1. Create a public array of `Zombie` ***structs***, and name it `zombies`.
+1. Crea un array pubblico di `Zombie`***structs***, e nominala `zombies`.
