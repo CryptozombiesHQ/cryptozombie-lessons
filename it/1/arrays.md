@@ -1,8 +1,8 @@
 ---
 title: Arrays
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
