@@ -26,9 +26,9 @@ Puoi anche creare un array di***structs***. Usando la struct del capitolo preced
     Person[] people; // Array dinamico, possiamo continuare ad aggiungere ad esso
     
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Ricordi che le variabili di stato sono contenute permanentemente nella blockchain? Quindi creare un array dinamico di structs come questo può essere utile per i dati strutturati nel tuo contratto, simile a un database.
 
-## Public Arrays
+## Array Pubblici
 
 You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
 
