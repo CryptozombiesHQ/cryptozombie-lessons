@@ -1,8 +1,8 @@
 ---
-title: Working With Structs and Arrays
+title: Lavorando con Structs e Arrays
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
@@ -22,9 +22,7 @@ material:
       Zombie[] public zombies;
       
       function createZombie(string _name, uint _dna) {
-      // start here
-      }
-      
+      // inizia qui
       }
     answer: >
       pragma solidity ^0.4.19;
@@ -36,9 +34,9 @@ material:
       function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
-### Creating New Structs
+### Creazione di nuove Structs
 
-Remember our `Person` struct in the previous example?
+Ricordi la nostra struct di `Persona` nell' esempio precedente?
 
     struct Person {
       uint age;
