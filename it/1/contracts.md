@@ -1,22 +1,22 @@
 ---
-title: "Contracts"
+title: "Contratti"
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. Inserisci la versione solidity qui
       
-      //2. Create contract here
+      //2. Crea il contratto qui
     answer: >
       pragma solidity ^0.4.19;
       
       contract ZombieFactory {
       }
 ---
-Starting with the absolute basics:
+Iniziamo dalle basi assolute:
 
 Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
