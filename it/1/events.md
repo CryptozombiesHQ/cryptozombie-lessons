@@ -52,18 +52,18 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Our contract is almost finished! Now let's add an ***event***.
+Il nostro contratto è quasi finito! Adesso aggiungiamo un ***evento***.
 
-***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+Gli ***Eventi*** sono un modo per il tuo contratto di comunicare qualcosa che succede sulla blockchain alla tua front-end app, che può essere "in ascolto" per determinati eventi e agire quando questi accadono.
 
-Example:
+Esempio:
 
-    // declare the event
+    // dichiara un evento
     event IntegersAdded(uint x, uint y, uint result);
     
     function add(uint _x, uint _y) public {
       uint result = _x + _y;
-      // fire an event to let the app know the function was called:
+      // lancia un evento per far sapere alla app che la funzione è stata chiamata:
       IntegersAdded(_x, _y, result);
       return result;
     }
