@@ -69,18 +69,18 @@ Esempio:
     }
     
 
-Your app front-end could then listen for the event. A javascript implementation would look something like:
+La vostra app front-end potrebbe quindi ascoltare l'evento. Un implementazione javascript potrebbe quindi assomigliare a:
 
     YourContract.IntegersAdded(function(error, result) { 
-      // do something with result
+      // fai qualcosa con risultato
     }
     
 
-# Put it to the test
+# Facciamo un test
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+Noi vogliamo un evento che faccia sapere alla nostra front-end tutte le volte che un nuovo zombie è stato creato, quindi la app ce lo mostri.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Dichiara un `evento` chiamato`NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
 
 2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
 
