@@ -1,8 +1,8 @@
 ---
-title: Function Declarations
+title: Dichiarazioni di funzione
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
@@ -21,7 +21,7 @@ material:
       
       Zombie[] public zombies;
       
-      // start here
+      // inizia qui
       
       }
     answer: >
@@ -35,16 +35,16 @@ material:
       }
       }
 ---
-A function declaration in solidity looks like the following:
+Una dichiarazione di funzione in solidity sembra come la seguente:
 
     function eatHamburgers(string _name, uint _amount) {
     
     }
     
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+Questa è una funzione nominata `eatHamburgers` che richiede 2 parametri: una `string` e un `uint`. Per ora il corpo della funzione è vuoto.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Nota Bene: È convenzione (ma non obbligatoria) avviare i nomi delle variabili dei parametri di funzione con un carattere di underscore (` _ `) per differenziarli dalle variabili globali. Useremo questa convenzione durante il nostro tutorial.
 
 You would call this function like so:
 
