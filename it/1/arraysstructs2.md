@@ -73,5 +73,5 @@ Nota che `array.push()` aggiunge qualcosa alla **fine** dell' array, quindi gli 
 
 Creiamo la nostra funzione createZombie in modo che faccia qualcosa!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+1. Compila il corpo della funzione in modo da creare un nuovo `Zombie`, e aggiugilo all' array `zombies`. Il `nome` e il `dna` per il nuovo zombie dovrebbero arrivare dagli argomenti della funzione.
+2. Facciamolo in una riga di codice per mantenere le cose pulite.
