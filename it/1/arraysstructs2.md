@@ -46,30 +46,30 @@ Ricordi la nostra struct di `Persona` nell' esempio precedente?
     Person[] public people;
     
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Adesso andremo a imparare come creare una nuova `Persona` e aggiungerla all' array delle nostre `persone`.
 
-    // create a New Person:
+    // creare una Nuova Persona:
     Person satoshi = Person(172, "Satoshi");
     
-    // Add that person to the Array:
+    // Aggiungere quella persona all' Array:
     people.push(satoshi);
     
 
-We can also combine these together and do them in one line of code to keep things clean:
+Possiamo inoltre combinare questi elementi insieme ed eseguirli in una sola riga di codice per mantenere le cose pulite:
 
     people.push(Person(16, "Vitalik"));
     
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+Nota che `array.push()` aggiunge qualcosa alla **fine** dell' array, quindi gli elementi rimangono nell'ordine in cui li abbiamo aggiunti. Come nel seguente esempio:
 
     uint[] numbers;
     numbers.push(5);
     numbers.push(10);
     numbers.push(15);
-    // numbers is now equal to [5, 10, 15]
+    // i numeri sono ora equivalenti a [5, 10, 15]
     
 
-# Put it to the test
+# Facciamo un test
 
 Let's make our createZombie function do something!
 
