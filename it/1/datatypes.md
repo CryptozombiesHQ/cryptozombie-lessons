@@ -1,8 +1,8 @@
 ---
-title: State Variables & Integers
+title: Variabili di stato & Interi
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
@@ -21,7 +21,7 @@ material:
       uint dnaDigits = 16;
       }
 ---
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+Ottimo lavoro! Ora che abbiamo un guscio per il nostro contratto, impariamo come Solidity si occupa delle variabili.
 
 ***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
