@@ -80,8 +80,8 @@ La vostra app front-end potrebbe quindi ascoltare l'evento. Un implementazione j
 
 Noi vogliamo un evento che faccia sapere alla nostra front-end tutte le volte che un nuovo zombie è stato creato, quindi la app ce lo mostri.
 
-1. Dichiara un `evento` chiamato`NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Dichiara un `evento` chiamato `NewZombie`. Dovrebbe passare `zombieId` (a `uint`), `name` (a `string`), e `dna` (a `uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
+2. Modifica la funzione `_createZombie` per lanciare l'evento `NewZombie` dopo aver aggiunto il nuovo Zombie al nostro `zombies` array.
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Avrai bisogno degli zombie `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
