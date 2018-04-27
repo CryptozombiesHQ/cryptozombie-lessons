@@ -1,8 +1,8 @@
 ---
-title: Events
+title: Eventi
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
@@ -11,7 +11,7 @@ material:
       
       contract ZombieFactory {
       
-      // declare our event here
+      // dichiara qui il nostro evento
       
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
@@ -25,7 +25,7 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
-      // and fire it here
+      // e lancialo qui
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
