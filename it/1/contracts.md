@@ -18,9 +18,9 @@ material:
 ---
 Iniziamo dalle basi assolute:
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+Il codice Solidity è contenuto nei **contratti**. Un `contratto` è un fondamentale elemento costitutivo delle applicazioni Ethereum — tutte le variabili e le funzioni appartengono al contratto, e sarà il punto di partenza di tutti i vostri progetti.
 
-An empty contract named `HelloWorld` would look like this:
+Un contratto vuoto nominato `HelloWorld` potrebbe essere simile a questo:
 
     contract HelloWorld {
     
