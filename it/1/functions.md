@@ -46,14 +46,14 @@ Questa è una funzione nominata `eatHamburgers` che richiede 2 parametri: una `s
 
 > Nota Bene: È convenzione (ma non obbligatoria) avviare i nomi delle variabili dei parametri di funzione con un carattere di underscore (` _ `) per differenziarli dalle variabili globali. Useremo questa convenzione durante il nostro tutorial.
 
-You would call this function like so:
+Chiamereste questa funzione così:
 
     eatHamburgers("vitalik", 100);
     
 
-# Put it to the test
+# Facciamo un test
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+Nella nostra app, avremo bisogno di essere in grado di creare alcuni zombie. Creiamo una funzione per questo.
 
 1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
