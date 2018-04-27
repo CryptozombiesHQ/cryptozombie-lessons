@@ -39,10 +39,10 @@ In questo contratto d'esempio, noi creiamo un `uint` chiamato `myUnsignedInteger
 
 Il tipo di dato `uint` riguarda un numero intero senza segno, che significa che **il suo valore deve essere non-negativo**. Ci sarà anche un tipo di dato `int` per i numeri interi col segno.
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> Nota: in Solidity, `uint` è in realtà un alias per `uint256`, un numero intero senza segno a 256-bit. Puoi dichiarare uints con meno bits — `uint8`, `uint16`, `uint32`, etc.. Ma in generale si può semplicemente usare `uint` tranne in casi specifici, di cui parleremo nelle lezioni successive.
 
-# Put it to the test
+# Facciamo un test
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+Il nostro DNA Zombie sarà determinato da un numero di 16 cifre.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+Dichiara un `uint` nominato `dnaDigits`, e impostalo uguale a `16`.
