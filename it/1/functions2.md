@@ -1,8 +1,8 @@
 ---
-title: Private / Public Functions
+title: Funzioni Private / Pubbliche
 actions:
-  - checkAnswer
-  - hints
+  - controllaRisposta
+  - suggerimenti
 material:
   editor:
     language: sol
@@ -24,8 +24,6 @@ material:
       function createZombie(string _name, uint _dna) {
       zombies.push(Zombie(_name, _dna));
       }
-      
-      }
     answer: >
       pragma solidity ^0.4.19;
       
@@ -36,9 +34,9 @@ material:
       function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
       }
 ---
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+In Solidity, le funzioni sono `pubbliche` di default. Ciò significa che chiunque (o qualsiasi altro contratto) può chiamare la funzione del tuo contratto ed eseguire il suo codice.
 
-Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Ovviamente questo non è sempre desiderabile, e può rendere il tuo contratto vulnerabile agli attacchi. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
 
 Let's look at how to declare a private function:
 
