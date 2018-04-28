@@ -88,30 +88,30 @@
             "zombieUpgraded": "{zombieName} ha subido al Nivel {levelNum}!",
             "header": [
                 "¡Enhorabuena! ¡Has completado la {lesson3} de CryptoZombies!",
-                "¡Enseña el ejército zombi a tus amigos!",
+                "¡Presume tu ejército zombie a tus amigos!",
                 "Comparte esta URL para que tus amigos puedan ver tu ejército:"
             ],
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 4:"
+                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 4:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel 3",
-            "shareLinkText": "¡He completado la Lección 3 de #CryptoZombies! Echa un vistazo a mi ejército zombi:"
+            "shareLinkText": "¡He completado la Lección 3 de #CryptoZombies! Echa un vistazo a mi ejército zombie:"
         },
         "lesson4": {
             "achievementsUnlocked": "Logros Desbloqueados:",
             "zombieUpgraded": "¡{zombieName} ha subido al Nivel {levelNum}!",
-            "newZombieAdded": "¡Has añadido un zombi Nivel 1 a tu ejército!",
+            "newZombieAdded": "¡Has añadido un nuevo zombie Nivel 1 a tu ejército!",
             "header": [
                 "¡Enhorabuena! ¡Has completado la {lesson4} de CryptoZombies!",
-                "¡Enseña el ejército zombi a tus amigos!",
+                "¡Presume tu ejército zombie a tus amigos!",
                 "Comparte esta URL para que tus amigos puedan ver tu ejército:"
             ],
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 5:"
+                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 5:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
             "shareLinkText": "¡He completado la Lección 4 de #CryptoZombies, y he derrotado al malvado zombi IOTA! Pruébalo tu mismo:"
