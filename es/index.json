@@ -47,9 +47,9 @@
         "showHint": "Mostrar pistas",
         "nextChapter": "Siguiente capítulo",
         "tryAgain": "Probar otra vez",
-        "checkAnswer": "Verificar la respuesta",
+        "checkAnswer": "Comprobar Respuesta",
         "showMeTheAnswer": "Muéstrame la respuesta",
-        "hideAnswer": "Esconde la respuesta"
+        "hideAnswer": "Esconder Respuesta"
     },
     "lessonComplete": {
         "shareLinksAction": "O puede hacer clic en los botones a continuación para compartir :",
