@@ -52,15 +52,15 @@
         "hideAnswer": "Esconder Respuesta"
     },
     "lessonComplete": {
-        "shareLinksAction": "O puede hacer clic en los botones a continuación para compartir :",
-        "signIn": "Conéctate y guarda tu progreso",
-        "goToNextLesson": "Pasar a la siguiente lección",
+        "shareLinksAction": "O puede hacer click en los botones de abajo para compartir:",
+        "signIn": "Inicia sesión para guardar tu progreso",
+        "goToNextLesson": "Ir a la siguiente lección",
         "lesson1": {
             "header": [
                 "¡Enhorabuena! ¡Has completado la Lección 1 de CryptoZombies!",
                 "Estás oficialmente un paso más cerca de crear tus propios juegos en Ethereum.",
-                "¡Enseña tu primer zombi a tus amigos!",
-                "Aquí tienes el link permanente a tu zombi:"
+                "¡Enseña tu primer zombie a tus amigos!",
+                "Aquí tienes el link permanente de tu zombi:"
             ],
             "footer": "Asegúrate que guardas tu progreso antes de seguir con la Lección 2.",
             "zombieDesc": "CryptoZombie de Nivel 1",
