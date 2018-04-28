@@ -194,7 +194,7 @@
             "randomZombieGenerator": "generador aleatorio de zombis",
             "achievementPreamble": [
                 "¡Tu amigo ha aprendido el desarrollo básico de un juego en Ethereum, y ha creado a {zombieName}, un CryptoZombie de Nivel 1 como prueba!",
-                "Para completar la Lección 1 de CryptoZombies, tu amigo ha construido un {randomZombieGenerator} y ha aprendido de:"
+                "Para completar la Lección 1 de CryptoZombies, tu amigo ha construido un {randomZombieGenerator} y ha aprendido sobre:"
             ],
             "achievements": [
                 "Como escribir contratos inteligentes en Ethereum",
