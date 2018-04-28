@@ -78,7 +78,7 @@
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 3:"
+                "Cuando estés listo, haz click en el botón de abajo para acceder a la Lección 3:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel 2",
             "shareLinkText": "¡He completado la Lección 2 de #CryptoZombies! Mi zombie se comió algunos #CryptoKitties, y he aprendido más sobre el desarrollo en #Ethereum. Observa mi zombie exterminando más CryptoKitties:"
@@ -94,7 +94,7 @@
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 4:"
+                "Cuando estés listo, haz click en el botón de abajo para acceder a la Lección 4:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel 3",
             "shareLinkText": "¡He completado la Lección 3 de #CryptoZombies! Echa un vistazo a mi ejército zombie:"
@@ -111,7 +111,7 @@
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 5:"
+                "Cuando estés listo, haz click en el botón de abajo para acceder a la Lección 5:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
             "shareLinkText": "¡He completado la Lección 4 de #CryptoZombies, y he derrotado al malvado zombi IOTA! Pruébalo tu mismo:"
@@ -121,23 +121,23 @@
             "newZombieAdded": "¡Has añadido un zombi Nivel {levelNum} a tu ejército!",
             "header": [
                 "¡Enhorabuena! ¡Has completado la lección {lesson5} de CryptoZombies!",
-                "¡Enseña el ejército zombi a tus amigos!",
+                "¡Presume tu ejército zombie a tus amigos!",
                 "Comparte esta URL para que tus amigos puedan ver tu ejército:"
             ],
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 6:"
+                "Cuando estés listo, haz click en el botón de abajo para acceder a la Lección 6:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
-            "shareLinkText": "¡He completado la Lección 5 de #CryptoZombies, y he derrotado al malvado zombi IOTA! Pruébalo tu mismo:"
+            "shareLinkText": "¡He completado la Lección 5 de #CryptoZombies, y he conseguido un CryptoZombie de nivel 10! Echale un vistazo a mi ejército zombie:"
         },
         "lesson6": {
-            "achievementsUnlocked": "ALogros Desbloqueados:",
-            "newZombieAdded": "¡Has añadido un zombi Nivel {levelNum} a tu ejército!",
+            "achievementsUnlocked": "Logros Desbloqueados:",
+            "newZombieAdded": "¡Recibió {zombieName}, un CryptoZombie de Nivel {levelNum}!",
             "header": [
-                "¡Enhorabuena! ¡Has completado la lección {lesson5} de CryptoZombies!",
-                "¡Enseña el ejército zombi a tus amigos!",
+                "¡Enhorabuena! ¡Has completado la lección {lesson6} de CryptoZombies!",
+                "¡Presume tu ejército zombie a tus amigos!",
                 "Comparte esta URL para que tus amigos puedan ver tu ejército:"
             ],
             "footer": [
