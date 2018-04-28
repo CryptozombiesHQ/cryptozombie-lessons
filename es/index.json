@@ -32,7 +32,7 @@
         "signInPrompt": "A partir de ahora, debes estar conectado para que podamos sincronizar tu progreso y tus zombies. Regístrese usando el siguiente botón: ",
         "signInButton": "Registro",
         "levelUpText": "En esta lección, subiremos de nivel a los zombies creados en lecciones anteriores.",
-        "missingZombieText": "Desafortunadamente, parece que no tienes zombies de la Lección {lessonNum}. Si no ha completado esta lección, hágalo antes de continuar:",
+        "missingZombieText": "Desafortunadamente, parece que no tienes zombies de la Lección {lessonNum}. Si aún ha completado esa lección, hágalo antes de continuar:",
         "fixMissingZombieText": "Si tienes este error y ya has terminado la Lección {lessonNum}, ignóralo y ve al final {generateNewZombie}.",
         "generateNewZombieLink": "Generar un nuevo zombie",
         "areYouReady": "¿Estás listo para comenzar?",
