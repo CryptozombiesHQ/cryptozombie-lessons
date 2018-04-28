@@ -42,8 +42,8 @@
         "pageTitle": "@:base.nombre | {lesson} {chapter}",
         "header": "Capítulo {chapterNum}: {title}",
         "saveProgress": "Guardar Progreso",
-        "autosaveEnabled": "Copia de seguridad automática habilitada",
-        "resumeProgress": "Retomar",
+        "autosaveEnabled": "Autoguardar activado",
+        "resumeProgress": "Reanudar Progreso",
         "showHint": "Mostrar pistas",
         "nextChapter": "Siguiente capítulo",
         "tryAgain": "Probar otra vez",
@@ -292,8 +292,8 @@
                 "Para completar la Lección 6 de CryptoZombies, tu amigo ha aprendido sobre:"
             ],
             "achievements": [
-                "Usar Web3.js para hacer el front-end de nuestra DApp",
-                "Realizar transacciones con Web3.js",
+                "Creación de front-ends web para contratos inteligentes de Ethereum usando Web3.js",
+                "Usar MetaMask e Infura para crear user-facing DApps",
                 "Escuchar eventos del contrato inteligente y mostrando a los usuarios actualizaciones en tiempo real",
                 "¡Y más!"
             ],
