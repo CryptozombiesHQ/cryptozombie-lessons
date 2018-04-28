@@ -156,7 +156,7 @@
         "catZombie": "Gato-Zombi",
         "mutantZombie": "Zombi-Mutante",
         "newSpeciesDna": "Nuevo ADN de {species}",
-        "cryptoKitty": "CryptoGato",
+        "cryptoKitty": "CryptoKitty",
         "human": "Humano",
         "tryAnotherCombo": "Prueba Otra Combinación"
     },
@@ -213,9 +213,9 @@
         },
         "lesson2": {
             "zombieCardBattle": "Carta Zombie de Batalla",
-            "love": "amor",
+            "love": "aman",
             "achievementPreamble": [
-                "¡Tu amigo ha completado la Lección 2 de CryptoZombies, y ha mejorado a {zombieName} a un asesino de CryptoGatos!",
+                "¡Tu amigo ha completado la Lección 2 de CryptoZombies, y ha mejorado a {zombieName} a un asesino de CryptoKitties!",
                 "¡¿Un Asesino de CryptoKitties?!",
                 "Resulta que los CryptoZombies {love} alimentarse de CryptoKitties.",
                 "Cuando un CryptoZombie se alimenta de un CryptoKitty, sus ADN se fusionan y el CryptoKitty se transforma en un CryptoZombie.",
