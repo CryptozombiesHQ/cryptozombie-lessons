@@ -275,9 +275,9 @@
             ],
             "achievements": [
                 "Tokens, el estándar ERC721 y crear tokens intercambiables / activos",
-                "Hacer transacciones con estos tokens",
+                "Bibliotecas de Solidity y cómo utilizarlos",
                 "Hacer operaciones matemáticas a prueba de overflows y underflows",
-                "¡Y más!"
+                "Comenta tu código de Solidity y el natspec estándar"
             ],
             "callToAction": [
                 "¿Quiéres crear tu propio CryptoZombie y añadirlo a tus filas?",
@@ -287,8 +287,8 @@
         "lesson6": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "¡Tu amigo ha completado la Lección 6 de CryptoZombies, y ha construido su propia DApp!",
-                "Sigue adelante y pruébalo tu mismo a la izquierda. ¡Usa el ejército de tu amigo para entrar en la batalla!",
+                "¡Tu amigo ha completado la Lección 6 de CryptoZombies, y ha recibido `El Fantasma de la Web3` un CryptoZombie de nivel 3.0!",
+                "Comprueba el ejército de zombies de tu amigo a la izquierda. Muy formidable, ¿Eh?",
                 "Para completar la Lección 6 de CryptoZombies, tu amigo ha aprendido sobre:"
             ],
             "achievements": [
