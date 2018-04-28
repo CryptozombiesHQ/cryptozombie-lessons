@@ -269,12 +269,12 @@
         "lesson5": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "¡Tu amigo ha completado la Lección 5 de CryptoZombies, y ha mejorado su ejército zombi!",
-                "Sigue adelante y pruébalo tu mismo a la izquierda. ¡Usa el ejército de tu amigo para entrar en la batalla!",
+                "¡Tu amigo ha completado la Lección 5 de CryptoZombies, y ha recibido un CryptoZombie de nivel 10!",
+                "Comprueba el ejército de zombies de tu amigo a la izquierda. Muy formidable, ¿Eh?",
                 "Para completar la Lección 5 de CryptoZombies, tu amigo ha aprendido sobre:"
             ],
             "achievements": [
-                "Implementar el token ERC-721 en su contrato inteligente",
+                "Tokens, el estándar ERC721 y crear tokens intercambiables / activos",
                 "Hacer transacciones con estos tokens",
                 "Hacer operaciones matemáticas a prueba de overflows y underflows",
                 "¡Y más!"
