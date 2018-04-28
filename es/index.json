@@ -20,7 +20,7 @@
         "readOnly": "Solo lectura"
     },
     "lessonMenu": {
-        "pageTitle": "@:base.nombre | @:base.eslogan",
+        "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lección {lessonNum}: {title}",
         "signIn": "Inicia sesión para guardar tu progreso",
         "progressLoaded": "Tu progreso ha sido cargado"
@@ -36,12 +36,12 @@
         "fixMissingZombieText": "Si tienes este error y ya has terminado la Lección {lessonNum}, ignóralo y ve al final {generateNewZombie}.",
         "generateNewZombieLink": "Generar un nuevo zombie",
         "areYouReady": "¿Estás listo para empezar?",
-        "resumeLesson": "Retoma la lección {lessonNum}"
+        "resumeLesson": "Reanudar lección {lessonNum}"
     },
     "chapter": {
-        "pageTitle": "@:base.name | {lesson} {chapter}",
+        "pageTitle": "@:base.nombre | {lesson} {chapter}",
         "header": "Capítulo {chapterNum}: {title}",
-        "saveProgress": "Guardar",
+        "saveProgress": "Guardar Progreso",
         "autosaveEnabled": "Copia de seguridad automática habilitada",
         "resumeProgress": "Retomar",
         "showHint": "Mostrar pistas",
@@ -294,7 +294,7 @@
             "achievements": [
                 "Usar Web3.js para hacer el front-end de nuestra DApp",
                 "Realizar transacciones con Web3.js",
-                "Implementar MetaMask e Infura",
+                "Escuchar eventos del contrato inteligente y mostrando a los usuarios actualizaciones en tiempo real",
                 "¡Y más!"
             ],
             "callToAction": [
