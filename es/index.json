@@ -26,7 +26,7 @@
         "progressLoaded": "Tu progreso ha sido cargado"
     },
     "overview": {
-        "pageTitle": "@:base.nombre {lesson} | @:base.eslogan",
+        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Regalos",
         "title": "Lección {lessonNum}: {title}",
         "signInPrompt": "A partir de ahora, debes estar conectado para que podamos sincronizar tu progreso y tus zombies. Regístrese usando el siguiente botón: ",
@@ -142,19 +142,19 @@
             ],
             "footer": [
                 "¡La lección 7 estará lista en las próximas semanas!",
-                "Recibirás un e-mail tan temprano como sea posible.",
-                "¡De mientras, únete a nuestro telegram {telegramLink}, o síguenos en {twitterLink} para hablarnos!"
+                "Recibirás un correo electrónico de nosotros tan pronto como esté listo.",
+                "¡Mientras tanto, únete a nuestro grupo en telegram {telegramLink}, o síguenos en {twitterLink} para unirte a la conversación!"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
-            "shareLinkText": "He completado la Lección 6 de #CryptoZombies, ¡y he ganado el zombie 'The Phantom of Web3' de nivel 3.0! Héchale un vistazo a mi ejército zombie:"
+            "shareLinkText": "He completado la Lección 6 de #CryptoZombies, ¡y he ganado el zombie 'The Phantom of Web3' de nivel 3.0! Echale un vistazo a mi ejército zombie:"
         }
     },
     "zombieBattle": {
         "yourTurn": "Tu Turno",
         "zombieDna": "ADN de {name}",
-        "newZombieGenerated": "¡Nuevo {species} Creado!",
+        "newZombieGenerated": "¡Nuevas {species} Generadas!",
         "catZombie": "Gato-Zombi",
-        "mutantZombie": "Zombi-Mutante",
+        "mutantZombie": "Zombie-Mutante",
         "newSpeciesDna": "Nuevo ADN de {species}",
         "cryptoKitty": "CryptoKitty",
         "human": "Humano",
@@ -172,10 +172,10 @@
     "zombieResult": {
         "headGeneLabel": "Gen de la Cabeza:",
         "eyeGeneLabel": "Gen de los Ojos:",
-        "shirtGeneLabel": "Gen de la Camiseta:",
+        "shirtGeneLabel": "Gen de la Camisa:",
         "skinColorGeneLabel": "Gen del Color de Piel:",
         "eyeColorGeneLabel": "Gen del Color de Ojos:",
-        "clothesColorGeneLabel": "Gen del Colo de Ropa:",
+        "clothesColorGeneLabel": "Gen del Color de Ropa:",
         "nameInputPlaceholder": "Introduce un nombre aquí",
         "defaultZombieDesc": "Un CryptoZombie de Nivel 1"
     },
@@ -183,7 +183,7 @@
         "IOTAslain": "¡IOTA ha sido derrotado en batalla!",
         "winCount": "Número de victoras de tu zombie:",
         "iotaLose": "Número de derrotas de IOTA",
-        "newZombie": "Nuevo Zombi Creado"
+        "newZombie": "Nuevo Zombie Creado"
     },
     "sharePage": {
         "pageTitle": "¡Echa un vistazo a mi CryptoZombie {zombieName}!",
