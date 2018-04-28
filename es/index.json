@@ -4,7 +4,7 @@
         "tagLine": "Aprende a programar juegos en Ethereum",
         "lesson": "Lección {lessonNum}",
         "chapter": "Capítulo {chapterNum}",
-        "syncing": "Sincronización...",
+        "syncing": "Sincronizando...",
         "telegram": {
             "name": "Telegram",
             "openChat": "Abrir el chat",
@@ -20,13 +20,13 @@
         "readOnly": "Solo lectura"
     },
     "lessonMenu": {
-        "pageTitle": "@:base.name | @:base.tagLine",
+        "pageTitle": "@:base.nombre | @:base.eslogan",
         "itemLabel": "Lección {lessonNum}: {title}",
         "signIn": "Inicia sesión para guardar tu progreso",
         "progressLoaded": "Tu progreso ha sido cargado"
     },
     "overview": {
-        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+        "pageTitle": "@:base.nombre {lesson} | @:base.eslogan",
         "presents": "Regalos",
         "title": "Lección {lessonNum}: {title}",
         "signInPrompt": "A partir de ahora, debes estar conectado para que podamos sincronizar tu progreso y tus zombies. Regístrese usando el siguiente botón: ",
@@ -156,7 +156,7 @@
         "catZombie": "Gato-Zombi",
         "mutantZombie": "Zombi-Mutante",
         "newSpeciesDna": "Nuevo ADN de {species}",
-        "cryptoKitty": "CryptoKitty",
+        "cryptoKitty": "CryptoGato",
         "human": "Humano",
         "tryAnotherCombo": "Prueba Otra Combinación"
     },
