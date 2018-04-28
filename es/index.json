@@ -60,11 +60,11 @@
                 "¡Enhorabuena! ¡Has completado la Lección 1 de CryptoZombies!",
                 "Estás oficialmente un paso más cerca de crear tus propios juegos en Ethereum.",
                 "¡Enseña tu primer zombie a tus amigos!",
-                "Aquí tienes el link permanente de tu zombi:"
+                "Aquí tienes el link permanente de tu zombie:"
             ],
             "footer": "Asegúrate que guardas tu progreso antes de seguir con la Lección 2.",
             "zombieDesc": "Un CryptoZombie de Nivel 1",
-            "shareLinkText": "He completado la Lección 1 de #CryptoZombies y he aprendido los elementos básicos de programar un juego en #Ethereum. ¡Echa un vistazo al primer zombi de mi ejército!"
+            "shareLinkText": "He completado la Lección 1 de #CryptoZombies y he aprendido los elementos básicos de programar un juego en #Ethereum. ¡Echa un vistazo al primer zombie de mi ejército!"
         },
         "lesson2": {
             "header": [
@@ -73,15 +73,15 @@
                 "¡{zombieName} ha subido al Nivel 2!",
                 "¡Has añadido a NoName, un CatZombie a tu ejército! (No te preocupes, aprenderás a cambiarle el nombre en la Lección 3)",
                 "¡Enseña tu CryptoKitty-slayer a tus amigos!",
-                "Comparte esta URL para que tus amigos puedan matar CryptoKitties junto a tu zombi:"
+                "Comparte esta URL para que tus amigos puedan exterminar CryptoKitties con tu zombie:"
             ],
             "footer": [
                 "¿Estás drisfrutando CryptoZombies? ¡Háznoslo saber!",
                 "Únete a la conversación en {telegramLink}, o síguenos en {twitterLink}",
-                "Cuando estés preparado, clica en el botón de abajo para acceder a la Lección 3:"
+                "Cuando estés preparado, haz click en el botón de abajo para acceder a la Lección 3:"
             ],
             "zombieDesc": "Un CryptoZombie de Nivel 2",
-            "shareLinkText": "¡He compledato la Lección 2 de #CryptoZombies! Mi zombi se ha comido algín #CryptoKitties, y he aprendido más sobre el desarrollo en #Ethereum. Mira mi zombi matando más CryptoKitties:"
+            "shareLinkText": "¡He completado la Lección 2 de #CryptoZombies! Mi zombie se comió algunos #CryptoKitties, y he aprendido más sobre el desarrollo en #Ethereum. Observa mi zombie exterminando más CryptoKitties:"
         },
         "lesson3": {
             "achievementsUnlocked": "Logros Desbloqueados:",
