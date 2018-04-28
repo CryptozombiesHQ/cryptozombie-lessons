@@ -191,7 +191,7 @@
         "zombieDesc": "{name}, un CryptoZombie de Nivel {levelNum}",
         "lesson1": {
             "zombieDesc": "Un CryptoZombie de Nivel 1",
-            "randomZombieGenerator": "generador aleatorio de zombis",
+            "randomZombieGenerator": "generador aleatorio de zombies",
             "achievementPreamble": [
                 "¡Tu amigo ha aprendido el desarrollo básico de un juego en Ethereum, y ha creado a {zombieName}, un CryptoZombie de Nivel 1 como prueba!",
                 "Para completar la Lección 1 de CryptoZombies, tu amigo ha construido un {randomZombieGenerator} y ha aprendido sobre:"
@@ -287,7 +287,7 @@
         "lesson6": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "¡Tu amigo ha completado la Lección 6 de CryptoZombies, y ha recibido `El Fantasma de la Web3` un CryptoZombie de nivel 3.0!",
+                "¡Tu amigo ha completado la Lección 6 de CryptoZombies, y recibió `The Phantom of Web3` un CryptoZombie de nivel 3.0!",
                 "Comprueba el ejército de zombies de tu amigo a la izquierda. Muy formidable, ¿Eh?",
                 "Para completar la Lección 6 de CryptoZombies, tu amigo ha aprendido sobre:"
             ],
