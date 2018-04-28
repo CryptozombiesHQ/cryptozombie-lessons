@@ -212,10 +212,10 @@
             ]
         },
         "lesson2": {
-            "zombieCardBattle": "Carta de Zombie de Batalla",
-            "love": "aman",
+            "zombieCardBattle": "Carta Zombie de Batalla",
+            "love": "amor",
             "achievementPreamble": [
-                "¡Tu amigo ha completado la Lección 2 de CryptoZombies, y ha mejorado a {zombieName} a un asesino de CryptoKitties!",
+                "¡Tu amigo ha completado la Lección 2 de CryptoZombies, y ha mejorado a {zombieName} a un asesino de CryptoGatos!",
                 "¡¿Un Asesino de CryptoKitties?!",
                 "Resulta que los CryptoZombies {love} alimentarse de CryptoKitties.",
                 "Cuando un CryptoZombie se alimenta de un CryptoKitty, sus ADN se fusionan y el CryptoKitty se transforma en un CryptoZombie.",
