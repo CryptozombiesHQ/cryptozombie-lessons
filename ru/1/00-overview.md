@@ -3,8 +3,8 @@ title: Создание Зомбо-фабрики
 header: Добро пожаловать, человек!
 roadmap: roadmap.jpg
 ---
-So you think you have what it takes to become a **CryptoZombie**, huh?
+Так вы полагаете, что у вас есть всё необходимое, чтобы стать **КриптоЗомби**?
 
-This course will teach you how to **build a game on Ethereum**.
+Этот курс научит вас тому, как **построить игру на Ethereum**.
 
-It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
+Он предназначен для начинающих программистов на Solidity, но предполагается, что у вас есть некоторый опыт программирования на другом языке (например, Javascript).
