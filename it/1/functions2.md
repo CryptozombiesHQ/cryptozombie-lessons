@@ -53,6 +53,6 @@ Come vedi, usiamo la parola chiave `private` dopo il nome della funzione. E come
 
 # Facciamo un test
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+La funzione `createZombie` del nostro contratto è impostata come pubblica in modo predefinito — questo significa che chiunque può chiamarla e creare un nuovo zombie nel nostro contratto! Reandiamola privata.
 
 1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
