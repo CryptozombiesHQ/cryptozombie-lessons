@@ -1,102 +1,86 @@
 ---
-title: Еще о функциях
-actions: ['Проверить', 'Подсказать']
+title: More on Functions
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
-
-          // Начало здесь
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string _str) private view returns (uint) {
+      }
       }
 ---
+In this chapter, we're going to learn about Function ***return values***, and function modifiers.
 
-В этом разделе мы изучим функцию **_вернуть значение_** и ее модификаторы. 
+## Return Values
 
-## Вернуть значение
+To return a value from a function, the declaration looks like this:
 
-Как задать функцию, чтобы она возвращала значение: 
+    string greeting = "What's up dog";
+    
+    function sayHello() public returns (string) {
+      return greeting;
+    }
+    
 
-```
-string greeting = "Привет, дружок";
+In Solidity, the function declaration contains the type of the return value (in this case `string`).
 
-function sayHello() public returns (string) {
-  return greeting;
-}
-```
+## Function modifiers
 
-Задание функции в Solidity содержит тип возвращаемого значения (в данном случае `string`).
+The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
 
-## Модификаторы функций
+So in this case we could declare it as a ***view*** function, meaning it's only viewing the data but not modifying it:
 
-Рассмотренная выше функция не модифицирует свое состояние — не изменяет значения и не переписывает что-либо.
+    function sayHello() public view returns (string) {
+    
 
-Поэтому в данном случае мы можем задать функцию **_просмотр_** – просмотр данных без их изменения:
+Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
 
-```
-function sayHello() public view returns (string) {
-```
+    function _multiply(uint a, uint b) private pure returns (uint) {
+      return a * b;
+    }
+    
 
-Еще в Solidity есть **_чистые_** функции — ты не получишь доступ к данным в приложении. Рассмотрим пример:
+This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as ***pure***.
 
-```
-function _multiply(uint a, uint b) private pure returns (uint) {
-  return a * b;
-}
-```
+> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
 
-Функция даже не читает состояние приложения - она возвращает значение, которое зависит только от параметров самой функции. В этом случае мы задаем функцию как **_pure_**. 
+# Put it to the test
 
-> Примечание: не всегда легко вспомнить, когда задать «чистую» функцию или «просмотр». К счастью, компилятор Solidity исправно выдает предупреждения, что нужно использовать тот или иной модификатор. 
+We're going to want a helper function that generates a random DNA number from a string.
 
-# Проверь себя
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
-Нам понадобится вспомогательная функция, которая генерирует случайный номер ДНК из строки. 
+2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
 
-1. Создай `private` (приватную) функцию под названием `_generateRandomDna` (сгенерировать случайную ДНК). Она будет брать один параметр под названием `_str` (строку `string`), и возвращать `uint`.
-
-2. Эта функция будет просматривать определенные переменные в контракте, но не менять их. Присвой ей модификатор `view` (просмотр). 
-
-3. Тело функции по прежнему остается пустым, заполним его позже. 
+3. The function body should be empty at this point — we'll fill it in later.

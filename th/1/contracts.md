@@ -1,56 +1,53 @@
 ---
 title: "Contracts"
-actions: ['checkAnswer', 'hints']
-material: 
+actions:
+  - checkAnswer
+  - hints
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. ระบุเวอร์ชั่นของ Solidity ตรงนี้
-
-      //2. สร้างContract ตรงนี้
-    answer: > 
+      pragma solidity //1. Enter solidity version here
+      
+      //2. Create contract here
+    answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
       }
 ---
+Starting with the absolute basics:
 
-เริ่มต้นด้วยขั้นตอนที่ง่ายๆ ก่อน:
+Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-โค้ดของ Solidity นั้นจะอยู่ในส่วนของ **contracts**  โดย `contract` นั้นจะเรียกว่าเป็นบล็อคโครงสร้างพื้นฐานในแอพพลิเคชั่น Ethereum ซึ่งมีตัวแปรและฟังชั่นต่างๆ ขึ้นอยู่กับ contract ทั้งสิ้น  สิ่งนี้จะเป็นจุดเริ่มต้นโปรเจคทั้งหมดทั้งมวลของคุณนั่นเอง
+An empty contract named `HelloWorld` would look like this:
 
-contract ว่างๆ ซึ่งเราใช้ชื่อว่า `HelloWorld` ก็จะมีหน้าตาดังนี้:
+    contract HelloWorld {
+    
+    }
+    
 
-```
-contract HelloWorld {
+## Version Pragma
 
-}
-```
+All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-##  Version Pragma
+It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
-ในทุกๆ โค้ดต้นฉบับของ Solidity จะต้องเริ่มต้นด้วยคำว่า “version pragma” หมายถึงการประกาศเวอร์ชั่นคอมไพล์เลอร์หรือตัวแปลภาษาของ Solidity ที่โค้ดนี้ควรใช้ ทั้งนี้ก็เพื่อป้องกันปัญหาที่โค้ดของคุณจะถูกทำลายเมื่อคอมไพล์เลอร์ในอนาคตนั้นมีการปรับเปลี่ยนไป โดยหน้าตาของขั้นตอนดังกล่าวเป็นดังนี้ :
+Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
 
-`pragma solidity ^0.4.19;` (สำหรับ Solidity เวอร์ชั่นล่าสุดขณะทำการเขียนโค้ดนี้ ซึ่งก็คือเวอร์ชั่น 0.4.19)
+    pragma solidity ^0.4.19;
+    
+    contract HelloWorld {
+    
+    }
+    
 
-หากนำมาวางร่วมกันกับ contract เราก็จะได้โครงสร้างเริ่มต้นว่างๆ ที่คุณจะต้องเขียนเป็นสิ่งแรกในทุกๆครั้งเมื่อสร้างโปรเจคใหม่ขึ้น:
+# Put it to the test
 
-```
-pragma solidity ^0.4.19;
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-contract HelloWorld {
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
-}
-```
+2. Create an empty contract called `ZombieFactory`.
 
-# ทดสอบ
-
-ในการที่จะสร้างกองทัพซอมบี้ เรามาลองสร้างฐานของ contract โดยใช้ชื่อว่า `ZombieFactory`
-
-1.	ในกล่องด้านขวาให้ระบุตามขั้นตอนที่ได้กล่าวมา เพื่อให้เวอร์ชั่นของ Solidity ที่เราจะใช้คือเวอร์ชั่น `0.40.19`
-
-2.	สร้าง contract เปล่าขึ้นมาแล้วใช้ชื่อว่า `ZombieFactory`
-
-เมื่อทำสำเร็จแล้ว ให้คลิกที่ “check answer” ด้านล่าง หรือหากขัดข้องส่วนไหนให้คลิกคำสั่ง “hint”
+When you're finished, click "check answer" below. If you get stuck, you can click "hint".

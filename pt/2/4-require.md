@@ -1,120 +1,92 @@
 ---
-title: Requerer (Require)
-actions: ['verificarResposta', 'dicas']
+title: Require
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              // comece aqui
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      event NewZombie(uint zombieId, string name, uint dna);
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      mapping (uint => address) public zombieToOwner;
+      mapping (address => uint) ownerZombieCount;
+      
+      function _createZombie(string _name, uint _dna) private {
+      uint id = zombies.push(Zombie(_name, _dna)) - 1;
+      zombieToOwner[id] = msg.sender;
+      ownerZombieCount[msg.sender]++;
+      NewZombie(id, _name, _dna);
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      // start here
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
 
-Na lição 1, possibilitamos os usuários de criar novos zumbis chamando a função `createRandomZombie` e colocando um nome. Porém, se os usuários continuarem chamando esta função e de forma ilimitada criando zumbis em seus exércitos, o jogo não teria tanta graça.
+Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
 
-Vamos fazer assim, cada jogador só pode chamar esta função uma vez. Desta maneira novos jogadores irão chamar só quando começarem o jogo pela primeira vez, para criar o primeiro zumbi do exército.
+How can we make it so this function can only be called once per player?
 
-Como podemos fazer esta função ser chamada somente uma vez por jogador?
+For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
 
-Para isso nós vamos usar o `require` (requerer). `require` faz com que a função lance um erro e pare a execução se alguma condição não for verdadeira:
+    function sayHiToVitalik(string _name) public returns (string) {
+      // Compares if _name equals "Vitalik". Throws an error and exits if not true.
+      // (Side note: Solidity doesn't have native string comparison, so we
+      // compare their keccak256 hashes to see if the strings are equal)
+      require(keccak256(_name) == keccak256("Vitalik"));
+      // If it's true, proceed with the function:
+      return "Hi!";
+    }
+    
 
-```
-function sayHiToVitalik(string _name) public returns (string) {
-  // Compara se _name é igual à "Vitalik". Lança um erro e termina se não for verdade.
-  // (Lembrete: Solidity não tem uma forma nativa de comparar strings, então
-  // temos que comparar os hashes keccak256 para verificar a igualdade)
-  require(keccak256(_name) == keccak256("Vitalik"));
+If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
-  // Se é verdade, prossiga com a função:
-  return "Olá!";
-}
-```
+Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
 
-Se você chamar esta função com `sayHiToVitalik("Vitalik")`, ela irá retornar "Olá!". Se você chamar esta função com outra entrada, ela irá lançar um erro e não irá executar.
+# Put it to the test
 
-Sendo assim, `require` é muito útil para verificar certas condições que devem ser verdadeiras antes de executar uma função.
+In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
 
-# Vamos testar
+Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
 
-Em nosso jogo de zumbi, nós não queremos que o usuário possa criar zumbis ilimitadamente em seus exércitos ao chamar a função `createRandomZombie` consecutivamente - acabaria com a graça do jogo.
+1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to ``, and throw an error otherwise.
 
-Vamos usar o `require` para ter certeza que esta função só será executada uma vez por usuário, quando precisarem criar o primeiro zumbi.
-
-1. Coloque uma declaração de `require` no começo da função `createRandomZombie`. A função deve checar para ter certeza que `ownerZombieCount[msg.sender]` é igual a `0`, e lançar um erro caso o contrário.
-
-> Nota: Em Solidity, não importa qual o termo você usar primeiro - ambas as formas funcionam. Porém, desde que o nosso checador de resposta é bem básico, ele só aceita um tipo de resposta correta - ele espera que `ownerZombieCount[msg.sender]` esteja em primeiro.
+> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.

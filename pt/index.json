@@ -179,6 +179,12 @@
         "nameInputPlaceholder": "Entre com o nome aqui",
         "defaultZombieDesc": "Um CryptoZombie de Nível 1"
     },
+    "battleArena": {
+        "IOTAslain": "IOTA has been slain in battle!",
+        "winCount": "Your Zombie's Win Count:",
+        "iotaLose": "IOTA's Loss Count",
+        "newZombie": "New Zombie Created"
+    },
     "sharePage": {
         "pageTitle": "Olha só o meu CryptoZombie {zombieName}!",
         "presents": "Apresenta",

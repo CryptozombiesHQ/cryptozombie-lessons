@@ -1,94 +1,79 @@
 ---
-title: Yapılarla ve Sıralamalarla çalışmak
-actions: ['cevapKontrol', 'ipuçları']
+title: Working With Structs and Arrays
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              // start here
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function createZombie(string _name, uint _dna) {
+      // start here
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
+### Creating New Structs
 
-### Yeni Yapılar Oluşturmak
+Remember our `Person` struct in the previous example?
 
-Önceki örnekteki bizim `Person` yapısını hatırlıyor musun?
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    Person[] public people;
+    
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Now we're going to learn how to create new `Person`s and add them to our `people` array.
 
-Person[] public people;
-```
+    // create a New Person:
+    Person satoshi = Person(172, "Satoshi");
+    
+    // Add that person to the Array:
+    people.push(satoshi);
+    
 
-Şimdi yeni `Person`ların nasıl oluşturulacağını ve onlara `people` sıralamamızı eklemeyi öğreneceğiz.
+We can also combine these together and do them in one line of code to keep things clean:
 
-```
-// Yeni bir Person oluştur:
-Person satoshi = Person(172, "Satoshi");
+    people.push(Person(16, "Vitalik"));
+    
 
-// Bu kişiye bir Sıralama ekle:
-people.push(satoshi);
-```
+Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
 
-Ayrıca, bunları birlikte kombine edebilir ve gidişatı temiz tutmak için bir satır kod yapabiliriz:
+    uint[] numbers;
+    numbers.push(5);
+    numbers.push(10);
+    numbers.push(15);
+    // numbers is now equal to [5, 10, 15]
+    
 
-```
-people.push(Person(16, "Vitalik"));
-```
+# Put it to the test
 
-`array.push()`un sıralamanın **sonuna** birşey eklediğine dikkat edin, yani öğeler onlara ekleediğimiz sıradadır. Aşağıdaki örneğe bakın:
+Let's make our createZombie function do something!
 
-```
-uint[] numbers;
-numbers.push(5);
-numbers.push(10);
-numbers.push(15);
-// sayılar şimdi [5, 10, 15]'e eşittir
-```
-
-# Teste koy
-
-Hadi birşey yapan kendi createZombie fonksiyonumuzu yapalım!
-
-1. Fonksiyon gövdesini doldurun böylece yeni bir `Zombie` oluşturur ve ona `zombies` sıralaması ekler. Yeni Zombi için `name` ve `dna` fonksiyon argümanlarından gelmelidir.
-2. Gidişatı temiz tutmak için hadi bunu bir kod satırında yapalım. 
+1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+2. Let's do it in one line of code to keep things clean.

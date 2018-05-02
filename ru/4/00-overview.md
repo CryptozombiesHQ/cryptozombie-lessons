@@ -1,13 +1,12 @@
 ---
-title: Боевая система Зомби
-header: "Урок 4: Боевая система Зомби"
+title: Zombie Battle System
+header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
 ---
+The time has come, human...
 
-Час настал, человек...
+Time to make your zombies FIGHT!
 
-Пришло время бросить зомбосолдат в БОЙ!
+But zombie battles aren't for the faint of heart...
 
-Битвы зомби — развлечение не для слабонервных...
-
-В этом уроке мы объединим все изученные в предыдущих главах концепции и создадим функцию зомби-битв. А еще разберемся с функциями **payable** и узнаем, как наделить DApps способностью получать деньги от игроков.
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.

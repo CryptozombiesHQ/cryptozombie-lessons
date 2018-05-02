@@ -1,100 +1,82 @@
 ---
-title: Keccak256 и преобразование типов данных
-actions: ['Проверить', 'Подсказать']
+title: Keccak256 and Typecasting
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              // Начало здесь
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function _createZombie(string _name, uint _dna) private {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      // start here
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
       }
 ---
+We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
 
-Нужно, чтобы функция `_generateRandomDna` (сгенерировать случайную ДНК) возвращала (полу-) случайный `uint`. Как этого добиться? 
+Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
 
-В Ethereum есть встроенная хэш-функция `keccak256` (произносится как «кечак»), разновидность SHA3. Хеш-функция обычно преображает входную строку в случайное 256-битное шестнадцатеричное число. Небольшое изменение в строке приведет к сильному изменению хэша. 
+It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
 
-Эта функция полезна для выполнения многих задач в Ethereum, но сейчас мы используем ее для обычной генерации псевдослучайных чисел. 
+Example:
 
-Пример:
+    //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
+    keccak256("aaaab");
+    //b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
+    keccak256("aaaac");
+    
 
-```
-//6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
-keccak256("aaaab");
-//b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
-keccak256("aaaac");
-```
+As you can see, the returned values are totally different despite only a 1 character change in the input.
 
-Как видишь, функция возвращает абсолютно другое значение, хотя мы изменили всего одну входную букву. 
+> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
 
-> Примечание: в блокчейне остро стоит проблема генерации **безопасных** случайных чисел. Приведенный нами метод небезопасен, но для текущей задачи годится, поскольку безопасность не входит в приоритетные задачи ДНК зомби. 
+## Typecasting
 
-## Преобразование типов данных
+Sometimes you need to convert between data types. Take the following example:
 
-Периодически типы данных надо конвертировать. Смотри пример: 
+    uint8 a = 5;
+    uint b = 6;
+    // throws an error because a * b returns a uint, not uint8:
+    uint8 c = a * b; 
+    // we have to typecast b as a uint8 to make it work:
+    uint8 c = a * uint8(b); 
+    
 
-```
-uint8 a = 5;
-uint b = 6;
-// Выдаст ошибку, потому что a * b возвращает uint, а не uint8:
-uint8 c = a * b; 
-// Чтобы код работал, нужно преобразовать b в uint8:
-uint8 c = a * uint8(b); 
-```
+In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
 
-В примере выше `a * b` возвращал `uint`, но мы попытались сохранить его как `uint8`, что потенциально могло привести к проблемам. Если преобразовать тип данных в `uint8`, то код будет работать, а компилятор не выдаст ошибку. 
+# Put it to the test
 
-# Проверь себя
+Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
 
-Давай заполним тело функции `_generateRandomDna` (сгенерировать случайную ДНК)! Для этого: 
+1. The first line of code should take the `keccak256` hash of `_str` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 
-1. Первая строчка кода должна взять `keccak256`-хэш от `_str`, чтобы сгенерировать превдослучайное шестнадцатеричное
- число, преобразовать его в `uint` и сохранить результат в `uint` с именем `rand`. 
-
-2. Мы хотим, чтобы зомби-ДНК содержала только 16 цифр (помнишь `dnaModulus`?). Поэтому следующая строчка кода должна `return` (возвращать) вычисленное выше значение модуля (`%`) `dnaModulus`. 
+2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.

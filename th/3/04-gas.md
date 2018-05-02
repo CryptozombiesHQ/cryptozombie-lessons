@@ -1,6 +1,8 @@
 ---
 title: Gas
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   editor:
@@ -8,239 +10,202 @@ material:
     startingCode:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./ownable.sol";
-
+        
         contract ZombieFactory is Ownable {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-                // เพิ่มข้อมูลใหม่ตรงนี้
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                randDna = randDna - randDna % 100;
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        // Add new data here
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) internal {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        randDna = randDna - randDna % 100;
+        _createZombie(_name, randDna);
+        }
+        
         }
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
+        
         contract KittyInterface {
-          function getKitty(uint256 _id) external view returns (
-            bool isGestating,
-            bool isReady,
-            uint256 cooldownIndex,
-            uint256 nextActionAt,
-            uint256 siringWithId,
-            uint256 birthTime,
-            uint256 matronId,
-            uint256 sireId,
-            uint256 generation,
-            uint256 genes
-          );
+        function getKitty(uint256 _id) external view returns (
+        bool isGestating,
+        bool isReady,
+        uint256 cooldownIndex,
+        uint256 nextActionAt,
+        uint256 siringWithId,
+        uint256 birthTime,
+        uint256 matronId,
+        uint256 sireId,
+        uint256 generation,
+        uint256 genes
+        );
         }
-
+        
         contract ZombieFeeding is ZombieFactory {
-
-          KittyInterface kittyContract;
-
-          function setKittyContractAddress(address _address) external onlyOwner {
-            kittyContract = KittyInterface(_address);
-          }
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
-              newDna = newDna - newDna % 100 + 99;
-            }
-            _createZombie("NoName", newDna);
-          }
-
-          function feedOnKitty(uint _zombieId, uint _kittyId) public {
-            uint kittyDna;
-            (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            feedAndMultiply(_zombieId, kittyDna, "kitty");
-          }
-
+        
+        KittyInterface kittyContract;
+        
+        function setKittyContractAddress(address _address) external onlyOwner {
+        kittyContract = KittyInterface(_address);
+        }
+        
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        if (keccak256(_species) == keccak256("kitty")) {
+        newDna = newDna - newDna % 100 + 99;
+        }
+        _createZombie("NoName", newDna);
+        }
+        
+        function feedOnKitty(uint _zombieId, uint _kittyId) public {
+        uint kittyDna;
+        (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+        feedAndMultiply(_zombieId, kittyDna, "kitty");
+        }
+        
         }
       "ownable.sol": |
         /**
-         * @title Ownable
-         * @dev Ownable contract มี address ของ owner และได้มีฟังก์ชั่นที่ไว้ใช้ควบคุมการยืนยันตัวตนขั้นพื้นฐานเอาไว้
-         * สิ่งนี้บ่งบอกถึงการนำ "user permissions"มาใช้นั่นเอง
-         */
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
+        */
         contract Ownable {
-          address public owner;
-
-          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-          /**
-           * @dev constructor ประเภท ownable ได้ตั้งค่า `owner` ดั้งเดิมของ contract ไปยังบัญชีของผู้ส่ง
-           * (sender account)
-           */
-          function Ownable() public {
-            owner = msg.sender;
-          }
-
-          /**
-           * @dev throwหากมีการเรียกโดยบัญชีอื่นที่ไม่ใช่ของ owner
-           */
-          modifier onlyOwner() {
-            require(msg.sender == owner);
-            _;
-          }
-
-          /**
-           * @dev อนุญาตให้ owner คนปัจจุบันสามารถโอนการควบคุม contract ไปยัง newOwnerได้
-           * @param newOwner คือ address ที่จะเอาไว้รับ ownership ที่ถูกโอนมาให้
-           */
-          function transferOwnership(address newOwner) public onlyOwner {
-            require(newOwner != address(0));
-            OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
-          }
-
+        address public owner;
+        
+        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        
+        /**
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
+        */
+        function Ownable() public {
+        owner = msg.sender;
+        }
+        
+        /**
+        * @dev Throws if called by any account other than the owner.
+        */
+        modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+        }
+        
+        /**
+        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0));
+        OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./ownable.sol";
-
       contract ZombieFactory is Ownable {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-              uint32 level;
-              uint32 readyTime;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) internal {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              randDna = randDna - randDna % 100;
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; uint32 level; uint32 readyTime; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) internal { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+Great! Now we know how to update key portions of the DApp while preventing other users from messing with our contracts.
 
-เก่งมากๆ เลย! ตอนนี้ก็ได้รู้ถึงการอัพเดท key portion ของ DApp ในช่วงที่จะป้องกันผู้ใช้อื่นไม่ให้เข้ามายุ่งวุ่นวายกับ contract ของเราแล้ว
+Let's look at another way Solidity is quite different from other programming languages:
 
-ลองมาดูในส่วนของความแตกต่างระหว่าง Solidity กับภาษาโปรแกรมอื่น ๆ ดีกว่า:
+## Gas — the fuel Ethereum DApps run on
 
-## Gas — เชื้อเพลิงที่ Ethereum DApps ต้องใช้
+In Solidity, your users have to pay every time they execute a function on your DApp using a currency called ***gas***. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp.
 
-ใน Solidity ผู้ใช้จะต้องมีการชำระเงินทุกครั้งที่มีการรันโค้ดฟังก์ชั่น โดยเรียกสกุลเงินที่ใช้แลกเปลี่ยนว่า **_gas_** ผู้ใช้ต้องซื้อ gas ด้วย Ether (เป็นสกุลเงินบน Ethereum) นั่นหมายถึงผู้ใช้ของคุณจะต้องจ่าย ETH เพื่อที่จะรันโค้ดฟังก์ชั่นบน DApp
+How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a ***gas cost*** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total ***gas cost*** of your function is the sum of the gas costs of all its individual operations.
 
-จำนวน gas ที่จำเป็นต้องใช้ในการรันฟังก์ชั่นนั้นขึ้นอยู่กับความซับซ้อนของ logic ซึ่งแต่ละโอเปอร์เรชั่นต่างก็มี **_gas cost_** ซึ่งมีค่าโดยคร่าวๆ ขึ้นกับปริมาณ resource ที่ต้องใช้ในการคำนวณของโอเปอเรชั่นนั้นๆ  (ยกตัวอย่างเช่น การ write ลงบน storage จะมีค่ามากกว่าเพียงแค่การบวกข้อมูลชนิด integer สองตัว เป็นต้น)  จำนวน **_gas cost_** รวมทั้งหมดในฟังก์ชั่นมาจากผลรวมระหว่าง gas cost รวมทั้งหมดของแต่ละโอเปอร์เรชั่น
+Because running functions costs real money for your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
 
-เนื่องจากการรันฟังก์ชั่นจะทำให้ผู้ใช้ต้องเสียค่าใช้จ่ายจริงๆ ดังนั้นการเขียนโค้ดอย่างมีประสิทธิภาพ (code optimization) นับว่าเป็นสิ่งสำคัญอันดับต้นๆ บน Ethereum มากกว่าในภาษาโปรแกรมมิ่งอื่นๆ ถ้าหากว่าโค้ดของคุณไม่เป็นระเบียบเละเทะ ผู้ใช้ก็จะต้องเสียค่าใช้จ่ายมากขึ้นในการที่จะรันโค้ดฟังก์ชั่นออกมา — อาจจะมีมูลค่าถึงล้านดอลล่าร์ก็เป็นได้หากมีผู้ใช้จำนวนมหาศาล
+## Why is gas necessary?
 
-## ทำไม gas จึงสำคัญ?
+Ethereum is like a big, slow, but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
 
-Ethereum เปรียบเสมือนกับคอมพิวเตอร์ขนาดใหญ่ที่ชำงานช้าแต่ว่ามีความปลอดภัยสูง ทุกๆ node ในเนตเวิร์คจะต้องทำการรันฟังก์ชั่นเดียวกันเพื่อเช็คความถูกต้องของผลลัพธ์ เมื่อทำการรันโค้ดฟังก์ชั่นหนึ่งๆ ออกมา — การที่มีการเช็คความถูกต้องโดย node จำนวนมากต่อการรันแต่ละฟังก์ชั่นจะเป็นสิ่งที่ทำให้ Ethereum นั้นมีการกระจายการคำนวนผล (decentralize) และทำให้ข้อมูลไม่สามารถเปลี่ยนแปลงได้ อีกทั้งยังไม่สามารถถูกตรวจจับได้ง่ายอีกด้วย (immutable and censorship-resistant)
+The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
 
-ผู้สร้าง Ethereum ต้องการแน่ใจว่าจะไม่มีใครเข้ามาทำให้เน็ตเวิร์คหยุดชะงักด้วยการทำให้โค้ดติดอยู่ในลูป หรือว่าเข้ามากอบโกยผลประโยชน์จาก network resource โดยการนำไปใช้ในการคำนวณที่ซับซ้อน ดังนั้นจึงได้ใช้วิธีการเก็บค่าใช้จ่ายเมื่อมีการถ่ายโอนใดๆ และผู้ใช้จะต้องเสียค่าใช้จ่ายสำหรับการคำนวณต่างๆ รวมทั้งสำหรับ storage อีกด้วย
+> Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
 
-> Note: ในกรณีของ sidechain อาจจะไม่ได้เป็นเช่นนี้เสมอไป เช่น  เหมือนกับในกรณีของ sidechain ที่กำลังสร้างอยู่โดยผู้เขียนเนื้อหา CryptoZombies ณ Loom Network คือไม่จำเป็นที่การรันเกมที่เหมือนกับ World of Warcraft โดยตรงบน mainnet ของ Ethereum จะดีเสมอไป— ราคาของ gas อาจถูกกำหนดให้มีราคาแพงได้ แต่มันสามารถรันลงบน sidechain ด้วยอัลกอริทึ่มที่แตกต่างออกไปแทน เราจะมากล่าวถึงประเด็นที่ว่าจะใช้ DApps ชนิดไหนบน sidechain หรือ Ethereum mainnet ในบทถัดไป
+## Struct packing to save gas
 
-## สร้าง packing เพื่อเอาไว้เก็บ gas
+In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
 
-ในบทเรียนที่ 1 ได้มีการกล่าวถึงข้อมูลชนิด `uint` ในชนิดต่าง ๆ: `uint8`, `uint16`, `uint32`, เป็นต้น
+Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the `uint` size. For example, using `uint8` instead of `uint` (`uint256`) won't save you any gas.
 
-โดยทั่วไปเราไม่จำเป็นต้องมานั่งสนใจการใช้ชนิดของข้อมูลย่อยๆ พวกนี้ก็ได้เพราะ Solidity ได้ทำการสำรองพื้นที่ไว้ 256 bits อยู่แล้วไม่ว่าจะเป็น `uint` ชนิดใดก็ตาม เช่น การใช้ `uint8` แทนที่จะเป็น `uint` (`uint256`) ก็ไม่ได้ทำให้คุณใช้ gas น้อยลงแต่อย่างใด
+But there's an exception to this: inside `struct`s.
 
-แต่ก็อาจจะมีข้อยกเว้นในบางกรณีเช่นกัน: ภายใน `struct` ต่าง ๆ
+If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
 
-หากว่ามีหลาย `uint`ภายใน struck 
-การใช้ `uint` ที่มีขนาดเล็กลงเมื่อเป็นไปได้จะช่วยให้ Solidity สามารถบรรจุตัวแปรต่างๆ (pack) ให้อยู่รวมกันเพื่อลดขนาดของหน่วยความจำได้ ยกตัวอย่างเช่น:
+    struct NormalStruct {
+      uint a;
+      uint b;
+      uint c;
+    }
+    
+    struct MiniMe {
+      uint32 a;
+      uint32 b;
+      uint c;
+    }
+    
+    // `mini` will cost less gas than `normal` because of struct packing
+    NormalStruct normal = NormalStruct(10, 20, 30);
+    MiniMe mini = MiniMe(10, 20, 30); 
+    
 
-```
-struct NormalStruct {
-  uint a;
-  uint b;
-  uint c;
-}
+For this reason, inside a struct you'll want to use the smallest integer sub-types you can get away with.
 
-struct MiniMe {
-  uint32 a;
-  uint32 b;
-  uint c;
-}
+You'll also want to cluster identical data types together (i.e. put them next to each other in the struct) so that Solidity can minimize the required storage space. For example, a struct with fields `uint c; uint32 a; uint32 b;` will cost less gas than a struct with fields `uint32 a; uint c; uint32 b;` because the `uint32` fields are clustered together.
 
-// `mini` จะใช้ gas น้อยกว่า `normal` เนื่องจากมีการ pack ส่วน struct เข้าไว้ด้วยกัน
-NormalStruct normal = NormalStruct(10, 20, 30);
-MiniMe mini = MiniMe(10, 20, 30); 
-```
+## Put it to the test
 
-เพราะฉะนั้นแล้ว เราจึงอยากให้ภายใน struct ใช้ข้อมูล integer ชนิดที่มีขนาดเล็กที่สุดเท่าที่จะทำได้
+In this lesson, we're going to add 2 new features to our zombies: `level` and `readyTime` — the latter will be used to implement a cooldown timer to limit how often a zombie can feed.
 
-อาจจำเป็นจะต้องใช้การรวมกลุ่ม (cluster) ข้อมูลชนิดที่่เหมือนกันเข้าด้วยกันอีกด้วย (เช่น นำข้อมูลที่เหมือนกันมาวางไว้ใกล้ ๆ กันภายใน struct) ซึ่งจะทำให้ Solidity สามารถลดพื้นที่จัดเก็บข้อมูลลงไปได้ ยกตัวอย่าง struct ที่มี
-field แบบ `uint c; uint32 a; uint32 b;` จะใช้ gas ในปริมาณที่น้อยกว่า field แบบ `uint32 a; uint c; uint32 b;`
-เนื่องจาก field `uint32` ได้ถูกนำมาวางไว้ให้อยู่ด้วยกัน
+So let's jump back to `zombiefactory.sol`.
 
+1. Add two more properties to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
 
-## ลองมาทดสอบกัน
-
-ในบทเรียนนี้ เราจะมาทำการเพิ่ม 2 คุณสมบัติเข้าไปในเจ้าซอมบี้ของเรากัน: นั่นก็คือ `level` และ `readyTime` — คุณสมบัติอันที่สองเอาไว้เพื่อการอิมพลิเมนท์เวลา cooldown ที่จะเอาไว้จำกัดความถี่ในการให้อาหารซอมบี้ได้
-
-ดังนั้นให้กลับไปที่ `zombiefactory.sol`กันเลย
-
-1. ให้เพิ่ม 2 คุณสมบัติเข้าไปใน struct  `Zombie` : ได้แก่ `level` (ชนิด `uint32`) และ `readyTime` (ชนิด`uint32` เช่นกัน) เนื่องด้วยเราต้องการให้สองคุณสมบัตินี้อยู่ด้วยกัน ดังนั้นก็ให้วางทั้งคู่ในส่วนท้ายของ struct เลย
-
-จำนวน 32 bit เพียงพอแล้วต่อการเก็บ level ของซอมบี้ และ timestamp ทำให้เราสามารถใช้ gas costs ได้น้อยลงโดยการ pack ข้อมูลเข้าด้วยกันให้แน่นมากขึ้นโดยการใช้ `uint` (256-bits) แบบทั่ว ๆ ไป
+32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).

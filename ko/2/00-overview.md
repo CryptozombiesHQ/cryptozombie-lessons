@@ -1,11 +1,10 @@
 ---
-title: 좀비가 희생물을 공격하다 
-header: 그러니까 자네가 레슨 2에 왔다는 거군!
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-훌륭하다, 인간이여! 자네, 내가 생각했던 것보다 코딩을 잘하는군. 
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-레슨 2는 **좀비에게 다른 생명체를 먹여서 좀비 군대의 규모를 늘리는 방법을** 자네에게 가르쳐 줄 걸세.
-
-이 레슨에서 몇 가지 고급 솔리디티 개념에 대해 다룰 것이니, 시작하기 전에 레슨 1을 완료하는 걸 강력 추천하네.
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.

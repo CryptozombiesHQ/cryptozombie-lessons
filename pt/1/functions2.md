@@ -1,72 +1,60 @@
 ---
-title: Funções Privadas / Públicas
-actions: ['verificarResposta', 'dicas']
+title: Private / Public Functions
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function createZombie(string _name, uint _dna) {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
       }
 ---
+In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
 
-Em Solidity, funções são públicas por padrão. Isso significa que qualquer um (ou qualquer outro contrato) pode chamar a função em seu contrato e executar seu código.
+Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
 
-Obviamente que isso nem sempre é o desejado, e pode tornar o seu contrato vulnerável a ataques. Sendo assim é uma boa prática marcar as suas funções com a palavra reservada `private` (privada) por padrão, e somente marcar com a palavra reservada `public` (pública) as funções que você quer expor para o mundo.
+Let's look at how to declare a private function:
 
-Vejamos como declarar uma função privada:
+    uint[] numbers;
+    
+    function _addToArray(uint _number) private {
+      numbers.push(_number);
+    }
+    
 
-```
-uint[] numbers;
+This means only other functions within our contract will be able to call this function and add to the `numbers` array.
 
-function _addToArray(uint _number) private {
-  numbers.push(_number);
-}
-```
+As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
 
-Isso quer dizer que somente as funções em nosso próprio contrato podem chamar a função e adicionar ao array `numbers`.
+# Put it to the test
 
-Como você pode ver, usarmos a palavra reservada `private` após o nome da função. E assim como os parâmetros da função, a convenção é começar os nomes das funções privadas com sublinhado (`_`).
+Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
 
-# Vamos testar
-
-No momento a função `createZombie` em nosso contrato é pública por padrão - isso significa que qualquer um pode chamar a função e criar um novo zumbi em nosso contrato! Vamos torná-la privada.
-
-1. Modifique a função `createZombie` para torná-la privada. Não esqueça da convenção de nomes.
+1. Modify `createZombie` so it's a private function. Don't forget the naming convention!

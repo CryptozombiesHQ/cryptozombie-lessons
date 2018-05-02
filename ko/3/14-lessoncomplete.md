@@ -1,6 +1,8 @@
 ---
-title: 레슨 3 완료!
-actions: ['checkAnswer', 'hints']
+title: Lesson 3 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1

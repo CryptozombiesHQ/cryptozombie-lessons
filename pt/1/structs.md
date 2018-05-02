@@ -1,55 +1,47 @@
 ---
-title: Estruturas
-actions: ['verificarResposta', 'dicas']
+title: Structs
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          // comece aqui
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
       }
 ---
+Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
 
-Algumas vezes você precisa de um tipo de dado mais complexo. Para isso, Solidity fornece **_structs_**:
+    struct Person {
+      uint age;
+      string name;
+    }
+    
+    
 
-```
-struct Person {
-  uint age;
-  string name;
-}
+Structs allow you to create more complicated data types that have multiple properties.
 
-```
+> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
 
-Estruturas permitem que você crie tipos de dados mais complicados que tem múltiplas propriedades.
+# Put it to the test
 
-> Note que nos apresentamos um novo tipo de dado, `string`. Strings são de tamanho arbitrário de dados UTF-8. Ex. `string greeting = "Hello world!"`
+In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
 
-# Vamos testar
+1. Create a `struct` named `Zombie`.
 
-Em nossa aplicação, nós queremos criar alguns zumbis! E zumbis terão múltiplas propriedades, esse é o caso perfeito para usarmos estruturas.
-
-1. Criar uma `struct` chamada `Zombie`.
-
-2. Nossa estrutura `Zombie` terá 2 propriedades: `name` (uma `string`), e `dna` (um `uint`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).

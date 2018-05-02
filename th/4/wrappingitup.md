@@ -1,6 +1,8 @@
 ---
 title: Wrapping It Up
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: true
@@ -10,19 +12,18 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 4.
 
-สุดยอดไปเลย! เพียงเท่านี้ก็ได้เรียนรู้เนื้อหาทั้งหมดของบทที่ 4 ครบหมดแล้ว
+Go ahead and test out your battle function to the right!
 
-ลองทดสอบฟังก์ชั่นการต่อสู้ได้ทางด้านขวามือดู!
+## Claim your reward
 
-## อย่าลืมมารับรางวัลกันด้วย
+After winning the battle:
 
-หลังจากที่ชนะการแข่งขัน:
+1. Your zombie will level up
 
-1. ซอมบี้ของเราจะเลเวลสูงขึ้น
+2. Your zombie will increase his `winCount`
 
-2. มีการเพิ่ม `winCount` ไปยังซอมบี้
+3. You will spawn a new zombie to add to your army!
 
-3. คุณจะได้สร้างซอมบี้ตัวใหม่ขึ้นมา เพื่อจะเพิ่มไปยังกองทัพ!
-
-เดินหน้าต่อไปและลองต่อสู้ดู หลังจากนั้นก็เรียนรู้ต่อในบทถัดไปกันได้เลย
+Go ahead and try the battle, then proceed to the next chapter to complete the lesson.

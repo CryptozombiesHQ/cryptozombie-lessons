@@ -1,72 +1,60 @@
 ---
-title: Function Declarations การประกาศค่าฟังก์ชั่น
-actions: ['checkAnswer', 'hints']
+title: Function Declarations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          // เริ่มตรงนี้
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      uint dna;
+      string name;
+      }
+      
+      Zombie[] public zombies;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { uint dna; string name; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) {
+      }
       }
 ---
+A function declaration in solidity looks like the following:
 
-การประกาศฟังก์ชั่นใน Solidity จะมีหน้าตาดังนี้
+    function eatHamburgers(string _name, uint _amount) {
+    
+    }
+    
 
-```
-function eatHamburgers(string _name, uint _amount) {
+This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
 
-}
-```
+> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
 
-โดยตัวอย่างดังกล่าวจะเป็นฟังก์ชั่นที่ชื่อว่า `eatHamburgers` ที่จะรับตัวแปร 2 ค่า ได้แก่ ข้อมูลชนิด `string` และ `uint` โดยในตอนนี้ภายในฟังก์ชั่นจะยังไม่มีอะไร
+You would call this function like so:
 
-> โน้ต: การเริ่มต้นชื่อของตัวแปรต่างๆ ภายในฟังก์ชั่นด้วยเครื่องหมายสัญประกาศ (`_`) จะทำให้มีความสะดวก (แต่ก็ไม่ได้จำเป็น) ในการที่จะแยกความแตกต่างตัวแปรเหล่านี้ออกจากตัวแป global โดยเดี๋ยวเราจะสอนวิธีการใช้ดังกล่าวในบทนี้ด้วย 
+    eatHamburgers("vitalik", 100);
+    
 
-คุณสามารถเรียกฟังก์ชั่นได้ดังนี้
+# Put it to the test
 
-```
-eatHamburgers("vitalik", 100);
-```
+In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-# ทดสอบ
+1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
-ในแอพพลิเคชั่นของเรานั้นต้องการฟังก์ชั่นที่เอาไว้สร้างซอมบี้ขึ้นมา เราจะมาสร้างฟังก์ชั่นนี้กัน
-
-1.	สร้างฟังก์ชั่นขึ้นโดยใช้ชื่อว่า `createZombie`  โดยควรสามารถรับตัวแปรได้ดังนี้ **__name_** (เป็น `string`) และ **__dna_** (เป็น `uint`) 
-
-และปล่อยส่วน body ของฟังก์ชั่นให้ว่างไปก่อนเพราะเราจะมาเขียนในภายหลัง
+Leave the body empty for now — we'll fill it in later.

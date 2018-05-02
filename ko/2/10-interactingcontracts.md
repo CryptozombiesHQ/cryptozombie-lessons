@@ -1,193 +1,167 @@
 ---
-title: 좀비가 무엇을 먹나요?
-actions: ['정답 확인하기', '힌트 보기']
+title: What Do Zombies Eat?
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
-        // 여기에 KittyInterface를 생성한다
-
+        
+        // Create KittyInterface here
+        
         contract ZombieFeeding is ZombieFactory {
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            _createZombie("NoName", newDna);
-          }
-
+        
+        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        _createZombie("NoName", newDna);
+        }
+        
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) internal {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./zombiefactory.sol";
-
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
-
+      contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
+      function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
+It's time to feed our zombies! And what do zombies like to eat most?
 
-이제 좀비들에게 먹이를 줄 시간이군! 좀비가 가장 좋아하는 먹이가 뭘까? 
+Well it just so happens that CryptoZombies love to eat...
 
-크립토좀비가 가장 좋아하는 먹이는... 
+**CryptoKitties!** 
 
-**크립토키티!** 😱😱😱
+(Yes, I'm serious 
 
-(그래, 정말이라네 😆 )
+In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
 
-좀비에게 크립토키티를 먹이로 주려면 크립토키티 스마트 컨트랙트에서 키티 DNA를 읽어와야 할 것이네. 이게 가능한 이유는 크립토키티 데이터가 블록체인 상에 공개적으로 저장되어 있기 때문이지. 블록체인이 환상적이지 않나?! 
+Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 
 
-걱정 말게 - 우리 게임이 어느 누구의 크립토키티에게도 실제 해를 끼치지 않을 것이니 말일세. 우린 단지 크립토키티 데이터를 *읽어 올* 뿐이지. 실제로 이 데이터를 지울 수는 없다네. 😉 
+## Interacting with other contracts
 
-## 다른 컨트랙트와 상호작용하기 
+For our contract to talk to another contract on the blockchain that we don't own, first we need to define an ***interface***.
 
-블록체인 상에 있으면서 우리가 소유하지 않은 컨트랙트와 우리 컨트랙트가 상호작용을 하려면 우선 **_인터페이스_**를 정의해야 하네. 
+Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
-간단한 예시를 살펴 보도록 하지. 다음과 같은 블록체인 컨트랙트가 있다고 해 보세: 
+    contract LuckyNumber {
+      mapping(address => uint) numbers;
+    
+      function setNum(uint _num) public {
+        numbers[msg.sender] = _num;
+      }
+    
+      function getNum(address _myAddress) public view returns (uint) {
+        return numbers[_myAddress];
+      }
+    }
+    
 
-```
-contract LuckyNumber {
-  mapping(address => uint) numbers;
+This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
 
-  function setNum(uint _num) public {
-    numbers[msg.sender] = _num;
-  }
+Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
 
-  function getNum(address _myAddress) public view returns (uint) {
-    return numbers[_myAddress];
-  }
-}
-```
+First we'd have to define an ***interface*** of the `LuckyNumber` contract:
 
-이 컨트랙트는 아무나 자신의 행운의 수를 저장할 수 있는 간단한 컨트랙트이고, 각자의 이더리움 주소와 연관이 있을 것이네. 이 주소를 이용해서 누구나 그 사람의 행운의 수를 찾아 볼 수 있지. 
+    contract NumberInterface {
+      function getNum(address _myAddress) public view returns (uint);
+    }
+    
 
-이제 `getNum` 함수를 이용하여 이 컨트랙트에 있는 데이터를 읽고자 하는 external 함수가 있다고 해 보세.
+Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
 
-먼저, `LuckyNumber` 컨트랙트의 **_인터페이스_**를 정의할 필요가 있네: 
+Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
 
-```
-contract NumberInterface {
-  function getNum(address _myAddress) public view returns (uint);
-}
-```
+So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
 
-약간 다르지만, 인터페이스를 정의하는 것이 컨트랙트를 정의하는 것과 유사하다는 걸 참고하게. 먼저, 다른 컨트랙트와 상호작용하고자 하는 함수만을 선언할 뿐(이 경우, `getNum`이 바로 그러한 함수이지) 다른 함수나 상태 변수를 언급하지 않네. 
+By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
 
-다음으로, 함수 몸체를 정의하지 않지. 중괄호 `{`, `}`를 쓰지 않고 함수 선언을 세미콜론(`;`)으로 간단하게 끝내지. 
+We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
-그러니 인터페이스는 컨트랙트 뼈대처럼 보인다고 할 수 있지. 컴파일러도 그렇게 인터페이스를 인식하지.
+# Put it to the test
 
-우리의 dapp 코드에 이런 인터페이스를 포함하면 컨트랙트는 다른 컨트랙트에 정의된 함수의 특성, 호출 방법, 예상되는 응답 내용에 대해 알 수 있게 되지. 
+We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
 
-다음 레슨에서 다른 컨트랙트의 함수를 실제로 호출할 것일세. 지금은 크립토키티 컨트랙트를 위한 인터페이스를 선언해 보세.  
+The function looks like this:
 
-# 직접 해보기
+    function getKitty(uint256 _id) external view returns (
+        bool isGestating,
+        bool isReady,
+        uint256 cooldownIndex,
+        uint256 nextActionAt,
+        uint256 siringWithId,
+        uint256 birthTime,
+        uint256 matronId,
+        uint256 sireId,
+        uint256 generation,
+        uint256 genes
+    ) {
+        Kitty storage kit = kitties[_id];
+    
+        // if this variable is 0 then it's not gestating
+        isGestating = (kit.siringWithId != 0);
+        isReady = (kit.cooldownEndBlock <= block.number);
+        cooldownIndex = uint256(kit.cooldownIndex);
+        nextActionAt = uint256(kit.cooldownEndBlock);
+        siringWithId = uint256(kit.siringWithId);
+        birthTime = uint256(kit.birthTime);
+        matronId = uint256(kit.matronId);
+        sireId = uint256(kit.sireId);
+        generation = uint256(kit.generation);
+        genes = kit.genes;
+    }
+    
 
-자네를 위해 크립토키티 소스 코드를 찾아 봤네. 거기서, (우리 좀비 게임에서 새로운 좀비를 생성하는 데 필요한!) "유전자"를 포함한 모든 키티 데이터를 반환하는 `getKitty`라는 함수를 발견했네.
+The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
 
-`getKitty` 함수는 다음과 같네:
+Now that we know what this function looks like, we can use it to create an interface:
 
-```
-function getKitty(uint256 _id) external view returns (
-    bool isGestating,
-    bool isReady,
-    uint256 cooldownIndex,
-    uint256 nextActionAt,
-    uint256 siringWithId,
-    uint256 birthTime,
-    uint256 matronId,
-    uint256 sireId,
-    uint256 generation,
-    uint256 genes
-) {
-    Kitty storage kit = kitties[_id];
+1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
 
-    // if this variable is 0 then it's not gestating
-    isGestating = (kit.siringWithId != 0);
-    isReady = (kit.cooldownEndBlock <= block.number);
-    cooldownIndex = uint256(kit.cooldownIndex);
-    nextActionAt = uint256(kit.cooldownEndBlock);
-    siringWithId = uint256(kit.siringWithId);
-    birthTime = uint256(kit.birthTime);
-    matronId = uint256(kit.matronId);
-    sireId = uint256(kit.sireId);
-    generation = uint256(kit.generation);
-    genes = kit.genes;
-}
-```
-
-이 함수는 우리에게 익숙한 함수들과는 달라 보이지. 함수가 다양한 값들을 반환하고 있지... 자네가 자바스크립트 같은 프로그래밍 언어를 이용해 본 적이 있다면 이 점이 다르다는 걸 알 수 있을 거네. 솔리디티에서는 함수가 하나 이상의 값을 반환할 수 있지. 
-
-`getKitty` 함수가 어떤 함수인지 알아 보았으니, 이를 이용하여 인터페이스를 만들어 볼 수 있을 걸세:
-
-1. `KittyInterface`라는 인터페이스를 정의한다. 인터페이스 정의가 `contract` 키워드를 이용하여 새로운 컨트랙트를 생성하는 것과 같다는 점을 기억할 것. 
-
-2. 인터페이스 내에 `getKitty` 함수를 선언한다 (위의 함수에서 중괄호 안의 모든 내용은 제외하고 `return` 키워드 및 반환 값 종류까지만 복사/붙여넣기 하고 그 다음에 세미콜론을 넣어야 한다).
+2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.

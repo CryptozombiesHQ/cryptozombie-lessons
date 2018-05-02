@@ -1,72 +1,60 @@
 ---
-title: Özel / Genel Fonksiyonlar
-actions: ['cevapKontrol', 'ipuçları']
+title: Private / Public Functions
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      function createZombie(string _name, uint _dna) {
+      zombies.push(Zombie(_name, _dna));
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
       }
 ---
+In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
 
-Solidity'de, fonksiyonlar varsayılan olarak `public`tir . Bu, herhangi birinin (veya bir diğer kontratın) kontratınızın fonksiyonunu çağırabileceği ve kendi koduna uygulayabileceği anlamına gelir.
+Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
 
-Açıkça bu her zaman istenilir değildir ve ve saldırı için kontratınızı zayıf yapabilir. Dolayısıyla fonksiyonlarınızı varsayılan olarak `private` işaretlemek ve daha sonra sadece dünyaya teşhir etmek istediğiniz fonksiyonları `public` yapmak iyi uygulamadır.
+Let's look at how to declare a private function:
 
-Özel bir fonksiyonun nasıl belirleneceğine bakalım:
+    uint[] numbers;
+    
+    function _addToArray(uint _number) private {
+      numbers.push(_number);
+    }
+    
 
-```
-uint[] numbers;
+This means only other functions within our contract will be able to call this function and add to the `numbers` array.
 
-function _addToArray(uint _number) private {
-  numbers.push(_number);
-}
-```
+As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
 
-Bu, kontratımızın içindeki yalnızca diğer fonksiyonların bu fonksiyonu çağırabileceği ve `numbers` dizisi ekleyebileceği anlamına gelir.
+# Put it to the test
 
-Gördüğünüz gibi, fonksiyon isminden sonra `private` anahtar kelimesini kullanıyoruz. And as with function parameters, Ve fonksiyon parametrelerinde olduğu gibi, özel fonksiyon isimlerini bir alt çizgi (`_`) ile başlatmak gelenektir.
+Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
 
-# Teste koy
- 
-Kontratımızın `createZombie` fonksiyonu şu anda varsayılan olarak geneldir — bu, herhangi birinin onu çağırabildiği ve kontratımızda yeni bir Zombi oluşturabildiği anlamına gelir! Hadi onu özel yapalım.
-
-1. `createZombie`yi değiştirin yani o bir özel fonksiyondur. Düzeni isimlendirmeyi unutmayın!
+1. Modify `createZombie` so it's a private function. Don't forget the naming convention!

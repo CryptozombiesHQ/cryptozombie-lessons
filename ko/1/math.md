@@ -1,47 +1,42 @@
 ---
-title: 수학 연산
-actions: ['정답 확인하기', '힌트 보기']
+title: Math Operations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          // 여기서 시작
-
+      
+      uint dnaDigits = 16;
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
-
 ---
+Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
 
-솔리디티에서 수학은 꽤 간단하지. 다음 연산은 대부분의 프로그래밍 언어의 수학 연산과 동일하네:
+* Addition: `x + y`
+* Subtraction: `x - y`,
+* Multiplication: `x * y`
+* Division: `x / y`
+* Modulus / remainder: `x % y` *(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)*
 
-* 덧셈: `x + y`
-* 뺄셈: `x - y`,
-* 곱셈: `x * y`
-* 나눗셈: `x / y`
-* 모듈로 / 나머지: `x % y` _(이를테면, `13 % 5`는 `3`이다. 왜냐면 13을 5로 나누면 나머지가 3이기 때문이다)_
+Solidity also supports an ***exponential operator*** (i.e. "x to the power of y", x^y):
 
-솔리디티는 **_지수 연산_**도 지원하지 (즉, "x의 y승", x^y이지):
+    uint x = 5 ** 2; // equal to 5^2 = 25
+    
 
-```
-uint x = 5 ** 2; // 즉, 5^2 = 25
-```
+# Put it to the test
 
-# 직접 해보기
+To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
 
-우리의 좀비 DNA가 16자리 숫자가 되도록 하기 위해 또다른 `unit`형 변수를 생성하고 10^16 값을 배정하세. 이로써 이 값을 이후 모듈로 연산자 `%`와 함께 이용하여 16자리보다 큰 수를 16자리 숫자로 줄일 수 있네. 
-
-1. `dnaModulus`라는 `uint`형 변수를 생성하고 **10의 `dnaDigits`승**을 배정한다.
+1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.

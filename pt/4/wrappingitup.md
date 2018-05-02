@@ -1,6 +1,8 @@
 ---
-title: Juntando Tudo
-actions: ['verificarResposta', 'dicas']
+title: Wrapping It Up
+actions:
+  - checkAnswer
+  - hints
 requireLogin: true
 material:
   saveZombie: true
@@ -10,19 +12,18 @@ material:
     hideSliders: true
     answer: 1
 ---
+Congratulations! That concludes Lesson 4.
 
-Parabéns! Isso conclui a Lição 4.
+Go ahead and test out your battle function to the right!
 
-Vá em frente e teste sua função de batalha zumbi a direita!
+## Claim your reward
 
-## Reivindique a sua recompensa
+After winning the battle:
 
-Após vencer a batalha:
+1. Your zombie will level up
 
-1. Seu zumbi irá aumentar um nível
+2. Your zombie will increase his `winCount`
 
-2. Seu zumbi irá aumentar o `winCount` dele
+3. You will spawn a new zombie to add to your army!
 
-3. Você irá criar um novo zumbi para adicionar ao seu exército!
-
-Vá em frente e tente uma batalha, então prossiga para próximo capítulo para completar a lição.
+Go ahead and try the battle, then proceed to the next chapter to complete the lesson.

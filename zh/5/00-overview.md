@@ -1,13 +1,12 @@
 ---
-title: ERC721 标准和加密收藏品
-header: "Lesson 5: ERC721 标准和加密收藏品"
+title: ERC721 & Crypto-Collectibles
+header: "Lesson 5: ERC721 & Crypto-Collectibles"
 roadmap: roadmap5.jpg
 ---
+Whew! Things are starting to heat up in here...
 
-呼，游戏变得越来越刺激啦...
+In this lesson, we're going to get a bit more advanced.
 
-在这一课，我们将接触到一些更高级的东西。
+We're going to talk about **tokens**, the **ERC721** standard, and **crypto-collectible assets**.
 
-我们将讨论 **代币**,  **ERC721** 标准, 以及 **加密收集资产**.
-
-换句话说，我们将 **让你可以和你的朋友交易僵尸!**
+In other words, we're going to **make it so you can trade your zombies with your friends.**

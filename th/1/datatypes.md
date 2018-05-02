@@ -1,50 +1,48 @@
 ---
 title: State Variables & Integers
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          //start here
-
+      
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-
+      uint dnaDigits = 16;
       }
 ---
+Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
 
-ยอดเยี่ยม! ตอนนี้เราก็จะได้ส่วน shell ของ contractแล้ว ต่อจากนี้เราก็จะมาเรียนรู้กันว่า Solidity จะจัดการกับตัวแปรต่างๆ ได้อย่างไรบ้าง
+***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
-**_State variables_** จะถูกจัดเก็บถาวรลงในส่วนจัดเก็บของ contract  ซึ่งนั่นก็หมายความว่ามันก็จะถูกเขียนลงในบล็อคเชนของ Ethereum เช่นกัน
+##### Example:
 
-##### ตัวอย่าง:
-```
-contract Example {
-  // ในส่วนนี้จะถูกจัดเก็บถาวรลงในบล็อคเชน
-  uint myUnsignedInteger = 100;
-}
-```
+    contract Example {
+      // This will be stored permanently in the blockchain
+      uint myUnsignedInteger = 100;
+    }
+    
 
-ในตัวอย่างของ contract  เราจะสร้าง `uint` โดยใช้ชื่อว่า `myUnsignedInteger` และตั้งให้มีค่าเท่ากับ 100
+In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
 
 ## Unsigned Integers: `uint`
 
-ข้อมูลชนิด `uint` หรือ unsigned integer มีความหมายว่า**ค่าของมันจะต้องไม่ติดลบ**  ซึ่งนอกจากนี้ก็ยังมีข้อมูลชนิด int สำหรับ signed integers เช่นกัน
+The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
 
-> โน้ต: ใน Solidity นั้น `uint` จริงๆ แล้วก็คือนามแฝงสำหรับ `uint256` หรือ 256-bit unsigned integer นั่นเอง คุณสามารถประกาศข้อมูล uints เป็นจำนวนบิทที่น้อยกว่าได้ เช่น `uint8`, `uint16`, `uint32` เป็นต้น แต่โดยปกติแล้วก็จะใช้แค่ `uint` เท่านั้น เว้นเพียงแต่ในบางกรณีซึ่งเราจะกล่าวในบทต่อๆ ไป
+> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
 
-# ทดสอบ
+# Put it to the test
 
-Zombie DNA ของเรานั้นจะถูกกำหนดโดยตัวเลขจำนวน 16 ตัว
+Our Zombie DNA is going to be determined by a 16-digit number.
 
-ประกาศข้อมูลชนิด `uint` โดยใช้ชื่อว่า `dnaDigits` และตั้งให้มีค่าเท่ากับ `16`
+Declare a `uint` named `dnaDigits`, and set it equal to `16`.

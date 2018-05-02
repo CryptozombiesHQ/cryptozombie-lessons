@@ -1,19 +1,20 @@
 ---
 title: Data Types
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
-    startingCode: |
-    answer: >
+    0: |
+      
+    1: >
+      
 ---
+Solidity's code is encapsulated in contracts. A contract is basically...
 
-โค้ดใน Solidity นั้นถูกบรรจุไว้ใน contract โดยหน้าตาของ contract โดยทั่วไปแล้วก็คือ...
+    contract HelloWorld
+    
+    
 
-```
-contract HelloWorld
-
-```
-
-# มาทดสอบกัน
-
+# Put it to the test

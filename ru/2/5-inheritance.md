@@ -1,122 +1,91 @@
 ---
-title: Наследование
-actions: ['Проверить', 'Подсказать']
+title: Inheritance
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      event NewZombie(uint zombieId, string name, uint dna);
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
       }
-
-      // Начало здесь
-
+      
+      Zombie[] public zombies;
+      
+      mapping (uint => address) public zombieToOwner;
+      mapping (address => uint) ownerZombieCount;
+      
+      function _createZombie(string _name, uint _dna) private {
+      uint id = zombies.push(Zombie(_name, _dna)) - 1;
+      zombieToOwner[id] = msg.sender;
+      ownerZombieCount[msg.sender]++;
+      NewZombie(id, _name, _dna);
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      require(ownerZombieCount[msg.sender] == 0);
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
+      }
+      
+      // Start here
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
-
       contract ZombieFeeding is ZombieFactory {
-
       }
-
 ---
+Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
 
-Код уже довольно длинный! Чтобы не делать один длиннющий контракт и организовать код, можно разбить логику кода на несколько контрактов. 
+One feature of Solidity that makes this more manageable is contract ***inheritance***:
 
-В Solidity есть фича, которая помогает управлять длинными контрактами — **_наследование_**:
+    contract Doge {
+      function catchphrase() public returns (string) {
+        return "So Wow CryptoDoge";
+      }
+    }
+    
+    contract BabyDoge is Doge {
+      function anotherCatchphrase() public returns (string) {
+        return "Such Moon BabyDoge";
+      }
+    }
+    
 
-```
-contract Doge {
-  function catchphrase() public returns (string) {
-    return "Клевый песик";
-  }
-}
+`BabyDoge` ***inherits*** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
 
-contract BabyDoge is Doge {
-  function anotherCatchphrase() public returns (string) {
-    return "Клевый щеночек";
-  }
-}
-```
+This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
 
-`BabyDoge` (щенок) **_наследует_** `Doge` (Псу!). Если ты скомпилируешь и развернешь `BabyDoge`, он получит доступ и к `catchphrase()` и к `anotherCatchphrase()` (и ко всем остальным открытым функциям, которые мы опишем в `Doge`).
+# Put it to the test
 
-Это можно использовать для логического наследования (как с подтипами, `Cat` (кошка) это `Animal` (животное)), или для простой организации кода, группируя вместе одинаковую логику  внутри различных классов. 
+In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
 
-# Проверь себя
-
-В следующих главах мы собираемся наделить зомби способностью питаться и размножаться. Поместим эту логику в класс, который наследует все методы из `ZombieFactory`. 
-
-1. Создай контракт под названием `ZombieFeeding` сразу под `ZombieFactory`. Этот контракт наследует контракту из нашей Фабрики Зомби `ZombieFactory`. 
+1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.

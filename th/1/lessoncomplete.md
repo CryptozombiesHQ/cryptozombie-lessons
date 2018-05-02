@@ -1,21 +1,22 @@
 ---
 title: Lesson 1 Complete!
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
 ---
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-ยินดีด้วย! คุณได้จบบทที่ 1 และสามารถที่จะสร้างซอมบี้ตัวแรกในกองทัพของคุณได้แล้ว!
+# Next Steps
 
-# ขั้นตอนต่อไป
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-แต่นี่เป็นเพียงขั้นตอนเริ่มต้น! ต่อไปเราจะทำการปล่อยบทเรียนในการสร้างซอมบี้ใหม่ๆ  ในแต่ละสัปดาห์เพื่อที่จะสร้างและขยายกองทัพซอมบี้ของเราต่อไปเรื่อยๆ
+### 1. Sign in to save your progress
 
-### 1. ลงชื่อเข้าใช้เพื่อทำการบันทึกความก้าวหน้าของคุณ
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
-**_Sign in_** เพื่อทำการบันทึกความก้าวหน้าโดยคลิกที่ลิ้งค์คำสั่ง “Save progress” ตรงด้านบนของเพจ โดยเราจะแจ้งเตือนคุณเมื่อมีบทเรียนใหม่ออกมา
+### 2. Share your zombie with your friends
 
-### 2. อย่าลืมที่จะแบ่งปันซอมบี้ของคุณให้เพื่อนดู
-
-**_Share_** แบ่งปันซอมบี้ของคุณบน twitter และอื่นๆ (ใส่รูปหรือlink)
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)

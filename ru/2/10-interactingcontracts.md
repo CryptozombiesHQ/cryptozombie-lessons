@@ -1,193 +1,167 @@
 ---
-title: Кем питаются зомби?
-actions: ['Проверить', 'Подсказать']
+title: What Do Zombies Eat?
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
-        // Здесь создай интерфейс Криптокотика
-
+        
+        // Create KittyInterface here
+        
         contract ZombieFeeding is ZombieFactory {
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            _createZombie("NoName", newDna);
-          }
-
+        
+        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        _createZombie("NoName", newDna);
+        }
+        
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) internal {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./zombiefactory.sol";
-
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
-
+      contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
+      function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
+It's time to feed our zombies! And what do zombies like to eat most?
 
-Время покормить зомби! Чем они питаются?
+Well it just so happens that CryptoZombies love to eat...
 
-Звезды сошлись так, что зомби питаются...
+**CryptoKitties!** 
 
-**Криптокотиками!** 😱😱😱
+(Yes, I'm serious 
 
-(Мы серьезно 😆)
+In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
 
-Для этого нам нужно будет считать kittyDna из смарт-контракта Криптокотиков. Это возможно, потому что данные котиков хранятся в открытом блокчейне. Клево, правда?
+Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 
 
-Не волнуйся - на самом деле ни одного Криптокотика не пострадает. Мы только *считаем* данные Криптокотиков, но не сможем удалить их 😉
+## Interacting with other contracts
 
-## Взаимодействие с другими контрактами
+For our contract to talk to another contract on the blockchain that we don't own, first we need to define an ***interface***.
 
-Чтобы наш контракт связался с другим контрактом в блокчейне, которым владеем не мы, сначала  нужно определить **_интерфейс_**.
+Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
-Посмотрим простой пример. Допустим, в блокчейне существует такой контракт: 
+    contract LuckyNumber {
+      mapping(address => uint) numbers;
+    
+      function setNum(uint _num) public {
+        numbers[msg.sender] = _num;
+      }
+    
+      function getNum(address _myAddress) public view returns (uint) {
+        return numbers[_myAddress];
+      }
+    }
+    
 
-```
-contract LuckyNumber {
-  mapping(address => uint) numbers;
+This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
 
-  function setNum(uint _num) public {
-    numbers[msg.sender] = _num;
-  }
+Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
 
-  function getNum(address _myAddress) public view returns (uint) {
-    return numbers[_myAddress];
-  }
-}
-```
+First we'd have to define an ***interface*** of the `LuckyNumber` contract:
 
-Это простой контракт, где каждый может хранить свой счастливый номер, связаный с личным адресом Ethereum. Тогда любой может найти счастливый номер человека по адресу.
+    contract NumberInterface {
+      function getNum(address _myAddress) public view returns (uint);
+    }
+    
 
-Теперь допустим, что у нас есть другой внешний контракт, который хочет считать данные в этом контракте, используя функцию `getNum`.
+Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
 
-Сначала нам надо будет определить **_интерфейс_** контракта `LuckyNumber` (счастливый номер):
+Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
 
-```
-contract NumberInterface {
-  function getNum(address _myAddress) public view returns (uint);
-}
-```
+So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
 
-Это похоже на определение контракта, но есть несколько отличий. Во-первых, мы объявляем только те функции, с которыми хотим взаимодействовать - в данном случае `getNum` - и не упоминаем другие функции или переменные состояния.
+By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
 
-Во-вторых, мы не определяем тела функций. Вместо фигурных скобок (`{` и `}`) мы заканчиваем задание функции точкой с запятой (`;`).
+We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
-Это как скелет контракта. Так компилятор узнает, что это интерфейс.
+# Put it to the test
 
-Если включить интерфейс в код DApp, наш контракт узнает, как выглядят функции другого контракта, как их вызвать и какой придет ответ.
+We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
 
-В следующем уроке мы будем вызывать функции другого контракта, а пока зададим интерфейс для контракта Криптокотиков.
+The function looks like this:
 
-# Проверь себя
+    function getKitty(uint256 _id) external view returns (
+        bool isGestating,
+        bool isReady,
+        uint256 cooldownIndex,
+        uint256 nextActionAt,
+        uint256 siringWithId,
+        uint256 birthTime,
+        uint256 matronId,
+        uint256 sireId,
+        uint256 generation,
+        uint256 genes
+    ) {
+        Kitty storage kit = kitties[_id];
+    
+        // if this variable is 0 then it's not gestating
+        isGestating = (kit.siringWithId != 0);
+        isReady = (kit.cooldownEndBlock <= block.number);
+        cooldownIndex = uint256(kit.cooldownIndex);
+        nextActionAt = uint256(kit.cooldownEndBlock);
+        siringWithId = uint256(kit.siringWithId);
+        birthTime = uint256(kit.birthTime);
+        matronId = uint256(kit.matronId);
+        sireId = uint256(kit.sireId);
+        generation = uint256(kit.generation);
+        genes = kit.genes;
+    }
+    
 
-Мы исследовали для тебя исходный код Криптокотиков и нашли функцию «getKitty», которая возвращает все данные котика, включая «гены» (как раз то, что нам нужно, чтобы создать новых зомби!).
+The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
 
-Функция выглядит так:
+Now that we know what this function looks like, we can use it to create an interface:
 
-```
-function getKitty(uint256 _id) external view returns (
-    bool isGestating,
-    bool isReady,
-    uint256 cooldownIndex,
-    uint256 nextActionAt,
-    uint256 siringWithId,
-    uint256 birthTime,
-    uint256 matronId,
-    uint256 sireId,
-    uint256 generation,
-    uint256 genes
-) {
-    Kitty storage kit = kitties[_id];
+1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
 
-    // Если эта переменная равна нулю, то она не беременеет:)
-    isGestating = (kit.siringWithId != 0);
-    isReady = (kit.cooldownEndBlock <= block.number);
-    cooldownIndex = uint256(kit.cooldownIndex);
-    nextActionAt = uint256(kit.cooldownEndBlock);
-    siringWithId = uint256(kit.siringWithId);
-    birthTime = uint256(kit.birthTime);
-    matronId = uint256(kit.matronId);
-    sireId = uint256(kit.sireId);
-    generation = uint256(kit.generation);
-    genes = kit.genes;
-}
-```
-
-Функция выглядит не совсем привычно. Смотри, она возвращает кучу разных значений! В отличие от Javascript в Solidity можно вернуть больше одного значения из функции.
-
-Теперь, когда мы знаем, как должна выглядеть функция, можем использовать ее для создания интерфейса:
-
-1. Задайте интерфейс под названием «KittyInterface». Это похоже на создание нового контракта - используем ключевое слово `contract`.
-
-2. Внутри интерфейса задайте функцию `getKitty` (копировать/вставить функцию, приведенную выше,но после оператора `return` идет точка с запятой, а не все выражение внутри фигурных скобок.
+2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.

@@ -1,6 +1,8 @@
 ---
-title: Leksjon 2 Oversikt
-actions: ['checkAnswer', 'hints']
+title: Lesson 2 Overview
+actions:
+  - checkAnswer
+  - hints
 material:
   saveZombie: false
   zombieBattle:
@@ -10,25 +12,24 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
 
-I leksjon 1 opprettet vi en funksjon som tar navn, bruker den til å generere en tilfeldig zombie, og legger til zombien i vår apps zombie database på blockchain.
+In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
 
-I leksjon 2 skal vi gjøre appen vår mer spilllignende: Vi skal gjøre det til flere spillere, og vi vil også legge til en morsommere måte å lage zombier i stedet for bare å generere dem tilfeldig.
+How will we create new zombies? By having our zombies "feed" on other lifeforms!
 
-Hvordan skal vi lage nye zombier? Ved å ha våre zombier spise andre livsformer!
+## Zombie Feeding
 
-## Zombiene Spiser
+When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
 
-Når en zombie spiser, smitter den verten med et virus. Viruset slår så verten inn i en ny zombie som knytter seg til hæren din. Den nye zombieens DNA vil bli beregnet ut fra den tidligere zombieens DNA og verts DNA.
+And what do our zombies like to feed on most?
 
-Og hva liker våre zombier best å spise?
+To find that out... You'll have to complete lesson 2!
 
-For å finne ut det ... Du må fullføre leksjon 2!
+# Put it to the test
 
-# Test det
+There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
 
-Det er en enkel demo av fôring til høyre. Klikk på et menneske for å se hva som skjer når zombien din spiser!
+You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
 
-Du kan se at den nye zombiens DNA er bestemt av din opprinnelige zombie DNA, så vel som vertens DNA.
-
-Når du er klar, klikk på "Next Chapter" for å fortsette, og la oss komme i gang ved å lage spillspillet vårt.
+When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.

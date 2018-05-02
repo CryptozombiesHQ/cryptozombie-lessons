@@ -1,6 +1,8 @@
 ---
-title: Visão Geral da Lição 2
-actions: ['verificarResposta', 'dicas']
+title: Lesson 2 Overview
+actions:
+  - checkAnswer
+  - hints
 material:
   saveZombie: false
   zombieBattle:
@@ -10,25 +12,24 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
 
-Na lição 1, nós criamos uma função que obtém um nome, e o usa para gerar um zumbi aleatório, e adiciona esse zumbi ao banco de dados do nosso aplicativo na blockchain.
+In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
 
-Na lição 2, nós iremos fazer o nosso aplicativo mais parecido com um jogo: Nós vamos fazer um jogo multi-jogador, e vamos adicionar formas mais divertidas de criar zumbis ao invés de somente gerar-los de forma aleatória.
+How will we create new zombies? By having our zombies "feed" on other lifeforms!
 
-Como vamos criar novos zumbis? "Alimentando" nossos zumbis com outras formas de vida!
+## Zombie Feeding
 
-## Alimentação de Zumbi
+When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
 
-Quando um zumbi se alimenta, ele infecta o hospedeiro com um vírus. O Vírus então torna o hospedeiro e um novo zumbi que se junta ao seu exército. O DNA do novo zumbi será calculado a partir do DNA do zumbi anterior e do DNA do hospedeiro.
+And what do our zombies like to feed on most?
 
-E o que os nossos zumbis mais gostam de comer?
+To find that out... You'll have to complete lesson 2!
 
-Para saber... Você precisa completar a lição 2!
+# Put it to the test
 
-# Vamos testar
+There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
 
-A direita uma simples demonstração de alimentação. Clique no humano e veja o que acontece quando o seu zumbi se alimenta!
+You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
 
-Você pode ver que o DNA do novo zumbi é determinado pelo DNA do zumbi original, e também o DNA do hospedeiro.
-
-Quando você estiver pronto, clique em "Next chapter" (Próximo Capítulo) para seguir, e vamos começar fazendo o nosso jogo multi-jogador.
+When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.

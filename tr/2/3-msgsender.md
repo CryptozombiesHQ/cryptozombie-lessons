@@ -1,133 +1,106 @@
 ---
 title: Msg.sender
-actions: ['cevapKontrol', 'ipuçları']
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              // start here
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      
+      event NewZombie(uint zombieId, string name, uint dna);
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      Zombie[] public zombies;
+      
+      mapping (uint => address) public zombieToOwner;
+      mapping (address => uint) ownerZombieCount;
+      
+      function _createZombie(string _name, uint _dna) private {
+      uint id = zombies.push(Zombie(_name, _dna)) - 1;
+      // start here
+      NewZombie(id, _name, _dna);
+      }
+      
+      function _generateRandomDna(string _str) private view returns (uint) {
+      uint rand = uint(keccak256(_str));
+      return rand % dnaModulus;
+      }
+      
+      function createRandomZombie(string _name) public {
+      uint randDna = _generateRandomDna(_name);
+      _createZombie(_name, randDna);
+      }
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      event NewZombie(uint zombieId, string name, uint dna);
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
+      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
 
-Artık kimin bir zombi sahibi olduğunun izlenmesini sürdürmek için haritalandırmamız var, onları kullanmak için `_createZombie` yöntemini güncellemek isteyeceğiz.
-
-Bunu yapmak için, `msg.sender` denilen bir şeyi kullanmamız gerek.
+In order to do this, we need to use something called `msg.sender`.
 
 ## msg.sender
 
-Solidity'de, tüm fonksiyonlarda mevcut olan belli global değişkenler vardır. Bunlardan biri geçerli fonksiyonu çağıran kişinin (veya akıllı kontratın) `address`'ine başvuran `msg.sender`'dir. 
+In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
 
-> Dikkat: Solidity'de, fonksiyon uygulaması her zaman harici bir çağırıcı ile başlatmaya ihtiyaç duyar. Bir kontrat birisi onun fonksiyonlarından birini çağırana kadar hiç birşey yapmadan blok zincirinde bulunacaktır. Yani her zaman bi `msg.sender` olacaktır.
+> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
 
-`msg.sender` kullanımının ve bir `mapping` güncellemenin bir örneği buradadır:
+Here's an example of using `msg.sender` and updating a `mapping`:
 
-```
-mapping (address => uint) favoriteNumber;
+    mapping (address => uint) favoriteNumber;
+    
+    function setMyNumber(uint _myNumber) public {
+      // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
+      favoriteNumber[msg.sender] = _myNumber;
+      // ^ The syntax for storing data in a mapping is just like with arrays
+    }
+    
+    function whatIsMyNumber() public view returns (uint) {
+      // Retrieve the value stored in the sender's address
+      // Will be `0` if the sender hasn't called `setMyNumber` yet
+      return favoriteNumber[msg.sender];
+    }
+    
 
-function setMyNumber(uint _myNumber) public {
-  // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
-  favoriteNumber[msg.sender] = _myNumber;
-  // ^ The syntax for storing data in a mapping is just like with arrays
-}
+In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
 
-function whatIsMyNumber() public view returns (uint) {
-  // Retrieve the value stored in the sender's address
-  // Will be `0` if the sender hasn't called `setMyNumber` yet
-  return favoriteNumber[msg.sender];
-}
-```
- 
-Bu saçma örnekte, her hangi biri kontratımıza kendi adreslerine bağlanabilecek `setMyNumber` çağırabilir ve bir `uint` depolayabilirdi. Sonra `whatIsMyNumber`'i çağırdıklarında depoladıkları `uint`'i çağırırlardı. 
+Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
 
-`msg.sender` kullanmak size Ethereum blok zinciri güvenliğini verir — birinin başka birisinin verilerinin değiştirmesinin tek yolu onların Ethereum adresi ile ilişkili özel anahtarını çalmak olurdu.
+# Put it to the test
 
-# Teste koy
+Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
 
-Fonksiyonu çağırana zombi sahipliği atamak için ders 1'den `_createZombie` yöntemimizi güncelleyelim.
+1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
 
-1. Önce, yeni zombinin `id`'sini geri aldıktan sonra, `msg.sender`i bu `id` altında depolamak için `zombieToOwner` haritalandırmamızı güncelleyelim.
+2. Second, let's increase `ownerZombieCount` for this `msg.sender`.
 
-2. İkinci olarak, bu `msg.sender` için `ownerZombieCount`'i arttıralım.
+In Solidity, you can increase a `uint` with `++`, just like in javascript:
 
-Solidity'de, javascriptteki gibi bir `uint`'i `++` ile arttırabilirsiniz:
+    uint number = 0;
+    number++;
+    // `number` is now `1`
+    
 
-```
-uint number = 0;
-number++;
-// `number` şimdi `1`
-```
-
-Bu bölüm için son cevabınız iki satır kod olmalı.
+Your final answer for this chapter should be 2 lines of code.

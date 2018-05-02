@@ -1,6 +1,8 @@
 ---
-title: Aperçu de la Leçon
-actions: ['vérifierLaRéponse', 'indice']
+title: Lesson Overview
+actions:
+  - checkAnswer
+  - hints
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -9,34 +11,31 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
 
-Dans la Leçon 1, vous allez faire une "Usine de Zombies" pour avoir une armée de zombies.
+* Our factory will maintain a database of all zombies in our army
+* Our factory will have a function for creating new zombies
+* Each zombie will have a random and unique appearance
 
-* Notre usine maintiendra une base de données de tous les zombies de notre armée
-* Notre usine aura une fonction pour créer de nouveaux zombies
-* Chaque zombie aura une apparence aléatoire et unique
+In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 
-Dans les leçons suivantes, nous ajouterons plus de fonctionnalités, comme donner aux zombies la capacité d'attaquer des humains ou d'autres zombies ! Mais avant d'en arriver là, nous devons commencer par la fonctionnalité de base pour créer de nouveaux zombies.
+## How Zombie DNA Works
 
-## Comment marche l'ADN Zombie
+The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
 
-L'apparence du zombie va dépendre de son "ADN Zombie". L'ADN d'un Zombie est simple - c'est un entier de 16 chiffres, comme :
+    8356281049284737
+    
 
-```
-8356281049284737
-```
+Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
 
-Tout comme l'ADN réel, différentes parties de ce nombre représenteront différents traits. Les 2 premiers chiffres correspondent au type de tête du zombie, les 2 derniers chiffres aux yeux du zombie, etc.
+> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
-> Remarque : Pour ce tutoriel, nous avons fait simple, et nos zombies peuvent avoir seulement 7 types de têtes différentes (même si 2 chiffres permettent 100 options possibles). Plus tard, nous pourrions ajouter plus de types de têtes si nous voulions augmenter le nombre de zombies possibles.
+For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
 
-Par exemple, les 2 premiers chiffres de notre ADN exemple sont `83`. Pour les faire correspondre à un type de tête, nous devons faire `83 % 7 + 1` = 7. Ce Zombie aura donc le 7ième type de tête.
+In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
-Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène pour la tête) sur la 7ème tête (le bonnet de Noël) pour voir à quel trait correspond le `83`.
+# Put it to the test
 
+1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
 
-# A votre tour
-
-1. Jouez avec les curseurs sur le côté droit de la page. Testez pour voir comment les différentes valeurs numériques influent sur les différents aspects de l'apparence du zombie.
-
-Allez, assez jouer. Lorsque vous êtes prêt à continuer, cliquez sur "Chapitre Suivant" ci-dessous, et plongeons dans l'apprentissage de Solidity !
+Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!

@@ -1,50 +1,48 @@
 ---
-title: Status variabler og integers
-actions: ['checkAnswer', 'hints']
+title: State Variables & Integers
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          //start her
-
+      
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-
+      uint dnaDigits = 16;
       }
 ---
+Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
 
-Godt jobbet! Nå som vi har laget et skjellett til kontrakten, la oss lære om hvordan Solidity jobber med variabler.
+***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
-**_Status variabler_**er permanent lagret i kontrakt-lagringsplass. Dette betyr at de blir lagret i Ethereum blockchain-en. Tenk på dem som om du lagrer til en database.
+##### Example:
 
-##### Eksempel:
-```
-contract Example {
-  // Dette blir lagret direkte til blockchainen
-  uint myUnsignedInteger = 100;
-}
-```
+    contract Example {
+      // This will be stored permanently in the blockchain
+      uint myUnsignedInteger = 100;
+    }
+    
 
-I denne eksempel kontrakten har vi laget en `uint` kalt `myUnsignedInteger` som er satt til 100.
+In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
 
-## Usignert Integers: `uint`
+## Unsigned Integers: `uint`
 
-`uint` datatypen er en usignert integer, som betyr **verdien må være positiv**. Det finnes også en `int` data type for signerte integers.
+The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
 
-> Noter: I Solidity, er `uint` faktisk et synonym for `uint256`, en 256-bit usignert integer. du kan definere uints med færre bits — `uint8`, `uint16`, `uint32`, etc.. Men du vil som oftest bruke `uint` med unntak i spesielle tilfeller, som vi kommer til å snakke mer om i senere leksjoner.
+> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
 
-# Test det
+# Put it to the test
 
-Zombie DNA-et kommer til å  bli fastslått av et 16-sifret nummer.
+Our Zombie DNA is going to be determined by a 16-digit number.
 
-Deklarer en `uint` kalt `dnaDigits`, og sett den lik `16`.
+Declare a `uint` named `dnaDigits`, and set it equal to `16`.

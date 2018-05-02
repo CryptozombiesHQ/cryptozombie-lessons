@@ -1,6 +1,8 @@
 ---
-title: Lesson 5 terminée !
-actions: ['vérifierLaRéponse', 'indice']
+title: Lesson 5 Complete!
+actions:
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1

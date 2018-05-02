@@ -1,135 +1,128 @@
 ---
 title: Storage vs Memory
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
-
+        
         import "./zombiefactory.sol";
-
+        
         contract ZombieFeeding is ZombieFactory {
-
-          // Start her
-
+        
+        // Start here
+        
         }
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
-
+        
         contract ZombieFactory {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+        
+        event NewZombie(uint zombieId, string name, uint dna);
+        
+        uint dnaDigits = 16;
+        uint dnaModulus = 10 ** dnaDigits;
+        
+        struct Zombie {
+        string name;
+        uint dna;
+        }
+        
+        Zombie[] public zombies;
+        
+        mapping (uint => address) public zombieToOwner;
+        mapping (address => uint) ownerZombieCount;
+        
+        function _createZombie(string _name, uint _dna) private {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        NewZombie(id, _name, _dna);
+        }
+        
+        function _generateRandomDna(string _str) private view returns (uint) {
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus;
+        }
+        
+        function createRandomZombie(string _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+        }
+        
         }
     answer: >
       pragma solidity ^0.4.19;
-
       import "./zombiefactory.sol";
-
       contract ZombieFeeding is ZombieFactory {
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-        }
-
+      function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; }
       }
 ---
+In Solidity, there are two places you can store variables — in `storage` and in `memory`.
 
-I Solidity,  er det to steder du kan lagre variabler — i `storage` og in `memory`.
+***Storage*** refers to variables stored permanently on the blockchain. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
 
-**_Storage_** refererer til variabler lagret permanent på blockchain. **_Memory_** variabler er midlertidige, og slettes mellom eksterne funksjonssamtaler til kontrakten din. Tenk på det som datamaskinens harddisk vs RAM.
+Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
 
-Mesteparten av tiden trenger du ikke å bruke disse nøkkelordene, fordi Solidity håndterer dem som standard. Status-variabler (variabler deklarert utenfor funksjoner) er som standard `storage` og skrevet permanent til blockchainen, mens variabler som er deklarert inne i funksjonene, er`memory` og vil forsvinne når funksjonsanropet avsluttes.
+However, there are times when you do need to use these keywords, namely when dealing with ***structs*** and ***arrays*** within functions:
 
-Men, det er noen ganger du faktisk trenger å bruke disse nøkkelordene, mest når vi håndterer **_structs_** og **_arrays_** inne i funksjoner:
+    contract SandwichFactory {
+      struct Sandwich {
+        string name;
+        string status;
+      }
+    
+      Sandwich[] sandwiches;
+    
+      function eatSandwich(uint _index) public {
+        // Sandwich mySandwich = sandwiches[_index];
+    
+        // ^ Seems pretty straightforward, but solidity will give you a warning
+        // telling you that you should explicitly declare `storage` or `memory` here.
+    
+        // So instead, you should declare with the `storage` keyword, like:
+        Sandwich storage mySandwich = sandwiches[_index];
+        // ...in which case `mySandwich` is a pointer to `sandwiches[_index]`
+        // in storage, and...
+        mySandwich.status = "Eaten!";
+        // ...this will permanently change `sandwiches[_index]` on the blockchain.
+    
+        // If you just want a copy, you can use `memory`:
+        Sandwich memory anotherSandwich = sandwiches[_index + 1];
+        // ...in which case `anotherSandwich` will simply be a copy of the 
+        // data in memory, and...
+        anotherSandwich.status = "Eaten!";
+        // ...will just modify the temporary variable and have no effect 
+        // on `sandwiches[_index + 1]`. But you can do this:
+        sandwiches[_index + 1] = anotherSandwich;
+        // ...if you want to copy the changes back into blockchain storage.
+      }
+    }
+    
 
-```
-contract SandwichFactory {
-  struct Sandwich {
-    string name;
-    string status;
-  }
+Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
 
-  Sandwich[] sandwiches;
+For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
 
-  function eatSandwich(uint _index) public {
-    // Sandwich mySandwich = sandwiches[_index];
+# Put it to the test
 
-    // ^ Virker ganske grei, men solidity vil gi deg en advarsel som
-    // forteller deg at du eksplisitt bør deklarere  `storage` eller `memory` her.
+It's time to give our zombies the ability to feed and multiply!
 
-    // så istedet deklarer med `storage` nøkkelord slik:
-    Sandwich storage mySandwich = sandwiches[_index];
-    // ... i så fall `mySandwich` er en peker til `sandwiches[_index]`
-    // i storage, og ...
-    mySandwich.status = "Eaten!";
-    // ... dette vil permanent endre `sandwiches[_index]` på blockchainen.
+When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
 
-    // Hvis du bare vil ha en kopi, kan du bruke`memory`:
-    Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ... i så fall er "anotherSandwich" rett og slett en kopi av
-    // data i minnet, og ...
-    anotherSandwich.status = "Eaten!";
-    // ... vil bare endre den midlertidige variabelen og har ingen effekt
-    // på `sandwiches[_index + 1]`. Men du kan gjøre dette:
-    sandwiches[_index + 1] = anotherSandwich;
-    // ... hvis du vil kopiere endringene tilbake i blockchain lagring(storage).
-  }
-}
-```
+1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
 
-Ikke bekymre deg hvis du ikke forstår fullt når du skal bruke hvilken av de - gjennom denne opplæringen forteller vi deg når du skal bruke `storage` og når du skal bruke `memory`, og Solidity-kompilatoren vil også gi deg advarsler for å gi deg beskjed når du skal bruke ett av disse nøkkelordene.
+2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+    
+    > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
 
-For nå er det nok å forstå at det er tilfeller der du må eksplisitt erklære `storage` eller `memory`!
+3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
 
-# Test det
+You should have 4 lines of code so far, including the line with the closing `}`.
 
-Det er på tide å gi våre zombier muligheten til å mate og formere seg!
-
-Når en zombie feeds på et annet livsform, vil dets DNA kombinere med det andre livsformede DNA for å skape en ny zombie.
-
-1. Lag en funksjon kalt `feedAndMultiply`. Den vil ta to parametere: `_zombieId` (en `uint`) og `_targetDna` (en `uint`). Denne funksjon skal være `public`.
-
-2. Vi ønsker ikke å la noen andre mate med vår zombie! Så først, la oss sørge for at vi eier denne zombieen. Legg til en `require` statement for å være sikker at `msg.sender` er zombie-ens eier (likt som vi gjorde det i `createRandomZombie` funksjonen).
-
- > Noter: Igjen, fordi vår svar-kontroller er primitiv, forventer den `msg.sender` å komme først og vil markere feil hvis du bytter rekkefølgen. Men normalt når du er koder, kan du bruke hvilken rekkefølge du foretrekker - begge er riktige.
-
-3. Vi kommer til å trenge å få denne zombieens DNA. Så det neste som vår funksjon skal gjøre er å erklære en lokal `Zombie` som heter `myZombie` (som vil være en `storage` peker). Sett denne variabelen til å være lik indeksen `_zombieId` i vår `zombies`-array.
-
-Du bør ha 4 linjer med kode så langt, inkludert linjen med den avsluttende `}`.
-
-Vi fortsetter å utvinne denne funksjonen i neste kapittel!
+We'll continue fleshing out this function in the next chapter!

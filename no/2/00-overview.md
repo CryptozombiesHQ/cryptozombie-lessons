@@ -1,12 +1,10 @@
 ---
-title: Zombiene Angriper ofrene deres
-header: Du har kommet deg helt til Leksjon 2!
+title: Zombies Attack Their Victims
+header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
 ---
+Impressive, human! You're a better coder than I thought.
 
-Imponerende, menneskelig! Du er en bedre koder enn jeg trodde.
+Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
 
-Leksjon 2 vil lære deg hvordan du kan **utvikle din zombie-hær ved å spise andre livsformer**.
-
-I denne leksjonen vil vi dekke noen mer avanserte soliditetskonsepter, så det er høyt
-anbefalt at du fullfører leksjon 1 før du starter.
+In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.

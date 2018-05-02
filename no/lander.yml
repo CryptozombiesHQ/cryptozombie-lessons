@@ -1,8 +1,7 @@
----
-nor:
+"no":
   ogdescription: CryptoZombies er en interaktiv kodeskole som lærer deg å skrive smarte kontrakter i Solidity gjennom å bygge ditt eget krypto-collectables-spill.
   ogtitle: CryptoZombies - Lær å kode spill på Ethereum. Drevet av Loom Network
-  langshort: NO #should be recognizable in local languages, like chinese would be 中文
+  langshort: EN
   learn_title: Lær å kode Ethereum DApps ved å bygge ditt eget spill
   learn_desc: CryptoZombies er en interaktiv kodeskole som lærer deg å skrive smarte kontrakter i Solidity gjennom å bygge ditt eget krypto-collectables-spill.
   get_started: Kom i gang, det er gratis
@@ -14,7 +13,7 @@ nor:
   collect_desc1: Tjen crypto-collectible Zombier og bonuser ved å fullføre kodetimer.
   collect_desc2: Etter å ha fullført alle leksjonene og distribuere DApp, putt zombie hæren mot andre spillers zombier i et av verdens første blokkerbaserte spill! Halvt kode-skole, halvt MMO crypto-collectible strategispill.
   collect_desc3: Hva venter du på? Klikk på knappen nedenfor for å dykke inn i leksjon 1 og bygge din første DApp. Det er gratis!
-  start_title: Kom igang nå! 
+  start_title: Kom igang nå!
   int_title: interaktive kode-timer
   inbrowser_desc: Steg-for-steg leksjoner i nettleseren tar deg fra Soliditets grunnleggende grunnlag for å skape ditt eget fullt funksjonelle blockchain spill. Selv ved slutten av leksjon 1 (som kan fullføres på kort tid), vet du nok for å offisielt kalle deg en Solidity-utvikler!
   zombie_title: Lag en Zombie-hær

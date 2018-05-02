@@ -1,75 +1,64 @@
 ---
 title: Arrays
-actions: ['checkAnswer', 'hints']
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          // start here
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
       }
 ---
+When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
-เมื่อคุณต้องการชุดข้อมูลของอะไรบางอย่าง คุณสามารถใช้ **_array_** มาช่วยในการจัดการได้ ซึ่งใน Solidity นั้นเราจะมี arrays อยู่2 ชนิด ได้แก่: **_fixed_** arrays และ **_dynamic_** arrays:
+    // Array with a fixed length of 2 elements:
+    uint[2] fixedArray;
+    // another fixed Array, can contain 5 strings:
+    string[5] stringArray;
+    // a dynamic Array - has no fixed size, can keep growing:
+    uint[] dynamicArray;
+    
 
-```
-// fixed Array จำกัดความยาวให้มีแค่2 elements :
-uint[2] fixedArray;
-// หรือจะเป็น fixed Array ที่สามารถมีข้อมูลชนิด Strings ได้ 5 ตัวก็จะเขียนได้ว่า:
-string[5] stringArray ;
-// Dynamic Array – จะไม่จำกัดขนาดที่แน่นอน ซึ่งแปลว่า array ชนิดนี้สามารถมีขนาดเพิ่มได้เรื่อยๆ :
-uint[] dynamicArray;
-```
+You can also create an array of ***structs***. Using the previous chapter's `Person` struct:
 
-เราสามารถที่จะสร้าง array ของ **_structs_** โดยใช้ `Person`‘ struct ที่อยู่ในบทก่อนหน้าได้เลย
+    Person[] people; // dynamic Array, we can keep adding to it
+    
 
-```
-Person[]people; // แปลว่าเป็น dynamic Array ซึ่งเราสามารถเพิ่มค่าลงไปใน array ได้เรื่อยๆ
-```
+Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
-จำได้ไหมว่าตัวแปรที่บอกสถานะ จะต้องถูกบรรจุถาวรอยู่ใน blockchain ดังนั้นการสร้างdynamic array ของ structs ในรูปแบบนี้จะมีประโยชน์มากสำหรับการบรรจุข้อมูลต่างๆ ในสัญญา (contract) ของคุณ สามารถเทียบได้ว่าเป็นฐานข้อมูลอย่างหนึ่งก็ว่าได้
+## Public Arrays
 
-## Public Arrays 
+You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
 
-เราสามารถประกาศ array ให้มีค่าเป็น `public` และ Solidity ก็จะสร้าง **_getter_** method ขึ้นมาโดยอัตโนมัติสำหรับ array นี้  โดยหน้าตาของ syntax จะเป็นดังต่อไปนี้: 
+    Person[] public people;
+    
 
-```
-Person[]public people;
-```
+Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
 
-ทำให้ contract อื่นๆ จะสามารถอ่านค่าได้ (แต่ไม่สามารถเขียนได้) ลงใน array นี้  ดังนั้นpattern นี้จึงเหมาะสำหรับการบรรจุข้อมูลที่เป็นสาธารณะหรือว่า public ใน contract ของคุณ
+# Put it to the test
 
-# ลองมาทดสอบดู
+We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
-ตอนนี้เรากำลังต้องการที่จะบรรจุค่าของกองกำลังซอมบี้ ลงในแอพพลิเคชั่นของเรา และต้องการที่จะให้จำนวนของซอมบี้ทั้งหมดนั้น ไปปรากฏอยู่ในแอพพลิเคชั่นอื่นๆ เช่นกัน ซึ่งนั่นก็แปลว่าเราต้องการให้กองกำลังของซอมบี้นั้นมีค่าเป็นสาธารณะ(public)
-
-1. สร้าง public array ของ `Zombie` **_structs_** แล้วตั้งชื่อว่า `zombies`
+1. Create a public array of `Zombie` ***structs***, and name it `zombies`.

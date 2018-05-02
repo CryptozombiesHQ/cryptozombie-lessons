@@ -1,13 +1,12 @@
 ---
-title: 僵尸作战系统
-header: "Lesson 4: 僵尸作战系统"
-roadmap: roadmap3.png
+title: Zombie Battle System
+header: "Lesson 4: Zombie Battle System"
+roadmap: roadmap4.jpg
 ---
+The time has come, human...
 
-这一刻终于来了, 人类……
+Time to make your zombies FIGHT!
 
-是时候让你的僵尸战斗了！
+But zombie battles aren't for the faint of heart...
 
-不过僵尸大战并不适合胆小的人……
-
-在这一课, 我们将综合利用在前面课程中学到的许多知识，创建一个僵尸作战系统。 我们也将学习 `payable` 函数，学习如何开发可以接收其他玩家付款的DApp。
+In this lesson, we're going to be putting together a lot of the concepts you've learned in previous chapters to build out a zombie battle function. We're also going to learn about **payable** functions, and how to build DApps that can accept money from players.

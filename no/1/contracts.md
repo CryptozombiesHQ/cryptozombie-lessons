@@ -1,56 +1,53 @@
 ---
-title: "Kontrakter"
-actions: ['checkAnswer', 'hints']
-material: 
+title: "Contracts"
+actions:
+  - checkAnswer
+  - hints
+material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Legg til solidity versjon her
-
-      //2. Lag kontrakt her
-    answer: > 
+      pragma solidity //1. Enter solidity version here
+      
+      //2. Create contract here
+    answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
       }
 ---
+Starting with the absolute basics:
 
-Start med det absolutt grunnleggende:
+Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-Solidity's er innkapslet av **contracts**. En `contract` er en fundamental grunnsten i Ethereum applikasjoner — alle variabler og funksjoner tilhører en kontrakt, og dette vil være startpunktet for alle dine prosjekter.
+An empty contract named `HelloWorld` would look like this:
 
-En tom kontrakt kalt `HelloWorld` vil se slik ut:
+    contract HelloWorld {
+    
+    }
+    
 
-```
-contract HelloWorld {
+## Version Pragma
 
-}
-```
+All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-## Versjon Pragma
+It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
-Alle solidity dokumenter bør starte med "version pragma" — en deklararsjon av versjonen til Solidity kompilatoren skal bruke. Dette er for å unngå problemer med fremtidige kompilator-versjoner som potensielt kan bryte koden din.
+Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
 
-Det ser slik ut: `pragma solidity ^0.4.19;` (fordi den nyeste versjonen av Solidity i skrivende stund er 0.4.19).
+    pragma solidity ^0.4.19;
+    
+    contract HelloWorld {
+    
+    }
+    
 
-Putt alt sammen og du har en et skjellett til et prosjekt — det første du kommer til å skrive hver gang du lager et nytt prosjekt.
+# Put it to the test
 
-```
-pragma solidity ^0.4.19;
+To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
-contract HelloWorld {
+1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
-}
-```
+2. Create an empty contract called `ZombieFactory`.
 
-# Test det
-
-For å lage Zombie-ene våre, la oss lage en base-kontrakt kalt `ZombieFactory`.
-
-1. I boksen til høyre, gjør det slik at solidity bruker versjon `0.4.19`.
-
-2. Lag en tom kontrakt kalt `ZombieFactory`.
-
-Når du er ferdig, klikk "check answer" nedenfor. Hvis du sitter fast kan du klikke på "hint".
+When you're finished, click "check answer" below. If you get stuck, you can click "hint".

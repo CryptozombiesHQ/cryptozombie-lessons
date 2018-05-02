@@ -1,50 +1,48 @@
 ---
-title: 状态变量和整数
-actions: ['答案', '提示']
+title: State Variables & Integers
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          //这里开始
-
+      
+      //start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-
+      uint dnaDigits = 16;
       }
 ---
+Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
 
-真棒！我们已经为我们的合约做了一个外壳， 下面学习 Solidity 中如何使用变量。
+***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
-**_状态变量_**是被永久地保存在合约中。也就是说它们被写入以太币区块链中. 想象成写入一个数据库。
+##### Example:
 
-##### 例子:
-```
-contract Example {
-  // 这个无符号整数将会永久的被保存在区块链中
-  uint myUnsignedInteger = 100;
-}
-```
+    contract Example {
+      // This will be stored permanently in the blockchain
+      uint myUnsignedInteger = 100;
+    }
+    
 
-在上面的例子中，定义 `myUnsignedInteger` 为 `uint` 类型，并赋值100。
+In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
 
-## 无符号整数: `uint`
+## Unsigned Integers: `uint`
 
-`uint` 无符号数据类型， 指**其值不能是负数**，对于有符号的整数存在名为 `int` 的数据类型。
+The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
 
-> 注: Solidity中， `uint` 实际上是 `uint256`代名词， 一个256位的无符号整数。你也可以定义位数少的uints — `uint8`， `uint16`， `uint32`， 等…… 但一般来讲你愿意使用简单的 `uint`， 除非在某些特殊情况下，这我们后面会讲。
+> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
 
-# 实战演习
+# Put it to the test
 
-我们的僵尸DNA将由一个十六位数字组成。
+Our Zombie DNA is going to be determined by a 16-digit number.
 
-定义 `dnaDigits` 为 `uint` 数据类型, 并赋值 `16`。
+Declare a `uint` named `dnaDigits`, and set it equal to `16`.

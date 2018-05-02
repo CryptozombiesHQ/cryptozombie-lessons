@@ -1,75 +1,64 @@
 ---
-title: Array-er
-actions: ['checkAnswer', 'hints']
+title: Arrays
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          // start her
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      string name;
+      uint dna;
+      }
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { string name; uint dna; }
+      Zombie[] public zombies;
       }
 ---
+When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
-Når du vil ta i bruk en kolleksjon av elementer kan du bruke en **_array_**. Det er to forskjellinge typer Array i Solidity: **_fixed_** arrays og **_dynamic_** arrays:
+    // Array with a fixed length of 2 elements:
+    uint[2] fixedArray;
+    // another fixed Array, can contain 5 strings:
+    string[5] stringArray;
+    // a dynamic Array - has no fixed size, can keep growing:
+    uint[] dynamicArray;
+    
 
-```
-// Array med en fastslått lengde på 2 strings:
-uint[2] fixedArray;
-// en annen fastslått Array, denne kan holde 5 strings:
-string[5] stringArray;
-// En dynamisk Array - har ingen fastslått lengde, kan forsette å bli større:
-uint[] dynamicArray;
-```
+You can also create an array of ***structs***. Using the previous chapter's `Person` struct:
 
-Du kan også lage en array av **_structs_**. Ved å ta i bruk forrige kapittels `Person` struct:
+    Person[] people; // dynamic Array, we can keep adding to it
+    
 
-```
-Person[] people; // dynamisk Array, vi kan fortsette å legge til elementer
-```
+Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
-Husk at status variabler er lagret direkte på Blockchain-en. Så å lage en dynamisk array av structs som dette kan bli brukt til å lagre strukturert data i contract-en din, litt som en database.
+## Public Arrays
 
-## Offentlige Array-er
+You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
 
-Du kan deklarere en array som `public`, og Solidity vil automatisk lage en **_getter_** metode for den. Syntaksen ser slik ut:
+    Person[] public people;
+    
 
-```
-Person[] public people;
-```
+Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
 
-Andre contracts vil da ha mulighet til å lese (men ikke skrive til) denne array-en. So this is a useful pattern for storing public data in your contract. Så dette er en hjelpsom metode for å lagre offentlig data i kontrakten din.
+# Put it to the test
 
-# Test det
+We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
-Vi kommer til å ville lagre en hel gjeng med Zombier i appen vår. Og vi kommer til å ville vise frem alle zombiene våre til andre apper, så vi vil at det skal være offentlig (public).
-
-1. Lag en offentlig(public) array av `Zombie` **_structs_**, og gi den navnet `zombies`.
+1. Create a public array of `Zombie` ***structs***, and name it `zombies`.

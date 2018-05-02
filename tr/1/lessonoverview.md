@@ -1,6 +1,8 @@
 ---
-title: Ders Genel Bakış
-actions: ['cevapKontrol', 'ipuçları']
+title: Lesson Overview
+actions:
+  - checkAnswer
+  - hints
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -9,33 +11,31 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
 
-Ders 1'de, bir zombi ordusu yapmak için bir "Zombi Fabrikası" inşa etmeyi öğreneceksiniz.
+* Our factory will maintain a database of all zombies in our army
+* Our factory will have a function for creating new zombies
+* Each zombie will have a random and unique appearance
 
-* Fabrikamız ordumuzun içindeki tüm zombilerin bir veritabanını sürdürecek  
-* Fabrikamızın yeni zombiler oluşturmak için bir fonksiyonu olacak  
-* Her zombinin rastgele ve benzersiz bir görünümü olacak  
+In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 
-Sonraki derslerde, insanlara veya diğer zombilere saldırması için zombilere yetenek vermek gibi daha fazla işlevsellik ekleyeceğiz! Fakat oraya gitmeden önce, yeni zombiler oluşturmanın temel işlevselliğini eklememiz lazım.
-  
-## Zombi DNA'sı Nasıl Çalışıyor?
+## How Zombie DNA Works
 
-Zombinin görünümü "Zombi DNA"sına bağlı olacak. Zombi DNA'sı basittir - şunun gibi 16 basamaklık bir sayıdır:
- 
-```
-8356281049284737
-```
+The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
 
-Tıpkı gerçek DNA gibi, bu sayının farklı kısımları farklı karakterleri planlayacak. İlk 2 basamak zombinin kafa tipini, ikinci 2 basamak zombinin gözlerini vs. planlar.
+    8356281049284737
+    
 
-> Not: Bu eğitim için, olayları basit tuttuk ve zombilerimiz sadece 7 tip kafaya sahip olabilir (2 basamak 100 olası seçeneğe izin verse de). Zombi çeşitlilik sayısını arttırmayı isteseydik devamında daha fazla kafa tipi ekleyebilirdik.
- 
-Örneğin, yukarıdaki örnek DNA'mızın ilk 2 basamağı `83`tür. Bunu zombinin kafa tipine planlamak için, `83 % 7 + 1` = 7 yaparız. Yani bu Zombi 7. kafa tipine sahip olur.
+Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
 
-Sağdaki panelde, ilerleyin ve 'kafa geni' kaydırıcısını 7. kafaya (Santa şapkası) hareket ettirerek `83`ün hangi karaktere karşılık geldiğini görün.
+> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
-# Teste koy
+For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
 
-1. Sayfanın sağ tarafındaki kaydırıcı ile oynayın. Farklı sayısal değerlerin zombi görünümünün farklı yönlerine nasıl karşılık geldiğini görmek için denemeler yapın.
+In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
-Tamam, etrafında oynamak yeterli. Devam etmek için hazır olduğunda, aşağıdan "Sonraki Bölüm"ü bul ve Solidity öğrenmenin içine dalalım!
+# Put it to the test
+
+1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
+
+Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!

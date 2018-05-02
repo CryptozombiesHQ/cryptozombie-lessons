@@ -1,72 +1,60 @@
 ---
-title: Declarações de Funções
-actions: ['verificarResposta', 'dicas']
+title: Function Declarations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          // comece aqui
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      uint dna;
+      string name;
+      }
+      
+      Zombie[] public zombies;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { uint dna; string name; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) {
+      }
       }
 ---
+A function declaration in solidity looks like the following:
 
-Uma declaração de função em Solidity parece o seguinte:
+    function eatHamburgers(string _name, uint _amount) {
+    
+    }
+    
 
-```
-function eatHamburgers(string _name, uint _amount) {
+This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
 
-}
-```
+> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
 
-Esta é uma declaração de uma função chamada `eatHamburgers` que recebe dois parâmetros: uma `string` e um `uint`. Por enquanto o corpo da função esta vazio.
+You would call this function like so:
 
-> Nota: É uma convenção (mas não é requerido) iniciar os nomes das variáveis nos parâmetros das funções com sublinhado para diferenciá-los de variáveis globais. Nós iremos usar isso como convenção em todo o nosso tutorial.
+    eatHamburgers("vitalik", 100);
+    
 
-Você chamaria essa função assim:
+# Put it to the test
 
-```
-eatHamburgers("vitalik", 100);
-```
+In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-# Vamos testar
+1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
-Em nossa aplicação, nós vamos precisar criar alguns zumbis. Vamos criar a função para isso:
-
-1. Crie uma função chamada `createZombie`. Esta deve receber dois argumentos: **__name_** (uma `string`), e **__dna_** (uma `uint`).
-
-Deixe o corpo da função vazia por enquanto - nós vamos preenchê-lo mais tarde.
+Leave the body empty for now — we'll fill it in later.

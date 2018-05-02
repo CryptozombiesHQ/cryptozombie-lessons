@@ -1,72 +1,60 @@
 ---
-title: Funksjon deklarasjon
-actions: ['checkAnswer', 'hints']
+title: Function Declarations
+actions:
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
     startingCode: |
       pragma solidity ^0.4.19;
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          // start her
-
+      
+      uint dnaDigits = 16;
+      uint dnaModulus = 10 ** dnaDigits;
+      
+      struct Zombie {
+      uint dna;
+      string name;
+      }
+      
+      Zombie[] public zombies;
+      
+      // start here
+      
       }
     answer: >
       pragma solidity ^0.4.19;
-
-
+      
       contract ZombieFactory {
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              uint dna;
-              string name;
-          }
-
-          Zombie[] public zombies;
-
-          function createZombie(string _name, uint _dna) {
-
-          }
-
+      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie { uint dna; string name; }
+      Zombie[] public zombies;
+      function createZombie(string _name, uint _dna) {
+      }
       }
 ---
+A function declaration in solidity looks like the following:
 
-Deklarasjon av en funksjon i Solidity ser slik ut:
+    function eatHamburgers(string _name, uint _amount) {
+    
+    }
+    
 
-```
-function eatHamburgers(string _name, uint _amount) {
+This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
 
-}
-```
+> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
 
-Dette er en funksjon kalt `eatHamburgers` som tar 2 parameterere: en `string` og en `uint`. La funksjonen stå tom, for nå.
+You would call this function like so:
 
-> Noter: Det er konvensjonelt (men ikke krevd) å starte funksjon parameter variabel navnmed understrek (`_`) for å differensiere mellom globale variabler. Vi kommer til å ta i bruk denne konvensjonen i dette kurset .
+    eatHamburgers("vitalik", 100);
+    
 
-Do kommer til å kjøre en funksjon slik:
+# Put it to the test
 
-```
-eatHamburgers("vitalik", 100);
-```
+In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-# Test det
+1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
-I appen vår kommer vi til å trenge å lage flere zombier. La oss lage en funksjon for det.
-
-1. Lag en funksjon kalt `createZombie`. Den kommer til å ta to parametere: **__name_** (en `string`), og **__dna_** (en `uint`).
-
-La funksjonen stå tom - vi kommer til å fylle inn resten senere.
+Leave the body empty for now — we'll fill it in later.
