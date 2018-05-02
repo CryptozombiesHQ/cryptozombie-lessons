@@ -3,8 +3,8 @@ title: 搭建僵尸工厂
 header: 人类，欢迎你
 roadmap: roadmap.jpg
 ---
-So you think you have what it takes to become a **CryptoZombie**, huh?
+你认为你可以当一个合格的 **CryptoZombie**, 嗯？
 
-This course will teach you how to **build a game on Ethereum**.
+这个教程会教你如何搭建一个**以太网的游戏**。
 
-It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
+此课程为 Solidity 初学者设计，需要你对其他的程序语言有所了解（如 JavaScript)。
