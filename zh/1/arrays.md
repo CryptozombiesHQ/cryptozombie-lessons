@@ -1,8 +1,8 @@
 ---
-title: Arrays
+title: 数组
 actions:
-  - checkAnswer
-  - hints
+  - 答案
+  - 提示
 material:
   editor:
     language: sol
