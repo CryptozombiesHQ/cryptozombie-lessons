@@ -1,8 +1,8 @@
 ---
-title: More on Functions
+title: Maggiori informazioni sulle funzioni
 actions:
-  - checkAnswer
-  - hints
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
@@ -25,7 +25,7 @@ material:
       zombies.push(Zombie(_name, _dna));
       }
       
-      // start here
+      // inizia qui
       
       }
     answer: >
