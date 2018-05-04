@@ -1,8 +1,8 @@
 ---
 title: Funzioni Private / Pubbliche
 actions:
-  - controllaRisposta
-  - suggerimenti
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
@@ -55,4 +55,4 @@ Come vedi, usiamo la parola chiave `private` dopo il nome della funzione. E come
 
 La funzione `createZombie` del nostro contratto è impostata come pubblica in modo predefinito — questo significa che chiunque può chiamarla e creare un nuovo zombie nel nostro contratto! Reandiamola privata.
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Modifica `createZombie` in modo da renderla una funzione privata. Non dimenticarti le convenzioni sui nomi!
