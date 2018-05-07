@@ -110,7 +110,7 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-En este trivial ejemplo, cualquiera puede llamar a `setMyNumber` y guardar un `uint` en nuestro contrato, que estara atado a su dirección. Entonces, cuando llamen a `whatIsMyNumber`, debería devolverles el `uint` que han guardado.
+En este trivial ejemplo, cualquiera puede llamar a `setMyNumber` y guardar un `uint` en nuestro contrato, que estará atado a su dirección. Entonces, cuando llamen a `whatIsMyNumber`, debería devolverles el `uint` que han guardado.
 
 Usando `msg.sender` te da la seguridad de la blockchain de Ethereum  — la única forma de que otra persona edite la información de esta sería robandole la clave privada asociada a la dirección Ethereum.
 
