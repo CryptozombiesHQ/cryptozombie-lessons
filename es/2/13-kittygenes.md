@@ -161,7 +161,7 @@ function eatBLT(string sandwich) public {
 
 Vamos a implementar los genes de los gatos en nuestro código del zombi.
 
-1. Primero, vamos a cambiar la definición de la función `feedAndMultiply` para que reciba un tercer argumento: un `string` lamado `_species`.
+1. Primero, vamos a cambiar la definición de la función `feedAndMultiply` para que reciba un tercer argumento: un `string` llamado `_species`.
 
 2. Después de calcular el ADN del nuevo zombi, vamos a añadir una sentencia `if` que compare los hashes `keccak256` de `_species` y el string `"kitty"`.
 
