@@ -188,8 +188,8 @@ Ahora que nuestro contrato base `ZombieFactory` extiende de `Ownable`, podemos u
 Esto es por como funciona la herencia de contratos. Recuerda:
 
 ```
-ZombieFeeding es ZombieFactory
-ZombieFactory es Ownable
+ZombieFeeding is ZombieFactory
+ZombieFactory is Ownable
 ```
 
 Como `ZombieFeeding` es también `Ownable`, puedes acceder a las funciones / eventos / modificadores del contrato `Ownable`. Esto se aplica a cualquier contrato que en el futuro herede de `ZombieFeeding`.
