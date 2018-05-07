@@ -225,7 +225,7 @@ contract MyContract is Ownable {
 
 Observa el modificador `onlyOwner` en la función `likeABoss`. Cuando llamas a `likeABoss`, el código dentro de `onlyOwner` se ejecuta **primero**. Entonces cuando se encuentra con la sentencia `_;` en `onlyOwner`, vuelve y ejecuta el código dentro de `likeABoss`.
 
-Hay otras maneras de usar los modificadores, uno de los casos de uso mas comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
+Hay otras maneras de usar los modificadores, uno de los casos de uso más comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
 
 En el caso de `onlyOwner`, añadiendole este modificador a la función hace que **solo** el **dueño** del contrato (tu, si eres el que lo ha implementado) puede llamar a la función.
 
