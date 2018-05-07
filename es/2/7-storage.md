@@ -75,7 +75,7 @@ En Solidity, hay dos sitios donde puedes guardar variables - en `storage` y en `
 
 La mayoría del tiempo no necesitas usar estas palabras clave ya que Solidity las controla por defecto. Las variables de estado (variables declaradas fuera de las funciones) son por defecto del tipo `storage` y son guardadas permanentemente en la blockchain, mientras que las variables declaradas dentro de las funciones son por defecto del tipo `memory` y desaparecerán una vez la llamada a la función haya terminado.
 
-Aún asi, hay momentos en los que necesitas usar estas palabras clave, concretamente cuando estes trabajando con **_structs_** y **_arrays_** dentro de las funciones:
+Aun así, hay momentos en los que necesitas usar estas palabras clave, concretamente cuando estes trabajando con **_structs_** y **_arrays_** dentro de las funciones:
 
 ```
 contract SandwichFactory {
