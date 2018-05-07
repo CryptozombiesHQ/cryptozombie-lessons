@@ -116,7 +116,7 @@ Usando `msg.sender` te da la seguridad de la blockchain de Ethereum  — la ún
 
 # Vamos a probarlo
 
-Vamos a actualizar nuestro método `_createZombie` de la Lección para asignar la propiedad de un zombi a el que haya llamado a la función.
+Vamos a actualizar nuestro método `_createZombie` de la Lección para asignarle la propiedad de un zombi a quien llame a la función.
 
 1. Primero, después de recibir la `id` del nuevo zombi, actualizamos nuestro mapeo `zombieToOwner` para que guarde `msg.sender` bajo esa `id`.
 
