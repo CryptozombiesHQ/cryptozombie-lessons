@@ -216,7 +216,7 @@ Así es como se declara un array en memoria:
 function getArray() external pure returns(uint[]) {
   // Instanciamos un nuevo array en memoria con una longitud de 3
   uint[] memory values = new uint[](3);
-  // Le añadimos algunos valor
+  // Le añadimos algunos valores
   values.push(1);
   values.push(2);
   values.push(3);
