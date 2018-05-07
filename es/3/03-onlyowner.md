@@ -227,7 +227,7 @@ Observa el modificador `onlyOwner` en la función `likeABoss`. Cuando llamas a `
 
 Hay otras maneras de usar los modificadores, uno de los casos de uso más comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
 
-En el caso de `onlyOwner`, añadiendole este modificador a la función hace que **solo** el **dueño** del contrato (tu, si eres el que lo ha implementado) puede llamar a la función.
+En el caso de `onlyOwner`, añadiendole este modificador a la función hace que **solo** el **dueño** del contrato (tú, si eres el que lo ha implementado) puede llamar a la función.
 
 >Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado malintencionadamente.Por ejemplo, el dueño puede añadir una función oculta ¡que le permita transferirse el zombi de cualquiera a sí mismo!
 
