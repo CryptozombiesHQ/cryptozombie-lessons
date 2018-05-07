@@ -85,7 +85,7 @@ material:
       }
 ---
 
-En la lección 1, hicimos que los usuarios puediesen crear nuevos zombis llamando a `createRandomZombie` y introduciendo un nombre. Sin embargo, si un usuario continuase llamando a esta función crearía un ejército de zombis ilimitado, el juego no sería muy divertido.
+En la lección 1, hicimos que los usuarios puediesen crear nuevos zombis llamando a `createRandomZombie` e introduciendo un nombre. Sin embargo, si un usuario continuase llamando a esta función crearía un ejército de zombis ilimitado, el juego no sería muy divertido.
 
 Vamos a hacer que un jugador solo pueda llamar a esta función una vez. De esta manera los nuevo jugadores podrán llamar a esta función cuando empiezen el juego para crear el primer zombi de su ejército.
 
