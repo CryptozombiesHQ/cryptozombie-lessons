@@ -151,7 +151,7 @@ Entraremos en como llamar a las funciones de otros contratos en la siguiente lec
 
 # Vamos a probarlo
 
-Hemos mirado el código fuente de CryptoKitties por tí, y hemos encontrado una functión llamada `getKitty` que devuelve todos los datos de un kitty, incluyendo sus "genes" (¡que es lo que nuestro juego de zombis necesita para crear un nuevo zombi!).
+Hemos mirado el código fuente de CryptoKitties por tí, y hemos encontrado una función llamada `getKitty` que devuelve todos los datos de un kitty, incluyendo sus "genes" (¡que es lo que nuestro juego de zombis necesita para crear un nuevo zombi!).
 
 La función es así:
 
