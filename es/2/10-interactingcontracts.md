@@ -101,7 +101,7 @@ Bueno lo que pasa es que a los CryptoZombies lo que les encanta comer es...
 
 **¡CryptoKitties!** 😱😱😱
 
-(Si, es enserio 😆 )
+(Sí, es enserio 😆 )
 
 Para hacer esto necesitamos leer el kittyDna de el contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
 
