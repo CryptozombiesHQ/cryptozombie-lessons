@@ -103,7 +103,7 @@ Bueno lo que pasa es que a los CryptoZombies lo que les encanta comer es...
 
 (Sí, es enserio 😆 )
 
-Para hacer esto necesitamos leer el kittyDna de el contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
+Para hacer esto necesitamos leer el kittyDna del contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
 
 No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty. Solo vamos a *leer* los datos de los CryptoKitties, no podemos borrarlos 😉
 
