@@ -10,7 +10,7 @@ material:
     answer: 1
 ---
 
-これでSolidityのコントラクトが完成だ！せっかくだからコントラクトがやり取りできるようにjavascriptでフロントエンドの作り方も教えてやろう。
+これでSolidityのコントラクトが完成だ！せっかくだからコントラクトがやり取りできるようにJavaScriptでフロントエンドの作り方も教えてやろう。
 
 イーサリアムには**_Web3.js_**というJavascriptライブラリがある。
 
@@ -67,7 +67,7 @@ function generateZombie(id, name, dna) {
   return zombieDetails
 }
 ```
-javascriptが何をしているのか説明するぞ。まず `zombieDetails`で生成した値を取得して、ブラウザベースのjavascriptのフレームワーク（ここではVue.js)を使って画像を置き換えて、そこにCSSフィルタを適用しているのだ。コードが欲しければ、後でコードを全て君にやろう。
+JavaScriptが何をしているのか説明するぞ。まず `zombieDetails`で生成した値を取得して、ブラウザベースのJavaScriptのフレームワーク（ここではVue.js)を使って画像を置き換えて、そこにCSSフィルタを適用しているのだ。コードが欲しければ、後でコードを全て君にやろう。
 
 # さぁ、自分でやってみるのだ！
 
