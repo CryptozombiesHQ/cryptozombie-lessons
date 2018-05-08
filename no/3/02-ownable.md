@@ -1,8 +1,8 @@
 ---
 title: Ownable Contracts
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
