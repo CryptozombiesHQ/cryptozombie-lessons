@@ -1,8 +1,8 @@
 ---
 title: Back to Attack!
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
