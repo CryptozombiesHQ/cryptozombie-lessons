@@ -1,8 +1,8 @@
 ---
 title: Keccak256 and Typecasting
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   editor:
     language: sol
