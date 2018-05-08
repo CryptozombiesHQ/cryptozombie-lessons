@@ -1,8 +1,8 @@
 ---
 title: Handling Multiple Return Values
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   editor:
     language: sol
