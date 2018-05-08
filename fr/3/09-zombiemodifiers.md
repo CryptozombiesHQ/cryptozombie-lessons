@@ -1,8 +1,8 @@
 ---
 title: Zombie Modifiers
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
