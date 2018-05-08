@@ -1,8 +1,8 @@
 ---
 title: Refactoring Common Logic
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
