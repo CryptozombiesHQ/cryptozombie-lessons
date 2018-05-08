@@ -1,8 +1,8 @@
 ---
 title: Storage is Expensive
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
