@@ -1,8 +1,8 @@
 ---
 title: Lesson Overview
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 skipCheckAnswer: true
 material:
   saveZombie: false
