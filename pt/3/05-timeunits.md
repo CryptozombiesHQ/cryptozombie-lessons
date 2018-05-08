@@ -1,8 +1,8 @@
 ---
 title: Time Units
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
