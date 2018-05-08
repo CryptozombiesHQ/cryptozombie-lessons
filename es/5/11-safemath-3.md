@@ -40,7 +40,7 @@ material:
 
           function _createZombie(string _name, uint _dna) internal {
             // Nota: Decidimos no prevenir el problema del año 2018... sin embargo no debemos
-            // preocuparnos de readyTime. Igual nuestra Dapp funcionará hasta el año 2038 ;)
+            // preocuparnos de readyTime. Igual nuestra DApp funcionará hasta el año 2038 ;)
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
             zombieToOwner[id] = msg.sender;
             // 3. Usemos el metodo `add` de SafeMath aquí:
