@@ -1,8 +1,8 @@
 ---
 title: Variabili di stato & Interi
 actions:
-  - controllaRisposta
-  - suggerimenti
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
