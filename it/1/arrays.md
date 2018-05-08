@@ -1,8 +1,8 @@
 ---
 title: Arrays
 actions:
-  - controllaRisposta
-  - suggerimenti
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
