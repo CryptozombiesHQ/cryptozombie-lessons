@@ -1,8 +1,8 @@
 ---
 title: Web3.js
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   saveZombie: true
   zombieResult:
