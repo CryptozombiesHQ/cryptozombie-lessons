@@ -1,8 +1,8 @@
 ---
 title: Comments
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
