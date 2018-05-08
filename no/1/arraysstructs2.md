@@ -1,8 +1,8 @@
 ---
 title: Working With Structs and Arrays
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   editor:
     language: sol
