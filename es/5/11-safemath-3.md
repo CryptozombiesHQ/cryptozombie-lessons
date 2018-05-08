@@ -15,7 +15,7 @@ material:
         contract ZombieFactory is Ownable {
 
           using SafeMath for uint256;
-          // 1. Declara el uso de SafeMath32 for uint32
+          // 1. Declara el uso de SafeMath32 for uint32f
           // 2. Declara el uso de SafeMath16 for uint16
 
           event NewZombie(uint zombieId, string name, uint dna);
@@ -485,8 +485,8 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
   return c;
 }
 
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+// Si usamos `.add` con un `uint8`, lo convertirá en `uint256`.
+// Por lo tanto no se desbordará, ya que 256 funciona en `uint256`.
 ```
 
 Esto significa que vamos a tener que implementar 2 librerías más para evitar los casos con `uint16` y `uint32`. Podemos llamarlos `SafeMath16` y `SafeMath32`.
