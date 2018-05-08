@@ -1,8 +1,8 @@
 ---
 title: Lesson 2 Overview
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   saveZombie: false
   zombieBattle:
