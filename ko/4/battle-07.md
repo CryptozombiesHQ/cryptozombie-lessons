@@ -1,8 +1,8 @@
 ---
 title: Zombie Wins and Losses
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
