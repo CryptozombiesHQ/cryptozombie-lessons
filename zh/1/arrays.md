@@ -1,8 +1,8 @@
 ---
 title: 数组
 actions:
-  - 答案
-  - 提示
+  - '答案'
+  - '提示'
 material:
   editor:
     language: sol
