@@ -1,8 +1,8 @@
 ---
 title: State Variables & Integers
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   editor:
     language: sol
