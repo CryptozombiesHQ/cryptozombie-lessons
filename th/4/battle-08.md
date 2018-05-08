@@ -1,8 +1,8 @@
 ---
 title: Zombie Victory
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
