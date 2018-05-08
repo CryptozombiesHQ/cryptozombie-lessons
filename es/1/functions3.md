@@ -1,8 +1,8 @@
 ---
 title: More on Functions
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   editor:
     language: sol
