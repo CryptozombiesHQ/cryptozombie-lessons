@@ -1,8 +1,8 @@
 ---
 title: Random Numbers
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
