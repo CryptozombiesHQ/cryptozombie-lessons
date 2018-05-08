@@ -1,8 +1,8 @@
 ---
 title: Wrapping It Up
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 material:
   saveZombie: true
   zombieBattle:
