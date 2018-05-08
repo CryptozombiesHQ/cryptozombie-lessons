@@ -1,8 +1,8 @@
 ---
 title: Dichiarazioni di funzione
 actions:
-  - controllaRisposta
-  - suggerimenti
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
