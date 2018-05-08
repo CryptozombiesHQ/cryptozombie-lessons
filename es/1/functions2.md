@@ -67,6 +67,6 @@ Como puedes ver, usamos la palabra clave `private` después del nombre de la fun
 
 # Vamos a probarlo
 
-Nuestro contrato tiene una función `createZombie` que es pública por defecto, esto significa ¡que cualquiera podría llamarlo y crear un nuevo zombi en nuestro contrato! Vamos a hacerla privada.
+Nuestro contrato tiene una función `createZombie` que es pública por defecto, esto significa ¡qué cualquiera podría llamarlo y crear un nuevo zombi en nuestro contrato! Vamos a hacerla privada.
 
 1. Modifica la función `createZombie` para que sea una función privada. ¡No te olvides de la convención del nombre!
