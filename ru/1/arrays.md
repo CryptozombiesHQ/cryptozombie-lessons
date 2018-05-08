@@ -1,8 +1,8 @@
 ---
 title: Массивы
 actions:
-  - проверь ответ
-  - подсказки
+  - 'проверь ответ'
+  - 'подсказки'
 material:
   editor:
     language: sol
