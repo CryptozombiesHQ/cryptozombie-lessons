@@ -1,8 +1,8 @@
 ---
 title: SafeMath Part 4
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
