@@ -1,8 +1,8 @@
 ---
 title: Lavorando con Structs e Arrays
 actions:
-  - controllaRisposta
-  - suggerimenti
+  - 'controllaRisposta'
+  - 'suggerimenti'
 material:
   editor:
     language: sol
