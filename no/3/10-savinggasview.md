@@ -1,8 +1,8 @@
 ---
 title: Saving Gas With 'View' Functions
 actions:
-  - checkAnswer
-  - hints
+  - 'checkAnswer'
+  - 'hints'
 requireLogin: true
 material:
   editor:
