@@ -53,7 +53,7 @@ material:
       }
 ---
 
-W tym rozdziale nauczymy sie o tym co zwracają funkcje **_return values_**, oraz o modyfikatorach funkcji.
+W tym rozdziale nauczymy się o tym co zwracają funkcje **_return values_**, oraz o modyfikatorach funkcji.
 
 ## Return Values
 
