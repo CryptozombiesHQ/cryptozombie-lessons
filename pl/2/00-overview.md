@@ -3,8 +3,8 @@ title: Zombie atakują swoje ofiary
 header: Dotarłeś do drugiej lekcji 2!
 roadmap: roadmap2.jpg
 ---
-Impressive, human! You're a better coder than I thought.
+Wow. Szacunek! Jesteś lepszym programistą niż myślałem.
 
-Lesson 2 will teach you how to **multiply your zombie army by feeding on other lifeforms**.
+W Lekcji 2 nauczysz się jak **pomnożyć swoją armię zombie karmiąc się innymi formami życia**.
 
-In this lesson we will cover some more advanced Solidity concepts, so it's highly recommended that you complete Lesson 1 before starting.
+W tej lekcji omówimy niektóre bardziej zaawansowane koncepcje Solidity więc dobrze żebyś wcześniej ukończył lekcję 1.
