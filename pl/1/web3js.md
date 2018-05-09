@@ -20,7 +20,7 @@ Nie przejmuj się jeśli nie wszystko jest dla Ciebie zrozumiałe.
 
 ```
 // Oto jak możemy dostać się do kontraktu
-var abi = /* abi wygenerowane przez kompiler */
+var abi = /* abi wygenerowane przez kompilator */
 var ZombieFactoryContract = web3.eth.contract(abi)
 var contractAddress = /* adres naszego kontraktu w Ethereum po opublikowaniu */
 var ZombieFactory = ZombieFactoryContract.at(contractAddress)

@@ -89,7 +89,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 Funkcja nie czyta żadnego stanu aplikacji — wartość którą zwraca zależy tylko od jej parametrów. W takim przypadku możemy zadeklarować taką funkcje jako **_pure_**.
 
-> Notatka: Może to być trudne do zapamiętania kiedy oznaczać funkcje pure/view. Na szczęście kompiler Solidity jest na tyle mądry, że zwraca ostrzeżenia podczas kompilacji.
+> Notatka: Może to być trudne do zapamiętania kiedy oznaczać funkcje pure/view. Na szczęście kompilator Solidity jest na tyle mądry, że zwraca ostrzeżenia podczas kompilacji.
 
 # Zadanie do wykonania
 
