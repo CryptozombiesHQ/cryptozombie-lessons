@@ -1,8 +1,8 @@
 ---
-title: Lesson 2 Overview
+title: Lekcja 2 Podsumowanie
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'Zaznacz odpowiedź'
+  - 'podpowiedź'
 material:
   saveZombie: false
   zombieBattle:
