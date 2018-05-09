@@ -13,8 +13,8 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;
@@ -32,8 +32,8 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;
