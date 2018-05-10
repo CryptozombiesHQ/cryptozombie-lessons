@@ -64,12 +64,12 @@
             ],
             "footer": "Achte darauf, dass Dein Fortschritt unten gespeichert wird, bevor Du mit Lektion 2 fortfährst.",
             "zombieDesc": "Ein CryptoZombie der Stufe 1",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "shareLinkText": "Ich habe gerade Lektion 1 von #CryptoZombies abgeschlossen und lernte die Grundlagen der Programmierung eines Spiels auf #Ethereum. Schau Dir den ersten Zombie in meiner Armee an!"
         },
         "lesson2": {
             "header": [
-                "Congratulations! You have completed {lesson2} of CryptoZombies!",
-                "Achievements Unlocked:",
+                "Herzlichen Glückwunsch! Du hast {lesson2} von CryptoZombies abgeschlossen!",
+                "Erfolge freigeschaltet:",
                 "{zombieName} has been upgraded to Level 2!",
                 "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
                 "Show off your CryptoKitty-slayer to your friends!",
