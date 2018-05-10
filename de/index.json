@@ -208,12 +208,12 @@
             "nameInputPlaceholder": "Gib einen Namen ein um einen Zombie zu generieren",
             "callToAction": [
                 "Willst Du Dein eigenes CryptoZombie bauen und dich den Reihen anschließen?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Lerne kostenlos mit CryptoZombies Deine eigenen Spiele auf Ethereum zu entwickeln! Jetzt loslegen:"
             ]
         },
         "lesson2": {
-            "zombieCardBattle": "Zombie Card Battle",
-            "love": "love",
+            "zombieCardBattle": "Zombie Spielkarten Schlacht",
+            "love": "lieben",
             "achievementPreamble": [
                 "Your friend has completed CryptoZombies Lesson 2, and upgraded {zombieName} to a CryptoKitty slayer!",
                 "A CryptoKitty Slayer?!",
