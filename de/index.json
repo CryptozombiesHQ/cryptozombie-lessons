@@ -293,13 +293,13 @@
             ],
             "achievements": [
                 "Erstellen von Web-Frontends für Ethereum Smart Contracts mit Web3.js",
-                "Using MetaMask and Infura to build user-facing DApps",
-                "Listening to smart contract events and showing users real-time updates",
-                "And more!"
+                "Verwendung von MetaMask und Infura um Benutzer gerichtete DApps zu entwickeln",
+                "Nach Smart Contract Ereignissen zu lauschen um Benutzern Echtzeit Aktualisierungen zu zeigen",
+                "Und vieles mehr!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Willst Du Deine eigene CryptoZombie-Armee erstellen und Dich den Reihen anschließen?",
+                "Lerne kostenlos mit CryptoZombies Deine eigenen Spiele auf Ethereum zu entwickeln! Jetzt loslegen:"
             ]
         }
     }
