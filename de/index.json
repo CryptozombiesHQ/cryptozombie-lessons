@@ -239,19 +239,19 @@
                 "Um die Lektion 3 von CryptoZombies abzubschliessen lernte Dein Freund etwas über:"
             ],
             "achievements": [
-                "How to build updatable smart contracts",
-                "Securing contracts with contract ownership",
-                "Gas and gas optimization on Ethereum",
-                "Function modifiers and security checks"
+                "Wie man aktualisierbare Smart Contracts erstellt",
+                "Absichern von Smart Contracts mit Vertragseigentum",
+                "Gas und Gas-Optimierung auf Ethereum",
+                "Funktionsmodifikatoren und Sicherheitsüberprüfungen"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Willst Du Dein eigenes CryptoZombie bauen und dich den Reihen anschließen?",
+                "Lerne kostenlos mit CryptoZombies Deine eigenen Spiele auf Ethereum zu entwickeln! Jetzt loslegen:"
             ]
         },
         "lesson4": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
+                "Dein Freund hat CryptoZombies Lektion 4 abgeschlossen, und besiegte den böse IOTA-Zombie!",
                 "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
                 "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
             ],
