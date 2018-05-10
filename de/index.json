@@ -1,14 +1,14 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "tagLine": "Lerne Spiele auf Ethereum zu programmieren",
+        "lesson": "Lektion {lessonNum}",
+        "chapter": "Kapitel {chapterNum}",
+        "syncing": "Synchronisieren...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
-            "action": "Join Our Telegram",
+            "openChat": "Chat öffnen",
+            "action": "Trete unseren Telegram bei",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
@@ -17,21 +17,21 @@
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "Schreibgeschützt"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded"
+        "itemLabel": "Lektion {lessonNum}: {title}",
+        "signIn": "Melde dich an und lade deinen Fortschritt",
+        "progressLoaded": "Dein Fortschritt wird geladen"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
-        "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        "signInButton": "Sign In",
-        "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
+        "presents": "Geschenke",
+        "title": "Lektion {lessonNum}: {title}",
+        "signInPrompt": "Von hier aus musst Du angemeldet sein, damit wir Deine Fortschritte und Zombies synchronisieren können. Bitte melden Dich über die Taste unten an:",
+        "signInButton": "Anmelden",
+        "levelUpText": "In dieser Lektion werden wir die Zombies von früheren Lektionen hochstufen.",
         "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
         "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
         "generateNewZombieLink": "generate a new zombie",
