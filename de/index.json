@@ -77,14 +77,14 @@
             ],
             "footer": [
                 "Hast Du Spass mit CryptoZombies? Lass es uns wissen!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 3:"
+                "Trete der Diskussion bei auf {telegramLink}, oder folge uns auf {twitterLink}",
+                "Wenn Du bereit bist, klicke unten auf Lektion 3:"
             ],
-            "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "zombieDesc": "Ein CryptoZombie der Stufe 2",
+            "shareLinkText": "Ich habe gerade Lektion 2 von #CryptoZombies abgeschlossen! Mein Zombie hat einige #CryptoKitties gefressen, und ich mehr über #Ethereum-Entwicklung gelernt. Schau Dir meinen Zombie an wie er mehr CryptoKitties bekämpft:"
         },
         "lesson3": {
-            "achievementsUnlocked": "Achievements Unlocked:",
+            "achievementsUnlocked": "Errungenschaften freigeschaltet:",
             "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
             "header": [
                 "Congratulations! You have completed {lesson3} of CryptoZombies!",
