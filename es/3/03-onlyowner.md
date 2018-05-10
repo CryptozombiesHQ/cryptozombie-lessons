@@ -188,15 +188,15 @@ Ahora que nuestro contrato base `ZombieFactory` extiende de `Ownable`, podemos u
 Esto es por como funciona la herencia de contratos. Recuerda:
 
 ```
-ZombieFeeding es ZombieFactory
-ZombieFactory es Ownable
+ZombieFeeding is ZombieFactory
+ZombieFactory is Ownable
 ```
 
 Como `ZombieFeeding` es también `Ownable`, puedes acceder a las funciones / eventos / modificadores del contrato `Ownable`. Esto se aplica a cualquier contrato que en el futuro herede de `ZombieFeeding`.
 
 ## Modificadores de Funciones
 
-Un modificador de funcion es igual que una función, pero usa la palabra clave `modifier` en vez de `function`. Pero no puede ser llamado directamente como una función  - en vez de eso, podemos añadirle el nombre del modificador al final de la definición de la función para cambiar el comportamiento de ella.
+Un modificador de función es igual que una función, pero usa la palabra clave `modifier` en vez de `function`. Pero no puede ser llamado directamente como una función  - en vez de eso, podemos añadirle el nombre del modificador al final de la definición de la función para cambiar el comportamiento de ella.
 
 Vamos a verlo con más detalle examinando `onlyOwner`:
 
@@ -225,13 +225,13 @@ contract MyContract is Ownable {
 
 Observa el modificador `onlyOwner` en la función `likeABoss`. Cuando llamas a `likeABoss`, el código dentro de `onlyOwner` se ejecuta **primero**. Entonces cuando se encuentra con la sentencia `_;` en `onlyOwner`, vuelve y ejecuta el código dentro de `likeABoss`.
 
-Hay otras maneras de usar los modificadores, uno de los casos de uso mas comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
+Hay otras maneras de usar los modificadores, uno de los casos de uso más comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
 
-En el caso de `onlyOwner`, añadiendole este modificador a la función hace que **solo** el **dueño** del contrato (tu, si eres el que lo ha implementado) puede llamar a la función.
+En el caso de `onlyOwner`, añadiendole este modificador a la función hace que **solo** el **dueño** del contrato (tú, si eres el que lo ha implementado) puede llamar a la función.
 
->Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado malintencionadamente.Por ejemplo, el dueño puede añadir una función oculta ¡que le permita transferirse el zombi de cualquiera a sí mismo!
+>Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado malintencionadamente.Por ejemplo, el dueño puede añadir una función oculta ¡qué le permita transferirse el zombi de cualquiera a sí mismo!
 
->Así que es importante recordar que solo porque una DApp esté en Ethereum no significa automáticamente que sea descentralizada — tienes que leerte el código fuente completo para asegurarte que esté libre de poderes especiales controlados por su dueño que puedan ser potencialmente preocupantes. Hay un cuidadoso balance entre mantener el control sobre la DAPP para poder arreglar los bugs potenciales, y construir una plataforma sin dueño donde tus usuarios  puedan confiar la seguridad de sus datos.
+>Así que es importante recordar que solo porque una DApp esté en Ethereum no significa automáticamente que sea descentralizada — tienes que leerte el código fuente completo para asegurarte que esté libre de poderes especiales controlados por su dueño que puedan ser potencialmente preocupantes. Hay un cuidadoso balance entre mantener el control sobre la DAPP para poder arreglar los bugs potenciales, y construir una plataforma sin dueño donde tus usuarios puedan confiar la seguridad de sus datos.
 
 ## Vamos a probarlo
 

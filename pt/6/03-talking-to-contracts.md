@@ -41,7 +41,7 @@ material:
           </body>
         </html>
       "cryptozombies_abi.js": |
-        var cryptozombiesABI = [
+        var cryptoZombiesABI = [
           {
             "constant": false,
             "inputs": [
@@ -882,7 +882,7 @@ ABI significa Application Binary Interface (Interface Binária da Aplicação). 
 
 Quando você compilar seu contrato para implantar no Ethereum (que abordaremos na Lição 7), o compilador Solidity lhe dará a ABI, então você precisará copiar e salvar isso mais o endereço do contrato.
 
-Como ainda não abordamos a implantação, para esta lição compilamos a ABI para você e a colocamos em um arquivo chamado `cryptozombies_abi.js`, armazenado em uma variável chamada`cryptozombiesABI`.
+Como ainda não abordamos a implantação, para esta lição compilamos a ABI para você e a colocamos em um arquivo chamado `cryptozombies_abi.js`, armazenado em uma variável chamada`cryptoZombiesABI`.
 
 Se incluirmos `cryptozombies_abi.js` em nosso projeto, poderemos acessar a ABI CryptoZombies usando essa variável.
 

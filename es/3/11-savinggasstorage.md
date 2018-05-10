@@ -208,7 +208,7 @@ Veremos los bucles `for` en el siguiente capítulo, pero primero, vamos a ver co
 
 ## Declarando arrays en memoria
 
-Puedes usar la palabra clave `memory` con arrays para crear un nuevo ararys dentro de una función sin necesidad de escribir nada en storage. El array solo existirá hasta el final de la llamada de la función, y esto es más barato en cuanto a gas que actualizar un array en `storage` - gratis si está dentro de una función `view` llamada externamente.
+Puedes usar la palabra clave `memory` con arrays para crear un nuevo arrays dentro de una función sin necesidad de escribir nada en storage. El array solo existirá hasta el final de la llamada de la función, y esto es más barato en cuanto a gas que actualizar un array en `storage` - gratis si está dentro de una función `view` llamada externamente.
 
 Así es como se declara un array en memoria:
 
@@ -216,7 +216,7 @@ Así es como se declara un array en memoria:
 function getArray() external pure returns(uint[]) {
   // Instanciamos un nuevo array en memoria con una longitud de 3
   uint[] memory values = new uint[](3);
-  // Le añadimos algunos valor
+  // Le añadimos algunos valores
   values.push(1);
   values.push(2);
   values.push(3);
@@ -235,6 +235,6 @@ En nuestra función `getZombiesByOwner`, queremos devolver un array `uint[]` con
 
 1. Declara una variable `uint[] memory` llamada `result`
 
-2. Fíjala a un nuevo array de tipo `uint`. El largo del array debería ser igual al los zombis que posea su `_owner`, que puede saberse mirándolo en nuestro `mapping` con: `ownerZombieCount[_owner]`.
+2. Fíjala a un nuevo array de tipo `uint`. El largo del array debería ser igual al número de zombis que posea su `_owner`, que puede saberse mirándolo en nuestro `mapping` con: `ownerZombieCount[_owner]`.
 
 3. Al final de la función devuelve `result`. Esta devolverá un array vacío por ahora, pero lo rellenaremos en el próximo capítulo.
