@@ -218,14 +218,14 @@
                 "Dein Freund hat Lektion 2 von CryptoZombies abgeschlossen und hat {zombieName} zum CryptoKitty-Schlächter hochgestuft!",
                 "Ein CryptoKitty-Schlächter?!",
                 "Es stellt sich heraus, dass CryptoZombies es {love} sich von CryptoKitties zu ernähren.",
-                "When a CryptoZombie feeds on a CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
-                "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
-                "Solidity Concepts Mastered",
-                "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
+                "Wenn ein CryptoZombie ein CryptoKitty frisst vermischt sich ihre DNA und die CryptoKitty wird als ein CryptoZombie wiederbelebt.",
+                "Auf gehts, wähle ein CryptoKitty aus um es anzugreifen und schau Dir an welche Art von Katzenzombie Du erhälst!",
+                "Beherrschung von Solidity Konzepten",
+                "Um die Lektion 2 von CryptoZombies abzubschliessen hat dein Freund einen {zombieCardBattle} entwickelt und lernte etwas über:"
             ],
             "achievements": [
-                "The basics of making a multi-player game",
-                "Interacting with other contracts on the Ethereum network",
+                "Die Grundlagen der Entwicklung eines Multiplayer-Spiels",
+                "Interaktion mit anderen Smart Contracts des Ethereum-Netzwerkes",
                 "Organizing larger Solidity projects into multiple contracts"
             ],
             "callToAction": [
