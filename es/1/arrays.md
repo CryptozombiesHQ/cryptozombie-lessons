@@ -31,7 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
-When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
+Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos tipos de arrays en Solidity: arrays ***fijos*** y arrays ***dinámicos***:
 
     // Array with a fixed length of 2 elements:
     uint[2] fixedArray;
@@ -48,7 +48,7 @@ You can also create an array of ***structs***. Using the previous chapter's `Per
 
 Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
-## Public Arrays
+## Arrays Públicos
 
 You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
 
