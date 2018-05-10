@@ -1,9 +1,9 @@
 es:
-  ogdescription: CryptoZombies es una escuela de programación interactiva que enseña a crear contratos inteligentes en Solidity mientras construyes tu propio juego cripto-coleccionable.
-  ogtitle: CryptoZombies - Aprende a programar en Ethereum. Impulsado por Loom Network
+  ogdescription: CryptoZombies es una escuela de programación interactiva que te enseña a crear contratos inteligentes en Solidity construyendo tu propio juego de cripto-coleccionables.
+  ogtitle: CryptoZombies - Aprende a programar en Ethereum. Desarrollado por Loom Network
   langshort: ES
-  learn_title: Aprende a Programar Ethereum DApps Construyendo Tu Propio Juego
-  learn_desc: CryptoZombies es una escuela de programación interactiva que enseña a crear contratos inteligentes en Solidity mientras construyes tu propio juego cripto-coleccionable.
+  learn_title: Aprende a programar Ethereum DApps construyendo tu propio Juego
+  learn_desc: CryptoZombies es una escuela de programación interactiva que te enseña a crear contratos inteligentes en Solidity construyendo tu propio juego de cripto-coleccionables.
   get_started: Empieza Ahora, Es Gratis
   learn_more: Más Información
   what_title: '¿Qué es CryptoZombies?'
@@ -29,7 +29,7 @@ es:
   footer_info: Información
   footer_contact: Contacto
   footer_contact_jobs: Trabajos
-  footer_email: Email
+  footer_email: Correo electrónico
   footer_about: Acerca de
   footer_desc: CryptoZombies.io es una plataforma de enseñanza gratuita dedicada a enseñar los entresijos de la programación Blockchain a los desarrolladores actuales o a los absolutos principiantes. Impulsado por Loom Network - una plataforma para la construcción de apps de escala comercial basadas en Ethereum.
   telegram_open_chat: Abrir Chat
