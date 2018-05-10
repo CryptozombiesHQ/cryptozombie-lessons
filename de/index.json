@@ -226,17 +226,17 @@
             "achievements": [
                 "Die Grundlagen der Entwicklung eines Multiplayer-Spiels",
                 "Interaktion mit anderen Smart Contracts des Ethereum-Netzwerkes",
-                "Organizing larger Solidity projects into multiple contracts"
+                "Aufteilung von größerer Solidity-Projekte in mehrfache Smart Contracts"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombies and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Willst Du Dein eigenes CryptoZombie bauen und dich den Reihen anschließen?",
+                "Lerne kostenlos mit CryptoZombies Deine eigenen Spiele auf Ethereum zu entwickeln! Jetzt loslegen:"
             ]
         },
         "lesson3": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 3, and upgraded their zombie army!",
-                "In order to complete Lesson 3 of CryptoZombies, your friend learned about:"
+                "Dein Freund hat Lektion 3 von CryptoZombies abgeschlossen und seine Zombie-Armee aufgerüstet!",
+                "Um die Lektion 3 von CryptoZombies abzubschliessen lernte Dein Freund etwas über:"
             ],
             "achievements": [
                 "How to build updatable smart contracts",
