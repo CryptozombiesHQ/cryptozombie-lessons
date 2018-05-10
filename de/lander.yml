@@ -15,7 +15,7 @@ de:
   collect_desc3: Worauf wartest Du? Klicke unten auf die Schaltfläche, tauche in Lektion 1 ein und entwickel Deine erste DApp. Es ist kostenlos!
   start_title: Jetzt loslegen
   int_title: Interaktive Programmier-Lektionen
-  inbrowser_desc: In-browser step-by-step lessons take you from the very basics of Solidity to creating your own fully-functional blockchain-based game. Even by the end of Lesson 1 (which can be completed in one sitting), you'll know enough to officially call yourself a Solidity developer!
+  inbrowser_desc: Schritt-für-Schritt Lektionen im Browser führen Dich von den Grundlagen von Solidity bis zu Deinem eigenen voll funktionsfähigen Blockchain-Spiel. Schon am Ende der ersten Lektion (abschliessbar in einer Sitzung) wirst Du genug wissen um Dich offiziell als Solidity-Entwickler zu bezeichnen!
   zombie_title: Build a Zombie Army
   zombie_desc: In Lesson 1, you will build a Zombie Factory to build your army. Every Zombie you create will have randomly generated DNA and have his own unique appearance. Further lessons (1 released each week) will add more functionality to your game, like the ability to battle other people's zombies!
   who_made: Who Made CryptoZombies and Why Is It Free?
