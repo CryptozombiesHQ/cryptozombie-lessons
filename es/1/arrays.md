@@ -57,7 +57,7 @@ You can declare an array as `public`, and Solidity will automatically create a *
 
 Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
 
-# Put it to the test
+# Vamos a probarlo
 
 We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
