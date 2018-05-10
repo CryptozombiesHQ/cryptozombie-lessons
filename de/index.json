@@ -191,15 +191,15 @@
         "zombieDesc": "{name}, ein CryptoZombie der Stufe {levelNum}",
         "lesson1": {
             "zombieDesc": "Ein CryptoZombie der Stufe 1",
-            "randomZombieGenerator": "Zombie Zufallsgenerator",
+            "randomZombieGenerator": "Zombie-Zufallsgenerator",
             "achievementPreamble": [
                 "Dein Freund hat die Grundlagen der Ethereum-Spielentwicklung gelernt und hat als Beweis {zombieName} erschaffen, eine CryptoZombie der Stufe 1!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "Um die Lektion 1 von CryptoZombies abzubschliessen hat dein Freund einen {randomZombieGenerator} gebaut und lernte etwas über:"
             ],
             "achievements": [
-                "How to write Ethereum smart contracts",
-                "Programming in Solidity, Ethereum's smart contract programming language",
-                "Building games on Ethereum"
+                "Wie man Ethereum Smart Contracts schreibt",
+                "Programmieren mit Solidity, Ethereums Programmiersprache für Smart Contracts",
+                "Entwicklung von Spielen auf Ethereum"
             ],
             "tryItOut": "Give the random zombie generator a try.",
             "below": "below",
