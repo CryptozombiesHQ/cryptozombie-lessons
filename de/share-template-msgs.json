@@ -1,14 +1,14 @@
 {
     "1": {
-        "pageTitle": "Check out my CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "I just completed CryptoZombies Lesson 1 and learned the basics of coding a game on Ethereum. Take a look at the first zombie in my army!"
+        "pageTitle": "Schau Dir meinen CryptoZombie {{ .ZombieName }} an!",
+        "ogDesc": "Ich habe gerade Lektion 1 von #CryptoZombies abgeschlossen und lernte die Grundlagen der Programmierung eines Spiels auf #Ethereum. Schau Dir den ersten Zombie meiner Armee an!"
     },
     "2": {
-        "pageTitle": "My CryptoZombie {{ .ZombieName }} just ate a CryptoKitty and leveled up!",
-        "ogDesc": "I just completed CryptoZombies Lesson 2, and added a reanimated CryptoKitty to my zombie army. Come take a look!"
+        "pageTitle": "Mein CryptoZombie {{ .ZombieName }} hat gerade eine CryptoKitty gefressen und ist aufgestiegen!",
+        "ogDesc": "Ich habe gerade Lektion 2 von #CryptoZombies abgeschlossen und eine wiederbelebte CryptoKitty hinzugefügt. Komm und schau es dir an!"
     },
     "3": {
-        "pageTitle": "Check out my CryptoZombie Army!",
+        "pageTitle": "Schau Dir meine CryptoZombie-Armee an!",
         "ogDesc": "I just completed CryptoZombies Lesson 3! My zombie army is growing..."
     },
     "4": {
