@@ -1,16 +1,16 @@
 de:
-  ogdescription: CryptoZombies ist eine interaktive Code-Schule, die Dir beibringt Smart Contracts in Solidity zu programmieren, indem du Dein eigenes Crypto-Collectables-Spiel entwickelst.
+  ogdescription: CryptoZombies ist eine interaktive Code-Schule, die Dir beibringt Smart Contracts in Solidity zu programmieren, indem du Dein eigenes Krypto-Sammel-Spiel entwickelst.
   ogtitle: CryptoZombies - lerne Spiele auf Ethereum zu entwickeln. Powered by Loom-Network
   langshort: DE
   learn_title: Lerne Ethereum DApps zu programmieren indem Du Dein eigenes Spiel entwickelst
-  learn_desc: CryptoZombies is an interactive code school that teaches you to write smart contracts in Solidity through building your own crypto-collectables game.
-  get_started: Get Started, It's Free
-  learn_more: Learn More
-  what_title: What is CryptoZombies?
-  what_desc1: CryptoZombies is a free, interactive code school that teaches you to build games on Ethereum.
-  what_desc2: The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.
-  collect_title: Earn Crypto-Collectibles
-  collect_desc1: Earn crypto-collectible Zombies and bonuses by completing coding lessons.
+  learn_desc: CryptoZombies ist eine interaktive Code-Schule, die Dir beibringt Smart Contracts in Solidity zu programmieren, indem du Dein eigenes Crypto-Collectables-Spiel entwickelst.
+  get_started: Auf gehts, es ist kostenlos
+  learn_more: Weitere Informationen
+  what_title: Was ist CryptoZombies?
+  what_desc1: CryptoZombies ist eine kostenlose, interaktive Code-Schule, die Dir beibringt Spiele auf Ethereum zu entwickeln.
+  what_desc2: Der Kurs ist für Anfänger von Solidity ausgelegt und beginnt mit den absoluten Grundlagen. Wenn Du also noch nie mit Solidity programmiert hast, machen Dir keine Sorgen, wir begleiten Dich Schritt für Schritt.
+  collect_title: Verdiene Dir Crypto-Collectibles
+  collect_desc1: Verdiene Dir Crypto-Collectible Zombies und Boni durch abschliessen von Programmier-Lektionen.
   collect_desc2: After completing all lessons and deploying your DApp, pit your zombie army against other players' zombies in one of the world's first blockchain-based games! Half code-school, half MMO crypto-collectible strategy game.
   collect_desc3: What are you waiting for? Click the button below to dive into lesson 1 and build your first DApp. It's free!
   start_title: Get Started Now
