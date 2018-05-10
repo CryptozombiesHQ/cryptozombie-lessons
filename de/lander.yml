@@ -16,10 +16,10 @@ de:
   start_title: Jetzt loslegen
   int_title: Interaktive Programmier-Lektionen
   inbrowser_desc: Schritt-für-Schritt Lektionen im Browser führen Dich von den Grundlagen von Solidity bis zu Deinem eigenen voll funktionsfähigen Blockchain-Spiel. Schon am Ende der ersten Lektion (abschliessbar in einer Sitzung) wirst Du genug wissen um Dich offiziell als Solidity-Entwickler zu bezeichnen!
-  zombie_title: Build a Zombie Army
-  zombie_desc: In Lesson 1, you will build a Zombie Factory to build your army. Every Zombie you create will have randomly generated DNA and have his own unique appearance. Further lessons (1 released each week) will add more functionality to your game, like the ability to battle other people's zombies!
-  who_made: Who Made CryptoZombies and Why Is It Free?
-  who_made1: CryptoZombies was made by the team at
+  zombie_title: Erstelle eine Zombie-Armee
+  zombie_desc: In Lektion 1 baust Du eine Zombie-Fabrik um Deine Armee aufzubauen. Jeder Zombie, den du erschaffst, wird eine zufällig erzeugte DNA und sein eigenes einzigartiges Aussehen haben. Weitere Lektionen (wöchentliche Veröffentlichung) werden Deinem Spiel mehr Funktionalität verleihen, wie z.B. die Fähigkeit gegen Zombies anderer Leute zu kämpfen!
+  who_made: Wer hat CryptoZombies geschaffen und warum ist es kostenlos?
+  who_made1: CryptoZombies wurde erstellt vom Team des
   who_made2: . We're building a platform for running large-scale applications on Ethereum sidechains.
   who_made3: We think blockchains are capable of a lot more than just payments, and we want to get more developers thinking outside the box and trying to build large-scale DApps. Games are one of the areas where we think blockchain will really revolutionize things. So we built CryptoZombies to help educate and inspire the next generation of blockchain game devs.
   find_us: Aside from CryptoZombies, we're working on some really cool projects. If you'd like to follow us, get in touch for a project, or just say hi, you can find us on
