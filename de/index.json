@@ -70,13 +70,13 @@
             "header": [
                 "Herzlichen Glückwunsch! Du hast {lesson2} von CryptoZombies abgeschlossen!",
                 "Erfolge freigeschaltet:",
-                "{zombieName} has been upgraded to Level 2!",
-                "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
-                "Show off your CryptoKitty-slayer to your friends!",
-                "Share this URL so your friends can slay CryptoKitties with your zombie:"
+                "{zombieName} ist auf Level 2 aufgestiegen!",
+                "Du hast NoName deiner Armee zugefügt, ein Katzenzombie! (Keine Sorge, in Lektion 3 wirst Du lernen wie man ihren/seinen Namen ändert)",
+                "Zeigen Deinen Freunde Deinen CryptoKitty-Schlächter!",
+                "Teile diese URL, so dass Deine Freunde CryptoKitties mit deinem Zombie schlachten können:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
+                "Hast Du Spass mit CryptoZombies? Lass es uns wissen!",
                 "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
                 "When you're ready, click the button below to access Lesson 3:"
             ],
