@@ -150,21 +150,21 @@
         }
     },
     "zombieBattle": {
-        "yourTurn": "Your Turn",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "New {species} Generated!",
-        "catZombie": "Cat-Zombie",
-        "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "New {species}'s DNA",
+        "yourTurn": "Du bist dran",
+        "zombieDna": "{name}s DNA",
+        "newZombieGenerated": "Neuer {species} erzeugt!",
+        "catZombie": "Katzenzombie",
+        "mutantZombie": "Mutierter Zombie",
+        "newSpeciesDna": "Neue {species} DNA",
         "cryptoKitty": "CryptoKitty",
-        "human": "Human",
-        "tryAnotherCombo": "Try Another Combination"
+        "human": "Mensch",
+        "tryAnotherCombo": "Versuche eine andere Kombination"
     },
     "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "Ein CryptoZombie der Stufe 1"
     },
     "zombieDeck": {
-        "zombieDesc": "A Level {levelNum} CryptoZombie",
+        "zombieDesc": "Eine CryptoZombie der Stufe {levelNum}",
         "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
         "save": "Save",
         "yourDeck": "Your Deck"
