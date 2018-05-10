@@ -29,7 +29,7 @@
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Geschenke",
         "title": "Lektion {lessonNum}: {title}",
-        "signInPrompt": "Von hier aus musst Du angemeldet sein, damit wir Deine Fortschritte und Zombies synchronisieren können. Bitte melden Dich über die Taste unten an:",
+        "signInPrompt": "Von hier aus musst Du angemeldet sein, damit wir Deine Fortschritte und Zombies synchronisieren können. Bitte melden Dich über die Schaltflächen unten an:",
         "signInButton": "Anmelden",
         "levelUpText": "In dieser Lektion werden wir die Zombies von früheren Lektionen hochstufen.",
         "missingZombieText": "Leider sieht es so aus, dass du keinen Zombie von Lektion {lessonNum} hast. Wenn Du diese Lektion noch nicht beendet hast, tu das bitte, bevor Du fortfährst:",
@@ -43,27 +43,27 @@
         "header": "Kapitel {chapterNum}: {title}",
         "saveProgress": "Fortschritt speichern",
         "autosaveEnabled": "Automatisches Speichern aktiviert",
-        "resumeProgress": "Resume Progress",
-        "showHint": "Show Hint",
-        "nextChapter": "Next Chapter",
-        "tryAgain": "Try Again",
-        "checkAnswer": "Check Answer",
-        "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "resumeProgress": "Fortschritt fortsetzen",
+        "showHint": "Hinweis zeigen",
+        "nextChapter": "Nächstes Kapitel",
+        "tryAgain": "Erneut versuchen",
+        "checkAnswer": "Antwort überprüfen",
+        "showMeTheAnswer": "Zeige mir die Antwort",
+        "hideAnswer": "Antwort ausblenden"
     },
     "lessonComplete": {
-        "shareLinksAction": "Or you can click the buttons below to share:",
-        "signIn": "Sign in and save your progress",
-        "goToNextLesson": "Proceed to Next Lesson",
+        "shareLinksAction": "Oder klicke auf die Schaltflächen unten, um zu teilen:",
+        "signIn": "Melde dich an und speichere Deinen Fortschritt",
+        "goToNextLesson": "Weiter zur nächsten Lektion",
         "lesson1": {
             "header": [
-                "Congratulations! You have completed Lesson 1 of CryptoZombies!",
-                "You're officially one step closer to building your own games on Ethereum.",
-                "Show off your first zombie to your friends!",
-                "Here's a permalink to your zombie:"
+                "Herzlichen Glückwunsch! Du hast Lektion 1 von CryptoZombies abgeschlossen!",
+                "Du bist nun offiziell einen Schritt näher, Deine eigenen Spiele auf Ethereum zu konstruieren.",
+                "Zeigen Deinen Freunden Deinen ersten Zombie!",
+                "Hier ist ein permanenter Link zu Deinem Zombie:"
             ],
-            "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
-            "zombieDesc": "A Level 1 CryptoZombie",
+            "footer": "Achte darauf, dass Dein Fortschritt unten gespeichert wird, bevor Du mit Lektion 2 fortfährst.",
+            "zombieDesc": "Ein CryptoZombie der Stufe 1",
             "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
         },
         "lesson2": {
