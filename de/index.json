@@ -165,35 +165,35 @@
     },
     "zombieDeck": {
         "zombieDesc": "Eine CryptoZombie der Stufe {levelNum}",
-        "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
-        "save": "Save",
-        "yourDeck": "Your Deck"
+        "nameInputPlaceholder": "Gib {name} einen neuen Namen, und drücken auf \"Speichern\"",
+        "save": "Speichern",
+        "yourDeck": "Dein Kartenstapel"
     },
     "zombieResult": {
-        "headGeneLabel": "Head Gene:",
-        "eyeGeneLabel": "Eye Gene:",
-        "shirtGeneLabel": "Shirt Gene:",
-        "skinColorGeneLabel": "Skin Color Gene:",
-        "eyeColorGeneLabel": "Eye Color Gene:",
-        "clothesColorGeneLabel": "Clothes Color Gene:",
-        "nameInputPlaceholder": "Enter a name here",
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "headGeneLabel": "Kopf-Gen:",
+        "eyeGeneLabel": "Augen-Gen:",
+        "shirtGeneLabel": "Hemd-Gen:",
+        "skinColorGeneLabel": "Hautfarben-Gen:",
+        "eyeColorGeneLabel": "Augenfarben-Gen:",
+        "clothesColorGeneLabel": "Kleiderfarben-Gen:",
+        "nameInputPlaceholder": "Gib hier einen Namen ein",
+        "defaultZombieDesc": "Ein CryptoZombie der Stufe 1"
     },
     "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+        "IOTAslain": "IOTA wurde wurde im Kampf erschlagen!",
+        "winCount": "Anzahl der Gewinne deines Zombies:",
+        "iotaLose": "Anzahl der Verluste von IOTA",
+        "newZombie": "Neuer Zombie erstellt"
     },
     "sharePage": {
-        "pageTitle": "Check out my CryptoZombie {zombieName}!",
-        "presents": "Presents",
-        "zombieDesc": "{name}, a Level {levelNum} CryptoZombie",
+        "pageTitle": "Schau Dir meinen CryptoZombie {zombieName} an!",
+        "presents": "Geschenke",
+        "zombieDesc": "{name}, ein CryptoZombie der Stufe {levelNum}",
         "lesson1": {
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "randomZombieGenerator": "random zombie generator",
+            "zombieDesc": "Ein CryptoZombie der Stufe 1",
+            "randomZombieGenerator": "Zombie Zufallsgenerator",
             "achievementPreamble": [
-                "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
+                "Dein Freund hat die Grundlagen der Ethereum-Spielentwicklung gelernt und hat als Beweis {zombieName} erschaffen, eine CryptoZombie der Stufe 1!",
                 "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
             ],
             "achievements": [
