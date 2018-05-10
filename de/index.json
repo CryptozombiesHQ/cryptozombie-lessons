@@ -201,13 +201,13 @@
                 "Programmieren mit Solidity, Ethereums Programmiersprache für Smart Contracts",
                 "Entwicklung von Spielen auf Ethereum"
             ],
-            "tryItOut": "Give the random zombie generator a try.",
-            "below": "below",
-            "above": "above",
-            "zombieGeneratorText": "{tryItOut} Enter a name in the box {below}{above} to generate a new zombie!",
-            "nameInputPlaceholder": "Enter a name to generate a zombie",
+            "tryItOut": "Probier den Zombie-Zufallsgenerator aus.",
+            "below": "unterem",
+            "above": "obigen",
+            "zombieGeneratorText": "{tryItOut} Gib einen Namen im {below}{above} Feld ein, um einen neuen Zombie zu generieren!",
+            "nameInputPlaceholder": "Gib einen Namen ein um einen Zombie zu generieren",
             "callToAction": [
-                "Want to build your own CryptoZombie and join the ranks?",
+                "Willst Du Dein eigenes CryptoZombie bauen und dich den Reihen anschließen?",
                 "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
             ]
         },
