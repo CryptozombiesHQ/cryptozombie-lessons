@@ -85,35 +85,35 @@
         },
         "lesson3": {
             "achievementsUnlocked": "Errungenschaften freigeschaltet:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+            "zombieUpgraded": "{zombieName} ist auf Level {levelNum} aufgestiegen!",
             "header": [
-                "Congratulations! You have completed {lesson3} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "Herzlichen Glückwunsch! Du hast {lesson3} von CryptoZombies abgeschlossen!",
+                "Zeigen Deinen Freunden Deine Zombie-Armee!",
+                "Teile diese URL, damit Deine Freunde sich Deine Armee anschauen können:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 4:"
+                "Hast Du Spass mit CryptoZombies? Lass es uns wissen!",
+                "Trete der Diskussion bei auf {telegramLink}, oder folge uns auf {twitterLink}",
+                "Wenn Du bereit bist, klicke unten auf Lektion 4:"
             ],
-            "zombieDesc": "A Level 3 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 3! Check out my zombie army:"
+            "zombieDesc": "Ein CryptoZombie der Stufe 3",
+            "shareLinkText": "Ich habe gerade Lektion 3 von #CryptoZombies abgeschlossen! Schau Dir meine Zombie-Armee an:"
         },
         "lesson4": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "achievementsUnlocked": "Errungenschaften freigeschaltet:",
+            "zombieUpgraded": "{zombieName} ist auf Stufe {levelNum} aufgestiegen!",
+            "newZombieAdded": "Du hast einen neuen Zombie der Stufe 1 deiner Armee hinzugefügt!",
             "header": [
-                "Congratulations! You have completed {lesson4} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "Herzlichen Glückwunsch! Du hast {lesson4} von CryptoZombies abgeschlossen!",
+                "Zeigen Deinen Freunden Deine Zombie-Armee!",
+                "Teile diese URL, damit Deine Freunde sich Deine Armee anschauen können:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 5:"
+                "Hast Du Spass mit CryptoZombies? Lass es uns wissen!",
+                "Trete der Diskussion bei auf {telegramLink}, oder folge uns auf {twitterLink}",
+                "Wenn Du bereit bist, klicke unten auf Lektion 5:"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "zombieDesc": "Eine CryptoZombie der Stufe {levelNum}",
             "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
         },
         "lesson5": {
