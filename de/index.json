@@ -22,7 +22,7 @@
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lektion {lessonNum}: {title}",
-        "signIn": "Melde dich an und lade deinen Fortschritt",
+        "signIn": "Melde dich an und lade Deinen Fortschritt",
         "progressLoaded": "Dein Fortschritt wird geladen"
     },
     "overview": {
@@ -58,20 +58,20 @@
         "lesson1": {
             "header": [
                 "Herzlichen Glückwunsch! Du hast Lektion 1 von CryptoZombies abgeschlossen!",
-                "Du bist nun offiziell einen Schritt näher, Deine eigenen Spiele auf Ethereum zu konstruieren.",
+                "Du bist nun offiziell einen Schritt näher, Deine eigenen Spiele auf Ethereum zu entwickeln.",
                 "Zeigen Deinen Freunden Deinen ersten Zombie!",
                 "Hier ist ein permanenter Link zu Deinem Zombie:"
             ],
             "footer": "Achte darauf, dass Dein Fortschritt unten gespeichert wird, bevor Du mit Lektion 2 fortfährst.",
             "zombieDesc": "Ein CryptoZombie der Stufe 1",
-            "shareLinkText": "Ich habe gerade Lektion 1 von #CryptoZombies abgeschlossen und lernte die Grundlagen der Programmierung eines Spiels auf #Ethereum. Schau Dir den ersten Zombie in meiner Armee an!"
+            "shareLinkText": "Ich habe gerade Lektion 1 von #CryptoZombies abgeschlossen und lernte die Grundlagen der Programmierung eines Spiels auf #Ethereum. Schau Dir den ersten Zombie meiner Armee an!"
         },
         "lesson2": {
             "header": [
                 "Herzlichen Glückwunsch! Du hast {lesson2} von CryptoZombies abgeschlossen!",
                 "Erfolge freigeschaltet:",
-                "{zombieName} ist auf Level 2 aufgestiegen!",
-                "Du hast NoName deiner Armee zugefügt, ein Katzenzombie! (Keine Sorge, in Lektion 3 wirst Du lernen wie man ihren/seinen Namen ändert)",
+                "{zombieName} ist auf Stufe 2 aufgestiegen!",
+                "Du hast NoName Deiner Armee zugefügt, ein Katzenzombie! (Keine Sorge, in Lektion 3 wirst Du lernen wie man ihren/seinen Namen ändert)",
                 "Zeigen Deinen Freunde Deinen CryptoKitty-Schlächter!",
                 "Teile diese URL, so dass Deine Freunde CryptoKitties mit deinem Zombie schlachten können:"
             ],
