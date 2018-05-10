@@ -252,30 +252,30 @@
         "lesson4": {
             "achievementPreamble": [
                 "Dein Freund hat CryptoZombies Lektion 4 abgeschlossen, und besiegte den böse IOTA-Zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+                "Auf gehts, auf der linken Seite kannst Du es selber ausprobieren. Verwende die Armee Deines Freundes um in die Schlacht zu gehen!",
+                "Um die Lektion 4 von CryptoZombies abzubschliessen lernte Dein Freund etwas über:"
             ],
             "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
+                "Bezahlbare Funktionen und wie man mit Ethereum-basierten Spielen Geld verdienen kann",
+                "Abheben von ETH aus Smart Contracts",
+                "Erzeugung von Zufallszahlen & Sicherheit auf Ethereum",
+                "Und vieles mehr!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Willst Du Dein eigenes CryptoZombie bauen und dich den Reihen anschließen?",
+                "Lerne kostenlos mit CryptoZombies Deine eigenen Spiele auf Ethereum zu entwickeln! Jetzt loslegen:"
             ]
         },
         "lesson5": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+                "Dein Freund hat Lektion 5 von CryptoZombies abgeschlossen und hat einen CryptoZombie Stufe 10 erhalten!",
+                "Schau Dir auf der linken Seite die Zombie-Armee deines Freundes an. Ziemlich beeindruckend, nicht wahr?",
+                "Um die Lektion 5 von CryptoZombies abzubschliessen lernte Dein Freund etwas über:"
             ],
             "achievements": [
-                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
-                "Solidity libraries and how to use them",
+                "Token, den ERC721-Standard, und das Erstellen von handelbaren Token / Vermögenswerte",
+                "Solidity Bibliotheken und wie man sie verwendet",
                 "The SafeMath library and preventing uint overflows and underflows",
                 "Commenting your Solidity code and the natspec standard"
             ],
