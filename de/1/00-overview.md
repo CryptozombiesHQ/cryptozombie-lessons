@@ -7,4 +7,4 @@ Du denkst also, Du hast das Zeug ein **CryptoZombie** zu werden, huh?
 
 Dieser Kurs wird Dir zeigen, wie man **ein Spiel auf Ethereum entwickelt**.
 
-It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
+Er richtet sich an Anfänger von Solidity. Wir gehen aber davon aus, dass Du ein bisschen Erfahrungen im programmieren in einer anderen Sprache hast (z.B. Javascript).
