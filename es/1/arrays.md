@@ -33,24 +33,24 @@ material:
 ---
 Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos tipos de arrays en Solidity: arrays ***fijos*** y arrays ***dinámicos***:
 
-    // Array with a fixed length of 2 elements:
+    // Array con un numero fijo de 2 elementos:
     uint[2] fixedArray;
-    // another fixed Array, can contain 5 strings:
+    // otro array fijo que contiene 5 cadenas (strings):
     string[5] stringArray;
-    // a dynamic Array - has no fixed size, can keep growing:
+    // un array dinamico que no tiene tamaño fijo y puede seguir creciendo:
     uint[] dynamicArray;
     
 
 Tú también puedes crear un array de ***structuras***. Usando los capítulos previos `Person` struct:
 
-    Person[] people; // dynamic Array, we can keep adding to it
+    Person[] people; // Array dinámico, podemos seguir añadiéndolo
     
 
-Recuerdas que las variables de estado están guardadas permanentemente en la Blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Recuerdas que las variables de estado están guardadas permanentemente en la Blockchain? Entonces al crear un array dinámico de estructuras como este, puede ser muy útil para guardar datos estructurados en tu contrato, a manera de una base de datos.
 
 ## Arrays Públicos
 
-You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
+Tú puedes declarar un array como `public`, y Solidity automáticamente creará un método ***getter*** para ello. La sintaxis se parecería a esto:
 
     Person[] public people;
     
