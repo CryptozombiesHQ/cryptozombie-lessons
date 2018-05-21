@@ -41,12 +41,12 @@ Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos
     uint[] dynamicArray;
     
 
-You can also create an array of ***structs***. Using the previous chapter's `Person` struct:
+Tú también puedes crear un array de ***structuras***. Usando los capítulos previos `Person` struct:
 
     Person[] people; // dynamic Array, we can keep adding to it
     
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Recuerdas que las variables de estado están guardadas permanentemente en la Blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
 ## Arrays Públicos
 
