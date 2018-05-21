@@ -41,7 +41,7 @@ Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos
     uint[] dynamicArray;
     
 
-Tú también puedes crear un array de ***structuras***. Usando los capítulos previos `Person` struct:
+Tú también puedes crear un array de ***structs*** (estructuras). Usando los capítulos previos `Person` struct:
 
     Person[] people; // Array dinámico, podemos seguir añadiéndolo
     
@@ -55,10 +55,10 @@ Tú puedes declarar un array como `public`, y Solidity automáticamente creará 
     Person[] public people;
     
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+Otros contratos podrían leer (pero no escribir) en este array. Este es un patrón útil para almacenar datos públicos en su contrato.
 
 # Vamos a probarlo
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+Vamos a querer almacenar un ejército de zombies en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombies a otras aplicaciones, por lo que querremos que sea público.
 
-1. Create a public array of `Zombie` ***structs***, and name it `zombies`.
+1. Crea un array publico de `Zombie` ***structs***, y llámalo `zombies`.
