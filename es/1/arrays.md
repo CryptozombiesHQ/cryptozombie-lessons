@@ -19,7 +19,7 @@ material:
       uint dna;
       }
       
-      // start here
+      // Iniciar aquí
       
       }
     answer: >
