@@ -1,5 +1,5 @@
 ---
-title: Working With Structs and Arrays
+title: Trabajando con estructuras y arrays
 actions:
   - 'checkAnswer'
   - 'hints'
