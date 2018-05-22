@@ -1,5 +1,5 @@
 ---
-title: Arrays (Arreglos)
+title: Arrays
 actions:
   - 'comprobarRespuesta'
   - 'pistas'
