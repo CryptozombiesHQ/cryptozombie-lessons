@@ -38,7 +38,7 @@ material:
 ---
 ### Creando Nuevas Estructuras
 
-Remember our `Person` struct in the previous example?
+Recuerdas nuestra estructura `Person` en el ejemplo anterior?
 
     struct Person {
       uint age;
