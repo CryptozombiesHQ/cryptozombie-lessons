@@ -1,8 +1,8 @@
 ---
 title: Trabajando con estructuras de datos y arrays
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -22,7 +22,7 @@ material:
       Zombie[] public zombies;
       
       function createZombie(string _name, uint _dna) {
-      // start here
+      // comienza aquí
       }
       
       }
@@ -36,7 +36,7 @@ material:
       function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
-### Creating New Structs
+### Creando Nuevas Estructuras
 
 Remember our `Person` struct in the previous example?
 
