@@ -62,18 +62,18 @@ También podemos combinar estas dos cosas para hacerlas en una sola línea y man
     people.push(Person(16, "Vitalik"));
     
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+Date cuenta que `array.push()` añade algo al **final** del array, así que los elementos siguen el orden de añadido. Observa este ejemplo:
 
     uint[] numbers;
     numbers.push(5);
     numbers.push(10);
     numbers.push(15);
-    // numbers is now equal to [5, 10, 15]
+    // el array numbers es ahora igual a [5, 10, 15]
     
 
-# Put it to the test
+# Vamos a probarlo
 
-Let's make our createZombie function do something!
+Vamos hacer que nuestra función createZombie haga algo!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+1. Rellena el cuerpo de la función para que cree un nuevo `Zombie`, y añádelo al array `zombies`. The `name` and `dna` for the new Zombie should come from the function arguments.
 2. Let's do it in one line of code to keep things clean.
