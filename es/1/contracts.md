@@ -1,15 +1,15 @@
 ---
-title: "title:Título\nactions: acciones\n0: chequear respuesta\n1: consejos\nmaterial:\neditor:\nlenguage: sol\nComenzarCódigo: pragma solidity //1. Introduce la versión de solidity aquí //2. Crear contrato aquí\nRespuesta:solidity pragma^`0.4.9.; contrato ZombieFactory{}\nComenzando por lo más básico:\nEl código Solidity está encapsulado en contratos. Un \"contract\" es el bloque fundamental para construir aplicaciones en Ethereum - todas las \"variables\" y \"funciones\" pertenecen a un contrato y este será el punto de partida de todos sus proyectos.\nUn contrato \"vacío\" que le llamaremos \"HelloWorld\" se representaría así:\ncontract HelloWord{\n}\nVersión Pragma\nTodo el código fuente del lenguaje Solidity debe comenzar con una \"versión pragma\", los programas en Solidity se utilizan para especificar ciertas condiciones bajo las cuales el archivo fuente puede o no ejecutarse. La versión pragma especifica en qué versión de Solidity puede trabajar un archivo fuente. Es decir, es una declaración de la versión del compilador de Solidity que debe usar dicho código. Esto se utiliza para evitar problemas con futuras versiones del compilador que pudieran introducir cambios que podrían romper el código.\nLa manera de presentarlo sería: pragma solidity ^0.4.19; (esta anotación pertenece a la última versión de Solidity en el momento de traducir este documento o.4.19).\nUniendo el contrato \"vacío\" que indicamos al inicio y la declaración que todo código fuente en el lenguaje Solidity debe de usar nos permite construir un contrato inicial básico, el cual lo desarrollaríamos como sigue:\npragma solidity ^0.4.19;\nContract HelloWorld{\n}\nEsta forma de construir un contrato nos servirá para comenzar cada nuevo proyecto.\nPonlo a prueba\nPara comenzar a crear nuestro ejército Zombie, creemos un contrato base llamado ZombieFactory.\nEn el cuadro a la derecha, haga que nuestro contrato utilice la versión de solidez 0.4.19.\nCrea un contrato vacío llamado ZombieFactory.\nCuando hayas terminado, haz clic en \"verificar respuesta\" a continuación. Si te quedas atascado, puedes hacer clic en \"pista\"."
+title: "Contratos"
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. Coloca la versión de solidity aquí
       
-      //2. Create contract here
+      //2. Crear el contrato aquí
     answer: >
       pragma solidity ^0.4.19;
       
