@@ -1,5 +1,5 @@
 ---
-title: Trabajando con estructuras de datos y arrays
+title: Trabajando con estructuras y arrays
 actions:
   - 'comprobarRespuesta'
   - 'pistas'
@@ -48,12 +48,12 @@ Recuerdas nuestra estructura `Person` en el ejemplo anterior?
     Person[] public people;
     
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Ahora vamos a aprender como crear una nueva persona `Person`s y añadirlo a nuestro array `people`.
 
-    // create a New Person:
+    // crea una nueva Persona:
     Person satoshi = Person(172, "Satoshi");
     
-    // Add that person to the Array:
+    // Añade esa persona a el Array:
     people.push(satoshi);
     
 
