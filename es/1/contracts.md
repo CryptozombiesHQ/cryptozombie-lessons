@@ -46,8 +46,8 @@ Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo 
 
 Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
+1. En la caja de la derecha, haz lo necesario para que el contrato use la versión de Solidity `0.4.19`.
 
-2. Create an empty contract called `ZombieFactory`.
+2. Crea un contrato vacío llamado `ZombieFactory`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+Cuando hayas terminado, haz clic en "comprobar respuesta" abajo. Si te quedas atascado, haz clic en "pistas".
