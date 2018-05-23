@@ -27,24 +27,24 @@ Un contrato vacío llamado `HolaMundo` se asemejaría a esto:
     }
     
 
-## Version Pragma
+## Versión Pragma
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar en tu código.
 
-It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
+Esta declaración se asemeja a esto: `pragma solidity ^0.4.19;` (para usar la última versión del compilador de Solidity actual, la 0.4.19).
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
 
     pragma solidity ^0.4.19;
     
-    contract HelloWorld {
+    contract HolaMundo {
     
     }
     
 
-# Put it to the test
+# Vamos a probarlo
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory`.
 
 1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
 
