@@ -50,14 +50,14 @@ Recuerdas nuestra estructura `Person` en el ejemplo anterior?
 
 Ahora vamos a aprender como crear una nueva persona `Person`s y añadirlo a nuestro array `people`.
 
-    // crea una nueva Persona:
+    // crear un nuevo Persona:
     Person satoshi = Person(172, "Satoshi");
     
-    // Añade esa persona a el Array:
+    // Añade esta persona a nuestro Array:
     people.push(satoshi);
     
 
-We can also combine these together and do them in one line of code to keep things clean:
+También podemos combinar estas dos cosas para hacerlas en una sola línea y mantener el código limpio:
 
     people.push(Person(16, "Vitalik"));
     
