@@ -51,10 +51,10 @@ Vamos a ver como se declara una función privada:
 
 Esto significa que solo otras funciones dentro de tu contrato podrán llamar a esta función y añadir al array `numbers`.
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+Como puedes ver, usamos la palabra clave `private` después del nombre de la función. Y de las misma forma que con los parámetros de funciones, la convención es nombrar las funciones privadas empezando con una barra baja (`_`).
 
-# Put it to the test
+# Vamos a probarlo
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+Nuestro contrato tiene una función `createZombie` que es pública por defecto, esto significa ¡que cualquiera podría llamarlo y crear un nuevo zombi en nuestro contrato! Vamos a hacerla privada.
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Modifica la función `createZombie` para que sea una función privada. ¡No te olvides de la convención del nombre!
