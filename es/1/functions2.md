@@ -38,9 +38,9 @@ material:
 ---
 En Solidity, las funciones son públicas `public` por defecto. Esto significa que cualquiera (o cualquier otro contrato) puede llamarla y ejecutar su código.
 
-Esto no es algo que queramos que pase siempre, y de hecho puede hacer vulnerables tus contratos. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Esto no es algo que queramos que pase siempre, y de hecho puede hacer vulnerables tus contratos. Por lo tanto es una buena práctica marcar tus funciones como privadas `private` y solamente hacer públicas `public` aquellas que queramos exponer al mundo exterior.
 
-Let's look at how to declare a private function:
+Vamos a ver como se declara una función privada:
 
     uint[] numbers;
     
@@ -49,7 +49,7 @@ Let's look at how to declare a private function:
     }
     
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+Esto significa que solo otras funciones dentro de tu contrato podrán llamar a esta función y añadir al array `numbers`.
 
 As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
 
