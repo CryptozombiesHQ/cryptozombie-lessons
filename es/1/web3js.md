@@ -47,16 +47,15 @@ No te preocupes si esto no tiene mucho sentido todavía.
         dnaStr = "0" + dnaStr
     
       let zombieDetails = {
-        // los primeros dos dígitos hacen la cabeza. We have 7 possible heads, so % 7
-        // to get a number 0 - 6, then add 1 to make it 1 - 7. Then we have 7
-        // image files named "head1.png" through "head7.png" we load based on
-        // this number:
+        // los primeros dos dígitos hacen la cabeza. Tenemos 7 posibles cabezas, entonces hacemos % 7 // para obtener un número entre 0 - 6, después le sumamos 1 para hacerlo entre 1 - 7. Luego tenemos 7
+        // imagenes llamadas desde "head1.png" hasta "head7.png" que cargamos en base a
+        // este número:
         headChoice: dnaStr.substring(0, 2) % 7 + 1,
-        // 2nd 2 digits make up the eyes, 11 variations:
+        // los siguientes 2 dígitos se refieren a los ojos, 11 variaciones:
         eyeChoice: dnaStr.substring(2, 4) % 11 + 1,
-        // 6 variations of shirts:
+        // 6 variaciones de camisetas:
         shirtChoice: dnaStr.substring(4, 6) % 6 + 1,
-        // last 6 digits control color. Updated using CSS filter: hue-rotate
+        // loa últimos 6 dígitos controlas el color. Updated using CSS filter: hue-rotate
         // which has 360 degrees:
         skinColorChoice: parseInt(dnaStr.substring(6, 8) / 100 * 360),
         eyeColorChoice: parseInt(dnaStr.substring(8, 10) / 100 * 360),
