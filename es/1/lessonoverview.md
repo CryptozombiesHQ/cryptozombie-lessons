@@ -32,10 +32,10 @@ Al igual que el ADN de verdad, las diferentes partes de este número están liga
 
 En el ejemplo de arriba, los dos primeros dígitos del ADN son `83`. Para mapearlo al tipo de cabeza hacemos una división módulo 7 y añadimos uno, `83 % 7 + 1` = 7. Así el zombi tendrá el séptimo tipo de cabeza.
 
-In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
+Usando el panel de la derecha mueve la barra del `Gen Cabeza` hasta la cabeza 7 (la que tiene el gorro de Santa Claus) para así ver que trazo `83` correspondería con él.
 
-# Put it to the test
+# Vamos a probarlo
 
-1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
+1. Juega con las barras de desplazamiento de la derecha de la página. Experimenta para ver como diferentes valores corresponden con diferentes aspectos del zombi.
 
-Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
+Ok, ya hemos jugado bastante. Cuando estés listo para continuar ¡dale a "Capítulo Siguiente" abajo para comenzar a aprender Solidity!
