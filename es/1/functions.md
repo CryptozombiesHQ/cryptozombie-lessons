@@ -1,8 +1,8 @@
 ---
-title: Function Declarations
+title: Declaraciones de Función
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -21,7 +21,7 @@ material:
       
       Zombie[] public zombies;
       
-      // start here
+      // Iniciar aquí
       
       }
     answer: >
@@ -31,8 +31,7 @@ material:
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { uint dna; string name; }
       Zombie[] public zombies;
-      function createZombie(string _name, uint _dna) {
-      }
+      function createZombie(string _name, uint _dna) { }
       }
 ---
 A function declaration in solidity looks like the following:
