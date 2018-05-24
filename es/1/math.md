@@ -37,6 +37,6 @@ Solidity también tiene un ***operador exponencial*** (por ejemplo "x elevado a 
 
 # Vamos a probarlo
 
-Para asegurarnos de que el ADN de nuestro Zombi tiene solo 16 dígitos, vamos a crear un `uint` igual a 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+Para asegurarnos de que el ADN de nuestro Zombi tiene solo 16 dígitos, vamos a crear un `uint` igual a 10^16. De esa manera podemos utilizar el módulo operador `%` para acortar un número entero a 16 dígitos.
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. Crea un `uint` llamado `dnaModulus`, y dale el valor de **10 elevado a `dnaDigits`**.
