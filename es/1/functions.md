@@ -34,26 +34,26 @@ material:
       function createZombie(string _name, uint _dna) { }
       }
 ---
-A function declaration in solidity looks like the following:
+Una declaración de una función en solidity se parece a esto:
 
     function eatHamburgers(string _name, uint _amount) {
     
     }
     
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+Esta es una función llamada `eatHamburgers` que toma 2 parámetros: una cadena de texto `string` y un número entero sin signo `uint`. Por ahora dejamos el cuerpo de la función vacío.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Nota: la convención (no obligatoria) es llamar los parámetros de las funciones con nombres que empiezan con un subrayado (`_`) de esta forma diferenciarlos de variables globales. Utilizaremos esta convención en este tutorial.
 
-You would call this function like so:
+Llamaríamos esta función de esta forma:
 
     eatHamburgers("vitalik", 100);
     
 
-# Put it to the test
+# Vamos a probarlo
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. Crea una función llamada `createZombie`. Debería tomar dos parámetros **__name_** (un `string`), y **__dna_** (un número entero sin signo `uint`).
 
-Leave the body empty for now — we'll fill it in later.
+Dejemos el cuerpo de la función vacío por ahora — lo rellenaremos más tarde.
