@@ -79,8 +79,8 @@ Esta función no lee desde el estado de la aplicación - el valor devuelto depen
 
 Necesitaremos una función que nos ayude a generar un número aleatorio para el ADN a partir de una cadena de texto (string).
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Crea una función `private` la cual se llame `_generateRandomDna`. Recibirá un parámetro llamado `_str` (un `string`), y devolverá un `uint`.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. Esta función tendrá que ver algunas de las variables de nuestro contrato, pero no modificará ninguna, así que la marcaremos como `view`.
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. El cuerpo de la función debería estar vacio por ahora, lo rellenaremos más tarde.
