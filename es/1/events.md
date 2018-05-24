@@ -84,4 +84,4 @@ Queremos tener un evento que nos haga saber cada vez que un zombi nuevo se ha cr
 
 2. Modifica la función `createZombie` para lanzar el evento `NewZombie` después de haber añadido el nuevo Zombi a nuestro array de `zombies`.
 
-3. Vas a necesitar el `id` del zombi. `array.push()` devuelve un `uint` con el nuevo tamaño del array - y como primer elemento del array tiene índice 0, `array.push() - 1` será el índice del zombi que acabamos de añadir. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Vas a necesitar el `id` del zombi. `array.push()` devuelve un `uint` con el nuevo tamaño del array - y como primer elemento del array tiene índice 0, `array.push() - 1` será el índice del zombi que acabamos de añadir. Guarda el resultado de `zombies.push() - 1` en un número de tipo `uint` llamado `id`, así podrás usarlo en el evento `NewZombie` de la siguiente línea.
