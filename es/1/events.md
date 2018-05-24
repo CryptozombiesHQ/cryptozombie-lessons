@@ -52,31 +52,31 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Our contract is almost finished! Now let's add an ***event***.
+¡Nuestro contrato está casi terminado! Ahora vamos a añadir un ***evento***.
 
-***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+Los ***Eventos*** son la forma en la que nuestro contrato comunica que algo sucedió en la cadena de bloques a la interfaz del usuario, el cual puede estar 'escuchando' ciertos eventos y hacer algo cuando suceden.
 
-Example:
+Ejemplo:
 
-    // declare the event
+    // declara el evento aquí
     event IntegersAdded(uint x, uint y, uint result);
     
     function add(uint _x, uint _y) public {
       uint result = _x + _y;
-      // fire an event to let the app know the function was called:
+      // lanza el evento para hacer saber a tu aplicación que la función ha sido llamada:
       IntegersAdded(_x, _y, result);
       return result;
     }
     
 
-Your app front-end could then listen for the event. A javascript implementation would look something like:
+La aplicación con la interfaz de usuario podría entonces estar escuchando el evento. Una implementación en JavaScript sería así:
 
     YourContract.IntegersAdded(function(error, result) { 
-      // do something with result
+      // hacer algo con 'result'
     }
     
 
-# Put it to the test
+# Vamos a probarlo
 
 We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
