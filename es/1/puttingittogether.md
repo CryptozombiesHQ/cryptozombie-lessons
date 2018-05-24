@@ -30,7 +30,7 @@ material:
       return rand % dnaModulus;
       }
       
-      // inicía aquí
+      // iniciar aquí
       
       }
     answer: >
