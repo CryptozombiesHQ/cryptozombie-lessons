@@ -13,9 +13,9 @@ material:
 
 Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
 
-### 1. Ingresa para guardar tu progreso
+### 1. Inicia sesión para guardar tu progreso
 
-***Regístrate*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
+***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
 
 ### 2. Comparte tu zombi con tus amigos
 
