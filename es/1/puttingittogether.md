@@ -1,8 +1,8 @@
 ---
-title: Putting It Together
+title: Juntandolo Todo
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -30,7 +30,7 @@ material:
       return rand % dnaModulus;
       }
       
-      // start here
+      // inicía aquí
       
       }
     answer: >
@@ -45,15 +45,15 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+¡Estamos a punto de terminar con nuestro generador aleatorio de Zombis! Vamos a crear una función pública que ponga todo junto.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+Vamos a crear una función pública que tomará un parámetro, el nombre del zombi, y usará ese nombre para crear un zombi con un ADN aleatorio.
 
-# Put it to the test
+# Vamos a probarlo
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). *(Note: Declare this function `public` just as you declared previous functions `private`)*
+1. Crea una función pública `public` llamada `createRandomZombie`. Recibirá un parámetro llamado `_name` (una cadena de caracteres `string`). *(Nota: Declara esta función como `public` de la misma forma que hiciste para declarar las anteriores funciones `private`)*
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. La primera línea de la función debería llamar a la función `_generateRandomDna` usando `_name`, como parámetro y guardar el resultado en un `uint` llamado `randDna`.
 
 3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
 
