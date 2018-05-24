@@ -13,24 +13,24 @@ material:
 ---
 En la Lección 1 vas a construir una "Fabrica de Zombis" para poder crear tu ejército de zombis.
 
-* Our factory will maintain a database of all zombies in our army
-* Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+* Nuestra fábrica mantendrá una base de datos de todos los zombis en nuestro ejército
+* Nuestra fábrica tendrá una función que cree nuevos zombis
+* Cada zombi tendrá una apariencia aleatoria y no habrá dos iguales
 
-In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
+En las siguientes lecciones añadiremos más funcionalidades, ¡como la capacidad de atacar humanos u otros zombis! Pero antes de que lleguemos allí tendremos que contar con la funcionalidad de crear nuevos zombis.
 
-## How Zombie DNA Works
+## Comó funciona el ADN de los Zombi
 
-The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
+La apariencia del zombi esta basada en el ADN del Zombi. El ADN del Zombi es sencillo, es un número de 16 dígitos, como este:
 
     8356281049284737
     
 
-Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
+Al igual que el ADN de verdad, las diferentes partes de este número están ligadas a los diferentes rasgos del Zombi. Los dos primeros dígitos indican el tipo de cabeza, los 2 siguientes son para los ojos etc.
 
-> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
+> Nota: Para este tutorial mantendremos las cosas sencillas, y nuestros zombis solo tendrán 7 tipos distintos de cabezas (aunque podríamos tener 100 con dos dígitos). Más tarde añadiremos más tipos de cabeza para poder aumentar el número posible de variantes de zombis.
 
-For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
+En el ejemplo de arriba, los dos primeros dígitos del ADN son `83`. Para mapearlo al tipo de cabeza hacemos una división módulo 7 y añadimos uno, `83 % 7 + 1` = 7. Así el zombi tendrá el séptimo tipo de cabeza.
 
 In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
