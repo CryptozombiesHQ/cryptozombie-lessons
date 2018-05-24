@@ -55,6 +55,6 @@ Vamos a crear una función pública que tomará un parámetro, el nombre del zom
 
 2. La primera línea de la función debería llamar a la función `_generateRandomDna` usando `_name`, como parámetro y guardar el resultado en un `uint` llamado `randDna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. La segunda línea debería de llamar a la función `_createZombie` y pasarle los parámetros `_name` y `randDna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. La solución debería contener 4 líneas de código (incluyendo la llave de cierre `}` de la función).
