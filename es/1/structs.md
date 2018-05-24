@@ -25,7 +25,7 @@ material:
       struct Zombie { string name; uint dna; }
       }
 ---
-Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
+Algunas veces necesitas tipos de datos más complejos. Para esto Solidity proporciona ***structs</strong>* (estructuras de datos):</p> 
 
     struct Person {
       uint age;
@@ -34,14 +34,14 @@ Sometimes you need a more complex data type. For this, Solidity provides ***stru
     
     
 
-Structs allow you to create more complicated data types that have multiple properties.
+Las estructuras te permiten crear tipos de datos más complejos que tienen varias propiedades.
 
-> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+> Nota: acabamos de introductir un nuevo tipo de dato `string`, que se usan para cadenas de texto UTF-8 de longitud arbitraria. Ejemplo: `string greeting = "¡Hola Mundo!"`
 
-# Put it to the test
+# Vamos a probarlo
 
-In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
+En nuestra aplicación, vamos a querer crear unos cuantos zombies. Y los zombis tienen varias propiedades, así que es un caso perfecto para usar estructuras de datos.
 
-1. Create a `struct` named `Zombie`.
+1. Crea un `struct` llamado `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
+2. Nustras estructura `Zombie` tendrá dos propiedades: `name` (tipo `string`), y `dna` (de tipo `uint`).
