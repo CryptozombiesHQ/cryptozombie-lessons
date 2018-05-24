@@ -79,4 +79,4 @@ Vamos a rellenar el cuerpo de la función `_generateRandomDna`, esto es lo que d
 
 1. La primera línea del código debería tomar el hash `keccak256` de `_str` para generar un hexadecimal cuasi-aleatorio, forzarlo como un `uint`, y por último guardar el resultado en un `uint` llamado `rand`.
 
-2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
+2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). Así que la segunda línea del código debería devolver `return` el módulo del valor de arriba (`%`) `dnaModulus`.
