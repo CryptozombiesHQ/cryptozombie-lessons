@@ -57,17 +57,17 @@ Ejemplo:
 
 Como puedes ver, el valor devuelto para cada caso es completamente distinto, a pesar de que sólo hemos cambiado un carácter del argumento.
 
-> Nota: Generar números aleatorios de forma **segura** en la cadena de bloques es algo muy difícil. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Nota: Generar números aleatorios de forma **segura** en la cadena de bloques es algo muy difícil. El método que usamos aquí no es seguro, pero la seguridad no es nuestra prioridad para el ADN del Zombi, es suficiente para este propósito.
 
-## Typecasting
+## Encasillamiento
 
-Sometimes you need to convert between data types. Take the following example:
+A veces es necesario convertir entre tipos de datos. Por ejemplo en el siguiente caso:
 
     uint8 a = 5;
     uint b = 6;
-    // throws an error because a * b returns a uint, not uint8:
+    // dará un error porque a * b devuelve un uint, y no un uint8:
     uint8 c = a * b; 
-    // we have to typecast b as a uint8 to make it work:
+    // debemos forzar la variable b para que se convierta en un uint8
     uint8 c = a * uint8(b); 
     
 
