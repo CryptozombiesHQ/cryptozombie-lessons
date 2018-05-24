@@ -1,17 +1,17 @@
 ---
-title: Lesson Overview
+title: Resumen de la Lección
 actions:
-  - 'checkAnswer'
-  - 'hints'
-skipCheckAnswer: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+skipCheckAnswer: verdadero
 material:
-  saveZombie: false
+  saveZombie: falso
   zombieResult:
-    hideNameField: true
-    ignoreZombieCache: true
+    hideNameField: verdadero
+    ignoreZombieCache: verdadero
     answer: 1
 ---
-In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
+En la Lección 1 vas a construir una "Fabrica de Zombis" para poder crear tu ejército de zombis.
 
 * Our factory will maintain a database of all zombies in our army
 * Our factory will have a function for creating new zombies
