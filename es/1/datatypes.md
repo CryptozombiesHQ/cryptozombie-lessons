@@ -23,12 +23,12 @@ material:
 ---
 ¡Buen trabajo! Ahora que tenemos una capa para nuestro contrato, aprendamos cómo Solidity maneja las variables.
 
-***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+Las ***Variables de Estado*** se guardan permanentemente en el almacenamiento del contrato. Esto significa que se escriben en la cadena de bloques de Ethereum. Piensa en ellos como escribir en una base de datos.
 
-##### Example:
+##### Ejemplo:
 
     contract Example {
-      // This will be stored permanently in the blockchain
+      // Esto se guardará permanentemente en la cadena de bloques
       uint myUnsignedInteger = 100;
     }
     
