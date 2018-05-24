@@ -64,20 +64,20 @@ En este caso podríamos declararla como función ***view*** que significa que so
     function sayHello() public view returns (string) {
     
 
-Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity también contiene funciones ***pure***, que significa que ni siquiera puedes acceder a los datos de la aplicación. Por ejemplo:
 
     function _multiply(uint a, uint b) private pure returns (uint) {
       return a * b;
     }
     
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as ***pure***.
+Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como ***pure***.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> Nota: No siempre es fácil recordar marcar una función como pure o view, por suerte el compilador de Solidity es muy bueno avisándonos de cuándo debemos usar estos modificadores de función.
 
-# Put it to the test
+# Vamos a probarlo
 
-We're going to want a helper function that generates a random DNA number from a string.
+Necesitaremos una función que nos ayude a generar un número aleatorio para el ADN a partir de una cadena de texto (string).
 
 1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
