@@ -1,8 +1,8 @@
 ---
-title: Keccak256 and Typecasting
+title: Keccak256 y Encasillamiento
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -26,7 +26,7 @@ material:
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
-      // start here
+      // iniciar aquí
       }
       
       }
@@ -41,13 +41,13 @@ material:
       function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
       }
 ---
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+Queremos que nuestra función `_generateRandomDna` devuelva un valor (semi) aleatorio `uint`. Comó se puede conseguir esto?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
+Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. Una función hash lo que hace es mapear una cadena de caracteres a un número aleatorio hexadecimal de 256-bits. Un pequeño cambio en la cadena de texto (string) producirá un gran cambio en el hash.
 
-It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
+Es muy útil para muchas cosas, pero por ahora vamos a usarlo solamente para generar un número cuasi-aleatorio.
 
-Example:
+Ejemplo:
 
     //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
     keccak256("aaaab");
@@ -55,9 +55,9 @@ Example:
     keccak256("aaaac");
     
 
-As you can see, the returned values are totally different despite only a 1 character change in the input.
+Como puedes ver, el valor devuelto para cada caso es completamente distinto, a pesar de que sólo hemos cambiado un carácter del argumento.
 
-> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Nota: Generar números aleatorios de forma **segura** en la cadena de bloques es algo muy difícil. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
 
 ## Typecasting
 
