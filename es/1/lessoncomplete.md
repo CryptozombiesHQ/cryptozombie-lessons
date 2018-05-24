@@ -13,10 +13,10 @@ material:
 
 Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
 
-### Registrate para guardar tu progreso
+### 1. Ingresa para guardar tu progreso
 
-***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+***Regístrate*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
 
-### 2. Share your zombie with your friends
+### 2. Comparte tu zombi con tus amigos
 
-***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
