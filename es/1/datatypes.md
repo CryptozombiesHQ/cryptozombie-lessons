@@ -33,13 +33,13 @@ Las ***Variables de Estado*** se guardan permanentemente en el almacenamiento de
     }
     
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+En este contrato de ejemplo, hemos creado un `uint` llamado `myUnsignedInteger` y le hemos dado el valor 100.
 
-## Unsigned Integers: `uint`
+## Enteros sin Signos: `uint`
 
-The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
+El tipo de dato `uint` es un entero sin signo, esto significa que **su valor siempre debe ser no-negativo**. También hay un tipo de dato `int` para números enteros con signo.
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> Nota: En Solidity, `uint` es realmente un alias para `uint256`, un número entero sin signo de 256-bits. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
 
 # Put it to the test
 
