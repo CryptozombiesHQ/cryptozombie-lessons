@@ -1,8 +1,8 @@
 ---
-title: Private / Public Functions
+title: Funciones Públicas y Privadas
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
