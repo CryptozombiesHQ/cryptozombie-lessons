@@ -1,8 +1,8 @@
 ---
-title: Inheritance
+title: Herencia
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -46,7 +46,7 @@ material:
       
       }
       
-      // Start here
+      // Iniciar aquí
     answer: >
       pragma solidity ^0.4.19;
       
@@ -63,9 +63,9 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Nuestro código está haciendose un poco largo. En lugar de hacer un contrato extremandamente largo, a veces tiene sentido separar la lógica de nuestro código en multiples contratos para organizar el código.
 
-One feature of Solidity that makes this more manageable is contract ***inheritance***:
+Una característica de Solidity que hace más manejable esto es la ***herencia*** de los contratos:
 
     contract Doge {
       function catchphrase() public returns (string) {
@@ -73,14 +73,14 @@ One feature of Solidity that makes this more manageable is contract ***inheritan
       }
     }
     
-    contract BabyDoge is Doge {
+    contract BabyDoge es Doge {
       function anotherCatchphrase() public returns (string) {
         return "Such Moon BabyDoge";
       }
     }
     
 
-`BabyDoge` ***inherits*** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
+`BabyDoge` ***hereda*** de `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
 
 This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
 
