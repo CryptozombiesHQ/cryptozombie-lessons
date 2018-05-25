@@ -17,7 +17,7 @@ material:
               uint dna;
           }
 
-          // start here
+          // ここからzombiesを定義するのだ
 
       }
     answer: >
