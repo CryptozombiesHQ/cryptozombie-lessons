@@ -63,26 +63,26 @@ Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
 
 La blockchain de Ethereum está creada por ***cuentas***, las cuales podrían ser como cuentas bancarias. Una cuenta tiene un balance de ***Ether*** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
 
-Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
+Cada cuenta tiene una `dirección`, que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 
+(Esta dirección pertenece al equipo de CryptoZombies. Si estás disfrutando CryptoZombies, ¡puedes enviarnos algunos Ether! 
 
-We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
+Vamos a entrar en el meollo de las direcciones en otra lección, por ahora solo necesitas entender que **una direccion está asociada a un usuario específico** (o un contrato inteligente).
 
-So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+Así que podemos utilizarlo como identificador único para nuestros zombis. Cuando un usuario crea un nuevo zombi interactuando con nuestra app, adjudicaremos la propiedad de esos zombis a la dirección de Ethereum que ha llamado a la función.
 
-## Mappings
+## Mapeos
 
-In Lesson 1 we looked at ***structs*** and ***arrays***. ***Mappings*** are another way of storing organized data in Solidity.
+En la Lección 1 vimos los ***structs*** y los ***arrays***. Los ***Mappings*** son otra forma de organizar los datos en Solidity.
 
-Defining a `mapping` looks like this:
+Definir un `mapping` se asemejaría a esto:
 
-    // For a financial app, storing a uint that holds the user's account balance:
-    mapping (address => uint) public accountBalance;
-    // Or could be used to store / lookup usernames based on userId
-    mapping (uint => string) userIdToName;
+    // Para una aplicación financial, guardamos un uint con el balance de su cuenta:
+    mapping (address =>> uint) public accountBalance;
+    // O podría usarse para guardar / ver los usuarios basados en ese userId
+    mapping (uint =>> string) userIdToName;
     
 
 A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
