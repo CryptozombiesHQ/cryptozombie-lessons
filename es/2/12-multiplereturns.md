@@ -1,8 +1,8 @@
 ---
-title: Handling Multiple Return Values
+title: Manejando Múltiples Valores Devueltos
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -40,7 +40,7 @@ material:
         _createZombie("NoName", newDna);
         }
         
-        // define function here
+        // define la función aquí
         
         }
       "zombiefactory.sol": |
