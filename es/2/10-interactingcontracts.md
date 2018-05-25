@@ -118,17 +118,17 @@ Ten en cuenta que esto se asemeja a definir un contrato, con algunas diferencias
 
 Segundo, no definimos el cuerpo de la función. En vez de usar las llaves (`{` y `}`), solamente terminaremos la función añadiendo un punto y coma al final de la declaración (`;`).
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+Sería como definir el esqueleto del contrato. Así es como el compilador sabe que es una interfaz.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+Incluyendo esta interfaz en el código de tu dapp nuestro contrato sabe como son las funciones de otros contratos, como llamarlas, y que tipo de respuesta recibiremos.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+Entraremos en como llamar a las funciones de otros contratos en la siguiente lección, por ahora vamos a declarar nuestra interfaz para el contrato de CryptoKitties.
 
-# Put it to the test
+# Vamos a probarlo
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+Hemos mirado el código fuente de CryptoKitties por tí, y hemos encontrado una función llamada `getKitty` que devuelve todos los datos de un kitty, incluyendo sus "genes" (¡que es lo que nuestro juego de zombis necesita para crear un nuevo zombi!).
 
-The function looks like this:
+La función es así:
 
     function getKitty(uint256 _id) external view returns (
         bool isGestating,
@@ -144,7 +144,7 @@ The function looks like this:
     ) {
         Kitty storage kit = kitties[_id];
     
-        // if this variable is 0 then it's not gestating
+        // si la variable es 0 entonces no esta gestando
         isGestating = (kit.siringWithId != 0);
         isReady = (kit.cooldownEndBlock <= block.number);
         cooldownIndex = uint256(kit.cooldownIndex);
@@ -158,9 +158,9 @@ The function looks like this:
     }
     
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+La función parece un poco diferente de las que hemos usado. Puedes ver que devuelve... una lista de valores diferentes. Si vienes de un lenguaje de programación como Javascript, esto es diferente — en Solidity puedes devolver más de un valor a una función.
 
-Now that we know what this function looks like, we can use it to create an interface:
+Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
 1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
 
