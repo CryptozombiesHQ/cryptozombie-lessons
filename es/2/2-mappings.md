@@ -1,8 +1,8 @@
 ---
-title: Mappings and Addresses
+title: Mapeos y Direcciones
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -23,7 +23,7 @@ material:
       
       Zombie[] public zombies;
       
-      // declare mappings here
+      // declara los mapeos aquí
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
@@ -55,7 +55,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Let's make our game multi-player by giving the zombies in our database an owner.
+Vamos a hacer nuestro juego multijugador dandolés a los zombis un dueño en la base de datos.
 
 To do this, we'll need 2 new data types: `mapping` and `address`.
 
