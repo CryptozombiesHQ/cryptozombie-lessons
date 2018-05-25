@@ -1,8 +1,8 @@
 ---
-title: Import
+title: Importar
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -10,7 +10,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
         
-        // put import statement here
+        // añade la declaración import aquí
         
         contract ZombieFeeding is ZombieFactory {
         
