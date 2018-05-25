@@ -17,7 +17,7 @@ material:
               uint dna;
           }
 
-          // ここからzombiesを定義するのだ
+          // ここにzombiesというパブリックな配列を定義するのだ
 
       }
     answer: >
