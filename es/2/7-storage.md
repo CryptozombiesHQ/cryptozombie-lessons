@@ -1,8 +1,8 @@
 ---
-title: Storage vs Memory
+title: Almacenamiento vs Memoria
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
