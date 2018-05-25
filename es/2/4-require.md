@@ -78,16 +78,16 @@ Para eso usamos `require`. `require` hace que la función lanze un error y pare 
     }
     
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+Si llamas a la función con `sayHiToVitalik("Vitalik")`, esta devolverá "Hi!". Si la llamas con cualquier otra entrada, lanzará un error y no se ejecutará.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+De este modo `require` es muy útil a la hora de verificar que ciertas condiciones sean verdaderas antes de ejecutar una función.
 
-# Put it to the test
+# Vamos a probarlo
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+En nuestro juego de zombis, no queremos que un usuario pueda crear zombis ilimitados en su ejército llamado a `createRandomZombie` — esto haría que el juego no fuese muy divertido.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+Vamos a usar `require` para asegurarnos que esta función solo pueda ser ejecutada una vez por usuario, cuando vayan a crear su primer zombi.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to ``, and throw an error otherwise.
+1. Coloca una declaración `require` al principio de la función `createRandomZombie`. La función debería comprobar que `ownerZombieCount[msg.sender]` sea igual a ``, y si no que lanze un error.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> Nota: En Solidity, no importa que término pongamos primero - ambos son equivalentes. De todas formas, como nuestro corrector de respuestas es bastante básico, solo aceptamos una respuesta correcta - esta espera que `ownerZombieCount[msg.sender]` vaya primero.
