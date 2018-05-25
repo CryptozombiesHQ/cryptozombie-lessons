@@ -22,7 +22,7 @@ En la Lección 2, vamos a hacer nuestra app más parecida a un juego: Vamos a ha
 
 Cuando un zombi se alimenta, infecta al anfitrión con un virus. El virus convierte al anfitrión en un nuevo zombi que se une a tu ejército. El nuevo ADN del zombi estará calculado del ADN del anterior zombi y del ADN del anfitrión.
 
-¿Y qué es lo que más les gusta a nuestros zombis para alimentarse?
+¿Y qué es lo que más les gusta a nuestros zombis alimentarse?
 
 Para averiguarlo... ¡Tendrás que completar la lección 2!
 
@@ -32,4 +32,4 @@ A la derecha tenemos una demostración simple de la alimentación. ¡Haz clic en
 
 Puedes ver como el ADN del nuevo zombi está determinado por el ADN del zombi original, así como del ADN del anfitrión.
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+Cuando estés preparado, haz clic en "Siguiente capítulo" para continuar, y vamos a empezar a hacer nuestro juego multijugador.
