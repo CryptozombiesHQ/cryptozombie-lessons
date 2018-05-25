@@ -74,21 +74,21 @@ material:
 ---
 ¡Es hora de alimentar a nuestros zombis! Y ¿Qué es lo que más les gusta comer?
 
-Well it just so happens that CryptoZombies love to eat...
+Bueno lo que pasa es que a los CryptoZombies les encanta comer...
 
-**CryptoKitties!** 
+**¡CryptoKitties!** 
 
-(Yes, I'm serious 
+(Si, es enserio 
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+Para hacer esto necesitamos leer el kittyDna de el contrato inteligente de los CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 
+No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty. Solo vamos a *leer* los datos de los CryptoKitties, no podemos borrarlos 
 
-## Interacting with other contracts
+## Interactuando con otros contratos
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an ***interface***.
+Para que nuestro contrato pueda hablar a otro contrato de la blockchain que no poseemos, necesitamos definir una ***interfaz***.
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+Vamos a ver un simple ejemplo. Digamos que hay un contrato en la blockchain que se veía así:
 
     contract LuckyNumber {
       mapping(address => uint) numbers;
@@ -103,7 +103,7 @@ Let's look at a simple example. Say there was a contract on the blockchain that 
     }
     
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+Este sería un simple contrato donde cualquiera puede guardar su número de la suerte, y este estará asociado a su dirección de Ethereum. De esta forma cualquiera podría ver el número de la suerte de una persona usando su dirección.
 
 Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
 
