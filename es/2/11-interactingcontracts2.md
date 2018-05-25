@@ -118,4 +118,4 @@ De esta manera, tu contrato puede interactuar con otro contrato de la blockchain
 
 ¡Vamos a preparar nuestro contrato para leer el contrato inteligente de CryptoKitties!
 
-1. He guardado la dirección del contrato de CryptoKitties en el código por ti, debajo de la variable `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1. He guardado la dirección del contrato de CryptoKitties en el código por ti, debajo de la variable `ckAddress`. En la siguiente línea, crea una `KittyInterface` llamada `kittyContract`, y incialializala con `ckAddress` — igual como hicimos con `numberContract` arriba.
