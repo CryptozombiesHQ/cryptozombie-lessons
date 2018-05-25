@@ -1,15 +1,15 @@
 ---
-title: Lesson 2 Overview
+title: Resumen de la Lección 2
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
-  saveZombie: false
+  saveZombie: falso
   zombieBattle:
     zombie:
       lesson: 1
-    humanBattle: true
-    ignoreZombieCache: true
+    humanBattle: verdadero
+    ignoreZombieCache: verdadero
     answer: 1
 ---
 In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
