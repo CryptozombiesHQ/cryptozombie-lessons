@@ -57,11 +57,11 @@ material:
 ---
 Vamos a hacer nuestro juego multijugador dandolés a los zombis un dueño en la base de datos.
 
-To do this, we'll need 2 new data types: `mapping` and `address`.
+Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
 
-## Addresses
+## Direcciones
 
-The Ethereum blockchain is made up of ***accounts***, which you can think of like bank accounts. An account has a balance of ***Ether*** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
+La blockchain de Ethereum está creada por ***cuentas***, las cuales podrían ser como cuentas bancarias. Una cuenta tiene un balance de ***Ether*** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
 
 Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
 
