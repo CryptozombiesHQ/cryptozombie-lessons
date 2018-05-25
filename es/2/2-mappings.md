@@ -75,7 +75,7 @@ Así que podemos utilizarlo como identificador único para nuestros zombis. Cuan
 
 ## Mapeos
 
-En la Lección 1 vimos los ***structs*** y los ***arrays***. Los ***Mappings*** son otra forma de organizar los datos en Solidity.
+En la Lección 1 observamos los ***structs*** y los ***arrays***. Los ***Mappings*** son otra forma de organizar los datos en Solidity.
 
 Definir un `mapping` se asemejaría a esto:
 
@@ -93,4 +93,4 @@ Para guardar la propiedad de un zombi, vamos a usar dos mapeos: el primero guard
 
 1. Crea un mapeo llamado `zombieToOwner`. Su llave será un `uint` (guardaremos y podremos ver el zombi basados en esta id) y el valor será un `address`. Vamos a hacer este mapeo `public`.
 
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+2. Crea un mapeo llamado `ownerZombieCount`, donde la llave es un `address` y el valor un `uint`.
