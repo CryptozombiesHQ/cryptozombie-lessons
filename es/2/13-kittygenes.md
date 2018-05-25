@@ -135,4 +135,4 @@ Vamos a implementar los genes de los gatos en nuestro código del zombi.
     
     > Explicación: Supongamos que `newDna` es `334455`. Entonces `newDna % 100` es `55`, así que `newDna - newDna % 100` es `334400`. Finalmente añadimos `99` para obtener `334499`.
 
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+4. Para terminar, necesitamos cambiar la llamada de la función dentro de `feedOnKitty`. Cuando llama a `feedAndMultiply`, añade el parámetro `"kitty"` al final.
