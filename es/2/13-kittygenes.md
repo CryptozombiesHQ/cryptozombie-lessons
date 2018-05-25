@@ -115,21 +115,21 @@ Diremos que los gato-zombis tienen `99` en los últimos dos dígitos de su ADN (
 Una declaración if en Solidity es igual que en javascript:
 
     function eatBLT(string sandwich) public {
-      // Remember with strings, we have to compare their keccak256 hashes
-      // to check equality
+      // Recuerda que con strings, tenemos que comparar sus hashes keccak256
+      // para comprobar su equidad
       if (keccak256(sandwich) == keccak256("BLT")) {
         eat();
       }
     }
     
 
-# Put it to the test
+# Vamos a probarlo
 
-Let's implement cat genes in our zombie code.
+Vamos a implementar los genes de los gatos en nuestro código del zombi.
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
+1. Primero, vamos a cambiar la definición de la función `feedAndMultiply` para que reciba un tercer argumento: un `string` llamado `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
+2. Después de calcular el ADN del nuevo zombi, vamos a añadir una declaración `if` que compare los hashes `keccak256` de `_species` y el string `"kitty"`
 
 3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
     
