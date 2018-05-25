@@ -12,7 +12,7 @@ material:
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
           
-          //ここから開始するのだ
+          // ここにZombieというstructを定義するのだ
 
       }
     answer: >
