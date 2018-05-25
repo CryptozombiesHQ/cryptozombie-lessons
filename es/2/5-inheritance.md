@@ -80,12 +80,12 @@ Una característica de Solidity que hace más manejable esto es la ***herencia**
     }
     
 
-`BabyDoge` ***hereda*** de `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
+`BabyDoge` ***hereda*** de `Doge`. Eso significa que si compilas y ejecutas `BabyDoge`, tendrá acceso tanto a `catchphrase()` como a `anotherCatchphrase()` (y a cualquier otra función publica que definamos en `Doge`).
 
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
+Esto puede usarse como una herencia lógica (como una subclase, un `Gato` es un `Animal`). Pero también puede usarse simplemente para organizar tu código agrupando lógica similar en diferentes clases.
 
-# Put it to the test
+# Vamos a probarlo
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
+En los siguientes capítulos, vamos a implementar la funcionalidad para que nuestros zombis se alimenten y se multipliquen. Vamos a añadir esa lógica en su propia clase que herede de `ZombieFactory`.
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. Crea un contrato llamado `ZombieFeeding` debajo de `ZombieFactory`. Este contrato heredará de nuestro contrato `ZombieFactory`.
