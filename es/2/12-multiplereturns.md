@@ -92,7 +92,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna); }
       }
 ---
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
+Esta función `getKitty` es el primer ejemplo que vamos a ver que devuelva multiples valores. Vamos a ver como manejarlos:
 
     function multipleReturns() internal returns(uint a, uint b, uint c) {
       return (1, 2, 3);
