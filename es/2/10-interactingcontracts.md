@@ -105,18 +105,18 @@ Vamos a ver un simple ejemplo. Digamos que hay un contrato en la blockchain que 
 
 Este sería un simple contrato donde cualquiera puede guardar su número de la suerte, y este estará asociado a su dirección de Ethereum. De esta forma cualquiera podría ver el número de la suerte de una persona usando su dirección.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
+Ahora digamos que tenemos un contrato externo que quiere leer la información de este contrato usando la función `getNum`.
 
-First we'd have to define an ***interface*** of the `LuckyNumber` contract:
+Primero tenemos que definir una ***interfaz*** del contrato `LuckyNumber`:
 
     contract NumberInterface {
       function getNum(address _myAddress) public view returns (uint);
     }
     
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+Ten en cuenta que esto se asemeja a definir un contrato, con algunas diferencias. Primero, solo declaramos las funciones con las que queremos interactuar — en este caso `getNum` — y no mencionamos ninguna otra función o variables de estado.
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+Segundo, no definimos el cuerpo de la función. En vez de usar las llaves (`{` y `}`), solamente terminaremos la función añadiendo un punto y coma al final de la declaración (`;`).
 
 So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
 
