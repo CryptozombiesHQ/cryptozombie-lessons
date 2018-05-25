@@ -1,8 +1,8 @@
 ---
-title: Using an Interface
+title: Usando una Interfaz
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -30,7 +30,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
         
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        // Initialize kittyContract here using `ckAddress` from above
+        // Inicializa kittyContract aquí usando el `ckAddress` desde arriba
         
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
