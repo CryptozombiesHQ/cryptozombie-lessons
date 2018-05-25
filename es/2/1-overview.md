@@ -12,24 +12,24 @@ material:
     ignoreZombieCache: verdadero
     answer: 1
 ---
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+En la lección 1, creamos una función que recibía un nombre, lo usaba para generar un zombi aleatorio, y lo añadía a la base de datos de zombis de nuestra app guardada en la blockchain.
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+En la Lección 2, vamos a hacer nuestra app más parecida a un juego: Vamos a hacerlo multijugador, y tambén añadiremos más diversión a la creación de zombis en vez de crearlos aleatoriamente.
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+¿Cómo crearemos nuevos zombis? ¡Haciendo que nuestros zombis se "alimenten" de otras formas de vida!
 
-## Zombie Feeding
+## Alimentando a los Zombis
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+Cuando un zombi se alimenta, infecta al anfitrión con un virus. El virus convierte al anfitrión en un nuevo zombi que se une a tu ejército. El nuevo ADN del zombi estará calculado del ADN del anterior zombi y del ADN del anfitrión.
 
-And what do our zombies like to feed on most?
+¿Y qué es lo que más les gusta a nuestros zombis para alimentarse?
 
-To find that out... You'll have to complete lesson 2!
+Para averiguarlo... ¡Tendrás que completar la lección 2!
 
-# Put it to the test
+# Vamos a probarlo
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
+A la derecha tenemos una demostración simple de la alimentación. ¡Haz clic en un humano para ver que pasa cuando tu zombi se alimenta!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+Puedes ver como el ADN del nuevo zombi está determinado por el ADN del zombi original, así como del ADN del anfitrión.
 
 When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
