@@ -86,21 +86,21 @@ Aquí tenemos un ejemplo de como usar `msg.sender` y actualizar un `mapping`:
 
 En este trivial ejemplo, cualquier apuede llamar a `setMyNumber` y guardar un `uint` en nuestro contrato, que estara atado a su dirección. Entonces cuando llamen a `whatIsMyNumber`, deberían devolverles el `uint` que guardaron.
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+Usando `msg.sender` te da la seguridad de la blockchain de Ethereum — la única forma de que otra persona edite la información de esta sería robandole la clave privada asociada a la dirección Ethereum.
 
-# Put it to the test
+# Vamos a probarlo
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+Vamos a actualizar nuestro método `_createZombie` de la Lección para asignar la propiedad de un zombi a el que haya llamado a la función.
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1. Primero, después de recibir la `id` del nuevo zombi, actualizamos nuestro mapeo `zombieToOwner` para que guarde `msg.sender` bajo esa `id`.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`.
+2. Segundo, vamos a incrementar `ownerZombieCount` para este `msg.sender`.
 
-In Solidity, you can increase a `uint` with `++`, just like in javascript:
+En Solidity, puedes incrementar un `uint` con `++`, así como en javascript:
 
     uint number = 0;
     number++;
-    // `number` is now `1`
+    // `number` es ahora `1`
     
 
-Your final answer for this chapter should be 2 lines of code.
+Tu resultado final para este capítulo debería tener 2 líneas de código.
