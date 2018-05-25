@@ -162,6 +162,6 @@ La función parece un poco diferente de las que hemos usado. Puedes ver que devu
 
 Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. Define una interfaz llamada `KittyInterface`. Recuerda, es como crear un nuevo contrato — usamos la palabra clave `contract`.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. Dentro de la interfaz, define la función `getKitty` (que debería ser un copia/pega de la función de arriba, pero con un punto y coma después de la definición de `returns`, en vez de todo lo que hay dentro de las llaves.
