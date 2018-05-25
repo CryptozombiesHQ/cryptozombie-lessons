@@ -75,6 +75,6 @@ material:
 
 2. 関数の最初の行で`_name`で`_generateRandomDna`を実行させ、それを`randDna`という名前で `uint`に格納せよ。
 
-3. 次の行で、 `_createZombie` 関数を実行し、その値を`_name`と`randDna`に渡せ。
+3. 次の行で、 `_createZombie` 関数を実行し、`_name`と`randDna`を引数として渡せ。
 
 4. ソリューションは4行以内とする（関数を閉じる`}`を含む）。
