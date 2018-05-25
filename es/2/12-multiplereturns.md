@@ -102,25 +102,25 @@ Esta función `getKitty` es el primer ejemplo que vamos a ver que devuelva multi
       uint a;
       uint b;
       uint c;
-      // This is how you do multiple assignment:
+      // Así es como hacemos múltiples asignaciones:
       (a, b, c) = multipleReturns();
     }
     
-    // Or if we only cared about one of the values:
+    // O si solo nos importa el último de estos valores:
     function getLastReturnValue() external {
       uint c;
-      // We can just leave the other fields blank:
+      // Podemos dejar el resto de campos en blanco:
       (,,c) = multipleReturns();
     }
     
 
-# Put it to the test
+# Vamos a probarlo
 
-Time to interact with the CryptoKitties contract!
+¡Es la hora de interactuar con el contrato de los CryptoKitties!
 
-Let's make a function that gets the kitty genes from the contract:
+Vamos a hacer una función que obtenga los genes del gato del contrato:
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1. Haz una función llamada `feedOnKitty`. Tomará 2 parámetros `uint`, `_zombieId` y `_kittyId`, y deberá ser una función `pública`.
 
 2. The function should first declare a `uint` named `kittyDna`.
     
