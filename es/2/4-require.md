@@ -1,8 +1,8 @@
 ---
 title: Require
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -39,7 +39,7 @@ material:
       }
       
       function createRandomZombie(string _name) public {
-      // start here
+      // iniciar aquí
       uint randDna = _generateRandomDna(_name);
       _createZombie(_name, randDna);
       }
@@ -59,21 +59,22 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+En la lección 1, hicimos que los usuarios puediesen crear nuevos zombis llamando a `createRandomZombie` y introduciendo un nombre. Sin embargo, si un usuario continuase llamando a esta función crearía un ejército de zombis ilimitado, el juego no sería muy divertido.
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+Vamos a hacer que un jugador solo pueda llamar a esta función una vez. De esta manera los nuevo jugadores podrán llamar a esta función cuando empiezen el juego para crear el primer zombi de su ejército.
 
-How can we make it so this function can only be called once per player?
+¿Cómo podemos hacer para que esta función solo pueda ser llamada una vez por jugador?
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
+Para eso usamos `require`. `require` hace que la función lanze un error y pare de ejecutarse si la condición no es verdadera:
 
     function sayHiToVitalik(string _name) public returns (string) {
-      // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-      // (Side note: Solidity doesn't have native string comparison, so we
-      // compare their keccak256 hashes to see if the strings are equal)
+      // Compara si _name es igual a "Vitalik". Lanza un error y existe si no es verdadero.
+      // (Nota: Solidity no tiene su propio comparador de strings, por lo que
+      // compararemos sus hashes keccak256 para ver si sus strings son iguales)
       require(keccak256(_name) == keccak256("Vitalik"));
-      // If it's true, proceed with the function:
+      // Si es verdad, continuamos con la función:
       return "Hi!";
+     }
     }
     
 
