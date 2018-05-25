@@ -80,17 +80,17 @@ En la Lección 1 vimos los ***structs*** y los ***arrays***. Los ***Mappings*** 
 Definir un `mapping` se asemejaría a esto:
 
     // Para una aplicación financial, guardamos un uint con el balance de su cuenta:
-    mapping (address =>> uint) public accountBalance;
+    mapping (address => uint) public accountBalance;
     // O podría usarse para guardar / ver los usuarios basados en ese userId
-    mapping (uint =>> string) userIdToName;
+    mapping (uint => string) userIdToName;
     
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+Un mapeo es esencialmente una asociación valor-clave para guardar y ver datos. En el primer ejemplo, la llave es un `address` (dirección) y el valor es un `uint`, y en el segundo ejemplo la llave es un `uint` y el valor un `string`.
 
-# Put it to the test
+# Vamos a probarlo
 
-To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
+Para guardar la propiedad de un zombi, vamos a usar dos mapeos: el primero guardará el rastro de la dirección que posee ese zombi y la otra guardará el rastro de cuantos zombis posee cada propietario.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1. Crea un mapeo llamado `zombieToOwner`. Su llave será un `uint` (guardaremos y podremos ver el zombi basados en esta id) y el valor será un `address`. Vamos a hacer este mapeo `public`.
 
 2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
