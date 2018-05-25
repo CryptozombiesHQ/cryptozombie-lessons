@@ -1,8 +1,8 @@
 ---
 title: Msg.sender
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -28,7 +28,7 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
-      // start here
+      // iniciar aquí
       NewZombie(id, _name, _dna);
       }
       
@@ -57,15 +57,15 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
+Ahora que tenemos nuestros mapeos para seguir el rastro del propietario de un zombi, queremos actualizar el metodo `_createZombie` para que los utilice.
 
-In order to do this, we need to use something called `msg.sender`.
+Para poder hacer esto, necesitamos algo llamado `msg.sender`.
 
 ## msg.sender
 
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
+En Solidity, hay una serie de variables globales que están disponibles para todas las funciones. Una de estas es `msg.sender`, que hace referencia a la `dirección` de la persona (o el contrato inteligente) que ha llamado a esa función.
 
-> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
+> Nota: En Solidity, la ejecución de una función necesita empezar con una llamada exterior. Un contrato se sentará en la blockchain sin hacer nada esperando a que alguien llame a una de sus funciones. So there will always be a `msg.sender`.
 
 Here's an example of using `msg.sender` and updating a `mapping`:
 
