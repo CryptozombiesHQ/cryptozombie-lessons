@@ -102,17 +102,17 @@ material:
 ---
 La lógica de nuestra función está ahora completa... pero vamos a añadir una característica extra.
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+Vamos a hacer que los zombis creados a partir de gatos tengan una única característica que muestre que son gato-zombis.
 
-To do this, we can add some special kitty code in the zombie's DNA.
+Para hacer esto, debemos añadir algo de código del gato en el ADN del zombi.
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics.
+Si recuerdas la lección 1, estamos solo usando los primeros 12 dígitos de los 16 dígitos que determinan el ADN de la apariencia de un zombi. Así que vamos a usar los últimos 2 dígitos para manejar esas características "especiales".
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+Diremos que los gato-zombis tienen `99` en los últimos dos dígitos de su ADN (debido a que tienen 9 vidas). Entonces en nuestro código, diremos que si `if` un zombi viene de un gato, los últimos dos dígitos de su ADN serán `99`.
 
-## If statements
+## Declaraciones if
 
-If statements in Solidity look just like javascript:
+Una declaración if en Solidity es igual que en javascript:
 
     function eatBLT(string sandwich) public {
       // Remember with strings, we have to compare their keccak256 hashes
