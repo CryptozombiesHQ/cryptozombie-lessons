@@ -65,26 +65,26 @@ Para poder hacer esto, necesitamos algo llamado `msg.sender`.
 
 En Solidity, hay una serie de variables globales que están disponibles para todas las funciones. Una de estas es `msg.sender`, que hace referencia a la `dirección` de la persona (o el contrato inteligente) que ha llamado a esa función.
 
-> Nota: En Solidity, la ejecución de una función necesita empezar con una llamada exterior. Un contrato se sentará en la blockchain sin hacer nada esperando a que alguien llame a una de sus funciones. So there will always be a `msg.sender`.
+> Nota: En Solidity, la ejecución de una función necesita empezar con una llamada exterior. Un contrato se sentará en la blockchain sin hacer nada esperando a que alguien llame a una de sus funciones. Así que siempre habrá un `msg.sender`.
 
-Here's an example of using `msg.sender` and updating a `mapping`:
+Aquí tenemos un ejemplo de como usar `msg.sender` y actualizar un `mapping`:
 
     mapping (address => uint) favoriteNumber;
     
     function setMyNumber(uint _myNumber) public {
-      // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
+      // Actualiza nuestro mapeo `favoriteNumber` para guardar `_myNumber` debajo de `msg.sender`
       favoriteNumber[msg.sender] = _myNumber;
-      // ^ The syntax for storing data in a mapping is just like with arrays
+      // ^ La sintaxis para guardar datos en un mapeo es como en los arrays
     }
     
     function whatIsMyNumber() public view returns (uint) {
-      // Retrieve the value stored in the sender's address
-      // Will be `0` if the sender hasn't called `setMyNumber` yet
+      // Conseguimos el valor guardado en la dirección del emisor
+      // Será `0` si el emisor no ha llamado a `setMyNumber` aun
       return favoriteNumber[msg.sender];
     }
     
 
-In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
+En este trivial ejemplo, cualquier apuede llamar a `setMyNumber` y guardar un `uint` en nuestro contrato, que estara atado a su dirección. Entonces cuando llamen a `whatIsMyNumber`, deberían devolverles el `uint` que guardaron.
 
 Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
 
