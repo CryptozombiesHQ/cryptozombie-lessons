@@ -131,8 +131,8 @@ Vamos a implementar los genes de los gatos en nuestro código del zombi.
 
 2. Después de calcular el ADN del nuevo zombi, vamos a añadir una declaración `if` que compare los hashes `keccak256` de `_species` y el string `"kitty"`
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+3. Dentro de la sentencia `if`, queremos reemplazar los últimos 2 dígitos del ADN con `99`. Una manera de hacer esto es usando la lógica: `newDna = newDna - newDna % 100 + 99;`.
     
-    > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+    > Explicación: Supongamos que `newDna` es `334455`. Entonces `newDna % 100` es `55`, así que `newDna - newDna % 100` es `334400`. Finalmente añadimos `99` para obtener `334499`.
 
 4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
