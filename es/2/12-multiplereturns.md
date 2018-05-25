@@ -120,12 +120,12 @@ Esta función `getKitty` es el primer ejemplo que vamos a ver que devuelva multi
 
 Vamos a hacer una función que obtenga los genes del gato del contrato:
 
-1. Haz una función llamada `feedOnKitty`. Tomará 2 parámetros `uint`, `_zombieId` y `_kittyId`, y deberá ser una función `pública`.
+1. Haz una función llamada `feedOnKitty`. Tomará 2 parámetros `uint`, `_zombieId` y `_kittyId`, y deberá ser una función `public`.
 
-2. The function should first declare a `uint` named `kittyDna`.
+2. La función debería declarar un `uint` llamado `kittyDna`.
     
-    > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+    > Nota: En nuestra `KittyInterface`, `genes` es un `uint256` — pero si recuerdas en la lección 1, `uint` es un alias para `uint256` — son la misma cosa.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3. La función entonces debería llamar a la función `kittyContract.getKitty` con `_kittyId` y guardar `genes` en `kittyDna`. Recuerda — `getKitty` devuelve un montón de variables. (10 para ser exactos — Soy bueno, ¡los he contado para ti!). But all we care about is the last one, `genes`. Count your commas carefully!
 
 4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
