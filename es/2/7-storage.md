@@ -14,7 +14,7 @@ material:
         
         contract ZombieFeeding is ZombieFactory {
         
-        // Start here
+        // Iniciar aquí
         
         }
       "zombiefactory.sol": |
@@ -63,7 +63,7 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; }
       }
 ---
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+En Solidity, hay dos lugares donde puedes guardar variables — en `storage` (almacenamiento) y en `memory` (memoria).
 
 ***Storage*** refers to variables stored permanently on the blockchain. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
 
