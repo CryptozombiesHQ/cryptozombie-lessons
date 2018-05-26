@@ -89,8 +89,8 @@ Más tarde haremos nuestra fórmula más complicada si queremos, añadiéndole p
 
 2. Después nuestra función deberá declarar un `uint` llamado `newDna`, y fijarle el valor del promedio entre el ADN de `myZombie` y el ADN de `_targetDna` (como en el ejemplo de arriba).
     
-    > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
+    > Nota: Puedes acceder a las propiedades de `myZombie` usando `myZombie.name` y `myZombie.dna`
 
-3. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+3. Una vez que tengamos el ADN, vamos a llamar a `_createZombie`. Puedes mirar en la pestaña `zombiefactory.sol` si has olvidado los parámetros que esta función necesita para ser llamada. Ten en cuenta que necesita un nombre, así que vamos a colocarle a nuestro zombi el nombre `"NoName"` — podremos escribir una función para cambiar el nombre del zombi más adelante.
 
-> Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
+> Nota: ¡Quizá notes un problema en nuestro código, que no encaja en Solidity! No te preocupes, arreglaremos esto en el siguiente capítulo ;)
