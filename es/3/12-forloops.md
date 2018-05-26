@@ -198,13 +198,13 @@ De esta forma cada vez que creemos un nuevo zombi, simplemente tenemos que usar 
 
 Este planteamiento es tentador por su simplicidad. Pero vamos a ver que pasa si más tarde añadimos una función para transferir un zombi de un dueño a otro (¡cosa que querremos hacer en una lección próxima!).
 
-Esa función de transferencia necesitará que: 1. Push the zombie to the new owner's `ownerToZombies` array, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
+Esa función de transferencia necesitará que: 1. Añadir el zombi al array `ownerToZombies` del nuevo dueño, 2. Eliminar el zombi del array `ownerToZombies` del antiguo dueño, 3. Mover todos los zombis en el array del antiguo dueño para rellenar el hueco que hemos dejado, y luego 4. Reducir el largo del array en 1.
 
-Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
+El paso 3 costará demasiado gas, debido a que tenemos que hacer una escritura por cada zombi que queramos mover. Si un usuario tiene 20 zombis y cambia el primero de todos, tenemos que hacer 19 escrituras para mantener el orden del array.
 
-Since writing to storage is one of the most expensive operations in Solidity, every call to this transfer function would be extremely expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
+Como escribir en storage es una de las operaciones más caras en Solidity, cada llamada a la función de transferencia será exteremadamente cara en cuanto al gas. Y lo peor, la función costará diferente cantidad de gas cada vez que se llame, dependiendo de cuantos zombis tenga el usuario en su ejército y el índice del zombi siendo intercambiado. Así que el usuario no sabrá cuanto gas enviar.
 
-> Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
+> Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. But then we would change the ordering of our zombie army every time we made a trade.
 
 Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
 
