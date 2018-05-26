@@ -123,6 +123,6 @@ Cuando un zombi se alimente de otras formas de vida, su ADN se combinará con el
 
 3. Vamos a necesitar obtener el ADN de este zombi. Así que lo próximo que nuestra función debería hacer es declarar un `Zombie` local llamado `myZombie` (que deberá ser un puntero del tipo `storage`). Coloca esta variable para que sea igual que el índice `_zombieId` de nuestro array `zombies`.
 
-You should have 4 lines of code so far, including the line with the closing `}`.
+Deberías tener 4 líneas de código hasta ahora, incluyendo la línea de fin de la función `}`.
 
-We'll continue fleshing out this function in the next chapter!
+¡Continuaremos rellenando esta función en el siguiente capítulo!
