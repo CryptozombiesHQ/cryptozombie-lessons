@@ -185,8 +185,8 @@ De esta manera podemos pasar una referencia a nuestro zombi en una función en v
 
 1. Empieza definiendo una función `_triggerCooldown`. Esta tomará 1 argumento, `_zombie`, un puntero a `Zombie storage`. La función deberá ser `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. El cuerpo de la función deberá ajustar `_zombie.readyTime` a `uint32(now + cooldownTime)`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3. Luego, crea una función llamada `_isReady`. Esta función también recibirá un argumento `Zombie storage` llamado `_zombie`. Esta será una función `internal view`, y devolverá un `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. El cuerpo de la función deberá devolver `(_zombie.readyTime <= now)`, que evaluará si es `true` o `false`. Esta función nos dirá si ha pasado el suficiente tiempo desde la última vez que un zombi se alimentó.
