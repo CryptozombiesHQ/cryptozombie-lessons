@@ -109,7 +109,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -118,7 +118,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -127,8 +127,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -148,32 +148,31 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
+Ahora que nuestro contrato base `ZombieFactory` hereda de `Ownable`, podemos usar también el modificador de función `onlyOwner` en la función `ZombieFeeding`.
 
-This is because of how contract inheritance works. Remember:
+Esto es por como funciona la herencia de contratos. Recuerda:
 
-    ZombieFeeding is ZombieFactory
-    ZombieFactory is Ownable
+    ZombieFeeding es ZombieFactory
+    ZombieFactory es Ownable
     
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+Como `ZombieFeeding` es también `Ownable`, puedes acceder a las funciones / eventos / modificadores del contrato `Ownable`. Esto se aplica a cualquier contrato que en el futuro herede de `ZombieFeeding`.
 
-## Function Modifiers
+## Modificadores de Funciones
 
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
+Un modificador de función es igual que una función, pero usa la palabra clave `modifier` en lugar de `function`. Pero no puede ser llamado directamente como una función —  en vez de eso, podemos añadirle el nombre del modificador al final de la definición de la función para cambiar el comportamiento de ella.
 
-Let's take a closer look by examining `onlyOwner`:
+Vamos a verlo con más detalle examinando `onlyOwner`:
 
     /**
-     * @dev Throws if called by any account other than the owner.
-     */
+     * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
     modifier onlyOwner() {
       require(msg.sender == owner);
       _;
     }
     
 
-We would use this modifier as follows:
+Tendríamos que usar el modificador de esta manera:
 
     contract MyContract is Ownable {
       event LaughManiacally(string laughter);
