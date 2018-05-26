@@ -194,27 +194,27 @@ Puedes usar la palabra clave `memory` con arrays para crear un nuevo ararys dent
 Así es como se declara un array en memoria:
 
     function getArray() external pure returns(uint[]) {
-      // Instantiate a new array in memory with a length of 3
+      // Instanciamos un nuevo array en memoria con una longitud de 3
       uint[] memory values = new uint[](3);
-      // Add some values to it
+      // Le añadimos algunos valores
       values.push(1);
       values.push(2);
       values.push(3);
-      // Return the array
+      // Devolvemos el array
       return values;
     }
     
 
-This is a trivial example just to show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+Esto es un ejemplo trivial para enseñarte a cómo usar la sintaxis, pero en el próximo capítulo veremos como combinarlo con bucles `for` para usarlo en casos de uso reales.
 
-> Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+> Nota: los arrays de tipo memory **deben** son creados con un argumento de longitud (en este ejemplo, `3`). Actualmente no pueden ser redimensionados como los arrays storage pueden serlo usando `array.push()`, de todas maneras esto puede cambiar en futuras versiones de Solidity.
 
-## Put it to the test
+## Vamos a probarlo
 
-In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
+En nuestra función `getZombiesByOwner`, queremos devolver un array `uint[]` con todos los zombis de un usuario particular.
 
-1. Declare a `uint[] memory` variable called `result`
+1. Declara una variable `uint[] memory` llamada `result`
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2. Establecela a un nuevo array de tipo `uint`. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
 
 3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
