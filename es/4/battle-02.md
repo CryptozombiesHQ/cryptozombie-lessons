@@ -271,4 +271,4 @@ Implementemos una función de número aleatorio que podamos utilizar para determ
 
 3. La función debería primero incrementar `randNonce` (utilizando la sintaxis `randNonce++`).
 
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+4. Finalmente, debería (en una línea de código) calcular el encasillado de `uint` del hash `keccak256` de `now`, `msg.sender` y `randNonce` — y `devuelve` ese valor `% _modulus`. (¡Vaya! Eso fue un trabalenguas. Si pudiste comprender eso, échale un vistazo al ejemplo de arriba donde generamos un número aleatorio — la lógica es muy similar).
