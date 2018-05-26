@@ -215,6 +215,6 @@ En nuestra función `getZombiesByOwner`, queremos devolver un array `uint[]` con
 
 1. Declara una variable `uint[] memory` llamada `result`
 
-2. Establecela a un nuevo array de tipo `uint`. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2. Establecela a un nuevo array de tipo `uint`. El largo del array debería ser igual al los zombis que posea su `_owner`, el cual podamos mirarlo desde nuestro `mapping` con: `ownerZombieCount[_owner]`.
 
-3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
+3. Al final de la función devuelve `result`. Esta devolverá un array vacío por ahora, pero lo rellenaremos en el próximo capítulo.
