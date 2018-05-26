@@ -159,53 +159,56 @@ Queremos tener la habilidad de actualizar esa dirección en nuestro contrato, pe
 
 Para manejar casos como este, una práctica emergente común es hacer el contrato `Ownable` — significa que tiene un dueño (tú) con privilegios especiales.
 
-## OpenZeppelin's `Ownable` contract
+## Contrato `Ownable` de OpenZeppelin
 
-Below is the `Ownable` contract taken from the ***OpenZeppelin*** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, we highly recommend you check out their site to further your learning!
+Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZeppelin***. OpenZeppelin es una libreria segura donde hay contratos inteligentes para utilizar en tus propias DApps revisados por la comunidad. Después de esta lección, ¡te recomendamos que visites su sitio web para fomentar tu aprendizaje!
 
-Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
+Échale un vistazo al contrato más abajo. Vas a ver algunas cosas que no hemos aprendido aún, pero no te preocupes, hablaremos de ellas más adelante.
 
     /**
-     * @title Ownable
-     * @dev The Ownable contract has an owner address, and provides basic authorization control
-     * functions, this simplifies the implementation of "user permissions".
+    * @title Apropiable
+    * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+    * funciones, esto simplifica la implementación de "permisos de usuario".
      */
     contract Ownable {
-      address public owner;
-      event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    address public owner;
     
-      /**
-       * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-       * account.
-       */
-      function Ownable() public {
-        owner = msg.sender;
-      }
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     
-      /**
-       * @dev Throws if called by any account other than the owner.
+    /**
+    * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
+    * account.
        */
-      modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
-      }
+    function Ownable() public {
+    owner = msg.sender;
+    }
     
-      /**
-       * @dev Allows the current owner to transfer control of the contract to a newOwner.
-       * @param newOwner The address to transfer ownership to.
+    
+    /**
+    * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
        */
-      function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
-      }
+    modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+    }
+    
+    
+    /**
+    * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+       * @param newOwner La dirección para transferir la propiedad a.
+       */
+    function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0));
+    OwnershipTransferred(owner, newOwner);
+    owner = newOwner;
+    }
     }
     
 
-A few new things here we haven't seen before:
+Alguna de las cosas nuevas que no hemos visto todavía:
 
-- Constructors: `function Ownable()` is a ***constructor***, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
-- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
+- Constructores: `function Ownable()`` es un ***onstructor***, el cual es una función especial opcional que tiene el mismo nombre que el contrato. Será ejecutada una sóla vez, cuando el contrato sea creado por primera vez.
+- Modificadores de Funciones: `modifier onlyOwner()`. Los modificadores son como semi-funciones que son usadas para modificar otras funciones, normalmente para comprobar algunos requisitos antes de la ejecución. En este caso, `onlyOwner` puede ser utilizada para limitar el acceso para que **solo** el **dueño** del contrato pueda ejecutar esta función. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
 - `indexed` keyword: don't worry about this one, we don't need it yet.
 
 So the `Ownable` contract basically does the following:
