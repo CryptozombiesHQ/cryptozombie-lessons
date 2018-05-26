@@ -204,23 +204,23 @@ El paso 3 costará demasiado gas, debido a que tenemos que hacer una escritura p
 
 Como escribir en storage es una de las operaciones más caras en Solidity, cada llamada a la función de transferencia será exteremadamente cara en cuanto al gas. Y lo peor, la función costará diferente cantidad de gas cada vez que se llame, dependiendo de cuantos zombis tenga el usuario en su ejército y el índice del zombi siendo intercambiado. Así que el usuario no sabrá cuanto gas enviar.
 
-> Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. But then we would change the ordering of our zombie army every time we made a trade.
+> Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. Pero cambiaremos el orden de nuestro ejército cada vez que hagamos una transacción.
 
-Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
+Debido a que las funciones `view` no consumen gas cuando son llamadas externamente, podemos simplemente usar un bucle-for en `getZombiesByOwner` para iterar en el array de zombis y construir un array de zombis que pertenezcan a un usuario específico. Con esto nuestra función de `transferencia` será mucho más barata, ya que no necesitamos reordenar ningún array en storage, y porque este enfoque ligeramente contra-intuitivo es íntegramente más barato.
 
-## Using `for` loops
+## Usando los bucles `for`
 
-The syntax of `for` loops in Solidity is similar to JavaScript.
+La sintaxis de los bucles `for` en Solidity es similar a JavaScript.
 
-Let's look at an example where we want to make an array of even numbers:
+Vamos a ver un ejemplo donde queremos hacer un array de números pares:
 
     function getEvens() pure external returns(uint[]) {
       uint[] memory evens = new uint[](5);
-      // Keep track of the index in the new array:
+      // Guardamos el índice del nuevo array:
       uint counter = 0;
-      // Iterate 1 through 10 with a for loop:
+      // Iteramos del 1 al 10 con un bucle for:
       for (uint i = 1; i <= 10; i++) {
-        // If `i` is even...
+        // Si `i` es par...
         if (i % 2 == 0) {
           // Add it to our array
           evens[counter] = i;
