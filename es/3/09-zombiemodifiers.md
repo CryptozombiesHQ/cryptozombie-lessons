@@ -165,31 +165,31 @@ material:
 ---
 Ahora vamos a usar nuestro modificador `aboveLevel` para crear algunas funciones.
 
-Our game will have some incentives for people to level up their zombies:
+Nuestro juego tendrá algunos incentivos para la gente que suba de nivel a sus zombis:
 
-- For zombies level 2 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+- Para los zombis de nivel 2 y superior, los usuarios podrán cambiarle el nombre.
+- Para los zombis de nivel 20 y superior, los usarios podrán darle un ADN personalizado.
 
-We'll implement these functions below. Here's the example code from the previous lesson for reference:
+Vamos a implementar estas funciones abajo. Aquí tienes un ejemplo de la lección anterior como referencia:
 
-    // A mapping to store a user's age:
+    // Un mapeo para guardar la edad del usuario:
     mapping (uint => uint) public age;
     
-    // Require that this user be older than a certain age:
+    // Modificador que requiere que ese usuario sea mayor a cierta edad:
     modifier olderThan(uint _age, uint _userId) {
       require (age[_userId] >= _age);
       _;
     }
     
-    // Must be older than 16 to drive a car (in the US, at least)
+    // Tiene que ser mayor a 16 años para conducir un coche (en EEUU, al menos).
     function driveCar(uint _userId) public olderThan(16, _userId) {
-      // Some function logic
+      // La lógica de la función
     }
     
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+1. Crea una función llamada `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
 2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 
