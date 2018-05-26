@@ -84,13 +84,13 @@ El problema es que hemos intentado llamar a la función `_createZombie` desde `Z
 
 ## Internal y External
 
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
+Además de `public` y `private`, Solidity tiene dos tipos más de visibilidad para las funciones: `internal` y `external`.
 
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
+`internal` internal es lo mismo que `private`, a excepción de que es también accesible desde otros contratos que hereden de este. **(Ey, suena como lo que necesitamos aquí!)**.
 
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
+`external` es similar que `public`, a excepción que estas funciones SOLO pueden ser llamadas desde fuera del contrato — no pueden ser llamadas por otras funciones dentro de ese contrato. Hablaremos más adelante sobre cuando querrás usar `external` vs `public` later.
 
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+Para declarar las funciones `internal` o `external`, la sintaxis es igual que `private` y `public`:
 
     contract Sandwich {
       uint private sandwichesEaten = 0;
@@ -105,13 +105,13 @@ For declaring `internal` or `external` functions, the syntax is the same as `pri
     
       function eatWithBacon() public returns (string) {
         baconSandwichesEaten++;
-        // We can call this here because it's internal
+        // Podemos llamar a esta función aquí porque es internal
         eat();
       }
     }
     
 
-# Put it to the test
+# Vamos a probarlo
 
 1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
     
