@@ -217,16 +217,16 @@ Básicamente el contrato `Ownable` hace lo siguiente:
 
 2. Añade el modificador `onlyOwner`, que puede restringir el acceso a solo el `owner` en una función
 
-3. It allows you to transfer the contract to a new `owner`
+3. Permite transferir el contrato a un nuevo `owner`
 
-`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
+`onlyOwner` es un requisito tan común que la mayoría de las DApps en Solidity suelen empezar con un copia/pega de este contrato `Ownable`, y después su primer contrato hereda de él.
 
-Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
+Como queremos limitar el acceso de `setKittyContractAddress` a `onlyOwner`, vamos a hacer lo mismo para nuestro contrato.
 
-## Put it to the test
+## Vamos a probarlo
 
-We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
+Hemos copiado el código del contrato `Ownable` en un nuevo fichero, `ownable.sol`. Vamos a continuar haciendo que `ZombieFactory` lo herede de él.
 
-1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
+1. Modifica nuestro código para que haga un `import` del contenido de `ownable.sol`. Si no recuerdas como hacer esto echa un vistazo a `zombiefeeding.sol`.
 
-2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
+2. Modifica el contrato `ZombieFactory` para que herede de `Ownable`. De nuevo, puedes echarle un ojo a `zombiefeeding.sol` si no recuerdas como lo hicimos.
