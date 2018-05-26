@@ -167,17 +167,17 @@ Ethereum es como un ordenador grande, lento, pero extremandamente seguro. Cuando
 
 Los creadores de Ethereum querían estar seguros de que nadie pudiese obstruir la red con un loop infinito, o acaparar todos los recursos de la red con cálculos intensos. Por eso no hicieron las transacciones gratuitas, y los usuarios tienen que pagar por su poder de computo así como por su espacio en memoria.
 
-> Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+> Nota: Esto no es necesariamente verdadero en las sidechains, así como los autores de CryptoZombies están construyendo en Loom Network. Es probable que nunca se ejecute un juego como World of Warcraft directamente en la mainnet de Ethereum — el coste de gas sería excesivamente caro. Pero puede ejecutarse en una sidechain con un algoritmo de consenso diferente. Hablaremos más sobre que tipos de DApps querrás implementar en la sidechain y cual en la mainnet de Ethereum en lecciones futuras.
 
-## Struct packing to save gas
+## Empaquetado struct para ahorrar gas
 
-In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
+En la Lección 1, mencionamos que hay otros tipos de `uint`: `uint8`, `uint16`, `uint32`, etc.
 
-Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the `uint` size. For example, using `uint8` instead of `uint` (`uint256`) won't save you any gas.
+Normalmente no hay ningún beneficio en usar cualquiera de estos subtipos porque Solidity reserva 256 bits de almacenamiento independientemente del tamaño del `uint`. Por ejemplo, usar `uint8` en vez de `uint` (`uint256`) no te ahorrará nada de gas.
 
-But there's an exception to this: inside `struct`s.
+Pero hay una excepción en esto: dentro de los `struct`.
 
-If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
+Si tienes varios `uint` dentro de una estructura, usar un `uint` de tamaño reducido cuando sea posible permitirá a Solidity empaquetar estas variables para que ocupen menos espacio en la memoria. Por ejemplo. Por ejemplo:
 
     struct NormalStruct {
       uint a;
@@ -191,21 +191,21 @@ If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when 
       uint c;
     }
     
-    // `mini` will cost less gas than `normal` because of struct packing
+    // `mini` costará menos gas que `normal` debido al empaquetado de la estructura
     NormalStruct normal = NormalStruct(10, 20, 30);
     MiniMe mini = MiniMe(10, 20, 30); 
     
 
-For this reason, inside a struct you'll want to use the smallest integer sub-types you can get away with.
+Por esta razón, dentro de una estructura querrás usar los subtipos más pequeños que vayas a necesitar.
 
-You'll also want to cluster identical data types together (i.e. put them next to each other in the struct) so that Solidity can minimize the required storage space. For example, a struct with fields `uint c; uint32 a; uint32 b;` will cost less gas than a struct with fields `uint32 a; uint c; uint32 b;` because the `uint32` fields are clustered together.
+Querrás también agrupar los tipos de datos que sean iguales (es decir, ponerlos el uno al otro en la estructura) así Solidity podrá minimizar el espacio requerido. Por ejemplo, una estructura con campos `uint c; uint32 a; uint32 b;` costará menos gas que una estructura con campos `uint32 a; uint c; uint32 b;` porque los campos `uint32` están agrupados.
 
-## Put it to the test
+## Vamos a probarlo
 
-In this lesson, we're going to add 2 new features to our zombies: `level` and `readyTime` — the latter will be used to implement a cooldown timer to limit how often a zombie can feed.
+En esta lección, vamos a añadir 2 nuevas características a nuestros zombis: `level` y `readyTime` — este último se usará para implementar un temporizador que limite la alimentación del zombi.
 
-So let's jump back to `zombiefactory.sol`.
+Volvamos de nuevo a `zombiefactory.sol`.
 
-1. Add two more properties to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
+1. Añade dos propiedades más a la estructura de `Zombie`: `level` (un `uint32`), y `readyTime` (también un `uint32`). Queremos agrupar estos tipos de dato juntos, así que vamos a colocarlos al final de la estructura.
 
 32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
