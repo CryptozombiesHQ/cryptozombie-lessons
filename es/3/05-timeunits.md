@@ -166,35 +166,35 @@ La variable `now` devolverá el actual tiempo unix (la cantidad de segundos que 
 
 > Nota: El tiempo unix es tradicionalmente guardado en un número de 32 bits. Esto nos llevará a el problema del "Año 2038", donde las variables timestamp de tipo unix desbordarán y dejará inservibles muchos sistemas antiguos. Así que si queremos que nuestra DApp siga funcionando después de 20 años, podemos usar un número de 64 bits — pero mientras nuestros usuarios tendrán que gastar más gas para usar nuestra DApp. ¡Decisiones de diseño!
 
-Solidity también contiene `segundos`, `minutos`, `horas`, `días`, `semanas` y `años` como unidades de tiempo. These will convert to a `uint` of the number of seconds in that length of time. So `1 minutes` is `60`, `1 hours` is `3600` (60 seconds x 60 minutes), `1 days` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
+Solidity también contiene `segundos`, `minutos`, `horas`, `días`, `semanas` y `años` como unidades de tiempo. Estos convertirán a un `uint` la cantidad de segundos que contengan esos números. Es decir `1 minuto ` son `60`, `1 hora` son `3600` (60 segundos x 60 minutos), `1 día` son `86400` (24 horas x 60 minutos x 60 segundos), etc.
 
-Here's an example of how these time units can be useful:
+Aquí un ejemplo de como estas unidades pueden ser útiles:
 
     uint lastUpdated;
     
-    // Set `lastUpdated` to `now`
+    // Ajustamos `lastUpdated` a `now
     function updateTimestamp() public {
       lastUpdated = now;
     }
     
-    // Will return `true` if 5 minutes have passed since `updateTimestamp` was 
-    // called, `false` if 5 minutes have not passed
+    // Devolverá `true` si han pasado 5 minutos desde que `updateTimestamp`
+    // fue llamado, `false` si no han pasado 5 minutos todavía
     function fiveMinutesHavePassed() public view returns (bool) {
       return (now >= (lastUpdated + 5 minutes));
     }
     
 
-We can use these time units for our Zombie `cooldown` feature.
+Puedes usar estas unidades de tiempo para la característica de `cooldown` de nuestro Zombi.
 
-## Put it to the test
+## Vamos a probarlo
 
-Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 day** after attacking or feeding to attack again.
+Vamos a añadir un tiempo de enfriamiento a nuestra DApp, y hacer que los zombis tengan que esperar **1 día** antes de volver atacar o alimentarse.
 
-1. Declare a `uint` called `cooldownTime`, and set it equal to `1 days`. (Forgive the poor grammar — if you set it equal to "1 day", it won't compile!)
+1. Declara un `uint` llamado `cooldownTime`, y ajustalo a `1 days`. (Olvídate de la gramática pobre — si lo ajustas a "1 day", ¡No va a compilar!)
 
-2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
+2. Desde que añadimos `level` y `readyTime` a nuestra estructura `Zombie` en el anterior capítulo, necesitamos actualizar `_createZombie()` para usar el número correcto de argumentos cuando creemos una nueva estructura `Zombie`.
     
-    Update the `zombies.push` line of code to add 2 more arguments: `1` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
+    Actualiza la línea `zombies.push` para añadir 2 argumentos más: `1` (para `level`), y `uint32(now + cooldownTime)` (para `readyTime`).
 
 > Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
 
