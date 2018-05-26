@@ -134,6 +134,6 @@ Vamos a actualizar nuestro código de la Lección 2 para que sea capaz de cambia
 
 3. Crea una función llamada `setKittyContractAddress`. Esta tomará un argumento, `_address` (un `address`), y deberá ser una función `external`.
 
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
+4. Dentro de la función, agrega una línea de código que establezca `kittyContract` igual a `KittyInterface(_address)`.
 
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+> Nota: Si notas un agujero de seguridad en esta función, no te preocupes — lo arreglaremos en el próximo capítulo ;)
