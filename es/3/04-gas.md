@@ -208,4 +208,4 @@ Volvamos de nuevo a `zombiefactory.sol`.
 
 1. Añade dos propiedades más a la estructura de `Zombie`: `level` (un `uint32`), y `readyTime` (también un `uint32`). Queremos agrupar estos tipos de dato juntos, así que vamos a colocarlos al final de la estructura.
 
-32 bits son más que suficientes para guardar el nivel del zombi y la marca de tiempo, esto nos ahorrará algo del coste de gas agrupando los datos mejor que si usáramos el típico `uint` (256-bits).
+32 bits son más que suficientes para guardar el nivel del zombi y el timestamp, esto nos ahorrará algo del coste de gas agrupando los datos mejor que si usáramos el típico `uint` (256-bits).
