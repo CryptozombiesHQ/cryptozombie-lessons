@@ -165,16 +165,16 @@ material:
 ---
 Ahora vamos a modificar `feedAndMultiply` para añadir el temporizador de enfriamiento en la cuenta.
 
-Volviendo atrás en esta función, puedes ver que la hicimos `public` en la lección anterior. Una práctica importante de seguridad es examinar todas tus funciones `public` y `external`, y prueba a pensar las maneras en las que los usuarios podrían abusar de ellas. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Volviendo atrás en esta función, puedes ver que la hicimos `public` en la lección anterior. Una práctica importante de seguridad es examinar todas tus funciones `public` y `external`, y prueba a pensar las maneras en las que los usuarios podrían abusar de ellas. Recuerda — a no ser que estas funciones tengan un modificador como `onlyOwner`, cualquier usuario puede llamarlas y pasarles los datos que quieran.
 
-Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+Reexaminando esta particular función, el usuario podrá llamar a la función directamente y pasarle el `_targetDna` o `_species` que quiera. Esto no parece tener mucha jugabilidad — ¡queremos que sigan nuestras reglas!
 
-On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+Si nos damos cuento, esta función solo necesita ser llamada por `feedOnKitty()`, así que la manera más fácil de prevenir estos problemas es hacer la función `internal`.
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+1. Actualmente `feedAndMultiply` es una función `public`. Vamos a hacerla `internal` para que el contrato sea mas seguro. No queremos que los usuarios puedan llamar a esta función con el ADN que ellos quieran.
 
-2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
+2. Vamos a hacer que `feedAndMultiply` utilice nuestro `cooldownTime` en la cuenta. Primero, después de buscar `myZombie`, vamos a añadirle una declaración `require` que compruebe `_isReady()` y le pase `myZombie`. De esta manera el usuario solo podrá ejecutar esta función si el enfriamiento del zombi ha terminado.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+3. Al final de la función vamos a llamar a `_triggerCooldown(myZombie)` para que la alimentación desencadene el tiempo de enfriamiento del zombi.
