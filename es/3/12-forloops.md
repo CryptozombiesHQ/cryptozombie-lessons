@@ -222,9 +222,9 @@ Vamos a ver un ejemplo donde queremos hacer un array de números pares:
       for (uint i = 1; i <= 10; i++) {
         // Si `i` es par...
         if (i % 2 == 0) {
-          // Add it to our array
+          // Añadelo a nuestro array
           evens[counter] = i;
-          // Increment counter to the next empty index in `evens`:
+          // Incrementamos el contador al nuevo índice vacío de `evens`:
           counter++;
         }
       }
@@ -232,21 +232,21 @@ Vamos a ver un ejemplo donde queremos hacer un array de números pares:
     }
     
 
-This function will return an array with the contents `[2, 4, 6, 8, 10]`.
+La función devolverá un array con este contenido `[2, 4, 6, 8, 10]`.
 
-## Put it to the test
+## Vamos a probarlo
 
-Let's finish our `getZombiesByOwner` function by writing a `for` loop that iterates through all the zombies in our DApp, compares their owner to see if we have a match, and pushes them to our `result` array before returning it.
+Vamos a terminar nuestra función `getZombiesByOwner` escribiendo un bucle `for` que itere todos los zombis de nuestra DApp, comparando su dueño para que cuando coincida con el que buscamos, lo añada al array `result` antes de devolverlo.
 
-1. Declare a `uint` called `counter` and set it equal to ``. We'll use this variable to keep track of the index in our `result` array.
+1. Declara un `uint` llamado `counter` y estableciéndolo a ``. Usaremos esta variable para mantener el control del índice en nuestro array `result`.
 
-2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
+2. Declara un bucle `for` que empiece en `uint i = 0` y vaya hasta `i < zombies.length`. Este iterará todos los zombis de nuestro array.
 
-3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
+3. Dentro del bucle `for`, crea una sentencia `if` que compruebe si `zombieToOwner[i]` es igual a `_owner`. Esto comparará dos direcciones para ver si son iguales.
 
-4. Inside the `if` statement:
+4. Dentro de la declaración `if`:
     
-    1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
-    2. Increment `counter` by 1 (see the `for` loop example above).
+    1. Añadimos la ID del zombi a nuestro array `result` haciendo que `result[counter]` sea igual a `i`.
+    2. Incrementamos `counter` a 1 (mira el bucle `for` del ejemplo de arriba).
 
-That's it — the function will now return all the zombies owned by `_owner` without spending any gas.
+Eso es — la función ahora devolverá todos los zombis del usuario `_owner` sin gastar nada de gas.
