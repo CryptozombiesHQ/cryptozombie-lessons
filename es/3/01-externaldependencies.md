@@ -112,11 +112,11 @@ Para empezar, despues de implementar un contrato en Ethereum, es ***inmutable***
 
 El código inicial que implementes en el contrato es el que va a permanecer, permanentemente, en la blockchain. Esta es una de las razones por las cuales la seguridad es una gran preocupación en Solidity. Si hay un error en el código del contrato, no hay forma de solucionarlo más adelante. Tendrías que decirles a tus usuarios que empiecen a usar otra dirección de contrato inteligente que incluya ese arreglo.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+Pero esto también es una característica de los contratos inteligentes. El código es la ley. Si lees el código de un contrato inteligente y lo verificas, vas a estar totalmente seguro de que cada vez que lo llames va a hacer exactamente lo que el código dice que va a hacer. Más adelante nadie va a poder cambiar la función y que te devuelva resultados inesperados.
 
-## External dependencies
+## Dependencias externas
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp. But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+En la Lección 2, hardcodeamos la dirección del contrato de CryptoKitties en nuestra DApp. Pero ¿qué pasa si el contrato de CryptoKitties tiene un error y alguien destruye todos los gatitos?
 
 It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
 
