@@ -1,9 +1,9 @@
 ---
-title: Public Functions & Security
+title: Funciones Públicas & Seguridad
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -44,18 +44,18 @@ material:
         return (_zombie.readyTime <= now);
         }
         
-        // 1. Make this function internal
+        // 1. Haz esta función internal
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
-        // 2. Add a check for `_isReady` here
+        // 2. Añade la comprobación de `_isReady` aquí
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
         if (keccak256(_species) == keccak256("kitty")) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
-        // 3. Call `triggerCooldown`
+        // 3. Llama a `triggerCooldown`
         }
         
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -112,9 +112,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -122,7 +122,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -131,7 +131,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -140,8 +140,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -163,9 +163,9 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Now let's modify `feedAndMultiply` to take our cooldown timer into account.
+Ahora vamos a modificar `feedAndMultiply` para añadir el temporizador de enfriamiento en la cuenta.
 
-Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Volviendo atrás en esta función, puedes ver que la hicimos `public` en la lección anterior. Una práctica importante de seguridad es examinar todas tus funciones `public` y `external`, y prueba a pensar las maneras en las que los usuarios podrían abusar de ellas. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
 
 Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
 
