@@ -113,15 +113,15 @@ No te preocupes si no has entendido del todo como usar esto — durante este tut
 
 ¡Es hora de dar a nuestros zombis la posibilidad de alimentarse y multiplicarse!
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
+Cuando un zombi se alimente de otras formas de vida, su ADN se combinará con el ADN de la otra forma de vida creando un nuevo zombi.
 
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
+1. Crea una función llamada `feedAndMultiply`. Recibirá dos parámetros: `_zombieId` (un `uint`) y `_targetDna` (también un `uint`). Está función deberá ser `public`.
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2. ¡No queremos que cualquier persona se alimente usando nuestro zombi! Así que primero, vamos a comprobar que somos dueños de ese zombi. Añade una declaración `require` para asegurar que `msg.sender` es igual al dueño del zombi (similar a como lo hicimos en la función `createRandomZombie`).
     
-    > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
+    > Nota: De nuevo, como nuestro corrector de respuestas es primitivo, espera que `msg.sender` venga primero y marcará como respuesta incorrecta si cambias el orden. Pero normalmente cuando programes, podrás utilizar el orden que tu quieras — ambos son correctos.
 
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. Vamos a necesitar obtener el ADN de este zombi. Así que lo próximo que nuestra función debería hacer es declarar un `Zombie` local llamado `myZombie` (que deberá ser un puntero del tipo `storage`). Coloca esta variable para que sea igual que el índice `_zombieId` de nuestro array `zombies`.
 
 You should have 4 lines of code so far, including the line with the closing `}`.
 
