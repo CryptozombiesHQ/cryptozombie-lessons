@@ -1,9 +1,9 @@
 ---
-title: Immutability of Contracts
+title: Inmutabilidad de los Contratos
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -30,12 +30,12 @@ material:
         
         contract ZombieFeeding is ZombieFactory {
         
-        // 1. Remove this:
+        // 1. Elimina esto:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        // 2. Change this to just a declaration:
+        // 2. Cambia esto por la declaración:
         KittyInterface kittyContract = KittyInterface(ckAddress);
         
-        // 3. Add setKittyContractAddress method here
+        // 3. Añade el método setKittyContractAddress aquí
         
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
