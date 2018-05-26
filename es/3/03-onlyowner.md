@@ -177,20 +177,20 @@ Tendríamos que usar el modificador de esta manera:
     contract MyContract is Ownable {
       event LaughManiacally(string laughter);
     
-      // Note the usage of `onlyOwner` below:
+      // Mira como se usa `onlyOwner` debajo:
       function likeABoss() external onlyOwner {
         LaughManiacally("Muahahahaha");
       }
     }
     
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+Observa el modificador `onlyOwner` en la función `likeABoss`. Cuando llamas a `likeABoss`, el código dentro de `onlyOwner` se ejecuta **primero**. Entonces cuando se encuentra con la sentencia `_;` en `onlyOwner`, vuelve y ejecuta el código dentro de `likeABoss`.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+Hay otras maneras de usar los modificadores, uno de los casos de uso mas comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+En el caso de `onlyOwner`, añadiéndole este modificador a la función hace que **solo** el **dueño** del contrato (tú, si eres el que lo ha implementado) puede llamar a la función.
 
-> Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
+> Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado maliciosamente. Por ejemplo, el dueño puede añadir una función oculta ¡que le permita transferirse el zombi de cualquiera a sí mismo!
 > 
 > So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
 
