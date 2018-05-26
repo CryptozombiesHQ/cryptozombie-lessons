@@ -247,11 +247,11 @@ Una vez que un nodo ha resuelto la PoW, los otros nodos dejan de resolver la PoW
 
 Digamos que teníamos un contrato coin flip — cara duplicas tu dinero, sello lo pierdes todo. Digamos que utilizó la función aleatoria anterior para determinar cara o sello. (`random >= 50` es cara, `random < 50`es sello).
 
-Si yo estuviera ejecutando un nodo, podría publicar una transacción **a mi propio nodo solamente** y no compartirla. Luego podría ejecutar la función coin flip para ver si gané — y si perdí, escojo no incluir esa transacción en el próximo bloque que estoy resolviendo. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Si yo estuviera ejecutando un nodo, podría publicar una transacción **a mi propio nodo solamente** y no compartirla. Luego podría ejecutar la función coin flip para ver si gané — y si perdí, escojo no incluir esa transacción en el próximo bloque que estoy resolviendo. Podría seguir haciendo esto indefinidamente hasta que finalmente gané el lanzamiento de la moneda y resuelto el siguiente bloque, beneficiándome de ello.
 
-## So how do we generate random numbers safely in Ethereum?
+## Entonces ¿Cómo generamos números aleatorio de manera segura en Ethereum?
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an ***oracle*** to access a random number function from outside of the Ethereum blockchain.
+Ya que todos los contenidos de la blockchain son visibles para todos los participantes, este es un problema difícil, y su solución está más allá del rango de este tutorial. Puedes leer <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new> este hilo de StackOverflow</a> para que se haga un idea. Una idea sería utilizar un ***oráculo*** para ingresar una función de número aleatorio desde fuera de la blockchain de Ethereum.
 
 Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
 
