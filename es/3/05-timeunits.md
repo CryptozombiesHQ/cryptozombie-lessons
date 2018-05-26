@@ -196,8 +196,8 @@ Vamos a añadir un tiempo de enfriamiento a nuestra DApp, y hacer que los zombis
     
     Actualiza la línea `zombies.push` para añadir 2 argumentos más: `1` (para `level`), y `uint32(now + cooldownTime)` (para `readyTime`).
 
-> Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
+> Nota: El `uint32(...)` es necesario porque `now` devuelve un `uint256` por defecto. Así que necesitamos convertirlo explícitamente a `uint32`.
 
-`now + cooldownTime` will equal the current unix timestamp (in seconds) plus the number of seconds in 1 day — which will equal the unix timestamp 1 day from now. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
+`now + cooldownTime` será igual al tiempo unix (en segundos) más el numero de segundos en 1 día — que será igual que el tiempo unix en segundos de 1 día a partir de hoy. Más adelante podemos comparar si el `readyTime` del zombi es mayor a `now` para ver si ha pasado el suficiente tiempo para poder volver a usarlo.
 
-We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
+En el próximo capítulo implementaremos la funcionalidad para limitar las acciones basadas en `readyTime`.
