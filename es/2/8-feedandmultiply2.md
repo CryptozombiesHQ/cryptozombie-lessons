@@ -1,8 +1,8 @@
 ---
-title: Zombie DNA
+title: ADN del Zombi
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -17,7 +17,7 @@ material:
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
-        // start here
+        // iniciar aquí
         }
         
         }
@@ -67,27 +67,27 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
-Let's finish writing the `feedAndMultiply` function.
+Vamos a terminar de escribir la función `feedAndMultiply`.
 
-The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA.
+La fórmula para calcular el ADN del nuevo zombi es simple: Es simplemente el promedio entre el ADN del zombi que hemos alimentado y el ADN del zombi objetivo.
 
-For example:
+Por ejemplo:
 
     function testDnaSplicing() public {
       uint zombieDna = 2222222222222222;
       uint targetDna = 4444444444444444;
       uint newZombieDna = (zombieDna + targetDna) / 2;
-      // ^ will be equal to 3333333333333333
+      // ^ será igual a 3333333333333333
     }
     
 
-Later we can make our formula more complicated if we want to, like adding some randomness to the new zombie's DNA. But for now we'll keep it simple — we can always come back to it later.
+Más tarde haremos nuestra fórmula más complicada si queremos, añadiéndole por ejemplo algún valor aleatorio al nuevo ADN. Pero por el momento vamos a dejarlo simple — siempre podemos volver a ello más adelante.
 
-# Put it to the test
+# Vamos a probarlo
 
-1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus` to only take the last 16 digits.
+1. Primero necesitamos estar seguro que el `_targetDna` no es mayor de 16 dígitos. Para ello, podemos fijar que el valor de `_targetDna` sea igual a `_targetDna % dnaModulus` para que únicamente guarde los últimos 16 dígitos.
 
-2. Next our function should declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+2. Después nuestra función deberá declarar un `uint` llamado `newDna`, y fijarle el valor del promedio entre el ADN de `myZombie` y el ADN de `_targetDna` (como en el ejemplo de arriba).
     
     > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
 
