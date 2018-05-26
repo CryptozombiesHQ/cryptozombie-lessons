@@ -1,9 +1,9 @@
 ---
-title: Random Numbers
+title: Números Aleatorios
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -14,7 +14,7 @@ material:
         import "./zombiehelper.sol";
         
         contract ZombieBattle is ZombieHelper {
-        // Start here
+        // Iniciar aquí
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -168,9 +168,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -178,7 +178,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -187,7 +187,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -196,8 +196,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -212,32 +212,32 @@ material:
       contract ZombieBattle is ZombieHelper { uint randNonce = 0;
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; } }
 ---
-Great! Now let's figure out the battle logic.
+¡Grandioso! Ahora descifremos la lógica de batalla.
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+Todo buen juego necesita algún nivel de aleatoriedad. Entonces ¿Cómo generamos números aleatorios en Solidity?
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+La respuesta correcta es que no puede. Bueno, al menos no puede hacerlo de una manera segura.
 
-Let's look at why.
+Vamos a ver el por qué.
 
-## Random number generation via `keccak256`
+## La generación aleatoria de números a través de `keccak256`
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+La mejor fuente de aleatoriedad que tenemos en solidity es la función hash `keccak256`.
 
-We could do something like the following to generate a random number:
+Podríamos hacer algo como lo siguiente para generar un número aleatorio:
 
-    // Generate a random number between 1 and 100:
+    // Genera un número aleatorio entre 1 y 100:
     uint randNonce = 0;
     uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
     randNonce++;
     uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
     
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice).
+Lo que esto haría es tomar la marca de tiempo de `now`, el `msg.sender`, y un `nonce` (un número que sólo se utiliza una vez, para que no ejecutemos dos veces la misma función hash con los mismos parámetros de entrada) en incremento.
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+Entonces utilizaría `keccak` para convertir estas entradas a un hash aleatorio, convertir ese hash a un `uint` y luego utilizar `% 100` para tomar los últimos 2 dígitos solamente, dándonos un número totalmente aleatorio entre 0 y 99.
 
-### This method is vulnerable to attack by a dishonest node
+### Este método es vulnerable a ataques de un nodo deshonesto
 
 In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a ***transaction***. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a ***block*** to the rest of the network.
 
