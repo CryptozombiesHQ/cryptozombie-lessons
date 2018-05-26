@@ -82,36 +82,36 @@ Sin embargo, hay momentos en los que necesitas usar estas palabras clave, concre
       function eatSandwich(uint _index) public {
         // Sandwich mySandwich = sandwiches[_index];
     
-        // ^ Seems pretty straightforward, but solidity will give you a warning
-        // telling you that you should explicitly declare `storage` or `memory` here.
+        // ^ Parece algo sencillo, pero solidity te dará un warning
+        // diciendote que deberías declararlo `storage` o `memory`.
     
-        // So instead, you should declare with the `storage` keyword, like:
+        // De modo que deberias declararlo como `storage`, así:
         Sandwich storage mySandwich = sandwiches[_index];
-        // ...in which case `mySandwich` is a pointer to `sandwiches[_index]`
-        // in storage, and...
+        // ...donde `mySandwich` es un apuntador a `sandwiches[_index]`
+        // de tipo storage, y...
         mySandwich.status = "Eaten!";
-        // ...this will permanently change `sandwiches[_index]` on the blockchain.
+        // ...esto cambiará permanentemente `sandwiches[_index]` en la blockchain.
     
-        // If you just want a copy, you can use `memory`:
+        // Si solo quieres una copia, puedes usar `memory`:
         Sandwich memory anotherSandwich = sandwiches[_index + 1];
-        // ...in which case `anotherSandwich` will simply be a copy of the 
-        // data in memory, and...
+        // ...donde `anotherSandwich` seria una simple copia de
+        // los datos en memoria, y...
         anotherSandwich.status = "Eaten!";
-        // ...will just modify the temporary variable and have no effect 
-        // on `sandwiches[_index + 1]`. But you can do this:
+        // ...modificará la variable temporal y no tendrá efecto
+        // en`sandwiches[_index + 1]`. Pero puedes hacer esto:
         sandwiches[_index + 1] = anotherSandwich;
-        // ...if you want to copy the changes back into blockchain storage.
+        // ...si deseas copiar los cambios nuevamente en el almacenamiento en la blockchain.
       }
     }
     
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+No te preocupes si no has entendido del todo como usar esto — durante este tutorial te diremos cuándo usar `storage` y cuándo usar `memory`, y el compilador de Solidity también te dará advertencias para hacerte saber cuando usar cada una de estas palabras clave.
 
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
+¡Por ahora, es suficiente con que entiendas en que caso necesitarás usar explícitamente `storage` o `memory`!
 
-# Put it to the test
+# Vamos a probarlo
 
-It's time to give our zombies the ability to feed and multiply!
+¡Es hora de dar a nuestros zombis la posibilidad de alimentarse y multiplicarse!
 
 When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
 
