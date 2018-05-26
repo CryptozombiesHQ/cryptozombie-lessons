@@ -1,8 +1,8 @@
 ---
-title: More on Function Visibility
+title: Más en la Visibilidad de Funciones
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   editor:
     language: sol
@@ -27,7 +27,7 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
         
-        // edit function definition below
+        // edita la definición de la función abajo
         function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
@@ -76,13 +76,13 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-**The code in our previous lesson has a mistake!**
+**¡El código de nuestra lección anterior tenía un error!**
 
-If you try compiling it, the compiler will throw an error.
+Si intentas compilarlo, el compilador lanzará un error.
 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+El problema es que hemos intentado llamar a la función `_createZombie` desde `ZombieFeeding`, pero `_createZombie` es una función `private` dentro de `ZombieFactory`. Esto significa que ninguno de los demás contratos que hereden de `ZombieFactory` podrán acceder a ello.
 
-## Internal and External
+## Internal y External
 
 In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
 
