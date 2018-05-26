@@ -1,5 +1,5 @@
 ---
-title: Advanced Solidity Concepts
+title: Conceptos Avanzados de Solidity
 header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap3.png
 ---
