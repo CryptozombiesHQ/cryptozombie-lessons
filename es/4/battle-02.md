@@ -239,15 +239,15 @@ Entonces utilizaría `keccak` para convertir estas entradas a un hash aleatorio,
 
 ### Este método es vulnerable a ataques de un nodo deshonesto
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a ***transaction***. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a ***block*** to the rest of the network.
+En Ethereum, cuando llamas a una función en un contrato, lo transmite a un nodo o nodos en la red como una ***transacción***. Los nodos en la red luego recolectan un montón de transacciones, intentan ser el primero en resolver el problema de matemática intensamente informático como una "Prueba de Trabajo", para luego publicar ese grupo de transacciones junto con sus Pruebas de Trabajo (PoW) como un ***bloque*** para el resto de la red.
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+Una vez que un nodo ha resuelto la PoW, los otros nodos dejan de resolver la PoW, verifican que las transacciones en la lista de transacciones del otro nodo son validas, luego aceptan el bloque y pasan a tratar de resolver el próximo bloque.
 
-**This makes our random number function exploitable.**
+**Esto hace que nuestra función de números aleatorios sea explotable.**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Digamos que teníamos un contrato coin flip — cara duplicas tu dinero, sello lo pierdes todo. Digamos que utilizó la función aleatoria anterior para determinar cara o sello. (`random >= 50` es cara, `random < 50`es sello).
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Si yo estuviera ejecutando un nodo, podría publicar una transacción **a mi propio nodo solamente** y no compartirla. Luego podría ejecutar la función coin flip para ver si gané — y si perdí, escojo no incluir esa transacción en el próximo bloque que estoy resolviendo. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
 
 ## So how do we generate random numbers safely in Ethereum?
 
