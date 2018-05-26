@@ -1,9 +1,9 @@
 ---
-title: For Loops
+title: Bucles For
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -32,7 +32,7 @@ material:
         
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
         uint[] memory result = new uint[](ownerZombieCount[_owner]);
-        // Start here
+        // Iniciar aquí
         return result;
         }
         
@@ -130,9 +130,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -140,7 +140,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -149,7 +149,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -158,8 +158,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -178,27 +178,27 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
-In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage.
+En el capítulo anterior, mencionamos que a veces queremos usar bucles `for` para construir contenido dentro de un array en una función antes que simplemente guardar el array en storage.
 
-Let's look at why.
+Vamos a ver el por qué.
 
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
+Para nuestra función `getZombiesByOwner`, una implementación nativa sería guardar un `mapping` de los dueños para los ejércitos zombis en el contrato `ZombieFactory`:
 
     mapping (address => uint[]) public ownerToZombies
     
 
-Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
+De esta forma cada vez que creemos un nuevo zombi, simplemente tenemos que usar `ownerToZombies[owner].push(zombieId)` para añadirlo al array del ejército de zombis de ese usuario. Y `getZombiesByOwner` sería una función tan sencilla como:
 
     function getZombiesByOwner(address _owner) external view returns (uint[]) {
       return ownerToZombies[_owner];
     }
     
 
-### The problem with this approach
+### El problema con este enfoque
 
-This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
+Este planteamiento es tentador por su simplicidad. Pero vamos a ver que pasa si más tarde añadimos una función para transferir un zombi de un dueño a otro (¡cosa que querremos hacer en una lección próxima!).
 
-That transfer function would need to: 1. Push the zombie to the new owner's `ownerToZombies` array, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
+Esa función de transferencia necesitará que: 1. Push the zombie to the new owner's `ownerToZombies` array, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
 
 Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
 
