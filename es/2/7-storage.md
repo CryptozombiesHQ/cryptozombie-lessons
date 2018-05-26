@@ -65,11 +65,11 @@ material:
 ---
 En Solidity, hay dos lugares donde puedes guardar variables — en `storage` (almacenamiento) y en `memory` (memoria).
 
-***Storage*** refers to variables stored permanently on the blockchain. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+***Storage*** se refiere a las variables guardadas permanentemente en la blockchain. Las variables de tipo ***Memory*** son temporales, y son borradas en lo que una función externa llama a tu contrato. Piensa que es como el disco duro vs la RAM de tu ordenador.
 
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
+La mayoría del tiempo no necesitas usar estas palabras claves ya que Solidity las controla por defecto. Las variables de estado (variables declaradas fuera de las funciones) son por defecto del tipo `storage` y son guardadas permanentemente en la blockchain, mientras que las variables declaradas dentro de las funciones son por defecto del tipo `memory` y desaparecerán una vez cuando la llamada a la función termine.
 
-However, there are times when you do need to use these keywords, namely when dealing with ***structs*** and ***arrays*** within functions:
+Sin embargo, hay momentos en los que necesitas usar estas palabras clave, concretamente cuando estés trabajando con ***structs*** y ***arrays*** dentro de las funciones:
 
     contract SandwichFactory {
       struct Sandwich {
