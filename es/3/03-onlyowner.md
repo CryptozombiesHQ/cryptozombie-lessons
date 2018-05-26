@@ -1,9 +1,9 @@
 ---
-title: onlyOwner Function Modifier
+title: Modificador de Función onlyOwner
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -32,7 +32,7 @@ material:
         
         KittyInterface kittyContract;
         
-        // Modify this function:
+        // Modifica esta función:
         function setKittyContractAddress(address _address) external {
         kittyContract = KittyInterface(_address);
         }
@@ -99,9 +99,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
