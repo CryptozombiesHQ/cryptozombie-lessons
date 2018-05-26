@@ -1,9 +1,9 @@
 ---
-title: Storage is Expensive
+title: Storage es Costoso
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
