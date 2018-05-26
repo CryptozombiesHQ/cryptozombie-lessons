@@ -1,9 +1,9 @@
 ---
-title: Ownable Contracts
+title: Contratos Apropiables
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -11,9 +11,9 @@ material:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
         
-        // 1. Import here
+        // 1. Importalo aquí
         
-        // 2. Inherit here:
+        // 2. Heredalo aquí:
         contract ZombieFactory {
         
         event NewZombie(uint zombieId, string name, uint dna);
