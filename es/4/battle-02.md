@@ -259,16 +259,16 @@ Así que mientras esta generación de número aleatorio NO sea segura en Ethereu
 
 Ya que sólo estamos construyendo un juego simple es solo una demostración en este tutorial y no hay dinero real en riesgo, vamos a asumir el riesgo de utilizar un generador de números aleatorios que es simple de implementar, sabiendo que no es totalmente seguro.
 
-In a future lesson, we may cover using ***oracles*** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+En una lección futura, puede que cubramos el uso de los ***_oráculos*** (una manera segura de incorporar datos desde afuera de Ethereum) para generar números aleatorios seguros desde afuera de la blockchain.
 
-## Put it to the test
+## Vamos a probarlo
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+Implementemos una función de número aleatorio que podamos utilizar para determinar el resultado de nuestras batallas, incluso si no está totalmente seguro de ataques.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to ``.
+1. Dale a nuestro contrato un `uint` llamado `randNonce`, y ajustalo igual a ``.
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. Crea una función llamada `randMod` (módulo-aleatorio). Será una función `internal` que tome un `uint` llamado `_modulus`, y `returns` un `uint`.
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
+3. La función debería primero incrementar `randNonce` (utilizando la sintaxis `randNonce++`).
 
 4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
