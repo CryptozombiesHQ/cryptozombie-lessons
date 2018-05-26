@@ -1,9 +1,9 @@
 ---
-title: Saving Gas With 'View' Functions
+title: Ahorrando Gas Con Funciones 'View'
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -30,7 +30,7 @@ material:
         zombies[_zombieId].dna = _newDna;
         }
         
-        // Create your function here
+        // Crea tu función aquí
         
         }
       "zombiefeeding.sol": |
@@ -126,9 +126,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -136,7 +136,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -145,7 +145,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -154,8 +154,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -175,17 +175,17 @@ material:
       }
       }
 ---
-Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
+¡Increible! Ahora tenemos algunas habilidades especiales para los zombis de nivel alto, dándoles a sus dueños un incentivo por subirlos de nivel. Si queremos podemos añadir más de estos en el futuro.
 
-Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+Vamos a añadir una nueva función: nuestra DApp necesita un método para ver el ejército de un usuario — vamos a llamarlo `getZombiesByOwner`.
 
-This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+Esta función solo necesita leer datos de la blockchain, por lo que podemos hacer una función `view`. Esta nos brinda un importante tema a la hora de hablar sobre la optimización de gas:
 
-## View functions don't cost gas
+## Las funciones view no cuestan gas
 
-`view` functions don't cost any gas when they're called externally by a user.
+Las funciones `view` no cuestan gas cuando son llamadas externamente por un usuario.
 
-This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+Esto es debido a que las funciones `view` no cambia nada en la blockchain - solo leen datos. Así que marcar una función con `view` le dice a `web3.js` que solo necesita consultar a tu nodo local de Ethereum para ejecutar la función, y que no necesita crear ninguna transacción en la blockchain (la cual debería ejecutarse por todos y cada uno de los nodos, y costaría gas).
 
 We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
 
