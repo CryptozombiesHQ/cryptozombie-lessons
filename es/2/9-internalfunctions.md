@@ -113,6 +113,6 @@ Para declarar las funciones `internal` o `external`, la sintaxis es igual que `p
 
 # Vamos a probarlo
 
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+1. Cambia `_createZombie()` de `private` a `internal` así otros contratos podrán acceder a ella.
     
-    We've already focused you back to the proper tab, `zombiefactory.sol`.
+    Hemos vuelto a colocarte en la pestaña correspondiente, `zombiefactory.sol`.
