@@ -189,10 +189,10 @@ Vamos a implementar estas funciones abajo. Aquí tienes un ejemplo de la lecció
 
 ## Vamos a probarlo
 
-1. Crea una función llamada `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+1. Crea una función llamada `changeName`. Esta tomará 2 argumentos: `_zombieId` (un `uint`), y `_newName` (un `string`), y hazla `external`. Esta deberá tener el modificador `aboveLevel`, y deberá pasar `2` por el parámetro `_level`. (No te olvides de pasarle el `_zombieId` también).
 
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
+2. En esta función, primero tenemos que verificar que el `msg.sender` es igual a `zombieToOwner[_zombieId]`. Utiliza una declaración `require`.
 
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+3. Después la función deberá fijar `zombies[_zombieId].name` como `_newName`.
 
-4. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
+4. Crea otra función llamada `changeDna` debajo de `changeName`. Su definición y contenido tendrá que ser igual que el de `changeName`, a excepción de su segundo argumento que será `_newDna` (un `uint`), y debemos pasarle `20` para el parámetro `` _level` `` en el modificador `aboveLevel`. Y por supuesto, este deberá fijar el `dna` del zombi a `_newDna` en vez de cambiarle el nombre.
