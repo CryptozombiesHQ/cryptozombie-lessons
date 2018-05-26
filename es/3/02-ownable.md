@@ -127,8 +127,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -151,13 +151,13 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
-Did you spot the security hole in the previous chapter?
+¿Has encontrado el agujero de seguridad en el capítulo anterior?
 
-`setKittyContractAddress` is `external`, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
+¡`setKittyContractAddress` es `external`, así que cualquiera la puede llamar! Eso significa que cualquiera que haya llamado a la función podría cambiar la dirección del contrato de CryptoKitties, y romper nuestra aplicación para todos sus usuarios.
 
-We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
+Queremos tener la habilidad de actualizar esa dirección en nuestro contrato, pero no queremos que todo el mundo sea capaz de hacerlo.
 
-To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner (you) who has special privileges.
+Para manejar casos como este, una práctica emergente común es hacer el contrato `Ownable` — significa que tiene un dueño (tú) con privilegios especiales.
 
 ## OpenZeppelin's `Ownable` contract
 
