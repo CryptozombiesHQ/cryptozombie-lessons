@@ -106,11 +106,11 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Up until now, Solidity has looked quite similar to other languages like JavaScript. But there are a number of ways that Ethereum DApps are actually quite different from normal applications.
+Hasta ahora, Solidity se ha parecido bastante a otros lenguajes como JavaScript. Pero hay unas cuantas maneras en las que las DApps de Ethereum son diferentes a las aplicaciones normales.
 
-To start with, after you deploy a contract to Ethereum, it’s ***immutable***, which means that it can never be modified or updated again.
+Para empezar, despues de implementar un contrato en Ethereum, es ***inmutable***, lo que significa que nunca va a ser modificado o actualizado de nuevo.
 
-The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity. If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
+El código inicial que implementes en el contrato es el que va a permanecer, permanentemente, en la blockchain. Esta es una de las razones por las cuales la seguridad es una gran preocupación en Solidity. Si hay un error en el código del contrato, no hay forma de solucionarlo más adelante. Tendrías que decirles a tus usuarios que empiecen a usar otra dirección de contrato inteligente que incluya ese arreglo.
 
 But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
 
