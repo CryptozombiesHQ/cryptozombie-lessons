@@ -61,4 +61,4 @@ Inne kontrakty będą miały wtedy mozliwość odczytu z tej tablicy (ale nie za
 
 Zamierzamy przechowywać armię zombie w naszej aplikacji. I będziemy chcieli pokazać wszystkie nasze zombie w innych aplikacjach, więc musimy je utworzyć jako publiczne.
 
-1. Stwórz publiczną tablicę `Zombie` ***structs*** i nazwij ją `zombies`.
+1. Stwórz publiczną tablicę z `Zombie` ***structs*** i nazwij ją `zombies`.
