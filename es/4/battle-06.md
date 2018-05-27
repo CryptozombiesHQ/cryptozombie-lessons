@@ -240,4 +240,4 @@ Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el mod
     
     declara un `Zombie storage` llamado `enemyZombie` y configuralo como igual a `zombies[_targetId]`.
 
-3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. Entonces anuncie un `uint` llamado `rand` y configurelo para que sea igual al resultado de la función `randMod` con `100` como un argumento.
