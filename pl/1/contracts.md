@@ -16,9 +16,9 @@ material:
       contract ZombieFactory {
       }
 ---
-Zaczynanie od całkowitych podstaw:
+Zacznijmy od całkowitych podstaw:
 
-Kod Solidity jest ujęty w **kontraktach**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+Kod Solidity ujęty jest w **kontraktach**. `Kontrakt` jest fundamentalnym blokiem budującym aplikacje oparte na Ethereum — wszystkie zmienne i funkcje należą do kontraktu i to będzie punkt wyjścia dla wszystkich Twoich projektów.
 
 An empty contract named `HelloWorld` would look like this:
 
