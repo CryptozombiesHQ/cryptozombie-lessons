@@ -221,11 +221,11 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external { } }
 ---
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+Ahora que tenemos una fuente de aleatoriedad en nuestro contrato, podemos utilizar en nuestras batallas zombi para calcular el resultado.
 
-Our zombie battles will work as follows:
+Nuestras batallas zombi funcionarán de la siguiente manera:
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
+- Tú elijes a uno de tus zombis y a un zombi del oponente para atacar.
 - If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
 - All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
 - If the attacking zombie wins, it levels up and spawns a new zombie.
