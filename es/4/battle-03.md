@@ -226,11 +226,11 @@ Ahora que tenemos una fuente de aleatoriedad en nuestro contrato, podemos utiliz
 Nuestras batallas zombi funcionarán de la siguiente manera:
 
 - Tú elijes a uno de tus zombis y a un zombi del oponente para atacar.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+- Si eres el zombi atacante, tendrás un 70% de probabilidades de ganar. El zombi defensor tendrá 30% de probabilidades de ganar.
+- Todos los zombis (atacando y defendiendo) tendrán un `winCount` y un `lossCount` que incrementará dependiendo del resultado de la batalla.
+- Si el zombi que ataca gana, sube de nivel y genera un nuevo zombie.
+- Si pierde, no ocurre nada (solamente incrementa su `lossCount`).
+- Si tu zombi gana o pierde, el tiempo de enfriamiento de ataque del zombi empezará a correr.
 
 This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
 
