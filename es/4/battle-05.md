@@ -35,13 +35,13 @@ material:
         zombies[_zombieId].level++;
         }
         
-        // 1. Modifica esta función para usar `ownerOf`:
+        // 1. Modifica esta función para utilizar`ownerOf`:
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         zombies[_zombieId].name = _newName;
         }
         
-        // 2. Do the same with this function:
+        // 2. Haz lo mismo con esta función:
         function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         zombies[_zombieId].dna = _newDna;
@@ -183,9 +183,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -193,7 +193,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -202,7 +202,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -211,8 +211,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -235,10 +235,10 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
-We have a couple more places in `zombiehelper.sol` where we need to implement our new `modifier` `ownerOf`.
+Tenemos un par de lugares más en `zombiehelper.sol` donde necesitamos implementar nuestro nuevo `modifier` `ownerOf`.
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Update `changeName()` to use `ownerOf`
+1. Actualiza `changeName()` para utilizar `ownerOf`
 
-2. Update `changeDna()` to use `ownerOf`
+2. Actualiza `changeDna()` para utilizar `ownerOf`
