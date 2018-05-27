@@ -1,28 +1,28 @@
 ---
-title: Wrapping It Up
+title: Empaquetandolo todo
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
-  saveZombie: true
+  saveZombie: verdadero
   battleArena:
     zombie:
       lesson: 2
-    hideSliders: true
+    hideSliders: verdadero
     answer: 1
 ---
-Congratulations! That concludes Lesson 4.
+¡Felicidades! Eso concluye la Lección 4.
 
-Go ahead and test out your battle function to the right!
+¡Adelante y prueba tu función de batalla a la derecha!
 
-## Claim your reward
+## Reclama tu recompensa
 
-After winning the battle:
+Después de ganar la batalla:
 
-1. Your zombie will level up
+1. Tu zombi subirá de nivel
 
-2. Your zombie will increase his `winCount`
+2. Tu zombi incrementara su `winCount`
 
 3. You will spawn a new zombie to add to your army!
 
