@@ -1,9 +1,9 @@
 ---
-title: Zombie Loss
+title: Zombi Derrota
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -31,7 +31,7 @@ material:
         myZombie.level++;
         enemyZombie.lossCount++;
         feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-        } // start here
+        } // inicia aquí
         }
         }
       "zombiehelper.sol": |
@@ -190,9 +190,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -200,7 +200,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -209,7 +209,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -218,8 +218,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -235,27 +235,27 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); if (rand <= attackVictoryProbability) { myZombie.winCount++; myZombie.level++; enemyZombie.lossCount++; feedAndMultiply(_zombieId, enemyZombie.dna, "zombie"); } else { myZombie.lossCount++; enemyZombie.winCount++; _triggerCooldown(myZombie); } } }
 ---
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+Ahora que hemos codificado lo que ocurre cuando su zombi gana, vamos a averiguar lo que ocurre cuando **pierde**.
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+En nuestro juego, cuando los zombis pierden su nivel no disminuye — simplemente añaden una derrota a su `lossCount` y su tiempo de enfriamiento se activa para que tengan que esperar un día antes de volver a atacar.
 
-To implement this logic, we'll need an `else` statement.
+Para implementar está lógica necesitaremos una declaración `else`.
 
-`else` statements are written just like in JavaScript and many other languages:
+Las declaraciones `else` se escriben como en JavaScript y muchos otros lenguajes:
 
     if (zombieCoins[msg.sender] > 100000000) {
-      // You rich!!!
+      // Eres rico!!!
     } else {
-      // We require more ZombieCoins...
+      // Requerimos más Zombi Monedas...
     }
     
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Add an `else` statement. If our zombie loses:
+1. Añade una declaración `else`. Si nuestro zombi pierde:
     
-    a. Increment `myZombie`'s `lossCount`.
+    a. Incrementa el `lossCount` de `myZombie`.
     
-    b. Increment `enemyZombie`'s `winCount`.
+    b. Incrementa el `winCount` del `enemyZombie`.
     
-    c. Run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)
+    c. Ejecuta la función `_triggerCooldown` en `myZombie`. De esta manera el zombi sólo puede atacar una vez por día. (Recuerda, `_triggerCooldown` ya esta ejecutado dentro de `feedAndMultiply`. Así que el enfriamiento del zombi sera activado si gana o pierde.)
