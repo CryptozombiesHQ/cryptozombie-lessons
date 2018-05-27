@@ -1,9 +1,9 @@
 ---
-title: Zombie Victory
+title: Zombi Victoria
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -26,7 +26,7 @@ material:
         Zombie storage myZombie = zombies[_zombieId];
         Zombie storage enemyZombie = zombies[_targetId];
         uint rand = randMod(100);
-        // Start here
+        // Iniciar aquí
         }
         }
       "zombiehelper.sol": |
@@ -185,9 +185,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -195,7 +195,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -204,7 +204,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -213,8 +213,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -230,20 +230,20 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); if (rand <= attackVictoryProbability) { myZombie.winCount++; myZombie.level++; enemyZombie.lossCount++; feedAndMultiply(_zombieId, enemyZombie.dna, "zombie"); } } }
 ---
-Now that we have a `winCount` and `lossCount`, we can update them depending on which zombie wins the fight.
+Ahora que tenemos un `winCount` y un `lossCount`, podemos actualizarlos dependiendo de cuál zombi gane la pelea.
 
-In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
+En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemos ese número para determinar quien gana la pelea y actualizar nuestras estadísticas apropiadamente.
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Create an `if` statement that checks if `rand` is ***less than or equal to*** `attackVictoryProbability`.
+1. Crea una declaración `if` que verifique si `rand` es ***menor o igual a*** `attackVictoryProbability`.
 
-2. If this condition is true, our zombie wins! So:
+2. Si esta condición resulta verdadera ¡Nuestro zombi gana! Entonces:
     
-    a. Increment `myZombie`'s `winCount`.
+    a. Incrementa `myZombie`'s `winCount`.
     
-    b. Increment `myZombie`'s `level`. (Level up!!!!!!!)
+    b. Incrementa `myZombie`'s `level`. (Sube de Nivel!!!!!!!)
     
-    c. Increment `enemyZombie`'s `lossCount`. (Loser!!!!!! 
+    c. Incrementa `enemyZombie`'s `lossCount`. (Perdedor!!!!!! 
     
-    d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).
+    d. Ejecuta la función `feedAndMultiply`. Revisa `zombiefeeding.sol` para ver la sintaxis para llamarlo. Para el 3er argumento (`_species`), pase el string `"zombie"`. (Esto no hace nada ahora mismo, pero luego podríamos añadir un poco más de funcionalidad para generar zombis tipo "zombie-based" si lo deseamos).
