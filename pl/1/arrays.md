@@ -59,6 +59,6 @@ Inne kontrakty będą miały wtedy mozliwość odczytu z tej tablicy (ale nie za
 
 # Wypróbujmy zatem
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+Zamierzamy przechowywać armię zombie w naszej aplikacji. I będziemy chcieli pokazać wszystkie nasze zombie w innych aplikacjach, więc musimy je utworzyć jako publiczne.
 
-1. Create a public array of `Zombie` ***structs***, and name it `zombies`.
+1. Stwórz publiczną tablicę `Zombie` ***structs*** i nazwij ją `zombies`.
