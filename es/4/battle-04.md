@@ -1,9 +1,9 @@
 ---
-title: Refactoring Common Logic
+title: Refactorizando la Lógica Común
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -32,8 +32,7 @@ material:
         
         KittyInterface kittyContract;
         
-        // 1. Create modifier here
-        
+        // 1. Crea un modificador aquí
         function setKittyContractAddress(address _address) external onlyOwner {
         kittyContract = KittyInterface(_address);
         }
@@ -46,9 +45,9 @@ material:
         return (_zombie.readyTime <= now);
         }
         
-        // 2. Add modifier to function definition:
+        // 2. Añade un modificador a la definición de la función:
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-        // 3. Remove this line
+        // 3. Elimina esta línea
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         require(_isReady(myZombie));
@@ -181,9 +180,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -191,7 +190,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -200,7 +199,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -209,8 +208,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -232,9 +231,9 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; require(_isReady(myZombie)); _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(_species) == keccak256("kitty")) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); _triggerCooldown(myZombie); }
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); } }
 ---
-Whoever calls our `attack` function — we want to make sure the user actually owns the zombie they're attacking with. It would be a security concern if you could attack with someone else's zombie!
+Quien sea que llame a nuestra función `attack` — queremos asegurarnos de que el usuario sea realmente el dueño del zombi con el que está atacando. ¡Sería un problema de seguridad si se pudiera atacar con el zombi de alguien más!
 
-Can you think of how we would add a check to see if the person calling this function is the owner of the `_zombieId` they're passing in?
+¿Puede pensar en cómo podríamos añadir un chequeo para ver si la persona que llama a esta función es el dueño del `_zombieId` que está pasando?
 
 Give it some thought, and see if you can come up with the answer on your own.
 
