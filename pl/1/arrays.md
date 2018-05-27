@@ -43,10 +43,10 @@ Jeśli chcesz stworzyć zbiór jakichś zmiennych, możesz użyć ***tablicy (ar
 
 Możesz również utworzyć tablice złozoną ze struktur (***structs***). Wykorzystując strukturę `Person` z poprzedniego rozdziału:
 
-    Person[] people; // dynamic Array, we can keep adding to it
+    Person[] people; // Tablica dynamiczna, możesz do niej dodawać elementy
     
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
+Pamietasz, że zmienne stanu są przechowywane trwale w blockchain'ie? Więc tworzenie dynamicznej tablicy struktur w ten sposób może być użyteczne w celu przechowywania danych strukturalnych, takich jak np. bazy danych.
 
 ## Public Arrays
 
