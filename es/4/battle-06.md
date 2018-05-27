@@ -1,9 +1,9 @@
 ---
-title: Back to Attack!
+title: '¡De Vuelta al Ataque!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -22,9 +22,9 @@ material:
         return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
         
-        // 1. Add modifier here
+        // 1. Añade un modificador aquí
         function attack(uint _zombieId, uint _targetId) external {
-        // 2. Start function definition here
+        // 2. Inicia la definición de la función aquí
         }
         }
       "zombiehelper.sol": |
@@ -181,9 +181,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -191,7 +191,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -200,7 +200,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -209,8 +209,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -226,18 +226,18 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); } }
 ---
-Enough refactoring — back to `zombieattack.sol`.
+Suficiente refactorización — regresemos a `zombieattack.sol`.
 
-We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
+Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el modificador `ownerOf` para ser utilizado.
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Add the `ownerOf` modifier to `attack` to make sure the caller owns `_zombieId`.
+1. Añade el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`.
 
-2. The first thing our function should do is get a `storage` pointer to both zombies so we can more easily interact with them:
+2. Lo primero que nuestra función debería hacer es conseguir un puntero de `storage` a ambos zombis para poder interactuar con ellos fácilmente:
     
-    a. Declare a `Zombie storage` named `myZombie`, and set it equal to `zombies[_zombieId]`.
+    anuncie un `Zombie storage` llamado `myZombie` y configuralo como igual a `zombies[_zombieId]`.
     
-    b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
+    declara un `Zombie storage` llamado `enemyZombie` y configuralo como igual a `zombies[_targetId]`.
 
-3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
+3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.
