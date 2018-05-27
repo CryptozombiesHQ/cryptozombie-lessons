@@ -48,16 +48,16 @@ Możesz również utworzyć tablice złozoną ze struktur (***structs***). Wykor
 
 Pamietasz, że zmienne stanu są przechowywane trwale w blockchain'ie? Więc tworzenie dynamicznej tablicy struktur w ten sposób może być użyteczne w celu przechowywania danych strukturalnych, takich jak np. bazy danych.
 
-## Public Arrays
+## Tablice Publiczne
 
-You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
+Możesz zadeklarować tablicę jako `public`, a Solidity automatycznie utworzy metodę ***getter*** dla niej. Składnia wygląda następująco:
 
     Person[] public people;
     
 
-Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
+Inne kontrakty będą miały wtedy mozliwość odczytu z tej tablicy (ale nie zapisu). Więc jest to użyteczna forma publicznego przechowywania danych w Twoim kontrakcie.
 
-# Put it to the test
+# Wypróbujmy zatem
 
 We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
