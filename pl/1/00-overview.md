@@ -1,5 +1,5 @@
 ---
-title: Making the Zombie Factory
+title: Tworzenie Fabryki Zombie
 header: Welcome, human!
 roadmap: roadmap.jpg
 ---
