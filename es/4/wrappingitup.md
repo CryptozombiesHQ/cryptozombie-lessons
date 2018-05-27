@@ -22,8 +22,8 @@ Después de ganar la batalla:
 
 1. Tu zombi subirá de nivel
 
-2. Tu zombi incrementara su `winCount`
+2. Tu zombi incrementará su `winCount`
 
-3. You will spawn a new zombie to add to your army!
+3. ¡Generarás un nuevo zombi para añadirlo a tu ejército!
 
-Go ahead and try the battle, then proceed to the next chapter to complete the lesson.
+Adelante y prueba la batalla, luego procede al siguiente capítulo para completar la lección.
