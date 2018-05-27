@@ -31,9 +31,9 @@ Pusty kontrakt `HelloWorld` wygląda następująco:
 
 Kod źródłowy Solidity zaczyna się poprzez "wersję pragma" — deklarację wersji kompilatora Solidity, którego nasz kod będzie używał. Stosuje się to aby zapobiec problemom z przyszłymi wersjami, które moga potencjalnie zawierać zmiany kolidujące z Twoim kodem.
 
-It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
+Wygląda to tak: `pragma solidity ^0.4.19;` (dla aktualnej wersji Solidity, w trakcie pisania tego tekstu, 0.4.19).
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierwsza rzecz, którą napiszesz, zaczynając nowy projekt:
 
     pragma solidity ^0.4.19;
     
@@ -42,7 +42,7 @@ Putting it together, here is a bare-bones starting contract — the first thing
     }
     
 
-# Put it to the test
+# Wypróbujmy zatem
 
 To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
 
