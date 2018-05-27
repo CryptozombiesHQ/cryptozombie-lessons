@@ -232,12 +232,12 @@ Nuestras batallas zombi funcionarán de la siguiente manera:
 - Si pierde, no ocurre nada (solamente incrementa su `lossCount`).
 - Si tu zombi gana o pierde, el tiempo de enfriamiento de ataque del zombi empezará a correr.
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+Esto es mucha lógica a implementar así que lo haremos por partes en los siguientes capítulos.
 
-## Put it to the test
+## Vamos a probarlo
 
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
+1. Dale a nuestro contrato una variable `uint` llamada `attackVictoryProbability` y configuralo igual a `70`.
 
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
+2. Crea una función llamada `attack`. Tomará dos parámetros: `_zombieId` (un `uint`) y `_targetId` (también un `uint`). Debería ser una función `external`.
 
-Leave the function body empty for now.
+Deja el cuerpo de función vacío por ahora.
