@@ -75,5 +75,5 @@ Zauważ, że `array.push()` dodaje elementy do **końca** tablicy, więc będą 
 
 Sprawmy, aby nasza funkcja createZombie coś dla nas wykonała!
 
-1. W ciele funkcji stwórz nowego `Zombie` i dodaj go do tablicy `zombies`. Parametr `name` i `dna` dla nowego Zombiaka powinny pochodzić z argumentów funkcji.
-2. Let's do it in one line of code to keep things clean.
+1. W ciele funkcji stwórz nowego `Zombie` i dodaj go do tablicy `zombies`. Parametry `name` i `dna` dla nowego Zombiaka powinny pochodzić z argumentów funkcji.
+2. Zrób to w jednej linii, aby zachować porządek i zmniejszyć ilośc linijek kodu.
