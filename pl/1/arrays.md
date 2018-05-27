@@ -33,15 +33,15 @@ material:
 ---
 Jeśli chcesz stworzyć zbiór jakichś zmiennych, możesz użyć ***tablicy (array)***. W Solidity mamy do dyspozycji dwa typy tablic: ***fixed*** i ***dynamic***:
 
-    // Array with a fixed length of 2 elements:
+    // Tablica o stałym rozmiarze 2 elementów:
     uint[2] fixedArray;
-    // another fixed Array, can contain 5 strings:
+    // kolejna tablica o stałym rozmiarze, może zawierać 5 elementów typu string:
     string[5] stringArray;
-    // a dynamic Array - has no fixed size, can keep growing:
+    // tablica dynamiczna - nie ma stałego rozmiaru, jej rozmiar może się zwiększać:
     uint[] dynamicArray;
     
 
-You can also create an array of ***structs***. Using the previous chapter's `Person` struct:
+Możesz również utworzyć tablice złozoną ze struktur (***structs***). Wykorzystując strukturę `Person` z poprzedniego rozdziału:
 
     Person[] people; // dynamic Array, we can keep adding to it
     
