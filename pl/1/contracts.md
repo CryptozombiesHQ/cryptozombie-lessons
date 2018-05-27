@@ -20,16 +20,16 @@ Zacznijmy od całkowitych podstaw:
 
 Kod Solidity ujęty jest w **kontraktach**. `Kontrakt` jest fundamentalnym blokiem budującym aplikacje oparte na Ethereum — wszystkie zmienne i funkcje należą do kontraktu i to będzie punkt wyjścia dla wszystkich Twoich projektów.
 
-An empty contract named `HelloWorld` would look like this:
+Pusty kontrakt `HelloWorld` wygląda następująco:
 
     contract HelloWorld {
     
     }
     
 
-## Version Pragma
+## Wersja Pragma
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+Kod źródłowy Solidity zaczyna się poprzez "wersję pragma" — deklarację wersji kompilatora Solidity, którego nasz kod będzie używał. Stosuje się to aby zapobiec problemom z przyszłymi wersjami, które moga potencjalnie zawierać zmiany kolidujące z Twoim kodem.
 
 It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
