@@ -235,15 +235,15 @@ Quien sea que llame a nuestra función `attack` — queremos asegurarnos de que
 
 ¿Puede pensar en cómo podríamos añadir un chequeo para ver si la persona que llama a esta función es el dueño del `_zombieId` que está pasando?
 
-Give it some thought, and see if you can come up with the answer on your own.
+Piénsalo por un rato, y observa si puedes conseguir la respuesta por tu cuenta.
 
-Take a moment... Refer to some of our previous lessons' code for ideas...
+Tomate tu tiempo... Revisa el código de algunas de las lecciones anteriores para conseguir ideas...
 
-Answer below, don't continue until you've given it some thought.
+Respuesta abajo, no continúe hasta que lo hayas pensado realmente.
 
-## The answer
+## La respuesta
 
-We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
+Hemos hecho este chequeo varias veces en lecciones anteriores. En `changeName()`, `changeDna()`, y `feedAndMultiply()`, utilizamos el siguiente chequeo:
 
     require(msg.sender == zombieToOwner[_zombieId]);
     
