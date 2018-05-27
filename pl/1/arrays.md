@@ -31,7 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
-Jeśli chcesz stworzyć zbiór jakichś obiektów, możesz użyć ***tablicy (array)***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
+Jeśli chcesz stworzyć zbiór jakichś zmiennych, możesz użyć ***tablicy (array)***. W Solidity mamy do dyspozycji dwa typy tablic: ***fixed*** i ***dynamic***:
 
     // Array with a fixed length of 2 elements:
     uint[2] fixedArray;
