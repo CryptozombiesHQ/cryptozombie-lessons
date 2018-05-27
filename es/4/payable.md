@@ -220,35 +220,35 @@ Las funciones `payable` son parte de lo que hace de Solidity y Ethereum algo tan
 
 Piénsalo por un momento. Cuando llama una función API en un servidor web normal, no puede enviar dólares (USD$) junto con su llamada de función — ni enviar Bitcoin.
 
-But in Ethereum, because both the money (*Ether*), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
+Pero en Ethereum, ya que tanto el dinero (*Ether*), los datos (*payload de transacción*) y el mismo código de contrato viven en Ethereum, es posible para usted llamar a una función **y** pagar dinero por el contrato al mismo tiempo.
 
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
+Esto abarca una lógica realmente interesante, como requerir un cierto pago por el contrato con el motivo de ejecutar una función.
 
-## Let's look at an example
+## Veamos un ejemplo
 
     contract OnlineStore {
       function buySomething() external payable {
-        // Check to make sure 0.001 ether was sent to the function call:
+        // Asegurate que fueron enviados 0.001 ether a la llamada de función:
         require(msg.value == 0.001 ether);
-        // If so, some logic to transfer the digital item to the caller of the function:
+        // Si es así, alguna lógica para transferir el elemento digital a la persona que llama a la función:
         transferThing(msg.sender);
       }
     }
     
 
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
+Aquí, `msg.value` es una manera de ver cuanto Ether fue enviado al contrato, y `ether` es una unidad incorporada.
 
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
+Lo que sucede aquí es que alguien llamaría a la función desde web3.js (desde la interfaz JavaScript de la DApp) de esta manera:
 
-    // Assuming `OnlineStore` points to your contract on Ethereum:
+    // Asumiendo que `OnlineStore` apunta a tu contrato en Ethereum:
     OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
     
 
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
+Nótese el campo `value`, donde la llamada de función javascript especifíca cuánto `ether` enviar (0.001). Si piensas en la transacción como un sobre, y los parámetros que usted envía a la llamada de función son los contenidos de la carta que coloca adentro, entonces añadir un `value` es como poner dinero en efectivo dentro del sobre — la carta y el dinero son entregados juntos al receptor.
 
-> Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
+> Nota: Si una función no es marcada como `payable` y usted intenta enviar Ether a esta, como se hizo anteriormente, la función rechazará tu transacción.
 
-## Putting it to the Test
+## Vamos a probarlo
 
 Let's create a `payable` function in our zombie game.
 
