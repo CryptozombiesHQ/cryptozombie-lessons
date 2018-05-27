@@ -1,8 +1,8 @@
 ---
-title: Working With Structs and Arrays
+title: Praca ze Strukturami i Tablicami
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -22,7 +22,7 @@ material:
       Zombie[] public zombies;
       
       function createZombie(string _name, uint _dna) {
-      // start here
+      // zacznij tutaj
       }
       
       }
@@ -36,9 +36,9 @@ material:
       function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
-### Creating New Structs
+### Tworzenie Nowych Struktur
 
-Remember our `Person` struct in the previous example?
+Pamiętasz naszą strukturę `Person` z poprzedniego przykładu?
 
     struct Person {
       uint age;
@@ -48,7 +48,7 @@ Remember our `Person` struct in the previous example?
     Person[] public people;
     
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Teraz nauczymy się jak utworzyć nowe elementy `Person`s i dodać je do naszej tablicy `people`.
 
     // create a New Person:
     Person satoshi = Person(172, "Satoshi");
