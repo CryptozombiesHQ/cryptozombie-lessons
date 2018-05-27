@@ -223,26 +223,26 @@ Puede escribir una función para retirar Ether del contrato de la siguiente form
 
 Nótese que estamos utilizando `owner` y `onlyOwner` del contrato `Ownable`, asumiendo que este fue importado.
 
-Puedes transferir Ether a una dirección utilizando la función `transfer` y `this.balance` devolverá el balance total almacenado en el contrato. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
+Puedes transferir Ether a una dirección utilizando la función `transfer` y `this.balance` devolverá el balance total almacenado en el contrato. Así que si 100 usuarios han pagado 1 Ether a nuestro contrato, `this.balance` sería igual a 100 Ether.
 
-You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
+Puedes utilizar `transfer` para enviar fondos a cualquier dirección de Ethereum. Por ejemplo, podrías tener una función que transfiera Ether de vuelta al `msg.sender` si rebasan el precio al pagar un item:
 
     uint itemFee = 0.001 ether;
     msg.sender.transfer(msg.value - itemFee);
     
 
-Or in a contract with a buyer and a seller, you could save the seller's address in storage, then when someone purchases his item, transfer him the fee paid by the buyer: `seller.transfer(msg.value)`.
+O en un contrato con un comprador y un vendedor, podrías guardar la dirección del vendedor en la memoria, luego, cuando alguien adquiera su item, transferirle la tasa pagada por el comprador: `seller.transfer(msg.value)`.
 
-These are some examples of what makes Ethereum programming really cool — you can have decentralized marketplaces like this that aren't controlled by anyone.
+Estos son algunos ejemplos de lo que hace de la programación de Ethereum algo realmente genial — puedes tener mercados descentralizados como este que no son controlados por nadie.
 
-## Putting it to the Test
+## Vamos a probarlo
 
-1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
+1. Crea una función `withdraw` en nuestro contrato, la cual debería ser idéntica al ejemplo anterior `GetPaid`.
 
-2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
+2. El precio del Ether aumentó x10 en el año pasado. Así que mientras 0.001 ether es como $1 en el momento de escribir esto, si sube x10 de nuevo, 0.001 ETH sería equivalente a $10 y nuestro juego será mucho más costoso.
     
-    So it's a good idea to create a function that allows us as the owner of the contract to set the `levelUpFee`.
+    Así que es una buena idea crear una función que nos permita, como dueños del contrato, configurar el `levelUpFee`.
     
-    a. Create a function called `setLevelUpFee` that takes one argument, `uint _fee`, is `external`, and uses the modifier `onlyOwner`.
+    a. Crea una función llamada `setLevelUpFee` que tome un argumento, `uint _fee`, sea `external` y utilice el modificador `onlyOwner`.
     
-    b. The function should set `levelUpFee` equal to `_fee`.
+    b. La función debería configurar `levelUpFee` como igual a `_fee`.
