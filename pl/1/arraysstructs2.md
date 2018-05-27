@@ -48,21 +48,21 @@ Pamiętasz naszą strukturę `Person` z poprzedniego przykładu?
     Person[] public people;
     
 
-Teraz nauczymy się jak utworzyć nowe elementy `Person`s i dodać je do naszej tablicy `people`.
+Teraz nauczymy się jak utworzyć nowe elementy `Person` i dodać je do naszej tablicy `people`.
 
-    // create a New Person:
+    // utwórz nowy element Person:
     Person satoshi = Person(172, "Satoshi");
     
-    // Add that person to the Array:
+    // dodaj ten element do tablicy:
     people.push(satoshi);
     
 
-We can also combine these together and do them in one line of code to keep things clean:
+Możesz również połączyć to razem i napisać to w jednej linii kodu, aby zachować większy porządek:
 
     people.push(Person(16, "Vitalik"));
     
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+Zauważ, że `array.push()` dodaje elementy do **końca** tablicy, więc będą one w takiej kolejności, jakiej je napiszemy. Spójrz na poniższy przykład:
 
     uint[] numbers;
     numbers.push(5);
