@@ -1,9 +1,9 @@
 ---
-title: More Refactoring
+title: Más Refactorización
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -35,7 +35,7 @@ material:
         zombies[_zombieId].level++;
         }
         
-        // 1. Modify this function to use `ownerOf`:
+        // 1. Modifica esta función para usar `ownerOf`:
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         zombies[_zombieId].name = _newName;
