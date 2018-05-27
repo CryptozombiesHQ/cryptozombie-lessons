@@ -33,7 +33,7 @@ Kod źródłowy Solidity zaczyna się poprzez "wersję pragma" — deklarację w
 
 Wygląda to tak: `pragma solidity ^0.4.19;` (dla aktualnej wersji Solidity, w trakcie pisania tego tekstu, 0.4.19).
 
-Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierwsza rzecz, którą napiszesz, zaczynając nowy projekt:
+Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierwszą rzecz, którą napiszesz, zaczynając nowy projekt:
 
     pragma solidity ^0.4.19;
     
@@ -44,10 +44,10 @@ Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierw
 
 # Wypróbujmy zatem
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+Aby zacząć tworzyć naszą armię Zombiaków, utwórzmy najpierw startowy kontrakt o nazwie `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.19`.
+1. W oknie obok, spraw aby nasz kontrakt używał wersji Solidity `0.4.19`.
 
-2. Create an empty contract called `ZombieFactory`.
+2. Utwórz pusty kontrakt o nazwie `ZombieFactory`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+Kiedy skończysz, kliknij "sprawdź odpowiedź" poniżej. Jeżeli utkniesz, możesz uzyskać podpowiedź klikając w przycisk "podpowiedź".
