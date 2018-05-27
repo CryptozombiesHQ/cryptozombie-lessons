@@ -248,16 +248,16 @@ Hemos hecho este chequeo varias veces en lecciones anteriores. En `changeName()`
     require(msg.sender == zombieToOwner[_zombieId]);
     
 
-This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own `modifier` to clean up our code and avoid repeating ourselves.
+Esta es la misma lógica que necesitaremos para nuestra función `attack`. Ya que estamos utilizando multiples veces la misma lógica, movamos esto a su propio `modifier` para limpiar nuestro código y evitar redundancias.
 
-## Put it to the test
+## Vamos a probarlo
 
-We're back to `zombiefeeding.sol`, since this is the first place we used that logic. Let's refactor it into its own `modifier`.
+Regresamos a `zombiefeeding.sol`, debido a que este es el primer lugar dónde usamos esa lógica. Vamos a refactorizarlo en su propio `modifier`.
 
-1. Create a `modifier` called `ownerOf`. It will take 1 argument, `_zombieId` (a `uint`).
+1. Crea un `modifier` llamado `ownerOf`. Tomará 1 argumento `_zombieId` (un `uint`).
     
-    The body should `require` that `msg.sender` is equal to `zombieToOwner[_zombieId]`, then continue with the function. You can refer to `zombiehelper.sol` if you don't remember the syntax for a modifier.
+    El cuerpo debería `require` (requerir) que `msg.sender` sea igual a `zombieToOwner[_zombieId]`, y luego continuar con la función. Puede consultar `zombiehelper.sol` si no recuerda la sintaxis para un modificador.
 
-2. Change the function definition of `feedAndMultiply` such that it uses the modifier `ownerOf`.
+2. Cambia la definición de la función de `feedAndMultiply` de manera que utilice el modificador `ownerOf`.
 
-3. Now that we're using a `modifier`, you can remove the line `require(msg.sender == zombieToOwner[_zombieId]);`
+3. Ahora que estamos utilizando un `modifier`, puedes eliminar la línea `require(msg.sender == zombieToOwner[_zombieId]);`
