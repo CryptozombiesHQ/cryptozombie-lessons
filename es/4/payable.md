@@ -1,9 +1,9 @@
 ---
 title: Payable
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -15,14 +15,14 @@ material:
         
         contract ZombieHelper is ZombieFeeding {
         
-        // 1. Define levelUpFee here
+        // 1. Define levelUpFee aquí
         
         modifier aboveLevel(uint _level, uint _zombieId) {
         require(zombies[_zombieId].level >= _level);
         _;
         }
         
-        // 2. Insert levelUp function here
+        // 2. Inserta la función levelUp function aquí
         
         function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
@@ -149,9 +149,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -159,7 +159,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -168,7 +168,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -177,8 +177,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -199,26 +199,26 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
-Up until now, we've covered quite a few ***function modifiers***. It can be difficult to try to remember everything, so let's run through a quick review:
+Hasta ahora, hemos cubierto unos cuantos ***modificadores de función***. Puede resultar difícil tratar de recordar todo, así que hagamos un breve repaso:
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+1. Tenemos modificadores de visibilidad que controlan desde dónde y cuándo la función puede ser llamada: `private` significa que sólo puede ser llamada desde otras funciones dentro del contrato; `internal` es como `private` pero también puede ser llamada por contratos que hereden desde este; `external` sólo puede ser llamada desde afuera del contrato; y finalmente `public` puede ser llamada desde cualquier lugar, tanto internamente como externamente.
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+2. También tenemos modificadores, los cuales nos dicen cómo interactúa la función con la BlockChain: `view` nos indica que al ejecutar la función, ningún dato será guardado/cambiado. `pure` nos indica que la función no sólo no guarda ningún dato en la blockchain, si no que tampoco lee ningún dato de la blockchain. Ambos no cuestan nada de gas para llamar si son llamados externamente desde afuera del contrato (pero si cuestan combustible si son llamado internamente por otra función).
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
+3. Luego tenemos los `modifiers` personalizados, de los cuales aprendimos en la Lección 3: `onlyOwner` y `aboveLevel`, por ejemplo. Para estos podemos definir la lógica personalizada para determinar cómo afectan a una función.
 
-These modifiers can all be stacked together on a function definition as follows:
+Todos estos modificadores pueden ser apilados juntos en una definición de función de la siguiente manera:
 
     function test() external view onlyOwner anotherModifier { /* ... */ }
     
 
-In this chapter, we're going to introduce one more function modifier: `payable`.
+En este capítulo, vamos a presentar un modificador de función más: `payable`.
 
-## The `payable` Modifier
+## El Modificador `payable`
 
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether.
+Las funciones `payable` son parte de lo que hace de Solidity y Ethereum algo tan genial — son un tipo de función especial que pueden recibir Ether.
 
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
+Piénsalo por un momento. Cuando llama una función API en un servidor web normal, no puede enviar dólares (USD$) junto con su llamada de función — ni enviar Bitcoin.
 
 But in Ethereum, because both the money (*Ether*), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
 
