@@ -68,12 +68,12 @@ Zauważ, że `array.push()` dodaje elementy do **końca** tablicy, więc będą 
     numbers.push(5);
     numbers.push(10);
     numbers.push(15);
-    // numbers is now equal to [5, 10, 15]
+    // tablica "numbers" jest teraz równa: [5, 10, 15]
     
 
-# Put it to the test
+# Wypróbujmy zatem
 
-Let's make our createZombie function do something!
+Sprawmy, aby nasza funkcja createZombie coś dla nas wykonała!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+1. W ciele funkcji stwórz nowego `Zombie` i dodaj go do tablicy `zombies`. Parametr `name` i `dna` dla nowego Zombiaka powinny pochodzić z argumentów funkcji.
 2. Let's do it in one line of code to keep things clean.
