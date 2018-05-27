@@ -1,8 +1,8 @@
 ---
-title: Arrays
+title: Tablice (Arrays)
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -19,7 +19,7 @@ material:
       uint dna;
       }
       
-      // start here
+      // zacznij tutaj
       
       }
     answer: >
@@ -31,7 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
-When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
+Jeśli chcesz stworzyć zbiór jakichś obiektów, możesz użyć ***tablicy (array)***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
     // Array with a fixed length of 2 elements:
     uint[2] fixedArray;
