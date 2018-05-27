@@ -1,9 +1,9 @@
 ---
-title: Withdraws
+title: Retiros
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -22,9 +22,9 @@ material:
         _;
         }
         
-        // 1. Create withdraw function here
+        // 1. Crea una función de retiro aquí
         
-        // 2. Create setLevelUpFee function here
+        // 2. Crea la función setLevelUpFee aquí
         
         function levelUp(uint _zombieId) external payable {
         require(msg.value == levelUpFee);
@@ -156,9 +156,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -166,7 +166,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -175,7 +175,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -184,8 +184,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -208,11 +208,11 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
+En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre cuando lo envías?
 
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract.
+Luego de enviar Ether a un contrato, este se almacena en la cuenta de Etehreum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato.
 
-You can write a function to withdraw Ether from the contract as follows:
+Puede escribir una función para retirar Ether del contrato de la siguiente forma:
 
     contract GetPaid is Ownable {
       function withdraw() external onlyOwner {
@@ -221,9 +221,9 @@ You can write a function to withdraw Ether from the contract as follows:
     }
     
 
-Note that we're using `owner` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
+Nótese que estamos utilizando `owner` y `onlyOwner` del contrato `Ownable`, asumiendo que este fue importado.
 
-You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
+Puedes transferir Ether a una dirección utilizando la función `transfer` y `this.balance` devolverá el balance total almacenado en el contrato. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
 
 You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
 
