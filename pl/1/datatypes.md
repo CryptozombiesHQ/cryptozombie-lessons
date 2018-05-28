@@ -21,7 +21,7 @@ material:
       uint dnaDigits = 16;
       }
 ---
-Dobra robota! Teraz, kiedy mamy już podstawową komórkę naszego kontraktu, poznajmy zmienne w języku Solidity.
+Dobra robota! Teraz, kiedy mamy już podstawowy szablon naszego kontraktu, poznajmy zmienne w języku Solidity.
 
 ***Zmienne stanu*** są trwale przechowywane w pamięci kontraktu. Oznacza to, że są wpisywane do blockchain'u Ethereum. Pomyśl o nich jak o wpisaniu do baz danych.
 
@@ -39,9 +39,9 @@ W tym przykładowym kontrakcie, utworzyliśmy zmienną typu `uint` o nazwie `myU
 
 Typ danych `uint`, jest typem, który nazywamy jako unsigned integer, oznacza to, że **jego wartość musi być nieujemna**. Występuje również typ `int`, który przyjmuje wartości zarówno ujemne jak i dodatnie.
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> Uwaga: W Solidity, `uint` jest tak właściwie inaczej nazwanym typem `uint256` (256-bitowym typem unsigned integer). Możesz zadeklarować mniejszą ilośc bitów — `uint8`, `uint16`, `uint32`, itd.. Lecz zazwyczaj będziesz uzywał po prostu `uint` z wyjątkiem pewnych przypadków, o których porozmawiach w późniejszych lekcjach.
 
-# Put it to the test
+# Wypróbujmy zatem
 
 Our Zombie DNA is going to be determined by a 16-digit number.
 
