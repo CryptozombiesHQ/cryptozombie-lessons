@@ -51,9 +51,9 @@ Spójrzmy jak zadeklarować funkcje prywatną:
 
 To spowoduje, że tylko funkcje znajdujące się wewnątrz kontraktu będą mogły wywołać naszą funkcję i dodać `numbers` do tablicy.
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+Jak widzisz, używamy słowa kluczowego `private` po nazwie funkcji i podobnie jak przy parametrach, nazwę funkcji poprzedzamy podkreślnikiem (`_`).
 
-# Put it to the test
+# Wypróbujmy zatem
 
 Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
 
