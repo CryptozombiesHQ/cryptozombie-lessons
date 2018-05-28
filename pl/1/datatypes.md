@@ -28,14 +28,14 @@ Dobra robota! Teraz, kiedy mamy już podstawową komórkę naszego kontraktu, po
 ##### Przykład:
 
     contract Example {
-      // To będzie przechowywane trwale w blockchain'ie
+      // Zostanie to zapisane na stałe w blockchain'ie
       uint myUnsignedInteger = 100;
     }
     
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+W tym przykładowym kontrakcie, utworzyliśmy zmienną typu `uint` o nazwie `myUnsignedInteger` i ustawiliśmy ją równą liczbie 100.
 
-## Unsigned Integers: `uint`
+## Liczby całkowite dodatnie (Unsigned Integers): `uint`
 
 The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
 
