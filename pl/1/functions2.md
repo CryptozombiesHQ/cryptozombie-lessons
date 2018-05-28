@@ -49,7 +49,7 @@ Spójrzmy jak zadeklarować funkcje prywatną:
     }
     
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+To spowoduje, że tylko funkcje znajdujące się wewnątrz kontraktu będą mogły wywołać naszą funkcję i dodać `numbers` do tablicy.
 
 As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
 
