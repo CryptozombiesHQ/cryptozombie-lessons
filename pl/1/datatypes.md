@@ -1,8 +1,8 @@
 ---
-title: State Variables & Integers
+title: Zmienne stanu & liczby całkowite (integers)
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -11,7 +11,7 @@ material:
       
       contract ZombieFactory {
       
-      //start here
+      // zacznij tutaj
       
       }
     answer: >
@@ -21,14 +21,14 @@ material:
       uint dnaDigits = 16;
       }
 ---
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+Dobra robota! Teraz, kiedy mamy już podstawową komórkę naszego kontraktu, poznajmy zmienne w języku Solidity.
 
-***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+***Zmienne stanu*** są trwale przechowywane w pamięci kontraktu. Oznacza to, że są wpisywane do blockchain'u Ethereum. Pomyśl o nich jak o wpisaniu do baz danych.
 
-##### Example:
+##### Przykład:
 
     contract Example {
-      // This will be stored permanently in the blockchain
+      // To będzie przechowywane trwale w blockchain'ie
       uint myUnsignedInteger = 100;
     }
     
