@@ -55,6 +55,6 @@ Wywołałbyś tę funkcję tak:
 
 W naszej aplikacji, chcemy mieć mozliwość tworzenia Zombiaków. Stwórzmy do tego funkcję.
 
-1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
+1. Utwórz funkcję o nazwie `createZombie`. Powinna mieć dwa parametry: **_name** (`string`) i **_dna** (`uint`).
 
-Leave the body empty for now — we'll fill it in later.
+Ciało funkcji pozostaw narazie puste - zajmiemy się tym później.
