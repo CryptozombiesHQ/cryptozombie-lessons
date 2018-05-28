@@ -1,8 +1,8 @@
 ---
-title: Function Declarations
+title: Deklarowanie Funkcji
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -21,7 +21,7 @@ material:
       
       Zombie[] public zombies;
       
-      // start here
+      // zacznij tutaj
       
       }
     answer: >
@@ -35,25 +35,25 @@ material:
       }
       }
 ---
-A function declaration in solidity looks like the following:
+Deklaracja funkcji w Solidity wygląda następująco:
 
     function eatHamburgers(string _name, uint _amount) {
     
     }
     
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+To jest funkcja o nazwie `eatHamburgers`, która odbiera dwa parametry: typu `string` i typu `uint`. Na tą chwilę ciało funkcji jest puste.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Uwaga: Konwencją jest (lecz nie jest to wymagane) rozpoczęcie nazw zmiennych parametrów funkcji poprzez podkreślnik (`_`) w celu rozróżnienia ich od zmiennych globalnych. Będziemy się tego trzymać w naszym tutorialu.
 
-You would call this function like so:
+Wywołałbyś tę funkcję tak:
 
     eatHamburgers("vitalik", 100);
     
 
-# Put it to the test
+# Wypróbujmy zatem
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+W naszej aplikacji, chcemy mieć mozliwość tworzenia Zombiaków. Stwórzmy do tego funkcję.
 
 1. Create a function named `createZombie`. It should take two parameters: **__name_** (a `string`), and **__dna_** (a `uint`).
 
