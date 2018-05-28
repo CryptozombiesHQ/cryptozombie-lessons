@@ -84,4 +84,4 @@ Chcemy aby event powiadomił naszą aplikację za każdym razem gdy stworzony zo
 
 2. Zmodyfikuj funkcję `_createZombie` tak aby uruchamiała event `NewZombie` po dodaniu nowego Zombie do naszej tablicy o nazwie `zombies`.
 
-3. Potrzebujesz `id` Zombiaka. `array.push()` zwraca `uint` nowej dłudości tablicy - i odkąd pierwszy jej element miał index o numerze 0, to `array.push() - 1` będzie indeksem zombie, który właśnie dodaliśmy. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Potrzebujesz `id` Zombiaka. `array.push()` zwraca `uint` nowej dłudości tablicy - i odkąd pierwszy jej element miał index o numerze 0, to `array.push() - 1` będzie indeksem zombie, który właśnie dodaliśmy. Zachowaj wynik `zombies.push() - 1` w `uint` i nazwij `id`, więc będziesz mógł użyć tego w evencie `NewZombie` w następnej linii.
