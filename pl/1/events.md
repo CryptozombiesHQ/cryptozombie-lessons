@@ -54,34 +54,34 @@ material:
 ---
 Nasz kontrakt jest prawie gotowy! Teraz dodajmy ***event***.
 
-***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+***Eventy*** są sposobem komunikacji o tym, że coś wydarzyło się w blockchain'ie do Twojej aplikacji. Możemy określić to jako "nasłuchiwanie" pewnych wydarzeń i podejmowanie działania gdy takie się pojawią.
 
-Example:
+Przykład:
 
-    // declare the event
+    // deklaracja eventu
     event IntegersAdded(uint x, uint y, uint result);
     
     function add(uint _x, uint _y) public {
       uint result = _x + _y;
-      // fire an event to let the app know the function was called:
+      // uruchomienie eventu aby dać znać aplikacji, że funkcja została wywołana:
       IntegersAdded(_x, _y, result);
       return result;
     }
     
 
-Your app front-end could then listen for the event. A javascript implementation would look something like:
+Twoja front-endowa aplikacja może nasłuchiwać event. Implementacja w Javascripcie wygląda następująco:
 
     YourContract.IntegersAdded(function(error, result) { 
-      // do something with result
+      // zrób coś z wynikiem
     }
     
 
-# Put it to the test
+# Wypróbujmy zatem
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+Chcemy aby event powiadomił naszą aplikację za każdym razem gdy stworzony zostanie nowy Zombie, więc aplikacja będzie mogła to wyświetlić.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Zadeklaruj `event` i nazwij go `NewZombie`. Powinien zawierać `zombieId` (`uint`), `name` (`string`), oraz `dna` (`uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
+2. Zmodyfikuj funkcję `_createZombie` tak aby uruchamiała event `NewZombie` po dodaniu nowego Zombie do naszej tablicy o nazwie `zombies`.
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Potrzebujesz `id` Zombiaka. `array.push()` zwraca `uint` nowej dłudości tablicy - i odkąd pierwszy jej element miał index o numerze 0, to `array.push() - 1` będzie indeksem zombie, który właśnie dodaliśmy. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
