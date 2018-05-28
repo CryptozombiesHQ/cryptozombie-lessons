@@ -1,8 +1,8 @@
 ---
-title: Events
+title: Eventy
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -11,7 +11,7 @@ material:
       
       contract ZombieFactory {
       
-      // declare our event here
+      // zadeklaruj event tutaj
       
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
@@ -25,7 +25,7 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
-      // and fire it here
+      // i "odpal" go tu
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
@@ -52,7 +52,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Our contract is almost finished! Now let's add an ***event***.
+Nasz kontrakt jest prawie gotowy! Teraz dodajmy ***event***.
 
 ***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
