@@ -43,6 +43,6 @@ Typ danych `uint`, jest typem, który nazywamy jako unsigned integer, oznacza to
 
 # Wypróbujmy zatem
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+DNA naszego Zombiaka będzie określone poprzez 16-cyfrowy numer.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+Zadeklaruj `uint`, nazwij jako `dnaDigits` i ustaw równe `16`.
