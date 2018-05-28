@@ -35,7 +35,7 @@ Dobra robota! Teraz, kiedy mamy już podstawową komórkę naszego kontraktu, po
 
 W tym przykładowym kontrakcie, utworzyliśmy zmienną typu `uint` o nazwie `myUnsignedInteger` i ustawiliśmy ją równą liczbie 100.
 
-## Liczby całkowite dodatnie (Unsigned Integers): `uint`
+## Liczby całkowite bez znaku (Unsigned Integers): `uint`
 
 The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
 
