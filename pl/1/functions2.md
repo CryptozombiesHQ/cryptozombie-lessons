@@ -38,9 +38,9 @@ material:
 ---
 W Solidity, funkcje są domyślnie publiczne (`public`). Oznacza to, że każdy (lub każdy inny kontrakt) może wywołać funkcję z Twojego kontraktu i jej kod się wykona.
 
-Obviously this isn't always desireable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Oczywiście to nie zawsze jest pożądane i może spowodować, że Twój kontrakt będzie podatny na ataki. Zatem dobrą praktyką jest oznaczanie funkcji domyślnie jako prywatne (`private`), a wprowadzać zmiany na `public` wtedy, gdy chcesz ją pokazać światu.
 
-Let's look at how to declare a private function:
+Spójrzmy jak zadeklarować funkcje prywatną:
 
     uint[] numbers;
     
