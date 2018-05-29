@@ -1,9 +1,9 @@
 ---
-title: SafeMath Part 3
+title: SafeMath Parte 3
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -17,8 +17,8 @@ material:
         contract ZombieFactory is Ownable {
         
         using SafeMath for uint256;
-        // 1. Declare using SafeMath32 for uint32
-        // 2. Declare using SafeMath16 for uint16
+        // 1. Declara using SafeMath32 for uint32
+        // 2. Declara using SafeMath16 for uint16
         
         event NewZombie(uint zombieId, string name, uint dna);
         
@@ -41,8 +41,8 @@ material:
         mapping (address => uint) ownerZombieCount;
         
         function _createZombie(string _name, uint _dna) internal {
-        // Note: We chose not to prevent the year 2038 problem... So don't need
-        // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
+        // Note: Elegimos no evitar el problema del año 2038 ... Así que no necesitamos
+        // preocuparnos de los desbordamientos en readyTime. Nuestra aplicación está atornillada en el 2038 de todos modos ;)
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         zombieToOwner[id] = msg.sender;
         // 3. Let's use SafeMath's `add` here:
