@@ -53,27 +53,27 @@ W Solidity, deklaracja funkcji zawiera typ wartości zwracanej (w tym przypadku 
 
 ## Modyfikatory funkcji
 
-Powyższa funkcja, tak właściwie nie zmienia stanu w Solidity — tzn. nie zmienia żadnej wartości ani niczego nie zapisuje.
+Powyższa funkcja, tak właściwie nie zmienia stanu — tzn. nie zmienia żadnej wartości ani niczego nie zapisuje.
 
 Więc w tym przypadku powinniśmy zadeklarować ją jako ***view***, co oznacza, że jest to funkcja tylko do odczytu danych, ale nie modyfikowania ich:
 
     function sayHello() public view returns (string) {
     
 
-Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity posiada również funkcje ***pure***, co oznacza, że nie masz dostępu do danych w aplikacji. Rozważmy następującą rzecz:
 
     function _multiply(uint a, uint b) private pure returns (uint) {
       return a * b;
     }
     
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as ***pure***.
+Ta funkcja nie odczytuje nawet ze stanu aplikacji — jej zwracana wartość zależy od jej parametrów. Więc w takim wypadku deklarujemy funkcję jako ***pure***.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> Uwaga: Może być trudne do zapamiętania to, kiedy oznaczać funkcje jako pure/view. Na szczęście, kompilator Solidity jest dobry pod względem ostrzeżeń informujących i napewno da Ci znać, kiedy powinienieś użyć jednego z tych modyfikatorów.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-We're going to want a helper function that generates a random DNA number from a string.
+Zamierzamy mieć funkcję pomocniczą, która generuje losowe DNA z ciągu znaków (ze stringu).
 
 1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
