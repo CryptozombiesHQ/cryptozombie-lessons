@@ -401,15 +401,15 @@ Vamos a ver una característica de seguridad importante que debe tener en cuenta
 
 Digamos que tenemos un campo `uint8`, que sólo puede tener 8 bits. Esto significa, que el número más grande que podemos almacenar es binario `11111111` (o en decimal, 2^8 - 1 = 255).
 
-Take a look at the following code. What is `number` equal to at the end?
+Echa un vistazo al siguiente código. ¿Cuál es el `number` igual al final?
 
     uint8 number = 255;
     number++;
     
 
-In this case, we've caused it to overflow — so `number` is counterintuitively now equal to `` even though we increased it. (If you add 1 to binary `11111111`, it resets back to `00000000`, like a clock going from `23:59` to `00:00`).
+En este caso, hemos provocado un desbordamiento por exceso (overflow) — así que `number` ahora es contra-intuitivamente igual a `` aunque lo hayamos aumentado. (Si añades +1 al valor binario `11111111`, se reiniciará al valor inicial `00000000`, igual que un reloj pasa de las `23:59` a las `00:00`).
 
-An underflow is similar, where if you subtract `1` from a `uint8` that equals ``, it will now equal `255` (because `uint`s are unsigned, and cannot be negative).
+Un desbordamiento por defecto (underflow) es similar, donde si intentamos restar `1` de un `uint8` que es igual a ``, ahora pasará a valer `255` (porque `uint` no tiene signo y por lo tanto, no puede ser negativo).
 
 While we're not using `uint8` here, and it seems unlikely that a `uint256` will overflow when incrementing by `1` each time (2^256 is a really big number), it's still good to put protections in our contract so that our DApp never has unexpected behavior in the future.
 
