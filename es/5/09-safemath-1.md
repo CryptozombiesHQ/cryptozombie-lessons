@@ -389,17 +389,17 @@ material:
 
 Eso no fue tan difícil, ¿verdad? Muchas de estas cosas de Ethereum suenan realmente complicadas cuando escuchas a personas hablar de ellas, así que la mejor manera de entenderlas es realizarlas tú mismo.
 
-Ten en cuenta que esto es sólo una implementación mínima. Hay características adicionales que podemos desear añadir a nuestra implementación, como algunas comprobaciones adicionales para asegurarnos de que los usuarios no transfieran accidentalmente sus zombis a la dirección `` (que se llama "quemar" un token, — básicamente se envía a una dirección a la cual nadie tiene su clave privada, haciéndolo irrecuperable). Or to put some basic auction logic in the DApp itself. (Can you think of some ways we could implement that?)
+Ten en cuenta que esto es sólo una implementación mínima. Hay características adicionales que podemos desear añadir a nuestra implementación, como algunas comprobaciones adicionales para asegurarnos de que los usuarios no transfieran accidentalmente sus zombis a la dirección `` (que se llama "quemar" un token, — básicamente se envía a una dirección a la cual nadie tiene su clave privada, haciéndolo irrecuperable). Quizás, implementar alguna lógica básica de subasta en su DApp. (¿Puedes pensar en algunas formas para implementar eso?)
 
-But we wanted to keep this lesson manageable, so we went with the most basic implementation. If you want to see an example of a more in-depth implementation, you can take a look at the OpenZeppelin ERC721 contract after this tutorial.
+Pero queríamos que esta lección fuera manejable, por lo que optamos por la implementación más básica. Si deseas ver un ejemplo de una implementación más profunda, puedes echar un vistazo al contrato de OpenZeppelin con ERC721 después de este tutorial.
 
-### Contract security enhancements: Overflows and Underflows
+### Mejoras de seguridad en el contrato: Desbordamientos por exceso (Overflows) y por defecto (Underflows)
 
-We're going to look at one major security feature you should be aware of when writing smart contracts: Preventing overflows and underflows.
+Vamos a ver una característica de seguridad importante que debe tener en cuenta al escribir contratos inteligentes: Prevención de desbordamientos por exceso (overflow) y por defecto (underflow).
 
-What's an ***overflow***?
+¿Qué es un ***desbordamiento***?
 
-Let's say we have a `uint8`, which can only have 8 bits. That means the largest number we can store is binary `11111111` (or in decimal, 2^8 - 1 = 255).
+Digamos que tenemos un campo `uint8`, que sólo puede tener 8 bits. Esto significa, que el número más grande que podemos almacenar es binario `11111111` (o en decimal, 2^8 - 1 = 255).
 
 Take a look at the following code. What is `number` equal to at the end?
 
