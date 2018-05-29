@@ -474,9 +474,9 @@ Por ejemplo, en ZombieAttack tenemos:
     enemyZombie.lossCount++;
     
 
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
+También deberíamos prevenir los desbordamientos aquí, solo para estar seguros. (En general, es una buena idea usar SafeMath en lugar de las operaciones matemáticas básicas. Tal vez en una versión futura de Solidity estas se implementarán de manera predeterminada, pero por ahora debemos tomar precauciones de seguridad adicionales en nuestro código).
 
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
+Sin embargo, tenemos un pequeño problema — `winCount` y `lossCount` son de tipo `uint16`, y `level` es de tipo `uint32`. Entonces, si usamos el método `add` de SafeMath con estos parámetros de entrada, en realidad no nos protegerá del desbordamiento ya que convertirá estos tipos en `uint256`:
 
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
       uint256 c = a + b;
