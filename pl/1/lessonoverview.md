@@ -11,15 +11,15 @@ material:
     ignoreZombieCache: prawda
     answer: 1
 ---
-W lekcji 1 zbudujesz "Fabrykę Zombie", aby zbudować armię zombie.
+W lekcji 1 zbudujesz "Fabrykę Zombie", aby stworzyć armię zombi.
 
 * Nasza fabryka będzie obsługiwała bazę danych ze wszystkimi zombiakami w naszej armii
 * Będzie posiadała funkcję do tworzenia nowych zombi
-* Każdy zombie będzie miał losowy i niepowtarzalny wygląd
+* Każdy zombi będzie miał losowy i niepowtarzalny wygląd
 
-In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
+W późniejszych lekcjach, dodamy więcej funkcjonalności, takich jak danie zombiakom możliwości atakowania ludzi lub innych zombi! Ale zanim do tego dojdziemy, musimy zaimplementować podstawową funkcjonalność tworzenia nowych zombi.
 
-## How Zombie DNA Works
+## Jak działa DNA Zombiaka
 
 The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
 
