@@ -444,22 +444,22 @@ Entonces, en pocas palabras, las funciones de SafeMath's de `add`, `sub`, `mul`,
 
 ### Usando SafeMath en nuestro código.
 
-To prevent overflows and underflows, we can look for places in our code where we use `+`, `-`, `*`, or `/`, and replace them with `add`, `sub`, `mul`, `div`.
+Para evitar el desbordamiento, podemos buscar en nuestro código los lugares donde se utilicen `+`, `-`, `*`, o `/`, y sustituirlos por `add`, `sub`, `mul`, `div`.
 
-Ex. Instead of doing:
+Ejemplo. En lugar de escribir:
 
     myUint++;
     
 
-We would do:
+Deberíamos escribir:
 
     myUint = myUint.add(1);
     
 
-## Putting it to the Test
+## Vamos a probarlo
 
-We have 2 places in `ZombieOwnership` where we used math operations. Let's swap them out with SafeMath methods.
+Tenemos dos sitios en `ZombieOwnership` donde se hacen operaciones matemáticas. Vamos a sustituirlos con los métodos SafeMath.
 
-1. Replace `++` with a SafeMath method.
+1. Reemplaza `++` por su método correspondiente SafeMath.
 
-2. Replace `--` with a SafeMath method.
+2. Reemplaza `--` por su método correspondiente de SafeMath.
