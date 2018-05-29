@@ -1,21 +1,21 @@
 ---
-title: Lesson Overview
+title: Przegląd Lekcji
 actions:
-  - 'checkAnswer'
-  - 'hints'
-skipCheckAnswer: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+skipCheckAnswer: prawda
 material:
-  saveZombie: false
+  saveZombie: fałsz
   zombieResult:
-    hideNameField: true
-    ignoreZombieCache: true
+    hideNameField: prawda
+    ignoreZombieCache: prawda
     answer: 1
 ---
-In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
+W lekcji 1 zbudujesz "Fabrykę Zombie", aby zbudować armię zombie.
 
-* Our factory will maintain a database of all zombies in our army
-* Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+* Nasza fabryka będzie obsługiwała bazę danych ze wszystkimi zombiakami w naszej armii
+* Będzie posiadała funkcję do tworzenia nowych zombi
+* Każdy zombie będzie miał losowy i niepowtarzalny wygląd
 
 In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 
