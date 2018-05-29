@@ -411,17 +411,17 @@ En este caso, hemos provocado un desbordamiento por exceso (overflow) — así 
 
 Un desbordamiento por defecto (underflow) es similar, donde si intentamos restar `1` de un `uint8` que es igual a ``, ahora pasará a valer `255` (porque `uint` no tiene signo y por lo tanto, no puede ser negativo).
 
-While we're not using `uint8` here, and it seems unlikely that a `uint256` will overflow when incrementing by `1` each time (2^256 is a really big number), it's still good to put protections in our contract so that our DApp never has unexpected behavior in the future.
+Si bien no estamos usando `uint8` aquí, y parece poco probable que `uint256` se desborde aumentando de `1 en 1` cada vez (2^256 es realmente un número enorme), sigue siendo bueno poner protecciones en nuestro contrato para que nuestra DApp nunca tenga un comportamiento inesperado en el futuro.
 
-### Using SafeMath
+### Usando SafeMath
 
-To prevent this, OpenZeppelin has created a ***library*** called SafeMath that prevents these issues by default.
+Para prevenir esto, OpenZeppelin ha creado una ***librería*** llamada SafeMath que previene estos problemas por defecto.
 
-But before we get into that... What's a library?
+Pero antes de entrar en eso... ¿Qué es una librería?
 
-A ***library*** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
+Una ***librería*** es un tipo de contrato especial en Solidity. Una de las cosas para las cuales es útil, es para adjuntar funciones a tipos de datos nativos.
 
-For example, with the SafeMath library, we'll use the syntax `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
+Por ejemplo, con la librería SafeMath, usaremos la sintaxis `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
 
     using SafeMath for uint256;
     
