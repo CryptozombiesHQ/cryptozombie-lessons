@@ -11,12 +11,12 @@ Gratulacje! Ukończyłeś lekcję 1 i stworzyłeś pierwszego zombie w swojej ar
 
 # Kolejne Kroki
 
-To jest dopiero początek. Będziemy co tydzień wypuszczać nową lekcję CryptoZombies, aby rozbudowywać grę coraz bardziej i rozwijać swoją armię zombie.
+To jest dopiero początek. Będziemy co tydzień wypuszczać nową lekcję CryptoZombies, aby rozbudowywać grę coraz bardziej i dalej rozwijać swoją armię zombie.
 
-### 1. Sign in to save your progress
+### 1. Zaloguj się, aby zapisać swoje postępy
 
-***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+***Zaloguj się*** aby zapisać swoje postępy klikając link "Zapisz postęp" u góry strony. Damy Ci znać, gdy tylko dodamy nową lekcję.
 
-### 2. Share your zombie with your friends
+### 2. Podziel się zombie ze swoimi przyjaciółmi
 
-***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+***Podziel się*** swoim Zombiakiem na Twitterze, bla bla, itp. (zamieść obrazki / linki)
