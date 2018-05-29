@@ -41,13 +41,13 @@ material:
       function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
       }
 ---
-Chcemy, aby funkcja `_generateRandomDna` zwracała (na wpół) losowo wartość `uint`. Jak to zrealizować?
+Chcemy, aby funkcja `_generateRandomDna` zwracała (na wpół) losową wartość `uint`. Jak to zrealizować?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
+Ethereum posiada wbudowaną funkcję haszującą `keccak256`, która jest wersją SHA3. Funkcja haszująca zasadniczo odwzorowuje wejściowy ciąg znaków (string) na losową 256-bitową liczbę szesnastkową. Mała zmiana w stringu powoduje znaczną zmianę w haszu.
 
-It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
+Jest to przydatne w Ethereum z wielu powodów, ale na ten moment użyjemy tego do wygenerowania pseduo-losowej liczby.
 
-Example:
+Przykład:
 
     //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
     keccak256("aaaab");
@@ -55,9 +55,9 @@ Example:
     keccak256("aaaac");
     
 
-As you can see, the returned values are totally different despite only a 1 character change in the input.
+Jak widzisz, zwrócona wartość bardzo się różni, pomimo zmiany tylko jednego znaku.
 
-> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Uwaga: **Bezpieczne** generowanie losowych liczb w blockchain'ie jest bardzo trudnym problemem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
 
 ## Typecasting
 
