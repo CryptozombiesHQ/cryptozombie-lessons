@@ -300,14 +300,14 @@ material:
         * @dev La división entera de dos números, omiten el cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
-        // assert(b > 0); // Solidity automatically throws when dividing by 0
+        // assert(b > 0); // Solidity automáticamente arroja cuando divide por 0
         uint256 c = a / b;
-        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+        // assert(a == b * c + a % b); // No hay ningún caso en el que esto no se mantenga
         return c;
         }
         
         /**
-        * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+        * @dev Restar dos números, arroja un desbordamiento (es decir, si el sustraendo es mayor que el minuendo).
         */
         function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
@@ -315,7 +315,7 @@ material:
         }
         
         /**
-        * @dev Adds two numbers, throws on overflow.
+        * @dev Sumar dos números, arroja un desbordamiento.
         */
         function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
@@ -385,11 +385,11 @@ material:
       
       }
 ---
-Congratulations, that completes our ERC721 implementation!
+¡Felicidades, eso completa nuestra implementación de ERC721!
 
-That wasn't so tough, was it? A lot of this Ethereum stuff sounds really complicated when you hear people talking about it, so the best way to understand it is to actually go through an implementation of it yourself.
+Eso no fue tan difícil, ¿verdad? Muchas de estas cosas de Ethereum suenan realmente complicadas cuando escuchas a personas hablar de ellas, así que la mejor manera de entenderlas es realizarlas tú mismo.
 
-Keep in mind that this is only a minimal implementation. There are extra features we may want to add to our implementation, such as some extra checks to make sure users don't accidentally transfer their zombies to address `` (which is called "burning" a token — basically it's sent to an address that no one has the private key of, essentially making it unrecoverable). Or to put some basic auction logic in the DApp itself. (Can you think of some ways we could implement that?)
+Ten en cuenta que esto es sólo una implementación mínima. Hay características adicionales que podemos desear añadir a nuestra implementación, como algunas comprobaciones adicionales para asegurarnos de que los usuarios no transfieran accidentalmente sus zombis a la dirección `` (que se llama "quemar" un token, — básicamente se envía a una dirección a la cual nadie tiene su clave privada, haciéndolo irrecuperable). Or to put some basic auction logic in the DApp itself. (Can you think of some ways we could implement that?)
 
 But we wanted to keep this lesson manageable, so we went with the most basic implementation. If you want to see an example of a more in-depth implementation, you can take a look at the OpenZeppelin ERC721 contract after this tutorial.
 
