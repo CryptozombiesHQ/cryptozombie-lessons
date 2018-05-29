@@ -194,7 +194,7 @@ material:
 
 ¡Increible! Ahora tenemos algunas habilidades especiales para los zombis de nivel alto, dandoles a sus dueños un incentivo por subirlos de nivel. Si queremos podemos añadir más de estos en el futuro.
 
-Vamos a añadir una nueva función: nuestra DApp necesita un metodo para ver el ejército de un usuario - vamos a llamarlo `getZombiesByOwner`.
+Vamos a añadir una nueva función: nuestra DApp necesita un método para ver el ejército de un usuario - vamos a llamarlo `getZombiesByOwner`.
 
 Esta función solo necesita leer datos de la blockchain, por lo que podemos hacer una función `view`. Esta nos brinda un importante tema a la hora de hablar sobre la optimización de gas:
 
