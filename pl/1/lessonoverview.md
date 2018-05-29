@@ -21,12 +21,12 @@ W późniejszych lekcjach, dodamy więcej funkcjonalności, takich jak danie zom
 
 ## Jak działa DNA Zombiaka
 
-The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
+Wygląd Zombi jest oparty na jego "Zombie DNA". Zombie DNA jest proste — jest to 16-to cyfrowa liczba (integer), taka jak poniżej:
 
     8356281049284737
     
 
-Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
+Tak jak prawdziwe DNA, różne jego części odpowiadają za różne cechy. Pierwsze dwie cyfry odnoszą się do typu głowy, kolejne dwie do oczu, itd.
 
 > Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
