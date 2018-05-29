@@ -1,8 +1,8 @@
 ---
-title: More on Functions
+title: Więcej o funkcjach
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -23,10 +23,6 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
-      }
-      
-      // start here
-      
       }
     answer: >
       pragma solidity ^0.4.19;
