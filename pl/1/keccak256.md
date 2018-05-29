@@ -1,8 +1,8 @@
 ---
-title: Keccak256 and Typecasting
+title: Keccak256 i rzutowanie typu
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -26,7 +26,7 @@ material:
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
-      // start here
+      // zacznij tutaj
       }
       
       }
@@ -41,7 +41,7 @@ material:
       function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
       }
 ---
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+Chcemy, aby funkcja `_generateRandomDna` zwracała (na wpół) losowo wartość `uint`. Jak to zrealizować?
 
 Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexidecimal number. A slight change in the string will cause a large change in the hash.
 
