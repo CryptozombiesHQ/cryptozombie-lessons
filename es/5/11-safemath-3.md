@@ -45,7 +45,7 @@ material:
         // preocuparnos de los desbordamientos en readyTime. Nuestra aplicación está atornillada en el 2038 de todos modos ;)
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         zombieToOwner[id] = msg.sender;
-        // 3. Let's use SafeMath's `add` here:
+        // 3. Vamos a utilizar `add` de SafeMath aquí:
         ownerZombieCount[msg.sender]++;
         NewZombie(id, _name, _dna);
         }
@@ -245,9 +245,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -255,7 +255,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -264,7 +264,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -273,8 +273,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -288,12 +288,12 @@ material:
         
         /**
         * @title SafeMath
-        * @dev Math operations with safety checks that throw on error
+        * @dev Operaciones matemáticas con chequeos de seguridad que arrojan un error
         */
         library SafeMath {
         
         /**
-        * @dev Multiplies two numbers, throws on overflow.
+        * @dev Multiplicar dos números, arroja un desbordamiento.
         */
         function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
@@ -305,7 +305,7 @@ material:
         }
         
         /**
-        * @dev Integer division of two numbers, truncating the quotient.
+        * @dev La división entera de dos números, omiten al cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
@@ -315,7 +315,7 @@ material:
         }
         
         /**
-        * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+        * @dev Restar dos números, arroja un desbordamiento (es decir, si el sustraendo es mayor que el minuendo).
         */
         function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
@@ -323,7 +323,7 @@ material:
         }
         
         /**
-        * @dev Adds two numbers, throws on overflow.
+        * @dev Sumar dos números, arroja un desbordamiento.
         */
         function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
@@ -463,11 +463,11 @@ material:
       
       }
 ---
-Great, now our ERC721 implementation is safe from overflows & underflows!
+¡Genial, ahora nuestra implementación de ERC721 está a salvo de desbordamientos!
 
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
+Volviendo al código que escribimos en lecciones anteriores, hay algunos otros lugares donde nuestro código podría ser vulnerables a desbordamientos.
 
-For example, in ZombieAttack we have:
+Por ejemplo, en ZombieAttack tenemos:
 
     myZombie.winCount++;
     myZombie.level++;
