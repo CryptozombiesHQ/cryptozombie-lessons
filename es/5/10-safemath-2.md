@@ -302,7 +302,7 @@ material:
         }
         
         /**
-        * @dev Integer division of two numbers, truncating the quotient.
+        * @dev La división entera de dos números, omiten al cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
