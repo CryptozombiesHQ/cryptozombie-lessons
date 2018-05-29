@@ -36,11 +36,11 @@ material:
       }
       }
 ---
-In this chapter, we're going to learn about Function ***return values***, and function modifiers.
+W tym rozdziale nauczymy się nieco o ***wartościach zwracanych</strong>* przez funkcje i o modyfikatorach funkcji.</p> 
 
-## Return Values
+## Wartości zwracane
 
-To return a value from a function, the declaration looks like this:
+Aby zwrócić wartość z funkcji, deklaracja wygląda tak:
 
     string greeting = "What's up dog";
     
@@ -49,13 +49,13 @@ To return a value from a function, the declaration looks like this:
     }
     
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+W Solidity, deklaracja funkcji zawiera typ wartości zwracanej (w tym przypadku `string`).
 
-## Function modifiers
+## Modyfikatory funkcji
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+Powyższa funkcja, tak właściwie nie zmienia stanu w Solidity — tzn. nie zmienia żadnej wartości ani niczego nie zapisuje.
 
-So in this case we could declare it as a ***view*** function, meaning it's only viewing the data but not modifying it:
+Więc w tym przypadku powinniśmy zadeklarować ją jako ***view***, co oznacza, że jest to funkcja tylko do odczytu danych, ale nie modyfikowania ich:
 
     function sayHello() public view returns (string) {
     
