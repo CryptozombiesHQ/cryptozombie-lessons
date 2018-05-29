@@ -28,9 +28,9 @@ Wygląd Zombi jest oparty na jego "Zombie DNA". Zombie DNA jest proste — jest 
 
 Tak jak prawdziwe DNA, różne jego części odpowiadają za różne cechy. Pierwsze dwie cyfry odnoszą się do typu głowy, kolejne dwie do oczu, itd.
 
-> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
+> Uwaga: W tym tutorialu, uprościmy sobie pewne rzeczy i nasze Zombiaki będą miały tylko 7 różnych typów głów (mimo, że 2 cyfry są w stanie zrobić 100 możliwych kombinacji). Później możemy dodać więcej typów głów jeśli chcemy zwiększyć ilość możliwych zmian wyglądu zombi.
 
-For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
+Na przykład, pierwsze dwie cyfry naszego DNA powyżej to `83`. Aby przełożyć to na rodzaj głowy zombi wykonujemy prostą kalkulację `83 % 7 + 1` = 7. Więc ten Zombi będzie miał siódmy (z kolei) typ głowy.
 
 In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 
