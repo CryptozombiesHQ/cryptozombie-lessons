@@ -43,7 +43,7 @@ material:
 ---
 Chcemy, aby funkcja `_generateRandomDna` zwracała (na wpół) losową wartość `uint`. Jak to zrealizować?
 
-Ethereum posiada wbudowaną funkcję haszującą `keccak256`, która jest wersją SHA3. Funkcja haszująca zasadniczo odwzorowuje wejściowy ciąg znaków (string) na losową 256-bitową liczbę szesnastkową. Mała zmiana w stringu powoduje znaczną zmianę w haszu.
+Ethereum posiada wbudowaną funkcję haszującą `keccak256`, która jest wersją SHA3. Funkcja haszująca zasadniczo przekształca wejściowy ciąg znaków (string) na losową 256-bitową liczbę szesnastkową. Mała zmiana w stringu powoduje znaczną zmianę w haszu.
 
 Jest to przydatne w Ethereum z wielu powodów, ale na ten moment użyjemy tego do wygenerowania pseudo-losowej liczby.
 
@@ -79,4 +79,4 @@ W ciele funkcji `_generateRandomDna` wpiszmy:
 
 1. Pierwsza linijka kodu powinna zawierać hasz `keccak256` ze stringu (`_str`) aby wygenerować pseudo-losową liczbę szesnastkową, rzutuj to na `uint`, a finalnie przechowuj wynik w `rand` typu `uint`.
 
-2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
+2. Chcemy aby nasze DNA było o długości 16 cyfr (pamietasz o `dnaModulus`?). Więc druga linia powinna `zwracać` powyższą wartość modulo (`%`) `dnaModulus`.
