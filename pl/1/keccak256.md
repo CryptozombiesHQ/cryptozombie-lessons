@@ -45,7 +45,7 @@ Chcemy, aby funkcja `_generateRandomDna` zwracała (na wpół) losową wartość
 
 Ethereum posiada wbudowaną funkcję haszującą `keccak256`, która jest wersją SHA3. Funkcja haszująca zasadniczo odwzorowuje wejściowy ciąg znaków (string) na losową 256-bitową liczbę szesnastkową. Mała zmiana w stringu powoduje znaczną zmianę w haszu.
 
-Jest to przydatne w Ethereum z wielu powodów, ale na ten moment użyjemy tego do wygenerowania pseduo-losowej liczby.
+Jest to przydatne w Ethereum z wielu powodów, ale na ten moment użyjemy tego do wygenerowania pseudo-losowej liczby.
 
 Przykład:
 
@@ -57,21 +57,21 @@ Przykład:
 
 Jak widzisz, zwrócona wartość bardzo się różni, pomimo zmiany tylko jednego znaku.
 
-> Uwaga: **Bezpieczne** generowanie losowych liczb w blockchain'ie jest bardzo trudnym problemem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Uwaga: **Bezpieczne** generowanie losowych liczb w blockchain'ie jest bardzo trudnym problemem. Zastosowana przez nas metoda nie jest bezpieczna, lecz w związku z tym, że bezpieczeństwo nie jest naszym priorytetem dla DNA Zombie, możemy pominąć kwestie z tym związane.
 
-## Typecasting
+## Rzutowanie typu
 
-Sometimes you need to convert between data types. Take the following example:
+Czasami będziesz potrzebował przekonwertowania pomiędzy typami danych. Spójrz:
 
     uint8 a = 5;
     uint b = 6;
-    // throws an error because a * b returns a uint, not uint8:
+    // rzuca błąd, bo a * b zróci uint, a nie uint8
     uint8 c = a * b; 
-    // we have to typecast b as a uint8 to make it work:
+    // mamy rzutowanie b jako uint8 aby to zadziałało
     uint8 c = a * uint8(b); 
     
 
-In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
+W powyższym, `a * b` zwraca `uint`, a my próbowaliśmy zachować to jako `uint8`, co mogło powodować potencjalne problemy. By casting it as a `uint8`, it works and the compiler won't throw an error.
 
 # Put it to the test
 
