@@ -71,12 +71,12 @@ Czasami będziesz potrzebował przekonwertowania pomiędzy typami danych. Spójr
     uint8 c = a * uint8(b); 
     
 
-W powyższym, `a * b` zwraca `uint`, a my próbowaliśmy zachować to jako `uint8`, co mogło powodować potencjalne problemy. By casting it as a `uint8`, it works and the compiler won't throw an error.
+W powyższym, `a * b` zwraca `uint`, a my próbowaliśmy zachować to jako `uint8`, co mogło powodować potencjalne problemy. Dzięki rzutowaniu na `uint8`, pozbywamy się problemu i kompilator nie wyrzuci nam błędu.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+W ciele funkcji `_generateRandomDna` wpiszmy:
 
-1. The first line of code should take the `keccak256` hash of `_str` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. Pierwsza linijka kodu powinna zawierać hasz `keccak256` ze stringu (`_str`) aby wygenerować pseudo-losową liczbę szesnastkową, rzutuj to na `uint`, a finalnie przechowuj wynik w `rand` typu `uint`.
 
 2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
