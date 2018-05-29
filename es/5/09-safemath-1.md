@@ -1,9 +1,9 @@
 ---
-title: Preventing Overflows
+title: Previniendo Desbordamientos
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -12,11 +12,11 @@ material:
         pragma solidity ^0.4.19;
         
         import "./ownable.sol";
-        // 1. Import here
+        // 1. Importar aquí:
         
         contract ZombieFactory is Ownable {
         
-        // 2. Declare using safemath here
+        // 2. Declara usando safemath aquí
         
         event NewZombie(uint zombieId, string name, uint dna);
         
@@ -237,9 +237,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -247,7 +247,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -256,7 +256,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -265,8 +265,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -280,12 +280,12 @@ material:
         
         /**
         * @title SafeMath
-        * @dev Math operations with safety checks that throw on error
+        * @dev Operaciones matemáticas con chequeos de seguridad que arrojan un error
         */
         library SafeMath {
         
         /**
-        * @dev Multiplies two numbers, throws on overflow.
+        * @dev Multiplicar dos números, arroja un desbordamiento.
         */
         function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
@@ -297,7 +297,7 @@ material:
         }
         
         /**
-        * @dev Integer division of two numbers, truncating the quotient.
+        * @dev La división entera de dos números, omiten el cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
