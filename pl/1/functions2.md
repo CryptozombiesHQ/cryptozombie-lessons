@@ -55,6 +55,6 @@ Jak widzisz, używamy słowa kluczowego `private` po nazwie funkcji i podobnie j
 
 # Wypróbujmy zatem
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+Nasza funkcja `createZombie` jest obecnie publiczna domyślnie — oznacza to, że każdy może ją wywołać i utworzyć nowego Zombiaka w naszym kontrakcie! Uczyńmy ją prywatną.
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Zmodyfikuj `createZombie` jako funkcję prywatną. Nie zapomnij o konwencji nazewnictwa!
