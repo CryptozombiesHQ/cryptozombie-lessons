@@ -300,9 +300,9 @@ material:
         * @dev La división entera de dos números, omiten el cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
-        // assert(b > 0); // Solidity automáticamente arroja cuando divide por 0
+        // assert(b > 0); // Solidity automatically throws when dividing by 0
         uint256 c = a / b;
-        // assert(a == b * c + a % b); // No hay ningún caso en el que esto no se mantenga
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
         return c;
         }
         
