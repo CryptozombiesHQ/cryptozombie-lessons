@@ -69,14 +69,14 @@ Solidity posiada również funkcje ***pure***, co oznacza, że nie masz dostępu
 
 Ta funkcja nie odczytuje nawet ze stanu aplikacji — jej zwracana wartość zależy od jej parametrów. Więc w takim wypadku deklarujemy funkcję jako ***pure***.
 
-> Uwaga: Może być trudne do zapamiętania to, kiedy oznaczać funkcje jako pure/view. Na szczęście, kompilator Solidity jest dobry pod względem ostrzeżeń informujących i napewno da Ci znać, kiedy powinienieś użyć jednego z tych modyfikatorów.
+> Uwaga: Może być trudne do zapamiętania to, kiedy oznaczać funkcje jako pure/view. Na szczęście, kompilator Solidity jest dobry pod względem wydawania ostrzeżeń i napewno da Ci znać, kiedy powinienieś użyć jednego z tych modyfikatorów.
 
 # Wypróbujmy zatem
 
 Zamierzamy mieć funkcję pomocniczą, która generuje losowe DNA z ciągu znaków (ze stringu).
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Stwórz `prywatną` funkcję o nazwie `_generateRandomDna`. Powinna ona mieć jeden parametr o nazwie `_str` typu (`string`) i zwracać wartość `uint`.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. Ta funkcja będzie pokazywała niektóre ze zmiennych naszego kontraktu, ale nie modyfikowała ich, więc oznacz ją jako `view`.
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. Ciało funkcji pozostaw narazie puste — uzupełnimy je później.
