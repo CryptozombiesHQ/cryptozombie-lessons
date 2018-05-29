@@ -421,7 +421,7 @@ Pero antes de entrar en eso... ¿Qué es una librería?
 
 Una ***librería*** es un tipo de contrato especial en Solidity. Una de las cosas para las cuales es útil, es para adjuntar funciones a tipos de datos nativos.
 
-Por ejemplo, con la librería SafeMath, usaremos la sintaxis `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
+Por ejemplo, con la librería SafeMath, usaremos la sintaxis `using SafeMath for uint256`. La librería SafeMath tiene 4 funciones — `add`, `sub`, `mul` y `div`. Y ahora podemos acceder a estas funciones desde `uint256` de la siguiente manera:
 
     using SafeMath for uint256;
     
@@ -430,14 +430,14 @@ Por ejemplo, con la librería SafeMath, usaremos la sintaxis `using SafeMath for
     uint256 c = a.mul(2); // 5 * 2 = 10
     
 
-We'll look at what these functions do in the next chapter, but for now let's add the SafeMath library to our contract.
+Veremos qué hacen estas funciones en el próximo capítulo, pero por ahora agreguemos la librería SafeMath a nuestro contrato.
 
-## Putting it to the Test
+## Vamos a probarlo
 
-We've already included OpenZeppelin's `SafeMath` library for you in `safemath.sol`. You can take a quick peek at the code now if you want to, but we'll be looking at it in depth in the next chapter.
+Ya hemos incluido la librería `SafeMath` de OpenZeppelin por ti en `safemath.sol`. Ahora puedes echarle un vistazo rápido al código si lo deseas, pero lo veremos en profundidad en el siguiente capítulo.
 
-First let's tell our contract to use SafeMath. We'll do this in ZombieFactory, our very base contract — that way we can use it in any of the sub-contracts that inherit from this one.
+Primero, vamos a decirle a nuestro contrato para utilizar SafeMath. Haremos esto en nuestra ZombieFactory, nuestro contrato base — de esa manera podemos usarlo en cualquiera de los subcontratos que hereden de este.
 
-1. Import `safemath.sol` into `zombiefactory.sol`.
+1. Importa `safemath.sol` en `zombiefactory.sol`.
 
-2. Add the declaration `using SafeMath for uint256;`.
+2. Añade la declaración `using SafeMath for uint256;`.
