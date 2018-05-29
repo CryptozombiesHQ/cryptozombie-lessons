@@ -1,17 +1,17 @@
 ---
-title: Lesson 1 Complete!
+title: Lekcja 1 ukończona!
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   lessonComplete:
     answer: 1
 ---
-Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
+Gratulacje! Ukończyłeś lekcję 1 i stworzyłeś pierwszego zombie w swojej armii.
 
-# Next Steps
+# Kolejne Kroki
 
-This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
+To jest dopiero początek. Będziemy co tydzień wypuszczać nową lekcję CryptoZombies, aby rozbudowywać grę coraz bardziej i rozwijać swoją armię zombie.
 
 ### 1. Sign in to save your progress
 
