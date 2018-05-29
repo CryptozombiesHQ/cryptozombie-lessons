@@ -32,9 +32,9 @@ Tak jak prawdziwe DNA, różne jego części odpowiadają za różne cechy. Pier
 
 Na przykład, pierwsze dwie cyfry naszego DNA powyżej to `83`. Aby przełożyć to na rodzaj głowy zombi wykonujemy prostą kalkulację `83 % 7 + 1` = 7. Więc ten Zombi będzie miał siódmy (z kolei) typ głowy.
 
-In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
+W panelu obok, przesuń suwak `gen głowy` do numeru 7 (czapka mikołaja) i zobacz jakiej cesze odpowiada kod `83`.
 
-# Put it to the test
+# Wypróbujmy zatem
 
 1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
 
