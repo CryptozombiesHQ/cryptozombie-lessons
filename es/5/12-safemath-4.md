@@ -1,9 +1,9 @@
 ---
-title: SafeMath Part 4
+title: SafeMath Parte 4
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -18,7 +18,7 @@ material:
         uint attackVictoryProbability = 70;
         
         function randMod(uint _modulus) internal returns(uint) {
-        // Here's one!
+        // Aquí hay uno!
         randNonce++;
         return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
         }
@@ -28,13 +28,13 @@ material:
         Zombie storage enemyZombie = zombies[_targetId];
         uint rand = randMod(100);
         if (rand <= attackVictoryProbability) {
-        // Here's 3 more!
+        // Aquí hay 3 más!
         myZombie.winCount++;
         myZombie.level++;
         enemyZombie.lossCount++;
         feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
         } else {
-        // ...annnnd another 2!
+        // y...... otros 2!
         myZombie.lossCount++;
         enemyZombie.winCount++;
         _triggerCooldown(myZombie);
@@ -245,9 +245,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -255,7 +255,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -264,7 +264,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -273,8 +273,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -288,12 +288,12 @@ material:
         
         /**
         * @title SafeMath
-        * @dev Math operations with safety checks that throw on error
+        * @dev Operaciones matemáticas con chequeos de seguridad que arrojan un error
         */
         library SafeMath {
         
         /**
-        * @dev Multiplies two numbers, throws on overflow.
+        * @dev Multiplicar dos números, arroja un desbordamiento.
         */
         function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
@@ -305,7 +305,7 @@ material:
         }
         
         /**
-        * @dev Integer division of two numbers, truncating the quotient.
+        * @dev La división entera de dos números, omiten al cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
@@ -315,7 +315,7 @@ material:
         }
         
         /**
-        * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+        * @dev Restar dos números, arroja un desbordamiento (es decir, si el sustraendo es mayor que el minuendo).
         */
         function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
@@ -323,7 +323,7 @@ material:
         }
         
         /**
-        * @dev Adds two numbers, throws on overflow.
+        * @dev Sumar dos números, arroja un desbordamiento.
         */
         function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
@@ -334,7 +334,7 @@ material:
         
         /**
         * @title SafeMath32
-        * @dev SafeMath library implemented for uint32
+        * @dev Librería SafeMath implementada para uint32
         */
         library SafeMath32 {
         
@@ -368,7 +368,7 @@ material:
         
         /**
         * @title SafeMath16
-        * @dev SafeMath library implemented for uint16
+        * @dev Librería SafeMath implementada para uint16
         */
         library SafeMath16 {
         
@@ -441,10 +441,10 @@ material:
       }
       }
 ---
-Great, now we can implement SafeMath on all the types of `uint`s we used in our DApp!
+¡Genial! ¡Ahora podemos implementar SafeMath en todos los tipos de `uint` que usamos en nuestra DApp!
 
-Let's fix all those potential issues in `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 
+Arreglemos todos esos problemas potenciales en `ZombieAttack`. (También había un `zombies[_zombieId].level++;` que necesitaba ser arreglado en `ZombieHelper`, pero nosotros nos ocupamos de eso ya, así no gastamos un capítulo adicional para hacerlo 
 
-## Putting it to the Test
+## Vamos a probarlo
 
-Go ahead and implement SafeMath methods on all the `++` increments in `ZombieAttack`. We've left comments in the code to make them easy to find.
+Adelante e implementa los métodos de SafeMath en todos los incrementos `++` que aparecen en `ZombieAttack`. Hemos dejado comentarios en el código para que sean fáciles de encontrar.
