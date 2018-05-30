@@ -17,8 +17,8 @@ material:
         contract ZombieFactory is Ownable {
         
         using SafeMath for uint256;
-        // 1. Declara using SafeMath32 for uint32
-        // 2. Declara using SafeMath16 for uint16
+        // 1. Declara que estamos usando SafeMath32 para uint32
+        // 2. Declara que estamos usando SafeMath16 para uint16
         
         event NewZombie(uint zombieId, string name, uint dna);
         
@@ -484,24 +484,24 @@ Sin embargo, tenemos un pequeño problema — `winCount` y `lossCount` son de t
       return c;
     }
     
-    // If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-    // So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+    // Si llamamos `.add` en un `uint8`, se convierte en `uint256`.
+    // Entonces no se desbordará en 2^8, ya que 256 es un `uint256` válido.
     
 
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
+Esto significa que vamos a tener que implementar 2 librerías más para evitar los casos de desbordamientos con `uint16` y `uint32`. Podemos llamarlos `SafeMath16` y `SafeMath32`.
 
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
+El código será exactamente igual al de SafeMath, excepto que todas las instancias de `uint256` serán reemplazadas por `uint32` o `uint16`.
 
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
+Hemos avanzado esta parte e implementado el código por ti — ve a `safemath.sol` para ver el código.
 
-Now we need to implement it in ZombieFactory.
+Ahora tenemos que implementarlo en ZombieFactory.
 
-## Putting it to the Test
+## Vamos a probarlo
 
-Assignment:
+Tareas:
 
-1. Declare that we're using `SafeMath32` for `uint32`.
+1. Declara que estamos usando `SafeMath32` para `uint32`.
 
-2. Declare that we're using `SafeMath16` for `uint16`.
+2. Declara que estamos usando `SafeMath16` para `uint16`.
 
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
+3. Hay una línea más de código en ZombieFactory donde deberíamos usar un método de SafeMath. Hemos dejado un comentario para indicar dónde.
