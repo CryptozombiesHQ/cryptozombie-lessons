@@ -479,46 +479,44 @@ Por lo tanto, también tenemos comentarios de varias líneas:
         esto tan bueno como puede ser.
     
         Sepa que este es todavía el comienzo del desarrollo de Blockchain.
-        We've come very far but there are so many ways to make this
-        community better. If we made a mistake somewhere, you can
-        help us out and open a pull request here:
+        Hemos llegado muy lejos, pero hay muchas maneras de hacer esto 
+        mejor comunidad. Si cometimos un error en alguna parte, puedes
+        ayudarnos y abrir una pull request aquí:
         https://github.com/loomnetwork/cryptozombie-lessons
     
-        Or if you have some ideas, comments, or just want to say
-        hi - drop by our Telegram community at https://t.me/loomnetwork
-      */
-    }
+        O si tiene algunas ideas, comentarios o simplemente quiere decirnos
+        hola - Únete a nuestra comunidad de Telegram en https://t.me/loomnetwork
     
 
-In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
+En particular, es una buena práctica comentar tu código para explicar el comportamiento esperado de cada función en tu contrato. De esta forma, otro desarrollador (¡O tu, después de un paréntesis de 6 meses en un proyecto!) puede leer rápidamente y comprender a un nivel alto lo que hace su código sin tener que leer el código en sí.
 
-The standard in the Solidity community is to use a format called ***natspec***, which looks like this:
+El estándar en la comunidad Solidity es usar un formato llamado ***natspec***, el cual tiene esta apariencia:
 
-    /// @title A contract for basic math operations
+    /// @title Un contrato para operaciones básicas de matemáticas
     /// @author H4XF13LD MORRIS 
-      /// @param y the second uint.
+      /// @param y el segundo uint.
       /// @return z the product of (x * y)
-      /// @dev This function does not currently check for overflows
+      /// @dev Esta función actualmente no verifica desbordamientos
       function multiply(uint x, uint y) returns (uint z) {
-        // This is just a normal comment, and won't get picked up by natspec
+        // Este es solo un comentario normal, y no será recogido por natspec
         z = x * y;
       }
     }
     
 
-`@title` and `@author` are straightforward.
+`@title` y `@author` son simples.
 
-`@notice` explains to a **user** what the contract / function does. `@dev` is for explaining extra details to developers.
+`@notice` explica a un **usuario** lo que hace el contrato o la función de este. `@dev` es para explicar detalles adicionales a los desarrolladores.
 
-`@param` and `@return` are for describing what each parameter and return value of a function are for.
+`@param` y `@return` son para describir para qué sirve cada parámetro y el valor de retorno de una función.
 
-Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a `@dev` note explaining what each function does.
+Tenga en cuenta que no siempre tiene que usar todas estas etiquetas para cada función — todas las etiquetas son opcionales. Pero al menos, deje una nota `@dev` explicando lo que hace cada función.
 
-# Put it to the test
+# Vamos a probarlo
 
-If you haven't noticed by now, the CryptoZombies answer-checker ignores comments when it checks your answers. So we can't actually check your natspec code for this chapter ;)
+Si no lo has notado todavía, el corrector de CryptoZombies ignora los comentarios cuando verifica sus respuestas. Por lo tanto, no podemos verificar su código utilizando comentarios natspec ;)
 
-However, by now you're a Solidity whiz — we're just going to assume you've got this!
+Sin embargo, a estas alturas ya eres un genio de Solidity — ¡Vamos a asumir que lo has entendido!
 
 Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
