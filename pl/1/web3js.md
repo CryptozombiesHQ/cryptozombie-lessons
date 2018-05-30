@@ -47,8 +47,8 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
         dnaStr = "0" + dnaStr
     
       let zombieDetails = {
-        // Dwie pierwsze cyfry tworzą głowę Zombiaka. We have 7 possible heads, so % 7
-        // to get a number 0 - 6, then add 1 to make it 1 - 7. Then we have 7
+        // Dwie pierwsze cyfry tworzą głowę Zombiaka. Mamy 7 możliwych głów, więc % 7
+     // aby otrzymać numer od 0 - 6, następnie dodajemy 1 aby uzyskać 1 - 7. Then we have 7
         // image files named "head1.png" through "head7.png" we load based on
         // this number:
         headChoice: dnaStr.substring(0, 2) % 7 + 1,
