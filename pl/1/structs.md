@@ -40,7 +40,7 @@ Struktury pozwalają tworzyć bardziej skomplikowane typy danych, które mają w
 
 # Wypróbujmy zatem
 
-W naszej aplikacji chcemy stworzyć jakieś Zombiaki! I te Zombiaki będą posiadały wiele właściwości, więc jest to idealny przypadek, aby zastosować do niego strukturę.
+W naszej aplikacji chcemy stworzyć jakieś Zombiaki! Będą one posiadały wiele właściwości, więc jest to idealny przypadek, aby zastosować strukturę.
 
 1. Utwórz `strukturę` i nazwij ją `Zombie`.
 
