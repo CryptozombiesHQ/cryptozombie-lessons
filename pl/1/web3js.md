@@ -48,15 +48,15 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
     
       let zombieDetails = {
         // Dwie pierwsze cyfry tworzą głowę Zombiaka. Mamy 7 możliwych głów, więc % 7
-     // aby otrzymać numer od 0 - 6, następnie dodajemy 1 aby uzyskać 1 - 7. Then we have 7
-        // image files named "head1.png" through "head7.png" we load based on
-        // this number:
+        // aby otrzymać numer od 0 - 6, następnie dodajemy 1 aby uzyskać 1 - 7. Wtedy otrzymujemy 7
+        // plików z obrazkami nazwanych odpowiednio "head1.png" do "head7.png" załadowujemy opierając się 
+        // na tej liczbie:
         headChoice: dnaStr.substring(0, 2) % 7 + 1,
-        // 2nd 2 digits make up the eyes, 11 variations:
+        // druga para, złożóna z 2-óch cyfr tworzy oczy, 11 modyfikacji:
         eyeChoice: dnaStr.substring(2, 4) % 11 + 1,
-        // 6 variations of shirts:
+        // 6 modyfikacji koszuli:
         shirtChoice: dnaStr.substring(4, 6) % 6 + 1,
-        // last 6 digits control color. Updated using CSS filter: hue-rotate
+        // ostatnie 6 cyfr wpływa na kolor. Updated using CSS filter: hue-rotate
         // which has 360 degrees:
         skinColorChoice: parseInt(dnaStr.substring(6, 8) / 100 * 360),
         eyeColorChoice: parseInt(dnaStr.substring(8, 10) / 100 * 360),
