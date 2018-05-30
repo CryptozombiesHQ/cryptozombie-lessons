@@ -1,39 +1,39 @@
 ---
-title: Wrapping It Up
+title: Empaquetandolo todo
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
-skipCheckAnswer: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
+skipCheckAnswer: verdadero
 material:
-  saveZombie: false
+  saveZombie: falso
   zombieDeck:
     zombie:
       lesson: 5
-    hideSliders: true
+    hideSliders: verdadero
     answer: 1
 ---
-Congratulations! That concludes Lesson 5.
+¡Felicidades! Eso concluye la Lección 5.
 
-As a reward, we've transferred you your very own Level 10 **H4XF13LD MORRIS </p> 
+Como recompensa. ¡Te transferimos tu propio zombi de nivel 10 **H4XF13LD MORRIS </p> 
 
-(Omg, the legendary **H4XF13LD MORRIS </p> 
+(OH POR DIOS, el legendario zombi **H4XF13LD MORRIS </p> 
 
-Now you have 4 zombies in your army.
+Ahora tienes 4 zombis en tu ejército.
 
-Before you move on, you have the option to rename any of them if you'd like by clicking on them to the right and entering a new name. (Though I don't know why you would ever want to rename **H4XF13LD MORRIS </p> 
+Antes de seguir adelante, tienes la opción de cambiar el nombre de cualquiera de ellos si lo deseas haciendo clic en ellos a la derecha y escribiendo un nuevo nombre. (Aunque no sé por qué querrías renombrar **H4XF13LD MORRIS </p> 
 
-## Let's recap:
+## Recapitulemos:
 
-In this lesson we learned about:
+En esta lección aprendimos sobre:
 
-- Tokens, the ERC721 standard, and tradable assets/zombies
-- Libraries and how to use them
-- How to prevent overflows and underflows using the SafeMath library
-- Commenting your code and the natspec standard
+- Tokens, el estándar ERC721, y comerciar con activos/zombis
+- Librerías y cómo usarlas
+- Cómo prevenir desbordamientos por exceso (overflows) y por defecto (underflows) usando la librería SafeMath
+- Comentar tu código y el estándar natspec
 
-This lesson concludes our game's Solidity code! (For now — we may add even more lessons in the future).
+¡Esta lección concluye el código en Solidity de nuestro juego! (Por ahora — podemos añadir aún más lecciones en el futuro).
 
-In the next 2 lessons, we're going to look at how to deploy your contracts and interact with them using ***web3.js*** (so you can build a front-end for your DApp).
+En las próximas 2 lecciones, vamos a ver cómo desplegar sus contratos e interactuar con ellos usando ***web3.js*** (para que pueda construir un front-end para su DApp).
 
-Go ahead and rename any of your zombies if you like, then proceed to the next chapter to complete the lesson.
+Continúa y renombra cualquiera de tus zombis si lo deseas, luego pasa al siguiente capítulo para completar la lección.
