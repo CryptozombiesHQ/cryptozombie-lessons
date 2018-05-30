@@ -1,8 +1,8 @@
 ---
-title: Structs
+title: Struktury
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -14,7 +14,7 @@ material:
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
       
-      // start here
+      // zacznij tutaj
       
       }
     answer: >
