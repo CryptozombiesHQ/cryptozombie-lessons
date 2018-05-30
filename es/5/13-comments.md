@@ -518,10 +518,10 @@ Si no lo has notado todavía, el corrector de CryptoZombies ignora los comentari
 
 Sin embargo, a estas alturas ya eres un genio de Solidity — ¡Vamos a asumir que lo has entendido!
 
-Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
+Pruébalo de todos modos e intenta añadir algunas etiquetas natspec a `ZombieOwnership`:
 
-1. `@title` — E.g. A contract that manages transfering zombie ownership
+1. El `@title` — Es decir. Un contrato que gestiona la transferencia de la propiedad de un zombi
 
-2. `@author` — Your name!
+2. `@author` — Tu nombre!
 
-3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft
+3. `@dev` — Compatible con la implementación de OpenZeppelin borrador de la especificación ERC721
