@@ -80,7 +80,7 @@ La aplicación con la interfaz de usuario podría entonces estar escuchando el e
 
 Queremos tener un evento que nos haga saber cada vez que un zombi nuevo se ha creado, de forma que pueda mostrarnoslo.
 
-1. Declara un evento `evento` llamado `NewZombie`. Debería pasar las variables `zombieId` (un `uint`), `name` (un `string`), y `dna` (un `uint`).
+1. Declara un evento `event` llamado `NewZombie`. Debería pasar las variables `zombieId` (un `uint`), `name` (un `string`), y `dna` (un `uint`).
 
 2. Modifica la función `createZombie` para lanzar el evento `NewZombie` después de haber añadido el nuevo Zombi a nuestro array de `zombies`.
 
