@@ -36,6 +36,6 @@ W panelu obok, przesuń suwak `gen głowy` do numeru 7 (czapka mikołaja) i zoba
 
 # Wypróbujmy zatem
 
-1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
+1. Pobaw się suwakami, znajdującymi się po prawej stronie. Poeksperymentuj, aby zobaczyć jak różne wartości liczbowe odpowiadają różnym aspektom wyglądu Zombiaka.
 
-Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
+Ok, wystarczy. Kiedy będziesz gotowy, kliknij "Następny Rozdział" poniżej i zanurz się w nauce Solidity!
