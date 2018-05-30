@@ -46,7 +46,7 @@ En este capítulo aprenderemos sobre los ***valores de retorno*** de una funció
 
 Para devolver un valor desde una función, la declaración es la siguiente:
 
-    string greeting = "Que tal viejo";
+    string greeting = "What's up dog";
     
     function sayHello() public returns (string) {
       return greeting;
