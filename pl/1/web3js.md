@@ -26,7 +26,7 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
     var ZombieFactory = ZombieFactoryContract.at(contractAddress)
     // `ZombieFactory` has access to our contract's public functions and events
     
-    // Rodzaj nasłuchiwania eventu, które odbiera daną wejściową:
+    // Rodzaj nasłuchiwania eventu, który odbiera daną wejściową:
     $("#ourButton").click(function(e) {
       var name = $("#nameInput").val()
       // Call our contract's `createRandomZombie` function:
