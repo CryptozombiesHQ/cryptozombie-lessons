@@ -50,7 +50,7 @@ Recuerdas nuestra estructura `Person` en el ejemplo anterior?
 
 Ahora vamos a aprender como crear una nueva persona `Person`s y añadirlo a nuestro array `people`.
 
-    // crear un nuevo Persona:
+    // crear un nuevo Person:
     Person satoshi = Person(172, "Satoshi");
     
     // Añade esta persona a nuestro Array:
