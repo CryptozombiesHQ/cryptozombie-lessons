@@ -23,7 +23,7 @@ material:
       
       Zombie[] public zombies;
       
-      // declara los mapeos aquí
+      // declara los mappings aquí
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
@@ -63,7 +63,7 @@ Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
 
 La blockchain de Ethereum está creada por ***cuentas***, las cuales podrían ser como cuentas bancarias. Una cuenta tiene un balance de ***Ether*** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
 
-Cada cuenta tiene una `dirección`, que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
+Cada cuenta tiene una dirección `address`, que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
