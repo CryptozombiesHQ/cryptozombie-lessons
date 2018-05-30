@@ -44,7 +44,7 @@ Deklaracja funkcji w Solidity wygląda następująco:
 
 To jest funkcja o nazwie `eatHamburgers`, która odbiera dwa parametry: typu `string` i typu `uint`. Na tą chwilę ciało funkcji jest puste.
 
-> Uwaga: Konwencją jest (lecz nie jest to wymagane) rozpoczęcie nazw zmiennych parametrów funkcji poprzez podkreślnik (`_`) w celu rozróżnienia ich od zmiennych globalnych. Będziemy się tego trzymać w naszym tutorialu.
+> Uwaga: Konwencją jest (lecz nie jest to wymagane) rozpoczynanie nazw zmiennych parametrów funkcji poprzez podkreślnik (`_`) w celu rozróżnienia ich od zmiennych globalnych. Będziemy się tego trzymać w naszym tutorialu.
 
 Wywołałbyś tę funkcję tak:
 
