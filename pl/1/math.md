@@ -1,8 +1,8 @@
 ---
-title: Math Operations
+title: Operacje Matematyczne
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -12,8 +12,7 @@ material:
       contract ZombieFactory {
       
       uint dnaDigits = 16;
-      //start here
-      
+      // zacznij tutaj
       }
     answer: >
       pragma solidity ^0.4.19;
@@ -22,7 +21,7 @@ material:
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
 ---
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+Matematyka w Solidity jest całkiem prosta. Następujące operacje są takie same, jak w większości języków programowania:
 
 * Addition: `x + y`
 * Subtraction: `x - y`,
