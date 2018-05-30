@@ -1,9 +1,9 @@
 ---
-title: Comments
+title: Comentarios
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'comprobarRespuesta'
+  - 'pistas'
+requireLogin: verdadero
 material:
   editor:
     language: sol
@@ -15,7 +15,7 @@ material:
         import "./erc721.sol";
         import "./safemath.sol";
         
-        /// TODO: Replace this with natspec descriptions
+        /// TODO: Reemplaza esto con descripciones natspec
         contract ZombieOwnership is ZombieAttack, ERC721 {
         
         using SafeMath for uint256;
@@ -243,9 +243,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -253,7 +253,7 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
         * account.
         */
         function Ownable() public {
@@ -262,7 +262,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -271,8 +271,8 @@ material:
         
         
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
+        * @param newOwner La dirección para transferir la propiedad a.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
@@ -286,12 +286,12 @@ material:
         
         /**
         * @title SafeMath
-        * @dev Math operations with safety checks that throw on error
+        * @dev Operaciones matemáticas con chequeos de seguridad que arrojan un error
         */
         library SafeMath {
         
         /**
-        * @dev Multiplies two numbers, throws on overflow.
+        * @dev Multiplicar dos números, arroja un desbordamiento.
         */
         function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
@@ -303,7 +303,7 @@ material:
         }
         
         /**
-        * @dev Integer division of two numbers, truncating the quotient.
+        * @dev La división entera de dos números, omiten al cociente.
         */
         function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
@@ -313,7 +313,7 @@ material:
         }
         
         /**
-        * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+        * @dev Restar dos números, arroja un desbordamiento (es decir, si el sustraendo es mayor que el minuendo).
         */
         function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
@@ -321,7 +321,7 @@ material:
         }
         
         /**
-        * @dev Adds two numbers, throws on overflow.
+        * @dev Sumar dos números, arroja un desbordamiento.
         */
         function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
@@ -332,7 +332,7 @@ material:
         
         /**
         * @title SafeMath32
-        * @dev SafeMath library implemented for uint32
+        * @dev Librería SafeMath implementada para uint32
         */
         library SafeMath32 {
         
@@ -366,7 +366,7 @@ material:
         
         /**
         * @title SafeMath16
-        * @dev SafeMath library implemented for uint16
+        * @dev Librería SafeMath implementada para uint16
         */
         library SafeMath16 {
         
@@ -452,33 +452,33 @@ material:
       }
       }
 ---
-The Solidity code for our zombie game is finally finished!
+¡El código de Solidity para nuestro juego zombi finalmente ha terminado!
 
-In the next lessons, we'll look at how to deploy the code to Ethereum, and how to interact with it with Web3.js.
+En las próximas lecciones, veremos cómo desplegar el código en Ethereum y cómo interactuar con él utilizando Web3.js.
 
-But one final thing before we let you go in Lesson 5: Let's talk about **commenting your code**.
+Pero una última cosa antes de que te dejemos ir de la Lección 5. Hablemos de **comentar tu código**.
 
-## Syntax for comments
+## Sintaxis para los comentarios
 
-Commenting in Solidity is just like JavaScript. You've already seen some examples of single line comments throughout the CryptoZombies lessons:
+Comentar en Solidity es como JavaScript. Ya has visto algunos ejemplos de comentarios de una sola línea a lo largo de las lecciones de CryptoZombies:
 
-    // This is a single-line comment. It's kind of like a note to self (or to others)
+    // Este es un comentario de una sola línea. Es como una nota para uno mismo (o para otros)
     
 
-Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time.
+Simplemente añade `//` en cualquier lugar y estarás comentando. Es tan fácil que deberías hacerlo todo el tiempo.
 
-But I hear you — sometimes a single line is not enough. You are born a writer, after all!
+Pero te entiendo— a veces una sola línea no es suficiente. ¡Eres escritor, después de todo!
 
-Thus we also have multi-line comments:
+Por lo tanto, también tenemos comentarios de varias líneas:
 
     contract CryptoZombies {
-      /* This is a multi-lined comment. I'd like to thank all of you
-        who have taken your time to try this programming course.
-        I know it's free to all of you, and it will stay free
-        forever, but we still put our heart and soul into making
-        this as good as it can be.
+      /* Este es un comentario de múltiples líneas. Me gustaría agradecerles a todos
+        los que se han tomado su tiempo para probar este curso de programación.
+        Sé que es gratis para todos ustedes, y se mantendrá libre
+        para siempre, pero aún ponemos nuestro corazón y nuestra alma en hacer
+        esto tan bueno como puede ser.
     
-        Know that this is still the beginning of Blockchain development.
+        Sepa que este es todavía el comienzo del desarrollo de Blockchain.
         We've come very far but there are so many ways to make this
         community better. If we made a mistake somewhere, you can
         help us out and open a pull request here:
