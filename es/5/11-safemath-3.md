@@ -334,7 +334,7 @@ material:
         
         /**
         * @title SafeMath32
-        * @dev SafeMath library implemented for uint32
+        * @dev Librería SafeMath implementada para uint32
         */
         library SafeMath32 {
         
@@ -368,7 +368,7 @@ material:
         
         /**
         * @title SafeMath16
-        * @dev SafeMath library implemented for uint16
+        * @dev Librería SafeMath implementada para uint16
         */
         library SafeMath16 {
         
