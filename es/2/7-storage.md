@@ -1,5 +1,5 @@
 ---
-title: Storage vs Memoria
+title: Almacenamiento vs Memoria
 actions:
   - 'comprobarRespuesta'
   - 'pistas'
