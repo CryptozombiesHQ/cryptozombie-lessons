@@ -1,8 +1,8 @@
 ---
-title: Putting It Together
+title: Łacząc to razem...
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -30,7 +30,7 @@ material:
       return rand % dnaModulus;
       }
       
-      // start here
+      // zacznij tutaj
       
       }
     answer: >
@@ -45,16 +45,16 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+Jesteśmy bliscy ukończenia naszego generatora losowych Zombi! Stwórzmy teraz funkcję, która "spina" wszystko razem.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+Zamierzamy napisać publiczną funkcję, która na wejściu pobiera nanzwę Zombiaka i używa tej nazwy do stworzenia Zombi z losowym DNA.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). *(Note: Declare this function `public` just as you declared previous functions `private`)*
+1. Stwórz `publiczną` funkcję o nazwie `createRandomZombie`. Będzie ona pobierała jeden parametr o nazwie `_name` (typu `string`). *(Uwaga: Zadeklaruj tę funkcję `public` tak jak zadeklarowałeś poprzednie funkcje `private`)* 
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. Pierwsza linia tej funkcji powinna wywołać funkcję `_generateRandomDna` z argumentem `_name` i przechowywać jako `uint` o nazwie `randDna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. Druga linia wywołuje funkcje `_createZombie` z argumentami `_name` i `randDna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. Rozwiązaniem są 4 linie kodu (włączając w to klamrę zamykającą `}` funkcję).
