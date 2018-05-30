@@ -99,9 +99,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Apropiable
-        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
-        * funciones, esto simplifica la implementación de "permisos de usuario".
+        * @title Ownable
+        * @dev El Contraro Ownable tiene una dirección de propietario, y ofrece funciones de control
+        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
