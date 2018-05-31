@@ -172,10 +172,10 @@ Nuestro juego tendrá algunos incentivos para la gente que suba de nivel a sus z
 
 Vamos a implementar estas funciones abajo. Aquí tienes un ejemplo de la lección anterior como referencia:
 
-    // Un mapeo para guardar la edad del usuario:
+    // Un mapping para guardar la edad del usuario:
     mapping (uint => uint) public age;
     
-    // Modificador que requiere que ese usuario sea mayor a cierta edad:
+    // Un modificador que requiere que ese usuario sea mayor a cierta edad:
     modifier olderThan(uint _age, uint _userId) {
       require (age[_userId] >= _age);
       _;
