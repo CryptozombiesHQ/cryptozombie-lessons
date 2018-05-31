@@ -56,8 +56,8 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
         eyeChoice: dnaStr.substring(2, 4) % 11 + 1,
         // 6 modyfikacji koszuli:
         shirtChoice: dnaStr.substring(4, 6) % 6 + 1,
-        // ostatnie 6 cyfr wpływa na kolor. Updated using CSS filter: hue-rotate
-        // which has 360 degrees:
+        // ostatnie 6 cyfr wpływa na kolor. Aktualizacja przy użyciu filtra CSS: hue-rotate
+        // który ma 360 stopni:
         skinColorChoice: parseInt(dnaStr.substring(6, 8) / 100 * 360),
         eyeColorChoice: parseInt(dnaStr.substring(8, 10) / 100 * 360),
         clothesColorChoice: parseInt(dnaStr.substring(10, 12) / 100 * 360),
@@ -68,9 +68,9 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
     }
     
 
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
+To, czym zajmuję się kod Javascript, jest pobieranie wartości generowanych w `zombieDetails` i użycie trochę przeglądarkowej magii Javascriptu (używamy Vue.js) aby zamieniać obrazki i zastosowywać filtry CSS. Otrzymasz do tego cały kod w późniejszej lekcji.
 
-# Give it a try!
+# Spróbuj!
 
 Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
 
