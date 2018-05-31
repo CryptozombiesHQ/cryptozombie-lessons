@@ -86,11 +86,11 @@ Tutaj mamy przykład użycia `msg.sender` i zaktualizowania `mapowania`:
 
 W tym trywialnym przykładzie, każdy może wywołać `setMyNumber` i przechować `uint` w naszym kontrakcie, który byłby związany z jego adresem. I wtedy, kiedy wywoła `whatIsMyNumber`, zwróci mu `uint`, który przechował.
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+Używanie `msg.sender` daje Ci bezpieczeństwo w blockchain'ie Ethereum — jedyna drogą, kiedy ktoś może zmodyfikować czyjeś dane, jest kradzież prywatnego klucza związanego z adresem Ethereum.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+Zaktualizujmy funkcję `_createZombie` z lekcji 1 tak, aby dołączyć własnośc Zombi, gdy ktokolwiek wywoła tę funkcję.
 
 1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
 
