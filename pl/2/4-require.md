@@ -1,8 +1,8 @@
 ---
 title: Require
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -39,15 +39,13 @@ material:
       }
       
       function createRandomZombie(string _name) public {
-      // start here
+      // zacznij tutaj
       uint randDna = _generateRandomDna(_name);
       _createZombie(_name, randDna);
       }
       
       }
     answer: >
-      pragma solidity ^0.4.19;
-      
       contract ZombieFactory {
       event NewZombie(uint zombieId, string name, uint dna);
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
@@ -59,7 +57,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+W lekcji 1, zrobiliśmy tak, aby użytkownicy mieli możliwość tworzenia nowych Zombi poprzez wywołanie `createRandomZombie` i wpisanie jego nazwy. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
 
 Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
 
