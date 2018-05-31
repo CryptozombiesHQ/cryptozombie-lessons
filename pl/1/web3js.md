@@ -15,7 +15,7 @@ Nasz kontrakt Solidity jest gotowy! Teraz potrzebujemy napisać aplikacje fronte
 
 Ethereum posiada bibliotekę Javascript o nazwie ***Web3.js***.
 
-W późniejszych lekcjach, zagłębimy się w temat rozmieszenia kontraktu i ustawienia Web3.js. Lecz na tą chwile, spójrz na przykład kodu, jak Web3.js oddziaływuje na nasz rozlokowany kontrakt.
+W późniejszych lekcjach, zagłębimy się w temat rozmieszczania kontraktu i ustawienia Web3.js. Lecz na tą chwile, spójrz na przykład kodu, jak Web3.js oddziaływuje na nasz rozlokowany kontrakt.
 
 Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
 
@@ -72,6 +72,6 @@ To, czym zajmuję się kod Javascript, jest pobieranie wartości generowanych w 
 
 # Spróbuj!
 
-Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
+Śmiało — wpisz nazwę w polu po prawej stronie i zobacz, jakiego Zombiaka otrzymasz!
 
-**Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**
+**Jeśli masz juz Zombi, z którego jestes zadowolony to kliknij "Następny Rozdział" poniżej, aby zapisać swojego Zombi i ukończyć pierwszą lekcję!**
