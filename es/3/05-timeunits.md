@@ -173,7 +173,7 @@ Aquí un ejemplo de como estas unidades pueden ser útiles:
 
     uint lastUpdated;
     
-    // Ajustamos `lastUpdated` a `now
+    // Configuramos `lastUpdated` a `now
     function updateTimestamp() public {
       lastUpdated = now;
     }
