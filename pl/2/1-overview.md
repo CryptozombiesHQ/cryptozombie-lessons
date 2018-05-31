@@ -28,8 +28,8 @@ Aby się tego dowiedzieć... Musisz ukończyć lekcje 2!
 
 # Wypróbujmy zatem
 
-Po prawej mamy proste demo karmienia. Kliknij na człowieka aby zobaczyć co się dzieje gdy Twój Zombi się karmi!
+Po prawej mamy proste demo karmienia. Kliknij na człowieka aby zobaczyć co się dzieje, gdy Twój Zombi się karmi!
 
-Pewnie zauważyłeś, że nowe DNA Zombiaka jest określane przez oryginalne DNA Zombi oraz DNA hosta.
+Pewnie zauważyłeś, że nowe DNA Zombiaka jest określane przez oryginalne DNA Zombi oraz DNA hosta (człowieka w tym przypadku).
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+Kiedy będziesz gotowy, kliknij przycisk "Następny Rozdział" aby zacząć tworzyć grę dla wielu graczy.
