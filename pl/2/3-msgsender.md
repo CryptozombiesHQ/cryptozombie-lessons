@@ -1,8 +1,8 @@
 ---
 title: Msg.sender
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -28,7 +28,7 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
-      // start here
+      // zacznij tutaj
       NewZombie(id, _name, _dna);
       }
       
@@ -57,9 +57,9 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
+Teraz, kiedy mamy już mapowania zawierające informacje o tym, kto jest posiadaczem Zombi, będziemy chcieli aktualizować metodę `_createZombie` aby ich używać.
 
-In order to do this, we need to use something called `msg.sender`.
+Aby to zrobić, musimy użyć czegoś o nazwie `msg.sender`.
 
 ## msg.sender
 
