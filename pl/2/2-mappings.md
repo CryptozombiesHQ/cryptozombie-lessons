@@ -59,9 +59,9 @@ Zróbmy z naszej gry multiplayer poprzez nadanie Zombiakom z naszej bazy właśc
 
 Aby to zrobic, potrzebujemy 2 nowe typy danych: `mapping` i `address`.
 
-## Addresses
+## Adresy
 
-The Ethereum blockchain is made up of ***accounts***, which you can think of like bank accounts. An account has a balance of ***Ether*** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
+Blockchain sieci Ethereum jest złożony z ***kont***, o których można myśleć jak o kontach bankowych. Konto posiada saldo ***Etheru*** (waluta używana w blockchain'ie Ethereum) i jesteśmy w stanie wysyłac oraz odbierać płatności do innych kont, tak samo jak z Twojego konta bankowego możesz przelać pieniądze na inne konto bankowe.
 
 Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
 
