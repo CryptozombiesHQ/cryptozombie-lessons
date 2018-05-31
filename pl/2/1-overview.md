@@ -20,16 +20,16 @@ Jak zamierzamy tworzyć nowe Zombi? Poprzez karmienie ich innymi formami życia!
 
 ## Karmienie Zombiaka
 
-Gdy Zombi karmi się, infekuje hosta wirusem. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+Gdy Zombi karmi się, infekuje hosta wirusem. Nastepnie wirus zmienia hosta w nowego Zombi, który dołącza do Twojej armii. Nowe DNA jest obliczane z DNA poprzedniego Zombi oraz DNA hosta.
 
-And what do our zombies like to feed on most?
+A co Zombi lubią najbardziej?
 
-To find that out... You'll have to complete lesson 2!
+Aby się tego dowiedzieć... Musisz ukończyć lekcje 2!
 
-# Put it to the test
+# Wypróbujmy zatem
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
+Po prawej mamy proste demo karmienia. Kliknij na człowieka aby zobaczyć co się dzieje gdy Twój Zombi się karmi!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+Pewnie zauważyłeś, że nowe DNA Zombiaka jest określane przez oryginalne DNA Zombi oraz DNA hosta.
 
 When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
