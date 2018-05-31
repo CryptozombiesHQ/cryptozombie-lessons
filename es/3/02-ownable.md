@@ -1,5 +1,5 @@
 ---
-title: Contratos Apropiables
+title: Contratos Ownable
 actions:
   - 'comprobarRespuesta'
   - 'pistas'
@@ -100,7 +100,7 @@ material:
       "ownable.sol": |
         /**
         * @title Ownable
-        * @dev El Contraro Ownable tiene una dirección de propietario, y ofrece funciones de control
+        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
         * permisos básicos, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
@@ -167,7 +167,7 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
 
     /**
     * @title Ownable
-    * @dev El Contraro Ownable tiene una dirección de propietario, y ofrece funciones de control
+    * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
     * permisos básicos, esto simplifica la implementación de "permisos de usuario".
      */
     contract Ownable {
