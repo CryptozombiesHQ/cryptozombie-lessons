@@ -85,12 +85,12 @@ Definiowanie `mapowania` wygląda następująco:
     mapping (uint => string) userIdToName;
     
 
-Mapowanie to zasadniczo klucz-wartość do przechowywania i sprawdzania danych. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+Mapowanie to zasadniczo klucz-wartość do przechowywania i sprawdzania danych. W pierwszym przykładzie, kluczem jest `adres`, a wartością jest `uint`, natomiast w drugim klucz to `uint`, a wartość `string`.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
+Do przechowywania własności Zombi, mamy zamiar użyć dwóch mapowań: jedno, które przechowuje informacje o adresie i jest właścicielem Zombi, drugie, które przechowuje informacje o tym ile Zombi posiada właściciel.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1. Stwórz mapowanie i nazwij je `zombieToOwner`. Kluczem będzie `uint` (będziemy przechowywać i sprawdzać Zombiaka opartego na jego ID), a wartością `address`. Uczyńmy to mapowanie `publicznym`.
 
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+2. Kolejne mapowanie nazwij `ownerZombieCount`, gdzie kluczem jest `address`, a wartością `uint`.
