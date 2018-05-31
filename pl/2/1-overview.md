@@ -30,6 +30,6 @@ Aby się tego dowiedzieć... Musisz ukończyć lekcje 2!
 
 Po prawej mamy proste demo karmienia. Kliknij na człowieka aby zobaczyć co się dzieje, gdy Twój Zombi się karmi!
 
-Pewnie zauważyłeś, że nowe DNA Zombiaka jest określane przez oryginalne DNA Zombi oraz DNA hosta (człowieka w tym przypadku).
+Pewnie zauważyłeś, że nowe DNA Zombiaka jest tworzone z oryginalnego DNA Zombi oraz DNA hosta (w tym przypadku człowieka).
 
 Kiedy będziesz gotowy, kliknij przycisk "Następny Rozdział" aby zacząć tworzyć grę dla wielu graczy.
