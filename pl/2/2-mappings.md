@@ -1,8 +1,8 @@
 ---
-title: Mappings and Addresses
+title: Mapowanie i Adresy
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -23,7 +23,7 @@ material:
       
       Zombie[] public zombies;
       
-      // declare mappings here
+      // zadeklaruj mapowanie tutaj
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
