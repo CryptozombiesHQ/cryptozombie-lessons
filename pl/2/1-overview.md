@@ -20,7 +20,7 @@ Jak zamierzamy tworzyć nowe Zombi? Poprzez karmienie ich innymi formami życia!
 
 ## Karmienie Zombiaka
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+Gdy Zombi karmi się, infekuje hosta wirusem. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
 
 And what do our zombies like to feed on most?
 
