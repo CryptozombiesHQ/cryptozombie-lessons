@@ -90,7 +90,7 @@ Używanie `msg.sender` daje Ci bezpieczeństwo w blockchain'ie Ethereum — jedy
 
 # Wypróbujmy zatem
 
-Zaktualizujmy funkcję `_createZombie` z lekcji 1 tak, aby dołączyć własnośc Zombi, gdy ktokolwiek wywoła tę funkcję.
+Zaktualizujmy funkcję `_createZombie` z lekcji 1 tak, aby dołączyć własność Zombi, gdy ktokolwiek wywoła tę funkcję.
 
 1. Najpierw, po otrzymaniu nowych `id` Zombi, zauktualizujmy nasze mapowanie `zombieToOwner` aby przechować `msg.sender` pod tym `id`.
 
