@@ -71,21 +71,21 @@ Każde konto posiada `adres`, który jest jak numer konta bankowego. Jest to uni
 
 W szczegóły adresów zagłębimy sie później, natomiast na tą chwilę musisz wiedzieć, że **adres jest własnością określonego użytkownika** (lub kontraktu).
 
-Więc możemy go użyć jako unikatowe ID dla posiadania naszych Zombi. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+Więc możemy go użyć jako unikatowe ID dla posiadania naszych Zombi. Kiedy użytkownik tworzy nowego Zombi poprzez interakcję z naszą aplikacją, konfigurujemy posiadanie tych Zombi w adresie Ethereum, który wywołał funkcję.
 
-## Mappings
+## Mapowanie
 
-In Lesson 1 we looked at ***structs*** and ***arrays***. ***Mappings*** are another way of storing organized data in Solidity.
+W lekcji 1 widzieliśmy ***struktury*** i ***tablice***. ***Mapowania*** są innym sposobem przechowywania zorganizowanych danych w języku Solidity.
 
-Defining a `mapping` looks like this:
+Definiowanie `mapowania` wygląda następująco:
 
-    // For a financial app, storing a uint that holds the user's account balance:
+    // dla aplikacji finansowej, przechowuj uint, który posiada saldo konta użytkownika:
     mapping (address => uint) public accountBalance;
-    // Or could be used to store / lookup usernames based on userId
+    // lub może byc użyte do przechowywania / sprawdzenia nazw użytkowników opartych na userID
     mapping (uint => string) userIdToName;
     
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+Mapowanie to zasadniczo klucz-wartość do przechowywania i sprawdzania danych. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
 
 # Put it to the test
 
