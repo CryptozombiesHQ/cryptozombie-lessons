@@ -168,9 +168,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Apropiable
-        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
-        * funciones, esto simplifica la implementación de "permisos de usuario".
+        * @title Ownable
+        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
+        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address public owner;
@@ -178,8 +178,8 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev El constructor del contrato apropiable establece el `propietario` original del contrato para el remitente
-        * account.
+        * @dev El constructor del Ownable establece al `owner` (propietario) original del contrato.
+        * a la dirección de la cuenta del remitente.
         */
         function Ownable() public {
         owner = msg.sender;
@@ -187,7 +187,7 @@ material:
         
         
         /**
-        * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
+        * @dev Abandonar si es llamado por una cuenta que no sea el `owner`.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -197,7 +197,7 @@ material:
         
         /**
         * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
-        * @param newOwner La dirección para transferir la propiedad a.
+        * @param newOwner La dirección del nuevo propietario.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0));
