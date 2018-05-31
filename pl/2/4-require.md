@@ -57,34 +57,34 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-W lekcji 1, zrobiliśmy tak, aby użytkownicy mieli możliwość tworzenia nowych Zombi poprzez wywołanie `createRandomZombie` i wpisanie jego nazwy. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+W lekcji 1, zrobiliśmy tak, aby użytkownicy mieli możliwość tworzenia nowych Zombi poprzez wywołanie `createRandomZombie` i wpisanie jego nazwy. Jednakże, jeśli użytkownicy mogliby nadal wywoływać tę funkcję, aby stworzyć nieograniczoną liczbę Zombi w swojej armii, gra nie byłaby bardzo zabawna.
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+Zróbmy tak, aby każdy gracz mógł wywołać tę funkcję tylko raz. W ten sposób nowi gracze będą wywoływać ją po rozpoczęciu gry, aby stworzyć początkowego Zombi w armii.
 
-How can we make it so this function can only be called once per player?
+Jak możemy to zrobić, aby funkcja ta była wywołana tylko raz dla każdego gracza?
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
+Używamy do tego `require`. `require` powoduje, że funkcja będzie sygnalizowała błąd i zatrzyma wykonywanie, jeśli jakiś warunek nie jest spełniony:
 
     function sayHiToVitalik(string _name) public returns (string) {
-      // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-      // (Side note: Solidity doesn't have native string comparison, so we
-      // compare their keccak256 hashes to see if the strings are equal)
+      // Sprawdza czy _name jest równe "Vitalik". Wyrzuca błąd i wychodzi jeśli to nie jest prawdą.
+      // (Dygresja: Solidity nie posiada natywnego porównywania stringów, więc
+      // porównujemy hasze keccak256, aby sprawdzić czy ciągi znaków są sobie równe)
       require(keccak256(_name) == keccak256("Vitalik"));
-      // If it's true, proceed with the function:
+      // Jeśli to prawda, kontynuuj działanie funkcji:
       return "Hi!";
     }
     
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+Jeśli wywołasz tę funkcję tak: `sayHiToVitalik("Vitalik")`, zwróci "Hi!". Jeśli wywołasz ją z innymi danymi wejściowymi, będzie sygnalizować błąd i się nie wykona.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+Zatem `require` jest pożyteczne do weryfikacji pewnych warunków, które muszą być prawdą przed uruchomieniem funkcji.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+W naszej grze Zombi, nie chcemy aby użytkownik mógł tworzyć armię Zombiaków bez limitu poprzez powtarzanie wywołań `createRandomZombie` — to spowoduje, że gra nie będzie bardzo zabawna.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+Użyjmy `require` aby upewnić się, że tak funkcja zostanie wykonana tylko raz dla danego użytkownia, kiedy stworzy on swojego pierwszego Zombi.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to ``, and throw an error otherwise.
+1. Umieść wyrażenie `require` na początku `createRandomZombie`. Funkcja powinna sprawdzać czy `ownerZombieCount[msg.sender]` jest równe `` i wyrzucić błąd w przeciwnym wypadku.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> Uwaga: W Solidity, Nie ma znaczenia, które wyrażenie napiszesz jako pierwsze — obie kolejności są równoważne. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
