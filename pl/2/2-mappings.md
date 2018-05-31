@@ -63,15 +63,15 @@ Aby to zrobic, potrzebujemy 2 nowe typy danych: `mapping` i `address`.
 
 Blockchain sieci Ethereum jest złożony z ***kont***, o których można myśleć jak o kontach bankowych. Konto posiada saldo ***Etheru*** (waluta używana w blockchain'ie Ethereum) i jesteśmy w stanie wysyłać oraz odbierać płatności do innych kont, tak samo jak z Twojego konta bankowego możesz przelać pieniądze na inne konto bankowe.
 
-Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
+Każde konto posiada `adres`, który jest jak numer konta bankowego. Jest to unikatowy identyfikator, który należy do tego konta i wygląda tak:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
 (This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 
 
-We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
+W szczegóły adresów zagłębimy sie później, natomiast na tą chwilę musisz wiedzieć, że **adres jest własnością określonego użytkownika** (lub kontraktu).
 
-So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+Więc możemy go użyć jako unikatowe ID dla posiadania naszych Zombi. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
 
 ## Mappings
 
