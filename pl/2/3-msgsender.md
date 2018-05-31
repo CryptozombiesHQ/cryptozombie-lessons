@@ -65,7 +65,7 @@ Aby to zrobić, musimy użyć czegoś o nazwie `msg.sender`.
 
 W Solidity, istnieją pewne zmienne globalne, które są dostępne dla wszystkich funkcji. Jedną z nich jest `msg.sender`, które odnosi się do `adresu` osoby (lub kontraktu), który wywołał aktualna funkcję.
 
-> Uwaga: W Solidity, wywołanie funkcji zawsze wymaga wywołania zewnętrzenego. Kontrakt tylko umieszczony jest w blockchain'ie i nic nie robi do czasu, gdy ktoś wywoła jedną z jego funkcji. Więc zawsze wystąpi tu `msg.sender`.
+> Uwaga: W Solidity, wywołanie funkcji zawsze wymaga wywołania zewnętrzenego. Kontrakt tylko umieszczony jest w blockchain'ie i nie robi nic, do czasu, gdy ktoś wywoła jedną z jego funkcji. Więc zawsze wystąpi tu `msg.sender`.
 
 Tutaj mamy przykład użycia `msg.sender` i zaktualizowania `mapowania`:
 
@@ -92,15 +92,15 @@ Używanie `msg.sender` daje Ci bezpieczeństwo w blockchain'ie Ethereum — jedy
 
 Zaktualizujmy funkcję `_createZombie` z lekcji 1 tak, aby dołączyć własnośc Zombi, gdy ktokolwiek wywoła tę funkcję.
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1. Najpierw, po otrzymaniu nowych `id` Zombi, zauktualizujmy nasze mapowanie `zombieToOwner` aby przechować `msg.sender` pod tym `id`.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`.
+2. Po drugie, zwiększmy `ownerZombieCount` dla `msg.sender`.
 
-In Solidity, you can increase a `uint` with `++`, just like in javascript:
+W Solidity, możesz zwiększać `uint` poprzez `++`, tak jak w Javascript:
 
     uint number = 0;
     number++;
-    // `number` is now `1`
+    // `number` jest teraz równy `1`
     
 
-Your final answer for this chapter should be 2 lines of code.
+Twoja końcowa odpowiedź dla tego rozdziału powinna zawierać 2 linie kodu.
