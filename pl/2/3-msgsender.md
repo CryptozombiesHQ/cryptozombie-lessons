@@ -63,7 +63,7 @@ Aby to zrobić, musimy użyć czegoś o nazwie `msg.sender`.
 
 ## msg.sender
 
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
+W Solidity, istnieją pewne zmienne globalne, które są dostępne dla wszystkich funkcji. Jedną z nich jest `msg.sender`, które odnosi się do `adresu` osoby (lub kontraktu), który wywołał aktualna funkcję.
 
 > Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
 
