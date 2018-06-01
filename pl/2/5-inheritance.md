@@ -1,8 +1,8 @@
 ---
-title: Inheritance
+title: Dziedziczenie
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -45,8 +45,6 @@ material:
       }
       
       }
-      
-      // Start here
     answer: >
       pragma solidity ^0.4.19;
       
@@ -63,7 +61,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Kod gry staje się trochę długi. Zamiast tworzyć jeden ekstremalnie długi kontrakt, czasami sens ma podzielenie Twojego kodu na wiele kontraktów, aby zachować lepszą organizację.
 
 One feature of Solidity that makes this more manageable is contract ***inheritance***:
 
