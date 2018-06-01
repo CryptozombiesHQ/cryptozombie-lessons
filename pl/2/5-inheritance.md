@@ -61,9 +61,9 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
-Kod gry staje się trochę długi. Zamiast tworzyć jeden ekstremalnie długi kontrakt, czasami sens ma podzielenie Twojego kodu na wiele kontraktów, aby zachować lepszą organizację.
+Kod gry staje się trochę długi. Zamiast tworzyć jeden ekstremalnie długi kontrakt, czasami sens ma podzielenie Twojego kodu na wiele kontraktów, dla zachowania lepszej organizacji.
 
-One feature of Solidity that makes this more manageable is contract ***inheritance***:
+Cechą języka Solidity, która pozwoli Ci na lepsze zarządzanie Twoim kontrakem jest ***dziedziczenie***:
 
     contract Doge {
       function catchphrase() public returns (string) {
