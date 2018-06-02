@@ -1,8 +1,8 @@
 ---
-title: Lesson 6 Complete!
+title: '¡Lección 6 Completa!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
   lessonComplete:
     answer: 1
