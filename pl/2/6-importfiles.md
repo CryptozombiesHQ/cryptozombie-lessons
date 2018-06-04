@@ -1,8 +1,8 @@
 ---
 title: Import
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -10,7 +10,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
         
-        // put import statement here
+        // tutaj umieść instrukcję importu
         
         contract ZombieFeeding is ZombieFactory {
         
@@ -60,9 +60,9 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
+Łał! Pewnie widzisz, że wyczyściliśmy kod po prawej i masz teraz zakładki na górze edytora. Dalej! Klikaj pomiędzy nimi aby wypróbować.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
+Nasz kod stawał się coraz dłuższy, więc podzieliliśmy go na kilka plików aby uczynić go łatwiej zarządzalnym. Jest to naturalny sposób w jaki radzimy sobie z długimi skryptami w projektach Solidity.
 
 When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
 
