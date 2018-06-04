@@ -63,7 +63,7 @@ Aby to zrobic, potrzebujemy 2 nowe typy danych: `mapping` i `address`.
 
 Blockchain sieci Ethereum jest złożony z ***kont***, o których można myśleć jak o kontach bankowych. Konto posiada saldo ***Etheru*** (waluta używana w blockchain'ie Ethereum) i jesteśmy w stanie wysyłać oraz odbierać płatności do innych kont, tak samo jak z Twojego konta bankowego możesz przelać pieniądze na inne konto bankowe.
 
-Każde konto posiada `adres`, który jest jak numer konta bankowego. Jest to unikatowy identyfikator, który należy do tego konta i wygląda tak:
+Każde konto posiada `adres`, który jest jak numer konta bankowego. Jest to unikatowy identyfikator, który należy do tego konta i przykładowo wygląda tak:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
