@@ -80,10 +80,10 @@ Cechą języka Solidity, która pozwoli Ci na lepsze zarządzanie Twoim kontrake
 
 `BabyDoge` ***dziedziczy*** z `Doge`. Oznacza to, że jeśli skompilujesz i wdrożysz `BabyDoge`, będzie miał on dostęp zarówno do `catchphrase()` jak i `anotherCatchphrase()` (oraz każdej innej funkcji publicznej zdefiniowanej w `Doge`).
 
-Może to zostać użyte do logicznego dziedziczenia (tak jak w przypadku podklasy, `Kot` może dziedziczyć z klasy `Zwierzę`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
+Może to zostać użyte do logicznego dziedziczenia (tak jak w przypadku podklasy, `Kot` może dziedziczyć z klasy `Zwierzę`). Ale również do organizowania kodu, poprzez grupowanie podobnej logiki w różnych kontraktach.
 
-# Put it to the test
+# Wyprobujmy zatem
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
+W kolejnych rozdziałach, będziemy implementować funkcjonalność umożliwiającą karmienie i pomnażanie Zombiaków. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
 
 1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
