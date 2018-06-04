@@ -1,8 +1,8 @@
 ---
 title: Storage vs Memory
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -14,12 +14,10 @@ material:
         
         contract ZombieFeeding is ZombieFactory {
         
-        // Start here
+        // zacznij tutaj
         
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
-        
         contract ZombieFactory {
         
         event NewZombie(uint zombieId, string name, uint dna);
@@ -63,9 +61,9 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; }
       }
 ---
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+W Solidity są dwa miejsca gdzie można przechowywać zmienne — w `storage` oraz w `memory`.
 
-***Storage*** refers to variables stored permanently on the blockchain. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+***Storage*** odnosi się do zmiennych przechowywanych na stałe w blockchain'ie. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
 
 Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
 
