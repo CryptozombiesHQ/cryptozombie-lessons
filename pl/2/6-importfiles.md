@@ -64,7 +64,7 @@ material:
 
 Nasz kod stawał się coraz dłuższy, więc podzieliliśmy go na kilka plików aby uczynić go łatwiej zarządzalnym. Jest to naturalny sposób w jaki radzimy sobie z długimi skryptami w projektach Solidity.
 
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+Kiedy masz kilka plików i chcesz zaimportować jeden plik do innego, Solidity używa słowa kluczowego `import`:
 
     import "./someothercontract.sol";
     
@@ -73,10 +73,10 @@ When you have multiple files and you want to import one file into another, Solid
     }
     
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+Więc jeśli mamy plik o nazwie `someothercontract.sol` w tym samym katalogu co nasz kontrakt (znaki `./` nam o tym mówią), to zostanie on zaimportowany przez kompilator.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
+Teraz, kiedy mamy wielo-plikową strukturę, potrzebujemy użyć słówka `import` aby móc czytac zawartość innego pliku:
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`.
+1. Zaimportuj `zombiefactory.sol` do naszego nowego pliku, `zombiefeeding.sol`.
