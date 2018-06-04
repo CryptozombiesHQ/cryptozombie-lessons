@@ -105,21 +105,21 @@ Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek klucz
 
 Nie przejmuj się, jeśli jeszcze nie wiesz, kiedy używać któregoś z tych słówek - w tym samouczku dowiesz się, kiedy użyć ` storage `, a kiedy ` memory `. Kompilator Solidity podaje również ostrzeżenia, informujące o tym, kiedy należy użyć jednego z tych słów kluczowych.
 
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
+Jest to wystarczające, aby wiedzieć, że istnieją przypadki gdzie musisz wyraźnie zadeklarować `storage` lub `memory`!
 
-# Put it to the test
+# Wyprobójmy zatem
 
-It's time to give our zombies the ability to feed and multiply!
+Nadszedł czas aby dać naszym Zombiakom mozliwość karmienia i pomnażania się!
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
+Kiedy Zombi karmi się inna formą życia, jego DNA łączy się z innym DNA w celu stworzenia nowego Zombi.
 
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
+1. Stwórz funkcję, o nazwie `feedAndMultiply`. Będzie ona odbierała dwa parametry: `_zombieId` (`uint`) i `_targetDna` (również `uint`). Funkcja ta powinna być `public`.
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2. Nie chcemy pozwolić, aby ktoś inny karmił się naszym zombie! Najpierw upewnijmy się, że jesteśmy właścicielami tego zombie. Dodaj wyrażenie `require` aby upewnić się, że `msg.sender` jest równe właścicielowi tego Zombi (podobnie jak zrobiliśmy to w funkcji `createRandomZombie`).
     
-    > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
+    > Uwaga: Znowu, ponieważ nasze sprawdzanie odpowiedzi jest prymitywne, oczekuje aby `msg.sender` było na początku i oznaczy to jako błąd, jeśli zmienisz kolejność. Ale zwykle, gdy kodujesz, możesz użyć dowolnej kolejności - obie są poprawne.
 
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. Będziemy potrzebować DNA tego Zombi. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
 
 You should have 4 lines of code so far, including the line with the closing `}`.
 
