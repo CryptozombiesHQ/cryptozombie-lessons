@@ -88,7 +88,7 @@ Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek klucz
         // ...w którym to przypadku `mySandwich` jest wskaźnikiem do `sandwiches[_index]`
         // w storage, i...
         mySandwich.status = "Eaten!";
-        // ...to zmieni na stałe `sandwiches[_index]` w blockchain'ie.
+        // ...to się zmieni na stałe `sandwiches[_index]` w blockchain'ie.
     
         // Jeśli chcesz tylko skopiować użyj `memory`:
         Sandwich memory anotherSandwich = sandwiches[_index + 1];
@@ -96,14 +96,14 @@ Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek klucz
         // danych w memory, i...
         anotherSandwich.status = "Eaten!";
         // ...tylko modyfikuje chwilową zmienną oraz nie ma wpływu 
-        // na `sandwiches[_index + 1]`. But you can do this:
+        // na `sandwiches[_index + 1]`. Ale możesz zrobic to tak:
         sandwiches[_index + 1] = anotherSandwich;
-        // ...if you want to copy the changes back into blockchain storage.
+        // ...jeśli chcesz z powrotem skopiować zmiany do storage blockchain'u.
       }
     }
     
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+Nie przejmuj się, jeśli jeszcze nie wiesz, kiedy używać któregoś z tych słówek - w tym samouczku dowiesz się, kiedy użyć ` storage `, a kiedy ` memory `. Kompilator Solidity podaje również ostrzeżenia, informujące o tym, kiedy należy użyć jednego z tych słów kluczowych.
 
 For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
 
