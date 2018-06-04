@@ -65,7 +65,7 @@ W Solidity są dwa miejsca gdzie można przechowywać zmienne — w `storage` or
 
 ***Storage*** odnosi się do zmiennych przechowywanych na stałe w blockchain'ie. Zmienne ***Memory*** są chwilowe, tzn. że są usuwane pomiędzy zewnętrznymi wywołaniami funkcji Twojej umowy (kontraktu). Pomyśl o tym jak o dysku twardym komputera vs pamięci RAM.
 
-Zazwyczaj nie trzeba używać tych słów kluczowych, ponieważ Solidity domyślnie je obsługuje. Zmienne stanu (zmienne zadeklarowane poza funkcjami) są domyślnie ` storage ` i zapisywane na stałe w blockchain'ie, podczas gdy zmienne zadeklarowane wewnątrz funkcji to ` memory ` i znikną one po zakończeniu wywołania funkcji.
+Zazwyczaj nie trzeba używać tych słów kluczowych, ponieważ Solidity domyślnie je obsługuje. Zmienne stanu (zmienne zadeklarowane poza funkcjami) są domyślnie ` storage ` i są zapisywane na stałe w blockchain'ie, podczas gdy zmienne zadeklarowane wewnątrz funkcji to ` memory ` i znikają one po zakończeniu wywołania funkcji.
 
 Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek kluczowych, mianowicie gdy mamy do czynienia ze ***strukturami*** i ***tablicami*** wewnątrz funkcji:
 
@@ -88,7 +88,7 @@ Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek klucz
         // ...w którym to przypadku `mySandwich` jest wskaźnikiem do `sandwiches[_index]`
         // w storage, i...
         mySandwich.status = "Eaten!";
-        // ...to się zmieni na stałe `sandwiches[_index]` w blockchain'ie.
+        // ...to zmieni na stałe `sandwiches[_index]` w blockchain'ie.
     
         // Jeśli chcesz tylko skopiować użyj `memory`:
         Sandwich memory anotherSandwich = sandwiches[_index + 1];
@@ -109,7 +109,7 @@ Jest to wystarczające, aby wiedzieć, że istnieją przypadki gdzie musisz wyra
 
 # Wyprobójmy zatem
 
-Nadszedł czas aby dać naszym Zombiakom mozliwość karmienia i pomnażania się!
+Nadszedł czas, aby dać naszym Zombiakom mozliwość karmienia i pomnażania się!
 
 Kiedy Zombi karmi się inna formą życia, jego DNA łączy się z innym DNA w celu stworzenia nowego Zombi.
 
@@ -119,8 +119,8 @@ Kiedy Zombi karmi się inna formą życia, jego DNA łączy się z innym DNA w c
     
     > Uwaga: Znowu, ponieważ nasze sprawdzanie odpowiedzi jest prymitywne, oczekuje aby `msg.sender` było na początku i oznaczy to jako błąd, jeśli zmienisz kolejność. Ale zwykle, gdy kodujesz, możesz użyć dowolnej kolejności - obie są poprawne.
 
-3. Będziemy potrzebować DNA tego Zombi. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. Będziemy potrzebować DNA tego Zombi. Więc następną rzeczą, którą nasza funkcja powinna robić jest zadeklarowanie lokalnego `Zombie` o nazwie `myZombie` (który będzie wskaźnikiem do `storage`). Ustaw tą zmienną równą indeksowi `_zombieId` w naszej tablicy `zombies`.
 
-You should have 4 lines of code so far, including the line with the closing `}`.
+Powinieneś mieć 4 linie kodu, włącznie z zamykającymi klamrami `}`.
 
 We'll continue fleshing out this function in the next chapter!
