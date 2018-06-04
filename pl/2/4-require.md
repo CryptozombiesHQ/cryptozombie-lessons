@@ -87,4 +87,4 @@ Użyjmy `require` aby upewnić się, że tak funkcja zostanie wykonana tylko raz
 
 1. Umieść wyrażenie `require` na początku `createRandomZombie`. Funkcja powinna sprawdzać czy `ownerZombieCount[msg.sender]` jest równe `` i wyrzucić błąd w przeciwnym wypadku.
 
-> Uwaga: W Solidity, Nie ma znaczenia, które wyrażenie napiszesz jako pierwsze — obie kolejności są równoważne. Jednakże, ponieważ nasze narzędzie do sprawdzania odpowiedzi jest naprawdę proste, będzie ono akceptowało tylko jedną odpowiedź jako poprawną — oczekuje aby `ownerZombieCount[msg.sender]` było piewsze.
+> Uwaga: W Solidity, Nie ma znaczenia, które wyrażenie napiszesz jako pierwsze — obie kolejności są równoważne. Jednakże, nasze narzędzie do sprawdzania odpowiedzi jest naprawdę proste, będzie ono akceptowało tylko jedną odpowiedź jako poprawną — oczekuje aby `ownerZombieCount[msg.sender]` było piewsze.
