@@ -90,13 +90,13 @@ Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek klucz
         mySandwich.status = "Eaten!";
         // ...to zmieni na stałe `sandwiches[_index]` w blockchain'ie.
     
-        // If you just want a copy, you can use `memory`:
+        // Jeśli chcesz tylko skopiować użyj `memory`:
         Sandwich memory anotherSandwich = sandwiches[_index + 1];
-        // ...in which case `anotherSandwich` will simply be a copy of the 
-        // data in memory, and...
+        // ...w przypadku gdy `anotherSandwich` jest tylko kopią 
+        // danych w memory, i...
         anotherSandwich.status = "Eaten!";
-        // ...will just modify the temporary variable and have no effect 
-        // on `sandwiches[_index + 1]`. But you can do this:
+        // ...tylko modyfikuje chwilową zmienną oraz nie ma wpływu 
+        // na `sandwiches[_index + 1]`. But you can do this:
         sandwiches[_index + 1] = anotherSandwich;
         // ...if you want to copy the changes back into blockchain storage.
       }
