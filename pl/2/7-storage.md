@@ -111,16 +111,16 @@ Jest to wystarczające, aby wiedzieć, że istnieją przypadki gdzie musisz wyra
 
 Nadszedł czas, aby dać naszym Zombiakom mozliwość karmienia i pomnażania się!
 
-Kiedy Zombi karmi się inna formą życia, jego DNA łączy się z innym DNA w celu stworzenia nowego Zombi.
+Kiedy Zombi karmi się jakąś formą życia, jego DNA łączy się z innym DNA w celu stworzenia nowego Zombi.
 
 1. Stwórz funkcję, o nazwie `feedAndMultiply`. Będzie ona odbierała dwa parametry: `_zombieId` (`uint`) i `_targetDna` (również `uint`). Funkcja ta powinna być `public`.
 
 2. Nie chcemy pozwolić, aby ktoś inny karmił się naszym zombie! Najpierw upewnijmy się, że jesteśmy właścicielami tego zombie. Dodaj wyrażenie `require` aby upewnić się, że `msg.sender` jest równe właścicielowi tego Zombi (podobnie jak zrobiliśmy to w funkcji `createRandomZombie`).
     
-    > Uwaga: Znowu, ponieważ nasze sprawdzanie odpowiedzi jest prymitywne, oczekuje aby `msg.sender` było na początku i oznaczy to jako błąd, jeśli zmienisz kolejność. Ale zwykle, gdy kodujesz, możesz użyć dowolnej kolejności - obie są poprawne.
+    > Uwaga: Znowu nasze sprawdzanie odpowiedzi jest prymitywne, więc oczekuje aby `msg.sender` było na początku i oznaczy to jako błąd, jeśli zmienisz kolejność. Ale zwykle, gdy kodujesz, możesz użyć dowolnej kolejności - obie są poprawne.
 
-3. Będziemy potrzebować DNA tego Zombi. Więc następną rzeczą, którą nasza funkcja powinna robić jest zadeklarowanie lokalnego `Zombie` o nazwie `myZombie` (który będzie wskaźnikiem do `storage`). Ustaw tą zmienną równą indeksowi `_zombieId` w naszej tablicy `zombies`.
+3. Będziemy potrzebować DNA tego Zombi. Następną rzeczą, którą nasza funkcja powinna robić jest zadeklarowanie lokalnego `Zombie` o nazwie `myZombie` (który będzie wskaźnikiem do `storage`). Ustaw tą zmienną równą indeksowi `_zombieId` w naszej tablicy `zombies`.
 
 Powinieneś mieć 4 linie kodu, włącznie z zamykającymi klamrami `}`.
 
-We'll continue fleshing out this function in the next chapter!
+Będziemy kontynuować wypełnianie tej funkcji w następnym rozdziale!
