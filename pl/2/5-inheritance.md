@@ -78,7 +78,7 @@ Cechą języka Solidity, która pozwoli Ci na lepsze zarządzanie Twoim kontrake
     }
     
 
-`BabyDoge` ***dziedziczy*** z `Doge`. Oznacza to, że jeśli skompilujesz i wdrożysz `BabyDoge`, będzie miał on dostęp zarówno do `catchphrase()` jak i `anotherCatchphrase()` (oraz każdych innych funkcji publicznych zdefiniowanych w `Doge`).
+`BabyDoge` ***dziedziczy*** z `Doge`. Oznacza to, że jeśli skompilujesz i wdrożysz `BabyDoge`, będzie miał on dostęp zarówno do `catchphrase()` jak i `anotherCatchphrase()` (oraz każdej innej funkcji publicznej zdefiniowanej w `Doge`).
 
 Może to zostać użyte do logicznego dziedziczenia (tak jak w przypadku podklasy, `Kot` może dziedziczyć z klasy `Zwierzę`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
 
