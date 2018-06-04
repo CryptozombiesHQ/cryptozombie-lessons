@@ -63,11 +63,11 @@ material:
 ---
 W Solidity są dwa miejsca gdzie można przechowywać zmienne — w `storage` oraz w `memory`.
 
-***Storage*** odnosi się do zmiennych przechowywanych na stałe w blockchain'ie. ***Memory*** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+***Storage*** odnosi się do zmiennych przechowywanych na stałe w blockchain'ie. Zmienne ***Memory*** są chwilowe, tzn. że są usuwane pomiędzy zewnętrznymi wywołaniami funkcji Twojej umowy (kontraktu). Pomyśl o tym jak o dysku twardym komputera vs pamięci RAM.
 
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
+Zazwyczaj nie trzeba używać tych słów kluczowych, ponieważ Solidity domyślnie je obsługuje. Zmienne stanu (zmienne zadeklarowane poza funkcjami) są domyślnie ` storage ` i zapisywane na stałe w blockchain'ie, podczas gdy zmienne zadeklarowane wewnątrz funkcji to ` memory ` i znikną one po zakończeniu wywołania funkcji.
 
-However, there are times when you do need to use these keywords, namely when dealing with ***structs*** and ***arrays*** within functions:
+Jednakże, są przypadki kiedy będziesz potrzebował użyć tych słówek kluczowych, mianowicie gdy mamy do czynienia ze ***strukturami*** i ***tablicami*** wewnątrz funkcji:
 
     contract SandwichFactory {
       struct Sandwich {
@@ -80,15 +80,15 @@ However, there are times when you do need to use these keywords, namely when dea
       function eatSandwich(uint _index) public {
         // Sandwich mySandwich = sandwiches[_index];
     
-        // ^ Seems pretty straightforward, but solidity will give you a warning
-        // telling you that you should explicitly declare `storage` or `memory` here.
+        // ^ Wygląda bardzo prosto, lecz Solidity wyda ostrzeżenie
+        // mówiące Ci o tym, że powinienieś wyraźnie zadeklarować tutaj `storage` lub `memory`.
     
-        // So instead, you should declare with the `storage` keyword, like:
+        // Więc zamiast tego powinieneś zadeklarować `storage` tak:
         Sandwich storage mySandwich = sandwiches[_index];
-        // ...in which case `mySandwich` is a pointer to `sandwiches[_index]`
-        // in storage, and...
+        // ...w którym to przypadku `mySandwich` jest wskaźnikiem do `sandwiches[_index]`
+        // w storage, i...
         mySandwich.status = "Eaten!";
-        // ...this will permanently change `sandwiches[_index]` on the blockchain.
+        // ...to zmieni na stałe `sandwiches[_index]` w blockchain'ie.
     
         // If you just want a copy, you can use `memory`:
         Sandwich memory anotherSandwich = sandwiches[_index + 1];
