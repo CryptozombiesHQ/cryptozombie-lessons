@@ -84,6 +84,6 @@ Może to zostać użyte do logicznego dziedziczenia (tak jak w przypadku podklas
 
 # Wyprobujmy zatem
 
-W kolejnych rozdziałach, będziemy implementować funkcjonalność umożliwiającą karmienie i pomnażanie Zombiaków. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
+W kolejnych rozdziałach, będziemy implementować funkcjonalność umożliwiającą karmienie i pomnażanie Zombiaków. Umieśćmy tę logikę we własnym kontrakcie, który dziedziczy wszystkie metody z `ZombieFactory`.
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. Stwórz kontrakt o nazwie `ZombieFeeding` poniżej `ZombieFactory`. Kontrakt ten powienien dziedziczyć z kontraktu `ZombieFactory`.
