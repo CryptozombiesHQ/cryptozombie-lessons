@@ -117,4 +117,4 @@ W ten sposób twoja umowa może wchodzić w interakcje z dowolną inną umową w
 
 Skonfigurujmy nasz kontrakt do odczytywania ze smart contractu CryptoKitties!
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1. Zapisałem dla Ciebie w kodzie adres kontraktu CryptoKitties, pod zmienną o nazwie `ckAddress`. W kolejnej linii, stwórz `KittyInterface` i nazwij `kittyContract`, zainicjalizuj go z `ckAddress` — tak jak zrobiliśmy to z ` numberContract ` powyżej.
