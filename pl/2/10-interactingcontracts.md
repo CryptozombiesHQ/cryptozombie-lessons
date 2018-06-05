@@ -144,7 +144,7 @@ Funkcja ta wygląda następująco:
     ) {
         Kitty storage kit = kitties[_id];
     
-        // if this variable is 0 then it's not gestating
+        // jeśli ta zmienna ma wartość 0, to nie jest ona rozważana 
         isGestating = (kit.siringWithId != 0);
         isReady = (kit.cooldownEndBlock <= block.number);
         cooldownIndex = uint256(kit.cooldownIndex);
@@ -158,10 +158,10 @@ Funkcja ta wygląda następująco:
     }
     
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+Ta funkcja wygląda nieco inaczej, niż jesteśmy przyzwyczajeni. Możesz zauważyć, że zwraca ona... wiele różnych wartości. Jeśli programowałeś w językach takich jak Javascript to jest tu różnica — w Solidity, możesz zwrócić z funkcji więcej niż jedną wartość.
 
-Now that we know what this function looks like, we can use it to create an interface:
+Teraz, jak wiemy już, jak wygląda ta funkcja, możemy użyć jej do tworzenia interfejsu:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. Zdefiniuj interfejs i nazwij `KittyInterface`. Pamiętaj, że wygląda to jak tworzenie nowego kontraktu — uzywamy słowa kluczowego `contract`.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. Wewnątrz interfejsu zdefiniuj funkcję `getKitty` (którą należy skopiować i wkleić z funkcji powyżej, ale ze średnikiem, po wyrażeniu `returns`. Nie potrzebujemy tego, co znajduje się w nawiasach klamrowych.
