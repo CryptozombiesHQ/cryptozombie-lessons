@@ -74,19 +74,19 @@ material:
 ---
 Nadszedł czas, aby nakarmić nasze Zombiaki! A co lubią one jeśc najbardziej?
 
-Well it just so happens that CryptoZombies love to eat...
+Cóż, tak się składa, że CryptoZombi uwielbiają jeść...
 
 **CryptoKitties!** 
 
 (Yes, I'm serious 
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+Z związku z tym, potrzebujemy odczytać kittyDna z kontraktu CryptoKitties. Możemy to zrobić, ponieważ dane CryptoKitties są przechowywane jawnie w blockchain'ie. Czyż blockchain nie jest wspaniały?!
 
 Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 
 
-## Interacting with other contracts
+## Interakcja z innymi umowami (kontraktami)
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an ***interface***.
+Aby nasz kontrakt mógł porozumiewać się z innym kontraktem w blockchain'ie, najpierw musimy zdefiniować coś, co nosi nazwę: ***interface***.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
