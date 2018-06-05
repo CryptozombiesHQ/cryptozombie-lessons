@@ -30,7 +30,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
         
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        // Initialize kittyContract here using `ckAddress` from above
+        // zainicjalizuj tutaj kittyContract używając `ckAddress` z góry
         
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
@@ -89,7 +89,7 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
+Kontynuując nasz poprzedni przykład z `NumberInterface `, kiedy zdefiniowaliśmy interfejs jako:
 
     contract NumberInterface {
       function getNum(address _myAddress) public view returns (uint);
