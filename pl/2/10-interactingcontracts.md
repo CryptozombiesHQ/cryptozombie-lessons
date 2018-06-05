@@ -1,8 +1,8 @@
 ---
-title: What Do Zombies Eat?
+title: Co jedza Zombi?
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -12,7 +12,7 @@ material:
         
         import "./zombiefactory.sol";
         
-        // Create KittyInterface here
+        // Utwórz tutaj KittyInterface 
         
         contract ZombieFeeding is ZombieFactory {
         
@@ -72,7 +72,7 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
-It's time to feed our zombies! And what do zombies like to eat most?
+Nadszedł czas, aby nakarmić nasze Zombiaki! A co lubią one jeśc najbardziej?
 
 Well it just so happens that CryptoZombies love to eat...
 
