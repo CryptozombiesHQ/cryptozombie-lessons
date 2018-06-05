@@ -114,13 +114,13 @@ Najpierw musimy zdefioniować ***interfejs*** kontraktu `LuckyNumber` :
     }
     
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+Zauważ, że wygląda to zupełnie jak definiowanie kontraktu, z niewielkimi różnicami. Po pierwsze, deklarujemy tylko te funkcje, z którymi chcemy wejść w interakcję — w tym przypadku `getNum` — i nie nadmieniamy tu żadnych innych funkcji czy zmiennych.
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+Po drugie, nie definiujemy ciał funkcji. Zamiast nawiasów klamrowych (`{` oraz `}`), po prostu kończymy funkcję średnikiem (`;`).
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+Wygląda to więc jak szkielet kontraktu. W ten sposób kompilator wie, że jest to interfejs.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+Poprzez dołączenie tego interfejsu w kodzie zdecentralizowanej aplikacji nasz kontrakt wie jak wyglądają funkcje innego kontraktu, jak je wywoływać i jakiej oczekiwać odpowiedzi.
 
 We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
