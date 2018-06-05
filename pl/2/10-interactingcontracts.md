@@ -1,5 +1,5 @@
 ---
-title: Co jedza Zombi?
+title: Co jedzą Zombi?
 actions:
   - 'sprawdźOdpowiedź'
   - 'podpowiedź'
