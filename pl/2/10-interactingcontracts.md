@@ -88,7 +88,7 @@ Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We'
 
 Aby nasz kontrakt mógł porozumiewać się z innym kontraktem w blockchain'ie, najpierw musimy zdefiniować coś, co nosi nazwę: ***interface***.
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+Spójrzmy na prosty przykład. Powiedzmy, że zawarto umowę w blockchain'ie, która wygląda tak:
 
     contract LuckyNumber {
       mapping(address => uint) numbers;
@@ -103,11 +103,11 @@ Let's look at a simple example. Say there was a contract on the blockchain that 
     }
     
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+Byłaby to prosta umowa, w której każdy może przechowywać swój szczęśliwy numer i zostałby on powiązany z adresem Ethereum. Następnie każdy mógłby spojrzeć na szczęśliwy numer tej osoby poprzez użycie swojego adresu.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
+Teraz, powiedzmy, że mamy zewnętrzny kontrakt, który chce czytać dane w tym kontrakcie używając funkcji `getNum`.
 
-First we'd have to define an ***interface*** of the `LuckyNumber` contract:
+Najpierw musimy zdefioniować ***interfejs*** kontraktu `LuckyNumber` :
 
     contract NumberInterface {
       function getNum(address _myAddress) public view returns (uint);
