@@ -1,8 +1,8 @@
 ---
-title: Using an Interface
+title: Korzystanie z interfejsu
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
