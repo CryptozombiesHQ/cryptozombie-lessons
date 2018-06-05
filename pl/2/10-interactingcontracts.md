@@ -122,13 +122,13 @@ Wygląda to więc jak szkielet kontraktu. W ten sposób kompilator wie, że jest
 
 Poprzez dołączenie tego interfejsu w kodzie zdecentralizowanej aplikacji nasz kontrakt wie jak wyglądają funkcje innego kontraktu, jak je wywoływać i jakiej oczekiwać odpowiedzi.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+Wejdziemy w wywoływanie funkcji innego kontraktu w następnej lekcji, a na ta chwilę, zadeklarujmy nasz interfejs dla kontraktu CryptoKitties.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+Zajrzeliśmy dla Ciebie do kodu źródłowego CryptoKittties i znaleźliśmy funkcję o nazwie `getKitty`, która zwraca wszystkie dane kitty, włączając w to "geny" (czyli to, co nasza gra potrzebuje aby uformować nowego Zombiaka!).
 
-The function looks like this:
+Funkcja ta wygląda następująco:
 
     function getKitty(uint256 _id) external view returns (
         bool isGestating,
