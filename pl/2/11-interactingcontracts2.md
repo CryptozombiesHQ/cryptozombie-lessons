@@ -96,26 +96,25 @@ Kontynuując nasz poprzedni przykład z `NumberInterface `, kiedy zdefiniowaliś
     }
     
 
-We can use it in a contract as follows:
+Możemy użyć go w kontrakcie w następujący sposób:
 
     contract MyContract {
       address NumberInterfaceAddress = 0xab38... 
-      // ^ The address of the FavoriteNumber contract on Ethereum
+      // ^ adres kontraktu FavoriteNumber w Ethereum
       NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
-      // Now `numberContract` is pointing to the other contract
-    
+      // Teraz `numberContract` wskazuje na inny kontrakt
       function someFunction() public {
-        // Now we can call `getNum` from that contract:
+        // Teraz możemy wywołać `getNum`z kontraktu:
         uint num = numberContract.getNum(msg.sender);
-        // ...and do something with `num` here
+        // ...i zrobić coś tutaj z `num`
       }
     }
     
 
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
+W ten sposób twoja umowa może wchodzić w interakcje z dowolną inną umową w blockchain'ie Ethereum, o ile ujawniają one swoje funkcje jako `public` lub `external`.
 
-# Put it to the test
+# Wypróbujmy zatem
 
-Let's set up our contract to read from the CryptoKitties smart contract!
+Skonfigurujmy nasz kontrakt do odczytywania ze smart contractu CryptoKitties!
 
 1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
