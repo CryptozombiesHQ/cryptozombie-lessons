@@ -123,7 +123,7 @@ Wyrażenia if w Solidity wyglądają jak w Javascripcie:
     }
     
 
-# Wyprobójmy zatem
+# Wypróbujmy zatem
 
 Zaimplementujmy geny kota w kodzie Zombi.
 
