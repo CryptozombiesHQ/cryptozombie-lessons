@@ -11,7 +11,7 @@ material:
     1: >
       
 ---
-Kod Solidity ujęty jest w kontrakty. Kontrakt jest w zasadzie...
+Kod Solidity ujęty jest w kontrakty. Kontrakt to w zasadzie...
 
     contract HelloWorld
     
