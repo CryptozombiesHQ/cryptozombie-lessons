@@ -102,11 +102,11 @@ material:
 ---
 Logika naszej funkcji jest gotowa... lecz dodajmy bonusową cechę.
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+Zróbmy, aby Zombi stworzone z kotków miały jakąś unikalną cechę, która pokaże nam, że są one koto-Zombiakami.
 
-To do this, we can add some special kitty code in the zombie's DNA.
+Aby to zrobić, możemy dodać specjalny kod kotka w DNA Zombiaka.
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics.
+Jeśli spojrzymy do lekcji 1, to widać, że używamy tylko pierwszych 12 cyfr z naszego 16-to cyfrowego DNA do określenia wyglądu Zombi. So let's use the last 2 unused digits to handle "special" characteristics.
 
 We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
 
