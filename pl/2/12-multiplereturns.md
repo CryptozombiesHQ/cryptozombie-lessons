@@ -122,9 +122,9 @@ Uczyńmy, aby funkcja ta otrzymywała geny z kontraktu:
 
 1. Napisz funkcję o nazwie `feedOnKitty`. Ma ona mieć 2 parametry typu `uint`, `_zombieId` oraz `_kittyId`, oznacz ją jako `public`.
 
-2. The function should first declare a `uint` named `kittyDna`.
+2. Ta funkcja powinna najpierw deklarować zmienną `kittyDna` typu `uint`.
     
-    > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+    > Uwaga: W naszym interfejsie `KittyInterface`, `geny` są typu `uint256` — ale jeśli pamiętasz z lekcji 1, `uint` jest aliasem dla `uint256` — to jest to samo.
 
 3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
 
