@@ -102,23 +102,23 @@ Funkcja `getKitty` jest naszym pierwszym przykładem funkcji, która zwraca wiel
       uint a;
       uint b;
       uint c;
-      // This is how you do multiple assignment:
+      // W ten sposób wykonujesz wiele zadań:
       (a, b, c) = multipleReturns();
     }
     
-    // Or if we only cared about one of the values:
+    // Lub jeśli interesuje nas tylko jedna z wartości:
     function getLastReturnValue() external {
       uint c;
-      // We can just leave the other fields blank:
+      // Możemy pozostawić pozostałe pola puste:
       (,,c) = multipleReturns();
     }
     
 
-# Put it to the test
+# Wyprobójmy zatem
 
-Time to interact with the CryptoKitties contract!
+Czas na interakcję z kontraktem CryptoKitties!
 
-Let's make a function that gets the kitty genes from the contract:
+Uczyńmy, aby funkcja ta otrzymywała geny z kontraktu:
 
 1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
 
