@@ -100,7 +100,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Our function logic is now complete... but let's add in one bonus feature.
+Logika naszej funkcji jest gotowa... lecz dodajmy bonusową cechę.
 
 Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
 
