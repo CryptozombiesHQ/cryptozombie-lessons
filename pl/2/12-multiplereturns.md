@@ -126,6 +126,6 @@ Uczyńmy, aby funkcja ta otrzymywała geny z kontraktu:
     
     > Uwaga: W naszym interfejsie `KittyInterface`, `geny` są typu `uint256` — ale jeśli pamiętasz z lekcji 1, `uint` jest aliasem dla `uint256` — to jest to samo.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3. Następnie powinna wywoływać funkcję `kittyContract.getKitty` z `_kittyId` i przechowywać `geny` w `kittyDna`. Pamiętaj — `getKitty` zwraca wiele wartości. (dokładnie 10 - jestem miły, policzyłem je dla Ciebie!). Ale to, na czym nam zależy, to ostatni, `geny`. Policz przecinki dokładnie!
 
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+4. Ostatecznie, funkcja powinna wywoływać `feedAndMultiply` i przekazać zarówno `_zombieId` oraz `kittyDna`.
