@@ -120,7 +120,7 @@ Czas na interakcję z kontraktem CryptoKitties!
 
 Uczyńmy, aby funkcja ta otrzymywała geny z kontraktu:
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1. Napisz funkcję o nazwie `feedOnKitty`. Ma ona mieć 2 parametry typu `uint`, `_zombieId` oraz `_kittyId`, oznacz ją jako `public`.
 
 2. The function should first declare a `uint` named `kittyDna`.
     
