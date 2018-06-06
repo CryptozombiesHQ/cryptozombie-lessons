@@ -127,12 +127,12 @@ Wyrażenia if w Solidity wyglądają jak w Javascripcie:
 
 Zaimplementujmy geny kota w kodzie Zombi.
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
+1. Najpierw, zmieńmy definicje funkcji `feedAndMultiply` tak, aby odbierała trzeci argument: `string` o nazwie `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
+2. Następnie, po przekalkulowaniu nowego DNA Zombi, dodajmy wyrażenie `if` porównujące hasz `keccak256` `_species` ze stringiem `"kitty"`
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+3. Wewnatrz `if'a`, chcemy zamienić ostatnie 2 cyfry DNA na `99`. Jedyna drogą aby to wykonać jest użycie następującej operacji: `newDna = newDna - newDna % 100 + 99;`.
     
-    > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+    > Wyjaśnienie: Załóżmy że `newDna` jest równe `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
 
 4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
