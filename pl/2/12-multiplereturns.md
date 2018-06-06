@@ -114,7 +114,7 @@ Funkcja `getKitty` jest naszym pierwszym przykładem funkcji, która zwraca wiel
     }
     
 
-# Wyprobójmy zatem
+# Wypróbujmy zatem
 
 Czas na interakcję z kontraktem CryptoKitties!
 
