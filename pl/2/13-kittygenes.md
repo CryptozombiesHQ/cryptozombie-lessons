@@ -131,8 +131,8 @@ Zaimplementujmy geny kota w kodzie Zombi.
 
 2. Następnie, po przekalkulowaniu nowego DNA Zombi, dodajmy wyrażenie `if` porównujące hasz `keccak256` `_species` ze stringiem `"kitty"`
 
-3. Wewnatrz `if'a`, chcemy zamienić ostatnie 2 cyfry DNA na `99`. Jedyna drogą aby to wykonać jest użycie następującej operacji: `newDna = newDna - newDna % 100 + 99;`.
+3. Wewnatrz `if'a`, chcemy zamienić ostatnie 2 cyfry DNA na `99`. Jedyną drogą, aby to wykonać jest użycie następującej operacji: `newDna = newDna - newDna % 100 + 99;`.
     
-    > Wyjaśnienie: Załóżmy że `newDna` jest równe `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
+    > Wyjaśnienie: Załóżmy że `newDna` jest równe `334455`. Wtedy, `newDna % 100` jest `55`, więc `newDna - newDna % 100` jest `334400`. Na końcu dodajemy `99` aby otrzymać `334499`.
 
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+4. Jeszcze musimy zmienić wywołanie funkcji wewnątrz `feedOnKitty`. Kiedy wywołuje `feedAndMultiply`, dodaj na końcu parametr `"kitty"`.
