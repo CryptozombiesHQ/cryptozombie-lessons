@@ -1,8 +1,8 @@
 ---
-title: "Bonus: Kitty Genes"
+title: "Bonus: Geny Kotka"
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -32,20 +32,20 @@ material:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
         KittyInterface kittyContract = KittyInterface(ckAddress);
         
-        // Modify function definition here:
+        // Zmodyfikuj tutaj definicję funkcji:
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        // Add an if statement here
+        // Tutaj dodaj wyrażenie if
         _createZombie("NoName", newDna);
         }
         
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
         uint kittyDna;
         (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-        // And modify function call here:
+        // A tu, zmodyfikuj wywołanie funkcji:
         feedAndMultiply(_zombieId, kittyDna);
         }
         
