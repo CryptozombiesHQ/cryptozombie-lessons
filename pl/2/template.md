@@ -1,8 +1,8 @@
 ---
-title: Data Types
+title: Typy Danych
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -11,10 +11,10 @@ material:
     1: >
       
 ---
-Solidity's code is encapsulated in contracts. A contract is basically...
+Kod Solidity ujęty jest w kontrakty. Kontrakt jest w zasadzie...
 
     contract HelloWorld
     
     
 
-# Put it to the test
+# Wypróbujmy zatem
