@@ -106,26 +106,26 @@ Zróbmy, aby Zombi stworzone z kotków miały jakąś unikalną cechę, która p
 
 Aby to zrobić, możemy dodać specjalny kod kotka w DNA Zombiaka.
 
-Jeśli spojrzymy do lekcji 1, to widać, że używamy tylko pierwszych 12 cyfr z naszego 16-to cyfrowego DNA do określenia wyglądu Zombi. So let's use the last 2 unused digits to handle "special" characteristics.
+Jeśli spojrzymy do lekcji 1, to widać, że używamy tylko pierwszych 12 cyfr z naszego 16-to cyfrowego DNA do określenia wyglądu Zombi. Więc wykorzystajmy ostatnie dwie nieużywane cyfry do obsługi "specjalnej" charakterystyki.
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+Powiemy, że koto-Zombi mają `99` jako ostatnie cyfry DNA (bo koty mają 9 żyć). Tak więc w naszym kodzie, mówimy `if` (jeśli) Zombiak pochodzi od kotka, ustaw ostatnie dwie cyfry DNA na `99`.
 
-## If statements
+## Wyrażenia if
 
-If statements in Solidity look just like javascript:
+Wyrażenia if w Solidity wyglądają jak w Javascripcie:
 
     function eatBLT(string sandwich) public {
-      // Remember with strings, we have to compare their keccak256 hashes
-      // to check equality
+      // Pamiętaj, że przy stringach porównujemy ich hasze keccak256
+      // aby sprawdzić równość
       if (keccak256(sandwich) == keccak256("BLT")) {
         eat();
       }
     }
     
 
-# Put it to the test
+# Wyprobójmy zatem
 
-Let's implement cat genes in our zombie code.
+Zaimplementujmy geny kota w kodzie Zombi.
 
 1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
 
