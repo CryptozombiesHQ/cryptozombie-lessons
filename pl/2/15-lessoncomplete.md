@@ -1,8 +1,8 @@
 ---
-title: Lesson 2 Complete!
+title: Lekcja 2 ukończona!
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   lessonComplete:
     answer: 1
