@@ -85,12 +85,12 @@ Później możemy uczynić naszą formułę bardziej skomplikowaną, jeśli chce
 
 # Wypróbujmy zatem
 
-1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus` to only take the last 16 digits.
+1. Najpierw musimy się upewnić czy `_targetDna` nie jest dłuższe niż 16 cyfr. Aby to zrobić, możemy ustawić `_targetDna` równe `_targetDna % dnaModulus` aby wziąć tylko ostatnie 16 cyfr.
 
-2. Next our function should declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+2. Następnie nasza funkcja powinna deklarować `uint` o nazwie `newDna` i ustawić równe średniej z `myZombie` DNA oraz `_targetDna` (jak podano w przykładzie powyżej).
     
-    > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
+    > Uwaga: Możesz dostać się do właściwości `myZombie` używając `myZombie.name` i `myZombie.dna`
 
-3. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+3. Kiedy mamy nowe DNA, wywołajmy `_createZombie`. Możesz zajrzeć do zakładki `zombiefactory.sol` jeśli nie pamiętasz jakich parametrów potrzebuje ta funkcja do wywołania. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
 
 > Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
