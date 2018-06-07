@@ -1,24 +1,24 @@
 ---
-title: Wrapping It Up
+title: Zakończmy zabawę
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
-  saveZombie: true
+  saveZombie: prawda
   zombieBattle:
     zombie:
       lesson: 1
-    humanBattle: false
-    hideSliders: true
+    humanBattle: fałsz
+    hideSliders: prawda
     answer: 1
 ---
-That's it, you've completed lesson 2!
+Tak jest, udało Ci się ukończyć lekcje 2!
 
 You can check out the demo to the right to see it in action. Go ahead, I know you can't wait until the bottom of this page 
 
-## Javascript implementation
+## Implementacja Javascript
 
-Once we're ready to deploy this contract to Ethereum we'll just compile and deploy `ZombieFeeding` — since this contract is our final contract that inherits from `ZombieFactory`, and has access to all the public methods in both contracts.
+Gdy jesteśmy gotowi, aby umieścić kontrakt w Ethereum będziemy musieli tylko skompilować i wdrożyć `ZombieFeeding` — ten kontrakt jest naszym ostatecznym kontraktem, który dziedziczy po `ZombieFactory` i ma dostęp do wszystkich publicznych metod w obu kontraktach.
 
 Let's look at an example of interacting with our deployed contract using Javascript and web3.js:
 
