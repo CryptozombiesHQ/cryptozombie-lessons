@@ -67,23 +67,23 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; _createZombie("NoName", newDna); }
       }
 ---
-Let's finish writing the `feedAndMultiply` function.
+Skończmy pisać funkcję `feedAndMultiply`.
 
-The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA.
+Formuła do obliczania nowego DNA Zombi jest prosta: jest to po prostu średnia pomiędzy DNA Zombiaka i DNA ofiary.
 
-For example:
+Na przykład:
 
     function testDnaSplicing() public {
       uint zombieDna = 2222222222222222;
       uint targetDna = 4444444444444444;
       uint newZombieDna = (zombieDna + targetDna) / 2;
-      // ^ will be equal to 3333333333333333
+      // ^ będzie równe 3333333333333333
     }
     
 
-Later we can make our formula more complicated if we want to, like adding some randomness to the new zombie's DNA. But for now we'll keep it simple — we can always come back to it later.
+Później możemy uczynić naszą formułę bardziej skomplikowaną, jeśli chcemy, np. dodać trochę losowości do nowego DNA Zombi. Lecz na razie utrzymamy to w prostocie - zawsze możemy do niego wrócić później.
 
-# Put it to the test
+# Wypróbujmy zatem
 
 1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus` to only take the last 16 digits.
 
