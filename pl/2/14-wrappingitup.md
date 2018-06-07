@@ -34,7 +34,7 @@ Spójrzmy na przykład interakcji z naszymi wdrożonymi kontraktami za pomocą J
     // Aby dostać się do obrazka KryptoKiciusia, musimy zapytać o jego web API. Ta
     // informacja nie jest przechowywana w blockchain'ie, tylko na ich serwerze.
     // jeśli wszystko zostało przechowane w blockchain'ie, nie powinniśmy się martwić
-    // o to, że serwer padnie, zmianę API, czy firma
+    // o to, że serwer padnie, o zmianę API, czy o to, że firma
     // zablokuje nam możliwość załadowania ich assetów jeśli nie polubią naszej gry Zombi ;)
     let apiUrl = "https://api.cryptokitties.co/kitties/" + kittyId
     $.get(apiUrl, function(data) {
@@ -56,10 +56,10 @@ Spójrzmy na przykład interakcji z naszymi wdrożonymi kontraktami za pomocą J
     })
     
 
-# Give it a try!
+# Spróbuj!
 
-Select the kitty you want to feed on. Your zombie's DNA and the kitty's DNA will combine, and you'll get a new zombie in your army!
+Wybierz kotka, którym chcesz się nakarmić. DNA Twojego Zombiaka oraz DNA kotka połączy się i otrzymasz nowego Zombi w swojej armii!
 
 Notice those cute cat legs on your new zombie? That's our final `99` digits of DNA at work 
 
-You can start over and try again if you want. When you get a kitty zombie you're happy with (you only get to keep one), go ahead and proceed to the next chapter to complete lesson 2!
+Możesz zacząć od nowa i spróbować ponownie, jeśli chcesz. Kiedy otrzymasz kotka, z którego jesteś zadowolony (możesz zatrzymać tylko jednego), przejdź do następnego rozdziału, aby ukończyć lekcję 2!
