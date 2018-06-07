@@ -91,6 +91,6 @@ Później możemy uczynić naszą formułę bardziej skomplikowaną, jeśli chce
     
     > Uwaga: Możesz dostać się do właściwości `myZombie` używając `myZombie.name` i `myZombie.dna`
 
-3. Kiedy mamy nowe DNA, wywołajmy `_createZombie`. Możesz zajrzeć do zakładki `zombiefactory.sol` jeśli nie pamiętasz jakich parametrów potrzebuje ta funkcja do wywołania. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+3. Kiedy mamy nowe DNA, wywołajmy `_createZombie`. Możesz zajrzeć do zakładki `zombiefactory.sol` jeśli nie pamiętasz jakich parametrów potrzebuje ta funkcja do wywołania. Zauważ, że wymaga nazwy, więc ustawmy nazwę naszego nowego Zombiaka jako `"NoName"` — później możemy napisać funkcje zmieniającą nazwy Zombiaków.
 
-> Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
+> Uwaga: Maniaku Solidity! :) być może zauważyłeś problem z naszym kodem! Nie martw się, naprawimy to w kolejnym rozdziale ;)
