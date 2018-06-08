@@ -109,9 +109,9 @@ Do tej pory, Solidity wyglądał całkiem podobnie do innych języków jak np. J
 
 Po wdrożeniu umowy do Ethereum, jest ona ***niezmienna***, co oznacza, że nie może już nigdy być zmodyfikowana lub zaktualizowana ponownie.
 
-Początkowy kod, który wdrażasz do umowy zostaje zapisany na stałe w blockchain'ie. This is one reason security is such a huge concern in Solidity. If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
+Początkowy kod, który wdrażasz do umowy zostaje zapisany na stałe w blockchain'ie. Jest to jeden z powodów, który budzi niepokój jeśli chodzi o bezpieczeństwo w Solidity. Więc jeśli Twój kod posiada wady, nie ma sposobu na naprawienie go, np. jakimś patch'em. Możesz jedynie poinformować użytkowników, aby zaczęli używać innego adresu Twojej inteligentnej umowy, takiej która została poprawiona.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod inteligentnej umowy i weryfikujesz go, możesz być pewien, że przy każdym wywołaniu funkcji będzie robić dokładnie to, co ten kod Ci mówi. No one can later change that function and give you unexpected results.
 
 ## External dependencies
 
