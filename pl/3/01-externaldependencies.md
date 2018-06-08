@@ -111,11 +111,11 @@ Po wdrożeniu umowy do Ethereum, jest ona ***niezmienna***, co oznacza, że nie 
 
 Początkowy kod, który wdrażasz do umowy zostaje zapisany na stałe w blockchain'ie. Jest to jeden z powodów, który budzi niepokój jeśli chodzi o bezpieczeństwo w Solidity. Więc jeśli Twój kod posiada wady, nie ma sposobu na naprawienie go, np. jakimś patch'em. Możesz jedynie poinformować użytkowników, aby zaczęli używać innego adresu Twojej inteligentnej umowy, takiej która została poprawiona.
 
-Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod inteligentnej umowy i weryfikujesz go, możesz być pewien, że przy każdym wywołaniu funkcji będzie robić dokładnie to, co ten kod Ci mówi. No one can later change that function and give you unexpected results.
+Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod inteligentnej umowy i weryfikujesz go, możesz być pewien, że przy każdym wywołaniu funkcji będzie robić dokładnie to, co ten kod Ci mówi. Nikt nie może później zmienić takiej funkcji i przynieść nieoczekiwanych rezultatów.
 
-## External dependencies
+## Zewnętrzne zależności
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp. But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+W lekcji 2, zakodowaliśmy adres kontraktu CryptoKitties do naszej DApp. Lecz co by się stało, jeśli kontrakt CryptoKitties miałby bug'a i ktoś zniszczyłby wszystkie kotki?
 
 It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
 
