@@ -80,11 +80,11 @@ material:
 
 Jeśli go skompilujesz, kompilator poinformuje Cię o błędzie.
 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+Problemem jest próba wywołania funkcji `_createZombie` wewnątrz `ZombieFeeding`, bo `_createZombie` jest funkcją prywatną</code> ` dla <code>ZombieFactory`. Oznacza to, że żaden kontrakt, który dziedziczy z `ZombieFactory` nie może uzyskać do niego dostępu.
 
-## Internal and External
+## Internal oraz External
 
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
+Oprócz `public` i `private`, Solidity ma dwa dodatkowe typu określające dostęp do funkcji: `internal` i `external`.
 
 `internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
 
