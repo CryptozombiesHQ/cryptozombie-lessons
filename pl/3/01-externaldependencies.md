@@ -117,9 +117,9 @@ Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod 
 
 W lekcji 2, zakodowaliśmy adres kontraktu CryptoKitties do naszej DApp. Lecz co by się stało, jeśli kontrakt CryptoKitties miałby bug'a i ktoś zniszczyłby wszystkie kotki?
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+Jest mało prawdopodobne, ale jeśli tak by się stało uczyniłoby nasze DApp całkowicie bezużyteczne — DApp mogłyby wskazywać na ustalony adres, który nie zwraca już żadnych kotków. Nasze Zombiaki nie mogłyby żywić się kotkami i nie bylibyśmy w stanie zmodyfikować umowy, aby to naprawić.
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+Z tego powodu, często warto mieć funkcje, które umożliwiają aktualizację kluczowych części DApp.
 
 For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
 
