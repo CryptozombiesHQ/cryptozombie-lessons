@@ -7,8 +7,8 @@ Grr... Nie mogę Cię powstrzymać, czy mogę? Twoje umiejętności Solidity są
 
 Teraz, kiedy masz już pewne doświadczenie w kodowaniu w Solidity, będziemy zagłębiać się w niektóre, bardziej techniczne aspekty rozbudowy Ethereum.
 
-Ta lekcja będzie nieco mniej imponująca (przepraszam, nie ma odwrotu!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
+Ta lekcja będzie nieco mniej imponująca (przepraszam, nie ma odwrotu!). Ale nauczysz się naprawdę ważnych pojęć, które przybliżą Cię do budowania rzeczywistych DApps (zdecentralizowanych aplikacji) — rzeczy takich jak **własność kontraktu, koszt gazu, optymalizacja kodu oraz bezpieczeństwo**.
 
-You've been warned — no kitties and rainbows in Lesson 3!
+Zostałeś ostrzeżony — żadnych kotków, ani tęczy w lekcji 3!
 
-But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
+Ale dużo gęsto upakowanej wiedzy o Solidity. Mocno zalecamy ukończenie lekcji 2 przed rozpoczęciem aktualnej.
