@@ -117,22 +117,22 @@ Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod 
 
 W lekcji 2, zakodowaliśmy adres kontraktu CryptoKitties do naszej DApp. Lecz co by się stało, jeśli kontrakt CryptoKitties miałby bug'a i ktoś zniszczyłby wszystkie kotki?
 
-Jest mało prawdopodobne, ale jeśli tak by się stało uczyniłoby nasze DApp całkowicie bezużyteczne — DApp mogłyby wskazywać na ustalony adres, który nie zwraca już żadnych kotków. Nasze Zombiaki nie mogłyby żywić się kotkami i nie bylibyśmy w stanie zmodyfikować umowy, aby to naprawić.
+Jest to mało prawdopodobne, ale jeśli tak by się stało uczyniłoby to naszą DApp całkowicie bezużyteczną — DApp mogłaby wskazywać na ustalony adres, który nie zwraca już żadnych kotków. Nasze Zombiaki nie mogłyby żywić się kotkami i nie bylibyśmy w stanie zmodyfikować umowy, aby to naprawić.
 
 Z tego powodu, często warto mieć funkcje, które umożliwiają aktualizację kluczowych części DApp.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+Na przykład, zamiast kodowania adresu kontraktu CryptoKitties do naszej DApp, powinniśmy prawdopodobnie mieć funkcję `setKittyContractAddress`, która pozwoli nam zmienić ten adres w przyszłości, w przypadku, gdy coś się stanie z kontraktem CryptoKitties.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
+Zaktualizujmy nasz kod z lekcji 2, aby móc zmienić adres umowy CryptoKitties.
 
-1. Delete the line of code where we hard-coded `ckAddress`.
+1. Usuń linię kodu gdzie znajduje się `ckAddress`.
 
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
+2. Zmień linię, gdzie stworzyliśmy `kittyContract`, zadeklaruj tylko zmienną — tj. nie inicjalizuj żadną wartością.
 
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
+3. Stwórz funkcję o nazwie `setKittyContractAddress`. Ma pobierać jeden argument, `_address` (typu `address`) i powinna to być funkcja `external`.
 
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
+4. Wewnątrz funkcji, dodaj jedną linie kodu, która ustawi code>kittyContract</code> równe `KittyInterface(_address)`.
 
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+> Uwaga: jeśli zauważyłeś lukę w zabezpieczeniu tej funkcji, nie martw się — naprawimy to w kolejnym rozdziale ;)
