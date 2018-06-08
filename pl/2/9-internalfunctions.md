@@ -1,5 +1,5 @@
 ---
-title: Więcej o widoczności funkcji
+title: Więcej o zakresie widoczności funkcji
 actions:
   - 'sprawdźOdpowiedź'
   - 'podpowiedź'
@@ -80,7 +80,7 @@ material:
 
 Jeśli go skompilujesz, kompilator poinformuje Cię o błędzie.
 
-Problemem jest próba wywołania funkcji `_createZombie` wewnątrz `ZombieFeeding`, bo `_createZombie` jest funkcją prywatną</code> ` dla <code>ZombieFactory`. Oznacza to, że żaden kontrakt, który dziedziczy z `ZombieFactory` nie może uzyskać do niego dostępu.
+Problemem jest próba wywołania funkcji `_createZombie` wewnątrz `ZombieFeeding`, bo `_createZombie` jest funkcją prywatną</code> ` dla <code>ZombieFactory`. Oznacza to, że żaden kontrakt, który dziedziczy z `ZombieFactory` nie może uzyskać do niej dostępu.
 
 ## Internal oraz External
 
@@ -90,7 +90,7 @@ Oprócz `public` i `private`, Solidity ma dwa dodatkowe typy określające dost�
 
 `external` jest podobne do `public`, z wyjątkiem, że funkcje te mogą zostać wywołane TYLKO poza kontraktem — nie mogą być wywołane poprzez inne funkcje wewnątrz kontraktu. Będziemy później mówić o tym, dlaczego warto czasem użyć `external` vs `public`.
 
-Do deklarowania funkcji `internal` lub `external`, składnia wygląda tak samo jak przy `private` i `public`:
+Przy deklarowaniu funkcji `internal` lub `external`, składnia wygląda tak samo jak przy `private` i `public`:
 
     contract Sandwich {
       uint private sandwichesEaten = 0;
@@ -113,6 +113,6 @@ Do deklarowania funkcji `internal` lub `external`, składnia wygląda tak samo j
 
 # Wypróbujmy zatem
 
-1. Zmień `_createZombie()` z `private` na `internal` więc nasze pozostałe kontrakty będą miały do niej dostęp.
+1. Zmień funkcję `_createZombie()` z `private` na `internal`, aby nasze pozostałe kontrakty mogły mieć do niej dostęp.
     
-    We've already focused you back to the proper tab, `zombiefactory.sol`.
+    Już skierowaliśmy Cię do właściwej zakładki, `zombiefactory.sol`.
