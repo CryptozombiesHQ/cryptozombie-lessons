@@ -84,13 +84,13 @@ Problemem jest próba wywołania funkcji `_createZombie` wewnątrz `ZombieFeedin
 
 ## Internal oraz External
 
-Oprócz `public` i `private`, Solidity ma dwa dodatkowe typu określające dostęp do funkcji: `internal` i `external`.
+Oprócz `public` i `private`, Solidity ma dwa dodatkowe typy określające dostęp do funkcji: `internal` i `external`.
 
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
+`internal` jest tym samym co `private`, z wyjątkiem tego, że umożliwia dostęp do kontraktów dziedziczących po tym kontrakcie. **(Hmm, tego właśnie tutaj potrzebujemy!)**.
 
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
+`external` jest podobne do `public`, z wyjątkiem, że funkcje te mogą zostać wywołane TYLKO poza kontraktem — nie mogą być wywołane poprzez inne funkcje wewnątrz kontraktu. Będziemy później mówić o tym, dlaczego warto czasem użyć `external` vs `public`.
 
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+Do deklarowania funkcji `internal` lub `external`, składnia wygląda tak samo jak przy `private` i `public`:
 
     contract Sandwich {
       uint private sandwichesEaten = 0;
@@ -105,14 +105,14 @@ For declaring `internal` or `external` functions, the syntax is the same as `pri
     
       function eatWithBacon() public returns (string) {
         baconSandwichesEaten++;
-        // We can call this here because it's internal
+        // Możemy wywołać ją tutaj, bo jest oznaczona jako internal
         eat();
       }
     }
     
 
-# Put it to the test
+# Wypróbujmy zatem
 
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+1. Zmień `_createZombie()` z `private` na `internal` więc nasze pozostałe kontrakty będą miały do niej dostęp.
     
     We've already focused you back to the proper tab, `zombiefactory.sol`.
