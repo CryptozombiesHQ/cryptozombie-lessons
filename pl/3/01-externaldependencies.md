@@ -1,9 +1,9 @@
 ---
-title: Immutability of Contracts
+title: Niezmienność Kontraktów (umów)
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -30,13 +30,12 @@ material:
         
         contract ZombieFeeding is ZombieFactory {
         
-        // 1. Remove this:
+        // 1. Usuń to:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        // 2. Change this to just a declaration:
+        // 2. Zmień to na deklarację:
         KittyInterface kittyContract = KittyInterface(ckAddress);
         
-        // 3. Add setKittyContractAddress method here
-        
+        // 3. Dodaj tutaj metodę setKittyContractAddress
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
@@ -56,7 +55,7 @@ material:
         
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        ragma solidity ^0.4.19;
         
         contract ZombieFactory {
         
