@@ -1,8 +1,8 @@
 ---
-title: More on Function Visibility
+title: Więcej o widoczności funkcji
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
   editor:
     language: sol
@@ -27,7 +27,7 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
         
-        // edit function definition below
+        // edytuj poniższą definicję funkcji
         function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
@@ -76,9 +76,9 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
-**The code in our previous lesson has a mistake!**
+**Kod z naszej poprzedniej lekcji ma błąd!**
 
-If you try compiling it, the compiler will throw an error.
+Jeśli go skompilujesz, kompilator poinformuje Cię o błędzie.
 
 The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
 
