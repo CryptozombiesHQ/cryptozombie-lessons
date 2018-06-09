@@ -8,7 +8,7 @@ material:
       "zombiefeeding.sol": |
         pragma solidity ^0.4.19;
 
-        // put import statement here
+        // tu doplň import
 
         contract ZombieFeeding is ZombieFactory {
 
@@ -62,11 +62,13 @@ material:
       }
 
 ---
-
+Hohó! Všimni si že sme trochu prečistili kód vpravo a v editora sa ti zobrazujú taby jednotlivých súborov. Vyskúšaj sa medzi nimi trochu preklikať. 
 Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
 
+Náš kód začínal byť celkom dlhý, takže sme ho rozdelili do niekoľkých suborov, aby sa nám s ním ľahšie pracovalo. Toto je obvyklý spôsob ako si poradiť s vělkými Solidity projektami.
 Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
 
+Keď máš niekoľko súborov a chceš importovať jeden do druhé'ho, v Solidity sa na to používa kľučove slovo `import`:'
 When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
 
 ```
@@ -77,10 +79,15 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+Takže ak by sme mali súbor s názvom `someothercontract.sol` v rovnakom adresári ako tento kontrakt (`./` referuje adresár v ktorom je daný kontrakt uložený). 
+So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it 
+would get imported by the compiler.
 
+# Vyskúšaj si to sám
 # Put it to the test
 
+Teraz keď už máme pripravenú multi-súborovú štruktúru, musíme použiť `import` na to, aby sme mohli používať obsah iných súborov.
 Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
 
+1. Importuj `zombiefactory.sol` do našeho nového súboru `zombiefeeding.sol`.
 1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 

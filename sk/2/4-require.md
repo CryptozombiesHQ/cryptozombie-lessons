@@ -37,7 +37,7 @@ material:
           }
 
           function createRandomZombie(string _name) public {
-              // start here
+              // začni písať tu
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
           }
@@ -85,35 +85,48 @@ material:
       }
 ---
 
+V Lekcií 1 sme napísali kód tak, že užívatelia môžu vytvárať nových zombie volaním funkcie `createRandomZombie` a zadaním mena zombie. Problém je že ak by užívatelia mohli volať túto funkciu bez obmedzení, mohli by si vytvárať nekonečné armády zombie a hra by pre ostatných nebola veľmi zábavná.
 In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
 
+Poďme spraviť potrebné úpravy, aby hráč mohol z jednej adresy vytvoriť nového zombie len raz. Tým pádom hráči zavolajú túto funkciu iba raz, aby vytvorili prvopočiatočného zombie ich zombie armády.
 Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
 
+Ako implementujeme obmedzenie aby táto funkcia mohla byť zavolaná iba jeden krát každým hráčom?
 How can we make it so this function can only be called once per player? 
 
+Použijeme na to `require`. `require` zabezpečí, že funkcia vráti error ak určitá podmienka nie je splnená:
 For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-  // (Side note: Solidity doesn't have native string comparison, so we
-  // compare their keccak256 hashes to see if the strings are equal)
+  // Porovná či argument _name je reťazec "Vitalik". Ak nie, vráti error a skončí.
+  // (Bočná poznámka: Solidity natívne nepodporuje porovnávanie reťazcov,
+  // preto vypočítame keccak256 hashe oboch reťazcov a pozrieme sa či sa zhodujú )
   require(keccak256(_name) == keccak256("Vitalik"));
-  // If it's true, proceed with the function:
+  // Ak bola podmienka splnená, pokračuj vo vykonávaní funkcie
   return "Hi!";
 }
 ```
 
+Ak zavoláš túto funkciu takto: `sayHiToVitalik("Vitalik")`, vráti naspäť hodnotu "Hi!". Ak túto funkciu zavoláš s akýmkoľvek iným argumentom, vráti error a nevykoná sa.
+
 If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
+A preto `require` je užitočný konštrukt na verifikáciu či boli splnené určite podmienky, pred tým než vykoná hlavná logika funkcie.
 Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
 
+
+# Vyskúšaj si to sám
 # Put it to the test
 
+V našej zombie hre nechceme, aby užívateľ mohol donekonečna vytvárať neobmedzený počet zombie opakovaným volaním `createRandomZombie` - hra by nebola veľmi zábavná.
 In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
 
+Poďme použiť `require` konštrukt na to, aby sme zaručili že táto funkcia bude vykonaná pre každého hráča len raz, keď si vytvoria svojho prvého zombie.
 Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
 
+1. Vlož konštrukt `require` na začiatok funkcie `createRandomZombie`. Funkcia by mala kontrolovať, že `ownerZombieCount[msg.sender]` je rovné `0`, v opačnom prípade vyhodiť error.
 1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
 
+> Poznámka: V Solidity nezáleží ktorý výraz do require zadáš ako prvý - výsledok bude rovnaký pre oboje zoradenia. Každopádne, nakoľko je náš softvér na kontrolovanie odpovedí veľmi jednoduchý, akceptuje jedinú správnu odpoved - očakáva že `ownerZombieCount[msg.sender]` bude prvým výrazom argumentom v require.
 > Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
