@@ -81,7 +81,7 @@ We can also combine these together and do them in one line of code to keep thing
 people.push(Person(16, "Vitalik"));
 ```
 
-
+Všimnime si že `array.push()` pridáva nejaký prvok na **koniec** poľa, takže prvky poľa su zoradené v rovnakom poradí ako sme ich pridávali. Pozrime sa na nasledujúci príklad:
 Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
 
 ```
@@ -89,12 +89,18 @@ uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
+// pole numbers vyzerá teraz takto [5, 10, 15]
 // numbers is now equal to [5, 10, 15]
 ```
 
+# Vyskúšaj si to sám
 # Put it to the test
 
+Poďme upraviť našu funkciu cryptoZombie tak, aby vlastne niečo robila!
 Let's make our createZombie function do something!
+
+1. Vyplňíme telo funkcie tak, aby vytvárila novú inštanciu `Zombie` a pridala ju do poľa `zombies`. Atribúty `name` a `dna` pre nového Zombie by mali byť použité z argumentov funkcie. 
+2. Spravme to všetko na jednom riadku, nech je náš kód čistý.
 
 1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
 2. Let's do it in one line of code to keep things clean.
