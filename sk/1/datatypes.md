@@ -1,5 +1,5 @@
 ---
-title: State Variables & Integers
+title: Stavové premenné a celé čísla
 actions: ['checkAnswer', 'hints']
 material:
   editor:

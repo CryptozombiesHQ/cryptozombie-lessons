@@ -1,5 +1,5 @@
 ---
-title: Function Declarations
+title: Deklarácia Funkcií
 actions: ['checkAnswer', 'hints']
 material:
   editor:

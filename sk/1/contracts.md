@@ -1,5 +1,5 @@
 ---
-title: "Contracts"
+title: "Kontrakty"
 actions: ['checkAnswer', 'hints']
 material: 
   editor:

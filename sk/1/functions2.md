@@ -1,5 +1,5 @@
 ---
-title: Private / Public Functions
+title: Private / Public Funkcie
 actions: ['checkAnswer', 'hints']
 material:
   editor:

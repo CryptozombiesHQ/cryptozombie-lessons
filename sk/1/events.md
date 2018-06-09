@@ -1,5 +1,5 @@
 ---
-title: Events
+title: Udalosti
 actions: ['checkAnswer', 'hints']
 material:
   editor:
