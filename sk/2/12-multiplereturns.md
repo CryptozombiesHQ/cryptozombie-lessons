@@ -38,7 +38,7 @@ material:
             _createZombie("NoName", newDna);
           }
 
-          // define function here
+          // Tu definuj funkciu
 
         }
       "zombiefactory.sol": |
@@ -122,6 +122,7 @@ material:
       }
 ---
 
+Táto `getKitty` funkcia je prvým príkladom vracania niekoľkým hodnôt z funkcie. Poďme sa pozrieť na to ako tieto návratové hodnoty spracovať. 
 This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
 
 ```
@@ -133,30 +134,38 @@ function processMultipleReturns() external {
   uint a;
   uint b;
   uint c;
-  // This is how you do multiple assignment:
+  // Takto priradíš návratové hodnoty do niekoľkých premenných
   (a, b, c) = multipleReturns();
 }
 
-// Or if we only cared about one of the values:
+// Alebo v prípade že ťa zaujíma len jedna hodnota:
 function getLastReturnValue() external {
   uint c;
-  // We can just leave the other fields blank:
+  // Môžme ostatné položky ponechať prázdne takto:
   (,,c) = multipleReturns();
 }
 ```
 
+# Vyskúšaj si to sám
 # Put it to the test
 
+Je čas na interkaciu s CryptoKitties kontraktom!
 Time to interact with the CryptoKitties contract!
 
+Poďme spraviť funkciu, ktorá získa gény mačky z CryptoKitties kontraktu:
 Let's make a function that gets the kitty genes from the contract:
 
+1. Vytvor funkciu s naźvom `feedOnKitty`. Bude príjmať 2 `uint` parametre, `_zombieId` a`_kittyId`. Mala by to byť `public` funkcia.
 1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
 
+2. Funkcia by mala najprv deklarovať `uint` s názvom`kittyDna`.
 2. The function should first declare a `uint` named `kittyDna`.
 
+  > Poznámka: V našom `KittyInterface`, `genes` je `uint256` - ale ak si spomenieš na Lekciu 1, `uint` je skratkou pre `uint256` - je to to isté.
   > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
 
+3. Funkcai by potom mala volať funkciu `kittyContract.getKitty` s paramtrom `_kittyId` a uložiť `genes` do `kittyDna`. Pamätaj — `getKitty` vracia kopu premenných. (10 aby sme boli presný - som milý, zrátal som ich za teba!). No jediná návratová hodnota ktorá nás naozaj zaujíma je posledná, `genes`. Zrátaj si počet čiarok pozorne!
 3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
 
+4. Na záver, funkcia by mala zavolať `feedAndMultiply` a predať jej paremetre `_zombieId` a `kittyDna`.
 4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.

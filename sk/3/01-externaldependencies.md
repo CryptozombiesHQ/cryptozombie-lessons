@@ -28,12 +28,12 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // 1. Remove this:
+          // 1. Zmaž tento riadok
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
+          // 2. Toto zmeň len na deklaráciu bez inicializácie
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // 3. Add setKittyContractAddress method here
+          // 3. Tu pridaj funkciu setKittyContractAddress
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
