@@ -217,7 +217,7 @@ Więc kontrakty `Ownable` zasadniczo powodują następujące rzeczy:
 3. Umożliwia przeniesienie umowy do nowego właściciela (`owner</ code>)</p></li>
 </ol>
 
-<p><code>onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
+<p><code>onlyOwner<code> jest tak powszechnym wymogiem dla kontraktów, że większość aplikacji Solidity zaczyna się od kopiuj/wklej kontraktu <code>Ownable`, a następnie pierwszy kontrakt dziedziczy z niego.
     
     Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
     
