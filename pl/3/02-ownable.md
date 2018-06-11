@@ -1,9 +1,9 @@
 ---
-title: Ownable Contracts
+title: Posiadane Kontrakty
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
