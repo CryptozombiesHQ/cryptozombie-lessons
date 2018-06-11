@@ -206,7 +206,7 @@ Kilka nowych rzeczy, których nie widzieliśmy wcześniej:
 
 - Konstruktory: `function Ownable()` jest ***konstruktorem***, który jest opcjonalną, specjalną funkcją i ma taką samą nazwę jak kontrakt. Zostanie wykonany tylko jeden raz, kiedy umowa zostanie po raz pierwszy utworzona.
 - Modyfikatory funkcji: `modifier onlyOwner()`. Modyfikatory to rodzaj półfunkcji, które służą do modyfikowania innych funkcji, zwykle w celu sprawdzenia niektórych wymagań przed wykonaniem. W tym przypadku `onlyOwner` może zostać użyty do ograniczenia dostępu, więc **tylko**** właściciel ** umowy może uruchomić tę funkcję. Porozmawiamy więcej o modyfikatorach funkcji w kolejnym rozdziale oraz o tym, co robi ten dziwny znak `_;`.
-- Słowo kluczowe `indexed`: nie przejmujmy sie tym, narazie tego nie będziemy potrzebować.
+- Słowo kluczowe `indexed`: nie przejmujmy sie tym, narazie nie będziemy tego potrzebować.
 
 Więc kontrakty `Ownable` zasadniczo powodują następujące rzeczy:
 
@@ -223,8 +223,8 @@ Więc kontrakty `Ownable` zasadniczo powodują następujące rzeczy:
     
     ## Wypróbujmy zatem
     
-    Poszliśmy dalej i skopiowaliśmy kod kontraktu `Ownable` do nowego pliku, `ownable.sol`. Zacznijmy od tego, aby odziedziczyć po nim `ZombieFactory`.
+    Poszliśmy dalej i skopiowaliśmy kod kontraktu `Ownable` do nowego pliku o nazwie `ownable.sol`. Zacznijmy od tego, aby `ZombieFactory` dziedziczył po nim.
     
     1. Zmodyfikuj nasz kod aby `importował` zawartość `ownable.sol`. Jeśli nie pamiętasz, jak to zrobić, zajrzyj do `zombiefeeding.sol`.
     
-    2. Zmodyfikuj umowę `ZombieFactory`, tak aby dziedziczyć po `Ownable `. Znowu możesz rzucić okiem na `zombiefeeding.sol`, jeśli nie pamiętasz, jak to się robi.
+    2. Zmodyfikuj umowę `ZombieFactory`, tak aby dziedziczyć po `Ownable`. Znowu możesz rzucić okiem na `zombiefeeding.sol`, jeśli nie pamiętasz, jak się to robi.
