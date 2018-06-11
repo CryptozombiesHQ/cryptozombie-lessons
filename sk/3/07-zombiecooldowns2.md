@@ -1,5 +1,5 @@
 ---
-title: Public Functions & Security
+title: Public funkcie a bezpečnosť
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -42,18 +42,18 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 1. Make this function internal
+          // 1. Túto funkcu uprav na internal
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. Add a check for `_isReady` here
+            // 2. Tu pridaj kontrolu výsledku funkcie 
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. Call `triggerCooldown`
+            // 3. Tu zavolaj funkciu `triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -206,18 +206,26 @@ material:
       }
 ---
 
+Teraz poďme modifikovať funkciu `feedAndMultiply` tak, aby brala do úvahy náš časovač cooldown odpočívania.
 Now let's modify `feedAndMultiply` to take our cooldown timer into account.
 
+Všimni si že sme túto funkciu v predchádzajúcich lekciách spravili `public`. Je dôležitou bezpečnostnou praktikou vždy preskúmať všetky naše `public` and `external` funkcie a zvážiť všetky možné spôsoby, akým by užívatelia mohli potenciálne tieto funkcie zneužiť. Nezabudni že ak tieto funkcie nemajú modifikátor ako `onlyOwner`, ktokoľvek môže tieto funkcie zavolať s ľubovolnými parametrami.
 Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
 
+Keď túto našu funkciu opakovane preskúmame, všimneme si že nejaký úžívateľ by ju mohol zavolať a podsunút akékoľvek hodnoty v parametroch  `_targetDna` or `_species`. To nevyzerá dobre - my chceme aby hráči dodržovali naše praidlá!
 Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
 
+Pri bližšom preskúmaní situácie zistíme, že táto funkcia je volaná iba z našej funkcie `feedOnKitty()`, takže najjednoduchší spôsob ako predísť problémom je upraviť `feedAndMultiply` na `internal`.
 On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
 
+
+## Vyskúšaj si to sám
 ## Put it to the test 
 
+1. Momentálne `feedAndMultiply` je `public` funkcia. Poďme ju upraviť na `internal`, takže bude náš kontrakt bezpečnejší. Nechceme aby naši užívatelia boli schopny volať túto s hociakým DNA s akým oni chcú.
 1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
 
+2. Poďme upraviť `feedAndMultiply` tak aby brala v úvahu `cooldownTime`. Najprv, po tom čo vyhľadáme `myZombie`, poďme prida't `require` ktorý skontroluje či je zombie pripravný na ďalšie kŕmenie tak, že zavoláme `_isReady()` a predáme jej ako parameter `myZombie`. Tým pádom bude úžívateľ mať možnosť spustiť túto funkciu len po tom čo uplynulo dostatok času odposledného kŕmenia.
 2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
 
 3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.

@@ -1,5 +1,5 @@
 ---
-title: Zombie Battles
+title: Zombie Bytky
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -207,18 +207,26 @@ material:
       }
 ---
 
+Teraz keď sme sa naučili o payable funkciách a ether balansoch kontraktov, je na čase pridať do hry funkcionality zombie súbovjov! 
 Now that we've learned about payable functions and contract balances, it's time to add functionality for zombie battles!
 
+Budeme nasledovať formát predošlých kapitol a usporiadáme náš kód tým že vytvoríme nový subor / kontrakt pre funkcionalitu napádania, ktorý bude importovať predchadzajúci kontrakt.
 Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
 
+## Vyskúšaj si to sám
 ## Put it to the test
 
+Poďme si zopakovať ako vytvoriť nový kontrakt. Opakovanie je matka múdrosti.
 Let's review creating a new contract. Repetition leads to mastery!
 
+Ak si nevieš spomenút na syntax, očekuj si `zombiehelper.sol` - no skús úlohu najprv vyriešiť bez pomoci, na otestovanie tvojich znalostí.
 If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
 
+1. Na vrchu deklaruj že kontrakt je napísaný pre Solidity na verzií `^0.4.19`.
 1. Declare at the top of the file that we're using Solidity version `^0.4.19`.
 
 2. `import` from `zombiehelper.sol`.
+2. Sprav `import` súboru `zombiehelper.sol`.
 
+3. Deklaruj nový kontrakt `contract` nazvaný `ZombieBattle` ktorý bude dediť od `ZombieHelper`. Zatiaľ nechaj telo kontraktu prázdne.
 3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.

@@ -1,5 +1,5 @@
 ---
-title: Back to Attack!
+title: Späť do útoku!
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -20,9 +20,9 @@ material:
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
 
-          // 1. Add modifier here
+          // 1. Pridaj modifikátor tu
           function attack(uint _zombieId, uint _targetId) external {
-            // 2. Start function definition here
+            // 2. Začni písat telo funkciu tu
           }
         }
       "zombiehelper.sol": |
@@ -239,18 +239,25 @@ material:
       }
 ---
 
+Dosť bolo refaktorovania - poďme naspäť do súboru `zombieattack.sol`.
 Enough refactoring — back to `zombieattack.sol`.
 
+Ideme pokračovať v implementácií našej funkcie `attack`, teraz keď už máme pripravený modifikátor `ownerOf`.
 We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
 
+## Vyskúšaj si to sám
 ## Put it to the test
 
+1. Pridaj modifikátor `ownerOf` funkcii `attack` aby si sa uistil, že volatel funkcie je vlastník zombie s ID `_zombieId`.
 1. Add the `ownerOf` modifier to `attack` to make sure the caller owns `_zombieId`.
 
+2. Prvá vec ktorú by naša funkcia mala robiť je získať `storage` ukazateľ na oboch zombie, aby sme s nimi mohli ľahko pracovať:
 2. The first thing our function should do is get a `storage` pointer to both zombies so we can more easily interact with them:
-
+  a. Deklaruj `Zombie storage` premennú pomenovanú `myZombie` a nastav ju na hodnotu `zombies[_zombieId]`.
   a. Declare a `Zombie storage` named `myZombie`, and set it equal to `zombies[_zombieId]`.
 
+  b. Deklaruj `Zombie storage` s názvom `enemyZombie` a nstav ju na hodnotu `zombies[_targetId]`.
   b. Declare a `Zombie storage` named `enemyZombie`, and set it equal to `zombies[_targetId]`.
 
+3. Teraz použijeme náhodné čislo medzi 0 a 99 na to, aby sme určili výsledok boja. Deklaruj `uint` s názvom `rand` a nastav jeho hodnotu na výsledok `randMod` funkcie. `randMod` by mala byť zavolaná s argumentom `100`. 
 3. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `uint` named `rand`, and set it equal to the result of the `randMod` function with `100` as an argument.

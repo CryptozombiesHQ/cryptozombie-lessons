@@ -1,5 +1,5 @@
 ---
-title: onlyOwner Function Modifier
+title: Funkčný modifikátor onlyOwner
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // Modify this function:
+          // Uprav túto funkciu
           function setKittyContractAddress(address _address) external {
             kittyContract = KittyInterface(_address);
           }
@@ -183,8 +183,10 @@ material:
       }
 ---
 
+Teraz keď náš základný kontrakt `ZombieFactory` dedí od `Ownable` môžeme použiť funkčný modifikátor `onlyOwner` taktiež v kontrakte `ZombieFeeding`.
 Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
 
+To preto, ako funguje dedičnost kontraktov. Pamätaj:
 This is because of how contract inheritance works. Remember:
 
 ```
@@ -192,12 +194,15 @@ ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+Teda, ak `ZombieFeeding` je `ZombieFactory`, a `ZombieFactory` je `Ownable`, potom `ZombieFeeding` je tiež `Ownable`. Preto `ZombieFeeding` má taktiež prístup k funkciám, udalostiam a modifikátorom ownable `Ownable` kontraktu. Rovnaký princíp sa ďalej aplikuje na akékoľvek kontrakty, ktoré by v budúcnosti ďalej dedili od `ZombieFeeding`.
 
+## Funkčné modifikátory
 ## Function Modifiers
 
+Funkčný modifikátor vyzerá úplne ako funkcia, no používa kľučové slovo `modifier` namiesto `function`. Naviac nemôže byť priamo zavolaný ako funkcie. Miesto toho, môžeme modifikátor pripojiť na koniec hlavičky nejakej funkcie a motifikovať tak jej správanie.
 A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
 
+Poďme sa na to lepšie pozrieť skúmaním modifkátoru `onlyOwner`: 
 Let's take a closer look by examining `onlyOwner`:
 
 ```
@@ -211,30 +216,39 @@ modifier onlyOwner() {
 ```
 
 We would use this modifier as follows:
+Tento modifikátor by sme použili nasledovne:
 
 ```
 contract MyContract is Ownable {
   event LaughManiacally(string laughter);
 
-  // Note the usage of `onlyOwner` below:
+  // Všimni si použitie `onlyOwner`:
   function likeABoss() external onlyOwner {
     LaughManiacally("Muahahahaha");
   }
 }
 ```
 
+Všimni si modifikátor  `onlyOwner` na funkcií `likeABoss`. Keď zavoláš `likeABoss`, kód vo vnútri `onlyOwner` sa vykoná **ako prvý**. Až potom, keď sa dostane ku riadku `_;` vo vnútri `onlyOwner`, sa začne vykonávať kód vo vnútri pôvodne zavolanej funkcie `likeABoss`.
 Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
 
+Takže zatiaľ čo existujé rozličné možnosti ako využiť modifikátory, jeden z najtypickéjších prípadov je na vykonanie určitých `require` kontrol, pred tým než sa začne vykonávať funkcia.
 So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
 
+V prípade `onlyOwner`, využitie tohoto modifikátora zaručí to, že **iba** (only) **vlasntník** (owner) kontraktu (to si ty, ktorý si nasadil kontrakt) može zavolať túto funkciu.
 In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
 
+>Poznámka: Pridávanie takýchto špeciálnych schopností je často nevyhnutnosť, no je to niečo čo vlastníci kontraktov môžu zneužiť proti užívateľom. Napríklad, vlastník kontraktu môže pridať backdoor funkciu, ktorá by len jemu umožnila privlastniť si cudzích zombies!
 >Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
 
+>Preto je dôležité si pamätať, že len preto že je naša DAppka na Ethereu ju nerobí automaticky decentralizovanou - je treba si prečítať celý zdrojový kód a uistitť sa, že neobsahuje špeciálne kontrolné funkcie pre vlastníka kontraktu, ktoré by mohli predstavovať problém. Pri písaní DApp je potrebné nájsť určitú rovnováhu medzi schopnosťou udržiavať aplikáciu funkčnú, byť schopný opraviť pontencionálne bugy, no zároveň vytvoriť necentralizovanú platformu, ktorej užívatelia môžu veriť.  
 >So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
 
+# Vyskúšaj si to sám
 ## Put it to the test
 
+Teraz môžeme obmedziť prístup do `setKittyContractAddress` tak, aby sme túto funkciu mohli volať len my.
 Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
 
+1. Pridaj funkcii `setKittyContractAddress` modifikátor `onlyOwner`.
 1. Add the `onlyOwner` modifier to `setKittyContractAddress`.

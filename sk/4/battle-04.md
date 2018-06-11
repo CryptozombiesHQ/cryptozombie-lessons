@@ -1,5 +1,5 @@
 ---
-title: Refactoring Common Logic
+title: Refaktorovanie Zdieľanej Logiky
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -30,7 +30,7 @@ material:
 
           KittyInterface kittyContract;
 
-          // 1. Create modifier here
+          // 1. Tu vytvor modifikátor
 
           function setKittyContractAddress(address _address) external onlyOwner {
             kittyContract = KittyInterface(_address);
@@ -44,9 +44,9 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. Add modifier to function definition:
+          // 2. Tejto funkcii pridaj vytvorený modifikátor
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. Remove this line
+            // 3. Zmaž nasledujúci riadok
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
@@ -278,34 +278,48 @@ material:
       }
 ---
 
+Keď niekto zavolá funkciu `attack`, chcem si byť istý že volatel tejto funkcie je skutočne vlastníkom zombie ktorého sa snaží poslať na útok. Nechceme aby mohli hráči dávať rozkazy cudzím zombie!
 Whoever calls our `attack` function — we want to make sure the user actually owns the zombie they're attacking with. It would be a security concern if you could attack with someone else's zombie!
 
+Dokážeš prísť na to ako by sme skontrolovali že osoba ktorá volá túto funkciu je vlastníkom zombieho s ID `_zombieId` prijatého cez argument funkcie? 
 Can you think of how we would add a check to see if the person calling this function is the owner of the `_zombieId` they're passing in?
 
+Chvíľu porozmýšľaj a skús či dokážeš prísť na správnu odpoveď sám.
 Give it some thought, and see if you can come up with the answer on your own.
 
+Daj tomu chvíľu... Skús sa kód z predchádzajúcich lekcie pre inšpiráciu... 
 Take a moment... Refer to some of our previous lessons' code for ideas...
 
+Odpoveď je dole, ale nepokračuj dokým si na to neskúsil prísť sám.
 Answer below, don't continue until you've given it some thought.
 
+## Odpoveď
 ## The answer
 
+Takúto kontrolu sme spravili už niekoľko krát v predošlých lekciách. Vo funkciách  `changeName()`, `changeDna()`, a `feedAndMultiply()` sme vykonávali takúto kontrolu:
 We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
+Toto je presne to čo potrebujeme aj pre našu `attack` funkciu. Keďže chceme používať rovnaký kód niekoľko krát, poďme ho presunút do osobitného modifikátora `modifier` aby sme sa zbytočne neopakovali, a udržali kód čistejší.
 This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own `modifier` to clean up our code and avoid repeating ourselves.
 
+## Vyskúšaj si to sám
 ## Put it to the test
 
+Teraz sme naspäť v súbore `zombiefeeding.sol`, keďže toto bolo prvé miesto kde sme tento kód použili. Poďme ho teraz extrahovať do samostatného funkčného modifikátora.
 We're back to `zombiefeeding.sol`, since this is the first place we used that logic. Let's refactor it into its own `modifier`.
 
+1. Vytvor `modifier` s názvom `ownerOf`. Bude príjmať 1 argument, `_zombieId` (typu `uint`).
 1. Create a `modifier` called `ownerOf`. It will take 1 argument, `_zombieId` (a `uint`).
 
+  Telo modifikátora by malo obsahovať `require`, ktorý skontroluje že `msg.sender` sa rovná `zombieToOwner[_zombieId]`. Ak je požiadavka splnená, musí sa ďalej pokračovať vo funkcii. Ak si zabudol syntax, pozri si súbor `zombiehelper.sol`.
   The body should `require` that `msg.sender` is equal to `zombieToOwner[_zombieId]`, then continue with the function. You can refer to `zombiehelper.sol` if you don't remember the syntax for a modifier.
 
+2. Uprav definíciu funkcie `feedAndMultiply` tak, aby používala modifikátor `ownerOf`.
 2. Change the function definition of `feedAndMultiply` such that it uses the modifier `ownerOf`.
 
+3. Teraz keď už používame modifikátor, môžeš z nej zmazať riadok  `require(msg.sender == zombieToOwner[_zombieId]);`. 
 3. Now that we're using a `modifier`, you can remove the line `require(msg.sender == zombieToOwner[_zombieId]);`
