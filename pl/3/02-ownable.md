@@ -11,7 +11,7 @@ material:
       "zombiefactory.sol": |
         pragma solidity ^0.4.19;
         
-        // 1. Import here
+        // 1. Zaimportuj tutaj
         
         // 2. Inherit here:
         contract ZombieFactory {
