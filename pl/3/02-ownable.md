@@ -1,5 +1,5 @@
 ---
-title: Posiadane Kontrakty
+title: Kontrakty Ownable
 actions:
   - 'sprawdźOdpowiedź'
   - 'podpowiedź'
@@ -13,7 +13,7 @@ material:
         
         // 1. Zaimportuj tutaj
         
-        // 2. Inherit here:
+        // 2. Odziedzicz tutaj:
         contract ZombieFactory {
         
         event NewZombie(uint zombieId, string name, uint dna);
@@ -99,9 +99,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @tytuł Ownable
-        * @dev Posiadany kontrakt zawiera adres właściciela i zapewnia podstawową autoryzację kontroli
-        * funkcji, ułatwia implementację "uprawnień użytkownika".
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
         address public owner;
@@ -109,8 +109,8 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev Konstruktor ustala pierwotnego `właściciela`kontraktu do konta
-        * nadawcy.
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
         */
         function Ownable() public {
         owner = msg.sender;
@@ -118,7 +118,7 @@ material:
         
         
         /**
-        * @dev Wyrzuci, jeśli zostanie wywołany przez konto inne niż właściciela.
+        * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
@@ -151,19 +151,19 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
-Did you spot the security hole in the previous chapter?
+Zauważyłeś lukę w bezpieczeństwie w poprzednim rozdziale?
 
-`setKittyContractAddress` is `external`, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
+`setKittyContractAddress` jest `external`, więc każdy może to wywołać! Oznacza to, że każdy, kto wywołał tę funkcję, może zmienić adres umowy CryptoKitties i złamać naszą aplikację dla wszystkich jej użytkowników.
 
-We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
+Chcemy mieć możliwość zaktualizowania tego adresu w naszej umowie, ale nie chcemy, aby wszyscy mogli go aktualizować.
 
-To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner (you) who has special privileges.
+Aby poradzić sobie z takimi przypadkami, jedną z powszechnych praktyk, która się pojawiła, jest zawarcie umów `Ownable` — co oznacza, że mają one właściciela (Ciebie), który ma specjalne uprawnienia.
 
-## OpenZeppelin's `Ownable` contract
+## Kontrakt OpenZeppelin's `Ownable`
 
-Below is the `Ownable` contract taken from the ***OpenZeppelin*** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, we highly recommend you check out their site to further your learning!
+Poniższy kontrakt `Ownable` wzięty jest z biblioteki Solidity ***OpenZeppelin***. OpenZeppelin to biblioteka bezpiecznych i sprawdzonych przez społeczność inteligentnych kontraktów, z których możesz korzystać we własnych zdecentralizowanych aplikacjach. Po tej lekcji zdecydowanie zalecamy zapoznanie się z ich witryną w celu dalszej nauki!
 
-Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
+Prześledź poniższy kontrakt. Zobaczysz kilka rzeczy, których jeszcze się nie nauczyłeś, ale nie martw się, porozmawiamy o nich później.
 
     /**
      * @title Ownable
