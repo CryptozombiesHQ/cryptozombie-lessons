@@ -117,7 +117,7 @@ Ale jest to także cecha smart kontraktów. Kod jest prawem. Jeśli czytasz kod 
 
 W lekcji 2, zakodowaliśmy adres kontraktu CryptoKitties do naszej DApp. Lecz co by się stało, jeśli kontrakt CryptoKitties miałby bug'a i ktoś zniszczyłby wszystkie kotki?
 
-Jest to mało prawdopodobne, ale jeśli tak by się stało uczyniłoby to naszą DApp całkowicie bezużyteczną — DApp mogłaby wskazywać na ustalony adres, który nie zwraca już żadnych kotków. Nasze Zombiaki nie mogłyby żywić się kotkami i nie bylibyśmy w stanie zmodyfikować umowy, aby to naprawić.
+Jest to mało prawdopodobne, ale jeśli tak by się stało uczyniłoby to naszą DApp całkowicie bezużyteczną — DApp mogłaby wskazywać na ustalony adres, który nie zwraca już żadnych kotków. Nasze Zombiaki nie mogłyby żywić się kotkami i nie bylibyśmy w stanie zmodyfikować kontraktu, aby to naprawić.
 
 Z tego powodu, często warto mieć funkcje, które umożliwiają aktualizację kluczowych części DApp.
 
