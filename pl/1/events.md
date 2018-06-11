@@ -54,7 +54,7 @@ material:
 ---
 Nasz kontrakt jest prawie gotowy! Teraz dodajmy ***event***.
 
-***Eventy*** są sposobem komunikacji o tym, że coś wydarzyło się w blockchain'ie do Twojej aplikacji. Możemy określić to jako "nasłuchiwanie" pewnych wydarzeń i podejmowanie działania gdy takie się pojawią.
+***Eventy*** są sposobem komunikowania Twojej aplikacji o tym, że coś wydarzyło się w blockchain'ie. Możemy określić to jako "nasłuchiwanie" pewnych wydarzeń i podejmowanie działania gdy takie się pojawią.
 
 Przykład:
 
