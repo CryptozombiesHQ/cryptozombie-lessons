@@ -99,9 +99,9 @@ material:
         }
       "ownable.sol": |
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @tytuł Ownable
+        * @dev Posiadany kontrakt zawiera adres właściciela i zapewnia podstawową autoryzację kontroli
+        * funkcji, ułatwia implementację "uprawnień użytkownika".
         */
         contract Ownable {
         address public owner;
@@ -109,8 +109,8 @@ material:
         event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
         
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-        * account.
+        * @dev Konstruktor ustala pierwotnego `właściciela`kontraktu do konta
+        * nadawcy.
         */
         function Ownable() public {
         owner = msg.sender;
@@ -118,7 +118,7 @@ material:
         
         
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Wyrzuci, jeśli zostanie wywołany przez konto inne niż właściciela.
         */
         modifier onlyOwner() {
         require(msg.sender == owner);
