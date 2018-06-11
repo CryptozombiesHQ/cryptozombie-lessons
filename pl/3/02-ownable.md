@@ -202,28 +202,29 @@ Prześledź poniższy kontrakt. Zobaczysz kilka rzeczy, których jeszcze się ni
     }
     
 
-A few new things here we haven't seen before:
+Kilka nowych rzeczy, których nie widzieliśmy wcześniej:
 
-- Constructors: `function Ownable()` is a ***constructor***, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
-- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
-- `indexed` keyword: don't worry about this one, we don't need it yet.
+- Konstruktory: `function Ownable()` jest ***konstruktorem***, który jest opcjonalną, specjalną funkcją i ma taką samą nazwę jak kontrakt. Zostanie wykonany tylko jeden raz, kiedy umowa zostanie po raz pierwszy utworzona.
+- Modyfikatory funkcji: `modifier onlyOwner()`. Modyfikatory to rodzaj półfunkcji, które służą do modyfikowania innych funkcji, zwykle w celu sprawdzenia niektórych wymagań przed wykonaniem. W tym przypadku `onlyOwner` może zostać użyty do ograniczenia dostępu, więc **tylko**** właściciel ** umowy może uruchomić tę funkcję. Porozmawiamy więcej o modyfikatorach funkcji w kolejnym rozdziale oraz o tym, co robi ten dziwny znak `_;`.
+- Słowo kluczowe `indexed`: nie przejmujmy sie tym, narazie tego nie będziemy potrzebować.
 
-So the `Ownable` contract basically does the following:
+Więc kontrakty `Ownable` zasadniczo powodują następujące rzeczy:
 
-1. When a contract is created, its constructor sets the `owner` to `msg.sender` (the person who deployed it)
+1. Kiedy kontrakt jest utworzony, jego konstruktor ustawia `owner(właściciela)` dla `msg.sender`
 
-2. It adds an `onlyOwner` modifier, which can restrict access to certain functions to only the `owner`
+2. Dodaje modyfikator `onlyOwner`, który może ograniczyć dostęp do wybranych funkcji tylko dla `owner`
 
-3. It allows you to transfer the contract to a new `owner`
+3. Umożliwia przeniesienie umowy do nowego właściciela (`owner</ code>)</p></li>
+</ol>
 
-`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
-
-Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
-
-## Put it to the test
-
-We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
-
-1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
-
-2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
+<p><code>onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
+    
+    Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
+    
+    ## Put it to the test
+    
+    We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
+    
+    1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
+    
+    2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
