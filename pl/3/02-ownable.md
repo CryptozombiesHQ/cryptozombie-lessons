@@ -217,14 +217,14 @@ Więc kontrakty `Ownable` zasadniczo powodują następujące rzeczy:
 3. Umożliwia przeniesienie umowy do nowego właściciela (`owner</ code>)</p></li>
 </ol>
 
-<p><code>onlyOwner<code> jest tak powszechnym wymogiem dla kontraktów, że większość aplikacji Solidity zaczyna się od kopiuj/wklej kontraktu <code>Ownable`, a następnie pierwszy kontrakt dziedziczy z niego.
+<p><code>onlyOwner` jest tak powszechnym wymogiem dla kontraktów, że większość aplikacji Solidity zaczyna się od kopiuj/wklej kontraktu `Ownable`, a następnie pierwszy kontrakt dziedziczy z niego.
     
-    Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
+    Ponieważ chcemy ograniczyć `setKittyContractAddress` do `onlyOwner`, zrobimy to samo dla naszej umowy.
     
-    ## Put it to the test
+    ## Wypróbujmy zatem
     
-    We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
+    Poszliśmy dalej i skopiowaliśmy kod kontraktu `Ownable` do nowego pliku, `ownable.sol`. Zacznijmy od tego, aby odziedziczyć po nim `ZombieFactory`.
     
-    1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
+    1. Zmodyfikuj nasz kod aby `importował` zawartość `ownable.sol`. Jeśli nie pamiętasz, jak to zrobić, zajrzyj do `zombiefeeding.sol`.
     
-    2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
+    2. Zmodyfikuj umowę `ZombieFactory`, tak aby dziedziczyć po `Ownable `. Znowu możesz rzucić okiem na `zombiefeeding.sol`, jeśli nie pamiętasz, jak to się robi.
