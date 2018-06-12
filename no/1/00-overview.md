@@ -1,6 +1,6 @@
 ---
 title: Making the Zombie Factory
-header: Welcome, human!
+header: Velkommen, menneske!
 roadmap: roadmap.jpg
 ---
 So you think you have what it takes to become a **CryptoZombie**, huh?
