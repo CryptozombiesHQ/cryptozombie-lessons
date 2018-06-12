@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 2
+title: SafeMath, 2. časť
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -28,9 +28,9 @@ material:
           }
 
           function _transfer(address _from, address _to, uint256 _tokenId) private {
-            // 1. Replace with SafeMath's `add`
+            // 1. Nahraď SafeMath funkciou `add`
             ownerZombieCount[_to]++;
-            // 2. Replace with SafeMath's `sub`
+            // 2. Nahraď SafeMath funkciou `sub`
             ownerZombieCount[_from]--;
             zombieToOwner[_tokenId] = _to;
             Transfer(_from, _to, _tokenId);
@@ -382,6 +382,7 @@ material:
       }
 ---
 
+Najrv sa pozrime na kód SafeMath knižnice:
 Let's take a look at the code behind SafeMath:
 
 ```
@@ -416,18 +417,21 @@ library SafeMath {
 }
 ```
 
+Ako prvé si všimneme nové kľučové slovo `library`. Knižnice označené `library` sú podobné ako kontrakty `contract`, no s pár rozdielmi. Knižnice nám umožnujú ich používať s kľučovým slovom `using`, ktoré automatický pripne funkcie knižnice na iné dátové typy:
 First we have the `library` keyword — libraries are similar to `contract`s but with a few differences. For our purposes, libraries allow us to use the `using` keyword, which automatically tacks on all of the library's methods to another data type:
 
 ```
 using SafeMath for uint;
-// now we can use these methods on any uint
+// teraz môžme používať tieto funkcie na akomkoľvek uinte
 uint test = 2;
 test = test.mul(3); // test now equals 6
 test = test.add(5); // test now equals 11
 ```
 
+Všimnite si, že `mul` a `add` funkcie v deklarácií vyžadujú dva argumenty. Keď však tieto funkcie potom používame, do zátvoriek píšeme len jeden argument. To preto, lebo prvý argument je automaticky doplnený uintom, na ktorom samotnú funkciu voláme. 
 Note that the `mul` and `add` functions each require 2 arguments, but when we declare `using SafeMath for uint`, the `uint` we call the function on (`test`) is automatically passed in as the first argument.
 
+Poďme sa pozrieť ako vyzerá kód `add` funkcie, nech vieme čo SafeMath vlastne robí:
 Let's look at the code behind `add` to see what SafeMath does:
 
 ```
@@ -438,32 +442,43 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 }
 ```
 
+`add` v podstate len sčíta dva `uint`y operátorom `+`. Čo však obsauje naviac je `assert`, ktorý zaručuje že suma týchto dvoch čísel je vačšia, ako hodnota prvého argumentu. To nás zachráni od pretečenia.
 Basically `add` just adds 2 `uint`s like `+`, but it also contains an `assert` statement to make sure the sum is greater than `a`. This protects us from overflows.
 
+`assert` je podobný ako `require` tým, že v prípade že je výraz vo vnútri nepravdivý, vyhodí error. Rozdiel medzi `assert` a `require` je však ten, že `require` vráti užívateľovi zvyšok gasu, zatiaľ čo `assert` tak nespraví. Takže vo vačšine prípadov by si mal používať vo svojom kóde `require`. `assert` sa typicky používa len na ošetrenie situácií, kedy by sa malo niečo v kontrakte strašne pokaziť (napríklad `uint` pretečenie).   
 `assert` is similar to `require`, where it will throw an error if false. The difference between `assert` and `require` is that `require` will refund the user the rest of their gas when a function fails, whereas `assert` will not. So most of the time you want to use `require` in your code; `assert` is typically used when something has gone horribly wrong with the code (like a `uint` overflow).
 
+Takže ak to v jednoduchosti zhrnieme, `add`, `sub`, `mul`, a`div` sú SafeMath funkcie, ktoré vykonavajú 4 základné matematické operácie, no vyhodia error v prípade pretečenia alebo podtečenia. 
 So, simply put, SafeMath's `add`, `sub`, `mul`, and `div` are functions that do the basic 4 math operations, but throw an error if an overflow or underflow occurs.
 
+### Použitie SafeMath v našom kóde
 ### Using SafeMath in our code.
 
+Aby sme predišli pretečeniu a podtečeniu, musíme v našom kóde nájsť miesta kde používame operátory `+`, `-`, `*`, alebo `/`, a nahradiť ich `add`, `sub`, `mul`, `div`.
 To prevent overflows and underflows, we can look for places in our code where we use `+`, `-`, `*`, or `/`, and replace them with `add`, `sub`, `mul`, `div`.
 
+Takže napríklad, namiesto:
 Ex. Instead of doing:
 
 ```
 myUint++;
 ```
 
+By sme spravili:
 We would do:
 
 ```
 myUint = myUint.add(1);
 ```
 
+## Vyskúšaj si to sám
 ## Putting it to the Test
 
+V kontrakte `ZombieOwnership` máme dve miesta kde používame matematické operácie. Poďme ich zmeniť za SafeMath funkcie.
 We have 2 places in `ZombieOwnership` where we used math operations. Let's swap them out with SafeMath methods.
 
+1. Nahraď `++` SafeMath metódou.
 1. Replace `++` with a SafeMath method.
 
+1. Nahraď `--` SafeMath metódou.
 2. Replace `--` with a SafeMath method.

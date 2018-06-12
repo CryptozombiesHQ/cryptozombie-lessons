@@ -1,5 +1,5 @@
 ---
-title: Comments
+title: Komentáre
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -13,7 +13,7 @@ material:
         import "./erc721.sol";
         import "./safemath.sol";
 
-        /// TODO: Replace this with natspec descriptions
+        /// TODO: Tento komentár nahraď natspec dokumentáciou
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -451,85 +451,104 @@ material:
       }
 ---
 
+Solidity kód naše zombie hry je konečne hotový!
 The Solidity code for our zombie game is finally finished!
 
+V ďalších lekciách sa pozrieme na to, ako nasadiť náš kontrakt na Ethereum, a ako sním pracovať z Javascriptu prostredníctvom Web3.js.
 In the next lessons, we'll look at how to deploy the code to Ethereum, and how to interact with it with Web3.js.
 
+Posledná vec, pred tým než ťa v Lekcii 5 necháme ísť: Poďme sa pobaviť o **komentovaní kódu**.
 But one final thing before we let you go in Lesson 5: Let's talk about **commenting your code**.
 
+## Syntax pre komentáre
 ## Syntax for comments
 
+Komentáre v Solidity su presne ako tie v JavaScripte. Doposiaľ si v CryptoZombies lekciách videl už pár príkladov komentárov na jednom riadku, napríklad:
 Commenting in Solidity is just like JavaScript. You've already seen some examples of single line comments throughout the CryptoZombies lessons:
 
 ```
+// Toto je komentár na jeden riadok. Je to taký odkaz pre seba samého (alebo pre druhých)
 // This is a single-line comment. It's kind of like a note to self (or to others)
 ```
 
+Stačí pridať dvojité `//` kdekoľvek, a možeš komentovať. Je to tak jednoduché, že by si to mal robiť neustále.
 Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time.
 
+Ale viem na čo myslíš - jedno riadkové komentáre nestačia. Nakoniec, veď si aj rodený spisovateľ!
 But I hear you — sometimes a single line is not enough. You are born a writer, after all!
 
+Takže takto môžme robiť viac riadkové komentáre.
 Thus we also have multi-line comments:
 
 ```
 contract CryptoZombies {
-  /* This is a multi-lined comment. I'd like to thank all of you
-    who have taken your time to try this programming course.
-    I know it's free to all of you, and it will stay free
-    forever, but we still put our heart and soul into making
-    this as good as it can be.
+  /* Toto je komentár na niekoľko riadkov. Chcel by som ti poďakovať
+    že si si našiel čas na tento programátorsky kurz. 
+    Viem že je zadarmo, a zadarmo aj navždy zostane, no aj tak
+    sa do neho snažíme dať naše srdcia a spraviť ho tak dobrý
+    ako len môže byť.
 
-    Know that this is still the beginning of Blockchain development.
-    We've come very far but there are so many ways to make this
-    community better. If we made a mistake somewhere, you can
-    help us out and open a pull request here:
+    Vec, že toto je staĺe len začiatok Blockchain vývoja.
+    Dotiahli sme to zatiaľ ďaleko, no existuje veľa spôsobov,
+    ako spraviť túto komunitu ešte lepšiu. Ak sme niekde spravili
+    chybu, môžeš nám pomôcť tým že otvríš nový pull request tu:
     https://github.com/loomnetwork/cryptozombie-lessons
 
-    Or if you have some ideas, comments, or just want to say
-    hi - drop by our Telegram community at https://t.me/loomnetwork
+    Ak máš nejaké nové nápady, komentáre, alebo chceš len pozraviť,
+    zastav sa v našej Telegram komunite t https://t.me/loomnetwork
   */
 }
 ```
 
+Špeciálne dobrou praktikou je komentovať svoj kód, a vysvetľovať očakávané správanie každej funkcie tvojho kontraktu. Tým pádom iný programátor (prípadne ty po 6 mesiacoch) bude schopný rýchlo vstrebať a pochopiť, ako sa má kontrakt zhruba správať bez toho, aby musel čítať kód.
 In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
 
+Štandardným spôsob v Solidity komunite je používanie formátu zvaného **_natspec_**,, ktorý vyzerá nejako takto:
 The standard in the Solidity community is to use a format called **_natspec_**, which looks like this:
 
 ```
-/// @title A contract for basic math operations
+/// @title Kontrakt pre základné matematické operácie
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
-/// @notice For now, this contract just adds a multiply function
+/// @notice Zatiaľ má tento kontrakt len sčítavanie a násobenie
 contract Math {
-  /// @notice Multiplies 2 numbers together
-  /// @param x the first uint.
-  /// @param y the second uint.
-  /// @return z the product of (x * y)
-  /// @dev This function does not currently check for overflows
+  /// @notice Výnasobí spolu 2 čísla
+  /// @param x je prvý uint.
+  /// @param y je druhý uint.
+  /// @return z je ich násobok (x * y)
+  /// @dev Táto funkcia momentálne nekontroluje pretečenie
   function multiply(uint x, uint y) returns (uint z) {
-    // This is just a normal comment, and won't get picked up by natspec
+    // Toto je len obyčajný komentár, nebude zachytený natspecom
     z = x * y;
   }
 }
 ```
 
-`@title` and `@author` are straightforward.
+`@title` (titul) and `@author` sú asi jasné.
 
-`@notice` explains to a **user** what the contract / function does. `@dev` is for explaining extra details to developers.
+`@notice` vysvetľuje **užívateľovi kontraktu**, čo kontrakt / funkcia robí. `@dev` je pre vysvetlenie extra detailov pre programátorov
 
-`@param` and `@return` are for describing what each parameter and return value of a function are for.
+`@param` a `@return` sú pre popis toho, čo ktoré parametre a návratové hodnoty reprezentujú
 
+Všimni si že nie vždy musíme použiť všetky tieto natspec tagy pre každú jednu funkciu - všetky z týchto tagov su nepovinné. Ale je dobré zanechať aspoň `@dev` poznámku o tom, čo daná funkcia robí
 Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a `@dev` note explaining what each function does.
 
+## Vyskúšaj si to sám
 # Put it to the test
 
+Ak si si ešte nevšimol, softvér kontrolujúci tvoje CryptoZombies riešenia ignoruje komentáre. Takže vlastne nemôžeme skontrolovať tvoj natsepc kód na konci tejto kapitoly ;)  
 If you haven't noticed by now, the CryptoZombies answer-checker ignores comments when it checks your answers. So we can't actually check your natspec code for this chapter ;)
 
+Každopádne, v tejto chvíli si už Solidity guru. V tejto lekcii ti budeme preto dôverovať, že to zvládneš!
 However, by now you're a Solidity whiz — we're just going to assume you've got this!
 
+Tak či onak si to výskúšaj, pridaj pár natspect tagov pre `ZombieOwnership`:
 Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
+1. `@title` - teda niečo ako "Kontrakt ktorý manažuje prevod zombie vlastníctva"
 1. `@title` — E.g. A contract that manages transfering zombie ownership
 
+2. `@author` - Tvoje meno!
 2. `@author` — Your name!
 
+3. `@dev` - napríklad niečo ako: "V súlade s návrhom implementácioe ERC721 podľa OpenZeppelin"
 3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft

@@ -1,5 +1,5 @@
 ---
-title: SafeMath Part 4
+title: SafeMath, 4. časť
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -16,7 +16,7 @@ material:
           uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
-            // Here's one!
+            // Tu je jeden!
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
@@ -26,13 +26,13 @@ material:
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
             if (rand <= attackVictoryProbability) {
-              // Here's 3 more!
+              // Tu sú tri ďalšie!
               myZombie.winCount++;
               myZombie.level++;
               enemyZombie.lossCount++;
               feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
             } else {
-              // ...annnnd another 2!
+              // ...aaa ďalšie dve!
               myZombie.lossCount++;
               enemyZombie.winCount++;
               _triggerCooldown(myZombie);
@@ -440,10 +440,14 @@ material:
       }
 ---
 
+Skvelé, teraz môžme implementovať SafeMath na všetkých typoch `uint`ov ktoré v našej DApp máme.
 Great, now we can implement SafeMath on all the types of `uint`s we used in our DApp!
 
+Poďme opraviť potencionálne problémy v `ZombieAttack`. (V `ZombieHelper` bol taktiež jeden riadok, `zombies[_zombieId].level++;`, ktorý sme ale už opravili za teba, nech tým nemusíme tráviť ďalšiu kapitolu 😉).
 Let's fix all those potential issues in `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 😉).
 
+## Vyskúšaj si to sám
 ## Putting it to the Test
 
+Pozri sa na kód a použi SafeMath metódy všade tam, kde `++` inkrementujeme čísla v `ZombieAttack`. Nechali sme ti v kóde komentáre, aby si tieto kritické miesta ľahko našiel.
 Go ahead and implement SafeMath methods on all the `++` increments in `ZombieAttack`. We've left comments in the code to make them easy to find.

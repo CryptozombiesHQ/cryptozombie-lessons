@@ -1,5 +1,5 @@
 ---
-title: Preventing Overflows
+title: Prevencia Pretečenia
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -10,11 +10,11 @@ material:
         pragma solidity ^0.4.19;
 
         import "./ownable.sol";
-        // 1. Import here
+        // 1. Tu importuj
 
         contract ZombieFactory is Ownable {
 
-          // 2. Declare using safemath here
+          // 2. Tu deklaruj safemath
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -384,22 +384,33 @@ material:
       }
 ---
 
+Gralujeme. Tvoja implementácia ERC721 štandardu je hotová!
 Congratulations, that completes our ERC721 implementation!
 
+To nebolo zas tak ťažké, čo povieš? Veľa vecí okolo Ethereum znie veľmi zložito keď o nich počuješ rozprávať ostatných ľudí. Najlepší spôsob ako veciam porozumieť je skúsiť si nejaký kód sám naimplementovať.
 That wasn't so tough, was it? A lot of this Ethereum stuff sounds really complicated when you hear people talking about it, so the best way to understand it is to actually go through an implementation of it yourself.
 
+Pamätaj však že toto bola len minimálna implementácia. Mohli by sme ju rozšíriť o ďalšie vlastnosti, napríklad pridať dodatočné kontroly, aby užívatelia nemohli odoslať svojich zombies na adresu `0` (Posielanie tokenov na takúto adresa sa nazýva "pálenie" ("burning") tokenov. Predstavuje to totiž odosielanie tokenov na adresu, ktorej privátny kľúč nikto nemá, čo znamená že takéto tokeny budú navždy neobnoviteľné). Ďalšia extra funkcionality ktorú by sme mohli pridať by mohli byť aukcie, ako súčasť našej samotnej DApp. (Dokáž prísť s nejakými nápadmi ako také niečo naimplementovať?)
 Keep in mind that this is only a minimal implementation. There are extra features we may want to add to our implementation, such as some extra checks to make sure users don't accidentally transfer their zombies to address `0` (which is called "burning" a token — basically it's sent to an address that no one has the private key of, essentially making it unrecoverable). Or to put some basic auction logic in the DApp itself. (Can you think of some ways we could implement that?)
+
+Chceli sme však aby táto lekcia bola ľahko stráviteľná, preto sme prešli iba základnou implementáciou. Keby si chcel vidiet príklad pokročilejšej implementácie, môžeš sa po tomto tutoriále pozrieť na OpenZeppelin ERC721 kontrakt.
 
 But we wanted to keep this lesson manageable, so we went with the most basic implementation. If you want to see an example of a more in-depth implementation, you can take a look at the OpenZeppelin ERC721 contract after this tutorial.
 
+### Bezpečnostné vylepšenia kontraktu: Pretečenie a podtečenie
 ### Contract security enhancements: Overflows and Underflows
 
+Teraz sa pozrieme na jednu z najdôležitejších bezpečnostných vlastností, ktorých by si si mal byť vedomí pri písani smart kontraktov: ochrana pred pretečením a podtečením.
 We're going to look at one major security feature you should be aware of when writing smart contracts: Preventing overflows and underflows.
+
+Čo je to  **_pretečenie_**?
 
 What's an **_overflow_**?
 
+Dajme tomu, že máme nejaký `uint8`, ktorý má len 8 bitov. To znamená, že najväčšie číslo, ktoré môže držat je binárne `11111111` (decimálne je to, 2^8 - 1 = 255).
 Let's say we have a `uint8`, which can only have 8 bits. That means the largest number we can store is binary `11111111` (or in decimal, 2^8 - 1 = 255).
 
+Pozri sa na nasledujúci kód. Čomu sa bude na konci rovnať `number`?
 Take a look at the following code. What is `number` equal to at the end?
 
 ```
@@ -407,20 +418,28 @@ uint8 number = 255;
 number++;
 ```
 
+V tomto prípade sme spôsobili pretečenie - čislo `number` sa teraz neintuitívne rovná `0`, napriek tomu že sme sa jeho hodnotu pokúsili inkrementovať. (Keď pridáš 1 ku binárnemu čislu `11111111`, vyresetuje sa naspať na `00000000`, rovnako ako sa čas na hodinkách mení z `23:59` na `00:00`).
 In this case, we've caused it to overflow — so `number` is counterintuitively now equal to `0` even though we increased it. (If you add 1 to binary `11111111`, it resets back to `00000000`, like a clock going from `23:59` to `00:00`).
 
+Podtečenie je podobné. Nastáva v prípade že odčítaš `1` od `uint8` ktorý sa rovná `0`. Výsledok sa bude rovnať `255` (pretože `uint` je bez znamienka, nemôže nadobúdať záporné hodnoty).
 An underflow is similar, where if you subtract `1` from a `uint8` that equals `0`, it will now equal `255` (because `uint`s are unsigned, and cannot be negative).
 
+V našom kóde síce nepoužívame `uint8`, a môže sa zdať nepravdepodobné že by `uint256` pretiekol tým, že k nemu zakaždý pričítame jednotku (2^256 je skutočne gigantické číslo). Napriek tomu je stále dobrou praktikou naimplementovať ochranné mechanizmy, tak aby sa naša DApp nikdy nedostala do neočakávaného stavu v budúcnosti. 
 While we're not using `uint8` here, and it seems unlikely that a `uint256` will overflow when incrementing by `1` each time (2^256 is a really big number), it's still good to put protections in our contract so that our DApp never has unexpected behavior in the future.
 
+### Používanie SafeMath
 ### Using SafeMath
 
+Na to aby sme sa tomu vyhli, OpenZeppelin vytvoril **_knižnicu_** (**_library_**) s názvom SafeMath. Tá zabraňuje vyššie spomenutým problémom.
 To prevent this, OpenZeppelin has created a **_library_** called SafeMath that prevents these issues by default.
 
+Ale než sa k tomu dostaneme... čo je to vlastne knižnica?
 But before we get into that... What's a library?
 
+**_Knižnica_** (**_library_**), je v solidity špeciálny typ kontraktu. Jeden zo spôsobov, akým sú knižnice užitočné je ten, že môžu rozšíriť natívne dátové typy o nové funkcie.
 A **_library_** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
 
+Najprv musíme deklarovať v našom kontrakte že chceme časť knižnice používať takýmto spôsobom `using SafeMath for uint256`. SafeMath knižnica má 4 funkcie - `add`, `sub`, `mul`, and `div`. K týmto funkciám budeme môcť pristupovať z `uint256` takto:
 For example, with the SafeMath library, we'll use the syntax `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
 
 ```
@@ -431,14 +450,20 @@ uint256 b = a.add(3); // 5 + 3 = 8
 uint256 c = a.mul(2); // 5 * 2 = 10
 ```
 
+na to, čo presne tieto funkcie robia sa pozrieme v ďalšej kapitole. Zatiaľ poďme len pridať SafeMath knižnicu do našeho kontraktu.
 We'll look at what these functions do in the next chapter, but for now let's add the SafeMath library to our contract.
 
+## Vyskúšaj si to sám
 ## Putting it to the Test
 
+Do tvojeho projektu sme ti už pridali `SafeMath` knižnicu, nájdeš ju v súbore `safemath.sol`. Môžeš sa pozrieť ako vyzerá jej kód, no to budeme skutočne podrobnejšie preberať až v ďalšej kapitole.
 We've already included OpenZeppelin's `SafeMath` library for you in `safemath.sol`. You can take a quick peek at the code now if you want to, but we'll be looking at it in depth in the next chapter.
 
+Najprv poďme našemu kontraktu povedať, aby používal SafeMath. Spravíme to v Zombie Factory, nášom úplne najzákladnejšom kontrakte. To nám umožní používať SafeMath funkcie aj vo všetkých kontraktoch, ktoré od neho dedia. 
 First let's tell our contract to use SafeMath. We'll do this in ZombieFactory, our very base contract — that way we can use it in any of the sub-contracts that inherit from this one.
 
+1. Importuj `safemath.sol` do `zombiefactory.sol`.
 1. Import `safemath.sol` into `zombiefactory.sol`.
 
+2. Pridaj deklaráciu `using SafeMath for uint256;`.
 2. Add the declaration `using SafeMath for uint256;`.
