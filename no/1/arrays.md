@@ -1,8 +1,8 @@
 ---
 title: Arrays
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sjekkSvar'
+  - 'hint'
 material:
   editor:
     language: sol
@@ -31,7 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
-When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
+Når du vil ha en samling av noe kan du bruke en ***matrise***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
     // Array with a fixed length of 2 elements:
     uint[2] fixedArray;
