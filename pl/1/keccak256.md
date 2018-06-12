@@ -57,7 +57,7 @@ Przykład:
 
 Jak widzisz, zwrócona wartość bardzo się różni, pomimo zmiany tylko jednego znaku.
 
-> Uwaga: **Bezpieczne** generowanie losowych liczb w blockchain'ie jest bardzo trudnym problemem. Zastosowana przez nas metoda nie jest bezpieczna, lecz w związku z tym, że bezpieczeństwo nie jest naszym priorytetem dla DNA Zombie, możemy pominąć kwestie z tym związane.
+> Uwaga: **Bezpieczne** generowanie losowych liczb w blockchain'ie jest bardzo trudnym problemem. Zastosowana przez nas metoda nie jest bezpieczna, lecz w związku z tym, że bezpieczeństwo nie jest naszym priorytetem dla DNA Zombi, możemy pominąć kwestie z tym związane.
 
 ## Rzutowanie typu
 
