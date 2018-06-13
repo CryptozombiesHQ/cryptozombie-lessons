@@ -40,11 +40,11 @@ material:
       }
       }
 ---
-In this chapter, we're going to learn about Function ***return values***, and function modifiers.
+In questo capitolo, andremo a conoscere la funzione ***restituire valori***, e modificatori di funzione.
 
-## Return Values
+## Restituire Valori
 
-To return a value from a function, the declaration looks like this:
+Per restituire un valore da una funzione, la dichiarazione é cosí:
 
     string greeting = "What's up dog";
     
