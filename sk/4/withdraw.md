@@ -262,13 +262,10 @@ contract GetPaid is Ownable {
 ```
 
 Všímni si že používame `owner` a `onlyOwner`  z `Ownable` kontraktu, za predpokladu že bol naimportovaný. 
-Note that we're using `owner` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
 
 Ether môžeš odoslať na inú adresu pomocou funkcie `transfer` a `this.balance` ti zase povie, koľko Etheru je momentálne uloženého na adrese kontraktu. Takže ak napríklad 100 užívateľov pošle našemu kontraktu 1 Ether, `this.balance` sa bude rovnať 100 Ether.
-You can transfer Ether to an address using the `transfer` function, and `this.balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `this.balance` would equal 100 Ether.
 
 Funkciu `transfer` môžeš používať na to, aby si nejaký Ether z kontraktu previedol na iný účet. Môžeš mať napríklad funkciu ktorá prevedie akýkoľvek Ether, ktorý obdržala v transakcii naviac, naspať odosielateľovi transakcie. 
-You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
 
 ```
 uint itemFee = 0.001 ether;
@@ -276,25 +273,17 @@ msg.sender.transfer(msg.value - itemFee);
 ```
 
 Prípadne v kontrakte s kupcom a predávajúcim by si si mohol do kontraktu uložiť adresu predajcu, a až by sa niekto rozhodol kúpiť predmet ktorý predáva, preposlal by si mu poplatok za predmet od kupcu takto: `seller.transfer(msg.value)`. 
-Or in a contract with a buyer and a seller, you could save the seller's address in storage, then when someone purchases his item, transfer him the fee paid by the buyer: `seller.transfer(msg.value)`.
 
 Toto bolo pár príkladov, čo robí programovanie na Ethereum fakt cool - môžeme vytvárať decentralizované trhy, ktoré nie su nikým centrálne riadené.
-These are some examples of what makes Ethereum programming really cool — you can have decentralized marketplaces like this that aren't controlled by anyone.
 
 ## Vyskúšaj si to sám
-## Putting it to the Test
 
 1. Vytvor v našom kontrakte funkciu `withdraw`, ktorá by mala byť identická so spomínaým príkladom funkcie `GetPaid` vyššie.
-1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
 
 2. Cena Etheru sa za posledný rok znásobila 10x. 0.001 Etheru v čase písania tohoto tutoriálu predstavuje ekvivalent asi 1 doláru. Ak sa ale cena opäť zvýši 10x, 0.001 ETH sa už bude rovnať 10 dolárom. Naša hra by sa tak naraz stala oveľa drahšia na hranie.
-2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
 
   Preto je dobrý nápad si vytvoriť funkciu, ktorá umožní vlastníkovi kontraktu nastaviť hodnotu `levelUpFee`.
-  So it's a good idea to create a function that allows us as the owner of the contract to set the `levelUpFee`.
 
   a. Vytvor funkciu s naźvom `setLevelUpFee`. Bude príjmať argument `uint _fee`. Funkcia bude `external` a naviac bude používať modifikátor `onlyOwner`.
-  a. Create a function called `setLevelUpFee` that takes one argument, `uint _fee`, is `external`, and uses the modifier `onlyOwner`.
 
   b. Funkcia by mala nastaviť `levelUpFee` rovný `_fee`.
-  b. The function should set `levelUpFee` equal to `_fee`.

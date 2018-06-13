@@ -250,28 +250,19 @@ material:
 ---
 
 Teraz keď už máme `winCount` a `lossCount`, môžeme ich aktualizovať podľa toho či zombie vyhrá alebo prehrá súboj.
-Now that we have a `winCount` and `lossCount`, we can update them depending on which zombie wins the fight.
 
 V Kapitole 6 sme výpočítali náhodné čislo v rozsahu od 0 do 100. Teraz použijeme toto čislo na to, aby sme určili ktorý Zombie vyhral súboj. Na základe toho potom updatujeme počítadlá.
-In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
 
 ## Vyskúšaj si to sám
-## Put it to the test
 
 1. Vytvor `if` podmienku, ktorá bude kontrolovať či `rand`  je **_menej alebo sa rovná_** `attackVictoryProbability`.
-1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attackVictoryProbability`.
 
 2. Ak je táto podmienka pravdivá, náš zombie vyhrá. Takže:
-2. If this condition is true, our zombie wins! So:
 
   a. Pre `myZombie` zvýš atribút `winCount` o jedna.
-  a. Increment `myZombie`'s `winCount`.
 
   b. Pre `myZombie` zvýš atribút `level` o jedna. (Level up!!!!)
-  b. Increment `myZombie`'s `level`. (Level up!!!!!!!)
 
   c. Pre `enemyZombie` zvýš atribút `lossCount` o jedna. (Lama!!! 😫 😫 😫)
-  c. Increment `enemyZombie`'s `lossCount`. (Loser!!!!!! 😫 😫 😫)
 
   d. Zavolaj funkciu `feedAndMultiply`. Aby si si pripomenul syntax na jej zavolanie, pozri sa do `zombiefeeding.sol`. Ako hdnotu tretieho argumentu (`_species`) nastav reťazec `"zombie"`. (V skutočnosti to zatial nebude mať žiaden vplyv, no keby sme chceli, neskôr možme pridať dalšiu funkcionalitu pre vznik nového zombie).
-  d. Run the `feedAndMultiply` function. Check `zombiefeeding.sol` to see the syntax for calling it. For the 3rd argument (`_species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).

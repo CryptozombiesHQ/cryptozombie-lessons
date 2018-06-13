@@ -229,41 +229,30 @@ material:
       }
 ---
 Doposiaľ sme hovorili o niekoľkých **_funkčných modifikátoroch_** Môže byť ťažké si to všetko zapamätať, poďme si to teda ešte rýchlo zopakovať.
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
 
 1. K dispozicií mamé modifikátory viditelnosti, ktore určujú odkiaľ môže byť daná funkcia zavolaná. `private` znamená, že môže byť volaná len z ostatných funkcií rovnkého kontraktu. `internal` je ako `private`, ale môže byť volaná taktiež z kódu oddedených kontraktov. `external` funkcie môžu byť volané iba externe, mimo daného kontraktu. Na záver, `public` môžu byť volané odkiaľkoľvek - môžu byť volané interne aj externe. 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
 
 2. Ďalej máme taktiež modifikátoy stavu, ktoré deklarujú akým spôsobom funkcia interaguje s blockchain: `view` hovorí, že tým že spustíme funkciu, žiadne dáta na blockchain nebudu modifikované. `pure` zase značí že funkcia nezapisuje ani nečíta žiadne data z blockchain. Volanie oboch týchto typov funkcii je zadarmo z hľadiska gasu, v prípade že sú tieto funkcie volané externe mimo kontraktu (no budú stáť gas, v prípade že su zavolané interne inou funkciou kontraktu).
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
 
 3. Na záver mame vlastné modifikátor `modifiers`, o ktorých sme sa naučili v Lekcii 3: `onlyOwner` and `aboveLevel`, napríklad. Pre tieto môžeme napísať vlastnú logiku a definovať ako ovplyvnia funkciu.
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
 
 Všetky tieto tpyp modifikátorov môžu byť použité spolu, napríklad takto:
-These modifiers can all be stacked together on a function definition as follows:
 
 ```
 function test() external view onlyOwner anotherModifier { /* ... */ }
 ```
 
 V tejto kapitelo sa pozrieme na ďalší modifikátor: `payable`.
-In this chapter, we're going to introduce one more function modifier: `payable`.
 
 ## Modifikátor `payable`
-## The `payable` Modifier
 
 Funkcie ktoré su `payable` je to čo robí Solidity a Ethereum tak cool - sú to špeciálne typy funkcii, ktoré su schopné príjmať Ether.
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether. 
 
 Poďme o tom chvíľu premýšlať. Keď zavoláš API normálneho, nemôžeš mu poslať americké doláre alebo bitcoin spolu s tvojim HTTP requestom.
-Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
 
 Ale na Ethereum blockchain, pretože peniaze (_Ether_), dáta (*dáta transkacie*)/(*transaction payload*) aj kód kontraktu ležia všetky na Ethereum blockchain, je môžné naraz zavolať funkciu kontraktu **a zároveň** poslať kontraktu peniaze.
-But in Ethereum, because both the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **and** pay money to the contract at the same time.
 
 To umožnuje vytvárať zaujímavú logiku, napríklad vyžadovanie určitej platby, na to aby kontrakt vykonal zavolanú funkciu.
-This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
 
 ## Poďme sa pozrieť na príklad
 ## Let's look at an example
@@ -279,10 +268,8 @@ contract OnlineStore {
 ```
 
 V tomto príklade nám `msg.value` ukazuje koľko Etheru bolo poslaného kontraktu. `ether` je vstaná jednotka. 
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
 
 Na nasledujúcom príklade je ukážka ako by niekto mohol zavolať túto funkciu z web3.js (z Javascriptového front endu našej DAppky):
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
 
 ```
 // Predpoklajme že `OnlineStore` referuje na náš kontrakt na Ethereum blockchain
@@ -290,28 +277,19 @@ OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei
 ```
 
 Všimni si parameter `value`, ktorým javascriptové funkčné volanie špecifikuje koľko `ether`u poslať (0.001). Ak si predstavíme transakciu ako odoslanie obálky, funkčné parametre sú ako písmenká ktoré napíšeš na list v obálke a `value` je ako keď do tej obálky ešte pridáš bankovky. List aj peniaze v obálky su potom doručené príjemcovi ako transakcia.
-Notice the `value` field, where the javascript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
 
 >Poznámka: Ak funkcia nie je označená `payable` a pri jej zavolaní sa pokúsiš poslať nejaký Ether, tvoja transakcia bude odmietnutá.
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
 
 ## Vyskúšaj si to sám
-## Putting it to the Test
 
 Poďme v našej zombie hre vytvoriť `payable` funkciu.
-Let's create a `payable` function in our zombie game.
 
 Dajme tomu že naša hra bude mať takú vlasnosť, že užívatelia môžu zaplatiť ETH na to, aby zvýšili level svojich zombie. ETH ktorý ľudia kontraktu pošlú zostane uložený v tvojom kontrakte ktorého si vlastník - toto je jednoduchý príklad ako môžeš zarobiť peniaze na svojich hrách. 
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH will get stored in the contract, which you own — this a simple example of how you could make money on your games!
 
 1. Definuj premennú kontraktu `uint` s názvom `levelUpFee` a nastav ju na hodnotu `0.001 ether`.
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
 
 2. Vytvori funkciu s názvom `levelUp`. Tá bude príjmať jeden parameter `_zombieId` typu `uint`. Bude to funkcia `external` a `payable`.
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
 
 3. Funkcia by mala najprv použiť `require` aby skontrolovala že `msg.value` sa rovná `levelUpFee`.
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
 
 4. Ďalej by mala inkrementovať `level` daného zombie: `zombies[_zombieId].level++`.
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.

@@ -232,10 +232,8 @@ material:
 ---
 
 Teraz keď už máme zdroj náhodnosti v našom kontrakte, môžme ho použiť na výpočet výsledkov zápasov zombie.
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
 
 Naše zombie zápasy budu fungovať nasledovne:
-Our zombie battles will work as follows:
 
 - Zvolíš oponentovho zombie, ktoreho chceš napadnúť, a zvolíš si jedného z svojich zombies, ktorý bude útočiť
 - Zombie ktorý útočí ma 70% šancu výhry. Zombie ktorý je napadnutý má len 30% šancu úspechu.
@@ -243,25 +241,14 @@ Our zombie battles will work as follows:
 - Ak útočiaci zombie vyhrá, jeho level sa zvýši a vznikne nový zombie.
 - Ak útočiaci zombie prehrá, nič sa nestane (iba sa mu zvýši `lossCount` o 1).
 - Bez ohľadu na to či útočiaci zombie vyhrá alebo prehrá, začne sa mu odpočitávať čas odpočinku. Počas toho nemôže znova útočiť 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `winCount` and a `lossCount` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `lossCount` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
 
 Toto je obstahuje veľa logiky ktorú budeme musieť implementovať, takže to poskladáme dokopy v priebehu nasledujúcich kapitol.
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
 
 
 ## Vyskúšaj si to sám
-## Put it to the test
 
 1. Daj našemu kontraktu premennú `uint` s názvom `attackVictoryProbability` a nastav jej hodnotu na `70`.
-1. Give our contract a `uint` variable called `attackVictoryProbability`, and set it equal to `70`.
 
 2. Vytvor funkciu s názvom  `attack`. Bude poberať dva parametre: `_zombieId` (typu `uint`) a `_targetId` (typu `uint`). Bude to funkcia s `external` modifikátorom.
-2. Create a function called `attack`. It will take two parameters: `_zombieId` (a `uint`) and `_targetId` (also a `uint`). It should be an `external` function.
 
 Zatiaľ necháme telo funkcie prázdne.
-Leave the function body empty for now.

@@ -270,34 +270,23 @@ material:
 ---
 
 V našej zombie hre si chcem udržiavať prehľad o tom, koľko bytiek naši zombie vyhrali a prehrali. Jedna z možností je spraviť si niečo ako "zombie rebríček" uložený v kontrakte.
-For our zombie game, we're going to want to keep track of how many battles our zombies have won and lost. That way we can maintain a "zombie leaderboard" in our game state.
 
 Tieto dáta by sme mohli uchovávať rozličnými spôsobmi v našej DApp - individuálne mappingy, štruktúra reprezentujúca leaderboard rebríček, prípadne v Zombie štruktúre samotnej. 
-We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
 
 Každý zo spôsobov má svoje výhody i nevýhody, v závislosti od toho akým sposobom chcem s dátami pracovať. V tomto tutoriále budeme ukladať štatistiky do `Zombie` štruktúry pre jednoduchosť. Vytvoríme atribúty `winCount` a `lossCount`.
-Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
 
 Poďme preskočiť naspäť na `zombiefactory.sol` a pridať tieto vlastnosti `Zombie` štruktúre.
-So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
 
 ## Vyskúšaj si to sám
-## Put it to the test
 
 1. Modifikuj `Zombie` štruktúru a pridaj 2 ďalšie atribúty:
-1. Modify our `Zombie` struct to have 2 more properties:
   
   a. `winCount`, typu `uint16`
-  a. `winCount`, a `uint16`
 
   b. `lossCount`, typu `uint16`
-  b. `lossCount`, also a `uint16`
 
   >Poznámka: Pamätaj, kedže je možné zabalíčkovať `uint`y do štruktúr, snažíme sa použiť take malé `uint`y ako sa len dá. `uint8` by bol prílíš malý, nakoľko 2^8 = 256. Keby náš zombie útočil pravidlene každý deň, tento `uint` by pretiekol za menej ako rok. Avšak 2^16 je 65536 - pokiaľ užívateľ nebude vyhrávať alebo prehrávať každý deň, po dobu 179 rokov, malo by to byť ok. 
-  >Note: Remember, since we can pack `uint`s inside structs, we want to use the smallest `uint`s we can get away with. A `uint8` is too small, since 2^8 = 256 — if our zombies attacked once per day, they could overflow this within a year. But 2^16 is 65536 — so unless a user wins or loses every day for 179 years straight, we should be safe here.
 
 2. Teraz keď už máš nové atribu'ty na `Zombie` štruktúre, musíme modifikovať definíciu `_createZombie()`.
-2. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `_createZombie()`.
 
   Uprav definíciu vytvárania nového zombie, tak aby každý novovytvorený zombie začínal s `0` výhrami a `0` prehrami.
-  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.
