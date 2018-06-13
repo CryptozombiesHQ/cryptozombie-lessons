@@ -11,16 +11,12 @@ material:
 ---
 
 Náš Solidity kotnrakt je hotový. Teraz potrebujeme napísať Javascriptový frontend, ktorý bude prepojený s našim kontraktom.
-Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
 
 Ethereum má Javascriptovú knižnicu ktorá sa volá **_Web3.js_**.
-Ethereum has a Javascript library called **_Web3.js_**.
 
 V neskorších lekciách sa pozrieme na to ako nasaďiť náš kontrakt do blokchain a ako nastaviť Web3.js. Prezatiaľ sa však pozrieme len na ukážkový kód, ako by sme pomocou Web3.js pracovali s nasadeným kontraktom. 
-In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
 
 Ak ti to zatiaľ nedáva moc zmysel, nemaj obavy.
-Don't worry if this doesn't all make sense yet.
 
 ```
 // Takto by sme pristupovali k našemu kontraktu
@@ -37,7 +33,7 @@ $("#ourButton").click(function(e) {
   ZombieFactory.createRandomZombie(name)
 })
 
-// Naslúcame na vyvolanie udalosti `NewZombie` a v prípade detekcie obnovíme stránku
+// Naslúchame na vyvolanie udalosti `NewZombie` a v prípade detekcie obnovíme stránku
 var event = ZombieFactory.NewZombie(function(error, result) {
   if (error) return
   generateZombie(result.zombieId, result.name, result.dna)
@@ -79,13 +75,9 @@ function generateZombie(id, name, dna) {
 ```
 
 Čo ďalej robí náš Javascript je to, že zoberie niektoré z hodnôt v `zombieDetails` vyššie a pridá štipku javascriptovej mágie (používame Vue.js)  na to, aby sme menili obrázky a aplikovali CSS filtre. V neskorších lekciách uvidíš kompletný kód.
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
 
 # Vyskúšaj si to sám
-# Give it a try!
 
 Do boxu na pravej strane skús napísať meno a sleduj akého Zombie obdržíš.
-Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
 
 **Až budeš mať zombie s akým si spokojný, klikni na "Next Chapter" nižšie aby si si uložil svojho zombie a dokončil tak lekciu 1!**
-**Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**
