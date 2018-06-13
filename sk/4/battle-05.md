@@ -270,13 +270,9 @@ material:
 ---
 
 Máme ešte pár ďalších miesto v súbore `zombiehelper.sol`, kde možme implmentovať náš nový modifikátor `modifier ownerOf`.
-We have a couple more places in `zombiehelper.sol` where we need to implement our new `modifier` `ownerOf`.
 
 ## Vyskúšaj si to sám 
-## Put it to the test
 
 1. Aktualizuj funkciu `changeName()` aby používala `ownerOf`
-1. Update `changeName()` to use `ownerOf`
 
 1. Aktualizuj funkciu `changeDna()` aby používala `ownerOf`
-2. Update `changeDna()` to use `ownerOf`

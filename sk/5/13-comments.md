@@ -452,33 +452,24 @@ material:
 ---
 
 Solidity kód naše zombie hry je konečne hotový!
-The Solidity code for our zombie game is finally finished!
 
 V ďalších lekciách sa pozrieme na to, ako nasadiť náš kontrakt na Ethereum, a ako sním pracovať z Javascriptu prostredníctvom Web3.js.
-In the next lessons, we'll look at how to deploy the code to Ethereum, and how to interact with it with Web3.js.
 
 Posledná vec, pred tým než ťa v Lekcii 5 necháme ísť: Poďme sa pobaviť o **komentovaní kódu**.
-But one final thing before we let you go in Lesson 5: Let's talk about **commenting your code**.
 
 ## Syntax pre komentáre
-## Syntax for comments
 
 Komentáre v Solidity su presne ako tie v JavaScripte. Doposiaľ si v CryptoZombies lekciách videl už pár príkladov komentárov na jednom riadku, napríklad:
-Commenting in Solidity is just like JavaScript. You've already seen some examples of single line comments throughout the CryptoZombies lessons:
 
 ```
 // Toto je komentár na jeden riadok. Je to taký odkaz pre seba samého (alebo pre druhých)
-// This is a single-line comment. It's kind of like a note to self (or to others)
 ```
 
 Stačí pridať dvojité `//` kdekoľvek, a možeš komentovať. Je to tak jednoduché, že by si to mal robiť neustále.
-Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time.
 
 Ale viem na čo myslíš - jedno riadkové komentáre nestačia. Nakoniec, veď si aj rodený spisovateľ!
-But I hear you — sometimes a single line is not enough. You are born a writer, after all!
 
 Takže takto môžme robiť viac riadkové komentáre.
-Thus we also have multi-line comments:
 
 ```
 contract CryptoZombies {
@@ -501,10 +492,8 @@ contract CryptoZombies {
 ```
 
 Špeciálne dobrou praktikou je komentovať svoj kód, a vysvetľovať očakávané správanie každej funkcie tvojho kontraktu. Tým pádom iný programátor (prípadne ty po 6 mesiacoch) bude schopný rýchlo vstrebať a pochopiť, ako sa má kontrakt zhruba správať bez toho, aby musel čítať kód.
-In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
 
 Štandardným spôsob v Solidity komunite je používanie formátu zvaného **_natspec_**,, ktorý vyzerá nejako takto:
-The standard in the Solidity community is to use a format called **_natspec_**, which looks like this:
 
 ```
 /// @title Kontrakt pre základné matematické operácie
@@ -517,7 +506,7 @@ contract Math {
   /// @return z je ich násobok (x * y)
   /// @dev Táto funkcia momentálne nekontroluje pretečenie
   function multiply(uint x, uint y) returns (uint z) {
-    // Toto je len obyčajný komentár, nebude zachytený natspecom
+    // Toto je len obyčajný komentár, nebude detekovaný natspecom
     z = x * y;
   }
 }
@@ -530,25 +519,17 @@ contract Math {
 `@param` a `@return` sú pre popis toho, čo ktoré parametre a návratové hodnoty reprezentujú
 
 Všimni si že nie vždy musíme použiť všetky tieto natspec tagy pre každú jednu funkciu - všetky z týchto tagov su nepovinné. Ale je dobré zanechať aspoň `@dev` poznámku o tom, čo daná funkcia robí
-Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a `@dev` note explaining what each function does.
 
-## Vyskúšaj si to sám
-# Put it to the test
+# Vyskúšaj si to sám
 
 Ak si si ešte nevšimol, softvér kontrolujúci tvoje CryptoZombies riešenia ignoruje komentáre. Takže vlastne nemôžeme skontrolovať tvoj natsepc kód na konci tejto kapitoly ;)  
-If you haven't noticed by now, the CryptoZombies answer-checker ignores comments when it checks your answers. So we can't actually check your natspec code for this chapter ;)
 
 Každopádne, v tejto chvíli si už Solidity guru. V tejto lekcii ti budeme preto dôverovať, že to zvládneš!
-However, by now you're a Solidity whiz — we're just going to assume you've got this!
 
 Tak či onak si to výskúšaj, pridaj pár natspect tagov pre `ZombieOwnership`:
-Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
 1. `@title` - teda niečo ako "Kontrakt ktorý manažuje prevod zombie vlastníctva"
-1. `@title` — E.g. A contract that manages transfering zombie ownership
 
 2. `@author` - Tvoje meno!
-2. `@author` — Your name!
 
 3. `@dev` - napríklad niečo ako: "V súlade s návrhom implementácioe ERC721 podľa OpenZeppelin"
-3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft

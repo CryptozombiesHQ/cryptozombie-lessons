@@ -441,13 +441,9 @@ material:
 ---
 
 Skvelé, teraz môžme implementovať SafeMath na všetkých typoch `uint`ov ktoré v našej DApp máme.
-Great, now we can implement SafeMath on all the types of `uint`s we used in our DApp!
 
 Poďme opraviť potencionálne problémy v `ZombieAttack`. (V `ZombieHelper` bol taktiež jeden riadok, `zombies[_zombieId].level++;`, ktorý sme ale už opravili za teba, nech tým nemusíme tráviť ďalšiu kapitolu 😉).
-Let's fix all those potential issues in `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 😉).
 
 ## Vyskúšaj si to sám
-## Putting it to the Test
 
 Pozri sa na kód a použi SafeMath metódy všade tam, kde `++` inkrementujeme čísla v `ZombieAttack`. Nechali sme ti v kóde komentáre, aby si tieto kritické miesta ľahko našiel.
-Go ahead and implement SafeMath methods on all the `++` increments in `ZombieAttack`. We've left comments in the code to make them easy to find.

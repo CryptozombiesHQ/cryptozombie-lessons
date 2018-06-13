@@ -462,12 +462,9 @@ material:
       }
 ---
 Super, teraz je naša ERC721 implementácia zabezpečená pred pretečeniami a podtečeniami!
-Great, now our ERC721 implementation is safe from overflows & underflows!
 Ak si prejdeme kód ktorý sme napísali v predchádzajúcich lekciách, zistíme, že v našom kóde existuje niekoľko miest ktoré riskujú pretečenie alebo podtečenie.
-Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
 
 Napríklad, vo funkcii ZombieAttack máme:
-For example, in ZombieAttack we have:
 
 ```
 myZombie.winCount++;
@@ -476,10 +473,8 @@ enemyZombie.lossCount++;
 ```
 
 Pre istotu by sme mali zabrániť pretečeniam aj tu. (Je dobrou praktikou obecne, používať výhradne SafeMath metódy na matematické operácie. Možno v budúcnosti Solidity implementuje matematické operácie takýmto spôsobom natívne, no pre zatiaľ musíme prevencii pretečení venovať našu pozornosť).
-We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
 
 Teraz však máme trochu problém -  `winCount` a `lossCount` sú `uint16`s, a `level` je `uint32`. Ak použijeme SafeMath `add` metódu s týmito argumentmi, stále nebudeme od prečenia ochránený. To preto, lebo `add` SafeMath metóda by tieto argumenty skonvertovala na `uint256`:
-However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -493,28 +488,19 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 ```
 
 To znamená že budeme potrebovať implementovať ešte 2 ďalšie knižnice ktoré by predchádzali pretečeniu dátových typov `uint16` a `uint32`. Môžme ich pomenovať `SafeMath16` and `SafeMath32`.
-This means we're going to need to implement 2 more libraries to prevent overflow/underflows with our `uint16`s and `uint32`s. We can call them `SafeMath16` and `SafeMath32`.
 
 Kód bude úplne rovnaký ako v prípade SafeMath, s výnimkou že všetky výskyty `uint256` budu nahradené typmi `uint32` alebo `uint16`.
-The code will be exactly the same as SafeMath, except all instances of `uint256` will be replaced with `uint32` or `uint16`.
 
 Aby si s tým netrávil moc času, pomohli sme ti a tieto dodatočné knižnice sme vytvorili za teba. Pozri si ich kód v súbore `safemath.sol`.
-We've gone ahead and implemented that code for you — go ahead and look at `safemath.sol` to see the code.
 
 Teraz tieto knižnice potrebujeme použiť v ZombieFactory.
-Now we need to implement it in ZombieFactory.
 
 ## Vyskúšaj si to sám
-## Putting it to the Test
 
 Zadanie:
-Assignment:
 
 1. Deklaruj, že pre `uint32` používame `SafeMath32`.
-1. Declare that we're using `SafeMath32` for `uint32`.
 
 1. Deklaruj, že pre `uint16` používame `SafeMath16`.
-2. Declare that we're using `SafeMath16` for `uint16`.
 
 3. V ZombieFactory zostal ešte jeden riadok kódu kde treba použíť SafeMath metódu. Aby si to ľahko našiel, nechali sme ti tam komentár.
-3. There's one more line of code in ZombieFactory where we should use a SafeMath method. We've left a comment to indicate where.
