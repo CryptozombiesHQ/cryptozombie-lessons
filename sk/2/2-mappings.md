@@ -85,13 +85,13 @@ Aby sme to dosiahli, budeme potrebovať 2 nové dátové štruktúry `mapping` a
 ## Adresy
 ## Addresses
 
-Ethereum blockchain je tvorený **_účtami_**, ok ktorých môžeš premýšľať podobným spôsobom ako o bankových účtoch. Účet má určitý balanc **_Etheru_** (kryptomena na Ethereum blockchaine). Môžeš odosielať a príjmať platby do a z ostatných učtov, rovnako ako keď su prevádzané peniaze medzi bankovými účtami. 
+Ethereum blockchain je tvorený **_účtami_**. Môžeš o nich premýšľať podobným spôsobom ako o bankových účtoch. Účet má určitý balans **_Etheru_** (kryptomena na Ethereum blockchaine). Môžeš odosielať a príjmať platby do a z ostatných učtov. Rovnako ako keď sú prevádzané peniaze medzi bankovými účtami. 
 
-Každý účet má svoju `adresu` ktorú si možno predstaviť ako číslo bankového účtu. Je to unikátny identifikátor ktorý referuje jeden účet. Môže vyzerať napríklad takto:
+Každý účet má svoju `adresu`. Tu je možné prirovnať k číslu bankového účtu. Je to unikátny identifikátor referujúci na jeden konkrétny účet. Môže vyzerať napríklad takto:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(Táto adresa patrí CryptoZombies týmu. Ak sa ti kryptozombies páči, môžeš nám poslať nejaký Ether! 😉 )
+(Táto adresa patrí CryptoZombies týmu. Ak sa ti CryptoZombies páči, môžeš nám poslať nejaký Ether! 😉 )
 
 K bližším detailom o adresách sa dostaneme v nasledujúcej lekci. Zatiaľ stačí keď porozumieš že **adresa je vlastnená špecifickým užívateľom** (alebo aj smart kontraktom).
 
@@ -99,23 +99,23 @@ To znamená že môžeme adresu použiť ako unikátny identifikátor vlastníct
 
 ## Mapovania
 
-V Lekcii 1 sme sa pozreli na **_štruktúry_** (structs) a **_polia_** (arrays). **_Mapvania_** (mappings) sú ďalším spôsobom ako v Solidity môžeme pracovať so štrukturovanými dátami.
+V Lekcii 1 sme sa pozreli na **_štruktúry_** (structs) a **_polia_** (arrays). **_Mapovania_** (**_mapping_**) sú ďalším spôsobom ako v Solidity môžeme pracovať so štrukturovanými dátami.
 
-Definovanie mapovania vyzerá takto: 
+Deklarácia mapovania vyzerá takto: 
 
 ```
-// Pre finančnú aplikáciu by sme mohli mať mapovanie, v ktorom by ku každej adrese patril uint reprezentujúcu balanc k dispozicií na danom účte:
+// Pre finančnú aplikáciu by sme mohli mať mapovanie, v ktorom by ku každej adrese patril `uint` reprezentujúcu balanc ktorý je na danom účte k dispozicií:
 mapping (address => uint) public accountBalance;
 // Alebo by sme mohli ukladať a prehľadávat úžívateľské mená podľa userId
 mapping (uint => string) userIdToName;
 ```
 
-Mapovanie je v podstate dátové úložisko vo forme kľuč-hodnota. V prvom príklade, kľúčom je hodnota typu `address` ktorej korešponduje hodnota typu `uint`. V druhom príklade je kľučom hodnota typu `uint`. Každému kľúču potom odpovedá určitá hodnota typu `string`.
+Mapovanie je v podstate dátové úložisko vo forme kľuč-hodnota. V prvom príklade je kľúčom je hodnota typu `address` ktorej korešponduje hodnota typu `uint`. V druhom príklade je kľúčom hodnota typu `uint`. Každému kľúču potom odpovedá určitá hodnota typu `string`.
 
 # Vyskúšaj si to sám
 
-Aby sme nejakým spôsobom spravovali vlastníctvo vytvorených zombie, použijeme dve mapovania. Jedno si bude pamätať adresu vlastníka zombie s určítým id. Druhé mapovanie použijeme na to udržovanie počtu zombies vlastneného nejakou adresou.  
+Aby sme nejakým spôsobom spravovali vlastníctvo vytvorených zombie, použijeme dve mapovania. Jedno si bude pamätať adresu vlastníka zombie s určítým id. Druhé mapovanie použijeme na udržovanie si počtu zombies vlastneného nejakou adresou.  
 
-1. Vytvor mapvanie pomenované `zombieToOwner`. Kľúčom bude `uint` (použijeme id zombie na to aby sme zistili kto je jeho vlastníkom) a hodnotou mapovania bude adresa (adresa vlastníka zombie). Mapovanie deklarujme ako `public`.
+1. Vytvor mapovanie pomenované `zombieToOwner`. Kľúčom bude `uint` (použijeme id zombie na to aby sme zistili kto je jeho vlastníkom) a hodnotou mapovania bude adresa (adresa vlastníka zombie). Mapovanie deklarujme ako `public`.
 
-2. Vytvor mapovanie s názvom `ownerZombieCount`, ktorého kľúč bude typu `address` a hodnotou bude `uint`.
+2. Vytvor mapovanie s názvom `ownerZombieCount`. Kľúč mapovania bude typu `address` a hodnotou bude `uint`.

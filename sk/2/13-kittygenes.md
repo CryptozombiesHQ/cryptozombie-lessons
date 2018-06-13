@@ -43,7 +43,7 @@ material:
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            // A uprav spôsob volanie funkcie tu
+            // A tu uprav spôsob volania funkcie
             feedAndMultiply(_zombieId, kittyDna);
           }
 
@@ -134,13 +134,13 @@ material:
 ---
 Logika našej funkcie je teraz kompletná... no poďme pridať ešte nejakú bonusovú vlasnosť.
 
-Poďme kód upraviť tak, aby zombies vyrobený z mačiek mali nejakú unikátnu vlasnost ktorá odráža fakt že sú to mačko-zombies.
+Poďme kód upraviť tak, aby zombies vyrobený z mačiek mali nejakú unikátnu vlasnosť odrážajúcu fakt, že sú to mačko zombíci.
 
-Poďme im pridať nejaký špecialny mačko kód do DNA.
+Poďme im pridať špeciálny mačkovský DNA kód.
 
-Ak sa spomínaš z Lekcie 1, momentálne používame len prvých 12 cifier zo 16 cifier našeho DNA na určenie vzhľadu našeho zombie. Poďme teda využiť posledné 2 nevyužité cify na signalizáciu "špciálnych" vlasností.
+Ak sa spomínaš z Lekcie 1, momentálne používame len prvých 12 cifier zo 16 cifier našeho DNA na určenie vzhľadu našeho zombie. Poďme teda využiť posledné 2 nevyužité cify na signalizáciu "špeciálnych" vlasností.
 
-Definujme, že mačko zombies budú mať čislo `99` v posledných dvoch cifrách DNA (lebo mačky majú 9 životov). Takže v našom kóde povieme, že `ak` pochádza zombie z mačky, potom posledné dve cifry DNA sa budú rovnať `99`.
+Definujme, že mačko-zombíci budú mať čislo `99` v posledných dvoch cifrách DNA (lebo mačky majú 9 životov). Takže v našom kóde povieme, že ak pochádza zombie z mačky, potom posledné dve cifry DNA sa budú rovnať `99`.
 
 ## If podmienky
 
@@ -148,7 +148,7 @@ Definujme, že mačko zombies budú mať čislo `99` v posledných dvoch cifrác
 
 ```
 function eatBLT(string sandwich) public {
-  // Spomeň si že v prípade reťazcov musíme porovnávať ich keccak256 
+  // Spomeň si, že v prípade reťazcov musíme porovnávať ich keccak256 hash
   // hashe na overenie rovnosti 
   if (keccak256(sandwich) == keccak256("BLT")) {
     eat();
@@ -160,12 +160,12 @@ function eatBLT(string sandwich) public {
 
 Poďme implemntovať mačacie gény do našeho zombie DNA kódu.
 
-1. Za prvé, poďme upraviť definíciu funkcie  `feedAndMultiply` tak, aby príjmala tretí argument: `string` s názvom `_species`.
+1. Za prvé uprav definíciu funkcie `feedAndMultiply` tak, aby príjmala tretí argument: `string` s názvom `_species`.
 
-2. Ďalej, po tom čo vypočítame DNA nového zombie, pridajme podmienku `if` a porovnajme `keccak256` hashe reťazcov `_species` a`"kitty"`.
+2. Po tom čo vypočítaš DNA nového zombie, pridaj podmienku `if` a porovnaj `keccak256` hashe reťazcov `_species` a`"kitty"`.
 
-3. Vo tele `if` podmienky nahradíme posledné dve cifry DNA čislom 99. Jedna z možností ako to dosiahnu't je použít nasledovný spôsob: `newDna = newDna - newDna % 100 + 99;`.
+3. Vo tele `if` podmienky nahraď posledné dve cifry DNA čislom 99. Jedna z možností ako to dosiahnuť je použiť nasledovný metódu: `newDna = newDna - newDna % 100 + 99;`.
 
   > Vysvetlenie: Predpokladajme že `newDna` is `334455`. Potom `newDna % 100` je `55`, takže `newDna - newDna % 100` je `334400`. Na záver, ak prídáme `99`, dostaneme `334499`.
 
-4. Na koniec, potrebujeme upravi+t volanie funkcie vo vnútri `feedOnKitty`. Keď voláme `feedAndMultiply`, musíme pridať pradenie hodnoty nového parametru `_species` hodnotou `"kitty"`.
+4. Na koniec musíš upraviť volanie funkcie vo vnútri `feedOnKitty`. Keď voláš `feedAndMultiply`, musíš do volania pridať náš nový parameter `_species` hodnotou `"kitty"`.

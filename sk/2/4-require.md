@@ -85,13 +85,13 @@ material:
       }
 ---
 
-V Lekcií 1 sme napísali kód tak, že užívatelia môžu vytvárať nových zombie volaním funkcie `createRandomZombie` a zadaním mena zombie. Problém je že ak by užívatelia mohli volať túto funkciu bez obmedzení, mohli by si vytvárať nekonečné armády zombie a hra by pre ostatných nebola veľmi zábavná.
+V Lekcií 1 sme napísali kód tak, aby užívatelia mohli vytvárať nových zombie volaním funkcie `createRandomZombie` s menom zombie ako parametrom. Problém je, že ak by užívatelia mohli volať túto funkciu bez obmedzení, mohli by si vytvárať nekonečné armády zombie. Hra by potom pre ostatných nebola veľmi zábavná.
 
-Poďme spraviť potrebné úpravy, aby hráč mohol z jednej adresy vytvoriť nového zombie len raz. Tým pádom hráči zavolajú túto funkciu iba raz, aby vytvorili prvopočiatočného zombie ich zombie armády.
+Poďme spraviť potrebné úpravy na to, aby hráč mohol z jednej adresy vytvoriť nového zombie iba raz. Tým pádom hráči zavolajú túto funkciu iba jeden krát, pre vytvorenie ich prvopočiatočného zombie.
 
-Ako implementujeme obmedzenie aby táto funkcia mohla byť zavolaná iba jeden krát každým hráčom?
+Ako implementujeme obmedzenie, aby táto funkcia mohla byť zavolaná každým hráčom maximálne raz?
 
-Použijeme na to `require`. `require` zabezpečí, že funkcia vráti error ak určitá podmienka nie je splnená:
+Použijeme na to `require`. `require` zabezpečí, že funkcia vráti error, ak je určitá podmienka nesplnená.
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
@@ -106,7 +106,7 @@ function sayHiToVitalik(string _name) public returns (string) {
 
 Ak zavoláš túto funkciu takto: `sayHiToVitalik("Vitalik")`, vráti naspäť hodnotu "Hi!". Ak túto funkciu zavoláš s akýmkoľvek iným argumentom, vráti error a nevykoná sa.
 
-A preto `require` je užitočný konštrukt na verifikáciu či boli splnené určite podmienky, pred tým než sa vykoná hlavná logika funkcie.
+`require` preto predstavuje veľmi užitočný konštrukt na verifikáciu toho, či boli splnené určité podmienky pred tým, než sa vykoná hlavná logika funkcie.
 
 
 # Vyskúšaj si to sám
@@ -115,6 +115,6 @@ V našej zombie hre nechceme, aby užívateľ mohol donekonečna vytvárať neob
 
 Poďme použiť `require` konštrukt na to, aby sme zaručili že táto funkcia bude vykonaná pre každého hráča len raz, keď si vytvoria svojho prvého zombie.
 
-1. Vlož konštrukt `require` na začiatok funkcie `createRandomZombie`. Funkcia by mala kontrolovať, že `ownerZombieCount[msg.sender]` je rovné `0`, v opačnom prípade vyhodiť error.
+1. Vlož konštrukt `require` na začiatok funkcie `createRandomZombie`. Funkcia by mala kontrolovať, že `ownerZombieCount[msg.sender]` sa rovná `0`, a v opačnom prípade vyhodiť error.
 
-> Poznámka: V Solidity nezáleží ktorý výraz do require zadáš ako prvý - výsledok bude rovnaký pre oboje zoradenia. Každopádne, nakoľko je náš softvér na kontrolovanie odpovedí veľmi jednoduchý, akceptuje jedinú správnu odpoved - očakáva že `ownerZombieCount[msg.sender]` bude prvým výrazom argumentom v require.
+> Poznámka: V Solidity nezáleží ktorý výraz do require zadáš ako prvý. Výsledok bude rovnaký pre oboje zoradenia. Bohužiaľ, nakoľko je náš softvér na kontrolovanie odpovedí veľmi jednoduchý, akceptuje jedinú správnu odpoved - očakáva že `ownerZombieCount[msg.sender]` bude prvým výrazom argumentom v require.

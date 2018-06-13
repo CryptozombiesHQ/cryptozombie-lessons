@@ -82,47 +82,47 @@ material:
       }
 ---
 
-Teraz keď už máme pripravené naše mapovania na udržovanie prehľadu o tom kto vlastní ktorého zombie, musíme ich použiť v metóde `_createZombie`.
+Teraz keď už máme pripravené naše mapovania na udržovanie prehľadu o tom, kto vlastní ktorého zombie, musíme ich použiť v metóde `_createZombie`.
 
 Na to aby sa nám to podarilo, musíme si pomôcť s ďalšou novou vlasnosťou Solidity - `msg.sender`.
 
 ## msg.sender
 
-V Solidity existujú určité globálne premenné ktoré su dostupné vo všetkých funkciách. Jedna z nich je aj `msg.sender`, ktorá nesie informáciu o `adrese` určitej osoby (alebo smart kontraktu) ktorá zavolala prave vykonávanú metódu.
+V Solidity existujú globálne premenné ktoré su dostupné vo všetkých funkciách. Jedna z nich je aj `msg.sender`. Obsahuje  adresu `address` účtu osoby (alebo smart kontraktu) ktorá vyvolala prave vykonávanú funkciu.
 
-> Poznámka: V Solidity musí vykonanie funkcie kontraktu vždy započať externým volaním mimo kontrakt. Kontrakt proste sedí na blockchaine a nerobí nič, dokým niekto nezavolá nejakú z jeho funkcií. Takže pri behu funkcie kontraktu bude mať `msg.sender` vždy definovanú nejakú hodnotu. 
+> Poznámka: V Solidity musí vykonanie funkcie kontraktu vždy započať externým volaním mimo kontrakt. Kontrakt proste sedí na blockchaine a nerobí nič, dokým niekto nezavolá nejakú z jeho funkcií. Preto pri behu funkcie kontraktu bude mať `msg.sender` vždy nejakú hodnotu nastavenú. 
 
-Tu je príklad pouižitia `msg.sender` a modifikácie mapovania:
+Tu je príklad použitia `msg.sender` a modifikácie mapovania:
 
 ```
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
-  // uprav hodnotu `favoriteNumber` tak aby číslo `_myNumber` bolo uložené pod kľúčom `msg.sender`
+  // uprav hodnotu `favoriteNumber` tak, aby číslo `_myNumber` bolo uložené pod kľúčom `msg.sender`
   favoriteNumber[msg.sender] = _myNumber;
   // ^ Syntax pre ukladanie dát do mapovania je rovnaká ako v prípade polí
 }
 
 function whatIsMyNumber() public view returns (uint) {
-  // Zisti hodnotu uloženú v mapovaním pod kľučom rovným hodnote adresy z ktorej bola zavolaná táto funkcia.
-  // Ak volateľ funkcie doposial nezavolal `setMyNumber`, táto funkcia vráti hodnotu `0` 
+  // Zisti hodnotu uloženú v mapovaní pod kľúčom s hodnotou adresy, z ktorej táto funkcia bola zavolaná.
+  // Ak volateľ funkcie doposiaľ nezavolal `setMyNumber`, táto funkcia vráti hodnotu `0` 
   return favoriteNumber[msg.sender];
 }
 ```
 
-V tomto triviálnom príklade, ktokoľvek by mohol zavolať `setMyNumber` a uložiť `uint` do kontraktu. Tento `uint` by potom bol viazaný na adresu ich účtu. Potom pri zavolaní `whatIsMyNumber`, dostali by naspať číslo ktoré si do kontraktu uložili.
+V tomto triviálnom príklade by mohol ktokoľvek zavolať `setMyNumber` a uložiť `uint` do kontraktu. Tento `uint` by potom bol viazaný na adresu jeho účtu. Pri zavolaní `whatIsMyNumber` by potom dostal naspať to číslo, ktoré si do kontraktu uložil.
 
-Používanie `msg.sender` nám je jedna z mechanizmov bezpečnosti na Ethereum blockchain - jediný spôsob ako modifikovať cudzie dáta by bolo ukradnúť ich privátny kľúč asociovaný s ich Ethereum adresou. 
+Používanie `msg.sender` je jeden z mechanizmov bezpečnosti na Ethereum blockchain. Jediný spôsob ako modifikovať cudzie dáta by bolo ukradnúť privátny kľúč asociovaný s cudzou Ethereum adresou. 
 
 # Vyskúšaj si to sám
 
-Poďme upraviť našu funkciu `_createZombie` z Lekcie 1 a priradiť vlastníctvo zombie tomu, kto zavolal túto funkciu. 
+Poďme upraviť našu funkciu `_createZombie` z Lekcie 1 a priradiť vlastníctvo zombieho tomu, kto funkciu zavolal. 
 
-1. Za prvé, po tom čo dostaneš naspäť `id` vytvoreného zombie, ulož do mapovania `zombieToOwner` hodnotu `msg.sender` pod klúčom s hodnotou `id`.
+1. Po tom čo dostaneš naspäť `id` vytvoreného zombie, ulož do mapovania `zombieToOwner` hodnotu `msg.sender` pod klúčom s hodnotou `id`.
 
-2. Za druhé, poďme zvýšiť `ownerZombieCount` pre odosielateľa tejto transkacie - `msg.sender`.
+2. Ďalej zvýš `ownerZombieCount` pre odosielateľa tejto transakcie - `msg.sender`.
 
-V Solidity je možné inkrementovať hodnotu `uint` pomocou operátora `++` rovnako ako v Javascripte:
+V Solidity je možné inkrementovať hodnotu `uint` pomocou operátora `++`, rovnako ako v Javascripte:
 
 ```
 uint number = 0;

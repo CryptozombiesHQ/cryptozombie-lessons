@@ -59,8 +59,8 @@ ZombieFactory.NewZombie(function(error, result) {
 
 # Vyskúšaj si to sám
 
-Zvoľ mačku na ktorej sa chceš nakŕmiť. DNA tvojho zombie a DNA napadnutej mačku sa skombinujú a ty získaš nového zombie do svojej armády!
+Zvoľ mačku na ktorej sa chceš nakŕmiť. DNA tvojho zombie a DNA napadnutej mačky sa skombinujú a ty získaš nového zombie do svojej armády!
 
 Vidíš tie roztomilé mačacie labky na tvojom novom zombie? To je gén `99` v praxi!
 
-Môžeš to vyskúšat niekoľko krát. Až dostaneš mačacieho zombie s ktorým budeš spokojný (môžeš si ponechať len jedného), pokračuj na ďalšiu kapitolu pre dokončenie Lekcie 2!
+Môžeš to vyskúšať aj viac krát. Až dostaneš mačacieho zombie s ktorým budeš spokojný (môžeš si ponechať len jedného), pokračuj na ďalšiu kapitolu pre dokončenie Lekcie 2!

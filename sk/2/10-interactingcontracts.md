@@ -103,15 +103,15 @@ Nuž, ukázalo sa že CryptoZombies najviac zbožňujú...
 
 (Áno, myslím to vážne 😆 )
 
-Na to aby sme to mohli spraviť budeme potrebovať byť schopný čítať CryptoKitties smart kontrakt. Naimplementovať to môžeme, pretože dáta CryptoKitties su uložené verejne na blockchaine. No nie je blockchain super?
+Ay sme to mohli spraviť budeme potrebovať byť schopný čítať CryptoKitties smart kontrakt. Naimplementovať sa to dá, pretože dáta CryptoKitties su uložené verejne na blockchaine. No nie je blockchain super?
 
-Nemaj obavy - naša hra v skutočnosti neporaní žiadny CryptoKitty mačičku. Budeme iba *čítať* Cryptokitties dáta, nebudeme schopný ich zmazať alebo modifikovať 😉 
+Naša hra v skutočnosti neporaní žiadnu mačičku CryptoKitty. Budeme iba *čítať* Cryptokitties dáta, nebudeme schopný ich zmazať alebo modifikovať 😉 
 
 ## Interakcia s inými kontraktmi
 
 Na to aby náš kontrakt mohol komunikovať s iným kontraktom na blockchain, budeme musieť najrpv definovať **_rozhranie_** (**_interface_**).
 
-Poďme sa pozriet na nasledujúci jednoduchý príklad. Predstavme si že na blockchaine je nasadený takýto kontrakt:
+Poďme sa pozrieť na nasledujúci jednoduchý príklad. Predstavme si, že na blockchaine je nasadený takýto kontrakt:
 
 ```
 contract LuckyNumber {
@@ -127,11 +127,11 @@ contract LuckyNumber {
 }
 ```
 
-Totot by bol jednoduchý kontrakt na to, aby si mohol ktokoľvek uložiť svoje štastné číslo. To bude potom asociované s ich Ethereum adresou. Ďalej by ktokoľvek mohol vyhľadať štastné číslo priradené k ľubovolnej adrese.
+Toto by bol jednoduchý kontrakt na ukladanie štastné číslo. Ktokoľvek môže nastaviť svoje šťastné čislo pomocou funkcie `setNum`. To potom bude asociované s jeho Ethereum adresou. Ďalej môže ktokoľvek vyhľadať štastné číslo priradené k ľubovolnej adrese.
 
-Zvážme situáciou ked by sme mali externý kontrakt z ktorého by sme chceli čítať dáta z `LuckyNumber` kontraktu pomocou funkcie `getNum`.
+Zvážme situáciou kedy by sme mali externý kontrakt, z ktorého by sme chceli čítať dáta z `LuckyNumber` kontraktu pomocou funkcie `getNum`.
 
-Najrpv by sme museli definovať **_rozhranie_** (**_interface_** ) v našom kontrakte:
+Najprv by sme museli definovať **_rozhranie_** (**_interface_** ) v našom kontrakte:
 
 ```
 contract NumberInterface {
@@ -139,19 +139,19 @@ contract NumberInterface {
 }
 ```
 
-všimni si že to vyzerá ako definícia smart kontraktu, no s pár rozdielmi. Za prvé, deklarujeme iba funkcie s ktorými chceme pracovať - v tomto prípade by to bola funkcia  `getNum`. Nemusíme vôbec spomínať ostatné funkcie alebo stavové premenné.
+Všimni si že to vyzerá ako definícia smart kontraktu, no s pár rozdielmi. Za prvé, deklarujeme iba funkcie s ktorými chceme pracovať. V tomto prípade by to bola funkcia `getNum`. Nemusíme vôbec spomínať ostatné funkcie alebo stavové premenné.
 
 Za druhé, nemusíme definovať telá funkcií. Namiesto závoriek (`{` a `}`) proste ukončíme deklaráciu funkcie bodkočiarkou (`;`).
 
-Takže to vyzerá len ako základná kostra kontraktu. Tak kompilátor rozumie, že sa jedná len o rozhranie.
+Takže to vyzerá len ako základná kostra kontraktu. Kompilátor tak porozumie, že sa jedná len o rozhranie.
 
-Tým že zahrnieme toto rozranie do kódu našej dappky, náš kontrakt bude vediet ako vyzerajú funkcie ine'ho kontraktu, ako ich volať a akú odpoveď od nich očakávať naspäť.
+Tým že zahrnieme toto rozranie do kódu našej dappky, náš kontrakt bude vedieť ako vyzerajú funkcie iného kontraktu, ako ich volať, a akú odpoveď od nich má očakávať naspäť.
 
-Na to, ako skutočne volať funkcie cudzieho kontraktu sa pozrieme v ďalšej lekcii, zatiaľ len deklarujeme rozranie Cryptokitties kontraktu, aby sme s ním mohli pracovať.
+Ako skutočne volať funkcie cudzieho kontraktu sa pozrieme v ďalšej lekcii, zatiaľ len deklarujeme rozranie Cryptokitties kontraktu, aby sme s ním mohli začať pracovať.
 
 # Vyskúšaj si to sám
 
-Pozreli sme sa na zdrojový kód CryptoKitties za teba, a našli sme funkciu s názvom `getKitty`. Tá vracia všetky informácie o jednej mačke, včetne jej génov (a to je to čo náš zombie potrebuje na vytvorenie nového zombie!).
+Pozreli sme sa na zdrojový kód CryptoKitties za teba a našli sme funkciu s názvom `getKitty`. Vracia všetky informácie o jednej mačke, včetne jej génov (a to je to, čo náš zombie potrebuje na vytvorenie nového zombie!).
 
 Funkcia vyzerá nasledovne:
 
@@ -184,10 +184,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-Táto funkcia vyzerá torchu inak ako to na čo sme zvyknutý. Všimni si že vracia... nie jednu ale niekoľko hodnôt. Ak prichádzaš z jazykov ako Javascript, možno budeš prekvapený - v Solidity je možné vrátit viac než jednu hodnotu z funkcie naraz. 
+Táto funkcia vyzerá trochu inak ako to, na čo sme zvyknutý. Všimni si že vracia... nie jednu, ale hneď niekoľko hodnôt. Ak prichádzaš z jazykov ako Javascript, možno budeš prekvapený. v Solidity je možné vrátit z funkcie niekoľko hodnôt naraz.
 
-Teraz keď vieme ako táto funkcia vyzerá, môžme to použiť na vytvorenie rozrania:
+Teraz keď už vieme, ako táto funkcia vyzerá, môžme to použiť na deklaráciu rozrania:
 
-1. Definuj rozhranie s názvom `KittyInterface`. Pamataj, že to bude vyzerať rovnako ako keď vytváraš nový kontrakt - použijeme kľučové slovo `contract`.
+1. Deklaruj rozhranie s názvom `KittyInterface`. Bude vyzerať rovnako ako keď vytváraš nový kontrakt - použi kľučové slovo `contract`.
 
-2. Vo vnútry rozrania deklaruj funkciu `getKitty` (ktorá bude kópiou funkcie ukázanej vyššie, no s rozdielom že za `returns` bude nasledovať bodkočiarka, namiesto `{` `}` závoriek).
+2. Vo vnútri rozrania deklaruj funkciu `getKitty` (bude kópiou funkcie ukázanej vyššie, no s rozdielom že za `returns` bude nasledovať bodkočiarka, namiesto `{` `}` závoriek).

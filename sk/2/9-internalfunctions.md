@@ -102,7 +102,7 @@ material:
       }
 ---
 
-**Kód ktorý z našej predošlej lekcie obstahuje chybu!**
+**Kód ktorý z našej predošlej lekcie obsahuje chybu!**
 
 Ak sa ho pokúsiš skompilovať, kompilátor vyhodí error.
 
@@ -110,13 +110,13 @@ Problém je ten, že sme sa pokúsili zavolať funkciu `_createZombie` z `Zombie
 
 ## Internal a External
 
-Okrem možných kategorií viditeľnosti funkcií  `public` a `private` existujú dve ďalšie možnosti: `internal` a `external`.
+Okrem spomínaných kategorií viditeľnosti funkcií, `public` a `private`, existujú dve ďalšie možnosti. Sú to `internal` a `external`.
 
-`internal` je to isté ako `private`, no s tým rozdielom, že je takáto funkcai bude prístupná ja kontraktom ktoré od kontraktu dedia. **(Hej, to znie ako to čo potrebujeme!)**
+`internal` je to isté ako `private`, no s rozdielom, že takáto funkcia bude prístupná len dediacim kontraktom. **(Hej!! To znie ako to, čo tu teraz potrebujeme!)**
 
-`external` je podobné ako `public`, no s rozdielom že takáto funkcia bude môcť byť zavolaná IBA mimo kontraktu - nebude môcť byť zavolana z ostatných funkcií rovnakého kontraktu. O tom, kedy sa hodí použiť `external` versus `public` si povieme neskôr.
+`external` je podobné ako `public`, no s rozdielom, že takáto funkcia môže byť zavolaná IBA mimo kontraktu. Nemôže byť zavolaná z ostatných funkcií rovnakého kontraktu. O tom, kedy sa hodí použiť `external` versus `public` si povieme neskôr.
 
-Na deklaráciu `internal` alebo `external` funkcií sa používa syntax rovnaká ako pre `private` a `public` funkcie:
+Na deklaráciu `internal` alebo `external` funkcií sa používa taká istá syntax, ako pre `private` a `public` funkcie:
 
 ```
 contract Sandwich {
@@ -140,6 +140,6 @@ contract BLT is Sandwich {
 
 # Vyskúšaj si to sám
 
-1. Zmeň  `_createZombie()` z `private` na `internal` aby k nej ostatné kontrakty získali prístup.
+1. Zmeň `_createZombie()` z `private` na `internal` aby k tejto funkcii získali prístup dediace kontrakty.
 
-  Rovno sme ťa prepli na tab súboru, v ktorom musíš spraviť zmenu - `zombiefactory.sol`.
+  Rovno sme ťa prepli do tabu súboru v ktorom musíš spraviť zmenu - `zombiefactory.sol`.

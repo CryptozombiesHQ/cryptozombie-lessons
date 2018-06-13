@@ -69,13 +69,13 @@ material:
       }
 ---
 
-V Solidity existujú dve miesta kde môžu premenne "sýdliť". Buď v trvalom dátovom úložisku kontraktu - `storage`, alebo v pamäti - `memory`.
+V Solidity existujú dve miesta kde môžu premenné "sýdliť". Buď v trvalom dátovom úložisku kontraktu, tzv. `storage`, alebo v pamäti `memory`.
 
-**_Storage_** referuje na premenné trvalo uložené na blockchain.  **_Memory_** premenné su dočasné a su vymazáne medzi jednotlivý externými volaniami funkcii kontraktu. Môžeš o týchto dvoch typoch úložísk premýšlať podobne ako o hard disku a RAMke.
+**_Storage_** referuje na premenné trvalo uložené na blockchaine. **_Memory_** premenné su dočasné, a sú vymazané medzi jednotlivými externými volaniami funkcii kontraktu. Môžeš o týchto dvoch typoch úložísk premýšlať podobne ako o hard disku a RAMke.
 
-Vačsinou nebudeš nutne musieť používať tieto kľučové slova, pretože Solidity vie ako s premnnými vhodne zaobchádzať. Stavové premenné (premenné deklarované mimo funkcií) sú automaticky typu `storage` a su zapísané do blockchain. Naopak, premenné deklarované vo vnútri funkcii su automaticky typu `memory` a ich hodnota bude zabudnutá ked volaná funkcia dobehne.
+Vačsinou nebudeš nutne musieť používať tieto kľučové slova, pretože Solidity vie, ako s premennými zaobchádzať. Stavové premenné (premenné deklarované mimo funkcií) sú automaticky typu `storage` a sú zapísané na blockchain. Naopak, premenné deklarované vo vnútri funkcií sú automaticky typu `memory`. Ich hodnota bude zabudnutá keď bežiaca funkcia dobehne.
 
-Každopádne však existujú prípady, kedy budeš tieto kľučove slová ručne špecifikovať. Predovšetkým keď budeš pracovať so **_štruktúrami_** a **_poliami_** v rámci funkcií:
+Existujú však prípady kedy budeš tieto kľučové slová ručne špecifikovať. Predovšetkým vtedy, keď budeš pracovať so **_štruktúrami_** a **_poliami_** v rámci funkcií:
 
 ```
 contract SandwichFactory {
@@ -90,45 +90,45 @@ contract SandwichFactory {
     // Sandwich mySandwich = sandwiches[_index];
 
     // ^ Toto vyzerá jasne, no Solidity ohlási varovanie hovoriace o tom
-    // že je potreba explicitne špecifikovať typ premenne `storage` alebo `memory`
+    // že je potrebné explicitne špecifikovať typ premennej `storage` alebo `memory`
 
-    // Takže by si mal deklarovať túto premennú s kľucovým slovom `storage`:
+    // Túto premennú by si mal deklarovať s kľučovým slovom `storage`:
     Sandwich storage mySandwich = sandwiches[_index];
-    // ...v takom prípade `mySandwich` je len ukazateľom na `sandwiches[_index]`
+    // ...v takom prípade `mySandwich` je ukazateľom na `sandwiches[_index]`
     // v trvalom úložisku kontraktu, a preto ... 
     mySandwich.status = "Eaten!";
-    // ...tento riadok kódu by permanentne zmenil hodnotu `sandwiches[_index]`
-    // na blockchain
+    // ...tento riadok kódu by permanentne zmení hodnotu `sandwiches[_index]`
+    // na blockchaine
 
-    // Ak sa chceš však len kópiu, môžeš použiť `memory`:
+    // Ak sa chceš však len kópiu, môžeš deklarovať premennú v pamäti pomocou `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...a v takom prípade bude `anotherSandwich` proste len dočasnou
+    // ...v takom prípade bude `anotherSandwich` len dočasnou
     // kópiou v pamäti, a preto ...
     anotherSandwich.status = "Eaten!";
-    // ...iba modifikuje dočasnu premennú, no nebude mať žiadny efekt
-    // na dáta v blockchain `sandwiches[_index + 1]`. No mohol by si spraviť toto:
+    // ...len modifikuje dočasnu premennú, no nebude mať žiadny trvalý efekt
+    // na dáta `sandwiches[_index + 1]` v blockchaine. Mohol by si ale spraviť toto:
     sandwiches[_index + 1] = anotherSandwich;
-    // ...ak by si chcel skopírovať upravené data naspať na úložisko v blokchain
+    // ...ak by si chcel skopírovať upravené data naspať na trvalé úložisko nablokchaine
   }
 }
 ```
-Nemaj obavy ak ešte plne nerozumieš kedy použiť memory alebo storage - v priebehu tohoto tutoriálu ti povieme kedy použiť `storage` a kedy použiť `memory`. Solidity kompilátor ti taktiež bude pomáhať upozrneniami, v prípade že je potrebné aby si použil jedno z týchto dvoch kľučových slov. 
+Ak ešte plne nerozumieš kedy použiť memory alebo storage, nemaj obavy. V priebehu tohoto tutoriálu ti povieme kedy použiť `storage` a kedy použiť `memory`. Solidity kompilátor ti taktiež bude pomáhať upozorneniami v prípade že je potrebné, aby si použil jedno z týchto dvoch kľučových slov. 
 
-Zatiaľ však stačí rozumieť tomu, že existujú prípady keď potrebujeme explicitne špecifikovat deklaráciu `storage` alebo `memory`!
+Zatiaľ ale stačí rozumieť tomu, že existujú prípady kedy potrebujeme premenným explicitne špecifikovať `storage` alebo `memory`!
 
 # Vyskúšaj si to sám
 
-Je čas na to dať našim zombie schopnosť sa kŕmiť a násobiť!
+Je čas na to, dať našim zombie schopnosť sa kŕmiť a násobiť!
 
-Keď sa zombie kŕmi na iných formách života, jeho DNA sa skombinuje s DNA obete a na základe tejto kombinácie sa vytvorí nový zombie.
+Keď sa zombie kŕmi na iných formách života, jeho DNA sa skombinuje s DNA obete. Na základe tejto kombinácie vznikne nový zombie.
 
-1. Vytvor funkciu pomenovanú `feedAndMultiply`. Tá bude brať dva parametre: `_zombieId` (typu `uint`) and `_targetDna` (tiež typu `uint`). Táto funkcia bude `public`.
+1. Vytvor funkciu pomenovanú `feedAndMultiply`. Bude brať dva parametre: `_zombieId` (typu `uint`) a `_targetDna` (tiež typu `uint`). Táto funkcia bude `public`.
 
-2. Nechceme aby za nás kŕmil našeho zombie niekto iný! Takže najprv sa uistime, že tohoto zombie vlastníme. Pridaj `require` aby si zaručil že `msg.sender` je skutočne vlastník daného zombie (podobne ako sme použili `require` vo funkcii `createRandomZombie`).
+2. Nechceme aby našeho zombie dával kŕmiť niekto iný! Takže najprv overíme vlastníctvo zombie. Pridaj `require` aby si zaručil že `msg.sender` je skutočne vlastník daného zombie (podobne ako sme použili `require` vo funkcii `createRandomZombie`).
 
- > Poznámka: Opať raz, pretože náš kontrolór odpovedí je primitívny, očakáva že `msg.sender` bude v `require` prvý. Ak poradie prehodíš, odpoved bude vyhodnotená ako nesprávna. V praxi na poradí výrazov v `require` ale nezáleží, oboje verzie sú správne.
+ > Poznámka: Pretože náš kontrolór odpovedí je primitívny, očakáva, že `msg.sender` bude v `require` prvý. Ak poradie prehodíš, odpoveď bude vyhodnotená ako nesprávna. V praxi ale na poradí výrazov v `require` nezáleží, oboje verzie sú správne.
 
-3. Budeme potrebovať DNA tohoto zombie. Preto ďalšia vec, ktorú musí kontrakt vykonať je lokálna deklarácia premennej typu `Zombie` pomenovaná `myZombie` (a bude `storage` ukazaťeľom). Nastav hodnotu tejto premennej rovnú indexu `_zombieId` v našom `zombies` poli.
+3. Budeme potrebovať DNA tohoto zombie. Ďalšia vec, ktorú preto musí kontrakt vykonať je lokálna deklarácia premennej typu `Zombie` pomenovaná `myZombie` (a bude `storage` ukazaťeľom). Nastav hodnotu tejto premennej rovnú indexu `_zombieId` v našom `zombies` poli.
 
 Mali by to byť 4 riadky kódu, včetne uzatváracej závorky `}`. 
 

@@ -62,11 +62,11 @@ material:
       }
 
 ---
-Hohó! Všimni si že sme trochu prečistili kód vpravo a v editora sa ti zobrazujú taby jednotlivých súborov. Vyskúšaj sa medzi nimi trochu preklikať. 
+Hohó! Všimni si, že sme trochu prečistili kód vpravo, a že v editore sa ti zobrazujú taby jednotlivých súborov. Vyskúšaj sa medzi nimi trochu preklikať. 
 
-Náš kód začínal byť celkom dlhý, takže sme ho rozdelili do niekoľkých suborov, aby sa nám s ním ľahšie pracovalo. Toto je obvyklý spôsob ako si poradiť s vělkými Solidity projektami.
+Náš kód začínal byť pomerne dlhý, takže sme ho rozdelili do niekoľkých suborov. Toto je častý spôsob ako si poradiť s veľkými Solidity projektami.
 
-Keď máš niekoľko súborov a chceš importovať jeden do druhé'ho, v Solidity sa na to používa kľučove slovo `import`:'
+Keď máš niekoľko súborov a chceš importovať jeden do druhého, Solidity na to používa kľúčové slovo `import`:'
 
 ```
 import "./someothercontract.sol";
@@ -76,10 +76,10 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-Takže ak by sme mali súbor s názvom `someothercontract.sol` v rovnakom adresári ako tento kontrakt (`./` referuje adresár v ktorom je daný kontrakt uložený). 
+Ak by sme mali súbor s názvom `someothercontract.sol` v rovnakom adresári ako tento kontrakt (`./` referuje adresár v kontrakt uložený), takto by sme ho naimportovali. 
 
 # Vyskúšaj si to sám
 
-Teraz keď už máme pripravenú multi-súborovú štruktúru, musíme použiť `import` na to, aby sme mohli používať obsah iných súborov.
+Teraz keď už máme pripravenú viac súborovú štruktúru projektu, použijeme `import` na to, aby sme mohli využívať obsah iných súborov.
 
 1. Importuj `zombiefactory.sol` do našeho nového súboru `zombiefeeding.sol`.

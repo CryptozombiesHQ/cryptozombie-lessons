@@ -122,7 +122,7 @@ material:
       }
 ---
 
-Táto `getKitty` funkcia je prvým príkladom vracania niekoľkým hodnôt z funkcie. Poďme sa pozrieť na to ako tieto návratové hodnoty spracovať. 
+Táto `getKitty` funkcia je prvým príkladom vracania niekoľkým hodnôt z funkcie. Poďme sa pozrieť ako tieto návratové hodnoty spracovať. 
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -137,7 +137,7 @@ function processMultipleReturns() external {
   (a, b, c) = multipleReturns();
 }
 
-// Alebo v prípade že ťa zaujíma len jedna hodnota:
+// Alebo v prípade že ťa zaujíma len jedna z hodnôt:
 function getLastReturnValue() external {
   uint c;
   // Môžme ostatné položky ponechať prázdne takto:
@@ -147,16 +147,16 @@ function getLastReturnValue() external {
 
 # Vyskúšaj si to sám
 
-Je čas na interkaciu s CryptoKitties kontraktom!
+Je čas na interakciu s CryptoKitties kontraktom!
 
-Poďme spraviť funkciu, ktorá získa gény mačky z CryptoKitties kontraktu:
+Poďme napísať funkciu ktorá získa gény mačky z CryptoKitties kontraktu:
 
-1. Vytvor funkciu s naźvom `feedOnKitty`. Bude príjmať 2 `uint` parametre, `_zombieId` a`_kittyId`. Mala by to byť `public` funkcia.
+1. Vytvor funkciu s názvom `feedOnKitty`. Bude príjmať 2 `uint` parametre - `_zombieId` a `_kittyId`. Mala by to byť `public` funkcia.
 
-2. Funkcia by mala najprv deklarovať `uint` s názvom`kittyDna`.
+2. Funkcia by mala najprv deklarovať `uint` s názvom `kittyDna`.
 
   > Poznámka: V našom `KittyInterface`, `genes` je `uint256` - ale ak si spomenieš na Lekciu 1, `uint` je skratkou pre `uint256` - je to to isté.
 
-3. Funkcai by potom mala volať funkciu `kittyContract.getKitty` s paramtrom `_kittyId` a uložiť `genes` do `kittyDna`. Pamätaj — `getKitty` vracia kopu premenných. (10 aby sme boli presný - som milý, zrátal som ich za teba!). No jediná návratová hodnota ktorá nás naozaj zaujíma je posledná, `genes`. Zrátaj si počet čiarok pozorne!
+3. Funkcia by potom mala volať funkciu `kittyContract.getKitty` s parametrom `_kittyId` a uložiť `genes` do `kittyDna`. Ber na vedomie, že `getKitty` vracia kopu návratových hodnôt. (10, aby sme boli presný. Sme dobrí, zrátali sme ich za teba!). Jediná návratová hodnota ktorá nás ale naozaj zaujíma je tá posledná, `genes`. Zrátaj si počet čiarok pozorne!
 
-4. Na záver, funkcia by mala zavolať `feedAndMultiply` a predať jej paremetre `_zombieId` a `kittyDna`.
+4. Funkcia by mala na záver zavolať `feedAndMultiply` a predať jej paremetre `_zombieId` a `kittyDna`.

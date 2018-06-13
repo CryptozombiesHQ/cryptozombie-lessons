@@ -78,7 +78,7 @@ material:
 
 Poďme dokončiť funkciu `feedAndMultiply`.
 
-Vzorec na výpočet DNA nového zombie je jednoduchý: Proste spočítame priemer medzi DNA kŕmiaceho sa zombie a DNA jeho obete.
+Vzorec na výpočet DNA nového zombie je jednoduchý. Proste spočítame priemer medzi DNA kŕmiaceho sa zombie a DNA obete.
 
 Napríklad:
 
@@ -91,16 +91,16 @@ function testDnaSplicing() public {
 }
 ```
 
-Neskôr môžme spraviť metódu výpočtu nového DNA sofistikovanejšiu, napríklad do toho zamiešať nejakú náhodnosť. Zatial to však spravme jednoducho - vždy sa k tomu môžme ešte vrátit. 
+Neskôr môžme spraviť metódu výpočtu nového DNA sofistikovanejšiu, napríklad do toho zamiešať nejakú náhodnosť. Zatiaľ to však spravme jednoducho. Vždy sa k tomu môžme vrátit naspäť.
 
 # Vyskúšaj si to sám
 
-1. Najprv sa musíš uistiť že `_targetDna` nemá viac ako 16 cifier. To môžeš zaručiť tak že nastavíš hodnotu `_targetDna` nech sa rovná výrazu `_targetDna % dnaModulus`. Takýmto spôsobom nebude môcť mať viac ako 16 cifier.
+1. Najprv zaisti, že `_targetDna` nemá viac ako 16 cifier. To môžeš zaručiť tak, že nastavíš hodnotu `_targetDna` rovnú výrazu `_targetDna % dnaModulus`. Takýmto spôsobom nebude môcť mať viac ako 16 cifier.
 
-2. Ďalej naša funkcia by mala deklarovať `uint` s názvom `newDna` a nastaviť ho na hodnotu vypočítanú ako priemer DNA `myZombie` s DNA `_targetDna` (tak ako sme to ukázali vyššie).
+2. Ďalej by naša funkcia mala deklarovať `uint` s názvom `newDna`, a nastaviť jeho hodnotu na hodnotu vypočítanú ako priemer medzi DNA `myZombie` a DNA `_targetDna` (tak ako sme to ukázali vyššie).
 
   > Poznámka: K jednotlivým vlasnostiam `myZombie` môžeš pristupovať takto: `myZombie.name` a `myZombie.dna`.
 
-3. Keď už budeš mať hotové nové DNA, zavolaj `_createZombie`. Môžeš sa pozrieť na tab `zombiefactory.sol` ak si zabudol aké paramtre táto funkcia požaduje. Podotknime že táto funkcia požaduje meno, takže zatiaľ nastavíme meno našeho nového zombie na `"NoName"` - môžeme neskôr napísať funkciu na premenovanie existujúceho zombie.
+3. Keď už budeš mať hotové nové DNA, zavolaj `_createZombie`. Môžeš sa pozrieť na tab `zombiefactory.sol`, ak si zabudol aké parametre táto funkcia požaduje. Podotknime len, že táto funkcia požaduje meno. To v prípade nového zombie nastavíme na `"NoName"`. Neskôr môžeme dopísať funkciu na premenovanie existujúceho zombie.
 
-> Poznámka: Solidity borci si možno všimli v našom aktuálnom kóde istý problém. Nemajte obovy, všetko opravíme v nasledujúcej kapitole ;)
+> Poznámka: Pozorný zombie majstri si možno všimli v našom aktuálnom kóde problém. Bez obáv, všetko opravíme v nasledujúcej kapitole ;)

@@ -93,7 +93,7 @@ material:
 
 ---
 
-Kód našej hry sa začína celkom predlžovať. Namiesto toho aby sme robili náš kontrakt extrémne dlhý, občas dáva zmysel rozdeliť logiku kódu do niekoľkých kontraktov a tak lepšie zorganizovať kód aplikácie.
+Kód našej hry sa začína celkom predlžovať. Namiesto toho aby sme robili náš kontrakt extrémne dlhým, občas dáva zmysel rozdeliť logiku kódu do niekoľkých kontraktov, a tak lepšie zorganizovať kód aplikácie.
 
 Jedna z vlastností Solidity ktorá zľahčuje prácu s kódom je **_dedičnosť_** kontraktov:
 
@@ -111,12 +111,12 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_dedí_** z kontraktu `Doge`. To znamená, že ak skompiluješ a nasadíš na blockchain `BabyDoge`, bude mať k dispozícií oboje `catchphrase()` and `anotherCatchphrase()` (a taktiež akékoľvek iné funkcie ktoré by sme definovali na `Doge`).
+`BabyDoge` **_dedí_** z kontraktu `Doge`. To znamená, že ak skompiluješ a nasadíš na blockchain `BabyDoge`, bude mať k dispozícií oboje `catchphrase()` aj `anotherCatchphrase()` (a taktiež akékoľvek iné funkcie ktoré by sme definovali na `Doge`).
 
-Toto môže byť pouižité pre logickú dedičnost (napríklad v prípade podkategórie, `Mačka` je `Zviera`). Ale inokedy taktiež jednoducho na to, aby sme zorganizovali náš kód zoskupením určitej logiky do viacerých kontraktov.
+Toto môže byť použité pre logickú dedičnost (napríklad v prípade podkategórie, `Mačka` je `Zviera`). Ale inokedy tiež jednoducho na to, aby sme zorganizovali náš kód zoskupením určitej logiky do viacerých kontraktov.
 
 # Vyskúšaj si to sám
 
-V nasledujúcich kapitolách budeme implementovať zombie funkcionalitu pre ich kŕmenie a rozmnožovanie. Poďme dať túto logiku do separátnych kontraktov ktoré budú dediť všetky metódy a premenné zo `ZombieFactory`. 
+V nasledujúcich kapitolách budeme implementovať zombie funkcionalitu pre ich kŕmenie a rozmnožovanie. Poďme dať túto logiku do separátnych kontraktov, ktoré budú dediť všetky metódy a premenné zo `ZombieFactory`. 
 
 1. Vytvor kontrakt pomenovaný `ZombieFeeding` pod `ZombieFactory`. Tento kontrakt bude dediť od našeho `ZombieFactory` kontraktu.

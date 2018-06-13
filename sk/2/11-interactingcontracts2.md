@@ -121,12 +121,12 @@ contract NumberInterface {
 }
 ```
 
-Teraz ho môžeme použiť v našom kontrakte nasledovne:
+Ho teraz môžeme použiť v našom kontrakte nasledovne:
 
 ```
 contract MyContract {
   address NumberInterfaceAddress = 0xab38... 
-  // ^ Adresa kontraktu FavoriteNumber na Ethereum blockchain
+  // ^ Adresa kontraktu FavoriteNumber na Ethereum blockchaine
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
   // Teraz `numberContract` ukazuje na cudzí FavoriteNumber kontrakt
 
@@ -138,10 +138,10 @@ contract MyContract {
 }
 ```
 
-Takýmto sposobom, náš kontrakt može pracovať s iným kontraktom ktorý je na Ethereum blockchain, pokiaľ daný kontrakt odhaľuje svoje funkcie ako `public` alebo `external`.
+Takýmto spôsobom môže náš kontrakt pracovať na Ethereum blockchain s cudzím kontraktom, za predpokladu že zverejňuje svoje funkcie prostredníctvom `public` alebo `external` modifikátorov.
 
 # Vyskúšaj si to sám
 
 Poďme nastaviť náš kontrakt tak, aby čítal dáta z CryptoKitties smart kontraktu.
 
-1. Uložil som pre teba adresu CryptoKitties kontraktu do kódu, konkrétne do premennej pomenovanej `ckAddress`. Na ďalšom riadku vytvor rozhranie `KittyInterface` pomenované `kittyContract` . Inicializuj ho adresou `ckAddress` - presne ako sme to spravili na príklade s `numberContract` vyššie.
+1. Uložili sme pre teba adresu CryptoKitties kontraktu do kódu, konkrétne do premennej pomenovanej `ckAddress`. Na ďalšom riadku vytvor rozhranie `KittyInterface` pomenované `kittyContract`. Inicializuj ho adresou `ckAddress`, presne ako sme to spravili na príklade s `numberContract` vyššie.
