@@ -287,7 +287,7 @@ These are some examples of what makes Ethereum programming really cool — you 
 1. Vytvor v našom kontrakte funkciu `withdraw`, ktorá by mala byť identická so spomínaým príkladom funkcie `GetPaid` vyššie.
 1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
 
-2. Cena Etheru sa za posledný krat znásobila 10x. Takže zatiaľ čo  0.001 etheru je teraz ekvivalent asi 1 doláru v čase písania tohot tutoriálu, ak sa cena opäť zvýši 10x, 0.001 ETH sa už bude rovnať 10 dolárom. Naša hra by sa tak naraz stala oveľa drahšia na hranie.
+2. Cena Etheru sa za posledný rok znásobila 10x. 0.001 Etheru v čase písania tohoto tutoriálu predstavuje ekvivalent asi 1 doláru. Ak sa ale cena opäť zvýši 10x, 0.001 ETH sa už bude rovnať 10 dolárom. Naša hra by sa tak naraz stala oveľa drahšia na hranie.
 2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
 
   Preto je dobrý nápad si vytvoriť funkciu, ktorá umožní vlastníkovi kontraktu nastaviť hodnotu `levelUpFee`.

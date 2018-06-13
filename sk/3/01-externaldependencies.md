@@ -183,7 +183,7 @@ Let's update our code from Lesson 2 to be able to change the CryptoKitties contr
 3. Vytvor funkciu, ktorá sa bude volať `setKittyContractAddress`. Bude príjmať jeden argument `_address` (typu `address`). Mala by to byť `external` funkcia.
 3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
 
-4. Vo vnútri tejto funkcie pridaj riado kódu, ktorý nastaví hodnotu `kittyContract` rovnú `KittyInterface(_address)`.
+4. Vo vnútri tejto funkcie pridaj riadok kódu, ktorý nastaví hodnotu `kittyContract` rovnú `KittyInterface(_address)`.
 4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
 
 > Poznámka: Ak si všimneš bezpečnostnú zranitelnosť v tejto funkcii, neboj, opravíme to v ďalšej kapitole ;)

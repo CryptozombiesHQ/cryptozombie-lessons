@@ -1,14 +1,14 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "tagLine": "Nauč sa písať hry na Ethereum",
+        "lesson": "Lekcia {lessonNum}",
+        "chapter": "Kapitola {chapterNum}",
+        "syncing": "Synchronizujem...",
         "telegram": {
             "name": "Telegram",
             "openChat": "Open Chat",
-            "action": "Join Our Telegram",
+            "action": "Pridaj sa k nám cez Telegram",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
@@ -17,289 +17,293 @@
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "len na čítanie"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded"
+        "itemLabel": "Lekcia {lessonNum}: {title}",
+        "signIn": "Pre načítanie svojho postupu sa prihlás",
+        "progressLoaded": "Tvoj postup je načítaný"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
+        "title": "Lekcia {lessonNum}: {title}",
+
         "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        "signInButton": "Sign In",
-        "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
+        
+        "signInButton": "Prihlásiť sa",
+        "levelUpText": "V tejto lekcií ideme navýšiť zobmie venegerovaných v predošlých lekciách",
+        "missingZombieText": "Zdá sa, že bohužial nevlastníš zombie z lekcie {lessonNum}. Ak si tú lekciu ešte nedokončil, prosím, sprav tak, než budeš pokračovať:",
         "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
-        "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
-        "generateNewZombieLink": "generate a new zombie",
-        "areYouReady": "Are you ready to get started?",
-        "resumeLesson": "Resume Lesson {lessonNum}"
+        "fixMissingZombieText": "Ak si už dokončil lekciu {lessonNum} a stále vidíš tento error, môžeš preskočiť na jej koniec a {generateNewZombie}.",
+        "generateNewZombieLink": "vygeneruj nového zombie",
+        "areYouReady": "Si pripravený začať?",
+        "resumeLesson": "Pokračuj v Lekcii {lessonNum}"
     },
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Chapter {chapterNum}: {title}",
-        "saveProgress": "Save Progress",
-        "autosaveEnabled": "Autosave Enabled",
-        "resumeProgress": "Resume Progress",
-        "showHint": "Show Hint",
-        "nextChapter": "Next Chapter",
-        "tryAgain": "Try Again",
-        "checkAnswer": "Check Answer",
-        "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "header": "Kapitola {chapterNum}: {title}",
+        "saveProgress": "Postup Uložený",
+        "autosaveEnabled": "Automatické ukladanie aktivované",
+        "resumeProgress": "Pokračuj v postupe",
+        "showHint": "Ukáž Tip",
+        "nextChapter": "Ďalšia Kapitole",
+        "tryAgain": "Skúsiť Znovu",
+        "checkAnswer": "Skontroluj Odpoveď",
+        "showMeTheAnswer": "Ukáž Odpoveď",
+        "hideAnswer": "Skry Odpoveď"
     },
     "lessonComplete": {
-        "shareLinksAction": "Or you can click the buttons below to share:",
-        "signIn": "Sign in and save your progress",
-        "goToNextLesson": "Proceed to Next Lesson",
+        "shareLinksAction": "Alebo môžeš pre zdielanie stlačiť tlačidlo nižšie:",
+        "signIn": "Prihlás sa a ulož svoj postup Uložený",
+        "goToNextLesson": "Pokračuj do Ďalšej Lekcie",
         "lesson1": {
             "header": [
-                "Congratulations! You have completed Lesson 1 of CryptoZombies!",
-                "You're officially one step closer to building your own games on Ethereum.",
-                "Show off your first zombie to your friends!",
-                "Here's a permalink to your zombie:"
+                "Gratulácia! Podarilo sa ti dokončiť CryptoZombies Lekciu 1"
+                "Teraz si oficiálne o krok bližšie k budovanie vlastných Ethereum hier",
+                "Ukáž svojeho prvého zombie priateľom",
+                "Tu je permanentý link na tvojho zombie"
             ],
-            "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "footer": "Nižšie sa uisti, že je tvoj progress uložený, pred tým než budeš pokračovať na Lekciu 2.",
+            "zombieDesc": "Level 1 CryptoZombie",
+            "shareLinkText": "Práve som dokončil Lekciu 1 #CryptoZombies! Naučil som sa základy programovania hier na #Ethereum. Pozrite sa prvého zombie mojej armády!"
         },
         "lesson2": {
             "header": [
-                "Congratulations! You have completed {lesson2} of CryptoZombies!",
-                "Achievements Unlocked:",
-                "{zombieName} has been upgraded to Level 2!",
-                "You've added NoName, a CatZombie to your army! (Don't worry, you'll learn how to change his/her name in Lesson 3)",
-                "Show off your CryptoKitty-slayer to your friends!",
-                "Share this URL so your friends can slay CryptoKitties with your zombie:"
+                "Gratulácia! Podarilo sa ti dokončiť {lesson2} CryptoZombies!",
+                "Dosiahnute úspechy:",
+                "{zombieName} bol vylepšený na Level 2!",
+                "Pridal si do svojej armády zombie NoName a CatZombie! (Neboj, v Lekcii 3 zistíš ako zmeniť jeho)",
+                "Ukáž svojho CryptoKitty zabijaka svojím priateľom!",
+                "Zdieľaj túto URL, aby mohli tvoji priatelia s tvojím zombie taktiež zabiť zopár CryptoKitties"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 3:"
+                "Páči sa ti CryptoZombies? Daj nám vedieť!",
+                "Pridaj sa do rozhovoru na {telegramLink}, sleduj nás na {twitterLink}",
+                "Keď budeš pripravený, klikni na tlačidlo nižšie a pokračuj v Lekcii 3:"
             ],
-            "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "zombieDesc": "Level 2 CryptoZombie",
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 2! Môj Zombie zožral pár #CryptoKitties, ja som sa naučil viac o vývoji na #Ethereum. Pozrite sa ako môj zombie bojuje s ďalšímy CryptoKitties:"
         },
         "lesson3": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+            "achievementsUnlocked": "Dosiahnute úspechy:",
+            "zombieUpgraded": "{zombieName} bol vylepšený na Level {levelNum}!",
             "header": [
-                "Congratulations! You have completed {lesson3} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "Gratulácia! Podarilo sa ti dokončiť {lesson} CryptoZombies!",
+                "Ukáž svoju zombie armádu priateľom!",
+                "Zdieľaj túto URL, aby sa tvoji priatelia mohli pozrieť na tvoju zombie armádu:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 4:"
+                "Páči sa ti CryptoZombies? Daj nám vedieť!",
+                "Pridaj sa do rozhovoru na {telegramLink}, sleduj nás na {twitterLink}",
+                "Keď budeš pripravený, klikni na tlačidlo nižšie a pokračuj v Lekcii 4:"
             ],
-            "zombieDesc": "A Level 3 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 3! Check out my zombie army:"
+            "zombieDesc": "Level 3 CryptoZombie",
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 3! Čekujte moju zombie armádu:"
         },
         "lesson4": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+            "achievementsUnlocked": "Dosiahnute úspechy:",
+            "zombieUpgraded": "{zombieName} bol vylepšený na Level {levelNum}!",
+            "newZombieAdded": "Svoju armádu si rozšíril o nového Level 1 zombie!",
             "header": [
-                "Congratulations! You have completed {lesson4} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
+                "Gratulácia! Podarilo sa ti dokončiť {lesson4} CryptoZombies!",
+                "Ukáž svoju zombie armádu priateľom!",
+                "Zdieľaj túto URL, aby sa tvoji priatelia mohli pozrieť na tvoju zombie armádu:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 5:"
+                "Páči sa ti CryptoZombies? Daj nám vedieť!",
+                "Pridaj sa do rozhovoru na {telegramLink}, sleduj nás na {twitterLink}",
+                "Keď budeš pripravený, klikni na tlačidlo nižšie a pokračuj v Lekcii 5:"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "zombieDesc": "Level {levelNum} CryptoZombie",
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 4 v ktorej som porazil zlého IOTA zombie! Vyskúšaj si to tiež:"
         },
         "lesson5": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+            "achievementsUnlocked": "Dosiahnute úspechy:",
+            "newZombieAdded": "Obdržal si Level {levelNum} CryptoZombie {zombieName}!",
             "header": [
-                "Congratulations! You have completed {lesson5} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your full zombie army:"
+                "Gratulácia! Podarilo sa ti dokončiť {lesson5} CryptoZombies!",
+                "Ukáž svoju zombie armádu priateľom!",
+                "Zdieľaj túto URL, aby sa tvoji priatelia mohli pozrieť na tvoju zombie armádu:"
             ],
             "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 6:"
+                "Páči sa ti CryptoZombies? Daj nám vedieť!",
+                "Pridaj sa do rozhovoru na {telegramLink}, sleduj nás na {twitterLink}",
+                "Keď budeš pripravený, klikni na tlačidlo nižšie a pokračuj v Lekcii 6:"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
+            "zombieDesc": "Level {levelNum} CryptoZombie",
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 5 a získal som Level 10 CryptoZombie! Vyskúšaj si to tiež:"
         },
         "lesson6": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+            "achievementsUnlocked": "Dosiahnute úspechy:",
+            "newZombieAdded": "Obdržal si Level {levelNum} CryptoZombie {zombieName}!",
             "header": [
-                "Congratulations! You have completed {lesson6} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your full zombie army:"
+                "Gratulácia! Podarilo sa ti dokončiť {lesson6} CryptoZombies!",
+                "Ukáž svoju zombie armádu priateľom!",
+                "Zdieľaj túto URL, aby sa tvoji priatelia mohli pozrieť na tvoju zombie armádu:"
             ],
             "footer": [
-                "Lesson 7 will be out in the next few weeks!",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+                "Lekcia 7 bude zverejnená za pár týžňov!",
+                "Pošleme ti email, hneď ako bude nová lekcia pripravená!"
+                "Medzičasom sa zapoj do konverzácií na {telegramLink}, alebo nás sleduj na Twittri {twitterLink}!"
             ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
+            "zombieDesc": "Level {levelNum} CryptoZombie",
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 6 a získal som  Level 3.0 CryptoZombie 'The Phantom of Web3'! Pozri sa na moju armádu:"
         }
     },
     "zombieBattle": {
-        "yourTurn": "Your Turn",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "New {species} Generated!",
+        "yourTurn": "Tvoj ťah",
+        "zombieDna": "DNA zombie {name}",
+        "newZombieGenerated": "Nový {species} Vygenerovaný!",
         "catZombie": "Cat-Zombie",
         "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "New {species}'s DNA",
+        "newSpeciesDna": "DNA nového {species}",
         "cryptoKitty": "CryptoKitty",
-        "human": "Human",
-        "tryAnotherCombo": "Try Another Combination"
+        "human": "Človek",
+        "tryAnotherCombo": "Skús inú Kombináciu"
     },
     "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "defaultZombieDesc": "Level 1 CryptoZombie"
     },
     "zombieDeck": {
-        "zombieDesc": "A Level {levelNum} CryptoZombie",
-        "nameInputPlaceholder": "Give {name} a new name and press 'Save'",
-        "save": "Save",
-        "yourDeck": "Your Deck"
+        "zombieDesc": "Level {levelNum} CryptoZombie",
+        "nameInputPlaceholder": "Daj zombiemu {name} nové meno a stlač 'Uložiť'",
+        "save": "Uložiť",
+        "yourDeck": "Tvoja Zostava"
     },
     "zombieResult": {
-        "headGeneLabel": "Head Gene:",
-        "eyeGeneLabel": "Eye Gene:",
-        "shirtGeneLabel": "Shirt Gene:",
-        "skinColorGeneLabel": "Skin Color Gene:",
-        "eyeColorGeneLabel": "Eye Color Gene:",
-        "clothesColorGeneLabel": "Clothes Color Gene:",
-        "nameInputPlaceholder": "Enter a name here",
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+        "headGeneLabel": "Hlavový Gén:",
+        "eyeGeneLabel": "Očný Gén:",
+        "shirtGeneLabel": "Tričkový Gén:",
+        "skinColorGeneLabel": "Gén Farby Pleti:",
+        "eyeColorGeneLabel": "Gén Farby Očí:",
+        "clothesColorGeneLabel": "Gén Farby Oblečenia:",
+        "nameInputPlaceholder": "Tu zadaj meno",
+        "defaultZombieDesc": "Level 1 CryptoZombie"
     },
     "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+        "IOTAslain": "IOTA bol v zápase porazený!",
+        "winCount": "Počet víťazstiev tvojho Zombie:",
+        "iotaLose": "Počet prehier zombie IOTA",
+        "newZombie": "Nový zombie vytvorený"
     },
     "sharePage": {
-        "pageTitle": "Check out my CryptoZombie {zombieName}!",
-        "presents": "Presents",
+        "pageTitle": "Pozrite sa na môjho CryptoZombie {zombieName}!",
+        "presents": "Uvádza",
         "zombieDesc": "{name}, a Level {levelNum} CryptoZombie",
         "lesson1": {
-            "zombieDesc": "A Level 1 CryptoZombie",
-            "randomZombieGenerator": "random zombie generator",
+            "zombieDesc": "Level 1 CryptoZombie",
+            "randomZombieGenerator": "generátor nahodných zombie",
             "achievementPreamble": [
-                "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "Tvoj kamarát sa naučil základy vývoja hier na Ethereum blockchain. Ako dôkaz vytvoril  Level 1 CryptoZombie {zombieName}",
+                "Na to, aby dokončil CryptoZombies Lekciu 1, vytvoril {randomZombieGenerator} a naučil sa viac o:"
             ],
             "achievements": [
-                "How to write Ethereum smart contracts",
-                "Programming in Solidity, Ethereum's smart contract programming language",
-                "Building games on Ethereum"
+                "Ako písať Ethereum smart kontrakty",
+                "Ako na programovanie v Solidity, programovacom jazyku Ethereum smart kontraktov",
+                "Vytváranie hier na Ethereum"
             ],
-            "tryItOut": "Give the random zombie generator a try.",
-            "below": "below",
-            "above": "above",
-            "zombieGeneratorText": "{tryItOut} Enter a name in the box {below}{above} to generate a new zombie!",
-            "nameInputPlaceholder": "Enter a name to generate a zombie",
+            "tryItOut": "Vyskúšaj si náhodný zombie generátor",
+            "below": "nižšie",
+            "above": "vyššie",
+            "zombieGeneratorText": "{tryItOut} Zadaj meno do do poľa {below}{above} a vygeneruj nového zombie!",
+            "nameInputPlaceholder": "Pre vygenerovanie zombie vyplň meno",
             "callToAction": [
-                "Want to build your own CryptoZombie and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         },
         "lesson2": {
             "zombieCardBattle": "Zombie Card Battle",
             "love": "love",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 2, and upgraded {zombieName} to a CryptoKitty slayer!",
-                "A CryptoKitty Slayer?!",
-                "It turns out CryptoZombies {love} to feed on CryptoKitties.",
-                "When a CryptoZombie feeds on a CryptoKitty, their DNA mixes together and the CryptoKitty becomes reanimated as a CryptoZombie.",
-                "Go ahead, choose a CryptoKitty to attack, and see what kind of CatZombie you get!",
-                "Solidity Concepts Mastered",
+                "Tvoj priateľ dokončil CryptoZombies Lekciu 2 a vylepšil zombie {zombieName} na CryptoKitty zabijaka!",
+                "CryptoKitty zabijaka?!",
+                "Ukázalo sa že CryptoZombies {love} požieranie CryptoKitties.",
+                "Keď sa CryptoZombie nažerie z CryptoKitty, ich DNA sa zmieša a CryptoKitty sa vzkriesi ako CryptoZombie,",
+                "Pokračuj ďalej, vyber CryptoKitty ktorú chceš napadnúť a sleduj aký MačkoZombie vznikne!",
+                "Osvojené Koncepty Solidity "
+                "Na dokončil druhej lekcie školy kódu CryptoZombies tvoj priateľ vytvoril {zombieCardBattle}. Toto sa pri tom naučil:"
                 "In order to complete Lesson 2 of CryptoZombies Code School, your friend built a {zombieCardBattle} and learned about:"
             ],
             "achievements": [
-                "The basics of making a multi-player game",
-                "Interacting with other contracts on the Ethereum network",
-                "Organizing larger Solidity projects into multiple contracts"
+                "Základy tvorby multi-player hry",
+                "Interakcia medzi inými kontraktmi na Ethereum sieti",
+                "Reorganizácia veľkých Solidity projektov do niekoľkých kontraktov"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombies and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         },
         "lesson3": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 3, and upgraded their zombie army!",
-                "In order to complete Lesson 3 of CryptoZombies, your friend learned about:"
+                "Tvoj priateľ dokončil CryptoZombies Lekciu 3 a vylepšil svoju zombie armádu!",
+                "Na to, aby dokončil CryptoZombies Lekciu 3, musel sa naučiť o:"
             ],
             "achievements": [
-                "How to build updatable smart contracts",
-                "Securing contracts with contract ownership",
-                "Gas and gas optimization on Ethereum",
-                "Function modifiers and security checks"
+                "Ako vytvoriť upraviteľné smart kontrakty",
+                "Ako zabezpečiť kontrakty pomocou vlastníctva kontraktov",
+                "Gas a jeho optimalizácia na Ethereum",
+                "Funkčné modifikátory a bezpečnostné kontroly"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         },
         "lesson4": {
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+                "Tvoj priateľ dokončil CryptoZombies Lekciu 4 a porazil zlého IOTA zombie!",
+                "Vyskúšaj si to sám tu vľavo. Použi armádu tvojho priateľa na to aby si sa zapojil do bytky!",
+                "Na to, aby tvoj priateľ úspešne dokončil CryptoZombies Lekciu 4, musel sa naučiť o:"
             ],
             "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
+                "Payable funkcie, ako zarábať peniaze vytváraním hier založených na Ethereum",
+                "Vyberanie ETH zo smart kontraktov",
+                "Generovanie náhodných čísel a bezpečnosť na Ethereum",
+                "A mnoho ďalších vecí!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         },
         "lesson5": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+                "Tvoj priateľ dokončil CryptoZombies Lekciu 5 a obdržal CryptoZombie na Leveli 10!",
+                "Pozri sa na zombie armádu tvojho priateľa. Celkom impozantná, nemyslíš?"
+                "Na to, aby tvoj priateľ úspešne dokončil CryptoZombies Lekciu 5, musel sa naučiť o:"
             ],
             "achievements": [
-                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
-                "Solidity libraries and how to use them",
-                "The SafeMath library and preventing uint overflows and underflows",
-                "Commenting your Solidity code and the natspec standard"
+                "Tokenoch, ERC721 štandarde, tvorba obchodovateľných tokenov a aktív",
+                "Solidity knižnice a ako ich používať",
+                "SafeMath knižnica a ako predísť pretečeniu a podtečeniu celých čísel",
+                "Komentovanie Solidity kódu a natspec štandard"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         },
         "lesson6": {
             "zombieDesc": "{name} CryptoZombie",
             "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 6 and received a Level 3.0 `The Phantom of Web3` CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 6 of CryptoZombies, your friend learned about:"
+                "Tvoj priateľ dokončil CryptoZombies Lekciu 6 a obdržal Level 3.0 CryptoZombie `The Phantom of Web3`!",
+                "Pozri sa na zombie armádu tvojho priateľa. Celkom impozantná, nemyslíš?"
+                "Na to, aby tvoj priateľ úspešne dokončil CryptoZombies Lekciu 6, musel sa naučiť o:"
             ],
             "achievements": [
-                "Building web front-ends for Ethereum smart contracts using Web3.js",
-                "Using MetaMask and Infura to build user-facing DApps",
-                "Listening to smart contract events and showing users real-time updates",
-                "And more!"
+                "Ako vytvárať webové front endy pre Ethereum smart kontrakty použitím Web3.js",
+                "Ako používať MetaMask a Infuru na vytváranie decentralizovaných webových aplikácií",
+                "Sledovanie udalostí vyvolaných v smart kontrakte a ich zobrazovanie užívateľom v reálnom čase"
+                "A mnoho ďalších vecí!"
             ],
             "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+                "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
+                "Naučil sa tvoriť vlastné hry na Ethereum ZADARMO s CryptoZombies! Začni teraz:"
             ]
         }
     }

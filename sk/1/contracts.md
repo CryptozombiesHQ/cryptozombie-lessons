@@ -37,7 +37,7 @@ contract HelloWorld {
 Solidity zdrojový kod by mal začínať textom "version pragma" - je to deklarácia verzie Solidity kompilátoru, ktorý by mal byť použitý na kompiláciu našeho kontraktu. Je to mechanizmus ako predísť problémom v prípade pokusu o použitia budúcej verziu Solidity kompilátoru. V budúcnosti by sa totiž Solidity kompilátor zmeniť a interpretovať náš kód inak, v dôsledku čoho by náš kód prestal fungovať správne.  
 All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
 
-Vyzerať to môže napríklad takto: 
+Vyzerať to môže napríklad takto:  `pragma solidity ^0.4.19;` (v čase písania tohoto tutoriálu je najnovšou Solidity verziou 0.4.19). 
 It looks like this: `pragma solidity ^0.4.19;` (for the latest solidity version at the time of this writing, 0.4.19).
 
 Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:

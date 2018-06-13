@@ -1,26 +1,26 @@
 {
     "1": {
-        "pageTitle": "Check out my CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "I just completed CryptoZombies Lesson 1 and learned the basics of coding a game on Ethereum. Take a look at the first zombie in my army!"
+        "pageTitle": "Pozri na môjho CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 1 a naučil som ssa základy programovania hry na Ethereum. Pozri sa na prvého zombie v mojej armáde!"
     },
     "2": {
-        "pageTitle": "My CryptoZombie {{ .ZombieName }} just ate a CryptoKitty and leveled up!",
-        "ogDesc": "I just completed CryptoZombies Lesson 2, and added a reanimated CryptoKitty to my zombie army. Come take a look!"
+        "pageTitle": "Môj CryptoZombie {{ .ZombieName }} práve zožral CryptoKitty a zvýšil svoj level!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 2 a do svojej zombie armády som pridal som vzkriesenú zomfikovanú CryptoKitty. Pozeraj na ňu!"
     },
     "3": {
-        "pageTitle": "Check out my CryptoZombie Army!",
-        "ogDesc": "I just completed CryptoZombies Lesson 3! My zombie army is growing..."
+        "pageTitle": "Pozri na moju CryptoZombie armádu!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 3! Moja zombie armáda narastá..."
     },
     "4": {
-        "pageTitle": "My CryptoZombie defeated the evil IOTA zombie!",
-        "ogDesc": "I just completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Come relive the battle..."
+        "pageTitle": "Môj CryptoZombie porazil zlého IOTA zombieho!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 4. Porazil som pri tom zlého IOTA zombie."
     },
     "5": {
-        "pageTitle": "My CryptoZombie Army Has Grown!",
-        "ogDesc": "I just completed CryptoZombies Lesson 5, and got a level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG!"
+        "pageTitle": "Moja CryptoZombie armáda sa rozrástla!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 5 a získal som level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG!"
     },
     "6": {
-        "pageTitle": "Check out 'The Phantom of Web3', my Level 3.0 CryptoZombie!",
-        "ogDesc": "I just completed CryptoZombies Lesson 6, and learned how to use Web3.js, MetaMask, and Infura to build my own DApp!"
+        "pageTitle": "Pozri na môjho Level 3.0 CryptoZombie 'The Phantom of Web3'!",
+        "ogDesc": "Práve som dokončil CryptoZombies Lekciu 6, a naučil sa ako používat Web3.js, MetaMask, Infuru na vytvorenie vlastne DApp."
     }
 }
