@@ -183,21 +183,21 @@ material:
       }
 ---
 
-Atribút `level` by mal byť celkom jasný. Až neskôr vyvinieme systém útočenia a zápasov, víťazní zombie ktorí vyhraju viac bytiek navýšia svoj level a získaju prístup k novým schopnostiam.
+Atribút `level` by mal byť celkom jasný. Až neskôr vyvinieme systém útočenia a zápasov, víťazní zombie ktorí vyhrajú viac bytiek navýšia svoj level, a získajú prístup k novým schopnostiam.
 
-Atribút `readyTime` si vysvetlíme podrobnejšie. Jeho cieľom je pridať "obdobie chladnutia", čo bude predstavovať čas kedy musí zombie čakať než mu bude dovolené útočiť znova po predchádzajúcom útoku. Bez tejto vlasnosti by zombie mohol útočiť a násobiť sa tisícky krát za deň, čo by spravilo hru príliš ľahkú.
+Atribút `readyTime` si vysvetlíme podrobnejšie. Jeho cieľom je pridať "obdobie chladnutia". To bude predstavovať čas kedy musí zombie čakať, než mu bude znova dovolené útočiť po predchádzajúcom útoku. Bez tejto vlasnosti by zombie mohli útočiť a násobiť sa tisícky krát za deň. To by spravilo hru príliš ľahkú.
 
-Na to aby sme si držali prehľad o tom, koľko času musí zombie čakať než znova zaútočí použijeme Solidity časové jednotky.
+Na to aby sme si držali prehľad o tom, koľko času musí zombie čakať než bude môcť znova zaútočiť použijeme časové jednotky Solidity.
 
 ## Časové jednotky
 
-Solidty nám poskytuje natívne časové jednotky pre prácu s časom. 
+Solidty nám pre prácu s časom natívne poskytuje isté časové jednotky.
 
-Globálna premenná `now` bude vždu vracať unixovú časovú známku (počet sekúnd ktoré uplynuli od 1vého Januára 1970). V momente písania tohoto textu je aktuálny čas v týchto jednotkách `1515527488`.
+Globálna premenná `now` vracia vždy aktuálnu unixovú časovú známku (počet sekúnd ktoré uplynuli od 1vého Januára 1970). V momente písania tohoto textu je aktuálny čas v týchto jednotkách `1515527488`.
 
->Poznámka: Unixový čas je typicky uložený v 32 bitovom čísle. To bude viesť k "Problému roku 2038", kedy 32-bitové unixové časové známky pretečú a rozbijú mnoho zastaralých systémov. Takže ak by sme chceli aby naša aplikáciu fungovala aj po 20 rokoch od dneška, museli by sme použit 64-bitové číslo - naši používatelia by však museli utratiť viac gasu v našej DAppke medzičasom. Je to designové rozhodnutie.
+>Poznámka: Unixový čas je typicky uložený v 32 bitovom čísle. To bude viesť k "Problému roku 2038". Vtedy totiž 32-bitové unixové časové známky pretečú a rozbijú mnoho zastaralých systémov. Ak by sme teda chceli, aby naša aplikáciu fungovala aj po roku 2038, museli by sme použit 64-bitové číslo. Na oplátku by ale naši používatelia našej DAppky by však museli utratiť viac gasu. Je to designové rozhodnutie.
 
-Solidity taktiež obsahuje časove jednotky `seconds`, `minutes`, `hours`, `days`, `weeks` a `years`. Tieto skonvertujú časový interval do počtu sekúnd v ňom. Napríklad  `1 minutes` je `60`, `1 hours` je `3600` (60 sekúnd x 60 minút), `1 days` je `86400` (24 hodín x 60 minút x 60 sekúnd), atď.
+Solidity taktiež obsahuje spomínané časové jednotky `seconds`, `minutes`, `hours`, `days`, `weeks` a `years`. Tieto skonvertujú časový interval do počtu sekúnd v ňom. Napríklad: `1 minutes` je `60`, `1 hours` je `3600` (60 sekúnd x 60 minút), `1 days` je `86400` (24 hodín x 60 minút x 60 sekúnd), atď.
 
 Tu je príklad, ako môžu byť takéto časové jednotky užitočné:
 
@@ -223,15 +223,15 @@ Tieto jednotky môžeme podobným spôsobom použiť pre `cooldown` vychladzovac
 
 Poďme teraz pridať vychladzovacie obdobie do našej DApp. Nastavíme to tak, aby zombie museli čakať **1 deň** po útočení alebo kŕmení, než im bude dovolené útočiť znova.
 
-1. Deklaruj `uint` nazvaný `cooldownTime` a nstav jeho hodnotu na  `1 days` (odpusť nedokonalú anglickú gramatiku - ak sa pokúsiš nastaviť hodnotu na "1 day", kontrakt sa neskompiluje!)
+1. Deklaruj `uint` nazvaný `cooldownTime` a nastav jeho hodnotu na `1 days` (odpusť nedokonalú anglickú gramatiku - ak sa pokúsiš nastaviť hodnotu na "1 day", kontrakt sa neskompiluje!)
 
 2. Nakoľko sme pridali `level` a `readyTime` do našej `Zombie` štruktúry v predchádzajúcej kapitole, budeme musieť aktualizovať `_createZombie()`, aby používal správny počet argumentov pri vytváraní novej `Zombie` štruktúry.
 
-Aktualizuj riadok kódu s  `zombies.push` a pridaj 2 nové argumenty: `1` (pre `level`), a `uint32(now + cooldownTime)` (pre `readyTime`).
+Aktualizuj riadok kódu s `zombies.push` a pridaj 2 nové argumenty: `1` (pre `level`), a `uint32(now + cooldownTime)` (pre `readyTime`).
 
 >Poznámka: `uint32(...)` je nevyhnutnosť, pretože `now` vracia `uint256`, preto ho musíme explicitne pretypovať na `uint32`.
 
-`now + cooldownTime` sa budú rovnať aktuálnej unixovej časovej známke (v sekundách) plus počet sekúnd v jednom dni - to nám da unixovú časovú známku s hodnotou referujou čas presne 1 deň od aktuálneho momentu. Neskôr môžme porovnávať či hodnota `readyTime` je vačšia ako `now`, aby sme zistili či už uplynulo dostatok času a zombie môže opäť bojovať.
+`now + cooldownTime` sa budú rovnať aktuálnej unixovej časovej známke (v sekundách) plus počet sekúnd v jednom dni. To nám dá unixovú časovú známku s hodnotou referujúcou čas presne 1 deň od aktuálneho momentu. Neskôr môžeme porovnávať, či hodnota `readyTime` je vačšia ako `now`, aby sme zistili či uplynulo dostatok času, a či zombie môže opäť bojovať.
 
 V ďalšej kapitole implementujeme funkcionalitu ktorá pomocou `readyTime` obmedzí bojovanie a kŕmenie zombie.
 

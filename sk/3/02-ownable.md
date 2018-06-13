@@ -179,19 +179,19 @@ material:
       }
 ---
 
-Všimol si si bezpečnostný problém ktorý sme vytvorili v predchádzajúcej lekcii?
+Všimol si si bezpečnostný problém ktorý sme dopustili v predchádzajúcej lekcii?
 
-`setKittyContractAddress` je `external`, to znamená že ktokoľvek ju môže zavolať! Takže ktokoľvek by zavolal túto funkciu môže zmeniť adresu CryptoKitties kontraktu a pokaziť tak našu DApp.
+`setKittyContractAddress` je `external`, to znamená že ktokoľvek ju môže zavolať! Ktokoľvek zavolá túto funkciu môže zmeniť adresu CryptoKitties kontraktu a pokaziť tak našu DApp.
 
 Stále chceme mať možnosť túto adresu aktualizovať, no nechceme aby to mohol robiť ktokoľvek.
 
-Na zabezpečenie takýchto situácií sa stalo bežnou praktikou urobiť kontrakty `Ownable` (vlastnené) - čo znamená že majú vlastníka ktorý má špeciálne práva.
+Na zabezpečenie takýchto situácií sa stalo bežnou praktikou urobiť kontrakty `Ownable` ("vlastniteľné"). To znamená že majú vlastníka, ktorý na nich má právo vykonávať určité špeciálne operácie.
 
 ## `Ownable` kontrakty od OpenZeppelin
 
-V bloku kódu nižšie je `Ownable` kontrakt z  **_OpenZeppelin_**  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použit vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
+V bloku kódu nižšie je `Ownable` kontrakt z  **_OpenZeppelin_**  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použiť vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
 
-Pozri si tento kontrakt. Uvidíš niekoľko vecí ktoré sme zatiaľ ešte neprebrali, no nemaj obavy. Dostaneme sa k nim za chvíľu.
+Pozri si tento kontrakt. Uvidíš niekoľko vecí, ktoré sme zatiaľ ešte neprebrali. Dostaneme sa k nim za chvíľu.
 
 ```
 /**
@@ -233,27 +233,27 @@ contract Ownable {
 
 Niekoľko vecí ktoré sme doposiaľ nevideli:
 
-- Konštruktory: `function Ownable()` je **_konštruktor_** (**_constructor_**). To je funkcia ktorú môžeš ale nemusíš definovať, má rovnaký názov ako kontrakt. Bude vykonaná iba raz, a to v čase ked je kontrakt vytvorený.
-- Funkčné modifikátory: `modifier onlyOwner()`. Modifikátory sú také polovičaté funkcie, ktoré su použité na modifikáciu iných funkcií, obvykle na skontrolovanie určitých požiadavok pred vykonaním funkcie.V tomto prípade `onlyOwner` je modifikátor ktorý limituje právo spúštať funkciu iba (only) vlastníkom (owner). Pozrieme sa na ne z blízka v ďalšej kapitole, vysvetlíme si taktiež čo znamená ten podivný kód `_;`.
-- Kľučové slovo `indexed`: toto zatiaľ riešit nebudeme, nepotrebujeme to.
+- Konštruktory. `function Ownable()` je **_konštruktor_** (**_constructor_**). To je funkcia, ktorú môžeš ale nemusíš definovať, má rovnaký názov ako kontrakt. Bude vykonaná iba raz, a to v čase ked je kontrakt vytvorený.
+- Funkčné modifikátory: `modifier onlyOwner()`. Modifikátory sú také polovičaté funkcie, použité na modifikáciu chovania iných funkcií. Obvykle na skontrolovanie určitých požiadavok pred vykonaním funkcie. V tomto prípade `onlyOwner` je modifikátor ktorý limituje právo spúštať funkciu iba (only) vlastníkom (owner). Pozrieme sa na ne z blízka v ďalšej kapitole, kde si taktiež vysvetlíme, čo znamená ten podivný kód `_;`.
+- Kľučové slovo `indexed`: toto zatiaľ riešit nebudeme, zatiaľ ho nepotrebujeme.
 
-Takže `Ownable` kontrakty majú v podstate nasledovné vlasnosti:
+`Ownable` kontrakty teda majú nasledovné vlasnosti:
 
-1. Keď je kontrakt vytvorený, konštruktor nastaví `owner` na `msg.sender` (adresa, z ktorej bol kontrakt nasadený).
+1. Keď je kontrakt vytvorený, v konštruktor nastavia vlastníka kontraktu `owner` na `msg.sender` (adresa, z ktorej bol kontrakt nasadený).
 
-2. Ownable nám dodá k dispozícií modifikátor `onlyOwner`, ktorý môžme používať v našich funkciách na to, aby jediná adresa z ktore mohli byť zavolané, bola adresa uložená v `owner`.
+2. `Ownable` nám dodá k dispozícií modifikátor `onlyOwner`. Ten môžeme používať v našich funkciách na to, aby jediná adresa z ktorej túto funkciu bolo možné zavolať, bola adresa uložená v premennej `owner`.
 
 3. Umožňuje preniesť kontrakt novému vlastníkovi - umožnuje zmenu hodnoty `owner`.
 
-`onlyOwner` je tak bežná požiadavka pre kontrakty, že väčšina Solidity DApps sa začína písať tak, že si najprv skopírujeme do projektu `Ownable` kontrakt. Až potom začneme písať naše kontrakty, ktoré dedia od `Ownable`.
+`onlyOwner` je  pre kontrakty tak bežnou požiadavkou, že väčšina Solidity DApps sa začína písať tak, že si najprv skopírujeme do projektu `Ownable` kontrakt. Až potom začneme písať naše kontrakty, ktoré dedia od `Ownable`.
 
 Nakoľko chceme limitovať prístup k volaniu `setKittyContractAddress` len pre vlastníka našej DApp (nás), použijeme `onlyOwner` modifikátor.
 
 
 ## Vyskúšaj si to sám
 
-Išli sme trochu napred a rovno sme skopírovali `Ownable` kontrakt do nového súboru v tvojom projekte `ownable.sol`. Poďme upraviť náš kontrakt `ZombieFactory` tak, aby dedil od `Ownable`.
+Trochu sme ti pomohli a skopírovali sme `Ownable` kontrakt do nového súboru v tvojom projekte `ownable.sol`. Poďme upraviť náš kontrakt `ZombieFactory` tak, aby dedil od `Ownable`.
 
-1. Modifikuj náš kód tak, aby importoval (`import`) obsah súboru `ownable.sol`. Ak si nespomínaš ako na to, pozri sa na `zombiefeeding.sol`.
+1. Modifikuj kód tak, aby importoval (`import`) obsah súboru `ownable.sol`. Ak si nespomínaš ako na to, pozri sa na `zombiefeeding.sol`.
 
 2. Modifikuj  `ZombieFactory` kontrakt tak, aby dedil od `Ownable`. Môžeš sa pozrieť na súbor `zombiefeeding.sol` ak si nespomínaš ako na to.

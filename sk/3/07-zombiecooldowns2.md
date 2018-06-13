@@ -208,17 +208,17 @@ material:
 
 Teraz poďme modifikovať funkciu `feedAndMultiply` tak, aby brala do úvahy náš časovač cooldown odpočívania.
 
-Všimni si že sme túto funkciu v predchádzajúcich lekciách spravili `public`. Je dôležitou bezpečnostnou praktikou vždy preskúmať všetky naše `public` and `external` funkcie a zvážiť všetky možné spôsoby, akým by užívatelia mohli potenciálne tieto funkcie zneužiť. Nezabudni že ak tieto funkcie nemajú modifikátor ako `onlyOwner`, ktokoľvek môže tieto funkcie zavolať s ľubovolnými parametrami.
+Všimni si, že túto funkciu sme v predošlých lekciách spravili `public`. Je dôležitou bezpečnostnou praktikou vždy preskúmať všetky naše `public` and `external` funkcie a zvážiť všetky možné spôsoby, akými by užívatelia mohli potenciálne tieto funkcie zneužiť. Nezabúdaj, že ak tieto funkcie nemajú modifikátor ako `onlyOwner`, ktokoľvek môže tieto funkcie zavolať s ľubovolnými parametrami.
 
-Keď túto našu funkciu opakovane preskúmame, všimneme si že nejaký úžívateľ by ju mohol zavolať a podsunút akékoľvek hodnoty v parametroch  `_targetDna` or `_species`. To nevyzerá dobre - my chceme aby hráči dodržovali naše pravidlá!
+Keď túto našu funkciu opakovane preskúmame, všimneme si že nejaký úžívateľ by ju mohol zavolať a podsunút akékoľvek hodnoty v parametroch `_targetDna` or `_species`. To nevyzerá dobre - my chceme aby hráči dodržovali naše pravidlá!
 
-Pri bližšom preskúmaní situácie zistíme, že táto funkcia je volaná iba z našej funkcie `feedOnKitty()`, takže najjednoduchší spôsob ako predísť problémom je upraviť `feedAndMultiply` na `internal`.
+Pri bližšom preskúmaní situácie zistíme, že táto funkcia je vlastne volaná iba z našej funkcie `feedOnKitty()`. Preto najjednoduchší spôsob ako predísť problémom je upraviť `feedAndMultiply` na `internal`.
 
 
 ## Vyskúšaj si to sám
 
-1. Momentálne `feedAndMultiply` je `public` funkcia. Poďme ju upraviť na `internal`, takže bude náš kontrakt bezpečnejší. Nechceme aby naši užívatelia boli schopny volať túto s hociakým DNA s akým oni chcú.
+1. Momentálne `feedAndMultiply` je `public` funkcia. Upraviť na `internal` aby bol kontrakt bezpečnejší. Nechceme aby užívatelia boli schopní volať túto s takým DNA s akým si len zachcú.
 
-2. Poďme upraviť `feedAndMultiply` tak aby brala v úvahu `cooldownTime`. Najprv, po tom čo vyhľadáme `myZombie`, poďme prida't `require` ktorý skontroluje či je zombie pripravný na ďalšie kŕmenie tak, že zavoláme `_isReady()` a predáme jej ako parameter `myZombie`. Tým pádom bude úžívateľ mať možnosť spustiť túto funkciu len po tom čo uplynulo dostatok času odposledného kŕmenia.
+2. Upraviť `feedAndMultiply` tak, aby brala v úvahu `cooldownTime`. Po tom čo vyhľadáš `myZombie` pridaj `require` ktorý skontroluje, či je zombie pripravný na ďalšie kŕmenie. Na skontrolovanie zavolaj funkciu `_isReady()` a predaj jej ako parameter `myZombie`. Tým pádom bude úžívateľ bude môcť úspešne používať túto funkciu len po tom, čo uplynulo dostatok času odposledného kŕmenia.
 
-3. Na konci funkcie zavolajme  `_triggerCooldown(myZombie)`, aby kŕmenie zombie odštartovalo odpočinkovú cooldown periódu času
+3. Na konci funkcie zavolaj `_triggerCooldown(myZombie)`. Kŕmenie zombie totiž taktiež musí odštartovať odpočinkovú cooldown periódu.

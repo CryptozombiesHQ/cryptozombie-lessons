@@ -179,35 +179,35 @@ material:
       }
 ---
 
-Super! Teraz už vieme ako aktualizovať kľučové časti našej aplikácie, no zaroveň zabrániť škodlivým užívaľom hrabať sa v našom kontrakte.
+Super! Teraz už vieme ako aktualizovať kľučové časti našej aplikácie, a zároveň zabrániť škodlivým užívateľom modifikovať kritcké dáta kontraktu.
 
-Poďme sa pozrieť na ďalší aspekt, ktorým sa Solidity líši od ostatných programovacích jazykov.
+Poďme sa pozrieť na ďalší aspekt ktorým sa Solidity líši od ostatných programovacích jazykov.
 
 ## Gas — palivo na ktorom bežia Ethereum DApps 
 
-V solidity musia užívatelia zaplatiť zakaždým keď zavolajú nejakú funkciu tvojho kontraktu meno nazývanou **_gas_** (plyn). Užívatelia si môžu kúpiť gas za Ether (Ethereum kryptomena), to znamená že tvoji užívatelia musia utrácať ETH na to, aby mohli vyvolávať funkcie tvojej DAppky.
+V solidity musia užívatelia zaplatiť zakaždým keď zavolajú nejakú funkciu tvojho kontraktu menou nazývanou **_gas_** (plyn). Užívatelia si môžu kúpiť gas za Ether (Ethéreum kryptomena). Znamená to, že tvoji užívatelia musia utrácať ETH na to, aby mohli volať funkcie tvojej DAppky.
 
-Koľko gasu je požadovaného na vykonanie funkcie záleží od toho aká zložita je logika funkcie. Každá individuálna operácia má určitú **_cenu gasu_** (**_gas cost_**), na základe toho koľko výpočtových zdrojov bude potrených na vykonanie danej opeŕacie (napríklad zápis dát do blockchain je oveľa drahšia operácia ako sčítanie dvoch čísel). Finálna cena (koľko "gasov" bude užívateľ zaplatiť) za vykonanie funkcie, je daná ako súčet všetkých výdajov gasu na všetky individuálne výpočtové operácie počas jej vykonávania.
+Koľko gasu je na vykonanie funkcie potrebné záleží od toho, aká zložita je logika volanej funkcie. Každá individuálna operácia má určitú **_spotrebu gasu_** (**_gas cost_**). Spotreba gasu operácie je daná tým, koľko výpočtových zdrojov bude potrebných na vykonanie operácie (napríklad zápis dát do blockchain je oveľa drahšia operácia ako sčítanie dvoch čísel). Finálna množstvo gasu potrebné na vykonanie funkcie je vypočítané súčet všetkých výdajov gasu jednotlivých individuálnych výpočtových operácií počas behu funkcie.
 
-Pretože vykonávanie funkcií stojí tvojich užívateľov reálne peniaze, optimalizácia kódu je na Ethereu oveľa dôležitejšia ako v iných programovacích jazykoch. Ak je tvoj kód neporiadny, užívatelia budú musieť utratiť za používanie tvojho kontraktu viac - v prípade tísícok užívateľov by tak moholo možné že by ľudia utratili milióny zbytočne.  
+Pretože vykonávanie funkcií stojí tvojich užívateľov reálne peniaze, optimalizácia kódu je na Ethéreu oveľa dôležitejšie ako v iných programovacích jazykoch. Ak je tvoj kód neporiadny, užívatelia budú musieť utratiť za používanie tvojho kontraktu viac. V prípade tísícok užívateľov je možné, že by ľudia zbytočne premrhali milióny dolárov.  
 
 ## Prečo je gas potrebný?
 
-Ethereum je ako obrovksý, pomalý ale extrémny bezpečný počítač. Keď zavoláš nejakú funkciu, každý jeden server ktorý je zapojený do Ethereum siete túto funkciu spustí a overí výstup - tisícky počítačov verifikujúcich beh každej jednej zavolanej funkcie je to, čo robit Ethereum decentrailozvanu sieťou. Vďaka tomu sú dáta v blokchain nemeniteľné a odolné voči cenzúre.
+Ethereum je ako obrovský, pomalý, za to však extrémne bezpečný počítač. Keď zavoláš nejakú funkciu, každý jeden server ktorý je zapojený do Ethereum siete túto funkciu spustí a overí výstup. Tisícky počítačov verifikujúcich beh každej jednej zavolanej funkcie je presne to, čo robí Ethéreum decentralizovanou sieťou. Vďaka tomu sú dáta v blokchain nemeniteľné a odolné voči cenzúre.
 
-Tvorcovia Ethereum chceli zabezpečiť situáciu kedy by sa nejaký užívateľ pokúsil zahltiť celú sieť spustením nekonečného cyklu, alebo ju zaplaviť príliš náročným výpočtom. Práve preto transakcie nie sú zadarmo, užívatelia musia zaplatiť za výpočtový čas potrebný na beh funkcie ktorú zavolajú, a taktiež dáta ktoré do blockchain uložia. 
+Tvorcovia Ethérea chceli zabezpečiť situáciu, kedy by sa nejaký užívateľ pokúsil zahltiť celú sieť spustením nekonečného cyklu, alebo ju zaplaviť príliš náročným výpočtom. To je dôvod prečo transakcie nie sú zadarmo. Užívatelia musia zaplatiť za výpočtový čas potrebný na beh funkcie ktorú zavolajú a taktiež dáta ktoré na blockchain uložia. 
 
-> Poznámka: Toto nie je nevyhnutne pravda pre bočné siete, tzv. sidechains. Príkladom takej je sieť, na ktorej autori CryptoZombies pracujú v Loom Network. Pravdepodobne by nedávalo celkom zmysel používať hlavnú Ethereum sieť pre ako ako napríklad World of Warcraft - množstvo gasu ktoré by úživatelia museli utratiť by pre nich bola neúnosná. Mohla by byť však použitá sidechain s odlišným konsenzus algoritmom. Viac o tom, aké typy DApps sa hodia na sidechains a aké na hlavnú Ethereum sieť, budeme preberať v budúcich lekciách.
+> Poznámka: Toto nie je nevyhnutne pravda pre bočné siete, tzv. sidechains. Príkladom takej je napríklad sieť, na ktorej autori CryptoZombies pracujú v Loom Network. Pravdepodobne by nedávalo celkom zmysel používať hlavnú Ethereum sieť pre aplikácie ako ako napríklad World of Warcraft - množstvo gasu ktoré by úživatelia museli utratiť by pre nich bola neúnosné. Mohla by byť však použitá sidechain s odlišným konsenzus algoritmom. Viac o tom, aké typy DApps sa hodia na sidechains a aké na hlavnú Ethereum sieť preberieme v budúcich lekciách.
 
 ## Úspora gasu balíčkovaním do štruktúr
 
-V Lekcii 1 sme spomenuli že existuju viaceré druhy `uint`ov: `uint8`, `uint16`, `uint32`, atd.
+V Lekcii 1 sme spomenuli, že existujú viaceré druhy `uint`ov: `uint8`, `uint16`, `uint32`, atď.
 
-Za normálnych okolností nám používanie týchto pod-typov nedáva žiadnu výhody, pretože Solidity rezervuje v dátovom úložisku segment 256 bitov bez ohľadu na to, koľko bitový `uint` používame. Keď vo svojom kontrakte deklaruješ stavovú premennú typu `uint8` namiesto  `uint` (`uint256`), neušetríš tým žiaden gas.
+Za normálnych okolností nám používanie týchto pod-typov nedáva žiadnu výhody, pretože Solidity rezervuje v dátovom úložisku segment 256 bitov bez ohľadu na to, koľko bitový `uint` používame. Keď vo svojom kontrakte deklaruješ stavovú premennú typu `uint8` namiesto `uint` (`uint256`), neušetríš tým žiaden gas.
 
-Existuje však výnimka: ked tieto typy používame vo vnútri štruktúr (`struct`).
+Existuje však výnimka: keď tieto typy používame vo vnútri štruktúr (`struct`).
 
-Ak použijeme niekoľko `uint`ov vo vnútri štruktúri, použitie menších `uint`ov tam kde sa dá, umožní Solidity zabalíčkovať tieto premenné dokopy a vy výsledku takáto štruktúra zaberie menej miesta. Napríklad: 
+Ak použijeme niekoľko `uint`ov vo vnútri štruktúri, použitie menších `uint`ov tam kde sa dá, umožní Solidity "zabalíčkovať" tieto premenné dokopy. Vo výsledku potom takáto štruktúra zaberie menej miesta na blockchaine. Napríklad: 
 
 ```
 struct NormalStruct {
@@ -222,22 +222,21 @@ struct MiniMe {
   uint c;
 }
 
-// `mini` will cost less gas than `normal` because of struct packing
-// `mini` štruktúra bude stáť menej gasu ako `normal` vďaka balíčkovaniu štruktúr
+// `mini` štruktúra bude stáť menej gasu ako `normal` vďaka "balíčkovaniu" štruktúr
 NormalStruct normal = NormalStruct(10, 20, 30);
 MiniMe mini = MiniMe(10, 20, 30); 
 ```
 
-Z tohoto dôvodu je doporučene vo vnútri štruktúr používať uint pod-typy najmenšie ako sa dá
+Z tohoto dôvodu je doporučené vo vnútri štruktúr používať uint pod-typy najmenšie ako sa dá
 
-Aby to fungovalo, je ale potrebné usporiadať typy rovnakých dátových typov spolu (tým že ich napíšeš jeden za druhým v štruktúre). Potom bude Solidity schopné ušetriť nároky na množstvo potrebného miesta v dátovom úložisku. Napríklad, štruktúra s atribútmi `uint c; uint32 a; uint32 b;` bude stáť menej gasu ako štruktúra, pretože `uint32` atribúty sú zhromadené dokopy.
+Aby balíčkovanie fungovalo, je potrebné usporiadať typy rovnakých dátových typov spolu (tým že ich napíšeš jeden za druhým do deklarácie štruktúry). Potom bude Solidity schopné ušetriť nároky na množstvo potrebného miesta v trvalom dátovom úložisku. Napríklad, štruktúra s atribútmi `uint c; uint32 a; uint32 b;` bude stáť menej gasu ako štruktúra `uint32 a; uint c; uint32 b;`, pretože `uint32` atribúty sú zapísané vedľa seba.
 
 ## Vyskúšaj si to sám
 
 V tejto lekcii pridáme 2 nové atribúty pre našich zombie: `level` a `readyTime`. `readyTime` bude neskôr použitý na to, aby sme implementovali stopky a obmedzili ako často sa môže zombie kŕmiť.
 
-Teraz sa poďme pozriet spať na `zombiefactory.sol`.
+Teraz sa poďme pozrieť späť na `zombiefactory.sol`.
 
 1. Pridaj dva nové atribúty do našej `Zombie` štruktúry: `level` (typu `uint32`), and `readyTime` (typu `uint32`). Tieto dáta budeme chcieť zhlúčiť do jednej skupiny pre úsporu miesta balíčkovaním, takže oba atribúty pridaj na koniec štruktúry.
 
-32 bitov je viac než dosť na udržovanie informácie o levele zombie a časovej značky, takže ušetríme množstvo spotrebovaného gasu tým, že tieto dáta budú uložené tesnejšie pri sebe ako v prípade obyčajného `uint`u (256 bitov).
+32 bitov je viac než dosť na udržovanie informácie o levele zombie a časovej značky. Ušetríme preto množstvo spotrebovaného gasu tým, že tieto dáta budú uložené tesnejšie pri sebe ako v prípade obyčajného `uint`u (256 bitov).

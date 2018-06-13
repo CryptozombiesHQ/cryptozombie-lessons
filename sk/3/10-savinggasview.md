@@ -192,25 +192,25 @@ material:
       }
 ---
 
-Úžasné! Teraz sme pridali nové špeciálne schopnosti pre zombie s vyžším levelom. To dá úžívateľom určitý stimul svojich zombie levelovať. Neskôr môžme pridať ďalšie špeciálne schopnosti. 
+Úžasné! Pridali sme nové špeciálne schopnosti pre zombie s vyšším levelom. To dá úžívateľom určitý stimul svojich zombie levelovať. Neskôr môžme pridať ďalšie špeciálne schopnosti. 
 
-Poďme pridať ešte jednu špeciálnu funkciu: naša DApp potrebuje mať možnosť prístupu ku celej armáde úžívateľa - poďme ju nazvať `getZombiesByOwner`.
+Poďme pridať ešte jednu špeciálnu funkciu. Naša DApp potrebuje mať možnosť prístupu ku celej armáde úžívateľa. Poďme vytvoriť funkciu ktorá nám ho zabezpečí, nazveme ju `getZombiesByOwner`.
 
-Táto funkcia bude dáta z blockchain iba čítať, preto z nej môžme spraviž `view` funkciu. To nás privádza späť k dôležitej téme optimalizácie utrateného gasu:
+Táto funkcia bude dáta z blockchain iba čítať, preto z nej môžme spraviť `view` funkciu. To nás privádza späť k dôležitej téme optimalizácie utrateného gasu.
 
-## View funkcie nestoja gas
+## View funkcie nestoja žiaden gas
 
-`view` funkcie nestoja žiaden gas, v prípade že su volané externe užívateľom.
+`view` funkcie nestoja žiaden gas, v prípade že su volané **externe** užívateľom.
 
-To preto, lebo  `view` funkcie nemodifikujú žiadne dáta v blockchain - iba dáta čítajú. Tým že označíme funkciu s `view` povieme `web3.js`, že jediné čo treba spraviť je požiadať Ethereum server spustiť túto funkciu. No nakoľko sa nevykoná žiadna transakcia na blockchaine ako taká, cena takéhoto dotazu je nulová (keby to bola transakcia, musela by prebehnúť na všetkých Serveroch zapojených do Ethereum siete).
+To preto, lebo `view` funkcie nemodifikujú žiadne dáta v blockchain - iba dáta čítajú. Tým že označíme funkciu s `view` vlastne povieme `web3.js`, že jediné čo treba spraviť je požiadať jediný Ethereum server o spustinie tejto funkciu. Nakoľko sa ale nevykoná žiadna transakcia na blockchaine, cena takéhoto dotazu je nulová (keby to bola transakcia, musela by prebehnúť na všetkých serveroch zapojených do Ethereum siete).
 
-Čo sa týka nastavenia web3.js v tvjom kóde, to je téma ktoru pokryjeme neskôr. To podstatné čo si z tejto lekcie treba odniesť je to, že môžme optimalizovať útratu gasu užívateľmi v tvojej DAppke tým, že budeš používať `external view`  funkcie všade kde je to možné.
+Čo sa týka nastavenia web3.js v tvojom kóde, to je téma ktorú pokryjeme neskôr. Podstatné čo si z tejto lekcie treba odniesť je to, že môžme optimalizovať útratu gasu užívateľmi v tvojej DAppke tým, že budeš používať `external view`  funkcie všade kde je to možné.
 
-> Poznámka: Ak je funkcia `view` zavolaná interne z inej funkcie rovnakého kontraktu, potom to **nie je** `view` funkcia, a takéto volanie bude spotrebovávať gas. To preto, lebo tá iná funkcia reprezentuje transakciu na Ethereum sieti a teda prístup k dátam sa bude musieť odohrať na každom Etheruem servri ktorý túto transakciu verifikuje. Preto sú `view` funkcie zadarmo len vtedy, keď su volané externe. 
+> Poznámka: Ak je funkcia `view` zavolaná interne z inej funkcie rovnakého kontraktu ktorá **nie je** `view` funkcia, potom aj táto funkcia bude spotrebovávať gas. To preto, lebo vykonávanie tej druhej funkcie nutne reprezentuje transakciu na Ethereum sieti. Vy výsledku sa potom prístup k dátam sa bude musieť odohrať na každom Etheruem servri, ktorý túto transakciu verifikuje. Preto sú `view` funkcie zadarmo len vtedy, keď su volané externe. 
 
 ## Vyskúšaj si to sám
 
-Teraz ideme implementovať funkciu, ktorá vráti celú armádu zombie patriaca jednému užívateľovi. Neskôr budeme túto funkciu volať z `web3.js` na to, aby sme zobrazili profil užívateľa a ich kompletné armády.
+Teraz implementuješ funkciu ktorá vráti celú armádu zombie patriaca jednému užívateľovi. Neskôr budeš túto funkciu volať z `web3.js` na to, aby si zobrazil profil užívateľa a jeho kompletnú armádu.
 
 Logika tejto funkcie je trochu komplikovanejšia a preto nám jej implementácia zaberie niekoľko kapitol.
 

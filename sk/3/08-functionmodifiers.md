@@ -172,15 +172,15 @@ material:
       }
 ---
 
-Super! Náš zombie ma teraz funkčný odpočinkový časovač.
+Super! Náš zombie má teraz funkčný odpočinkový časovač.
 
-Ďalej ideme pridať pár pomocný metód. Vytvorili sme pre teba nový subor s názvom `zombiehelper.sol`, ktorý importuje `zombiefeeding.sol`. To nám pomôže udržať kód dobre zorganizovaný.
+Teraz ideme pridať pár ďalších pomocných funkcií. Vytvorili sme ti nový subor s názvom `zombiehelper.sol`. Ten importuje `zombiefeeding.sol` aby sme udržali kód prehľadne zorganizovaný.
 
-Poďme spraviť úpravy, aby naši zombie získali špeciálne vlasnosti po dosiahnutí určitého levelu. Než to spravíme, musíme sa najprv naučiť niečo viac o funkčných modifikátoroch.
+Poďme spraviť potrebné úpravy na to, aby naši zombie  po dosiahnutí určitého levelu získali špeciálne vlasnosti. Najprv sa však musíme naučiť niečo viac o funkčných modifikátoroch.
 
 ## Funkčné modifikátory s argumentami
 
-Doposiaľ sme videli len jednoduchý príklad modifikátor - `onlyOwner`. Avšak funkčné modifikátory môžu príjmať aj argumenty. Napríklad:
+Doposiaľ sme videli len jednoduchý príklad modifikátoru - `onlyOwner`. Funkčné modifikátory však môžu príjmať aj argumenty. Napríklad:
 
 ```
 // Mapovanie ktoré udržuje vek užívateľa:
@@ -205,6 +205,6 @@ Poďme skúsiť spraviť náš vlastný `modifier` ktorý bude používať `leve
 ## Vyskúšaj si to sám
 1. V kontrakte `ZombieHelper` vytvor `modifier` s názvom `aboveLevel`. Bude príjmať dva argumenty, `_level` (typu `uint`) a `_zombieId` (taktiež `uint`).
 
-2. Telo modifikátora by alo skontrolovať že `zombies[_zombieId].level` je viac alebo sa rovná `_level`.
+2. Telo modifikátora by malo skontrolovať, že `zombies[_zombieId].level` je viac alebo sa rovná `_level`.
 
-3. Pamataj na to, že posledný riadok modifikátoru musí byť `_;`, aby v prípade splnenej podmienky pokračovalo vykonávanie užívateľom volanej funkcie.
+3. Pamataj na to, že posledný riadok modifikátoru musí byť `_;`, aby v prípade splnenej podmienky tok kódu pokračoval do pôvodnej, užívateľom volanej funkcie.

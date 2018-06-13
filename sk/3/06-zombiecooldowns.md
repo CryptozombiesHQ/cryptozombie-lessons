@@ -203,17 +203,17 @@ Ideme modifikovať našu funkciu `feedAndMultiply` tak, že:
 
 1. Kŕmenie vyvolá obdobie cooldown odpočinku zombie, a
 
-2. Zombie sa nemôžu kŕmiť na mačkách až kým neskončí ich odpočinkové cooldown obdobie. 
+2. Zombie sa nemôžu kŕmiť na mačkách, až dokým neskončí ich odpočinkové cooldown obdobie. 
 
-Toto zabezpečí že zombies sa nemôžu stále kŕmiť na mačičkách a nekonečna sa rozmnožovať. V budúcnosti, až pridáme funkcionalitu zápasov, obmedzíme taktiež zápasy medzi zombies cooldown obdobím.  
+Toto zabezpečí, že zombies sa nemôžu stále kŕmiť na mačičkách a donekonečna sa rozmnožovať. Ked v budúcnosti pridáme funkcionalitu zápasov, obmedzíme taktiež frekvenciu zápasov medzi zombies cooldown obdobím.  
 
-Za prvé, poďme si definovať pár pomocných funkcií, ktore nám pomôžu skontrolovať `readyTime` zombie.
+Poďme si teraz definovať pár pomocných funkcií, ktoré nám pomôžu skontrolovať `readyTime` zombieho.
 
 ## Predávanie štruktúr cez argumenty
 
-Funkciám ktoré su `private` alebo `internal` je možné predávať ako argumenty ukazatele na štruktúry v trvalom dátavom úložisku. To je pre nás užitočné, možme si takto posúvať ukazatěl na nejakého `Zombie` medzi našimi funkciami.
+Funkciám ktoré sú `private` alebo `internal` je možné predávať ako argumenty vo forme ukazateľov na štruktúry v trvalom dátavom úložisku `storage`. To je pre nás užitočné. Možme si takto medzi našimi funkciami posúvať ukazatatele na nejakého `Zombie`.
 
-Syntax je takáto:
+Syntax je nasledovná:
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
@@ -221,14 +221,14 @@ function _doStuff(Zombie storage _zombie) internal {
 }
 ```
 
-Týmto spôsobom môžme priamo predávať referenciu na zombie v trvalom dátovom úložisku. Keby sme to takto nespravili, museli by sme funkciám podśuvať ID zombie a potom daného zombie nájsť v poli `zombies` podľa ID.
+Takto si môžeme predávať priamu referenciu na zombie v trvalom dátovom úložisku. Keby sme to takto nespravili, museli by sme funkciám podsúvať ID zombie, a potom použiť ID na prečítanie daného zombie v poli `zombies`.
 
 ## Vyskúšaj si to sám
 
-1. Začni tým že definuješ funkciu `_triggerCooldown`. Tá bude príjmať 1 argument, `_zombie` typu `Zombie storage`. Funkcia by mala byť  `internal`.
+1. Začni tým že definuješ funkciu `_triggerCooldown`. Tá bude príjmať 1 argument `_zombie` typu `Zombie storage`. Funkcia by mala byť  `internal`.
 
 2. Telo funkcie by malo nastaviť `_zombie.readyTime` na hodnotu `uint32(now + cooldownTime)`. 
 
-3. Ďalej, vytvor funkciu s naźvom `_isReady`. Táto funkcia bude taktiež príjmať argument typu `Zombie storage` s názvom `_zombie`. Bude to `internal view`  funkcia a vracať bude hodnotu typu `bool`.
+3. Ďalej vytvor funkciu s naźvom `_isReady`. Táto funkcia bude taktiež príjmať argument typu `Zombie storage` s názvom `_zombie`. Bude to `internal view` funkcia a vracať bude hodnotu typu `bool`.
 
 4. Telo funkcie by malo vracať `(_zombie.readyTime <= now)`. Tento výraz bude vyhodnotený buď na hodnotu `true` alebo `false`. Táto funkcia nám povie, či už ubehlo dostatočné množstvo času od posledného kŕmenia.

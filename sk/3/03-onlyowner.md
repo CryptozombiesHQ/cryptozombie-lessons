@@ -183,20 +183,20 @@ material:
       }
 ---
 
-Teraz keď náš základný kontrakt `ZombieFactory` dedí od `Ownable` môžeme použiť funkčný modifikátor `onlyOwner` taktiež v kontrakte `ZombieFeeding`.
+Teraz keď náš základný kontrakt `ZombieFactory` dedí od `Ownable`, môžeme použiť funkčný modifikátor `onlyOwner` taktiež v kontrakte `ZombieFeeding`.
 
-To preto, ako funguje dedičnost kontraktov. Pamätaj:
+To preto, ako funguje dedičnost kontraktov. Ak máme takúto hierarchiu:
 
 ```
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
 
-Teda, ak `ZombieFeeding` je `ZombieFactory`, a `ZombieFactory` je `Ownable`, potom `ZombieFeeding` je tiež `Ownable`. Preto `ZombieFeeding` má taktiež prístup k funkciám, udalostiam a modifikátorom ownable `Ownable` kontraktu. Rovnaký princíp sa ďalej aplikuje na akékoľvek kontrakty, ktoré by v budúcnosti ďalej dedili od `ZombieFeeding`.
+`ZombieFeeding` je `ZombieFactory`, a `ZombieFactory` je `Ownable`. Potom `ZombieFeeding` je tiež `Ownable`. Preto `ZombieFeeding` má taktiež prístup k funkciám, udalostiam a modifikátorom `Ownable` kontraktu. Rovnaký princíp sa ďalej aplikuje na všetky kontrakty ktoré budú v budúcnosti ďalej dediť od `ZombieFeeding`.
 
 ## Funkčné modifikátory
 
-Funkčný modifikátor vyzerá úplne ako funkcia, no používa kľučové slovo `modifier` namiesto `function`. Naviac nemôže byť priamo zavolaný ako funkcie. Miesto toho, môžeme modifikátor pripojiť na koniec hlavičky nejakej funkcie a motifikovať tak jej správanie.
+Funkčný modifikátor vyzerá úplne ako funkcia, no používa kľučové slovo `modifier` namiesto `function`. Naviac nemôže byť zavolaný priamo, ako funkcia. Miesto toho môžeme ale modifikátor pripojiť na koniec hlavičky nejakej funkcie a tak modifikovať jej správanie.
 
 Poďme sa na to lepšie pozrieť skúmaním modifkátoru `onlyOwner`: 
 
@@ -210,7 +210,7 @@ modifier onlyOwner() {
 }
 ```
 
-We would use this modifier as follows:
+Tento modifikátor potom môžeme použiť takýmto spôsobom:
 
 ```
 contract MyContract is Ownable {
@@ -223,15 +223,15 @@ contract MyContract is Ownable {
 }
 ```
 
-Všimni si modifikátor  `onlyOwner` na funkcií `likeABoss`. Keď zavoláš `likeABoss`, kód vo vnútri `onlyOwner` sa vykoná **ako prvý**. Až potom, keď sa dostane ku riadku `_;` vo vnútri `onlyOwner`, sa začne vykonávať kód vo vnútri pôvodne zavolanej funkcie `likeABoss`.
+Všimni si modifikátor `onlyOwner` na funkcii `likeABoss`. Keď zavoláš `likeABoss`, kód vo vnútri `onlyOwner` sa vykoná **ako prvý**. Až potom, keď sa tok kódu dostane ku riadku `_;` vo vnútri `onlyOwner`, začne sa vykonávať kód pôvodne volanej funkcie `likeABoss`.
 
-Takže zatiaľ čo existujé rozličné možnosti ako využiť modifikátory, jeden z najtypickéjších prípadov je na vykonanie určitých `require` kontrol, pred tým než sa začne vykonávať funkcia.
+Existujé rozličné možnosti ako využiť modifikátory, no jeden z najtypickéjších prípadov je na vykonanie určitých `require` kontrol, pred tým než sa funkcia začne vykonávať.
 
-V prípade `onlyOwner`, využitie tohoto modifikátora zaručí to, že **iba** (only) **vlasntník** (owner) kontraktu (to si ty, ktorý si nasadil kontrakt) može zavolať túto funkciu.
+V prípade `onlyOwner`, využitie tohoto modifikátora zaručí to, že **iba** (only) **vlasntník** (owner) kontraktu (to si ty, ktorý si nasadil kontrakt na blockchain) može funkciu s týmto modifikátorom úspešne zavolať.
 
->Poznámka: Pridávanie takýchto špeciálnych schopností je často nevyhnutnosť, no je to niečo čo vlastníci kontraktov môžu zneužiť proti užívateľom. Napríklad, vlastník kontraktu môže pridať backdoor funkciu, ktorá by len jemu umožnila privlastniť si cudzích zombies!
+>Poznámka: Pridávanie takýchto špeciálnych schopností je často síce nevyhnutnosť, no je to zároveň niečo, čo vlastníci kontraktov môžu zneužiť proti užívateľom. Napríklad, vlastník kontraktu môže pridať backdoor funkciu, ktorá by len jemu umožnila privlastniť si cudzích zombies!
 
->Preto je dôležité si pamätať, že len preto že je naša DAppka na Ethereu ju nerobí automaticky decentralizovanou - je treba si prečítať celý zdrojový kód a uistitť sa, že neobsahuje špeciálne kontrolné funkcie pre vlastníka kontraktu, ktoré by mohli predstavovať problém. Pri písaní DApp je potrebné nájsť určitú rovnováhu medzi schopnosťou udržiavať aplikáciu funkčnú, byť schopný opraviť pontencionálne bugy, no zároveň vytvoriť necentralizovanú platformu, ktorej užívatelia môžu veriť.  
+>Preto je dôležité si pamätať, že len preto že je naša DAppka na Ethéreu ju nerobí automaticky decentralizovanou. Je treba si prečítať zdrojový kód a uistiť sa, že neobsahuje špeciálne kontrolné funkcie pre vlastníka kontraktu, ktoré by mohli predstavovať problém. Pri písaní DAppiek je potrebné nájsť určitú rovnováhu medzi schopnosťou udržiavať aplikáciu funkčnú, byť schopný opraviť pontencionálne bugy, no zároveň vytvoriť necentralizovanú platformu, ktorej užívatelia môžu veriť.  
 
 ## Vyskúšaj si to sám
 

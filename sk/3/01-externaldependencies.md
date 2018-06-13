@@ -141,34 +141,34 @@ material:
       }
 ---
 
-Doposiaľ Solidity vyzeralo celkom podobne ako ostatné programovanie jazyky, napríklad Javascript. Existuje však niekoľko veľkých rozdielov akými sa decentralizované aplikácie (DApps) na Ethereu líšia od klasických aplikácií.
+Doposiaľ Solidity vyzeralo celkom podobne ako ostatné programovanie jazyky, napríklad Javascript. Existuje však niekoľko veľkých rozdielov, akými sa decentralizované aplikácie (DApps) na Ethéreu líšia od klasických aplikácií.
 
-Za prvé, po tom čo nasadíš svoj kontrakt na Ethereum blockchain, bude **_nemeniteľný_** , čo znamená že jeho kód už nikdy nemože byť upravený.
+Za prvé, po tom čo nasadíš svoj kontrakt na Ethereum blockchain, stane sa **_nemeniteľným_**. To znamená že jeho kód už nikdy nemože byť upravený.
 
-Počiatočný kód kontraktu ktorý nasadíš na blockchain tam zostane navždy, permanentne. Práve to je ale jeden z dôvodov, prečo je bezpečnosť v prípade Solidity kontraktov extrémne dôležitá záležitosť.. Ak je v tvojom kód chyba, nie je spôsob ako ju neskôr napraviť. Musel by si povedať svojim užívateľom aby začali používať adresu iného smart kontraktu, ktorý by zahrňoval opravu danej chyby.
+Kód kontraktu ktorý nasadíš na blockchain tam zostane navždy, permanentne. Práve to je ale jeden z dôvodov, prečo je bezpečnosť v prípade Solidity kontraktov extrémne dôležitá záležitosť. Ak je v tvojom kód chyba, nie je spôsob ako ju dodatočne napraviť. Musel by si povedať svojim užívateľom povedať, aby začali používať adresu nového smart kontraktu, obsahujúceho opravu chyby.
 
-No nemenitelnost je zároveň užitočnou vlastnosťou smart kontraktov. Kód je zákon. Ak si prečítaš kód smart kontraktu, môžeš si byť istý že vždy keď zavoláš jeho funkciu, vykoná sa presne to čo si našiel napísané v kóde. Nikto sa nemôže dodatočne rozhodnúť upraviť kód tej funkcie a spôsobiť neočakávané výsledky pre užívateľov.  
+Nemeniteľnosť je zároveň užitočnou vlastnosťou smart kontraktov. Kód je zákon. Ak si prečítaš kód smart kontraktu, môžeš si byť istý, že vždy keď zavoláš jeho funkciu, vykoná sa presne tak, ako si to našiel napísané v kóde. Nikto sa nemôže dodatočne rozhodnúť upraviť kód danej funkcie a spôsobiť pre užívateľov neočakávané výsledky.  
 
 ## Externé závislosti
 
-V Lekcii 2 sme zafixovali adresu CryptoKitties smart kontraktu do našej DApp. Ale čo by sa stalo, keby CryptoKitties kontrakt mal v sebe chybu a niekto zmazal všetky mačky?
+V Lekcii 2 sme zafixovali adresu CryptoKitties smart kontraktu do našej DApp. Ale čo by sa stalo, keby mal CryptoKitties kontrakt v sebe chybu a niekto zmazal všetky mačky?
 
-Je to síce nepravdepodobné, ale keby sa to stalo, spravilo by to našu DAppku kompletne nepoužitelnú - naša DApp by odkazovala na kontrakt ktorý by už nevracal žiadne krypto mačky. Naši zombie by sa teda neboli schopný na mačkách kŕmiť a my by sme nemali možnosť náš kontrakt upraviť. 
+Je to síce nepravdepodobné, ale keby sa to stalo, spravilo by to našu DAppku kompletne nepoužiteľnou. Naša DApp by odkazovala na kontrakt, ktorý by už neobsahoval žiadne krypto mačky. Naši zombie by sa neboli schopný na mačkách kŕmiť, a my by sme nemali možnosť náš kontrakt upraviť. 
 
-Práve z tohoto dôvodu dáva zmysel vytvárať funkcie, ktoré umožnia aktualizovať kľučové časti našej DApp.
+Práve z tohoto dôvodu dáva zmysel vytvoriť taktiež funkcie, ktoré umožnia aktualizovať kľučové časti DAppky.
 
-Napríklad, namiesto zafixovania adresy CryptoKitties kontraktu do našej DAppky, mohli sme si spraviť funkciu `setKittyContractAddress`, ktorá by nám umožnila zmeniť túto adresu. V prípade že by sa v budúcnosti stalo CryptoKitties kontraktu niečo zlé, mohli by sme aktualizovať adresu CryptoKitties kontraktu na novú opravenú verziu.
+Napríklad namiesto zafixovania adresy CryptoKitties kontraktu do našej DAppky, mohli by sme si spraviť funkciu `setKittyContractAddress`, ktorá by nám umožnila túto adresu zmeniť. V prípade, že by sa v budúcnosti stalo CryptoKitties kontraktu niečo zlé, mohli by sme dodatočne aktualizovať adresu CryptoKitties (novú opravenú verziu CryptoKitties, ktorú by autori CryptoKitties museli nanovo nasadiť na blockchain).
 
 ## Vyskúšaj si to sám
 
-Poďme upraviť náš kód z Lekcie 2, tak aby sme boli schopný modifikovať adresu CryptoKitties kontraktu.
+Poďme upraviť náš kód z Lekcie 2 tak, aby sme boli schopný dodatočne zmneniť adresu CryptoKitties kontraktu.
 
 1. Zmaž riadok kódu kde sme zafixovali hodnotu premennej `ckAddress`.
 
-2. Upravit riadok, v ktorom sme vytvorili `kittyContract`. Namiesto priradenia hodnoty túto premennú len deklaruj.
+2. Uprav riadok, v ktorom sme deklarovali premennú `kittyContract`. Nenastavuj jej žiadnu hodnotu, ponechaj len deklaráciu.
 
-3. Vytvor funkciu, ktorá sa bude volať `setKittyContractAddress`. Bude príjmať jeden argument `_address` (typu `address`). Mala by to byť `external` funkcia.
+3. Vytvor funkciu ktorá sa bude volať `setKittyContractAddress`. Bude príjmať jeden argument `_address` (typu `address`). Mala by to byť `external` funkcia.
 
-4. Vo vnútri tejto funkcie pridaj riadok kódu, ktorý nastaví hodnotu `kittyContract` rovnú `KittyInterface(_address)`.
+4. Do vnútra tejto funkcie pridaj riadok kódu ktorý nastaví hodnotu premennej `kittyContract` na `KittyInterface(_address)`.
 
-> Poznámka: Ak si všimneš bezpečnostnú zranitelnosť v tejto funkcii, neboj, opravíme to v ďalšej kapitole ;)
+> Poznámka: Ak si v tejto funkcii všimneš bezpečnostnú zranitelnosť, neboj, opravíme to v ďalšej kapitole ;)

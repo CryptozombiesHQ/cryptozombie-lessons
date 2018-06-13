@@ -198,17 +198,17 @@ material:
 
 Jedna z najdrahších operácií v Solidity je používanie `storage` - predovšetkým zápis dát.
 
-To preto, lebo zakaždým ked zapíšeš alebo zmeníš nejaké dáta, tie budú permanentne zapísané do blockchain. Navždy! Tisícky serverov po celom svete budú musieť tieto dáta uložiť na svoje hard disky. Ako bude blockchain rásť, množstvo takýchto dát bude čím ďalej tým viac navyšovať. Preto je zápis dát na blockchain drahá operácia.
+To preto, lebo zakaždým ked zapíšeš alebo zmeníš nejaké dáta, tie budú permanentne zapísané na blockchain. Navždy! Tisícky serverov po celom svete budú musieť tieto dáta uložiť na svoje hard disky. Ako bude blockchain rásť, množstvo takýchto dát sa bude čím ďalej, tým viac navyšovať. Preto je zápis dát na blockchain drahá operácia.
 
-Na to aby sme udržali ceny čo najnižšie, musíme sa snažiť vyhnúť zápisu dát na blockchain pokiaľ to nie je nevyhnutné. To môže mať za dôsledok zdanlivo neefektívne napísaný kód - napríklad vytváranie nového poľa v pamäti zakaždým keď je zavolaná určitá funkcia, namiesto toho aby sme si tieto dáta proste dopredu zapísali na blockchain.
+Na to aby sme udržali ceny čo najnižšie sa musíme snažiť vyhnúť zápisu dát na blockchain pokiaľ to nie je nevyhnutné. To môže mať za dôsledok zdanlivo neefektívne napísaný kód - napríklad vytváranie nového poľa v pamäti zakaždým keď je zavolaná určitá funkcia, namiesto toho aby sme si tieto dáta proste dopredu zapísali na blockchain.
 
-V prípade väčšiny programovacích jazykov je iterácia cez veľké datasety operácia drahá na zdroje. Avšak v Solidity je tento spôsob lacnejší ako používanie `storage`, v prípade že sa jedná o `external view` funkciu, pretože `view` funkcie nestoja nestoja našich užívateľov žiaden gas (a gas stojí našich užívateľov skutočné peniaze!).
+V prípade väčšiny programovacích jazykov je iterácia cez veľké datasety operácia drahá na zdroje. Avšak v Solidity je tento spôsob lacnejší ako používanie `storage`, v prípade že sa jedná o `external view` funkciu. To preto, lebo `view` funkcie nestoja nestoja našich užívateľov žiaden gas (gas stojí našich užívateľov skutočné peniaze!).
 
-V dalšej kapitole sa pozrieme na `for` cykly, ale najprv sa pozrime na to, ako deklarovať pole v pamäti.
+V ďalšej kapitole sa pozrieme na `for` cykly. Ešte pred tým ale preberieme, ako deklarovať pole v pamäti.
 
 ## Deklarácia polí v pamäti
 
-Na to aby si vo funkcii vytvoril pole v pamäti, a nezapísal si žiadne dáta na blockchain, môžeš použiť kľúčové slovo `memory`. Pole bude existovať len do konca behu funkciu, takže je to z hľadiska gasu oveľa lacnejšie ako zápis dát na blockchain - dokonca úplne zadarmo pokiaľ je to `view` funkcia volaná externe.
+Na to aby si vo funkcii vytvoril pole v pamäti a nezapísal si žiadne dáta na blockchain môžeš použiť kľúčové slovo `memory`. Pole bude existovať len do konca behu funkcie. Takže z hľadiska gasu to bude oveľa lacnejšie ako zápis dát na blockchain - dokonca úplne zadarmo, v prípade `view` funkcie volanej externe.
 
 Takto deklarujeme pole v pamäti:
 
@@ -225,16 +225,16 @@ function getArray() external pure returns(uint[]) {
 }
 ```
 
-Toto je triviálny príklad ktorý demonštruje syntax, ale v ďalšej kapitole sa pozrieme to môžme skombinovať s `for` cyklami v skutočných kontraktoch.
+Toto je triviálny príklad ktorý demonštruje syntax, ale v ďalšej kapitole sa pozrieme na to, ako môžme polia skombinovať s `for` cyklami v skutočných kontraktoch.
 
->Poznámka: polia v pamäti **musia** mať špecifikovanú dĺžku (v tomto príklade je to `3`). Polia ktoré sídlia v pamäti nemôžu dynamicky meniť veľkost tak, ako to dokážu polia v trvalom `storage` dátovom úložisku pomocou `array.push()`. Je však možné že sa to zmení v budúcich verziách Solidity.
+>Poznámka: polia v pamäti **musia** mať špecifikovanú dĺžku (v tomto príklade je to `3`). Polia, ktoré sídlia v pamäti nemôžu dynamicky meniť veľkost tak, ako to dokážu polia v trvalom `storage` dátovom úložisku pomocou `array.push()`. Je však možné, že toto chovanie sa zmení v budúcich verziách Solidity.
 
 ## Vyskúšaj si to sám
 
-Z našej funkcie `getZombiesByOwner` cheme vrátit pole `uint`ov, teda `uint[]`, ktoré bude obsahovať všetkých zombies ktoré daný užívateľ vlastní.
+Z našej funkcie `getZombiesByOwner` cheme vrátit pole `uint`ov, teda `uint[]`, ktoré bude obsahovať všetkých zombies ktorých daný užívateľ vlastní.
 
 1. Deklaruj premennú `result` typu `uint[] memory`.
 
-2. Nastav jej hodnotu na nové `uint` pole. Dĺžka tohoto poľa by mala byť taká, koľko tento `_owner` vlastní, čo môžeme zistiť z našeho `mapping` takto  `ownerZombieCount[_owner]`.
+2. Nastav jej hodnotu na nové `uint` pole. Dĺžka tohoto poľa by mala toľko, koľko zombie tento `_owner` vlastní. Tento počet môžeme zistiť z našeho mapovania `ownerZombieCount[_owner]`.
 
 3. Na konci funkcie vrátime `result`. Zatiaľ je to len prázdne pole, no v ďalšej kapitole sa pozrieme ako ho vyplníme.

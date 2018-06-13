@@ -179,12 +179,12 @@ material:
 
 Teraz pri vytváraní pár funkcií použijeme náš nový modifikátor `aboveLevel`  
 
-Naša hra bude mať obsahovať stimuly aby mali ľudia motiváciu levelovať svojich zombie:
+Naša hra bude mať obsahovať stimuly dávajúce hráčom motiváciu levelovať svojich zombie:
 
-- Pre zombie od levelu 2 a vyššie, užívatelia budú mať možnosť im nastaviť meno.
-- Pre zombie od levelu 20 a vyššie, užívatelia im budú môcť dať vlastné DNA.
+- Pre zombie od levelu 2 a vyššie budú užívatelia mať možnosť im nastaviť meno.
+- Pre zombie od levelu 20 a vyššie im budú môcť nastaviť vlastné DNA.
 
-Tieto funkcie implemetnuje v kóde nižšie. Pre referenciu, tu je ukážka kódu z predchádzajúcej lekcie:
+Túto funkcionalitu implementujeme v tejto kapitole. Pre referenciu, tu je ukážka kódu z predošlej lekcie:
 
 ```
 // Mapovanie ktoré obstahuje vek užívateľov
@@ -204,10 +204,10 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 ## Vyskúšaj si to sám
 
-1. Vytvor funkciu s názvom `changeName`. Bude príjmať 2 argumenty:  `_zombieId` (typu `uint`), and `_newName` (typu `string`). Nezabudni spraviť túto funkciu `external`. Taktiež by mala používať `aboveLevel` modifikátor, ktorému by mala podsunúť parameter `_level` s hodnotou `2`. (taktiež však nezabudni podsunúť parameter `_zombieId`).
+1. Vytvor funkciu s názvom `changeName`. Bude príjmať 2 argumenty: `_zombieId` (typu `uint`), and `_newName` (typu `string`). Nezabudni spraviť túto funkciu `external`. Taktiež by mala používať `aboveLevel` modifikátor, ktorému by mala podsunúť parameter `_level` s hodnotou `2`. (taktiež však nezabudni podsunúť parameter `_zombieId`).
 
-2. V tejto funkcii najprv skontrolujeme že  `msg.sender` je rovný `zombieToOwner[_zombieId]`. Použi na to `require`.
+2. V tejto funkcii najprv skontroluj, že `msg.sender` je rovný `zombieToOwner[_zombieId]`. Použi na to `require`.
 
-3. Potom v tejto funkcii priraď `zombies[_zombieId].name` hodnotu  `_newName`.
+3. V tejto funkcii potom priraď `zombies[_zombieId].name` hodnotu `_newName`.
 
-4. Vytvor ďalšiu funkciu s názvom `changeDna` pod funkciou  `changeName`. Jej definícia a obstah bude skoro identický ako `changeName`, s rozdielom že druhý argument bude `_newDna` (typu `uint`). Ďalší rozdiel bude v hodnote argumentu `_level` poslaného jej modifikátoru `aboveLevel` - hodnotu tohoto argumentu nastavíme na `20`. No a samozrejme, namiesto zmeny mena zombie v tejto funkcií nastavíme hodnotu `dna` daného zombie na hodnotu rovnú `_newDna`.
+4. Pod funkciou `changeName` vytvor ďalšiu funkciu s názvom `changeDna`. Jej definícia a obsah bude skoro identický ako `changeName`, s rozdielom že druhý argument bude `_newDna` (typu `uint`). Ďalší rozdiel bude v hodnote argumentu `_level` poslaného jej modifikátoru `aboveLevel` - hodnotu tohoto argumentu nastavíme na `20`. No a samozrejme, namiesto zmeny mena zombie v tejto funkcií nastavíme hodnotu `dna` daného zombie na hodnotu rovnú `_newDna`.
