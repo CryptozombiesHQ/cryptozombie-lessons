@@ -198,31 +198,22 @@ material:
 ---
 
 Teraz ked už máme atribút `readyTime` na našej `Zombie` štruktúre, poďme preskočit do `zombiefeeding.sol` a implementovať cooldown stopky.  
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
 
 Ideme modifikovať našu funkciu `feedAndMultiply` tak, že:
-We're going to modify our `feedAndMultiply` such that:
 
 1. Kŕmenie vyvolá obdobie cooldown odpočinku zombie, a
-1. Feeding triggers a zombie's cooldown, and
 
 2. Zombie sa nemôžu kŕmiť na mačkách až kým neskončí ich odpočinkové cooldown obdobie. 
-2. Zombies can't feed on kitties until their cooldown period has passed
 
 Toto zabezpečí že zombies sa nemôžu stále kŕmiť na mačičkách a nekonečna sa rozmnožovať. V budúcnosti, až pridáme funkcionalitu zápasov, obmedzíme taktiež zápasy medzi zombies cooldown obdobím.  
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
 
 Za prvé, poďme si definovať pár pomocných funkcií, ktore nám pomôžu skontrolovať `readyTime` zombie.
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
 
 ## Predávanie štruktúr cez argumenty
-## Passing structs as arguments
 
 Funkciám ktoré su `private` alebo `internal` je možné predávať ako argumenty ukazatele na štruktúry v trvalom dátavom úložisku. To je pre nás užitočné, možme si takto posúvať ukazatěl na nejakého `Zombie` medzi našimi funkciami.
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
 
 Syntax je takáto:
-The syntax looks like this:
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
@@ -231,19 +222,13 @@ function _doStuff(Zombie storage _zombie) internal {
 ```
 
 Týmto spôsobom môžme priamo predávať referenciu na zombie v trvalom dátovom úložisku. Keby sme to takto nespravili, museli by sme funkciám podśuvať ID zombie a potom daného zombie nájsť v poli `zombies` podľa ID.
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
 
-# Vyskúšaj si to sám
-## Put it to the test 
+## Vyskúšaj si to sám
 
 1. Začni tým že definuješ funkciu `_triggerCooldown`. Tá bude príjmať 1 argument, `_zombie` typu `Zombie storage`. Funkcia by mala byť  `internal`.
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
 
 2. Telo funkcie by malo nastaviť `_zombie.readyTime` na hodnotu `uint32(now + cooldownTime)`. 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
 
 3. Ďalej, vytvor funkciu s naźvom `_isReady`. Táto funkcia bude taktiež príjmať argument typu `Zombie storage` s názvom `_zombie`. Bude to `internal view`  funkcia a vracať bude hodnotu typu `bool`.
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
 
 4. Telo funkcie by malo vracať `(_zombie.readyTime <= now)`. Tento výraz bude vyhodnotený buď na hodnotu `true` alebo `false`. Táto funkcia nám povie, či už ubehlo dostatočné množstvo času od posledného kŕmenia.
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.

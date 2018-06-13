@@ -173,19 +173,14 @@ material:
 ---
 
 Super! Náš zombie ma teraz funkčný odpočinkový časovač.
-Great! Our zombie now has a functional cooldown timer.
 
 Ďalej ideme pridať pár pomocný metód. Vytvorili sme pre teba nový subor s názvom `zombiehelper.sol`, ktorý importuje `zombiefeeding.sol`. To nám pomôže udržať kód dobre zorganizovaný.
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
 
 Poďme spraviť úpravy, aby naši zombie získali špeciálne vlasnosti po dosiahnutí určitého levelu. Než to spravíme, musíme sa najprv naučiť niečo viac o funkčných modifikátoroch.
-Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
 
 ## Funkčné modifikátory s argumentami
-## Function modifiers with arguments
 
 Doposiaľ sme videli len jednoduchý príklad modifikátor - `onlyOwner`. Avšak funkčné modifikátory môžu príjmať aj argumenty. Napríklad:
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
 
 ```
 // Mapovanie ktoré udržuje vek užívateľa:
@@ -204,18 +199,12 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 ```
 
 Ako vidíš, modifikátor `olderThan` príjma arugmenty rovnako ako obyčajná funkcia. A je to práve funkcia `driveCar` ktorá modifikátoru argument posiela. 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
 
 Poďme skúsiť spraviť náš vlastný `modifier` ktorý bude používať `level` atribút zombie, aby obmedzil prístup ku špeciálnym zombie schopnostiam.
-Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
 
-# Vyskúšaj si to sám
-## Put it to the test
+## Vyskúšaj si to sám
 1. V kontrakte `ZombieHelper` vytvor `modifier` s názvom `aboveLevel`. Bude príjmať dva argumenty, `_level` (typu `uint`) a `_zombieId` (taktiež `uint`).
-1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
 
 2. Telo modifikátora by alo skontrolovať že `zombies[_zombieId].level` je viac alebo sa rovná `_level`.
-2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
 
 3. Pamataj na to, že posledný riadok modifikátoru musí byť `_;`, aby v prípade splnenej podmienky pokračovalo vykonávanie užívateľom volanej funkcie.
-3. Remember to have the last line of the modifier call the rest of the function with `_;`.

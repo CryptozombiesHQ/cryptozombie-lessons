@@ -178,18 +178,13 @@ material:
 ---
 
 Teraz pri vytváraní pár funkcií použijeme náš nový modifikátor `aboveLevel`  
-Now let's use our `aboveLevel` modifier to create some functions.
 
 Naša hra bude mať obsahovať stimuly aby mali ľudia motiváciu levelovať svojich zombie:
-Our game will have some incentives for people to level up their zombies:
 
-- Pre zombie od levelu 2 a vyššie, užívatelia budú mať možnosť im nastaviť meno
-- Pre zombie od levelu 20 a vyššie, užívatelia im budú môcť dať vlastné DNA
-- For zombies level 2 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+- Pre zombie od levelu 2 a vyššie, užívatelia budú mať možnosť im nastaviť meno.
+- Pre zombie od levelu 20 a vyššie, užívatelia im budú môcť dať vlastné DNA.
 
 Tieto funkcie implemetnuje v kóde nižšie. Pre referenciu, tu je ukážka kódu z predchádzajúcej lekcie:
-We'll implement these functions below. Here's the example code from the previous lesson for reference:
 
 ```
 // Mapovanie ktoré obstahuje vek užívateľov
@@ -208,16 +203,11 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 ```
 
 ## Vyskúšaj si to sám
-## Put it to the test
 
 1. Vytvor funkciu s názvom `changeName`. Bude príjmať 2 argumenty:  `_zombieId` (typu `uint`), and `_newName` (typu `string`). Nezabudni spraviť túto funkciu `external`. Taktiež by mala používať `aboveLevel` modifikátor, ktorému by mala podsunúť parameter `_level` s hodnotou `2`. (taktiež však nezabudni podsunúť parameter `_zombieId`).
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
 2. V tejto funkcii najprv skontrolujeme že  `msg.sender` je rovný `zombieToOwner[_zombieId]`. Použi na to `require`.
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 
 3. Potom v tejto funkcii priraď `zombies[_zombieId].name` hodnotu  `_newName`.
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
 
 4. Vytvor ďalšiu funkciu s názvom `changeDna` pod funkciou  `changeName`. Jej definícia a obstah bude skoro identický ako `changeName`, s rozdielom že druhý argument bude `_newDna` (typu `uint`). Ďalší rozdiel bude v hodnote argumentu `_level` poslaného jej modifikátoru `aboveLevel` - hodnotu tohoto argumentu nastavíme na `20`. No a samozrejme, namiesto zmeny mena zombie v tejto funkcií nastavíme hodnotu `dna` daného zombie na hodnotu rovnú `_newDna`.
-4. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
