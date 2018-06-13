@@ -114,7 +114,6 @@ material:
       }
 ---
 Pokračujeme v predošlom príklade s `NumberInterface`. Po tom ako sme definovali rozranie ako: 
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
 
 ```
 contract NumberInterface {
@@ -123,7 +122,6 @@ contract NumberInterface {
 ```
 
 Teraz ho môžeme použiť v našom kontrakte nasledovne:
-We can use it in a contract as follows:
 
 ```
 contract MyContract {
@@ -134,7 +132,6 @@ contract MyContract {
 
   function someFunction() public {
     // Teraz môžme zavolať `getNum` toho kontraktu
-    // Now we can call `getNum` from that contract:
     uint num = numberContract.getNum(msg.sender);
     // ... a niečo ďalej robiť s hodnotou `num` ktorú sme z neho obdržali 
   }
@@ -142,13 +139,9 @@ contract MyContract {
 ```
 
 Takýmto sposobom, náš kontrakt može pracovať s iným kontraktom ktorý je na Ethereum blockchain, pokiaľ daný kontrakt odhaľuje svoje funkcie ako `public` alebo `external`.
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
 
 # Vyskúšaj si to sám
-# Put it to the test
 
 Poďme nastaviť náš kontrakt tak, aby čítal dáta z CryptoKitties smart kontraktu.
-Let's set up our contract to read from the CryptoKitties smart contract!
 
 1. Uložil som pre teba adresu CryptoKitties kontraktu do kódu, konkrétne do premennej pomenovanej `ckAddress`. Na ďalšom riadku vytvor rozhranie `KittyInterface` pomenované `kittyContract` . Inicializuj ho adresou `ckAddress` - presne ako sme to spravili na príklade s `numberContract` vyššie.
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.

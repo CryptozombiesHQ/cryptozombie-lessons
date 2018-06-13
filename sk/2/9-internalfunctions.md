@@ -103,27 +103,20 @@ material:
 ---
 
 **Kód ktorý z našej predošlej lekcie obstahuje chybu!**
-**The code in our previous lesson has a mistake!**
 
 Ak sa ho pokúsiš skompilovať, kompilátor vyhodí error.
-If you try compiling it, the compiler will throw an error.
 
 Problém je ten, že sme sa pokúsili zavolať funkciu `_createZombie` z `ZombieFeeding`, no  `_createZombie` je deklarovaná ako `private` vo vnútri `ZombieFactory`. To znamená, že žiadny z kontraktov dediacich z `ZombieFactory` k tejto funkcii nebude mať prístup. 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
 
 ## Internal a External
 
 Okrem možných kategorií viditeľnosti funkcií  `public` a `private` existujú dve ďalšie možnosti: `internal` a `external`.
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
 
 `internal` je to isté ako `private`, no s tým rozdielom, že je takáto funkcai bude prístupná ja kontraktom ktoré od kontraktu dedia. **(Hej, to znie ako to čo potrebujeme!)**
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
 
 `external` je podobné ako `public`, no s rozdielom že takáto funkcia bude môcť byť zavolaná IBA mimo kontraktu - nebude môcť byť zavolana z ostatných funkcií rovnakého kontraktu. O tom, kedy sa hodí použiť `external` versus `public` si povieme neskôr.
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
 
-Na deklaráciu `internal` alebo `external` funkcií sa používa syntax rovnaká ako pre `private` a `public` funkcie.
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+Na deklaráciu `internal` alebo `external` funkcií sa používa syntax rovnaká ako pre `private` a `public` funkcie:
 
 ```
 contract Sandwich {
@@ -146,10 +139,7 @@ contract BLT is Sandwich {
 ```
 
 # Vyskúšaj si to sám
-# Put it to the test
 
 1. Zmeň  `_createZombie()` z `private` na `internal` aby k nej ostatné kontrakty získali prístup.
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
 
-  Rovno sme ti prepli fokus naspäť na správny tab, `zombiefactory.sol`.
-  We've already focused you back to the proper tab, `zombiefactory.sol`.
+  Rovno sme ťa prepli na tab súboru, v ktorom musíš spraviť zmenu - `zombiefactory.sol`.
