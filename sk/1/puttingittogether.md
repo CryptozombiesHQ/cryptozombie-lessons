@@ -64,15 +64,15 @@ material:
       }
 ---
 
-Náš generátor nahodných zombie je takmer dokončený. Poďme vytvoriť verejnú funkciu ktorá to všetko prepojí dohromady.
+Náš generátor nahodných zombie je takmer dokončený. Poďme vytvoriť verejnú funkciu ktorá to všetko prepojí dokopy.
 
-Teraz ideme vytvoriť public funkciu ktorá príjma vstup vo forme mena zombie. Na základe mena potom vytvorí nového zombie s náhodným DNA. 
+Teraz ideme vytvoriť verejnú funkciu ktorá príjma vstup vo forme mena zombie. Na základe mena potom vytvorí nového zombie s náhodným DNA. 
 
 # Vyskúšaj si to sám
 
-1. Vytvor `public` funkciu pomenovanú `createRandomZombie`. Táto bude príjmať jediný parameter `_name` (typu `string`). _(Poznámka: Deklaruj túto funkciu `public` rovnkým spôsobom ako si doposiaľ deklaroval ostatné funkcie `private`)_ 
+1. Vytvor `public` funkciu pomenovanú `createRandomZombie`. Tá bude príjmať jediný parameter `_name` (typu `string`). _(Poznámka: Deklaruj túto funkciu `public` rovnkým spôsobom, akým si doposiaľ deklaroval ostatné funkcie `private`)_ 
 
-2. Prvý riadok funkcie by mal zavolať funkciu `_generateRandomDna` s podsunutým argumentom `_name` a uložiť výsledok v `uint`e pomenovanom `randDna`. 
+2. Prvý riadok funkcie by mal zavolať funkciu `_generateRandomDna` s podsunutým argumentom `_name` a uložiť výsledok v `uint`e s názvom `randDna`. 
 
 3. Druhý riadok by mal zavolať funkciu  `_createZombie` a predať jej argumenty `_name` a `randDna`.
 

@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Náš kontrakt je takmer hotový. Poďme ešte pridať **event** . 
+Náš kontrakt je takmer hotový. Poďme ešte pridať **udalosti**.
 
-**Udalosti** (**_Events_**) sú spôsob akým náš kontrakt môže dať vedieť front endu tvojej aplikácie vedieť, že sa v tvojom kontrakte niečo nastalo. Tvoja aplikácia može sledovať vyvolanie určitých typov udalostí a reagovať keď nastanú. 
+**Udalosti** (**_Events_**) sú spôsob, ako kontrakt môže dať vedieť front endu tvojej aplikácie vedieť, že sa v tvojom kontrakte niečo nastalo. Tvoja aplikácia može sledovať vyvolanie určitých typov udalostí a reagovať keď nastanú. 
 
 Príklad:
 
@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Front end tvojej aplikácie može sledovať vyvolanie tejto udalosti. Javascriptová implementácia by vyzerala zhruba takto:
+Front end tvojej aplikácie môže sledovať vyvolanie tejto udalosti. Javascriptová implementácia by vyzerala zhruba takto:
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
@@ -101,10 +101,10 @@ YourContract.IntegersAdded(function(error, result) {
 
 # Vyskúšaj si to sám
 
-Chceme aby náš kontrakt dal vedieť našej aplikácií zakaždým keď sa vytvorí nový zombie. Naša front end aplikácia s tak sama môže obnoviť a nového zombie zobraziť.
+Chceme, aby náš kontrakt dal vedieť našej aplikácií zakaždým, keď sa vytvorí nový zombie. Front end našej aplikácie sa tak sám môže obnoviť a zobraziť nového zombie.
 
-1. Deklaruj `event` pomenovanú `NewZombie`. Táto udalosť by mala príjmať argumenty `zombieId` (typu `uint`), `name` (typu `string`) a `dna` (typu `uint`).
+1. Deklaruj udalosť (`event`) pomenovaný `NewZombie`. Táto udalosť by mala príjmať argumenty `zombieId` (typu `uint`), `name` (typu `string`) a `dna` (typu `uint`).
 
-2. Uprav funkciu `_createZombie` ktora vyvolá udalosť `NewZombie` po tom čo pridá nového Zombie do poľa `zombies`.
+2. Uprav funkciu `_createZombie`, aby po pridaní nového Zombie do poľa `zombies` vyvolala udalosť `NewZombie`.
 
 3. K vyvolaniu tejto udalosti budeš potrebovať `id` vytvoreného Zombie. Volanie `array.push()` vracia naspať `uint` reprezentujúci dĺžku novéh poľa - nakoľko prvý prvok poľa má index `0`, hodnota `array.push() - 1` sa bude rovnať indexu práve pridaného Zombie. Výsledok výrazu `array.push() - 1` si ulož do `uint` s menom `id`, aby si ho potom mohol predať ako argument pri vyvolávaní udalosti `NewZombie` na ďalšom riadku.

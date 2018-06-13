@@ -50,7 +50,6 @@ material:
 ### Vytváranie nových štruktúr
 
 Spomínaš si na našu štruktúru `Person` z predchádzajúceho príkladu?
-Remember our `Person` struct in the previous example?
 
 ```
 struct Person {
@@ -61,8 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-Teraz sa naučíme ako vytvoriť nové štruktúry `Person` a ako ich pridať do poľa `people`.
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+Teraz sa naučíme, ako vytvoriť nové štruktúry `Person`, a ako ich pridať do poľa `people`.
 
 ```
 // vytvorme novú Person štruktúru
@@ -74,14 +72,13 @@ Person satoshi = Person(172, "Satoshi");
 people.push(satoshi);
 ```
 
-Tieto kroky možme taktiež skombinovať do jedného, aby sme udržali náš kód čistý:
-We can also combine these together and do them in one line of code to keep things clean:
+Tieto kroky môžme taktiež skombinovať do jedného, aby sme udržali kód čistejší:
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Všimnime si že `array.push()` pridáva nejaký prvok na **koniec** poľa, takže prvky poľa su zoradené v rovnakom poradí ako sme ich pridávali. Pozrime sa na nasledujúci príklad:
+Všimnime si, že `array.push()` pridáva prvok na **koniec** poľa. Prvky poľa su teda zoradené v rovnakom poradí, v akom sme ich pridávali. Pozrime sa na nasledujúci príklad:
 
 ```
 uint[] numbers;
@@ -89,12 +86,11 @@ numbers.push(5);
 numbers.push(10);
 numbers.push(15);
 // pole numbers vyzerá teraz takto [5, 10, 15]
-// numbers is now equal to [5, 10, 15]
 ```
 
 # Vyskúšaj si to sám
 
 Poďme upraviť našu funkciu cryptoZombie tak, aby vlastne niečo robila!
 
-1. Vyplňíme telo funkcie tak, aby vytvárila novú inštanciu `Zombie` a pridala ju do poľa `zombies`. Atribúty `name` a `dna` pre nového Zombie by mali byť použité z argumentov funkcie. 
-2. Spravme to všetko na jednom riadku, nech je náš kód čistý.
+1. Vyplňíme telo funkcie, aby vytvárila novú inštanciu `Zombie` a pridala ju do poľa `zombies`. Atribúty `name` a `dna` pre nového Zombie prepoužijeme z argumentov funkcie. 
+2. Toto všetko spravme na jednom riadku.

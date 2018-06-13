@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Tu je potrebné špecifikovať verziu Solidity
+      pragma solidity // 1. Tu je potrebné špecifikovať verziu Solidity
 
       //2. Tu vytvor kontrakt
     answer: > 
@@ -31,7 +31,7 @@ contract HelloWorld {
 
 ## Version Pragma
 
-Solidity zdrojový kod by mal začínať textom "version pragma" - je to deklarácia verzie Solidity kompilátoru, ktorý by mal byť použitý na kompiláciu našeho kontraktu. Je to mechanizmus ako predísť problémom v prípade pokusu o použitia budúcej verziu Solidity kompilátoru. V budúcnosti by sa totiž Solidity kompilátor zmeniť a interpretovať náš kód inak, v dôsledku čoho by náš kód prestal fungovať správne.  
+Zdrojový kód Solidity by mal začínať textom "version pragma". Je to deklarácia verzie Solidity kompilátoru, pre ktorý bol kód kontraktu napísaný. Je to mechanizmus ako predísť problémom v prípade pokusu o použitia budúcej verziu Solidity kompilátoru. V budúcnosti by sa totiž Solidity kompilátor mohol zmeniť a začat interpretovať náš kód inak. V dôsledku toho by náš kód mohol prestať fungovať správne.  
 
 Vyzerať to môže napríklad takto:  `pragma solidity ^0.4.19;` (v čase písania tohoto tutoriálu je najnovšou Solidity verziou 0.4.19). 
 
@@ -49,7 +49,7 @@ contract HelloWorld {
 
 Na to aby sme mohli vytvoriť našu Zombie armádu, poďme najprv vytvoriť základný kontrakt pomenovaný `ZombieFactory`.
 
-1. V textovom boxe vpravo špecifikuj že tvoj smart kontrakt je napísaný pre solidity `0.4.19`.
+1. V textovom boxe vpravo najprv špecifikuj verziu Solidity `0.4.19`.
 2. Vytvor prázdny kontrakt pomenovaný `ZombieFactory`.
 
-Ked budeš s úlohou hotový, klikni na "skontroluj odpoveď" v spodnej časti stránky. Ak sa pri plnení úlohy zasekneš, môžeš použiť tlačidlo "Nápoveda".
+Ked budeš s úlohou hotový, klikni na "Skontroluj Odpoveď" v spodnej časti stránky. Ak sa pri plnení úlohy zasekneš, použi tlačidlo "Nápoveda".

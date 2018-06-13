@@ -23,26 +23,26 @@ material:
       }
 ---
 
-Dobrá práca! Teraz keď už máme kostru našeho kontraktu, poďme sa naučiť ako sa Solidity správa k premenným.
+Dobrá práca! Teraz keď už máme kostru našeho kontraktu, poďme sa naučiť ako sa Solidity správa ku premenným.
 
 
-**Stavové premenné** su permanentne uložené v dátovom uložisku kontraktu. To znamená že su zapísané v Ethereum blockchaine. Zapisovanie do nich môžeš vnímať ako zapisovanie do databáze.
+**Stavové premenné** su permanentne uložené v dátovom uložisku kontraktu. To znamená, že su zapísané na Ethereum blockchaine. Zapisovanie do nich môžeš vnímať ako zapisovanie do databáze.
 
 ##### Príklad:
 ```
 contract Example {
-  // Hodnota tejto premennej bude permentne uložená v blockchain 
+  // Hodnota tejto premennej bude permentne uložená v blockchaine
   uint myUnsignedInteger = 100;
 }
 ```
 
-V tomto ukážkovom kontrakte sme deklarovali premennú `myUnsignedInteger` typu `uint` a nastavili sme jej hodnotu na 100.
+V tomto ukážkovom kontrakte sme deklarovali premennú `myUnsignedInteger` typu `uint`. Jej hodnotu sme nastavili na 100.
 
 ## Celé čísla bez znamienka: `uint`
 
-Dátový typ `uint` reprezentuje celé číslo bez znamienka, čo znamená že hodnoty ktoré môže nadobudnúť sú nezáporné. Existuje taktiež dátový typ `int` ktorý reprezentuje čisla so znamienkom.  
+Dátový typ `uint` reprezentuje celé číslo bez znamienka. To znamená že môže nadobudnúť len nezáporné hodnoty. Existuje taktiež dátový typ `int`, ktorý reprezentuje čisla so znamienkom.  
 
-> Poznámka: V Solidity je `uint` v skutočnosti len skratka pre `uint256`, 256 bitové bezznamienkové čislo. Je možné taktiež deklarovať uint-y s menším počtom bitov -  — `uint8`, `uint16`, `uint32`, atď.. Obecne je ale doporučené používať proste `uint`, až na určité špecifické prípady. O tých si povieme v neskorších lekciách.
+> Poznámka: V Solidity je `uint` v skutočnosti len skratka pre `uint256`, čo je 256 bitové bezznamienkové čislo. Je možné taktiež deklarovať uinty s menším počtom bitov - `uint8`, `uint16`, `uint32`, a podobne. Obecne je však doporučené, až na určité špecifické prípady, používať `uint`. O tých špeciálnych prípadoch si povieme v neskorších lekciách.
 
 # Vyskúšaj si to sám
 

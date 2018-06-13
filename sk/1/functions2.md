@@ -1,5 +1,5 @@
 ---
-title: Private / Public Funkcie
+title: Verejné a súkromné funkcie
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -47,11 +47,11 @@ material:
       }
 ---
 
-Pokiaľ nešpecifikujeme inak, viditelnosť funkcií je `public`. To znamená že ktokoľvek (a akýkoľvek iný kontrakt) môže takúto funkciu volať a spustiť jej kód.
+Pokiaľ nešpecifikujeme inak, viditelnosť funkcií je `public`. To znamená, že ktokoľvek (a akýkoľvek iný kontrakt) môže takúto funkciu volať a spustiť jej kód.
 
-To však samozrejme nie je vždy to čo chceme, a môže to spraviť náš kontrakt zranitelný voči útokom. Preto je dobrou praktikou vždy nastaviť viditelnosť našich funkcii na `private` a zmeniť na `public` až vo chvíli keď sa rozhodneme že je dobré aby s danou funkciou mohli pracovať ostatní.
+To však samozrejme nie je vždy to čo chceme a môže to spraviť náš kontrakt zranitelný voči útokom. Preto je dobrou praktikou vždy nastaviť viditelnosť našich funkcii na `private` a zmeniť na `public` až vo chvíli, keď sa rozhodneme že chceme aby funkciu mohli volať aj ostatní.
 
-Poďme sa pozrieť na to ako môžeme deklarovať privátnu funkciu.
+Poďme sa pozrieť na to, ako môžeme deklarovať súkromnú (`private`) funkciu.
 
 ```
 uint[] numbers;
@@ -63,10 +63,10 @@ function _addToArray(uint _number) private {
 
 To znamená, že jedine ostatné funkcie inštancie našeho kontraktu budú schopné volať túto funkciu a pridávať čísla do poľa `numbers`.
 
-Ako vidíš, používame kľučové slovo `private` za názvom funkcie. Podobne ako pre názvy funkčných parametrov, je konvenciou začínať názvy private funkcií s podtržítkom (`_`).
+Ako vidíš, používame kľučové slovo `private` za názvom funkcie. Podobne ako pre názvy funkčných parametrov, je konvenciou začínať názvy `private` funkcii s podtržítkom (`_`).
 
 # Vyskúšaj si to sám
 
-Funkcia našeho kontraktu `createZombie` má implicitne viditelnosť nastavenú na public - to znamená že ktokoľvek ju môže zavolat a vytvoriť nového Zombie v našom kontrakte. Poďme ju spraviť privátnu.
+Funkcia našeho kontraktu `createZombie` má implicitne viditelnosť nastavenú na `public`. Ktokoľvek ju môže zavolať a vytvoriť nového Zombie v našom kontrakte. Poďme ju spraviť súkromnú.
 
-1. Uprave `createZombie` tak aby bola privátnou funkciou. Nezabudni na konvenciu pri jej pomenovávání.
+1. Uprav `createZombie` tak, aby bola súkromnou (`private`) funkciou. Nezabudni na konvenciu pri pomenovávání súkromných funkcií.
