@@ -1,7 +1,7 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Nauč sa písať hry na Ethereum",
+        "tagLine": "Nauč sa písať hry na Ethéreu",
         "lesson": "Lekcia {lessonNum}",
         "chapter": "Kapitola {chapterNum}",
         "syncing": "Synchronizujem...",
@@ -27,15 +27,12 @@
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Presents",
+        "presents": "Prezentuje",
         "title": "Lekcia {lessonNum}: {title}",
-
-        "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
-        
+        "signInPrompt": "Od teraz sa budeš musieť prihlásiť, aby sme mohli ukladať tvoj postup a tvoju zombie armádu. Prosím, prihlás sa tlačidlom nižšie:",    
         "signInButton": "Prihlásiť sa",
         "levelUpText": "V tejto lekcií ideme navýšiť zobmie venegerovaných v predošlých lekciách",
         "missingZombieText": "Zdá sa, že bohužial nevlastníš zombie z lekcie {lessonNum}. Ak si tú lekciu ešte nedokončil, prosím, sprav tak, než budeš pokračovať:",
-        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
         "fixMissingZombieText": "Ak si už dokončil lekciu {lessonNum} a stále vidíš tento error, môžeš preskočiť na jej koniec a {generateNewZombie}.",
         "generateNewZombieLink": "vygeneruj nového zombie",
         "areYouReady": "Si pripravený začať?",
@@ -48,16 +45,16 @@
         "autosaveEnabled": "Automatické ukladanie aktivované",
         "resumeProgress": "Pokračuj v postupe",
         "showHint": "Nápoveda",
-        "nextChapter": "Ďalšia Kapitole",
+        "nextChapter": "Ďalšia Kapitola",
         "tryAgain": "Skúsiť Znovu",
-        "checkAnswer": "Skontroluj Odpoveď",
-        "showMeTheAnswer": "Ukáž Odpoveď",
-        "hideAnswer": "Skry Odpoveď"
+        "checkAnswer": "Skontrovať Odpoveď",
+        "showMeTheAnswer": "Ukázať Odpoveď",
+        "hideAnswer": "Skryť Odpoveď"
     },
     "lessonComplete": {
-        "shareLinksAction": "Alebo môžeš pre zdielanie stlačiť tlačidlo nižšie:",
-        "signIn": "Prihlás sa a ulož svoj postup Uložený",
-        "goToNextLesson": "Pokračuj do Ďalšej Lekcie",
+        "shareLinksAction": "Alebo môžeš pre zdieľanie použiť tlačidlo nižšie:",
+        "signIn": "Prihlás sa a ulož svoj postup",
+        "goToNextLesson": "Pokračovať na Ďalšiu Lekciu",
         "lesson1": {
             "header": [
                 "Gratulácia! Podarilo sa ti dokončiť CryptoZombies Lekciu 1"
@@ -149,7 +146,7 @@
                 "Medzičasom sa zapoj do konverzácií na {telegramLink}, alebo nás sleduj na Twittri {twitterLink}!"
             ],
             "zombieDesc": "Level {levelNum} CryptoZombie",
-            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 6 a získal som  Level 3.0 CryptoZombie 'The Phantom of Web3'! Pozri sa na moju armádu:"
+            "shareLinkText": "Práve som dokončil #CryptoZombies Lekciu 6 a získal som Level 3.0 CryptoZombie 'The Phantom of Web3'! Pozri sa na moju armádu:"
         }
     },
     "zombieBattle": {

@@ -1,5 +1,5 @@
 ---
-title: Wrapping It Up
+title: Hotovo!
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -11,21 +11,21 @@ material:
     answer: 1
 ---
 
-Gratulujem! Podarilo sa ti úspešne napísať tvoju prvý Web3.js front end aplikáciu, ktorá komunikuje so smart kontraktom.
+Gratulujeme!!! Podarilo sa ti úspešne napísať svoju prvý Web3.js front end aplikáciu komunikujúcu so smart kontraktom na blockchaine.
 
-Ako odmenu dostaneš nového zombie `The Phantom of Web3`! Je to zombie Level 3.0 (ako Web 3.0 😉), s maskou lýšky. Očekuj si ho tu vpravo.
+Ako odmenu dostaneš nového zombie `The Phantom of Web3`! Je to zombie Level 3.0 (ako Web 3.0 😉) s maskou lýšky. Očekuj si ho vpravo.
 
 ## Ďalšie kroky
 
 Táto lekcia bola účelovo len základná. Chceli sme ti ukázať hlavnú logiku ktorú musíš naimplementovať, aby tvoja aplikácia mohla komunikovať so smart kontraktom. Nechceli sme však stráviť príliš veľa času kompletnou implementáciou, pretože Web3.js oblasť kódu sa celkom opakuje. Aj keby sme pokračovali v implementácií dalšej funkcionality spojenej s web3, nič nové by sme sa už nenaučili.
 
-Preto sme nechali túto implementáciu pomerne strohú. Tu je zoznam nápadov vecí, ktoré by sme mohli ešte ďalej doimplementovať do našeho front endu. Ak chceš, nechaj sa inšpirovať a naprogramuj si Zombie hru s takýmito vylepšeniami:
+Preto sme nechali túto implementáciu pomerne strohú. Tu je zoznam nápadov, ktoré by sme mohli ešte ďalej doimplementovať do našeho front endu. Ak chceš, nechaj sa inšpirovať a naprogramuj si Zombie hru s takýmito vylepšeniami:
 
-1. Naimplemetuj funkcie pre  `attack`, `changeName`, `changeDna` a ERC721 funkcie `transfer`, `ownerOf`, `balanceOf`, atd. Implementácia týchto funkcií by bola identická so všetkými ostatnými `send` transakciami o ktorých sme doposiaľ hovorili.
+1. Naimplemetuj funkcie pre `attack`, `changeName`, `changeDna` a ERC721 funkcie `transfer`, `ownerOf`, `balanceOf`, atd. Implementácia týchto funkcií by bola identická so všetkými ostatnými `send` transakciami o ktorých sme doposiaľ hovorili.
 
-2. Implementácia administrátorského rozhrania, cez ktoré by si mohl volať funkcie `setKittyContractAddress`, `setLevelUpFee` a `withdraw`. Ani tieto funkcie by nemali nejakú špeciálnu logiku. Opäť by to boli funkcie veľmi pododbné tým, ktoré sme doposiaľ napísali. Mal by si sa uitiť, že tieto funkcie by boli volané z rovnakej Ethereum adresy, ako tej, z ktorej bol kontrakt nasadený.
+2. Implementácia administrátorského rozhrania, cez ktoré by si mohol volať funkcie `setKittyContractAddress`, `setLevelUpFee` a `withdraw`. Ani tieto funkcie by nemali nejakú špeciálnu logiku. Opäť by to boli funkcie veľmi pododbné tým, ktoré sme doposiaľ napísali. Mal by si sa uitiť, že tieto funkcie by boli volané z rovnakej Ethereum adresy, ako tej, z ktorej bol kontrakt nasadený.
 
-3. Ďalej máme pár nápadov na rozličné front end pohľady, ktoré by sa dali naprogramovať:
+3. Ďalej máme pár nápadov na rozličné stránku front endu, ktoré by sa mohli pridať:
 
   a. Stránka jedného individuálneho zombie. Na tejto stránke by bolo možné zistit detailné informácie o špecifickom zombie, stránka by mala permalink. Zobrazovala by vzhľad zombie, jeho meno, vlastníka (s linkom na profil účtu vlastníka), jeho pomer víťazstiev a prehier, atď.
 
@@ -49,7 +49,7 @@ Preto sme nechali túto implementáciu pomerne strohú. Tu je zoznam nápadov ve
 
 8. Pravdepodobne by sme taktiež mali pridať udalosť `Attack` do našeho smart kontraktu. Táto udalosť by zaznamenala adresu užívateľa ako `indexed` parameter, tak ako sme si o tom hovorili v predošlej kapitole. Toto by umožnilo notifikácie v reálnom čase, takže by si mohli pozrieť zombieho ktorý ich napadol a nejakým spôsobom reagovať.
 
-9. Ďalej by sme asi potrebovali naimplementovať určitú vyrovnávaciu pamäť na front end aplikácie, aby sme príliš nevyťažili Infuru s opakovanými dotazmi na rovnaké dáta. (Naša aktuálna implementácia `displayZombies` volá `getZombieDetails` pre každého jedného zombie, zakaždým keď obnovíme stránku - kdežto v skutočnosti by nám malo stačiť volať túto metódu len vtedy, keď je pridaný nový zombie do našej armády).
+9. Ďalej by sme asi potrebovali naimplementovať určitú vyrovnávaciu pamäť na front ende aplikácie, aby sme príliš nevyťažili Infuru opakovanými dotazmi na rovnaké dáta. (Naša aktuálna implementácia `displayZombies` volá `getZombieDetails` pre každého jedného zombie, zakaždým keď obnovíme stránku - kdežto v skutočnosti by nám malo stačiť volať túto metódu len vtedy, keď je pridaný nový zombie do našej armády).
 
 10. Chatovaciu miestnosť v reálnom čase, nech sa hráči môžu navzájom zastrašovat kto komu rozpráši armádu.
 
@@ -59,7 +59,7 @@ Kedže pre vytvorenie takéhoto webového rozrania by sme potrebovali napísať 
 
 > Poznámka: Napriek tomu že sú smart kontrakty decentralizované, náš front end pre interakciu s našou DAppkou by bol kompletne centralizovaný na nejakom webovom serveri.
 >
-> Každopádne, pomocou SDK, na akom pracujeme v <a href="https://medium.com/loom-network/loom-network-is-live-scalable-ethereum-dapps-coming-soon-to-a-dappchain-near-you-29d26da00880" target=_blank>Loom Network</a>, budeš už čoskoro schopný pobežať front endy ako je tento na svojej vlastne DappChaine, namiesto centralizovaného serveru. Tým pádom, medzi Ethereum a Loom DAppChain bude tvoja DAppka 100% bežať len na blockchain.
+> Každopádne, pomocou SDK na akom pracujeme v <a href="https://medium.com/loom-network/loom-network-is-live-scalable-ethereum-dapps-coming-soon-to-a-dappchain-near-you-29d26da00880" target=_blank>Loom Network</a>, budeš už čoskoro schopný pobežať front endy ako je tento na svojej vlastne DappChaine, namiesto centralizovaného serveru. Tým pádom, medzi Ethereum a Loom DAppChain bude tvoja DAppka 100% bežať len na blockchain.
 
 ## Záver
 
@@ -67,4 +67,4 @@ Týmto si dovŕšil Lekciu 6. Teraz máš všetky vedomosti potrebné na vytvore
 
 V ďalšej lekcii sa pozrieme na záverečný kúsok skladačky - nasadzovanie smart kontraktov na Ethereum blockchain.
 
-Klikni na "Ďalšia Kapitola" pre vyzdvihnutie tvojej odmeny!
+Klikni na "Ďalšia Kapitola" pre vyzdvihnutie svojej zaslúženej odmeny!
