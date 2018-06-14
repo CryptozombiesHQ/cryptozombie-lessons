@@ -257,13 +257,13 @@ material:
         }
       }
 ---
-Teraz keď sme naimplementovali scenár keď náš zombie súboj vyhrá, pozri me sa, čo sa stane ak náš zombie prehrá.
+Naimplementovali scenár keď náš zombie súboj vyhrá. Venujme sa teraz alternatívnej možnosti prehry.
 
-Ak náš zombie prehrá, v našej hre sa jeho level nezníži - proste sa zombiemu započíta prhra do `lossCount` atribútu, a odštartuje sa ich odpočinkový časovač. Kým časovač nedobehne, zombie nebude môcť útočiť.
+Ak náš zombie prehrá, v našej hre sa jeho level nezníži. Iba zombiemu započítame prehru do `lossCount` atribútu a odštartuje sa mu odpočinkový cooldown časovač. Kým časovač nedobehne, zombie nebude môcť znova útočiť.
 
 Aby sme túto logiku naimplementovali, budeme musiet použiť kľučové slovo `else`.
 
-`else`, podobne ako v Javascripte a iných jazykoch, sa používa nasledovne:
+`else` sa sa používa podobne ako v Javascripte a iných jazykoch:
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
@@ -281,4 +281,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   a. Pre `enemyZombie` zvýš atribút `winCount` o jedna.
 
-  c. Zavolaj funkciu `_triggerCooldown` na `myZombie`. Tá zabezpečí, že zombie môže útočiť len raz za deň. (Pamätaj, `_triggerCooldown` sa volá taktiež vo funkcií `feedAndMultiply`. Cooldown časovač odpočinky sa teda pre zombie spustí bez ohľadu na to či vyhrá alebo prehrá.)
+  c. Zavolaj funkciu `_triggerCooldown` na `myZombie`. Tá zabezpečí, že zombie môže útočiť len raz za deň. (Pamätaj, `_triggerCooldown` sa volá taktiež vo funkcií `feedAndMultiply`. Cooldown časovač odpočinku sa teda pre zombie spustí bez ohľadu na to či vyhrá, alebo prehrá.)

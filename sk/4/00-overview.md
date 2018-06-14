@@ -10,4 +10,4 @@ Nastal čas nechať tvojich zombie BOJOVAŤ!
 
 Ale zombie zápasy sa nedejú len tak pre nič za nič...
 
-V tejto lekcii spojíme mnoho konceptov, ktoré sme sa naučili v predchádzajúcich kaptilách, a postaviť na ich základe bojové funkcie pre našich zombie. Taktiež sa naučíme o takzvaných **payable** (**platitelných**) funkciách, a ako môžu naše DApp príjmať peniaze od užívateľov.
+V tejto lekcii spojíme mnoho konceptov, ktoré sme sa doposiaľ naučili v predchádzajúcich kaptolách. Na ich základe teraz vytvoríme základné bojové funkcie pre našich zombie. Taktiež sa naučíme o takzvaných **payable** (**platitelných**) funkciách. Dozvieme sa, ako môžu naše DAppky príjmať peniaze od užívateľov.

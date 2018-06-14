@@ -416,19 +416,19 @@ library SafeMath {
 }
 ```
 
-Ako prvé si všimneme nové kľučové slovo `library`. Knižnice označené `library` sú podobné ako kontrakty `contract`, no s pár rozdielmi. Knižnice nám umožnujú ich používať s kľučovým slovom `using`, ktoré automatický pripne funkcie knižnice na iné dátové typy:
+Ako prvé si všimneme nové kľučové slovo `library`. Knižnice označené `library` sú podobné ako kontrakty `contract`, no s pár rozdielmi. Knižnice môžme používať prostredníctvom kľučového slova `using`, ktoré automaticky napojí funkcie knižnice na iné dátové typy:
 
 ```
 using SafeMath for uint;
-// teraz môžme používať tieto funkcie na akomkoľvek uinte
+// teraz môžme používať SateMath funkcie na uintoch
 uint test = 2;
 test = test.mul(3); // test now equals 6
 test = test.add(5); // test now equals 11
 ```
 
-Všimnite si, že `mul` a `add` funkcie v deklarácií vyžadujú dva argumenty. Keď však tieto funkcie potom používame, do zátvoriek píšeme len jeden argument. To preto, lebo prvý argument je automaticky doplnený uintom, na ktorom samotnú funkciu voláme. 
+Všimni si, že `mul` a `add` funkcie v deklarácií vyžadujú dva argumenty. Keď však tieto funkcie potom používame, do zátvoriek píšeme len jeden argument. To preto, lebo prvý argument je automaticky doplnený uintom, na ktorom funkciu voláme. 
 
-Poďme sa pozrieť ako vyzerá kód `add` funkcie, nech vieme čo SafeMath vlastne robí:
+Poďme sa pozrieť ako vyzerá kód `add` funkcie, nech vieme čo SafeMath pod kapotou vlastne robí:
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -438,15 +438,15 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 }
 ```
 
-`add` v podstate len sčíta dva `uint`y operátorom `+`. Čo však obsauje naviac je `assert`, ktorý zaručuje že suma týchto dvoch čísel je vačšia, ako hodnota prvého argumentu. To nás zachráni od pretečenia.
+`add` v podstate len sčíta dva `uint`y operátorom `+`. Čo však obsahuje naviac je `assert`, ktorý zaručuje že suma týchto dvoch čísel je vačšia ako hodnota prvého argumentu. To nás zachráni od pretečenia.
 
-`assert` je podobný ako `require` tým, že v prípade že je výraz vo vnútri nepravdivý, vyhodí error. Rozdiel medzi `assert` a `require` je však ten, že `require` vráti užívateľovi zvyšok gasu, zatiaľ čo `assert` tak nespraví. Takže vo vačšine prípadov by si mal používať vo svojom kóde `require`. `assert` sa typicky používa len na ošetrenie situácií, kedy by sa malo niečo v kontrakte strašne pokaziť (napríklad `uint` pretečenie).   
+`assert` je podobný ako `require` tým, že v prípade že je výraz vo vnútri nepravdivý, vyhodí error. Rozdiel medzi `assert` a `require` je však ten, že `require` vráti užívateľovi zvyšok gasu, zatiaľ čo `assert` tak nespraví. Takže vo vačšine prípadov by si mal používať vo svojom kóde `require`. `assert` sa používa typicky len na ošetrenie situácií, kedy by sa šlo v kontrakte niečo strašne pokaziť (napríklad `uint` pretečenie).   
 
-Takže ak to v jednoduchosti zhrnieme, `add`, `sub`, `mul`, a`div` sú SafeMath funkcie, ktoré vykonavajú 4 základné matematické operácie, no vyhodia error v prípade pretečenia alebo podtečenia. 
+V jednoduchosti, `add`, `sub`, `mul`, a`div` sú SafeMath funkcie, ktoré vykonavajú 4 základné matematické operácie, no vyhodia error v prípade pretečenia alebo podtečenia. 
 
 ### Použitie SafeMath v našom kóde
 
-Aby sme predišli pretečeniu a podtečeniu, musíme v našom kóde nájsť miesta kde používame operátory `+`, `-`, `*`, alebo `/`, a nahradiť ich `add`, `sub`, `mul`, `div`.
+Aby sme predišli pretečeniu a podtečeniu, musíme v našom kóde nájsť miesta kde používame operátory `+`, `-`, `*` alebo `/`, a nahradiť ich `add`, `sub`, `mul`, `div`.
 
 Takže napríklad, namiesto:
 
@@ -454,7 +454,7 @@ Takže napríklad, namiesto:
 myUint++;
 ```
 
-By sme spravili:
+By sme použili:
 
 ```
 myUint = myUint.add(1);
@@ -462,7 +462,7 @@ myUint = myUint.add(1);
 
 ## Vyskúšaj si to sám
 
-V kontrakte `ZombieOwnership` máme dve miesta kde používame matematické operácie. Poďme ich zmeniť za SafeMath funkcie.
+V kontrakte `ZombieOwnership` sú dve miesta kde používame matematické operácie. Poďme ich zmeniť za SafeMath funkcie.
 
 1. Nahraď `++` SafeMath metódou.
 

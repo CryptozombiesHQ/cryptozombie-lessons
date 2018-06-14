@@ -224,15 +224,15 @@ Skvelé. Poďme teraz vymyslieť ako budú fungovať súboje.
 
 Všetky dobré hry v sebe majú štipku náhondosti. Takže ako vygenerujeme náhodné čisla v Solidity?
 
-Skutočná odpoveď v tomto prípade je tá, že sa to v Solidity zatiaľ spraviť nedá. Aspoň nie úplne bezpečne.
+Skutočná odpoveď je v tomto prípade taká, že sa to v Solidity zatiaľ spraviť nedá. Aspoň nie úplne bezpečne.
 
-Poďme sa pozrieť na to, prečo je to tak.
+Pozrieme na to, prečo je to tak.
 
 ## Generovanie náhodných čísel pomocou `keccak256`
 
 Najlepším zdrojom náhodnosti v Solidity je hash funkcia `keccak256`.
 
-Na to aby sme generovali náhodné čísla by sme mohli skúsiť spraviť niečo takéto:
+Na generovanie náhodných čísel by sme mohli skúsiť spraviť niečo takéto:
 
 ```
 // Vygeneruj náhodné čislo medzi 1 a 100
@@ -242,37 +242,37 @@ randNonce++;
 uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 ```
 
-Tento kód vezme aktuálnu časovú známku z `now`, ďalej hodnotu `msg.sender` a číslo `nonce` (to je číslo, ktoré sa bude zakaždým inkrementovať, aby sa predišlo tomu že by sme spustili funkciu s rovnakými vstupnými parametrami dva krát). 
+Tento kód vezme aktuálnu časovú známku z `now`, hodnotu `msg.sender` a číslo `nonce` (to je číslo, ktoré sa bude zakaždým inkrementovať, aby sa predišlo situácii, kde by sme spustili funkciu s rovnakými vstupnými parametrami dva krát). 
 
-Potom tento kód použije `keccak` a skonvertuje kombináciu všetkých vstupov na náhodný hash, hodnotu toho potom skonvertuje na celé čislo `uint`. Na záver z toho čísla vypočíta `% 100` aby sme dostali len posledné dve cifry, čím konečne dostávame náhodné číslo v rozsahu 0 až 99. 
+Potom tento kód použije `keccak` a skonvertuje kombináciu všetkých vstupov na náhodný hash. Jeho hodnotu skonvertuje na celé čislo `uint`. Na záver z tohoto čísla vypočítame `% 100`, aby sme dostali len posledné dve cifry. Tým konečne dostávame náhodné číslo v rozsahu 0 až 99. 
 
 ### Táto metóda je zraniteľná útokom nečestného uzlu
 
-Keď v Ethereum zavoláš funkciu kontraktu, rozpošle sa uzlom (serverom ktoré overuju transakcie) vo forme **_transakcie_**. Uzly v sieti pozbierajú niekoľko takýchto transakcií a pokúsia sa ako prvé vyriešiť výpočtovo náročný matematický problém, známy ako "Proof of Work". Keď ho vyriešia, zverejnia do Ethereum siete skupinu transakcií spolu s ich vypočítaným riešením Proof of Work (PoW) vo forme **_bloku_**.
+Keď v Ethéreu zavoláš funkciu kontraktu, rozpošle sa Ethéreum uzlom (serverom ktoré overujú transakcie) vo forme **_transakcie_**. Uzly v sieti pozbierajú niekoľko takýchto transakcií a pokúsia sa ako prvé vyriešiť výpočtovo náročný matematický problém, známy ako "Proof of Work". Keď ho vyriešia, zverejnia na Ethéreum sieť skupinu transakcií spolu vypočítaným riešením Proof of Work (PoW) vo forme **_bloku_**.
 
-Až potom uzol vyrieši PoW, ostatné uzly sa prestanú počítať PoW, overia že list transakcií ktoré zverejnil úspešný uzol je validný, akceptujú nový blok a začnú sa snažiť vyriešiť PoW pre ďalší blok.
+Po tom čo jeden uzol vyrieši PoW, ostatné uzly sa prestanú počítať atuálny PoW, ale overia že list transakcií ktoré zverejnil úspešný uzol je validný, akceptujú nový blok a začnú sa snažiť vyriešiť PoW pre ďalší blok.
 
 **To je to čo robí našu generáciu nahodný čísel zraniteľnou**
 
-Dajme tomu že by sme spravili kontrakt na "hádzanie si mincou". Ak spadne hlava, tvoje peniaze sa zdvojnásobia, v opačnom prípade stratíš všetko. Dajme tomu že tento kontrakt používa funkciu na generovanie náhodných čisel ktorú sme ukázali vyššie na to, aby rozhodol ktorá strana mince spadla (`random >= 50` bude hlava, `random < 50` bude znak).
+Dajme tomu, že by sme spravili kontrakt na "hádzanie si mincou". Ak spadne hlava, tvoje peniaze sa zdvojnásobia, v opačnom prípade stratíš všetko. Dajme tomu že tento kontrakt používa funkciu na generovanie náhodných čisel ktorú sme ukázali vyššie k tomu, aby rozhodol, ktorá strana mince spadla (`random >= 50` bude hlava, `random < 50` bude znak).
 
-Keby som v Ethereum sieti bežal svoj vlastný uzol, mohol by som zverejniť transakciu **iba pre moj uzol** a rozhodnúť sa ju nezdieľat s ostatnými. Potom by som mohol hádzať v kontrakte mincou a sledovať či sa mi hod podarilo vyhrať. Ak by som prehral, túto transakciu by som sa proste rozhodol nezačleniť do ďalšieho bloku transakcií na ktorom pracujem. Toto by som mohol robiť do nekonečna, až by sa mi nakoniec podarilo víťazne hodiť mincou, takúto transakciu by som začlenil do ďalšieho bloku a profitoval.
+Keby som v Ethéreum sieti bežal svoj vlastný uzol, mohol by som zverejniť transakciu **iba pre moj uzol** a rozhodnúť sa ju nezdieľat s ostatnými. Potom by som mohol v kontrakte opakovane hádzať mincou a sledovať, či sa mi podarilo hod vyhrať. Ak by som prehral, túto transakciu by som sa proste rozhodol nezačleniť do ďalšieho bloku transakcií na ktorom pracujem. Toto by som mohol robiť do nekonečna, až by sa mi nakoniec podarilo mincou víťazne hodiť. Takúto transakciu by som už  začlenil do ďalšieho bloku a profitoval.
 
 ## Tak ako bezpečne vygenerujeme náhodné čisla na Ethereum?
 
 Pretože všetok obsah blockchainu je viditeľný všetkým zučastneným, je to náročný problém, a jeho riešenie je nad rámec tohoto tutoriálu. Môžeš sa o tom dočítať viacej <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>v tomto StackOverflow vlákne</a>. Jeden z nápadov je používať tzv. **_oracle_** pre prístup k funkcii generujúcej náhodné čísla mimo Ethereum blockchain.
 
-Samozrejme že keďže by sme v sieti súťažili v overovaní ďalšieho bloku s desiatkami tísic iných Ethereum uzlov, šanca že by sa nám podarilo vyriešiť nasledujúci blok (ktorý by mohol obstahovať nami zmanipulovanú transakciu) by bola veľmi nízka. Potrebovali by sme veľké množstvo výpočtových zdrojov na to, aby sme z takejto zranitelnosti mohli s výnosom ťažiť. Keby však bola potenciálna odmena dostatočne veľká (keby bolo možné na hádzanie mincov staviť napríklad $100,000,000), stálo by to za pokus o útok.
+Samozrejme že keďže by sme v sieti súťažili v overovaní ďalšieho bloku s desiatkami tísic iných Ethereum uzlov, šanca že by sa nám podarilo vyriešiť nasledujúci blok (ktorý by mohol obstahovať nami zmanipulovanú transakciu) by bola veľmi nízka. Potrebovali by sme veľké množstvo výpočtových zdrojov na to, aby sme z tejto zranitelnosti mohli s výnosne ťažiť. Keby však bola potenciálna odmena dostatočne veľká (keby bolo možné na hádzanie mincov staviť napríklad $100,000,000), stálo by to za pokus o útok.
 
-Náhodná generácia čísel na Ethereu teda NIE JE bezpečná. Avšak pokiaľ na našej náhodnej funkcií nezáleží obrovské množstvo peňazí, v praxi je to tak že užívatelia pravdepodobne nebudú mať dostatok zdrojov na to aby ju napadli.
+Náhodná generácia čísel na Ethereu teda NIE JE bezpečná. Pokiaľ ale na našej náhodnej funkcií nezáleží obrovské množstvo peňazí, v praxi je to tak, že užívatelia pravdepodobne nebudú mať k dispozicii dostatok zdrojov na to aby ju napadli.
 
-Pretože v tomto tutoriále vytvárame len jednoduchú hru za účelom ukážky a v stávke nie su žiadne reálne peniaze, rozhodli sme sa akceptovať riziká ktoré so sebou nesie použitie takéhoto náhodného generátora. Generátor nebude celkom 100% bezpečný, no jeho hlavná výhoda je dá ľahko naimplementovať.
+Pretože v tomto tutoriále vytvárame len jednoduchú hru za účelom ukážky, a v stávke nie sú žiadne reálne peniaze, rozhodli sme sa akceptovať riziká ktoré so sebou nesie použitie takéhoto náhodného generátora. Generátor nebude celkom 100% bezpečný, no výhodou je jeho jednoduchá implementácia.
 
-V budúcich lekciách môžno pokryujeme tému **_oracle_** (bezpečný spôsob ako získať dáta z mimo Ethereum siete) na to, aby sme mohli získať náhodné čísla generované mimo blockchain. 
+V budúcich lekciách môžno pokryjeme tému **_oracle_** (bezpečný spôsob ako získať dáta z mimo Ethereum siete) na to, aby sme mohli získať náhodné čísla generované mimo blockchain. 
 
 ## Vyskúšaj si to sám
 
-Poďme teraz naimplementovať funkciu ktorá bude počítať náhodné čísla aby sme určili výsledky našich zombie zápasov, hoci to nebude zabezpečené voči útokom spomenutého typu.
+Poďme teraz naimplementovať funkciu, ktorá bude počítať náhodné čísla. Tú využijeme na určovanie výsledkov našich zombie zápasov, hoci nebude zabezpečené voči útokom spomenutého typu.
 
 1. Daj svojmu kontraktu `uint` s názvom `randNonce` a nstav ho na hodnotu `0`.
 
@@ -280,4 +280,4 @@ Poďme teraz naimplementovať funkciu ktorá bude počítať náhodné čísla a
 
 3. Funkcia by mala najprv inkrementovať `randNonce` (s použitím syntaxe `randNonce++`). 
 
-4. Na záver by mala (v jednom riadku kódu) vypočítať `keccak256` hash z hodnôt `now`, `msg.sender`, `randNonce`, výsledok pretopovať na `uint`. Z toho by sa mala spočítať hodnota `% _modulus` a výsledok bude vrátený (`return`) z funkcie. (Huh, to možno znie trochu zložito. Ak si sa v tom stratil, pozri sa na to ako sme generovali náhodné čísla na našom pôvodnom príklade hore - logika je veľmi podobná).
+4. Na záver by mala (v jednom riadku kódu) vypočítať `keccak256` hash z hodnôt `now`, `msg.sender`, `randNonce`, výsledok pretopovať na `uint`. Z toho by sa mala spočítať hodnota `% _modulus`, a tento výsledok bude vrátený (`return`) z funkcie. (Huh, to možno znie trochu zložito. Ak si sa v tom stratil, pozri sa na to ako sme generovali náhodné čísla na našom pôvodnom príklade hore - logika je veľmi podobná).

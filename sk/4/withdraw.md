@@ -244,14 +244,11 @@ material:
       }
 ---
 
-V predošlej kapitole sme sa naučili ako posielať kontraktu Ether. Čo sa však stane keď ho tam pošleš?
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
+V predošlej kapitole sme sa naučili ako posielať kontraktu Ether. Čo sa však stane, po tom čo ho úspešne pošleme?
 
-Po tom čo odošleš kontraktu Ether, bude prijatý Ether uložený na Ethereum účte tvojho kontraktu. Pokiaľ nepridáme funkciu na jeho výber, zostane tam Ether uviaznutý.
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract. 
+Po tom čo odošleš kontraktu Ether, tento Ether zostane uložený na účte tvojho kontraktu. Pokiaľ nepridáme funkciu na jeho výber, zostane tam Ether uviaznutý. 
 
-Funkciu na výber Etheru môžme napísať takto:
-You can write a function to withdraw Ether from the contract as follows:
+Funkciu na výber Etheru môžeme napísať takto:
 
 ```
 contract GetPaid is Ownable {
@@ -261,29 +258,29 @@ contract GetPaid is Ownable {
 }
 ```
 
-Všímni si že používame `owner` a `onlyOwner`  z `Ownable` kontraktu, za predpokladu že bol naimportovaný. 
+Ber na vedomie, že v tomto príklade používame `owner` a `onlyOwner` z `Ownable` kontraktu (za predpokladu že bol naimportovaný). 
 
-Ether môžeš odoslať na inú adresu pomocou funkcie `transfer` a `this.balance` ti zase povie, koľko Etheru je momentálne uloženého na adrese kontraktu. Takže ak napríklad 100 užívateľov pošle našemu kontraktu 1 Ether, `this.balance` sa bude rovnať 100 Ether.
+Ether môžeš odoslať na inú adresu pomocou funkcie `transfer`. Premenná `this.balance` ti zase povie, koľko Etheru je momentálne uloženého na adrese kontraktu. Takže napríklad, ak 100 užívateľov pošle našemu kontraktu 1 Ether, `this.balance` sa bude rovnať 100 Ether.
 
-Funkciu `transfer` môžeš používať na to, aby si nejaký Ether z kontraktu previedol na iný účet. Môžeš mať napríklad funkciu ktorá prevedie akýkoľvek Ether, ktorý obdržala v transakcii naviac, naspať odosielateľovi transakcie. 
+Funkciu `transfer` môžeš používať na to, aby si nejaký Ether z kontraktu previedol na ľubovolný iný účet. Môžeš mať napríklad funkciu ktorá prevedie akýkoľvek Ether ktorý obdržala v transakcii extra, naspať odosielateľovi transakcie. 
 
 ```
 uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-Prípadne v kontrakte s kupcom a predávajúcim by si si mohol do kontraktu uložiť adresu predajcu, a až by sa niekto rozhodol kúpiť predmet ktorý predáva, preposlal by si mu poplatok za predmet od kupcu takto: `seller.transfer(msg.value)`. 
+V kontrakte s kupcom a predávajúcim by si si zase mohol do kontraktu uložiť adresu predajcu, a až by sa niekto rozhodol kúpiť predmet ktorý predáva, preposlal by si predajcovi poplatok za predmet od kupcu takto: `seller.transfer(msg.value)`. 
 
-Toto bolo pár príkladov, čo robí programovanie na Ethereum fakt cool - môžeme vytvárať decentralizované trhy, ktoré nie su nikým centrálne riadené.
+Toto bolo pár príkladov, čo robí programovanie na Ethereum fakt cool - môžeme vytvárať decentralizované trhy, ktoré nie sú nikým centrálne riadené.
 
 ## Vyskúšaj si to sám
 
-1. Vytvor v našom kontrakte funkciu `withdraw`, ktorá by mala byť identická so spomínaým príkladom funkcie `GetPaid` vyššie.
+1. Vytvor funkciu `withdraw` ktorej kód bude identický s príkladom funkcie `GetPaid` vyššie.
 
-2. Cena Etheru sa za posledný rok znásobila 10x. 0.001 Etheru v čase písania tohoto tutoriálu predstavuje ekvivalent asi 1 doláru. Ak sa ale cena opäť zvýši 10x, 0.001 ETH sa už bude rovnať 10 dolárom. Naša hra by sa tak naraz stala oveľa drahšia na hranie.
+2. Cena Etheru sa za posledný rok znásobila 10x. V čase písania tohoto tutoriálu je 0.001 Etheru ekvivalent asi 1 doláru. Ak sa ale cena opäť zvýši 10x, 0.001 ETH sa už bude rovnať 10 dolárom. Naša hra by sa tak naraz stala oveľa drahšia na hranie.
 
   Preto je dobrý nápad si vytvoriť funkciu, ktorá umožní vlastníkovi kontraktu nastaviť hodnotu `levelUpFee`.
 
   a. Vytvor funkciu s naźvom `setLevelUpFee`. Bude príjmať argument `uint _fee`. Funkcia bude `external` a naviac bude používať modifikátor `onlyOwner`.
 
-  b. Funkcia by mala nastaviť `levelUpFee` rovný `_fee`.
+  b. Funkcia by mala nastaviť `levelUpFee` na hodnotu prijatého argumentu `_fee`.

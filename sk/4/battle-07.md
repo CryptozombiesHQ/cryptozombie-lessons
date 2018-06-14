@@ -269,13 +269,13 @@ material:
       }
 ---
 
-V našej zombie hre si chcem udržiavať prehľad o tom, koľko bytiek naši zombie vyhrali a prehrali. Jedna z možností je spraviť si niečo ako "zombie rebríček" uložený v kontrakte.
+V našej zombie hre si chcem udržiavať prehľad o tom, koľko bytiek zombie vyhrali a prehrali. Jedna z možností je spraviť si niečo ako "zombie rebríček" uložený v kontrakte.
 
-Tieto dáta by sme mohli uchovávať rozličnými spôsobmi v našej DApp - individuálne mappingy, štruktúra reprezentujúca leaderboard rebríček, prípadne v Zombie štruktúre samotnej. 
+Tieto dáta by sme mohli uchovávať rozličnými spôsobmi v našej DApp - individuálne mapovania, štruktúra reprezentujúca leaderboard rebríček, prípadne v Zombie štruktúre samotnej. 
 
-Každý zo spôsobov má svoje výhody i nevýhody, v závislosti od toho akým sposobom chcem s dátami pracovať. V tomto tutoriále budeme ukladať štatistiky do `Zombie` štruktúry pre jednoduchosť. Vytvoríme atribúty `winCount` a `lossCount`.
+Každý zo spôsobov má svoje výhody i nevýhody, v závislosti od toho, akým sposobom chceme s dátami pracovať. V tomto tutoriále budeme ukladať štatistiky do `Zombie` štruktúry dôvodu jednoduchosti. Vytvoríme v nej atribúty `winCount` a `lossCount`.
 
-Poďme preskočiť naspäť na `zombiefactory.sol` a pridať tieto vlastnosti `Zombie` štruktúre.
+Poďme preskočiť naspäť na `zombiefactory.sol` a pridať `Zombie` štruktúre tieto atribúty.
 
 ## Vyskúšaj si to sám
 
@@ -285,8 +285,8 @@ Poďme preskočiť naspäť na `zombiefactory.sol` a pridať tieto vlastnosti `Z
 
   b. `lossCount`, typu `uint16`
 
-  >Poznámka: Pamätaj, kedže je možné zabalíčkovať `uint`y do štruktúr, snažíme sa použiť take malé `uint`y ako sa len dá. `uint8` by bol prílíš malý, nakoľko 2^8 = 256. Keby náš zombie útočil pravidlene každý deň, tento `uint` by pretiekol za menej ako rok. Avšak 2^16 je 65536 - pokiaľ užívateľ nebude vyhrávať alebo prehrávať každý deň, po dobu 179 rokov, malo by to byť ok. 
+  >Poznámka: Pamätaj, kedže je možné zabalíčkovať `uint`y do štruktúr, snažíme sa použiť take malé `uint`y ako sa len dá. `uint8` by bol prílíš malý, nakoľko 2^8 = 256. Keby náš zombie útočil pravidlene každý deň, tento `uint` by pretiekol za menej ako rok. Avšak 2^16 je už 65536. Pokiaľ užívateľ nebude vyhrávať alebo prehrávať každodeňne po dobu 179 rokov, malo by to stačiť.
 
-2. Teraz keď už máš nové atribu'ty na `Zombie` štruktúre, musíme modifikovať definíciu `_createZombie()`.
+2. Teraz keď už máš nové atribúty na `Zombie` štruktúre, zostáva modifikovať definíciu `_createZombie()`.
 
   Uprav definíciu vytvárania nového zombie, tak aby každý novovytvorený zombie začínal s `0` výhrami a `0` prehrami.

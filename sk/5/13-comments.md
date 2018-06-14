@@ -455,45 +455,45 @@ Solidity kód naše zombie hry je konečne hotový!
 
 V ďalších lekciách sa pozrieme na to, ako nasadiť náš kontrakt na Ethereum, a ako sním pracovať z Javascriptu prostredníctvom Web3.js.
 
-Posledná vec, pred tým než ťa v Lekcii 5 necháme ísť: Poďme sa pobaviť o **komentovaní kódu**.
+Posledná vec ktorú preberieme, než ťa v Lekcii 5 necháme ísť je **komentovanie kódu**.
 
 ## Syntax pre komentáre
 
-Komentáre v Solidity su presne ako tie v JavaScripte. Doposiaľ si v CryptoZombies lekciách videl už pár príkladov komentárov na jednom riadku, napríklad:
+Komentáre v Solidity sú presne ako v JavaScripte. Doposiaľ si v CryptoZombies lekciách videl už pár príkladov komentárov na jednom riadku, napríklad:
 
 ```
 // Toto je komentár na jeden riadok. Je to taký odkaz pre seba samého (alebo pre druhých)
 ```
 
-Stačí pridať dvojité `//` kdekoľvek, a možeš komentovať. Je to tak jednoduché, že by si to mal robiť neustále.
+Stačí kdekoľvek pridať dvojité `//` a možeš komentovať. Je to tak ľahké, že by si to mal robiť stále.
 
-Ale viem na čo myslíš - jedno riadkové komentáre nestačia. Nakoniec, veď si aj rodený spisovateľ!
+Viem na čo myslíš - jedno riadkové komentáre nestačia. Nakoniec, však aj si rodený spisovateľ!
 
-Takže takto môžme robiť viac riadkové komentáre.
+Takto môžeme písať viac riadkové komentáre.
 
 ```
 contract CryptoZombies {
   /* Toto je komentár na niekoľko riadkov. Chcel by som ti poďakovať
     že si si našiel čas na tento programátorsky kurz. 
-    Viem že je zadarmo, a zadarmo aj navždy zostane, no aj tak
-    sa do neho snažíme dať naše srdcia a spraviť ho tak dobrý
-    ako len môže byť.
+    Je bezplatný, bezplantým navždy aj zostane, a predsa
+    sa do neho snažíme dať vliať naš srdcia a spraviť ho tak
+    dobrý, ako len môže byť.
 
-    Vec, že toto je staĺe len začiatok Blockchain vývoja.
+    Vedz, že toto je staĺe len začiatok Blockchain vývoja.
     Dotiahli sme to zatiaľ ďaleko, no existuje veľa spôsobov,
-    ako spraviť túto komunitu ešte lepšiu. Ak sme niekde spravili
-    chybu, môžeš nám pomôcť tým že otvríš nový pull request tu:
+    ako túto komunitu spraviť ešte lepšiu. Ak sme niekde spravili
+    chybu, môžeš nám pomôcť tým, že otvoríš nový pull request tu:
     https://github.com/loomnetwork/cryptozombie-lessons
 
     Ak máš nejaké nové nápady, komentáre, alebo chceš len pozraviť,
-    zastav sa v našej Telegram komunite t https://t.me/loomnetwork
+    zastav sa v našej Telegram komunite https://t.me/loomnetwork
   */
 }
 ```
 
-Špeciálne dobrou praktikou je komentovať svoj kód, a vysvetľovať očakávané správanie každej funkcie tvojho kontraktu. Tým pádom iný programátor (prípadne ty po 6 mesiacoch) bude schopný rýchlo vstrebať a pochopiť, ako sa má kontrakt zhruba správať bez toho, aby musel čítať kód.
+Je dobrou praktikou svoj kód komentovať a vysvetľovať očakávané správanie každej funkcie kontraktu. Tým pádom iný programátor (prípadne ty po 6 mesiacoch) bude schopný rýchlo vstrebať a pochopiť ako sa má kontrakt zhruba správať bez toho, aby musel dopodrobna čítať kód.
 
-Štandardným spôsob v Solidity komunite je používanie formátu zvaného **_natspec_**,, ktorý vyzerá nejako takto:
+Štandardným spôsob v Solidity komunite je používanie dokumentačného formátu zvaného **_natspec_**. Vyzerá nejako takto:
 
 ```
 /// @title Kontrakt pre základné matematické operácie
@@ -514,22 +514,22 @@ contract Math {
 
 `@title` (titul) and `@author` sú asi jasné.
 
-`@notice` vysvetľuje **užívateľovi kontraktu**, čo kontrakt / funkcia robí. `@dev` je pre vysvetlenie extra detailov pre programátorov
+`@notice` vysvetľuje **užívateľovi kontraktu**, čo kontrakt / funkcia robí. `@dev` je pre vysvetlenie implementačných detailov pre programátorov
 
 `@param` a `@return` sú pre popis toho, čo ktoré parametre a návratové hodnoty reprezentujú
 
-Všimni si že nie vždy musíme použiť všetky tieto natspec tagy pre každú jednu funkciu - všetky z týchto tagov su nepovinné. Ale je dobré zanechať aspoň `@dev` poznámku o tom, čo daná funkcia robí
+Všimni si, že nie vždy musíme použiť všetky tieto natspec tagy pre každú jednu funkciu. Všetky z týchto tagov sú nepovinné. Je ale dobré zanechať aspoň `@dev` poznámku o tom, čo funkcia robí
 
 # Vyskúšaj si to sám
 
-Ak si si ešte nevšimol, softvér kontrolujúci tvoje CryptoZombies riešenia ignoruje komentáre. Takže vlastne nemôžeme skontrolovať tvoj natsepc kód na konci tejto kapitoly ;)  
+Ak si si ešte nevšimol, softvér kontrolujúci tvoje CryptoZombies riešenia ignoruje komentáre. Takže vlastne nemôžeme skontrolovať tvoj natspec komentár na konci tejto kapitoly ;)  
 
-Každopádne, v tejto chvíli si už Solidity guru. V tejto lekcii ti budeme preto dôverovať, že to zvládneš!
+Každopádne, v tejto chvíli si už Solidity guru, takže ti budeme veriť že to hravo zvládneš!
 
-Tak či onak si to výskúšaj, pridaj pár natspect tagov pre `ZombieOwnership`:
+Tak či onak si to výskúšaj, pridaj pár natspec tagov pre `ZombieOwnership`:
 
-1. `@title` - teda niečo ako "Kontrakt ktorý manažuje prevod zombie vlastníctva"
+1. `@title` - teda niečo ako "Kontrakt ktorý manažuje prevod zombie vlastníctva".
 
-2. `@author` - Tvoje meno!
+2. `@author` - Tvoje meno.
 
-3. `@dev` - napríklad niečo ako: "V súlade s návrhom implementácioe ERC721 podľa OpenZeppelin"
+3. `@dev` - niečo v štýle: "V súlade s návrhom implementácie ERC721 podľa OpenZeppelin".

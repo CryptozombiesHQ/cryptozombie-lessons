@@ -249,9 +249,9 @@ material:
       }
 ---
 
-Teraz keď už máme `winCount` a `lossCount`, môžeme ich aktualizovať podľa toho či zombie vyhrá alebo prehrá súboj.
+V predošlej lekcii sme pridali `winCount` a `lossCount`. Poďme ich aktualizovať podľa toho, či zombie vyhrá, alebo prehrá súboj.
 
-V Kapitole 6 sme výpočítali náhodné čislo v rozsahu od 0 do 100. Teraz použijeme toto čislo na to, aby sme určili ktorý Zombie vyhral súboj. Na základe toho potom updatujeme počítadlá.
+V Kapitole 6 sme výpočítali náhodné čislo v rozsahu od 0 do 100. Teraz toto čislo použijeme na to, aby sme určili ktorý Zombie súboj vyhral. Podľa toho zmeníme počítadlá.
 
 ## Vyskúšaj si to sám
 
@@ -261,8 +261,8 @@ V Kapitole 6 sme výpočítali náhodné čislo v rozsahu od 0 do 100. Teraz pou
 
   a. Pre `myZombie` zvýš atribút `winCount` o jedna.
 
-  b. Pre `myZombie` zvýš atribút `level` o jedna. (Level up!!!!)
+  b. Pre `myZombie` zvýš atribút `level` o jedna. (Nový level!!!!)
 
-  c. Pre `enemyZombie` zvýš atribút `lossCount` o jedna. (Lama!!! 😫 😫 😫)
+  c. Pre `enemyZombie` zvýš atribút `lossCount` o jedna. (Lúzer!!! 😫 😫 😫)
 
-  d. Zavolaj funkciu `feedAndMultiply`. Aby si si pripomenul syntax na jej zavolanie, pozri sa do `zombiefeeding.sol`. Ako hdnotu tretieho argumentu (`_species`) nastav reťazec `"zombie"`. (V skutočnosti to zatial nebude mať žiaden vplyv, no keby sme chceli, neskôr možme pridať dalšiu funkcionalitu pre vznik nového zombie).
+  d. Zavolaj funkciu `feedAndMultiply`. Aby si si pripomenul syntax na jej zavolanie, pozri sa do `zombiefeeding.sol`. Ako hodnotu tretieho argumentu (`_species`) nastav reťazec `"zombie"`. (V skutočnosti to zatiaľ nebude mať žiaden vplyv, no keby sme chceli, neskôr možme pridať dalšiu funkcionalitu pre vznik nového zombie).

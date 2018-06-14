@@ -231,18 +231,18 @@ material:
       }
 ---
 
-Teraz keď už máme zdroj náhodnosti v našom kontrakte, môžme ho použiť na výpočet výsledkov zápasov zombie.
+Teraz keď už máme zdroj náhodnosti v našom kontrakte, môžeme ho použiť na výpočet výsledkov zápasov zombie.
 
-Naše zombie zápasy budu fungovať nasledovne:
+Naše zombie zápasy budu fungovať nasledovne.
 
-- Zvolíš oponentovho zombie, ktoreho chceš napadnúť, a zvolíš si jedného z svojich zombies, ktorý bude útočiť
+- Zvolíš zombie oponenta ktorého chceš napadnúť, a spomedzi svojich zombies si zvolíš toho, ktorý pôjde bojovať.
 - Zombie ktorý útočí ma 70% šancu výhry. Zombie ktorý je napadnutý má len 30% šancu úspechu.
 - Všetci zombie (útočiaci aj brániaci sa) budú mať počítadlo výhier `winCount` a počítadlo prehier `lossCount`, ktoré sa budú navyšovať na základe výsledku bytky.
-- Ak útočiaci zombie vyhrá, jeho level sa zvýši a vznikne nový zombie.
+- Ak útočiaci zombie vyhrá, jeho level sa zvýši a jeho vlastníkovi vznikne nový zombie.
 - Ak útočiaci zombie prehrá, nič sa nestane (iba sa mu zvýši `lossCount` o 1).
-- Bez ohľadu na to či útočiaci zombie vyhrá alebo prehrá, začne sa mu odpočitávať čas odpočinku. Počas toho nemôže znova útočiť 
+- Bez ohľadu na to, či útočiaci zombie vyhrá alebo prehrá, začne sa mu odpočitávať čas odpočinku. Počas tejto doby nemôže útočiť. 
 
-Toto je obstahuje veľa logiky ktorú budeme musieť implementovať, takže to poskladáme dokopy v priebehu nasledujúcich kapitol.
+Toto zahrňuje veľa logiky ktorú budeme musieť implementovať, takže to všetko poskladáme dokopy v priebehu nasledujúcich kapitol.
 
 
 ## Vyskúšaj si to sám

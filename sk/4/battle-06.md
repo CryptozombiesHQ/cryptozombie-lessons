@@ -239,9 +239,9 @@ material:
       }
 ---
 
-Dosť bolo refaktorovania - poďme naspäť do súboru `zombieattack.sol`.
+Dosť bolo refaktorovania - poďme pracovať naspäť v súbore `zombieattack.sol`.
 
-Ideme pokračovať v implementácií našej funkcie `attack`, teraz keď už máme pripravený modifikátor `ownerOf`.
+Teraz, keď už máme pripravený modifikátor `ownerOf`, budeme pokračovať v implementácií funkcie `attack`.
 
 ## Vyskúšaj si to sám
 

@@ -11,19 +11,19 @@ material:
     answer: 1
 ---
 
-Gratulácia! Týmto zavŕšime Lekciu 4.
+Gratulácia! Týmto si uspešne zvládol Lekciu 4.
 
-Poď na to a vyskúšaj si svoju bojovú funkciu v pravej časti stránky!
+Poď na to a vyskúšaj si svoju novú bojovú funkciu v pravej časti stránky!
 
 
-## Tu je tvoja odmena
+## Tvoja odmena
 
 Po vyhratí Zombie súboja:
 
-1. Tvoj zombie zvýši svoj level
+1. Tvoj zombie zvýši svoj level.
 
-2. Tvoj zombie zvýši svoje počítadlo víťazstiev `winCount`
+2. Tvoj zombie zvýši svoje počítadlo víťazstiev `winCount`.
 
-3. Vytvorí sa ti nový zombie do tvojej armády!
+3. Vytvorí sa ti v tvojej armáde nový zombie!
 
-Vyskúšaj si súboj, a potom pokračuj do ďalšej kapitolu pre dokončenie tejto lekice.
+Vyskúšaj si súboj a potom pokračuj do ďalšej kapitoly pre oficiálne ukončenie tejto lekcie.

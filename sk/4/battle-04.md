@@ -278,25 +278,25 @@ material:
       }
 ---
 
-Keď niekto zavolá funkciu `attack`, chcem si byť istý že volatel tejto funkcie je skutočne vlastníkom zombie ktorého sa snaží poslať na útok. Nechceme aby mohli hráči dávať rozkazy cudzím zombie!
+Keď niekto zavolá funkciu `attack`, chceme si byť istý že je skutočne vlastníkom zombieho, ktorého odosiela na útok. Nechceme predsa, aby mohli hráči dávať rozkazy cudzím zombie!
 
-Dokážeš prísť na to ako by sme skontrolovali že osoba ktorá volá túto funkciu je vlastníkom zombieho s ID `_zombieId` prijatého cez argument funkcie? 
+Dokážeš prísť na to, ako by sme skontrolovali že osoba ktorá volá túto funkciu je vlastníkom zombieho s ID `_zombieId` prijatého cez argument funkcie? 
 
-Chvíľu porozmýšľaj a skús či dokážeš prísť na správnu odpoveď sám.
+Chvíľu nad tým porozmýšľaj. Skús či dokážeš prísť na správnu odpoveď sám.
 
-Daj tomu chvíľu... Skús sa kód z predchádzajúcich lekcie pre inšpiráciu... 
+Daj tomu chvíľu... Pozri sa na kód z predchádzajúcich lekcie pre inšpiráciu... 
 
 Odpoveď je dole, ale nepokračuj dokým si na to neskúsil prísť sám.
 
 ## Odpoveď
 
-Takúto kontrolu sme spravili už niekoľko krát v predošlých lekciách. Vo funkciách  `changeName()`, `changeDna()`, a `feedAndMultiply()` sme vykonávali takúto kontrolu:
+Takúto kontrolu sme spravili už niekoľko krát v predošlých lekciách. Vo funkciách  `changeName()`, `changeDna()`, a `feedAndMultiply()` sme kontrolovali:
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-Toto je presne to čo potrebujeme aj pre našu `attack` funkciu. Keďže chceme používať rovnaký kód niekoľko krát, poďme ho presunút do osobitného modifikátora `modifier` aby sme sa zbytočne neopakovali, a udržali kód čistejší.
+Toto je presne to, čo potrebujeme aj pre našu `attack` funkciu. Keďže chceme používať rovnaký kód niekoľko krát, poďme ho presunút do osobitného funkčného modifikátora, aby sme sa zbytočne neopakovali a udržali kód čistejší.
 
 ## Vyskúšaj si to sám
 
@@ -304,8 +304,8 @@ Teraz sme naspäť v súbore `zombiefeeding.sol`, keďže toto bolo prvé miesto
 
 1. Vytvor `modifier` s názvom `ownerOf`. Bude príjmať 1 argument, `_zombieId` (typu `uint`).
 
-  Telo modifikátora by malo obsahovať `require`, ktorý skontroluje že `msg.sender` sa rovná `zombieToOwner[_zombieId]`. Ak je požiadavka splnená, musí sa ďalej pokračovať vo funkcii. Ak si zabudol syntax, pozri si súbor `zombiehelper.sol`.
+  Telo tohoto funkčného modifikátora by malo obsahovať `require`, ktorý skontroluje že `msg.sender` sa rovná `zombieToOwner[_zombieId]`. Ak je požiadavka splnená, musí sa ďalej pokračovať vo funkcii. Ak si nespomínaš na syntax, pozri si súbor `zombiehelper.sol`.
 
 2. Uprav definíciu funkcie `feedAndMultiply` tak, aby používala modifikátor `ownerOf`.
 
-3. Teraz keď už používame modifikátor, môžeš z nej zmazať riadok  `require(msg.sender == zombieToOwner[_zombieId]);`. 
+3. Teraz keď už používame modifikátor, môžeš z funkcie `feedAndMultiply` zmazať riadok `require(msg.sender == zombieToOwner[_zombieId]);`. 

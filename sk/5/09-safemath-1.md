@@ -386,16 +386,16 @@ material:
 
 Gralujeme. Tvoja implementácia ERC721 štandardu je hotová!
 
-To nebolo zas tak ťažké, čo povieš? Veľa vecí okolo Ethereum znie veľmi zložito keď o nich počuješ rozprávať ostatných ľudí. Najlepší spôsob ako veciam porozumieť je skúsiť si nejaký kód sám naimplementovať.
+To nebolo zas tak ťažké, čo povieš? Veľa vecí okolo Ethereum znie veľmi zložito keď o nich počuješ rozprávať ostatných ľudí. Najlepší spôsob ako veciam porozumieť je skúsiť si ich sám naimplementovať.
 
-Pamätaj však že toto bola len minimálna implementácia. Mohli by sme ju rozšíriť o ďalšie vlastnosti, napríklad pridať dodatočné kontroly, aby užívatelia nemohli odoslať svojich zombies na adresu `0` (Posielanie tokenov na takúto adresa sa nazýva "pálenie" ("burning") tokenov. Predstavuje to totiž odosielanie tokenov na adresu, ktorej privátny kľúč nikto nemá, čo znamená že takéto tokeny budú navždy neobnoviteľné). Ďalšia extra funkcionality ktorú by sme mohli pridať by mohli byť aukcie, ako súčasť našej samotnej DApp. (Dokáž prísť s nejakými nápadmi ako také niečo naimplementovať?)
+Pamätaj však že toto bola len minimálna implementácia. Mohli by sme ju rozšíriť o ďalšie vlastnosti, napríklad pridať dodatočné kontroly, aby užívatelia nemohli odoslať svojich zombies na adresu `0` (Posielanie tokenov na takúto adresa sa nazýva "pálenie" ("burning") tokenov. Znamená to totiž odosielanie tokenov na adresu, ktorej privátny kľúč nikto nemá. Preto tokeny na tejto adrese zostanú navždy neobnoviteľnými). Ďalšia dodatočná funkcionalita našej DApp, ktorú by sme mohli pridať, by mohli byť aukcie. (Dokáž prísť s nejakými nápadmi ako také niečo naimplementovať?)
 
-Chceli sme však aby táto lekcia bola ľahko stráviteľná, preto sme prešli iba základnou implementáciou. Keby si chcel vidiet príklad pokročilejšej implementácie, môžeš sa po tomto tutoriále pozrieť na OpenZeppelin ERC721 kontrakt.
+Chceli sme však túto lekciu spraviť ľahko stráviteľnú, preto sme prešli iba základnou implementáciou. Keby si chcel vidieť príklad pokročilejšej implementácie, môžeš sa po tomto tutoriále pozrieť na OpenZeppelin ERC721 kontrakt.
 
 
 ### Bezpečnostné vylepšenia kontraktu: Pretečenie a podtečenie
 
-Teraz sa pozrieme na jednu z najdôležitejších bezpečnostných vlastností, ktorých by si si mal byť vedomí pri písani smart kontraktov: ochrana pred pretečením a podtečením.
+Teraz sa pozrieme na jednu z najdôležitejších bezpečnostných vlastností, ktorých by si si mal byť vedomí pri písani smart kontraktov. Ochrana pred pretečením a podtečením.
 
 Čo je to  **_pretečenie_**?
 
@@ -409,21 +409,21 @@ uint8 number = 255;
 number++;
 ```
 
-V tomto prípade sme spôsobili pretečenie - čislo `number` sa teraz neintuitívne rovná `0`, napriek tomu že sme sa jeho hodnotu pokúsili inkrementovať. (Keď pridáš 1 ku binárnemu čislu `11111111`, vyresetuje sa naspať na `00000000`, rovnako ako sa čas na hodinkách mení z `23:59` na `00:00`).
+V tomto prípade sme spôsobili pretečenie. Číslo `number` sa na konci tohotu kódu neintuitívne bude rovnať `0`, a to napriek tomu, že sme sa jeho hodnotu pokúsili inkrementovať! (Keď pridáš 1 ku binárnemu čislu `11111111`, vyresetuje sa naspať na `00000000`, rovnako ako sa čas na hodinkách mení z `23:59` na `00:00`).
 
 Podtečenie je podobné. Nastáva v prípade že odčítaš `1` od `uint8` ktorý sa rovná `0`. Výsledok sa bude rovnať `255` (pretože `uint` je bez znamienka, nemôže nadobúdať záporné hodnoty).
 
-V našom kóde síce nepoužívame `uint8`, a môže sa zdať nepravdepodobné že by `uint256` pretiekol tým, že k nemu zakaždý pričítame jednotku (2^256 je skutočne gigantické číslo). Napriek tomu je stále dobrou praktikou naimplementovať ochranné mechanizmy, tak aby sa naša DApp nikdy nedostala do neočakávaného stavu v budúcnosti. 
+V našom kóde síce nepoužívame `uint8`, a môže sa zdať nepravdepodobné, že by `uint256` pretiekol len preto, že mu zakaždým pričítame jednotku (2^256 je skutočne gigantické číslo). Napriek tomu je stále dobrou praktikou naimplementovať ochranné mechanizmy, aby sme mali istotu že naša DApp sa v budúcnosti nikdy nedostane do neočakávaného stavu. 
 
 ### Používanie SafeMath
 
-Na to aby sme sa tomu vyhli, OpenZeppelin vytvoril **_knižnicu_** (**_library_**) s názvom SafeMath. Tá zabraňuje vyššie spomenutým problémom.
+Na to, aby sme sa tomu vyhli, OpenZeppelin vytvoril **_knižnicu_** (**_library_**) s názvom SafeMath. Tá zabraňuje vyššie spomenutým problémom.
 
 Ale než sa k tomu dostaneme... čo je to vlastne knižnica?
 
 **_Knižnica_** (**_library_**), je v solidity špeciálny typ kontraktu. Jeden zo spôsobov, akým sú knižnice užitočné je ten, že môžu rozšíriť natívne dátové typy o nové funkcie.
 
-Najprv musíme deklarovať v našom kontrakte že chceme časť knižnice používať takýmto spôsobom `using SafeMath for uint256`. SafeMath knižnica má 4 funkcie - `add`, `sub`, `mul`, and `div`. K týmto funkciám budeme môcť pristupovať z `uint256` takto:
+Najprv musíme deklarovať v našom kontrakte, že chceme časť knižnice používať takýmto spôsobom `using SafeMath for uint256`. SafeMath knižnica má 4 funkcie - `add`, `sub`, `mul`, and `div`. K týmto funkciám budeme môcť pristupovať z `uint256` takto:
 
 ```
 using SafeMath for uint256;

@@ -462,9 +462,9 @@ material:
       }
 ---
 Super, teraz je naša ERC721 implementácia zabezpečená pred pretečeniami a podtečeniami!
-Ak si prejdeme kód ktorý sme napísali v predchádzajúcich lekciách, zistíme, že v našom kóde existuje niekoľko miest ktoré riskujú pretečenie alebo podtečenie.
+Ak si prejdeme kód napísaný v predchádzajúcich lekciách, zistíme, že v našom kóde existuje niekoľko ďalších miest náchýlných na pretečenie alebo podtečenie.
 
-Napríklad, vo funkcii ZombieAttack máme:
+Napríklad vo funkcii ZombieAttack máme:
 
 ```
 myZombie.winCount++;
@@ -472,9 +472,9 @@ myZombie.level++;
 enemyZombie.lossCount++;
 ```
 
-Pre istotu by sme mali zabrániť pretečeniam aj tu. (Je dobrou praktikou obecne, používať výhradne SafeMath metódy na matematické operácie. Možno v budúcnosti Solidity implementuje matematické operácie takýmto spôsobom natívne, no pre zatiaľ musíme prevencii pretečení venovať našu pozornosť).
+Pre istotu by sme mali zabrániť pretečeniam aj tu. (Je dobrou praktikou obecne používať výhradne SafeMath metódy na všetky matematické operácie. Možno v budúcnosti Solidity implementuje matematické operácie takýmto spôsobom natívne, no pre zatiaľ musíme prevencii pretečení venovať našu pozornosť).
 
-Teraz však máme trochu problém -  `winCount` a `lossCount` sú `uint16`s, a `level` je `uint32`. Ak použijeme SafeMath `add` metódu s týmito argumentmi, stále nebudeme od prečenia ochránený. To preto, lebo `add` SafeMath metóda by tieto argumenty skonvertovala na `uint256`:
+Teraz však máme trochu problém. Premenné `winCount` a `lossCount` sú `uint16`s, `level` je `uint32`. Ak použijeme SafeMath `add` metódu s týmito argumentmi, stále nebudeme od prečenia ochránený. SafeMath `add` metóda by tieto argumenty skonvertovala totiž na `uint256`:
 
 ```
 function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -483,13 +483,13 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
   return c;
 }
 
-// Ak zavoláme `.add` na `uint8`, bude skonvertovan=y na `uint256`.
-// Pretečenie nebude detekované pri čísle vyššom ako 2^8, pretože 256 je validná `uint256` hodnota.
+// Ak zavoláme `.add` na `uint8`, bude skonvertovaný na `uint256`.
+// Pretečenie nebude detekované už pri čísle 2^8, pretože 256 je validná `uint256` hodnota.
 ```
 
-To znamená že budeme potrebovať implementovať ešte 2 ďalšie knižnice ktoré by predchádzali pretečeniu dátových typov `uint16` a `uint32`. Môžme ich pomenovať `SafeMath16` and `SafeMath32`.
+Budeme preto potrebovať implementovať ešte 2 ďalšie knižnice ktoré by predídu pretečeniu dátových typov `uint16` a `uint32`. Môžme ich pomenovať `SafeMath16` and `SafeMath32`.
 
-Kód bude úplne rovnaký ako v prípade SafeMath, s výnimkou že všetky výskyty `uint256` budu nahradené typmi `uint32` alebo `uint16`.
+Kód bude úplne rovnaký ako v prípade SafeMath, s výnimkou, že všetky výskyty `uint256` budu nahradené typmi `uint32` alebo `uint16`.
 
 Aby si s tým netrávil moc času, pomohli sme ti a tieto dodatočné knižnice sme vytvorili za teba. Pozri si ich kód v súbore `safemath.sol`.
 
@@ -503,4 +503,4 @@ Zadanie:
 
 1. Deklaruj, že pre `uint16` používame `SafeMath16`.
 
-3. V ZombieFactory zostal ešte jeden riadok kódu kde treba použíť SafeMath metódu. Aby si to ľahko našiel, nechali sme ti tam komentár.
+3. V ZombieFactory zostal ešte jeden riadok kódu kde treba použíť SafeMath metódu. Aby si ho ľahko našiel, nechali sme pri ňom komentár.
