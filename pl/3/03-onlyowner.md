@@ -150,19 +150,19 @@ material:
 ---
 Nasz bazowy kontrakt `ZombieFactory` dziedziczy z `Ownable`, więc możemy użyć modyfikatora funkcji `onlyOwner` w `ZombieFeeding`.
 
-This is because of how contract inheritance works. Remember:
+Zawdzięczamy to działaniu dziedziczenia. Zapamiętaj:
 
     ZombieFeeding is ZombieFactory
     ZombieFactory is Ownable
     
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+Więc `ZombieFeeding` jest również `Ownable` i może mieć dostęp do funkcji / eventów / modyfikatorów z kontraktu `Ownable`. Dotyczy to wszelkich umów, które dziedziczą z `ZombieFeeding` w przyszłości również.
 
-## Function Modifiers
+## Modyfikatory funkcji
 
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
+Modyfikator funkcji wygląda podobnie jak funkcja, ale używa słowa kluczowego `modifier` zamiast słowa `function`. I nie może być wywoływany bezpośrednio jak funkcja — zamiast tego możemy dołączyć nazwę modyfikatora na końcu definicji funkcji, aby zmienić zachowanie tej funkcji.
 
-Let's take a closer look by examining `onlyOwner`:
+Przyjrzyjmy się bliżej aby przebadać `onlyOwner`:
 
     /**
      * @dev Throws if called by any account other than the owner.
@@ -173,19 +173,19 @@ Let's take a closer look by examining `onlyOwner`:
     }
     
 
-We would use this modifier as follows:
+Możemy użyć tego modyfikatora w następujący sposób:
 
     contract MyContract is Ownable {
       event LaughManiacally(string laughter);
     
-      // Note the usage of `onlyOwner` below:
+      // Zwróć uwagę na użycie `onlyOwner` poniżej:
       function likeABoss() external onlyOwner {
         LaughManiacally("Muahahahaha");
       }
     }
     
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+Zwróć uwagę na modyfikator `onlyOwner` w funkcji `likeABoss`. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
 
 So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
 
