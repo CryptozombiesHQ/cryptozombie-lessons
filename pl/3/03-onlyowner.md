@@ -1,9 +1,9 @@
 ---
-title: onlyOwner Function Modifier
+title: Modyfikator funkcji onlyOwner
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -32,7 +32,7 @@ material:
         
         KittyInterface kittyContract;
         
-        // Modify this function:
+        // Zmodyfikuj tę funkcję:
         function setKittyContractAddress(address _address) external {
         kittyContract = KittyInterface(_address);
         }
