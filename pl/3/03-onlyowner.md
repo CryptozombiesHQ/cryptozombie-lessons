@@ -185,11 +185,11 @@ Możemy użyć tego modyfikatora w następujący sposób:
     }
     
 
-Zwróć uwagę na modyfikator `onlyOwner` w funkcji `likeABoss`. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+Zwróć uwagę na modyfikator `onlyOwner` w funkcji `likeABoss`. Kiedy wywołujesz `likeABoss`, kod wewnątrz `onlyOwner` wykonuje się **najpierw**. Następnie gdy trafi na wyrażenie `_;` w `onlyOwner`, wraca i wykonuje kod wewnątrz `likeABoss`.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+Choć istnieją inne sposoby użycia modyfikatorów, jednym najbardziej powszechnym przypadkiem użycia jest szybkie dodanie sprawdzenia `require` przed wykonaniem funkcji.
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+W przypadku `onlyOwner`, dodanie tego modyfikatora do funkcji sprawi, że **tylko** **właściciel (owner)** kontraktu (Ty, jeśli go wdrożyłeś) może wywołać tę funkcję.
 
 > Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
 > 
