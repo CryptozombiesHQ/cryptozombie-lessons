@@ -1,5 +1,5 @@
 ---
-title: Zombie Battles
+title: Walka Zombie
 actions:
   - 'checkAnswer'
   - 'hints'
