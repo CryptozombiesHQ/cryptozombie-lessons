@@ -220,4 +220,4 @@ Jeśli nie pamiętasz składni kodu do zrobienia tego, sprawdź kod z `zombiehel
 
 2. `import` z `zombiehelper.sol`.
 
-3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.
+3. Zadeklaruj nowy `contract` o nazwie `ZombieBattle`, który będzie dziedziczył po `ZombieHelper`. Ciało kontraktu na razie pozostaw puste.
