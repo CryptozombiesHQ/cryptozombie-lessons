@@ -206,7 +206,7 @@ material:
       contract ZombieBattle is ZombieHelper {
       }
 ---
-Now that we've learned about payable functions and contract balances, it's time to add functionality for zombie battles!
+Teraz, gdy dowiedzieliśmy się o funkcjach payable oraz stanu konta kontraktu, przyszedł czas na dodanie nowych funkcjonalności do walki zombie!
 
 Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
 
