@@ -235,9 +235,9 @@ Możemy użyć poniższy przykładowy kod to wygenerowania liczby losowej:
 
 Kod wykorzystuje timestamp `now`, zmienne `msg.sender` oraz inkrementowaną `nonce` (liczba ta jest zawsze używana tylko raz, dlatego nie możemy uruchomić tej samej funkcji haszującej z tymi samymi parametrami dwukrotnie).
 
-It would then use `keccak` to convert these inputs to a random hash, convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits, giving us a totally random number between 0 and 99.
+Następnie funkcja `keccak` konwertuje te parametry na losowy hasz, w kolejnym kroku hash zamieniany jest na zmienną typu `uint`, potem przy użyciu `% 100` wybierane są dwie ostatnie cyfry liczby. To daje nam losową liczbę z przedziału od 1 do 100.
 
-### This method is vulnerable to attack by a dishonest node
+### Ta metoda jest podatna na atak przez nieuczciwy węzeł
 
 In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a ***transaction***. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a ***block*** to the rest of the network.
 
