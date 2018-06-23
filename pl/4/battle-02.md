@@ -216,13 +216,13 @@ material:
 
 Wszystkie dobre gry wymagają jakiegoś poziomu losowości. Więc jak generujemy liczby losowe w Solidity?
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+Prawdziwa odpowiedź brzmi: nie możesz. Cóż, przynajmniej nie możesz tego zrobić bezpiecznie.
 
-Let's look at why.
+Spójrzmy dlaczego.
 
-## Random number generation via `keccak256`
+## Generowanie liczby losowej poprzez `keccak256`
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+Najlepsze źródło losowości które mamy w Solidity to funkcja haszująca `keccak256`.
 
 We could do something like the following to generate a random number:
 
