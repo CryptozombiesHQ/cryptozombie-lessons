@@ -1,8 +1,8 @@
 ---
 title: Walka Zombie
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'wskazówki'
 requireLogin: true
 material:
   editor:
