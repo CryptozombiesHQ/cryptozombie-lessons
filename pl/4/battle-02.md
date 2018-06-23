@@ -239,7 +239,7 @@ Następnie funkcja `keccak` konwertuje te parametry na losowy hasz, w kolejnym k
 
 ### Ta metoda jest podatna na atak przez nieuczciwy węzeł
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a ***transaction***. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a ***block*** to the rest of the network.
+W Ethereum wywołanie funkcji kontraktu, przekazujesz do węzła lub węzłów sieci jako ***transakcję***. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a ***block*** to the rest of the network.
 
 Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
 
