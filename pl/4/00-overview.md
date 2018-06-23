@@ -1,9 +1,9 @@
 ---
-title: Zombie Battle System
-header: "Lesson 4: Zombie Battle System"
+title: System Walki Zombie
+header: "Lekcja 4: System Walki Zombie"
 roadmap: roadmap4.jpg
 ---
-The time has come, human...
+Nadszedł czas, człowieku...
 
 Time to make your zombies FIGHT!
 
