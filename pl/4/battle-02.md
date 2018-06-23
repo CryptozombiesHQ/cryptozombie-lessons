@@ -224,9 +224,9 @@ Spójrzmy dlaczego.
 
 Najlepsze źródło losowości które mamy w Solidity to funkcja haszująca `keccak256`.
 
-We could do something like the following to generate a random number:
+Możemy użyć poniższy przykładowy kod to wygenerowania liczby losowej:
 
-    // Generate a random number between 1 and 100:
+    // Generuje liczbę losową w przedziale od 1 do 100:
     uint randNonce = 0;
     uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
     randNonce++;
