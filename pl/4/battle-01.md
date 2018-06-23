@@ -208,9 +208,9 @@ material:
 ---
 Teraz, gdy dowiedzieliśmy się o funkcjach payable oraz stanu konta kontraktu, przyszedł czas na dodanie nowych funkcjonalności do walki zombie!
 
-Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
+Podążając za schematem z poprzednich rozdziałów. Utworzymy nowy plik / kontrakt dla funkcjonalności walki, która jest importowana z poprzedniego kontraktu.
 
-## Put it to the test
+## Wypróbujmy zatem
 
 Let's review creating a new contract. Repetition leads to mastery!
 
