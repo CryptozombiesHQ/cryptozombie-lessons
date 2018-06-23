@@ -214,10 +214,10 @@ Podążając za schematem z poprzednich rozdziałów. Utworzymy nowy plik / kont
 
 Powtórzmy tworzenie nowego kontraktu. Powtórki prowadzą do perfekcji!
 
-If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
+Jeśli nie pamiętasz składni kodu do zrobienia tego, sprawdź kod z `zombiehelper.sol` - ale postaraj się na początku utworzyć nowy kontrakt bez podglądania dla sprawdzenia swojej wiedzy.
 
-1. Declare at the top of the file that we're using Solidity version `^0.4.19`.
+1. Zadeklaruj na samym początku pliku że używamy Solidity w wersji `^0.4.19`.
 
-2. `import` from `zombiehelper.sol`.
+2. `import` z `zombiehelper.sol`.
 
 3. Declare a new `contract` called `ZombieBattle` that inherits from `ZombieHelper`. Leave the contract body empty for now.
