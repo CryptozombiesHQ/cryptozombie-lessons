@@ -212,7 +212,7 @@ Podążając za schematem z poprzednich rozdziałów. Utworzymy nowy plik / kont
 
 ## Wypróbujmy zatem
 
-Let's review creating a new contract. Repetition leads to mastery!
+Powtórzmy tworzenie nowego kontraktu. Powtórki prowadzą do perfekcji!
 
 If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
 
