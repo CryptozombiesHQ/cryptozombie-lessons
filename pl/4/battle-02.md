@@ -1,8 +1,8 @@
 ---
-title: Random Numbers
+title: Liczby Losowe
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'wskazówki'
 requireLogin: true
 material:
   editor:
@@ -14,7 +14,7 @@ material:
         import "./zombiehelper.sol";
         
         contract ZombieBattle is ZombieHelper {
-        // Start here
+        // Rozpocznij tutaj
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.19;
@@ -212,9 +212,9 @@ material:
       contract ZombieBattle is ZombieHelper { uint randNonce = 0;
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; } }
 ---
-Great! Now let's figure out the battle logic.
+Świetnie! Teraz zagłębimy się w logikę walki.
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+Wszystkie dobre gry wymagają jakiegoś poziomu losowości. Więc jak generujemy liczby losowe w Solidity?
 
 The real answer here is, you can't. Well, at least you can't do it safely.
 
@@ -265,7 +265,7 @@ In a future lesson, we may cover using ***oracles*** (a secure way to pull data 
 
 Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to ``.
+1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
 
 2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
 
