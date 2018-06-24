@@ -251,9 +251,9 @@ Jeśli uruchomimy własny węzeł to możemy publikować transakcje **tylko na s
 
 ## Więc jak wygenerować bezpiecznie liczby losowe w Ethereum?
 
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an ***oracle*** to access a random number function from outside of the Ethereum blockchain.
+Ponieważ cała zawartość blockchain jest publiczna dla wszystkich, to jest to skomplikowany problem i jego rozwiązanie wykracza poza zakres tego samouczka. Dodatkowe informacje na ten temat możesz znaleźć w <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>tym wątku na StackOverflow</a>. Jednym z rozwiązań jest wykorzystanie ***oracle*** do dostępu do funkcji liczb losowych spoza blockchain'u Ethereum.
 
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+Oczywiście w sieci Ethereum w rywalizacji o rozwiązanie kolejnego bloku bierze udział aż około 10 tyś. węzłów. Nasze szanse na zatwierdzenie kolejnego bloku są bardzo niskie. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
 
 So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
 
