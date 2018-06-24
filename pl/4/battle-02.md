@@ -247,7 +247,7 @@ Gdy jeden z węzłów rozwiązał PoW nowego bloku, inne węzły przestają pró
 
 Wyobraźmy sobie, że mamy kontrakt rzutu monetą — gdy wypadnie orzeł twoje pieniądze się podwajają, a gdy wypadnie reszka to tracisz wszystko. Powiedzmy, że używa on powyższej funkcji liczb losowych do ustalenia czy wypadł orzeł czy reszka. (`random >= 50` to orzeł, `random < 50` to reszka).
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Jeśli uruchomimy własny węzeł to możemy publikować transakcje **tylko na swoim węźle** nie udostępniając ich. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
 
 ## So how do we generate random numbers safely in Ethereum?
 
