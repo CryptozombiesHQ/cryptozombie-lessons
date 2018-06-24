@@ -245,7 +245,7 @@ Gdy jeden z węzłów rozwiązał PoW nowego bloku, inne węzły przestają pró
 
 **To sprawia, że nasze funkcje liczb losowych można wykorzystać.**
 
-Wyobraźmy sobie, że mamy kontrakt rzutu monetą — gdy wypadnie orzeł twoje pieniądze się podwajają, a gdy wypadnie reszka to tracisz wszystko. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Wyobraźmy sobie, że mamy kontrakt rzutu monetą — gdy wypadnie orzeł twoje pieniądze się podwajają, a gdy wypadnie reszka to tracisz wszystko. Powiedzmy, że używa on powyższej funkcji liczb losowych do ustalenia czy wypadł orzeł czy reszka. (`random >= 50` to orzeł, `random < 50` to reszka).
 
 If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
 
