@@ -253,7 +253,7 @@ Jeśli uruchomimy własny węzeł to możemy publikować transakcje **tylko na s
 
 Ponieważ cała zawartość blockchain jest publiczna dla wszystkich, to jest to skomplikowany problem i jego rozwiązanie wykracza poza zakres tego samouczka. Dodatkowe informacje na ten temat możesz znaleźć w <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>tym wątku na StackOverflow</a>. Jednym z rozwiązań jest wykorzystanie ***oracle*** do dostępu do funkcji liczb losowych spoza blockchain'u Ethereum.
 
-Oczywiście w sieci Ethereum w rywalizacji o rozwiązanie kolejnego bloku bierze udział aż około 10 tyś. węzłów. Nasze szanse na zatwierdzenie kolejnego bloku są bardzo niskie. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+Oczywiście w sieci Ethereum w rywalizacji o rozwiązanie kolejnego bloku bierze udział aż około 10 tyś. węzłów. Nasze szanse na zatwierdzenie kolejnego bloku są bardzo niskie. Potrzebowalibyśmy mnóstwo czasu oraz dużej mocy obliczeniowej, aby mieć szanse na pomyślny atak. Natomiast jeśli w grę wchodzi wysoka nagroda (np. jeśli możemy wygrać 100 mln $), to będzie nam warto spróbować tego ataku.
 
 So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
 
