@@ -255,9 +255,9 @@ Ponieważ cała zawartość blockchain jest publiczna dla wszystkich, to jest to
 
 Oczywiście w sieci Ethereum w rywalizacji o rozwiązanie kolejnego bloku bierze udział aż około 10 tyś. węzłów. Nasze szanse na zatwierdzenie kolejnego bloku są bardzo niskie. Potrzebowalibyśmy mnóstwo czasu oraz dużej mocy obliczeniowej, aby mieć szanse na pomyślny atak. Natomiast jeśli w grę wchodzi wysoka nagroda (np. jeśli możemy wygrać 100 mln $), to będzie nam warto spróbować tego ataku.
 
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
+Tak więc, generowanie liczb losowych nie jest bezpieczne na Ethereum. W praktyce dopóki w naszej grze nie chodzi o duże pieniądze. W naszej grze zakładamy że użytkownicy gry prawdopobnie nie będą grali o duże pieniądze.
 
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
+Ponieważ tworzymy prostą grę dla samouczka oraz nie wchodzą w grę prawdziwe pieniądze będziemy wykorzystywać prosty generator liczb losowych, który jest prosty do implementacji. Wiedząc że nie jest on w pełni bezpieczny.
 
 In a future lesson, we may cover using ***oracles*** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
 
