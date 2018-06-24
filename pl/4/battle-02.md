@@ -241,11 +241,11 @@ Następnie funkcja `keccak` konwertuje te parametry na losowy hasz, w kolejnym k
 
 W Ethereum wywołanie funkcji kontraktu, przekazujesz do węzła lub węzłów sieci jako ***transakcję***. Węzły zbierają transakcje oraz starają się rozwiązać problem matematyczny poprzez "Proof of Work", a następnie zapisują transakcje w ***bloku*** wraz z ich Proof of Work (PoW). Blok zostaje upubliczniony całej sieci.
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+Gdy jeden z węzłów rozwiązał PoW nowego bloku, inne węzły przestają próbować rozwiązać PoW, sprawdza on czy listy transakcji innych węzłów są prawidłowe, a następnie akceptuje blok i przechodzi do rozwiązywania następnego bloku.
 
-**This makes our random number function exploitable.**
+**To sprawia, że nasze funkcje liczb losowych można wykorzystać.**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Wyobraźmy sobie, że mamy kontrakt rzutu monetą — gdy wypadnie orzeł twoje pieniądze się podwajają, a gdy wypadnie reszka to tracisz wszystko. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
 
 If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
 
