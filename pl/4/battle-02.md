@@ -243,13 +243,13 @@ W Ethereum wywołanie funkcji kontraktu, przekazujesz do węzła lub węzłów s
 
 Gdy jeden z węzłów rozwiązał PoW nowego bloku, inne węzły przestają próbować rozwiązać PoW, sprawdza on czy listy transakcji innych węzłów są prawidłowe, a następnie akceptuje blok i przechodzi do rozwiązywania następnego bloku.
 
-**To sprawia, że nasze funkcje liczb losowych można wykorzystać.**
+**To sprawia, że nasze funkcje liczb losowych można oszukać.**
 
 Wyobraźmy sobie, że mamy kontrakt rzutu monetą — gdy wypadnie orzeł twoje pieniądze się podwajają, a gdy wypadnie reszka to tracisz wszystko. Powiedzmy, że używa on powyższej funkcji liczb losowych do ustalenia czy wypadł orzeł czy reszka. (`random >= 50` to orzeł, `random < 50` to reszka).
 
-Jeśli uruchomimy własny węzeł to możemy publikować transakcje **tylko na swoim węźle** nie udostępniając ich. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+Jeśli uruchomimy własny węzeł to możemy publikować transakcje **tylko na swoim węźle** nie udostępniając ich. Możemy wtedy uruchomić funkcję rzutu monetą i sprawdzić czy wygraliśmy i jeśli nie wygraliśmy to nie udostępniamy tej transakcji do kolejnego bloku. Możemy to robić nieskończenie dopóki nie wygramy rzutu monetą i kolejny blok nie zostanie zatwierdzony.
 
-## So how do we generate random numbers safely in Ethereum?
+## Więc jak wygenerować bezpiecznie liczby losowe w Ethereum?
 
 Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an ***oracle*** to access a random number function from outside of the Ethereum blockchain.
 
