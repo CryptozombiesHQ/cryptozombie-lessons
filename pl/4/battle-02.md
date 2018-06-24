@@ -267,7 +267,7 @@ Zaimplementujmy funkcję do generowania liczb losowej, dzięki której będziemy
 
 1. Zadeklaruj `uint`, nazwij jako `dnaDigits` i ustaw wartość `16`.
 
-2. Utwórz funkcję o nazwie `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. Utwórz funkcję o nazwie `randMod` (random-modulus). Będzie to funkcja `internal`, która jako parametr przyjmuje `uint` o nazwie `_modulus` oraz zwraca `uint`.
 
 3. The function should first increment `randNonce` (using the syntax `randNonce++`).
 
