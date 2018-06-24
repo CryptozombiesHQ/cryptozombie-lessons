@@ -259,15 +259,15 @@ Tak więc, generowanie liczb losowych nie jest bezpieczne na Ethereum. W praktyc
 
 Ponieważ tworzymy prostą grę dla samouczka oraz nie wchodzą w grę prawdziwe pieniądze będziemy wykorzystywać prosty generator liczb losowych, który jest prosty do implementacji. Wiedząc że nie jest on w pełni bezpieczny.
 
-In a future lesson, we may cover using ***oracles*** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+Przyszłe lekcje bedą obejmować wykorzystanie ***oracle*** (bezpieczny sposób na przekazywanie danych spoza Ethereum) do wygenerowania liczb losowych poza blockchan'em.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+Zaimplementujmy funkcję do generowania liczb losowej, dzięki której będziemy mogli określić wynik naszych bitew.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
+1. Zadeklaruj `uint`, nazwij jako `dnaDigits` i ustaw wartość `16`.
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. Utwórz funkcję o nazwie `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
 
 3. The function should first increment `randNonce` (using the syntax `randNonce++`).
 
