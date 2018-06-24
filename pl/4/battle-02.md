@@ -269,6 +269,6 @@ Zaimplementujmy funkcję do generowania liczb losowej, dzięki której będziemy
 
 2. Utwórz funkcję o nazwie `randMod` (random-modulus). Będzie to funkcja `internal`, która jako parametr przyjmuje `uint` o nazwie `_modulus` oraz zwraca `uint`.
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
+3. Funkcja powinna najpierw inkrementować `randNonce` (używając składni `randNonce++`).
 
 4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
