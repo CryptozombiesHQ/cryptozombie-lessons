@@ -271,4 +271,4 @@ Zaimplementujmy funkcję do generowania liczb losowej, dzięki której będziemy
 
 3. Funkcja powinna najpierw inkrementować `randNonce` (używając składni `randNonce++`).
 
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `now`, `msg.sender`, and `randNonce` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+4. Na końcu powinna (w jednej lini kodu) obliczyć `uint` przekonwertowaną z `keccak256` haszu z `msg.sender`, `randNonce` oraz `return` tą wartość przez `% _modulus`. ( Jeśli nie nadążasz, zerknij przykład z przykładu wyżej, gdzie generujemy liczbę losową, logika jest podobna).
