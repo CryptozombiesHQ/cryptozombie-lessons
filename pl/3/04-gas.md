@@ -165,7 +165,7 @@ Ponieważ wywoływanie funkcji kosztuje realne pieniądze, optymalizacja kodu w 
 
 Ethereum jest jak wielki, powolny, ale niezwykle bezpieczny komputer. Kiedy wywołujesz funkcję, każdy węzeł (node) sieci musi uruchomić tę samą funkcję w celu zweryfikowania danych wyjściowych — tysiące nodów, które sprawdzają każde wywołanie funkcji, sprawiają, że Ethereum jest zdecentralizowane, a dane tej sieci są niezmienne i odporne na cenzurę.
 
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
+Twórcy Ethereum chcieli zapewnić, że nikt nie zapcha sieci nieskończona pętlą albo nie wykorzysta wszystkich zasobów sieci do bardzo intensywnych obliczeń. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
 
 > Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
 
