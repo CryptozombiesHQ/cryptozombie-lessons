@@ -1,9 +1,9 @@
 ---
-title: Gas
+title: Gaz
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -23,7 +23,7 @@ material:
         struct Zombie {
         string name;
         uint dna;
-        // Add new data here
+        // Dodaj tutaj nowe dane
         }
         
         Zombie[] public zombies;
