@@ -177,7 +177,7 @@ Normalnie nie ma żadnych korzyści z używania tych pod-typów ponieważ Solidi
 
 Ale istnieje do tego wyjątek: wewnątrz `struktur`.
 
-If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
+Jeśli masz wiele `uint` wewnątrz struktury, to kiedy jest to możliwe, użycie `uint` o mniejszej wielkości pozwoli Solidity upakować te zmienne razem, aby zajmowały mniej miejsca. Na przykład:
 
     struct NormalStruct {
       uint a;
@@ -191,7 +191,7 @@ If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when 
       uint c;
     }
     
-    // `mini` will cost less gas than `normal` because of struct packing
+    // `mini` będzie kosztowało mniej gazu niż `normal` dzięki upakowaniu w strukturę
     NormalStruct normal = NormalStruct(10, 20, 30);
     MiniMe mini = MiniMe(10, 20, 30); 
     
