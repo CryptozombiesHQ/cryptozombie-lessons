@@ -171,11 +171,11 @@ Twórcy Ethereum chcieli zapewnić, że nikt nie zapcha sieci nieskończona pęt
 
 ## Użycie "struct" w celu oszczędzania gazu
 
-In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
+W lekcji 1, wspomnieliśmy, że są różne typy `uint`: `uint8`, `uint16`, `uint32`, itd.
 
-Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the `uint` size. For example, using `uint8` instead of `uint` (`uint256`) won't save you any gas.
+Normalnie nie ma żadnych korzyści z używania tych pod-typów ponieważ Solidity rezerwuje 256 bitów pamięci, niezależnie od wielkosci `uint`. Na przykład, używając `uint8` zamiast `uint` (`uint256`) nie spowoduje to, że zaoszczędzisz gaz.
 
-But there's an exception to this: inside `struct`s.
+Ale istnieje do tego wyjątek: wewnątrz `struktur`.
 
 If you have multiple `uint`s inside a struct, using a smaller-sized `uint` when possible will allow Solidity to pack these variables together to take up less storage. For example:
 
