@@ -155,9 +155,9 @@ Spójrzmy jak Solidity różni się od innych języków programowania:
 
 ## Gaz — paliwo, które napędza zdecentralizowane aplikacje (DApps) na Ethereum
 
-W Solidity, użytkownicy muszą płacić za każdym razem, gdy wywołują funkcję Twojej DApp, używając do tego waluty zwanej ***gazem***. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp.
+W Solidity, użytkownicy muszą płacić za każdym razem, gdy wywołują funkcję Twojej DApp, używając do tego waluty zwanej ***gazem***. Użytkownicy kupują gaz za Ether (waluta na Ethereum), więc muszą oni wydać ETH jeśli chcą wykonać jakieś funkcje zawarte w Twojej aplikacji.
 
-How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a ***gas cost*** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total ***gas cost*** of your function is the sum of the gas costs of all its individual operations.
+Ile gazu jest wymagane do wykonania funkcji zależy od tego, jak skomplikowana jest logika tej funkcji. Each individual operation has a ***gas cost*** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total ***gas cost*** of your function is the sum of the gas costs of all its individual operations.
 
 Because running functions costs real money for your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
 
