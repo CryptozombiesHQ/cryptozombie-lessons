@@ -165,11 +165,11 @@ Ponieważ wywoływanie funkcji kosztuje realne pieniądze, optymalizacja kodu w 
 
 Ethereum jest jak wielki, powolny, ale niezwykle bezpieczny komputer. Kiedy wywołujesz funkcję, każdy węzeł (node) sieci musi uruchomić tę samą funkcję w celu zweryfikowania danych wyjściowych — tysiące nodów, które sprawdzają każde wywołanie funkcji, sprawiają, że Ethereum jest zdecentralizowane, a dane tej sieci są niezmienne i odporne na cenzurę.
 
-Twórcy Ethereum chcieli zapewnić, że nikt nie zapcha sieci nieskończona pętlą albo nie wykorzysta wszystkich zasobów sieci do bardzo intensywnych obliczeń. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
+Twórcy Ethereum chcieli zapewnić, że nikt nie zapcha sieci nieskończona pętlą albo nie wykorzysta wszystkich zasobów sieci do bardzo intensywnych obliczeń. Więc uczynili transakcje płatnymi i użytkownicy muszą płacić za obliczenia oraz przechowywanie danych.
 
-> Note: This isn't necessarily true for sidechains, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a sidechain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on sidechains vs the Ethereum mainnet in a future lesson.
+> Uwaga: To niekoniecznie musi być prawda w przypadku sidechain'ów, jak te, które autorzy CryptoZombies budują w Loom Network. Prawdopodobnie nigdy nie będzie miało sensu odpalenie gry takiej jak World of Warcraft bezpośrednio na głównej sieci Ethereum — koszt gazu byłby wtedy zaporą. Ale może ona działać na sidechain'ie z innym algorytmem konsensusu. Porozmawiamy o typach DApps, które możesz wdrożyć na sidechain'ie lub głównej sieci Ethereum w kolejnej lekcji.
 
-## Struct packing to save gas
+## Użycie "struct" w celu oszczędzania gazu
 
 In Lesson 1, we mentioned that there are other types of `uint`s: `uint8`, `uint16`, `uint32`, etc.
 
