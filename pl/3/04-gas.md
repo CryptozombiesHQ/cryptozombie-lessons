@@ -157,13 +157,13 @@ Spójrzmy jak Solidity różni się od innych języków programowania:
 
 W Solidity, użytkownicy muszą płacić za każdym razem, gdy wywołują funkcję Twojej DApp, używając do tego waluty zwanej ***gazem***. Użytkownicy kupują gaz za Ether (waluta na Ethereum), więc muszą oni wydać ETH jeśli chcą wykonać jakieś funkcje zawarte w Twojej aplikacji.
 
-Ile gazu jest wymagane do wykonania funkcji zależy od tego, jak skomplikowana jest logika tej funkcji. Each individual operation has a ***gas cost*** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total ***gas cost*** of your function is the sum of the gas costs of all its individual operations.
+Ile gazu jest wymagane do wykonania funkcji zależy od tego, jak skomplikowana jest logika tej funkcji. Każda operacja posiada swój ***koszt gazu***, który zależy od tego ile zasobów obliczeniowych komputera zaangażowane jest do wykonywania tej operacji (np. zapis do pamięci masowej jest znacznie bardziej kosztowny niż dodawanie dwóch liczb całkowitych). Sumaryczny ***koszt gazu*** Twojej funkcji jest sumą kosztów poszczególnych jej operacji.
 
-Because running functions costs real money for your users, code optimization is much more important in Ethereum than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
+Ponieważ wywoływanie funkcji kosztuje realne pieniądze, optymalizacja kodu w Ethereum jest bardziej istotna niż w innych aplikacjach czy językach programowania. Jeśli kod jest zaniedbany, Twoi użytkownicy będą musieli płacić więcej, aby wykonywać funkcje — a to może spowodować miliony dolarów dodatkowych, niepotrzebnych opłat dla tysięcy użytkowników.
 
-## Why is gas necessary?
+## Dlaczego gaz jest konieczny?
 
-Ethereum is like a big, slow, but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
+Ethereum jest jak wielki, powolny, ale niezwykle bezpieczny komputer. Kiedy wywołujesz funkcję, każdy węzeł (node) sieci musi uruchomić tę samą funkcję w celu zweryfikowania danych wyjściowych — tysiące nodów, które sprawdzają każde wywołanie funkcji, sprawiają, że Ethereum jest zdecentralizowane, a dane tej sieci są niezmienne i odporne na cenzurę.
 
 The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
 
