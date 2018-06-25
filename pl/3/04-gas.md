@@ -149,13 +149,13 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
-Great! Now we know how to update key portions of the DApp while preventing other users from messing with our contracts.
+Wspaniale! Teraz już wiemy jak aktualizować kluczowe części zdecentralizowanej aplikacji, aby uniemożliwić innym użytkownikom manipulowanie naszymi umowami.
 
-Let's look at another way Solidity is quite different from other programming languages:
+Spójrzmy jak Solidity różni się od innych języków programowania:
 
-## Gas — the fuel Ethereum DApps run on
+## Gaz — paliwo, które napędza zdecentralizowane aplikacje (DApps) na Ethereum
 
-In Solidity, your users have to pay every time they execute a function on your DApp using a currency called ***gas***. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp.
+W Solidity, użytkownicy muszą płacić za każdym razem, gdy wywołują funkcję Twojej DApp, używając do tego waluty zwanej ***gazem***. Users buy gas with Ether (the currency on Ethereum), so your users have to spend ETH in order to execute functions on your DApp.
 
 How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a ***gas cost*** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total ***gas cost*** of your function is the sum of the gas costs of all its individual operations.
 
