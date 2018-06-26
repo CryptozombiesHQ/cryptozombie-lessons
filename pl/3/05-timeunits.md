@@ -162,7 +162,7 @@ Aby śledzić, ile czasu Zombi musi czekać do ponownego zaatakowania, możemy u
 
 Solidity zapewnia wbudowane jednostki do radzenia sobie z czasem.
 
-The variable `now` will return the current unix timestamp (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
+Zmienna `now` zwraca aktualny uniksowy znacznik czasu (liczba sekund, które minęły od 1 stycznia 1970 r.). Czas uniksowy w chwili pisania tego tekstu to `1515527488`.
 
 > Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow and break a lot of legacy systems. So if we wanted our DApp to keep running 20 years from now, we could use a 64-bit number instead — but our users would have to spend more gas to use our DApp in the meantime. Design decisions!
 
