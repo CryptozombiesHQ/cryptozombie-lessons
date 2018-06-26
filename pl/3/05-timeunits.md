@@ -154,13 +154,13 @@ material:
 ---
 Właściwość `level` raczej nie wymaga komentarza. Poźniej, gdy stworzymy system walki, Zombiaki, które wygrają więcej bitew będą zwiększały z czasem swój poziom i zyskiwały więcej umiejętności.
 
-Właściwość `readyTime` wymaga nieco więcej wyjaśnień. Celem jest, aby dodać "czas odnowienia", czyli czas, kiedy Zombi musi czekać po nakarmieniu lub zaatakowaniu zanim nastąpi możliwość ponownego karmienia / ataku. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
+Właściwość `readyTime` wymaga nieco więcej wyjaśnień. Celem jest, aby dodać "czas odnowienia", czyli czas, kiedy Zombi musi czekać po nakarmieniu lub zaatakowaniu zanim nastąpi możliwość ponownego karmienia / ataku. Bez tego Zombiaki mogłyby atakować i mnożyć się 1000 razy na dobę, co czyniłoby grę zbyt łatwą.
 
-In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
+Aby śledzić, ile czasu Zombi musi czekać do ponownego zaatakowania, możemy użyć jednostek czasu Solidity.
 
-## Time units
+## Jednostki czasu
 
-Solidity provides some native units for dealing with time.
+Solidity zapewnia wbudowane jednostki do radzenia sobie z czasem.
 
 The variable `now` will return the current unix timestamp (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
 
