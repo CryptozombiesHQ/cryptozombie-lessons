@@ -164,11 +164,11 @@ Solidity zapewnia wbudowane jednostki do radzenia sobie z czasem.
 
 Zmienna `now` zwraca aktualny uniksowy znacznik czasu (liczba sekund, które minęły od 1 stycznia 1970 r.). Czas uniksowy w chwili pisania tego tekstu to `1515527488`.
 
-> Uwaga: Czas uniksowy tradycyjnie jest przechowywany w liczbach 32-bitowych. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow and break a lot of legacy systems. So if we wanted our DApp to keep running 20 years from now, we could use a 64-bit number instead — but our users would have to spend more gas to use our DApp in the meantime. Design decisions!
+> Uwaga: Czas uniksowy tradycyjnie jest przechowywany w liczbach 32-bitowych. Prowadzi to do problemu "Roku 2038", kiedy to 32-bitowe znaczniki systemu unix będą przepełnione i złamią stare systemy. Więc jeśli chcieliśmy, aby nasza DApp została utrzymana przez 20 lat od teraz, powinniśmy użyć zamiast tego numeru 64-bitowego — ale nasi użytkownicy musieliby zapłacić za to więcej gazu. Decyzje projektowe!
 
-Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a `uint` of the number of seconds in that length of time. So `1 minutes` is `60`, `1 hours` is `3600` (60 seconds x 60 minutes), `1 days` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
+Solidity zawiera również jednostki takie jak `sekundy`, `minuty`, `godziny`, `dni`, `tygodnie` i `lata`. Będzie to konwertowane do `uint`, liczby sekund tego okresu. Więc `1 minuta` to `60`, `1 godzina`, to</code> `3600` (60 sekund x 60 minut), `1 dzień` to `86400` (24 godziny x 60 minut x 60 sekund), itd.
 
-Here's an example of how these time units can be useful:
+Oto przykład jak możemy wykorzystać te jednostki czasu:
 
     uint lastUpdated;
     
