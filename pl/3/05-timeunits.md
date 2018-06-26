@@ -152,9 +152,9 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
-The `level` property is pretty self-explanatory. Later on, when we create a battle system, zombies who win more battles will level up over time and get access to more abilities.
+Właściwość `level` raczej nie wymaga komentarza. Poźniej, gdy stworzymy system walki, Zombiaki, które wygrają więcej bitew będą zwiększały z czasem swój poziom i zyskiwały więcej umiejętności.
 
-The `readyTime` property requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
+Właściwość `readyTime` wymaga nieco więcej wyjaśnień. Celem jest, aby dodać "czas odnowienia", czyli czas, kiedy Zombi musi czekać po nakarmieniu lub zaatakowaniu zanim nastąpi możliwość ponownego karmienia / ataku. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
 
 In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
 
