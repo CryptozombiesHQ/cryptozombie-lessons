@@ -192,12 +192,12 @@ Dodaj czas oczekiwania do naszej DApp i spraw, aby Zombiaki musiały odczekać *
 
 1. Zadeklaruj `uint` o nazwie `cooldownTime`, ustaw równe `1 dzień`. (Wybacz niepoprawną gramatykę — jeśli ustawisz ją na "1 dzień", to się nie skompiluje!)
 
-2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
+2. Odkąd dodaliśmy `level` i `readyTime` do naszej struktury `Zombie` w poprzednim rozdziale, potrzebujemy zaktualizować `_createZombie()`, aby używała poprawnej liczby argumentów kiedy utworzymy nową strukturę `Zombie`.
     
-    Update the `zombies.push` line of code to add 2 more arguments: `1` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
+    Zaktualizuj linijkę `zombies.push` poprzez dodanie dwóch argumentów `1` (dla `level`) i `uint32(now + cooldownTime)` (dla `readyTime`).
 
-> Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
+> Uwaga: `uint32(...)` jest niezbędny, ponieważ `now` zwraca domyślnie `uint256`. Więc musimy jawnie przekonwertować go do `uint32`.
 
-`now + cooldownTime` will equal the current unix timestamp (in seconds) plus the number of seconds in 1 day — which will equal the unix timestamp 1 day from now. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
+`now + cooldownTime` będzie równe aktualnemu uniksowemu znacznikowi czasu (w sekundach) plus liczba sekund z jednego dnia — która będzie równa uniksowemu znacznikowi czasu 1 dzień od teraz. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
 
 We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
