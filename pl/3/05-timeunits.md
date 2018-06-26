@@ -172,25 +172,25 @@ Oto przykład jak możemy wykorzystać te jednostki czasu:
 
     uint lastUpdated;
     
-    // Set `lastUpdated` to `now`
+    // Ustaw`lastUpdated` jako`now`
     function updateTimestamp() public {
       lastUpdated = now;
     }
     
-    // Will return `true` if 5 minutes have passed since `updateTimestamp` was 
-    // called, `false` if 5 minutes have not passed
+    // Zwróci `true` jeśli upłynie 5 minut od momentu wywołania `updateTimestamp`,
+    // `false` jeśli nie upłynie 5 minut
     function fiveMinutesHavePassed() public view returns (bool) {
       return (now >= (lastUpdated + 5 minutes));
     }
     
 
-We can use these time units for our Zombie `cooldown` feature.
+Możemy użyć tych jednostek czasu dla naszego Zombi. Właściwość `czas oczekiwania`.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 day** after attacking or feeding to attack again.
+Dodaj czas oczekiwania do naszej DApp i spraw, aby Zombiaki musiały odczekać **1 dzień** po ataku lub nakarmieniu się.
 
-1. Declare a `uint` called `cooldownTime`, and set it equal to `1 days`. (Forgive the poor grammar — if you set it equal to "1 day", it won't compile!)
+1. Zadeklaruj `uint` o nazwie `cooldownTime`, ustaw równe `1 dzień`. (Wybacz niepoprawną gramatykę — jeśli ustawisz ją na "1 dzień", to się nie skompiluje!)
 
 2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
     
