@@ -198,6 +198,6 @@ Dodaj czas oczekiwania do naszej DApp i spraw, aby Zombiaki musiały odczekać *
 
 > Uwaga: `uint32(...)` jest niezbędny, ponieważ `now` zwraca domyślnie `uint256`. Więc musimy jawnie przekonwertować go do `uint32`.
 
-`now + cooldownTime` będzie równe aktualnemu uniksowemu znacznikowi czasu (w sekundach) plus liczba sekund z jednego dnia — która będzie równa uniksowemu znacznikowi czasu 1 dzień od teraz. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
+`now + cooldownTime` będzie równe aktualnemu uniksowemu znacznikowi czasu (w sekundach) plus liczba sekund z jednego dnia — która będzie równa uniksowemu znacznikowi czasu 1 dzień od teraz. Potem możemy porównać czy `readyTime` Zombiaka jest większy od `now`, w celu sprawdzenia upłynięcia czasu i możliwości ponownego użycia Zombi.
 
-We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
+W następnym rozdziale zaimplementujemy funkcjonalność ograniczającą operacje oparte na `readyTime`.
