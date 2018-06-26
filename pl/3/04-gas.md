@@ -167,7 +167,7 @@ Ethereum jest jak wielki, powolny, ale niezwykle bezpieczny komputer. Kiedy wywo
 
 Twórcy Ethereum chcieli zapewnić, że nikt nie zapcha sieci nieskończona pętlą albo nie wykorzysta wszystkich zasobów sieci do bardzo intensywnych obliczeń. Więc uczynili transakcje płatnymi i użytkownicy muszą płacić za obliczenia oraz przechowywanie danych.
 
-> Uwaga: To niekoniecznie musi być prawda w przypadku sidechain'ów, jak te, które autorzy CryptoZombies budują w Loom Network. Prawdopodobnie nigdy nie będzie miało sensu odpalenie gry takiej jak World of Warcraft bezpośrednio na głównej sieci Ethereum — koszt gazu byłby wtedy zaporą. Ale może ona działać na sidechain'ie z innym algorytmem konsensusu. Porozmawiamy o typach DApps, które możesz wdrożyć na sidechain'ie lub głównej sieci Ethereum w kolejnej lekcji.
+> Uwaga: To niekoniecznie musi być prawda w przypadku sidechain'ów, np. takich, które autorzy CryptoZombies budują w Loom Network. Prawdopodobnie nigdy nie będzie miało sensu odpalenie gry takiej jak World of Warcraft bezpośrednio na głównej sieci Ethereum — koszt gazu byłby wtedy zaporą. Ale może ona działać na sidechain'ie z innym algorytmem konsensusu. Porozmawiamy o typach DApps, które możesz wdrożyć na sidechain'ie lub głównej sieci Ethereum w kolejnej lekcji.
 
 ## Użycie "struct" w celu oszczędzania gazu
 
