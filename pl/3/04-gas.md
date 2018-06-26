@@ -153,7 +153,7 @@ Wspaniale! Teraz już wiemy jak aktualizować kluczowe części zdecentralizowan
 
 Spójrzmy jak Solidity różni się od innych języków programowania:
 
-## Gaz — paliwo, które napędza zdecentralizowane aplikacje (DApps) na Ethereum
+## Gaz — paliwo, które napędza zdecentralizowane aplikacje na Ethereum
 
 W Solidity, użytkownicy muszą płacić za każdym razem, gdy wywołują funkcję Twojej DApp, używając do tego waluty zwanej ***gazem***. Użytkownicy kupują gaz za Ether (waluta na Ethereum), więc muszą oni wydać ETH jeśli chcą wykonać jakieś funkcje zawarte w Twojej aplikacji.
 
@@ -196,16 +196,16 @@ Jeśli masz wiele `uint` wewnątrz struktury, to kiedy jest to możliwe, użycie
     MiniMe mini = MiniMe(10, 20, 30); 
     
 
-For this reason, inside a struct you'll want to use the smallest integer sub-types you can get away with.
+Z tego powodu, wewnątrz struktury będziesz wolał używać najmniejszej wartości, takiej która będzie wystarczająca.
 
-You'll also want to cluster identical data types together (i.e. put them next to each other in the struct) so that Solidity can minimize the required storage space. For example, a struct with fields `uint c; uint32 a; uint32 b;` will cost less gas than a struct with fields `uint32 a; uint c; uint32 b;` because the `uint32` fields are clustered together.
+Warto również grupować razem identyczne typy danych (t.j. wpisywać je obok siebie w strukturze), pozwoli to zminimalizować wymaganą ilość miejsca przechowywania tych danych. Na przykład, pola struktur `uint c; uint32; uint32b;` będą kosztowały mniej gazu, niż pola `uint32; uint c; uint32 b;` ponieważ pola `uint32` są zgrupowane razem.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-In this lesson, we're going to add 2 new features to our zombies: `level` and `readyTime` — the latter will be used to implement a cooldown timer to limit how often a zombie can feed.
+W tej lekcji, zamierzamy dodać dwie nowe cechy do naszych Zombi: `level` i `readyTime` — ta druga będzie wykorzystywana do implementacji czasomierza, aby ograniczyć to, jak często można karmić Zombiaka.
 
-So let's jump back to `zombiefactory.sol`.
+Więc wróćmy do `zombiefactory.sol`.
 
-1. Add two more properties to our `Zombie` struct: `level` (a `uint32`), and `readyTime` (also a `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
+1. Dodaj dwie właściwości do struktury `Zombie`: `level` (typu `uint32`) oraz `readyTime` (również typu `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
 
 32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
