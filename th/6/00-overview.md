@@ -4,16 +4,16 @@ header: "Lesson 6: App Front-ends & Web3.js"
 roadmap: roadmap6.png
 ---
 
-Huh, you've made it this far?!
+โอ้โห มากันไกลขนาดนี้แล้วหรอเนี้ย?!
 
-You're no ordinary CryptoZombie...
+สกิลการสร้าง CryptoZombie ของเราจัดอยู่ในระดับที่ไม่ธรรมดาแล้วนะเนี่ย...
 
-By completing Lesson 5, you've demonstrated that you have a pretty firm grasp of Solidity.
+หลังจากที่เราผ่านบทที่ 5 กันสำเร็จไปได้แล้วนั้นแสดงให้เห็นได้อย่างหนึ่งว่า เรามีความเข้าใจที่ลึกซึ้งมากเกี่ยวกับ Solidity ทีเดียวเลยนะ
 
-But no DApp is complete without a way for its users to interact with it...
+แต่เดี๋ยวก่อน ไม่มี DApp ไหนจะเสร็จสมบูรณ์ทั้งนั้น ถ้าผู้ใช้ยังไม่สามารถ interact กับมันได้...
 
-In this lesson, we're going to look at how to interact with your smart contract and build a basic front-end for your DApp using a library called **Web3.js**.
+ขอบเขตเนื้อหาภายในบทนี้เราจะมาดูวิธีการเพิ่ม interaction กับ smart contract ของเราและการสร้าง front-end ขั้นเบสิคสำหรับ DApp โดยการใช้ library ที่มีชื่อว่า **Web3.js** นั่นเอง
 
-Note that app front-ends are written in **JavaScript**, not Solidity. But since the focus of this course is on Ethereum / Solidity, we're assuming you are already comfortable building websites with HTML, JavaScript (including ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), and JQuery, and will not be spending time covering the basics of those languages.
+จำไว้ว่า front-end บนแอพพลิเคชั่นของเราถูกเขียนด้วยภาษา **JavaScript** ไม่ใช่ Solidity แต่ในเมื่อคอร์สนี้เพ่งความสนใจไปที่เรื่อง Ethereum / Solidity จึงไม่มีทางเลือกที่จะต้องคิดว่าเรามีความรู้ในเรื่องของการสร้างเว็บไซต์ด้วยโค้ด HTML, JavaScript กันอยู่แล้ว (รวมถึง ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>) และ JQuery ซึ่งจะขอไม่ใช้เวลาในการพูดถึงเรื่องเนื้อหาพื้นฐานในภาษาเหล่านั้นนะจ๊ะ
 
-If you are not already comfortable building websites with HTML / Javascript, you should complete a basic tutorial elsewhere before starting this lesson.
+แปลว่าถ้ายังไม่คุ้นเคยกับการสร้างเว็บไซต์ด้วย HTML / Javascript แล้วล่ะก็ ขอให้ไปศึกษาพื้นฐานต่างๆ ดังกล่าวจากที่อื่นมาให้แน่นก่อน แล้วค่อยกลับมาเรียนรู้กันต่อได้เลย
