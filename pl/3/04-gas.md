@@ -202,10 +202,10 @@ Warto również grupować razem identyczne typy danych (t.j. wpisywać je obok s
 
 ## Wypróbujmy zatem
 
-W tej lekcji, zamierzamy dodać dwie nowe cechy do naszych Zombi: `level` i `readyTime` — ta druga będzie wykorzystywana do implementacji czasomierza, aby ograniczyć to, jak często można karmić Zombiaka.
+W tej lekcji, zamierzamy dodać dwie nowe właściwości do naszych Zombi: `level` i `readyTime` — ta druga będzie wykorzystywana do implementacji czasomierza, aby ograniczyć to, jak często można karmić Zombiaka.
 
-Więc wróćmy do `zombiefactory.sol`.
+Wróćmy więc do `zombiefactory.sol`.
 
-1. Dodaj dwie właściwości do struktury `Zombie`: `level` (typu `uint32`) oraz `readyTime` (również typu `uint32`). We want to pack these data types together, so let's put them at the end of the struct.
+1. Dodaj dwie właściwości do struktury `Zombie`: `level` (typu `uint32`) oraz `readyTime` (również typu `uint32`). Chcemy spakować te dane razem, więc wpiszmy je na końcu struktury.
 
-32 bits is more than enough to hold the zombie's level and timestamp, so this will save us some gas costs by packing the data more tightly than using a regular `uint` (256-bits).
+32 bity będą w zupełności wystarczające, aby przechować nasze nowe właściwości, więc oszczędzi nam to trochę gazu poprzez spakowanie tych danych ściślej niż przy użyciu regularnego `uint` (256-bitów).
