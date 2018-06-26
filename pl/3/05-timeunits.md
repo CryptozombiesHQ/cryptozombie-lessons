@@ -1,9 +1,9 @@
 ---
-title: Time Units
+title: Jednostki czasu
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -19,7 +19,7 @@ material:
         
         uint dnaDigits = 16;
         uint dnaModulus = 10 ** dnaDigits;
-        // 1. Define `cooldownTime` here
+        // 1. Zdefiniuj tutaj `cooldownTime`
         
         struct Zombie {
         string name;
@@ -34,7 +34,7 @@ material:
         mapping (address => uint) ownerZombieCount;
         
         function _createZombie(string _name, uint _dna) internal {
-        // 2. Update the following line:
+        // 2. Zaktualizuj następującą linię:
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
