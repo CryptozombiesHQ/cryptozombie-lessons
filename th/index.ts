@@ -1,5 +1,5 @@
-// TODO: ตรงนี้ไม่ควรอิมพอร์ตด้วยตัวเอง ควรโหลดแค่ทั้งหมดไฟล์ที่เป็น .md พอ 
-// ไฟล์ต่างๆ จากตำแหน่งที่คล้ายกัน... ซึ่งอาจต้องทำผ่าน webpack
+// TODO: Shouldn't have to import stuff manually here, should just load all .md
+// files from the relevant locations... probably need to do that via webpack.
 
 // lesson 1
 import l1_overview from './1/00-overview.md'
