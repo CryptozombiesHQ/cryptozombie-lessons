@@ -170,20 +170,20 @@ Najpierw, zdefiniujmy funkcje pomocnicze, które pozwolą nam ustawić i sprawdz
 
 ## Przekazywanie struktur jako argumenty
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+Możesz ustawić wskaźnik pamięci do struktury jako argument funkcji `private` lub `internal`. Jest to przydatne, na przykład, przekazanie struktur `Zombie` pomiędzy funkcjami.
 
-The syntax looks like this:
+Składnia wygląda tak:
 
     function _doStuff(Zombie storage _zombie) internal {
-      // do stuff with _zombie
+      // rób coś z _zombie
     }
     
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+W ten sposób możemy przekazać odwołanie do naszych Zombi wewnątrz funkcji, zamiast przekazując identyfikator Zombi i sprawdzać go.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
+1. Zacznij od zdefiniowania funkcji `_triggerCooldown`. Będzie ona miała 1 argument, `_zombie`, typu wskaźnikowego `Zombie storage`. Funkcja powinna być `internal`.
 
 2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
 
