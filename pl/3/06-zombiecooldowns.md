@@ -1,7 +1,7 @@
 ---
-title: Zombie Cooldowns
+title: Czas oczekiwania Zombi
 actions:
-  - 'checkAnswer'
+  - 'sprawdźOdpowiedź'
   - 'hints'
 requireLogin: true
 material:
