@@ -2,8 +2,8 @@
 title: Czas oczekiwania Zombi
 actions:
   - 'sprawdźOdpowiedź'
-  - 'hints'
-requireLogin: true
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -36,9 +36,9 @@ material:
         kittyContract = KittyInterface(_address);
         }
         
-        // 1. Define `_triggerCooldown` function here
+        // 1. Zdefiniuj tutaj funkcję `_triggerCooldown`
         
-        // 2. Define `_isReady` function here
+        // 2. Tutaj funkcję `_isReady`
         
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
@@ -156,11 +156,11 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
+Kiedy mamy już właściwość `readyTime` w naszej strukturze `Zombie`, zajrzyjmy do `zombiefeeding.sol` i zaimplementujmy timer.
 
-We're going to modify our `feedAndMultiply` such that:
+Zmodyfikujemy `feedAndMultiply` w taki oto sposób:
 
-1. Feeding triggers a zombie's cooldown, and
+1. Karmienie włącza czas oczekiwania Zombiaka i
 
 2. Zombies can't feed on kitties until their cooldown period has passed
 
