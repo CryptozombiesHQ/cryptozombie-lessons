@@ -189,4 +189,4 @@ W ten sposób możemy przekazać odwołanie do naszych Zombi wewnątrz funkcji, 
 
 3. Następnie należy utworzyć funkcję o nazwie `_isReady`. Funkcja ta również przyjmie argument `Zombie storage` z nazwą `_zombie`. Będzie to funkcja `internal view` zwracająca rezultat typu `bool`.
 
-4. W ciele funkcji powinniśmy zwrócić `(_zombie.readyTime <= now)`, które wynik oceni jako `true` lub `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. W ciele funkcji powinniśmy zwrócić `(_zombie.readyTime <= now)`, które wynik oceni jako `true` lub `false`. Funkcja ta powie nam czy minęło wystarczająco dużo czasu od ostatniego karmienia Zombi.
