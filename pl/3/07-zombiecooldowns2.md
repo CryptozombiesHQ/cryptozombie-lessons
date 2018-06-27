@@ -165,7 +165,7 @@ material:
 ---
 Zmodyfikujmy `feedAndMultiply` aby wziąć pod uwagę nasz timer.
 
-Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę funkcję jako `public`. Ważną praktyką w kwestii bezpieczeństwa jest przeanalizowanie wszystkich Twoich `publicznych` i `zewnętrznych (external)` funkcji oraz próba wymyślenia, w jaki sposób użytkownicy mogliby ich nadużywać. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
 
 Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
 
