@@ -169,12 +169,12 @@ Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę 
 
 Ponowne analizowanie tej określonej funkcji, użytkownik może bezpośrednio ją wywołać i przekazać dowolne `_targetDna` lub `_species`. To nie jest gra — chcemy aby przestrzegały naszych zasad!
 
-Przyglądając się bliżej, ta funkcja musi zostać tylko wywołana przez `feedOnKitty()`, więc najprostszym sposobem, aby zapobiec wykorzystywaniom jest określenie jej jako `internal`.
+Przyglądając się bliżej, ta funkcja może zostać wywołana poprzez `feedOnKitty()`, więc najprostszym sposobem, aby zapobiec wykorzystywaniom jest określenie jej jako `internal`.
 
 ## Wypróbujmy zatem
 
-1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. We don't want users to be able to call this function with any DNA they want.
+1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. Nie chcemy, aby użytkownicy mogli wywołać tę funkcję z dowolnym DNA jakie chcą.
 
-2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
+2. Uczyńmy aby `feedAndMultiply` brało pod uwagę nasz `cooldownTime`. Po pierwsze, spójrzmy na `myZombie`, dodajmy wyrażenie `require`, które sprawdzi `_isReady()` i przekaże do niej `myZombie`. W ten sposób użytkownik może wywołać tę funkcję, tylko jeśli czas odnowienia Zombi upłynął.
 
 3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
