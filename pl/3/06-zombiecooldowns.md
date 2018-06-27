@@ -162,13 +162,13 @@ Zmodyfikujemy `feedAndMultiply` w taki oto sposób:
 
 1. Karmienie włącza czas oczekiwania Zombiaka i
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+2. Zombiaki nie mogą karmić się kotkami do momentu upłynięcia czasu oczekiwania
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+Będzie to zapobiegało możliwości nieskończonego karmienia się i mnożenia. W przyszłości, kiedy dodamy system walki, zrobimy tak, aby atakowanie innych Zombi również opierało się na czasie oczekiwania.
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+Najpierw, zdefiniujmy funkcje pomocnicze, które pozwolą nam ustawić i sprawdzić `readyTime` Zombiaka.
 
-## Passing structs as arguments
+## Przekazywanie struktur jako argumenty
 
 You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
 
