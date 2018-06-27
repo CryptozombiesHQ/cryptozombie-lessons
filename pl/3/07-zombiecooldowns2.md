@@ -165,15 +165,15 @@ material:
 ---
 Zmodyfikujmy `feedAndMultiply` aby wziąć pod uwagę nasz timer.
 
-Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę funkcję jako `public`. Ważną praktyką w kwestii bezpieczeństwa jest przeanalizowanie wszystkich Twoich `publicznych` i `zewnętrznych (external)` funkcji oraz próba wymyślenia, w jaki sposób użytkownicy mogliby ich nadużywać. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę funkcję jako `public`. Ważną praktyką w kwestii bezpieczeństwa jest przeanalizowanie wszystkich Twoich `publicznych` i `zewnętrznych (external)` funkcji oraz próba wymyślenia, w jaki sposób użytkownicy mogliby ich nadużywać. Pamiętaj — jeżeli te funkcje nie będą miały modyfikatora takiego jak `onlyOwner`, to każdy użytkownik będzie mógł je wywoływać i przekazywać do nich dane jakie tylko zechce.
 
-Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+Ponowne analizowanie tej określonej funkcji, użytkownik może bezpośrednio ją wywołać i przekazać dowolne `_targetDna` lub `_species`. To nie jest gra — chcemy aby przestrzegały naszych zasad!
 
-On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+Przyglądając się bliżej, ta funkcja musi zostać tylko wywołana przez `feedOnKitty()`, więc najprostszym sposobem, aby zapobiec wykorzystywaniom jest określenie jej jako `internal`.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. We don't want users to be able to call this function with any DNA they want.
 
 2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
 
