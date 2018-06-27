@@ -1,9 +1,9 @@
 ---
-title: Public Functions & Security
+title: Funkcje Publiczne & Bezpieczeństwo
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -44,18 +44,18 @@ material:
         return (_zombie.readyTime <= now);
         }
         
-        // 1. Make this function internal
+        // 1. Zrób tą funkcję internal
         function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
-        // 2. Add a check for `_isReady` here
+        // 2. Dodaj tutaj sprawdzanie dla `_isReady`
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
         if (keccak256(_species) == keccak256("kitty")) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
-        // 3. Call `triggerCooldown`
+        // 3. Wywołaj `triggerCooldown`
         }
         
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -163,7 +163,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
-Now let's modify `feedAndMultiply` to take our cooldown timer into account.
+Zmodyfikujmy `feedAndMultiply` aby wziąć pod uwagę nasz timer.
 
 Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
 
