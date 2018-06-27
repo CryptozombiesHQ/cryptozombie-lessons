@@ -175,6 +175,6 @@ Przyglądając się bliżej, ta funkcja może zostać wywołana poprzez `feedOnK
 
 1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. Nie chcemy, aby użytkownicy mogli wywołać tę funkcję z dowolnym DNA.
 
-2. Uczyńmy aby `feedAndMultiply` brało pod uwagę nasz `cooldownTime`. Po pierwsze, spójrzmy na `myZombie`, dodajmy wyrażenie `require`, które sprawdzi `_isReady()` i przekaże do niej `myZombie`. W ten sposób użytkownik może wywołać tę funkcję, tylko jeśli czas odnowienia Zombi upłynął.
+2. Uczyńmy aby `feedAndMultiply` brało pod uwagę nasz `cooldownTime`. Po pierwsze, spójrzmy na `myZombie`, dodajmy wyrażenie `require`, które sprawdzi `_isReady()` i przekaże do niej `myZombie`. W ten sposób użytkownik może wywołać tę funkcję tylko wtedy, gdy czas odnowienia Zombi upłynie.
 
 3. Na końcu funkcji wywołajmy `_triggerCooldown(myZombie)`, aby karmienie wyzwalało czas oczekiwania dla Zombi.
