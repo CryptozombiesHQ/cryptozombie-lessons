@@ -167,14 +167,14 @@ Zmodyfikujmy `feedAndMultiply` aby wziąć pod uwagę nasz timer.
 
 Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę funkcję jako `public`. Ważną praktyką w kwestii bezpieczeństwa jest przeanalizowanie wszystkich Twoich `publicznych` i `zewnętrznych (external)` funkcji oraz próba wymyślenia, w jaki sposób użytkownicy mogliby ich nadużywać. Pamiętaj — jeżeli te funkcje nie będą miały modyfikatora takiego jak `onlyOwner`, to każdy użytkownik będzie mógł je wywoływać i przekazywać do nich dane jakie tylko zechce.
 
-Ponowne analizowanie tej określonej funkcji, użytkownik może bezpośrednio ją wywołać i przekazać dowolne `_targetDna` lub `_species`. To nie jest gra — chcemy aby przestrzegały naszych zasad!
+Ponowne przeanalizowanie tej szczególnej funkcji uświadamia nas, że użytkownik może bezpośrednio ją wywołać i przekazać dowolne `_targetDna` lub `_species`. To nie wydaje się bardzo podobne do gry — chcemy aby przestrzegał naszych zasad!
 
 Przyglądając się bliżej, ta funkcja może zostać wywołana poprzez `feedOnKitty()`, więc najprostszym sposobem, aby zapobiec wykorzystywaniom jest określenie jej jako `internal`.
 
 ## Wypróbujmy zatem
 
-1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. Nie chcemy, aby użytkownicy mogli wywołać tę funkcję z dowolnym DNA jakie chcą.
+1. Obecnie `feedAndMultiply` jest funkcją `publiczną`. Zróbmy ją `internal`, aby kontrakt był bardziej bezpieczny. Nie chcemy, aby użytkownicy mogli wywołać tę funkcję z dowolnym DNA.
 
 2. Uczyńmy aby `feedAndMultiply` brało pod uwagę nasz `cooldownTime`. Po pierwsze, spójrzmy na `myZombie`, dodajmy wyrażenie `require`, które sprawdzi `_isReady()` i przekaże do niej `myZombie`. W ten sposób użytkownik może wywołać tę funkcję, tylko jeśli czas odnowienia Zombi upłynął.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+3. Na końcu funkcji wywołajmy `_triggerCooldown(myZombie)`, aby karmienie wyzwalało czas oczekiwania dla Zombi.
