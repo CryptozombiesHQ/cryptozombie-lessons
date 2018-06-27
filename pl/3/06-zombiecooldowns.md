@@ -185,8 +185,8 @@ W ten sposób możemy przekazać odwołanie do naszych Zombi wewnątrz funkcji, 
 
 1. Zacznij od zdefiniowania funkcji `_triggerCooldown`. Będzie ona miała 1 argument, `_zombie`, typu wskaźnikowego `Zombie storage`. Funkcja powinna być `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. W ciele funkcji ustawmy `_zombie.readyTime` równe `uint32(now + cooldownTime)`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3. Następnie należy utworzyć funkcję o nazwie `_isReady`. Funkcja ta również przyjmie argument `Zombie storage` z nazwą `_zombie`. Będzie to funkcja `internal view` zwracająca rezultat typu `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. W ciele funkcji powinniśmy zwrócić `(_zombie.readyTime <= now)`, które wynik oceni jako `true` lub `false`. This function will tell us if enough time has passed since the last time the zombie fed.
