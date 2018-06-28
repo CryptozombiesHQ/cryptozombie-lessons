@@ -194,12 +194,12 @@ Wcześniej widzieliśmy prosty przykład `onlyOwner`. Ale modyfikatory funkcji m
 
 Możesz tutaj zauważyć, że modyfikator `olderThan` odbiera argumenty podobnie jak funkcja i funkcja `driveCar` przekazuje te argumenty do modyfikatora.
 
-Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
+Spróbujmy utworzyć nasz własny `modyfikator`, który używa właściwości `level`, aby ograniczyć dostęp do specjalnych zdolności.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
+1. W `ZombieHelper`, utwórz `modyfikator` i nazwij go `aboveLevel`. Niech odbiera 2 argumenty `_level` (`uint`) i `_zombieId` (`uint`).
 
-2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
+2. W jego ciele zróbmy sprawdzanie, aby zapewnić, że `zombies[_zombieId].level` jest większe lub równe `_level`.
 
-3. Remember to have the last line of the modifier call the rest of the function with `_;`.
+3. Pamiętaj, aby umieścić w ostatniej linii modyfikatora, wywołanie pozostałej części funkcji przy pomocy: `_;`.
