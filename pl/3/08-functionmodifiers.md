@@ -1,9 +1,9 @@
 ---
-title: More on Function Modifiers
+title: Więcej o modyfikatorach funkcji
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -15,7 +15,7 @@ material:
         
         contract ZombieHelper is ZombieFeeding {
         
-        // Start here
+        // Zacznij tutaj
         
         }
       "zombiefeeding.sol": |
