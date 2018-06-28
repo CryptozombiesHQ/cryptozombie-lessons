@@ -192,7 +192,7 @@ Wcześniej widzieliśmy prosty przykład `onlyOwner`. Ale modyfikatory funkcji m
     }
     
 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
+Możesz tutaj zauważyć, że modyfikator `olderThan` odbiera argumenty podobnie jak funkcja i funkcja `driveCar` przekazuje te argumenty do modyfikatora.
 
 Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
 
