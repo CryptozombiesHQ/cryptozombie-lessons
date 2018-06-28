@@ -166,29 +166,29 @@ material:
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
       }
 ---
-Great! Our zombie now has a functional cooldown timer.
+Świetnie! Nasz Zombi posiada od teraz timer odliczający czas oczekiwania.
 
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
+Następnie, zamierzamy dodać metody pomocnicze. Stworzyliśmy dla Ciebie nowy plik o nazwie `zombiehelper.sol`, który importuje `zombiefeeding.sol`. Pomoże to zorganizować nasz kod.
 
-Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
+Zróbmy tak, aby Zombiaki mogły zdobyć specjalne umiejętności po osiągnięciu pewnego poziomu. Lecz aby to wykonać, najpierw musimy dowiedzieć się nieco więcej o modyfikatorach funkcji.
 
-## Function modifiers with arguments
+## Modyfikatory funkcji z argumentami
 
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
+Wcześniej widzieliśmy prosty przykład `onlyOwner`. Ale modyfikatory funkcji mogą również odbierać argumenty. Na przykład:
 
-    // A mapping to store a user's age:
+    // Mapowanie do przechowywania wieku użytkownika:
     mapping (uint => uint) public age;
     
-    // Modifier that requires this user to be older than a certain age:
+    // Modyfikator, który wymaga, aby user był w starszym wieku niż określony:
     modifier olderThan(uint _age, uint _userId) {
       require(age[_userId] >= _age);
       _;
     }
     
-    // Must be older than 16 to drive a car (in the US, at least).
-    // We can call the `olderThan` modifier with arguments like so:
+    // Musi być starszy niż 16 lat (przynajmniej w USA).
+    // Możemy wywołać modyfikator `olderThan` z argumentami jak:
     function driveCar(uint _userId) public olderThan(16, _userId) {
-      // Some function logic
+      // Jakaś logika funkcji
     }
     
 
