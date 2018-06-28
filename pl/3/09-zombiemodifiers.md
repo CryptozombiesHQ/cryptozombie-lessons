@@ -1,9 +1,9 @@
 ---
-title: Zombie Modifiers
+title: Modyfikatory Zombi
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
