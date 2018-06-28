@@ -103,8 +103,8 @@ import l6_ch10 from './6/10-wrappingitup.md'
 import l6_complete from './6/lessoncomplete.md'
 
 
-// chapterList เป็น ordered array ของทุกบทเรียน โดยจะจัดวางเรียงลำดับกัน
-// index ของแต่ละบทเป็นแบบ 1-based ไม่ใช่ zero-based บทเรียนแรกก็คือ 1 นั่นเอง
+// chapterList is an ordered array of chapters. The order represents the order of the chapters.
+// chapter index will be 1-based and not zero-based. First chapter is 1
 
 export default {
   1: [
