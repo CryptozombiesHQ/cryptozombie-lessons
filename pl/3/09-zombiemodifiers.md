@@ -189,10 +189,10 @@ Zaimplementujemy te funkcje poniżej. Tutaj jest przykład kodu z poprzedniej le
 
 ## Wypróbujmy zatem
 
-1. Stwórz funkcję, o nazwie `feedAndMultiply`. Będzie ona pobierała 2 argumenty: `_zombieId` (`uint`) i `_newName` (`string`), zróbmy ją `external`. Powinna mieć modyfikator `aboveLevel` i przekazywać `2` dla parametru `_level`. (Don't forget to also pass the `_zombieId`).
+1. Stwórz funkcję, o nazwie `changeName`. Będzie ona pobierała 2 argumenty: `_zombieId` (`uint`) i `_newName` (`string`), zróbmy ją `external`. Powinna mieć modyfikator `aboveLevel` i przekazywać `2` dla parametru `_level`. (Nie zapomnij przekazaż również `_zombieId`).
 
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
+2. W tej funkcji, najpierw zweryfikujemy czy `msg.sender` jest równy `zombieToOwner[_zombieId]`. Użyj do tego wyrażenia `require`.
 
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+3. Potem, funkcja powinna ustawiać `zombies[_zombieId].name` równe `_newName`.
 
-4. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
+4. Stwórz inną funkcję o nazwie `changeDna` poniżej `changeName`. Jej definicja i zawartość będzie prawie identyczna do `changeName`, z wyjątkiem drugiego argumentu, którym będzie `_newDna` (`uint`) i przekaże on `20` dla parametru `_level` w `aboveLevel`. I oczywiście, powinien ustawić `dna` Zombiaka jako `_newDna` zamiast ustawiać imię Zombi.
