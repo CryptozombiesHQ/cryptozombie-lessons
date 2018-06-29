@@ -199,8 +199,8 @@ Logika funkcji jest troszkę skomplikowana, więc zajmie nam to kilka rozdział�
 
 1. Stwórz nową funkcję o nazwie `getZombiesByOwner`. Ma ona odbierać jeden argument typu `address` o nazwie `_owner`.
 
-2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
+2. Oznaczmy ją jako `external view`, więc będziemy mogli ją wywołać z `web3.js` bez zużycia gazu.
 
-3. The function should return a `uint[]` (an array of `uint`).
+3. Funkcja ta powinna zwracać `uint[]` (tablicę `uint`).
 
-Leave the function body empty for now, we'll fill it in in the next chapter.
+Ciało funkcji pozostawmy puste, wypełnimy ją w następnym rozdziale.
