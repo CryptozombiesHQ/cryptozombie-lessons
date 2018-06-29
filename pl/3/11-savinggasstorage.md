@@ -1,9 +1,9 @@
 ---
-title: Storage is Expensive
+title: '"storage" jest drogie'
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -31,7 +31,7 @@ material:
         }
         
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
-        // Start here
+        // Zacznij tutaj
         }
         
         }
@@ -177,7 +177,7 @@ material:
       return result; }
       }
 ---
-One of the more expensive operations in Solidity is using `storage` — particularly writes.
+Jedną z najbardziej kosztownych operacji w Solidity jest używanie `storage`.
 
 This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
 
