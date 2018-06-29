@@ -198,7 +198,7 @@ Ta funkcja transferująca będzie potrzebowała: 1. Włożyć Zombiaka do tablic
 
 Krok 3 byłby ekstremalnie kosztowny jeśli chodzi o gaz, ponieważ będziemy musieli zrobić zapis dla każdego Zombi, którego przeniesiemy. Jeśli właściciel ma 20 zombie i handluje od pierwszego, będziemy musieli zrobić 19 zapisów, aby utrzymać kolejność w tablicy.
 
-Since writing to storage is one of the most expensive operations in Solidity, every call to this transfer function would be extremely expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
+Odkąd zapisywanie do pamięci jest jedną z najbardziej kosztownych operacji w Solidity, każde wywołanie tej funkcji transferującej będzie pożerało bardzo duże ilości gazu. I co gorsza, ilość gazu będzie się różniła za każdym jej wywołaniem, w zależności od tego jak wiele Zombiaków użytkownik ma w swojej armii i numeru Zombi, który zostanie poddany wymianie. Więc user nie będzie wiedział ile gazu zużyje.
 
 > Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
 
