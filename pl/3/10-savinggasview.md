@@ -189,13 +189,13 @@ A to z tego powodu, że funkcje `view` tak właściwie nie zmieniają niczego w 
 
 Ustawianiem web3.js i tworzeniem własnego węzła zajmiemy się później. A na tą chwilę, sporą nauką jest dla nas fakt, że możemy optymalizować zużycie gazu przez użytkowników dzięki stosowaniu funkcji `external view` tam, gdzie jest to możliwe.
 
-> Uwaga: Jeśli funkcja `view` jest wywołana wewnętrznie poprzez inną funkcję w tym samym kontrakcie to **nie** jest to funkcja `view` i będzie ona nadal generowała koszty gazu. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
+> Uwaga: Jeśli funkcja `view` jest wywołana wewnętrznie poprzez inną funkcję w tym samym kontrakcie to **nie** jest to funkcja `view` i będzie ona nadal generowała koszty gazu. Jest tak ponieważ ta inna funkcja tworzy transakcje na Ethereum i stale musi być weryfikowana poprzez każdy węzeł w sieci. Więc funkcje `view` są "wolne" tylko wtedy, gdy są one wywoływane zewnętrznie.
 
-## Put it to the test
+## Wypróbujmy zatem
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from `web3.js` if we want to display a user profile page with their entire army.
+Zamierzamy zaimplementować funkcję, która zwróci nam całą armię Zombi użytkownika. Możemy tę funkcję później wywołać z `web3.js` jeśli chcemy wyświetlić profil usera z jego całą armią.
 
-This function's logic is a bit complicated so it will take a few chapters to implement.
+Logika funkcji jest troszkę skomplikowana, więc zajmie nam to kilka rozdziałów zanim ją zaimplementujemy.
 
 1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
 
