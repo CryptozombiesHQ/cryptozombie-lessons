@@ -211,10 +211,10 @@ Jest to trywialny przykład do pokazania składni, ale w następnym rozdziale zo
 
 ## Wypróbujmy zatem
 
-In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
+W funkcji `getZombiesByOwner`, chcemy zwracać tablicę `uint[]` ze wszystkimi Zombiakami, które posiada określony użytkownik.
 
-1. Declare a `uint[] memory` variable called `result`
+1. Zadeklaruj zmienną `uint[] memory` o nazwie `result`.
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2. Ustaw równe nowej tablicy typu `uint`. Długość tablicy powinna wynosić tyle, ile Zombiaków posiada `_owner`, do którego możemy zajrzeć przy pomocy naszego `mapowania` poprzez: `ownerZombieCount[_owner]`.
 
-3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
+3. Na koniec funkcja zwraca `result`. Narazie jest tylko pustą tablicą, ale w następnym rozdziale wypełnimy ją.
