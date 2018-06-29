@@ -194,7 +194,7 @@ Możesz użyć słowa kluczowego `memory` z tablicami, aby stworzyć wewnątrz f
 Oto sposób deklarowania tablicy w pamięci:
 
     function getArray() external pure returns(uint[]) {
-      // Instantiate a new array in memory with a length of 3
+      // Utworzenie nowej tablicy w pamięci o długości 3
       uint[] memory values = new uint[](3);
       // Add some values to it
       values.push(1);
@@ -205,11 +205,11 @@ Oto sposób deklarowania tablicy w pamięci:
     }
     
 
-This is a trivial example just to show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+Jest to trywialny przykład do pokazania składni, ale w następnym rozdziale zobaczymy jak połączyć to z pętlami `for` dla realnych przypadków.
 
-> Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+> Uwaga: tablice w pamięci **muszą** być utworzone z argumentem określającym jej długość (w tym przypadku `3`). Obecnie nie można zmienić ich rozmiaru tak, jak można to robić z macierzami pamięci masowej poprzez `array.push()`, jednakże może się to zmienić w przyszłych wersjach języka Solidity.
 
-## Put it to the test
+## Wypróbujmy zatem
 
 In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
 
