@@ -195,4 +195,4 @@ Zaimplementujemy te funkcje poniżej. Tutaj jest przykład kodu z poprzedniej le
 
 3. Potem, funkcja powinna ustawiać `zombies[_zombieId].name` równe `_newName`.
 
-4. Stwórz inną funkcję o nazwie `changeDna` poniżej `changeName`. Jej definicja i zawartość będzie prawie identyczna do `changeName`, z wyjątkiem drugiego argumentu, którym będzie `_newDna` (`uint`) i przekaże on `20` dla parametru `_level` w `aboveLevel`. I oczywiście, powinien ustawić `dna` Zombiaka jako `_newDna` zamiast ustawiać imię Zombi.
+4. Stwórz inną funkcję o nazwie `changeDna` poniżej `changeName`. Jej definicja i zawartość będzie prawie identyczna do `changeName`, z wyjątkiem drugiego argumentu, którym będzie `_newDna` (`uint`) i przekaże on `20` dla parametru `_level` w `aboveLevel`. I oczywiście, powinien ustawić `dna` Zombi jako `_newDna` zamiast jego imienia.
