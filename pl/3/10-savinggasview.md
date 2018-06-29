@@ -175,15 +175,15 @@ material:
       }
       }
 ---
-Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
+Imponujące! Teraz mamy już specjalne umiejętności dla Zombiaków o wyższym poziomie, aby zachęcić ich właścicieli do podnoszenia tego poziomu. Jeśli będziemy chcieli, możemy później dodać ich więcej.
 
-Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+Dodajmy jeszcze jedną funkcję: nasza DApp potrzebuje metody do wyświetlania całej armii Zombiaków, którą posiada user — nazwijmy ją `getZombiesByOwner`.
 
-This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+Funkcja ta będzie potrzebowała jedynie odczytać dane z blockchain'a, więc możemy oznaczyć ją `view`. Pokazuje nam to ważny aspekt jeżeli chodzi o optymalizację zużycia gazu:
 
-## View functions don't cost gas
+## Funkcje "view" nie generują kosztów gazu
 
-`view` functions don't cost any gas when they're called externally by a user.
+Funkcje `view` nie kosztują gazu, gdy są wywoływane zewnętrznie przez użytkownika.
 
 This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
 
