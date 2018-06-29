@@ -32,16 +32,12 @@ material:
         
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
         uint[] memory result = new uint[](ownerZombieCount[_owner]);
-        // Start here
+        // Zacznij tutaj
         return result;
         }
         
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
-        
-        import "./zombiefactory.sol";
-        
         contract KittyInterface {
         function getKitty(uint256 _id) external view returns (
         bool isGestating,
@@ -178,11 +174,11 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
-In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage.
+W poprzednim rozdziale, wspomnieliśmy, że czasami będziesz chciał użyć pętli `for`, aby zbudować zawartość tablicy w funkcji, zamiast po prostu zapisywać tą tablicę do przechowania.
 
-Let's look at why.
+Spójrzmy dlaczego.
 
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
+Dla naszej funkcji `getZombiesByOwner`, naiwnym byłoby przechowywać `mapowanie` właścicieli do armii Zombi w kontrakcie `ZombieFactory`:
 
     mapping (address => uint[]) public ownerToZombies
     
