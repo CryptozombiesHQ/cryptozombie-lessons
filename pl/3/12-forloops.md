@@ -183,18 +183,18 @@ Dla naszej funkcji `getZombiesByOwner`, naiwnym byłoby przechowywać `mapowanie
     mapping (address => uint[]) public ownerToZombies
     
 
-Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
+Wtedy za każdym razem, gdy tworzymy nowego Zombiaka, użyjemy po prostu `ownerToZombies[owner].push(zombieId)`, aby dodać go do tablicy Zombiaków właściciela. I `getZombiesByOwner` byłaby bardzo prostą funkcją:
 
     function getZombiesByOwner(address _owner) external view returns (uint[]) {
       return ownerToZombies[_owner];
     }
     
 
-### The problem with this approach
+### Jaki jest problem z tym podejściem?
 
-This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
+Podejście to jest kuszące, w swej prostocie. Ale przyjrzyjmy się co się dzieje, jeśli dodamy funkcję transferującą Zombi od jednego właściciela do drugiego (będziemy to chcieli na pewno dodać w późniejszej lekcji!).
 
-That transfer function would need to: 1. Push the zombie to the new owner's `ownerToZombies` array, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
+Ta funkcja transferująca będzie potrzebowała: 1. Włożyć Zombiaka do tablicy `ownerToZombies` nowego właściciela, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
 
 Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
 
