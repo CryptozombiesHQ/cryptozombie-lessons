@@ -200,7 +200,7 @@ Krok 3 byłby ekstremalnie kosztowny jeśli chodzi o gaz, ponieważ będziemy mu
 
 Odkąd zapisywanie do pamięci jest jedną z najbardziej kosztownych operacji w Solidity, każde wywołanie tej funkcji transferującej będzie pożerało bardzo duże ilości gazu. I co gorsza, ilość gazu będzie się różniła za każdym jej wywołaniem, w zależności od tego jak wiele Zombiaków użytkownik ma w swojej armii i numeru Zombi, który zostanie poddany wymianie. Więc user nie będzie wiedział ile gazu zużyje.
 
-> Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
+> Uwaga: Oczywiście, możemy tylko przemieścić ostatniego Zombiaka w tablicy, aby wypełnić brakujący slot i zmniejszyć długość tablicy o jeden. Ale wtedy zmienilibyśmy kolejność naszej armii Zombi za każdym razem, gdy dokonywalibyśmy wymiany.
 
 Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
 
