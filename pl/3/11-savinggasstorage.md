@@ -179,9 +179,9 @@ material:
 ---
 Jedną z najbardziej kosztownych operacji w Solidity jest używanie `storage`.
 
-This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
+Jest tak, ponieważ gdy za każdym razem zapisujesz lub zmieniasz trochę danych, trafia to na stałe do sieci blockchain. Na zawsze! Tysiące węzłów na świecie musi przechowywać te dane na swoich dyskach, a ilość tych danych ciągle wrasta wraz z powiększaniem się blockchain'a. Więc pojawiają się koszty.
 
-In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups.
+Aby obniżyć koszty, nie należy zapisywać danych w pamięci, chyba że jest to absolutnie konieczne. Czasami wymaga to pozornie nieefektywnej logiki programistycznej — jak przebudowywanie tablicy w `pamięci` za każdym razem, gdy wywoływana jest funkcja, zamiast po prostu zapisywania tej tablicy w zmiennej w celu szybkiego wyszukiwania.
 
 In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
 
