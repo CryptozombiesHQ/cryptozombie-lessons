@@ -185,11 +185,11 @@ Funkcja ta będzie potrzebowała jedynie odczytać dane z blockchain'a, więc mo
 
 Funkcje `view` nie kosztują gazu, gdy są wywoływane zewnętrznie przez użytkownika.
 
-This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+A to z tego powodu, że funkcje `view` tak właściwie nie zmieniają niczego w blockchain'ie - one tylko odczytują dane. Więc oznaczenie funkcji jako `view` mówi `web3.js`, że potrzebuje tylko zapytać lokalny węzeł Ethereum o uruchomienie funkcji i tak właściwie nie tworzy transakcji w blockchain'ie (która musi być uruchomiona na każdym pojedynczym węźle i kosztuje gaz).
 
-We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
+Ustawianiem web3.js i tworzeniem własnego węzła zajmiemy się później. A na tą chwilę, sporą nauką jest dla nas fakt, że możemy optymalizować zużycie gazu przez użytkowników dzięki stosowaniu funkcji `external view` tam, gdzie jest to możliwe.
 
-> Note: If a `view` function is called internally from another function in the same contract that is **not** a `view` function, it will still cost gas. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
+> Uwaga: Jeśli funkcja `view` jest wywołana wewnętrznie poprzez inną funkcję w tym samym kontrakcie to **nie** jest to funkcja `view` i będzie ona nadal generowała koszty gazu. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
 
 ## Put it to the test
 
