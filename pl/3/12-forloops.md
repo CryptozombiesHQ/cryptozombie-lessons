@@ -194,9 +194,9 @@ Wtedy za każdym razem, gdy tworzymy nowego Zombiaka, użyjemy po prostu `ownerT
 
 Podejście to jest kuszące, w swej prostocie. Ale przyjrzyjmy się co się dzieje, jeśli dodamy funkcję transferującą Zombi od jednego właściciela do drugiego (będziemy to chcieli na pewno dodać w późniejszej lekcji!).
 
-Ta funkcja transferująca będzie potrzebowała: 1. Włożyć Zombiaka do tablicy `ownerToZombies` nowego właściciela, 2. Remove the zombie from the old owner's `ownerToZombies` array, 3. Shift every zombie in the older owner's array up one place to fill the hole, and then 4. Reduce the array length by 1.
+Ta funkcja transferująca będzie potrzebowała: 1. Włożyć Zombiaka do tablicy `ownerToZombies` nowego właściciela, 2. Usunąć Zombi ze starej tablicy `ownerToZombies`, 3. Przesunąć Zombi w starej tablicy o jedną pozycję w górę, aby zniwelować lukę, a następnie 4. Zmniejszyć długość tablicy o 1.
 
-Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
+Krok 3 byłby ekstremalnie kosztowny jeśli chodzi o gaz, ponieważ będziemy musieli zrobić zapis dla każdego Zombi, którego przeniesiemy. Jeśli właściciel ma 20 zombie i handluje od pierwszego, będziemy musieli zrobić 19 zapisów, aby utrzymać kolejność w tablicy.
 
 Since writing to storage is one of the most expensive operations in Solidity, every call to this transfer function would be extremely expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
 
