@@ -197,7 +197,7 @@ Zamierzamy zaimplementować funkcję, która zwróci nam całą armię Zombi uż
 
 Logika funkcji jest troszkę skomplikowana, więc zajmie nam to kilka rozdziałów zanim ją zaimplementujemy.
 
-1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
+1. Stwórz nową funkcję o nazwie `getZombiesByOwner`. Ma ona odbierać jeden argument typu `address` o nazwie `_owner`.
 
 2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
 
