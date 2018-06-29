@@ -1,9 +1,9 @@
 ---
 title: Saving Gas With 'View' Functions
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
   editor:
     language: sol
@@ -30,7 +30,7 @@ material:
         zombies[_zombieId].dna = _newDna;
         }
         
-        // Create your function here
+        // Utwórz tutaj Twoją funkcję
         
         }
       "zombiefeeding.sol": |
