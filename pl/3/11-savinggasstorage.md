@@ -185,13 +185,13 @@ Aby obniżyć koszty, nie należy zapisywać danych w pamięci, chyba że jest t
 
 W większości języków programowania, stosowanie pętli wokół dużych zestawów danych jest kosztowne. Ale w Solidity, ten sposób jest oszczędniejszy niż użycie `storage` jeśli jest to funkcja `external view`, a funkcje `view` nie kosztują Twoich użytkowników żadnej ilości gazu. (a gaz kosztuje prawdziwe pieniądze!).
 
-We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
+Do pętli `for` przejdziemy w następnym rozdziale, ale najpierw, zobaczmy jak deklarować tablice w pamięci.
 
-## Declaring arrays in memory
+## Deklarowanie tablic w pamięci
 
-You can use the `memory` keyword with arrays to create a new array inside a function without needing to write anything to storage. The array will only exist until the end of the function call, and this is a lot cheaper gas-wise than updating an array in `storage` — free if it's a `view` function called externally.
+Możesz użyć słowa kluczowego `memory` z tablicami, aby stworzyć wewnątrz funkcji nową tablicę bez potrzeby pisania czegokolwiek do przechowywania. Tablica będzie istniała tylko do końca wywołania funkcji i jest to oszczędność gazu większa, niż aktualizowanie tablicy w `storage` — jeśli jest to funkcja `view` wywołana zewnętrznie.
 
-Here's how to declare an array in memory:
+Oto sposób deklarowania tablicy w pamięci:
 
     function getArray() external pure returns(uint[]) {
       // Instantiate a new array in memory with a length of 3
