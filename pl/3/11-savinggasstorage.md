@@ -1,5 +1,5 @@
 ---
-title: '"storage" jest drogie'
+title: '"storage" jest kosztowne'
 actions:
   - 'sprawdźOdpowiedź'
   - 'podpowiedź'
@@ -181,9 +181,9 @@ Jedną z najbardziej kosztownych operacji w Solidity jest używanie `storage`.
 
 Jest tak, ponieważ gdy za każdym razem zapisujesz lub zmieniasz trochę danych, trafia to na stałe do sieci blockchain. Na zawsze! Tysiące węzłów na świecie musi przechowywać te dane na swoich dyskach, a ilość tych danych ciągle wrasta wraz z powiększaniem się blockchain'a. Więc pojawiają się koszty.
 
-Aby obniżyć koszty, nie należy zapisywać danych w pamięci, chyba że jest to absolutnie konieczne. Czasami wymaga to pozornie nieefektywnej logiki programistycznej — jak przebudowywanie tablicy w `pamięci` za każdym razem, gdy wywoływana jest funkcja, zamiast po prostu zapisywania tej tablicy w zmiennej w celu szybkiego wyszukiwania.
+Aby obniżyć koszty, nie należy zapisywać danych w pamięci, chyba że jest to absolutnie konieczne. Czasami wymaga to pozornie nieefektywnej logiki programistycznej — jak na przykład przebudowywanie tablicy w `pamięci` za każdym razem, gdy wywoływana jest funkcja, zamiast po prostu zapisywania tej tablicy w zmiennej w celu szybkiego wyszukiwania.
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
+W większości języków programowania, stosowanie pętli wokół dużych zestawów danych jest kosztowne. Ale w Solidity, ten sposób jest oszczędniejszy niż użycie `storage` jeśli jest to funkcja `external view`, a funkcje `view` nie kosztują Twoich użytkowników żadnej ilości gazu. (a gaz kosztuje prawdziwe pieniądze!).
 
 We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
 
