@@ -202,7 +202,7 @@ Odkąd zapisywanie do pamięci jest jedną z najbardziej kosztownych operacji w 
 
 > Uwaga: Oczywiście, możemy tylko przemieścić ostatniego Zombiaka w tablicy, aby wypełnić brakujący slot i zmniejszyć długość tablicy o jeden. Ale wtedy zmienilibyśmy kolejność naszej armii Zombi za każdym razem, gdy dokonywalibyśmy wymiany.
 
-Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
+Odkąd funkcje `view` nie kosztują gazu gdy są wywołane zewnętrznie, możemy po prostu użyć pętli for w `getZombiesByOwner` aby iterować w całej tablicy Zombi i utworzyć tablicę, która należy do konkretnego właściciela. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
 
 ## Using `for` loops
 
