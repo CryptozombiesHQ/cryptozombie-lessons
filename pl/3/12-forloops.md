@@ -202,25 +202,25 @@ Odkąd zapisywanie do pamięci jest jedną z najbardziej kosztownych operacji w 
 
 > Uwaga: Oczywiście, możemy tylko przemieścić ostatniego Zombiaka w tablicy, aby wypełnić brakujący slot i zmniejszyć długość tablicy o jeden. Ale wtedy zmienilibyśmy kolejność naszej armii Zombi za każdym razem, gdy dokonywalibyśmy wymiany.
 
-Odkąd funkcje `view` nie kosztują gazu gdy są wywołane zewnętrznie, możemy po prostu użyć pętli for w `getZombiesByOwner` aby iterować w całej tablicy Zombi i utworzyć tablicę, która należy do konkretnego właściciela. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
+Odkąd funkcje `view` nie kosztują gazu gdy są wywołane zewnętrznie, możemy po prostu użyć pętli for w `getZombiesByOwner` aby iterować w całej tablicy Zombi i utworzyć tablicę, która należy do konkretnego właściciela. Wtedy nasza funkcja `transfer` będzie mniej kosztowna, ponieważ nie musimy zmieniać kolejności żadnych tablic w pamięci i to nieco mniej intuicyjne podejście jest ogólnie mniej kosztowne.
 
-## Using `for` loops
+## Użycie pętli `for`
 
-The syntax of `for` loops in Solidity is similar to JavaScript.
+Składnia pętli `for` w Solidity jest podobna do tej w JavaScripcie.
 
-Let's look at an example where we want to make an array of even numbers:
+Spójrzmy na przykład gdzie chcemy zrobić tablicę liczb parzystych:
 
     function getEvens() pure external returns(uint[]) {
       uint[] memory evens = new uint[](5);
-      // Keep track of the index in the new array:
+      // Śledź indeks w nowej tablicy:
       uint counter = 0;
-      // Iterate 1 through 10 with a for loop:
+      // Iteruj od 1 do 10 za pomocą pętli for:
       for (uint i = 1; i <= 10; i++) {
-        // If `i` is even...
+        // Jeśli `i` jest parzyste...
         if (i % 2 == 0) {
-          // Add it to our array
+          // Dodaj to do naszej tablicy
           evens[counter] = i;
-          // Increment counter to the next empty index in `evens`:
+          // Inkrementuj licznik do kolejnego pustego indeksu w `evens`:
           counter++;
         }
       }
@@ -228,9 +228,9 @@ Let's look at an example where we want to make an array of even numbers:
     }
     
 
-This function will return an array with the contents `[2, 4, 6, 8, 10]`.
+Ta funkcja zwróci tablicę z zawartością `[2, 4, 6, 8, 10]`.
 
-## Put it to the test
+## Wypróbujmy zatem
 
 Let's finish our `getZombiesByOwner` function by writing a `for` loop that iterates through all the zombies in our DApp, compares their owner to see if we have a match, and pushes them to our `result` array before returning it.
 
