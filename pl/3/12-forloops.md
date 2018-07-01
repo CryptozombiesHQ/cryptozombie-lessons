@@ -236,9 +236,9 @@ Zakończmy funkcję `getZombiesByOwner` poprzez napisanie pętli `for`, która i
 
 1. Zadeklaruj `counter` typu `uint` i ustaw równe `0`. Użyjemy tej zmiennej, aby śledzić indeks tablicy `result`.
 
-2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
+2. Zadeklaruj pętlę `for`, która rozpoczyna się od `uint i = 0` i przechodzi przez `i < zombies.length`. To będzie iterować wszystkie Zombi w naszej tablicy.
 
-3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
+3. Wewnątrz pętli `for`, utwórz wyrażenie `if`, które sprawdza czy `zombieToOwner[i]`jest równe `_owner`. This will compare the two addresses to see if we have a match.
 
 4. Inside the `if` statement:
     
