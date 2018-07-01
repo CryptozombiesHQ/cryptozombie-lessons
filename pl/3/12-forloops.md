@@ -232,17 +232,17 @@ Ta funkcja zwróci tablicę z zawartością `[2, 4, 6, 8, 10]`.
 
 ## Wypróbujmy zatem
 
-Zakończmy funkcję `getZombiesByOwner` poprzez napisanie pętli `for`, która iteruje po wszystkich Zombiakach w naszej DApp, porównując ich właściciela w celu dopasowania i włożenia ich do tablicy `result` przed zwróceniem.
+Zakończmy funkcję `getZombiesByOwner` poprzez napisanie pętli `for`, która iteruje po wszystkich Zombiakach w naszej DApp, porównując ich właściciela w celu dopasowania i włożenia ich do tablicy `result` przed zwróceniem jej.
 
 1. Zadeklaruj `counter` typu `uint` i ustaw równe `0`. Użyjemy tej zmiennej, aby śledzić indeks tablicy `result`.
 
 2. Zadeklaruj pętlę `for`, która rozpoczyna się od `uint i = 0` i przechodzi przez `i < zombies.length`. To będzie iterować wszystkie Zombi w naszej tablicy.
 
-3. Wewnątrz pętli `for`, utwórz wyrażenie `if`, które sprawdza czy `zombieToOwner[i]`jest równe `_owner`. This will compare the two addresses to see if we have a match.
+3. Wewnątrz pętli `for`, utwórz wyrażenie `if`, które sprawdza czy `zombieToOwner[i]` jest równe `_owner`. Będzie to porównywać dwa adresy w celu sprawdzenia dopasowania.
 
-4. Inside the `if` statement:
+4. Wewnątrz wyrażenia `if`:
     
-    1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
-    2. Increment `counter` by 1 (see the `for` loop example above).
+    1. Dodaj ID Zombiaka do tablicy `result` przez ustawienie `result[counter]` równe `i`.
+    2. Inkrementuj `counter` o 1 (spójrz na przykład pętli `for` powyżej).
 
-That's it — the function will now return all the zombies owned by `_owner` without spending any gas.
+To wszystko — funkcja zwróci teraz wszystkie Zombi, które są własnością `_owner` nie pożerając przy tym żadnej ilości gazu.
