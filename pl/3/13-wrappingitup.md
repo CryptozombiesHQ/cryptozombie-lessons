@@ -1,29 +1,29 @@
 ---
-title: Wrapping It Up
+title: Zakończmy zabawę
 actions:
-  - 'checkAnswer'
-  - 'hints'
-requireLogin: true
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
+requireLogin: prawda
 material:
-  saveZombie: false
+  saveZombie: fałsz
   zombieDeck:
     zombie:
       lesson: 2
-    hideSliders: true
+    hideSliders: prawda
     answer: 1
 ---
-Congratulations! That concludes Lesson 3.
+Gratulacje! To kończy lekcję 3.
 
-## Let's recap:
+## Przypomnijmy:
 
-- We've added a way to update our CryptoKitties contracts
-- We've learned to protect core functions with `onlyOwner`
-- We've learned about gas and gas optimization
-- We added levels and cooldowns to our zombies
-- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
-- And finally, we now have a function to return a user's zombie army
+- Dodaliśmy sposób aktualizowania naszych Smart Kontraktów CryptoKitties
+- Nauczyliśmy się chronić podstawowe funkcje za pomocą `onlyOwner`
+- Dowiedzieliśmy się o gazie i jego optymalizacji
+- Dodaliśmy poziomy i czasy oczekiwania dla naszych Zombiaków
+- Mamy teraz funkcje aktualizacji imion Zombi i DNA, gdy zombie osiągnie określony poziom
+- I w końcu, mamy funkcję zwracania armii Zombi użytkownika
 
-## Claim your reward
+## Odbierz nagrodę
 
 As a reward for completing Lesson 3, both of your zombies have leveled up!
 
