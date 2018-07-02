@@ -20,7 +20,7 @@ Gratulacje! To kończy lekcję 3.
 - Nauczyliśmy się chronić podstawowe funkcje za pomocą `onlyOwner`
 - Dowiedzieliśmy się o gazie i jego optymalizacji
 - Dodaliśmy poziomy i czasy oczekiwania dla naszych Zombiaków
-- Mamy teraz funkcje aktualizacji imion Zombi i DNA, gdy zombie osiągnie określony poziom
+- Mamy teraz funkcje aktualizowania imion Zombi i DNA, gdy Zombi osiągnie określony poziom
 - I w końcu, mamy funkcję zwracania armii Zombi użytkownika
 
 ## Odbierz nagrodę
