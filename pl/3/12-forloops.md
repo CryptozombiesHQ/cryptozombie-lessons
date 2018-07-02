@@ -178,7 +178,7 @@ W poprzednim rozdziale, wspomnieliśmy, że czasami będziesz chciał użyć pę
 
 Spójrzmy dlaczego.
 
-Dla naszej funkcji `getZombiesByOwner`, naiwnym byłoby przechowywać `mapowanie` właścicieli do armii Zombi w kontrakcie `ZombieFactory`:
+Dla naszej funkcji `getZombiesByOwner`, naiwnym byłoby zapisanie `mapowania` właścicieli do armii Zombi w kontrakcie `ZombieFactory`:
 
     mapping (address => uint[]) public ownerToZombies
     
@@ -236,7 +236,7 @@ Zakończmy funkcję `getZombiesByOwner` poprzez napisanie pętli `for`, która i
 
 1. Zadeklaruj `counter` typu `uint` i ustaw równe `0`. Użyjemy tej zmiennej, aby śledzić indeks tablicy `result`.
 
-2. Zadeklaruj pętlę `for`, która rozpoczyna się od `uint i = 0` i przechodzi przez `i < zombies.length`. To będzie iterować wszystkie Zombi w naszej tablicy.
+2. Zadeklaruj pętlę `for`, która rozpoczyna się od `uint i = 0` i przechodzi przez `i < zombies.length`. To będzie iterować przez wszystkie Zombi w naszej tablicy.
 
 3. Wewnątrz pętli `for`, utwórz wyrażenie `if`, które sprawdza czy `zombieToOwner[i]` jest równe `_owner`. Będzie to porównywać dwa adresy w celu sprawdzenia dopasowania.
 
