@@ -25,8 +25,8 @@ Gratulacje! To kończy lekcję 3.
 
 ## Odbierz nagrodę
 
-As a reward for completing Lesson 3, both of your zombies have leveled up!
+Jako nagroda za ukończenie lekcji 3, poziom Twoich Zombiaków został podniesiony!
 
-And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
+A teraz, gdy NoName (kotek-zombie, którego stworzyłeś w Lekcji 2), został uaktualniony do poziomu 2, możesz wywołać `changeName`, aby nadać mu imię. Nigdy więcej NoName!
 
-Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
+Kontynuuj i nadaj nazwę dla NoName, a następnie przejdź do kolejnego rozdziału, aby ukończyć lekcję.
