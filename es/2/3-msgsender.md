@@ -84,7 +84,7 @@ material:
 
 Ahora que tenemos nuestros mapeos para seguir el rastro del propietario de un zombi, queremos actualizar el metodo `_createZombie` para que los utilice.
 
-Para poder hacer esto, necesitamos algo llamdo `msg.sender`.
+Para poder hacer esto, necesitamos algo llamado `msg.sender`.
 
 ## msg.sender
 

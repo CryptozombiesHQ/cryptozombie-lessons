@@ -66,6 +66,6 @@ function _addToArray(uint _number) private {
 
 # それではテストだ
 
-我々の`createZombie`コントラクトはデフォルトでpublicになっている。つまりだれでもコントラクトから関数を呼び出してゾンビを作れるということだ！これはあってはならないことだから、privateに変えなければならない。
+我々の`createZombie`関数はデフォルトでpublicになっている。つまりだれでもコントラクトから関数を呼び出してゾンビを作れるということだ！これはあってはならないことだから、privateに変えなければならない。
 
 1. private関数になるように、`createZombie`を編集せよ。名付けの通例を忘れるなよ！

@@ -183,7 +183,7 @@ material:
       }
 ---
 
-Ahora que nuestro contrato base `ZombieFactory` extiende de `Ownable`, podemos usar también el modificador de función `onlyOwner` en la función `ZombieFeeding`.
+Ahora que nuestro contrato base `ZombieFactory` hereda de `Ownable`, podemos usar también el modificador de función `onlyOwner` en la función `ZombieFeeding`.
 
 Esto es por como funciona la herencia de contratos. Recuerda:
 
