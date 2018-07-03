@@ -238,7 +238,7 @@ La función devolverá un array con este contenido `[2, 4, 6, 8, 10]`.
 
 Vamos a terminar nuestra función `getZombiesByOwner` escribiendo un bucle `for` que itere todos los zombis de nuestra DApp, comparando su dueño para que cuando coincida con el que buscamos, lo añada al array `result` antes de devolverlo.
 
-1. Declara un `uint` llamado `counter` y estableciéndolo a ``. Usaremos esta variable para mantener el control del índice en nuestro array `result`.
+1. Declara un `uint` llamado `counter` y estableciéndolo a `0`. Usaremos esta variable para mantener el control del índice en nuestro array `result`.
 
 2. Declara un bucle `for` que empiece en `uint i = 0` y vaya hasta `i < zombies.length`. Este iterará todos los zombis de nuestro array.
 
