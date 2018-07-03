@@ -87,6 +87,6 @@ In our zombie game, we don't want the user to be able to create unlimited zombie
 
 Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to ``, and throw an error otherwise.
+1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
 
 > Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
