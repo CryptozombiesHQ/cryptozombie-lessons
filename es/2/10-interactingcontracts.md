@@ -190,4 +190,4 @@ Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
 1. Define una interfaz llamada `KittyInterface`. Recuerda, es como crear un nuevo contrato - usamos la palabra clave `contract`.
 
-2. Dentro de la interfaz, define la función `getKitty` (que debería ser un copia/pega de la función de arriba, pero con un punto y coma después de la definición de `returns`, en vez de todo lo que hay dentro de las llaves.
+2. Dentro de la interfaz, define la función `getKitty` (que debería ser un copia/pega de la función de arriba, pero con un punto y coma después de los parámetros, en vez de todo lo que hay dentro de las llaves.

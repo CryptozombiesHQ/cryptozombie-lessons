@@ -15,8 +15,8 @@ material:
         contract ZombieFactory is Ownable {
 
           using SafeMath for uint256;
-          // 1. Declare using SafeMath32 for uint32
-          // 2. Declare using SafeMath16 for uint16
+          // 1. Declara el uso de SafeMath32 for uint32f
+          // 2. Declara el uso de SafeMath16 for uint16
 
           event NewZombie(uint zombieId, string name, uint dna);
 
@@ -39,11 +39,11 @@ material:
           mapping (address => uint) ownerZombieCount;
 
           function _createZombie(string _name, uint _dna) internal {
-            // Note: We chose not to prevent the year 2038 problem... So don't need
-            // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
+            // Nota: Decidimos no prevenir el problema del año 2018... sin embargo no debemos
+            // preocuparnos de readyTime. Igual nuestra DApp funcionará hasta el año 2038 ;)
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
             zombieToOwner[id] = msg.sender;
-            // 3. Let's use SafeMath's `add` here:
+            // 3. Usemos el metodo `add` de SafeMath aquí:
             ownerZombieCount[msg.sender]++;
             NewZombie(id, _name, _dna);
           }
@@ -485,8 +485,8 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
   return c;
 }
 
-// If we call `.add` on a `uint8`, it gets converted to a `uint256`.
-// So then it won't overflow at 2^8, since 256 is a valid `uint256`.
+// Si usamos `.add` con un `uint8`, lo convertirá en `uint256`.
+// Por lo tanto no se desbordará, ya que 256 funciona en `uint256`.
 ```
 
 Esto significa que vamos a tener que implementar 2 librerías más para evitar los casos con `uint16` y `uint32`. Podemos llamarlos `SafeMath16` y `SafeMath32`.

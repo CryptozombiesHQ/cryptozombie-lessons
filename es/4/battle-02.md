@@ -246,11 +246,11 @@ Luego entonces utilizaría `keccak` para convertir estas entradas a un hash alea
 
 En Ethereum, cuando llama a una función en un contrato, lo transmite a un nodo o nodos en la red como una **_transacción_**. Los nodos en la red luego recolectan un montón de transacciones, intentan ser el primero en resolver el problema de matemática intensamente informático como una "Prueba de Trabajo", para luego publicar ese grupo de transacciones junto con sus Pruebas de Trabajo (PoW) como un **_bloque_** para el resto de la red.
 
-Una vez que un nodo ha resuelto la PoW, los otros nodos dejan de intentar resolver la PoW, verifican que las transacciones en la lista de transacciones del otro nodo son validas, luego aceptan el bloque y pasan a tratar de resolver el próximo bloque.
+Una vez que un nodo ha resuelto la PoW, los otros nodos dejan de intentar resolver la PoW, verifican que las transacciones en la lista de transacciones del otro nodo son válidas, luego aceptan el bloque y pasan a tratar de resolver el próximo bloque.
 
 **Esto hace que nuestra función de números aleatorios sea explotable **.
 
-Digamos que teníamos un contrato coin flip — cara y duplica su dinero, sello y pierde todo. Digamos que utilizó la función aleatorea anterior para determinar cara o sello. (`random >= 50` es cara, `random < 50` es sello).
+Digamos que teníamos un contrato coin flip — cara y duplica su dinero, sello y pierde todo. Digamos que utilizó la función aleatoria anterior para determinar cara o sello. (`random >= 50` es cara, `random < 50` es sello).
 
 Si yo estuviera ejecutando un nodo, podría publicar una transacción **a mi propio nodo solamente** y no compartirla. Luego podría ejecutar la función coin flip para ver si gané — y si perdí, escojo no incluir esa transacción en el próximo bloque que estoy resolviendo. Podría seguir haciendo esto indefinidamente hasta que finalmente gané el lanzamiento de la moneda y resolví el siguiente bloque, beneficiandome de ello.
 

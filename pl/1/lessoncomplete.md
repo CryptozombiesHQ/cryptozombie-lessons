@@ -1,5 +1,5 @@
 ---
-title: Ukończyłeś pierwszą lekcje!
+title: Ukończyłeś pierwszą lekcję!
 actions: ['sprawdźOdpowiedź', 'podpowiedzi']
 material:
   lessonComplete:

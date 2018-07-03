@@ -183,7 +183,7 @@ Você percebeu a falha de segurança no capítulo anterior?
 
 `setKittyContractAddress` é um `external`, então qualquer um pode chamá-lo! Isso quer dizer que qualquer um que chamar a função pode mudar o endereço do contrato do CryptoKitties, e quebrar a nossa aplicação para todos os usuários.
 
-Nós queremos uma maneira de atualizar este endereço em nosso contrato, mas nós não queremos que qualquer um passa atualizá-lo.
+Nós queremos uma maneira de atualizar este endereço em nosso contrato, mas nós não queremos que qualquer um possa atualizá-lo.
 
 Para lidar com casos assim, uma prática que se tornou comum é tornar o contrato `Ownable` (Proprietário) - quer dizer que tem um dono (você no caso) que tem privilégios especiais.
 

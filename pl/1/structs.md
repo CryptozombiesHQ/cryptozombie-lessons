@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Czasami potrzebyjesz bardziej złożonego typu danych. W tym celu Solidity dostarcza **_structs_**:
+Czasami potrzebujesz bardziej złożonego typu danych. W tym celu Solidity dostarcza **_structs_**:
 
 ```
 struct Person {
@@ -48,7 +48,7 @@ Structs pozwalają Ci tworzyć złożone typy danych, które mają wiele właśc
  
 # Zadanie do wykonania
 
-Chcemy, aby w naszej aplikacji dało się tworzyć zombie! Każdy zombie ma wiele właściwości, idealnie więc powinny pasować strukts.
+Chcemy, aby w naszej aplikacji dało się tworzyć zombie! Każdy zombie ma wiele właściwości, structs idealnie się do tego nadaje.
 
 1. Stwórz `struct` o nazwie `Zombie`.
 
