@@ -15,13 +15,13 @@ material:
       uint dnaModulus = 10 ** dnaDigits;
       
       struct Zombie {
-      uint dna;
       string name;
+      uint dna;
       }
       
       Zombie[] public zombies;
       
-      // Iniciar aquí
+      // start here
       
       }
     answer: >
@@ -29,9 +29,10 @@ material:
       
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { uint dna; string name; }
+      struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function createZombie(string _name, uint _dna) { }
+      function createZombie(string _name, uint _dna) {
+      }
       }
 ---
 Una declaración de una función en solidity se parece a esto:
