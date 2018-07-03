@@ -60,7 +60,7 @@ struct Person {
 Person[] public people;
 ```
 
-Teraz nauczymy się jak  stworzyć nową osobę `Person` i dodać ją do naszej tablicy `people`.
+Teraz nauczymy się jak stworzyć nową osobę `Person` i dodać ją do naszej tablicy `people`.
 
 ```
 // tworzenie nowej osoby Person:
@@ -90,5 +90,5 @@ numbers.push(15);
 
 Spraw aby nasza funkcja createZombie coś robiła!
 
-1. Uzupełnij funkcje tak aby tworzyła nowego `Zombie`. Dodaj go do tablicy `zombies`.Imie `name` i Dna `dna` dla nowego Zombie powinny być argumentami funkcji.
+1. Uzupełnij funkcję tak aby tworzyła nowego `Zombie`. Dodaj go do tablicy `zombies`. Imię `name` i Dna `dna` dla nowego Zombie powinny być argumentami funkcji.
 2. Zróbmy to w jednej linijce kodu, aby wszystko wyglądało ładnie.

@@ -58,7 +58,7 @@ material:
 
 Chcemy, aby nasza funkcja `_generateRandomDna` zwracała pseudo losową liczbę naturalną `uint`. W jaki sposób możemy to osiągnąć?
 
-W Ethereum wbudowana jest funka hashująca `keccak256`, która jest odmianą funkcji SHA3. Funkcja hashująca mapuje ciąg znaków (string) na 256-bit heksadecymalny numer. Mała zmiana wejściowego stringa powoduje całkowitą zmiane wyniku funkcji.
+W Ethereum wbudowana jest funka hashująca `keccak256`, która jest odmianą funkcji SHA3. Funkcja hashująca mapuje ciąg znaków (string) na 256-bit heksadecymalny numer. Mała zmiana wejściowego stringa powoduje całkowitą zmianę wyniku funkcji.
 
 
 Jest to bardzo przydatne w wielu przypadkach w Ethereum, ale narazie użyjmy jej do wygenerowania psedo-losowej liczby.
@@ -78,23 +78,23 @@ Jak widzisz, zwracana wartość jest kompletnie inna, pomimo że zmieniliśmy ty
 
 ## Typowanie
 
-Czasami potrzebujesz przekonwertować dane pomiędzy typami. Zerknij na poniższy przekład:
+Czasami potrzebujesz przekonwertować dane pomiędzy typami. Zerknij na poniższy przykład:
 
 ```
 uint8 a = 5;
 uint b = 6;
-// rzuc wyjątek ponieważ a * b zwraca uint, a nie uint8:
+// rzuć wyjątek ponieważ a * b zwraca uint, a nie uint8:
 uint8 c = a * b; 
 // musimy typować zmienną b na uint8 aby przykład zadziałał:
 uint8 c = a * uint8(b); 
 ```
 
-W powyższym przykładzie, `a * b` zwraca `uint`, ale my próbujemy zapisać to jako`uint8`. Stwarza to  problem. Po zmianie typy na `uint8`, wszystko działa i kompiler nie zwraca żadnego błędu.
+W powyższym przykładzie, `a * b` zwraca `uint`, ale my próbujemy zapisać to jako`uint8`. Stwarza to  problem. Po zmianie typy na `uint8`, wszystko działa i kompilator nie zwraca żadnego błędu.
 
 #  Zadanie do wykonania
 
-Uzupełnijmy naszą funkcjie `_generateRandomDna` ! Oto co powinniśmy zrobić:
+Uzupełnijmy naszą funkcję `_generateRandomDna` ! Oto co powinniśmy zrobić:
 
-1. W pierwszej linijce wywołaj fununkcje `keccak256` na  `_str` aby wygenerować pseudo-losową heksadecymalną liczbę. Zmień jej typ na uint i zapisz rezultat jako `uint` o nazwie `rand`.
+1. W pierwszej linijce wywołaj funkcję `keccak256` na  `_str` aby wygenerować pseudo-losową heksadecymalną liczbę. Zmień jej typ na uint i zapisz rezultat jako `uint` o nazwie `rand`.
 
 2. Chcemy aby nasze DNA miało tylko 16 znaków (pamiętasz nasze `dnaModulus`?). Więc druga linia powinna `zwracac` powyższą wartość modulo (`%`) `dnaModulus`.
