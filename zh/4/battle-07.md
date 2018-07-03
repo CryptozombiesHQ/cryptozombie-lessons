@@ -256,4 +256,4 @@ So let's jump back to `zombiefactory.sol`, and add these properties to our `Zomb
 
 2. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `_createZombie()`.
     
-    Change the zombie creation definition so it creates each new zombie with `` wins and `` losses.
+    Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.
