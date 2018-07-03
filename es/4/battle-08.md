@@ -244,7 +244,7 @@ Ahora que tenemos un `winCount` y  `lossCount`, podemos actualizarlos dependiend
 
 En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemos ese número para determinar quien gana la pelea y actualizar nuestras estadísticas apropiadamente.
 
-## Pongalo a prueba
+## Póngalo a prueba
 
 1. Cree una declaración `if` que verifique si `rand` es **_menor o igual a_** `attackVictoryProbability`.
 

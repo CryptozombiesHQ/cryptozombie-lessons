@@ -95,7 +95,7 @@ Para eso usamos `require`. `require` hace que la función lanze un error y pare 
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
-  // Compara si _name es igual a "Vitalik". Lanza un error y existe si no es verdadero.
+  // Compara si _name es igual a "Vitalik". Lanza un error si no lo son.
   // (Nota: Solidity no tiene su propio comparador de strings, por lo que
   // compararemos sus hashes keccak256 para ver si sus strings son iguales)
   require(keccak256(_name) == keccak256("Vitalik"));
