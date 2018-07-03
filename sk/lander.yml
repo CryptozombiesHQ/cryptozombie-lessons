@@ -1,0 +1,37 @@
+---
+en:
+  ogdescription: CryptoZombies je interaktívna škola kódu. Naučí písať smart kontrakty v Solidity tak, že ťa prevedie procesom tvorby vlastnej crypto hry.
+  ogtitle: CryptoZombies - Naučme sa písať hry na Ethéreu. Sponzorované spoločnosťou Loom Network
+  langshort: SK #should be recognizable in local languages, like chinese would be 中文
+  learn_title: Nauč sa programovať Ethereum DAppky vytvorením vlastnej hry
+  learn_desc: CryptoZombies je interaktívna škola kódu. Naučí písať smart kontrakty v Solidity tak, že ťa prevedie procesom tvorby vlastnej crypto hry.
+  get_started: Začni, je to zadarmo
+  learn_more: Zisti viac
+  what_title: Čo je to CryptoZombies?
+  what_desc1: CryptoZombies je bezplatná interaktívna škola kódu, ktorá ťa naučí vytvárať hry na Ethéreu
+  what_desc2: Tento kurz bol navrhnutý pre začiatočníkov v Solidity. Začína však od absolútny začiatkov, takže ak si ešte nemáš žiadne skúsenosti so Solidity, nemaj obavy - prevedieme ťa ním krok za krokom.
+  collect_title: Získavaj Krypto Zberateľské predmety
+  collect_desc1: Získavaj Krypto Zberateľských zombie a bonusov dokončovaním programovacích úloh.
+  collect_desc2: Po tom čo dokončíš všetky lekcie a nasadíš svoju DAppku, vyšli svojich zombie proti ostatným v jednej z prvých blockchain hier na svete. CryptoZombies je napol škola kódu, napol krypto zberateľská strategická hra.
+  collect_desc3: Na čo ešte čakáš? Klikni na tlačidlo nižšie, ponor sa do prvej lekcie a začni pracovať na svojej prvej DAppke. Je to zadarmo!
+  start_title: Začni teraz
+  int_title: Interaktívne Programátorské Lekcie
+  inbrowser_desc: Krok-za-krokom lekcie v prehliadači, ktoré ťa prevedú od úplných Solidity základov, až po vytvorenie plne funknčnej hry založenej na blockchain technológií. Dokonca už na konci Lekcie 1 (ktorú je možné zvládnuť na jedno posedenie) budeš vedieť dostatok na to, aby si sa oficiálne začal považovať za Solidity vývojára!
+  zombie_title: Vybuduj Zombie Armádu
+  zombie_desc: V prvej lekcii vytvoríš Zombie Továreň na vybudovanie svojej armády. Každý Zombie ktorého vytvoríš, bude mať náhodné DNA a unikátny vzhľad. V ďalších lekciách (každý týždeň bude vydaná jedna) pridáš do svojej hry ďalšiu funkcionalitu, ako napríklad možnosť útočiť so svojím zombie na zombie iných hráčov! 
+  who_made: Kto Vytvoril CryptoZombies a Prečo Je Zdarma?
+  who_made1: CryptoZombies bol vytvorený týmom v 
+  who_made2: . Budujeme platform pre vytváranie vysoko škálovateľných aplikácií na Ethéreu a bočných sidechains.
+  who_made3: Myslíme si, že blockchainy sú schopné viac než len platieb. Chceme, aby viac vývojárov začalo myslieť nekonvenčne a pokúsilo sa vytvoriť decentralizované aplikácie vo veľkej škále. Hry sú jedna z oblastí, o ktorej si myslíme že podľahne blockchain revolúcii. Aby sme pomohli pomôcť vyučiť a inšpirovať novú generáciu herných vývojárov na blockchaine, vytvorili sme CryptoZombies.
+  find_us: Okrem CryptoZombies pracujeme ešte na ďalších cool projektoch. Ak by si nás chcel sledovať, dostať sa k projektom, alebo len pozdraviť, môžeš nás nájsť na
+  and_our: a našom
+  email_us_at: ", alebo nám pošli email na"
+  footer_network: Sieť
+  footer_info: Informácie
+  footer_contact: Kontakt
+  footer_contact_jobs: Kariéra
+  footer_email: Email
+  footer_about: O nás
+  footer_desc: CryptoZombies.io je bezplatná platforma pre vzdelávanie existujúcich vývojárov, ale aj úplných nováčikov, o programovaní na Blockchaine. Sponzorované Loom Network - platforma pre tvorbu komerčných aplikácií na Ethéreu.
+  telegram_open_chat: Open Chat
+  telegram_link: https://t.me/loomnetwork
