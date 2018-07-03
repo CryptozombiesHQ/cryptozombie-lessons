@@ -265,7 +265,7 @@ In a future lesson, we may cover using ***oracles*** (a secure way to pull data 
 
 Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to ``.
+1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
 
 2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
 
