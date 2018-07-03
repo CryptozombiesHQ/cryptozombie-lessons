@@ -501,7 +501,7 @@ material:
               // a transação foi enviada
               $("#txStatus").text("Comendo um gatinho. Isso pode demorar um pouco...");
               // Envie o tx para nosso contrato:
-              return cryptoZombies.methods.feedOnKitty(zombieId, KittyId)
+              return cryptoZombies.methods.feedOnKitty(zombieId, kittyId)
               .send({ from: userAccount })
               .on("receipt", function(receipt) {
                 $("#txStatus").text("Comeu um gatinho e gerou um novo Zumbi!");
