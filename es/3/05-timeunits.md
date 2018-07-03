@@ -163,7 +163,7 @@ Para controlar el tiempo que necesita esperar un zombi antes de volver a atacar,
 
 Solidity proporciona algunas unidades nativas para trabajar con el tiempo.
 
-La variable `now` devolverá el actual tiempo unix (la cantidad de segundos que han pasado desde el 1 de Enero de 1970). El tiempo unix cuando escribía esto es `1515527488`.
+The variable `now` will return the current unix timestamp of the latest block (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
 
 > Nota: El tiempo unix es tradicionalmente guardado en un número de 32 bits. Esto nos llevará a el problema del "Año 2038", donde las variables timestamp de tipo unix desbordarán y dejará inservibles muchos sistemas antiguos. Así que si queremos que nuestra DApp siga funcionando después de 20 años, podemos usar un número de 64 bits — pero mientras nuestros usuarios tendrán que gastar más gas para usar nuestra DApp. ¡Decisiones de diseño!
 
