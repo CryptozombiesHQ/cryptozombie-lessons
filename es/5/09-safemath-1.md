@@ -390,7 +390,7 @@ material:
 
 Eso no fue tan difícil, ¿verdad? Muchas de estas cosas de Ethereum suenan realmente complicadas cuando escuchas a personas hablar de ellas, así que la mejor manera de entenderlas es realizarlas tú mismo.
 
-Ten en cuenta que esto es sólo una implementación mínima. Hay características adicionales que podemos desear añadir a nuestra implementación, como algunas comprobaciones adicionales para asegurarnos de que los usuarios no transfieran accidentalmente sus zombis a la dirección `` (que se llama "quemar" un token, — básicamente se envía a una dirección a la cual nadie tiene su clave privada, haciéndolo irrecuperable). Quizás, implementar alguna lógica básica de subasta en su DApp. (¿Puedes pensar en algunas formas para implementar eso?)
+Ten en cuenta que esto es sólo una implementación mínima. Hay características adicionales que podemos desear añadir a nuestra implementación, como algunas comprobaciones adicionales para asegurarnos de que los usuarios no transfieran accidentalmente sus zombis a la dirección `0` (que se llama "quemar" un token, — básicamente se envía a una dirección a la cual nadie tiene su clave privada, haciéndolo irrecuperable). Quizás, implementar alguna lógica básica de subasta en su DApp. (¿Puedes pensar en algunas formas para implementar eso?)
 
 Pero queríamos que esta lección fuera manejable, por lo que optamos por la implementación más básica. Si deseas ver un ejemplo de una implementación más profunda, puedes echar un vistazo al contrato de OpenZeppelin con ERC721 después de este tutorial.
 
@@ -408,9 +408,9 @@ Echa un vistazo al siguiente código. ¿Cuál es el `number` igual al final?
     number++;
     
 
-En este caso, hemos provocado un desbordamiento por exceso (overflow) — así que `number` ahora es contra-intuitivamente igual a `` aunque lo hayamos aumentado. (Si añades +1 al valor binario `11111111`, se reiniciará al valor inicial `00000000`, igual que un reloj pasa de las `23:59` a las `00:00`).
+En este caso, hemos provocado un desbordamiento por exceso (overflow) — así que `number` ahora es contra-intuitivamente igual a `0` aunque lo hayamos aumentado. (Si añades +1 al valor binario `11111111`, se reiniciará al valor inicial `00000000`, igual que un reloj pasa de las `23:59` a las `00:00`).
 
-Un desbordamiento por defecto (underflow) es similar, donde si intentamos restar `1` de un `uint8` que es igual a ``, ahora pasará a valer `255` (porque `uint` no tiene signo y por lo tanto, no puede ser negativo).
+Un desbordamiento por defecto (underflow) es similar, donde si intentamos restar `1` de un `uint8` que es igual a `0`, ahora pasará a valer `255` (porque `uint` no tiene signo y por lo tanto, no puede ser negativo).
 
 Si bien no estamos usando `uint8` aquí, y parece poco probable que `uint256` se desborde aumentando de `1 en 1` cada vez (2^256 es realmente un número enorme), sigue siendo bueno poner protecciones en nuestro contrato para que nuestra DApp nunca tenga un comportamiento inesperado en el futuro.
 
