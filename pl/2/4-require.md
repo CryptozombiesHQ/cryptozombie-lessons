@@ -85,6 +85,6 @@ W naszej grze Zombi, nie chcemy aby użytkownik mógł tworzyć armię Zombiakó
 
 Użyjmy `require` aby upewnić się, że tak funkcja zostanie wykonana tylko raz dla danego użytkownia, kiedy stworzy on swojego pierwszego Zombi.
 
-1. Umieść wyrażenie `require` na początku `createRandomZombie`. Funkcja powinna sprawdzać czy `ownerZombieCount[msg.sender]` jest równe `` i wyrzucić błąd w przeciwnym wypadku.
+1. Umieść wyrażenie `require` na początku `createRandomZombie`. Funkcja powinna sprawdzać czy `ownerZombieCount[msg.sender]` jest równe `0` i wyrzucić błąd w przeciwnym wypadku.
 
 > Uwaga: W Solidity, Nie ma znaczenia, które wyrażenie napiszesz jako pierwsze — obie kolejności są równoważne. Jednakże, nasze narzędzie do sprawdzania odpowiedzi jest naprawdę proste, będzie ono akceptowało tylko jedną odpowiedź jako poprawną — oczekuje aby `ownerZombieCount[msg.sender]` było piewsze.
