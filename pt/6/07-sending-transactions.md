@@ -483,7 +483,7 @@ material:
               // a transação foi enviada
               $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
               // Envie o tx para nosso contrato:
-              return CryptoZombies.methods.createRandomZombie(name)
+              return cryptoZombies.methods.createRandomZombie(name)
               .send({from: userAccount})
               .on("receipt", function (receipt) {
                 $ ("#txStatus").text("Criado com sucesso" + name + "!");
@@ -501,7 +501,7 @@ material:
               // a transação foi enviada
               $("#txStatus").text("Comendo um gatinho. Isso pode demorar um pouco...");
               // Envie o tx para nosso contrato:
-              return CryptoZombies.methods.feedOnKitty(zombieId, kittyId)
+              return cryptoZombies.methods.feedOnKitty(zombieId, kittyId)
               .send({ from: userAccount })
               .on("receipt", function(receipt) {
                 $("#txStatus").text("Comeu um gatinho e gerou um novo Zumbi!");
@@ -584,7 +584,7 @@ function createRandomZombie(name) {
   // a transação foi enviada
   $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
   // Envie o tx para nosso contrato:
-  return CryptoZombies.methods.createRandomZombie(name)
+  return cryptoZombies.methods.createRandomZombie(name)
   .send({from: userAccount})
   .on("receipt", function (receipt) {
     $ ("#txStatus").text("Criado com sucesso" + name + "!");

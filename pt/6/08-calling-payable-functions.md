@@ -66,7 +66,7 @@ material:
                 // a transação foi enviada
                 $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
                 // Envie o tx para nosso contrato:
-                return CryptoZombies.methods.createRandomZombie(name)
+                return cryptoZombies.methods.createRandomZombie(name)
                 .send({from: userAccount})
                 .on("receipt", function (receipt) {
                   $ ("#txStatus").text("Criado com sucesso" + name + "!");
@@ -81,7 +81,7 @@ material:
 
               function feedOnKitty(zombieId, kittyId) {
                 $("#txStatus").text("Eating a kitty. This may take a while...");
-                return CryptoZombies.methods.feedOnKitty(zombieId, kittyId)
+                return cryptoZombies.methods.feedOnKitty(zombieId, kittyId)
                 .send({ from: userAccount })
                 .on("receipt", function(receipt) {
                   $("#txStatus").text("Ate a kitty and spawned a new Zombie!");
@@ -514,7 +514,7 @@ material:
               // a transação foi enviada
               $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
               // Envie o tx para nosso contrato:
-              return CryptoZombies.methods.createRandomZombie(name)
+              return cryptoZombies.methods.createRandomZombie(name)
               .send({from: userAccount})
               .on("receipt", function (receipt) {
                 $ ("#txStatus").text("Criado com sucesso" + name + "!");
@@ -532,7 +532,7 @@ material:
               // a transação foi enviada
               $("#txStatus").text("Comendo um gatinho. Isso pode demorar um pouco...");
               // Envie o tx para nosso contrato:
-              return CryptoZombies.methods.feedOnKitty(zombieId, kittyId)
+              return cryptoZombies.methods.feedOnKitty(zombieId, kittyId)
               .send({ from: userAccount })
               .on("receipt", function(receipt) {
                 $("#txStatus").text("Comeu um gatinho e gerou um novo Zumbi!");
@@ -547,8 +547,8 @@ material:
 
             function levelUp(zombieId) {
               $("#txStatus").text(""Upando seu zumbi..."");
-              return CryptoZombies.methods.levelUp(zombieId)
-              .send({ from: userAccount, value: web3js.utils.toWei("0.001") })
+              return cryptoZombies.methods.levelUp(zombieId)
+              .send({ from: userAccount, value: web3js.utils.toWei("0.001", "ether") })
               .on("receipt", function(receipt) {
                 $("#txStatus").text("Poder esmagador! Zumbi upado com sucesso");
               })
@@ -623,7 +623,7 @@ web3js.utils.toWei("1", "ether");
 Em nosso DApp, definimos `levelUpFee = 0.001 ether`, então quando chamamos nossa função `levelUp`, podemos fazer o usuário enviar o `0.001` Ether junto com ele usando o seguinte código:
 
 ```
-CryptoZombies.methods.levelUp(zombieId)
+cryptoZombies.methods.levelUp(zombieId)
 .send({from: userAccount, value: web3js.utils.toWei("0.001", "ether")})
 ```
 
