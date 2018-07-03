@@ -265,7 +265,7 @@ En una lección futura, puede que cubramos el uso de los ***_oráculos*** (una m
 
 Implementemos una función de número aleatorio que podamos utilizar para determinar el resultado de nuestras batallas, incluso si no está totalmente seguro de ataques.
 
-1. Dale a nuestro contrato un `uint` llamado `randNonce`, y ajustalo igual a ``.
+1. Dale a nuestro contrato un `uint` llamado `randNonce`, y ajustalo igual a `0`.
 
 2. Crea una función llamada `randMod` (módulo-aleatorio). Será una función `internal` que tome un `uint` llamado `_modulus`, y `returns` un `uint`.
 
