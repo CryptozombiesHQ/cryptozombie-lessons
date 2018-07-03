@@ -238,7 +238,7 @@ This function will return an array with the contents `[2, 4, 6, 8, 10]`.
 
 Let's finish our `getZombiesByOwner` function by writing a `for` loop that iterates through all the zombies in our DApp, compares their owner to see if we have a match, and pushes them to our `result` array before returning it.
 
-1. Declare a `uint` called `counter` and set it equal to ``. We'll use this variable to keep track of the index in our `result` array.
+1. Declare a `uint` called `counter` and set it equal to `0`. We'll use this variable to keep track of the index in our `result` array.
 
 2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
 
