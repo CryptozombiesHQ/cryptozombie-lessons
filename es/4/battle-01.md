@@ -211,7 +211,7 @@ Ahora que hemos aprendido sobre funciones payable y balances de contrato ¡Es ho
 
 Siguiendo el formato de capitulos pasados, organizaremos nuestro código creando un nuevo archivo / contrato para la funcionalidad de ataque que se importa desde nuestro contrato anterior.
 
-## Pongalo a prueba
+## Póngalo a prueba
 
 Hagamos un repaso de cómo crear un nuevo contrato ¡La repetición hace al maestro!
 

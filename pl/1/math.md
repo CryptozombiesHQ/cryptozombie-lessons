@@ -42,6 +42,6 @@ uint x = 5 ** 2; // wynosi 5^2 = 25
 
 # Zadanie do wykonania
 
-Aby mieć pewność, że Dna Zombie jest  16 znakowe, stwórzmy dodatkowy `uint` równy 10^16. Będziemy mogli później uzyć operatora `%`, aby skrócić integer do 16 znaków.
+Aby mieć pewność, że Dna Zombie jest  16 znakowe, stwórzmy dodatkowy `uint` równy 10^16. Będziemy mogli później użyć operatora `%`, aby skrócić integer do 16 znaków.
 
 1. Stwórz `uint` o nazwie `dnaModulus`, i ustaw ją jako **10 do potęgi `dnaDigits`**.

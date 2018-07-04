@@ -437,7 +437,7 @@ Nous verrons ce que font ces fonctions dans le prochain chapitre, pour l'instant
 
 Nous avons déjà rajouté la bibliothèque `SafeMath` d'OpenZeppelin pour vous dans `safemath.sol`. Vous pouvez regarder le code si vous voulez, mais nous allons l'étudier en détails dans le prochain chapitre.
 
-Pour l'instant, nous allons faire que notre contrat utilise SafeMath. Nous allons le faire dans ZombieFactory, nous contrat de base - de cette manière nous pourrons l'utiliser dans tous les sous-contrats qui en héritent.
+Pour l'instant, nous allons faire en sorte que notre contrat utilise SafeMath. Nous allons le faire dans ZombieFactory, notre contrat de base - de cette manière nous pourrons l'utiliser dans tous les sous-contrats qui en héritent.
 
 1. Importez `safemath.sol` dans `zombiefactory.sol`.
 

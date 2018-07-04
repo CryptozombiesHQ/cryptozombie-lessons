@@ -1,5 +1,5 @@
 ---
-title: Manejando Multiples Valores Devueltos
+title: Manejando Múltiples Valores Devueltos
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -122,7 +122,7 @@ material:
       }
 ---
 
-Esta función `getKitty` es el primer ejemplo que vamos a ver que devuelva multiples valores. Vamos a ver como manejarlos:
+Esta función `getKitty` es el primer ejemplo que vamos a ver que devuelva múltiples valores. Vamos a ver como manejarlos:
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {

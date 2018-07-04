@@ -13,13 +13,13 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;
 
-          // ここから始めるのだ
+          // ここにcreateZombieという関数を定義するのだ
 
       }
     answer: >
@@ -32,8 +32,8 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;
@@ -53,7 +53,7 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-これは`string` と `uint`という2つのパラメーターを持つ、eatHamburgers`というファンクションだ。関数の中身は今は空にしてある。
+これは`string` と `uint`という2つのパラメーターを持つ、`eatHamburgers`というファンクションだ。関数の中身は今は空にしてある。
 
 > 注：グローバル変数と区別をつけるために、関数パラメーター変数名はアンダースコア(`_`)をつけるのが通例（必須ではありません）です。このチュートリアルでは通例に従います。
 

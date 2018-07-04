@@ -281,6 +281,6 @@ msg.sender.transfer(msg.value - itemFee);
 
   그러니 컨트랙트의 소유자로서 우리가 `levelUpFee`를 설정할 수 있도록 하는 함수를 만드는 것이 좋겠지.
   
-  a. `setLevelupFee`라는 이름의, `uint _fee`를 하나의 인자로 받고 `external`이며 `onlyOwner` 제어자를 사용하는 함수를 생성하게.
+  a. `setLevelUpFee`라는 이름의, `uint _fee`를 하나의 인자로 받고 `external`이며 `onlyOwner` 제어자를 사용하는 함수를 생성하게.
   
   b. 이 함수는 `levelUpFee`를 `_fee`로 설정해야 하네.

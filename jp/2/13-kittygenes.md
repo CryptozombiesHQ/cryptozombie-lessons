@@ -36,14 +36,14 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            // Add an if statement here
+            // ここにifステートメントを追加せよ
             _createZombie("NoName", newDna);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
             uint kittyDna;
             (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            // And modify function call here:
+            // この関数呼び出しを編集せよ
             feedAndMultiply(_zombieId, kittyDna);
           }
 
@@ -145,7 +145,7 @@ material:
 
 ## If ステートメント
 
-SolidityのIfステートメントはjavascript と同じようなものだ；
+SolidityのIfステートメントはJavaScript と同じようなものだ；
 
 ```
 function eatBLT(string sandwich) public {

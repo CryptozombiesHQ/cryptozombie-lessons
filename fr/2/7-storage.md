@@ -75,7 +75,7 @@ Le **_stockage_** est utilisé pour les variables stockées de manière permanen
 
 La plupart du temps, vous n'aurez pas besoin d'utiliser ces mots clés car Solidity gère ça tout seul. les variables d'état (déclarées en dehors des fonctions) sont par défaut `storage` et écrites de manière permanente dans la blockchain, alors que les variables déclarées à l'intérieur des fonctions sont `memory` et disparaissent quand l'appel à la fonction est terminé.
 
-Cependant, il peut arriver que vous ayez besoin d'utiliser ses mots clés, surtout quand vous utilisez des **_structures_** et des **_tableaux_** à l'intérieur de fonctions :
+Cependant, il peut arriver que vous ayez besoin d'utiliser ces mots clés, surtout quand vous utilisez des **_structures_** et des **_tableaux_** à l'intérieur de fonctions :
 
 ```
 contract SandwichFactory {

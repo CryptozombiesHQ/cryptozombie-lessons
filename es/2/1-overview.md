@@ -19,7 +19,7 @@ En la Lección 2, vamos a hacer nuestra app más parecida a un juego: Vamos a ha
 
 ## Alimentando a los Zombis
 
-Cuando un zombi se alimenta, infecta al huésped con un viros. El virus convierte al huésped en un nuevo zombi que se une a tu ejército. El nuevo ADN del zombi estará calculado del ADN del anterior zombi y del ADN del huésped.
+Cuando un zombi se alimenta, infecta al huésped con un virus. El virus convierte al huésped en un nuevo zombi que se une a tu ejército. El nuevo ADN del zombi estará calculado del ADN del anterior zombi y del ADN del huésped.
 
 ¿Y qué es lo que más les gusta a los zombis?
 

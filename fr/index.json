@@ -131,6 +131,22 @@
             ],
             "zombieDesc": "Un CryptoZombie de niveau {levelNum}",
             "shareLinkText": "JE viens juste de finir la Leçon 5 de #CryptoZombies ! Viens voir mon armée de zombie :"
+        },
+        "lesson6": {
+            "achievementsUnlocked": "Achievements Unlocked:",
+            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+            "header": [
+                "Congratulations! You have completed {lesson6} of CryptoZombies!",
+                "Show off your zombie army to your friends!",
+                "Share this URL so your friends can check out your full zombie army:"
+            ],
+            "footer": [
+                "Lesson 7 will be out in the next few weeks!",
+                "You'll get an email from us as soon as it's ready.",
+                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+            ],
+            "zombieDesc": "A Level {levelNum} CryptoZombie",
+            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
         }
     },
     "zombieBattle": {
@@ -262,6 +278,24 @@
                 "Les bibliothèques Solidity et comment s'en servir",
                 "Comment empêcher les débordements en utilisant la bibliothèque SafeMath",
                 "Commenter son code Solidity et le standard natspec"
+            ],
+            "callToAction": [
+                "Vous voulez créer votre propre armée de CryptoZombie et rejoindre les rangs ?",
+                "Apprenez à créer vos propres jeux sur Ethereum GRATUITEMENT avec CryptoZombies ! Commencez maintenant :"
+            ]
+        },
+        "lesson6": {
+            "zombieDesc": "CryptoZombie {name}",
+            "achievementPreamble": [
+                "Votre ami a complété la Leçon 6 de CryptoZombies et a reçu `Le fantôme de Web3`, un CryptoZombie de niveau 3.0 !",
+                "Regardez l'armée de zombie de votre ami à gauche. Pas mal, non ?",
+                "Afin de terminer la Leçon 6 de CryptoZombies, votre ami a appris :"
+            ],
+            "achievements": [
+                "Construire des front-ends web pour des smart contracts Ethereum en utilisant Web3.js",
+                "Utiliser MetaMask et Infura pour construire des DApps côté utilisateur",
+                "Écouter les évènements d'un smart contract pour montrer à l'utilisateur des mise à jour en temps réel",
+                "Et encore plus !"
             ],
             "callToAction": [
                 "Vous voulez créer votre propre armée de CryptoZombie et rejoindre les rangs ?",

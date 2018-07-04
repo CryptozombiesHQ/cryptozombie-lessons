@@ -236,6 +236,6 @@ function getArray() external pure returns(uint[]) {
 
 1. `result`라는 이름의 `uint[] memory` 변수를 선언하게.
 
-2. 해당 변수에 `uint` 배열을 대입하게. 배열의 길이는 이 `_owner`가 소유한 좀비의 개수여야 하고, 이는 우리의 `mapping`인 `onwerZombieCount[_owner]`를 통해서 찾을 수 있네.
+2. 해당 변수에 `uint` 배열을 대입하게. 배열의 길이는 이 `_owner`가 소유한 좀비의 개수여야 하고, 이는 우리의 `mapping`인 `ownerZombieCount[_owner]`를 통해서 찾을 수 있네.
 
 3. 함수의 끝에서 `result`를 반환하게. 지금 당장은 빈 배열이지만, 다음 챕터에서 이를 채울 것이네.

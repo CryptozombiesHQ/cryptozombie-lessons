@@ -238,6 +238,7 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity ^0.4.19;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -326,6 +327,7 @@ material:
           }
         }
       "erc721.sol": |
+        pragma solidity ^0.4.19;
         contract ERC721 {
           event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
           event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);

@@ -204,17 +204,17 @@ material:
       }
 ---
 
-前のチャプターでは、単にstorageに配列を保存するのではなく、`for`ループを使用して関数内に配列を構築することを教えたな。
+前のチャプターでは、関数内で配列を構築する際に、単にstorageに保存するかわりに`for`ループを使用して作りたい場合もあると言ったな。
 
 その理由を説明しよう。
 
-`getZombiesByOwner`関数をそのまま使うと、ゾンビ軍団のオーナーの`mapping`が`ZombieFactory` コントラクトに保存されることになる。詳しく説明しよう：
+`getZombiesByOwner`関数を素直に実装しようとするなら、オーナーからゾンビ軍団への`mapping`を`ZombieFactory`コントラクトに持たせればいいだろう：
 
 ```
 mapping (address => uint[]) public ownerToZombies
 ```
 
-新しいゾンビを作る度に、`ownerToZombies[owner].push(zombieId)`を使ってオーナーのゾンビ配列に追加していくだけだ。`getZombiesByOwner` は非常に簡単な関数だ：
+新しいゾンビを作る度に、`ownerToZombies[owner].push(zombieId)`を使ってオーナーのゾンビ配列に追加していくだけだ。すると`getZombiesByOwner`は非常にシンプルな関数になる：
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -238,7 +238,7 @@ storageに書き込むことはSolidityの操作で一番ガスコストがか�
 
 > 注：もちろん、譲ったゾンビの場所に、配列の最後のゾンビを移動して、穴埋めに使う方法はあります。しかしその場合、取引の度にゾンビ軍団の順番を変えなければならなくなります。
 
-この場合、`view`関数は外部から呼び出した時にガスコストがかからないから、`getZombiesByOwner`内でforループを使ってそのオーナーのゾンビ全体を配列し直してしまえばいい。そうすれば`transfer`関数は安く抑えられるし、storage内で配列し直す必要もないし、直感的に使いやすくて全体のコストも抑えられる。
+この場合、`view`関数は外部から呼び出した時にガスコストがかからないから、`getZombiesByOwner`内でforループを使ってそのオーナーのゾンビ軍団の配列を作ってしまえばいい。そうすれば`transfer`関数はstorage内の配列を並び替える必要がないため安く抑えられるし、直感的ではないにしろ全体のコストも抑えられる。
 
 ## `for` ループを使う
 
@@ -269,17 +269,16 @@ function getEvens() pure external returns(uint[]) {
 
 ## それではテストだ
 
-`getZombiesByOwner`を完成させよ。`for`ループでDApp内の全てのゾンビをループさせ、オーナーが一致するかどうかを判定し、返す前に `result` 配列に格納せよ。
+`getZombiesByOwner`を完成させよ。`for`ループでDApp内の全てのゾンビをループさせ、オーナーが一致するかどうかを判定し、`result` 配列に格納して返却せよ。
 
-1. `counter`という`uint`を宣言し、`0`を設定せよ。この変数を使用して、`result`配列のインデックスをトラックせよ。
+1. `counter`という`uint`を宣言し、`0`に設定せよ。この変数は`result`配列のインデックスとして使用する。
 
-2. `uint i = 0`から始めて、`i < zombies.length`までループする、`for`ループを宣言せよ。ループは配列内のゾンビ全てを含むまで続行させるように。
+2. `uint i = 0`から始めて、`i < zombies.length`までループする`for`ループを宣言せよ。このループは配列内の全てのゾンビをイテレートする。
 
-3. `for`ループ内に`if`ステートメントを作成し、 `zombieToOwner[i]`が `_owner`と一致するか判定せよ。判定は、それぞれのアドレスを比較すればよいのだ
+3. `for`ループ内に`if`ステートメントを作成し、`zombieToOwner[i]`が`_owner`と一致するか判定せよ。２つのアドレスを比較することでチェックしているのだ。
 
 4. `if`ステートメント内部には以下を設定せよ：
-   1.  `result`配列内にゾンビのIDを追加せよ。`result[counter]`を`i`と同様に設定するだけでよいのだ。
-
+   1. `result`配列内にゾンビのIDを追加せよ。`result[counter]`を`i`と同等になるよう設定するだけでよい。
    2. `counter`を 1 増やせ。(`for`ループの例を参考にするのだ）。
 
 これでいい。`_owner` が所有する全てのゾンビが返るはずだ。しかもガスは一切不要だ。

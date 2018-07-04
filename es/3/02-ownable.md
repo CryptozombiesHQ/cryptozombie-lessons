@@ -185,13 +185,13 @@ material:
 
 Queremos tener el poder de actualizar esa dirección en nuestro contrato, pero no queremos que todo el mundo sea capaz de hacerlo.
 
-Para manejar casos como este, una practica emergente común es hacer el contrato `Ownable` — significa que tiene un dueño (tú) con privilegios especiales.
+Para manejar casos como este, una práctica emergente común es hacer el contrato `Ownable` — significa que tiene un dueño (tú) con privilegios especiales.
 
 ## Contrato `Ownable` de OpenZeppelin
 
-Abajo está el contrato `Ownable` definido en la libreria Solidity de **_OpenZeppelin_**. OpenZeppelin es una libreria segura donde hay contratos inteligentes para utilizar en tus propias DApps revisados por la comunidad. Despues de esta lección, mientras esperas ansiosamente la liberación de la Lección 4, ¡te recomendamos encarecidamente que visites su sitio web para fomentar tu aprendizaje!
+Abajo está el contrato `Ownable` definido en la librería Solidity de **_OpenZeppelin_**. OpenZeppelin es una librería segura donde hay contratos inteligentes para utilizar en tus propias DApps revisados por la comunidad. Despues de esta lección, mientras esperas ansiosamente la liberación de la Lección 4, ¡te recomendamos encarecidamente que visites su sitio web para fomentar tu aprendizaje!
 
-Echalé un vistazo al contrato más abajo. Vas a ver algunas cosas que no hemos aprendido aún, pero no te preocupes, hablaremos de ellas mas adelante.
+Échale un vistazo al contrato más abajo. Vas a ver algunas cosas que no hemos aprendido aún, pero no te preocupes, hablaremos de ellas más adelante.
 
 ```
 /**

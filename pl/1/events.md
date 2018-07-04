@@ -75,7 +75,7 @@ material:
 
 Nasz kontrakt jest prawie gotowy! Teraz dodajmy jeszcze **_event_**.
 
-**_Events(Zdarzenia)_** pozwalają Twojemu kontraktowi wysłać informacje do frontowej aplikacji. Frontowa aplikacja 'nasłuchuje', czy dane zdarzenie zaszło i jeśli tak jest to podejmuje stosowną akcje.
+**_Events(Zdarzenia)_** pozwalają Twojemu kontraktowi wysłać informacje do frontowej aplikacji. Frontowa aplikacja 'nasłuchuje', czy dane zdarzenie zaszło i jeśli tak jest to podejmuje stosowną akcję.
 
 Przykład:
 
@@ -85,7 +85,7 @@ event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // wywołaj zdarzenie to aby powiedzieć aplikacji, że funkcja została wywołana:
+  // wywołaj zdarzenie aby powiedzieć aplikacji, że funkcja została wywołana:
   IntegersAdded(_x, _y, result);
   return result;
 }
@@ -107,4 +107,4 @@ Chcemy, aby nasza frontowa aplikacja, była informowana zawsze kiedy tworzy się
 
 2. Zmodyfikuj funkcje `_createZombie` aby wywoływała zdarzenie `NewZombie`  po dodaniu nowego zombie do tablicy `zombies` array. 
 
-3. Będziesz potrzebował `id` nowo stworzonego zombie. `array.push()` zwraca `uint` który jest równy długości tablicy. Jeśli założymy, że pierwszy index tablicy to  0, `array.push() - 1` będzie indexem zombie którego właśnie dodaliśmy. Zapisz wynik `zombies.push() - 1` w `uint` o nazwie `id`, dzięki czemu będziesz mugł go użyć w zdarzeniu `NewZombie` w następnej linijce.
+3. Będziesz potrzebował `id` nowo stworzonego zombie. `array.push()` zwraca `uint` który jest równy długości tablicy. Jeśli założymy, że pierwszy index tablicy to  0, `array.push() - 1` będzie indexem zombie, którego właśnie dodaliśmy. Zapisz wynik `zombies.push() - 1` w `uint` o nazwie `id`, dzięki czemu będziesz mógł go użyć w zdarzeniu `NewZombie` w następnej linijce.

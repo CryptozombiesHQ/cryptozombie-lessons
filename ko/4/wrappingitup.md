@@ -1,5 +1,5 @@
 ---
-title: Wrapping It Up
+title: 마무리하기
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:

@@ -28,7 +28,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // Inicializa kittyContract aquí usando el `ckAddress` de abajo
+          // Inicializa kittyContract aquí usando el `ckAddress` de arriba
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -145,4 +145,4 @@ De esta manera, tu contrato puede interactuar con otro contrato de la blockchain
 
 ¡Vamos a preparar nuestro contrato para leer el contrato inteligente de CryptoKitties!
 
-1. He guardado la dirección del contrato de CryptoKitties en el código por ti, debajo de la variable `ckAddress`. En la siguiente línea, crea una`KittyInterface` llamada `kittyContract`, e inicializala con `ckAddress` — igual que como hemos hecho con `numberContract` arriba.
+1. He guardado la dirección del contrato de CryptoKitties en el código por ti, dentro de la variable `ckAddress`. En la siguiente línea, crea una`KittyInterface` llamada `kittyContract`, e inicializala con `ckAddress` — igual que como hemos hecho con `numberContract` arriba.

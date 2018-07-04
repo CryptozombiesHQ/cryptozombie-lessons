@@ -35,7 +35,7 @@
         "missingZombieText": "안타깝게도 자네는 레슨 {lessonNum}의 좀비를 가지고 있지 않는 것 같군. 해당 레슨을 아직 마치지 않았다면 진도를 나가기 전에 마치길 바라네:",
         "fixMissingZombieText": " 이미 레슨 {lessonNum}을 마쳤는데도 불구하고 에러로 이 메시지를 받는다면, 레슨 {lessonNum}의 중간 내용을 생략하고 마지막 부분으로 가서 {generateNewZombie}을 실행하게.",
         "generateNewZombieLink": "새로운 좀비 생성하기",
-        "areYouReady": "시작할 준비가 되었나",
+        "areYouReady": "시작할 준비가 되었나?",
         "resumeLesson": "레슨 {lessonNum} 계속하기"
     },
     "chapter": {
@@ -43,7 +43,7 @@
         "header": "챕터 {chapterNum}: {title}",
         "saveProgress": "진도 저장하기",
         "autosaveEnabled": "자동 저장이 활성화됨",
-        "resumeProgress": "진도 니가기",
+        "resumeProgress": "진도 나가기",
         "showHint": "힌트 보기",
         "nextChapter": "다음 챕터",
         "tryAgain": "다시 시도하기",
@@ -109,12 +109,45 @@
                 "이 URL를 공유해서 친구들이 자네의 군대를 확인할 수 있도록 해보게:"
             ],
             "footer": [
-                "레슨 5는 1-2주 안에 나올 것이네.",
+                "크립토좀비를 즐기고 있나? 우리에게 알려주게!",
+                "{telegramLink} 대화 방에 참가하거나 {twitterLink}에서 우리를 팔로우하게",
+                "준비가 되면 아래 버튼을 클릭하여 레슨 5를 진행하게:"
+            ],
+            "zombieDesc": "레벨 {levelNum} 크립토좀비",
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 4를 마치고, 사악한 IOTA 좀비를 물리쳤어요! 한번 직접 해보세요:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "도전과제 완료:",
+            "newZombieAdded": "레벨 {levelNum}의 크립토좀비인 {zombieName}를 얻었네!",
+            "header": [
+                "축하하네! 크립토좀비 {lesson5}를 마쳤네!",
+                "자네의 좀비를 자네 친구들에게 자랑하게!",
+                "이 URL를 공유해서 친구들이 자네의 전체 군대를 확인할 수 있도록 해보게:"
+            ],
+            "footer": [
+                "크립토좀비를 즐기고 있나? 우리에게 알려주게!",
+                "{telegramLink} 대화 방에 참가하거나 {twitterLink}에서 우리를 팔로우하게",
+                "준비가 되면 아래 버튼을 클릭하여 레슨 6을 진행하게:"
+            ],
+            "zombieDesc": "레벨 {levelNum} 크립토좀비",
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 5를 마치고, 레벨 10 크립토좀비를 얻었어요! 제 좀비 군단을 확인해보세요:"
+        },
+        "lesson6": {
+            "achievementsUnlocked": "도전과제 완료:",
+            "newZombieAdded": "레벨 {levelNum}의 크립토좀비인 {zombieName}를 얻었네!",
+            "header": [
+                "축하하네! 크립토좀비 {lesson6}을 마쳤네!",
+                "자네의 좀비를 자네 친구들에게 자랑하게!",
+                "이 URL를 공유해서 친구들이 자네의 전체 군대를 확인할 수 있도록 해보게:"
+            ],
+            "footer": [
+                "레슨 7은 다음 몇 주 안에 나올 것이네!",
                 "준비가 되는 대로 자네에게 메일을 보내주겠네.",
                 "그동안에, {telegramLink} 대화방에 참여하거나 {twitterLink}에서 우리를 팔로우하게!"
             ],
             "zombieDesc": "레벨 {levelNum} 크립토좀비",
-            "shareLinkText": "제가 방금 #CryptoZombies 레슨 4를 마치고, 사악한 IOTA 좀비를 물리쳤어요! 한번 직접 해보세요:"
+            
+            "shareLinkText": "제가 방금 #CryptoZombies 레슨 6을 마치고, 레벨 3.0인 'The Phantom of Web3' 크립토좀비를 얻었어요! 제 좀비 군단을 확인해보세요:"
         }
     },
     "zombieBattle": {
@@ -222,6 +255,42 @@
                 "Payable 함수, 그리고 이더리움 기반의 게임에서 돈을 버는 방법",
                 "스마트 컨트랙트에서 ETH를 인출하기",
                 "난수 생성 & 이더리움에서의 보안",
+                "그리고 더 많은 것들!"
+            ],
+            "callToAction": [
+                "당신만의 크립토좀비 군대를 만들고 랭킹에 참여하고 싶으세요?",
+                "크립토좀비를 통해 무.료.로. 이더리움에서 당신만의 게임을 만드는 방법을 배우세요! 지금 바로 시작하세요:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} 크립토좀비",
+            "achievementPreamble": [
+                "당신의 친구는 크립토좀비 레슨 5를 완료했고, 레벨 10짜리 크립토좀비를 받았습니다!",
+                "당신 친구의 좀비 군대를 왼쪽에서 확인해보세요. 꽤나 무섭죠?",
+                "크립토좀비 레슨 5를 완료하기 위해, 당신의 친구는 다음을 학습했습니다:"
+            ],
+            "achievements": [
+                "토큰, ERC721 표준, 거래 가능한 토큰/자산을 만드는 방법",
+                "솔리디티 라이브러리와 그 사용 방법",
+                "SafeMath 라이브러리와 uint 오버플로우, 언더플로우를 막는 방법",
+                "솔리디티 코드에 주석을 추가하는 방법과 natspec 표준"
+            ],
+            "callToAction": [
+                "당신만의 크립토좀비 군대를 만들고 랭킹에 참여하고 싶으세요?",
+                "크립토좀비를 통해 무.료.로. 이더리움에서 당신만의 게임을 만드는 방법을 배우세요! 지금 바로 시작하세요:"
+            ]
+        },
+        "lesson6": {
+            "zombieDesc": "{name} 크립토좀비",
+            "achievementPreamble": [
+                "당신의 친구는 크립토좀비 레슨 6을 완료했고, 레벨 3.0인 `The Phantom of Web3` 크립토좀비를 받았습니다!",
+                "당신 친구의 좀비 군대를 왼쪽에서 확인해보세요. 꽤나 무섭죠?",
+                "크립토좀비 레슨 6을 완료하기 위해, 당신의 친구는 다음을 학습했습니다:"
+            ],
+            "achievements": [
+                "Web3.js를 사용하여 이더리움 스마트 컨트랙트를 위한 웹 프론트엔드 만들기",
+                "MetaMask와 Infura를 사용하여 사용자가 쓸 수 있는 DApp 만들기",
+                "스마트 컨트랙트의 이벤트를 감지하여 사용자에게 실시간 업데이트 보여주기",
                 "그리고 더 많은 것들!"
             ],
             "callToAction": [
