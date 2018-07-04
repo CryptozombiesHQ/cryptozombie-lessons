@@ -20,6 +20,7 @@
         "readOnly": "읽기 전용"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "레슨 {lessonNum}: {title}",
         "signIn": "로그인하여 진도 불러오기",
@@ -146,7 +147,6 @@
                 "그동안에, {telegramLink} 대화방에 참여하거나 {twitterLink}에서 우리를 팔로우하게!"
             ],
             "zombieDesc": "레벨 {levelNum} 크립토좀비",
-            
             "shareLinkText": "제가 방금 #CryptoZombies 레슨 6을 마치고, 레벨 3.0인 'The Phantom of Web3' 크립토좀비를 얻었어요! 제 좀비 군단을 확인해보세요:"
         }
     },
@@ -206,7 +206,6 @@
                 "크립토좀비를 활용하여 공짜로 자신의 이더리움 게임을 만드는 법을 배워 보세요! 지금 바로 시작하세요:"
             ]
         },
-
         "lesson2": {
             "zombieCardBattle": "좀비 카드 배틀",
             "love": "매우 좋아하",

@@ -20,6 +20,7 @@
         "readOnly": "閲覧のみ"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "レッスン {lessonNum}: {title}",
         "signIn": "サインインをすれば進捗をロード",
@@ -125,9 +126,9 @@
                 "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
             ],
             "footer": [
-              "CryptoZombiesはいかがでしたか？ご感想をこちらで受け付けています",
-              "{telegramLink}に参加するか,  {twitterLink}をフォロー",
-              "準備ができたら、下のボタンを押すとレッスン6に進みます："
+                "CryptoZombiesはいかがでしたか？ご感想をこちらで受け付けています",
+                "{telegramLink}に参加するか,  {twitterLink}をフォロー",
+                "準備ができたら、下のボタンを押すとレッスン6に進みます："
             ],
             "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
             "shareLinkText": "#CryptoZombies のLesson5が終わってレベル10のゾンビをゲットしたよ！作ったゾンビ軍団をチェックしてみて！"
@@ -141,9 +142,9 @@
                 "このURLを送れば友達はいつでもゾンビ軍団を見れるぞ："
             ],
             "footer": [
-              "Lesson7は準備中です。",
-              "準備出来次第、Eメールでお知らせします。",
-              "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
+                "Lesson7は準備中です。",
+                "準備出来次第、Eメールでお知らせします。",
+                "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
             ],
             "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
             "shareLinkText": "#CryptoZombies のレッスン６が完了！レベル3.0のクリプトゾンビ'The Phantom of Web3'をゲットしたよ!ゾンビ軍団が大きくなってきた！😉"
