@@ -18,7 +18,8 @@ material:
           }
 
           Zombie[] public zombies;
-
+          
+          // createZombie関数をprivateに変更するのだ
           function createZombie(string _name, uint _dna) {
               zombies.push(Zombie(_name, _dna));
           }

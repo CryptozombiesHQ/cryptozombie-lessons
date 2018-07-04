@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // start here
+          // ここに_generateRandomDna関数を作成するのだ
 
       }
     answer: >

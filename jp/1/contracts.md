@@ -5,9 +5,9 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. solidityのバージョンをここに入力
+      pragma solidity //　1. solidityのバージョンをここに入力するのだ
 
-      //2. ここにコントラクトを作成
+      //　2. ここにコントラクトを作成するのだ
     answer: > 
       pragma solidity ^0.4.19;
 

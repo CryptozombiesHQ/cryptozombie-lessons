@@ -19,7 +19,7 @@ material:
 
           Zombie[] public zombies;
 
-          // ここから始めるのだ
+          // ここにcreateZombieという関数を定義するのだ
 
       }
     answer: >
