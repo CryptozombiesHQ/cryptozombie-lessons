@@ -1,5 +1,5 @@
 ---
-title: "Ownable" Kontrakty s vlastníctvom 
+title: Ownable Kontrakty s vlastníctvom 
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
