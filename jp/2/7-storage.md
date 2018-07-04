@@ -89,15 +89,15 @@ contract SandwichFactory {
   function eatSandwich(uint _index) public {
     // Sandwich mySandwich = sandwiches[_index];
 
-    // ^ かなり簡単に見えるが、この場合Solidityが`storage` や `memory`を
+    // ^ かなり簡単に見えるが、この場合Solidityが明示的に`storage` や `memory`を
     // 宣言するように警告が出るはずだ。
  
     // そこで、`storage`と宣言してみるぞ：
     Sandwich storage mySandwich = sandwiches[_index];
-    //...`mySandwich`がstorage内で`sandwiches[_index]`に
-    // ポインタをさす場合...
+    //...この場合`mySandwich`がstorage内の`sandwiches[_index]`を
+    // 示すポインタだから...
     mySandwich.status = "Eaten!";
-    // ...この場合`sandwiches[_index]`をブロックチェーン上で永久に変更することになる。
+    // ...これで`sandwiches[_index]`をブロックチェーン上でも永久に変更することになる。
 
     // コピーしたいだけなら、`memory`の方が便利だ：
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
