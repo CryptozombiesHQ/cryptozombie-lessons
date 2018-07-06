@@ -21,7 +21,7 @@ material:
       
       Zombie[] public zombies;
       
-      // start here
+      // zacznij tutaj
       
       }
     answer: >
