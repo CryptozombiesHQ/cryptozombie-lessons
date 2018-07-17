@@ -240,7 +240,7 @@ Nuestras batallas zombie funcionarán de la siguiente manera:
 
 Esto es mucha lógica a implementar así que lo haremos por partes en los siguientes capítulos.
 
-+## Pongalo a prueba
+## Pongalo a prueba
 
 1. Dele a nuestro contrato una variable `uint` llamada `attackVictoryProbability`, y configurela como igual a `70`.
 

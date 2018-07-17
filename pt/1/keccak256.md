@@ -98,6 +98,6 @@ Logo acima, `a * b` retorna um `uint`, mas nós estamos tentando guardar o seu v
 Vamos preencher o corpo da nossa função `_generateRandomDna`!
 O que deve ser feito é:
 
-1. A primeira linha de código deve ter uma pegar o hash `keccak256` de `_str` para gerar um hexadecimal pseudo-aleatório, converta-o em um `uint`, e finalmente guarde o resultado em um `uint` chamado `rand`.
+1. Na primeira linha de código, pegue o hash de `_str` utilizando a função `keccak256` gerando um hexadecimal pseudo-aleatório, converta-o em um `uint`, e finalmente guarde o resultado em um `uint` chamado `rand`.
 
 2. Nós queremos somente 16 dígitos de tamanho em nosso DNA (lembra do `dnaModulus`?). Então a segunda linha de código deve retornar `return` o módulo do valor acima (`%`) `dnaModulus`.

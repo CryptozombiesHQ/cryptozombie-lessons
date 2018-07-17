@@ -223,7 +223,7 @@ contract MyContract is Ownable {
 }
 ```
 
-Perceba que `onlyOwner` modifica a função `likeABoss`. Quando você chama `likeABoss`, a código dentro de `onlyOwner` executa **primeiro**. Então quando ela chega na declaração `_;` em `onlyOwner`, volta e executa o código dentro de `likeABoss`.
+Perceba que `onlyOwner` modifica a função `likeABoss`. Quando você chama `likeABoss`, o código dentro de `onlyOwner` executa **primeiro**. Depois quando chega na declaração `_;` em `onlyOwner`, volta e executa o código dentro de `likeABoss`.
 
 Enquanto há outras maneiras de usar os modificares, um dos casos mais comuns são os de adicionar rapidamente verificações de `require` antes de uma função executar.
 
@@ -231,10 +231,10 @@ No caso de `onlyOwner`, adicionar este modificador à função faz com que **onl
 
 >Nota: Dar ao dono poderes especiais sobre o contrato assim frequentemente é necessário, mas isso também pode ser malicioso. Por exemplo, o dono pode adicionar uma função _backdoor_ que permitiria a transferência do zumbi de qualquer pessoa para ele mesmo!
 
->Então é importante lembrar que somente porque uma DApp esta no Ethereum não automaticamente quer dizer que é decentralizado - você tem que ler todo o código fonte para ter certeza que é livre de controles especiais impostos pelo dono que você deve se preocupar. Há um cuidadoso equilíbrio como um desenvolvedor entre manter o controle sobre uma DApp para que você possar arrumar potenciais problemas, e construir uma plataforma sem dono, que os seus usuários possam confiar e manter os dados seguros.
+>Então é importante lembrar que somente porque uma DApp está no Ethereum, não quer dizer automaticamente que ela é decentralizado - você tem que ler todo o código fonte para ter certeza que ela é livre de controles especiais impostos pelo dono que você deve se preocupar. Como um desenvolvedor, há um cuidadoso equilíbrio entre manter o controle sobre uma DApp, para que você possar arrumar potenciais problemas, e construir uma plataforma sem dono, para que os usuários possam confiar e manter os dados seguros.
 
 ## Vamos testar
 
-Agora podemos restringir o acesso a `setKittyContractAddress` então ninguém além de nós possa modificá-la no futuro.
+Agora podemos restringir o acesso a `setKittyContractAddress` para que ninguém além de nós possa modificá-la no futuro.
 
 1. Adicione o modificador `onlyOwner` na `setKittyContractAddress`.

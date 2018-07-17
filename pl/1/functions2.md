@@ -47,9 +47,9 @@ material:
       }
 ---
 
-W Solidity, funkcje są domyślnie publiczne (`public`). To oznacza, że każdy (nawet inny kontrakt) może wywołać funkcje z twojego kontraktu i  w ten sposób wykonać jej kod.
+W Solidity, funkcje są domyślnie publiczne (`public`). To oznacza, że każdy (nawet inny kontrakt) może wywołać funkcję z twojego kontraktu i  w ten sposób wykonać jej kod.
 
-Oczywiście nie zawsze takie zachowanie jest pożądane, szczególnie może to doprowadzić do hakerskich ataków na Twój kontrakt. Z tego powodu dobrą praktyką jest pisanie funkcji jako `private` domyslnie. Jesli później okaże się, że funkcja powinna być publiczna `public`, wtedy możemy ją zmienić, tak aby była dostępna dla całego świata.
+Oczywiście nie zawsze takie zachowanie jest pożądane, szczególnie może to doprowadzić do hakerskich ataków na Twój kontrakt. Z tego powodu dobrą praktyką jest pisanie funkcji jako `private` domyślnie. Jesli później okaże się, że funkcja powinna być publiczna `public`, wtedy możemy ją zmienić, tak aby była dostępna dla całego świata.
 
 Zobaczmy jak się deklaruje prywatne `private` funkcje:
 
@@ -61,12 +61,12 @@ function _addToArray(uint _number) private {
 }
 ```
 
-To oznacza, że tylko funkcje z naszego kontraktu bedą mogły wywołać tą funkcje i dodać element do tablicy `numbers`
+To oznacza, że tylko funkcje z naszego kontraktu bedą mogły wywołać tą funkcję i dodać element do tablicy `numbers`
 
-Zauważ, że użyliśmy słówka kluczowego `private` zaraz po nazwie funkcji. Tak samo jak w przypadku parametrów funkcji, istnieje konwencja która mówi, aby nazwy prywatnych funkcji zaczynały się od podkreślnika (`_`).
+Zauważ, że użyliśmy słówka kluczowego `private` zaraz po nazwie funkcji. Tak samo jak w przypadku parametrów funkcji, istnieje konwencja by nazwy prywatnych funkcji zaczynały się od podkreślnika (`_`).
 
 # Zadanie do wykonania
 
-Funkcja `createZombie` naszego kontraktu jest aktualnie publiczna — to oznacza, że każdy może ją wywołać i stworzyć nowego zombie w naszym kontrakcie! Zróbmy z niej funkcje prywatną.
+Funkcja `createZombie` naszego kontraktu jest aktualnie publiczna — to oznacza, że każdy może ją wywołać i stworzyć nowego zombie w naszym kontrakcie! Zróbmy z niej funkcję prywatną.
 
-1. Zmień `createZombie` na przywatną funkcje. Nie zapomnij o naszej konwencji związanej z nazwami funkcji!
+1. Zmień `createZombie` na prywatną funkcję. Nie zapomnij o naszej konwencji związanej z nazwami funkcji!

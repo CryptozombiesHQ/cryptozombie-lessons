@@ -119,4 +119,4 @@ contract BabyDoge is Doge {
 
 다음 챕터에서 우리 좀비들이 먹이를 먹고 번식하도록 하는 기능을 구현할 것일세. 그 기능의 로직을 `ZombieFactory`의 모든 메소드를 상속하는 클래스에 넣어 보도록 하세.  
 
-1. `ZombieFactory` 아래에 `ZombieFeeding` 컨트랙트르 생성한다. 이 컨트랙트는 `ZombieFactory`를 상속해야 한다.
+1. `ZombieFactory` 아래에 `ZombieFeeding` 컨트랙트를 생성한다. 이 컨트랙트는 `ZombieFactory`를 상속해야 한다.

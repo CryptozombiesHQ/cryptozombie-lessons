@@ -19,7 +19,7 @@ material:
 
 Zacznijmy od absolutnych podstaw:
 
-Kod Solidity jest enkapsulowany w **kontraktach**. Kontrakt `contract` jest podstawową konstrukcją z jakiej zbudowana jest aplikacja na Ethereum. Wszystkie zmiennne, oraz funkcje należą do kontraktu. To będzie twój punkt wyjściowy przy pisaniu wszystkich późniejszych projektów
+Kod Solidity znajduje się w **kontraktach**. Kontrakt `contract` jest podstawową konstrukcją z jakiej zbudowana jest aplikacja na Ethereum. Wszystkie zmienne, oraz funkcje należą do kontraktu. To będzie twój punkt wyjściowy przy pisaniu wszystkich późniejszych projektów
 
 Pusty kontrakt o nazwie `HelloWorld` wygląda tak:
 
@@ -31,7 +31,7 @@ contract HelloWorld {
 
 ## Version Pragma
 
-Kod źródłowy solidity powinien zaczynać się od "version pragma", czyli deklaracji wersji dla kompilera Solidity. Jest to niezbędne aby wyeliminować ewentualne przyszłe błedy jeśli zmieni się wersja kompilera.
+Kod źródłowy Solidity powinien zaczynać się od "version pragma", czyli deklaracji wersji dla kompilera Solidity. Jest to niezbędne aby wyeliminować ewentualne przyszłe błedy jeśli zmieni się wersja kompilera.
 
 Powinno to wyglądać mniej więcej tak: `pragma solidity ^0.4.19;` ( 0.4.19 jest aktualną wersją w czasie pisania tego tutorialu).
 
@@ -47,10 +47,10 @@ contract HelloWorld {
 
 # Zadanie do wykonania
 
-Aby stworzyć armie zombie, stwórzmy najpierw podstawowy kontrakt o nazwie `ZombieFactory`.
+Aby stworzyć armię zombie, stwórzmy najpierw podstawowy kontrakt o nazwie `ZombieFactory`.
 
 1. W edytorze po prawej, spraw aby kontrakt używał wersji `0.4.19`.
 
 2. Stwórz pusty projekt o nazwie `ZombieFactory`.
 
-Kiedy skończysz, kliknij "sprawdź odpowiedź" poniżej. Jeśli utkniesz, mozesz kliknąć "podpowiedzi".
+Kiedy skończysz, kliknij "sprawdź odpowiedź" poniżej. Jeśli utkniesz, możesz kliknąć "podpowiedzi".

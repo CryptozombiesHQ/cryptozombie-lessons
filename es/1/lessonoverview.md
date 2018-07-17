@@ -16,7 +16,7 @@ En la Lección 1 vas a construir una "Fabrica de Zombis" para poder crear tu ej�
 * Nuestra fábrica tendrá una función que cree nuevos zombis
 * Cada zombi tendrá una apariencia aleatoria y no habrá dos iguales
 
-En las siguientes lecciones añadiremos más funcionalidades, ¡como la capacidad de atacar humanos u otros zombis! Pero antes de que lleguemos allí tendremos que contar con la funcionalidad de crear nuevos zombis.
+En las siguientes lecciones añadiremos más funcionalidades, ¡cómo la capacidad de atacar humanos u otros zombis! Pero antes de que lleguemos allí tendremos que contar con la funcionalidad de crear nuevos zombis.
 
 ## Cómo funciona el ADN de los Zombis
 
