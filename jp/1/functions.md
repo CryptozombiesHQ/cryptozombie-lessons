@@ -13,13 +13,13 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;
 
-          // ここから始めるのだ
+          // ここにcreateZombieという関数を定義するのだ
 
       }
     answer: >
@@ -32,8 +32,8 @@ material:
           uint dnaModulus = 10 ** dnaDigits;
 
           struct Zombie {
-              uint dna;
               string name;
+              uint dna;
           }
 
           Zombie[] public zombies;

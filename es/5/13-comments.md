@@ -422,7 +422,7 @@ contract CryptoZombies {
 }
 ```
 
-En particular, es una buena práctica comentar su código para explicar el comportamiento esperado de cada función en su contrato. De esta forma, otro desarrollador (¡O tu, después de un paréntesis de 6 meses en un proyecto!) puede leer rápidamente y comprender a un nivel alto lo que hace su código sin tener que leer el código en sí.
+En particular, es una buena práctica comentar su código para explicar el comportamiento esperado de cada función en su contrato. De esta forma, otro desarrollador (¡O tú, después de un paréntesis de 6 meses en un proyecto!) puede leer rápidamente y comprender a un nivel alto lo que hace su código sin tener que leer el código en sí.
 
 El estándar en la comunidad Solidity es usar un formato llamado **_natspec_**, que tiene esta apariencia:
 

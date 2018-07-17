@@ -103,7 +103,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 新しいゾンビを作る毎にそれをフロントエンドに伝えて、アプリ上に表示させたい。
 
-1. `NewZombie`を呼び出す`event`を宣言せよ。`zombieId` (`uint`)、 `name` (`string`)、 `dna` (`uint`)の値を渡すのだ。
+1. `NewZombie`という名前の`event`を宣言せよ。`zombieId` (`uint`)、 `name` (`string`)、 `dna` (`uint`)の値を渡すのだ。
 
 2. `_createZombie`関数を編集し、`zombies`配列に新しいゾンビを追加したら `NewZombie`イベントが発生させよ。
 

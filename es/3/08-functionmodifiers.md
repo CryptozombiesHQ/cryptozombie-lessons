@@ -209,4 +209,4 @@ Vamos a probar a hacer nuestro propio `modifier` que utilice la propiedad `level
 
 2. El cuerpo de la función deberá comprobar que `zombies[_zombieId].level` es mayor o igual a `_level`.
 
-3. Recuerda que para que el modificador pueda ser llamado por el restro de funciones debe incluir `_;` en la última línea.
+3. Recuerda que para que el modificador pueda ser llamado por el resto de funciones debe incluir `_;` en la última línea.

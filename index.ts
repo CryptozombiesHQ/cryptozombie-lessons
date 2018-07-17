@@ -6,6 +6,7 @@ import th from './th'
 import fr from './fr'
 import ru from './ru'
 import es from './es'
+import sk from './sk'
 
 export default {
   en, // English (source for all translations)
@@ -15,5 +16,6 @@ export default {
   th,
   fr,
   ru,
-  es
+  es,
+  sk
 }

@@ -10,17 +10,17 @@ material:
     answer: 1
 ---
 
-Nasz kontrakt Solidity jest gotowy! Teraz musimy już tylko napisać frontend w javascripcie, który będzie wchodził w interakcje z naszym kontraktem.
+Nasz kontrakt Solidity jest gotowy! Teraz musimy już tylko napisać frontend w JavaScripcie, który będzie wchodził w interakcje z naszym kontraktem.
 
 Ethereum dostarcza biblotekę Javascript o nazwie **_Web3.js_**.
 
 
-W późniejszych lekcjach pokażemy jak publikować kontrakt oraz jak ustawić Web3.js. Narazie jednak zobaczmy jak wygląda przykładowy kod który komunikuje się z kontraktem.
+W późniejszych lekcjach pokażemy jak publikować kontrakt oraz jak ustawić Web3.js. Narazie jednak zobaczmy jak wygląda przykładowy kod, który komunikuje się z kontraktem.
 Nie przejmuj się jeśli nie wszystko jest dla Ciebie zrozumiałe.
 
 ```
 // Oto jak możemy dostać się do kontraktu
-var abi = /* abi wygenerowane przez kompiler */
+var abi = /* abi wygenerowane przez kompilator */
 var ZombieFactoryContract = web3.eth.contract(abi)
 var contractAddress = /* adres naszego kontraktu w Ethereum po opublikowaniu */
 var ZombieFactory = ZombieFactoryContract.at(contractAddress)
@@ -68,11 +68,10 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
 Następnie javascript pobiera wygenerowaną powyżej wartość w `zombieDetails` i używa przeglądarkowej magii (używamy Vue.js) aby podmienić zdjęcia i filtry CSS. Zobaczysz ten kod w późniejszej lekcji.
 
 # Zadanie do wykonania
 
-Na przód - wisz swoje imię w polu po prawej i zobacz jakiego zombie otrzymasz!
+Na przód - wpisz swoje imię w polu po prawej i zobacz jakiego zombie otrzymasz!
 
-**Kiedy otrzymasz zombie który Cie staysfakcjonuje, kliknij "Następny Rozdział" poniżej, aby zapisać swojego zombie i ukończyć lekcje 1!**
+**Kiedy otrzymasz zombie, który Ci się podoba, kliknij "Następny Rozdział" poniżej, aby zapisać swojego zombie i ukończyć lekcje 1!**

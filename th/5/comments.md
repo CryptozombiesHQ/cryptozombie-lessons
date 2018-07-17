@@ -1,5 +1,5 @@
 ---
-title: Comments
+title: การสร้าง Comments
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -28,12 +28,12 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-          // 1. Remove this:
+          // 1. ลบบรรทัดนี้ออก:
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
+          // 2. เปลี่ยนส่วนนี้ให้เป็นเพียงแค่การประกาศค่าเท่านั้น:
           KittyInterface kittyContract = KittyInterface(ckAddress);
 
-          // 3. Add setKittyContractAddress method here
+          // 3. เพิ่ม method ที่ชื่อ setKittyContractAddress ตรงนี้เลยจ้า
 
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -141,35 +141,35 @@ material:
       }
 ---
 
-Solidity, or BlockChain programming in general, has alot in common with the kind of programming done for the aerospace industry. That is, if you make a mistake, the plane falls from the sky, the rockets can't reach the moon, and [all your money gets stuck forever](https://medium.com/chain-cloud-company-blog/parity-multisig-hack-again-b46771eaa838).
+โดยทั่วไปแล้วภาษาโปรแกรมมิ่งใน Solidity หรือ BlockChain เปรียบได้กับภาษาโปรแกรมมิ่งที่ใช้ในอุตสาหกรรมการบิน กล่าวคือหากมีข้อผิดพลาดขึ้นมาเพียงเล็กน้อยแล้วล่ะก็ อาจจะทำให้เครื่องบินทั้งลำตกลงมาก็เป็นได้ หรืออีกตัวอย่างก็คืออาจทำให้กระสวยอวกาศไปไม่ถึงดวงจันทร์ตามที่ตั้งใจไว้ และจะทำให้เรา [สูญเสียรายได้กันไปอย่างมหาศาลเลยทีเดียว](https://medium.com/chain-cloud-company-blog/parity-multisig-hack-again-b46771eaa838).
 
-So it becomes really really important that you double, triple check everything and make every effort to clarify the meaning and the intention behind each line of code.
+ความสำคัญของมันจึงสูงมากพอที่จำเป็นจะต้องมีการตรวจสอบจำนวนสอง หรือสามรอบด้วยความใส่ใจในทุกๆ องค์ประกอบเพื่อบอกได้ถึงความหมายและจุดประสงค์เบื้องหลังโค้ดในแต่ละบรรทัด
 
-This is why we are taking time to go over `comments` and their importance in Solidity programming. 
+เรื่องนี้จึงได้นำมาสู่เหตุผลที่ว่าทำไมเราจึงควรให้เวลาไปกับการคอมเม้น `comments` และความสำคัญของมันภายใน Solidity programming. 
 
-## Commenting with Style:
+## การสร้างคอมเม้นด้วยรูปแบบต่างๆ (Commenting with Style):
 
 ```
-// This is a single-line comment. It's kind of like a note to self (or to others)
+// ส่วนนี้คือการคอมเม้นภายในหนึ่งบรรทัด ซึ่งมันก็คือการสร้างโน้ตให้กับตัวเราเองนี่ล่ะ (หรือให้คนอื่นอ่านก็ได้นะ)
 ```
 
-Just add double `//` anywhere and you're commenting. It's so easy that you should do it all the time. But I hear you, sometimes a single line is not enough, you are born a writer:
+เพียงแค่เพิ่มเครื่องหมาย `//` ณ ตรงที่ใดก็ได้ก็จะหมายถึงว่าขณะนั้นเรากำลังสร้างคอมเม้นแล้ว ซึ่งอะไรแบบนี้เป็นเรื่องที่ควรทำให้เป็นนิสัยอย่างมากเนื่องจากมันเป็นอะไรที่ง่ายสุดๆ แต่อย่างไรก็ตาม เราทราบดีว่าบางทีการคอมเม้นภายในหนึ่งบรรทัดมันก็ไม่เพียงพอสำหรับนักเขียนมือฉมังอย่างเราๆ อะเนอะ:
 
 ```
 contract CryptoZombies {
   /*
-    This is a multi-lined comment. I'd like to thank all of you who have taken your time to try this programming course. I know it's free to all of you, and it will stay free forever, but we still put our heart and soul into making this as good as it can be. 
+    ตัวอย่างนี้คือการสร้างคอมเม้นแบบหลายบรรทัด ขอขอบคุณทุกๆ คนมากที่เสียสละเวลามาศึกษาคอร์สโปรแกรมมิ่งนี้ แม้ว่าเราจะเปิดบทเรียนนี้ให้เข้ามาศึกษากันแบบฟรีๆ และแน่นอนว่ามันจะเป็นแบบนี้เสมอ เราก็ยังยืนยันว่าจะใส่หัวใจและจิตวิญญาณในการทำมันให้ดีที่สุดเท่าที่จะทำได้เลยนะ
 
-    Know that this is still the beginning of Blockchain development. We've come very far but there are so many ways to make this community better. If we made a mistake somewhere, you can make a pull request here: https://github.com/loomnetwork/cryptozombie-lessons
+    ขอให้รู้ไว้ว่านี่เป็นเพียงแค่จุดเริ่มต้นในการพัฒนาบล็อกเชนเท่านั้น แม้ว่าเราอาจจะมากันไกลมากกว่าในตอนแรกเป็นที่เรียบร้อย แต่ก็ยังมีอีกหลายอย่างที่ต้องมาเรียนรู้กันเพื่อพัฒนาให้คอมมูนิตี้นี้ดีขึ้นกว่าเดิมให้ได้ หากว่าทางทีมของเราได้ทำผิดพลาดไว้ตรงไหนก็สามารถเข้ามาบอกกันได้โดยสร้าง pull request เอาไว้ที่นี่เล้ย: https://github.com/loomnetwork/cryptozombie-lessons
 
-    Or if you have some ideas, comments, or just want to say hi - drop by our Telegram. 
+    ไอเดียหรือคอมเม้นใหม่ๆ ที่อยากจะมาแลกเปลี่ยนกัน หรือแม้แต่การแวะมาทักทายเฉยๆ ก็ได้ - ให้เข้ามาเยี่ยมเยียนกันที่ Telegram ของเรานะจ๊ะ
   */
 }
 ```
 
-But sometimes the written language is not precise enough, or you want to make it really easy for others to read, then it's time to add real documentation. 
+แต่บางครั้งภาษาที่เราใช้เขียนก็อาจจะไม่ได้เป๊ะเท่าที่ควรนัก หรือแม้แต่กรณีที่เราต้องการให้มันอ่านง่าย ทำให้จะถึงเวลาของการเพิ่ม document จริงๆ เข้าไปแล้ว
 
-In this community, the general trend is to use `Doxygen` style tags. These tags are just a special way of writting comments that are clearer and machine readable. It makes it easier to generate documentation for others.
+ในคอมมูนิตี้ของเรานี้ มีเทรนด์ที่กำลังนิยมในการใช้แท็ก (tags) `Doxygen` style อยู่ โดย tags เหล่านี้ก็เป็นเพียงแค่วิธีพิเศษที่เพิ่มเข้ามาในการเขียนคอมเม้นที่จะทำมันมีความชัดเจนยิ่งขึ้นและ machine ก็สามารถอ่านได้ง่ายด้วย ซึ่งผลที่ตามมาก็คือความง่าต่อการสร้างเอกสารหรือ docimentation สำหรับผู้อื่น
 
 ```
 /** @title A basic math operation. */

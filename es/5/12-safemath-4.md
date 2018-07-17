@@ -16,7 +16,7 @@ material:
           uint attackVictoryProbability = 70;
 
           function randMod(uint _modulus) internal returns(uint) {
-            // Here's one!
+            // ¡Aquí hay uno!
             randNonce++;
             return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
           }
@@ -26,7 +26,7 @@ material:
             Zombie storage enemyZombie = zombies[_targetId];
             uint rand = randMod(100);
             if (rand <= attackVictoryProbability) {
-              // Here's 3 more!
+              // ¡Aquí hay tres más!
               myZombie.winCount++;
               myZombie.level++;
               enemyZombie.lossCount++;

@@ -71,9 +71,9 @@ function sayHello() public returns (string) {
 
 ## 함수 제어자
 
-위의 함수는 솔리디티에서 상태를 변화시키지 않지. 즉, 어떤 값을 변경하거나 무언가를 쓰지 않지.
+위에서 살펴 본 함수 sayHello()는 솔리디티에서 상태를 변화시키지 않는다네. 즉, 어떤 값을 변경하거나 무언가를 쓰지 않지.
 
-그러니 이 경우에는 함수를 **_view_** 함수로 선언하지. 이는 함수가 데이터를 보기만 하고 변경하지 않는다는 뜻이지:
+이 경우에는 함수를 **_view_** 함수로 선언한다네. 이는 함수가 데이터를 보기만 하고 변경하지 않는다는 뜻이지:
 
 ```
 function sayHello() public view returns (string) {
@@ -95,8 +95,8 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 스트링으로부터 랜덤 DNA 숫자를 생성하는 도우미 함수가 필요할 걸세. 
 
-1. `_generateRandomDna`라는 `private` 함수를 생성한다. 이 함수는 `_str` (`string`형)을 인자로 전달받고, `uint`을 반환할 것이다.
+1. `_generateRandomDna`라는 `private` 함수를 만드시게. 이 함수는 `_str` (`string`형)을 인자로 전달받고, `uint`을 반환해야 하네.
 
-2. 이 함수는 컨트랙트 변수를 보지만 변경하지는 않을 것이므로 `view`로 선언한다.
+2. 이 함수는 컨트랙트 변수를 보지만 변경하지는 않을 것이므로 `view`로 선언하게.
 
-3. 이 함수의 내용은 현재로서는 비어 있는 상태로 둔다. 나중에 채울 것이다. 
+3. 이 함수의 내용은 현재로서는 비어 있는 상태로 냅두시게. 나중에 채울 것이네.
