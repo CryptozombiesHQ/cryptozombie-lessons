@@ -23,7 +23,8 @@
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Leçon {lessonNum}: {title}",
         "signIn": "Connectez-vous et enregistrez vos progrès",
-        "progressLoaded": "Vos progrès sont chargés"
+        "progressLoaded": "Vos progrès sont chargés",
+        "getReward": "Le Prix"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",

@@ -23,7 +23,8 @@
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "レッスン {lessonNum}: {title}",
         "signIn": "サインインをすれば進捗をロード",
-        "progressLoaded": "進捗がロードされました"
+        "progressLoaded": "進捗がロードされました",
+        "getReward": "賞品"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
