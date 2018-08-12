@@ -35,7 +35,7 @@ $("#ourButton").click(function(e) {
 
 // Listen for the `NewZombie` event, and update the UI
 var event = ZombieFactory.NewZombie(function(error, result) {
-  if (error) return
+  if (!error) return
   generateZombie(result.zombieId, result.name, result.dna)
 })
 
