@@ -188,7 +188,7 @@ material:
 `readyTime` 속성은 조금 설명이 필요할 듯하군. 이것의 목표는 좀비가 먹이를 먹거나 공격을 하고 나서 다시 먹거나 공격할 수 있을 때까지 기다려야 하는 "재사용 대기 시간"을 추가하는 것이네. 이 속성 없이는, 좀비는 하루에 천 번 이상 공격하거나 증식할 수 있지. 이러면 게임이 너무 쉬워져 버릴 것이네.
 
 좀비가 다시 공격할 때까지 기다려야 하는 시간을 측정하기 위해, 우리는 솔리디티의 시간 단위(Time units)를 사용할 것이네.
-In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
+
 
 ## 시간 단위(Time units)
 
