@@ -1,5 +1,5 @@
 ---
-title: 함수 제어자 톺아보기
+title: 함수 제어자의 또 다른 특징
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
