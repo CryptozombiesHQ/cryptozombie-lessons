@@ -210,4 +210,4 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 3. 그리고 나서 이 함수에서는 `zombies[_zombieId].name`에 `_newName`을 대입해야 하네.
 
-4. `changeName` 아래에 `changeDna`라는 또다른 함수를 만들게. 이 함수의 정의와 내용은 `changeName`과 거의 똑같지만, 두 번째 인수가 `_newDna`(`uint`)이고, `aboveLevel`의 `_level` 매개 변수에 `20`을 전달해야 할 것이네. 물론, 이 함수는 좀비의 이름을 설정하는 것 대신에 좀비의 `dna`를 `_newDna`로 설정해야 하겠지.
+4. `changeName` 아래에 `changeDna`라는 또다른 함수를 만들게. 그리고 함수를 `external`로 만들게. 이 함수의 정의와 내용은 `changeName`과 거의 똑같지만, 두 번째 인수가 `_newDna`(`uint`)이고, `aboveLevel`의 `_level` 매개 변수에 `20`을 전달해야 할 것이네. 물론, 이 함수는 좀비의 이름을 설정하는 것 대신에 좀비의 `dna`를 `_newDna`로 설정해야 하겠지.
