@@ -1,14 +1,14 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Learn to code games on Ethereum",
-        "lesson": "Lesson {lessonNum}",
-        "chapter": "Chapter {chapterNum}",
-        "syncing": "Synchronizing...",
+        "tagLine": "Cách làm trò chơi trên nền Ethereum",
+        "lesson": "Bài {lessonNum}",
+        "chapter": "Phần {chapterNum}",
+        "syncing": "Đang đồng bộ...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
-            "action": "Join Our Telegram",
+            "openChat": "Mở hộp thoại",
+            "action": "Tham gia Telegram của chúng tôi",
             "link": "https://t.me/loomnetwork"
         },
         "twitter": {
@@ -17,30 +17,30 @@
         }
     },
     "editor": {
-        "readOnly": "read only"
+        "readOnly": "Chỉ xem"
     },
     "lessonMenu": {
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
-        "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded"
+        "itemLabel": "Bài {lessonNum}: {title}",
+        "signIn": "Đăng nhập và tải tiến trình của bạn",
+        "progressLoaded": "Tiến trình tải đã xong"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
+        "title": "Bài {lessonNum}: {title}",
         "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
         "signInButton": "Sign In",
         "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
-        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Lesson {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
-        "fixMissingZombieText": "If you've already completed Lesson {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
+        "missingZombieText": "Unfortunately it looks like you don't have a zombie from Bài {lessonNum}. If you haven't finished that lesson yet, please do so before continuing:",
+        "fixMissingZombieText": "If you've already completed Bài {lessonNum} and are receiving this message in error, you can just skip to the end and {generateNewZombie}.",
         "generateNewZombieLink": "generate a new zombie",
         "areYouReady": "Are you ready to get started?",
-        "resumeLesson": "Resume Lesson {lessonNum}"
+        "resumeLesson": "Resume Bài {lessonNum}"
     },
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Chapter {chapterNum}: {title}",
+        "header": "Phần {chapterNum}: {title}",
         "saveProgress": "Save Progress",
         "autosaveEnabled": "Autosave Enabled",
         "resumeProgress": "Resume Progress",
