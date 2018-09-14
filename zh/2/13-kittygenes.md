@@ -164,8 +164,8 @@ function eatBLT(string sandwich) public {
 
 2. 接下来，在我们计算出新的僵尸的DNA之后，添加一个 `if` 语句来比较 `_species` 和字符串 `"kitty"` 的 `keccak256` 哈希值。
 
-3.  在 `if` 语句中，我们用 `99` 替换了新僵尸DNA的最后两位数字。可以这么做：`newDna = newDna - newDna％100 + 99;`。
+3.  在 `if` 语句中，我们用 `99` 替换了新僵尸DNA的最后两位数字。可以这么做：`newDna = newDna - newDna ％ 100 + 99;`。
 
-    >解释：假设 `newDna` 是 `334455`。那么 `newDna％100` 是 `55`，所以 `newDna - newDna％100` 得到 `334400`。最后加上 `99` 可得到 `334499`。
+    >解释：假设 `newDna` 是 `334455`。那么 `newDna ％ 100` 是 `55`，所以 `newDna - newDna ％ 100` 得到 `334400`。最后加上 `99` 可得到 `334499`。
 
 4. 最后，我们修改了 `feedOnKitty` 中的函数调用。当它调用 `feedAndMultiply` 时，增加 `“kitty”` 作为最后一个参数。

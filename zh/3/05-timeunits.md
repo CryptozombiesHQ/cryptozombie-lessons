@@ -218,7 +218,7 @@ function fiveMinutesHavePassed() public view returns (bool) {
 }
 ```
 
-有了这些工具，我们可以为僵尸设定”冷静时间“功能
+有了这些工具，我们可以为僵尸设定“冷静时间”功能。
 
 ## 实战演习
 
