@@ -20,7 +20,7 @@
         "readOnly": "read only"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Claim Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lesson {lessonNum}: {title}",
         "signIn": "Sign in and load your progress",
