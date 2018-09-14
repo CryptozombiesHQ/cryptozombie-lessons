@@ -20,7 +20,7 @@
         "readOnly": "只读"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Claim Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "教程 {lessonNum}: {title}",
         "signIn": "登录后同步进度",
