@@ -20,7 +20,7 @@
         "readOnly": "읽기 전용"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Claim Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "레슨 {lessonNum}: {title}",
         "signIn": "로그인하여 진도 불러오기",
