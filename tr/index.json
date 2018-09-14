@@ -20,6 +20,7 @@
         "readOnly": "salt okunur"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Bölüm {lessonNum}: {title}",
         "signIn": "Oturum aç ve ilerlemeni yükle",
