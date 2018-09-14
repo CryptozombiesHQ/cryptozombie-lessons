@@ -45,7 +45,7 @@ material:
       }
 ---
 
-솔라디티에서 함수 선언은 다음과 같이 하네:
+솔리디티에서 함수 선언은 다음과 같이 하네:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
