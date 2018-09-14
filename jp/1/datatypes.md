@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //ここから開始するのだ
+          // ここにdnaDigitsを定義するのだ
 
       }
     answer: >

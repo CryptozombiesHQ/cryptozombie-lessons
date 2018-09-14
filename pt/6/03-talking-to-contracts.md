@@ -870,7 +870,7 @@ O Web3.js precisará de duas coisas para conversar com seu contrato: o **_endere
 
 Depois de terminar de escrever seu smart contract, você irá compilá-lo e implantá-lo no Ethereum. Vamos abordar **a implantação** na **próxima lição**, mas como esse é um processo bem diferente de escrever código, decidimos mudar a ordem e cobrir o Web3.js primeiro.
 
-Depois de implantar o seu contrato, ele recebe um endereço fixo no Ethereum, onde viverá para sempre. Se você se lembra da lição 2, o endereço do contrato CryptoKitties na rede social Ethereum é `YOUR_CONTRACT_ADDRESS`.
+Depois de implantar o seu contrato, ele recebe um endereço fixo no Ethereum, onde viverá para sempre. Se você se lembra da lição 2, o endereço do contrato CryptoKitties na rede social Ethereum é `0x06012c8cf97BEaD5deAe237070F9587f8E7A266d`.
 
 Você precisará copiar esse endereço após a implantação para conversar com seu smart contract.
 

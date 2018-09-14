@@ -81,6 +81,6 @@ Entonces si tenemos un fichero llamado `someothercontract.sol` en el mismo direc
 
 # Vamos a probarlo
 
-Ahora que tenemos una estructura de multiples ficheros, necesitamos usar `import` para leer el contenido del otro fichero:
+Ahora que tenemos una estructura de múltiples ficheros, necesitamos usar `import` para leer el contenido del otro fichero:
 
 1. Importa `zombiefactory.sol` en nuestro nuevo fichero, `zombiefeeding.sol`. 

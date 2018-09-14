@@ -5,9 +5,9 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. solidityのバージョンをここに入力
+      pragma solidity //　1. solidityのバージョンをここに入力するのだ
 
-      //2. ここにコントラクトを作成
+      //　2. ここにコントラクトを作成するのだ
     answer: > 
       pragma solidity ^0.4.19;
 
@@ -54,4 +54,4 @@ contract HelloWorld {
 
 2. `ZombieFactory`という空のコントラクトを作成せよ
 
-作成が終わったら、下の"答えの確認"をクリックせよ。もし迷うことがあれば、"ヒント"を押せばヒントをやろう。 
+作成が終わったら、下の"答え合わせ"をクリックせよ。もし迷うことがあれば、"ヒント"を押せばヒントをやろう。 
