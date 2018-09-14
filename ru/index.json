@@ -20,7 +20,7 @@
         "readOnly": "только чтение"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Claim Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Урок {lessonNum}: {title}",
         "signIn": "Войди, чтобы загрузить свой прогресс",
