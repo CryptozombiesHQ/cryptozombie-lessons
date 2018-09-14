@@ -114,7 +114,7 @@ En plus de `public` et `private`, Solidity a deux autres visibilité pour les fo
 
 `internal` est similaire à `private`, à l'exception qu'elle est aussi accessible aux contrats qui héritent de ce contrat. **(On dirait que c'est ce que l'on veut!)**.
 
-`extrenal` est similaire `public`, à l'exception que ces fonctions peuvent SEULEMENT être appelées à l'extérieur du contrat - elles ne peuvent pas être appelées par d'autres fonctions à l'intérieur du contrat. Nous expliquerons plus tard pourquoi utiliser `external` plutôt que `public`.
+`external` est similaire à `public`, à l'exception que ces fonctions peuvent SEULEMENT être appelées à l'extérieur du contrat - elles ne peuvent pas être appelées par d'autres fonctions à l'intérieur du contrat. Nous expliquerons plus tard pourquoi utiliser `external` plutôt que `public`.
 
 Pour déclarer des fonctions `internal` ou `external`, la syntaxe est la même que pour `private` et `public` :
 
