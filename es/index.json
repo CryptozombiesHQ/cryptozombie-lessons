@@ -20,10 +20,12 @@
         "readOnly": "Solo lectura"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lección {lessonNum}: {title}",
         "signIn": "Inicia sesión para guardar tu progreso",
-        "progressLoaded": "Tu progreso ha sido cargado"
+        "progressLoaded": "Tu progreso ha sido cargado",
+        "getReward": "Los Premios"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
