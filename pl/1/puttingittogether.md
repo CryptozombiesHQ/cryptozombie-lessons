@@ -64,16 +64,16 @@ material:
       }
 ---
 
-Jesteśmy blisko stworzenia losowego generatora Zombie! Stwórzmy publiczną funkcje która powiąże wszystko razem.
+Jesteśmy blisko stworzenia losowego generatora Zombie! Stwórzmy publiczną funkcję która powiąże wszystko razem.
 
-Zamierzamy stworzyś publiczna funkcje która na wejściu dostanieimie zombie. Następnie uzyje tego imienia do stworzenia zombie z losowym DNA.
+Zamierzamy stworzyś publiczna funkcję która na wejściu dostanie imi zombie. Następnie użyje tego imienia do stworzenia zombie z losowym DNA.
 
 # Zadanie do wykonania
 
-1. Stwórz `public` funkcje o nazwie `createRandomZombie`. Powinna przyjmować jeden parametr `_name` (`string`). _(Notatka: Zadeklaruj tą funkcje jako `public` tak samo jak deklarowałeś poprzednie funkcje typu `private`)_
+1. Stwórz `public` funkcję o nazwie `createRandomZombie`. Powinna przyjmować jeden parametr `_name` (`string`). _(Notatka: Zadeklaruj tą funkcję jako `public` tak samo jak deklarowałeś poprzednie funkcje typu `private`)_
 
-2. Pierwsza linijka funkcji powinna wywołać funkcje`_generateRandomDna` na zmiennej`_name`, oraz zapisać ją jako `uint` o nazwie `randDna`.
+2. Pierwsza linijka funkcji powinna wywołać funkcję `_generateRandomDna` na zmiennej `_name`, oraz zapisać ją jako `uint` o nazwie `randDna`.
 
-3. Druga linijka powinna wywołaś funkcje `_createZombie` ze zmiennymi `_name` oraz `randDna`.
+3. Druga linijka powinna wywołaś funkcję `_createZombie` ze zmiennymi `_name` oraz `randDna`.
 
-4. Rozwiązanie powinno być napisane w  4 linijkach kodu (włączając w to  zamekający tag `}`).
+4. Rozwiązanie powinno być napisane w 4 linijkach kodu (włączając w to zamykający tag `}`).

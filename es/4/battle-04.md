@@ -296,7 +296,7 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 Esta es la misma lógica que necesitaremos para nuestra función `attack`. Ya que estamos utilizando multiples veces la misma lógica, movamos esto a su propio `modifier` para limpiar nuestro código y evitar redundancias.
 
-## Pongalo a prueba
+## Póngalo a prueba
 
 Regresamos a `zombiefeeding.sol`, dado que este es el primer lugar dónde usamos esa lógica. Vamos a refactorizarlo en su propio `modifier`.
 

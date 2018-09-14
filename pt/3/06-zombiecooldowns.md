@@ -213,7 +213,7 @@ Primeiro, iremos definir alguma função de ajuda que faça a atribuição e che
 
 Você pode passar um ponteiro de storage para uma estrutura como argumento em uma função `private` ou `internal`. Isto é útil por exemplo, passar a nossa estrutura `Zombie` entre as funções.
 
-The syntax looks like this:
+A sintaxe deverá se parecer com isso: 
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
@@ -229,6 +229,6 @@ Desta maneira podemos passar uma referência do nosso zumbi para uma função ao
 
 2. O corpo da função deve atribuir `_zombie.readyTime` para `uint32(now + cooldownTime)`.
 
-3. Próximo, crie uma função chamada `_isReady`. Esta função irá receber também o `Zombie.storage` como argumento chamado `_zombie`. Esta será uma função `internal view` e irá retornar um `bool`.
+3. Em seguida, crie uma função chamada `_isReady`. Esta função também irá receber o `Zombie storage` como argumento chamado `_zombie`. Esta será uma função `internal view` e irá retornar um `bool`.
 
 4. O corpo da função deve retornar `(_zombie.readyTime <= now)`, quer irá validar se é `true` ou `false`. Esta função irá nos dizer se tempo o suficiente já passou desde a última vez que o zumbi se alimentou.

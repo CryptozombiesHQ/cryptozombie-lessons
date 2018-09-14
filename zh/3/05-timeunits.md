@@ -218,7 +218,7 @@ function fiveMinutesHavePassed() public view returns (bool) {
 }
 ```
 
-有了这些工具，我们可以为僵尸设定”冷静时间“功能
+有了这些工具，我们可以为僵尸设定“冷静时间”功能。
 
 ## 实战演习
 
@@ -228,7 +228,7 @@ function fiveMinutesHavePassed() public view returns (bool) {
 
 2. 因为在上一章中我们给 `Zombie` 结构体中添加 `level` 和 `readyTime` 两个参数，所以现在创建一个新的 `Zombie` 结构体时，需要修改 `_createZombie()`，在其中把新旧参数都初始化一下。
 
-    修改 `zombies.push` 那一行， 添加加2个参数：`1`（表示当前的 `level` ）和`uint32（now + cooldownTime 现在+冷静时间）`（表示下次允许攻击的时间 `readyTime`）。
+    修改 `zombies.push` 那一行， 添加加2个参数：`1`（表示当前的 `level` ）和`uint32（now + cooldownTime）`（现在+冷却时间，表示下次允许攻击的时间 `readyTime`）。
 
 >注意：必须使用 `uint32（...）` 进行强制类型转换，因为 `now` 返回类型 `uint256`。所以我们需要明确将它转换成一个 `uint32` 类型的变量。
 

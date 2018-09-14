@@ -75,7 +75,7 @@ material:
 
 ¡Nuestro contrato está casi terminado! Añadamos ahora un **_evento_**.
 
-Los **_eventos_** son la forma en la que nuestro contrato comunica que algo sucedió en la cadena de bloques a la interfaz de usuario, el cual puede estar 'escuchando' ciertos eventos y hacer algo cuando suceden.
+Los **_eventos_** son la forma en la que nuestro contrato comunica que algo sucedió en la cadena de bloques a la interfaz de usuario, el cual puede estar 'escuchando' ciertos eventos y hacer algo cuando sucedan.
 
 Ejemplo:
 

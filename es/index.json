@@ -20,6 +20,7 @@
         "readOnly": "Solo lectura"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lección {lessonNum}: {title}",
         "signIn": "Inicia sesión para guardar tu progreso",

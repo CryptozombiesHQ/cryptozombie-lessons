@@ -273,6 +273,6 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   а. Увеличь `lossCount` для `myZombie`.
 
-  б. Увеличь `winCount` для `winZombie`.
+  б. Увеличь `winCount` для `enemyZombie`.
 
 2. Вне оператора else запусти функцию `_triggerCooldown` на `myZombie`. Так зомби сможет атаковать только один раз в день.

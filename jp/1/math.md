@@ -10,7 +10,7 @@ material:
       contract ZombieFactory {
 
           uint dnaDigits = 16;
-          //ここから開始するのだ
+          // ここにdnaModulusを定義するのだ
 
       }
     answer: >

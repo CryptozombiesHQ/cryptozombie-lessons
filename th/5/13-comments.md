@@ -443,16 +443,16 @@ contract Math {
 
 ซึ่งคุณไม่ต้องใช้ทั้งหมดนี้เสมอไปในทุกๆ function เพราะแท็กเหล่านี้เป็นเพียงตัวเลือกเท่านั้น แต่อย่างน้อยที่สุดก็ควรจะมีการแท็ก `@dev` เพื่อให้ developer ท่านอื่นได้เข้าใจ function ได้ดีขึ้น
 
-# Put it to the test
+# มาทดสอบกัน
 
-If you haven't noticed by now, the CryptoZombies answer-checker ignores comments when it checks your answers. So we can't actually check your natspec code for this chapter ;)
+หากไม่ได้สังเกตุ ส่วนของ CryptoZombies answer-checker จะไม่สนใน comment ต่าง ๆ เวลาเช็คคำตอบของเรา ดังนั้นเราจึงไม่สามารถเช็ค natspec โค้ดของทุกท่านได้ในบทนี้ ;)
 
-However, by now you're a Solidity whiz — we're just going to assume you've got this!
+แต่ถึงอย่างนั้นก็ตาม เราเชื่อว่าคุณเป็นถึงผู้เชี่ยวชาญในเรื่องของ Solidity ไปแล้วนี่นา — เราจะสมมติว่าคุณเข้าใจสิ่งที่เราพูดไปทั้งหมดเลยก็แล้วกัน!
 
-Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
+ลองเพิ่ม natspec tags ไปยัง `ZombieOwnership` กันดู:
 
-1. `@title` — E.g. A contract that manages transfering zombie ownership
+1. `@title` — ตัวอย่างเช่น นี่คือcontract ที่ช่วยจัดการการส่งต่อ ownership ต่อซอมบี้
 
-2. `@author` — Your name!
+2. `@author` — ชื่อของเรานี่ล่ะ!
 
-3. `@dev` — E.g. Compliant with OpenZeppelin's implementation of the ERC721 spec draft
+3. `@dev` — ตัวอย่างเช่น ทำตามแบบในโค้ดของ OpenZeppelin ของ ERC721 spec draft
