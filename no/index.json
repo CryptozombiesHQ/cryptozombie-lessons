@@ -20,7 +20,7 @@
         "readOnly": "Bare for lesing"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Claim Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Leksjon {lessonNum}: {title}",
         "signIn": "Logg inn og last progressjonen din",
