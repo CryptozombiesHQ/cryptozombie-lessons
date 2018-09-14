@@ -20,6 +20,7 @@
         "readOnly": "สามารถอ่านได้อย่างเดียว"
     },
     "lessonMenu": {
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lesson {lessonNum}: {title}",
         "signIn": "ลงชื่อเข้าใช้เพื่อดูสิ่งที่คุณได้สร้างไว้",
