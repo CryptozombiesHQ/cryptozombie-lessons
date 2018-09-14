@@ -38,7 +38,7 @@ material:
 ---
 En Solidity, las funciones son públicas `public` por defecto. Esto significa que cualquiera (o cualquier otro contrato) puede llamarla y ejecutar su código.
 
-Esto no es algo que queramos que pase siempre, y de hecho puede hacer vulnerables tus contratos. Por lo tanto es una buena práctica marcar tus funciones como privadas `private` y solamente hacer públicas `public` aquellas que queramos exponer al mundo exterior.
+Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Por lo tanto es una buena práctica marcar tus funciones como privadas `private` y solamente hacer públicas `public` aquellas que queramos exponer al mundo exterior.
 
 Vamos a ver como se declara una función privada:
 
