@@ -50,10 +50,10 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+You can also create an array of **_structs_**. Using the previous chapter's `Zombie` struct:
 
 ```
-Person[] people; // dynamic Array, we can keep adding to it
+Zombie[] zombies; // dynamic Array, we can keep adding to it
 ```
 
 Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
@@ -63,7 +63,7 @@ Remember that state variables are stored permanently in the blockchain? So creat
 You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
 
 ```
-Person[] public people;
+Zombie[] public zombies;
 ```
 
 Other contracts would then be able to read (but not write) to this array. So this is a useful pattern for storing public data in your contract.
