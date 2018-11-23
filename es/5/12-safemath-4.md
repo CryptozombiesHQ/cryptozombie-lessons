@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiehelper.sol";
         
@@ -18,9 +18,9 @@ material:
         uint attackVictoryProbability = 70;
         
         function randMod(uint _modulus) internal returns(uint) {
-        // Aquí hay uno!
+        // Here's one!
         randNonce++;
-        return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+        return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
         }
         
         function attack(uint _zombieId, uint _targetId) external onlyOwnerOf(_zombieId) {
@@ -28,7 +28,7 @@ material:
         Zombie storage enemyZombie = zombies[_targetId];
         uint rand = randMod(100);
         if (rand <= attackVictoryProbability) {
-        // Aquí hay 3 más!
+        // Here's 3 more!
         myZombie.winCount++;
         myZombie.level++;
         enemyZombie.lossCount++;
@@ -42,7 +42,7 @@ material:
         }
         }
       "zombieownership.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombieattack.sol";
         import "./erc721.sol";
@@ -54,11 +54,11 @@ material:
         
         mapping (uint => address) zombieApprovals;
         
-        function balanceOf(address _owner) public view returns (uint256 _balance) {
+        function balanceOf(address _owner) external view returns (uint256) {
         return ownerZombieCount[_owner];
         }
         
-        function ownerOf(uint256 _tokenId) public view returns (address _owner) {
+        function ownerOf(uint256 _tokenId) external view returns (address) {
         return zombieToOwner[_tokenId];
         }
         
@@ -66,26 +66,22 @@ material:
         ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
         ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].sub(1);
         zombieToOwner[_tokenId] = _to;
-        Transfer(_from, _to, _tokenId);
+        emit Transfer(_from, _to, _tokenId);
         }
         
-        function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
-        _transfer(msg.sender, _to, _tokenId);
+        function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
+        require (zombieToOwner[_tokenId] == msg.sender || zombieApprovals[_tokenId] == msg.sender);
+        _transfer(_from, _to, _tokenId);
         }
         
-        function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
-        zombieApprovals[_tokenId] = _to;
-        Approval(msg.sender, _to, _tokenId);
+        function approve(address _approved, uint256 _tokenId) external payable onlyOwnerOf(_tokenId) {
+        zombieApprovals[_tokenId] = _approved;
+        emit Approval(msg.sender, _approved, _tokenId);
         }
         
-        function takeOwnership(uint256 _tokenId) public {
-        require(zombieApprovals[_tokenId] == msg.sender);
-        address owner = ownerOf(_tokenId);
-        _transfer(owner, msg.sender, _tokenId);
-        }
         }
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefeeding.sol";
         
@@ -99,7 +95,8 @@ material:
         }
         
         function withdraw() external onlyOwner {
-        owner.transfer(this.balance);
+        address _owner = owner();
+        _owner.transfer(address(this).balance);
         }
         
         function setLevelUpFee(uint _fee) external onlyOwner {
@@ -133,7 +130,7 @@ material:
         
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
@@ -178,7 +175,7 @@ material:
         require(_isReady(myZombie));
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        if (keccak256(_species) == keccak256("kitty")) {
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
@@ -192,7 +189,7 @@ material:
         }
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./ownable.sol";
         import "./safemath.sol";
@@ -227,11 +224,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
         
@@ -244,57 +241,92 @@ material:
         
         }
       "ownable.sol": |
+        pragma solidity ^0.4.25;
+        
         /**
         * @title Ownable
-        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
-        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
-        address public owner;
+        address private _owner;
         
-        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+        );
         
         /**
-        * @dev El constructor del Ownable establece al `owner` (propietario) original del contrato.
-        * a la dirección de la cuenta del remitente.
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
         */
-        function Ownable() public {
-        owner = msg.sender;
+        constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
         }
         
-        
+        /**
+        * @return the address of the owner.
+        */
+        function owner() public view returns(address) {
+        return _owner;
+        }
         
         /**
-        * @dev Abandonar si es llamado por una cuenta que no sea el `owner`.
+        * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(isOwner());
         _;
         }
         
+        /**
+        * @return true if `msg.sender` is the owner of the contract.
+        */
+        function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+        }
         
         /**
-        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
-        * @param newOwner La dirección del nuevo propietario.
+        * @dev Allows the current owner to relinquish control of the contract.
+        * @notice Renouncing to ownership will leave the contract without an owner.
+        * It will not be possible to call the functions with the `onlyOwner`
+        * modifier anymore.
         */
-        function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
+        function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
         }
         
+        /**
+        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+        }
+        
+        /**
+        * @dev Transfers control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+        }
         }
       "safemath.sol": |
-        pragma solidity ^0.4.18;
+        pragma solidity ^0.4.25;
         
         /**
         * @title SafeMath
-        * @dev Operaciones matemáticas con chequeos de seguridad que arrojan un error
+        * @dev Math operations with safety checks that throw on error
         */
         library SafeMath {
         
         /**
-        * @dev Multiplicar dos números, arroja un desbordamiento.
+        * @dev Multiplies two numbers, throws on overflow.
         */
         function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
@@ -401,18 +433,19 @@ material:
         }
         }
       "erc721.sol": |
-        contract ERC721 {
-        event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
-        event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
+        pragma solidity ^0.4.25;
         
-        function balanceOf(address _owner) public view returns (uint256 _balance);
-        function ownerOf(uint256 _tokenId) public view returns (address _owner);
-        function transfer(address _to, uint256 _tokenId) public;
-        function approve(address _to, uint256 _tokenId) public;
-        function takeOwnership(uint256 _tokenId) public;
+        contract ERC721 {
+        event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
+        event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);
+        
+        function balanceOf(address _owner) external view returns (uint256);
+        function ownerOf(uint256 _tokenId) external view returns (address);
+        function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+        function approve(address _approved, uint256 _tokenId) external payable;
         }
     answer: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       import "./zombiehelper.sol";
       
@@ -422,7 +455,7 @@ material:
       
       function randMod(uint _modulus) internal returns(uint) {
       randNonce = randNonce.add(1);
-      return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+      return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
       }
       
       function attack(uint _zombieId, uint _targetId) external onlyOwnerOf(_zombieId) {
@@ -444,7 +477,7 @@ material:
 ---
 ¡Genial! ¡Ahora podemos implementar SafeMath en todos los tipos de `uint` que usamos en nuestra DApp!
 
-Arreglemos todos esos problemas potenciales en `ZombieAttack`. (También había un `zombies[_zombieId].level++;` que necesitaba ser arreglado en `ZombieHelper`, pero nosotros nos ocupamos de eso ya, así no gastamos un capítulo adicional para hacerlo 
+Arreglemos todos esos problemas potenciales en `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 
 
 ## Vamos a probarlo
 
