@@ -7,23 +7,23 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiehelper.sol";
 
-        contract ZombieBattle is ZombieHelper {
+        contract ZombieAttack is ZombieHelper {
           uint randNonce = 0;
           // Create attackVictoryProbability here
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
-            return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+            return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
           }
 
           // Create new function here
         }
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiefeeding.sol";
 
@@ -37,7 +37,8 @@ material:
           }
 
           function withdraw() external onlyOwner {
-            owner.transfer(this.balance);
+            address _owner = owner();
+            _owner.transfer(address(this).balance);
           }
 
           function setLevelUpFee(uint _fee) external onlyOwner {
@@ -73,7 +74,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
 
@@ -114,7 +115,7 @@ material:
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
+            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
@@ -128,7 +129,7 @@ material:
           }
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./ownable.sol";
 
@@ -156,11 +157,11 @@ material:
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
             function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
@@ -173,57 +174,93 @@ material:
 
         }
       "ownable.sol": |
-        /**
-         * @title Ownable
-         * @dev The Ownable contract has an owner address, and provides basic authorization control
-         * functions, this simplifies the implementation of "user permissions".
-         */
-        contract Ownable {
-          address public owner;
+        pragma solidity ^0.4.25;
 
-          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        /**
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
+        */
+        contract Ownable {
+          address private _owner;
+
+          event OwnershipTransferred(
+            address indexed previousOwner,
+            address indexed newOwner
+          );
 
           /**
-           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-           * account.
-           */
-          function Ownable() public {
-            owner = msg.sender;
+          * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+          * account.
+          */
+          constructor() internal {
+            _owner = msg.sender;
+            emit OwnershipTransferred(address(0), _owner);
           }
 
+          /**
+          * @return the address of the owner.
+          */
+          function owner() public view returns(address) {
+            return _owner;
+          }
 
           /**
-           * @dev Throws if called by any account other than the owner.
-           */
+          * @dev Throws if called by any account other than the owner.
+          */
           modifier onlyOwner() {
-            require(msg.sender == owner);
+            require(isOwner());
             _;
           }
 
-
           /**
-           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-           * @param newOwner The address to transfer ownership to.
-           */
-          function transferOwnership(address newOwner) public onlyOwner {
-            require(newOwner != address(0));
-            OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
+          * @return true if `msg.sender` is the owner of the contract.
+          */
+          function isOwner() public view returns(bool) {
+            return msg.sender == _owner;
           }
 
+          /**
+          * @dev Allows the current owner to relinquish control of the contract.
+          * @notice Renouncing to ownership will leave the contract without an owner.
+          * It will not be possible to call the functions with the `onlyOwner`
+          * modifier anymore.
+          */
+          function renounceOwnership() public onlyOwner {
+            emit OwnershipTransferred(_owner, address(0));
+            _owner = address(0);
+          }
+
+          /**
+          * @dev Allows the current owner to transfer control of the contract to a newOwner.
+          * @param newOwner The address to transfer ownership to.
+          */
+          function transferOwnership(address newOwner) public onlyOwner {
+            _transferOwnership(newOwner);
+          }
+
+          /**
+          * @dev Transfers control of the contract to a newOwner.
+          * @param newOwner The address to transfer ownership to.
+          */
+          function _transferOwnership(address newOwner) internal {
+            require(newOwner != address(0));
+            emit OwnershipTransferred(_owner, newOwner);
+            _owner = newOwner;
+          }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       import "./zombiehelper.sol";
 
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
         uint randNonce = 0;
         uint attackVictoryProbability = 70;
 
         function randMod(uint _modulus) internal returns(uint) {
           randNonce++;
-          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
         }
 
         function attack(uint _zombieId, uint _targetId) external {

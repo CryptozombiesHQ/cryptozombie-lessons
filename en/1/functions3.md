@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
@@ -27,7 +27,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {
