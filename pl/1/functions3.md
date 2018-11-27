@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       
@@ -24,8 +24,12 @@ material:
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       }
+      
+      // start here
+      
+      }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
