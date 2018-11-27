@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
@@ -32,7 +32,7 @@ material:
         
         KittyInterface kittyContract;
         
-        // Modifica esta función:
+        // Modify this function:
         function setKittyContractAddress(address _address) external {
         kittyContract = KittyInterface(_address);
         }
@@ -42,7 +42,7 @@ material:
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        if (keccak256(_species) == keccak256("kitty")) {
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
@@ -56,7 +56,7 @@ material:
         
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./ownable.sol";
         
@@ -81,11 +81,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
         
@@ -98,53 +98,89 @@ material:
         
         }
       "ownable.sol": |
+        pragma solidity ^0.4.25;
+        
         /**
         * @title Ownable
-        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
-        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
-        address public owner;
+        address private _owner;
         
-        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+        );
         
         /**
-        * @dev El constructor del Ownable establece al `owner` (propietario) original del contrato.
-        * a la dirección de la cuenta del remitente.
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
         */
-        function Ownable() public {
-        owner = msg.sender;
+        constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
         }
         
+        /**
+        * @return the address of the owner.
+        */
+        function owner() public view returns(address) {
+        return _owner;
+        }
         
         /**
-        * @dev Abandonar si es llamado por una cuenta que no sea el `owner`.
+        * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(isOwner());
         _;
         }
         
+        /**
+        * @return true if `msg.sender` is the owner of the contract.
+        */
+        function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+        }
         
         /**
-        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
-        * @param newOwner La dirección del nuevo propietario.
+        * @dev Allows the current owner to relinquish control of the contract.
+        * @notice Renouncing to ownership will leave the contract without an owner.
+        * It will not be possible to call the functions with the `onlyOwner`
+        * modifier anymore.
         */
-        function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
+        function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
         }
         
+        /**
+        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+        }
+        
+        /**
+        * @dev Transfers control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+        }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       import "./zombiefactory.sol";
       contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
       KittyInterface kittyContract;
       function setKittyContractAddress(address _address) external onlyOwner { kittyContract = KittyInterface(_address); }
-      function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(_species) == keccak256("kitty")) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
+      function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
@@ -164,31 +200,88 @@ Un modificador de función es igual que una función, pero usa la palabra clave 
 
 Vamos a verlo con más detalle examinando `onlyOwner`:
 
+    pragma solidity ^0.4.25;
+    
     /**
-     * @dev Lo arroja si lo llama cualquier cuenta que no sea el propietario.
-    modifier onlyOwner() {
-      require(msg.sender == owner);
-      _;
-    }
+     * @title Ownable
+     * @dev The Ownable contract has an owner address, and provides basic authorization control
+     * functions, this simplifies the implementation of "user permissions".
+     */
+    contract Ownable {
+      address private _owner;
     
-
-Tendríamos que usar el modificador de esta manera:
-
-    contract MyContract is Ownable {
-      event LaughManiacally(string laughter);
+      event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+      );
     
-      // Mira como se usa `onlyOwner` debajo:
-      function likeABoss() external onlyOwner {
-        LaughManiacally("Muahahahaha");
+      /**
+       * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+       * account.
+       */
+      constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
+      }
+    
+      /**
+       * @return the address of the owner.
+       */
+      function owner() public view returns(address) {
+        return _owner;
+      }
+    
+      /**
+       * @dev Throws if called by any account other than the owner.
+       */
+      modifier onlyOwner() {
+        require(isOwner());
+        _;
+      }
+    
+      /**
+       * @return true if `msg.sender` is the owner of the contract.
+       */
+      function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+      }
+    
+      /**
+       * @dev Allows the current owner to relinquish control of the contract.
+       * @notice Renouncing to ownership will leave the contract without an owner.
+       * It will not be possible to call the functions with the `onlyOwner`
+       * modifier anymore.
+       */
+      function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
+      }
+    
+      /**
+       * @dev Allows the current owner to transfer control of the contract to a newOwner.
+       * @param newOwner The address to transfer ownership to.
+       */
+      function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+      }
+    
+      /**
+       * @dev Transfers control of the contract to a newOwner.
+       * @param newOwner The address to transfer ownership to.
+       */
+      function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
       }
     }
     
 
-Observa el modificador `onlyOwner` en la función `likeABoss`. Cuando llamas a `likeABoss`, el código dentro de `onlyOwner` se ejecuta **primero**. Entonces cuando se encuentra con la sentencia `_;` en `onlyOwner`, vuelve y ejecuta el código dentro de `likeABoss`.
+Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
 
-Hay otras maneras de usar los modificadores, uno de los casos de uso mas comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
+So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
 
-En el caso de `onlyOwner`, añadiéndole este modificador a la función hace que **solo** el **dueño** del contrato (tú, si eres el que lo ha implementado) puede llamar a la función.
+In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
 
 > Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado maliciosamente. Por ejemplo, el dueño puede añadir una función oculta ¡que le permita transferirse el zombi de cualquiera a sí mismo!
 > 
@@ -196,6 +289,6 @@ En el caso de `onlyOwner`, añadiéndole este modificador a la función hace que
 
 ## Vamos a probarlo
 
-Ahora restringiremos el acceso a `setKittyContractAddress` de tal manera que sólo nosotros podamos modificarlo en un futuro.
+Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
 
 1. Añade el modificador `onlyOwner` a `setKittyContractAddress`.
