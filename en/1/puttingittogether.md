@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
@@ -24,7 +24,7 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
@@ -32,7 +32,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {
@@ -52,7 +52,7 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 

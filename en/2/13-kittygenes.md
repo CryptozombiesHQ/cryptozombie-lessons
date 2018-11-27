@@ -6,7 +6,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
 
@@ -49,7 +49,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         contract ZombieFactory {
 
@@ -72,11 +72,11 @@ material:
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
             function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
@@ -89,7 +89,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       import "./zombiefactory.sol";
 
@@ -118,7 +118,7 @@ material:
           Zombie storage myZombie = zombies[_zombieId];
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(_species) == keccak256("kitty")) {
+          if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
@@ -151,7 +151,7 @@ If statements in Solidity look just like javascript:
 function eatBLT(string sandwich) public {
   // Remember with strings, we have to compare their keccak256 hashes
   // to check equality
-  if (keccak256(sandwich) == keccak256("BLT")) {
+  if (keccak256(abi.encodePacked(sandwich)) == keccak256(abi.encodePacked("BLT"))) {
     eat();
   }
 }
@@ -163,7 +163,7 @@ Let's implement cat genes in our zombie code.
 
 1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`
+2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`.  We can't directly pass strings to `keccak256`. Instead, we will pass `abi.encodePacked(_species)` as an argument on the left side and `abi.encodePacked("kitty")` as an argument on the right side.
 
 3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
 

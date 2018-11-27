@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
 
@@ -40,7 +40,7 @@ material:
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
+            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
@@ -54,7 +54,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         contract ZombieFactory {
 
@@ -77,11 +77,11 @@ material:
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
             function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
@@ -94,7 +94,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       import "./zombiefactory.sol";
 
@@ -126,7 +126,7 @@ material:
           Zombie storage myZombie = zombies[_zombieId];
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(_species) == keccak256("kitty")) {
+          if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
