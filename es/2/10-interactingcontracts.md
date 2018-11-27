@@ -8,11 +8,11 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
-        // Crea la KittyInterface aquí
+        // Create KittyInterface here
         
         contract ZombieFeeding is ZombieFactory {
         
@@ -26,7 +26,7 @@ material:
         
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         contract ZombieFactory {
         
@@ -49,11 +49,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
         
@@ -65,7 +65,7 @@ material:
         
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       import "./zombiefactory.sol";
       contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
@@ -76,13 +76,13 @@ material:
 
 Bueno lo que pasa es que a los CryptoZombies les encanta comer...
 
-**¡CryptoKitties!** 
+**CryptoKitties!** 
 
-(Si, es enserio 
+(Yes, I'm serious 
 
 Para hacer esto necesitamos leer el kittyDna de el contrato inteligente de los CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
 
-No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty. Solo vamos a *leer* los datos de los CryptoKitties, no podemos borrarlos 
+Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 
 
 ## Interactuando con otros contratos
 
