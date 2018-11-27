@@ -7,11 +7,11 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       
-      // dichiara qui il nostro evento
+      // declare our event here
       
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
@@ -25,11 +25,11 @@ material:
       
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
-      // e lancialo qui
+      // and fire it here
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
-      uint rand = uint(keccak256(_str));
+      uint rand = uint(keccak256(abi.encodePacked(_str)));
       return rand % dnaModulus;
       }
       
@@ -40,15 +40,15 @@ material:
       
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       event NewZombie(uint zombieId, string name, uint dna);
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; emit NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
@@ -58,13 +58,13 @@ Gli ***Eventi*** sono un modo per il tuo contratto di comunicare qualcosa che su
 
 Esempio:
 
-    // dichiara un evento
+    // declare the event
     event IntegersAdded(uint x, uint y, uint result);
     
     function add(uint _x, uint _y) public {
       uint result = _x + _y;
-      // lancia un evento per far sapere alla app che la funzione è stata chiamata:
-      IntegersAdded(_x, _y, result);
+      // fire an event to let the app know the function was called:
+      emit IntegersAdded(_x, _y, result);
       return result;
     }
     
