@@ -11,7 +11,7 @@ material:
       0: |
         
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefeeding.sol";
         
@@ -25,7 +25,8 @@ material:
         }
         
         function withdraw() external onlyOwner {
-        owner.transfer(this.balance);
+        address _owner = owner();
+        _owner.transfer(address(this).balance);
         }
         
         function setLevelUpFee(uint _fee) external onlyOwner {
@@ -61,7 +62,7 @@ material:
         
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
@@ -102,7 +103,7 @@ material:
         require(_isReady(myZombie));
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        if (keccak256(_species) == keccak256("kitty")) {
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
@@ -116,7 +117,7 @@ material:
         }
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./ownable.sol";
         
@@ -144,11 +145,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
         
@@ -161,49 +162,85 @@ material:
         
         }
       "ownable.sol": |
+        pragma solidity ^0.4.25;
+        
         /**
         * @title Ownable
-        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
-        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
-        address public owner;
+        address private _owner;
         
-        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+        );
         
         /**
-        * @dev El constructor del Ownable establece al `owner` (propietario) original del contrato.
-        * a la dirección de la cuenta del remitente.
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
         */
-        function Ownable() public {
-        owner = msg.sender;
+        constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
         }
         
+        /**
+        * @return the address of the owner.
+        */
+        function owner() public view returns(address) {
+        return _owner;
+        }
         
         /**
-        * @dev Abandonar si es llamado por una cuenta que no sea el `owner`.
+        * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(isOwner());
         _;
         }
         
+        /**
+        * @return true if `msg.sender` is the owner of the contract.
+        */
+        function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+        }
         
         /**
-        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
-        * @param newOwner La dirección del nuevo propietario.
+        * @dev Allows the current owner to relinquish control of the contract.
+        * @notice Renouncing to ownership will leave the contract without an owner.
+        * It will not be possible to call the functions with the `onlyOwner`
+        * modifier anymore.
         */
-        function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
+        function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
         }
         
+        /**
+        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+        }
+        
+        /**
+        * @dev Transfers control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+        }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       import "./zombiehelper.sol";
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
       }
 ---
 Ahora que hemos aprendido sobre funciones payable y balances de contrato, es hora de añadir funcionalidad para las batallas zombi!
@@ -216,8 +253,8 @@ Hagamos un repaso de cómo crear un nuevo contrato ¡La repetición hace al maes
 
 Si no puedes recordar la sintaxis para hacerla, revisa `zombiehelper.sol` para ponerte al día — pero primero trate de hacerlo sin fijarse para poner a prueba su conocimiento.
 
-1. Declara al principio del archivo que estamos utilizando la versión de Solidity `^0.4.19`.
+1. Declare at the top of the file that we're using Solidity version `^0.4.25`.
 
 2. `import` desde `zombiehelper.sol`.
 
-3. Declara un nuevo `contract` llamado`ZombieBattle` que herede de `ZombieHelper`. Deje vacío el cuerpo del contrato por ahora.
+3. Declare a new `contract` called `ZombieAttack` that inherits from `ZombieHelper`. Leave the contract body empty for now.
