@@ -9,15 +9,15 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiehelper.sol";
         
-        contract ZombieBattle is ZombieHelper {
-        // Iniciar aquí
+        contract ZombieAttack is ZombieHelper {
+        // Start here
         }
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefeeding.sol";
         
@@ -31,7 +31,8 @@ material:
         }
         
         function withdraw() external onlyOwner {
-        owner.transfer(this.balance);
+        address _owner = owner();
+        _owner.transfer(address(this).balance);
         }
         
         function setLevelUpFee(uint _fee) external onlyOwner {
@@ -67,7 +68,7 @@ material:
         
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
@@ -108,7 +109,7 @@ material:
         require(_isReady(myZombie));
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        if (keccak256(_species) == keccak256("kitty")) {
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
@@ -122,7 +123,7 @@ material:
         }
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./ownable.sol";
         
@@ -150,11 +151,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));;
         return rand % dnaModulus;
         }
         
@@ -167,50 +168,86 @@ material:
         
         }
       "ownable.sol": |
+        pragma solidity ^0.4.25;
+        
         /**
         * @title Ownable
-        * @dev El Contrato Ownable tiene una dirección de propietario, y ofrece funciones de control
-        * permisos básicos, esto simplifica la implementación de "permisos de usuario".
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
-        address public owner;
+        address private _owner;
         
-        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+        );
         
         /**
-        * @dev El constructor del Ownable establece al `owner` (propietario) original del contrato.
-        * a la dirección de la cuenta del remitente.
+        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+        * account.
         */
-        function Ownable() public {
-        owner = msg.sender;
+        constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
         }
         
+        /**
+        * @return the address of the owner.
+        */
+        function owner() public view returns(address) {
+        return _owner;
+        }
         
         /**
-        * @dev Abandonar si es llamado por una cuenta que no sea el `owner`.
+        * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(isOwner());
         _;
         }
         
+        /**
+        * @return true if `msg.sender` is the owner of the contract.
+        */
+        function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+        }
         
         /**
-        * @dev Permite al propietario actual transferir el control del contrato a un newOwner (nuevo propietario).
-        * @param newOwner La dirección del nuevo propietario.
+        * @dev Allows the current owner to relinquish control of the contract.
+        * @notice Renouncing to ownership will leave the contract without an owner.
+        * It will not be possible to call the functions with the `onlyOwner`
+        * modifier anymore.
         */
-        function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
+        function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
         }
         
+        /**
+        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+        }
+        
+        /**
+        * @dev Transfers control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+        }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       import "./zombiehelper.sol";
-      contract ZombieBattle is ZombieHelper { uint randNonce = 0;
-      function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(now, msg.sender, randNonce)) % _modulus; } }
+      contract ZombieAttack is ZombieHelper { uint randNonce = 0;
+      function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; } }
 ---
 ¡Grandioso! Ahora descifremos la lógica de batalla.
 
@@ -226,16 +263,16 @@ La mejor fuente de aleatoriedad que tenemos en solidity es la función hash `kec
 
 Podríamos hacer algo como lo siguiente para generar un número aleatorio:
 
-    // Genera un número aleatorio entre 1 y 100:
+    // Generate a random number between 1 and 100:
     uint randNonce = 0;
-    uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
+    uint random = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
     randNonce++;
-    uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
+    uint random2 = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
     
 
 Lo que esto haría es tomar la marca de tiempo de `now`, el `msg.sender`, y un `nonce` (un número que sólo se utiliza una vez, para que no ejecutemos dos veces la misma función hash con los mismos parámetros de entrada) en incremento.
 
-Entonces utilizaría `keccak` para convertir estas entradas a un hash aleatorio, convertir ese hash a un `uint` y luego utilizar `% 100` para tomar los últimos 2 dígitos solamente, dándonos un número totalmente aleatorio entre 0 y 99.
+It would then "pack" the inputs and use `keccak` to convert them to a random hash. Next, it would convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits. This will give us a totally random number between 0 and 99.
 
 ### Este método es vulnerable a ataques de un nodo deshonesto
 
@@ -271,4 +308,4 @@ Implementemos una función de número aleatorio que podamos utilizar para determ
 
 3. La función debería primero incrementar `randNonce` (utilizando la sintaxis `randNonce++`).
 
-4. Finalmente, debería (en una línea de código) calcular el encasillado de `uint` del hash `keccak256` de `now`, `msg.sender` y `randNonce` — y `devuelve` ese valor `% _modulus`. (¡Vaya! Eso fue un trabalenguas. Si pudiste comprender eso, échale un vistazo al ejemplo de arriba donde generamos un número aleatorio — la lógica es muy similar).
+4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `abi.encodePacked(now,msg.sender,randNonce)` — and `return` that value `% _modulus`. (¡Vaya! Eso fue un trabalenguas. Si pudiste comprender eso, échale un vistazo al ejemplo de arriba donde generamos un número aleatorio — la lógica es muy similar).
