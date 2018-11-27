@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       
@@ -21,19 +21,19 @@ material:
       
       Zombie[] public zombies;
       
-      function createZombie(string _name, uint _dna) {
-      // zacznij tutaj
+      function createZombie (string _name, uint _dna) {
+      // start here
       }
       
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function createZombie(string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
+      function createZombie (string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
 ### Tworzenie Nowych Struktur
