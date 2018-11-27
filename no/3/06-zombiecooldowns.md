@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./zombiefactory.sol";
         
@@ -45,7 +45,7 @@ material:
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        if (keccak256(_species) == keccak256("kitty")) {
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
@@ -59,7 +59,7 @@ material:
         
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
         
         import "./ownable.sol";
         
@@ -87,11 +87,11 @@ material:
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
         }
         
         function _generateRandomDna(string _str) private view returns (uint) {
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
         
@@ -104,47 +104,83 @@ material:
         
         }
       "ownable.sol": |
+        pragma solidity ^0.4.25;
+        
         /**
         * @title Ownable
         * @dev The Ownable contract has an owner address, and provides basic authorization control
         * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
-        address public owner;
+        address private _owner;
         
-        event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+        );
         
         /**
         * @dev The Ownable constructor sets the original `owner` of the contract to the sender
         * account.
         */
-        function Ownable() public {
-        owner = msg.sender;
+        constructor() internal {
+        _owner = msg.sender;
+        emit OwnershipTransferred(address(0), _owner);
         }
         
+        /**
+        * @return the address of the owner.
+        */
+        function owner() public view returns(address) {
+        return _owner;
+        }
         
         /**
         * @dev Throws if called by any account other than the owner.
         */
         modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(isOwner());
         _;
         }
         
+        /**
+        * @return true if `msg.sender` is the owner of the contract.
+        */
+        function isOwner() public view returns(bool) {
+        return msg.sender == _owner;
+        }
+        
+        /**
+        * @dev Allows the current owner to relinquish control of the contract.
+        * @notice Renouncing to ownership will leave the contract without an owner.
+        * It will not be possible to call the functions with the `onlyOwner`
+        * modifier anymore.
+        */
+        function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
+        }
         
         /**
         * @dev Allows the current owner to transfer control of the contract to a newOwner.
         * @param newOwner The address to transfer ownership to.
         */
         function transferOwnership(address newOwner) public onlyOwner {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
+        _transferOwnership(newOwner);
         }
         
+        /**
+        * @dev Transfers control of the contract to a newOwner.
+        * @param newOwner The address to transfer ownership to.
+        */
+        function _transferOwnership(address newOwner) internal {
+        require(newOwner != address(0));
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+        }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       import "./zombiefactory.sol";
       contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
@@ -152,7 +188,7 @@ material:
       function setKittyContractAddress(address _address) external onlyOwner { kittyContract = KittyInterface(_address); }
       function _triggerCooldown(Zombie storage _zombie) internal { _zombie.readyTime = uint32(now + cooldownTime); }
       function _isReady(Zombie storage _zombie) internal view returns (bool) { return (_zombie.readyTime <= now); }
-      function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(_species) == keccak256("kitty")) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
+      function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
