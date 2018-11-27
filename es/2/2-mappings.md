@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       
@@ -23,15 +23,15 @@ material:
       
       Zombie[] public zombies;
       
-      // declara los mappings aquí
+      // declare mappings here
       
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
-      NewZombie(id, _name, _dna);
+      emit NewZombie(id, _name, _dna);
       }
       
       function _generateRandomDna(string _str) private view returns (uint) {
-      uint rand = uint(keccak256(_str));
+      uint rand = uint(keccak256(abi.encodePacked(_str)));
       return rand % dnaModulus;
       }
       
@@ -42,7 +42,7 @@ material:
       
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
       
       contract ZombieFactory {
       event NewZombie(uint zombieId, string name, uint dna);
@@ -50,8 +50,8 @@ material:
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
       mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
-      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; emit NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
@@ -67,7 +67,7 @@ Cada cuenta tiene una dirección `address`, que sería como el número de la cue
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(Esta dirección pertenece al equipo de CryptoZombies. Si estás disfrutando CryptoZombies, ¡puedes enviarnos algunos Ether! 
+(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 
 
 Vamos a entrar en el meollo de las direcciones en otra lección, por ahora solo necesitas entender que **una direccion está asociada a un usuario específico** (o un contrato inteligente).
 
