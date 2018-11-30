@@ -1,19 +1,19 @@
 ---
-title: "Custom Game Modes: Zombie Battleground"
-header: "Custom Game Modes: Zombie Battleground"
+title: "自定义游戏模式：僵尸战场" 
+header: "自定义游戏模式：僵尸战场"
 roadmap: roadmap6.png
 ---
 
-Welcome, veteran CryptoZombie!
+CryptoZombie老学员，欢迎你啊！
 
-In this course, we are going to venture into the land of real game development.
+在本课中，我们将进入真正的游戏开发领域。
 
-You will be building a *custom game mode* for our blockchain-based mobile card game, <a href="https://loom.games" target=_blank>Zombie Battleground</a>. 
+你将为我们的区块链卡牌手游，<a href="https://loom.games" target=_blank>僵尸战场</a>，构建一个 *自定义游戏模式*。 
 
-**Once you complete this course, you’ll have the skillset to build your own mod of Zombie Battleground**. Very soon we'll be launching a custom game creator tool, and you'll be able to deploy these mods to Loom GameChain, where they will be immediately playable by thousands of real Zombie Battleground players.
+**完成本课后，你将拥有自己编写“僵尸战场”模组的全套技能。** 很快我们将推出一个自定义游戏创建工具，你将能够把这些模组部署到Loom GameChain，然后成千上万的“僵尸战场”真实玩家就可以立即开玩啦。
 
-Pretty cool, right?
+听起来很爽，对吧？
 
-Okay, let's start building the next great Ethereum game- Aliens vs Zombies!😆😆😆
+好，那我们开始构建下一个以太坊好游戏吧 —— “外星人大战僵尸”😆😆😆
 
-If you’re ready… Then let’s dive right in and build your first mod!
+如果你准备好了…… 那我们就行动起来吧，一起构建你的第一个模组！
