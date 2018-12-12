@@ -1,21 +1,21 @@
 ---
-title: Lesson 7 Complete!
+title: 第8课完成啦!
 actions: ['checkAnswer', 'hints']
 material:
   lessonComplete:
     answer: 1
 ---
 
-You're a legend!
+你真是个传奇！
 
-You've now implemented **three** custom game modes with custom deck rules.
+你已经实现了**三个**带有自定义牌组规则的自定义游戏模式。
 
-See how easy that can be?
+真的很简单，对吧？
 
-Now only your imagination is the limit... 
+现在只有你想不到的……
 
-In the very near future, you'll be able to use our Zombie Battleground Custom Game Creator tool to deploy your own smart contracts directly to Loom GameChain — and every Zombie Battleground player will be able to load your game mode and start playing it!
+在不久的将来，你将能使用我们的“僵尸战场” 自定义游戏创建工具把自己的智能合约直接部署到Loom GameChain —— 每个“僵尸战场”玩家都可以加载你的游戏模式来玩！
 
-You can get a headstart now by starting to brainstorm your own custom game modes and writing out the Solidity contracts.
+你现在可以抢占先机，开始好好想想你的自定义游戏模式并编写Solidity合约。
 
-And we'll let you know as soon as the game creator tool goes live.
+一旦游戏创建工具上线，我们会立即通知你哦！
