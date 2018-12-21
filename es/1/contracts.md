@@ -8,11 +8,11 @@ material:
     language: sol
     startingCode: |
       pragma solidity //1. Coloca la versión de solidity aquí
-      
+
       //2. Crear el contrato aquí
     answer: >
       pragma solidity ^0.4.25;
-      
+
       contract ZombieFactory {
       }
 ---
