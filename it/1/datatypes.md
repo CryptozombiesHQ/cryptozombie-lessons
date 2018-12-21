@@ -8,15 +8,15 @@ material:
     language: sol
     startingCode: |
       pragma solidity ^0.4.25;
-      
+
       contract ZombieFactory {
-      
+
       //start here
-      
+
       }
     answer: >
       pragma solidity ^0.4.25;
-      
+
       contract ZombieFactory {
       uint dnaDigits = 16;
       }
