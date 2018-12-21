@@ -8,23 +8,23 @@ material:
     language: sol
     startingCode: |
       pragma solidity ^0.4.25;
-      
+
       contract ZombieFactory {
-      
+
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
-      
+
       struct Zombie {
       string name;
       uint dna;
       }
-      
+
       // start here
-      
+
       }
     answer: >
       pragma solidity ^0.4.25;
-      
+
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
@@ -55,7 +55,7 @@ Puoi dichiarare un array come `pubblico`, e Solidity creerà automaticamente un 
     Person[] public people;
     
 
-Gli altri contratti potrebbero essere quindi abilitati a leggere (ma non scrivere) in questo array. Quindi questo è un modello utile per immagazzinare dati pubblici nel tuo contratto.
+Other contracts would then be able to read from, but not write to, this array. So this is a useful pattern for storing public data in your contract.
 
 # Facciamo un test
 
