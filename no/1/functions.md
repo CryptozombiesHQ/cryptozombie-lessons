@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 I appen vår kommer vi til å trenge å lage flere zombier. La oss lage en funksjon for det.
 
-1. Lag en funksjon kalt `createZombie`. Den kommer til å ta to parametere: **__name_** (en `string`), og **__dna_** (en `uint`).
+1. Lag en funksjon kalt `createZombie`. Den kommer til å ta to parametere: **\_name** (en `string`), og **\_dna** (en `uint`).
 
 La funksjonen stå tom - vi kommer til å fylle inn resten senere.

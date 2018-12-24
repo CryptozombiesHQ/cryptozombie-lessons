@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 Uygulamamızda, bazı zombiler oluşturabilmeye ihtiyacımız olacak. Bunun için bir fonksiyon oluşturalım.
 
-1. `createZombie` isimli bir fonksiyon oluşturun. İki parametre içermeli: **__isim_** (bir `string`), ve **__dna_** (bir `uint`).
+1. `createZombie` isimli bir fonksiyon oluşturun. İki parametre içermeli: **\_name** (bir `string`), ve **\_dna** (bir `uint`).
 
 Şimdilik gövdeyi boş bırakın — onu daha sonra dolduracağız.

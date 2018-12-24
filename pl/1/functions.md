@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 Potrzebujemy mieć możliwość tworzenia zombich w naszej aplikacji. Stwórzmy funkcję, która będzie za to odpowiadać.
 
-1. Stwórz funkcję o nazwie `createZombie`. Powinna przyjmować dwa parametry: **__name_** (`string`), oraz **__dna_** (`uint`).
+1. Stwórz funkcję o nazwie `createZombie`. Powinna przyjmować dwa parametry: **\_name** (`string`), oraz **\_dna** (`uint`).
 
 Narazie pozostaw funkcję pustą — wypełnimy ją później.
