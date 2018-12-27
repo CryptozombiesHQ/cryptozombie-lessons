@@ -1,21 +1,21 @@
 ---
-title: Lesson 8 Complete!
-actions: ['checkAnswer', 'hints']
+title: レッスン8コンプリート！
+actions: ['答え合わせ', 'ヒント']
 material:
   lessonComplete:
     answer: 1
 ---
 
-You're a legend!
+君は伝説だ！
 
-You've now implemented **three** custom game modes with custom deck rules.
+君はここまで**三つの**カスタムゲームを作ってきた。
 
-See how easy that can be?
+とても簡単だっただろ？
 
-Now only your imagination is the limit... 
+これからは君の想像力だけが鍵だ...
 
-In the very near future, you'll be able to use our Zombie Battleground Custom Game Creator tool to deploy your own smart contracts directly to Loom GameChain — and every Zombie Battleground player will be able to load your game mode and start playing it!
+近い将来君はZombie Battleground Custom Game Creator toolを使って自分のスマートコントラクトをLoom GameChain上に作る事が出来るようになる。そして他のZombie Battlegroundプレイヤー達は君の作ったゲームモードで遊べるんだ！
 
-You can get a headstart now by starting to brainstorm your own custom game modes and writing out the Solidity contracts.
+今は新しいゲームのアイデアを考え出したり、Solidityのコントラクトを書いたりして準備していてくれ。
 
-And we'll let you know as soon as the game creator tool goes live.
+ツールが出来次第君に連絡をしよう。
