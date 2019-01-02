@@ -55,6 +55,6 @@ Llamaríamos esta función de esta forma:
 
 En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Crea una función llamada `createZombie`. Debería tomar dos parámetros **__name_** (un `string`), y **__dna_** (un número entero sin signo `uint`).
+1. Create a function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`).
 
 Dejemos el cuerpo de la función vacío por ahora — lo rellenaremos más tarde.
