@@ -1,7 +1,7 @@
 {
   "base": {
     "name": "CryptoZombies",
-    "tagLine": "学习编译区块网游戏",
+    "tagLine": "区块链游戏编程, Solidity学习和部署免费互动教程",
     "lesson": "教程{lessonNum}",
     "chapter": "第{chapterNum}章",
     "syncing": "正在同步...",
@@ -14,7 +14,15 @@
     "twitter": {
       "name": "Twitter",
       "link": "https://twitter.com/loomnetwork"
-    }
+    },
+    "solidity_path": "Solidity 教程: 智能合约基础教程",
+    "hands_on_path": "实战教程: 编写及部署自定义游戏模式",
+    "plasma_path": "Plasma 教程: 如何使用 Plasma Cash",
+    "start_resume": "开始/继续",
+    "the_curriculum": "课程列表",
+    "course_overview":"课程预览",
+    "start": "开始",
+    "skip_lesson": "跳过本课"
   },
   "editor": {
     "readOnly": "只读"
