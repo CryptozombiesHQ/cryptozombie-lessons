@@ -55,6 +55,6 @@ Chiamereste questa funzione così:
 
 Nella nostra app, avremo bisogno di essere in grado di creare alcuni zombie. Creiamo una funzione per questo.
 
-1. Crea un funzione e chiamala`createZombie`. Dovrebbe avere due parametri:**__name_** (un `string`), e **__dna_** (un `uint`).
+1. Create a function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`).
 
 Lascia il corpo vuoto per ora — lo compileremo in seguito.
