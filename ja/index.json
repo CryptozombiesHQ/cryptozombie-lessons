@@ -7,29 +7,77 @@
         "syncing": "Synchronizing...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
+            "openChat": "Ask Question",
             "action": "Join Our Telegram",
-            "link": "https://t.me/loomnetwork"
+            "link": "https://t.me/loomnetworkdev"
         },
         "twitter": {
             "name": "Twitter",
             "link": "https://twitter.com/loomnetwork"
+        },
+        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
+        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
+        "plasma_path": "Plasma Path: Learn how to use PlasmaCash",
+        "start_resume": "Start/Resume",
+        "the_curriculum": "The Curriculum",
+        "course_overview": "Course Overview",
+        "start": "Start",
+        "skip_lesson": "Skip Lesson",
+        "graduate": "Ready to Graduate? Or You are Already Experienced?",
+        "you_will": "You Will",
+        "will_list": {
+            "use": "Use intermediate level solidity",
+            "deploy": "Deploy to a live PlasmaChain",
+            "interact": "Have real gamers play and interact with your Dapp",
+            "earn": "Charge an admission and earn some money!"
+        },
+        "make_game": "Make your game mode now!",
+        "goto_lesson_list": "Go to lesson list",
+        "share_link": "Share",
+        "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
+        "zbbg_link": "Get Early Access Now!",
+        "coming_soon": "Coming Soon"
+    },
+    "achievements": {
+        "achievements": "Achievements",
+        "achieved": "achieved",
+        "finished_first": {
+            "title": "Completed first lesson",
+            "desc": "Completed the first lesson in any course"
+        },
+        "finished_solidity": {
+            "title": "Finished the solidity path",
+            "desc": "Finished all lessons in Solidity path"
+        },
+        "finished_lesson7": {
+            "title": "Built a multi-fungible token",
+            "desc": "Built a multi-fungible token"
         }
+    },
+    "rewards": {
+        "rewards": "rewards",
+        "test_key": "Alpha Tester Key for Zombie Battleground",
+        "loom_tokens": "Loom Tokens",
+        "no_reward": " You don't have any rewards"
+    },
+    "footer": {
+        "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
+        "find_more": "Find out more..."
     },
     "editor": {
         "readOnly": "read only"
     },
     "lessonMenu": {
-        "getReward": "Claim Rewards",
+        "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
+        "itemLabel": "{title}",
         "signIn": "Sign in and load your progress",
         "progressLoaded": "Your progress is loaded"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
+        "title": "{title}",
         "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
         "signInButton": "Sign In",
         "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
@@ -50,7 +98,9 @@
         "tryAgain": "Try Again",
         "checkAnswer": "Check Answer",
         "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "hideAnswer": "Hide Answer",
+        "next_chapter": "NEXT",
+        "prev_chapter": "BACK"
     },
     "lessonComplete": {
         "shareLinksAction": "Or you can click the buttons below to share:",
@@ -297,6 +347,23 @@
                 "Using MetaMask and Infura to build user-facing DApps",
                 "Listening to smart contract events and showing users real-time updates",
                 "And more!"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
+        },
+        "lesson7": {
+            "zombieDesc": "Let's build an Zombie Battleground like game!",
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
+                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+                "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Multi fungible tokens, and the ERC721X standard",
+                "How to build a faucet that mints, let users claim, and transfers tokens",
+                "How to use ERC721X to implement unique, limited edition, and standard edition cards"
             ],
             "callToAction": [
                 "Want to build your own CryptoZombie army and join the ranks?",
