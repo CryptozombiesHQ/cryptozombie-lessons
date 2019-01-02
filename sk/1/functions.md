@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 V našej aplikácií potrebujeme byť schopný vytvárať Zombies. Poďme si na to napísať funkciu.
 
-1. Vytvor funkciu pomenovanú `createZombie`. Mala by príjmať dva parametre. **__name_** (typu `string`) a **__dna_** (typu `uint`).
+1. Vytvor funkciu pomenovanú `createZombie`. Mala by príjmať dva parametre. **\_name** (typu `string`) a **\_dna** (typu `uint`).
 
 Telo funkcie zatiaľ necháme prázdne - doplníme ho neskôr.
