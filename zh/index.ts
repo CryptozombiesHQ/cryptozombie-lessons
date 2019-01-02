@@ -130,6 +130,19 @@ import l8_ch8 from './8/08.md'
 import l8_ch9 from './8/09.md'
 import l8_complete from './8/lessoncomplete.md'
 
+// lesson9 erc721x
+import l9_overview from './9/00-overview.md'
+import l9_ch1 from './9/01-erc721x.md'
+import l9_ch2 from './9/02-erc721x.md'
+import l9_ch3 from './9/03-erc721x.md'
+import l9_ch4 from './9/04-erc721x.md'
+import l9_ch5 from './9/05-erc721x.md'
+import l9_ch6 from './9/06-erc721x.md'
+import l9_ch7 from './9/07-erc721x.md'
+import l9_ch8 from './9/08-erc721x.md'
+import l9_ch9 from './9/09-erc721x.md'
+import l9_ch10 from './9/10-erc721x.md'
+import l9_complete from './9/lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -264,5 +277,19 @@ export default {
     l8_ch8,
     l8_ch9,
     l8_complete,
+  ],
+  9: [
+    l9_overview,
+    l9_ch1,
+    l9_ch2,
+    l9_ch3,
+    l9_ch4,
+    l9_ch5,
+    l9_ch6,
+    l9_ch7,
+    l9_ch8,
+    l9_ch9,
+    l9_ch10,
+    l9_complete,
   ],
 }
