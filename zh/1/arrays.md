@@ -53,7 +53,7 @@ uint[] dynamicArray;
 你也可以建立一个 **_结构体_**类型的数组 例如，上一章提到的 `Person`:
 
 ```
-Person[] people; // dynamic Array, we can keep adding to it
+Person[] people; // 这是动态数组，我们可以不断添加元素
 ```
 
 记住：状态变量被永久保存在区块链中。所以在你的合约中创建动态数组来保存成结构的数据是非常有意义的。
