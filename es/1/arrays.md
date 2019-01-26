@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Tambien puedes crear arrays de **_structuras_**. Si usásemos la estructura `Person` del capítulo anterior:
+También puedes crear arrays de **_estructuras_**. Si usásemos la estructura `Person` del capítulo anterior:
 
 ```
 Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
@@ -66,10 +66,10 @@ Puedes declarar un array como `público`, y Solidity creará automaticamente una
 Person[] public people;
 ```
 
-Otros contratos podrían entonces leer (pero no escribir) de este array. Es un patrón de uso muy útil para guardar datos públicos en tu contrato.
+Otros contratos entonces podrán leer (pero no escribir) de este array. Es un patrón de uso muy útil para guardar datos públicos en tu contrato.
 
 # Vamos a probarlo
 
 Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras applicaciones, así que lo queremos público:
 
-1. Crear un array público de **_structuras_** `Zombie` y llámalo `zombies`.
+1. Crea un array público de **_estructuras_** `Zombie` y llámalo `zombies`.
