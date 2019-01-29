@@ -9,7 +9,7 @@ material:
 
       //2. Crear el contrato aquí
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {
@@ -33,12 +33,12 @@ contract HolaMundo {
 
 Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar con tu código.
 
-Esta declaración se asemeja a esto: `pragma solidity ^0.4.19;` (para usar la última versión del compilador de Solidity actual, la 0.4.19).
+Esta declaración se asemeja a esto: `pragma solidity ^0.4.25;` (para usar la última versión del compilador de Solidity actual, la 0.4.25).
 
 Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
 
 ```
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.25;
 
 contract HolaMundo {
 
@@ -49,7 +49,7 @@ contract HolaMundo {
 
 Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory` (Fábrica de Zombis).
 
-1. En la caja de la derecha, haz lo necesario para que el contrato use la versión de Solidity `0.4.19`.
+1. En la caja de la derecha, haz lo necesario para que el contrato use la versión de Solidity `0.4.25`.
 
 2. Crea un contrato vacio que se llame `ZombieFactory`.
 
