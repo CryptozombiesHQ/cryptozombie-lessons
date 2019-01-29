@@ -205,7 +205,7 @@
             "tryItOut": "Vyskúšaj si náhodný zombie generátor",
             "below": "nižšie",
             "above": "vyššie",
-            "zombieGeneratorText": "{tryItOut} Zadaj meno do do poľa {below}{above} a vygeneruj nového zombie!",
+            "zombieGeneratorText": "{tryItOut} Zadaj meno do poľa {below}{above} a vygeneruj nového zombie!",
             "nameInputPlaceholder": "Pre vygenerovanie zombie vyplň meno",
             "callToAction": [
                 "Chceš si vytvoriť vlastného CryptoZombie a vstúpiť do ringu?",
