@@ -277,7 +277,7 @@ Przyjrzyjmy się bliżej aby przebadać `onlyOwner`:
     }
     
 
-Notice the `onlyOwner` modifier on the `likeABoss` function. When you call `likeABoss`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `likeABoss`.
+Notice the `onlyOwner` modifier on the `renounceOwnership` function. When you call `renounceOwnership`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `renounceOwnership`.
 
 So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
 
