@@ -6,7 +6,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
 
@@ -42,7 +42,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         contract ZombieFactory {
 
@@ -65,11 +65,11 @@ material:
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
             function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
@@ -81,7 +81,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       import "./zombiefactory.sol";
 
