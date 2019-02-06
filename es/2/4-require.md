@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
@@ -28,11 +28,11 @@ material:
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
+              emit NewZombie(id, _name, _dna);
           }
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
@@ -44,7 +44,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {
@@ -68,11 +68,11 @@ material:
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
+              emit NewZombie(id, _name, _dna);
           }
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
@@ -98,7 +98,7 @@ function sayHiToVitalik(string _name) public returns (string) {
   // Compara si _name es igual a "Vitalik". Lanza un error si no lo son.
   // (Nota: Solidity no tiene su propio comparador de strings, por lo que
   // compararemos sus hashes keccak256 para ver si sus strings son iguales)
-  require(keccak256(_name) == keccak256("Vitalik"));
+  require(keccak256(_name)== keccak256("Vitalik"));
   // Si es verdad, continuamos con la función:
   return "Hi!";
 }
