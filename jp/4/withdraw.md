@@ -1,5 +1,5 @@
 ---
-title: Withdraws関数
+title: Withdraw関数
 actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:
