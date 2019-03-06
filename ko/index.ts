@@ -37,7 +37,7 @@ import kittygenes from './2/13-kittygenes.md'
 import wrappingitup from './2/14-wrappingitup.md'
 import lesson2complete from './2/15-lessoncomplete.md'
 
-// // lesson3
+// lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
 import l3_ch2 from './3/02-ownable.md'
@@ -116,6 +116,32 @@ import l7_ch9 from './7/09.md'
 import l7_ch10 from './7/10.md'
 import l7_ch11 from './7/11.md'
 import l7_complete from './7/lessoncomplete.md'
+
+import l8_overview from './8/00-overview.md'
+import l8_ch1 from './8/01.md'
+import l8_ch2 from './8/02.md'
+import l8_ch3 from './8/03.md'
+import l8_ch4 from './8/04.md'
+import l8_ch5 from './8/05.md'
+import l8_ch6 from './8/06.md'
+import l8_ch7 from './8/07.md'
+import l8_ch8 from './8/08.md'
+import l8_ch9 from './8/09.md'
+import l8_complete from './8/lessoncomplete.md'
+
+// lesson9 erc721x
+import l9_overview from './9/00-overview.md'
+import l9_ch1 from './9/01-erc721x.md'
+import l9_ch2 from './9/02-erc721x.md'
+import l9_ch3 from './9/03-erc721x.md'
+import l9_ch4 from './9/04-erc721x.md'
+import l9_ch5 from './9/05-erc721x.md'
+import l9_ch6 from './9/06-erc721x.md'
+import l9_ch7 from './9/07-erc721x.md'
+import l9_ch8 from './9/08-erc721x.md'
+import l9_ch9 from './9/09-erc721x.md'
+import l9_ch10 from './9/10-erc721x.md'
+import l9_complete from './9/lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -220,7 +246,7 @@ export default {
     l6_ch8,
     l6_ch9,
     l6_ch10,
-    l6_complete,
+    l6_complete
   ],
   7: [
     l7_overview,
@@ -236,5 +262,32 @@ export default {
     l7_ch10,
     l7_ch11,
     l7_complete,
-  ]
+  ],
+  8: [
+    l8_overview,
+    l8_ch1,
+    l8_ch2,
+    l8_ch3,
+    l8_ch4,
+    l8_ch5,
+    l8_ch6,
+    l8_ch7,
+    l8_ch8,
+    l8_ch9,
+    l8_complete,
+  ],
+  9: [
+    l9_overview,
+    l9_ch1,
+    l9_ch2,
+    l9_ch3,
+    l9_ch4,
+    l9_ch5,
+    l9_ch6,
+    l9_ch7,
+    l9_ch8,
+    l9_ch9,
+    l9_ch10,
+    l9_complete,
+  ],
 }
