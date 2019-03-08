@@ -98,7 +98,7 @@ function sayHiToVitalik(string _name) public returns (string) {
   // Compara si _name es igual a "Vitalik". Lanza un error si no lo son.
   // (Nota: Solidity no tiene su propio comparador de strings, por lo que
   // compararemos sus hashes keccak256 para ver si sus strings son iguales)
-  require(keccak256(_name)== keccak256("Vitalik"));
+  require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
   // Si es verdad, continuamos con la función:
   return "Hi!";
 }
