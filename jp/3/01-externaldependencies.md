@@ -1,5 +1,5 @@
 ---
-title: Immutability of Contracts
+title: コントラクトの不変性
 actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:

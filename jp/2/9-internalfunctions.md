@@ -133,7 +133,7 @@ contract BLT is Sandwich {
 
   function eatWithBacon() public returns (string) {
     baconSandwichesEaten++;
-    // We can call this here because it's internal
+    // `eat`メソッドはinternalで宣言されているから呼び出すことが可能だ
     eat();
   }
 }
