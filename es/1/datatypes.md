@@ -11,7 +11,7 @@ material:
 
       contract ZombieFactory {
 
-      //start here
+      // Empieza aquí
 
       }
     answer: >
