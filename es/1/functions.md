@@ -21,7 +21,7 @@ material:
 
       Zombie[] public zombies;
 
-      // start here
+      // Empieza aquí
 
       }
     answer: >
@@ -55,6 +55,6 @@ Llamaríamos esta función de esta forma:
 
 En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Create a function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`).
+1. Crea una función llamada `createZombie`. Debería tomar dos parámetros: **\_name** (un `string`), y **\_dna** (un `uint`).
 
 Dejemos el cuerpo de la función vacío por ahora — lo rellenaremos más tarde.
