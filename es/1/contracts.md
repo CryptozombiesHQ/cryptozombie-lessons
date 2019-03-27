@@ -31,7 +31,7 @@ Un contrato vacío llamado `HelloWorld` se asemejaría a esto:
 
 Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar en tu código.
 
-It looks like this: `pragma solidity ^0.4.25;` (for the latest solidity version at the time of this writing, 0.4.25).
+Se ve así: `pragma solidity ^0.4.25;` (para la versión actual del momento en que se ha escrito ésto, 0.4.25).
 
 Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
 
