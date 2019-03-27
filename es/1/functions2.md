@@ -21,7 +21,7 @@ material:
 
       Zombie[] public zombies;
 
-      function createZombie(string _name, uint _dna) {
+      function createZombie(string _name, uint _dna) { // Modifícala
       zombies.push(Zombie(_name, _dna));
       }
 
@@ -38,7 +38,7 @@ material:
 ---
 En Solidity, las funciones son públicas `public` por defecto. Esto significa que cualquiera (o cualquier otro contrato) puede llamarla y ejecutar su código.
 
-Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Por lo tanto es una buena práctica marcar tus funciones como privadas `private` y solamente hacer públicas `public` aquellas que queramos exponer al mundo exterior.
+Obviamente no es algo que queremos que pase siempre, y de hecho ésto puede hacer vulnerables tus contratos. Por lo tanto es una buena práctica marcar tus funciones como privadas `private` y solamente hacer públicas `public` aquellas que queramos exponer al mundo exterior.
 
 Vamos a ver como se declara una función privada:
 
