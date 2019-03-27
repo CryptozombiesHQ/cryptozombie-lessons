@@ -11,7 +11,7 @@ material:
 
       contract ZombieFactory {
 
-      // declare our event here
+      // Declara nuestro evento aquí
 
       uint dnaDigits = 16;
       uint dnaModulus = 10 ** dnaDigits;
@@ -25,7 +25,7 @@ material:
 
       function _createZombie(string _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
-      // and fire it here
+      // Y llámalo aquí
       }
 
       function _generateRandomDna(string _str) private view returns (uint) {
@@ -58,12 +58,12 @@ Los ***Eventos*** son la forma en la que nuestro contrato comunica que algo suce
 
 Ejemplo:
 
-    // declare the event
+    // Declaramos el evento
     event IntegersAdded(uint x, uint y, uint result);
     
     function add(uint _x, uint _y) public {
       uint result = _x + _y;
-      // fire an event to let the app know the function was called:
+      // Llamamos al evento para hacer saber a la aplicación que la función ha sido llamada:
       emit IntegersAdded(_x, _y, result);
       return result;
     }
