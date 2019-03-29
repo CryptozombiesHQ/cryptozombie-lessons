@@ -40,7 +40,7 @@ material:
         _createZombie("NoName", newDna);
         }
 
-        // define function here
+        // Define la función aquí
 
         }
       "zombiefactory.sol": |
