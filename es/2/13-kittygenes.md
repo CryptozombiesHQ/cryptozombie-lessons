@@ -32,20 +32,20 @@ material:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
         KittyInterface kittyContract = KittyInterface(ckAddress);
 
-        // Modify function definition here:
+        // Modifica la definición de la función aquí:
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
-        // Add an if statement here
+        // Añade un if aquí
         _createZombie("NoName", newDna);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
         uint kittyDna;
         (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-        // And modify function call here:
+        // Y modifica la llamada de la función aquí:
         feedAndMultiply(_zombieId, kittyDna);
         }
 
@@ -115,8 +115,8 @@ Diremos que los gato-zombis tienen `99` en los últimos dos dígitos de su ADN (
 Una declaración if en Solidity es igual que en javascript:
 
     function eatBLT(string sandwich) public {
-      // Remember with strings, we have to compare their keccak256 hashes
-      // to check equality
+      // Recuerda que con strings, tenemos que comparar sus hashes keccak256
+      // para comparar su equidad
       if (keccak256(abi.encodePacked(sandwich)) == keccak256(abi.encodePacked("BLT"))) {
         eat();
       }
@@ -129,7 +129,7 @@ Vamos a implementar los genes de los gatos en nuestro código del zombi.
 
 1. Primero, vamos a cambiar la definición de la función `feedAndMultiply` para que reciba un tercer argumento: un `string` llamado `_species`
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`. We can't directly pass strings to `keccak256`. Instead, we will pass `abi.encodePacked(_species)` as an argument on the left side and `abi.encodePacked("kitty")` as an argument on the right side.
+2. Después de calcular el ADN de nuestro zombie, vamos a añadir una declaración `if` que compare los hashes `keccak256` de `_species` y la string `"kitty"`. No podemos pasar strings a `keccak256` directamente. En su lugar, pasaremos `abi.encodePacked(_species)` como un argumento en el lado izquierdo y `abi.encodePacked("kitty")` como argumento en el lado derecho.
 
 3. Dentro de la sentencia `if`, queremos reemplazar los últimos 2 dígitos del ADN con `99`. Una manera de hacer esto es usando la lógica: `newDna = newDna - newDna % 100 + 99;`.
     
