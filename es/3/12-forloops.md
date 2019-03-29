@@ -32,7 +32,7 @@ material:
 
         function getZombiesByOwner(address _owner) external view returns(uint[]) {
         uint[] memory result = new uint[](ownerZombieCount[_owner]);
-        // Start here
+        // Empieza aquí
         return result;
         }
 
@@ -132,9 +132,9 @@ material:
         pragma solidity ^0.4.25;
 
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contrato apropiable tiene una dirección de propietario, y proporciona un control de autorización de funciones básico.
+        * Esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address private _owner;
