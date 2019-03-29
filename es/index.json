@@ -7,7 +7,7 @@
         "syncing": "Sincronizando...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Ask Question",
+            "openChat": "Haz una pregunta",
             "action": "Únete a nuestro Telegram",
             "link": "https://t.me/loomnetworkdev"
         },
@@ -18,31 +18,31 @@
         "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
         "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
         "plasma_path": "Plasma Path: Learn how to use PlasmaCash",
-        "start_resume": "Start/Resume",
-        "the_curriculum": "The Curriculum",
+        "start_resume": "Empezar/Continuar",
+        "the_curriculum": "El Curriculum",
         "course_overview": "Course Overview",
-        "start": "Start",
-        "skip_lesson": "Skip Lesson",
+        "start": "Empezar",
+        "skip_lesson": "Saltarse lección",
         "graduate": "Ready to Graduate? Or You are Already Experienced?",
-        "you_will": "You Will",
+        "you_will": "Lo harás",
         "will_list": {
             "use": "Use intermediate level solidity",
             "deploy": "Deploy to a live PlasmaChain",
             "interact": "Have real gamers play and interact with your Dapp",
             "earn": "Charge an admission and earn some money!"
         },
-        "make_game": "Make your game mode now!",
-        "goto_lesson_list": "Go to lesson list",
-        "share_link": "Share",
+        "make_game": "¡Haz tu modo de juego ahora!",
+        "goto_lesson_list": "Ir a la lista de lecciones",
+        "share_link": "Compartir",
         "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
-        "zbbg_link": "Get Early Access Now!",
-        "coming_soon": "Coming Soon"
+        "zbbg_link": "¡Consigue Acceso Anticipado Ahora!",
+        "coming_soon": "Próximamente"
     },
     "achievements": {
-        "achievements": "Achievements",
-        "achieved": "achieved",
+        "achievements": "Logros",
+        "achieved": "logrado",
         "finished_first": {
-            "title": "Completed first lesson",
+            "title": "Primera lección completada",
             "desc": "Completed the first lesson in any course"
         },
         "finished_solidity": {
@@ -55,20 +55,20 @@
         }
     },
     "rewards": {
-        "rewards": "rewards",
+        "rewards": "premios",
         "test_key": "Alpha Tester Key for Zombie Battleground",
         "loom_tokens": "Loom Tokens",
-        "no_reward": " You don't have any rewards"
+        "no_reward": " No tienes ningún premio"
     },
     "footer": {
         "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
-        "find_more": "Find out more..."
+        "find_more": "Saber más..."
     },
     "editor": {
         "readOnly": "Solo lectura"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Premios",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "{title}",
         "signIn": "Inicia sesión para guardar tu progreso",
@@ -99,8 +99,8 @@
         "checkAnswer": "Comprobar Respuesta",
         "showMeTheAnswer": "Muéstrame la respuesta",
         "hideAnswer": "Esconder Respuesta",
-        "next_chapter": "NEXT",
-        "prev_chapter": "BACK"
+        "next_chapter": "SIGUIENTE",
+        "prev_chapter": "ATRÁS"
     },
     "lessonComplete": {
         "shareLinksAction": "O puede hacer click en los botones de abajo para compartir:",
