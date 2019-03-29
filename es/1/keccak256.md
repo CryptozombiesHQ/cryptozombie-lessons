@@ -73,12 +73,12 @@ A veces es necesario convertir entre tipos de datos. Ésto podría ser un ejempl
     uint8 c = a * uint8(b); 
     
 
-In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
+En el código de arriba, `a * b` devuelve un `uint`, pero estábamos intentando guardarlo como un `uint8`, lo que podría causar problemas. Casteándolo a `uint8`, funcionará y el compilador no nos dará error.
 
 # Vamos a probarlo
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+¡Vamos a rellenar el cuerpo de la función `_generateRandomDna`! Esto es lo que deberíamos hacer:
 
-1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. La primera línea de código debería tomar el hash `keccak256` de `abi.encodePacked(_str)` para generar un hexadecimal cuasi aleatorio, forzarlo como un `uint`, y finalmente guardar el resultado en un `uint` llamado `rand`.
 
 2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). Así que la segunda línea del código debería devolver `return` el módulo del valor de arriba (`%`) `dnaModulus`.
