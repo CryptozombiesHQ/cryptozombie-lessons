@@ -13,7 +13,7 @@ material:
 
         // 1. Importalo aquí
 
-        // 2. Inherit here:
+        // 2. 
         contract ZombieFactory {
 
         event NewZombie(uint zombieId, string name, uint dna);
@@ -98,15 +98,13 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
-
         /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @title Apropiable
+        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
+        * funciones, esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
-        address private _owner;
+        address public owner;
 
         event OwnershipTransferred(
         address indexed previousOwner,
@@ -114,8 +112,8 @@ material:
         );
 
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-        * account.
+        * @dev El constructor del Ownable establece al `owner` original del contrato.
+        * a la dirección de la cuenta del remitente.
         */
         constructor() internal {
         _owner = msg.sender;
@@ -123,14 +121,14 @@ material:
         }
 
         /**
-        * @return the address of the owner.
+        * @devolver la dirección del propietario.
         */
         function owner() public view returns(address) {
         return _owner;
         }
 
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Se activa si lo llama cualquier cuenta que no sea el propietario.
         */
         modifier onlyOwner() {
         require(isOwner());
@@ -138,17 +136,17 @@ material:
         }
 
         /**
-        * @return true if `msg.sender` is the owner of the contract.
+        * @return true si `msg.sender` es el propietario del contrato.
         */
         function isOwner() public view returns(bool) {
         return msg.sender == _owner;
         }
 
         /**
-        * @dev Allows the current owner to relinquish control of the contract.
-        * @notice Renouncing to ownership will leave the contract without an owner.
-        * It will not be possible to call the functions with the `onlyOwner`
-        * modifier anymore.
+        * @dev Permite al actual porpietario renunciar al control del contrato.
+        * @notice Renunciar a la propiedad dejará el contrato sin un propietario.
+        * No será posible llamar a las funciones con el `onlyOwner`
+        * modificador más.
         */
         function renounceOwnership() public onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
@@ -156,7 +154,7 @@ material:
         }
 
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
+        * @dev Permite al actual propietario transferir el control del contrato a newOwner.
         * @param newOwner The address to transfer ownership to.
         */
         function transferOwnership(address newOwner) public onlyOwner {
