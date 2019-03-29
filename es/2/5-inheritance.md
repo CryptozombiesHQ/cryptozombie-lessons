@@ -46,7 +46,7 @@ material:
 
       }
 
-      // Start here
+      // Empieza aquí
     answer: >
       pragma solidity ^0.4.25;
 
