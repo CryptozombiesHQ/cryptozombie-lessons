@@ -28,7 +28,7 @@ material:
 
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
-      // start here
+      // Empieza aquí
       emit NewZombie(id, _name, _dna);
       }
 
