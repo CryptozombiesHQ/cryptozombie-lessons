@@ -12,7 +12,7 @@ material:
 
         import "./zombiefactory.sol";
 
-        // Create KittyInterface here
+        // Crea KittyInterface aquí
 
         contract ZombieFeeding is ZombieFactory {
 
