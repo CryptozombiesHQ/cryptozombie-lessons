@@ -23,7 +23,7 @@ material:
 
       Zombie[] public zombies;
 
-      // declare mappings here
+      // Delara los mappings aquí
 
       function _createZombie(string _name, uint _dna) private {
       uint id = zombies.push(Zombie(_name, _dna)) - 1;
