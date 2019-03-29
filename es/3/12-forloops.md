@@ -145,8 +145,8 @@ material:
         );
 
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-        * account.
+        * @dev El constructor Ownable establece al `owner` original del contrato
+        * a la dirección de la cuenta del remitente.
         */
         constructor() internal {
         _owner = msg.sender;
@@ -154,14 +154,14 @@ material:
         }
 
         /**
-        * @return the address of the owner.
+        * @return la dirección del owner.
         */
         function owner() public view returns(address) {
         return _owner;
         }
 
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Se activa si es llamada por cualquier cuenta que no sea la del propietario.
         */
         modifier onlyOwner() {
         require(isOwner());
