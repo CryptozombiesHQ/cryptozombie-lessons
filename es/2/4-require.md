@@ -39,7 +39,7 @@ material:
       }
 
       function createRandomZombie(string _name) public {
-      // start here
+      // Empieza aquí
       uint randDna = _generateRandomDna(_name);
       _createZombie(_name, randDna);
       }
