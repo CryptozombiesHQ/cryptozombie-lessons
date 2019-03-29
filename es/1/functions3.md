@@ -25,7 +25,7 @@ material:
       zombies.push(Zombie(_name, _dna));
       }
 
-      // start here
+      // Empieza aquí
 
       }
     answer: >
