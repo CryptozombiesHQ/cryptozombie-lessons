@@ -14,7 +14,7 @@ material:
 
         contract ZombieFeeding is ZombieFactory {
 
-        // Start here
+        // Empieza aquí
 
         }
       "zombiefactory.sol": |
