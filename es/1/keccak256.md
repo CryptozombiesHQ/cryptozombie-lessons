@@ -26,7 +26,7 @@ material:
       }
 
       function _generateRandomDna(string _str) private view returns (uint) {
-      // start here
+      // Empieza aquí
       }
 
       }
@@ -43,13 +43,13 @@ material:
 ---
 Queremos que nuestra función `_generateRandomDna` devuelva un valor (semi) aleatorio `uint`. Comó se puede conseguir esto?
 
-Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. A hash function basically maps an input into a random 256-bit hexidecimal number. A slight change in the input will cause a large change in the hash.
+Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. Una función hash básicamente mapea un input a un número aleatorio hexadecimal de 256 bits. Un pequeño cambio de la string puede suponer un cambio gigantesco en el hash.
 
 Es muy útil para muchas cosas, pero por ahora vamos a usarlo solamente para generar un número cuasi-aleatorio.
 
-Also important, `keccak256` expects a single parameter of type `bytes`. This means that we have to "pack" any parameters before calling `keccak256`:
+También importante, `keccak256` espera a un solo parámetro de tipo `byte`. Ésto quiere decir que tenemos que "packear" cualquier parámetro antes de llamar a `keccak256`:
 
-Example:
+Ejemplo:
 
     //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
     keccak256(abi.encodePacked("aaaab"));
@@ -57,13 +57,13 @@ Example:
     keccak256(abi.encodePacked("aaaac"));
     
 
-As you can see, the returned values are totally different despite only a 1 character change in the input.
+Como puedes ver, el valor devuelto es totalmente diferente, a pesar de que sólo hemos cambiado un carácter del argumento.
 
 > Nota: Generar números aleatorios de forma **segura** en la cadena de bloques es algo muy difícil. El método que usamos aquí no es seguro, pero la seguridad no es nuestra prioridad para el ADN del Zombi, es suficiente para este propósito.
 
 ## Encasillamiento
 
-Sometimes you need to convert between data types. Take the following example:
+A veces es necesario convertir entre tipos de datos. Ésto podría ser un ejemplo:
 
     uint8 a = 5;
     uint b = 6;
