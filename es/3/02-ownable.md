@@ -155,15 +155,15 @@ material:
 
         /**
         * @dev Permite al actual propietario transferir el control del contrato a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @param newOwner La dirección a transferir la posesión.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
         }
 
         /**
-        * @dev Transfers control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Se transfiere el control del contrato a newOwner.
+        * @param newOwner La dirección a transferir la posesión.
         */
         function _transferOwnership(address newOwner) internal {
         require(newOwner != address(0));
@@ -213,8 +213,8 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
       );
     
       /**
-       * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-       * account.
+       * @dev El constructor Ownable establece al `owner` original del contrato.
+       * a la dirección de la cuenta del remitente.
        */
       constructor() internal {
         _owner = msg.sender;
@@ -222,14 +222,14 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
       }
     
       /**
-       * @return the address of the owner.
+       * @return la dirección del propietario.
        */
       function owner() public view returns(address) {
         return _owner;
       }
     
       /**
-       * @dev Throws if called by any account other than the owner.
+       * @dev Se activa si alguien que no es el propietario.
        */
       modifier onlyOwner() {
         require(isOwner());
@@ -237,17 +237,16 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
       }
     
       /**
-       * @return true if `msg.sender` is the owner of the contract.
+       * @return true si `msg.sender` es el propietario del contrato.
        */
       function isOwner() public view returns(bool) {
         return msg.sender == _owner;
       }
     
       /**
-       * @dev Allows the current owner to relinquish control of the contract.
-       * @notice Renouncing to ownership will leave the contract without an owner.
-       * It will not be possible to call the functions with the `onlyOwner`
-       * modifier anymore.
+       * @dev Permite al actual propietario renunciar al control del contrato.
+       * @notice Renunciar a la propiedad del contrato dejaría el contrato sin un propietario.
+       * No será nunca más posible llamar a las funciones con el modificador `onlyOwner`
        */
       function renounceOwnership() public onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
@@ -255,16 +254,16 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
       }
     
       /**
-       * @dev Allows the current owner to transfer control of the contract to a newOwner.
-       * @param newOwner The address to transfer ownership to.
+       * @dev permite al actual propietario transferir el control del contrato a newOwner.
+       * @param newOwner La dirección a transferir la propiedad.
        */
       function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
       }
     
       /**
-       * @dev Transfers control of the contract to a newOwner.
-       * @param newOwner The address to transfer ownership to.
+       * @dev Se transfiere el control del contrato a newOwner.
+       * @param newOwner La dirección a transferir la propiedad.
        */
       function _transferOwnership(address newOwner) internal {
         require(newOwner != address(0));
