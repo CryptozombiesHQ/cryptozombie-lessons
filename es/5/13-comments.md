@@ -234,7 +234,7 @@ material:
 
         }
       "ownable.sol": |
-         pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
 
         /**
         * @title Ownable
@@ -500,8 +500,8 @@ Por lo tanto, también tenemos comentarios de varias líneas:
 
 ```
 contract CryptoZombies {
-  /* Este es un comentario con múltiples líneas. 
-  	Me gustaría agradecerles a todos vosotros, los que se han tomado su	
+  /* Este es un comentario con múltiples líneas.
+  	Me gustaría agradecerles a todos vosotros, los que se han tomado su
   	tiempo para probar este curso de programación.
   	Sé que es gratis para todos ustedes, y se mantendrá libre
     para siempre, pero aún ponemos nuestro corazón y nuestra alma en hacer

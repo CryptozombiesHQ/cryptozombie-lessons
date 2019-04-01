@@ -45,7 +45,7 @@ material:
         import "./zombieattack.sol";
         import "./erc721.sol";
         import "./safemath.sol";
-        
+
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -76,7 +76,7 @@ material:
             zombieApprovals[_tokenId] = _approved;
             emit Approval(msg.sender, _approved, _tokenId);
           }
-          
+
         }
       "zombiehelper.sol": |
         pragma solidity ^0.4.25;
@@ -238,8 +238,8 @@ material:
           }
 
         }
-       "ownable.sol": |
-          pragma solidity ^0.4.25;
+      "ownable.sol": |
+        pragma solidity ^0.4.25;
         /**
          * @title Ownable
          * @dev The Ownable contract has an owner address, and provides basic authorization control
@@ -261,7 +261,7 @@ material:
             _owner = msg.sender;
             emit OwnershipTransferred(address(0), _owner);
           }
-          
+
           /**
           * @return the address of the owner.
           */
@@ -311,7 +311,7 @@ material:
             _owner = newOwner;
           }
         }
-       "safemath.sol": |
+      "safemath.sol": |
         pragma solidity ^0.4.25;
 
         /**
@@ -427,9 +427,9 @@ material:
             return c;
           }
         }
-        
+
       "erc721.sol": |
-         pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
         contract ERC721 {
             event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
             event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);
@@ -440,35 +440,35 @@ material:
             function approve(address _approved, uint256 _tokenId) external payable;
         }
       answer: |
-      pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
 
-      import "./zombiehelper.sol";
+        import "./zombiehelper.sol";
 
-      contract ZombieAttack is ZombieHelper {
-        uint randNonce = 0;
-        uint attackVictoryProbability = 70;
+        contract ZombieAttack is ZombieHelper {
+          uint randNonce = 0;
+          uint attackVictoryProbability = 70;
 
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce = randNonce.add(1);
-          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
-        }
+          function randMod(uint _modulus) internal returns(uint) {
+            randNonce = randNonce.add(1);
+            return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
+          }
 
-        function attack(uint _zombieId, uint _targetId) external onlyOwnerOf(_zombieId) {
-          Zombie storage myZombie = zombies[_zombieId];
-          Zombie storage enemyZombie = zombies[_targetId];
-          uint rand = randMod(100);
-          if (rand <= attackVictoryProbability) {
-            myZombie.winCount = myZombie.winCount.add(1);
-            myZombie.level = myZombie.level.add(1);
-            enemyZombie.lossCount = enemyZombie.lossCount.add(1);
-            feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-          } else {
-            myZombie.lossCount = myZombie.lossCount.add(1);
-            enemyZombie.winCount = enemyZombie.winCount.add(1);
-            _triggerCooldown(myZombie);
+          function attack(uint _zombieId, uint _targetId) external onlyOwnerOf(_zombieId) {
+            Zombie storage myZombie = zombies[_zombieId];
+            Zombie storage enemyZombie = zombies[_targetId];
+            uint rand = randMod(100);
+            if (rand <= attackVictoryProbability) {
+              myZombie.winCount = myZombie.winCount.add(1);
+              myZombie.level = myZombie.level.add(1);
+              enemyZombie.lossCount = enemyZombie.lossCount.add(1);
+              feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
+            } else {
+              myZombie.lossCount = myZombie.lossCount.add(1);
+              enemyZombie.winCount = enemyZombie.winCount.add(1);
+              _triggerCooldown(myZombie);
+            }
           }
         }
-      }
 ---
 
 ¡Genial!¡Ahora podemos implementar SafeMath en todos los tipos de `uint` que usamos en nuestra DApp!

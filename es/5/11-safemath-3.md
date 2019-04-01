@@ -67,7 +67,7 @@ material:
         import "./zombieattack.sol";
         import "./erc721.sol";
         import "./safemath.sol";
-        
+
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           using SafeMath for uint256;
@@ -239,7 +239,7 @@ material:
           }
         }
       "ownable.sol": |
-      pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
 
         /**
         * @title Ownable
