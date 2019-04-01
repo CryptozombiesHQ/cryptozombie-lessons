@@ -66,7 +66,7 @@ material:
           }
         }
       "zombieattack.sol": |
-         pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
@@ -178,7 +178,7 @@ material:
 
         }
       "ownable.sol": |
-         "ownable.sol": |
+        "ownable.sol": |
         pragma solidity ^0.4.25;
 
         /**

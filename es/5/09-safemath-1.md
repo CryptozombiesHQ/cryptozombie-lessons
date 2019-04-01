@@ -61,7 +61,7 @@ material:
 
         import "./zombieattack.sol";
         import "./erc721.sol";
-        
+
         contract ZombieOwnership is ZombieAttack, ERC721 {
 
           mapping (uint => address) zombieApprovals;
@@ -231,7 +231,7 @@ material:
           }
         }
       "ownable.sol": |
-         pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
 
         /**
         * @title Ownable

@@ -173,7 +173,7 @@ material:
 
         }
       "ownable.sol": |
-          pragma solidity ^0.4.25;
+        pragma solidity ^0.4.25;
 
         /**
         * @title Ownable
@@ -277,7 +277,7 @@ Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el mod
 
 ## Póngalo a prueba
 
-1. Añada el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`. 
+1. Añada el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`.
 
 2. Lo primero que nuestra función debería hacer es conseguirles un puntero de `storage` a ambos zombies para poder interactuar con ellos más facilmente:
 
