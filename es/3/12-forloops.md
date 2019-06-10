@@ -176,7 +176,7 @@ material:
         }
 
         /**
-        * @dev Permite al actual propietario a ceder el control del contrato.
+        * @dev Permite al actual propietario a renunciar al control del contrato.
         * @notice Renucniar a la propiedad del contrato comportará dejar el contrato sin dueño.
         * No será posible llamar las funciones con el modificador
         * `onlyOwner` nunca más.
@@ -187,16 +187,16 @@ material:
         }
 
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al actual propietario transferir el controldel contrato a newOwner.
+        * @param newOwner es la dirección a transferir la posesión.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
         }
 
         /**
-        * @dev Transfers control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Transfiere el control del contrato a newOwner.
+        * @param newOwner es la dirección a transferir la posesión.
         */
         function _transferOwnership(address newOwner) internal {
         require(newOwner != address(0));
