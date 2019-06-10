@@ -32,7 +32,7 @@ material:
 
         KittyInterface kittyContract;
 
-        // Modify this function:
+        // Modifica esta función:
         function setKittyContractAddress(address _address) external {
         kittyContract = KittyInterface(_address);
         }
@@ -102,8 +102,8 @@ material:
 
         /**
         * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
+        * @dev El contrato Ownable tiene la dirección del propietario, y proporciona un control de autorización básico
+        * a las funciones. Esto simplifica la implementación de "permisos de usuario".
         */
         contract Ownable {
         address private _owner;
@@ -114,8 +114,8 @@ material:
         );
 
         /**
-        * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-        * account.
+        * @dev El constructor Ownable establece a `owner` del contrato a la cuenta
+        * remitente.
         */
         constructor() internal {
         _owner = msg.sender;
@@ -123,14 +123,14 @@ material:
         }
 
         /**
-        * @return the address of the owner.
+        * @return la dirección del propietario.
         */
         function owner() public view returns(address) {
         return _owner;
         }
 
         /**
-        * @dev Throws if called by any account other than the owner.
+        * @dev Se lanza si es llamado por cualquier otra cuenta que no sea la del propietario.
         */
         modifier onlyOwner() {
         require(isOwner());
@@ -138,17 +138,17 @@ material:
         }
 
         /**
-        * @return true if `msg.sender` is the owner of the contract.
+        * @return true si `msg.sender` es el propietario del contrato.
         */
         function isOwner() public view returns(bool) {
         return msg.sender == _owner;
         }
 
         /**
-        * @dev Allows the current owner to relinquish control of the contract.
-        * @notice Renouncing to ownership will leave the contract without an owner.
-        * It will not be possible to call the functions with the `onlyOwner`
-        * modifier anymore.
+        * @dev Permite al actual porpietario renunciar al control del contrato.
+        * @notice Renunciar a la propiedad dejará el contrato sin un propietario.
+        * No será posible llamar a las funciones con el modificador
+        * `onlyOwner` más.
         */
         function renounceOwnership() public onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
@@ -156,16 +156,16 @@ material:
         }
 
         /**
-        * @dev Allows the current owner to transfer control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Permite al actual propietario transferir el control del contrato a newOwner.
+        * @param newOwner La dirección a transferir la posesión.
         */
         function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
         }
 
         /**
-        * @dev Transfers control of the contract to a newOwner.
-        * @param newOwner The address to transfer ownership to.
+        * @dev Se transfiere el control del contrato a newOwner.
+        * @param newOwner La dirección a transferir la posesión.
         */
         function _transferOwnership(address newOwner) internal {
         require(newOwner != address(0));
@@ -184,6 +184,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Ahora que nuestro contrato base `ZombieFactory` hereda de `Ownable`, podemos usar también el modificador de función `onlyOwner` en la función `ZombieFeeding`.
 
 Esto es por como funciona la herencia de contratos. Recuerda:
