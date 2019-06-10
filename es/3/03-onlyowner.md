@@ -205,8 +205,8 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
     
     /**
      * @title Ownable
-     * @dev The Ownable contract has an owner address, and provides basic authorization control
-     * functions, this simplifies the implementation of "user permissions".
+     * @dev El contrato Ownable tiene una dirección de propietario, y proporciona autorización de control básica
+     * a las funciones. Esto simplifica la implementación de "permisos de usuario".
      */
     contract Ownable {
       address private _owner;
@@ -217,8 +217,8 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
       );
     
       /**
-       * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-       * account.
+       * @dev El constructor Ownable establece el`owner` original del contrato a
+       * la cuenta remitente.
        */
       constructor() internal {
         _owner = msg.sender;
@@ -226,14 +226,14 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
       }
     
       /**
-       * @return the address of the owner.
+       * @return la dirección del propietario.
        */
       function owner() public view returns(address) {
         return _owner;
       }
     
       /**
-       * @dev Throws if called by any account other than the owner.
+       * @dev Se lanza si es llamado por alguien que no es el propietario.
        */
       modifier onlyOwner() {
         require(isOwner());
@@ -241,17 +241,16 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
       }
     
       /**
-       * @return true if `msg.sender` is the owner of the contract.
+       * @return true si `msg.sender` es el propietario del contrato.
        */
       function isOwner() public view returns(bool) {
         return msg.sender == _owner;
       }
     
       /**
-       * @dev Allows the current owner to relinquish control of the contract.
-       * @notice Renouncing to ownership will leave the contract without an owner.
-       * It will not be possible to call the functions with the `onlyOwner`
-       * modifier anymore.
+       * @dev Permite al actual propietario renunciar al control del contrato.
+       * @notice Renunciar a la propiedad dejará el contrato sin un propietario.
+       * No será nunca más posible llamar a las funciones con el modificador `onlyOwner`.
        */
       function renounceOwnership() public onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
@@ -259,16 +258,16 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
       }
     
       /**
-       * @dev Allows the current owner to transfer control of the contract to a newOwner.
-       * @param newOwner The address to transfer ownership to.
+       * @dev permite al actual propietario transferir el control del contrato a newOwner.
+       * @param newOwner La dirección a transferir la propiedad.
        */
       function transferOwnership(address newOwner) public onlyOwner {
         _transferOwnership(newOwner);
       }
     
       /**
-       * @dev Transfers control of the contract to a newOwner.
-       * @param newOwner The address to transfer ownership to.
+       * @dev Se transfiere el control del contrato a newOwner.
+       * @param newOwner La dirección a transferir la propiedad.
        */
       function _transferOwnership(address newOwner) internal {
         require(newOwner != address(0));
@@ -278,11 +277,11 @@ Vamos a verlo con más detalle examinando `onlyOwner`:
     }
     
 
-Notice the `onlyOwner` modifier on the `renounceOwnership` function. When you call `renounceOwnership`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `renounceOwnership`.
+Fíjate en el modificador `onlyOwner` en la función `renounceOwnership`. Cuando llamas a `renounceOwnership`, el código dentro de `onlyOwner` se ejecuta **primero**. Entonces cuando se encuentra con la sentencia `_;` en `onlyOwner`, vuelve y ejecuta el código dentro de `renounceOwnership`.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+Hay otras maneras de usar los modificadores, pero uno de los casos de uso más comunes es añadir una rápida comprobación `require` antes de que se ejecute la función.
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+En el caso de `onlyOwner`, añadiéndole este modificador a la función hace que **solo** el **dueño** del contrato (tú, si eres el que lo ha implementado) puede llamar a la función.
 
 > Nota: Darle poderes especiales de esta manera al dueño a lo largo del contrato es usualmente necesario, pero puede también ser usado maliciosamente. Por ejemplo, el dueño puede añadir una función oculta ¡que le permita transferirse el zombi de cualquiera a sí mismo!
 > 
@@ -290,6 +289,6 @@ In the case of `onlyOwner`, adding this modifier to a function makes it so **onl
 
 ## Vamos a probarlo
 
-Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
+Ahora restringiremos el acceso a `setKittyContractAddress` de tal manera que sólo nosotros podamos modificarlo en un futuro.
 
 1. Añade el modificador `onlyOwner` a `setKittyContractAddress`.
