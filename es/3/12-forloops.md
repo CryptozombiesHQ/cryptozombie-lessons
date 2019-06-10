@@ -169,17 +169,17 @@ material:
         }
 
         /**
-        * @return true if `msg.sender` is the owner of the contract.
+        * @devuelve true si `msg.sender` es el propietario del contrato.
         */
         function isOwner() public view returns(bool) {
         return msg.sender == _owner;
         }
 
         /**
-        * @dev Allows the current owner to relinquish control of the contract.
-        * @notice Renouncing to ownership will leave the contract without an owner.
-        * It will not be possible to call the functions with the `onlyOwner`
-        * modifier anymore.
+        * @dev Permite al actual propietario a ceder el control del contrato.
+        * @notice Renucniar a la propiedad del contrato comportará dejar el contrato sin dueño.
+        * No será posible llamar las funciones con el modificador
+        * `onlyOwner` nunca más.
         */
         function renounceOwnership() public onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
@@ -214,6 +214,7 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
+
 En el capítulo anterior, mencionamos que a veces queremos usar bucles `for` para construir contenido dentro de un array en una función antes que simplemente guardar el array en storage.
 
 Vamos a ver el por qué.
