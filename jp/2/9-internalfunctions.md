@@ -115,7 +115,7 @@ Solidityには`public` と`private`の他に、`internal` と `external`とい�
 `internal`は`private`と同じだが、このコントラクトから継承したコントラクトにもアクセスできるようになる。 **(そうだ！これが我々に必要なものだ)**。
 
 `external`は `public`と同じだが、コントラクトの外からだけ呼び出すことができるのだ。つまりコントラクト内部の別の関数では呼び出すことができないものだ。
-`external` と `public`のとちらを使ったらいいのかという説明はあとでするからな。
+`external` と `public`のどちらを使ったらいいのかという説明はあとでするからな。
 
  `internal` と `external`の関数宣言は `private` や `public`の宣言方法と同じだ：
 
