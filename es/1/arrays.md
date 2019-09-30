@@ -32,6 +32,7 @@ material:
       Zombie[] public zombies;
       }
 ---
+
 Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos tipos de arrays en Solidity: arrays ***fijos*** y arrays ***dinámicos***:
 
     // Array con un numero fijo de 2 elementos:
