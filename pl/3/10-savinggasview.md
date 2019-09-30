@@ -211,6 +211,7 @@ material:
       }
       }
 ---
+
 Imponujące! Teraz mamy już specjalne umiejętności dla Zombiaków o wyższym poziomie, aby zachęcić ich właścicieli do podnoszenia tego poziomu. Jeśli będziemy chcieli, możemy później dodać ich więcej.
 
 Dodajmy jeszcze jedną funkcję: nasza DApp potrzebuje metody do wyświetlania całej armii Zombiaków, którą posiada user — nazwijmy ją `getZombiesByOwner`.
