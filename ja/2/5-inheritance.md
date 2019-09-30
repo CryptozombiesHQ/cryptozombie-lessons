@@ -63,6 +63,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
+
 Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
 
 One feature of Solidity that makes this more manageable is contract ***inheritance***:
