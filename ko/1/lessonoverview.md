@@ -11,6 +11,7 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+
 In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
 
 * Our factory will maintain a database of all zombies in our army
