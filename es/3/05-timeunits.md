@@ -190,6 +190,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 La propiedad `level` es auto-explicativa. Más adelante, cuando creemos el sistema de batalla, los zombis que ganen más batallas subirán de nivel y tendrán acceso a más habilidades.
 
 La propiedad `readyTime` requiere algo más de explicación. El objetivo es añadir un "periodo de enfriamiento", una cantidad de tiempo que el zombi debe esperar después de atacar o alimentarse antes de poder volver a hacerlo. Sin esto, el zombi podría atacar y multiplicarse 1.000 veces al día, lo que haría muy fácil el juego.
