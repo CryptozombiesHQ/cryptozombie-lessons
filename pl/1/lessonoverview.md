@@ -11,6 +11,7 @@ material:
     ignoreZombieCache: prawda
     answer: 1
 ---
+
 W lekcji 1 zbudujesz "Fabrykę Zombie", aby stworzyć armię zombi.
 
 * Nasza fabryka będzie obsługiwała bazę danych ze wszystkimi zombiakami w naszej armii
