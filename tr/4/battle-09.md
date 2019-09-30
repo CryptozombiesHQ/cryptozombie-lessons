@@ -272,6 +272,7 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); if (rand <= attackVictoryProbability) { myZombie.winCount++; myZombie.level++; enemyZombie.lossCount++; feedAndMultiply(_zombieId, enemyZombie.dna, "zombie"); } else { myZombie.lossCount++; enemyZombie.winCount++; _triggerCooldown(myZombie); } } }
 ---
+
 Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
 
 In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
