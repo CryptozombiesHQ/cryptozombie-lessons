@@ -199,6 +199,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Zmodyfikujmy `feedAndMultiply` aby wziąć pod uwagę nasz timer.
 
 Patrząc wstecz, możesz zauważyć, że w poprzedniej lekcji oznaczyliśmy tę funkcję jako `public`. Ważną praktyką w kwestii bezpieczeństwa jest przeanalizowanie wszystkich Twoich `publicznych` i `zewnętrznych (external)` funkcji oraz próba wymyślenia, w jaki sposób użytkownicy mogliby ich nadużywać. Pamiętaj — jeżeli te funkcje nie będą miały modyfikatora takiego jak `onlyOwner`, to każdy użytkownik będzie mógł je wywoływać i przekazywać do nich dane jakie tylko zechce.
