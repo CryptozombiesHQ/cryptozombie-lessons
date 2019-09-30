@@ -63,6 +63,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
+
 Nuestro código está haciendose un poco largo. En lugar de hacer un contrato extremandamente largo, a veces tiene sentido separar la lógica de nuestro código en multiples contratos para organizar el código.
 
 Una característica de Solidity que hace más manejable esto es la ***herencia*** de los contratos:
