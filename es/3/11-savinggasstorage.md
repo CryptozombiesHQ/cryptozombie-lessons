@@ -213,6 +213,7 @@ material:
       return result; }
       }
 ---
+
 Una de las operaciones más caras en Solidity es usar `storage` — especialmente la escritura.
 
 Esto es debido a que cada vez que escribes o cambias algún dato, este se guarda permanentemente en la blockchain. ¡Para siempre! Miles de nodos alrededor del mundo necesitan guardar esos datos en sus discos duros, y esa cantidad de datos sigue creciendo a lo largo del tiempo a medida que crece la blockchain. Así que tiene que haber un costo para hacer eso.
