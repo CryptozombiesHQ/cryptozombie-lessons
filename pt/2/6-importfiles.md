@@ -60,6 +60,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
+
 Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
 
 Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
