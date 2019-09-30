@@ -12,6 +12,7 @@ material:
     hideSliders: true
     answer: 1
 ---
+
 That's it, you've completed lesson 2!
 
 You can check out the demo to the right to see it in action. Go ahead, I know you can't wait until the bottom of this page 
