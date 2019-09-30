@@ -55,6 +55,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Zróbmy z naszej gry multiplayer poprzez nadanie Zombiakom z naszej bazy właściciela.
 
 Aby to zrobic, potrzebujemy 2 nowe typy danych: `mapping` i `address`.
