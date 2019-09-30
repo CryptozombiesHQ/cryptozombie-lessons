@@ -55,6 +55,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Vamos a hacer nuestro juego multijugador dandolés a los zombis un dueño en la base de datos.
 
 Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
