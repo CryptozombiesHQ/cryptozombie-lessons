@@ -76,6 +76,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 **Kod z naszej poprzedniej lekcji ma błąd!**
 
 Jeśli go skompilujesz, kompilator poinformuje Cię o błędzie.
