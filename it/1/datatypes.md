@@ -21,6 +21,7 @@ material:
       uint dnaDigits = 16;
       }
 ---
+
 Ottimo lavoro! Ora che abbiamo un guscio per il nostro contratto, impariamo come Solidity si occupa delle variabili.
 
 Le ***Variabili di stato*** sono archiviate permanentemente nella memoria del contratto. Ciò significa che sono scritte sulla blockchain Ethereum. Pensa a loro come scrivere su un DB.
