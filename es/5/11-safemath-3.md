@@ -497,6 +497,7 @@ material:
 
       }
 ---
+
 ¡Genial, ahora nuestra implementación de ERC721 está a salvo de desbordamientos!
 
 Volviendo al código que escribimos en lecciones anteriores, hay algunos otros lugares donde nuestro código podría ser vulnerables a desbordamientos.
