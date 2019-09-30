@@ -272,6 +272,7 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); if (rand <= attackVictoryProbability) { myZombie.winCount++; myZombie.level++; enemyZombie.lossCount++; feedAndMultiply(_zombieId, enemyZombie.dna, "zombie"); } else { myZombie.lossCount++; enemyZombie.winCount++; _triggerCooldown(myZombie); } } }
 ---
+
 Ahora que hemos codificado lo que ocurre cuando su zombi gana, vamos a averiguar lo que ocurre cuando **pierde**.
 
 En nuestro juego, cuando los zombis pierden su nivel no disminuye — simplemente añaden una derrota a su `lossCount` y su tiempo de enfriamiento se activa para que tengan que esperar un día antes de volver a atacar.
