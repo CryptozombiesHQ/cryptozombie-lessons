@@ -63,6 +63,7 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; }
       }
 ---
+
 En Solidity, hay dos lugares donde puedes guardar variables — en `storage` (almacenamiento) y en `memory` (memoria).
 
 ***Storage*** se refiere a las variables guardadas permanentemente en la blockchain. Las variables de tipo ***Memory*** son temporales, y son borradas en lo que una función externa llama a tu contrato. Piensa que es como el disco duro vs la RAM de tu ordenador.
