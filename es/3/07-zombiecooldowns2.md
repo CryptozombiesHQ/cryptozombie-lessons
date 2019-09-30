@@ -199,6 +199,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Ahora vamos a modificar `feedAndMultiply` para añadir el temporizador de enfriamiento en la cuenta.
 
 Volviendo atrás en esta función, puedes ver que la hicimos `public` en la lección anterior. Una práctica importante de seguridad es examinar todas tus funciones `public` y `external`, y prueba a pensar las maneras en las que los usuarios podrían abusar de ellas. Recuerda — a no ser que estas funciones tengan un modificador como `onlyOwner`, cualquier usuario puede llamarlas y pasarles los datos que quieran.
