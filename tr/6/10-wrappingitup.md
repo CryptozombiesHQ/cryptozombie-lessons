@@ -12,6 +12,7 @@ material:
     hideSliders: true
     answer: 1
 ---
+
 Congratulations! You've successfully written your first Web3.js front-end that interacts with your smart contract.
 
 As a reward, you get your very own `The Phantom of Web3` zombie! Level 3.0 (for Web 3.0 
