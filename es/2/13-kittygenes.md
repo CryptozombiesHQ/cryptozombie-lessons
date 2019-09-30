@@ -100,6 +100,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 La lógica de nuestra función está ahora completa... pero vamos a añadir una característica extra.
 
 Vamos a hacer que los zombis creados a partir de gatos tengan una única característica que muestre que son gato-zombis.
