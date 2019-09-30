@@ -11,6 +11,7 @@ material:
     hideSliders: prawda
     answer: 1
 ---
+
 Nasz kontrakt Solidity jest gotowy! Teraz potrzebujemy napisać aplikacje frontend'ową w Javascript, która będzie wchodziła w interakcję z kontraktem.
 
 Ethereum posiada bibliotekę Javascript o nazwie ***Web3.js***.
