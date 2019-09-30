@@ -272,6 +272,7 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
+
 Tenemos un par de lugares más en `zombiehelper.sol` donde necesitamos implementar nuestro nuevo `modifier` `ownerOf`.
 
 ## Vamos a probarlo
