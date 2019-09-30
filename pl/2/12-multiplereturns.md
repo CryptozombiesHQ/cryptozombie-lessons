@@ -92,6 +92,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna); }
       }
 ---
+
 Funkcja `getKitty` jest naszym pierwszym przykładem funkcji, która zwraca wiele wartości. Spójrzmy, jak sobie z nimi radzić:
 
     function multipleReturns() internal returns(uint a, uint b, uint c) {
