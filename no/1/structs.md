@@ -25,6 +25,7 @@ material:
       struct Zombie { string name; uint dna; }
       }
 ---
+
 Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
 
     struct Person {
