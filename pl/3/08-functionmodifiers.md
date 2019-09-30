@@ -202,6 +202,7 @@ material:
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
       }
 ---
+
 Świetnie! Nasz Zombi posiada od teraz timer odliczający czas oczekiwania.
 
 Następnie, zamierzamy dodać metody pomocnicze. Stworzyliśmy dla Ciebie nowy plik o nazwie `zombiehelper.sol`, który importuje `zombiefeeding.sol`. Pomoże to zorganizować nasz kod.
