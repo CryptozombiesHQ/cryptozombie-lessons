@@ -59,6 +59,7 @@ material:
       contract ZombieFeeding is ZombieFactory {
       }
 ---
+
 ¡Guau! Notarás que hemos limpiado el código de la derecha, ahora tienes unas pestañas en la parte superior de tu editor. Adelante, haz clic entre las pestañas para probarlo.
 
 Nuestro código estaba quedando algo largo, por eso lo hemos dividido en multiples archivos haciendolo así más manejable. Así es como normalmente deberás guardar tu código base en tus proyectos de Solidity.
