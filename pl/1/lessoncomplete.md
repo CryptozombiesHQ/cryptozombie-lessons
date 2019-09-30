@@ -7,6 +7,7 @@ material:
   lessonComplete:
     answer: 1
 ---
+
 Gratulacje! Ukończyłeś lekcję 1 i stworzyłeś pierwszego zombie w swojej armii.
 
 # Kolejne Kroki
