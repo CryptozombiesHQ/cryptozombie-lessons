@@ -59,6 +59,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 W lekcji 1, zrobiliśmy tak, aby użytkownicy mieli możliwość tworzenia nowych Zombi poprzez wywołanie `createRandomZombie` i wpisanie jego nazwy. Jednakże, jeśli użytkownicy mogliby nadal wywoływać tę funkcję, aby stworzyć nieograniczoną liczbę Zombi w swojej armii, gra nie byłaby bardzo zabawna.
 
 Zróbmy tak, aby każdy gracz mógł wywołać tę funkcję tylko raz. W ten sposób nowi gracze będą wywoływać ją po rozpoczęciu gry, aby stworzyć początkowego Zombi w armii.
