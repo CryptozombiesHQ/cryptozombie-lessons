@@ -475,6 +475,7 @@ material:
       }
       }
 ---
+
 ¡Genial! ¡Ahora podemos implementar SafeMath en todos los tipos de `uint` que usamos en nuestra DApp!
 
 Arreglemos todos esos problemas potenciales en `ZombieAttack`. (There was also one `zombies[_zombieId].level++;` that needed to be fixed in `ZombieHelper`, but we've taken care of that one for you so we don't take an extra chapter to do so 
