@@ -199,6 +199,7 @@ material:
       function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].dna = _newDna; }
       }
 ---
+
 Ahora vamos a usar nuestro modificador `aboveLevel` para crear algunas funciones.
 
 Nuestro juego tendrá algunos incentivos para la gente que suba de nivel a sus zombis:
