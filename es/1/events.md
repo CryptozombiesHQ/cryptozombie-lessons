@@ -52,6 +52,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 ¡Nuestro contrato está casi terminado! Ahora vamos a añadir un ***evento***.
 
 Los ***Eventos*** son la forma en la que nuestro contrato comunica que algo sucedió en la cadena de bloques a la interfaz del usuario, el cual puede estar 'escuchando' ciertos eventos y hacer algo cuando suceden.
