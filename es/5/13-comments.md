@@ -482,6 +482,7 @@ material:
 
       }
 ---
+
 ¡El código de Solidity para nuestro juego zombi finalmente ha terminado!
 
 En las próximas lecciones, veremos cómo desplegar el código en Ethereum y cómo interactuar con él utilizando Web3.js.
