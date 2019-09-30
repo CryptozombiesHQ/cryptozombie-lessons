@@ -187,6 +187,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 Wspaniale! Teraz już wiemy jak aktualizować kluczowe części zdecentralizowanej aplikacji, aby uniemożliwić innym użytkownikom manipulowanie naszymi umowami.
 
 Spójrzmy jak Solidity różni się od innych języków programowania:
