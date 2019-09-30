@@ -12,6 +12,7 @@ material:
     ignoreZombieCache: verdadero
     answer: 1
 ---
+
 En la lección 1, creamos una función que recibía un nombre, lo usaba para generar un zombi aleatorio, y lo añadía a la base de datos de zombis de nuestra app guardada en la blockchain.
 
 En la Lección 2, vamos a hacer nuestra app más parecida a un juego: Vamos a hacerlo multijugador, y tambén añadiremos más diversión a la creación de zombis en vez de crearlos aleatoriamente.
