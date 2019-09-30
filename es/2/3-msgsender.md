@@ -57,6 +57,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Ahora que tenemos nuestros mapeos para seguir el rastro del propietario de un zombi, queremos actualizar el metodo `_createZombie` para que los utilice.
 
 Para poder hacer esto, necesitamos algo llamado `msg.sender`.
