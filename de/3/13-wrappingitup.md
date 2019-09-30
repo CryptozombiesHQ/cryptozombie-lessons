@@ -12,6 +12,7 @@ material:
     hideSliders: true
     answer: 1
 ---
+
 Congratulations! That concludes Lesson 3.
 
 ## Let's recap:
