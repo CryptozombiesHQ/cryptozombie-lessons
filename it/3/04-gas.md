@@ -187,6 +187,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 Great! Now we know how to update key portions of the DApp while preventing other users from messing with our contracts.
 
 Let's look at another way Solidity is quite different from other programming languages:
