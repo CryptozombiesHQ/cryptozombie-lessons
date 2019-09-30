@@ -21,6 +21,7 @@ material:
       uint dnaDigits = 16;
       }
 ---
+
 ¡Buen trabajo! Ahora que tenemos una capa para nuestro contrato, aprendamos cómo Solidity maneja las variables.
 
 Las ***Variables de Estado*** se guardan permanentemente en el almacenamiento del contrato. Esto significa que se escriben en la cadena de bloques de Ethereum. Piensa en ellos como escribir en una base de datos.
