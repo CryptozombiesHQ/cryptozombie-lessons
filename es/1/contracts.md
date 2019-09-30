@@ -16,6 +16,7 @@ material:
       contract ZombieFactory {
       }
 ---
+
 Empecemos con lo más fundamental:
 
 El código Solidity está encapsulado en **contratos**. Un `contract` (contrato) es el bloque de construcción fundamental de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
@@ -46,7 +47,7 @@ Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo 
 
 Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.25`.
+1. En la caja de la derecha, haz que nuestro contrato utilice la versión `0.4.25`.
 
 2. Crea un contrato vacío llamado `ZombieFactory`.
 
