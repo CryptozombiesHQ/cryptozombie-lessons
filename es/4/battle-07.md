@@ -273,6 +273,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 Para nuestro juego zombi, queremos contabilizar cuantas batallas han ganado o perdido nuestros zombi. De esta manera podemos mantener un "tabla de posiciones zombi" en nuestro estado de juego.
 
 Podríamos almacenar estos datos de diferentes maneras en nuestro DApp — como mapeos individuales, como Estructuras de la tabla de posiciones o en la misma estructura `Zombie`.
