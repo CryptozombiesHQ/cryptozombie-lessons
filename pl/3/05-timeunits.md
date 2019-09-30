@@ -190,6 +190,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 Właściwość `level` raczej nie wymaga komentarza. Poźniej, gdy stworzymy system walki, Zombiaki, które wygrają więcej bitew będą zwiększały z czasem swój poziom i zyskiwały więcej umiejętności.
 
 Właściwość `readyTime` wymaga nieco więcej wyjaśnień. Celem jest, aby dodać "czas odnowienia", czyli czas, kiedy Zombi musi czekać po nakarmieniu lub zaatakowaniu zanim nastąpi możliwość ponownego karmienia / ataku. Bez tego Zombiaki mogłyby atakować i mnożyć się 1000 razy na dobę, co czyniłoby grę zbyt łatwą.
