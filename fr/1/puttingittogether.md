@@ -45,6 +45,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
 
 We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
