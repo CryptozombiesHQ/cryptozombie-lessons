@@ -264,6 +264,7 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); } }
 ---
+
 Enough refactoring — back to `zombieattack.sol`.
 
 We're going to continue defining our `attack` function, now that we have the `ownerOf` modifier to use.
