@@ -267,6 +267,7 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; Zombie storage enemyZombie = zombies[_targetId]; uint rand = randMod(100); if (rand <= attackVictoryProbability) { myZombie.winCount++; myZombie.level++; enemyZombie.lossCount++; feedAndMultiply(_zombieId, enemyZombie.dna, "zombie"); } } }
 ---
+
 Ahora que tenemos un `winCount` y un `lossCount`, podemos actualizarlos dependiendo de cuál zombi gane la pelea.
 
 En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemos ese número para determinar quien gana la pelea y actualizar nuestras estadísticas apropiadamente.
