@@ -35,6 +35,7 @@ material:
       }
       }
 ---
+
 Deklaracja funkcji w Solidity wygląda następująco:
 
     function eatHamburgers(string _name, uint _amount) {
