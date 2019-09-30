@@ -192,6 +192,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Kiedy mamy już właściwość `readyTime` w naszej strukturze `Zombie`, zajrzyjmy do `zombiefeeding.sol` i zaimplementujmy timer.
 
 Zmodyfikujemy `feedAndMultiply` w taki oto sposób:
