@@ -12,6 +12,7 @@ material:
     hideSliders: true
     answer: 1
 ---
+
 Congratulations! That concludes Lesson 4.
 
 Go ahead and test out your battle function to the right!
