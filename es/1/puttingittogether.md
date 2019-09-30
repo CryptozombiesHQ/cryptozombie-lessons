@@ -45,6 +45,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 ¡Estamos a punto de terminar con nuestro generador aleatorio de Zombis! Vamos a crear una función pública que ponga todo junto.
 
 Vamos a crear una función pública que tomará un parámetro, el nombre del zombi, y usará ese nombre para crear un zombi con un ADN aleatorio.
