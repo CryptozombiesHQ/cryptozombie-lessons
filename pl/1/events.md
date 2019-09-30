@@ -52,6 +52,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Nasz kontrakt jest prawie gotowy! Teraz dodajmy ***event***.
 
 ***Eventy*** są sposobem komunikowania Twojej aplikacji o tym, że coś wydarzyło się w blockchain'ie. Możemy określić to jako "nasłuchiwanie" pewnych wydarzeń i podejmowanie działania gdy takie się pojawią.
