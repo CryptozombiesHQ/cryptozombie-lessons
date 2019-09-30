@@ -36,6 +36,7 @@ material:
       function createZombie (string _name, uint _dna) { zombies.push(Zombie(_name, _dna)); }
       }
 ---
+
 ### Tworzenie Nowych Struktur
 
 Pamiętasz naszą strukturę `Person` z poprzedniego przykładu?
