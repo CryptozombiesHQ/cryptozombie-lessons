@@ -41,9 +41,10 @@ material:
       function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
       }
 ---
+
 Queremos que nuestra función `_generateRandomDna` devuelva un valor (semi) aleatorio `uint`. Comó se puede conseguir esto?
 
-Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. Una función hash básicamente mapea un input a un número aleatorio hexadecimal de 256 bits. Un pequeño cambio de la string puede suponer un cambio gigantesco en el hash.
+Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. Un pequeño cambio de la string puede suponer un cambio gigantesco en el hash.
 
 Es muy útil para muchas cosas, pero por ahora vamos a usarlo solamente para generar un número cuasi-aleatorio.
 
@@ -79,6 +80,6 @@ En el código de arriba, `a * b` devuelve un `uint`, pero estábamos intentando 
 
 ¡Vamos a rellenar el cuerpo de la función `_generateRandomDna`! Esto es lo que deberíamos hacer:
 
-1. La primera línea de código debería tomar el hash `keccak256` de `abi.encodePacked(_str)` para generar un hexadecimal cuasi aleatorio, forzarlo como un `uint`, y finalmente guardar el resultado en un `uint` llamado `rand`.
+1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexadecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 
 2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). Así que la segunda línea del código debería devolver `return` el módulo del valor de arriba (`%`) `dnaModulus`.
