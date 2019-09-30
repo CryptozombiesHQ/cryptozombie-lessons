@@ -45,6 +45,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Jesteśmy bliscy ukończenia naszego generatora losowych Zombi! Stwórzmy teraz funkcję, która "spina" wszystko razem.
 
 Zamierzamy napisać publiczną funkcję, która na wejściu pobiera nanzwę Zombiaka i używa tej nazwy do stworzenia Zombi z losowym DNA.
