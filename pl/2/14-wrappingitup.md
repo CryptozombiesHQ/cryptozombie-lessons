@@ -12,6 +12,7 @@ material:
     hideSliders: prawda
     answer: 1
 ---
+
 Tak jest, udało Ci się ukończyć lekcje 2!
 
 You can check out the demo to the right to see it in action. Go ahead, I know you can't wait until the bottom of this page 
