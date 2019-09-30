@@ -40,6 +40,7 @@ material:
       }
       }
 ---
+
 W tym rozdziale nauczymy się nieco o ***wartościach zwracanych</strong>* przez funkcje i o modyfikatorach funkcji.</p> 
 
 ## Wartości zwracane
