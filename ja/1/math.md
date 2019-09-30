@@ -22,6 +22,7 @@ material:
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       }
 ---
+
 Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
 
 * Addition: `x + y`
