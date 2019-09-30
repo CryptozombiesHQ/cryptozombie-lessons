@@ -12,6 +12,7 @@ material:
     ignoreZombieCache: prawda
     answer: 1
 ---
+
 W lekcji 1, utworzyliśmy funkcję, która pobiera nazwę, używa jej do generowania losowego Zombi i dodaje go do naszej bazy danych aplikacji w blockchain'ie.
 
 W lekcji 2 zrobimy naszą aplikację tak, aby bardziej wyglądała na grę. Zamierzamy zrobić multiplayer i uczynimy ją nieco zabawniejszą poprzez tworzenie Zombi zamiast generowania ich losowo.
