@@ -11,6 +11,7 @@ material:
     hideSliders: true
     answer: 1
 ---
+
 Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
 
 Ethereum has a Javascript library called ***Web3.js***.
