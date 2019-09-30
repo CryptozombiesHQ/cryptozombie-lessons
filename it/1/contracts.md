@@ -16,6 +16,7 @@ material:
       contract ZombieFactory {
       }
 ---
+
 Iniziamo dalle basi assolute:
 
 Il codice Solidity è contenuto nei **contratti**. Un `contratto` è un fondamentale elemento costitutivo delle applicazioni Ethereum — tutte le variabili e le funzioni appartengono al contratto, e sarà il punto di partenza di tutti i vostri progetti.
