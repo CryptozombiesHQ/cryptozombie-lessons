@@ -12,6 +12,7 @@ material:
     hideSliders: verdadero
     answer: 1
 ---
+
 ¡Eso es, has completado la lección 2!
 
 Ahora puede probar nuestra demostración a la derecha para verlo en acción. Sigue adelante, sé que no puedes esperar hasta el final de esta página 
