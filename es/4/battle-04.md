@@ -268,6 +268,7 @@ material:
       function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) { Zombie storage myZombie = zombies[_zombieId]; require(_isReady(myZombie)); _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); _triggerCooldown(myZombie); }
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); } }
 ---
+
 Quien sea que llame a nuestra función `attack` — queremos asegurarnos de que el usuario sea realmente el dueño del zombi con el que está atacando. ¡Sería un problema de seguridad si se pudiera atacar con el zombi de alguien más!
 
 ¿Puede pensar en cómo podríamos añadir un chequeo para ver si la persona que llama a esta función es el dueño del `_zombieId` que está pasando?
