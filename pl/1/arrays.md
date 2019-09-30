@@ -31,6 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
+
 Jeśli chcesz stworzyć zbiór jakichś zmiennych, możesz użyć ***tablicy (array)***. W Solidity mamy do dyspozycji dwa typy tablic: ***fixed*** i ***dynamic***:
 
     // Tablica o stałym rozmiarze 2 elementów:
