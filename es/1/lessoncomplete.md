@@ -7,6 +7,7 @@ material:
   lessonComplete:
     answer: 1
 ---
+
 ¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
 
 # Pasos Siguientes
