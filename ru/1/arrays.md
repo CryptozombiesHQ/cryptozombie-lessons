@@ -31,6 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
+
 Когда вам требуется создать коллекцию чего-либо, вы можете использовать ***массив***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
     // Array with a fixed length of 2 elements:
