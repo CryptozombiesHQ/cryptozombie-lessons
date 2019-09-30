@@ -12,6 +12,7 @@ material:
     hideSliders: verdadero
     answer: 1
 ---
+
 ¡Felicidades! Eso concluye la Lección 4.
 
 ¡Adelante y prueba tu función de batalla a la derecha!
