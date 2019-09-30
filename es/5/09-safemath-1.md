@@ -418,6 +418,7 @@ material:
 
       }
 ---
+
 Congratulations, that completes our ERC721 and ERC721x implementation!
 
 Eso no fue tan difícil, ¿verdad? Muchas de estas cosas de Ethereum suenan realmente complicadas cuando escuchas a personas hablar de ellas, así que la mejor manera de entenderlas es realizarlas tú mismo.
