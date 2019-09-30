@@ -184,6 +184,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Nasz bazowy kontrakt `ZombieFactory` dziedziczy z `Ownable`, więc możemy użyć modyfikatora funkcji `onlyOwner` w `ZombieFeeding`.
 
 Zawdzięczamy to działaniu dziedziczenia. Zapamiętaj:
