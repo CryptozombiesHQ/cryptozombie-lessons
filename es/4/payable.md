@@ -235,6 +235,7 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
+
 Hasta ahora, hemos cubierto unos cuantos ***modificadores de función***. Puede resultar difícil tratar de recordar todo, así que hagamos un breve repaso:
 
 1. Tenemos modificadores de visibilidad que controlan desde dónde y cuándo la función puede ser llamada: `private` significa que sólo puede ser llamada desde otras funciones dentro del contrato; `internal` es como `private` pero también puede ser llamada por contratos que hereden desde este; `external` sólo puede ser llamada desde afuera del contrato; y finalmente `public` puede ser llamada desde cualquier lugar, tanto internamente como externamente.
