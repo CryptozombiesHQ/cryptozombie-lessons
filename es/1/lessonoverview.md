@@ -11,6 +11,7 @@ material:
     ignoreZombieCache: verdadero
     answer: 1
 ---
+
 En la Lección 1 vas a construir una "Fabrica de Zombis" para poder crear tu ejército de zombis.
 
 * Nuestra fábrica mantendrá una base de datos de todos los zombis en nuestro ejército
