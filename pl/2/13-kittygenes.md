@@ -100,6 +100,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Logika naszej funkcji jest gotowa... lecz dodajmy bonusową cechę.
 
 Zróbmy, aby Zombi stworzone z kotków miały jakąś unikalną cechę, która pokaże nam, że są one koto-Zombiakami.
