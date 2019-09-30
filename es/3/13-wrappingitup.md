@@ -12,6 +12,7 @@ material:
     hideSliders: verdadero
     answer: 1
 ---
+
 ¡Felicidades! Eso concluye la Lección 3.
 
 ## Recapitulemos:
