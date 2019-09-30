@@ -192,6 +192,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Ahora que tenemos la propiedad `readyTime` en nuestra estructura `Zombie`, vamos a pasar a `zombiefeeding.sol` e implementar el contador de enfriamiento.
 
 Vamos a modificar nuestro `feedAndMultiply` de tal manera que:
