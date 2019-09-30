@@ -243,6 +243,7 @@ material:
       contract ZombieAttack is ZombieHelper {
       }
 ---
+
 Ahora que hemos aprendido sobre funciones payable y balances de contrato, es hora de añadir funcionalidad para las batallas zombi!
 
 Siguiendo el formato de capítulos anteriores, organizaremos nuestro código creando un nuevo archivo / contrato para la funcionalidad de ataque que se importa desde nuestro contrato anterior.
