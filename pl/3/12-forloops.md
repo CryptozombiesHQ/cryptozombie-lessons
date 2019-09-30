@@ -214,6 +214,7 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
+
 W poprzednim rozdziale, wspomnieliśmy, że czasami będziesz chciał użyć pętli `for`, aby zbudować zawartość tablicy w funkcji, zamiast po prostu zapisywać tą tablicę do przechowania.
 
 Spójrzmy dlaczego.
