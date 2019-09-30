@@ -213,6 +213,7 @@ material:
       return result; }
       }
 ---
+
 Jedną z najbardziej kosztownych operacji w Solidity jest używanie `storage`.
 
 Jest tak, ponieważ gdy za każdym razem zapisujesz lub zmieniasz trochę danych, trafia to na stałe do sieci blockchain. Na zawsze! Tysiące węzłów na świecie musi przechowywać te dane na swoich dyskach, a ilość tych danych ciągle wrasta wraz z powiększaniem się blockchain'a. Więc pojawiają się koszty.
