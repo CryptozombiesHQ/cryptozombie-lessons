@@ -185,6 +185,7 @@ material:
       function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
+
 ¿Has encontrado el agujero de seguridad en el capítulo anterior?
 
 ¡`setKittyContractAddress` es `external`, así que cualquiera la puede llamar! Eso significa que cualquiera que haya llamado a la función podría cambiar la dirección del contrato de CryptoKitties, y romper nuestra aplicación para todos sus usuarios.
