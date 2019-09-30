@@ -21,6 +21,7 @@ material:
       uint dnaDigits = 16;
       }
 ---
+
 Dobra robota! Teraz, kiedy mamy już podstawowy szablon naszego kontraktu, poznajmy zmienne w języku Solidity.
 
 ***Zmienne stanu*** są trwale przechowywane w pamięci kontraktu. Oznacza to, że są wpisywane do blockchain'u Ethereum. Pomyśl o nich jak o wpisaniu do baz danych.
