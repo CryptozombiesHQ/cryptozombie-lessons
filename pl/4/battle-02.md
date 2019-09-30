@@ -249,6 +249,7 @@ material:
       contract ZombieAttack is ZombieHelper { uint randNonce = 0;
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; } }
 ---
+
 Świetnie! Teraz zagłębimy się w logikę walki.
 
 Wszystkie dobre gry wymagają jakiegoś poziomu losowości. Więc jak generujemy liczby losowe w Solidity?
