@@ -211,6 +211,7 @@ material:
       }
       }
 ---
+
 ¡Increible! Ahora tenemos algunas habilidades especiales para los zombis de nivel alto, dándoles a sus dueños un incentivo por subirlos de nivel. Si queremos podemos añadir más de estos en el futuro.
 
 Vamos a añadir una nueva función: nuestra DApp necesita un método para ver el ejército de un usuario — vamos a llamarlo `getZombiesByOwner`.
