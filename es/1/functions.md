@@ -35,6 +35,7 @@ material:
       }
       }
 ---
+
 Una declaración de una función en solidity se parece a esto:
 
     function eatHamburgers(string _name, uint _amount) {
