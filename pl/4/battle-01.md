@@ -243,6 +243,7 @@ material:
       contract ZombieAttack is ZombieHelper {
       }
 ---
+
 Teraz, gdy dowiedzieliśmy się o funkcjach payable oraz stanu konta kontraktu, przyszedł czas na dodanie nowych funkcjonalności do walki zombie!
 
 Podążając za schematem z poprzednich rozdziałów. Utworzymy nowy plik / kontrakt dla funkcjonalności walki, która jest importowana z poprzedniego kontraktu.
