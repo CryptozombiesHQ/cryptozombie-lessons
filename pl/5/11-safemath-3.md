@@ -497,6 +497,7 @@ material:
 
       }
 ---
+
 Great, now our ERC721 implementation is safe from overflows & underflows!
 
 Going back through the code we wrote in previous lessons, there's a few other places in our code that could be vulnerable to overflows or underflows.
