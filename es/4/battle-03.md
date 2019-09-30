@@ -258,6 +258,7 @@ material:
       function randMod(uint _modulus) internal returns(uint) { randNonce++; return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus; }
       function attack(uint _zombieId, uint _targetId) external { } }
 ---
+
 Ahora que tenemos una fuente de aleatoriedad en nuestro contrato, podemos utilizar en nuestras batallas zombi para calcular el resultado.
 
 Nuestras batallas zombi funcionarán de la siguiente manera:
