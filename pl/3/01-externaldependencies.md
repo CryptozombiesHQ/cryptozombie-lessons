@@ -106,6 +106,7 @@ material:
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
+
 Do tej pory, Solidity wyglądał całkiem podobnie do innych języków jak np. Javascript. Ale jest kilka rzeczy, które czynią Ethereum DApps odmiennymi od normalnych aplikacji.
 
 Po wdrożeniu umowy do Ethereum, jest ona ***niezmienna***, co oznacza, że nie może już nigdy być zmodyfikowana lub zaktualizowana ponownie.
