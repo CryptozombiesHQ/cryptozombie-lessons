@@ -202,6 +202,7 @@ material:
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
       }
 ---
+
 ¡Genial! Nuestro zombi tiene ahora un temporizador de enfriamiento.
 
 Ahora, vamos a añadir algunos métodos auxiliares. Hemos creado un nuevo fichero por ti llamado `zombiehelper.sol`, que importa `zombiefeeding.sol`. Esto nos ayudará a tener nuestro código organizado.
