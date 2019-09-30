@@ -58,7 +58,7 @@ material:
 
 We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexidecimal number. A slight change in the input will cause a large change in the hash.
+Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash.
 
 It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
 
@@ -97,6 +97,6 @@ In the above, `a * b` returns a `uint`, but we were trying to store it as a `uin
 
 Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
 
-1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexadecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 
 2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
