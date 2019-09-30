@@ -12,6 +12,7 @@ material:
     hideSliders: prawda
     answer: 1
 ---
+
 Gratulacje! To kończy lekcję 3.
 
 ## Przypomnijmy:
