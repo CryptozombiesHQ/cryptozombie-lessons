@@ -11,6 +11,7 @@ material:
     1: >
 
 ---
+
 Solidity's code is encapsulated in contracts. A contract is basically...
 
     contract HelloWorld
