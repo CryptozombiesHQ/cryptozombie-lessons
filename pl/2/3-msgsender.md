@@ -57,6 +57,7 @@ material:
       function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
+
 Teraz, kiedy mamy już mapowania zawierające informacje o tym, kto jest posiadaczem Zombi, będziemy chcieli aktualizować metodę `_createZombie` aby ich używać.
 
 Aby to zrobić, musimy użyć czegoś o nazwie `msg.sender`.
