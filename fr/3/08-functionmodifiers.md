@@ -202,6 +202,7 @@ material:
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
       }
 ---
+
 Great! Our zombie now has a functional cooldown timer.
 
 Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
