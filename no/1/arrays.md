@@ -31,6 +31,7 @@ material:
       Zombie[] public zombies;
       }
 ---
+
 Når du vil ha en samling av noe kan du bruke en ***matrise***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
     // Array with a fixed length of 2 elements:
