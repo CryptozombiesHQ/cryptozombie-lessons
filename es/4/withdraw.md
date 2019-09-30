@@ -245,6 +245,7 @@ material:
       function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
+
 En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre cuando lo envías?
 
 Luego de enviar Ether a un contrato, este se almacena en la cuenta de Etehreum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato.
