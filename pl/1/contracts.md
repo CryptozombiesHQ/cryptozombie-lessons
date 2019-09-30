@@ -16,6 +16,7 @@ material:
       contract ZombieFactory {
       }
 ---
+
 Zacznijmy od całkowitych podstaw:
 
 Kod Solidity zawarty jest w **kontraktach**. `Kontrakt` jest fundamentalnym blokiem budującym aplikacje oparte na Ethereum — wszystkie zmienne i funkcje należą do kontraktu i to będzie punkt wyjścia dla wszystkich Twoich projektów.
