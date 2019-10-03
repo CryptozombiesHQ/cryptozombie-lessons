@@ -2,6 +2,7 @@
 title: Advanced Solidity Concepts
 header: "Lesson 3: Advanced Solidity Concepts"
 roadmap: roadmap3.png
+path: solidity
 ---
 
 Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...

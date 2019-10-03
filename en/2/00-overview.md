@@ -2,6 +2,7 @@
 title: Zombies Attack Their Victims
 header: So, you've made it to Lesson 2!
 roadmap: roadmap2.jpg
+path: solidity
 ---
 
 Impressive, human! You're a better coder than I thought.
