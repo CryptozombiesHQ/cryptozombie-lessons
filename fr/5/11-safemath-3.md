@@ -494,7 +494,7 @@ Cela veut dire que nous allons devoir implémenter 2 bibliothèques de plus pour
 
 Le code sera exactement le même que SafeMath, à l'exception des instances `uint256` qui seront remplacées par `uint32` ou `uint16`.
 
-Nous avons pris de l'avant et avons implémenté ce code pour vous — vous pouvez voir le code dans `safemath.sol`.
+Nous avons pris de l'avance et avons implémenté ce code pour vous — vous pouvez voir le code dans `safemath.sol`.
 
 Maintenant nous devons l'implémenter dans ZombieFactory.
 

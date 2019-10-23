@@ -424,7 +424,7 @@ contract CryptoZombies {
 }
 ```
 
-C'est particulièrement une bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
+C'est une particulièrement bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
 
 Le standard dans la communauté Solidity est d'utiliser un format appelé **_natspec_**, qui ressemble à ça :
 
@@ -461,7 +461,7 @@ Cependant, maintenant que vous êtes un expert Solidity — nous allons supposer
 
 Essayez d'ajouter des tags natspec à `ZombieOwnership`:
 
-1. `@title` — Par exemple : Un contrat qui permet de gère le transfère de propriété d'un zombie
+1. `@title` — Par exemple : Un contrat qui permet de gérer le transfert de propriété d'un zombie
 
 2. `@author` — Votre nom !
 
