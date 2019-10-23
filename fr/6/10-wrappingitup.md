@@ -11,7 +11,7 @@ material:
     answer: 1
 ---
 
-Félicitations ! Vous avez écrit avec succès votre premier front-end Web3.js qui interagie avec votre smart contract.
+Félicitations ! Vous avez écrit avec succès votre premier front-end Web3.js qui interagit avec votre smart contract.
 
 Comme récompense, vous obtenez votre propre zombie `The Phantom of Web3` de niveau 3.0 (pour Web 3.0 😉), avec en plus le masque de renard. Vous pouvez le voir à droite.
 
@@ -23,13 +23,13 @@ L'implémentation est donc minimale. Voici une liste d'idées de choses que l'on
 
 1. Implémenter des fonctions pour `attack`, `changeName`, `changeDna`, et les fonctions ERC721 `transfer`, `ownerOf`, `balanceOf`, etc. L'implémentation de ces fonctions sera identique aux autres transactions `send` que nous avons vu.
 
-2. Implémenter une "page admin" où vous pouvez exécuter `setKittyContractAddress`, `setLevelUpFee`, et `withdraw`. À nouveau, il n'y a pas de logique spéciale coté front-end - ces implémentations seraient identiques aux fonctions que nous avons déjà vu. Vous devrez juste vous assurer que vous les appelez depuis la même adresse Ethereum que celle qui a déployé le contrat, puisqu'elles ont le modificateur `onlyOwner`.
+2. Implémenter une "page admin" où vous pouvez exécuter `setKittyContractAddress`, `setLevelUpFee`, et `withdraw`. Ici encore, il n'y a pas de logique spéciale coté front-end - ces implémentations seraient identiques aux fonctions que nous avons déjà vu. Vous devrez juste vous assurer que vous les appelez depuis la même adresse Ethereum que celle qui a déployé le contrat, puisqu'elles ont le modificateur `onlyOwner`.
 
 3. Il y a plusieurs vues dans notre application que nous voudrions implémenter :
 
-  a. Une page zombie individuelle, où l'on peut voir les infos d'un zombie en particulier avec un lien permanent associé. Cette page devra afficher l'apparence du zombie, son nom, son propriétaire (avec un lien vers le profil de l'utilisateur), son compteur victoire/défaite, son historique de combats, etc.
+  a. Une page zombie individuelle, où l'on peut voir les infos d'un zombie en particulier avec un lien permanent associé. Cette page devra afficher l'apparence du zombie, son nom, son propriétaire (avec un lien vers le profil de l'utilisateur), son compteur victoires/défaites, son historique de combats, etc.
 
-  b. Une page utilisateur, où on peut voir l'armée de zombie d'un utilisateur avec un lien permanent. On doit pouvoir cliquer sur un zombie pour voir sa page, et aussi cliquer sur un zombie pour l'attaquer si on est connecté avec MetaMask et qu'on a une armée.
+  b. Une page utilisateur, où l'on peut voir l'armée de zombie d'un utilisateur avec un lien permanent. On doit pouvoir cliquer sur un zombie pour voir sa page, et aussi cliquer sur un zombie pour l'attaquer si on est connecté avec MetaMask et qu'on a une armée.
 
   c. Une page d'accueil, qui est une variation de la page utilisateur qui montre l'armée de zombie de l'utilisateur actuel. (C'est la page que nous avons commencé avec index.html).
 
@@ -37,9 +37,9 @@ L'implémentation est donc minimale. Voici une liste d'idées de choses que l'on
 
 5. Une fonction dans l'interface pour que l'utilisateur puisse attaquer le zombie d'un autre utilisateur.
 
-  Une façon de faire ça serait quand l'utilisateur navigue sur la page d'un autre utilisateur, il pourrait y avoir un bouton qui dit "Attaquer ce zombie". Quand l'utilisateur clique dessus, cela afficher un modal qui contient l'armée de l'utilisateur actif et lui demanderait "Avec quel zombie voulez-vous attaquer ?"
+  Une façon de faire ça serait que lorsque l'utilisateur navigue sur la page d'un autre utilisateur, il pourrait y avoir un bouton qui dit "Attaquer ce zombie". Quand l'utilisateur clique dessus, cela afficherait une modale qui contiendrait l'armée de l'utilisateur actif et lui demanderait "Avec quel zombie voulez-vous attaquer ?"
 
-  La page d'accueil utilisateur pourrait aussi avoir un bouton pour chaque zombie "Attaquer un autre zombie". Une fois cliqué, cela pourrait afficher un modal avec un champ de recherche pour rentrer l'ID d'un zombie. Une option pourrait dire "Attaquer un zombie aléatoire", qui rechercherait un nombre aléatoire.
+  La page d'accueil utilisateur pourrait aussi avoir un bouton pour chaque zombie "Attaquer un autre zombie". Une fois cliqué, cela pourrait afficher une modale avec un champ de recherche pour entrer l'ID d'un zombie. Une option pourrait dire "Attaquer un zombie aléatoire", qui rechercherait un nombre aléatoire.
 
   Il faudrait aussi griser les zombies de l'utilisateur dont la période d'attente n'est pas encore passée, afin que l'interface indique à l'utilisateur qu'il ne peut pas attaquer avec ce zombie, et combien de temps il doit attendre.
 
@@ -47,12 +47,11 @@ L'implémentation est donc minimale. Voici une liste d'idées de choses que l'on
 
 7. Pour les nouveaux utilisateurs, on pourrait afficher un message de bienvenue avec un moyen pour créer son premier zombie, en appelant `createRandomZombie()`.
 
-8. On voudrait sûrement ajouter un évènement `Attack` à notre smart contract avec l'adresse de l'utilisateur comme propriété `indexed` comme vu dans le chapitre précédent. Cela permettrait d'avoir des notifications en temps réel - on pourrait afficher une alerte à un utilisateur quand un de ses zombies est attaqué, et il pourrait voir le zombie/utilisateur qui l'a attaqué et rendre la pareille.
+8. On voudrait sûrement ajouter un évènement `Attack` à notre smart contract avec l'adresse de l'utilisateur comme propriété `indexed` comme vu dans le chapitre précédent. Cela permettrait d'avoir des notifications en temps réel - on pourrait afficher une alerte à un utilisateur lorsque l'un de ses zombies est attaqué, et il pourrait voir le zombie/utilisateur qui l'a attaqué et rendre la pareille.
 
 9. On voudrait certainement implémenter une sorte de cache pour notre front-end afin que nous ne soyons pas constamment en train d'interroger Infura avec des requêtes pour les mêmes données. (Notre implémentation actuelle de `displayZombies` appelle `getZombieDetails` pour chaque zombie à chaque fois que nous rafraîchissons l'interface - mais normalement nous devrions l'appeler seulement pour les nouveaux zombies ajoutés à notre armée).
 
-
-10. Un tchat en temps réel pour narguer les autres utilisateurs quand on écrase leur armée de zombie ? Oui svp.
+10. Un chat en temps réel pour narguer les autres utilisateurs quand on écrase leur armée de zombie ? Oui svp.
 
 C'est juste un début - Je suis sûr que vous avez encore pleins d'idées pour l'améliorer - et c'est déjà une bonne liste.
 
