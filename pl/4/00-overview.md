@@ -2,7 +2,9 @@
 title: System Walki Zombie
 header: "Lekcja 4: System Walki Zombie"
 roadmap: roadmap4.jpg
+path: solidity
 ---
+
 Nadszedł czas, człowieku...
 
 Czas na umożliwienie twoim zombie WALKI!
