@@ -386,9 +386,9 @@ material:
 
 Félicitations, cela complète notre implémentation ERC721 !
 
-Ce n'était pas si dur que ça, n'est-ce pas ? Beaucoup de chose en Ethereum paraissent compliquées quand on en entend parler, et la meilleure façon de le comprendre et de faire l'implémenter soi-même.
+Ce n'était pas si dur que ça, n'est-ce pas ? Beaucoup de choses en Ethereum paraissent compliquées quand on en entend parler, et la meilleure façon de le comprendre est d'en faire l'implémentation soi-même.
 
-Garder en tête que c'était une implémentation minimale. Il y a d'autres fonctionnalités que nous voudrions ajouter à notre implémentation, comme s'assurer que les utilisateurs ne transfèrent pas accidentellement leurs zombies à l'adresse `0` (on appelle ça brûler un token - l'envoyer à une adresse dont personne n'a la clé privée, le rendant irrécupérable). Ou rajouter une logique d'enchère sur notre DApp. (Est-ce que vous voyez une façon de faire ça ?)
+Gardez en tête que c'était une implémentation minimale. Il y a d'autres fonctionnalités que nous voudrions ajouter à notre implémentation, comme s'assurer que les utilisateurs ne transfèrent pas accidentellement leurs zombies à l'adresse `0` (on appelle ça brûler un token - l'envoyer à une adresse dont personne n'a la clé privée, le rendant irrécupérable). Ou rajouter une logique d'enchère sur notre DApp. (Est-ce que vous voyez une façon de faire ça ?)
 
 Mais nous voulons garder cette leçon simple, nous avons opté pour l'implémentation la plus basique. Si vous voulez voir un exemple d'une implémentation plus détaillée, vous pouvez regarder le contrat ERC721 d'OpenZeppelin après ce tutoriel.
 
@@ -411,7 +411,7 @@ Dans ce cas, nous avons causé un débordement par le haut - `number` est contre
 
 Un débordement par le bas est similaire, si vous soustrayez `1` d'un `uint8` égal `0`, le résultat sera `255` (car les `uint` sont non signés et ne peuvent pas être négatifs).
 
-Nous n'utilisons pas de `uint8` ici, et il paraît peut probable qu'un `uint256` débordera avec des incrémentations de `1` par `1` (2^256 est un nombre très grand), mais c'est toujours bon de protéger notre contrat afin que notre DApp n'est pas des comportements inattendus dans le futur.
+Nous n'utilisons pas de `uint8` ici, et il paraît peut probable qu'un `uint256` débordera avec des incrémentations de `1` par `1` (2^256 est un nombre très grand), mais c'est toujours bon de protéger notre contrat afin que notre DApp n'ait pas de comportements inattendus dans le futur.
 
 ### Utiliser SafeMath
 
@@ -419,9 +419,9 @@ Pour prévenir cela, OpenZeppelin a créé une **_bibliothèque_** appelée Safe
 
 Mais d'abord, c'est quoi une bibliothèque ?
 
-Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet de rajouter des fonctions à un type de donnée native.
+Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet de rajouter des fonctions à un type de données natif.
 
-Par exemple. avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath à 4 fonctions — `add`, `sub`, `mul`, et `div`. Et maintenant nous pouvons utiliser ces fonctions à partir d'un `uint256` en faisant :
+Par exemple. avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath a 4 fonctions — `add`, `sub`, `mul`, et `div`. Et maintenant nous pouvons utiliser ces fonctions à partir d'un `uint256` en faisant :
 
 ```
 using SafeMath for uint256;
