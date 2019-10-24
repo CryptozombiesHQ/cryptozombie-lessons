@@ -2,7 +2,9 @@
 title: ERC721 & Crypto-Collectibles
 header: "Lesson 5: ERC721 & Crypto-Collectibles"
 roadmap: roadmap5.jpg
+path: solidity
 ---
+
 Whew! Things are starting to heat up in here...
 
 In this lesson, we're going to get a bit more advanced.
