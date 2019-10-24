@@ -2,7 +2,9 @@
 title: Tworzenie Fabryki Zombie
 header: Witaj, człowieku!
 roadmap: roadmap.jpg
+path: solidity
 ---
+
 Więc myślisz, że posiadasz to, co jest potrzebne aby zostać **CryptoZombie**, hm?
 
 Ten kurs nauczy Cię jak **stworzyć grę na Ethereum**.
