@@ -2,7 +2,9 @@
 title: App Front-ends & Web3.js
 header: "Lección 6: App Front-ends & Web3.js"
 roadmap: roadmap6.png
+path: solidity
 ---
+
 ¿Has llegado muy lejos, eh?!
 
 No eres un CryptoZombie ordinario...
