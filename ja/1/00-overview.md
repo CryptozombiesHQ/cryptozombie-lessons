@@ -2,7 +2,9 @@
 title: Making the Zombie Factory
 header: Welcome, human!
 roadmap: roadmap.jpg
+path: solidity
 ---
+
 So you think you have what it takes to become a **CryptoZombie**, huh?
 
 This course will teach you how to **build a game on Ethereum**.
