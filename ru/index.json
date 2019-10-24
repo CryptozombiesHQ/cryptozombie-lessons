@@ -15,9 +15,27 @@
             "name": "Твитер",
             "link": "https://twitter.com/loomnetwork"
         },
+        "course": {
+            "solidity_path": {
+                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+            },
+            "hand_on_path": {
+                "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
+                "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
+            },
+            "hand_on_plasma": {
+                "title": "Advanced Solidity Path: Get In-depth Knowledge",
+                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+            },
+            "libra_path": {
+                "title": "Libra Path: Master the Basics of Libra Blockchain Development",
+                "summary": "Learn Libra Blockchain Development by Creating Your Own Simple Game Using the Move Programming Language"
+            }
+        },
         "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
         "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "plasma_path": "Plasma Path: Learn how to use PlasmaCash",
+        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
         "start_resume": "Start/Resume",
         "the_curriculum": "The Curriculum",
         "course_overview": "Course Overview",
@@ -370,5 +388,6 @@
                 "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
             ]
         }
-    }
+    },
+    "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
 }
