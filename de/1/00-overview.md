@@ -2,7 +2,9 @@
 title: Konstruiere eine Zombiefabrik
 header: Willkommen, Mensch!
 roadmap: roadmap.jpg
+path: solidity
 ---
+
 Du denkst also, Du hast das Zeug ein **CryptoZombie** zu werden, huh?
 
 Dieser Kurs wird Dir zeigen, wie man **ein Spiel auf Ethereum entwickelt**.
