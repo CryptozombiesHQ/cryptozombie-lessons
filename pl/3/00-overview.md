@@ -2,7 +2,9 @@
 title: Zaawansowane pojęcia Solidity
 header: "Lekcja 3: Zaawansowane pojęcia Solidity"
 roadmap: roadmap3.png
+path: solidity
 ---
+
 Grr... Nie mogę Cię powstrzymać, czy mogę? Twoje umiejętności Solidity są potężne, człowieku...
 
 Teraz, kiedy masz już pewne doświadczenie w kodowaniu w Solidity, będziemy zagłębiać się w niektóre, bardziej techniczne aspekty rozbudowy Ethereum.
