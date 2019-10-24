@@ -70,10 +70,10 @@ Używamy do tego `require`. `require` powoduje, że funkcja będzie sygnalizowa�
 
     function sayHiToVitalik(string _name) public returns (string) {
       // Sprawdza czy _name jest równe "Vitalik". Wyrzuca błąd i wychodzi jeśli to nie jest prawdą.
-      // (Dygresja: Solidity nie posiada natywnego porównywania stringów, więc
-      // porównujemy hasze keccak256, aby sprawdzić czy ciągi znaków są sobie równe)
-      require(keccak256(_name) == keccak256("Vitalik"));
-      // Jeśli to prawda, kontynuuj działanie funkcji:
+      // (Side note: Solidity doesn't have native string comparison, so we
+      // compare their keccak256 hashes to see if the strings are equal)
+      require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
+      // If it's true, proceed with the function:
       return "Hi!";
     }
     
