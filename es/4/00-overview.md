@@ -2,7 +2,9 @@
 title: Sistema de Batalla Zombi
 header: "Lección 4: Sistema de Batalla Zombi"
 roadmap: roadmap4.jpg
+path: solidity
 ---
+
 Ha llegado el momento, humano...
 
 ¡Es hora de hacer que tus zombis PELEEN!
