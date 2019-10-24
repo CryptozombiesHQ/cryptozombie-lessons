@@ -2,7 +2,9 @@
 title: Conceptos Avanzados de Solidity
 header: "Lección 3: Conceptos Avanzados de Solidity"
 roadmap: roadmap3.png
+path: solidity
 ---
+
 Grr... ¿No puedo frenarte, no? Tus habilidades en Solidity son formidables, humano...
 
 Ahora que tienes algo de experiencia programando Solidity, vamos a adentrarnos en aspectos más técnicos del desarrollo en Ethereum.
