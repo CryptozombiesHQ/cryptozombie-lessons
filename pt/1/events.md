@@ -103,7 +103,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 Queremos um evento que avise o frontend toda vez que um novo zumbi for criado, então o aplicativo pode mostrá-lo.
 
-1. Declare um `event` chamado `NewZombie`. Este deve passar os parâmetros `zombieID` (um `uint`), `name` (uma `string`), e `dna` (um `uint`).
+1. Declare um `event` chamado `NewZombie`. Este deve passar os parâmetros `zombieId` (um `uint`), `name` (uma `string`), e `dna` (um `uint`).
 
 2. Modifique a função `_createZombie` para disparar o evento `NewZombie` após adicionar o novo Zumbi em nosso array `zombies`
 
