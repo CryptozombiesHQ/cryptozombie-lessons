@@ -6,13 +6,13 @@
         "chapter": "第{chapterNum}章",
         "syncing": "正在同步...",
         "telegram": {
-            "name": "Telegram",
-            "openChat": "Ask Question",
+            "name": "电报群",
+            "openChat": "提问题",
             "action": "加入我们的Telegram",
             "link": "https://t.me/loomnetworkdev"
         },
         "twitter": {
-            "name": "Twitter",
+            "name": "推特",
             "link": "https://twitter.com/loomnetwork"
         },
         "course": {
