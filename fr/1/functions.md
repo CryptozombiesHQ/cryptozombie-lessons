@@ -66,6 +66,6 @@ eatHamburgers("vitalik", 100);
 
 Dans notre application, nous allons avoir besoin de créer des zombies. Pour cela, créons une fonction.
 
-1. Créez une fonction appelée `createZombie`. Elle devra prendre deux arguments : **__name_** (un `string`), et **__dna_** (un `uint`).
+1. Créez une fonction appelée `createZombie`. Elle devra prendre deux arguments : **\_name** (un `string`), et **\_dna** (un `uint`).
 
 Laissez le corps vide pour l'instant, nous le compléterons plus tard.

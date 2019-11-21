@@ -7,14 +7,81 @@
         "syncing": "Synchronizing...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
+            "openChat": "Ask Question",
             "action": "Join Our Telegram",
-            "link": "https://t.me/loomnetwork"
+            "link": "https://t.me/loomnetworkdev"
         },
         "twitter": {
             "name": "Twitter",
             "link": "https://twitter.com/loomnetwork"
+        },
+        "course" : {
+            "solidity_path" : {
+                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+            },
+            "hand_on_path": {
+                "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
+                "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
+            },
+            "hand_on_plasma": {
+                "title": "Advanced Solidity Path: Get In-depth Knowledge",
+                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+            },
+            "libra_path": {
+                "title": "Libra Path: Master the Basics of Libra Blockchain Development",
+                "summary": "Learn Libra Blockchain Development by Creating Your Own Simple Game Using the Move Programming Language"
+            }
+        },
+        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
+        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
+        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+        "start_resume": "Start/Resume",
+        "the_curriculum": "The Curriculum",
+        "course_overview":"Course Overview",
+        "start": "Start",
+        "skip_lesson": "Skip Lesson",
+        "graduate": "Ready to Graduate? Or You are Already Experienced?",
+        "you_will":"You Will",
+        "will_list": {
+            "use": "Use intermediate level solidity",
+            "deploy": "Deploy to a live PlasmaChain",
+            "interact": "Have real gamers play and interact with your Dapp",
+            "earn": "Charge an admission and earn some money!"
+        },
+        "make_game": "Make your game mode now!",
+        "goto_lesson_list" : "Go to lesson list",
+        "share_link": "Share",
+        "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
+        "zbbg_link": "Get Early Access Now!",
+        "coming_soon": "Coming Soon"
+
+    },
+    "achievements":{
+        "achievements": "Achievements",
+        "achieved": "achieved",
+        "finished_first":{
+            "title": "Completed first lesson",
+            "desc": "Completed the first lesson in any course"
+        },
+        "finished_solidity":{
+            "title": "Finished the solidity path",
+            "desc": "Finished all lessons in Solidity path"
+        },
+        "finished_lesson7":{
+            "title": "Built a multi-fungible token",
+            "desc": "Built a multi-fungible token"
         }
+    },
+    "rewards": {
+        "rewards" : "rewards",
+        "test_key": "Alpha Tester Key for Zombie Battleground",
+        "loom_tokens":"Loom Tokens",
+        "no_reward": " You don't have any rewards"
+    },
+    "footer":{
+        "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
+        "find_more": "Find out more..."
     },
     "editor": {
         "readOnly": "read only"
@@ -22,15 +89,14 @@
     "lessonMenu": {
         "getReward": "Rewards",
         "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "Lesson {lessonNum}: {title}",
+        "itemLabel": "{title}",
         "signIn": "Sign in and load your progress",
-        "progressLoaded": "Your progress is loaded",
-        "getReward": "Claim Rewards"
+        "progressLoaded": "Your progress is loaded"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
         "presents": "Presents",
-        "title": "Lesson {lessonNum}: {title}",
+        "title": "{title}",
         "signInPrompt": "From here on out you'll need to be signed in so we can sync your progress and zombies. Please sign in using the button below:",
         "signInButton": "Sign In",
         "levelUpText": "In this lesson we're going to level up the zombies generated in earlier lessons.",
@@ -51,7 +117,9 @@
         "tryAgain": "Try Again",
         "checkAnswer": "Check Answer",
         "showMeTheAnswer": "Show me the answer",
-        "hideAnswer": "Hide Answer"
+        "hideAnswer": "Hide Answer",
+        "next_chapter": "NEXT",
+        "prev_chapter": "BACK"
     },
     "lessonComplete": {
         "shareLinksAction": "Or you can click the buttons below to share:",
@@ -303,6 +371,24 @@
                 "Want to build your own CryptoZombie army and join the ranks?",
                 "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
             ]
+        },
+        "lesson7": {
+            "zombieDesc": "Let's build an Zombie Battleground like game!",
+            "achievementPreamble": [
+                "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
+                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+                "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
+            ],
+            "achievements": [
+                "Multi fungible tokens, and the ERC721X standard",
+                "How to build a faucet that mints, let users claim, and transfers tokens",
+                "How to use ERC721X to implement unique, limited edition, and standard edition cards"
+            ],
+            "callToAction": [
+                "Want to build your own CryptoZombie army and join the ranks?",
+                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+            ]
         }
-    }
+    },
+    "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
 }

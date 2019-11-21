@@ -1,5 +1,5 @@
 ---
-title: Time Units
+title: 時間の単位
 actions: ['答え合わせ', 'ヒント']
 requireLogin: true
 material:

@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
@@ -23,7 +23,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {
@@ -67,6 +67,6 @@ eatHamburgers("vitalik", 100);
 
 En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Crear una función llamada `createZombie`. Debería tomar dos parámetros **__name_** (un `string`), y **__dna_** (un número entero sin signo `uint`).
+1. Crear una función llamada `createZombie`. Debería tomar dos parámetros **\_name** (un `string`), y **\_dna** (un número entero sin signo `uint`).
 
 Dejemos el cuerpo de la función vacio por ahora, lo rellenaremos más tarde.
