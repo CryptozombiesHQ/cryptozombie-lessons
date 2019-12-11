@@ -258,7 +258,7 @@ contract GetPaid is Ownable {
 }
 ```
 
-インポートされていることを想定して、`owner`と`onlyOwner`修飾詞を`Ownable`コントラクトから用いていることに注目してくれ。
+インポートされていることを想定して、`owner`と`onlyOwner`修飾子を`Ownable`コントラクトから用いていることに注目してくれ。
 
 `transfer`関数を使ってEtherをあるアドレスに送ることができ、`this.balance`はコントラクトに溜まっている残高の総量を返す。なのでもし100人のユーザーが１Etherを我々のコントラクトに支払ったとしたら、`this.balance`は100Etherに等しくなるはずだ。
 
@@ -281,6 +281,6 @@ msg.sender.transfer(msg.value - itemFee);
 
   そこで一ついいアイディアがある。コントラクトの所有者として、我々が`levelUpFee`を設定できるような関数を作成するのだ。
 
-  a. 一つの引数`uint _fee`を受け取る`setLevelUpFee`という名の関数を作成せよ。これは`external`であり、`onlyOwner`修飾詞を用いることとする。
+  a. 一つの引数`uint _fee`を受け取る`setLevelUpFee`という名の関数を作成せよ。これは`external`であり、`onlyOwner`修飾子を用いることとする。
 
   b. 作成した関数に`levelUpFee`を設定し、`_fee`と同等となるようにせよ。

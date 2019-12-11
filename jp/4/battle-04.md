@@ -302,8 +302,8 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 1. `ownerOf`という`modifier`を作成せよ。これは１つの引数`_zombieId`（`uint`）を受け取る。
 
-  本文では、`msg.sender`が`zombieToOwner[_zombieId]`と同等であるように`require`（要求）し、そうであれば関数を続けるようにせよ。もし修飾詞の構文を覚えていなければ、`zombiehelper.sol`を参照してよい。
+  本文では、`msg.sender`が`zombieToOwner[_zombieId]`と同等であるように`require`（要求）し、そうであれば関数を続けるようにせよ。もし修飾子の構文を覚えていなければ、`zombiehelper.sol`を参照してよい。
 
-2. `feedAndMultiply`の関数定義を変更し、`ownerOf`修飾詞を使うようにせよ。
+2. `feedAndMultiply`の関数定義を変更し、`ownerOf`修飾子を使うようにせよ。
 
 3. 今は`modifier`を使っているので、以下の一行は削除するのだ。`require(msg.sender == zombieToOwner[_zombieId]);`
