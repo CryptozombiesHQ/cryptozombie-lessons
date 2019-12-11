@@ -1,22 +1,23 @@
 ---
-title: Lesson Complete!
+title: Lesson 1 Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Well done!👏🏻👏🏻👏🏻
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-You mastered the art of deploying smart contracts using _Truffle_!
+# Next Steps
 
-Remember, building on top of **Loom** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-Another thing to remember is how similar deploying to **Loom** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+### 1. Sign in to save your progress
 
-Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
-To further your knowledge, head over to our <a href="https://github.com/loomnetwork/loom-js" target=_blank>loom-js GitHub repository</a>. To add it to your project, just follow the instructions.
+### 2. Share your zombie with your friends
 
-Happy coding!
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
