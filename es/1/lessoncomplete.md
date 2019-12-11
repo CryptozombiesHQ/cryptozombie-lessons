@@ -1,10 +1,23 @@
 ---
-title: Lesson Complete!
+title: '¡Lección 1 Completa!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Congratulations! You have completed Lesson 1 of the CryptoZombies Libra course. You’ve learned to create accounts, check balances, view a list of accounts and send transactions. You’re officially one step closer to being a Libra developer.
+¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
+
+# Pasos Siguientes
+
+Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
+
+### 1. Inicia sesión para guardar tu progreso
+
+***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
+
+### 2. Comparte tu zombi con tus amigos
+
+***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
