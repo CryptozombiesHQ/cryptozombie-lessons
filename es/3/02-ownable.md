@@ -276,7 +276,7 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
 
 Alguna de las cosas nuevas que no hemos visto todavía:
 
-- Constructores: `function Ownable()`` es un ***constructor***, el cual es una función especial opcional que tiene el mismo nombre que el contrato. Será ejecutada una sóla vez, cuando el contrato sea creado por primera vez.
+- Constructors: `constructor()` is a ***constructor***, which is an optional special function. It will get executed only one time, when the contract is first created.
 - Modificadores de Funciones: `modifier onlyOwner()`. Los modificadores son como semi-funciones que son usadas para modificar otras funciones, normalmente para comprobar algunos requisitos antes de la ejecución. En este caso, `onlyOwner` puede ser utilizada para limitar el acceso para que **solo** el **dueño** del contrato pueda ejecutar esta función. Hablaremos sobre los modificadores en el siguiente capítulo, y que hace ese extraño `_;`.
 - Palabra clave `indexed`: no te preocupes por esto, no lo necesitaremos todavía.
 
