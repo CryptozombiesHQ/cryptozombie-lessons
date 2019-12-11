@@ -55,7 +55,7 @@ material:
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
-        // 3. Wywołaj `triggerCooldown`
+        // 3. Call `_triggerCooldown`
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
