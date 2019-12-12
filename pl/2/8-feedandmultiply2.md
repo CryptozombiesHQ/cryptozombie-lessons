@@ -70,7 +70,7 @@ material:
 
 Skończmy pisać funkcję `feedAndMultiply`.
 
-Formuła do obliczania nowego DNA Zombi jest prosta: jest to po prostu średnia pomiędzy DNA Zombiaka i DNA ofiary.
+The formula for calculating a new zombie's DNA is simple: It's simply the average between the feeding zombie's DNA and the target's DNA.
 
 Na przykład:
 
