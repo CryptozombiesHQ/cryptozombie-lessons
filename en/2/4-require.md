@@ -89,7 +89,7 @@ In lesson 1, we made it so users can create new zombies by calling `createRandom
 
 Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
 
-How can we make it so this function can only be called once per player? 
+How can we make it so this function can only be called once per player?
 
 For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
 
@@ -98,7 +98,7 @@ function sayHiToVitalik(string _name) public returns (string) {
   // Compares if _name equals "Vitalik". Throws an error and exits if not true.
   // (Side note: Solidity doesn't have native string comparison, so we
   // compare their keccak256 hashes to see if the strings are equal)
-  require(keccak256(_name) == keccak256("Vitalik"));
+  require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
   // If it's true, proceed with the function:
   return "Hi!";
 }

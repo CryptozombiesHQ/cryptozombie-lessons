@@ -84,9 +84,9 @@ Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` 
 
 ## Adresses
 
-La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte à un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
+La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte a un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
 
-Chaque compte à une `address`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
+Chaque compte a une `address`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
@@ -115,7 +115,7 @@ Un mappage est fondamentalement un stockage de valeur-clé pour stocker et reche
 
 # A votre tour
 
-Pour savoir à qui appartient un zombie. Nous allons utiliser 2 mappages : un qui va stocker l'adresse associée à un zombie, et l'autre qui va stocker combien de zombies un utilisateur possède.
+Pour savoir à qui appartient un zombie, nous allons utiliser 2 mappages : un qui va stocker l'adresse associée à un zombie, et l'autre qui va stocker combien de zombies un utilisateur possède.
 
 1. Créez un mappage appelé `zombieToOwner`. La clé est un `uint` (nous stockerons et rechercherons le zombie avec son id) et la valeur est une `address`.
 Ce mappage sera `public`.
