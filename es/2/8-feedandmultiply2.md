@@ -70,7 +70,7 @@ material:
 
 Vamos a terminar de escribir la función `feedAndMultiply`.
 
-La fórmula para calcular el ADN del nuevo zombi es simple: Es simplemente el promedio entre el ADN del zombi que hemos alimentado y el ADN del zombi objetivo.
+The formula for calculating a new zombie's DNA is simple: It's simply the average between the feeding zombie's DNA and the target's DNA.
 
 Por ejemplo:
 
