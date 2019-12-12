@@ -70,7 +70,7 @@ material:
 
 Let's finish writing the `feedAndMultiply` function.
 
-The formula for calculating a new zombie's DNA is simple: It's simply that average between the feeding zombie's DNA and the target's DNA.
+The formula for calculating a new zombie's DNA is simple: It's simply the average between the feeding zombie's DNA and the target's DNA.
 
 For example:
 
