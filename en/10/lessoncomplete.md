@@ -1,20 +1,20 @@
 ---
-title: Lesson Complete!
+title: 学完啦！
 actions: ['checkAnswer', 'hints']
 material:
   lessonComplete: 1
 ---
 
-Well done!👏🏻👏🏻👏🏻
+太厉害了！👏🏻👏🏻👏🏻
 
-You mastered the art of deploying smart contracts using _Truffle_!
+你已经掌握了使用 **Truffle** 部署智能合约的技能!
 
-Remember, building on top of **Loom** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+请记住，在 **_Loom_** 上构建将为你带来更快速、无 gas 的事务，是你创建区块链游戏和面向用户型 dapp 的完美选择。与此同时，你的用户也将享受到以太坊提供的安全保障!
 
-Another thing to remember is how similar deploying to **Loom** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+另一点也请记住，部署到 **_Loom_** 与部署到以太网差不多。你已经知道具体怎么实现，下一个项目就请选择使用最适合你的吧 😉。
 
-Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand. 
+当然，这只是一个示例 —— 我们做了几个决定，简化流程，使课程更容易理解。
 
-To further your knowledge, head over to our <a href="https://github.com/loomnetwork/loom-js" target=_blank>loom-js GitHub repository</a>. To add it to your project, just follow the instructions.
+要进一步了解这些知识，请访问我们的<a href="https://github.com/loomnetwork/loom-js" target=_blank>开发者文档</a>。
 
-Happy coding!
+祝搬砖愉快!
