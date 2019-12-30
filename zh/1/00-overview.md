@@ -1,18 +1,12 @@
 ---
-title: "Libra Basics"
-header: "Libra Basics"
+title: 搭建僵尸工厂
+header: 人类，欢迎你
 roadmap: roadmap.jpg
-path: libra
+path: solidity
 ---
 
-The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
+你认为你可以当一个合格的 **CryptoZombie**, 嗯？
 
-You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
+这个教程会教你如何搭建一个**以太网的游戏**。
 
-This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
-
-We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
-
-It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
-
-Course Time: 30 Minutes - 1 Hour
+此课程为 Solidity 初学者设计，需要你对其他的程序语言有所了解（如 JavaScript)。
