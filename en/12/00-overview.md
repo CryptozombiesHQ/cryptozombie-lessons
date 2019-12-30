@@ -3,6 +3,7 @@ title: "Libra Basics"
 header: "Libra Basics"
 roadmap: roadmap.jpg
 path: libra
+publishedOn: Cryptozombies
 ---
 
 The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.

@@ -4,6 +4,7 @@ header: Testing Smart Contracts with Truffle
 roadmap: roadmap.jpg
 path: solidity_advanced
 position: 1
+publishedOn: Cryptozombies
 ---
 
 Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
