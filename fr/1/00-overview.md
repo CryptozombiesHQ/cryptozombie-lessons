@@ -1,28 +1,27 @@
 ---
-title: Testing Smart Contracts with Truffle
-header: Testing Smart Contracts with Truffle
+title: How to Create a BEP-2 Token
+header: How to Create a BEP-2 Token
 roadmap: roadmap.jpg
-path: solidity_advanced
-position: 1
-publishedOn: Cryptozombies
 ---
 
-Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
+Hey there, have you been reading our newsletter lately?
 
-So, go ahead and deploy the game to the mainnet. Enjoy your success!
+If not, here's the thing: we've been very busy building the best multichain network. So far, we've added support for Ethereum, Tron, and Binance. And more chains are on the roadmap😉.
 
-Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
+Why is this important, you ask?
 
-Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
+Well, integrating with the major blockchains gets your DApp exposed to the user base of all these chains combined. Moreover, you'll be able to accept a multitude of tokens as payment.
 
-Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
+Thus, if you choose to build your app **_Loom_**, you simply get to spend more time coding your awesome DApp.
 
-To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
+Now let's talk a bit about the Binance and BEP-2 tokens.
 
-By the end of this lesson, you will be able to:
+**What is the BEP-2 standard?**
 
-- Test your smart contracts with `Truffle` against `Ganache`
-- Use `Chai` to write more expressive assertions
-- Test against `Loom`😉
+Good question! To answer it, I copied an pasted the following definition from the BEP-2 GitHub web page: "_The BEP2 standard describes a set of rules for token management within the Binance Chain ecosystem._"
+
+This is useful. But let me add something at least equally important. _Binance chain doesn’t provide support for smart contracts... but Loom does_. This allows you, as a developer, to build all sorts of cool stuff such as decentralized token swap service, a multi-collateral stable coin and so on and so forth.
+
+But first things first. In this lesson, we'll show you how to create a BEP-2 Token on the Binance chain.
 
 Let's get started!
