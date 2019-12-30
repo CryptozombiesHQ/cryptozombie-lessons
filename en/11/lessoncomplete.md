@@ -1,17 +1,17 @@
 ---
-title: 学完啦！
+title: Lesson Complete!
 actions: ['checkAnswer', 'hints']
 material:
   lessonComplete: 1
 ---
 
-你已经测试完游戏了。太不起了!
+You finished testing the game. You are nothing short of extraordinary!
 
-即使我们的游戏只是为了演示而创建的，但很明显，测试 Solidity 智能合约并不是件容易的事。我们知道现在你已经准备好测试你的智能合约了!
+Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
 
-请记住以下重点:
+The important things to remember are:
 
-- 确保为游戏中的每个功能创建单独的测试。
-- 保持所有东西都有清晰的标签和组织
-- 利用时间旅行
-- 在开发游戏或面向用户的 DApp 时，请考虑使用 Loom。我们强烈建议你从查看<a href="https://loomx.io/developers/" target=_blank>我们的文档</a>开始。
+- Make sure you create a separate test for each function in your game.
+- Keep everything clearly labelled and organized
+- Make use of time travelling
+- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.

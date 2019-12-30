@@ -1,18 +1,19 @@
 ---
-title: "Libra 基础"
-header: "Libra 基础"
+title: "Libra Basics"
+header: "Libra Basics"
 roadmap: roadmap.jpg
 path: libra
+publishedOn: Cryptozombies
 ---
 
-2038加密僵尸大战已经结束，曾经身为战士的你，现在是时候退役并找份平民百姓的工作啦。
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-你决定要开一家商店。作为一个被授勋的战争英雄，你清楚地知道下一代加密僵尸英雄在追求荣誉的道路上需要些什么。
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-本课程会一步步引导你建立一个商店，英雄可以从店主那里购买商品。通过这样的方式教会你 Libra 的所有基础知识。
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
 
-我们将向你介绍如何设置英雄和店主的帐户，如何在他们之间进行汇款，以及如何跟踪这些事务的状态。所有这些步骤都完美精确地模拟了 Libra 测试网。一旦我们完成了模拟步骤，我们将教会你如何安装所有必要的工具，来连接到 Libra 测试网。
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today. 
 
-本课程是与 Libra 交互的快速入门，所以不需要你具备任何编程经验。
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required. 
 
-课程时长：30分钟 - 1个小时
+Course Time: 30 Minutes - 1 Hour
