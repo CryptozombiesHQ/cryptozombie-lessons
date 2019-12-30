@@ -1,27 +1,19 @@
 ---
-title: Testing Smart Contracts with Truffle
-header: Testing Smart Contracts with Truffle
+title: "Libra Basics"
+header: "Libra Basics"
 roadmap: roadmap.jpg
-path: solidity_advanced
-position: 1
+path: libra
+publishedOn: Cryptozombies
 ---
 
-Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-So, go ahead and deploy the game to the mainnet. Enjoy your success!
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
 
-Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
 
-Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
 
-To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
-
-By the end of this lesson, you will be able to:
-
-- Test your smart contracts with `Truffle` against `Ganache`
-- Use `Chai` to write more expressive assertions
-- Test against `Loom`😉
-
-Let's get started!
+Course Time: 30 Minutes - 1 Hour
