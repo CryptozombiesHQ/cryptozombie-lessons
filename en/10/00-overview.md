@@ -1,25 +1,26 @@
 ---
-title: "用 Truffle 部署以太坊 dapp"
-header: "用 Truffle 部署以太坊 dapp"
+title: "Deploying DApps with Truffle"
+header: "Deploying DApps with Truffle"
 roadmap: roadmap.jpg
 path: solidity_advanced
 position: 2
+publishedOn: Cryptozombies
 ---
 
-还记得吗？我们承诺过会教你部署智能合约。
+Remember that we promised to teach you how to deploy a smart contract?
 
-已经有一段时间了，现在就来兑现诺言吧！
+It's been a while, but the time has come!
 
-本课中，我们将教你如何使用 **_Truffle_** 部署到 **_以太坊_**。
+In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
 
-当然，不仅限于此。你还会学到如何将智能合约部署到 **Loom** 😎。
+And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
 
-为什么要部署到 **Loom**？毕竟，**_以太坊_** 才是最安全的网络。
+Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
 
-是的，我们完全同意。但在以太坊上每个事务都要耗费 _gas_, 因此你的用户就必须为每个事务付费。而且，每个事务确认还得等上至少10秒。
+Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
 
-简而言之，**_在以太坊上，所有事务都受益于相同的安全保障_**。对于面向用户的 dapp 或游戏等，往往并不一定需要这种级别的安全性。事实上，它只会破坏用户体验。
+In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
 
-在 **Loom** 上, 用户可以有更快速且零 gas 的事务。这使得 **Loom** 更适合游戏或面向用户的 dapp。
+On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
 
-好了，废话少说！现在就开始吧 😉
+Enough talking! Let's get started😉
