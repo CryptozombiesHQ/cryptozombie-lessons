@@ -1,5 +1,5 @@
 ---
-title: Function Declarations
+title: Dichiarazioni di Funzione
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -19,7 +19,7 @@ material:
 
           Zombie[] public zombies;
 
-          // start here
+          // inizia qui
 
       }
     answer: >
@@ -45,7 +45,7 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+Una dichiarazione di funzione di Solidity è simile alla seguente:
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -53,20 +53,20 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+Questa è una funzione chiamata `eatHamburgers` che richiede 2 parametri: una `string` ed un `uint`. Per ora il body della funzione è vuoto.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Nota: è una convenzione (ma non obbligatoria) avviare i nomi delle variabili dei parametri di funzione con un trattino basso (`_`) per differenziarli dalle variabili globali. Useremo questa convenzione in tutto il nostro tutorial.
 
-You would call this function like so:
+Puoi chiamare la funzione in questo modo:
 
 ```
 eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+# Facciamo una prova
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+Nella nostra app dovremo essere in grado di creare alcuni zombi. Creiamo una funzione per fare ciò.
 
-1. Create a function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`).
+1. Creare una funzione denominata `createZombie`. Ci vogliono due parametri: **\_name** (una `string`), e **\_dna** (un `uint`).
 
-Leave the body empty for now — we'll fill it in later.
+Lascia il body vuoto per ora — lo riempiremo più tardi.

@@ -1,5 +1,5 @@
 ---
-title: Events
+title: Eventi
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          // declare our event here
+          // dichiara qui il tuo evento
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,7 +23,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-              // and fire it here
+              // e utilizzalo qui
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
@@ -73,38 +73,38 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
+Il nostro contratto è quasi finito! Ora aggiungiamo un **_evento_**.
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+**_Gli Eventi_** sono un modo per il tuo contratto di comunicare che è accaduto qualcosa sulla blockchain al front-end dell'app, che può essere in 'ascolto' per determinati eventi ed agire quando essi si verificano.
 
-Example:
+Esempio:
 
 ```
-// declare the event
+// dichiazione dell'evento
 event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // fire an event to let the app know the function was called:
+  // attiva un evento per far sapere all'app che la funzione è stata chiamata:
   emit IntegersAdded(_x, _y, result);
   return result;
 }
 ```
 
-Your app front-end could then listen for the event. A javascript implementation would look something like: 
+Il front-end dell'app potrebbe quindi ascoltare l'evento. Un'implementazione javascript sarebbe simile a:
 
 ```
 YourContract.IntegersAdded(function(error, result) { 
-  // do something with result
+  // fare qualcosa con il risultato
 }
 ```
 
-# Put it to the test
+# Facciamo una prova
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+Vogliamo un evento per far sapere al nostro front-end ogni volta che viene creato un nuovo zombi, in modo che l'app possa visualizzarlo.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Dichiaraare un `evento` chiamato `NewZombie`. Si dovrà passare `zombieId` (come `uint`), `name` (come `string`), e `dna` (come `uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
+2. Modifica la funzione `_createZombie` per lanciare l'evento `NewZombie` dopo aver aggiunto il nuovo Zombie al nostro array `zombies`. 
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. Avrai bisogno dell'`id` dello zombi. `array.push()` restituisce un `uint` della nuova lunghezza dell'array - e poichè il primo elemento nel'array ha indice 0, `array.push() - 1` sarà l'indice dello zombie che abbiamo appena aggiunto. Memorizza il risultato di `zombies.push() - 1` in un `uint` chiamato `id`, quindi puoi usarlo nell'evento `NewZombie` nella riga successiva.

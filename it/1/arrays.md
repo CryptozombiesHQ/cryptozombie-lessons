@@ -67,7 +67,7 @@ Person[] public people;
 
 Altri contratti sarebbero quindi in grado di leggere, ma non di scrivere, su questo array. Questo è un modello utile per l'archiviazione dei dati pubblici nel contratto.
 
-# Mettilo alla prova
+# Facciamo una prova
 
 Vogliamo archiviare un esercito di zombi nella nostra app. Vorremmo poi mostrare tutti i nostri zombi ad altre app, quindi dovrà essere pubblico.
 

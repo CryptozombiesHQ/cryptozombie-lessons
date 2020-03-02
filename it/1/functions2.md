@@ -1,5 +1,5 @@
 ---
-title: Private / Public Functions
+title: Funzioni Private / Pubbliche
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -47,11 +47,11 @@ material:
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+In Solidity, le funzioni sono `public` di default. Ciò significa che chiunque (o un qualsiasi altro contratto) può richiamare la funzione del contratto ed eseguirne il codice.
 
-Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+Ovviamente ciò non è sempre auspicabile e può rendere il contratto vulnerabile agli attacchi. Quindi è buona norma contrassegnare le tue funzioni come `private` di default, e rendere `public` solo le funzioni che vuoi esporre al mondo.
 
-Let's look at how to declare a private function:
+Diamo un'occhiata a come dichiarare una funzione privata:
 
 ```
 uint[] numbers;
@@ -61,12 +61,12 @@ function _addToArray(uint _number) private {
 }
 ```
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+Ciò significa che solo altre funzioni all'interno del nostro contratto saranno in grado di richiamare questa funzione ed aggiungere l'array `numbers`.
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+Come puoi vedere, usiamo la parola chiave `private` dopo il nome della funzione. E come per i parametri delle funzioni, è normale avviare nomi di funzioni private con un trattino basso (`_`).
 
-# Put it to the test
+# Facciamo una prova
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+La funzione `createZombie` del nostro contratto è attualmente pubblica per impostazione predefinita - questo significa che chiunque potrebbe richiamarla e creare un nuovo Zombie nel nostro contratto! Rendiamola privata.
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Modifica `createZombie` in modo che sia una funzione privata. Non dimenticare la convenzione di denominazione!

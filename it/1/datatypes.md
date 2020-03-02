@@ -1,5 +1,5 @@
 ---
-title: State Variables & Integers
+title: Variabili di Stato e Numeri Interi
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -9,7 +9,7 @@ material:
 
       contract ZombieFactory {
 
-          //start here
+          //inizia qui
 
       }
     answer: >
@@ -23,28 +23,28 @@ material:
       }
 ---
 
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+Ottimo lavoro! Ora che abbiamo una shell per il nostro contratto, impariamo come Solidity gestisce le variabili.
 
-**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+**_Le Variabili di Stato_** vengono memorizzate in modo permanente nella memoria dei contratti. Ciò significa che sono scritti sulla blockchain di Ethereum. Pensa a loro come a scrivere su un DB.
 
 ##### Example:
 ```
 contract Example {
-  // This will be stored permanently in the blockchain
+  // Questo verrà archiviato permanentemente nella blockchain
   uint myUnsignedInteger = 100;
 }
 ```
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+In questo contratto di esempio abbiamo creato un `uint` chiamato` myUnsignedInteger` e lo abbiamo impostato su 100.
 
-## Unsigned Integers: `uint`
+## Numeri Interi senza Segno: `uint`
 
-The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
+Il tipo di dati `uint` è un numero intero senza segno, nel senso che **il suo valore NON deve essere negativo**. C'è anche un tipo di dati `int` per numeri interi con segno.
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+> Nota: In Solidity, `uint` è in realtà un alias per `uint256`, un numero intero a 256-bit senza segno. Puoi dichiarare uints con meno bits — `uint8`, `uint16`, `uint32`, etc.. Ma in generale vorrai semplicemente usare `uint` tranne in casi specifici, di cui parleremo nelle lezioni successive.
 
-# Put it to the test
+# Facciamo una prova
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+Il nostro DNA di zombi sarà determinato da un numero di 16 cifre.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+Dichiarare un `uint` chiamato` dnaDigits` ed impostarlo uguale a `16`.

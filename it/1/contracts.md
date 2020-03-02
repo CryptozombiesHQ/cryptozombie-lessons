@@ -1,5 +1,5 @@
 ---
-title: "Contracts"
+title: "Contratti"
 actions: ['checkAnswer', 'hints']
 material: 
   editor:
@@ -7,7 +7,7 @@ material:
     startingCode: |
       pragma solidity //1. Enter solidity version here
 
-      //2. Create contract here
+      //2. Crea qui il contratto
     answer: > 
       pragma solidity ^0.4.25;
 
@@ -17,11 +17,11 @@ material:
       }
 ---
 
-Starting with the absolute basics:
+A partire dalle basi assolute:
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+Il codice di Solidity è incapsulato in **contratti**. Un `contract` è l'elemento fondamentale delle applicazioni Ethereum: tutte le variabili e le funzioni appartengono a un contratto e questo sarà il punto di partenza di tutti i vostri progetti.
 
-An empty contract named `HelloWorld` would look like this:
+Un contratto vuoto chiamato `HelloWorld` sarebbe simile al seguente:
 
 ```
 contract HelloWorld {
@@ -29,13 +29,13 @@ contract HelloWorld {
 }
 ```
 
-## Version Pragma
+## Versione Pragma
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+Tutto il codice sorgente di Solidity dovrebbe iniziare con a "version pragma" — una dichiarazione della versione del compilatore Solidity che questo codice dovrebbe usare. Questo per evitare problemi con le future versioni del compilatore che potrebbero generare eventuali rotture del codice.
 
-It looks like this: `pragma solidity ^0.4.25;` (for the latest solidity version at the time of this writing, 0.4.25).
+Sarebbe così: `pragma solidity ^0.4.25;` (per l'ultima versione di Solidity al momento della stesura di questo documento, 0.4.25).
 
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
+Mettendolo insieme, ecco un contratto di partenza semplice: la prima cosa che scriverai ogni volta che avvierai un nuovo progetto:
 
 ```
 pragma solidity ^0.4.25;
@@ -45,12 +45,12 @@ contract HelloWorld {
 }
 ```
 
-# Put it to the test
+# Facciamo una prova
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+Per iniziare a creare il nostro esercito di zombi, creiamo un contratto di base chiamato `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.25`.
+1. Nella casella a destra, crea il nostro contratto utilizzando Solidity versione `0.4.25`.
 
-2. Create an empty contract called `ZombieFactory`.
+2. Crea un contratto vuoto chiamato `ZombieFactory`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+Al termine, fai clic su "Verifica la risposta" di seguito. Se rimani bloccato, puoi fare clic su "Mostra suggerimento".

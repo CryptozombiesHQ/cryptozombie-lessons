@@ -60,10 +60,10 @@ struct Person {
 Person[] public people;
 ```
 
-Adesso impareremo come creare nuovi `Person`s e aggiungerli al nostro array `people`.
+Adesso impareremo come creare nuovi `Person`s e ad aggiungerli nel nostro array `people`.
 
 ```
-// creare una nuova Person:
+// crea una nuova Person:
 Person satoshi = Person(172, "Satoshi");
 
 // Aggiungere Person all'array
@@ -86,7 +86,7 @@ numbers.push(15);
 // numbers adesso è uguale a: [5, 10, 15]
 ```
 
-# Mettilo alla prova
+# Facciamo una prova
 
 Facciamo in modo che la nostra funzione createZombie faccia qualcosa!
 
