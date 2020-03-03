@@ -1,5 +1,5 @@
 ---
-title: More on Functions
+title: Altre Informazioni sulle Funzioni
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // start here
+          // inizia qui
 
       }
     answer: >
@@ -53,11 +53,11 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+In questo capitolo impareremo i **_valori di ritorno_** della funzione e i modificatori di funzione.
 
-## Return Values
+## Valori di Ritorno
 
-To return a value from a function, the declaration looks like this:
+Per restituire un valore da una funzione la dichiarazione è simile alla seguente:
 
 ```
 string greeting = "What's up dog";
@@ -67,19 +67,19 @@ function sayHello() public returns (string) {
 }
 ```
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+In Solidity, la dichiarazione di funzione contiene il tipo del valore restituito (in questo caso `string`).
 
-## Function modifiers
+## Modificatori di Funzioni
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+La funzione sopra non cambia effettivamente lo stato in Solidity - ad es. non cambia alcun valore né scrive nulla.
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+Quindi in questo caso potremmo dichiararla come una funzione **_view_**, il che significa che stai solo visualizzando i dati senza modificarli:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+Solidity contiene anche le funzioni **_pure_**, il che significa che non stai accedendo a nessun dato nell'app. Considera quanto segue:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,16 +87,16 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+Questa funzione non legge nemmeno dallo stato dell'app - il suo valore di ritorno dipende solo dai parametri della sua funzione. Quindi in questo caso dichiareremo la funzione come **_pure_**.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> Nota: potrebbe essere difficile ricordare quando contrassegnare le funzioni come pure/view. Fortunatamente il compilatore Solidity è bravo ad emettere avvisi per farti sapere quando dovresti usare uno di questi modificatori.
 
-# Put it to the test
+# Facciamo una prova
 
-We're going to want a helper function that generates a random DNA number from a string.
+Vogliamo una funzione di aiuto che generi un numero di DNA casuale da una stringa.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Creare una funzione `private` chiamata` _generateRandomDna`. Prenderà un parametro chiamato `_str` (una` string`) e restituirà un `uint`.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+2. Questa funzione visualizzerà alcune delle variabili del nostro contratto ma non le modificherà, contrassegnala quindi come `view`.
 
-3. The function body should be empty at this point — we'll fill it in later.
+3. Il body della funzione dovrebbe essere vuoto a questo punto - lo riempiremo più avanti.

@@ -1,5 +1,5 @@
 ---
-title: Keccak256 and Typecasting
+title: Keccak256 e Typecasting
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -24,7 +24,7 @@ material:
           } 
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              // start here
+              // inizia qui
           }
 
       }
@@ -56,16 +56,16 @@ material:
       }
 ---
 
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+Vogliamo che la nostra funzione `_generateRandomDna` restituisca un `uint` (semi) casuale. Come possiamo realizzarlo?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexidecimal number. A slight change in the input will cause a large change in the hash.
+Ethereum ha la funzione hash `keccak256` integrata, che è una versione di SHA3. Una funzione hash che fondamentalmente mappa un input in un numero esadecimale casuale a 256 bit. Una leggera modifica nell'input provocherà una grande modifica nell'hash.
 
-It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
+È utile per molti scopi in Ethereum, ma per ora lo useremo solo per la generazione di numeri pseudo-casuali.
 
 
-Also important, `keccak256` expects a single parameter of type `bytes`. This means that we have to "pack" any parameters before calling `keccak256`:
+Importante: `keccak256` prevede un singolo parametro di tipo` byte`. Ciò significa che dobbiamo "impacchettare" tutti i parametri prima di chiamare `keccak256`:
 
-Example:
+Esempio:
 
 ```
 //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
@@ -74,29 +74,29 @@ keccak256(abi.encodePacked("aaaab"));
 keccak256(abi.encodePacked("aaaac"));
 ```
 
-As you can see, the returned values are totally different despite only a 1 character change in the input.
+Come puoi vedere, i valori restituiti sono totalmente diversi nonostante una modifica di un solo carattere nell'input.
 
-> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Nota: La generazione **sicura** di numeri casuali nella blockchain è un problema molto difficile. Il nostro metodo qui esposto è insicuro, ma poiché la sicurezza non è la massima priorità per il nostro DNA di zombi, andrà bene per i nostri scopi.
 
 ## Typecasting
 
-Sometimes you need to convert between data types. Take the following example:
+A volte è necessario convertire i tipi di dati. Prendi il seguente esempio:
 
 ```
 uint8 a = 5;
 uint b = 6;
-// throws an error because a * b returns a uint, not uint8:
+// genera un errore perché a * b restituisce un uint, non uint8:
 uint8 c = a * b; 
-// we have to typecast b as a uint8 to make it work:
+// dobbiamo fare il typecast b come uint8 per farlo funzionare:
 uint8 c = a * uint8(b); 
 ```
 
-In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
+Come vedi sopra `a * b` restituisce un `uint`, ma stavamo provando a memorizzarlo come `uint8`, il che potrebbe causare potenziali problemi. Dichiarandolo come `uint8` funziona e il compilatore non genererà alcun errore.
 
-# Put it to the test
+# Facciamo una prova
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+Riempiamo il body della nostra funzione `_generateRandomDna`! Ecco cosa dovrebbe fare:
 
-1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. La prima riga di codice dovrebbe prendere l'hash `keccak256` di `abi.encodePacked(_str)` per generare un esadecimale pseudo-casuale, dichiararlo come` uint` ed infine archiviare il risultato in un `uint` chiamato `rand`.
 
-2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
+2. Vogliamo che il nostro DNA sia lungo solo 16 cifre (ricordi il nostro `dnaModulus`?). Quindi la seconda riga di codice dovrebbe esssere la `return` del valore `rand` (`%`) `dnaModulus`.

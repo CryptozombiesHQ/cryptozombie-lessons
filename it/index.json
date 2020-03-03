@@ -43,7 +43,7 @@
     "chapter": {
         "pageTitle": "@:base.name | {lesson} {chapter}",
         "header": "Capitolo {chapterNum}: {title}",
-        "saveProgress": "Salva",
+        "saveProgress": "Salva Progressi",
         "autosaveEnabled": "Salvataggio automatico abilitato",
         "resumeProgress": "Riprendere",
         "showHint": "Mostra suggerimento",
