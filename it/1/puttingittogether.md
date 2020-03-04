@@ -1,5 +1,5 @@
 ---
-title: Putting It Together
+title: Mettere Tutto Insieme
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -64,16 +64,16 @@ material:
       }
 ---
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+Abbiamo quasi finito con il nostro generatore casuale di zombi! Creiamo adesso una funzione pubblica che legherà tutto insieme.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+Creeremo una funzione pubblica che accetta un input, il nome dello zombi, ed usa il nome per creare un DNA casuale di zombi.
 
-# Put it to the test
+# Facciamo una prova
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+1. Creare una funzione `public` chiamata `createRandomZombie`. Ci vorrà un parametro chiamato `_name` (una `string`). _(Nota: dichiara questa funzione `public` proprio come hai dichiarato le funzioni precedenti `private`)_
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+2. La prima riga dovrebbe eseguire la funzione `_generateRandomDna` passandogli una stringa `_name` e memorizzarla in un `uint` chiamato `randDna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+3. La seconda riga dovrebbe eseguire la funzione `_createZombie` passandogli `_name` e `randDna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+4. La soluzione dovrebbe essere di 4 righe di codice (inclusa la chiusura `}` della funzione).

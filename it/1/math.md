@@ -44,4 +44,4 @@ uint x = 5 ** 2; // uguale a 5^2 = 25
 
 Per assicurarci che il DNA del nostro Zombi abbia solo 16 caratteri, facciamo un altro `uint` uguale a 10^16. In questo modo possiamo in seguito usare l'operatore modulo `%` per abbreviare un numero intero a 16 cifre.
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+1. Crea un `uint` chiamato` dnaModulus` ed impostalo uguale a **10 alla potenza di `dnaDigits`**.
