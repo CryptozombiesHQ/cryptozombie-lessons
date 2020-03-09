@@ -74,4 +74,4 @@ Ciò che il nostro javascript fa è prendere i valori generati sopra in `zombieD
 
 Vai avanti: digita il tuo nome nella casella a destra e vedi che tipo di zombi ottieni!
 
-**Una volta che hai uno zombi di cui sei soddisfatto, vai avanti e fai clic su "Prossimo Capitolo" di seguito per salvare lo zombi e completare la lezione 1!**
+**Una volta che hai uno zombi di cui sei soddisfatto, vai avanti e fai clic su "Capitolo Successivo" di seguito per salvare lo zombi e completare la lezione 1!**

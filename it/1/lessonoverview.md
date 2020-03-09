@@ -38,4 +38,4 @@ Nel riquadro di destra vai avanti e sposta il cursore `Gene della Testa` sulla 7
 
 1. Gioca con i cursori sul riquadro destro della pagina. Sperimenta per vedere come i diversi valori numerici corrispondono a diversi aspetti dello zombi.
 
-Ok, basta giocare. Quando sei pronto per continuare, premi "Prossimo Capitolo" di seguito e tuffiamoci nell'apprendimento di Solidity!
+Ok, basta giocare. Quando sei pronto per continuare, premi "Capitolo Successivo" di seguito e tuffiamoci nell'apprendimento di Solidity!
