@@ -1,22 +1,23 @@
 ---
-title: Lesson Complete!
+title: Lekcja 1 ukończona!
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'sprawdźOdpowiedź'
+  - 'podpowiedź'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Well done!👏🏻👏🏻👏🏻
+Gratulacje! Ukończyłeś lekcję 1 i stworzyłeś pierwszego zombie w swojej armii.
 
-You mastered the art of deploying smart contracts using **Truffle**!
+# Kolejne Kroki
 
-Remember, building on top of **_Loom_** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+To jest dopiero początek. Będziemy co tydzień wypuszczać nową lekcję CryptoZombies, aby rozbudowywać grę coraz bardziej i dalej rozwijać swoją armię zombie.
 
-Another thing to remember is how similar deploying to **_Loom_** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+### 1. Zaloguj się, aby zapisać swoje postępy
 
-Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
+***Zaloguj się*** aby zapisać swoje postępy klikając link "Zapisz postęp" u góry strony. Damy Ci znać, gdy tylko dodamy nową lekcję.
 
-To further your knowledge, head over to the <a href="https://loomx.io/developers/en/intro-to-loom.html" target=_blank>Developer's Documentation</a> page.
+### 2. Podziel się zombie ze swoimi przyjaciółmi
 
-Happy coding!
+***Podziel się*** swoim Zombiakiem na Twitterze, bla bla, itp. (zamieść obrazki / linki)
