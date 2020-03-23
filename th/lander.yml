@@ -1,7 +1,7 @@
 th:
   ogdescription: CryptoZombiesเป็นเหมือนโรงเรียนสอนการเขียนโค้ดที่จะสอนคุณเกี่ยวกับการสร้างsmart contractในSoilidityไปจนถึงการสร้างcrypto-collectables gameของคุณเอง
   ogtitle: CryptoZombies-เรียนรู้การโค้ดเกมต่างๆบนEthereum โดยได้รับการสนับสนุนจากLoom Network
-  langshort: ไทย
+  langshort: ไทย #should be recognizable in local languages, like chinese would be 中文
   learn_title: เรียนรู้การโค้ด Ethereum DAppsได้โดยการสร้างเกมของคุณขึ้นมาเอง
   learn_desc: CryptoZombiesเป็นเหมือนโรงเรียนสอนการเขียนโค้ดที่จะสอนคุณเกี่ยวกับการสร้างsmart contractในSoilidityไปจนถึงการสร้างcrypto-collectables gameของคุณเอง
   get_started: เริ่มต้นได้เลยโดยไม่ต้องเสียค่าใช้จ่าย
