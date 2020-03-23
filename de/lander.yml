@@ -1,7 +1,7 @@
 de:
   ogdescription: CryptoZombies ist eine interaktive Programmierschule, die Dir beibringt Smart Contracts in Solidity zu programmieren, indem du Dein eigenes Krypto-Sammel-Spiel entwickelst.
   ogtitle: CryptoZombies - lerne Spiele auf Ethereum zu entwickeln. Powered by Loom-Network
-  langshort: DE
+  langshort: DE #should be recognizable in local languages, like chinese would be 中文
   learn_title: Lerne Ethereum DApps zu programmieren indem Du Dein eigenes Spiel entwickelst
   learn_desc: CryptoZombies ist eine interaktive Code-Schule, die Dir beibringt Smart Contracts in Solidity zu programmieren, indem du Dein eigenes Krypto-Sammel-Spiel entwickelst.
   get_started: Auf gehts, es ist kostenlos
