@@ -1,7 +1,7 @@
 tr:
   ogdescription: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Solidity içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
   ogtitle: CryptoZombies - Ethereum’da oyunlar kodlamayı öğren. Loom Network tarafından çalıştırılıyor.
-  langshort: TR
+  langshort: TR #should be recognizable in local languages, like chinese would be 中文
   learn_title: Kendi Oyununuzu Yaparak Ethereum DApps Kodlamayı Öğrenin.
   learn_desc: CryptoZombies, kendi kripto toplanabilir oyununuzun yapımı sayesinde size Solidity içinde akıllı kontratlar yazmayı öğreten bir interaktif kod okuludur.
   get_started: Başlangıç, Ücretsizdir
