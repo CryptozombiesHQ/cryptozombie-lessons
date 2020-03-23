@@ -1,7 +1,7 @@
 "no":
   ogdescription: CryptoZombies er en interaktiv kodeskole som lærer deg å skrive smarte kontrakter i Solidity gjennom å bygge ditt eget krypto-collectables-spill.
   ogtitle: CryptoZombies - Lær å kode spill på Ethereum. Drevet av Loom Network
-  langshort: EN
+  langshort: EN #should be recognizable in local languages, like chinese would be 中文
   learn_title: Lær å kode Ethereum DApps ved å bygge ditt eget spill
   learn_desc: CryptoZombies er en interaktiv kodeskole som lærer deg å skrive smarte kontrakter i Solidity gjennom å bygge ditt eget krypto-collectables-spill.
   get_started: Kom i gang, det er gratis
