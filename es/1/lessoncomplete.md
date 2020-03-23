@@ -1,19 +1,23 @@
 ---
-title: Lesson Complete!
+title: '¡Lección 1 Completa!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-You finished testing the game. You are nothing short of extraordinary!
+¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
 
-Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
+# Pasos Siguientes
 
-The important things to remember are:
+Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
 
-- Make sure you create a separate test for each function in your game.
-- Keep everything clearly labelled and organized
-- Make use of time travelling
-- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
+### 1. Inicia sesión para guardar tu progreso
+
+***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
+
+### 2. Comparte tu zombi con tus amigos
+
+***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
