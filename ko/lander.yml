@@ -1,7 +1,7 @@
 ko:
   ogdescription: 크립토좀비는 학습자가 크립토 수집품 게임을 직접 만들어 봄으로써 솔리디티로 스마트 컨트렉트를 작성하는 방법을 배우도록 하는 대화형 코딩 스쿨입니다.
   ogtitle: 크립토좀비 - 이더리움 게임을 만드는 법을 학습하세요. Loom Network가 개발했습니다.
-  langshort: 한국어
+  langshort: 한국어 #should be recognizable in local languages, like chinese would be 中文
   learn_title: 직접 게임을 만들며 이더리움 댑 코딩을 배우세요.
   learn_desc: 크립토좀비는 학습자가 크립토 수집품 게임을 직접 만들어 봄으로써 솔리디티로 스마트 컨트렉트를 작성하는 방법을 배우도록 하는 대화형 코딩 스쿨입니다.
   get_started: 시작하세요! 무료입니다.
