@@ -1,5 +1,5 @@
 ---
-title: Public Functions & Security
+title: Funzioni Pubbliche & Sicurezza
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -42,18 +42,18 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 1. Make this function internal
+          // 1. Rendi questa funzione interna
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. Add a check for `_isReady` here
+            // 2. Aggiungi un controllo per `_isReady` qui
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. Call `_triggerCooldown`
+            // 3. Richiama `_triggerCooldown`
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -240,18 +240,18 @@ material:
       }
 ---
 
-Now let's modify `feedAndMultiply` to take our cooldown timer into account.
+Ora modifichiamo `feedAndMultiply` per tenere conto del nostro tempo di ricarica.
 
-Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+Guardando la storia di questa funzione, puoi vedere che l'abbiamo resa `public` nella lezione precedente. Un'importante pratica di sicurezza è esaminare tutte le tue funzioni `public` ed `external` e provare a pensare a come gli utenti potrebbero abusarne. Ricorda: a meno che queste funzioni non abbiano un modificatore come `onlyOwner`, qualsiasi utente potrà chiamarle e passargli tutti i dati che vogliono.
 
-Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+Riesaminiamo questa particolare funzione, l'utente può chiamare direttamente la funzione e passare qualsiasi `_targetDna` o `_species` che desidera. Così non sembra un gioco: vogliamo che seguano le nostre regole!
 
-On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+Con un esame più attento, questa funzione dovrà essere chiamata solo da `feedOnKitty()` quindi il modo più semplice per prevenire questi exploit è renderla `internal`.
 
-## Put it to the test 
+## Facciamo una prova
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+1. Attualmente `feedAndMultiply` è una funzione `public`. Rendiamola `internal` in modo che il contratto sia più sicuro. Non vogliamo che gli utenti siano in grado di chiamare questa funzione con il DNA che desiderano.
 
-2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
+2. Facciamo in modo che `feedAndMultiply` tenga conto del nostro `cooldownTime`. Innanzitutto, dopo aver cercato `myZombie`, aggiungiamo un'istruzione `require` che controlla `_isReady()` e gli passa `myZombie`. In questo modo l'utente può eseguire questa funzione solo se il tempo di recupero di uno zombi è scaduto.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+3. Alla fine della funzione chiamiamo `_triggerCooldown(myZombie)` in modo che l'alimentazione inneschi il tempo di recupero dello zombi.

@@ -235,34 +235,34 @@ Ora che abbiamo una proprietà `readyTime` sulla nostra struttura `Zombie`, pass
 
 Modificheremo il nostro `feedAndMultiply` in modo tale che:
 
-1. Feeding triggers a zombie's cooldown, and
+1. L'alimentazione inneschi il tempo di recupero di uno zombi e
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+2. Gli zombi non potranno nutrirsi di gattini fino al termine del tempo di recupero
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+Questo farà in modo che gli zombi non potranno nutrirsi illimitatamente di gattini e quindi moltiplicarsi tutto il giorno. In futuro, quando aggiungeremo la funzionalità di battaglia, faremo in modo che anche attaccare gli altri zombi si basi sul tempo di recupero.
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+Innanzitutto definiremo alcune funzioni di aiuto che ci consentono di impostare e controllare il `readyTime` di uno zombi.
 
-## Passing structs as arguments
+## Passando le strutture come argomenti
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
+È possibile passare un puntatore di archiviazione ad una struttura come argomento di una funzione `private` o `internal`. Ciò è utile, ad esempio, per passare le nostre strutture `Zombie` tra le funzioni.
 
-The syntax looks like this:
+La sintassi è simile alla seguente:
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
-  // do stuff with _zombie
+  // fai qualcosa con _zombie
 }
 ```
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+In questo modo possiamo passare un riferimento al nostro zombi in una funzione invece di passare un ID zombi e cercarlo.
 
-## Put it to the test 
+## Facciamo una prova
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
+1. Inizia definendo la funzione `_triggerCooldown`. Ci vorrà 1 argomento, `_zombie`, un puntatore `Zombie storage`. La funzione dovrebbe essere `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+2. Il corpo della funzione dovrebbe settare `_zombie.readyTime` su `uint32(now + cooldownTime)`.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+3. Quindi crea una funzione chiamata `_isReady`. Questa funzione prenderà anche un argomento `Zombie storage` chiamato `_zombie`. Sarà una funzione `internal view` e restituirà un `bool`.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+4. Il corpo della funzione dovrebbe restituire `(_zombie.readyTime <= now)`, che sarà `true` o `false`. Questa funzione ci dirà se è trascorso abbastanza tempo dall'ultima volta che lo zombi si è nutrito.

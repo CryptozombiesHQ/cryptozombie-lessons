@@ -1,5 +1,5 @@
 ---
-title: More on Function Modifiers
+title: Altro sulla funzione di modifica
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -13,7 +13,7 @@ material:
 
         contract ZombieHelper is ZombieFeeding {
 
-          // Start here
+          // Inizia qui
 
         }
       "zombiefeeding.sol": |
@@ -206,41 +206,41 @@ material:
       }
 ---
 
-Great! Our zombie now has a functional cooldown timer.
+Grande! Il nostro zombi ora ha un timer di ricarica che funziona.
 
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
+Successivamente aggiungeremo alcuni metodi di supporto aggiuntivi. Abbiamo creato per te un nuovo file chiamato `zombiehelper.sol` che importa `zombiefeeding.sol`. Ciò contribuirà a mantenere organizzato il nostro codice.
 
-Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
+Facciamo in modo che gli zombi ottengano abilità speciali dopo aver raggiunto un certo livello. Ma prima, per farlo, dobbiamo imparare un po' di più sulle funzioni di modifica.
 
-## Function modifiers with arguments
+## Funzioni di modifica con argomenti
 
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
+In precedenza abbiamo esaminato il semplice esempio di `onlyOwner`. Ma le funzioni di modifica possono anche accettare argomenti. Per esempio:
 
 ```
-// A mapping to store a user's age:
+// Una mappatura per memorizzare l'età di un utente:
 mapping (uint => uint) public age;
 
-// Modifier that requires this user to be older than a certain age:
+// Funzione di modifica che richiede che questo utente abbia più di una certa età:
 modifier olderThan(uint _age, uint _userId) {
   require(age[_userId] >= _age);
   _;
 }
 
-// Must be older than 16 to drive a car (in the US, at least).
-// We can call the `olderThan` modifier with arguments like so:
+// Deve avere più di 16 anni per guidare un'auto (almeno negli Stati Uniti).
+// Possiamo chiamare il modificatore `oldThan` con argomenti come questi:
 function driveCar(uint _userId) public olderThan(16, _userId) {
-  // Some function logic
+  // Qualche funzione logica
 }
 ```
 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
+Qui potete vedere che il modificatore `oldThan` accetta argomenti proprio come fa una funzione. E che la funzione `driveCar` passa i suoi argomenti al modificatore.
 
-Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
+Proviamo a creare il nostro `modifier` che utilizza la proprietà zombie `level` per limitare l'accesso ad abilità speciali.
 
-## Put it to the test
+## Facciamo una prova
 
-1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
+1. In `ZombieHelper` crea un `modifier` chiamato `aboveLevel`. Ci vorranno 2 argomenti, `_level` (un `uint`) e `_zombieId` (anch'esso un `uint`).
 
-2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
+2. Il corpo dovrebbe verificare che `zombies[_zombieId].level` sia maggiore o uguale a `_level`.
 
-3. Remember to have the last line of the modifier call the rest of the function with `_;`.
+3. Ricorda di avere l'ultima riga del modificatore che chiama il resto della funzione con `_;`.
