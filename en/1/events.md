@@ -103,7 +103,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+1. Declare an `event` called `NewZombie`. It should pass `id` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
 
 2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
 
