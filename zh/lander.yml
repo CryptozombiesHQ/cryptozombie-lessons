@@ -2,5 +2,36 @@
 zh:
   ogdescription: CryptoZombies 是个在编游戏的过程中学习 Solidity 智能协议语言的互动教程。
   ogtitle: CryptoZombies - 编游戏的同时学习以太坊的智能协议. Loom Network 产品。
-  telegram_open_chat: Open Chat
+  langshort: 简体中文 #should be recognizable in local languages, like chinese would be 中文
+  learn_title: 通过搭建您自己的游戏来学习以太坊Dapp编程
+  learn_desc: 加密僵尸是一个交互式的编程课程，教授您通过搭建您自己的加密藏品游戏来学习使用Solidity来编写智能合约。
+  get_started: 现在就开始，别担心，这个是免费的哦！
+  learn_more: 学习更多
+  what_title: 什么是加密僵尸？
+  what_desc1: 加密僵尸是一个免费的，交互式的编程课程，教您在以太坊上搭建游戏。
+  what_desc2: 该课程是针对零基础的Solidity初学者的课程。所以即使您之前从没用过Solidity也没有关系，我们会陪您一步步掌握Solidity。
+  collect_title: 赢得加密藏品
+  collect_desc1: 通过完成编程课程赢得加密藏品僵尸和额外奖励。
+  collect_desc2: 在完成所有的课程并部署您的Dapp后，用您的将是大军和其他玩家的僵尸在世界上第一个基于区块链的游戏里竞技吧！这不仅是一个编程课程，还是一个MMO加密藏品策略游戏。
+  collect_desc3: 还等啥呢啊？赶紧点击内个按钮开始第一节课，搭建你第一个Dapp啊！不要钱！
+  start_title: 现在就开始  
+  int_title: 交互式编程课程
+  inbrowser_desc: 在浏览器内运行的课程带您一步步实现从基础的Solidity知识开始，创建您自己功能齐全的基于区块链的游戏。完成了第一节课之后（随便点点就完成了），您就可以称自己为一名Solidity开发者了！
+  zombie_title: 建立一支僵尸军队
+  zombie_desc: 在第一节课，您通过僵尸工厂建立自己的军队。您创建的每一个僵尸都有一个随机产生的DNA和独特的造型。之后的课程（每周一节）会一点点地为您的游戏增加功能，比如给您的僵尸增加和别人的僵尸打架的功能！
+  who_made: 谁创立的加密僵尸？拥顾啥不要钱呢？
+  who_made1: 加密僵尸是由这个团队建立的 
+  who_made2: 。我们在建立一个大规模运行的以太坊侧链应用。
+  who_made3: 我们认为区块链能做的很多，不仅仅是支付，我们想让更多开发者思路开放一些，试着去搭建大规模的Dapp。游戏是我们认为区块链会真正变革的产业之一。所以我们创办了加密僵尸，来教会和影响下一代的区块链游戏开发者。
+  find_us: 除了加密僵尸，我们还干了一些非常酷的项目。如果您感兴趣，可以关注我们，与某个项目取得联系，或者是仅仅跟我们打个招呼，您可以通过以下方式找到我们：
+  and_our: 和我们
+  email_us_at: "，或者写电子邮件给我们"
+  footer_network: 网络
+  footer_info: 更多信息
+  footer_contact: 联系方式
+  footer_contact_jobs: 工作机会
+  footer_email: 电子邮件
+  footer_about: 关于
+  footer_desc: CryptoZombies.io是一个教授初学者或者有一定基础的程序员关于区块链交互的免费教学平台。由Loom网络建立——一个搭建以太坊商业机应用的平台。
+  telegram_open_chat: 开放聊天
   telegram_link: https://t.me/loomnetworkCN
