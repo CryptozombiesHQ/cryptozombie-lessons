@@ -53,7 +53,7 @@ material:
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
-            // 3. `triggerCooldown`을 호출하게
+            // 3. `_triggerCooldown`을 호출하게
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
