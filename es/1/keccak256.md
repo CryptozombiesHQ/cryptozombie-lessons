@@ -80,6 +80,6 @@ En el código de arriba, `a * b` devuelve un `uint`, pero estábamos intentando 
 
 ¡Vamos a rellenar el cuerpo de la función `_generateRandomDna`! Esto es lo que deberíamos hacer:
 
-1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexidecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexadecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 
 2. Queremos que nuestro ADN tenga solamente 16 dígitos (¿Recuerdas nuestra variable `dnaModulus`?). Así que la segunda línea del código debería devolver `return` el módulo del valor de arriba (`%`) `dnaModulus`.
