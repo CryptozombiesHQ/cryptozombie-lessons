@@ -7,16 +7,10 @@ material:
   lessonComplete: 1
 ---
 
-Well done!👏🏻👏🏻👏🏻
+Well done! You've now implemented an application that can deposit, transfer, and withdraw multiple assets. If you want to make payments using ETH again, you just need to set the value of the `token` variable back to `ETH`, and then update the `amountToDeposit`, `amountToTransfer`, and `amountToWithdraw` variables accordingly.
 
-You mastered the art of deploying smart contracts using **Truffle**!
+You could also use <a href="https://github.com/tj/commander.js/" target=_blank>Commander.js</a> or a similar library to allow your users to pass the token, the operation they want to perform, and the amount as command-line arguments, but this is beyond the scope of this tutorial.
 
-Remember, building on top of **_Loom_** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+The lessons in this series were aimed at getting you familiarized with the zkSync protocol. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready application!💪🏻
 
-Another thing to remember is how similar deploying to **_Loom_** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
-
-Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
-
-To further your knowledge, head over to the <a href="https://loomx.io/developers/en/intro-to-loom.html" target=_blank>Developer's Documentation</a> page.
-
-Happy coding!
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
