@@ -1,12 +1,16 @@
 ---
-title: How to Build an Oracle - Part 3
-header: How to Build an Oracle - Part 3
-path: solidity_advanced
+title: Advanced zkSync Concepts
+header: Advanced zkSync Concepts
 publishedOn: Cryptozombies
+path: beyond_ethereum
 ---
 
-Now that you've got a bit of experience under your belt, we're going to dive into some of the more technical aspects of writing an oracle.
+Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
 
-Remember that, even if you've covered a lot of ground, your oracle is still somehow centralized, meaning that **only the owner** is allowed to update the ETH price.
+You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
 
-In this lesson, we'll show you how to make your oracle more decentralized.
+If this snippet gets executed, what will be the output?
+
+If you answered `false`, then you’re set!
+
+We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17">Lesson 17</a> before starting this one.
