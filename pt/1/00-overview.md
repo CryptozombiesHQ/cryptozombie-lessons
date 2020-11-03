@@ -1,18 +1,28 @@
 ---
-title: How to Build an Oracle
-header: How to Build an Oracle
+title: Testing Smart Contracts with Truffle
+header: Testing Smart Contracts with Truffle
+roadmap: roadmap.jpg
 path: solidity_advanced
+position: 1
 publishedOn: Cryptozombies
 ---
 
-By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. If so, you may already have noticed that smart contracts can't directly access data from the outside world through an HTTP request or something similar. Instead, smart contracts pull data through something called an **_oracle_**.
+Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
 
-This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**.
+So, go ahead and deploy the game to the mainnet. Enjoy your success!
 
-In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
+Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
 
-That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
+Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
 
-The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
 
-Time to write some code!
+To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
+
+By the end of this lesson, you will be able to:
+
+- Test your smart contracts with `Truffle` against `Ganache`
+- Use `Chai` to write more expressive assertions
+- Test against `Loom`😉
+
+Let's get started!
