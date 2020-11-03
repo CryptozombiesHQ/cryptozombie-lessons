@@ -3,17 +3,18 @@ title: Lesson Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
+requireLogin: true
 material:
   lessonComplete: 1
 ---
 
-You finished testing the game. You are nothing short of extraordinary!
+Congratulations, you’ve made it to the end!
 
-Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
+In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
 
-The important things to remember are:
+In the next lesson, we'll put together the missing pieces by implementing:
 
-- Make sure you create a separate test for each function in your game.
-- Keep everything clearly labelled and organized
-- Make use of time travelling
-- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
+* The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
+* A bare-bones client that ties everything together.
+
+Until then, stay tuned and happy coding!
