@@ -7,8 +7,8 @@ material:
   lessonComplete: 1
 ---
 
-Awesome!
+Congratulations!
 
-You just issued a BEP-2 Token on the Binance test net and minted 1 billion tokens.
+You’ve made it to the end! By completing this lesson, you should have a good grasp of the basic functions and concepts of zkSync.
 
-But this is just an appetizer and we're working on more cool stuff. In the next lessons, we'll show you how to ...
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
