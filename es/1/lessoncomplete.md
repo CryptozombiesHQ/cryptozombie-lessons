@@ -1,23 +1,20 @@
 ---
-title: '¡Lección 1 Completa!'
+title: Lesson Complete!
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - 'checkAnswer'
+  - 'hints'
+requireLogin: true
 material:
-  lessonComplete:
-    answer: 1
+  lessonComplete: 1
 ---
 
-¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
+Congratulations, you’ve made it to the end!
 
-# Pasos Siguientes
+In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
 
-Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
+In the next lesson, we'll put together the missing pieces by implementing:
 
-### 1. Inicia sesión para guardar tu progreso
+* The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
+* A bare-bones client that ties everything together.
 
-***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
-
-### 2. Comparte tu zombi con tus amigos
-
-***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
+Until then, stay tuned and happy coding!
