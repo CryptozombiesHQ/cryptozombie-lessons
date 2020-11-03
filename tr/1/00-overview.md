@@ -1,26 +1,41 @@
 ---
-title: "Deploying DApps with Truffle"
-header: "Deploying DApps with Truffle"
-roadmap: roadmap.jpg
-path: solidity_advanced
-position: 2
+title: Intro to zkSync
+header: Intro to zkSync
 publishedOn: Cryptozombies
+path: beyond_ethereum
 ---
 
-Remember that we promised to teach you how to deploy a smart contract?
+Welcome!
 
-It's been a while, but the time has come!
+In this lesson, we will teach you the basics of zkSync, by walking you through setting up a shop where a customer (Alice) can buy goods from a shopkeeper (Bob)
 
-In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
+## What is zkSync?
 
-And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
+Recently there’s been some interesting research on using zero-knowledge proofs to secure token transfers between Ethereum and side-chains, and there’s now a practical implementation of this research in the form of **zkSync** from Matter Labs.
 
-Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
+zkSync is built on the ZK rollup architecture, a level-two scaling solution in which all funds are held by a smart contract on Ethereum, while computation and storage are performed off-chain.
 
-Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
+## Why should you care about zkSync?
 
-In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
+This is the short answer to why we think zkSync is important:
 
-On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
+* The protocol allows ETH and ERC20 token transfers with **_instant confirmations_** and 10 min finality on Ethereum.
+* Provides Mainnet-level security with **_zero reliance on 3rd parties_**.
+* Low transaction fees
+* Fast deposits and withdrawals
 
-Enough talking! Let's get started😉
+## How does zkSync work?
+
+In a nutshell, users can send their ETH or ERC20 tokens to the zkSync smart contract on Ethereum, and the protocol will credit them with the equivalent assets. For simplicity, this tutorial will only cover how you can make ETH payments.
+
+## What will you learn in this lesson?
+
+By the end of this lesson, you will be able to:
+
+* Set up accounts on zkSync
+* Deposit ETH to zkSync
+* Make payments by transferring ETH between zkSync accounts
+* Track the status of these transactions.
+* Withdraw ETH to Ethereum
+
+Let's get started!
