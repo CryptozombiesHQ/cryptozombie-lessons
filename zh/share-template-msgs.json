@@ -1,26 +1,26 @@
 {
-    "1": {
-        "pageTitle": "瞅瞅我的CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "我刚完成了CryptoZombies的第1课程，来看看我的僵尸军团！"
-    },
-    "2": {
-        "pageTitle": "我的僵尸{{ .ZombieName }}刚吃了个 CryptoKitty，升级了!",
-        "ogDesc": "我刚完成了CryptoZombies的第二课！还给我的僵尸大军收编了一只猫咪僵尸，你不来看看么？"
-    },
-    "3": {
-        "pageTitle": "来看看我的僵尸军团!",
-        "ogDesc": "我刚完成了CryptoZombies的第三课！我的僵尸军团变大了！"
-    },
-    "4": {
-        "pageTitle": "我的僵尸刚刚打败了邪恶的 IOTA 僵尸!",
-        "ogDesc": "我刚完成了CryptoZombies的第四课！还打败了邪恶的 IOTA 僵尸！ 来一起战斗吧..."
-    },
-    "5": {
-        "pageTitle": "我的 CryptoZombie 大军壮大了！",
-        "ogDesc": "我刚完成了 CryptoZombies 第五课， 还获得了一个10级僵尸，6不6？"
-    },
-    "6": {
-        "pageTitle": "瞧瞧我的 'The Phantom of Web3',我的 3.0 CryptoZombie!",
-        "ogDesc": "我刚完成了 CryptoZombies 第六课， 学会了如何使用 Web3.js, MetaMask, 以及 Infura 来打造我自己的 DApp!"
-    }
+  "1": {
+    "pageTitle": "瞅瞅我的CryptoZombie {{ .ZombieName }}!",
+    "ogDesc": "我刚完成了CryptoZombies的第1课程，来看看我的僵尸军团！"
+  },
+  "2": {
+    "pageTitle": "我的僵尸{{ .ZombieName }}刚吃了个 CryptoKitty，升级了!",
+    "ogDesc": "我刚完成了CryptoZombies的第二课！还给我的僵尸大军收编了一只猫咪僵尸，你不来看看么？"
+  },
+  "3": {
+    "pageTitle": "来看看我的僵尸军团!",
+    "ogDesc": "我刚完成了CryptoZombies的第三课！我的僵尸军团变大了！"
+  },
+  "4": {
+    "pageTitle": "我的僵尸刚刚打败了邪恶的 IOTA 僵尸!",
+    "ogDesc": "我刚完成了CryptoZombies的第四课！还打败了邪恶的 IOTA 僵尸！ 来一起战斗吧..."
+  },
+  "5": {
+    "pageTitle": "我的 CryptoZombie 大军壮大了！",
+    "ogDesc": "我刚完成了 CryptoZombies 第五课， 还获得了一个10级僵尸，6不6？"
+  },
+  "6": {
+    "pageTitle": "瞧瞧我的 'The Phantom of Web3',我的 3.0 CryptoZombie!",
+    "ogDesc": "我刚完成了 CryptoZombies 第六课， 学会了如何使用 Web3.js, MetaMask, 以及 Infura 来打造我自己的 DApp!"
+  }
 }
