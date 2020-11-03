@@ -7,8 +7,8 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You've just finsihed implementing your decentralized oracle!
+Awesome!
 
-The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
+You just issued a BEP-2 Token on the Binance test net and minted 1 billion tokens.
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+But this is just an appetizer and we're working on more cool stuff. In the next lessons, we'll show you how to ...
