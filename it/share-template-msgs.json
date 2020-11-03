@@ -1,0 +1,26 @@
+{
+    "1": {
+        "pageTitle": "Dai un'occhiata al mio CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "Ho appena completato la lezione 1 di CryptoZombies ed ho imparato le basi per scrivere un gioco su Ethereum. Dai un'occhiata al primo zombi del mio esercito!"
+    },
+    "2": {
+        "pageTitle": "Il mio CryptoZombie {{ .ZombieName }} ha appena mangiato un CryptoZitty ed è salito di livello!",
+        "ogDesc": "Ho appena completato la lezione 2 di CryptoZombies ed ho aggiunto un CryptoKitty rianimato al mio esercito di zombi. Vieni a dare un'occhiata!"
+    },
+    "3": {
+        "pageTitle": "Dai un'occhiata al mio esercito di CryptoZombie!",
+        "ogDesc": "Ho appena completato la lezione 3 di CryptoZombies! Il mio esercito di zombi sta crescendo..."
+    },
+    "4": {
+        "pageTitle": "Il mio CryptoZombie ha sconfitto il malvagio zombie IOTA!",
+        "ogDesc": "Ho appena completato la lezione 4 di CryptoZombies in cui ho sconfitto il malvagio zombie IOTA! Vieni a rivivere la battaglia..."
+    },
+    "5": {
+        "pageTitle": "Il mio esercito di CryptoZombie è cresciuto!",
+        "ogDesc": "Ho appena completato la lezione 5 di CryptoZombies ed ho ottenuto uno zombi livello 10 H4XF13LD MORRIS 💯💯😎💯💯 OMG!"
+    },
+    "6": {
+        "pageTitle": "Dai un'occhiata a \"Il Fantasma del Web3\", il mio livello 3.0 CryptoZombie!",
+        "ogDesc": "Ho appena completato la lezione 6 di CryptoZombies ed ho imparato ad usare Web3.js, MetaMask e Infura per creare la mia DApp!"
+    }
+}

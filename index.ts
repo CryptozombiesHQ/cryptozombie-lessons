@@ -8,6 +8,7 @@ import ru from './ru'
 import es from './es'
 import sk from './sk'
 import de from './de'
+import it from './it'
 
 export default {
   en, // English (source for all translations)
@@ -19,5 +20,6 @@ export default {
   ru,
   es,
   sk,
-  de
+  de,
+  it
 }
