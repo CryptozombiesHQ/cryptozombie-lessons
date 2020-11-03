@@ -194,6 +194,94 @@ import l13_ch1 from './13/01.md'
 import l13_ch2 from './13/02.md'
 import l13_ch3 from './13/03.md'
 import l13_ch4 from './13/04.md'
+import l13_ch5 from './13/05.md'
+import l13_ch6 from './13/06.md'
+import l13_ch7 from './13/07.md'
+import l13_ch8 from './13/08.md'
+import l13_ch9 from './13/09.md'
+import l13_ch10 from './13/10.md'
+import l13_ch11 from './13/11.md'
+import l13_ch12 from './13/12.md'
+import l13_complete from './13/lessoncomplete.md'
+
+//Lesson 14 - How to Build an Oracle Part 1 (Smart Contracts)
+import l14_overview from './14/00-overview.md'
+import l14_ch1 from './14/01.md'
+import l14_ch2 from './14/02.md'
+import l14_ch3 from './14/03.md'
+import l14_ch4 from './14/04.md'
+import l14_ch5 from './14/05.md'
+import l14_ch6 from './14/06.md'
+import l14_ch7 from './14/07.md'
+import l14_ch8 from './14/08.md'
+import l14_ch9 from './14/09.md'
+import l14_ch10 from './14/10.md'
+import l14_ch11 from './14/11.md'
+import l14_complete from './14/lessoncomplete.md'
+
+//Lesson 15 - How to Build an Oracle Part 2 (JavaScript)
+import l15_overview from './15/00-overview.md'
+import l15_ch1 from './15/01.md'
+import l15_ch2 from './15/02.md'
+import l15_ch3 from './15/03.md'
+import l15_ch4 from './15/04.md'
+import l15_ch5 from './15/05.md'
+import l15_ch6 from './15/06.md'
+import l15_ch7 from './15/07.md'
+import l15_ch8 from './15/08.md'
+import l15_ch9 from './15/09.md'
+import l15_ch10 from './15/10.md'
+import l15_ch11 from './15/11.md'
+import l15_ch12 from './15/12.md'
+import l15_ch13 from './15/13.md'
+import l15_ch14 from './15/14.md'
+import l15_complete from './15/lessoncomplete.md'
+
+//Lesson 16 - How to Build an Oracle Part 2 (Decentralized)
+import l16_overview from './16/00-overview.md'
+import l16_ch1 from './16/01.md'
+import l16_ch2 from './16/02.md'
+import l16_ch3 from './16/03.md'
+import l16_ch4 from './16/04.md'
+import l16_ch5 from './16/05.md'
+import l16_ch6 from './16/06.md'
+import l16_ch7 from './16/07.md'
+import l16_ch8 from './16/08.md'
+import l16_ch9 from './16/09.md'
+import l16_ch10 from './16/10.md'
+import l16_complete from './16/lessoncomplete.md'
+
+//Lesson 17 - Intro to zkSnarks
+import l17_overview from './17/00-overview.md'
+import l17_ch1 from './17/01.md'
+import l17_ch2 from './17/02.md'
+import l17_ch3 from './17/03.md'
+import l17_ch4 from './17/04.md'
+import l17_ch5 from './17/05.md'
+import l17_ch6 from './17/06.md'
+import l17_ch7 from './17/07.md'
+import l17_ch8 from './17/08.md'
+import l17_ch9 from './17/09.md'
+import l17_ch10 from './17/10.md'
+import l17_ch11 from './17/11.md'
+import l17_ch12 from './17/12.md'
+import l17_ch13 from './17/13.md'
+import l17_ch14 from './17/14.md'
+import l17_ch15 from './17/15.md'
+import l17_complete from './17/lessoncomplete.md'
+
+//Lesson 18
+import l18_overview from './18/00-overview.md'
+import l18_ch1 from './18/01.md'
+import l18_ch2 from './18/02.md'
+import l18_ch3 from './18/03.md'
+import l18_ch4 from './18/04.md'
+import l18_ch5 from './18/05.md'
+import l18_ch6 from './18/06.md'
+import l18_ch7 from './18/07.md'
+import l18_ch8 from './18/08.md'
+import l18_ch9 from './18/09.md'
+import l18_complete from './18/lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -393,5 +481,93 @@ export default {
     l13_ch2,
     l13_ch3,
     l13_ch4,
+    l13_ch5,
+    l13_ch6,
+    l13_ch7,
+    l13_ch8,
+    l13_ch9,
+    l13_ch10,
+    l13_ch11,
+    l13_ch12,
+    l13_complete
+  ],
+  14: [
+    l14_overview,
+    l14_ch1,
+    l14_ch2,
+    l14_ch3,
+    l14_ch4,
+    l14_ch5,
+    l14_ch6,
+    l14_ch7,
+    l14_ch8,
+    l14_ch9,
+    l14_ch10,
+    l14_ch11,
+    l14_complete
+  ],
+  15: [
+    l15_overview,
+    l15_ch1,
+    l15_ch2,
+    l15_ch3,
+    l15_ch4,
+    l15_ch5,
+    l15_ch6,
+    l15_ch7,
+    l15_ch8,
+    l15_ch9,
+    l15_ch10,
+    l15_ch11,
+    l15_ch12,
+    l15_ch13,
+    l15_ch14,
+    l15_complete
+  ],
+  16: [
+    l16_overview,
+    l16_ch1,
+    l16_ch2,
+    l16_ch3,
+    l16_ch4,
+    l16_ch5,
+    l16_ch6,
+    l16_ch7,
+    l16_ch8,
+    l16_ch9,
+    l16_ch10,
+    l16_complete
+  ],
+  17: [
+    l17_overview,
+    l17_ch1,
+    l17_ch2,
+    l17_ch3,
+    l17_ch4,
+    l17_ch5,
+    l17_ch6,
+    l17_ch7,
+    l17_ch8,
+    l17_ch9,
+    l17_ch10,
+    l17_ch11,
+    l17_ch12,
+    l17_ch13,
+    l17_ch14,
+    l17_ch15,
+    l17_complete
+  ],
+  18: [
+    l18_overview,
+    l18_ch1,
+    l18_ch2,
+    l18_ch3,
+    l18_ch4,
+    l18_ch5,
+    l18_ch6,
+    l18_ch7,
+    l18_ch8,
+    l18_ch9,
+    l18_complete
   ]
 }
