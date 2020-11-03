@@ -1,27 +1,26 @@
 ---
-title: How to Create a BEP-2 Token
-header: How to Create a BEP-2 Token
+title: "Deploying DApps with Truffle"
+header: "Deploying DApps with Truffle"
 roadmap: roadmap.jpg
+path: solidity_advanced
+position: 2
+publishedOn: Cryptozombies
 ---
 
-Hey there, have you been reading our newsletter lately?
+Remember that we promised to teach you how to deploy a smart contract?
 
-If not, here's the thing: we've been very busy building the best multichain network. So far, we've added support for Ethereum, Tron, and Binance. And more chains are on the roadmap😉.
+It's been a while, but the time has come!
 
-Why is this important, you ask?
+In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
 
-Well, integrating with the major blockchains gets your DApp exposed to the user base of all these chains combined. Moreover, you'll be able to accept a multitude of tokens as payment.
+And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
 
-Thus, if you choose to build your app **_Loom_**, you simply get to spend more time coding your awesome DApp.
+Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
 
-Now let's talk a bit about the Binance and BEP-2 tokens.
+Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
 
-**What is the BEP-2 standard?**
+In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
 
-Good question! To answer it, I copied an pasted the following definition from the BEP-2 GitHub web page: "_The BEP2 standard describes a set of rules for token management within the Binance Chain ecosystem._"
+On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
 
-This is useful. But let me add something at least equally important. _Binance chain doesn’t provide support for smart contracts... but Loom does_. This allows you, as a developer, to build all sorts of cool stuff such as decentralized token swap service, a multi-collateral stable coin and so on and so forth.
-
-But first things first. In this lesson, we'll show you how to create a BEP-2 Token on the Binance chain.
-
-Let's get started!
+Enough talking! Let's get started😉
