@@ -1,17 +1,27 @@
 ---
-title: How to Build an Oracle - Part 2
-header: How to Build an Oracle - Part 2
-path: solidity_advanced
-publishedOn: Cryptozombies
+title: How to Create a BEP-2 Token
+header: How to Create a BEP-2 Token
+roadmap: roadmap.jpg
 ---
 
-Welcome to the second part of our series about building an oracle. This lesson picks up where we left off last time, and we're going to look at how to:
+Hey there, have you been reading our newsletter lately?
 
-* Implement the JavaScript component of the oracle.
-* Write a simple Node.js client that interacts with the oracle. To keep things simple, you won't be building a fully-fledged web interface, but the code you'll write in this lesson will help you understand all the key aspects.
-* To glue everything together, we'll teach you how to deploy the smart contracts and run the oracle.
+If not, here's the thing: we've been very busy building the best multichain network. So far, we've added support for Ethereum, Tron, and Binance. And more chains are on the roadmap😉.
 
-Note that this is an advanced lesson and it requires:
+Why is this important, you ask?
 
-* A bit of **JavaScript** knowledge.
-* A basic understanding of `web3`. If you don’t know how `web3` works, don't worry. We've got you covered. Just head over to <a href="https://cryptozombies.io/en/lesson/6" target=_blank>Lesson 6</a> first.
+Well, integrating with the major blockchains gets your DApp exposed to the user base of all these chains combined. Moreover, you'll be able to accept a multitude of tokens as payment.
+
+Thus, if you choose to build your app **_Loom_**, you simply get to spend more time coding your awesome DApp.
+
+Now let's talk a bit about the Binance and BEP-2 tokens.
+
+**What is the BEP-2 standard?**
+
+Good question! To answer it, I copied an pasted the following definition from the BEP-2 GitHub web page: "_The BEP2 standard describes a set of rules for token management within the Binance Chain ecosystem._"
+
+This is useful. But let me add something at least equally important. _Binance chain doesn’t provide support for smart contracts... but Loom does_. This allows you, as a developer, to build all sorts of cool stuff such as decentralized token swap service, a multi-collateral stable coin and so on and so forth.
+
+But first things first. In this lesson, we'll show you how to create a BEP-2 Token on the Binance chain.
+
+Let's get started!
