@@ -1,19 +1,41 @@
 ---
-title: "Libra Basics"
-header: "Libra Basics"
-roadmap: roadmap.jpg
-path: libra
+title: Intro to zkSync
+header: Intro to zkSync
 publishedOn: Cryptozombies
+path: beyond_ethereum
 ---
 
-The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
+Welcome!
 
-You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
+In this lesson, we will teach you the basics of zkSync, by walking you through setting up a shop where a customer (Alice) can buy goods from a shopkeeper (Bob)
 
-This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
+## What is zkSync?
 
-We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
+Recently there’s been some interesting research on using zero-knowledge proofs to secure token transfers between Ethereum and side-chains, and there’s now a practical implementation of this research in the form of **zkSync** from Matter Labs.
 
-It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
+zkSync is built on the ZK rollup architecture, a level-two scaling solution in which all funds are held by a smart contract on Ethereum, while computation and storage are performed off-chain.
 
-Course Time: 30 Minutes - 1 Hour
+## Why should you care about zkSync?
+
+This is the short answer to why we think zkSync is important:
+
+* The protocol allows ETH and ERC20 token transfers with **_instant confirmations_** and 10 min finality on Ethereum.
+* Provides Mainnet-level security with **_zero reliance on 3rd parties_**.
+* Low transaction fees
+* Fast deposits and withdrawals
+
+## How does zkSync work?
+
+In a nutshell, users can send their ETH or ERC20 tokens to the zkSync smart contract on Ethereum, and the protocol will credit them with the equivalent assets. For simplicity, this tutorial will only cover how you can make ETH payments.
+
+## What will you learn in this lesson?
+
+By the end of this lesson, you will be able to:
+
+* Set up accounts on zkSync
+* Deposit ETH to zkSync
+* Make payments by transferring ETH between zkSync accounts
+* Track the status of these transactions.
+* Withdraw ETH to Ethereum
+
+Let's get started!
