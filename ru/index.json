@@ -1,393 +1,394 @@
 {
-    "base": {
-        "name": "КриптоЗомби",
-        "tagLine": "Научись создавать игры на Ethereum",
-        "lesson": "Урок {lessonNum}",
-        "chapter": "Глава {chapterNum}",
-        "syncing": "Синхронизируем...",
-        "telegram": {
-            "name": "Телеграм",
-            "openChat": "Ask Question",
-            "action": "Присоединяйся к нам в Телеграме",
-            "link": "https://t.me/loomnetworkdev"
-        },
-        "twitter": {
-            "name": "Твитер",
-            "link": "https://twitter.com/loomnetwork"
-        },
-        "course": {
-            "solidity_path": {
-                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
-                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
-            },
-            "hand_on_path": {
-                "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
-                "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
-            },
-            "hand_on_plasma": {
-                "title": "Advanced Solidity Path: Get In-depth Knowledge",
-                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
-            },
-            "libra_path": {
-                "title": "Libra Path: Master the Basics of Libra Blockchain Development",
-                "summary": "Learn Libra Blockchain Development by Creating Your Own Simple Game Using the Move Programming Language"
-            }
-        },
-        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
-        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
-        "start_resume": "Start/Resume",
-        "the_curriculum": "The Curriculum",
-        "course_overview": "Course Overview",
-        "start": "Start",
-        "skip_lesson": "Skip Lesson",
-        "graduate": "Ready to Graduate? Or You are Already Experienced?",
-        "you_will": "You Will",
-        "will_list": {
-            "use": "Use intermediate level solidity",
-            "deploy": "Deploy to a live PlasmaChain",
-            "interact": "Have real gamers play and interact with your Dapp",
-            "earn": "Charge an admission and earn some money!"
-        },
-        "make_game": "Make your game mode now!",
-        "goto_lesson_list": "Go to lesson list",
-        "share_link": "Share",
-        "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
-        "zbbg_link": "Get Early Access Now!",
-        "coming_soon": "Coming Soon"
+  "base": {
+    "name": "КриптоЗомби",
+    "tagLine": "Научись создавать игры на Ethereum",
+    "lesson": "Урок {lessonNum}",
+    "chapter": "Глава {chapterNum}",
+    "syncing": "Синхронизируем...",
+    "telegram": {
+      "name": "Телеграм",
+      "openChat": "Ask Question",
+      "action": "Присоединяйся к нам в Телеграме",
+      "link": "https://t.me/loomnetworkdev"
     },
-    "achievements": {
-        "achievements": "Achievements",
-        "achieved": "achieved",
-        "finished_first": {
-            "title": "Completed first lesson",
-            "desc": "Completed the first lesson in any course"
-        },
-        "finished_solidity": {
-            "title": "Finished the solidity path",
-            "desc": "Finished all lessons in Solidity path"
-        },
-        "finished_lesson7": {
-            "title": "Built a multi-fungible token",
-            "desc": "Built a multi-fungible token"
-        }
+    "twitter": {
+      "name": "Твитер",
+      "link": "https://twitter.com/loomnetwork"
     },
-    "rewards": {
-        "rewards": "rewards",
-        "test_key": "Alpha Tester Key for Zombie Battleground",
-        "loom_tokens": "Loom Tokens",
-        "no_reward": " You don't have any rewards"
+    "find_source_code_repo": "You can find the source code for these lessons at <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> this Github repo</a>.",
+    "course": {
+      "solidity": {
+        "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+        "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+      },
+      "hand_on_path": {
+        "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
+        "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
+      },
+      "solidity_advanced": {
+        "title": "Advanced Solidity Path: Get In-depth Knowledge",
+        "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+      },
+      "beyond_ethereum": {
+        "title": "Beyond Ethereum: Explore the Blockchain Ecosystem",
+        "summary": "Explore the blockchain ecosystem."
+      }
     },
-    "footer": {
-        "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
-        "find_more": "Find out more..."
+    "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
+    "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
+    "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+    "start_resume": "Start/Resume",
+    "the_curriculum": "The Curriculum",
+    "course_overview": "Course Overview",
+    "start": "Start",
+    "skip_lesson": "Skip Lesson",
+    "graduate": "Ready to Graduate? Or You are Already Experienced?",
+    "you_will": "You Will",
+    "will_list": {
+      "use": "Use intermediate level solidity",
+      "deploy": "Deploy to a live PlasmaChain",
+      "interact": "Have real gamers play and interact with your Dapp",
+      "earn": "Charge an admission and earn some money!"
     },
-    "editor": {
-        "readOnly": "только чтение"
+    "make_game": "Make your game mode now!",
+    "goto_lesson_list": "Go to lesson list",
+    "share_link": "Share",
+    "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
+    "zbbg_link": "Get Early Access Now!",
+    "coming_soon": "Coming Soon"
+  },
+  "achievements": {
+    "achievements": "Achievements",
+    "achieved": "achieved",
+    "finished_first": {
+      "title": "Completed first lesson",
+      "desc": "Completed the first lesson in any course"
     },
-    "lessonMenu": {
-        "getReward": "Rewards",
-        "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "{title}",
-        "signIn": "Войди, чтобы загрузить свой прогресс",
-        "progressLoaded": "Прогресс загружен"
+    "finished_solidity": {
+      "title": "Finished the solidity path",
+      "desc": "Finished all lessons in Solidity path"
     },
-    "overview": {
-        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Представляет",
-        "title": "{title}",
-        "signInPrompt": "С этого момента оставайся в системе, чтобы мы могли синхронизировать твои успехи и зомби. Войди, нажав на кнопку ниже:",
-        "signInButton": "Войти",
-        "levelUpText": "В этом уроке мы поднимем сгенерированных ранее зомби на новый уровень.",
-        "missingZombieText": "Не похоже, что у тебя остался зомби с Урока {lessonNum}. Закончи этот урок, прежде чем продолжить:",
-        "fixMissingZombieText": "Если Урок {lessonNum} все-таки был тобой закончен и это сообщение возникло по ошибке, просто пропусти его и {generateNewZombie}.",
-        "generateNewZombieLink": "Сгенерируй нового Зомби",
-        "areYouReady": "Начинаем?",
-        "resumeLesson": "Возобновить Урок {lessonNum}"
+    "finished_lesson7": {
+      "title": "Built a multi-fungible token",
+      "desc": "Built a multi-fungible token"
+    }
+  },
+  "rewards": {
+    "rewards": "rewards",
+    "test_key": "Alpha Tester Key for Zombie Battleground",
+    "loom_tokens": "Loom Tokens",
+    "no_reward": " You don't have any rewards"
+  },
+  "footer": {
+    "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
+    "find_more": "Find out more..."
+  },
+  "editor": {
+    "readOnly": "только чтение"
+  },
+  "lessonMenu": {
+    "getReward": "Rewards",
+    "pageTitle": "@:base.name | @:base.tagLine",
+    "itemLabel": "{title}",
+    "signIn": "Войди, чтобы загрузить свой прогресс",
+    "progressLoaded": "Прогресс загружен"
+  },
+  "overview": {
+    "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+    "presents": "Представляет",
+    "title": "{title}",
+    "signInPrompt": "С этого момента оставайся в системе, чтобы мы могли синхронизировать твои успехи и зомби. Войди, нажав на кнопку ниже:",
+    "signInButton": "Войти",
+    "levelUpText": "В этом уроке мы поднимем сгенерированных ранее зомби на новый уровень.",
+    "missingZombieText": "Не похоже, что у тебя остался зомби с Урока {lessonNum}. Закончи этот урок, прежде чем продолжить:",
+    "fixMissingZombieText": "Если Урок {lessonNum} все-таки был тобой закончен и это сообщение возникло по ошибке, просто пропусти его и {generateNewZombie}.",
+    "generateNewZombieLink": "Сгенерируй нового Зомби",
+    "areYouReady": "Начинаем?",
+    "resumeLesson": "Возобновить Урок {lessonNum}"
+  },
+  "chapter": {
+    "pageTitle": "@:base.name | {lesson} {chapter}",
+    "header": "Глава {chapterNum}: {title}",
+    "saveProgress": "Сохранить прогресс",
+    "autosaveEnabled": "Автосохранение включено",
+    "resumeProgress": "Возобновить прогресс",
+    "showHint": "Показать подсказку",
+    "nextChapter": "Следующая глава",
+    "tryAgain": "Попробуй еще раз",
+    "checkAnswer": "Проверить ответ",
+    "showMeTheAnswer": "Показать ответ",
+    "hideAnswer": "Скрыть ответ",
+    "next_chapter": "NEXT",
+    "prev_chapter": "BACK"
+  },
+  "lessonComplete": {
+    "shareLinksAction": "Или нажми на любую из кнопок, чтобы поделиться:",
+    "signIn": "Войди, чтобы сохранить прогресс",
+    "goToNextLesson": "К следующему уроку",
+    "lesson1": {
+      "header": [
+        "Поздравляем! Первый урок Криптозомби завершен.",
+        "Ты на шаг ближе к созданию собственной игры на Ethereum.",
+        "Покажи своего первого зомби друзьям!",
+        "Вот ссылка на твоего зомби:"
+      ],
+      "footer": "Убедись, что прогресс сохранен, прежде чем приступишь к Уроку 2.",
+      "zombieDesc": "КриптоЗомби Уровень 1",
+      "shareLinkText": "Завершен Урок 1 #КриптоЗомби! Теперь я знаю базовые принципы разработки игры на #Ethereum. Вот первый солдат в моей зомби-армии!"
     },
-    "chapter": {
-        "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Глава {chapterNum}: {title}",
-        "saveProgress": "Сохранить прогресс",
-        "autosaveEnabled": "Автосохранение включено",
-        "resumeProgress": "Возобновить прогресс",
-        "showHint": "Показать подсказку",
-        "nextChapter": "Следующая глава",
-        "tryAgain": "Попробуй еще раз",
-        "checkAnswer": "Проверить ответ",
-        "showMeTheAnswer": "Показать ответ",
-        "hideAnswer": "Скрыть ответ",
-        "next_chapter": "NEXT",
-        "prev_chapter": "BACK"
+    "lesson2": {
+      "header": [
+        "Поздравляем! Завершен {lesson2} КриптоЗомби!",
+        "Достижение разблокировано:",
+        "{zombieName} получил повышение до уровня 2!",
+        "Безымянный зомбокотик присоединился к твоей армии! (Не волнуйся, в Уроке 3 ты узнаешь как переименовать его или ее)",
+        "Покажи друзьям своего КриптоКотика-убийцу!",
+        "Поделись этой ссылкой, чтобы твои друзья тоже могли насладиться убийством КриптоКотиков с помощью зомби:"
+      ],
+      "footer": [
+        "Понравились КриптоЗомби? Напиши нам!",
+        "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
+        "Готово? Жми на кнопку и переходи к Уроку 3:"
+      ],
+      "zombieDesc": "КриптоЗомби второго уровня",
+      "shareLinkText": "Завершен Урок 2 #КриптоЗомби! Мой зомби съел несколько  #КриптоКотиков, а я теперь знаю еще больше о разработке на #Ethereum. Следи, как мой Зомби будет уничтожать КриптоКотиков:"
     },
-    "lessonComplete": {
-        "shareLinksAction": "Или нажми на любую из кнопок, чтобы поделиться:",
-        "signIn": "Войди, чтобы сохранить прогресс",
-        "goToNextLesson": "К следующему уроку",
-        "lesson1": {
-            "header": [
-                "Поздравляем! Первый урок Криптозомби завершен.",
-                "Ты на шаг ближе к созданию собственной игры на Ethereum.",
-                "Покажи своего первого зомби друзьям!",
-                "Вот ссылка на твоего зомби:"
-            ],
-            "footer": "Убедись, что прогресс сохранен, прежде чем приступишь к Уроку 2.",
-            "zombieDesc": "КриптоЗомби Уровень 1",
-            "shareLinkText": "Завершен Урок 1 #КриптоЗомби! Теперь я знаю базовые принципы разработки игры на #Ethereum. Вот первый солдат в моей зомби-армии!"
-        },
-        "lesson2": {
-            "header": [
-                "Поздравляем! Завершен {lesson2} КриптоЗомби!",
-                "Достижение разблокировано:",
-                "{zombieName} получил повышение до уровня 2!",
-                "Безымянный зомбокотик присоединился к твоей армии! (Не волнуйся, в Уроке 3 ты узнаешь как переименовать его или ее)",
-                "Покажи друзьям своего КриптоКотика-убийцу!",
-                "Поделись этой ссылкой, чтобы твои друзья тоже могли насладиться убийством КриптоКотиков с помощью зомби:"
-            ],
-            "footer": [
-                "Понравились КриптоЗомби? Напиши нам!",
-                "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
-                "Готово? Жми на кнопку и переходи к Уроку 3:"
-            ],
-            "zombieDesc": "КриптоЗомби второго уровня",
-            "shareLinkText": "Завершен Урок 2 #КриптоЗомби! Мой зомби съел несколько  #КриптоКотиков, а я теперь знаю еще больше о разработке на #Ethereum. Следи, как мой Зомби будет уничтожать КриптоКотиков:"
-        },
-        "lesson3": {
-            "achievementsUnlocked": "Достижение разблокировано:",
-            "zombieUpgraded": "{zombieName} получил повышение до уровня {levelNum}!",
-            "header": [
-                "Поздравляем! Завершен {lesson3} КриптоЗомби!",
-                "Покажи друзьям свою армию зомби!",
-                "Поделись этой ссылкой, чтобы друзья оценили зомбоармию:"
-            ],
-            "footer": [
-                "Понравились КриптоЗомби? Напиши нам!",
-                "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
-                "Готово? Жми на кнопку и переходи к Уроку 4:"
-            ],
-            "zombieDesc": "КриптоЗомби третьего уровня",
-            "shareLinkText": "Завершен Урок 3 #КриптоЗомби! Оцени мою зомбоармию:"
-        },
-        "lesson4": {
-            "achievementsUnlocked": "Достижение разблокировано:",
-            "zombieUpgraded": "{zombieName} получил повышение до уровня {levelNum}!",
-            "newZombieAdded": "В твою армию добавлен новый зомби уровня 1!",
-            "header": [
-                "Поздравляем! Завершен {lesson4} КриптоЗомби!",
-                "Покажи друзьям свою армию зомби!",
-                "Поделись этой ссылкой, чтобы друзья оценили зомбоармию:"
-            ],
-            "footer": [
-                "Понравились КриптоЗомби? Напиши нам!",
-                "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
-                "Готово? Жми на кнопку и переходи к Уроку 5:"
-            ],
-            "zombieDesc": "Криптозомби уровня {levelNum}",
-            "shareLinkText": "Завершен Урок 4 #КриптоЗомби, побежден злобный зомби IOTA! Попробуй тоже:"
-        },
-        "lesson5": {
-            "achievementsUnlocked": "Достижение разблокировано:",
-            "newZombieAdded": "Получен {zombieName}, Криптозомби {levelNum} уровня!",
-            "header": [
-                "Поздравляем! Завершен {lesson5} Криптозомби!",
-                "Покажи друзьям свою армию зомби!",
-                "Поделись этой ссылкой, чтобы твои друзья смогли оценить зомбоармию целиком:"
-            ],
-            "footer": [
-                "6 урок будет ждать тебя здесь через пару недель!",
-                "Мы напишем тебе, как только он будет готов.",
-                "А пока присоединяйся в нам в {telegramLink}, или подпишись в {twitterLink}!"
-            ],
-            "zombieDesc": "Криптозомби {levelNum} уровня",
-            "shareLinkText": "Завершен Урок 5 #КриптоЗомби, получен зомби 10 уровня! Оцени мою зомбоармию:"
-        },
-        "lesson6": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
-            "header": [
-                "Congratulations! You have completed {lesson6} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your full zombie army:"
-            ],
-            "footer": [
-                "Lesson 7 will be out in the next few weeks!",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
-            ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
-        }
+    "lesson3": {
+      "achievementsUnlocked": "Достижение разблокировано:",
+      "zombieUpgraded": "{zombieName} получил повышение до уровня {levelNum}!",
+      "header": [
+        "Поздравляем! Завершен {lesson3} КриптоЗомби!",
+        "Покажи друзьям свою армию зомби!",
+        "Поделись этой ссылкой, чтобы друзья оценили зомбоармию:"
+      ],
+      "footer": [
+        "Понравились КриптоЗомби? Напиши нам!",
+        "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
+        "Готово? Жми на кнопку и переходи к Уроку 4:"
+      ],
+      "zombieDesc": "КриптоЗомби третьего уровня",
+      "shareLinkText": "Завершен Урок 3 #КриптоЗомби! Оцени мою зомбоармию:"
     },
-    "zombieBattle": {
-        "yourTurn": "Твоя очередь",
-        "zombieDna": "{name} ДНК",
-        "newZombieGenerated": "Сгенерирован новый {species}!",
-        "catZombie": "Котозомби",
-        "mutantZombie": "Зомби-мутант",
-        "newSpeciesDna": "ДНК нового {species}",
-        "cryptoKitty": "КриптоКотик",
-        "human": "Человек",
-        "tryAnotherCombo": "Попробуй другую комбинацию"
+    "lesson4": {
+      "achievementsUnlocked": "Достижение разблокировано:",
+      "zombieUpgraded": "{zombieName} получил повышение до уровня {levelNum}!",
+      "newZombieAdded": "В твою армию добавлен новый зомби уровня 1!",
+      "header": [
+        "Поздравляем! Завершен {lesson4} КриптоЗомби!",
+        "Покажи друзьям свою армию зомби!",
+        "Поделись этой ссылкой, чтобы друзья оценили зомбоармию:"
+      ],
+      "footer": [
+        "Понравились КриптоЗомби? Напиши нам!",
+        "Присоединись к чату в {telegramLink}, или подпишись в {twitterLink}",
+        "Готово? Жми на кнопку и переходи к Уроку 5:"
+      ],
+      "zombieDesc": "Криптозомби уровня {levelNum}",
+      "shareLinkText": "Завершен Урок 4 #КриптоЗомби, побежден злобный зомби IOTA! Попробуй тоже:"
     },
-    "zombieChar": {
-        "defaultZombieDesc": "КриптоЗомби первого уровня"
+    "lesson5": {
+      "achievementsUnlocked": "Достижение разблокировано:",
+      "newZombieAdded": "Получен {zombieName}, Криптозомби {levelNum} уровня!",
+      "header": [
+        "Поздравляем! Завершен {lesson5} Криптозомби!",
+        "Покажи друзьям свою армию зомби!",
+        "Поделись этой ссылкой, чтобы твои друзья смогли оценить зомбоармию целиком:"
+      ],
+      "footer": [
+        "6 урок будет ждать тебя здесь через пару недель!",
+        "Мы напишем тебе, как только он будет готов.",
+        "А пока присоединяйся в нам в {telegramLink}, или подпишись в {twitterLink}!"
+      ],
+      "zombieDesc": "Криптозомби {levelNum} уровня",
+      "shareLinkText": "Завершен Урок 5 #КриптоЗомби, получен зомби 10 уровня! Оцени мою зомбоармию:"
     },
-    "zombieDeck": {
-        "zombieDesc": "КриптоЗомби {levelNum} уровня",
-        "nameInputPlaceholder": "Дай {name} новое имя и нажми 'Сохранить'",
-        "save": "Сохранить",
-        "yourDeck": "Твоя коллекция"
+    "lesson6": {
+      "achievementsUnlocked": "Achievements Unlocked:",
+      "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+      "header": [
+        "Congratulations! You have completed {lesson6} of CryptoZombies!",
+        "Show off your zombie army to your friends!",
+        "Share this URL so your friends can check out your full zombie army:"
+      ],
+      "footer": [
+        "Lesson 7 will be out in the next few weeks!",
+        "You'll get an email from us as soon as it's ready.",
+        "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+      ],
+      "zombieDesc": "A Level {levelNum} CryptoZombie",
+      "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
+    }
+  },
+  "zombieBattle": {
+    "yourTurn": "Твоя очередь",
+    "zombieDna": "{name} ДНК",
+    "newZombieGenerated": "Сгенерирован новый {species}!",
+    "catZombie": "Котозомби",
+    "mutantZombie": "Зомби-мутант",
+    "newSpeciesDna": "ДНК нового {species}",
+    "cryptoKitty": "КриптоКотик",
+    "human": "Человек",
+    "tryAnotherCombo": "Попробуй другую комбинацию"
+  },
+  "zombieChar": {
+    "defaultZombieDesc": "КриптоЗомби первого уровня"
+  },
+  "zombieDeck": {
+    "zombieDesc": "КриптоЗомби {levelNum} уровня",
+    "nameInputPlaceholder": "Дай {name} новое имя и нажми 'Сохранить'",
+    "save": "Сохранить",
+    "yourDeck": "Твоя коллекция"
+  },
+  "zombieResult": {
+    "headGeneLabel": "Ген головы:",
+    "eyeGeneLabel": "Ген разреза глаз:",
+    "shirtGeneLabel": "Ген мундира:",
+    "skinColorGeneLabel": "Ген цвета кожи:",
+    "eyeColorGeneLabel": "Ген цвета глаз:",
+    "clothesColorGeneLabel": "Ген цвета обмундирования:",
+    "nameInputPlaceholder": "Напиши имя",
+    "defaultZombieDesc": "КриптоЗомби первого уровня"
+  },
+  "battleArena": {
+    "IOTAslain": "IOTA пал в битве!",
+    "winCount": "Твой счетчик зомбопобед:",
+    "iotaLose": "IOTA счетчик поражений",
+    "newZombie": "Создан новый зомби"
+  },
+  "sharePage": {
+    "pageTitle": "Оцени моего Зомби {zombieName}!",
+    "presents": "Представляет",
+    "zombieDesc": "{name}, КриптоЗомби {levelNum} уровня",
+    "lesson1": {
+      "zombieDesc": "КриптоЗомби первого уровня",
+      "randomZombieGenerator": "случайный генератор зомби",
+      "achievementPreamble": [
+        "Твои друзья завершили первый урок КриптоЗомби, и создали {zombieName} - КриптоЗомби 1 уровня!",
+        "Чтобы завершить первый урок, надо было написать {randomZombieGenerator} и усвоить основы Solidity:"
+      ],
+      "achievements": [
+        "Как писать смарт-контракты на Ethereum",
+        "Программирование на Solidity, языке смарт-контрактов блокчейна Ethereum",
+        "Создаем игры на Ethereum"
+      ],
+      "tryItOut": "Испытай случайный зомбогенератор.",
+      "below": "ниже",
+      "above": "выше",
+      "zombieGeneratorText": "{tryItOut} Введи имя в поле {below}{above}, чтобы сгенерировать нового зомби!",
+      "nameInputPlaceholder": "Введи имя, чтобы сгенерировать зомби",
+      "callToAction": [
+        "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
+        "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
+      ]
     },
-    "zombieResult": {
-        "headGeneLabel": "Ген головы:",
-        "eyeGeneLabel": "Ген разреза глаз:",
-        "shirtGeneLabel": "Ген мундира:",
-        "skinColorGeneLabel": "Ген цвета кожи:",
-        "eyeColorGeneLabel": "Ген цвета глаз:",
-        "clothesColorGeneLabel": "Ген цвета обмундирования:",
-        "nameInputPlaceholder": "Напиши имя",
-        "defaultZombieDesc": "КриптоЗомби первого уровня"
+    "lesson2": {
+      "zombieCardBattle": "карточный бой зомби",
+      "love": "любят",
+      "achievementPreamble": [
+        "Твои друзья завершили второй урок КриптоЗомби, и подняли свой зомби {zombieName} до убийцы КриптоКотиков!",
+        "Убийцы КриптоКотиков?!",
+        "Оказывается КриптоЗомби {love} питаться КриптоКотиками.",
+        "Когда КриптоЗомби питается КриптоКотиком, их ДНК смешиваются, и КриптоКотик реанимируется в КриптоЗомби",
+        "Вперед, выбирай и нападай на КриптоКотика. Увидишь, какой получится Котозомби!",
+        "Концепция Solidity усвоена",
+        "Чтобы завершить второй урок в Школе КриптоЗомби, надо было создать {zombieCardBattle} и выучить:"
+      ],
+      "achievements": [
+        "Основы создания многопользовательского режима",
+        "Взаимодействие с другими контрактами в сети Ethereum",
+        "Организация крупных проектов Solidity в несколько контрактов"
+      ],
+      "callToAction": [
+        "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
+        "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
+      ]
     },
-    "battleArena": {
-        "IOTAslain": "IOTA пал в битве!",
-        "winCount": "Твой счетчик зомбопобед:",
-        "iotaLose": "IOTA счетчик поражений",
-        "newZombie": "Создан новый зомби"
+    "lesson3": {
+      "achievementPreamble": [
+        "Твои друзья завершили третий урок КриптоЗомби, и подняли свой зомби на новый уровень.",
+        "Чтобы завершить третий урок КриптоЗомби, понадобилось научиться:"
+      ],
+      "achievements": [
+        "Как создать обновляемый смарт-контракт",
+        "Безопасность контракта с помощью присваивания собственности",
+        "Газ и оптимизация газа в Ethereum",
+        "Модификаторы функция и проверки безопасности"
+      ],
+      "callToAction": [
+        "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
+        "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
+      ]
     },
-    "sharePage": {
-        "pageTitle": "Оцени моего Зомби {zombieName}!",
-        "presents": "Представляет",
-        "zombieDesc": "{name}, КриптоЗомби {levelNum} уровня",
-        "lesson1": {
-            "zombieDesc": "КриптоЗомби первого уровня",
-            "randomZombieGenerator": "случайный генератор зомби",
-            "achievementPreamble": [
-                "Твои друзья завершили первый урок КриптоЗомби, и создали {zombieName} - КриптоЗомби 1 уровня!",
-                "Чтобы завершить первый урок, надо было написать {randomZombieGenerator} и усвоить основы Solidity:"
-            ],
-            "achievements": [
-                "Как писать смарт-контракты на Ethereum",
-                "Программирование на Solidity, языке смарт-контрактов блокчейна Ethereum",
-                "Создаем игры на Ethereum"
-            ],
-            "tryItOut": "Испытай случайный зомбогенератор.",
-            "below": "ниже",
-            "above": "выше",
-            "zombieGeneratorText": "{tryItOut} Введи имя в поле {below}{above}, чтобы сгенерировать нового зомби!",
-            "nameInputPlaceholder": "Введи имя, чтобы сгенерировать зомби",
-            "callToAction": [
-                "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
-                "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
-            ]
-        },
-        "lesson2": {
-            "zombieCardBattle": "карточный бой зомби",
-            "love": "любят",
-            "achievementPreamble": [
-                "Твои друзья завершили второй урок КриптоЗомби, и подняли свой зомби {zombieName} до убийцы КриптоКотиков!",
-                "Убийцы КриптоКотиков?!",
-                "Оказывается КриптоЗомби {love} питаться КриптоКотиками.",
-                "Когда КриптоЗомби питается КриптоКотиком, их ДНК смешиваются, и КриптоКотик реанимируется в КриптоЗомби",
-                "Вперед, выбирай и нападай на КриптоКотика. Увидишь, какой получится Котозомби!",
-                "Концепция Solidity усвоена",
-                "Чтобы завершить второй урок в Школе КриптоЗомби, надо было создать {zombieCardBattle} и выучить:"
-            ],
-            "achievements": [
-                "Основы создания многопользовательского режима",
-                "Взаимодействие с другими контрактами в сети Ethereum",
-                "Организация крупных проектов Solidity в несколько контрактов"
-            ],
-            "callToAction": [
-                "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
-                "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
-            ]
-        },
-        "lesson3": {
-            "achievementPreamble": [
-                "Твои друзья завершили третий урок КриптоЗомби, и подняли свой зомби на новый уровень.",
-                "Чтобы завершить третий урок КриптоЗомби, понадобилось научиться:"
-            ],
-            "achievements": [
-                "Как создать обновляемый смарт-контракт",
-                "Безопасность контракта с помощью присваивания собственности",
-                "Газ и оптимизация газа в Ethereum",
-                "Модификаторы функция и проверки безопасности"
-            ],
-            "callToAction": [
-                "Хочешь создать своих КриптоЗомби и пополнить ряды зомбоармии?",
-                "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
-            ]
-        },
-        "lesson4": {
-            "achievementPreamble": [
-                "Твои друзья завершили четвертый урок КриптоЗомби, и победили злобного зомби IOTA!",
-                "Вперед, испытай зомбобитву в поле слева. Используй армию друзей, чтобы ввязаться в битву!",
-                "Чтобы завершить четвертый урок КриптоЗомби, понадобилось научиться:"
-            ],
-            "achievements": [
-                "Платные функции: как зарабатывать на основанных на Ethereum играх",
-                "Вывод ETH со смарт-контракта",
-                "Генерация случайных чисел и безопасность в Ethereum",
-                "И многое другое!"
-            ],
-            "callToAction": [
-                "Хочешь создать своих КриптоЗомби и занять место в рейтинге?",
-                "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
-            ]
-        },
-        "lesson5": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "Твои друзья завершили пятый урок КриптоЗомби, и получили зомби 10 уровня!",
-                "Оцени зомбоармию друзей в поле слева. Выглядит устрашающе, а?",
-                "Чтобы завершить пятый урок КриптоЗомби, понадобилось научиться:"
-            ],
-            "achievements": [
-                "Токены, стандарт ERC721, создание токенов и активов с возможностью купли/продажи",
-                "Библиотеки Solidity и способы их использования",
-                "Библиотека SafeMath и предотвращение переполнения и недостатка uint",
-                "Комментирироание кода Solidity и стандарта natspec"
-            ],
-            "callToAction": [
-                "Хочешь создать своих КриптоЗомби и занять место в рейтинге?",
-                "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
-            ]
-        },
-        "lesson6": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 6 and received a Level 3.0 `The Phantom of Web3` CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 6 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Building web front-ends for Ethereum smart contracts using Web3.js",
-                "Using MetaMask and Infura to build user-facing DApps",
-                "Listening to smart contract events and showing users real-time updates",
-                "And more!"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        },
-        "lesson7": {
-            "zombieDesc": "Let's build an Zombie Battleground like game!",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Multi fungible tokens, and the ERC721X standard",
-                "How to build a faucet that mints, let users claim, and transfers tokens",
-                "How to use ERC721X to implement unique, limited edition, and standard edition cards"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        }
+    "lesson4": {
+      "achievementPreamble": [
+        "Твои друзья завершили четвертый урок КриптоЗомби, и победили злобного зомби IOTA!",
+        "Вперед, испытай зомбобитву в поле слева. Используй армию друзей, чтобы ввязаться в битву!",
+        "Чтобы завершить четвертый урок КриптоЗомби, понадобилось научиться:"
+      ],
+      "achievements": [
+        "Платные функции: как зарабатывать на основанных на Ethereum играх",
+        "Вывод ETH со смарт-контракта",
+        "Генерация случайных чисел и безопасность в Ethereum",
+        "И многое другое!"
+      ],
+      "callToAction": [
+        "Хочешь создать своих КриптоЗомби и занять место в рейтинге?",
+        "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
+      ]
     },
-    "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
+    "lesson5": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "Твои друзья завершили пятый урок КриптоЗомби, и получили зомби 10 уровня!",
+        "Оцени зомбоармию друзей в поле слева. Выглядит устрашающе, а?",
+        "Чтобы завершить пятый урок КриптоЗомби, понадобилось научиться:"
+      ],
+      "achievements": [
+        "Токены, стандарт ERC721, создание токенов и активов с возможностью купли/продажи",
+        "Библиотеки Solidity и способы их использования",
+        "Библиотека SafeMath и предотвращение переполнения и недостатка uint",
+        "Комментирироание кода Solidity и стандарта natspec"
+      ],
+      "callToAction": [
+        "Хочешь создать своих КриптоЗомби и занять место в рейтинге?",
+        "Научись создавать собственные игры на Ethereum вместе с КриптоЗомби! Это бесплатно, начни прямо сейчас:"
+      ]
+    },
+    "lesson6": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 6 and received a Level 3.0 `The Phantom of Web3` CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 6 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Building web front-ends for Ethereum smart contracts using Web3.js",
+        "Using MetaMask and Infura to build user-facing DApps",
+        "Listening to smart contract events and showing users real-time updates",
+        "And more!"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    },
+    "lesson7": {
+      "zombieDesc": "Let's build an Zombie Battleground like game!",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Multi fungible tokens, and the ERC721X standard",
+        "How to build a faucet that mints, let users claim, and transfers tokens",
+        "How to use ERC721X to implement unique, limited edition, and standard edition cards"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    }
+  },
+  "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
 }
