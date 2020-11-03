@@ -1,16 +1,18 @@
 ---
-title: Advanced zkSync Concepts
-header: Advanced zkSync Concepts
+title: How to Build an Oracle
+header: How to Build an Oracle
+path: solidity_advanced
 publishedOn: Cryptozombies
-path: beyond_ethereum
 ---
 
-Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
+By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. If so, you may already have noticed that smart contracts can't directly access data from the outside world through an HTTP request or something similar. Instead, smart contracts pull data through something called an **_oracle_**.
 
-You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
+This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**.
 
-If this snippet gets executed, what will be the output?
+In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
 
-If you answered `false`, then you’re set!
+That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
 
-We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17">Lesson 17</a> before starting this one.
+The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+
+Time to write some code!
