@@ -1,393 +1,394 @@
 {
-    "base": {
-        "name": "CryptoZombies",
-        "tagLine": "学习编译区块网游戏",
-        "lesson": "教程{lessonNum}",
-        "chapter": "第{chapterNum}章",
-        "syncing": "正在同步...",
-        "telegram": {
-            "name": "电报群",
-            "openChat": "提问题",
-            "action": "加入我们的Telegram",
-            "link": "https://t.me/loomnetworkdev"
-        },
-        "twitter": {
-            "name": "推特",
-            "link": "https://twitter.com/loomnetwork"
-        },
-        "course": {
-            "solidity_path": {
-                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
-                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
-            },
-            "hand_on_path": {
-                "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
-                "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
-            },
-            "hand_on_plasma": {
-                "title": "Advanced Solidity Path: Get In-depth Knowledge",
-                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
-            },
-            "libra_path": {
-                "title": "Libra Path: Master the Basics of Libra Blockchain Development",
-                "summary": "Learn Libra Blockchain Development by Creating Your Own Simple Game Using the Move Programming Language"
-            }
-        },
-        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
-        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
-        "start_resume": "Start/Resume",
-        "the_curriculum": "The Curriculum",
-        "course_overview": "Course Overview",
-        "start": "Start",
-        "skip_lesson": "Skip Lesson",
-        "graduate": "Ready to Graduate? Or You are Already Experienced?",
-        "you_will": "You Will",
-        "will_list": {
-            "use": "Use intermediate level solidity",
-            "deploy": "Deploy to a live PlasmaChain",
-            "interact": "Have real gamers play and interact with your Dapp",
-            "earn": "Charge an admission and earn some money!"
-        },
-        "make_game": "Make your game mode now!",
-        "goto_lesson_list": "Go to lesson list",
-        "share_link": "Share",
-        "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
-        "zbbg_link": "Get Early Access Now!",
-        "coming_soon": "Coming Soon"
+  "base": {
+    "name": "CryptoZombies",
+    "tagLine": "学习编译区块网游戏",
+    "lesson": "教程{lessonNum}",
+    "chapter": "第{chapterNum}章",
+    "syncing": "正在同步...",
+    "telegram": {
+      "name": "电报群",
+      "openChat": "提问题",
+      "action": "加入我们的Telegram",
+      "link": "https://t.me/loomnetworkdev"
     },
-    "achievements": {
-        "achievements": "Achievements",
-        "achieved": "achieved",
-        "finished_first": {
-            "title": "Completed first lesson",
-            "desc": "Completed the first lesson in any course"
-        },
-        "finished_solidity": {
-            "title": "Finished the solidity path",
-            "desc": "Finished all lessons in Solidity path"
-        },
-        "finished_lesson7": {
-            "title": "Built a multi-fungible token",
-            "desc": "Built a multi-fungible token"
-        }
+    "twitter": {
+      "name": "推特",
+      "link": "https://twitter.com/loomnetwork"
     },
-    "rewards": {
-        "rewards": "rewards",
-        "test_key": "Alpha Tester Key for Zombie Battleground",
-        "loom_tokens": "Loom Tokens",
-        "no_reward": " You don't have any rewards"
+    "find_source_code_repo": "You can find the source code for these lessons at <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> this Github repo</a>.",
+    "course": {
+      "solidity": {
+        "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+        "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+      },
+      "hand_on_path": {
+        "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
+        "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
+      },
+      "solidity_advanced": {
+        "title": "Advanced Solidity Path: Get In-depth Knowledge",
+        "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+      },
+      "beyond_ethereum": {
+        "title": "Beyond Ethereum: Explore the Blockchain Ecosystem",
+        "summary": "Explore the blockchain ecosystem."
+      }
     },
-    "footer": {
-        "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
-        "find_more": "Find out more..."
+    "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
+    "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
+    "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+    "start_resume": "Start/Resume",
+    "the_curriculum": "The Curriculum",
+    "course_overview": "Course Overview",
+    "start": "Start",
+    "skip_lesson": "Skip Lesson",
+    "graduate": "Ready to Graduate? Or You are Already Experienced?",
+    "you_will": "You Will",
+    "will_list": {
+      "use": "Use intermediate level solidity",
+      "deploy": "Deploy to a live PlasmaChain",
+      "interact": "Have real gamers play and interact with your Dapp",
+      "earn": "Charge an admission and earn some money!"
     },
-    "editor": {
-        "readOnly": "只读"
+    "make_game": "Make your game mode now!",
+    "goto_lesson_list": "Go to lesson list",
+    "share_link": "Share",
+    "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
+    "zbbg_link": "Get Early Access Now!",
+    "coming_soon": "Coming Soon"
+  },
+  "achievements": {
+    "achievements": "Achievements",
+    "achieved": "achieved",
+    "finished_first": {
+      "title": "Completed first lesson",
+      "desc": "Completed the first lesson in any course"
     },
-    "lessonMenu": {
-        "getReward": "Rewards",
-        "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "{title}",
-        "signIn": "登录后同步进度",
-        "progressLoaded": "进度已同步"
+    "finished_solidity": {
+      "title": "Finished the solidity path",
+      "desc": "Finished all lessons in Solidity path"
     },
-    "overview": {
-        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "隆重宣布",
-        "title": "{title}",
-        "signInPrompt": "从这章开始需要同步以前生成的僵尸，请注册或者登录:",
-        "signInButton": "登录",
-        "levelUpText": "这段课程我们会用到之前生成的僵尸",
-        "missingZombieText": "亲，没有检测到课程{lessonNum}的僵尸。如果没有完成的话请现在去完成:",
-        "fixMissingZombieText": "如果已经完成了第{lessonNum}课程，这个提醒可能是错误的，你可以跳回到之前的课程{generateNewZombie}，进度会保留。",
-        "generateNewZombieLink": "重新同步僵尸",
-        "areYouReady": "少年，准备开始了吗?",
-        "resumeLesson": "跳到云尖， 第{lessonNum}课"
+    "finished_lesson7": {
+      "title": "Built a multi-fungible token",
+      "desc": "Built a multi-fungible token"
+    }
+  },
+  "rewards": {
+    "rewards": "rewards",
+    "test_key": "Alpha Tester Key for Zombie Battleground",
+    "loom_tokens": "Loom Tokens",
+    "no_reward": " You don't have any rewards"
+  },
+  "footer": {
+    "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
+    "find_more": "Find out more..."
+  },
+  "editor": {
+    "readOnly": "只读"
+  },
+  "lessonMenu": {
+    "getReward": "Rewards",
+    "pageTitle": "@:base.name | @:base.tagLine",
+    "itemLabel": "{title}",
+    "signIn": "登录后同步进度",
+    "progressLoaded": "进度已同步"
+  },
+  "overview": {
+    "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+    "presents": "隆重宣布",
+    "title": "{title}",
+    "signInPrompt": "从这章开始需要同步以前生成的僵尸，请注册或者登录:",
+    "signInButton": "登录",
+    "levelUpText": "这段课程我们会用到之前生成的僵尸",
+    "missingZombieText": "亲，没有检测到课程{lessonNum}的僵尸。如果没有完成的话请现在去完成:",
+    "fixMissingZombieText": "如果已经完成了第{lessonNum}课程，这个提醒可能是错误的，你可以跳回到之前的课程{generateNewZombie}，进度会保留。",
+    "generateNewZombieLink": "重新同步僵尸",
+    "areYouReady": "少年，准备开始了吗?",
+    "resumeLesson": "跳到云尖， 第{lessonNum}课"
+  },
+  "chapter": {
+    "pageTitle": "@:base.name | {lesson} {chapter}",
+    "header": "第{chapterNum}章: {title}",
+    "saveProgress": "保存进度",
+    "autosaveEnabled": "自动保存进度模式",
+    "resumeProgress": "跳到云尖",
+    "showHint": "显示提示",
+    "nextChapter": "下一章",
+    "tryAgain": "再查",
+    "checkAnswer": "交卷",
+    "showMeTheAnswer": "我要看答案！",
+    "hideAnswer": "不看答案了！",
+    "next_chapter": "NEXT",
+    "prev_chapter": "BACK"
+  },
+  "lessonComplete": {
+    "shareLinksAction": "点击以下按钮后分享:",
+    "signIn": "登录后同步进度",
+    "goToNextLesson": "去下一个课程",
+    "lesson1": {
+      "header": [
+        "太棒啦！你完成了 CryptoZombies 的第一个课程!",
+        "你离自己编译区块链游戏跨出了很大的一步。",
+        "跟你的朋友们晒一晒你新的僵尸吧！",
+        "这是你的僵尸的永久地址:"
+      ],
+      "footer": "去下一课程之前，请保存进度。",
+      "zombieDesc": "CryptoZombie 一级",
+      "shareLinkText": "我刚完成了#CryptoZombies 的第一课！学会了如何在#Ethereum 上搭建游戏。看我的部队里的第一个僵尸!"
     },
-    "chapter": {
-        "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "第{chapterNum}章: {title}",
-        "saveProgress": "保存进度",
-        "autosaveEnabled": "自动保存进度模式",
-        "resumeProgress": "跳到云尖",
-        "showHint": "显示提示",
-        "nextChapter": "下一章",
-        "tryAgain": "再查",
-        "checkAnswer": "交卷",
-        "showMeTheAnswer": "我要看答案！",
-        "hideAnswer": "不看答案了！",
-        "next_chapter": "NEXT",
-        "prev_chapter": "BACK"
+    "lesson2": {
+      "header": [
+        "你好棒！太棒啦！你完成了 CryptoZombies 的第二课!",
+        "成功解锁了:",
+        "{zombieName}被升级到二级!",
+        "无名～ 僵尸已加入你的部队! (别担心，第三节课里你会有机会改它的名字)",
+        "晒一晒你的 CryptoKitty-猎杀者！和你的朋友们分享！",
+        "这是你的僵尸的永久地址，让你的朋友跟你一起猎杀 CryptoKitties:"
+      ],
+      "footer": [
+        "喜欢 CryptoZombies? 跟我们打声招呼!",
+        "我们大家都在{telegramLink}, 或者可以关注我们的{twitterLink}",
+        "少年！第三节课等着你:"
+      ],
+      "zombieDesc": "CryptoZombie 二级",
+      "shareLinkText": "我刚完成了#CryptoZombies 的第二课！我的僵尸猎杀了一个在以太坊上的 CryptoKitty。看他们对打吧!"
     },
-    "lessonComplete": {
-        "shareLinksAction": "点击以下按钮后分享:",
-        "signIn": "登录后同步进度",
-        "goToNextLesson": "去下一个课程",
-        "lesson1": {
-            "header": [
-                "太棒啦！你完成了 CryptoZombies 的第一个课程!",
-                "你离自己编译区块链游戏跨出了很大的一步。",
-                "跟你的朋友们晒一晒你新的僵尸吧！",
-                "这是你的僵尸的永久地址:"
-            ],
-            "footer": "去下一课程之前，请保存进度。",
-            "zombieDesc": "CryptoZombie 一级",
-            "shareLinkText": "我刚完成了#CryptoZombies 的第一课！学会了如何在#Ethereum 上搭建游戏。看我的部队里的第一个僵尸!"
-        },
-        "lesson2": {
-            "header": [
-                "你好棒！太棒啦！你完成了 CryptoZombies 的第二课!",
-                "成功解锁了:",
-                "{zombieName}被升级到二级!",
-                "无名～ 僵尸已加入你的部队! (别担心，第三节课里你会有机会改它的名字)",
-                "晒一晒你的 CryptoKitty-猎杀者！和你的朋友们分享！",
-                "这是你的僵尸的永久地址，让你的朋友跟你一起猎杀 CryptoKitties:"
-            ],
-            "footer": [
-                "喜欢 CryptoZombies? 跟我们打声招呼!",
-                "我们大家都在{telegramLink}, 或者可以关注我们的{twitterLink}",
-                "少年！第三节课等着你:"
-            ],
-            "zombieDesc": "CryptoZombie 二级",
-            "shareLinkText": "我刚完成了#CryptoZombies 的第二课！我的僵尸猎杀了一个在以太坊上的 CryptoKitty。看他们对打吧!"
-        },
-        "lesson3": {
-            "achievementsUnlocked": "成就解锁了:",
-            "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
-            "header": [
-                "恭喜! 你完成了 CryptoZombies 的第三课",
-                "向你的朋友们炫耀你的僵尸吧",
-                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
-            ],
-            "footer": [
-                "喜欢 CryptoZombies? 跟我们打声招呼!",
-                "我们大家都在{telegramLink}, 或者可以关注{twitterLink}",
-                "少年！踏上你的第四课之路吧："
-            ],
-            "zombieDesc": "一个 3 级 CryptoZombie",
-            "shareLinkText": "我刚完成了 #CryptoZombies 第三课! 快来围观我的僵尸大军："
-        },
-        "lesson4": {
-            "achievementsUnlocked": "成就解锁了:",
-            "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
-            "newZombieAdded": "你又给你的僵尸大军征集到了一个 1 级僵尸!",
-            "header": [
-                "恭喜! 你完成了 CryptoZombies 的第四课",
-                "向你的朋友们炫耀你的僵尸吧",
-                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
-            ],
-            "footer": [
-                "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
-                "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
-                "准备好了的话，点击下面的按钮进入第五课："
-            ],
-            "zombieDesc": "一个 {levelNum} 级CryptoZombie",
-            "shareLinkText": "我刚完成了 #CryptoZombies 的第四课, 并打败了邪恶的 IOTA 僵尸，来试试你的本领吧:"
-        },
-        "lesson5": {
-            "achievementsUnlocked": "成就解锁了:",
-            "newZombieAdded": "你得到了 {zombieName}, 一个 {levelNum}级的 CryptoZombie!",
-            "header": [
-                "恭喜! 你完成了 CryptoZombies 的第五课",
-                "向你的朋友们炫耀你的僵尸吧",
-                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
-            ],
-            "footer": [
-                "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
-                "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
-                "准备好了的话，点击下面的按钮进入第五课："
-            ],
-            "zombieDesc": "一个 {levelNum} 级 CryptoZombie",
-            "shareLinkText": "我刚完成了 #CryptoZombies 的第五课还得到了一个10级的 CryptoZombie! 来看看我的僵尸大军："
-        },
-        "lesson6": {
-            "achievementsUnlocked": "成就解锁了:",
-            "newZombieAdded": "你收到一个 {zombieName}, 一个 {levelNum}级 CryptoZombie!",
-            "header": [
-                "恭喜! 你完成了 CryptoZombies 的第六课！",
-                "向你的朋友们炫耀你的僵尸吧",
-                "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
-            ],
-            "footer": [
-                "第七课将在不久后发布",
-                "一旦发布你就会收到我们的邮件通知",
-                "现在，请加入我们的 {telegramLink}，或者成为我们的{twitterLink} 粉丝吧"
-            ],
-            "zombieDesc": "一个 {levelNum} 级 CryptoZombie",
-            "shareLinkText": "我刚完成了 #CryptoZombies 第六课, 得到了一个 3.0 'The Phantom of Web3' CryptoZombie! 来看看我的僵尸大军："
-        }
+    "lesson3": {
+      "achievementsUnlocked": "成就解锁了:",
+      "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
+      "header": [
+        "恭喜! 你完成了 CryptoZombies 的第三课",
+        "向你的朋友们炫耀你的僵尸吧",
+        "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
+      ],
+      "footer": [
+        "喜欢 CryptoZombies? 跟我们打声招呼!",
+        "我们大家都在{telegramLink}, 或者可以关注{twitterLink}",
+        "少年！踏上你的第四课之路吧："
+      ],
+      "zombieDesc": "一个 3 级 CryptoZombie",
+      "shareLinkText": "我刚完成了 #CryptoZombies 第三课! 快来围观我的僵尸大军："
     },
-    "zombieBattle": {
-        "yourTurn": "等你出牌",
-        "zombieDna": "{name}的基因",
-        "newZombieGenerated": "新僵尸种类： {species}，诞生!",
-        "catZombie": "猫型僵尸",
-        "mutantZombie": "混合僵尸",
-        "newSpeciesDna": "新的{species}的DNA",
-        "cryptoKitty": "CryptoKitty",
-        "human": "人类",
-        "tryAnotherCombo": "尝试另一个组合"
+    "lesson4": {
+      "achievementsUnlocked": "成就解锁了:",
+      "zombieUpgraded": "{zombieName} 升级到了第 {levelNum} 级!",
+      "newZombieAdded": "你又给你的僵尸大军征集到了一个 1 级僵尸!",
+      "header": [
+        "恭喜! 你完成了 CryptoZombies 的第四课",
+        "向你的朋友们炫耀你的僵尸吧",
+        "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
+      ],
+      "footer": [
+        "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
+        "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
+        "准备好了的话，点击下面的按钮进入第五课："
+      ],
+      "zombieDesc": "一个 {levelNum} 级CryptoZombie",
+      "shareLinkText": "我刚完成了 #CryptoZombies 的第四课, 并打败了邪恶的 IOTA 僵尸，来试试你的本领吧:"
     },
-    "zombieChar": {
-        "defaultZombieDesc": "CryptoZombie第一级"
+    "lesson5": {
+      "achievementsUnlocked": "成就解锁了:",
+      "newZombieAdded": "你得到了 {zombieName}, 一个 {levelNum}级的 CryptoZombie!",
+      "header": [
+        "恭喜! 你完成了 CryptoZombies 的第五课",
+        "向你的朋友们炫耀你的僵尸吧",
+        "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
+      ],
+      "footer": [
+        "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
+        "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
+        "准备好了的话，点击下面的按钮进入第五课："
+      ],
+      "zombieDesc": "一个 {levelNum} 级 CryptoZombie",
+      "shareLinkText": "我刚完成了 #CryptoZombies 的第五课还得到了一个10级的 CryptoZombie! 来看看我的僵尸大军："
     },
-    "zombieDeck": {
-        "zombieDesc": "CryptoZombie{levelNum}级",
-        "nameInputPlaceholder": "给～{name}～一个取名，再按'保存'",
-        "save": "保存",
-        "yourDeck": "你的牌"
+    "lesson6": {
+      "achievementsUnlocked": "成就解锁了:",
+      "newZombieAdded": "你收到一个 {zombieName}, 一个 {levelNum}级 CryptoZombie!",
+      "header": [
+        "恭喜! 你完成了 CryptoZombies 的第六课！",
+        "向你的朋友们炫耀你的僵尸吧",
+        "把这个网址发送给你的朋友，他们就能围观你的僵尸大军了:"
+      ],
+      "footer": [
+        "第七课将在不久后发布",
+        "一旦发布你就会收到我们的邮件通知",
+        "现在，请加入我们的 {telegramLink}，或者成为我们的{twitterLink} 粉丝吧"
+      ],
+      "zombieDesc": "一个 {levelNum} 级 CryptoZombie",
+      "shareLinkText": "我刚完成了 #CryptoZombies 第六课, 得到了一个 3.0 'The Phantom of Web3' CryptoZombie! 来看看我的僵尸大军："
+    }
+  },
+  "zombieBattle": {
+    "yourTurn": "等你出牌",
+    "zombieDna": "{name}的基因",
+    "newZombieGenerated": "新僵尸种类： {species}，诞生!",
+    "catZombie": "猫型僵尸",
+    "mutantZombie": "混合僵尸",
+    "newSpeciesDna": "新的{species}的DNA",
+    "cryptoKitty": "CryptoKitty",
+    "human": "人类",
+    "tryAnotherCombo": "尝试另一个组合"
+  },
+  "zombieChar": {
+    "defaultZombieDesc": "CryptoZombie第一级"
+  },
+  "zombieDeck": {
+    "zombieDesc": "CryptoZombie{levelNum}级",
+    "nameInputPlaceholder": "给～{name}～一个取名，再按'保存'",
+    "save": "保存",
+    "yourDeck": "你的牌"
+  },
+  "zombieResult": {
+    "headGeneLabel": "头部基因:",
+    "eyeGeneLabel": "眼部基因:",
+    "shirtGeneLabel": "上衣基因:",
+    "skinColorGeneLabel": "皮肤基因:",
+    "eyeColorGeneLabel": "眼色基因:",
+    "clothesColorGeneLabel": "衣服颜色基因:",
+    "nameInputPlaceholder": "取个名字",
+    "defaultZombieDesc": "CryptoZombie一级"
+  },
+  "battleArena": {
+    "IOTAslain": "IOTA 在战斗中被打败了!",
+    "winCount": "你的僵尸的战胜次数：",
+    "iotaLose": "IOTA 的战败次数：",
+    "newZombie": "新僵尸生成了"
+  },
+  "sharePage": {
+    "pageTitle": "看我的CryptoZombie {zombieName}!",
+    "presents": "隆重宣布",
+    "zombieDesc": "{name}, 一个第{levelNum}级的CryptoZombie",
+    "lesson1": {
+      "zombieDesc": "CryptoZombie一级",
+      "randomZombieGenerator": "僵尸随机生产器",
+      "achievementPreamble": [
+        "你的朋友学会了以太坊的基础编程,并且编译了一个僵尸叫{zombieName}。 这个一级CryptoZombie是证明!",
+        "为了完成第一个CryptoZombies课程, 你的朋友打造了一个{randomZombieGenerator}，并且学会了:"
+      ],
+      "achievements": [
+        "如何编译以太坊的职能协议",
+        "Solidity语言的基础, 这是以太坊的核心程序语言",
+        "如何在以太坊上编译游戏"
+      ],
+      "tryItOut": "试一下这个僵尸随机生产器。",
+      "below": "下面",
+      "above": "上面",
+      "zombieGeneratorText": "{tryItOut} 在{below}{above}的空中填入任何名字!",
+      "nameInputPlaceholder": "填入名字获得僵尸",
+      "callToAction": [
+        "少年！编译你自己的僵尸游戏吗?",
+        "通过编游戏而学习以太坊! 还等什么:"
+      ]
     },
-    "zombieResult": {
-        "headGeneLabel": "头部基因:",
-        "eyeGeneLabel": "眼部基因:",
-        "shirtGeneLabel": "上衣基因:",
-        "skinColorGeneLabel": "皮肤基因:",
-        "eyeColorGeneLabel": "眼色基因:",
-        "clothesColorGeneLabel": "衣服颜色基因:",
-        "nameInputPlaceholder": "取个名字",
-        "defaultZombieDesc": "CryptoZombie一级"
+    "lesson2": {
+      "zombieCardBattle": "僵尸卡牌大战",
+      "love": "love",
+      "achievementPreamble": [
+        "你朋友刚完成了 CryptoZombies 的第二课, 并将 {zombieName} 升级成了一个 CryptoKitty 杀手!",
+        "一个 CryptoKitty 杀手?!",
+        "看起来我们的 CryptoZombies {love} 猎食 CryptoKitties.",
+        "当一个 CryptoZombie 猎食 CryptoKitty 后, 它们的 DNA 就会混合在一起，然后 CryptoKitty 就变成了变种 CryptoZombie.",
+        "继续玩儿，点击一个 CryptoKitty 去攻击, 然后看看你得到了什么猫僵尸！",
+        "Solidity 概念掌握啦",
+        "为了完成 CryptoZombies 的第二课, 你的朋友创建了一个 {zombieCardBattle} 并学会了："
+      ],
+      "achievements": [
+        "编写多人以太坊游戏的基础",
+        "与以太坊上的其他合约交互",
+        "将代码分成多个合约来管理较大的 Solidity 工程"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
     },
-    "battleArena": {
-        "IOTAslain": "IOTA 在战斗中被打败了!",
-        "winCount": "你的僵尸的战胜次数：",
-        "iotaLose": "IOTA 的战败次数：",
-        "newZombie": "新僵尸生成了"
+    "lesson3": {
+      "achievementPreamble": [
+        "你朋友完成了 CryptoZombies 第三课， 还把僵尸大军升级了！",
+        "为了完成 CryptoZombies 第三课， 你朋友学到了："
+      ],
+      "achievements": [
+        "如何编写可更新的智能合约",
+        "用合约拥有权来保护合约",
+        "Gas 和 如何在以太坊上节约 gas 花费",
+        "方法修饰器和安全检查"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
     },
-    "sharePage": {
-        "pageTitle": "看我的CryptoZombie {zombieName}!",
-        "presents": "隆重宣布",
-        "zombieDesc": "{name}, 一个第{levelNum}级的CryptoZombie",
-        "lesson1": {
-            "zombieDesc": "CryptoZombie一级",
-            "randomZombieGenerator": "僵尸随机生产器",
-            "achievementPreamble": [
-                "你的朋友学会了以太坊的基础编程,并且编译了一个僵尸叫{zombieName}。 这个一级CryptoZombie是证明!",
-                "为了完成第一个CryptoZombies课程, 你的朋友打造了一个{randomZombieGenerator}，并且学会了:"
-            ],
-            "achievements": [
-                "如何编译以太坊的职能协议",
-                "Solidity语言的基础, 这是以太坊的核心程序语言",
-                "如何在以太坊上编译游戏"
-            ],
-            "tryItOut": "试一下这个僵尸随机生产器。",
-            "below": "下面",
-            "above": "上面",
-            "zombieGeneratorText": "{tryItOut} 在{below}{above}的空中填入任何名字!",
-            "nameInputPlaceholder": "填入名字获得僵尸",
-            "callToAction": [
-                "少年！编译你自己的僵尸游戏吗?",
-                "通过编游戏而学习以太坊! 还等什么:"
-            ]
-        },
-        "lesson2": {
-            "zombieCardBattle": "僵尸卡牌大战",
-            "love": "love",
-            "achievementPreamble": [
-                "你朋友刚完成了 CryptoZombies 的第二课, 并将 {zombieName} 升级成了一个 CryptoKitty 杀手!",
-                "一个 CryptoKitty 杀手?!",
-                "看起来我们的 CryptoZombies {love} 猎食 CryptoKitties.",
-                "当一个 CryptoZombie 猎食 CryptoKitty 后, 它们的 DNA 就会混合在一起，然后 CryptoKitty 就变成了变种 CryptoZombie.",
-                "继续玩儿，点击一个 CryptoKitty 去攻击, 然后看看你得到了什么猫僵尸！",
-                "Solidity 概念掌握啦",
-                "为了完成 CryptoZombies 的第二课, 你的朋友创建了一个 {zombieCardBattle} 并学会了："
-            ],
-            "achievements": [
-                "编写多人以太坊游戏的基础",
-                "与以太坊上的其他合约交互",
-                "将代码分成多个合约来管理较大的 Solidity 工程"
-            ],
-            "callToAction": [
-                "想打造你自己的 CryptoZombies 并加入排行么？",
-                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
-            ]
-        },
-        "lesson3": {
-            "achievementPreamble": [
-                "你朋友完成了 CryptoZombies 第三课， 还把僵尸大军升级了！",
-                "为了完成 CryptoZombies 第三课， 你朋友学到了："
-            ],
-            "achievements": [
-                "如何编写可更新的智能合约",
-                "用合约拥有权来保护合约",
-                "Gas 和 如何在以太坊上节约 gas 花费",
-                "方法修饰器和安全检查"
-            ],
-            "callToAction": [
-                "想打造你自己的 CryptoZombies 并加入排行么？",
-                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
-            ]
-        },
-        "lesson4": {
-            "achievementPreamble": [
-                "你朋友完成了 CryptoZombies 第四课， 还打败了 IOTA 僵尸!",
-                "放心大胆在左边用你朋友的僵尸来一场大战吧",
-                "为了完成 CryptoZombies 第四课， 你朋友学到了："
-            ],
-            "achievements": [
-                "可支付方法，以及如何利用以太坊游戏盈利",
-                "从智能合约中提取一台",
-                "随机数生成器 以及 以太坊上的安全知识",
-                "此外还有更多！"
-            ],
-            "callToAction": [
-                "想打造你自己的 CryptoZombies 并加入排行么？",
-                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
-            ]
-        },
-        "lesson5": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "你朋友完成了 CryptoZombies 第五课， 还得到了一个10级的僵尸",
-                "围观一下左边你朋友的僵尸大军，很震撼吧?",
-                "为了完成 CryptoZombies 第五课， 你朋友学到了："
-            ],
-            "achievements": [
-                "代币， ERC721 标准，以及创建可交易的代币或者物件",
-                "Solidity 库以及如何使用",
-                "SafeMath 库以及如何防止溢出和下溢",
-                "natspec 标准以及如何给 Solidity 添加注释"
-            ],
-            "callToAction": [
-                "想打造你自己的 CryptoZombies 并加入排行么？",
-                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
-            ]
-        },
-        "lesson6": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "你朋友完成了CryptoZombies 第六课还获得了一个 3.0 `The Phantom of Web3` CryptoZombie!",
-                "看看左边你朋友的僵尸大军，挺壮观的对吧",
-                "为了完成 CryptoZombies 第六课, 你朋友学到了:"
-            ],
-            "achievements": [
-                "用 Web3.js 为以太坊智能合约创建前端界面",
-                "用 MetaMask 和 Infura 创建有用户界面的DApp",
-                "监听智能合约事件，显示用户实时更新",
-                "以及更多!"
-            ],
-            "callToAction": [
-                "想打造你自己的 CryptoZombies 并加入排行么？",
-                "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
-            ]
-        },
-        "lesson7": {
-            "zombieDesc": "Let's build an Zombie Battleground like game!",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Multi fungible tokens, and the ERC721X standard",
-                "How to build a faucet that mints, let users claim, and transfers tokens",
-                "How to use ERC721X to implement unique, limited edition, and standard edition cards"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        }
+    "lesson4": {
+      "achievementPreamble": [
+        "你朋友完成了 CryptoZombies 第四课， 还打败了 IOTA 僵尸!",
+        "放心大胆在左边用你朋友的僵尸来一场大战吧",
+        "为了完成 CryptoZombies 第四课， 你朋友学到了："
+      ],
+      "achievements": [
+        "可支付方法，以及如何利用以太坊游戏盈利",
+        "从智能合约中提取一台",
+        "随机数生成器 以及 以太坊上的安全知识",
+        "此外还有更多！"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
     },
-    "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
+    "lesson5": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "你朋友完成了 CryptoZombies 第五课， 还得到了一个10级的僵尸",
+        "围观一下左边你朋友的僵尸大军，很震撼吧?",
+        "为了完成 CryptoZombies 第五课， 你朋友学到了："
+      ],
+      "achievements": [
+        "代币， ERC721 标准，以及创建可交易的代币或者物件",
+        "Solidity 库以及如何使用",
+        "SafeMath 库以及如何防止溢出和下溢",
+        "natspec 标准以及如何给 Solidity 添加注释"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
+    },
+    "lesson6": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "你朋友完成了CryptoZombies 第六课还获得了一个 3.0 `The Phantom of Web3` CryptoZombie!",
+        "看看左边你朋友的僵尸大军，挺壮观的对吧",
+        "为了完成 CryptoZombies 第六课, 你朋友学到了:"
+      ],
+      "achievements": [
+        "用 Web3.js 为以太坊智能合约创建前端界面",
+        "用 MetaMask 和 Infura 创建有用户界面的DApp",
+        "监听智能合约事件，显示用户实时更新",
+        "以及更多!"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
+    },
+    "lesson7": {
+      "zombieDesc": "Let's build an Zombie Battleground like game!",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Multi fungible tokens, and the ERC721X standard",
+        "How to build a faucet that mints, let users claim, and transfers tokens",
+        "How to use ERC721X to implement unique, limited edition, and standard edition cards"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    }
+  },
+  "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
 }
