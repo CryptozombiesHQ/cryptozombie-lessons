@@ -1,16 +1,23 @@
 ---
-title: Lesson Complete!
+title: '¡Lección 1 Completa!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Well done! You've now implemented an application that can deposit, transfer, and withdraw multiple assets. If you want to make payments using ETH again, you just need to set the value of the `token` variable back to `ETH`, and then update the `amountToDeposit`, `amountToTransfer`, and `amountToWithdraw` variables accordingly.
+¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
 
-You could also use <a href="https://github.com/tj/commander.js/" target=_blank>Commander.js</a> or a similar library to allow your users to pass the token, the operation they want to perform, and the amount as command-line arguments, but this is beyond the scope of this tutorial.
+# Pasos Siguientes
 
-The lessons in this series were aimed at getting you familiarized with the zkSync protocol. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready application!💪🏻
+Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+### 1. Inicia sesión para guardar tu progreso
+
+***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
+
+### 2. Comparte tu zombi con tus amigos
+
+***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
