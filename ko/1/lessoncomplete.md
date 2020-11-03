@@ -1,16 +1,23 @@
 ---
-title: Lesson Complete!
+title: Lesson 1 Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Awesome, you've completed Lesson 2 of our series about building and interacting with an oracle.
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-Because we're just building an oracle for demo purposes, we've made a bunch of decisions that simplified things a bit. For example, think about what would happen when you bring the oracle down for an upgrade. Yeah, even if it'll take just a few minutes until you bring it back online, all the requests made during this period will be lost. And there's no way to notify the app that a particular request hasn't been processed. A solution for this is to keep track of the last block that got processed, and, every time the oracle starts, it should take it from there.
+# Next Steps
 
-A production-ready oracle should take care of this, and a few other things, of which, the most important is: how to make the oracle more **_decentralized_**. And this is exactly what we'll cover next.
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-Stay tuned for our next lesson!
+### 1. Sign in to save your progress
+
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+
+### 2. Share your zombie with your friends
+
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
