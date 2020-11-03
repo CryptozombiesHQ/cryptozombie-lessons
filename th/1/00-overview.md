@@ -1,17 +1,19 @@
 ---
-title: How to Build an Oracle - Part 2
-header: How to Build an Oracle - Part 2
-path: solidity_advanced
+title: "Libra Basics"
+header: "Libra Basics"
+roadmap: roadmap.jpg
+path: libra
 publishedOn: Cryptozombies
 ---
 
-Welcome to the second part of our series about building an oracle. This lesson picks up where we left off last time, and we're going to look at how to:
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-* Implement the JavaScript component of the oracle.
-* Write a simple Node.js client that interacts with the oracle. To keep things simple, you won't be building a fully-fledged web interface, but the code you'll write in this lesson will help you understand all the key aspects.
-* To glue everything together, we'll teach you how to deploy the smart contracts and run the oracle.
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-Note that this is an advanced lesson and it requires:
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
 
-* A bit of **JavaScript** knowledge.
-* A basic understanding of `web3`. If you don’t know how `web3` works, don't worry. We've got you covered. Just head over to <a href="https://cryptozombies.io/en/lesson/6" target=_blank>Lesson 6</a> first.
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
+
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
+
+Course Time: 30 Minutes - 1 Hour
