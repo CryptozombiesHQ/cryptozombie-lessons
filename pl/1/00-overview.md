@@ -1,16 +1,28 @@
 ---
-title: Advanced zkSync Concepts
-header: Advanced zkSync Concepts
+title: Testing Smart Contracts with Truffle
+header: Testing Smart Contracts with Truffle
+roadmap: roadmap.jpg
+path: solidity_advanced
+position: 1
 publishedOn: Cryptozombies
-path: beyond_ethereum
 ---
 
-Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
+Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
 
-You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
+So, go ahead and deploy the game to the mainnet. Enjoy your success!
 
-If this snippet gets executed, what will be the output?
+Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
 
-If you answered `false`, then you’re set!
+Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
 
-We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17">Lesson 17</a> before starting this one.
+Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
+
+To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
+
+By the end of this lesson, you will be able to:
+
+- Test your smart contracts with `Truffle` against `Ganache`
+- Use `Chai` to write more expressive assertions
+- Test against `Loom`😉
+
+Let's get started!
