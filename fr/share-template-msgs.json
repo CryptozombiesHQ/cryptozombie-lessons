@@ -1,26 +1,26 @@
 {
-    "1": {
-        "pageTitle": "Venez voir mon CryptoZombie {{ .ZombieName }} !",
-        "ogDesc": "Je viens de finir la Leçon 1 de CryptoZombies et j'ai appris les bases pour développer un jeu sur #Ethereum. Venez voir le premier zombie de mon armée !"
-    },
-    "2": {
-        "pageTitle": "Mon CryptoZombie {{ .ZombieName }} vient juste de manger un CryptoKitty et a augmenté d'un niveau !",
-        "ogDesc": "Je viens de finir la Leçon 2 de CryptoZombies, et j'ai ajouté un CryptoKitty mort-vivant à mon armé de zombie. Venez voir ça !"
-    },
-    "3": {
-        "pageTitle": "Venez voir mon armée de CryptoZombie !",
-        "ogDesc": "Je viens de finir la Leçon 3 de CryptoZombies ! Mon armée de zombie s'agrandit..."
-    },
-    "4": {
-        "pageTitle": "Mon CryptoZombie a battu le zombie maléfique IOTA !",
-        "ogDesc": "Je viens de finir la Leçon 4 de CryptoZombies, et j'ai battu le zombie maléfique IOTA ! Venez revivre la bataille..."
-    },
-    "5": {
-        "pageTitle": "Mon armée de CryptoZombie s'agrandit !",
-        "ogDesc": "Je viens de finir la Leçon 5 de CryptoZombies, et j'ai eu un zombie H4XF13LD MORRIS 💯💯😎💯💯 de niveau 10 !"
-    },
-    "6": {
-        "pageTitle": "Découvrez 'Le fantôme de Web3', mon CryptoZombie de niveau 3.0 !",
-        "ogDesc": "Je viens de finir la Leçon 6 de CryptoZombies, et j'ai appris à utiliser Web3.js, MetaMask, et Infura pour construire ma propre DApp !"
-    }
+  "1": {
+    "pageTitle": "Venez voir mon CryptoZombie {{ .ZombieName }} !",
+    "ogDesc": "Je viens de finir la Leçon 1 de CryptoZombies et j'ai appris les bases pour développer un jeu sur #Ethereum. Venez voir le premier zombie de mon armée !"
+  },
+  "2": {
+    "pageTitle": "Mon CryptoZombie {{ .ZombieName }} vient juste de manger un CryptoKitty et a augmenté d'un niveau !",
+    "ogDesc": "Je viens de finir la Leçon 2 de CryptoZombies, et j'ai ajouté un CryptoKitty mort-vivant à mon armé de zombie. Venez voir ça !"
+  },
+  "3": {
+    "pageTitle": "Venez voir mon armée de CryptoZombie !",
+    "ogDesc": "Je viens de finir la Leçon 3 de CryptoZombies ! Mon armée de zombie s'agrandit..."
+  },
+  "4": {
+    "pageTitle": "Mon CryptoZombie a battu le zombie maléfique IOTA !",
+    "ogDesc": "Je viens de finir la Leçon 4 de CryptoZombies, et j'ai battu le zombie maléfique IOTA ! Venez revivre la bataille..."
+  },
+  "5": {
+    "pageTitle": "Mon armée de CryptoZombie s'agrandit !",
+    "ogDesc": "Je viens de finir la Leçon 5 de CryptoZombies, et j'ai eu un zombie H4XF13LD MORRIS 💯💯😎💯💯 de niveau 10 !"
+  },
+  "6": {
+    "pageTitle": "Découvrez 'Le fantôme de Web3', mon CryptoZombie de niveau 3.0 !",
+    "ogDesc": "Je viens de finir la Leçon 6 de CryptoZombies, et j'ai appris à utiliser Web3.js, MetaMask, et Infura pour construire ma propre DApp !"
+  }
 }
