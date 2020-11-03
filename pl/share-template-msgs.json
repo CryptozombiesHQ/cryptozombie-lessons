@@ -1,26 +1,26 @@
 {
-    "1": {
-        "pageTitle": "Zobacz mojego CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "Właśnie skończyłem lekcje 1 CryptoZombies. Nauczyłem się podstaw programowania gier na Ethereum. Zobacz pierwszego zombiego w mojej armi!"
-    },
-    "2": {
-        "pageTitle": "Mój CryptoZombie {{ .ZombieName }} właśnie zjadł CryptoKota i zdobył następny poziom!",
-        "ogDesc": "Właśnie skończyłem lekcje 2 CryptoZombies Dodałem ożywionego CryptoKota do mojej armi zombich."
-    },
-    "3": {
-        "pageTitle": "Zobacz moją armie zombich!",
-        "ogDesc": "Właśnie skończyłem lekcje 3 CryptoZombies! Moja armia zombich rośnie..."
-    },
-    "4": {
-        "pageTitle": "Mój CryptoZombie pokonał złego zombiego IOTA!",
-        "ogDesc": "Właśnie skończyłem lekcje 4 CryptoZombies. Pokonałem złego zombiego IOTA! Chodź dołącz do bitwy..."
-    },
-    "5": {
-        "pageTitle": "My CryptoZombie Army Has Grown!",
-        "ogDesc": "I just completed CryptoZombies Lesson 5, and got a level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG!"
-    },
-    "6": {
-        "pageTitle": "Check out 'The Phantom of Web3', my Level 3.0 CryptoZombie!",
-        "ogDesc": "I just completed CryptoZombies Lesson 6, and learned how to use Web3.js, MetaMask, and Infura to build my own DApp!"
-    }
+  "1": {
+    "pageTitle": "Zobacz mojego CryptoZombie {{ .ZombieName }}!",
+    "ogDesc": "Właśnie skończyłem lekcje 1 CryptoZombies. Nauczyłem się podstaw programowania gier na Ethereum. Zobacz pierwszego zombiego w mojej armi!"
+  },
+  "2": {
+    "pageTitle": "Mój CryptoZombie {{ .ZombieName }} właśnie zjadł CryptoKota i zdobył następny poziom!",
+    "ogDesc": "Właśnie skończyłem lekcje 2 CryptoZombies Dodałem ożywionego CryptoKota do mojej armi zombich."
+  },
+  "3": {
+    "pageTitle": "Zobacz moją armie zombich!",
+    "ogDesc": "Właśnie skończyłem lekcje 3 CryptoZombies! Moja armia zombich rośnie..."
+  },
+  "4": {
+    "pageTitle": "Mój CryptoZombie pokonał złego zombiego IOTA!",
+    "ogDesc": "Właśnie skończyłem lekcje 4 CryptoZombies. Pokonałem złego zombiego IOTA! Chodź dołącz do bitwy..."
+  },
+  "5": {
+    "pageTitle": "My CryptoZombie Army Has Grown!",
+    "ogDesc": "I just completed CryptoZombies Lesson 5, and got a level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG!"
+  },
+  "6": {
+    "pageTitle": "Check out 'The Phantom of Web3', my Level 3.0 CryptoZombie!",
+    "ogDesc": "I just completed CryptoZombies Lesson 6, and learned how to use Web3.js, MetaMask, and Infura to build my own DApp!"
+  }
 }
