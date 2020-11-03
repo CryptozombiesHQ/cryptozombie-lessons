@@ -1,393 +1,394 @@
 {
-    "base": {
-        "name": "CryptoZombies",
-        "tagLine": "Lær å kode spill på Ethereum",
-        "lesson": "Leksjon {lessonNum}",
-        "chapter": "Kapittel {chapterNum}",
-        "syncing": "Synkroniserer...",
-        "telegram": {
-            "name": "Telegram",
-            "openChat": "Ask Question",
-            "action": "Ta del i vår Telegram",
-            "link": "https://t.me/loomnetworkdev"
-        },
-        "twitter": {
-            "name": "Twitter",
-            "link": "https://twitter.com/loomnetwork"
-        },
-        "course": {
-            "solidity_path": {
-                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
-                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
-            },
-            "hand_on_path": {
-                "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
-                "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
-            },
-            "hand_on_plasma": {
-                "title": "Advanced Solidity Path: Get In-depth Knowledge",
-                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
-            },
-            "libra_path": {
-                "title": "Libra Path: Master the Basics of Libra Blockchain Development",
-                "summary": "Learn Libra Blockchain Development by Creating Your Own Simple Game Using the Move Programming Language"
-            }
-        },
-        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
-        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
-        "start_resume": "Start/Resume",
-        "the_curriculum": "The Curriculum",
-        "course_overview": "Course Overview",
-        "start": "Start",
-        "skip_lesson": "Skip Lesson",
-        "graduate": "Ready to Graduate? Or You are Already Experienced?",
-        "you_will": "You Will",
-        "will_list": {
-            "use": "Use intermediate level solidity",
-            "deploy": "Deploy to a live PlasmaChain",
-            "interact": "Have real gamers play and interact with your Dapp",
-            "earn": "Charge an admission and earn some money!"
-        },
-        "make_game": "Make your game mode now!",
-        "goto_lesson_list": "Go to lesson list",
-        "share_link": "Share",
-        "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
-        "zbbg_link": "Get Early Access Now!",
-        "coming_soon": "Coming Soon"
+  "base": {
+    "name": "CryptoZombies",
+    "tagLine": "Lær å kode spill på Ethereum",
+    "lesson": "Leksjon {lessonNum}",
+    "chapter": "Kapittel {chapterNum}",
+    "syncing": "Synkroniserer...",
+    "telegram": {
+      "name": "Telegram",
+      "openChat": "Ask Question",
+      "action": "Ta del i vår Telegram",
+      "link": "https://t.me/loomnetworkdev"
     },
-    "achievements": {
-        "achievements": "Achievements",
-        "achieved": "achieved",
-        "finished_first": {
-            "title": "Completed first lesson",
-            "desc": "Completed the first lesson in any course"
-        },
-        "finished_solidity": {
-            "title": "Finished the solidity path",
-            "desc": "Finished all lessons in Solidity path"
-        },
-        "finished_lesson7": {
-            "title": "Built a multi-fungible token",
-            "desc": "Built a multi-fungible token"
-        }
+    "twitter": {
+      "name": "Twitter",
+      "link": "https://twitter.com/loomnetwork"
     },
-    "rewards": {
-        "rewards": "rewards",
-        "test_key": "Alpha Tester Key for Zombie Battleground",
-        "loom_tokens": "Loom Tokens",
-        "no_reward": " You don't have any rewards"
+    "find_source_code_repo": "You can find the source code for these lessons at <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> this Github repo</a>.",
+    "course": {
+      "solidity": {
+        "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+        "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+      },
+      "hand_on_path": {
+        "title": "Hands-on Path: Make and Deploy a Custom Game Mode",
+        "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat nunc at posuere congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque scelerisque leo nec nisl lacinia, dignissim facilisis dolor finibus. Donec pretium tortor in nunc pretium dignissim. Vestibulum sit amet viverra risus. Vestibulum laoreet dui ac ultricies vestibulum. Praesent aliquet vitae ligula a vestibulum. Fusce aliquam risus in mi lacinia, ut congue justo ornare. Curabitur quis turpis commodo, tincidunt enim ut, iaculis dolor. Donec vitae dolor sed purus ullamcorper consequat. Suspendisse accumsan lorem quis eros viverra, in ultricies tortor pulvinar. Nullam condimentum bibendum dolor, ac vulputate urna. Duis quis pharetra nunc, id luctus nunc. Sed aliquet, sapien sed fermentum lobortis, dolor dui ultrices sem, id mattis dui ligula a enim. Sed vel sem sit amet augue vulputate gravida. Mauris pellentesque, orci eget finibus eleifend, nisl metus convallis leo, et tristique lorem libero sit amet enim. Etiam vestibulum quam at volutpat vulputate. Praesent malesuada nec augue id aliquam. Nunc viverra nulla nec dolor elementum tristique. Vestibulum mollis tincidunt tempor. Quisque ac libero vel lorem porttitor dictum et id risus. Vestibulum tristique risus libero, at ullamcorper erat lacinia vitae. Phasellus viverra hendrerit felis. Duis sit amet velit quis turpis posuere sollicitudin."
+      },
+      "solidity_advanced": {
+        "title": "Advanced Solidity Path: Get In-depth Knowledge",
+        "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+      },
+      "beyond_ethereum": {
+        "title": "Beyond Ethereum: Explore the Blockchain Ecosystem",
+        "summary": "Explore the blockchain ecosystem."
+      }
     },
-    "footer": {
-        "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
-        "find_more": "Find out more..."
+    "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
+    "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
+    "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+    "start_resume": "Start/Resume",
+    "the_curriculum": "The Curriculum",
+    "course_overview": "Course Overview",
+    "start": "Start",
+    "skip_lesson": "Skip Lesson",
+    "graduate": "Ready to Graduate? Or You are Already Experienced?",
+    "you_will": "You Will",
+    "will_list": {
+      "use": "Use intermediate level solidity",
+      "deploy": "Deploy to a live PlasmaChain",
+      "interact": "Have real gamers play and interact with your Dapp",
+      "earn": "Charge an admission and earn some money!"
     },
-    "editor": {
-        "readOnly": "Bare for lesing"
+    "make_game": "Make your game mode now!",
+    "goto_lesson_list": "Go to lesson list",
+    "share_link": "Share",
+    "zbbg_slogan": "Zombie Battleground is the First Collectible Card Game to Run Entirely on the Blockchain",
+    "zbbg_link": "Get Early Access Now!",
+    "coming_soon": "Coming Soon"
+  },
+  "achievements": {
+    "achievements": "Achievements",
+    "achieved": "achieved",
+    "finished_first": {
+      "title": "Completed first lesson",
+      "desc": "Completed the first lesson in any course"
     },
-    "lessonMenu": {
-        "getReward": "Rewards",
-        "pageTitle": "@:base.name | @:base.tagLine",
-        "itemLabel": "{title}",
-        "signIn": "Logg inn og last progressjonen din",
-        "progressLoaded": "Progressjonen din har blitt lastet"
+    "finished_solidity": {
+      "title": "Finished the solidity path",
+      "desc": "Finished all lessons in Solidity path"
     },
-    "overview": {
-        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
-        "presents": "Presents",
-        "title": "{title}",
-        "signInPrompt": "Fra nå av må du logge på, så vi kan synkronisere fremgang og zombier. Vennligst logg inn med knappen nedenfor:",
-        "signInButton": "Logg inn",
-        "levelUpText": "I denne leksjonen skal vi levle opp zombiene som er generert i tidligere leksjoner.",
-        "missingZombieText": "Dessverre ser det ut som om du ikke har en zombie fra Lesson {lessonNum}. Hvis du ikke har fullført denne leksjonen, vennligst gjør det før du fortsetter:",
-        "fixMissingZombieText": "Hvis du allerede har gjennomført leksjon {lessonNum} og mottar denne meldingen ved en feiltakelse, kan du bare hoppe til slutten og {generateNewZombie}.",
-        "generateNewZombieLink": "generere en ny zombie",
-        "areYouReady": "Er du klar til å komme i gang?",
-        "resumeLesson": "Forsett leksjon {lessonNum}"
+    "finished_lesson7": {
+      "title": "Built a multi-fungible token",
+      "desc": "Built a multi-fungible token"
+    }
+  },
+  "rewards": {
+    "rewards": "rewards",
+    "test_key": "Alpha Tester Key for Zombie Battleground",
+    "loom_tokens": "Loom Tokens",
+    "no_reward": " You don't have any rewards"
+  },
+  "footer": {
+    "intro": "CryptoZombies is a free, open source, interactive code school that teaches you to build games on Ethereum. The course is designed for beginners to Solidity and starts off with the absolute basics. So if you've never coded with Solidity before, don't worry — we'll walk you through step by step.",
+    "find_more": "Find out more..."
+  },
+  "editor": {
+    "readOnly": "Bare for lesing"
+  },
+  "lessonMenu": {
+    "getReward": "Rewards",
+    "pageTitle": "@:base.name | @:base.tagLine",
+    "itemLabel": "{title}",
+    "signIn": "Logg inn og last progressjonen din",
+    "progressLoaded": "Progressjonen din har blitt lastet"
+  },
+  "overview": {
+    "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+    "presents": "Presents",
+    "title": "{title}",
+    "signInPrompt": "Fra nå av må du logge på, så vi kan synkronisere fremgang og zombier. Vennligst logg inn med knappen nedenfor:",
+    "signInButton": "Logg inn",
+    "levelUpText": "I denne leksjonen skal vi levle opp zombiene som er generert i tidligere leksjoner.",
+    "missingZombieText": "Dessverre ser det ut som om du ikke har en zombie fra Lesson {lessonNum}. Hvis du ikke har fullført denne leksjonen, vennligst gjør det før du fortsetter:",
+    "fixMissingZombieText": "Hvis du allerede har gjennomført leksjon {lessonNum} og mottar denne meldingen ved en feiltakelse, kan du bare hoppe til slutten og {generateNewZombie}.",
+    "generateNewZombieLink": "generere en ny zombie",
+    "areYouReady": "Er du klar til å komme i gang?",
+    "resumeLesson": "Forsett leksjon {lessonNum}"
+  },
+  "chapter": {
+    "pageTitle": "@:base.name | {lesson} {chapter}",
+    "header": "Kapittel {chapterNum}: {title}",
+    "saveProgress": "Lagre progressjon",
+    "autosaveEnabled": "Autolagring aktivert",
+    "resumeProgress": "Forsett progressjon",
+    "showHint": "Vis Hint",
+    "nextChapter": "Neste Kapittel",
+    "tryAgain": "Prøv på nytt",
+    "checkAnswer": "Sjekk svar",
+    "showMeTheAnswer": "Vis meg svaret",
+    "hideAnswer": "Gjem Svar",
+    "next_chapter": "NEXT",
+    "prev_chapter": "BACK"
+  },
+  "lessonComplete": {
+    "shareLinksAction": "Eller du kan klikke på knappene nedenfor for å dele:",
+    "signIn": "Logg inn og lagre progressjonen din",
+    "goToNextLesson": "Forsett til neste Leksjon",
+    "lesson1": {
+      "header": [
+        "Gratulerer! Du har fullført leksjon 1 av CryptoZombies!",
+        "Du er offisielt et skritt nærmere å bygge dine egne spill på Ethereum.",
+        "Vis frem din første zombie til vennene dine!",
+        "Her er en permalink til zombien din:"
+      ],
+      "footer": "Sørg for at progressjonen din er lagret nedenfor før du fortsetter til leksjon 2.",
+      "zombieDesc": "Eb Level 1 CryptoZombie",
+      "shareLinkText": "Jeg ble akkurat ferdig med Leksjon 1 og lærte det grunnlegende for å lage et spill for Ethereum. Ta en titt på Zombien min!"
     },
-    "chapter": {
-        "pageTitle": "@:base.name | {lesson} {chapter}",
-        "header": "Kapittel {chapterNum}: {title}",
-        "saveProgress": "Lagre progressjon",
-        "autosaveEnabled": "Autolagring aktivert",
-        "resumeProgress": "Forsett progressjon",
-        "showHint": "Vis Hint",
-        "nextChapter": "Neste Kapittel",
-        "tryAgain": "Prøv på nytt",
-        "checkAnswer": "Sjekk svar",
-        "showMeTheAnswer": "Vis meg svaret",
-        "hideAnswer": "Gjem Svar",
-        "next_chapter": "NEXT",
-        "prev_chapter": "BACK"
+    "lesson2": {
+      "header": [
+        "Gratulerer! Du har fullført {lesson2} av CryptoZombies!",
+        "Prestasjoner opplåst:",
+        "{zombieName} har blitt oppgradert til nivå 2!",
+        "Du har lagt NoName, en CatZombie til hæren din! (Ikke bekymre deg, du lærer hvordan du endrer hans / hennes navn i leksjon 3)",
+        "Vis av CryptoKitty-slayer til vennene dine!",
+        "Del denne nettadressen slik at vennene dine kan drepe CryptoKitties med zombieen din:"
+      ],
+      "footer": [
+        "Nyter du CryptoZombies? Gi oss beskjed!",
+        "Bli med i samtalen på {telegramlink}, eller følg oss på {twitter Link}",
+        "Når du er klar, klikk på knappen nedenfor for å få tilgang til leksjon 3:"
+      ],
+      "zombieDesc": "En Level 2 CryptoZombie",
+      "shareLinkText": "Jeg ble akkurat ferdig med CryptoZombies Leksjon 2, og la til en reanimert CryptoKitty til min Zombie-hær. Kom og ta en titt!"
     },
-    "lessonComplete": {
-        "shareLinksAction": "Eller du kan klikke på knappene nedenfor for å dele:",
-        "signIn": "Logg inn og lagre progressjonen din",
-        "goToNextLesson": "Forsett til neste Leksjon",
-        "lesson1": {
-            "header": [
-                "Gratulerer! Du har fullført leksjon 1 av CryptoZombies!",
-                "Du er offisielt et skritt nærmere å bygge dine egne spill på Ethereum.",
-                "Vis frem din første zombie til vennene dine!",
-                "Her er en permalink til zombien din:"
-            ],
-            "footer": "Sørg for at progressjonen din er lagret nedenfor før du fortsetter til leksjon 2.",
-            "zombieDesc": "Eb Level 1 CryptoZombie",
-            "shareLinkText": "Jeg ble akkurat ferdig med Leksjon 1 og lærte det grunnlegende for å lage et spill for Ethereum. Ta en titt på Zombien min!"
-        },
-        "lesson2": {
-            "header": [
-                "Gratulerer! Du har fullført {lesson2} av CryptoZombies!",
-                "Prestasjoner opplåst:",
-                "{zombieName} har blitt oppgradert til nivå 2!",
-                "Du har lagt NoName, en CatZombie til hæren din! (Ikke bekymre deg, du lærer hvordan du endrer hans / hennes navn i leksjon 3)",
-                "Vis av CryptoKitty-slayer til vennene dine!",
-                "Del denne nettadressen slik at vennene dine kan drepe CryptoKitties med zombieen din:"
-            ],
-            "footer": [
-                "Nyter du CryptoZombies? Gi oss beskjed!",
-                "Bli med i samtalen på {telegramlink}, eller følg oss på {twitter Link}",
-                "Når du er klar, klikk på knappen nedenfor for å få tilgang til leksjon 3:"
-            ],
-            "zombieDesc": "En Level 2 CryptoZombie",
-            "shareLinkText": "Jeg ble akkurat ferdig med CryptoZombies Leksjon 2, og la til en reanimert CryptoKitty til min Zombie-hær. Kom og ta en titt!"
-        },
-        "lesson3": {
-            "achievementsUnlocked": "Prestasjoner opplåst:",
-            "zombieUpgraded": "{zombieName} har blitt oppgradert til nivå {levelNum}!",
-            "header": [
-                "Gratulerer! Du har fullført {lesson3} av CryptoZombies!",
-                "Vis din zombie-hær til vennene dine!",
-                "Del denne URLen slik at vennene dine kan sjekke ut hæren din:"
-            ],
-            "footer": [
-                "Nyter du CryptoZombies? Gi oss beskjed!",
-                "Bli med i samtalen på {telegramlink}, eller følg oss på {twitter Link}",
-                "Når du er klar, klikk på knappen nedenfor for å få tilgang til leksjon 4:"
-            ],
-            "zombieDesc": "En Level 3 CryptoZombie",
-            "shareLinkText": "Jeg ble akkurat ferdig med #CryptoZombies Leksjon 3! Min zombie hær blir større!"
-        },
-        "lesson4": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
-            "newZombieAdded": "You've added a new Level 1 zombie to your army!",
-            "header": [
-                "Congratulations! You have completed {lesson4} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your army:"
-            ],
-            "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 5:"
-            ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
-        },
-        "lesson5": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
-            "header": [
-                "Congratulations! You have completed {lesson5} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your full zombie army:"
-            ],
-            "footer": [
-                "Enjoying CryptoZombies? Let us know!",
-                "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
-                "When you're ready, click the button below to access Lesson 6:"
-            ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
-        },
-        "lesson6": {
-            "achievementsUnlocked": "Achievements Unlocked:",
-            "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
-            "header": [
-                "Congratulations! You have completed {lesson6} of CryptoZombies!",
-                "Show off your zombie army to your friends!",
-                "Share this URL so your friends can check out your full zombie army:"
-            ],
-            "footer": [
-                "Lesson 7 will be out in the next few weeks!",
-                "You'll get an email from us as soon as it's ready.",
-                "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
-            ],
-            "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
-        }
+    "lesson3": {
+      "achievementsUnlocked": "Prestasjoner opplåst:",
+      "zombieUpgraded": "{zombieName} har blitt oppgradert til nivå {levelNum}!",
+      "header": [
+        "Gratulerer! Du har fullført {lesson3} av CryptoZombies!",
+        "Vis din zombie-hær til vennene dine!",
+        "Del denne URLen slik at vennene dine kan sjekke ut hæren din:"
+      ],
+      "footer": [
+        "Nyter du CryptoZombies? Gi oss beskjed!",
+        "Bli med i samtalen på {telegramlink}, eller følg oss på {twitter Link}",
+        "Når du er klar, klikk på knappen nedenfor for å få tilgang til leksjon 4:"
+      ],
+      "zombieDesc": "En Level 3 CryptoZombie",
+      "shareLinkText": "Jeg ble akkurat ferdig med #CryptoZombies Leksjon 3! Min zombie hær blir større!"
     },
-    "zombieBattle": {
-        "yourTurn": "Din tur",
-        "zombieDna": "{name}'s DNA",
-        "newZombieGenerated": "Ny {species} Generert!",
-        "catZombie": "Katte-Zombie",
-        "mutantZombie": "Mutant-Zombie",
-        "newSpeciesDna": "Ny {species}'s DNA",
-        "cryptoKitty": "CryptoKitty",
-        "human": "Menneske",
-        "tryAnotherCombo": "Prøv en annen kombinasjon"
+    "lesson4": {
+      "achievementsUnlocked": "Achievements Unlocked:",
+      "zombieUpgraded": "{zombieName} has been upgraded to Level {levelNum}!",
+      "newZombieAdded": "You've added a new Level 1 zombie to your army!",
+      "header": [
+        "Congratulations! You have completed {lesson4} of CryptoZombies!",
+        "Show off your zombie army to your friends!",
+        "Share this URL so your friends can check out your army:"
+      ],
+      "footer": [
+        "Enjoying CryptoZombies? Let us know!",
+        "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
+        "When you're ready, click the button below to access Lesson 5:"
+      ],
+      "zombieDesc": "A Level {levelNum} CryptoZombie",
+      "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
     },
-    "zombieChar": {
-        "defaultZombieDesc": "A Level 1 CryptoZombie"
+    "lesson5": {
+      "achievementsUnlocked": "Achievements Unlocked:",
+      "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+      "header": [
+        "Congratulations! You have completed {lesson5} of CryptoZombies!",
+        "Show off your zombie army to your friends!",
+        "Share this URL so your friends can check out your full zombie army:"
+      ],
+      "footer": [
+        "Enjoying CryptoZombies? Let us know!",
+        "Join the conversation on {telegramLink}, or follow us on {twitterLink}",
+        "When you're ready, click the button below to access Lesson 6:"
+      ],
+      "zombieDesc": "A Level {levelNum} CryptoZombie",
+      "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
     },
-    "zombieDeck": {
-        "zombieDesc": "En Level {levelNum} CryptoZombie",
-        "nameInputPlaceholder": "Gi {name} et nytt navn og press 'Lagre'",
-        "save": "Lagre",
-        "yourDeck": "Ditt dekk"
+    "lesson6": {
+      "achievementsUnlocked": "Achievements Unlocked:",
+      "newZombieAdded": "You received {zombieName}, a level {levelNum} CryptoZombie!",
+      "header": [
+        "Congratulations! You have completed {lesson6} of CryptoZombies!",
+        "Show off your zombie army to your friends!",
+        "Share this URL so your friends can check out your full zombie army:"
+      ],
+      "footer": [
+        "Lesson 7 will be out in the next few weeks!",
+        "You'll get an email from us as soon as it's ready.",
+        "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
+      ],
+      "zombieDesc": "A Level {levelNum} CryptoZombie",
+      "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
+    }
+  },
+  "zombieBattle": {
+    "yourTurn": "Din tur",
+    "zombieDna": "{name}'s DNA",
+    "newZombieGenerated": "Ny {species} Generert!",
+    "catZombie": "Katte-Zombie",
+    "mutantZombie": "Mutant-Zombie",
+    "newSpeciesDna": "Ny {species}'s DNA",
+    "cryptoKitty": "CryptoKitty",
+    "human": "Menneske",
+    "tryAnotherCombo": "Prøv en annen kombinasjon"
+  },
+  "zombieChar": {
+    "defaultZombieDesc": "A Level 1 CryptoZombie"
+  },
+  "zombieDeck": {
+    "zombieDesc": "En Level {levelNum} CryptoZombie",
+    "nameInputPlaceholder": "Gi {name} et nytt navn og press 'Lagre'",
+    "save": "Lagre",
+    "yourDeck": "Ditt dekk"
+  },
+  "zombieResult": {
+    "headGeneLabel": "Hode-Gen:",
+    "eyeGeneLabel": "øye-Gen:",
+    "shirtGeneLabel": "Skjorte-Gen:",
+    "skinColorGeneLabel": "Hudfarge-Gen:",
+    "eyeColorGeneLabel": "Øyenfarge-Gen:",
+    "clothesColorGeneLabel": "Kles-farge-Gen:",
+    "nameInputPlaceholder": "Legg til et navn her",
+    "defaultZombieDesc": "En Level 1 CryptoZombie"
+  },
+  "battleArena": {
+    "IOTAslain": "IOTA has been slain in battle!",
+    "winCount": "Your Zombie's Win Count:",
+    "iotaLose": "IOTA's Loss Count",
+    "newZombie": "New Zombie Created"
+  },
+  "sharePage": {
+    "pageTitle": "Sjekk ut min CryptoZombie {zombieName}!",
+    "presents": "Presents",
+    "zombieDesc": "{name}, en Level {levelNum} CryptoZombie",
+    "lesson1": {
+      "zombieDesc": "En Level 1 CryptoZombie",
+      "randomZombieGenerator": "tilfeldig zombie generator",
+      "achievementPreamble": [
+        "Din venn har lært grunnleggende om Ethereum spillutvikling, og opprettet {zombieName}, en Level 1 CryptoZombie som bevis!",
+        "For å fullføre leksjon 1 i CryptoZombies, bygde din venn en {randomZombieGenerator} og lærte om:"
+      ],
+      "achievements": [
+        "Hvordan skrive Ethereum smart-kontrakter",
+        "Programmering i Solidity, Ethereums smarte kontraktspråk for programmering",
+        "Bygge spill for Ethereum"
+      ],
+      "tryItOut": "Gi den tilfeldige zombiegeneratoren et forsøk.",
+      "below": "nedenfor",
+      "above": "ovenfor",
+      "zombieGeneratorText": "{tryItOut}Skriv inn et navn i boksen {below} {above} for å generere en ny zombie!",
+      "nameInputPlaceholder": "Skriv inn et navn for å generere en zombie",
+      "callToAction": [
+        "Vil du bygge din egen CryptoZombie og bli med i rekkene?",
+        "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+      ]
     },
-    "zombieResult": {
-        "headGeneLabel": "Hode-Gen:",
-        "eyeGeneLabel": "øye-Gen:",
-        "shirtGeneLabel": "Skjorte-Gen:",
-        "skinColorGeneLabel": "Hudfarge-Gen:",
-        "eyeColorGeneLabel": "Øyenfarge-Gen:",
-        "clothesColorGeneLabel": "Kles-farge-Gen:",
-        "nameInputPlaceholder": "Legg til et navn her",
-        "defaultZombieDesc": "En Level 1 CryptoZombie"
+    "lesson2": {
+      "zombieCardBattle": "Zombie kort-kamp",
+      "love": "elsker",
+      "achievementPreamble": [
+        "Din venn har fullført CryptoZombies Lesson 2, og oppgradert {zombieName} til en CryptoKitty slayer!",
+        "En CryptoKitty Slayer ?!",
+        "Det viser seg CryptoZombies {love} å spise CryptoKitties.",
+        "Når en CryptoZombie spiser en CryptoKitty, blander deres DNA sammen og CryptoKitty blir reanimert som en CryptoZombie.",
+        "Fortsett, velg en CryptoKitty å angripe, og se hva slags CatZombie du får!",
+        "Solidity konsept overkommet",
+        "For å fullføre leksjon 2 i CryptoZombies kode-skole, bygget din venn en {zombieCardBattle} og lærte om:"
+      ],
+      "achievements": [
+        "Grunnleggende om å lage et multi-player spill",
+        "Interagere med andre kontrakter på Ethereum-nettverket",
+        "Organisering av større soliditetsprosjekter i flere kontrakter"
+      ],
+      "callToAction": [
+        "Vil du bygge dine egne CryptoZombies og bli med i rekkene?",
+        "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+      ]
     },
-    "battleArena": {
-        "IOTAslain": "IOTA has been slain in battle!",
-        "winCount": "Your Zombie's Win Count:",
-        "iotaLose": "IOTA's Loss Count",
-        "newZombie": "New Zombie Created"
+    "lesson3": {
+      "achievementPreamble": [
+        "Din venn har fullført CryptoZombies Lesson 3, og oppgradert sin zombie hær!",
+        "For å fullføre leksjon 3 av CryptoZombies, lærte din venn om:"
+      ],
+      "achievements": [
+        "Hvordan bygge oppdaterbare smarte kontrakter",
+        "Sikre kontrakter med kontrakt eierskap",
+        "Gas og gas optimisasjon i Ethereum",
+        "Funksjons-modifiserere og sikkerhets-sjekker"
+      ],
+      "callToAction": [
+        "Vil du bygge din egen CryptoZombie-hær og bli med i rekkene?",
+        "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
+      ]
     },
-    "sharePage": {
-        "pageTitle": "Sjekk ut min CryptoZombie {zombieName}!",
-        "presents": "Presents",
-        "zombieDesc": "{name}, en Level {levelNum} CryptoZombie",
-        "lesson1": {
-            "zombieDesc": "En Level 1 CryptoZombie",
-            "randomZombieGenerator": "tilfeldig zombie generator",
-            "achievementPreamble": [
-                "Din venn har lært grunnleggende om Ethereum spillutvikling, og opprettet {zombieName}, en Level 1 CryptoZombie som bevis!",
-                "For å fullføre leksjon 1 i CryptoZombies, bygde din venn en {randomZombieGenerator} og lærte om:"
-            ],
-            "achievements": [
-                "Hvordan skrive Ethereum smart-kontrakter",
-                "Programmering i Solidity, Ethereums smarte kontraktspråk for programmering",
-                "Bygge spill for Ethereum"
-            ],
-            "tryItOut": "Gi den tilfeldige zombiegeneratoren et forsøk.",
-            "below": "nedenfor",
-            "above": "ovenfor",
-            "zombieGeneratorText": "{tryItOut}Skriv inn et navn i boksen {below} {above} for å generere en ny zombie!",
-            "nameInputPlaceholder": "Skriv inn et navn for å generere en zombie",
-            "callToAction": [
-                "Vil du bygge din egen CryptoZombie og bli med i rekkene?",
-                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
-            ]
-        },
-        "lesson2": {
-            "zombieCardBattle": "Zombie kort-kamp",
-            "love": "elsker",
-            "achievementPreamble": [
-                "Din venn har fullført CryptoZombies Lesson 2, og oppgradert {zombieName} til en CryptoKitty slayer!",
-                "En CryptoKitty Slayer ?!",
-                "Det viser seg CryptoZombies {love} å spise CryptoKitties.",
-                "Når en CryptoZombie spiser en CryptoKitty, blander deres DNA sammen og CryptoKitty blir reanimert som en CryptoZombie.",
-                "Fortsett, velg en CryptoKitty å angripe, og se hva slags CatZombie du får!",
-                "Solidity konsept overkommet",
-                "For å fullføre leksjon 2 i CryptoZombies kode-skole, bygget din venn en {zombieCardBattle} og lærte om:"
-            ],
-            "achievements": [
-                "Grunnleggende om å lage et multi-player spill",
-                "Interagere med andre kontrakter på Ethereum-nettverket",
-                "Organisering av større soliditetsprosjekter i flere kontrakter"
-            ],
-            "callToAction": [
-                "Vil du bygge dine egne CryptoZombies og bli med i rekkene?",
-                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
-            ]
-        },
-        "lesson3": {
-            "achievementPreamble": [
-                "Din venn har fullført CryptoZombies Lesson 3, og oppgradert sin zombie hær!",
-                "For å fullføre leksjon 3 av CryptoZombies, lærte din venn om:"
-            ],
-            "achievements": [
-                "Hvordan bygge oppdaterbare smarte kontrakter",
-                "Sikre kontrakter med kontrakt eierskap",
-                "Gas og gas optimisasjon i Ethereum",
-                "Funksjons-modifiserere og sikkerhets-sjekker"
-            ],
-            "callToAction": [
-                "Vil du bygge din egen CryptoZombie-hær og bli med i rekkene?",
-                "Lær å bygge dine egne spill på Ethereum GRATIS med CryptoZombies! Kom i gang nå: "
-            ]
-        },
-        "lesson4": {
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
-                "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
-                "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Payable functions, and how to earn money from your Ethereum-based games",
-                "Withdrawing ETH from smart contracts",
-                "Random number generation & security on Ethereum",
-                "And more!"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        },
-        "lesson5": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Tokens, the ERC721 standard, and creating tradable tokens / assets",
-                "Solidity libraries and how to use them",
-                "The SafeMath library and preventing uint overflows and underflows",
-                "Commenting your Solidity code and the natspec standard"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        },
-        "lesson6": {
-            "zombieDesc": "{name} CryptoZombie",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 6 and received a Level 3.0 `The Phantom of Web3` CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 6 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Building web front-ends for Ethereum smart contracts using Web3.js",
-                "Using MetaMask and Infura to build user-facing DApps",
-                "Listening to smart contract events and showing users real-time updates",
-                "And more!"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        },
-        "lesson7": {
-            "zombieDesc": "Let's build an Zombie Battleground like game!",
-            "achievementPreamble": [
-                "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
-                "Check out your friend's zombie army to the left. Pretty formidable, huh?",
-                "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
-            ],
-            "achievements": [
-                "Multi fungible tokens, and the ERC721X standard",
-                "How to build a faucet that mints, let users claim, and transfers tokens",
-                "How to use ERC721X to implement unique, limited edition, and standard edition cards"
-            ],
-            "callToAction": [
-                "Want to build your own CryptoZombie army and join the ranks?",
-                "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
-            ]
-        }
+    "lesson4": {
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie!",
+        "Go ahead and try it for yourself to the left. Use your friend's army to engage in battle!",
+        "In order to complete Lesson 4 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Payable functions, and how to earn money from your Ethereum-based games",
+        "Withdrawing ETH from smart contracts",
+        "Random number generation & security on Ethereum",
+        "And more!"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
     },
-    "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
+    "lesson5": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 5, and received a level 10 CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 5 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Tokens, the ERC721 standard, and creating tradable tokens / assets",
+        "Solidity libraries and how to use them",
+        "The SafeMath library and preventing uint overflows and underflows",
+        "Commenting your Solidity code and the natspec standard"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    },
+    "lesson6": {
+      "zombieDesc": "{name} CryptoZombie",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 6 and received a Level 3.0 `The Phantom of Web3` CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 6 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Building web front-ends for Ethereum smart contracts using Web3.js",
+        "Using MetaMask and Infura to build user-facing DApps",
+        "Listening to smart contract events and showing users real-time updates",
+        "And more!"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    },
+    "lesson7": {
+      "zombieDesc": "Let's build an Zombie Battleground like game!",
+      "achievementPreamble": [
+        "Your friend has completed CryptoZombies Lesson 7, and received a level 12 CryptoZombie!",
+        "Check out your friend's zombie army to the left. Pretty formidable, huh?",
+        "In order to complete Lesson 7 of CryptoZombies, your friend learned about:"
+      ],
+      "achievements": [
+        "Multi fungible tokens, and the ERC721X standard",
+        "How to build a faucet that mints, let users claim, and transfers tokens",
+        "How to use ERC721X to implement unique, limited edition, and standard edition cards"
+      ],
+      "callToAction": [
+        "Want to build your own CryptoZombie army and join the ranks?",
+        "Learn to build your own games on Ethereum for FREE with CryptoZombies! Get started now:"
+      ]
+    }
+  },
+  "czSlogan": "CryptoZombies: Learn ethereum blockchain programming with our solidity tutorial!"
 }
