@@ -1,28 +1,41 @@
 ---
-title: Testing Smart Contracts with Truffle
-header: Testing Smart Contracts with Truffle
-roadmap: roadmap.jpg
-path: solidity_advanced
-position: 1
+title: Intro to zkSync
+header: Intro to zkSync
 publishedOn: Cryptozombies
+path: beyond_ethereum
 ---
 
-Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
+Welcome!
 
-So, go ahead and deploy the game to the mainnet. Enjoy your success!
+In this lesson, we will teach you the basics of zkSync, by walking you through setting up a shop where a customer (Alice) can buy goods from a shopkeeper (Bob)
 
-Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
+## What is zkSync?
 
-Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
+Recently there’s been some interesting research on using zero-knowledge proofs to secure token transfers between Ethereum and side-chains, and there’s now a practical implementation of this research in the form of **zkSync** from Matter Labs.
 
-Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
+zkSync is built on the ZK rollup architecture, a level-two scaling solution in which all funds are held by a smart contract on Ethereum, while computation and storage are performed off-chain.
 
-To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
+## Why should you care about zkSync?
+
+This is the short answer to why we think zkSync is important:
+
+* The protocol allows ETH and ERC20 token transfers with **_instant confirmations_** and 10 min finality on Ethereum.
+* Provides Mainnet-level security with **_zero reliance on 3rd parties_**.
+* Low transaction fees
+* Fast deposits and withdrawals
+
+## How does zkSync work?
+
+In a nutshell, users can send their ETH or ERC20 tokens to the zkSync smart contract on Ethereum, and the protocol will credit them with the equivalent assets. For simplicity, this tutorial will only cover how you can make ETH payments.
+
+## What will you learn in this lesson?
 
 By the end of this lesson, you will be able to:
 
-- Test your smart contracts with `Truffle` against `Ganache`
-- Use `Chai` to write more expressive assertions
-- Test against `Loom`😉
+* Set up accounts on zkSync
+* Deposit ETH to zkSync
+* Make payments by transferring ETH between zkSync accounts
+* Track the status of these transactions.
+* Withdraw ETH to Ethereum
 
 Let's get started!
