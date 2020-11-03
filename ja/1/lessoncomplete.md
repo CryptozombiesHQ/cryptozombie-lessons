@@ -1,23 +1,14 @@
 ---
-title: Lesson 1 Complete!
+title: Lesson Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
 material:
-  lessonComplete:
-    answer: 1
+  lessonComplete: 1
 ---
 
-Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
+Awesome!
 
-# Next Steps
+You just issued a BEP-2 Token on the Binance test net and minted 1 billion tokens.
 
-This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
-
-### 1. Sign in to save your progress
-
-***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
-
-### 2. Share your zombie with your friends
-
-***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+But this is just an appetizer and we're working on more cool stuff. In the next lessons, we'll show you how to ...
