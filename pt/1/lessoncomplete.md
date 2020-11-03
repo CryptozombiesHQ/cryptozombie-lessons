@@ -7,4 +7,8 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You have completed Lesson 1 of the CryptoZombies Libra course. You’ve learned to create accounts, check balances, view a list of accounts and send transactions. You’re officially one step closer to being a Libra developer.
+Congratulations!
+
+You’ve made it to the end! By completing this lesson, you should have a good grasp of the basic functions and concepts of zkSync.
+
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
