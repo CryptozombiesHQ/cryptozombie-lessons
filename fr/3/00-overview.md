@@ -4,7 +4,7 @@ header: "Leçon 3: Concepts avancés en Solidity"
 roadmap: roadmap3.png
 ---
 
-Grr... On dirait que je ne peut pas vous ralentir ! Vos compétences en Solidity sont redoutables humain...
+Grr... On dirait que je ne peux pas vous ralentir ! Vos compétences en Solidity sont redoutables humain...
 
 Maintenant que vous êtes expérimenté en programmation Solidity, nous allons nous intéresser à un des aspects les plus techniques de la programmation Ethereum.
 
