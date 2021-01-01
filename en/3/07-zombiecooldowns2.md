@@ -220,7 +220,7 @@ material:
             return (_zombie.readyTime <= now);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+        function _feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
           require(_isReady(myZombie));
@@ -236,7 +236,7 @@ material:
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
           uint kittyDna;
           (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
+          _feedAndMultiply(_zombieId, kittyDna, "kitty");
         }
 
       }
@@ -252,7 +252,7 @@ On closer inspection, this function only needs to be called by `feedOnKitty()`, 
 
 ## Put it to the test 
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` and according to our convention, change function name to `_feedAndMultiply` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
 
 2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
 
