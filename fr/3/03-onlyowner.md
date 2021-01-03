@@ -185,7 +185,7 @@ material:
 
 Maintenant que notre contrat de base `ZombieFactory` hérite de `Ownable`, nous pouvons utiliser le modificateur de fonction `onlyOwner` aussi dans `ZombieFeeding`.
 
-C'est grâce à la façon dont l'héritage fonction. Souvenez-vous :
+C'est grâce à la façon dont l'héritage fonctionne. Souvenez-vous :
 
 ```
 ZombieFeeding is ZombieFactory
