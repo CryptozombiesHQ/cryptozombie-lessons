@@ -115,6 +115,6 @@ A mapping is essentially a key-value store for storing and looking up data. In t
 
 To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1. Create a mapping called `zombieToOwner`. The key will be an `address` (we'll store and look up the zombie based on its id) and the value a `uint`. Let's make this mapping `public`.
 
 2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
