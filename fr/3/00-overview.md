@@ -10,6 +10,6 @@ Maintenant que vous êtes expérimenté en programmation Solidity, nous allons n
 
 Cette leçon sera un peu moins tape-à-l’œil (désolé !). Mais vous allez apprendre des concepts vraiment importants qui vont vous rapprocher de la construction de DApps réelles - des concepts comme **les contrats avec propriétaire, les coûts en gas (gaz), l'optimisation de code, et la sécurité**.
 
-Vous êtes prévenu - pas de chatons ou d'arc en ciel dans la leçon 3 !
+Vous êtes prévenu - pas de chatons ou d'arc-en-ciel dans la leçon 3 !
 
 Mais beaucoup de connaissances Solidity rassemblées. Nous vous recommandons fortement d'avoir complété la leçon 2 avant de commencer celle-ci.

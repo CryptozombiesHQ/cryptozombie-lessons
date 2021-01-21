@@ -154,7 +154,7 @@ Mais c'est aussi une des fonctionnalités des smart contracts. Le code est immua
 
 Dans la leçon 2, nous avons codé en dur le contrat CryptoKitties dans notre DApp. Mais qu'arriverait-il si le contrat CryptoKitties avait un bug et que quelqu'un détruisait tous les chatons ?
 
-C'est peu probable, mais si cela arrive cela rendrait notre DApp complètement inutile - notre DApp pointerait vers une adresse écrite en dur qui ne retournerait plus aucun chaton. Nos zombies seraient incapables de se nourrir de chatons, et nous ne serions pas capable de modifier notre contrat pour le corriger.
+C'est peu probable, mais si cela arrive cela rendrait notre DApp complètement inutile - notre DApp pointerait vers une adresse écrite en dur qui ne retournerait plus aucun chaton. Nos zombies seraient incapables de se nourrir de chatons, et nous ne serions pas capables de modifier notre contrat pour le corriger.
 
 Pour cette raison, c'est souvent utile d'avoir des fonctions qui vous permettent de mettre à jour des portions clés de la DApp.
 
