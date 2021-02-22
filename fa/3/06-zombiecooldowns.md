@@ -1,6 +1,6 @@
 ---
-title: Zombie Cooldowns
-actions: ['checkAnswer', 'hints']
+title: زمان استراحت زامبی
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -232,39 +232,43 @@ material:
 
       }
 ---
+<div dir="rtl">
 
-Now that we have a `readyTime` property on our `Zombie` struct, let's jump to `zombiefeeding.sol` and implement a cooldown timer.
+خب حالا که متغیر `readyTime` رو در ساختار `Zombie` داریم، بریم سراغ `zombiefeeding.sol` و تایمر زمان توقف رو پیاده کنیم.
 
-We're going to modify our `feedAndMultiply` such that:
+می‌خوایم `feedAndMultiply`  رو تغییر بدیم:
 
-1. Feeding triggers a zombie's cooldown, and
+۱. با غذاخوردن، تایمر شروع می‌شه.
 
-2. Zombies can't feed on kitties until their cooldown period has passed
+۲. زامبی‌ها نمی‌تونن در زمان استراحت کیتی‌ها رو بخورن.
 
-This will make it so zombies can't just feed on unlimited kitties and multiply all day. In the future when we add battle functionality, we'll make it so attacking other zombies also relies on the cooldown.
+این باعث می‌شه که زامبی‌ها هر زمانی نتونن گربه‌ها رو بخورن و تکثیر شن. در آینده وقتی جنگ هم به عملیات اضافه بشه، طوری پیاده‌سازی می‌کنیم که حمله به زامبی‌های دیگر به این زمان استراحت وابسته باشه.
 
-First, we're going to define some helper functions that let us set and check a zombie's `readyTime`.
+اول، می‌خوایم یه تابع کمکی تعریف کنیم که توسط اون، `readyTime` زامبی رو تنظیم و چک کنیم.
 
-## Passing structs as arguments
+## ارسال ساختار به عنوان آرگومان
 
-You can pass a storage pointer to a struct as an argument to a `private` or `internal` function. This is useful, for example, for passing around our `Zombie` structs between functions.
-
-The syntax looks like this:
+می‌تونید اشاره‌گر حافظه رو به عنوان آرگومان یک تابع `private` یا`internal`، به یک ساختار بفرستید.  مثلا برای ارسال ساختار `Zombie` به تابع، سینتکس به این صورت می‌شه:
+</div>
 
 ```
 function _doStuff(Zombie storage _zombie) internal {
   // do stuff with _zombie
 }
 ```
+<div dir="rtl">
 
-This way we can pass a reference to our zombie into a function instead of passing in a zombie ID and looking it up.
+از این طریق می‌تونیم به جای ارسال متغیرهای زامبی ارجاع بدیم به ساختار زامبی.
 
-## Put it to the test 
+## دست به کد شو
 
-1. Start by defining a `_triggerCooldown` function. It will take 1 argument, `_zombie`, a `Zombie storage` pointer. The function should be `internal`.
 
-2. The function body should set `_zombie.readyTime` to `uint32(now + cooldownTime)`.
+۱. با تعریف تابع `_triggerCooldown` شروع کنید. یک آرگومان به عنوان `_zombie` می‌گیره، اشاره‌گر `Zombie storage`. این تابع باید `internal(داخلی)` باشه.
 
-3. Next, create a function called `_isReady`. This function will also take a `Zombie storage` argument named `_zombie`. It will be an `internal view` function, and return a `bool`.
+۲. داخل تابع مقدار `_zombie.readyTime` رو `uint32(زمان حال + زمان استراحت)` بذارید.
 
-4. The function body should return `(_zombie.readyTime <= now)`, which will evaluate to either `true` or `false`. This function will tell us if enough time has passed since the last time the zombie fed.
+۳. سپس، یک تابع به نام `_isReady` بنویسید. این تابع هم آرگومان `Zombie storage` رو با اسم `_zombie` دریافت می‌کنه. تابع از نوع `internal view` است و `bool` برمی‌گردونه.
+
+۴. تابع باید `(_zombie.readyTime <= now)` رو برگردونه، یعنی `true` یا `false`برمی‌گردونه. این تابع نشون می‌ده که زمان کافی از آخرین بار که زامبی تغذیه کرده گذشته یا نه.
+
+</div>

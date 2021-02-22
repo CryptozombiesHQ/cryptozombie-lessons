@@ -1,5 +1,5 @@
 ---
-title: What Do Zombies Eat?
+title: زامبی ها چه می خورند؟
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -95,23 +95,24 @@ material:
       }
 ---
 
-It's time to feed our zombies! And what do zombies like to eat most?
+<div dir="rtl">
+وقت آن است که به زامبی های خود غذا دهیم! زامبی ها بیشتر دوست دارند چه چیزی بخورند؟
 
-Well it just so happens that CryptoZombies love to eat...
+اتفاقاً CryptoZombies عاشق خوردن ...
 
 **CryptoKitties!** 😱😱😱
 
-(Yes, I'm serious 😆 )
+(بله ، جدی هستم 😆 )
 
-In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain. Isn't the blockchain cool?!
+برای انجام این کار باید kittyDna را از قرارداد هوشمند CryptoKitties بخوانیم. ما می توانیم این کار را انجام دهیم زیرا داده های CryptoKitties به طور عمومی در بلاکچین ذخیره می شوند. بلاکچین جالب نیست؟!
 
-Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We're only *reading* the CryptoKitties data, we're not able to actually delete it 😉
+نگران نباشید - بازی ما در واقع به CryptoKitty هیچ کس آسیب نمی رساند. ما فقط در حال *خواندن* داده های CryptoKitties هستیم، و قادر به حذف واقعی آنها نیستیم 😉
 
-## Interacting with other contracts
+## تعامل با سایر قراردادها
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+برای اینکه قرارداد ما با قرارداد دیگری در مورد بلاکچین صحبت کند که ما مالک آن نیستیم، ابتدا باید یک **_interface_** تعریف کنیم.
 
-Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
+بیایید به یک مثال ساده نگاه کنیم. فرض کنید قراردادی در بلاکچین وجود دارد که به این شکل است:
 
 ```
 contract LuckyNumber {
@@ -127,11 +128,11 @@ contract LuckyNumber {
 }
 ```
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+این یک قرارداد ساده است که در آن هر کسی می تواند شماره شانس خود را ذخیره کند و به آدرس اتریوم هر شخص نسبت داده خواهد شد. سپس هر شخص دیگری می تواند با استفاده از آدرس این شخص، به شماره شانس آن شخص نگاه کند.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+حال فرض کنید یک قرارداد خارجی داشتیم که می خواست با استفاده از تابع `getNum` داده های این قرارداد را بخواند.
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+ابتدا باید **_interface_** قرارداد `LuckyNumber` را تعریف کنیم:
 
 ```
 contract NumberInterface {
@@ -139,21 +140,21 @@ contract NumberInterface {
 }
 ```
 
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+توجه داشته باشید که به نظر می رسد این تعریف شبیه تغریف قرارداد است، با چند تفاوت. مورد اول ، ما فقط توابعی را که می خواهیم با آنها ارتباط برقرار کنیم تعریف می کنیم - در این مورد `getNum` - و هیچ یک از توابع یا متغیرهای state دیگر را تغریف نمی کنیم.
 
-Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
+تفاوت دوم این است که، بدنه توابع را تعریف نمیکنیم. به جای آکولاد های (`{` و `}`) ، به سادگی در پایان تعریف تابع (`;`) استفاده میکنیم.
 
-So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
+بنابراین این تعریف به نظر می رسد نوعی اسکلت قرارداد است. کامپایلر از این طریق می داند که این تعریف یک interface است.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+قرارداد ما با قرار دادن این interface در کد dapp ما می داند که توابع قرارداد دیگر چطور تعریف شده است، چگونه آنها را فراخوانی کند و چه نوع پاسخی را باید انتظار داشته باشد.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+در درس بعدی در واقع فراخوانی توابع قرارداد دیگر را خواهیم دید ، اما اکنون اجازه دهید interface خود را برای قرارداد CryptoKitties تعریف کنیم.
 
-# Put it to the test
+# دست به کد شو
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+ما سورس کد CryptoKitties را برای شما جستجو کردیم و تابعی به نام `getKitty` را پیدا کردیم که تمام داده های بچه گربه، از جمله "genes" آن را برمی گرداند (همان چیزی است که بازی زامبی ما برای تشکیل یک زامبی جدید نیاز دارد!).
 
-The function looks like this:
+تابع به صورت زیر است:
 
 ```
 function getKitty(uint256 _id) external view returns (
@@ -184,10 +185,11 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.
+عملکرد نسبت به آنچه که عادت کرده ایم کمی متفاوت به نظر می رسد. می بینید که دسته ای از مقادیر مختلف برگردانده می شود. اگر از زبان برنامه نویسی مانند Javascript استفاده کرده اید، می بینید که این دستور متفاوت است - در Solidity می توانید بیش از یک مقدار از یک تابع برگردانید.
 
-Now that we know what this function looks like, we can use it to create an interface:
+اکنون که دانستیم این تابع چگونه تعریف شده است، می توانیم از آن برای ایجاد یک interface استفاده کنیم:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. interfaceی به نام `KittyInterface` را تعریف کنید. به یاد داشته باشید ، این کار درست مانند ایجاد یک قرارداد جدید است - ما از کلمه کلیدی `contract` استفاده می کنیم.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. در داخل interface ، تابع `getKitty` را تعریف کنید (که باید یک کپی از تابع بالا باشد، اما بعد از دستور `returns` به جای اینکه همه چیز داخل آکولاد باشد، نقطه ویرگول استفاده کنید).
+</div>

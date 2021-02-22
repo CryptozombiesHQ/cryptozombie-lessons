@@ -1,6 +1,6 @@
 ---
-title: Events
-actions: ['checkAnswer', 'hints']
+title: رویدادها
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -72,13 +72,14 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+قراردادمون تقریبا تمومه! حالا بیایین یه **_event(رویداد)_** بهش اضافه کنیم.
 
-Our contract is almost finished! Now let's add an **_event_**.
+رویدادها راهی برای براقراری ارتباط بین قرارداد و فرانت اند اپلیکیشن شماست.
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
-
-Example:
-
+مثال:
+</div>
 ```
 // declare the event
 event IntegersAdded(uint x, uint y, uint result);
@@ -90,21 +91,26 @@ function add(uint _x, uint _y) public {
   return result;
 }
 ```
-
-Your app front-end could then listen for the event. A javascript implementation would look something like: 
-
+<div dir="rtl">
+  
+فرانت اپ شما منتظر رویداد می‌مونه. پیاده‌سازی جاوااسکریپتش یه چیزی شبیه این می‌شه:
+</div>
 ```
 YourContract.IntegersAdded(function(error, result) { 
   // do something with result
 }
 ```
+<div dir="rtl">
+  
+# دست به کد شو
 
-# Put it to the test
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+رویدادی می‌خوایم که هر بار یک زامبی جدید ایجاد می‌شه، در فرانت نمایش داده بشه.
 
-1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
+۱. رویدادی به اسم `NewZombie` تعریف کنید. باید این مقادیر رو بفرسته: `zombieId` (از نوع `uint`)، `name` (از نوع `string`) و `dna` (از نوع `uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array. 
+۲. تابع `_createZombie` را طوری تغییر بدید که وقتی به آرایه `zombies` اضافه می‌شه رویداد `NewZombie` رو اجرا کنه.
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+۳. بعدا `id` زامبی‌ها نیاز می‌شه. `array.push()` طول آرایه رو به `uint` یک برمی‌گردونه و چون شماره اولین خونه آرایه صفره، `array.push() - 1` شماره زامبی جدید می‌شه. نتیجه `array.push() - 1` در `id`از نوع `uint` ذخیره کنید، تا در رویداد در خط بعد ازش استفاده کنید.
+
+</div>

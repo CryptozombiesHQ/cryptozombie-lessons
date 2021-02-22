@@ -1,5 +1,5 @@
 ---
-title: Mappings and Addresses
+title: مپ ها و آدرس ها
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -77,30 +77,30 @@ material:
 
       }
 ---
+<div dir="rtl">
+بیایید با دادن مالک به زامبی های موجود در پایگاه داده ، بازی خود را چند نفره کنیم.
 
-Let's make our game multi-player by giving the zombies in our database an owner.
+برای انجام این کار ، ما به دو نوع داده جدید نیاز داریم: `mapping` و `address`.
 
-To do this, we'll need 2 new data types: `mapping` and `address`.
+## آدرس ها
 
-## Addresses
+بلاکچین اتریوم از **_accounts_** تشکیل شده است که می توانید آنها را مانند حساب های بانکی در نظر بگیرید. یک حساب شامل مقداری **_Ether_** (ارز مورد استفاده در بلاک چین اتریوم) است و شما می توانید اتر را به حساب های دیگر ارسال و دریافت کنید ، درست مانند حساب بانکی شما که می تواند پول را به حساب های بانکی دیگر منتقل کند.
 
-The Ethereum blockchain is made up of **_accounts_**, which you can think of like bank accounts. An account has a balance of **_Ether_** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
-
-Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
+هر حساب یک `address` دارد ، که می توانید آن را مانند شماره حساب بانکی در نظر بگیرید. که یک شناسه منحصر به فرد است که به آن حساب اشاره می کند و به این شکل است:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 😉 )
+(این آدرس متعلق به تیم CryptoZombies است. اگر از CryptoZombies لذت می برید ، می توانید برای ما اتر بفرستید! 😉)
 
-We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
+ما در فصل بعدی به جزییات فنی آدرس خواهیم پرداخت، اما در حال حاضر فقط باید بدانید که **ـ آدرس متعلق به یک کاربر خاص است ـ** (یا یک قرارداد هوشمند).
 
-So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+بنابراین می توانیم از آن به عنوان شناسه منحصر به فرد برای مالکیت زامبی های خود استفاده کنیم. هنگامی که یک کاربر با تعامل با برنامه ما زامبی های جدید ایجاد می کند ، ما مالکیت آن زامبی ها را به آدرس اتریومی که تابع را صدا می کند تنظیم خواهیم کرد.
 
 ## Mappings
 
-In Lesson 1 we looked at **_structs_** and **_arrays_**. **_Mappings_** are another way of storing organized data in Solidity.
+در فصل 1 ما **_structs_** و **_arrays_** را بررسی کردیم. **_Mappings_** روش دیگری برای ذخیره سازی داده های سازمان یافته در Solidity است.
 
-Defining a `mapping` looks like this:
+تعریف `mapping` به این شکل است:
 
 ```
 // For a financial app, storing a uint that holds the user's account balance:
@@ -109,12 +109,13 @@ mapping (address => uint) public accountBalance;
 mapping (uint => string) userIdToName;
 ```
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+یک mapping اساساً ذخیره کلید/مقدار برای ذخیره و جستجوی اطلاعات است. در مثال اول ، کلید یک `address` است و مقدار آن یک `uint` است ، و در مثال دوم کلید `uint` و مقدار `string` است.
 
-# Put it to the test
+# دست به کد شو
 
-To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
+برای ذخیره مالکیت زامبی ، ما قصد داریم از دو mapping استفاده کنیم: یکی که آدرس صاحب زامبی را ثبت کند و دیگری که تعداد زامبی های یک مالک را ثبت کند.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
+1. یک mapping به نام `zombieToOwner` ایجاد کنید. کلید `uint` خواهد بود (ما زامبی را بر اساس شناسه آن ذخیره و جستجو خواهیم کرد) و مقدار `address` خواهد بود. بیایید این mapping را `public` کنیم.
 
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+2. یک mapping به نام `ownerZombieCount` ایجاد کنید ، جایی که کلید یک `address` است و مقدار آن یک `uint` است.
+</div>

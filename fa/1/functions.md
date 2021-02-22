@@ -1,6 +1,6 @@
 ---
-title: Function Declarations
-actions: ['checkAnswer', 'hints']
+title: تعریف توابع
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -45,7 +45,11 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+<div dir="rtl">
+
+در سالیدیتی توابع به صورت زیر تعریف می‌شوند:
+
+</div>
 
 ```
 function eatHamburgers(string _name, uint _amount) {
@@ -53,20 +57,29 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty.
+<div dir="rtl">
+  
+این تابع، `eatHamburgers` نام دارد که دو پارامتر می‌گیرد: یک `string` و یک `uint`. فعلا بدنه تابع را خالی گذاشتیم.
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
 
-You would call this function like so:
+> نکته: رایجه (ولی لازم نیست) که متغیرهای پارامتر توابع با علامت (_) شروع بشه تا از متغیرهای سراسری متمایز بشن.
 
+تابعی که بالاتر ساختیم رو به این صورت صدا می‌زنیم:
+
+</div>
 ```
 eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+<div dir="rtl">
 
-In our app, we're going to need to be able to create some zombies. Let's create a function for that.
+# دست به کد شو
 
-1. Create a function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`).
+توی اپ‌مون نیاز میشه که تعدادی زامبی ایجاد کنیم، بیایید برای انجامش یه تابع بنویسیم.
 
-Leave the body empty for now — we'll fill it in later.
+
+۱. تابعی به نام `createZombie` بسازید که دو پارامتر دریافت می‌کنه: **\_name** (یک `string`) و **\_dna**  (یک uint)
+
+داخل تابع رو فعلا خالی بذارید بعدا تکمیلش می‌کنیم.
+
+</div>

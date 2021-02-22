@@ -1,5 +1,5 @@
 ---
-title: Inheritance
+title: وراثت
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -92,10 +92,10 @@ material:
       }
 
 ---
+<div dir="rtl">
+کد بازی ما در حال زیاد شدن است. به جای ساخت یک قرارداد بسیار طولانی ، گاهی اوقات منطقی است که منطق کد خود را در چندین قرارداد برای سازماندهی کد تقسیم کنید.
 
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
-
-One feature of Solidity that makes this more manageable is contract **_inheritance_**:
+یکی از ویژگی های Solidity که این قابلیت را بیشتر کنترل می کند ، **_inheritance_** یا وراثت قرارداد است:
 
 ```
 contract Doge {
@@ -111,12 +111,13 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
+`BabyDoge` از`Doge` ارث بری می کند. این بدان معناست که اگر `BabyDoge` را کامپایل و deploy کنید ، این تابع به هردو `catchphrase()` و `anotherCatchphrase()` (و سایر توابع عمومی دیگری که ممکن است در `Doge` تعریف کنیم) دسترسی خواهد داشت.
 
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
+از این قابلیت می توان برای وراثت منطقی استفاده کرد (مثلا با یک subclass ،یک `Cat` یک `Animal` است). همچنین این قابلیت می تواند به سادگی برای سازماندهی کد شما با گروه بندی منطق مشابه در قراردادهای مختلف مورد استفاده قرار گیرد.
 
-# Put it to the test
+# دست به کد شو
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
+در درس های بعدی ، ما می خواهیم عملکردی را برای تغذیه و تکثیر زامبی های خود اجرا کنیم. بیایید این منطق را در قرارداد خودش قرار دهیم که تمام توابع را از `ZombieFactory` به ارث می برد.
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. قراردادی با عنوان `ZombieFeeding` در زیر`ZombieFactory` بسازید. این قرارداد باید از قرارداد `ZombieFactory` ما ارث بری کند.
+</div>

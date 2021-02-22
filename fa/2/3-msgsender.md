@@ -81,18 +81,18 @@ material:
 
       }
 ---
+<div dir="rtl">
+حالا که mapping های خود برای پیگیری اینکه چه کسی صاحب یک زامبی است ، را داریم ، می خواهیم تابع `_createZombie` را برای استفاده از آنها به روز کنیم.
 
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
-
-In order to do this, we need to use something called `msg.sender`.
+برای این کار باید از چیزی به نام `msg.sender` استفاده کنیم.
 
 ## msg.sender
 
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
+در Solidity ، متغیرهای global خاصی وجود دارد که برای همه توابع در دسترس هستند. یکی از اینها `msg.sender` است که اشاره به `address` شخصی (یا قرارداد هوشمند) دارد که تابع فعلی را فراخوانی کرده است.
 
-> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
+> توجه: در Solidity ، اجرای تابع همیشه باید با یک فراخوانی خارجی شروع شود. یک قرارداد فقط روی بلاکچین قرار می گیرد و هیچ کاری انجام نمی دهد تا اینکه کسی یکی از توابع آن را صدا بزند. بنابراین همیشه `msg.sender` وجود خواهد داشت.
 
-Here's an example of using `msg.sender` and updating a `mapping`:
+در اینجا مثالی از استفاده از `msg.sender` و به روزرسانی`mapping` آورده شده است:
 
 ```
 mapping (address => uint) favoriteNumber;
@@ -110,19 +110,19 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
+در این مثال ساده ، هرکسی می تواند `setMyNumber` را صدا زده و `uint` را در قرارداد ما ذخیره کند ، که به آدرس این شخص اشاره خواهد کرد. سپس وقتی آنها `whatIsMyNumber` را صدا می زنند ، `uint` ذخیره شده به آنها بازگردانده حواهد شد.
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+استفاده از `msg.sender` امنیت بلاکچین اتریوم را به شما می دهد - تنها راهی که کسی می تواند داده های شخص دیگری را تغییر دهد دزدیدن کلید خصوصی مرتبط با آدرس اتریوم آن شخص است.
 
-# Put it to the test
+# دست به کد شو
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+بیایید تابع `_createZombie` خود را از فصل 1 به روز کنیم تا مالکیت زامبی را به هر کسی که این عملکرد را فراخوانی کرده اختصاص دهد.
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1. ابتدا ، پس از بازگرداندن `id` جدید زامبی ، بیایید mapping `zombieToOwner` خود را برای ذخیره `msg.sender` مرتبط با `id` به روز کنیم.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`. 
+2. دوم ، بیایید تعداد `ownerZombieCount` مربوط به `msg.sender` را افزایش دهیم.
 
-In Solidity, you can increase a `uint` with `++`, just like in javascript:
+در Solidity ، می توانید یک `uint` را با `++` افزایش دهید ، دقیقاً مانند جاوا اسکریپت:
 
 ```
 uint number = 0;
@@ -130,4 +130,5 @@ number++;
 // `number` is now `1`
 ```
 
-Your final answer for this chapter should be 2 lines of code.
+پاسخ نهایی شما برای این درس باید 2 خط کد باشد.
+</div>

@@ -1,5 +1,5 @@
 ---
-title: More on Function Visibility
+title: اطلاعات بیشتر در مورد Visibility تابع
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -102,21 +102,22 @@ material:
       }
 ---
 
-**The code in our previous lesson has a mistake!**
+<div dir="rtl">
+**کد درس قبلی ما اشتباه دارد!**
 
-If you try compiling it, the compiler will throw an error.
+اگر سعی کنید آن را کامپایل کنید ، کامپایلر خطایی ایجاد می کند.
 
-The issue is we tried calling the `_createZombie` function from within `ZombieFeeding`, but `_createZombie` is a `private` function inside `ZombieFactory`. This means none of the contracts that inherit from `ZombieFactory` can access it.
+مسئله این است که ما سعی کردیم تابع `_createZombie` را از درون `ZombieFeeding` فراخوانی کردیم ، اما `_createZombie` یک تابع `private` در داخل `ZombieFactory` است. این بدان معناست که هیچ یک از قراردادهایی که از `ZombieFactory` به ارث برده اند نمی توانند به آن دسترسی داشته باشند.
 
-## Internal and External
+## Internal و External
 
-In addition to `public` and `private`, Solidity has two more types of visibility for functions: `internal` and `external`.
+علاوه بر `public` و `private` ، Solidity دارای دو نوع visibility دیگر برای توابع است: `internal` و `external`.
 
-`internal` is the same as `private`, except that it's also accessible to contracts that inherit from this contract. **(Hey, that sounds like what we want here!)**.
+`internal` همان `private` است ، با این تفاوت که در قراردادهایی که از این قرارداد ارث بری دارند نیز قابل دسترسی است. **(به نظر می رسد همان چیزی است که ما در اینجا می خواهیم!)**.
 
-`external` is similar to `public`, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll talk about why you might want to use `external` vs `public` later.
+`external` شبیه به `public` است ، با این تفاوت که این توابع را فقط خارج از قرارداد می توان فراخوانی کرد - آنها را نمی توان با توابع دیگر آن قرارداد فراخوانی کرد. ما در مورد اینکه چرا بعداً ممکن است بخواهید از `external` در مقابل `public` استفاده کنید صحبت خواهیم کرد.
 
-For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
+برای اعلام توابع `internal` یا`external` ، syntax شبیه همان `private` و `public` است:
 
 ```
 contract Sandwich {
@@ -138,8 +139,9 @@ contract BLT is Sandwich {
 }
 ```
 
-# Put it to the test
+# دست به کد شو
 
-1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
+1. `_createZombie()` را از `private` به `internal` تغییر دهید تا قرارداد دیگر ما بتواند به آن دسترسی پیدا کند.
 
-  We've already focused you back to the proper tab, `zombiefactory.sol`.
+  ما قبلاً شما تب مناسب ، `zombiefactory.sol` برای شما انتخاب کرده ایم.
+</div>

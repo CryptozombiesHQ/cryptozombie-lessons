@@ -1,5 +1,5 @@
 ---
-title: Handling Multiple Return Values
+title: مدیریت چند مقدار برگشتی
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -122,7 +122,8 @@ material:
       }
 ---
 
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
+<div dir="rtl">
+تابع `getKitty` اولین مثالی است که دیدیم مقادیر متعددی را برمی گرداند. بیایید نحوه مدیریت آنها را بررسی کنیم:
 
 ```
 function multipleReturns() internal returns(uint a, uint b, uint c) {
@@ -145,18 +146,19 @@ function getLastReturnValue() external {
 }
 ```
 
-# Put it to the test
+# دست به کد شو
 
-Time to interact with the CryptoKitties contract!
+زمان تعامل با قرارداد CryptoKitties است!
 
-Let's make a function that gets the kitty genes from the contract:
+بیایید تابعی را ایجاد کنیم که ژن های گربه را از قرارداد دریافت کند:
 
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
+1. تابعی به نام `feedOnKitty` ایجاد کنید. این تابع 2 پارامتر `uint` ،`_zombieId` و `_kittyId` را دریافت حواهد کرد و باید یک تابع`public` باشد.
 
-2. The function should first declare a `uint` named `kittyDna`.
+2. تابع در ابتدا باید یک `uint` به نام `kittyDna` را تعریف کند.
 
-  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
+  > توجه: در `KittyInterface` ما ، `genes` از نوع `uint256` است - اما اگر فصل یک را به یاد آورید ، `uint` یک نام مستعار برای `uint256` است - این دو شبیه هم هستند.
 
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
+3. سپس این تابع باید تابع `kittyContract.getKitty` را با `_kittyId` فراخوانی کند و `genes` را در `kittyDna` ذخیره کند. بخاطر داشته باشید - `getKitty` تعداد زیادی متغیرها را برمی گرداند. (دقیقاً 10 تا - تعدادشان را برای شما حساب کردم!). اما تنها متغیری که برای ما مهم است آخرین مورد است ، `genes`. ویرگولهای خود را با دقت بشمارید!
 
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+4. سرانجام ، تابع باید `feedAndMultiply` را فراخوانی کند ، و مقادیر `_zombieId` و `kittyDna` ارسال کند.
+</div>

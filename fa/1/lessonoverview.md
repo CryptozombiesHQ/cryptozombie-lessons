@@ -1,6 +1,6 @@
 ---
-title: Lesson Overview
-actions: ['checkAnswer', 'hints']
+title: فصل یک در یک نگاه
+actions: ['بررسی پاسخ', 'راهنمایی']
 skipCheckAnswer: true
 material:
   saveZombie: false
@@ -9,33 +9,37 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
+<div dir="rtl">
+  
+در فصل ۱ شما برای ایجاد یک ارتش زامبی، یک "کارخانه زامبی" خواهید ساخت.
 
-In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
+*کارخانه ما پایگاه‌داده‌ای از همه زامبی‌های ارتش‌مون نگه‌می‌داره.
+*کارخانه ما تابعی برای ایجاد زامبی‌های جدید داره.
+*هر زامبی ظاهری منحصر به فرد و تصادفی داره.
 
-* Our factory will maintain a database of all zombies in our army
-* Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+در درس‌های آینده، توابع بیشتری همچون توانایی زامبی‌ها برای حمله به انسان‌ها یا زامبی‌های دیگر اضافه ‌می‌کنیم. اما قبل از اون باید یک‌سری توابع پایه مثل ایجاد زامبی‌ها داشته باشیم.
 
-In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
+## DNA زامبی چگونه کار می‌کند؟
 
-## How Zombie DNA Works
-
-The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
+ظاهر زامبی براساس "DNA زامبی" خواهد بود. DNA هم ساده است، یک عدد صحیح ۱۶ بیتی مثل این عدد:
+</div>
 
 ```
 8356281049284737
 ```
+<div dir="rtl">
+  
+درست مثل DNA واقعی، بخش‌های مختلف این عدد مربوط به خصوصیات مختلف است. دو رقم اول نوع سر زامبی رو مشخص می‌کنه، دو رقم بعدی مربوط به چشم‌های زامبیه و الی آخر.
 
-Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
+> نکته: در این آموزش مسائل رو ساده در نظر گرفتیم و زامبی‌ها فقط ۷ نوع سر می‌تونن داشته باشن (با اینکه با ۲ رقم ۱۰۰ نوع احتمال می‌شه داشت). بعدا اگر خواستیم تنوع زامبی‌ها رو افزایش بدیم می‌تونیم به تعداد نوع سرها اضافه کنیم.
 
-> Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
+برای مثال بالا دو رقم اول DNA مثال `83` است. برای تشخیص نوع سر این محاسبه رو انجام می‌دیم  `83 % 7 + 1` = 7. پس این زامبی ۷‌امین نوع سر رو خواهد داشت.
 
-For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type. 
+در پنل سمت راست، `ژن سر`  رو بذار روی ۷‌امین(کلاه بابانوئل) تا ببینی عدد `83` مربوط به چیه.
 
-In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
+# امتحان کن
 
-# Put it to the test
+۱. با اسلایدر سمت راست صفحه بازی کنید. و ببینید مقادیر عددی مختلف چطور ظاهر زامبی رو تغییر می‌ده.
 
-1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
-
-Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
+خب بازی بسه. هر وقت آماده بودین گزینه "فصل بعد" رو انتخاب کنین تا بریم سالیدیتی یاد بگیریم.
+</div>

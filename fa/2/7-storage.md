@@ -1,5 +1,5 @@
 ---
-title: Storage vs Memory
+title: تفاوت Storage و Memory
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -69,13 +69,14 @@ material:
       }
 ---
 
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+<div dir="rtl">
+در Solidity ، دو مکان وجود دارد که می توانید متغیرها را ذخیره کنید - در `storage` و `memory`.
 
-**_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
+**_Storage_** به متغیرهایی گفته می شود که به طور دائمی در زنجیره بلوک ذخیره می شوند. **_Memory_** متغیرها موقتی هستند و بین فراخوانی های خارجی توابع قرارداد شما، پاک می شوند. به آن مانند دیسک سخت و RAM در کامپیوترتان فکر کنید.
 
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
+بیشتر اوقات نیازی به استفاده از این کلمات کلیدی نیست زیرا Solidity به طور پیش فرض آنها را کنترل می کند. متغیرهای State (متغیرهای اعلام شده در خارج از توابع) بصورت پیش فرض `storage` هستند و برای همیشه در بلاکچین نوشته می شوند ، در حالی که متغیرهای اعلام شده در داخل توابع `memory` هستند و با پایان دادن به فراخوانی تابع از بین می روند.
 
-However, there are times when you do need to use these keywords, namely when dealing with **_structs_** and **_arrays_** within functions:
+با این حال ، مواردی وجود دارد که شما مجبور به استفاده از این کلمات کلیدی هستید ، به عنوان مثال در هنگام برخورد با **_structs_** و **_arrays_** در توابع:
 
 ```
 contract SandwichFactory {
@@ -112,24 +113,25 @@ contract SandwichFactory {
 }
 ```
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
+اگر هنوز به درستی نمی دانید که از کدام یک استفاده کنید ، نگران نباشید - در طول این آموزش ما به شما می گوییم که چه زمانی از `storage` استفاده کنید و چه زمانی از `memory` استفاده کنید ، و کامپایلر Solidity نیز به شما هشدارهایی در این مورد به شما می دهد که چه زمانی باید از یکی از این کلمات کلیدی استفاده کنید.
 
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
+در حال حاضر ، کافی است بدانید که مواردی وجود دارد که شما باید صریحاً `storage` یا `memory` را اعلام کنید!
 
-# Put it to the test
+# دست به کد شو
 
-It's time to give our zombies the ability to feed and multiply!
+وقت آن است که به زامبی های خود توانایی تغذیه و تکثیر را بدهیم!
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
+وقتی یک زامبی از برخی از شکل های زندگی دیگر تغذیه کند ، DNA آن با DNA شکل زندگی دیگر ترکیب می شود و یک زامبی جدید ایجاد می کند.
 
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
+1. تابعی به نام `feedAndMultiply` ایجاد کنید. این تابع دو پارامتر ورودی خواهد داشت: `_zombieId` (از نوع`uint`) و `_targetDna` (همچنین`uint`). این تابع باید `public` باشد.
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2. ما نمی خواهیم اجازه دهیم شخص دیگری با استفاده از زامبی ما تغذیه کند! بنابراین اول ، بیایید مطمئن شویم که مالک این زامبی هستیم. برای اطمینان از اینکه `msg.sender` برابر با صاحب این زامبی است ، عبارت`require` را اضافه کنید (شبیه کاری که در عملکرد `createRandomZombie` انجام دادیم).
 
- > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
+ > توجه: مجدداً ، به دلیل اینکه بررسی جواب ما ابتدایی است ، انتظار می رود که ابتدا `msg.sender` بیاید و در صورت تغییر ترتیب ، آن را اشتباه علامت گذاری می کند. اما به طور معمول هنگام کدگذاری ، می توانید از هر ترتیبی که ترجیح می دهید استفاده کنید - هر دو درست هستند.
 
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
+3. لازم است DNA این زامبی را بدست آوریم. بنابراین کار بعدی که تابع ما باید انجام دهد این است که یک `Zombie` محلی به نام`myZombie` اعلام کنید (که یک اشاره گر `storage` خواهد بود). این متغیر را در آرایه `zombies` ما برابر با index `_zombieId` قرار دهید.
 
-You should have 4 lines of code so far, including the line with the closing `}`. 
+شما باید 4 خط کد داشته باشید ، که شامل علامت `}` برای بسته شدن تابع است.
 
-We'll continue fleshing out this function in the next chapter!
+ما در درس بعدی به کارگیری این تابع ادامه خواهیم داد!
+</div>

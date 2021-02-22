@@ -1,21 +1,25 @@
 ---
-title: Lesson 1 Complete!
-actions: ['checkAnswer', 'hints']
+title: اتمام درس ۱!
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   lessonComplete:
     answer: 1
 ---
+<div dir="rtl">
 
-Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
+تبریک! شما درس ۱ را تموم کردین و اولین زامبی ارتش‌تون رو ساختید.
 
-# Next Steps
+# مراحل بعد
 
-This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
+این شروع کار بود. ما هر هفته درس جدیدی ارائه می‌کنیم تا بازی رو جلوتر ببریم و ارتش زامبی‌هامون رو توسعه بدیم.
 
-### 1. Sign in to save your progress
 
-**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+### 1. عضو شید تا میزان پیشرفت‌تون رو ذخیره کنید
 
-### 2. Share your zombie with your friends
+**_عضو شید_** و با کلیک روی گزینه "ذخیره پیشرفت" در بالای صفحه، میزان پیشرفت‌تون رو ذخیره کنید. به محض اضافه شدن درس جدید به شما اطلاع می‌دیم.
 
-**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+### 2. زامبی‌تون رو با دوستانتون به اشتراک بذارین
+
+زامبی‌تون رو در توئیتر و دیگر شبکه‌های اجتماعی **_به اشتراک بذارین_**.
+
+</div>

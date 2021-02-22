@@ -1,6 +1,6 @@
 ---
 title: Web3.js
-actions: ['checkAnswer', 'hints']
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   saveZombie: true
   zombieResult:
@@ -9,14 +9,16 @@ material:
     hideSliders: true
     answer: 1
 ---
+<div dir="rtl">
+  
+قرارداد سالیدیتی ما تکمیل شد! حالا باید یک فرانت جاوااسکریپتی بنویسیم که با قراردادمون در تعامل باشه.
 
-Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
+اتریوم یک کتابخونه جاوااسکریپت به اسم **_Web3.js_** داره.
 
-Ethereum has a Javascript library called **_Web3.js_**.
+در دروس آینده، می‌بینیم که چطور باید یک قرارداد رو دیپلوی کنیم و از استفاده کنیم.اما فعلا بیایین یه نگاهی بندازیم به چند تا نمونه کد برای اینکه ببینیم Web3.js چطور با قرارداد دیپلوی شده ارتباط برقرا می‌کنه.
 
-In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
-
-Don't worry if this doesn't all make sense yet.
+اصلا نگران نباشید اگر چیزی ازش متوجه نمی‌شید.
+</div>
 
 ```
 // Here's how we would access our contract:
@@ -67,11 +69,13 @@ function generateZombie(id, name, dna) {
   return zombieDetails
 }
 ```
+<div dir="rtl">
+  
+جاوااسکریپت ما مقادیری که در `zombieDetails` بالا تولید شده رو دریافت می‌کنه و با استفاده از برخی برنامه‌های جاوااسکریپت مبتنی بر مرورگر ( در اینجا از Vue.js استفاده کردیم) تصاویر رو عوض می‌کنه و فیلترهای CSS رو اعمال می‌کنه. در درس‌های بعدی کدهای مربوطه رو می‌بینید.
 
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
+# خودت امتحان کن!
 
-# Give it a try!
+یه اسمی رو در باکس سمت راست بنویس و ببین چه نوع زامبی‌ای بهت نمایش می‌ده!
 
-Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
-
-**Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**
+**زمانی که زامبی مورد علاقه‌ت رو پیدا کردی روی "فصل بعد" کلیک کن تا زامبی‌تو ذخیره کنی و درس اول رو کامل کنی!**
+</div>

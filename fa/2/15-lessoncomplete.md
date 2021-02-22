@@ -1,5 +1,5 @@
 ---
-title: Lesson 2 Complete!
+title: فصل ۲ کامل شد!
 actions: ['checkAnswer', 'hints']
 material:
   lessonComplete:

@@ -1,5 +1,5 @@
 ---
-title: Lesson 2 Overview
+title: بررسی فصل 2
 actions: ['checkAnswer', 'hints']
 material:
   saveZombie: false
@@ -11,24 +11,26 @@ material:
     answer: 1
 ---
 
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+<div dir="rtl">
+در فصل 1 ، ما تابعی ایجاد کردیم که نام رو میگیره و ازش برای ساخت یک زامبی تصادفی استفاده میکنه و اون زامبی رو به پایگاه داده زامبی برنامه ما در بلاکچین اضافه می کنه.
 
-In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
+در فصل 2 ، ما برنامه خودمون رو بیشتر شبیه به بازی خواهیم کرد: ما قصد داریم این بازی رو چند نفره کنیم، و همچنین یک روش جالب تر برای ایجاد زامبی ها به جای تولید اونا به طور تصادفی اضافه خواهیم کرد.
 
-How will we create new zombies? By having our zombies "feed" on other lifeforms!
+چگونه زامبی های جدید ایجاد می کنیم؟ اینطوری که زامبی های ما از «شکل های زندگی» دیگر تغذیه می کنند!
 
-## Zombie Feeding
+## تغذیه زامبی
 
-When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.
+وقتی که یک زامبی تغذیه می کند، در واقع میزبان رو به ویروس آلوده می کند و به زامبی تبدیل میکنه که جزوی از ارتش شما خواهد شد. **_DNA_** زامبی جدید بر اساس **_DNA_**  زامبی قبل و **_DNA_**  میطبان محاسبه میشه.
 
-And what do our zombies like to feed on most?
+و زامبی های ما بیشتر دوست دارند از چه چیزی تغذیه کنند؟
 
-To find that out... You'll have to complete lesson 2!
+برای فهمیدن این موضوع ... شما باید فصل 2 را کامل کنید!
 
-# Put it to the test
+# دست به کد شو
 
-There's a simple demo of feeding to the right. Click on a human to see what happens when your zombie feeds!
+یک دموی ساده برای تغذیه در سمت راست وجود دارد. روی یک انسان کلیک کنید تا ببینید چه اتفاقی می افتد وقتی زامبی شما تغذیه می کند!
 
-You can see that the new zombie's DNA is determined by your original zombie's DNA, as well as the host's DNA.
+می بینید که **_DNA_** زامبی جدید توسط **_DNA_** زامبی اصلی شما و همچنین **_DNA_** میزبان تعیین می شود.
 
-When you're ready, click "Next chapter" to move on, and let's get started by making our game multi-player.
+وقتی آماده شدید ، برای ادامه کار روی "درس بعدی" کلیک کنید ، و بیایید کار خود را با ساخت چند نفره بازی شروع کنیم.
+</div>

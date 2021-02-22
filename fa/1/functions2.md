@@ -1,6 +1,6 @@
 ---
-title: Private / Public Functions
-actions: ['checkAnswer', 'hints']
+title: توابع عمومی و خصوصی
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -47,11 +47,15 @@ material:
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+<div dir="rtl">
 
-Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+در سالیدیتی، توابع به صورت پیش‌فرض `عمومی` هستند. به عبارت دیگه هر فردی (یا هر قرارداد دیگه‌ای) می‌تونه توابع قرارداد شما رو صدا بزنه و کدش رو اجرا کنه.
 
-Let's look at how to declare a private function:
+مشخصه که همیشه نمی‌خوایم به این صورت توابع‌مون عمومی باشه، چون اینطوری قراردادمون در برابر حملات آسیب‌پذیر میشن. بنابراین خوبه که به صورت پیش‌فرض تمامی توابع رو به صورت `خصوصی` بنویسین، و فقط توابعی که می‌خواین در دسترس عموم قرار بگیره رو به صورت `عمومی` بنویسید.
+
+خب بیایید ببینیم چطوری باید یک تابع خصوصی (private) تعریف کنیم: 
+
+</div>
 
 ```
 uint[] numbers;
@@ -61,12 +65,16 @@ function _addToArray(uint _number) private {
 }
 ```
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
+<div dir="rtl">
 
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
+در این صورت، فقط توابعی که در همین قرارداد نوشته میشن می‌تونن این تابع رو صدا بزنن و عنصر به آرایه `numbers` اضافه کنن.
 
-# Put it to the test
+همونطور که دیدین، بعد از اسم تابع کلمه کلیدی `private` نوشته می‌شه. و برای پارامترهای تابع بهتره که قبل از اسمشون علامت (`_`) گذاشته بشه.
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+# دست به کد شو
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+تابع `createZombie` قراردادمون در حال حاضر به صورت پیش‌فرض عمومیه، و این یعنی هر کسی می‌تونه این تابع رو صدا بزنه و یک زامبی جدید در قراردادمون بسازه! بیایید این تابع رو به حالت خصوصی دربیاریم.
+
+۱. تابع `createZombie` را طوری تغییر بدین که خصوصی بشه. شرایط نام‌گذاری رو فراموش نکنید.
+
+</div>

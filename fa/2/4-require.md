@@ -84,14 +84,14 @@ material:
 
       }
 ---
+<div dir="rtl">
+در فصل 1 ، ما کاری کردیم تا کاربران بتوانند با فراخوانی `createRandomZombie` و وارد کردن نام ، زامبی های جدید ایجاد کنند. با این حال ، اگر کاربران بتوانند برای ایجاد زامبی های نامحدود در ارتش خود این تابع را صدا بزنند، بازی خیلی سرگرم کننده نخواهد بود.
 
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+بیایید کاری کنیم تا هر بازیکن فقط یک بار بتواند این تابع را صدا بزند. با این کار هر بازیکن جدید با شروع بازی برای ایجاد اولین زامبی خود می تواند این تابع را صدا بزند.
 
-Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
+چگونه می توانیم کاری کنیم تا این تابع فقط یک بار توسط هر بازیکن فراخوانی شود؟
 
-How can we make it so this function can only be called once per player?
-
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
+برای این کار ما از `require` استفاده می کنیم. `require` کاری می کند تا اگر یک شرط درست نباشد ، تابع خطایی ایجاد  کند و اجرای تابع متوقف می شود:
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
@@ -104,16 +104,17 @@ function sayHiToVitalik(string _name) public returns (string) {
 }
 ```
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+اگر این تابع را با `sayHiToVitalik("Vitalik")` فراخوانی کنید ،"Hi!"برمی گردد. اگر با ورودی دیگری آن را صدا کنید ، خطایی ایجاد می کند و اجرا نمی شود.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+بنابراین `require` برای تأیید شرایط خاصی که باید قبل از اجرای یک تابع درست باشد کاملاً مفید است.
 
-# Put it to the test
+# دست به کد شو
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+در بازی زامبی ما نمی خواهیم کاربر با فراخوانی مکرر `createRandomZombie` بتواند در ارتش خود زامبی نامحدود ایجاد کند - در این حالت بازی خیلی سرگرم کننده نخواهد بود.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+برای اطمینان از اینکه این تابع فقط یک بار برای هر کاربر ، آن هم زمانی که اولین زامبی خود را ایجاد می کنند ، از `require` استفاده کنیم.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
+1. در ابتدای `createRandomZombie` دستور `require` را قرار دهید. این تابع باید بررسی کند که `ownerZombieCount[msg.sender]` برابر است با `0` ، و در غیر اینصورت خطایی ایجاد می کند.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> توجه: در Solidity مهم نیست که کدام عبارت را در ابتدا قرار دهید - هر دو ترتیب معادل هستند. با این حال ، از آنجا که جستجوگر پاسخ ما واقعاً ساده است ، فقط یک پاسخ را به عنوان پاسخ صحیح می پذیرد - و انتظار دارد که `ownerZombieCount[msg.sender]` در ابتدا قرار گیرد.
+</div>

@@ -1,6 +1,7 @@
 ---
-title: Arrays
-actions: ['checkAnswer', 'hints']
+title: آرایه‌ها
+
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -39,37 +40,50 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+<div dir="rtl">        
+
+زمانی که می‌خواین یک مجموعه از هر چیزی بسازین، می‌تونین از **آرایه** استفاده کنین. در سالیدیتی دو نوع آرایه وجود داره: آرایه **ایستا** و آرایه **پویا**:
+</div>
 
 ```
-// Array with a fixed length of 2 elements:
+// آرایه دو عنصری ایستا (طول ثابت):
 uint[2] fixedArray;
-// another fixed Array, can contain 5 strings:
+// آرایه ایستای دیگری که می‌تواند ۵ رشته را نگه دارد:
 string[5] stringArray;
-// a dynamic Array - has no fixed size, can keep growing:
+// :آرایه پویا- طول ثابت ندارد و می‌تواند بزرگ شود
 uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
-
+<div dir="rtl"> 
+  
+همچنین می‌تونین از آرایه‌ای از **ساختارها** استفاده کنین. در اینجا از ساختار `Person` از فصل قبل استفاده می‌کنیم:
+</div>
 ```
 Person[] people; // dynamic Array, we can keep adding to it
 ```
+<div dir="rtl"> 
 
-Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in your contract, kind of like a database.
 
-## Public Arrays
+یادتونه که متغیرهای حالت به صورت دائمی در بلاکچین ذخیره می‌شدند؟ بنابراین ایجاد یک آرایه پویا از ساختارها مثل این می‌تونه برای ذخیره داده‌های ساختاریافته در قرارداد، چیزی شبیه به پایگاه داده، مفید باشه
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+## آرایه‌های عمومی
+
+شما می‌تونین یک آرایه را به صورت `عمومی` تعریف کنین، و سالیدیتی به‌صورت خودکار یک متد **_getter_** برایش ایجاد می‌کنه. سینتکس آن به صورت زیر خواهد بود:
+</div>
 
 ```
 Person[] public people;
 ```
+<div dir="rtl"> 
+  
+به این ترتیب بقیه قراردادها تنها دسترسی خواندن از این آرایه را خواهند داشت. بنابراین این یک الگوی مناسب برای ذخیره داده عمومی در قرارداد شما است.
 
-Other contracts would then be able to read from, but not write to, this array. So this is a useful pattern for storing public data in your contract.
 
-# Put it to the test
 
-We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
+# دست به کد شو
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+می‌خواهیم یک ارتش زامبی در اپلیکیشن‌مان داشته باشیم. و می‌خواهیم زامبی‌هامون را به رخ اپلیکیشن‌های دیگر بکشیم، بنابراین می‌خواهیم به صورت عمومی ذخیره بشن.
+
+۱. یک آرایه عمومی `Zombie` به صورت **_ساختار_** ایجاد کنین، و اسمش رو `zombies` بگذارین.
+
+</div>

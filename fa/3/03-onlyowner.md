@@ -1,6 +1,6 @@
 ---
-title: onlyOwner Function Modifier
-actions: ['checkAnswer', 'hints']
+title: تغییردهنده تابع onlyOwner
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -218,23 +218,28 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+حالا که `ZombieFactory` قرارداد پایه‌مون از `Ownable` به ارث می‌بره، می‌تونیم از متغیر تابع `onlyOwner` در `ZombieFeeding` هم استفاده کنیم.
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
-
-This is because of how contract inheritance works. Remember:
+و این به دلیل ارث‌بری قراردادها است:
+</div>
 
 ```
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
+<div dir="rtl">
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+بنابراین `ZombieFeeding` هم `Ownable` است و به توابع، رویدادها و متغیرهای قرارداد `Ownable` دسترسی داره. اگر `ZombieFeeding` در آینده قراردادی رو به ارث ببره این قانون روی اون هم اعمال می‌شه.
 
-## Function Modifiers
+## متغیرهای توابع
 
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
+متغیر تابع دقیقا مثل تابع است اما به جای کلمه کلیدی `function` از `modifier` استفاده می‌کنه. و نمی‌تونه مستقیما صدا زده شه. در عوض می‌تونیم اسمش رو در انتهای تعریف تابع بیاریم تا رفتار تابع رو تغییر بده.
 
-Let's take a closer look by examining `onlyOwner`:
+بیایین `onlyOwner` رو دقیق‌تر بررسی کنیم:
+
+</div>
 
 ```
 pragma solidity ^0.4.25;
@@ -313,19 +318,22 @@ contract Ownable {
   }
 }
 ```
+<div dir="rtl">
 
-Notice the `onlyOwner` modifier on the `renounceOwnership` function. When you call `renounceOwnership`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `renounceOwnership`.
+به تغییردهنده `onlyOwner` در تابع `renounceOwnership` توجه کنید. وقتی تابع `renounceOwnership` رو صدا می‌زنید، **اول** کد داخل `onlyOwner` اجرا می‌شه و یعد از اینکه به عبارت `_;` داخل `onlyOwner` رسید، برمی‌گرده و کد داخل `renounceOwnership` رو اجرا می‌کنه.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+راه‌های مختلفی برای استفاده تغییردهنده‌ها وجود داره، یکی از اون موارد افزودن `require` قبل از اجرای تابع است.
 
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
+در مورد `onlyOwner`، افزودن این تغییردهنده به یک تابع باعث می‌شه که **فقط مالک** قرارداد (دیپلوی کننده قرارداد)، تابع رو صدا بزنه.
 
->Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
+> نکته: دسترسی‌های مخصوص داشتن مالک روی قرارداد، مثل این لازمه. اما می‌تونه ازش استفاده نادرست هم بشه. مثلا مال می‌تونه یه تابع در پشتی بذاره که بهش اجازه انتقال زامبی‌های بقیه رو به خودش بده.
 
->So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
+> بنابراین مهمه که به یاد داشته باشیم اگر یک دپ روی اتریومه لزوما به این معنی نیست که غیرمتمرکزه. شما باید کل سورس کد رو بخونید تا مطمئن شید که مال دسترسی‌های نداره که باعث نگرانی شما بشه.
 
-## Put it to the test
+## دست به کد شو
 
-Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
+حالا می‌تونیم دسترسی به `setKittyContractAddress` رو محدود کنیم که در آینده کسی به جز خودمون نتونه تغییرش بده.
 
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+۱. تغییردهنده `onlyOwner` رو به `setKittyContractAddress` اضافه کنید.
+
+</div>

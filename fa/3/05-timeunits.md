@@ -1,6 +1,6 @@
 ---
-title: Time Units
-actions: ['checkAnswer', 'hints']
+title: واحدهای زمانی
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -220,24 +220,27 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+ویژگی `سطح(level)` از اسمش مشخصه چیو نشون می‌ده. در ادامه، وقتی یک سیستم مبارزه ایجاد کردیم، زامبی‌های برنده به مرحله بعد می‌رن و به توانایی‌هاشون اضافه می‌شه.
 
-The `level` property is pretty self-explanatory. Later on, when we create a battle system, zombies who win more battles will level up over time and get access to more abilities.
+ویژگی `readyTime` به توضیح بیشتری نیاز داره. هدف اینه که یه "مدت انتظار" به کد اضافه کنیم، که مدت زمان بین تغذیه/ حمله مجدد زامبی رو نشون می‌ده. چون در غیر اینصورت، یه زامبی می‌تونه هر زمانی حمله کنه یا چند برابر شه و اینطوری بازی خیلی ساده می‌شه.
 
-The `readyTime` property requires a bit more explanation. The goal is to add a "cooldown period", an amount of time a zombie has to wait after feeding or attacking before it's allowed to feed / attack again. Without this, the zombie could attack and multiply 1,000 times per day, which would make the game way too easy.
+برای ثبت این فاصله زمانی، می‌تونیم از واحدهای زمانی سالیدیتی استفاده کنیم.
 
-In order to keep track of how much time a zombie has to wait until it can attack again, we can use Solidity's time units.
+## واحدهای زمانی
 
-## Time units
 
-Solidity provides some native units for dealing with time. 
+سالیدیتی برای کار با زمان، واحدهای زمانی ارائه می‌ده.
 
-The variable `now` will return the current unix timestamp of the latest block (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
+متغیر `now` تایم‌استمپ آخرین بلاک رو برمی‌گردونه (تعداد ثانیه‌های گذشته از ۱ ژانویه ۱۹۷۰) این مقدار برای لحظه نوشتن این درس برابر `1515527488` است.
 
->Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow and break a lot of legacy systems. So if we wanted our DApp to keep running 20 years from now, we could use a 64-bit number instead — but our users would have to spend more gas to use our DApp in the meantime. Design decisions!
+> نکته: زمان از قدیم در یک عدد ۳۲ بیتی ذخیره شده، و این عدد تا "سال ۲۰۳۸" رو جواب می‌ده. پس اگر بخوایم دپ ما از الان تا ۲۰ سال دیگه کار کنه، باید از یک عدد ۶۴ بیتی استفاده کنیم، و در اینصورت کاربران ما باید هزینه گس بیشتری بپردازند. تصمیمات طراحی!
 
-Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a `uint` of the number of seconds in that length of time. So `1 minutes` is `60`, `1 hours` is `3600` (60 seconds x 60 minutes), `1 days` is `86400` (24 hours x 60 minutes x 60 seconds), etc.
+سالیدیتی واحدها زمانی `ثانیه`، `دقیقه`، `ساعت`، `روز`، `هفته` و `سال` رو داره. و همه اینا رو با یک عدد صحیح که برابر تعداد ثانیه‌هاست، نمایش می‌دن. یعنی `۱ دقیقه` می‌شه `۶۰`، `۱ ساعت` می‌شه `۳۶۰۰`، `۱ روز` می‌شه `۸۶۴۰۰` و الی آخر.
 
-Here's an example of how these time units can be useful:
+این هم مثالی از کاربرد واحدهای زمانی:
+</div>
 
 ```
 uint lastUpdated;
@@ -253,22 +256,25 @@ function fiveMinutesHavePassed() public view returns (bool) {
   return (now >= (lastUpdated + 5 minutes));
 }
 ```
+<div dir="rtl">
+  
+ما می‌تونیم از این واحدهای زمانی برای ویژگی `زمان استراحت(cooldown)` زامبی استفاده کنیم.
 
-We can use these time units for our Zombie `cooldown` feature.
+## دست به کد شو
+
+خب بیایین یک زمان استراحت به دپ‌مون اضافه کنیم تا زامبی‌ها مجبور باشن *۱ روز* برای تغذیه یا حمله مجدد صبر کنند. 
+
+۱. یک `uint` به نام `cooldownTime` تعریف کنید، و مقدارش رو برابر `۱ روز` بذارین. (خب حتما می‌دونین که اگر برابر "۱ روز" بذارین کامپایل نمی‌شه!)
+
+۲. چون به ساختار `Zombie` متغیر `level` و `readyTime` رو اضافه کردیم باید تابع `_createZombie()` رو به‌روز‌رسانی کنیم تا تعداد آرگومان‌های صحیحی رو بخونه.
 
 
-## Put it to the test 
+  خط رو به‌روز‌رسانی کنید و ۲ آرگومان دیگر بهش اضافه کنید: `۱` (برای `level`) و `uint32(زمان حال + زمان استراحت)` (برای `readyTime`).
+  
+> نکته: نوشتن عدد صحیح ۳۲ بیتی به اینصورت `uint32(...)` لازمه، چون زمان حال `now`به صورت پیش‌فرض عددصحیح ۲۵۶ بیتی برمی‌گردونه. پس باید صریحا به `uint32` تبدیلش کنیم.
 
-Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 day** after attacking or feeding to attack again.
+مقدار `now + cooldownTime` برابر تایم‌استمپ زمانی الان (به ثانیه) به‌علاوه تعداد ثانیه‌های یک روز می‌شه. بعدا می‌تونیم مقایسه کنیم ببینیم `readyTime` این زامبی بزرگتر از `now` شده یا نه که نشون می‌ده زمان کافی برای استفاده از این زامبی گذشته یا نه.
 
-1. Declare a `uint` called `cooldownTime`, and set it equal to `1 days`. (Forgive the poor grammar — if you set it equal to "1 day", it won't compile!)
+عملکردهایی که براساس `readyTime` فعالیت‌های زامبی رو محدود می‌کنه در درس بعد اضافه می‌کنیم.
 
-2. Since we added a `level` and `readyTime` to our `Zombie` struct in the previous chapter, we need to update `_createZombie()` to use the correct number of arguments when we create a new `Zombie` struct.
-
-  Update the `zombies.push` line of code to add 2 more arguments: `1` (for `level`), and `uint32(now + cooldownTime)` (for `readyTime`).
-
->Note: The `uint32(...)` is necessary because `now` returns a `uint256` by default. So we need to explicitly convert it to a `uint32`.
-
-`now + cooldownTime` will equal the current unix timestamp (in seconds) plus the number of seconds in 1 day — which will equal the unix timestamp 1 day from now. Later we can compare to see if this zombie's `readyTime` is greater than `now` to see if enough time has passed to use the zombie again.
-
-We'll implement the functionality to limit actions based on `readyTime` in the next chapter.
+</div>

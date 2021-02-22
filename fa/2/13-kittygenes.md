@@ -1,5 +1,5 @@
 ---
-title: "Bonus: Kitty Genes"
+title: "اضافه کردن: ژن های Kitty"
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -133,19 +133,20 @@ material:
       }
 ---
 
-Our function logic is now complete... but let's add in one bonus feature.
+<div dir="rtl">
+منطق تابع ما اکنون کامل شده است ... اما اجازه دهید یک ویژگی جدید را اضافه کنیم.
 
-Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.
+بیایید کاری کنیم تا زامبی های ساخته شده از بچه گربه ها، دارای ویژگی منحصر به فردی باشند که نشان دهد آنها زامبی گربه ای هستند.
 
-To do this, we can add some special kitty code in the zombie's DNA.
+برای انجام این کار ، می توانیم کد ویژه ای از بچه گربه ها را در DNA زامبی اضافه کنیم.
 
-If you recall from lesson 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle "special" characteristics. 
+اگر از فصل 1 یادآوری کنید ، ما در حال حاضر فقط از 12 رقم اول DNA 16 رقمی خود برای تعیین شکل ظاهری زامبی استفاده می کنیم. بنابراین بیایید از 2 رقم آخر استفاده نشده برای مدیریت ویژگی های "special" استفاده کنیم.
 
-We'll say that cat-zombies have `99` as their last two digits of DNA (since cats have 9 lives). So in our code, we'll say `if` a zombie comes from a cat, then set the last two digits of DNA to `99`.
+بگوییم که زامبی های گربه ای دارای عدد `99` به عنوان دو رقم آخر DNA خود هستند (از آنجا که گربه ها 9 زندگی دارند). بنابراین در کد ما ، می گوییم `if` یک زامبی از یک گربه ایجاد شود ، سپس دو رقم آخر DNA را روی `99` تنظیم کنید.
 
-## If statements
+## عبارات شرطی
 
-If statements in Solidity look just like javascript:
+عبارات شرطی در Solidity درست مثل javascript هستند:
 
 ```
 function eatBLT(string sandwich) public {
@@ -157,16 +158,16 @@ function eatBLT(string sandwich) public {
 }
 ```
 
-# Put it to the test
+# دست به کد شو
 
-Let's implement cat genes in our zombie code.
+بیایید ژن های گربه را در کد زامبی خود پیاده کنیم.
+1. ابتدا ، اجازه دهید تعریف تابع را برای `feedAndMultiply` تغییر دهیم ، بنابراین نیاز داریم پارامتر سومی اضافه می کنیم: یک `string` به نام`_species`
 
-1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species`
+2. سپس ، بعد از اینکه DNA زامبی جدید را محاسبه کردیم ، بیایید یک دستور `if` را با مقایسه هش `keccak256` `_species` و رشته `"kitty"` اضافه کنیم. نمی توانیم رشته ها را مستقیماً به `keccak256` منتقل کنیم. برای اینکار ، ما از `abi.encodePacked(_species)` به عنوان پارامتر در سمت چپ و `abi.encodePacked("kitty")` به عنوان پارامتر در سمت راست قرار خواهیم داد.
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`.  We can't directly pass strings to `keccak256`. Instead, we will pass `abi.encodePacked(_species)` as an argument on the left side and `abi.encodePacked("kitty")` as an argument on the right side.
+3. در داخل عبارت `if` ، می خواهیم 2 رقم آخر DNA را با`99` جایگزین کنیم. یک روش برای این کار استفاده از این منطق است: `newDna = newDna - newDna % 100 + 99;`.
 
-3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `newDna = newDna - newDna % 100 + 99;`.
+  > توضیحات: فرض کنید `newDna` برابر با `334455` است. سپس `newDna % 100` برابر با `55` است ، بنابراین `newDna - newDna % 100` برابر است با `334400`. در آخر `99` را به این نتیجه اضافه کنید تا `334499` بدست آورید.
 
-  > Explanation: Assume `newDna` is `334455`. Then `newDna % 100` is `55`, so `newDna - newDna % 100` is `334400`. Finally add `99` to get `334499`.
-
-4. Lastly, we need to change the function call inside `feedOnKitty`. When it calls `feedAndMultiply`, add the parameter `"kitty"` to the end.
+4. سرانجام ، باید فراخوانی تابع درون `feedOnKitty` را تغییر دهیم. در فراخوانی `feedAndMultiply`  ، پارامتر `"kitty"` را به انتها اضافه کنید.
+</div>

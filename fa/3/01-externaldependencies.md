@@ -1,6 +1,6 @@
 ---
-title: Immutability of Contracts
-actions: ['checkAnswer', 'hints']
+title: غیرقابل تغییر بودن قرارداد
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -141,34 +141,36 @@ material:
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript.  But there are a number of ways that Ethereum DApps are actually quite different from normal applications.
+<div dir="rtl"></div>
 
-To start with, after you deploy a contract to Ethereum, it’s **_immutable_**, which means that it can never be modified or updated again.
+تا الان سالیدیتی خیلی شبیه زبان‌های برنامه‌نویسی دیگه مثل جاوااسکریپت به نظر می‌اومد. اما مواردی هست که اپلیکیشن‌های اتریوم تفاوت بسیاری با اپلیکیشن‌های معمولی دارند.
 
-The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
+یکی از اون موارد اینه که، بعد از اینکه قرارداد رو در شبکه اتریوم دیپلوی کردین، **_immutable_ (غیرقابل تغییر)** خواهد بود یعنی امکان به‌روزرسانی یا تغییر نداره.
 
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+کد اولیه‌ای که در قرارداد می‌نویسین همیشه در بلاکچین، ماندگار خواهد بود. به همین دلیله که امنیت، یکی از موارد مهم در سالیدیتی به شمار می‌آد.اگر خطایی در قرارداد شما باشه، به هیچ وجه امکان اصلاح نخواهد داشت. و در این موارد باید  آدرس یک قرارداد هوشمند دیگری که اصلاح شده است را در اختیار کاربرانتان قرار دهید.
 
-## External dependencies
+اما این مورد یک جور مزیت هم به حساب می‌آد. کد مثل قانونه. اگر کد قرارداد هوشمندی رو بخونید و تاییدش کنید، می‌تونین مطمئن باشین که هر بار که یک تابع رو صدا می‌زنین همون کاری که در کد اومده بود انجام می‌ده. هیچکس نمی‌تونه تابع رو تغییر بده و نتایج غیرقابل انتظار بده.
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp.  But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+## وابستگی‌های خارجی
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+در درس ۲، آدرس قرارداد کریپتوکیتی‌ها رو به صورت ثابت (hardcode) در اپلیکیشن‌مون قراردادیم. اما چه اتفاقی می‌افته اگر اون قراردادمون باگ داشته باشه و یکی بیاد همه کیتی‌ها رو نابود کنه؟
 
-For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
+احتمالش کمه، اما اگر همچین اتفاقی هم بیفته، اپلیکیشن‌مون غیرقابل استفاده می‌شه چون به آدرسی اشاره می‌کنه که کیتی برنمی‌گردونه.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
+به همین دلیل، خوبه که توابعی داشته باشیم که بتونیم موارد مهم رو در اپلیکیشن به‌روزرسانی کنیم.
 
-## Put it to the test
+برای مثال، شاید بهتر باشه به جای اینکه آدرس رو به صورت ثابت در اپلیکیشن ثبت کنیم(hardcode) یه تابع `setKittyContractAddress` داشته باشیم که اگر اتفاقی برای قراردادمون افتاد بتونیم آدرسش رو تغییر بدیم.
 
-Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
+## دست به کد شو
 
-1. Delete the line of code where we hard-coded `ckAddress`.
+بیایین کد فصل۲ رو به‌روزرسانی کنیم تا بتونیم آدرس قرارداد رو تغییر بدیم.
 
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
+۱. کدهایی که آدرس رو هاردکد کردیم `ckAddress` حذف کنید.
 
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
+۲. خطی که `kittyContract` را ساختیم تغییر بدین به صورتی که فقط متغیر رو تعریف کنین، بدون اینکه مقداری بهش تخصیص بدین.
 
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
+۳. تابعی به اسم `setKittyContractAddress` بسازین. یک آرگومان به اسم `_address` از نوع `address` می‌گیره و باید یک تابع باشه.
 
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+۴. یه خط به  این تابع اضافه کنید که مقدار `kittyContract`  رو برابر `KittyInterface(_address)` ست کنه.
+
+> نکته: اگر مشکل امنیتی تو این تابع می‌بینید نگرانش نباشید، قسمت‌های بعدی درستش می‌کنیم ;)

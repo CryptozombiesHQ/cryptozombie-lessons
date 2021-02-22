@@ -241,19 +241,23 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+حالا بریم `feedAndMultiply` رو تغییر بدیم تا از تایمر زمان استراحت رو استفاده کنه.
 
-Now let's modify `feedAndMultiply` to take our cooldown timer into account.
+همونطور که می‌بینید این تابع رو `(عمومی)public` تعریف کردیم. یکی از کارهای مهم برای تامین امنیت اینه که توابع عمومی و خارجی`external` رو بررسی کنیم و راه‌هایی که ممکنه ازش سواستفاده شه رو پیدا کنیم. به‌خاطر داشته باشین که این توابع رو هر کسی می‌تونه صدا بزنه و هر داده‌ای رو بهشون بده مگر اینکه تغییردهنده `onlyOwner` رو داشته باشن.
 
-Looking back at this function, you can see we made it `public` in the previous lesson. An important security practice is to examine all your `public` and `external` functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `onlyOwner`, any user can call them and pass them any data they want to.
+با بررسی مجدد این تابع می‌بینیم که کاربر ‌می‌تونه تابع رو صدا بزنه و هر مقداری برای `_targetDna` یا `_species` بفرسته. این خیلی شبیه بازی نیست، ما می‌خوایم کاربرا از قوانین پیروی کنن. 
 
-Re-examining this particular function, the user could call the function directly and pass in any `_targetDna` or `_species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+با بررسی دقیق تر می‌بینیم که این تابع فقط از تابع `feedOnKitty()` صدا زده می‌شه، پس راحت‌ترین راه برای جلوگیری از این باگ‌ها اینه که تابع رو به‌صورت داخلی `internal` تعریف کنیم.
 
-On closer inspection, this function only needs to be called by `feedOnKitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+## دست به کد شو 
 
-## Put it to the test 
+۱. در حال حاضر تابع `feedAndMultiply` به صورت عمومی `public` تعریف شده. برای امنیت بیشتر بصورت `internal` تعریفش کنید. نمی‌خوایم کاربرا بتونن با هر تابع رو صدا بزنن.
 
-1. Currently `feedAndMultiply` is a `public` function. Let's make it `internal` so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
+۲. بیایین کدی بنویسیم که `feedAndMultiply` از `cooldownTime` استفاده کنه.
+بیایین یک `require` اضافه کنیم که `_isReady()` رو چک کنه و `myZombie` رو بهش بفرسته. اینطوری اگر زمان استراحت زامبی تموم شه کاربر می‌تونه فقط این تابع رو صدا بزنه.
 
-2. Let's make `feedAndMultiply` take our `cooldownTime` into account. First, after we look up `myZombie`, let's add a `require` statement that checks `_isReady()` and passes `myZombie` to it. This way the user can only execute this function if a zombie's cooldown time is over.
+۳. در انتها تابع `_triggerCooldown(myZombie)` رو صدا می‌زنیم که با تغذیه زمان استراحت زامبی شروع می‌شه.
 
-3. At the end of the function let's call `_triggerCooldown(myZombie)` so that feeding triggers the zombie's cooldown time.
+</div>

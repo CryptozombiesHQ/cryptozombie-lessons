@@ -1,6 +1,6 @@
 ---
-title: Working With Structs and Arrays
-actions: ['checkAnswer', 'hints']
+title: ساختارها و آرایه‌ها
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -47,9 +47,17 @@ material:
       }
 ---
 
-### Creating New Structs
+<div dir="rtl">  
+  
+۱.داخل تابع یه زامبی جدید با عنوان `Zombie`بسازین و اونو به آرایه`zombies` اضافه کنین. اسم `name` و دی‌ان‌ای `dna` زامبی جدید از آرگومان‌های تابع‌مونه.
+۲. بیایین کدمونو تو یه خط بنویسیم تا تمیزتر باشه.
 
-Remember our `Person` struct in the previous example?
+  
+### ایجاد ساختار جدید
+
+ساختار `Person` از مثال قبل رو یادتونه؟
+
+</div>
 
 ```
 struct Person {
@@ -60,35 +68,58 @@ struct Person {
 Person[] public people;
 ```
 
-Now we're going to learn how to create new `Person`s and add them to our `people` array.
+
+<div dir="rtl">     
+
+حالا می‌خوایم یاد بگیریم چطوری `Person`های جدید بسازیم و اونا رو به آرایه `people` (مردم) اضافه کنیم.
+
+</div>
 
 ```
-// create a New Person:
+// یک شخص جدید ایجاد کنید
 Person satoshi = Person(172, "Satoshi");
 
-// Add that person to the Array:
+// این شخص را به آرایه اضافه کنید
 people.push(satoshi);
 ```
 
-We can also combine these together and do them in one line of code to keep things clean:
+
+<div dir="rtl">     
+
+همچنین می‌تونیم این دو مرحله رو با هم تو یه خط کد بنویسیم تا کدمون تمیزتر باشه:
+
+</div>
 
 ```
 people.push(Person(16, "Vitalik"));
 ```
 
-Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
+
+<div dir="rtl">  
+   
+توجه کنین که `array.push()` عنصر جدید رو به **انتها**ی آرایه اضافه می‌کنه، پس عناصر به ترتیبی که اضافه شدند در آرایه ذخیره می‌شن. مثال زیر رو ببینین:
+
+</div>
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// آرایه number در نهایت به این ترتیب می‌شه [5, 10, 15]
 ```
 
-# Put it to the test
 
-Let's make our createZombie function do something!
 
-1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
-2. Let's do it in one line of code to keep things clean.
+<div dir="rtl">  
+
+# دست به کد شو
+
+بیاین کدی بنویسیم که تابع createZombie کاری انجام بده!
+
+
+۱.داخل تابع یه زامبی جدید با عنوان `Zombie`بسازین و اونو به آرایه`zombies` اضافه کنین. اسم `name` و دی‌ان‌ای `dna` زامبی جدید از آرگومان‌های تابع‌مونه.
+
+۲. بیایین کدمونو تو یه خط بنویسیم تا تمیزتر باشه.
+
+</div>

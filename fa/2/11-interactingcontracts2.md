@@ -1,5 +1,5 @@
 ---
-title: Using an Interface
+title: استفاده از Interface
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -114,7 +114,8 @@ material:
       }
 ---
 
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
+<div dir="rtl">
+در ادامه مثال قبلی خود با `NumberInterface`، حالا که interface را تعریف کردیم:
 
 ```
 contract NumberInterface {
@@ -122,6 +123,7 @@ contract NumberInterface {
 }
 ```
 
+ما می توانیم از این تعریف در قرارداد زیر استفاده کنیم:
 We can use it in a contract as follows:
 
 ```
@@ -139,10 +141,11 @@ contract MyContract {
 }
 ```
 
-In this way, your contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as `public` or `external`.
+به این ترتیب ، قرارداد شما می تواند با هر قرارداد دیگری در بلاکچین Ethereum ارتباط برقرار کند ، به شرطی که این توابع را به صورت `public` یا `external` نشان دهد.
 
-# Put it to the test
+# دست به کد شو
 
-Let's set up our contract to read from the CryptoKitties smart contract!
+بیایید قرارداد خود را تنظیم کنیم تا بتوانیم قرارداد هوشمند CryptoKitties را بخوانیم!
 
-1. I've saved the address of the CryptoKitties contract in the code for you, under a variable named `ckAddress`. In the next line, create a `KittyInterface` named `kittyContract`, and initialize it with `ckAddress` — just like we did with `numberContract` above.
+1. من آدرس قرارداد CryptoKitties ،را در متغیری به نام `ckAddress` در کد برای شما ذخیره کردم. در خط بعدی، یک `KittyInterface` به نام `kittyContract` ایجاد کنید و آن را با `ckAddress` مقداردهی اولیه کنید - دقیقاً مانند کاری که در بالا با `numberContract` انجام دادیم.
+</div>

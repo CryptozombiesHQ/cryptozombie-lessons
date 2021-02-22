@@ -207,16 +207,18 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+عالیه! حالا زامبی ما برای زمان استراحت تایمر داره.
 
-Great! Our zombie now has a functional cooldown timer.
+می‌خوایم تعدادی متد کمکی دیگه اضافه کنیم. برای مرتب بودن کد، یک فایل جدید به اسم `zombiehelper.sol` ایجاد کردیم که به `zombiefeeding.sol` وصل شده. 
 
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.sol`, which imports `zombiefeeding.sol`. This will help to keep our code organized.
+خب بیایین کاری کنیم که وقتی زامبی به مرحله خاصی رسید یه سری توانایی‌های خاص داشته باشه. اما برای این کار بهتره قبلش درباره تغییردهنده‌ها (modifiers) بیشتر یاد بگیریم.
 
-Let's make it so zombies gain special abilities after reaching a certain level. But in order to do that, first we'll need to learn a little bit more about function modifiers.
+## تغییردهنده‌های تابع با آرگومان
 
-## Function modifiers with arguments
-
-Previously we looked at the simple example of `onlyOwner`. But function modifiers can also take arguments. For example:
+قبلا مثال ساده‌ای از تغییردهنده یعنی `onlyOwner` رو دیدیم. اما تغییردهنده‌ها هم می‌تونن آرگومان داشته باشند. برای مثال: 
+</div>
 
 ```
 // A mapping to store a user's age:
@@ -234,15 +236,19 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
   // Some function logic
 }
 ```
+<div dir="rtl">
+  
+همونطور که می‌بینید تغییردهنده `olderThan`مثل تابع آرگومان داره، و تابع `driveCar`آرگومان‌هاش رو به تغییردهنده می‌فرسته.
 
-You can see here that the `olderThan` modifier takes arguments just like a function does. And that the `driveCar` function passes its arguments to the modifier.
+بیایین `modifier(تغییردهنده)` خودمون رو بسازیم که با استفاده از ویژگی `level` یک سری توانایی‌ها رو به زامبی می‌ده یا محدودشون می‌کنه.
 
-Let's try making our own `modifier` that uses the zombie `level` property to restrict access to special abilities.
+## دست به کد شو
 
-## Put it to the test
 
-1. In `ZombieHelper`, create a `modifier` called `aboveLevel`. It will take 2 arguments, `_level` (a `uint`) and `_zombieId` (also a `uint`).
+۱. در `ZombieHelper` یک `modifier(تغییردهنده)` به اسم `aboveLevel` بنویسید. دو تا آرگومان می‌گیره `_level` و `_zombieId` هر دو از نوع `uint`.
 
-2. The body should check to make sure `zombies[_zombieId].level` is greater than or equal to `_level`.
+۲. تابع باید بررسی کنه که `zombies[_zombieId].level` بزرگتر یا مساوی `_level` باشه.
 
-3. Remember to have the last line of the modifier call the rest of the function with `_;`.
+۳. به خاطر داشته باشید خط آخر تغییردهنده باید `_;` باشه، تا بقیه تابع رو صدا بزنه و اجرا کنه.
+
+</div>

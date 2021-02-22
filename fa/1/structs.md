@@ -1,6 +1,6 @@
 ---
-title: Structs
-actions: ['checkAnswer', 'hints']
+title: ساختارها (Structs)
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -32,7 +32,9 @@ material:
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
+<div dir="rtl">
+
+گاهی اوقات ممکنه به نوع‌داده پیچیده‌تری نیاز داشته باشین و **_structs(ساختار)_** در سالیدیتی برای اینطور مواقع است.
 
 ```
 struct Person {
@@ -42,14 +44,17 @@ struct Person {
 
 ```
 
-Structs allow you to create more complicated data types that have multiple properties.
 
-> Note that we just introduced a new type, `string`. Strings are used for arbitrary-length UTF-8 data. Ex. `string greeting = "Hello world!"`
+ساختارها این امکان را فراهم می‌آوردند تا نوع داده‌های پیچیده‌تری با ویژگی‌های چندگانه ایجاد کنین.
 
-# Put it to the test
+> نکته: همونطور که در مثال مشاهده می‌کنین یک نوع داده دیگری معرفی کردیم، `string`. رشته‌ها برای داده‌ها با طول متفاوت و فرمت UTF-8 استفاده می‌شن. مثال: `string greeting = "Hello world!"`
 
-In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a struct.
+# دست به کد شو
 
-1. Create a `struct` named `Zombie`.
+در برنامه‌مون می‌خوایم تعدادی زامبی بسازیم و زامبی‌ها چندین ویژگی دارن، بنابراین ساختارها در اینجا بسیار مناسب هستن.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `string`), and `dna` (a `uint`).
+۱. ساختاری به اسم `Zombie` بسازید.
+
+۲. این ساختار (struct) ۲ ویژگی دارد: `name` از نوع `string` و `dna` از نوع `uint`.
+
+</div>

@@ -1,6 +1,6 @@
 ---
-title: "Contracts"
-actions: ['checkAnswer', 'hints']
+title: "قراردادها"
+actions: ['بررسی پاسخ', 'راهنمایی']
 material: 
   editor:
     language: sol
@@ -16,27 +16,28 @@ material:
 
       }
 ---
+<div dir="rtl">
 
-Starting with the absolute basics:
+از پایه شروع می‌کنیم: 
 
-Solidity's code is encapsulated in **contracts**. A `contract` is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+زبان سالیدیتی برای توسعه `قرارداد`ها ایجاد شده. `قرارداد` پایه‌ای ترین بلوک ساختاری اپلیکیشن‌های اتریوم است. تمامی متغیرها و توابع به قرارداد تعلق دارند و این می‌تونه نقطه شروع پروژه‌هاتون باشه.
 
-An empty contract named `HelloWorld` would look like this:
-
+این یه نمونه قرارداد خالی به اسم `HelloWorld` است:
+</div>
 ```
 contract HelloWorld {
 
 }
 ```
+<div dir="rtl">
+## نسخه کامپایلر
 
-## Version Pragma
+همه کدهای سالیدیتی با عبارت "version pragma" شروع می‌شن. این عبارت نسخه کامپایلری که اون کد ازش استفاده می‌کنه رو نشون میده. به دلیل اینکه کامپایلر سالیدیتی در حال توسعه و تغییره، نسخه کامپایلری که هر کد استفاده می‌کنه رو مشخص می‌کنیم تا در آینده مشکلی برای کدمون به وجود نیاد.    
 
-All solidity source code should start with a "version pragma" — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.
+به این صورت نوشته می‌شه: `pragma solidity ^0.4.25;` 
 
-It looks like this: `pragma solidity ^0.4.25;` (for the latest solidity version at the time of this writing, 0.4.25).
-
-Putting it together, here is a bare-bones starting contract — the first thing you'll write every time you start a new project:
-
+یه جمع‌بندی کنیم، هر بار که یه پروژه‌ای رو شروع می‌کنین اولین چیزی که می‌نویسید اینه:
+</div>
 ```
 pragma solidity ^0.4.25;
 
@@ -44,13 +45,14 @@ contract HelloWorld {
 
 }
 ```
+<div dir="rtl">
+# دست به کد شو
 
-# Put it to the test
+برای ایجاد ارتش زامبی، یه قرارداد پایه به اسم `ZombieFactory` بسازین.
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+۱. نسخه کامپایلر رو `0.4.25` بذارین.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.25`.
+۲. یه قرارداد خالی به اسم `ZombieFactory` ایجاد کنین.
 
-2. Create an empty contract called `ZombieFactory`.
-
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+وقتی این مراحل رو انجام دادین روی گزینه "بررسی پاسخ" کلیک کنین و اگر به مشکل خوردین می‌تونین روی گزینه "راهنمایی" کلیک کنین.
+</div>

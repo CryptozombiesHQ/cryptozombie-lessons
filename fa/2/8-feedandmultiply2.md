@@ -1,5 +1,5 @@
 ---
-title: Zombie DNA
+title: زامبی DNA
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -76,11 +76,12 @@ material:
       }
 ---
 
-Let's finish writing the `feedAndMultiply` function.
+<div dir="rtl">
+بیایید نوشتن تابع `feedAndMultiply` را به پایان برسانیم.
 
-The formula for calculating a new zombie's DNA is simple: It's simply the average between the feeding zombie's DNA and the target's DNA. 
+فرمول محاسبه DNA یک زامبی جدید ساده است: فقط میانگین بین DNA زامبی تغذیه کننده و DNA هدف است.
 
-For example:
+مثلا:
 
 ```
 function testDnaSplicing() public {
@@ -91,16 +92,17 @@ function testDnaSplicing() public {
 }
 ```
 
-Later we can make our formula more complicated if we want to, like adding some randomness to the new zombie's DNA. But for now we'll keep it simple — we can always come back to it later.
+بعداً اگر بخواهیم می توانیم فرمول خود را پیچیده تر کنیم ، مقلا می توانیم ایجاد DNA زامبی را تصادفی تر کنیم. اما در حال حاضر ما آن را ساده نگه می داریم - همیشه بعداً می توانیم آن را تغییر دهیم.
 
-# Put it to the test
+# دست به کد شو
 
-1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus` to only take the last 16 digits.
+1. ابتدا باید اطمینان حاصل کنیم که `_targetDna` از 16 رقم بیشتر نباشد. برای این کار می توانیم `_targetDna` را برابر با `_targetDna % dnaModulus` قرار دهیم تا فقط 16 رقم آخر را بگیرد.
 
-2. Next our function should declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+2. بعد تابع ما باید یک `uint` به نام `newDna` را تعریف کند و آن را برابر با میانگین DNA `myZombie` و `_targetDna` قرار دهد (مانند مثال بالا).
 
-  > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
+  > توجه: می توانید با استفاده از `myZombie.name` و`myZombie.dna` به خصوصیات `myZombie` دسترسی پیدا کنید
 
-3. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+3. هنگامی که DNA جدید را بدست آوردیم ، بیایید `_createZombie` را صدا بزنیم. اگر فراموش کردید که این تابع برای فراخوانی به چه پارامترهایی نیاز دارد ، می توانید به تب `zombiefactory.sol` نگاه کنید. توجه داشته باشید که فراخوانی این تابع به یک نام نیاز دارد ، بنابراین بیایید فعلا نام زامبی جدید خود را `"NoName"` بگذاریم - بعداً می توانیم یک تابع بنویسیم تا نام زامبی ها را تغییر دهیم.
 
-> Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
+> توجه: در Solidity ، ممکن است در اینجا مشکلی با کد ما مشاهده کنید! نگران نباشید ، ما این مشکل را در درس بعدی رفع خواهیم کرد ؛)
+</div>

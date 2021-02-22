@@ -1,16 +1,19 @@
 ---
-title: Advanced Solidity Concepts
-header: "Lesson 3: Advanced Solidity Concepts"
+title: مفاهیم پیشرفته سالیدیتی
+header: "فصل ۳: مفاهیم پیشرفته سالیدیتی"
 roadmap: roadmap3.png
 path: solidity
 ---
+<div dir="rtl">
 
-Grr... I just can't slow you down, can I? Your Solidity skills are formidable, human...
+دیگه چیزی جلودارت نیست، هست؟ مهارت سالیدیتیت ترسناک شده، انسان ...
 
-Now that you've got some experience coding Solidity under your belt, we're going to dive into some of the more technical aspects of Ethereum development.
+حالا که تا حدی با سالیدیتی آشنا شدی و کد زدی، می‌خوایم بیشتر با جنبه‌های فنی توسعه اتریوم آشنا بشیم.
 
-This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
+این فصل زرق و برقش کمتره. اما تعدادی از مفاهیم بسیار مهم رو یاد می‌گیرین که شما رو به ساخت دپ (اپلیکیشن غیرمتمرکز) واقعی نزدیکتر می‌کنه‌، مفاهیمی مثل **مالکیت قرارداد، هزینه گس، بیهنه‌سازی کد و امنیت.**
 
-You've been warned — no kitties and rainbows in Lesson 3!
+پس در فصل ۳ خبری از کیتی و رنگین‌کمون نیست!
 
-But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
+اما مفاهیم مهمی در سالیدیتی رو یاد می‌گیرین. شدیدا توصیه می‌شه که قبل از شروع این فصل، فصل ۲ رو تکمیل کنید.
+
+</div>

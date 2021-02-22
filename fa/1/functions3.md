@@ -1,6 +1,6 @@
 ---
-title: More on Functions
-actions: ['checkAnswer', 'hints']
+title: کمی بیشتر در مورد توابع
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -53,11 +53,15 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about Function **_return values_**, and function modifiers.
+<div dir="rtl">
+  
+در این فصل  درباره **_مقادیر بازگشتی_** و تغییردهنده‌های (modifiers) توابع یاد می‌گیریم.
 
 ## Return Values
 
-To return a value from a function, the declaration looks like this:
+برای اینکه تابع یه مقداری برگردونه اینطوری تعریفش می‌کنیم: 
+
+</div>
 
 ```
 string greeting = "What's up dog";
@@ -66,37 +70,46 @@ function sayHello() public returns (string) {
   return greeting;
 }
 ```
+<div dir="rtl">
 
-In Solidity, the function declaration contains the type of the return value (in this case `string`).
+در سالیدیتی، نوع داده مقدار بازگشتی هنگام تعریف تابع مشخص می‌شود. (در این مثال `string`)
 
-## Function modifiers
+## تغییردهنده‌های (modifiers) توابع 
 
-The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.
+تابع بالا حالتی را تغییر نمی‌ده، مثلا مقداری را تغییر نمی‌ده یا چیزی نمی‌نویسه.
 
-So in this case we could declare it as a **_view_** function, meaning it's only viewing the data but not modifying it:
+در این حالت می‌تونیم تابع را یه عنوان **_view_** تعریف کنیم. به این معنی که فقط داده رو می‌بینه و تغییرش نمی‌ده:
+
+</div>
 
 ```
 function sayHello() public view returns (string) {
 ```
+<div dir="rtl">
 
-Solidity also contains **_pure_** functions, which means you're not even accessing any data in the app. Consider the following:
+توابعی دیگری هم در سالیدیتی می‌توان تعریف کرد. تابع **_pure_** حتی به داده‌های اپلیکیشن هم دسترسی نداره. به مثال زیر دقت کنید:
 
+</div>
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
   return a * b;
 }
 ```
+<div dir="rtl">
 
-This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as **_pure_**.
+این تابع حتی حالت اپلیکیشن رو نمی‌خونه، مقداری که برمی‌گردونه فقط به پارامتر تابعش وابسته است. پس در این موارد تابع به عنوان **_pure_** تعریف می‌شه.
 
-> Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+> نکته: ممکنه تشخیص اینکه چه زمانی تابع رو به صورت view یا pure تعریف کنیم. خوشبختانه کامپایلر سالیدیتی هشدارهای مناسبی می‌ده تا متوجه بشیم از کدوم modifier استفاده کنیم.
 
-# Put it to the test
+# دست به کد شو
 
-We're going to want a helper function that generates a random DNA number from a string.
+به یه تابع کمکی احتیاج داریم که از یه رشته، DNA تصادفی تولید کنه.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+۱. یک تابع `private` به `_generateRandomDna` اسم بسازین. یک پارامتر به اسم `_str` از نوع رشته می‌گیره و یک `uint` برمی‌گردونه.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
+۲. این تابع بعضی از متغیرهای قراردادمون رو می‌بینه ولی تغییرشون نمی‌ده پس از نوع `view` تعریفش کنید. 
 
-3. The function body should be empty at this point — we'll fill it in later.
+۳. داخل تابع رو فعلا خالی بذارید، بعدا تکمیلش می‌کنیم.
+
+
+</div>

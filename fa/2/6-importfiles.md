@@ -62,12 +62,12 @@ material:
       }
 
 ---
+<div dir="rtl">
+اوه متوجه خواهید شد که ما کدی که در سمت راست می بینید تمیز کردیم و اکنون در بالای ویرایشگر خود تب هایی دارید. بروید برای امتحان کردن ، بین تب ها کلیک کنید.
 
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
+کد ما داشت طولانی می شد ، بنابراین برای مدیریت بیشتر آن را به چندین فایل تقسیم کردیم. به طور معمول شما در پروژه های Solidity خود کدهای طولانی را به این طریق مدیریت خواهید کرد.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
-
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+وقتی چندین فابل دارید و می خواهید یک فایل را به فایل دیگری import کنید ، Solidity از کلمه کلیدی `import` استفاده می کند:
 
 ```
 import "./someothercontract.sol";
@@ -77,10 +77,10 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+بنابراین اگر فایلی با نام `someothercontract.sol` در همان دایرکتوری این قرارداد داشته باشیم (معنی `./` همین است) ، توسط کامپایلر import می شود.
 
-# Put it to the test
+# دست به کد شو
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
-
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 
+اکنون که ساختار چند فایلی را تنظیم کردیم ، برای خواندن مطالب فایل دیگر باید از import استفاده کنیم:
+1. `zombiefactory.sol` را به فایل جدید ما ، `zombiefeeding.sol` import کنید.
+</div>

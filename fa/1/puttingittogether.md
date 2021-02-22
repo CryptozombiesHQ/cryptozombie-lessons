@@ -1,6 +1,6 @@
 ---
-title: Putting It Together
-actions: ['checkAnswer', 'hints']
+title: چمع‌بندی
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -63,17 +63,20 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+داریم نزدیک می‌شیم به تکمیل ایجاد یه مولد زامبی تصادفی! بیایین یک تابع عمومی بسازیم که کار رو تموم کنیم.
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+می‌خواهیم یک تابع عمومی ایجاد کنیم که یک ورودی می‌گیره، اسم زامبی، و با استفاده از اسم و DNA تصادفی یک زامبی می‌سازه
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+# دست به کد شو
 
-# Put it to the test
+۱. یک تابع عمومی به اسم `createRandomZombie` بنویسین. این تابع یک پارامتر `_name` از نوع `string` می‌گیره. _(نکته: این تابع رو با کلمه کلیدی `public`، عمومی تعریف کنید همونطور که تابع قبل رو با استفاده از کلمه کلیدی `private`، خصوصی تعریف کردین.)_
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+۲. اولین خط تابع باید تابع `_generateRandomDna` را روی `_name` اجرا کمه و در یک `uint` به اسم `randDna` ذخیره کنه.
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+۳. دومین خط باید تابع `_createZombie` اجرا شه و اسم `_name`  و DNA تصادفی  `randDna` رو تولید کنه.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+۴. جواب نهایی باید ۴ خط بشه (با `}` تابع)
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+</div>

@@ -1,6 +1,6 @@
 ---
 title: State Variables & Integers
-actions: ['checkAnswer', 'hints']
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -22,29 +22,40 @@ material:
 
       }
 ---
+<div dir="rtl">
 
-Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
+کارتون عالی بود! حالا که با ساختار کلی قرارداد آشنا شدیم بریم ببینیم متغیرها در سالیدیتی چطور تعریف می‌شن.
 
-**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+**_متغیرهای حالت(State variables)_**  به صورت دائم در حافظه قرارداد ذخیره می‌شن. یعنی روی بلاکچین اتریوم نوشته می‌شن. مثل نوشتن تو دیتابیس.  
 
-##### Example:
+##### مثال:
+</div>
+
 ```
 contract Example {
   // This will be stored permanently in the blockchain
   uint myUnsignedInteger = 100;
 }
 ```
+<div dir="rtl">
+  
+در این قرارداد نمونه، یک `uint`  به اسم  `myUnsignedInteger`  ایجاد کردیم و مقدارش رو ۱۰۰ گذاشتیم.
 
-In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
+## اعداد صحیح بدون علامت: `uint`
 
-## Unsigned Integers: `uint`
+نوع داده `uint` برای نمایش و ذخیره اعداد بدون علامته ینی **مقدارش حتما باید نامنفی باشه**. برای ذخیره اعداد علامت‌دار از `int` استفاده می‌کنیم.
+</div>
+<div dir="rtl">
+  
+> نکته: در سالیدیتی `uint`، نام مستعار nt256` است، یک عدد صحیح بدون علامت ۲۵۶ بیتی. می‌تونین uintها رو با تعداد بیت کمتری هم ذخیره کنین- `uint8`، `uint16`، `uint32` و الی آخر. اما در کل معمولا از `uint` استفاده میشه جز در موارد خاصی که بعدا درباره‌ش صحبت می‌کنیم.
+</div>
 
-The `uint` data type is an unsigned integer, meaning **its value must be non-negative**. There's also an `int` data type for signed integers.
+<div dir="rtl">
 
-> Note: In Solidity, `uint` is actually an alias for `uint256`, a 256-bit unsigned integer. You can declare uints with less bits — `uint8`, `uint16`, `uint32`, etc.. But in general you want to simply use `uint` except in specific cases, which we'll talk about in later lessons.
+# دست به کد شو
 
-# Put it to the test
+قراره DNA زامبی ما یک عدد ۱۶ بیتی باشه.
 
-Our Zombie DNA is going to be determined by a 16-digit number.
+یک `uint` به اسم `dnaDigits` با مقدار ۱۶ بسازین.
 
-Declare a `uint` named `dnaDigits`, and set it equal to `16`.
+</div>

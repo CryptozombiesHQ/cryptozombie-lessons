@@ -1,6 +1,6 @@
 ---
-title: Ownable Contracts
-actions: ['checkAnswer', 'hints']
+title: قراردادهای مالکیت‌پذیر
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -214,20 +214,22 @@ material:
 
       }
 ---
+<div dir="rtl">
 
-Did you spot the security hole in the previous chapter?
+باگ امنیتی مرحله قبل رو تشخیص دادین؟
 
-`setKittyContractAddress` is `external`, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
+تابع `setKittyContractAddress` به‌صورت `external` تعریف شد پس یعنی هر کسی می‌تونه صداش بزنه! و این یعنی هر کسی که تابع رو صدا بزنه می‌تونه آدرس قرارداد CryptoKitties رو تغییر بده و اپلیکیشن رو برای تمام کاربران از بین ببره.
 
-We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
+ما می‌خوایم توانایی به‌روزرسانی آدرس قراردادمون رو داشته باشیم، اما نمی‌خوایم هر کسی بتونه آدرس رو به‌روز‌رسانی کنه.
 
-To handle cases like this, one common practice that has emerged is to make contracts `Ownable` — meaning they have an owner (you) who has special privileges.
+برای مدیریت این موارد، قابلیت تعیین مالکیت اضافه شده، به این معنی که برای قراردادها می‌شه مالک تعریف کرد که دسترسی‌های خاصی داره.
 
-## OpenZeppelin's `Ownable` contract
+## قرارداد `Ownable` از OpenZeppelin
 
-Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, we highly recommend you check out their site to further your learning!
+در ادامه قرارداد `Ownable` رو از کتابخونه سالیدیتی **_OpenZeppelin_** می‌بینید. OpenZeppelin یک کتابخونه برای تامین امنیت قراردادهاست که مورد تایید جامعه بلاکچین اتریومه که می‌تونین در دپ خودتون ازش استفاده کنید. بعد از اتمام این درس پیشنهاد می‌شه که یه سری به وبسایتشون بزنید تا اطلاعات بیشتری درباره‌ش کسب کنین.
 
-Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
+یه نگاهی به قرارداد زیر بندازین، مواردی رو می‌بینید که هنوز یاد نگرفتین، اما نگران نباشید در ادامه درباره‌شون صحبت می‌کنیم.
+</div>
 
 ```
 /**
@@ -304,29 +306,30 @@ contract Ownable {
   }
 }
 ```
+<div dir="rtl">
 
-A few new things here we haven't seen before:
+بعضی از چیزایی که قبلا ندیدیم:
+- سازنده‌ها (Constructors): `constructor()` یک **_سازنده_** است، یک تابع اختیاری خاص. فقط یک بار اجرا می‌شه، زمانی که قرارداد برای اولین بار ساخته شد.
+- متغیرهای تابع(Function Modifiers): تغییردهنده‌ها(Modifiers) یه جورایی نیمه‌تابع هستند که برای تغییر توابع دیگر استفاده می‌شن، معمولا برای اینکه یک‌سری پیش‌نیازها رو قبل از اجرا چک کنن. در اینجا، `modifier onlyOwner()` برای محدودکردن دسترسی استفاده می‌شه پس **فقط مالک** قرارداد می‌تونه این تابع رو اجرا کنه. بعدا بیشتر درباره تغییردهنده‌ها و این علامت عجیب `_;` صحبت می‌کنیم.
+- کلمه کلیدی `indexed` : فعلا بهش نیاز نداریم، نگرانش نباشید.
+پس اساسا قرارداد `Ownable` موارد زیر رو انجام می‌ده:
 
-- Constructors: `constructor()` is a **_constructor_**, which is an optional special function. It will get executed only one time, when the contract is first created.
-- Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
-- `indexed` keyword: don't worry about this one, we don't need it yet.
 
-So the `Ownable` contract basically does the following:
+۱. زمانی که یک قرارداد ایجاد می‌شه، سازنده‌ش، `owner` (مالک) رو برابر `msg.sender`(کسی که قرارداد رو دیپلوی می‌کنه)قرار می‌ده.
 
-1. When a contract is created, its constructor sets the `owner` to `msg.sender` (the person who deployed it)
+۲. تغییردهنده رو اضافه می‌کنه، که می‌تونه دسترسی به توابع خاصی رو به `مالک` محدود کنه.
 
-2. It adds an `onlyOwner` modifier, which can restrict access to certain functions to only the `owner`
+۳. به شما اجازه می‌ده قرارداد رو به مالک جدید منتقل کنید.
 
-3. It allows you to transfer the contract to a new `owner`
+قرارداد یکی از نیازمندی‌های اصلی قراردادهاست به همین دلیل اکثر دپ‌های سالیدیتی این قرارداد رو کپی می‌کنند.
 
-`onlyOwner` is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this `Ownable` contract, and then their first contract inherits from it.
+ما هم چون می‌خوایم `setKittyContractAddress` رو محدود کنیم به `onlyOwner`، همین کار رو برای قراردادمون می‌خوایم انجام بدیم.
 
-Since we want to limit `setKittyContractAddress` to `onlyOwner`, we're going to do the same for our contract.
+## دست به کد شو
 
-## Put it to the test
+ما کد قرارداد `Ownable` رو در یک فایل جدید به اسم `ownable.sol` کپی کردیم، حالا باید کاری کنیم که `ZombieFactory` اون رو به ارث ببره.
 
-We've gone ahead and copied the code of the `Ownable` contract into a new file, `ownable.sol`. Let's go ahead and make `ZombieFactory` inherit from it.
+۱. کد رو طوری تغییر بدین که محتوای `ownable.sol` رو `import` کنه. اگر یادتون نمی‌آد چطوری این کار رو انجام بدین نگاهی به `zombiefeeding.sol` بندازین.
 
-1. Modify our code to `import` the contents of `ownable.sol`. If you don't remember how to do this take a look at `zombiefeeding.sol`.
-
-2. Modify the `ZombieFactory` contract to inherit from `Ownable`. Again, you can take a look at `zombiefeeding.sol` if you don't remember how this is done.
+۲. قرارداد `ZombieFactory` رو طوری تغییر بدین که `Ownable` رو به ارث ببره. دوباره می‌تونین به `zombiefeeding.sol` نگاهی بندازین تا یادتون بیاد چطوری این کار رو انجام بدین.
+</div>

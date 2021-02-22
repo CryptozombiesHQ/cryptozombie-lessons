@@ -1,6 +1,6 @@
 ---
-title: Math Operations
-actions: ['checkAnswer', 'hints']
+title: عملیات ریاضی
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   editor:
     language: sol
@@ -25,23 +25,26 @@ material:
       }
 
 ---
+<div dir="rtl">
 
-Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:
+ریاضیات در سالیدیتی بسیار آسونه. عملیات زیر مثل اکثر زبان‌های برنامه‌نویسی انجام می‌شه:
 
-* Addition: `x + y`
-* Subtraction: `x - y`,
-* Multiplication: `x * y`
-* Division: `x / y`
-* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+* جمع: `x + y`
+* تفریق: `x - y`,
+* ضرب: `x * y`
+* تقسیم: `x / y`
+* پیمانه‌ای / باقی‌مانده: `x % y` _(برای مثال، `۱۳٪۵` می‌شه `۳`. چون باقی‌مانده تقسیم `۱۳` به `۵` می‌شه `۳`)_
 
-Solidity also supports an **_exponential operator_** (i.e. "x to the power of y", x^y):
-
+سالیدیتی از **_عملگر نمایی_** هم پشتیبانی می‌کند.("x به توان y"، x^y):
+</div>
 ```
 uint x = 5 ** 2; // equal to 5^2 = 25
 ```
+<div dir="rtl">
 
-# Put it to the test
+# دست به کد شو
 
-To make sure our Zombie's DNA is only 16 characters, let's make another `uint` equal to 10^16. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+برای اطمینان از ۱۶ کاراکتری بودن DNA، بیایین یک متغیر دیگه از نوع `uint` با مقدار ۱۰^۱۶ بسازیم. اینطوری می‌تونیم با استفاده از عملگر پیمانه‌ای یک عدد صحیح رو به صورت ۱۶ رقمی دربیاریم.
 
-1. Create a `uint` named `dnaModulus`, and set it equal to **10 to the power of `dnaDigits`**.
+۱. یک متغیر به اسم `dnaModulus` از نوع `uint` بسازین و مقدارش رو **۱۰ به توان `dnaDigits`** بذارین.
+</div>
