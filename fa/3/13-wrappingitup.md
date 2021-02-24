@@ -1,6 +1,6 @@
 ---
-title: Wrapping It Up
-actions: ['checkAnswer', 'hints']
+title: جمع‌بندی
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   saveZombie: false
@@ -11,21 +11,22 @@ material:
     answer: 1
 ---
 
-Congratulations! That concludes Lesson 3.
+تبریک! فصل ۳ به پایان رسید.
 
-## Let's recap:
+## بیایین جمع‌بندی کنیم:
 
-- We've added a way to update our CryptoKitties contracts
-- We've learned to protect core functions with `onlyOwner`
-- We've learned about gas and gas optimization
-- We added levels and cooldowns to our zombies
-- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
-- And finally, we now have a function to return a user's zombie army
+- راهی برای به‌روز‌رسانی قرارداد CryptoKitties اضافه کردیم
+- یاد گرفتیم از توابع مهم با محافظت کنیم
+- درباره گس و بهینه‌سازی مصرفش یاد گرفتیم
+- ویژگی‌هایی مثل سطح و زمان استراحت به زامبی اضافه کردیم
+- توابعی برای به‌روز‌رسانی اسم و زامبی نوشتیم که وقتی به مرحله خاصی برسن اجرا می‌شه
+- و در آخر، تابعی برای برگرداندن ارتش زامبی کاربر ایجاد کردیم
 
-## Claim your reward
 
-As a reward for completing Lesson 3, both of your zombies have leveled up!
+## جایزه‌تون رو دریافت کنید
 
-And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `changeName` to give him/her a name. NoName no more!
+به‌عنوان پاداش اتمام فصل۳، هر دو زامبی شما سطحشون ارتقا پیدا می‌کنه!
 
-Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
+و حالا که NoName (زامبی-کیتی که در فصل۲ ساختین) به مرحله ۲ ارتقا یافته و می‌تونین با صدا زدن تابع `changeName` بهش اسم اختصاص بدین.
+
+یه اسم بهش اختصاص بدین و با اتمام درس بعد فصل رو تکمیل کنید.

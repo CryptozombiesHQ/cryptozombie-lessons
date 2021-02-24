@@ -1,6 +1,6 @@
 ---
-title: More on Function Modifiers
-actions: ['checkAnswer', 'hints']
+title: بیشتر درباره تغییردهنده‌های توابع بدونیم
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:

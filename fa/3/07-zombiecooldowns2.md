@@ -1,6 +1,6 @@
 ---
-title: Public Functions & Security
-actions: ['checkAnswer', 'hints']
+title: توابع عمومی و امنیت
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -253,7 +253,8 @@ material:
 
 ## دست به کد شو 
 
-۱. در حال حاضر تابع `feedAndMultiply` به صورت عمومی `public` تعریف شده. برای امنیت بیشتر بصورت `internal` تعریفش کنید. نمی‌خوایم کاربرا بتونن با هر تابع رو صدا بزنن.
+
+۱. در حال حاضر تابع `feedAndMultiply` به صورت عمومی `public` تعریف شده. برای امنیت بیشتر بصورت `internal` تعریفش کنید. نمی‌خوایم کاربرا بتونن با هر DNA تابع رو صدا بزنن.
 
 ۲. بیایین کدی بنویسیم که `feedAndMultiply` از `cooldownTime` استفاده کنه.
 بیایین یک `require` اضافه کنیم که `_isReady()` رو چک کنه و `myZombie` رو بهش بفرسته. اینطوری اگر زمان استراحت زامبی تموم شه کاربر می‌تونه فقط این تابع رو صدا بزنه.

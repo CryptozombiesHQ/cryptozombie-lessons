@@ -1,6 +1,6 @@
 ---
-title: For Loops
-actions: ['checkAnswer', 'hints']
+title: حلقه For
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -240,17 +240,17 @@ material:
       }
 ---
 
-In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage.
+در درس قبل گفتیم که بعضی مواقع نیاز می‌شه که با استفاده از حلقه `for` محتوای آرایه رو ایجاد کنیم، به جای اینکه آرایه رو در  `storage`  بنویسیم.
 
-Let's look at why.
+بریم دلیلش رو بررسی کنیم:
 
-For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
+یه کار ساده برای به دست آوردن ارتش زامبی‌های یک کاربر اینه که از `mapping` استفاده کنیم، به این صورت:
 
 ```
 mapping (address => uint[]) public ownerToZombies
 ```
 
-Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
+هر بار که یک زامبی جدید ساخته می‌شه، به سادگی از `ownerToZombies[owner].push(zombieId)`  استفاده می‌کنیم و اون رو به آرایه زامبی‌ها اضافه می‌کنیم و تابع `getZombiesByOwner` خیلی ساده‌تر می‌شه:
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -258,29 +258,30 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 }
 ```
 
-### The problem with this approach
+### مشکل این رویکرد
 
-This approach is tempting for its simplicity. But let's look at what happens if we later add a function to transfer a zombie from one owner to another (which we'll definitely want to add in a later lesson!).
+این روش خیلی ساده است، اما بذارید ببینیم زمانی که می‌خواهیم زامبی‌های یک کاربر رو به دیگری انتقال یدیم چه اتفاقی می‌افته.
+تابع انتقال به موارد زیر نیاز داره:
 
-That transfer function would need to:
-1. Push the zombie to the new owner's `ownerToZombies` array,
-2. Remove the zombie from the old owner's `ownerToZombies` array,
-3. Shift every zombie in the older owner's array up one place to fill the hole, and then
-4. Reduce the array length by 1.
+۱. زامبی را به آرایه `ownerToZombies`  کاربر جدید اضافه کن.
+۲. آن زامبی را از آرایه `ownerToZombies`  کاربر قبلی حذف کن.
+۳. برای پرکردن جای خالی زامبی حذف شده، همه خانه‌های آرایه را شیفت بده.
+۴. یک واحد از طول آرایه کم کن.
 
-Step 3 would be extremely expensive gas-wise, since we'd have to do a write for every zombie whose position we shifted. If an owner has 20 zombies and trades away the first one, we would have to do 19 writes to maintain the order of the array.
 
-Since writing to storage is one of the most expensive operations in Solidity, every call to this transfer function would be extremely expensive gas-wise. And worse, it would cost a different amount of gas each time it's called, depending on how many zombies the user has in their army and the index of the zombie being traded. So the user wouldn't know how much gas to send.
+مرحله ۳ بسیار پرهزینه (از لحاظ مصرف گس) خواهد بود. اگر کاربر ۲۰ تا زامبی داشته باشه، و اولین زامبی در آرایه منتقل شود، نیاز به ۱۹ عمل نوشتن داریم.
 
-> Note: Of course, we could just move the last zombie in the array to fill the missing slot and reduce the array length by one. But then we would change the ordering of our zombie army every time we made a trade.
+و از آنجایی که نوشتن در  `storage`  یکی از پرهزینه‌ترین کارهادر سالیدیتی است، هر بار صدا زدن این تابع انتقال هزینه زیادی به بار خواهد آورد. با توجه به مکان زامبی انتقالی و تعداد دفعات صدازدن این تابع این هزینه متغیر است، بنابراین کاربر نمی‌دونه چه مقدار گس باید بفرسته. 
 
-Since `view` functions don't cost gas when called externally, we can simply use a for-loop in `getZombiesByOwner` to iterate the entire zombies array and build an array of the zombies that belong to this specific owner. Then our `transfer` function will be much cheaper, since we don't need to reorder any arrays in storage, and somewhat counter-intuitively this approach is cheaper overall.
+> نکته: البته می‌تونیم آخرین زامبی آرایه رو انتقال بدیم و فقط اون خانه رو پر کنیم اما در اینصورت باید در هر بار انتقال ترتیب ارتش زامبی رو هم درست کنیم.
+چون توابع `view` در صورتی که به صورت خارجی صدا زده شوند، گس مصرف نمی‌کنند، می‌تونیم در تابع `getZombiesByOwner`  از حلقه for برای به‌روزرسانی آرایه استفاده کنیم. در این صورت تابع `انتقال` ما خیلی ارزانتر می‌شه.
 
-## Using `for` loops
+## استفاده از حلقه `for`
 
-The syntax of `for` loops in Solidity is similar to JavaScript.
 
-Let's look at an example where we want to make an array of even numbers:
+سینتکس حلقه `for` در سالیدیتی مشابه جاوااسکریپت است.
+
+مثالی رو برای تشکیل آرایه‌ای از اعداد زوج ببینیم:
 
 ```
 function getEvens() pure external returns(uint[]) {
@@ -301,20 +302,23 @@ function getEvens() pure external returns(uint[]) {
 }
 ```
 
-This function will return an array with the contents `[2, 4, 6, 8, 10]`.
+این تابع هر آرایه‌ای با محتوای `[2, 4, 6, 8, 10]` برمی‌گردونه.
 
-## Put it to the test
+## دست به کد شو
 
-Let's finish our `getZombiesByOwner` function by writing a `for` loop that iterates through all the zombies in our DApp, compares their owner to see if we have a match, and pushes them to our `result` array before returning it.
+بیایید تابع `getZombiesByOwner`  رو با نوشتن یک حلقه `for`  تموم کنیم این حلقه روی زامبی‌های همه کاربران اجرا می‌شه تا ارتش مناسب رو پیدا کنه و در نهایت نتیجه رو در `result` ذخیره می کنه.
 
-1. Declare a `uint` called `counter` and set it equal to `0`. We'll use this variable to keep track of the index in our `result` array.
 
-2. Declare a `for` loop that starts from `uint i = 0` and goes up through `i < zombies.length`. This will iterate over every zombie in our array.
+۱. متغیری به نام `counter`  از نوع `uint` با مقدار `0` معرفی کنید. این متغیر ایندکس آرایه `result` رو ذخیره می‌کنه.
 
-3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
+۲. یک حلقه `for` با شروع از `uint i = 0`  و پایان  `i < zombies.length`  تعریف کنید.
 
-4. Inside the `if` statement:
-   1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
-   2. Increment `counter` by 1 (see the `for` loop example above).
+۳. داخل حلقه `for`  یک عبارت `if` بنویسید که چک می‌کند `zombieToOwner[i]`  برابر `_owner`  است یا خیر. این مورد برای بررسی دو آدرس است.
 
-That's it — the function will now return all the zombies owned by `_owner` without spending any gas.
+۴. داخل عبارت `if` :
+  الف. ID زامبی را با تخصیص مقدار i به `result[counter]`  به  `result`  دهید.
+  ب. مقدار `counter` را یک واحد افزایش دهید.
+    
+
+تمام! حالا تابع تمامی زامبی‌های `_owner` رو بدون ارسال گس برمی‌گردونه.
+

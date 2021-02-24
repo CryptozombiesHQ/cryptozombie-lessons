@@ -1,6 +1,6 @@
 ---
-title: Saving Gas With 'View' Functions
-actions: ['checkAnswer', 'hints']
+title: صرفه‌جویی در مصرف گس با استفاده از توابع 'View'
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -227,33 +227,35 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+عالیه! حالا زامبی‌های مرحله بالاتر یه سری توانایی‌های خاص دارند و این باعث می‌شه که کاربر تشویق شه تا زامبی رو به اون مراحل برسونه. هر زمانی می‌تونیم از این جور توانایی‌های اضافه کنیم.
 
-Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
+بیایین یک تابع دیگه اضافه کنیم: می‌خوایم تابعی به اسم `getZombiesByOwner` برای مشاهده کل ارتش زامبی‌های یک کاربر  بسازیم.
 
-Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `getZombiesByOwner`.
+این تابع فقط نیاز به خوندن داده از بلاکچین داره پس می‌تونیم `view` تعریفش کنیم. و در ادامه درباره تاثیر این نوع توابع در مصرف گس صحبت می‌کنیم:
 
-This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+## توابع view هزینه گس ندارند
 
-## View functions don't cost gas
+زمانی که توابع `view` بصورت خارجی توسط کاربر صدا زده می‌شن هزینه گس ندارند.
 
-`view` functions don't cost any gas when they're called externally by a user.
+دلیل این مسئله اینه که توابع `view` چیزی رو در بلاکچین تغییر نمی‌دهند و فقط داده رو می‌خونن. پس وقتی تابع رو به عنوان `view` تعریف می‌کنیم به `web3.js` می‌گه که برای اجرای تابع فقط نیاز به ارسال درخواست به اتریوم محلی (local) دارهو نیازی به ایجاد تراکنش در بلاکچین نداره (عملی که باید روی تمامی نودها اعمال شه و باعث مصرف گس می‌شه).
 
-This is because `view` functions don't actually change anything on the blockchain – they only read the data. So marking a function with `view` tells `web3.js` that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+بعدا درباره تنطیمات web3.js روی نو خودتون صحبت می‌کنیم. اما نکته مهمی که برای بهینه‌سازی دپ‌مون یا گرفتیم اینه که تا جایی که ممکنه توابع رو به صورت `external view` تعریف کنیم.
 
-We'll cover setting up web3.js with your own node later. But for now the big takeaway is that you can optimize your DApp's gas usage for your users by using read-only `external view` functions wherever possible.
+> نکته: اگر یک تابع `view` به صورت داخلی و توسط یک تابع دیگر درون همون قرارداد صدا زده شه دیگه یک تابع `view` نیست و گس مصرف می‌کنه. به این دلیل که تابع دیگر روی اتریوم تراکنش داره و نیاز به تایید همه نودها داره. بنابراین توابع `view` تنها زمانی رایگان هستند که به صورت خارجی صدا زده شوند.
 
-> Note: If a `view` function is called internally from another function in the same contract that is **not** a `view` function, it will still cost gas. This is because the other function creates a transaction on Ethereum, and will still need to be verified from every node. So `view` functions are only free when they're called externally.
+## دست به کد شو
 
-## Put it to the test
+می‌خوایم تابعی بنویسیم که کل ارتش زامبی کاربر رو برگردونه. برای نمایش پروفایل کاربر همراه با ارتش زامبی باید این تابع رو از `web3.js` صدا بزنیم.
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from `web3.js` if we want to display a user profile page with their entire army.
+منطق این تابع کمی پیچیده است، بنابراین پیاده‌سازیش چند درس طول می‌کشه.
 
-This function's logic is a bit complicated so it will take a few chapters to implement.
+۱. تابعی به اسم `getZombiesByOwner` بنویسید. یک آرگومان از نوع `address` به نام `_owner` داشته باشه.
 
-1. Create a new function named `getZombiesByOwner`. It will take one argument, an `address` named `_owner`.
+۲. بیایین تابع رو بصورت `external view` تعریف کنیم تا از `web3.js` صداش کنیم و هزینه گس هم نداشته باشه.
 
-2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
+۳. تابع باید یک `uint[]` برگردونه (آرایه‌ای از `uint`).
 
-3. The function should return a `uint[]` (an array of `uint`).
-
-Leave the function body empty for now, we'll fill it in in the next chapter.
+بدنه تابع رو در درس‌های بعد تکمیل می‌کنیم.
+</div>

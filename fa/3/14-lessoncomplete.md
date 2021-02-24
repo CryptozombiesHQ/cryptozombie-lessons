@@ -1,6 +1,6 @@
 ---
-title: Lesson 3 Complete!
-actions: ['checkAnswer', 'hints']
+title: اتمام فصل ۳
+actions: ['بررسی پاسخ', 'راهنمایی']
 material:
   lessonComplete:
     answer: 1

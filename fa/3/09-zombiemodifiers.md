@@ -1,6 +1,6 @@
 ---
-title: Zombie Modifiers
-actions: ['checkAnswer', 'hints']
+title: تغییردهنده‌های زامبی
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -212,15 +212,18 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+حالا با استفاده از تغییردهنده `aboveLevel` تعدای تابع می‌نویسیم.
 
-Now let's use our `aboveLevel` modifier to create some functions.
+این بازی ویژگی‌های داره که به کاربر اجازه می‌ده تغییراتی در زامبی‌ها ایجاد کنن:
 
-Our game will have some incentives for people to level up their zombies:
+- کاربران می‌تونن اسم زامبی‌های مرحله ۲ به بالا رو تغییر بدن.
+- کاربران می‌تونن DNA زامبی‌های مرحله ۲۰ بالا رو تغییر بدن.
 
-- For zombies level 2 and higher, users will be able to change their name.
-- For zombies level 20 and higher, users will be able to give them custom DNA.
+در ادامه این عملکردها رو پیاده‌سازی می‌کنیم، کد مقابل مثالی از فصل قبل است:
 
-We'll implement these functions below. Here's the example code from the previous lesson for reference:
+</div>
 
 ```
 // A mapping to store a user's age:
@@ -237,13 +240,15 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
   // Some function logic
 }
 ```
+<div dir="rtl">
 
-## Put it to the test
+## دست به کد شو
 
-1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string`), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
+۱. تابعی به نام `changeName` از نوع `external` بنویسید. دو آرگومان می‌گیره: `_zombieId` (از نوع `uint`) و `_newName` (از نوع `string`) و . باید تغییردهنده `aboveLevel` رو داشته باشه و مقدار `2` رو برای `_level` پارامتر بفرسته.(فراموش نکنید `_zombieId` رو هم بفرستید)
 
-2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
+۲. در این تابع  اول از همه باید بررسی کنیم که `msg.sender` برابر `zombieToOwner[_zombieId]`باشه. از یک عبارت `require` استفاده کنید.
 
-3. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+۳. سپس تابع باید `zombies[_zombieId].name` رو برابر `_newName` قرار بده.
 
-4. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
+۴. تابعی دیگری به نام `changeDna` بنویسید. تعریف و محتواش تقریبا شبیه تابع `changeName` خواهد بود، فقط آرگومان دوم `_newDna` (از نوع `uint`) باشه و باید مقدار `20` رو برای پارامتر `_level` بفرسته. و به جای تغییر اسم زامبی باید `dna` زامبی رو برابر `_newDna` بذاره.
+</div>

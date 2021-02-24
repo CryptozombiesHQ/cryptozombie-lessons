@@ -1,6 +1,6 @@
 ---
-title: Storage is Expensive
-actions: ['checkAnswer', 'hints']
+title: ذخیره‌سازی در storage گران است
+actions: ['بررسی پاسخ', 'راهنمایی']
 requireLogin: true
 material:
   editor:
@@ -232,22 +232,28 @@ material:
 
       }
 ---
+<div dir="rtl">
+  
+یکی از پرهزینه‌ترین عملیات در سالیدیتی استفاده از `storage` است، خصوصا نوشتن در آن.
 
-One of the more expensive operations in Solidity is using `storage` — particularly writes.
+دلیلش اینه که هر بار که یک قسمت از داده رو تغییر می‌دین یا داده‌ای نوشته می‌شه، به صورت دائمی رو بلاکچین نوشته می‌شه. و هزاران نود در سراسر جهان باید اون داده رو روی هارد فیزیکی‌شون ذخیره کنند و با رشد و توسعه بلاکچین حجم این داده‌ها بالاتر می‌ره، بنابراین هزینه‌ای برای این کار در نظر گرفته شده است.
 
-This is because every time you write or change a piece of data, it’s written permanently to the blockchain. Forever! Thousands of nodes across the world need to store that data on their hard drives, and this amount of data keeps growing over time as the blockchain grows. So there's a cost to doing that.
 
-In order to keep costs down, you want to avoid writing data to storage except when absolutely necessary. Sometimes this involves seemingly inefficient programming logic — like rebuilding an array in `memory` every time a function is called instead of simply saving that array in a variable for quick lookups. 
+برای کم کردن هزینه‌ها، باید فقط در زمان لزوم روی  `storage` داده بنویسید. و بعضی مواقع ممکنه از لحاظ برنامه‌نویسی بهینه به نظر نیاد، مثل به‌روزرسانی آرایه در حافظه  `memory` هر بار که تابع صدا زده می‌شه، به جای ذخیره اون آرایه در یک متغیر.
 
-In most programming languages, looping over large data sets is expensive. But in Solidity, this is way cheaper than using `storage` if it's in an `external view` function, since `view` functions don't cost your users any gas. (And gas costs your users real money!).
+در اکثر زبان‌های برنامه‌نویسی لوپ زدن روی مجموعه‌داده حجیم کار پرهزینه‌ایه، اما در سالیدیتی این کار بسیار کم‌هزینه‌تر از استفاده از `storage`  در صورتی که تابع `external view` تعریف شده باشه، چون توابع `view` هزینه‌ای برای کاربر ندارند.
 
-We'll go over `for` loops in the next chapter, but first, let's go over how to declare arrays in memory.
 
-## Declaring arrays in memory
+درباره حلقه `for` در درس بعد صحبت می‌کنیم اما الان ببینیم که چطور باید در حافظه آرایه تعریف کنیم.
 
-You can use the `memory` keyword with arrays to create a new array inside a function without needing to write anything to storage. The array will only exist until the end of the function call, and this is a lot cheaper gas-wise than updating an array in `storage` — free if it's a `view` function called externally.
+## تعریف آرایه در حافظه
 
-Here's how to declare an array in memory:
+
+برای ایجاد یک آرایه داخل تابع می‌تونید از کلمه کلیدی `memory` استفاده کنید بدون نیاز به نوشتن در  `storage`. آرایه در زمان اجرای تابع وجود خواهد داشت و این کار بسیار ارزانتر (از لحاظ مصرف گس) از به‌روزرسانی آرایه در  `storage`  خواهد بود و رایگانه اگر تابع از نوع `view` باشه و بصورت خارجی صدا زده شه.
+
+مثال زیر نشون می‌ده چطوری آرایه رو در حافظه تعریف کنید:
+
+</div>
 
 ```
 function getArray() external pure returns(uint[]) {
@@ -261,17 +267,21 @@ function getArray() external pure returns(uint[]) {
   return values;
 }
 ```
+<div dir="rtl">
+  
 
-This is a trivial example just to show you the syntax, but in the next chapter we'll look at combining this with `for` loops for real use-cases.
+این یک مثال برای نشان دادن سینتکس بود، در درس بعد با حلقه `for` و طرز استفاده ازش آشنا می‌شیم.
 
->Note: memory arrays **must** be created with a length argument (in this example, `3`). They currently cannot be resized like storage arrays can with `array.push()`, although this may be changed in a future version of Solidity.
+> نکته: طول آرایه‌های حافظه **باید** مشخص باشد (در این مثال `3`). در حال حاضر نمی‌شه اندازه‌شون رو مثل آرایه‌های ذخیره شده در storage با `array.push()` تغییر داد اما شاید در نسخه‌های بعدی سالیدیتی این ویژگی بهش اضافه شه.
 
-## Put it to the test
+## دست به کد شو
 
-In our `getZombiesByOwner` function, we want to return a `uint[]` array with all the zombies a particular user owns.
+در تابع `getZombiesByOwner` می‌خواهیم یک آرایه از نوع `uint[]` شامل زامبی‌های یک کاربر را برگردونه.
 
-1. Declare a `uint[] memory` variable called `result`
+۱. متغیری از نوع `uint[] memory` به نام `result` تعریف کنید.
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+۲. مقدار متغیر را برابر آرایه‌ای جدید از نوع `uint` قرار دهید.  طول آرایه برابر تعداد زامبی‌های یک کاربر خواهد بود که با استفاده از `mapping` با `ownerZombieCount[_owner]` می‌تونیم مقدارش رو چک کنیم.
 
-3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
+۳. در انتهای تابع مقدار `result` رو برگردانید. فعلا آرایه خالی است ولی در درس بعد آرایه رو تکمیل می‌کنیم.
+
+</div>
