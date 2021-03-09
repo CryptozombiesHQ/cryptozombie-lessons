@@ -7,13 +7,10 @@ material:
   lessonComplete: 1
 ---
 
-You finished testing the game. You are nothing short of extraordinary!
+Awesome, you've completed Lesson 2 of our series about building and interacting with an oracle.
 
-Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
+Because we're just building an oracle for demo purposes, we've made a bunch of decisions that simplified things a bit. For example, think about what would happen when you bring the oracle down for an upgrade. Yeah, even if it'll take just a few minutes until you bring it back online, all the requests made during this period will be lost. And there's no way to notify the app that a particular request hasn't been processed. A solution for this is to keep track of the last block that got processed, and, every time the oracle starts, it should take it from there.
 
-The important things to remember are:
+A production-ready oracle should take care of this, and a few other things, of which, the most important is: how to make the oracle more **_decentralized_**. And this is exactly what we'll cover next.
 
-- Make sure you create a separate test for each function in your game.
-- Keep everything clearly labelled and organized
-- Make use of time travelling
-- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
+Stay tuned for our next lesson!
