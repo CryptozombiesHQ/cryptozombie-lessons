@@ -1,12 +1,12 @@
 ---
-title: How to Build an Oracle - Part 3
-header: How to Build an Oracle - Part 3
-path: solidity_advanced
-publishedOn: Cryptozombies
+title: 搭建僵尸工厂
+header: 人类，欢迎你
+roadmap: roadmap.jpg
+path: solidity
 ---
 
-Now that you've got a bit of experience under your belt, we're going to dive into some of the more technical aspects of writing an oracle.
+你认为你可以当一个合格的 **CryptoZombie**, 嗯？
 
-Remember that, even if you've covered a lot of ground, your oracle is still somehow centralized, meaning that **only the owner** is allowed to update the ETH price.
+这个教程会教你如何搭建一个**以太网的游戏**。
 
-In this lesson, we'll show you how to make your oracle more decentralized.
+此课程为 Solidity 初学者设计，需要你对其他的程序语言有所了解（如 JavaScript)。
