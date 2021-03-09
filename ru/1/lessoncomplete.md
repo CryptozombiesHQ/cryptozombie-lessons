@@ -7,4 +7,8 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You have completed Lesson 1 of the CryptoZombies Libra course. You’ve learned to create accounts, check balances, view a list of accounts and send transactions. You’re officially one step closer to being a Libra developer.
+Awesome!
+
+You just issued a BEP-2 Token on the Binance test net and minted 1 billion tokens.
+
+But this is just an appetizer and we're working on more cool stuff. In the next lessons, we'll show you how to ...
