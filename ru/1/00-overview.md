@@ -1,16 +1,12 @@
 ---
-title: Advanced zkSync Concepts
-header: Advanced zkSync Concepts
-publishedOn: Cryptozombies
-path: beyond_ethereum
+title: Создание Зомбо-фабрики
+header: Добро пожаловать, человек!
+roadmap: roadmap.jpg
+path: solidity
 ---
 
-Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
+Так вы полагаете, что у вас есть всё необходимое, чтобы стать **КриптоЗомби**?
 
-You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
+Этот курс научит вас тому, как **построить игру на Ethereum**.
 
-If this snippet gets executed, what will be the output?
-
-If you answered `false`, then you’re set!
-
-We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17">Lesson 17</a> before starting this one.
+Он предназначен для начинающих программистов на Solidity, но предполагается, что у вас есть некоторый опыт программирования на другом языке (например, Javascript).
