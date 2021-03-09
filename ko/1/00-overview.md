@@ -1,12 +1,12 @@
 ---
-title: How to Build an Oracle - Part 3
-header: How to Build an Oracle - Part 3
-path: solidity_advanced
-publishedOn: Cryptozombies
+title: Making the Zombie Factory
+header: Welcome, human!
+roadmap: roadmap.jpg
+path: solidity
 ---
 
-Now that you've got a bit of experience under your belt, we're going to dive into some of the more technical aspects of writing an oracle.
+So you think you have what it takes to become a **CryptoZombie**, huh?
 
-Remember that, even if you've covered a lot of ground, your oracle is still somehow centralized, meaning that **only the owner** is allowed to update the ETH price.
+This course will teach you how to **build a game on Ethereum**.
 
-In this lesson, we'll show you how to make your oracle more decentralized.
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).
