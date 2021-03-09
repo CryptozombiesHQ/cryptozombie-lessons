@@ -1,23 +1,14 @@
 ---
-title: '¡Lección 1 Completa!'
+title: Lesson Complete!
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - 'checkAnswer'
+  - 'hints'
 material:
-  lessonComplete:
-    answer: 1
+  lessonComplete: 1
 ---
 
-¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
+Congratulations!
 
-# Pasos Siguientes
+You’ve made it to the end! By completing this lesson, you should have a good grasp of the basic functions and concepts of zkSync.
 
-Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
-
-### 1. Inicia sesión para guardar tu progreso
-
-***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
-
-### 2. Comparte tu zombi con tus amigos
-
-***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
