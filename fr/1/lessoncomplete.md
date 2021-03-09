@@ -3,20 +3,18 @@ title: Lesson Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
+requireLogin: true
 material:
   lessonComplete: 1
 ---
 
-Well done!👏🏻👏🏻👏🏻
+Congratulations, you’ve made it to the end!
 
-You mastered the art of deploying smart contracts using **Truffle**!
+In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
 
-Remember, building on top of **_Loom_** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+In the next lesson, we'll put together the missing pieces by implementing:
 
-Another thing to remember is how similar deploying to **_Loom_** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+* The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
+* A bare-bones client that ties everything together.
 
-Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
-
-To further your knowledge, head over to the <a href="https://loomx.io/developers/en/intro-to-loom.html" target=_blank>Developer's Documentation</a> page.
-
-Happy coding!
+Until then, stay tuned and happy coding!
