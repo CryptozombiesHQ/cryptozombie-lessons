@@ -130,7 +130,7 @@ contract Sandwich {
 contract BLT is Sandwich {
   uint private baconSandwichesEaten = 0;
 
-  function eatWithBacon() public returns (string) {
+  function eatWithBacon() internal returns (string) {
     baconSandwichesEaten++;
     // We can call this here because it's internal
     eat();
