@@ -3,18 +3,14 @@ title: Lesson Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
-requireLogin: true
 material:
   lessonComplete: 1
 ---
 
-Congratulations, you’ve made it to the end!
+Well done! You've now implemented an application that can deposit, transfer, and withdraw multiple assets. If you want to make payments using ETH again, you just need to set the value of the `token` variable back to `ETH`, and then update the `amountToDeposit`, `amountToTransfer`, and `amountToWithdraw` variables accordingly.
 
-In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
+You could also use <a href="https://github.com/tj/commander.js/" target=_blank>Commander.js</a> or a similar library to allow your users to pass the token, the operation they want to perform, and the amount as command-line arguments, but this is beyond the scope of this tutorial.
 
-In the next lesson, we'll put together the missing pieces by implementing:
+The lessons in this series were aimed at getting you familiarized with the zkSync protocol. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready application!💪🏻
 
-* The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
-* A bare-bones client that ties everything together.
-
-Until then, stay tuned and happy coding!
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
