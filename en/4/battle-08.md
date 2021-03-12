@@ -276,7 +276,7 @@ material:
           Zombie storage myZombie = zombies[_zombieId];
           Zombie storage enemyZombie = zombies[_targetId];
           uint rand = randMod(100);
-          if (rand <= attackVictoryProbability) {
+          if (rand < attackVictoryProbability) {
             myZombie.winCount++;
             myZombie.level++;
             enemyZombie.lossCount++;
@@ -288,11 +288,11 @@ material:
 
 Now that we have a `winCount` and `lossCount`, we can update them depending on which zombie wins the fight.
 
-In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
+In chapter 6 we calculated a random number from 0 to 99. Now let's use that number to determine who wins the fight, and update our stats accordingly.
 
 ## Put it to the test
 
-1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attackVictoryProbability`.
+1. Create an `if` statement that checks if `rand` is **_less than** `attackVictoryProbability`.
 
 2. If this condition is true, our zombie wins! So:
 
