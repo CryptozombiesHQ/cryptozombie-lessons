@@ -292,7 +292,7 @@ In chapter 6 we calculated a random number from 0 to 99. Now let's use that numb
 
 ## Put it to the test
 
-1. Create an `if` statement that checks if `rand` is **_less than** `attackVictoryProbability`.
+1. Create an `if` statement that checks if `rand` is **_less than_** `attackVictoryProbability`.
 
 2. If this condition is true, our zombie wins! So:
 
