@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -23,33 +23,33 @@ material:
 
       Zombie[] public zombies;
 
-      function _createZombie(string _name, uint _dna) private {
+      function _createZombie(string memory _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       // and fire it here
       }
 
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _generateRandomDna(string memory _str) private view returns (uint) {
       uint rand = uint(keccak256(abi.encodePacked(_str)));
       return rand % dnaModulus;
       }
 
-      function createRandomZombie(string _name) public {
+      function createRandomZombie(string memory _name) public {
       uint randDna = _generateRandomDna(_name);
       _createZombie(_name, randDna);
       }
 
       }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       event NewZombie(uint zombieId, string name, uint dna);
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; emit NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
-      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
+      function _createZombie(string memory _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; emit NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
+      function createRandomZombie(string memory _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
 
@@ -62,7 +62,7 @@ Example:
     // declare the event
     event IntegersAdded(uint x, uint y, uint result);
     
-    function add(uint _x, uint _y) public {
+    function add(uint _x, uint _y) public returns (uint) {
       uint result = _x + _y;
       // fire an event to let the app know the function was called:
       emit IntegersAdded(_x, _y, result);
@@ -72,9 +72,9 @@ Example:
 
 Your app front-end could then listen for the event. A javascript implementation would look something like:
 
-    YourContract.IntegersAdded(function(error, result) { 
+    YourContract.IntegersAdded(function(error, result) {
       // do something with result
-    }
+    })
     
 
 # Put it to the test
