@@ -1,18 +1,19 @@
 ---
-title: How to Build an Oracle
-header: How to Build an Oracle
-path: solidity_advanced
+title: "Libra Basics"
+header: "Libra Basics"
+roadmap: roadmap.jpg
+path: beyond_ethereum
 publishedOn: Cryptozombies
 ---
 
-By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. If so, you may already have noticed that smart contracts can't directly access data from the outside world through an HTTP request or something similar. Instead, smart contracts pull data through something called an **_oracle_**.
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**.
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
 
-That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
 
-The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
 
-Time to write some code!
+Course Time: 30 Minutes - 1 Hour
