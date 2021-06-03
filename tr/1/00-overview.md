@@ -1,26 +1,17 @@
 ---
-title: "Deploying DApps with Truffle"
-header: "Deploying DApps with Truffle"
-roadmap: roadmap.jpg
+title: How to Build an Oracle - Part 2
+header: How to Build an Oracle - Part 2
 path: solidity_advanced
-position: 2
 publishedOn: Cryptozombies
 ---
 
-Remember that we promised to teach you how to deploy a smart contract?
+Welcome to the second part of our series about building an oracle. This lesson picks up where we left off last time, and we're going to look at how to:
 
-It's been a while, but the time has come!
+* Implement the JavaScript component of the oracle.
+* Write a simple Node.js client that interacts with the oracle. To keep things simple, you won't be building a fully-fledged web interface, but the code you'll write in this lesson will help you understand all the key aspects.
+* To glue everything together, we'll teach you how to deploy the smart contracts and run the oracle.
 
-In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
+Note that this is an advanced lesson and it requires:
 
-And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
-
-Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
-
-Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
-
-In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
-
-On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
-
-Enough talking! Let's get started😉
+* A bit of **JavaScript** knowledge.
+* A basic understanding of `web3`. If you don’t know how `web3` works, don't worry. We've got you covered. Just head over to <a href="https://cryptozombies.io/en/lesson/6" target=_blank>Lesson 6</a> first.
