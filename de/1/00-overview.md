@@ -1,26 +1,16 @@
 ---
-title: All About Binance Chain
-header: All About Binance Chain
-roadmap: roadmap.jpg
-path: beyond_ethereum
+title: Advanced zkSync Concepts
+header: Advanced zkSync Concepts
 publishedOn: Cryptozombies
+path: beyond_ethereum
 ---
 
-Have you seen some of the recent updates from Loom Network?
+Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
 
-If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
+You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
 
-Why should you care?
+If this snippet gets executed, what will be the output?
 
-Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
+If you answered `false`, then you’re set!
 
-We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
-
-In this lesson, we'll walk you through how to:
-
-* Create your own token on the Binance Chain
-* Freeze and unfreeze tokens
-* Place an order on the Binance DEX
-
-Let's get started...
-
+We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17" >Lesson 17</a> before starting this one.
