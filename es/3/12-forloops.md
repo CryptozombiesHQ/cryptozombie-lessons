@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -20,7 +20,7 @@ material:
         _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         zombies[_zombieId].name = _newName;
         }
@@ -30,15 +30,15 @@ material:
         zombies[_zombieId].dna = _newDna;
         }
 
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
         uint[] memory result = new uint[](ownerZombieCount[_owner]);
-        // Empieza aquí
+        // Start here
         return result;
         }
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -65,7 +65,11 @@ material:
         kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function _triggerCooldown(Zombie storage _zombie) internal {
+        _zombie.readyTime = uint32(now + cooldownTime);
+        }
+
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
@@ -74,6 +78,7 @@ material:
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -84,7 +89,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -108,19 +113,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         randDna = randDna - randDna % 100;
@@ -129,12 +134,12 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
-        * @title Apropiable
-        * @dev El Contrato apropiable tiene una dirección de propietario, y proporciona un control de autorización de funciones básico.
-        * Esto simplifica la implementación de "permisos de usuario".
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
         address private _owner;
@@ -205,13 +210,13 @@ material:
         }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefeeding.sol";
       contract ZombieHelper is ZombieFeeding {
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
-      function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
+      function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
       function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].dna = _newDna; }
-      function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
+      function getZombiesByOwner(address _owner) external view returns(uint[] memory) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
 
@@ -226,7 +231,7 @@ Para nuestra función `getZombiesByOwner`, una implementación nativa sería gua
 
 De esta forma cada vez que creemos un nuevo zombi, simplemente tenemos que usar `ownerToZombies[owner].push(zombieId)` para añadirlo al array del ejército de zombis de ese usuario. Y `getZombiesByOwner` sería una función tan sencilla como:
 
-    function getZombiesByOwner(address _owner) external view returns (uint[]) {
+    function getZombiesByOwner(address _owner) external view returns (uint[] memory) {
       return ownerToZombies[_owner];
     }
     
@@ -251,13 +256,13 @@ La sintaxis de los bucles `for` en Solidity es similar a JavaScript.
 
 Vamos a ver un ejemplo donde queremos hacer un array de números pares:
 
-    function getEvens() pure external returns(uint[]) {
+    function getEvens() pure external returns(uint[] memory) {
       uint[] memory evens = new uint[](5);
-      // Guardamos el índice del nuevo array:
+      // Keep track of the index in the new array:
       uint counter = 0;
-      // Iteramos del 1 al 10 con un bucle for:
+      // Iterate 1 through 10 with a for loop:
       for (uint i = 1; i <= 10; i++) {
-        // Si `i` es par...
+        // If `i` is even...
         if (i % 2 == 0) {
           // Añadelo a nuestro array
           evens[counter] = i;
