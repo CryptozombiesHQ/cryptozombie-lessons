@@ -1,12 +1,19 @@
 ---
-title: Creando la Fabbrica di Zombie
-header: Benvenuto, umano!
+title: "Libra Basics"
+header: "Libra Basics"
 roadmap: roadmap.jpg
-path: solidity
+path: beyond_ethereum
+publishedOn: Cryptozombies
 ---
 
-Quindi pensi di avere quello che serve per diventare un **CryptoZombie**, huh?
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-Questo corso vi insegnerà come **creare un gioco su Ethereum**.
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-È stato designato per i principianti di Solidity, ma si presuppone che tu abbia qualche esperienza di programmazione in un'altro linguaggio (ad es. Javascript).
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
+
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
+
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
+
+Course Time: 30 Minutes - 1 Hour
