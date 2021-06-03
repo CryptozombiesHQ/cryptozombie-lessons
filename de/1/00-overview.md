@@ -1,17 +1,18 @@
 ---
-title: How to Build an Oracle - Part 2
-header: How to Build an Oracle - Part 2
+title: How to Build an Oracle
+header: How to Build an Oracle
 path: solidity_advanced
 publishedOn: Cryptozombies
 ---
 
-Welcome to the second part of our series about building an oracle. This lesson picks up where we left off last time, and we're going to look at how to:
+By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. If so, you may already have noticed that smart contracts can't directly access data from the outside world through an HTTP request or something similar. Instead, smart contracts pull data through something called an **_oracle_**.
 
-* Implement the JavaScript component of the oracle.
-* Write a simple Node.js client that interacts with the oracle. To keep things simple, you won't be building a fully-fledged web interface, but the code you'll write in this lesson will help you understand all the key aspects.
-* To glue everything together, we'll teach you how to deploy the smart contracts and run the oracle.
+This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**.
 
-Note that this is an advanced lesson and it requires:
+In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
 
-* A bit of **JavaScript** knowledge.
-* A basic understanding of `web3`. If you don’t know how `web3` works, don't worry. We've got you covered. Just head over to <a href="https://cryptozombies.io/en/lesson/6" target=_blank>Lesson 6</a> first.
+That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
+
+The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+
+Time to write some code!
