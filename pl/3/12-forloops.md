@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -20,7 +20,7 @@ material:
         _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         zombies[_zombieId].name = _newName;
         }
@@ -30,7 +30,7 @@ material:
         zombies[_zombieId].dna = _newDna;
         }
 
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
         uint[] memory result = new uint[](ownerZombieCount[_owner]);
         // Start here
         return result;
@@ -38,7 +38,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -65,7 +65,11 @@ material:
         kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function _triggerCooldown(Zombie storage _zombie) internal {
+        _zombie.readyTime = uint32(now + cooldownTime);
+        }
+
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
@@ -74,6 +78,7 @@ material:
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -84,7 +89,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -108,19 +113,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         randDna = randDna - randDna % 100;
@@ -129,7 +134,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -205,13 +210,13 @@ material:
         }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefeeding.sol";
       contract ZombieHelper is ZombieFeeding {
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
-      function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
+      function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
       function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].dna = _newDna; }
-      function getZombiesByOwner(address _owner) external view returns(uint[]) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
+      function getZombiesByOwner(address _owner) external view returns(uint[] memory) { uint[] memory result = new uint[](ownerZombieCount[_owner]); uint counter = 0; for (uint i = 0; i < zombies.length; i++) { if (zombieToOwner[i] == _owner) { result[counter] = i; counter++; } } return result; }
       }
 ---
 
@@ -226,7 +231,7 @@ Dla naszej funkcji `getZombiesByOwner`, naiwnym byłoby zapisanie `mapowania` w�
 
 Wtedy za każdym razem, gdy tworzymy nowego Zombiaka, użyjemy po prostu `ownerToZombies[owner].push(zombieId)`, aby dodać go do tablicy Zombiaków właściciela. I `getZombiesByOwner` byłaby bardzo prostą funkcją:
 
-    function getZombiesByOwner(address _owner) external view returns (uint[]) {
+    function getZombiesByOwner(address _owner) external view returns (uint[] memory) {
       return ownerToZombies[_owner];
     }
     
@@ -251,13 +256,13 @@ Składnia pętli `for` w Solidity jest podobna do tej w JavaScripcie.
 
 Spójrzmy na przykład gdzie chcemy zrobić tablicę liczb parzystych:
 
-    function getEvens() pure external returns(uint[]) {
+    function getEvens() pure external returns(uint[] memory) {
       uint[] memory evens = new uint[](5);
-      // Śledź indeks w nowej tablicy:
+      // Keep track of the index in the new array:
       uint counter = 0;
-      // Iteruj od 1 do 10 za pomocą pętli for:
+      // Iterate 1 through 10 with a for loop:
       for (uint i = 1; i <= 10; i++) {
-        // Jeśli `i` jest parzyste...
+        // If `i` is even...
         if (i % 2 == 0) {
           // Dodaj to do naszej tablicy
           evens[counter] = i;
