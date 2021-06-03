@@ -3,6 +3,7 @@ title: Konstruiere eine Zombiefabrik
 header: Willkommen, Mensch!
 roadmap: roadmap.jpg
 path: solidity
+publishedOn: Cryptozombies
 ---
 
 Du denkst also, Du hast das Zeug ein **CryptoZombie** zu werden, huh?
