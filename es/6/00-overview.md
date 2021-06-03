@@ -3,6 +3,7 @@ title: App Front-ends & Web3.js
 header: "Lección 6: App Front-ends & Web3.js"
 roadmap: roadmap6.png
 path: solidity
+publishedOn: Cryptozombies
 ---
 
 ¿Has llegado muy lejos, eh?!
