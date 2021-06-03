@@ -1,10 +1,23 @@
 ---
-title: Lesson Complete!
+title: Lesson 1 Complete!
 actions:
   - 'checkAnswer'
   - 'hints'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
+
+# Next Steps
+
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
+
+### 1. Sign in to save your progress
+
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+
+### 2. Share your zombie with your friends
+
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
