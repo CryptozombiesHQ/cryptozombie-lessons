@@ -1,28 +1,26 @@
 ---
-title: Testing Smart Contracts with Truffle
-header: Testing Smart Contracts with Truffle
+title: All About Binance Chain
+header: All About Binance Chain
 roadmap: roadmap.jpg
-path: solidity_advanced
-position: 1
+path: beyond_ethereum
 publishedOn: Cryptozombies
 ---
 
-Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
+Have you seen some of the recent updates from Loom Network?
 
-So, go ahead and deploy the game to the mainnet. Enjoy your success!
+If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
 
-Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
+Why should you care?
 
-Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
+Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
 
-Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
+We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
 
-To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
+In this lesson, we'll walk you through how to:
 
-By the end of this lesson, you will be able to:
+* Create your own token on the Binance Chain
+* Freeze and unfreeze tokens
+* Place an order on the Binance DEX
 
-- Test your smart contracts with `Truffle` against `Ganache`
-- Use `Chai` to write more expressive assertions
-- Test against `Loom`😉
+Let's get started...
 
-Let's get started!
