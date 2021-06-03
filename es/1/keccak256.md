@@ -21,12 +21,12 @@ material:
 
       Zombie[] public zombies;
 
-      function _createZombie(string _name, uint _dna) private {
+      function _createZombie(string memory _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       }
 
-      function _generateRandomDna(string _str) private view returns (uint) {
-      // Empieza aquí
+      function _generateRandomDna(string memory _str) private view returns (uint) {
+      // start here
       }
 
       }
@@ -37,14 +37,14 @@ material:
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
+      function _createZombie(string memory _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
       }
 ---
 
 Queremos que nuestra función `_generateRandomDna` devuelva un valor (semi) aleatorio `uint`. Comó se puede conseguir esto?
 
-Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. A hash function basically maps an input into a random 256-bit hexidecimal number. Un pequeño cambio de la string puede suponer un cambio gigantesco en el hash.
+Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. Un pequeño cambio de la string puede suponer un cambio gigantesco en el hash.
 
 Es muy útil para muchas cosas, pero por ahora vamos a usarlo solamente para generar un número cuasi-aleatorio.
 
@@ -68,10 +68,10 @@ A veces es necesario convertir entre tipos de datos. Ésto podría ser un ejempl
 
     uint8 a = 5;
     uint b = 6;
-    // dará un error porque a * b devuelve un uint, y no un uint8:
-    uint8 c = a * b; 
-    // debemos forzar la variable b para que se convierta en un uint8
-    uint8 c = a * uint8(b); 
+    // throws an error because a * b returns a uint, not uint8:
+    uint8 c = a * b;
+    // we have to typecast b as a uint8 to make it work:
+    uint8 c = a * uint8(b);
     
 
 En el código de arriba, `a * b` devuelve un `uint`, pero estábamos intentando guardarlo como un `uint8`, lo que podría causar problemas. Casteándolo a `uint8`, funcionará y el compilador no nos dará error.
