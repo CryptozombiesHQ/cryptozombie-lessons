@@ -8,7 +8,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -51,7 +51,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
@@ -70,19 +70,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         randDna = randDna - randDna % 100;
@@ -91,12 +91,12 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefactory.sol";
       contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
       address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d; KittyInterface kittyContract = KittyInterface(ckAddress);
-      function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
+      function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; _targetDna = _targetDna % dnaModulus; uint newDna = (myZombie.dna + _targetDna) / 2; if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { newDna = newDna - newDna % 100 + 99; } _createZombie("NoName", newDna); }
       function feedOnKitty(uint _zombieId, uint _kittyId) public { uint kittyDna; (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId); feedAndMultiply(_zombieId, kittyDna, "kitty"); }
       }
 ---
@@ -115,7 +115,7 @@ Powiemy, że koto-Zombi mają `99` jako ostatnie cyfry DNA (bo koty mają 9 ży�
 
 Wyrażenia if w Solidity wyglądają jak w Javascripcie:
 
-    function eatBLT(string sandwich) public {
+    function eatBLT(string memory sandwich) public {
       // Remember with strings, we have to compare their keccak256 hashes
       // to check equality
       if (keccak256(abi.encodePacked(sandwich)) == keccak256(abi.encodePacked("BLT"))) {
@@ -128,7 +128,7 @@ Wyrażenia if w Solidity wyglądają jak w Javascripcie:
 
 Zaimplementujmy geny kota w kodzie Zombi.
 
-1. Najpierw, zmieńmy definicje funkcji `feedAndMultiply` tak, aby odbierała trzeci argument: `string` o nazwie `_species`
+1. First, let's change the function definition for `feedAndMultiply` so it takes a 3rd argument: a `string` named `_species` which we'll store in `memory`.
 
 2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing the `keccak256` hashes of `_species` and the string `"kitty"`. We can't directly pass strings to `keccak256`. Instead, we will pass `abi.encodePacked(_species)` as an argument on the left side and `abi.encodePacked("kitty")` as an argument on the right side.
 
