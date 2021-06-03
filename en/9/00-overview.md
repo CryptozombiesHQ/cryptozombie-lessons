@@ -3,6 +3,7 @@ title: "ERC721x: Multi Fungible Tokens"
 header: "ERC721x: Multi Fungible Tokens"
 roadmap: roadmap.jpg
 
+publishedOn: Cryptozombies
 ---
 
 Welcome, CryptoZombie!

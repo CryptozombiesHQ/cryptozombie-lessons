@@ -1,27 +1,26 @@
 ---
-title: How to Create a BEP-2 Token
-header: How to Create a BEP-2 Token
+title: All About Binance Chain
+header: All About Binance Chain
 roadmap: roadmap.jpg
+path: beyond_ethereum
+publishedOn: Cryptozombies
 ---
 
-Hey there, have you been reading our newsletter lately?
+Have you seen some of the recent updates from Loom Network?
 
-If not, here's the thing: we've been very busy building the best multichain network. So far, we've added support for Ethereum, Tron, and Binance. And more chains are on the roadmap😉.
+If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
 
-Why is this important, you ask?
+Why should you care?
 
-Well, integrating with the major blockchains gets your DApp exposed to the user base of all these chains combined. Moreover, you'll be able to accept a multitude of tokens as payment.
+Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
 
-Thus, if you choose to build your app **_Loom_**, you simply get to spend more time coding your awesome DApp.
+We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
 
-Now let's talk a bit about the Binance and BEP-2 tokens.
+In this lesson, we'll walk you through how to:
 
-**What is the BEP-2 standard?**
+* Create your own token on the Binance Chain
+* Freeze and unfreeze tokens
+* Place an order on the Binance DEX
 
-Good question! To answer it, I copied an pasted the following definition from the BEP-2 GitHub web page: "_The BEP2 standard describes a set of rules for token management within the Binance Chain ecosystem._"
+Let's get started...
 
-This is useful. But let me add something at least equally important. _Binance chain doesn’t provide support for smart contracts... but Loom does_. This allows you, as a developer, to build all sorts of cool stuff such as decentralized token swap service, a multi-collateral stable coin and so on and so forth.
-
-But first things first. In this lesson, we'll show you how to create a BEP-2 Token on the Binance chain.
-
-Let's get started!

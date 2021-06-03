@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         // 1. Import here
 
@@ -29,19 +29,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generateRandomDna(string memory _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -50,7 +50,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -77,7 +77,7 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
@@ -96,7 +96,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -172,7 +172,7 @@ material:
           }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./ownable.sol";
 
@@ -193,19 +193,19 @@ material:
           mapping (uint => address) public zombieToOwner;
           mapping (address => uint) ownerZombieCount;
 
-          function _createZombie(string _name, uint _dna) internal {
+          function _createZombie(string memory _name, uint _dna) internal {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
               emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generateRandomDna(string memory _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               require(ownerZombieCount[msg.sender] == 0);
               uint randDna = _generateRandomDna(_name);
               randDna = randDna - randDna % 100;
@@ -307,7 +307,7 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-- Constructors: `constructor()` is a **_constructor_**, which is an optional special function. It will get executed only one time, when the contract is first created.
+- Constructors: `function Ownable()` is a **_constructor_**, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
 - Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
 - `indexed` keyword: don't worry about this one, we don't need it yet.
 
