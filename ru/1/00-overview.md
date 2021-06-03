@@ -1,26 +1,19 @@
 ---
-title: All About Binance Chain
-header: All About Binance Chain
+title: "Libra Basics"
+header: "Libra Basics"
 roadmap: roadmap.jpg
 path: beyond_ethereum
 publishedOn: Cryptozombies
 ---
 
-Have you seen some of the recent updates from Loom Network?
+The Crypto Zombies War of 2038 has ended and it’s time for you to retire as a soldier and find a civilian job.
 
-If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
+You’ve decided to set up a shop. As a decorated war hero you know what the next generation of Crypto Zombie heroes will need on their quest for glory.
 
-Why should you care?
+This course will teach you the absolute basics of Libra by walking you through setting up a shop where the hero can buy goods from a shop keeper.
 
-Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
+We walk you through how to setup accounts for the hero and the shopkeeper, how to send money between them, and how to track the status of those transactions. All while interacting with a perfectly accurate simulation of the libra testnet. Once we get through the simulation, we'll teach you exactly how to install all the necessary tools to connect to the Libra testnet today.
 
-We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
+It's designed as a quick and easy introduction to interacting with Libra, no prior programming experiences required.
 
-In this lesson, we'll walk you through how to:
-
-* Create your own token on the Binance Chain
-* Freeze and unfreeze tokens
-* Place an order on the Binance DEX
-
-Let's get started...
-
+Course Time: 30 Minutes - 1 Hour
