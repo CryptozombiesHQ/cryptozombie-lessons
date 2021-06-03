@@ -7,13 +7,4 @@ material:
   lessonComplete: 1
 ---
 
-You finished testing the game. You are nothing short of extraordinary!
-
-Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
-
-The important things to remember are:
-
-- Make sure you create a separate test for each function in your game.
-- Keep everything clearly labelled and organized
-- Make use of time travelling
-- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
+Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.
