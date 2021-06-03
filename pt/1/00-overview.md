@@ -1,26 +1,26 @@
 ---
-title: All About Binance Chain
-header: All About Binance Chain
+title: "Deploying DApps with Truffle"
+header: "Deploying DApps with Truffle"
 roadmap: roadmap.jpg
-path: beyond_ethereum
+path: solidity_advanced
+position: 2
 publishedOn: Cryptozombies
 ---
 
-Have you seen some of the recent updates from Loom Network?
+Remember that we promised to teach you how to deploy a smart contract?
 
-If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
+It's been a while, but the time has come!
 
-Why should you care?
+In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
 
-Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
+And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
 
-We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
+Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
 
-In this lesson, we'll walk you through how to:
+Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
 
-* Create your own token on the Binance Chain
-* Freeze and unfreeze tokens
-* Place an order on the Binance DEX
+In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
 
-Let's get started...
+On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
 
+Enough talking! Let's get started😉
