@@ -3,6 +3,7 @@ title: Zombie atakują swoje ofiary
 header: Dotarłeś do drugiej lekcji 2!
 roadmap: roadmap2.jpg
 path: solidity
+publishedOn: Cryptozombies
 ---
 
 Wow. Szacunek! Jesteś lepszym programistą niż myślałem.
