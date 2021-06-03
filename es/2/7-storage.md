@@ -1,5 +1,5 @@
 ---
-title: Almacenamiento vs Memoria
+title: Storage vs Memory (Data location)
 actions:
   - 'comprobarRespuesta'
   - 'pistas'
@@ -8,17 +8,17 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
         contract ZombieFeeding is ZombieFactory {
 
-        // Empieza aquí
+        // Start here
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
@@ -37,19 +37,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) private {
+        function _createZombie(string memory _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
@@ -57,14 +57,14 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefactory.sol";
       contract ZombieFeeding is ZombieFactory {
       function feedAndMultiply(uint _zombieId, uint _targetDna) public { require(msg.sender == zombieToOwner[_zombieId]); Zombie storage myZombie = zombies[_zombieId]; }
       }
 ---
 
-En Solidity, hay dos lugares donde puedes guardar variables — en `storage` (almacenamiento) y en `memory` (memoria).
+In Solidity, there are two locations you can store variables — in `storage` and in `memory`.
 
 ***Storage*** se refiere a las variables guardadas permanentemente en la blockchain. Las variables de tipo ***Memory*** son temporales, y son borradas en lo que una función externa llama a tu contrato. Piensa que es como el disco duro vs la RAM de tu ordenador.
 
@@ -118,7 +118,7 @@ Cuando un zombi se alimente de otras formas de vida, su ADN se combinará con el
 
 1. Crea una función llamada `feedAndMultiply`. Recibirá dos parámetros: `_zombieId` (un `uint`) y `_targetDna` (también un `uint`). Está función deberá ser `public`.
 
-2. ¡No queremos que cualquier persona se alimente usando nuestro zombi! Así que primero, vamos a comprobar que somos dueños de ese zombi. Añade una declaración `require` para asegurar que `msg.sender` es igual al dueño del zombi (similar a como lo hicimos en la función `createRandomZombie`).
+2. We don't want to let someone else feed our zombie! Así que primero, vamos a comprobar que somos dueños de ese zombi. Add a `require` statement to verify that `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
     
     > Nota: De nuevo, como nuestro corrector de respuestas es primitivo, espera que `msg.sender` venga primero y marcará como respuesta incorrecta si cambias el orden. Pero normalmente cuando programes, podrás utilizar el orden que tu quieras — ambos son correctos.
 
