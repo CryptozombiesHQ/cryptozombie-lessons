@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,27 +21,27 @@ material:
 
       Zombie[] public zombies;
 
-      function _createZombie(string _name, uint _dna) private {
+      function _createZombie(string memory _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       }
 
-      // Empieza aquí
+      // start here
 
       }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _createZombie(string memory _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string memory _str) private view returns (uint) {
       }
       }
 ---
 
-En este capítulo aprenderemos sobre los ***valores de retorno*** de una función, y sobre modificadores de funciones.
+In this chapter, we're going to learn about function ***return values***, and function modifiers.
 
 ## Valores de Retorno
 
@@ -49,7 +49,7 @@ Para devolver un valor desde una función, la declaración es la siguiente:
 
     string greeting = "What's up dog";
     
-    function sayHello() public returns (string) {
+    function sayHello() public returns (string memory) {
       return greeting;
     }
     
@@ -62,7 +62,7 @@ La función de arriba no cambia el estado en Solidity, esto es que no cambia nin
 
 En este caso podríamos declararla como función ***view*** que significa que solo puede ver los datos pero no modificarlos:
 
-    function sayHello() public view returns (string) {
+    function sayHello() public view returns (string memory) {
     
 
 Solidity también contiene funciones ***pure***, que significa que ni siquiera puedes acceder a los datos de la aplicación. Por ejemplo:
@@ -80,7 +80,7 @@ Esta función no lee desde el estado de la aplicación - el valor devuelto depen
 
 Necesitaremos una función que nos ayude a generar un número aleatorio para el ADN a partir de una cadena de texto (string).
 
-1. Crea una función `private` la cual se llame `_generateRandomDna`. Recibirá un parámetro llamado `_str` (un `string`), y devolverá un `uint`.
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`. Don't forget to set the data location of the `_str` parameter to `memory`.
 
 2. Esta función tendrá que ver algunas de las variables de nuestro contrato, pero no modificará ninguna, así que la marcaremos como `view`.
 
