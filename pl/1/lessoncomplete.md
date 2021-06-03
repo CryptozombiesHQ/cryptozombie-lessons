@@ -1,23 +1,16 @@
 ---
-title: Lekcja 1 ukończona!
+title: Lesson Complete!
 actions:
-  - 'sprawdźOdpowiedź'
-  - 'podpowiedź'
+  - 'checkAnswer'
+  - 'hints'
 material:
-  lessonComplete:
-    answer: 1
+  lessonComplete: 1
 ---
 
-Gratulacje! Ukończyłeś lekcję 1 i stworzyłeś pierwszego zombie w swojej armii.
+Well done! You've now implemented an application that can deposit, transfer, and withdraw multiple assets. If you want to make payments using ETH again, you just need to set the value of the `token` variable back to `ETH`, and then update the `amountToDeposit`, `amountToTransfer`, and `amountToWithdraw` variables accordingly.
 
-# Kolejne Kroki
+You could also use <a href="https://github.com/tj/commander.js/" target=_blank>Commander.js</a> or a similar library to allow your users to pass the token, the operation they want to perform, and the amount as command-line arguments, but this is beyond the scope of this tutorial.
 
-To jest dopiero początek. Będziemy co tydzień wypuszczać nową lekcję CryptoZombies, aby rozbudowywać grę coraz bardziej i dalej rozwijać swoją armię zombie.
+The lessons in this series were aimed at getting you familiarized with the zkSync protocol. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready application!💪🏻
 
-### 1. Zaloguj się, aby zapisać swoje postępy
-
-***Zaloguj się*** aby zapisać swoje postępy klikając link "Zapisz postęp" u góry strony. Damy Ci znać, gdy tylko dodamy nową lekcję.
-
-### 2. Podziel się zombie ze swoimi przyjaciółmi
-
-***Podziel się*** swoim Zombiakiem na Twitterze, bla bla, itp. (zamieść obrazki / linki)
+Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
