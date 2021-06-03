@@ -7,15 +7,15 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
-      // Empieza aquí
+      //start here
 
       }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       uint dnaDigits = 16;
