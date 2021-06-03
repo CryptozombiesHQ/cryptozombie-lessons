@@ -1,26 +1,13 @@
 ---
-title: All About Binance Chain
-header: All About Binance Chain
+title: Creando la Fabbrica di Zombie
+header: Benvenuto, umano!
 roadmap: roadmap.jpg
-path: beyond_ethereum
+path: solidity
 publishedOn: Cryptozombies
 ---
 
-Have you seen some of the recent updates from Loom Network?
+Quindi pensi di avere quello che serve per diventare un **CryptoZombie**, huh?
 
-If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
+Questo corso vi insegnerà come **creare un gioco su Ethereum**.
 
-Why should you care?
-
-Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
-
-We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
-
-In this lesson, we'll walk you through how to:
-
-* Create your own token on the Binance Chain
-* Freeze and unfreeze tokens
-* Place an order on the Binance DEX
-
-Let's get started...
-
+È stato designato per i principianti di Solidity, ma si presuppone che tu abbia qualche esperienza di programmazione in un'altro linguaggio (ad es. Javascript).
