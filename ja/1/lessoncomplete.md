@@ -7,8 +7,13 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations!
+You finished testing the game. You are nothing short of extraordinary!
 
-You’ve made it to the end! By completing this lesson, you should have a good grasp of the basic functions and concepts of zkSync.
+Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+The important things to remember are:
+
+- Make sure you create a separate test for each function in your game.
+- Keep everything clearly labelled and organized
+- Make use of time travelling
+- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
