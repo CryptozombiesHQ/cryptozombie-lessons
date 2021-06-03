@@ -7,4 +7,16 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.
+Well done!👏🏻👏🏻👏🏻
+
+You mastered the art of deploying smart contracts using **Truffle**!
+
+Remember, building on top of **_Loom_** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
+
+Another thing to remember is how similar deploying to **_Loom_** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+
+Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
+
+To further your knowledge, head over to the <a href="https://loomx.io/developers/en/intro-to-loom.html" target=_blank>Developer's Documentation</a> page.
+
+Happy coding!
