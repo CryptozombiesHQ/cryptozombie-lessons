@@ -9,11 +9,11 @@ material:
     language: sol
     startingCode:
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         // 1. Importalo aquí
 
-        // 2. 
+        // 2. Inherit here:
         contract ZombieFactory {
 
         event NewZombie(uint zombieId, string name, uint dna);
@@ -31,19 +31,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         randDna = randDna - randDna % 100;
@@ -52,7 +52,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -79,7 +79,7 @@ material:
         kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
@@ -98,10 +98,12 @@ material:
 
         }
       "ownable.sol": |
+        pragma solidity >=0.5.0 <0.6.0;
+
         /**
-        * @title Apropiable
-        * @dev El Contraro Apropiable tiene una dirección de propietario, y proporciona un control de autorización básico
-        * funciones, esto simplifica la implementación de "permisos de usuario".
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
         */
         contract Ownable {
         address public owner;
@@ -172,7 +174,7 @@ material:
         }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./ownable.sol";
       contract ZombieFactory is Ownable {
       event NewZombie(uint zombieId, string name, uint dna);
@@ -180,9 +182,9 @@ material:
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
       mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
-      function _createZombie(string _name, uint _dna) internal { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; emit NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
-      function createRandomZombie(string _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
+      function _createZombie(string memory _name, uint _dna) internal { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; emit NewZombie(id, _name, _dna); }
+      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
+      function createRandomZombie(string memory _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); randDna = randDna - randDna % 100; _createZombie(_name, randDna); }
       }
 ---
 
@@ -276,7 +278,7 @@ Abajo está el contrato `Ownable` definido en la libreria Solidity de ***OpenZep
 
 Alguna de las cosas nuevas que no hemos visto todavía:
 
-- Constructors: `constructor()` is a ***constructor***, which is an optional special function. It will get executed only one time, when the contract is first created.
+- Constructors: `function Ownable()` is a ***constructor***, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
 - Modificadores de Funciones: `modifier onlyOwner()`. Los modificadores son como semi-funciones que son usadas para modificar otras funciones, normalmente para comprobar algunos requisitos antes de la ejecución. En este caso, `onlyOwner` puede ser utilizada para limitar el acceso para que **solo** el **dueño** del contrato pueda ejecutar esta función. Hablaremos sobre los modificadores en el siguiente capítulo, y que hace ese extraño `_;`.
 - Palabra clave `indexed`: no te preocupes por esto, no lo necesitaremos todavía.
 
