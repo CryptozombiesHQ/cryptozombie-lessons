@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,7 +21,7 @@ material:
 
       Zombie[] public zombies;
 
-      function _createZombie(string _name, uint _dna) private {
+      function _createZombie(string memory _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       }
 
@@ -29,19 +29,19 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _createZombie(string memory _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string memory _str) private view returns (uint) {
       }
       }
 ---
 
-In questo capitolo, andremo a conoscere la funzione ***restituire valori***, e modificatori di funzione.
+In this chapter, we're going to learn about function ***return values***, and function modifiers.
 
 ## Restituire Valori
 
@@ -49,7 +49,7 @@ Per restituire un valore da una funzione, la dichiarazione é cosí:
 
     string greeting = "What's up dog";
     
-    function sayHello() public returns (string) {
+    function sayHello() public returns (string memory) {
       return greeting;
     }
     
@@ -62,7 +62,7 @@ The above function doesn't actually change state in Solidity — e.g. it doesn'
 
 So in this case we could declare it as a ***view*** function, meaning it's only viewing the data but not modifying it:
 
-    function sayHello() public view returns (string) {
+    function sayHello() public view returns (string memory) {
     
 
 Solidity also contains ***pure*** functions, which means you're not even accessing any data in the app. Consider the following:
@@ -80,7 +80,7 @@ This function doesn't even read from the state of the app — its return value 
 
 We're going to want a helper function that generates a random DNA number from a string.
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`. Don't forget to set the data location of the `_str` parameter to `memory`.
 
 2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
 
