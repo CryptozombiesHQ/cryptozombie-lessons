@@ -3,6 +3,7 @@ title: Zaawansowane pojęcia Solidity
 header: "Lekcja 3: Zaawansowane pojęcia Solidity"
 roadmap: roadmap3.png
 path: solidity
+publishedOn: Cryptozombies
 ---
 
 Grr... Nie mogę Cię powstrzymać, czy mogę? Twoje umiejętności Solidity są potężne, człowieku...
