@@ -11,7 +11,7 @@ material:
 
       //2. Tutaj utwórz kontrakt
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       }
@@ -32,11 +32,11 @@ Pusty kontrakt `HelloWorld` wygląda następująco:
 
 Kod źródłowy Solidity zaczyna się poprzez "wersję pragma" — deklarację wersji kompilatora Solidity, którego nasz kod będzie używał. Stosuje się to aby zapobiec problemom z przyszłymi wersjami, które moga potencjalnie zawierać zmiany kolidujące z Twoim kodem.
 
-It looks like this: `pragma solidity ^0.4.25;` (for the latest solidity version at the time of this writing, 0.4.25).
+For the scope of this tutorial, we'll want to be able to compile our smart contracts with any compiler version in the range of 0.5.0 (inclusive) to 0.6.0 (exclusive). It looks like this: `pragma solidity >=0.5.0 <0.6.0;`.
 
 Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierwszą rzecz, którą napiszesz, zaczynając nowy projekt:
 
-    pragma solidity ^0.4.25;
+    pragma solidity >=0.5.0 <0.6.0;
     
     contract HelloWorld {
     
@@ -47,7 +47,7 @@ Sklejając to w całość, poniżej mamy elementarną formę kontraktu — pierw
 
 Aby zacząć tworzyć naszą armię Zombiaków, utwórzmy najpierw startowy kontrakt o nazwie `ZombieFactory`.
 
-1. In the box to the right, make it so our contract uses solidity version `0.4.25`.
+1. In the box to the right, make it so our contract uses solidity version `>=0.5.0 <0.6.0`.
 
 2. Utwórz pusty kontrakt o nazwie `ZombieFactory`.
 
