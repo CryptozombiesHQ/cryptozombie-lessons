@@ -8,7 +8,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -30,7 +30,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        // Inicializa kittyContract aquí usando `ckAddress` de arriba
+        // Initialize kittyContract here using `ckAddress` from above
 
         function feedAndMultiply(uint _zombieId, uint _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
@@ -42,7 +42,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
@@ -61,19 +61,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
@@ -81,7 +81,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefactory.sol";
       contract KittyInterface { function getKitty(uint256 _id) external view returns ( bool isGestating, bool isReady, uint256 cooldownIndex, uint256 nextActionAt, uint256 siringWithId, uint256 birthTime, uint256 matronId, uint256 sireId, uint256 generation, uint256 genes ); }
       contract ZombieFeeding is ZombieFactory {
