@@ -7,7 +7,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity  >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,11 +21,11 @@ material:
 
       Zombie[] public zombies;
 
-      function _createZombie(string _name, uint _dna) private {
+      function _createZombie(string memory _name, uint _dna) private {
       zombies.push(Zombie(_name, _dna));
       }
 
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _generateRandomDna(string memory _str) private view returns (uint) {
       uint rand = uint(keccak256(abi.encodePacked(_str)));
       return rand % dnaModulus;
       }
@@ -34,15 +34,15 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity  >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
       uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
-      function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
-      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
+      function _createZombie(string memory _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
+      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
+      function createRandomZombie(string memory _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
 
@@ -52,7 +52,7 @@ Zamierzamy napisać publiczną funkcję, która na wejściu pobiera nanzwę Zomb
 
 # Wypróbujmy zatem
 
-1. Stwórz `publiczną` funkcję o nazwie `createRandomZombie`. Będzie ona pobierała jeden parametr o nazwie `_name` (typu `string`). *(Uwaga: Zadeklaruj tę funkcję `public` tak jak zadeklarowałeś poprzednie funkcje `private`)* 
+1. Stwórz `publiczną` funkcję o nazwie `createRandomZombie`. It will take one parameter named `_name` (a `string` with the data location set to `memory`). *(Uwaga: Zadeklaruj tę funkcję `public` tak jak zadeklarowałeś poprzednie funkcje `private`)* 
 
 2. Pierwsza linia tej funkcji powinna wywołać funkcję `_generateRandomDna` z argumentem `_name` i przechowywać jako `uint` o nazwie `randDna`.
 
