@@ -7,8 +7,13 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You've just finsihed implementing your decentralized oracle!
+You finished testing the game. You are nothing short of extraordinary!
 
-The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
+Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+The important things to remember are:
+
+- Make sure you create a separate test for each function in your game.
+- Keep everything clearly labelled and organized
+- Make use of time travelling
+- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
