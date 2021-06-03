@@ -7,8 +7,4 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You've just finsihed implementing your decentralized oracle!
-
-The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
-
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.
