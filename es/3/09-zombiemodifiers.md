@@ -9,7 +9,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -24,7 +24,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -51,7 +51,11 @@ material:
         kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function _triggerCooldown(Zombie storage _zombie) internal {
+        _zombie.readyTime = uint32(now + cooldownTime);
+        }
+
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId];
         _targetDna = _targetDna % dnaModulus;
@@ -60,6 +64,7 @@ material:
         newDna = newDna - newDna % 100 + 99;
         }
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
         }
 
         function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -70,7 +75,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -94,19 +99,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         randDna = randDna - randDna % 100;
@@ -115,7 +120,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -191,11 +196,11 @@ material:
         }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
       import "./zombiefeeding.sol";
       contract ZombieHelper is ZombieFeeding {
       modifier aboveLevel(uint _level, uint _zombieId) { require(zombies[_zombieId].level >= _level); _; }
-      function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
+      function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].name = _newName; }
       function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) { require(msg.sender == zombieToOwner[_zombieId]); zombies[_zombieId].dna = _newDna; }
       }
 ---
@@ -226,10 +231,12 @@ Vamos a implementar estas funciones abajo. Aquí tienes un ejemplo de la lecció
 
 ## Vamos a probarlo
 
-1. Crea una función llamada `changeName`. Esta tomará 2 argumentos: `_zombieId` (un `uint`), y `_newName` (un `string`), y hazla `external`. Esta deberá tener el modificador `aboveLevel`, y deberá pasar `2` por el parámetro `_level`. (No te olvides de pasarle el `_zombieId` también).
+1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string` with the data location set to `calldata` ), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
-2. En esta función, primero tenemos que verificar que el `msg.sender` es igual a `zombieToOwner[_zombieId]`. Utiliza una declaración `require`.
+> Note: `calldata` is somehow similar to `memory`, but it's only available to `external` functions.
 
-3. Después la función deberá fijar `zombies[_zombieId].name` como `_newName`.
+1. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 
-4. Crea otra función llamada `changeDna` debajo de `changeName`. Su definición y contenido tendrá que ser igual que el de `changeName`, a excepción de su segundo argumento que será `_newDna` (un `uint`), y debemos pasarle `20` para el parámetro `` _level` `` en el modificador `aboveLevel`. Y por supuesto, este deberá fijar el `dna` del zombi a `_newDna` en vez de cambiarle el nombre.
+2. Then the function should set `zombies[_zombieId].name` equal to `_newName`.
+
+3. Create another function named `changeDna` below `changeName`. Its definition and contents will be almost identical to `changeName`, except its second argument will be `_newDna` (a `uint`), and it should pass in `20` for the `_level` parameter on `aboveLevel`. And of course, it should set the zombie's `dna` to `_newDna` instead of setting the zombie's name.
