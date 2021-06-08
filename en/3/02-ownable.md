@@ -225,7 +225,7 @@ To handle cases like this, one common practice that has emerged is to make contr
 
 ## OpenZeppelin's `Ownable` contract
 
-Below is the `Ownable` contract taken from the **_OpenZeppelin_** Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, we highly recommend you check out their site to further your learning!
+Below is the `Ownable` contract taken from the [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/) Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that you can use in your own DApps. After this lesson, we highly recommend you check out their site to further your learning!
 
 Give the contract below a read-through. You're going to see a few things we haven't learned yet, but don't worry, we'll talk about them afterward.
 

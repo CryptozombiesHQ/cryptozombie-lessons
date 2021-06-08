@@ -189,7 +189,7 @@ material:
 
 ## OpenZeppelinの `Ownable` コントラクト
 
-一つ例を見せてやろう。これはSolidityのライブラリにある **_OpenZeppelin_** という`Ownable`コントラクトだ。OpenZeppelinは安全でしかもコミュニティで検証を経たスマートコントラクトだ。これをDAppで使うことができる。このレッスンの後で、OpenZeppelinのサイトをチェックしておくように。今後非常に役に立つだろう！
+一つ例を見せてやろう。これはSolidityのライブラリにある [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/) という`Ownable`コントラクトだ。OpenZeppelinは安全でしかもコミュニティで検証を経たスマートコントラクトだ。これをDAppで使うことができる。このレッスンの後で、OpenZeppelinのサイトをチェックしておくように。今後非常に役に立つだろう！
 
 下のコントラクトをよく読むように。まだわからないことがいくつもあるが、あとで教えるから今は気にすることはない。
 

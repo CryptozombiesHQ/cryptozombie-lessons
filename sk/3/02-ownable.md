@@ -189,7 +189,7 @@ Na zabezpečenie takýchto situácií sa stalo bežnou praktikou urobiť kontrak
 
 ## `Ownable` kontrakty od OpenZeppelin
 
-V bloku kódu nižšie je `Ownable` kontrakt z  **_OpenZeppelin_**  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použiť vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
+V bloku kódu nižšie je `Ownable` kontrakt z  [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/)  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použiť vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
 
 Pozri si tento kontrakt. Uvidíš niekoľko vecí, ktoré sme zatiaľ ešte neprebrali. Dostaneme sa k nim za chvíľu.
 

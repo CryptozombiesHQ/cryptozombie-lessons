@@ -189,7 +189,7 @@ material:
 
 ## OpenZeppelin库的`Ownable` 合约
 
-下面是一个 `Ownable` 合约的例子： 来自** _ OpenZeppelin _ ** Solidity 库的 `Ownable` 合约。 OpenZeppelin 是主打安保和社区审查的智能合约库，您可以在自己的 DApps中引用。等把这一课学完，您不要催我们发布下一课，最好利用这个时间把 OpenZeppelin 的网站看看，保管您会学到很多东西！
+下面是一个 `Ownable` 合约的例子： 来自 [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/) Solidity 库的 `Ownable` 合约。 OpenZeppelin 是主打安保和社区审查的智能合约库，您可以在自己的 DApps中引用。等把这一课学完，您不要催我们发布下一课，最好利用这个时间把 OpenZeppelin 的网站看看，保管您会学到很多东西！
 
 把楼下这个合约读读通，是不是还有些没见过代码？别担心，我们随后会解释。
 

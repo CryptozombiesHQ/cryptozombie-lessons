@@ -189,7 +189,7 @@ Para lidar com casos assim, uma prática que se tornou comum é tornar o contrat
 
 ## Contratos `Ownable` do OpenZeppelin
 
-Abaixo um contrato `Ownable` pego da biblioteca Solidity do **_OpenZeppelin_**. OpenZeppelin é uma biblioteca de contratos seguros e auditados pela comunidade que você pode usar em suas próprias DApps. Após esta lição, recomendamos fortemente que você visite o site deles para maior aprendizado.
+Abaixo um contrato `Ownable` pego da biblioteca Solidity do [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/). OpenZeppelin é uma biblioteca de contratos seguros e auditados pela comunidade que você pode usar em suas próprias DApps. Após esta lição, recomendamos fortemente que você visite o site deles para maior aprendizado.
 
 Leia com atenção o contrato abaixo. Você verá algumas coisas que nós já aprendemos, mas não se preocupe, iremos falar mais sobre isso em seguida.
 

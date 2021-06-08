@@ -189,7 +189,7 @@ For å håndtere saker som denne, en vanlig praksises som har oppstått er å la
 
 ## OpenZeppelin's `Ownable` kontrakter
 
-Nedenfor er den `Ownable` kontrakten hentet fra **_OpenZeppelin_** Solidity library. OpenZeppelin er et library med sikre og samfunnsmessige smart-kontrakter som du kan bruke i dine egne DApps. Etter denne leksjonen, mens du venter på utgivelsen av leksjon 4, anbefaler vi at du sjekker ut deres nettsted for å lære mer!
+Nedenfor er den `Ownable` kontrakten hentet fra [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/) Solidity library. OpenZeppelin er et library med sikre og samfunnsmessige smart-kontrakter som du kan bruke i dine egne DApps. Etter denne leksjonen, mens du venter på utgivelsen av leksjon 4, anbefaler vi at du sjekker ut deres nettsted for å lære mer!
 
 Gi kontrakten under en gjennomgang. Du kommer til å se ting vi ikke har lært enda, men ikke vær bekymret, vi kommert til å snakke om dem senere.
 

@@ -189,7 +189,7 @@ material:
 
 ## OpenZeppelin's `Ownable` contract
 
-ด้านล่างนี้คือ contract ชื่อ `Ownable` ที่รับมาจาก library ของ Solidity **_OpenZeppelin_** OpenZeppelin คือ library ของ secure and community-vetted smart contracts ที่สามารถนำมาใช้ใน DApps ของเรา หลังจากบทนี้เป็นต้นไป เราแนะนำว่าให้ลองไปดูเว็บไซต์นี้ได้ในขณะที่รอให้บทเรียนที่ 4 ออกมา เพื่อความเข้าใจที่มากยิ่งขึ้นของตัวคุณเอง!
+ด้านล่างนี้คือ contract ชื่อ `Ownable` ที่รับมาจาก library ของ Solidity [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/) OpenZeppelin คือ library ของ secure and community-vetted smart contracts ที่สามารถนำมาใช้ใน DApps ของเรา หลังจากบทนี้เป็นต้นไป เราแนะนำว่าให้ลองไปดูเว็บไซต์นี้ได้ในขณะที่รอให้บทเรียนที่ 4 ออกมา เพื่อความเข้าใจที่มากยิ่งขึ้นของตัวคุณเอง!
 
 ลองอ่าน contract ด้านล่างคร่าวๆ ดู คุณจะพบบางอย่างที่เรายังไม่ได้ศึกษากัน แต่ไม่ต้องเป็นห่วงไปเพราะเราจะได้เรียนรู้กันแน่ๆ ในอนาคต
 

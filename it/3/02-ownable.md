@@ -223,7 +223,7 @@ Per gestire casi come questo, c'è una pratica comune come quella di rendere i c
 
 ## Contratti `di proprietà` OpenZeppelin
 
-Di seguito è riportato il contratto `Ownable` tratto dalla libreria di Solidity **_OpenZeppelin_**. OpenZeppelin è una libreria di contratti intelligenti sicuri e controllati dalla community che è possibile utilizzare nelle proprie DApp. Dopo questa lezione ti consigliamo vivamente di visitare il loro sito per migliorare il tuo apprendimento!
+Di seguito è riportato il contratto `Ownable` tratto dalla libreria di Solidity [**_OpenZeppelin_**](https://docs.openzeppelin.com/openzeppelin/). OpenZeppelin è una libreria di contratti intelligenti sicuri e controllati dalla community che è possibile utilizzare nelle proprie DApp. Dopo questa lezione ti consigliamo vivamente di visitare il loro sito per migliorare il tuo apprendimento!
 
 Dai un'occhiata al contratto di seguito. Vedrai alcune cose che non abbiamo ancora imparato ma non preoccuparti, ne riparleremo in seguito.
 
