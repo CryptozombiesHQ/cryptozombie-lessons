@@ -223,7 +223,7 @@ contract MyContract is Ownable {
 }
 ```
 
-Vous avez vu le modificateur `onlyOwner` sur la fonction `likeABoss`? Quand vous appelez `likeABoss`, le code de `onlyOwner` s'exécute **en premier**. Puis, quand il arrive à la déclaration `_;` dans `onlyOwner`, il continu avec le code de `likeABoss`.
+Vous avez vu le modificateur `onlyOwner` sur la fonction `likeABoss`? Quand vous appelez `likeABoss`, le code de `onlyOwner` s'exécute **en premier**. Puis, quand il arrive à la déclaration `_;` dans `onlyOwner`, il continue avec le code de `likeABoss`.
 
 Il peut y avoir d'autres raisons d'utiliser des modificateurs, mais le cas d'utilisation le plus courant est pour rajouter facilement une vérification `require` avant l'exécution d'une fonction.
 
