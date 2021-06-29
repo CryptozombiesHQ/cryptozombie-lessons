@@ -211,4 +211,4 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 3. Ensuite la fonction devra définir `zombies[_zombieId].name` égal à `_newName`.
 
-4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et son contenu seront presque identiques à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sur, elle devra définir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.
+4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et son contenu seront presque identiques à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sûr, elle devra définir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.
