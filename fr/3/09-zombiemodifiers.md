@@ -182,7 +182,7 @@ Maintenant, utilisons notre modificateur `aboveLevel` pour créer quelques fonct
 Notre jeu aura quelques incitatifs pour que les gens fassent gagner des niveaux à leur zombies :
 
 - Pour les zombies de niveau 2 ou plus, les utilisateurs pourront changer leur nom.
-- Pour les zombies de niveau 20 ou plus, les utilisateurs pour leur donner un ADN personnalisé.
+- Pour les zombies de niveau 20 ou plus, les utilisateurs pourront leur donner un ADN personnalisé.
 
 Nous implémenterons ces fonctions ci-dessous. Voici un exemple de code d'une leçon précédente en référence :
 
