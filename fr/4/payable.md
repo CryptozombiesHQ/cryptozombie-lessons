@@ -233,7 +233,7 @@ Nous avons, jusqu'à présent, vu plusieurs **_modificateurs de fonction_**. Il 
 
 1. Il existe des modificateurs de visibilité qui contrôlent quand et depuis où la fonction peut être appelée : `private` veut dire que la fonction ne peut être appelée que par les autres fonctions à l'intérieur du contrat; `internal` est comme `private` mais en plus, elle peut être appelée par les contrats qui héritent de celui-ci; avec `external`, la fonction ne peut être appelée que depuis l'extérieur du contrat; et enfin avec `public`, elle peut être appelée depuis n'importe où, à l'intérieur et à l'extérieur.
 
-2. Il existe aussi des modificateurs d'état, qui nous indiquent comment la fonction interagit avec la BlockChain : `view` nous indique qu'en exécutant cette fonction, aucune donnée ne sera sauvegardée/modifiée. `pure` nous indique que non seulement aucune donnée ne sera sauvée sur la BlockChain, mais qu'en plus aucune donnée de la BlockChain ne sera lue. Ces 2 fonctions ne coûtent pas de gas si elles sont appelées depuis l'extérieur du contrat (mais elle coûtent du gas si elles sont appelées intérieurement par une autre fonction).
+2. Il existe aussi des modificateurs d'état, qui nous indiquent comment la fonction interagit avec la BlockChain : `view` nous indique qu'en exécutant cette fonction, aucune donnée ne sera écrite/modifiée. `pure` nous indique que non seulement aucune donnée ne sera enregistrée sur la BlockChain, mais qu'en plus aucune donnée de la BlockChain ne sera lue. Ces 2 fonctions ne coûtent pas de gas si elles sont appelées depuis l'extérieur du contrat (mais elle coûtent du gas si elles sont appelées à l'intérieur du contrat par une autre fonction).
 
 3. Ensuite nous avons les modificateurs personnalisés, que nous avons étudiés à la leçon 3 : `onlyOwner` et `aboveLevel` par exemple. Nous avons pu déterminer des logiques personnalisés pour ceux-ci, afin de choisir de quelles manières ils affectent une fonction.
 
@@ -252,7 +252,7 @@ Une des choses qui rend Solidity et Ethereum vraiment cool est le modificateur `
 
 Réfléchissons une minute. Quand vous faites un appel à une fonction API sur un serveur normal, vous ne pouvez pas envoyer des dollars US en même temps - pas plus que des Bitcoin.
 
-  Mais en Ethereum, puisque la monnaie (_Ether_), les données (*charge utile de la transaction*) et le code du contrat lui-même sont directement sur Ethereum, il est possible pour vous d'appeler une fonction **et** de payer le contrat en même temps.
+Mais en Ethereum, puisque la monnaie (_Ether_), les données (*charge utile de la transaction*) et le code du contrat lui-même sont directement sur Ethereum, il est possible pour vous d'appeler une fonction **et** de payer le contrat en même temps.
 
 Cela permet un fonctionnement vraiment intéressant, comme demander un certain paiement au contrat pour pouvoir exécuter une fonction.
 
@@ -277,7 +277,7 @@ Quelqu'un va appeler la fonction depuis web3.js (depuis l'interface utilisateur 
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-On remarque le champs `value` (valeur), où l'appel de la fonction Javascript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donné au même moment au destinataire.
+On remarque le champs `value` (valeur), où l'appel de la fonction Javascript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donnés au même moment au destinataire.
 
 > Remarque : Si une fonction n'est pas marquée `payable` et que vous essayez de lui envoyer des Ether, la fonction rejettera votre transaction.
 
