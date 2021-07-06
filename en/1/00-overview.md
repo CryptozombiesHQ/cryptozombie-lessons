@@ -3,6 +3,7 @@ title: Making the Zombie Factory
 header: Welcome, human!
 roadmap: roadmap.jpg
 path: solidity
+publishedOn: Cryptozombies
 ---
 
 So you think you have what it takes to become a **CryptoZombie**, huh?
