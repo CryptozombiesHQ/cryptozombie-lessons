@@ -279,7 +279,7 @@ Prześledź poniższy kontrakt. Zobaczysz kilka rzeczy, których jeszcze się ni
 
 Kilka nowych rzeczy, których nie widzieliśmy wcześniej:
 
-- Constructors: `function Ownable()` is a ***constructor***, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
+- Constructors: `constructor()` is a ***constructor***, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
 - Modyfikatory funkcji: `modifier onlyOwner()`. Modyfikatory to rodzaj półfunkcji, które służą do modyfikowania innych funkcji, zwykle w celu sprawdzenia niektórych wymagań przed wykonaniem. W tym przypadku `onlyOwner` może zostać użyty do ograniczenia dostępu, więc **tylko**** właściciel ** umowy może uruchomić tę funkcję. Porozmawiamy więcej o modyfikatorach funkcji w kolejnym rozdziale oraz o tym, co robi ten dziwny znak `_;`.
 - Słowo kluczowe `indexed`: nie przejmujmy sie tym, narazie nie będziemy tego potrzebować.
 
