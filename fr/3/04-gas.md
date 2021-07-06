@@ -187,15 +187,15 @@ Nous allons voir une autre chose qui différencie Solidity des autres langages d
 
 En Solidity, vos utilisateurs devront payer à chaque fois qu'ils exécutent une fonction de votre DApp avec une monnaie appelée **_gas_**. Les utilisateurs achètent du gas avec de l'Ether (la monnaie d'Ethereum), vos utilisateurs doivent donc dépenser de l'ETH pour exécuter des fonctions de votre DApp.
 
-La quantité de gas requit pour exécuter une fonction dépend de la complexité de cette fonction. Chaque opération individuelle à un **_coût en gas_** basé approximativement sur la quantité de ressources informatiques nécessaires pour effectuer l'opération (ex: écrire dans le storage est beaucoup plus cher que d'ajouter deux entiers). Le **_coût en gas_** total de votre fonction est la somme du coût de chaque opération individuelle.
+La quantité de gas requit pour exécuter une fonction dépend de la complexité de cette fonction. Chaque opération individuelle a un **_coût en gas_** basé approximativement sur la quantité de ressources informatiques nécessaires pour effectuer l'opération (ex: écrire dans le storage est beaucoup plus cher que d'ajouter deux entiers). Le **_coût en gas_** total de votre fonction est la somme du coût de chaque opération individuelle.
 
 Parce qu'exécuter des fonctions coûte de l'argent réel pour les utilisateurs, l'optimisation de code est encore plus importante en Solidity que pour les autres langages de programmation. Si votre code est négligé, vos utilisateurs devront payer plus cher pour exécuter vos fonctions - et cela pourrait résulter en des millions de dollars de frais inutiles répartis sur des milliers d'utilisateurs.
 
 ## Pourquoi le gas est nécessaire ?
 
-Ethereum est comme un ordinateur gros et lent, mais extrêmement sécurisé. Quand vous exécuter une fonction, chaque nœud du réseau doit exécuter la même fonction pour vérifier le résultat - c'est ces milliers de nœuds vérifiant chaque exécution de fonction qui rendent Ethereum décentralisé et les données immuables et résistantes à la censure.
+Ethereum est comme un ordinateur gros et lent, mais extrêmement sécurisé. Quand vous exécutez une fonction, chaque nœud du réseau doit exécuter la même fonction pour vérifier le résultat - c'est ces milliers de nœuds vérifiant chaque exécution de fonction qui rendent Ethereum décentralisé et les données immuables et résistantes à la censure.
 
-Les créateurs d'Ethereum ont voulu être sur que personne ne pourrait bloquer le réseau avec une boucle infinie, ou s'accaparer de toutes les ressources du réseau avec des calculs vraiment complexes. C'est pour cela que les transactions ne sont pas gratuites, et que les utilisateurs doivent payer pour faire des calculs et pour le stockage.
+Les créateurs d'Ethereum ont voulu être sûrs que personne ne pourrait bloquer le réseau avec une boucle infinie, ou s'accaparer toutes les ressources du réseau avec des calculs vraiment complexes. C'est pour cela que les transactions ne sont pas gratuites, et que les utilisateurs doivent payer pour faire des calculs et pour le stockage.
 
 > Remarque : Ce n'est pas forcément vrai pour des sidechains, comme celles que les auteurs de CryptoZombies construisent à Loom Network. Cela ne ferait pas de sens de faire tourner un jeu comme World of Warcraft directement sur le réseau principal Ethereum - le coût en gas serait excessivement cher. Mais il pourrait tourner sur une sidechain avec un algorithme de consensus différent. Nous parlerons dans une prochaine leçon des types de DApps que vous voudriez déployer sur des sidechains ou sur le réseau principal Ethereum.
 
@@ -243,4 +243,4 @@ Revenons à `zombiefactory.sol`.
 
 1. Ajoutez deux propriétés à notre structure `Zombie` : `level` (un `uint32`), et `readyTime` (aussi un `uint32`). Nous voulons emboîter ces types de données ensemble, pour cela mettez les à la fin de la structure.
 
-32 bits est largement assez pour stocker le niveau des zombies et l'horodatage, cela nous fera économiser du gas en emboîtant les données comparativement à un `uint` (256-bits).
+32 bits est largement suffisant pour stocker le niveau des zombies et l'horodatage, cela nous fera économiser du gas en emboîtant les données comparativement à un `uint` (256-bits).

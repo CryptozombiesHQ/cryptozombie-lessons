@@ -307,7 +307,7 @@ contract Ownable {
 
 A few new things here we haven't seen before:
 
-- Constructors: `function Ownable()` is a **_constructor_**, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
+- Constructors: `constructor()` is a **_constructor_**, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
 - Function Modifiers: `modifier onlyOwner()`. Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, `onlyOwner` can be used to limit access so **only** the **owner** of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird `_;` does.
 - `indexed` keyword: don't worry about this one, we don't need it yet.
 
