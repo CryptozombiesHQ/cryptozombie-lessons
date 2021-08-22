@@ -299,7 +299,7 @@ contract GetPaid is Ownable {
 
 Note that we're using `owner()` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
 
-And most important for `_owner` variable that it's have to be a `address payable` type for doing a sending and transferring ether instruction.
+And most important for `_owner` variable is that it has to be a `address payable` type to follow instructions to send and transfer ether.
 
 But our `owner()` isn't a type `address payable` so we have to explicitly cast to `address payable`. Casting any integer type like `uint160` to address produces an `address payable`.
 
