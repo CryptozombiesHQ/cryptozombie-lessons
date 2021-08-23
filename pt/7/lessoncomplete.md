@@ -1,25 +1,25 @@
 ---
-title: Lesson 7 Complete!
-actions: ['checkAnswer', 'hints']
+title: Lição 7 concluída!
+actions: ['verificarResposta', 'dicas']
 material:
   lessonComplete:
     answer: 1
 ---
 
-Congrats! You've just created your very first game mod for Zombie Battleground!
+Parabéns! Você acabou de criar seu primeiro mod de jogo para Zombie Battleground!
 
-This lesson was intended to get you familiar with all the syntax behind custom game modes, and showing you what types of changes are possible.
+Esta lição teve como objetivo familiarizá-lo com toda a sintaxe por trás dos modos de jogo personalizados e mostrar quais tipos de alterações são possíveis.
 
-In Lesson 2, we'll be looking at some more realistic game modes — where we apply some custom rules to deck selection, such as:
+Na Lição 2, veremos alguns modos de jogo mais realistas - onde aplicamos algumas regras personalizadas à seleção de deck, como:
 
-1. Players can only use cards that cost less than 2 goo
+1. Os jogadores só podem usar cartas que custam menos de 2 goo
 
-2. Players cannot have duplicate cards in their deck
+2. Os jogadores não podem ter cartas duplicadas em seu deck
 
-3. Before the match, both players' decks are shuffled together, and then distributed back randomly (so each player ends up with a mix of his cards and his opponents').
+3. Antes da partida, os baralhos de ambos os jogadores são embaralhados e depois distribuídos de volta aleatoriamente (de modo que cada jogador acaba com uma mistura de suas cartas e de seus oponentes).
 
-In the very very near future, we'll be launching a "Zombie Battleground Custom Game Creator" tool, which you can use to deploy your own custom game modes directly to Loom GameChain — and every Zombie Battleground player will be able to load your game mode and start playing it!
+Em um futuro muito próximo, lançaremos uma ferramenta "Zombie Battleground Custom Game Creator", que você pode usar para implantar seus próprios modos de jogo personalizados diretamente no Loom GameChain - e todos os jogadores de Zombie Battleground serão capazes de carregar seu jogo modo e comece a jogar!
 
-We'll let you know as soon as the game creator tool goes live.
+Avisaremos você assim que a ferramenta de criação de jogos entrar no ar.
 
-But in the meantime, you can proceed to Lesson 2 — and become expert by the time we roll it out!
+Mas, enquanto isso, você pode prosseguir para a Lição 2 - e se tornar um especialista quando a lançarmos!
