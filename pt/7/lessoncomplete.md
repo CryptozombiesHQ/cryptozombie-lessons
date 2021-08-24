@@ -12,7 +12,7 @@ Esta lição teve como objetivo familiarizá-lo com toda a sintaxe por trás dos
 
 Na Lição 2, veremos alguns modos de jogo mais realistas - onde aplicamos algumas regras personalizadas à seleção de deck, como:
 
-1. Os jogadores só podem usar cartas que custam menos de 2 goo
+1. Os jogadores só podem usar cartas que custam menos de 2 goo.
 
 2. Os jogadores não podem ter cartas duplicadas em seu deck
 
