@@ -16,4 +16,4 @@ Nesta lição, vamos ver como interagir com seu smart contract e construir um fr
 
 Observe que aplicativos front-ends são escritos em **JavaScript**, não em Solidity. Mas como o foco deste curso é o Ethereum / Solidity, presumimos que você já esteja confortável criando websites com HTML, JavaScript (incluindo o ES6 <a href = "https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promisses</a>) e JQuery, e não passaremos tempo cobrindo o básico dessas linguagens.
 
-Se você ainda não estiver confortável construindo sites com HTML / Javascript, você deve fazer algum tutorial básico em outro lugar antes de iniciar esta lição.
+Se você ainda não estiver confortável construindo sites com HTML / JavaScript, você deve fazer algum tutorial básico em outro lugar antes de iniciar esta lição.

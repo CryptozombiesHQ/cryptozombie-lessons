@@ -9,4 +9,4 @@ roadmap: roadmap.jpg
 Este curso te enseñará cómo **crear un juego en Ethereum**.
 
 Está diseñado para principiantes en Solidity, pero asume que tienes alguna experiencia
-programando en algún otro lenguage (por ejemplo Javascript).
+programando en algún otro lenguage (por ejemplo JavaScript).

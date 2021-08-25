@@ -15,11 +15,11 @@ material:
 
 Você pode testar na demo ao lodo direito para ver em ação. Vá em frente, Eu sei que você não pode esperar até o fim desta página 😉. Clique é um gatinho para atacar, e veja o novo gato zumbi que você consegue!
 
-## Implementação em Javascript
+## Implementação em JavaScript
 
 Uma vez que estamos prontos para a implantação do contrato no Ethereum podemos compilar e implantar `ZombieFeeding` - desde que este contrato é o nosso contrato final que herda de `ZombieFactory`, e tem acesso a todos os métodos públicos em ambos os contratos.
 
-Vejamos em um exemplo de interação com nosso contrato implantado usando Javascript e web3.js:
+Vejamos em um exemplo de interação com nosso contrato implantado usando JavaScript e web3.js:
 
 ```
 var abi = /* abi gerada pelo compilador */

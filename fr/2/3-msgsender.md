@@ -123,7 +123,7 @@ Mettons à jour notre fonction `_createZombie` de la leçon 1 pour désigner com
 
 2. Ensuite, augmentons notre `ownerZombieCount` pour ce `msg.sender`.
 
-En Solidity, vous pouvez augmenter un `uint` avec `++`, comme en Javascript :
+En Solidity, vous pouvez augmenter un `uint` avec `++`, comme en JavaScript :
 
 ```
 uint number = 0;

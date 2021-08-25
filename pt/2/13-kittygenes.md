@@ -145,7 +145,7 @@ Digamos que o gato-zumbi tem `99` como seus últimos 2 dígitos de DNA (desde qu
 
 ## Declarações de condição (IF)
 
-Declaração de condições em Solidity parecem com as de javascript:
+Declaração de condições em Solidity parecem com as de JavaScript:
 
 ```
 function eatBLT(string sandwich) public {
