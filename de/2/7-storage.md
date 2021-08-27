@@ -44,14 +44,14 @@ material:
         NewZombie(id, _name, _dna);
         }
         
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generatePseudoPseudoRandomDna(string _str) private view returns (uint) {
         uint rand = uint(keccak256(_str));
         return rand % dnaModulus;
         }
         
-        function createRandomZombie(string _name) public {
+        function createPseudoPseudoRandomZombie(string _name) public {
         require(ownerZombieCount[msg.sender] == 0);
-        uint randDna = _generateRandomDna(_name);
+        uint randDna = _generatePseudoPseudoRandomDna(_name);
         _createZombie(_name, randDna);
         }
         
@@ -117,7 +117,7 @@ When a zombie feeds on some other lifeform, its DNA will combine with the other 
 
 1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
 
-2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
+2. We don't want to let someone else feed using our zombie! So first, let's make sure we own this zombie. Add a `require` statement to make sure `msg.sender` is equal to this zombie's owner (similar to how we did in the `createPseudoRandomZombie` function).
     
     > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
 

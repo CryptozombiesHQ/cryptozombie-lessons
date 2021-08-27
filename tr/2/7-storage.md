@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ Bir zom bir başka bir yaşam formunda beslendiğinde, DNA'sı yeni bir zombi ol
 
 1. `feedAndMultiply`. denilen bir fonksiyon oluşturun. İki parametre alacaktır: `_zombieId` (bir `uint`) ve `_targetDna` (ayrı bir `uint`). Bu fonksiyon `public` olmalıdır.
 
-2. Başka birinin zombimizi kullanıp beslemesine izin vermek istemiyoruz! O zaman ilk olarak, bu zombiye sahip olduğumuzdan emin olalım. `msg.sender`'in bu zombinin sahibine eşit olduğundan emin olmak için bir `require` durumu ekleyin (`createRandomZombie` fonksiyonunda yaptığımızla aynı).
+2. Başka birinin zombimizi kullanıp beslemesine izin vermek istemiyoruz! O zaman ilk olarak, bu zombiye sahip olduğumuzdan emin olalım. `msg.sender`'in bu zombinin sahibine eşit olduğundan emin olmak için bir `require` durumu ekleyin (`createPseudoRandomZombie` fonksiyonunda yaptığımızla aynı).
 
  > Not: Tekrar, cevap denetleyicimiz primitif olduğundan, ilk gelmesi için `msg.sender` çıkarıyor ve sırayı değiştirirseniz onu yanlış işaretleyecek. Ama normalde kodlarken, istediğiniz bir tercih sırasını kullanabilirsiniz — ikisi de doğru.
 

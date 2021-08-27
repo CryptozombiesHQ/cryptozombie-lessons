@@ -5,13 +5,16 @@ material:
   lessonComplete: 1
 ---
 
-You finished testing the game. You are nothing short of extraordinary!
+Well done!👏🏻👏🏻👏🏻
 
-Even though in this case our game was built for demo purposes, it's clear that testing a Solidity smart contract is no mean feat. But we know that now you are well equipped to test your smart contracts!
+You mastered the art of deploying smart contracts using **Truffle**!
 
-The important things to remember are:
+Remember, building on top of **_Loom_** brings you faster, gas-free transactions that make it the perfect choice for creating blockchain games and user-facing DApps. At the same time, your users will enjoy the guaranteed security that Ethereum provides!
 
-- Make sure you create a separate test for each function in your game.
-- Keep everything clearly labelled and organized
-- Make use of time travelling
-- Consider using Loom when developing a game or a user-facing DApp. We highly recommend you to get started by checking out <a href="https://loomx.io/developers/" target=_blank>our documentation</a>.
+Another thing to remember is how similar deploying to **_Loom_** is to deploying to the Ethereum mainnet. You now know how to do both, just be careful how you choose which one to use for your next project😉.
+
+Anyway, this was just an example — we made several decisions that simplified things a bit to make the lesson easier to understand.
+
+To further your knowledge, head over to the <a href="https://loomx.io/developers/en/intro-to-loom.html" target=_blank>Developer's Documentation</a> page.
+
+Happy coding!

@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -123,7 +123,7 @@ contract SandwichFactory {
 
 1. สร้างฟังก์ชั่นที่มีชื่อว่า `feedAndMultiply` ให้รับ parameter 2 ค่า: `_zombieId` (ชนิด `uint`) และ `_targetDna` (ชนิด `uint`) ฟังก์ชั่นนี้ควรมีค่าเป็น `public`.
 
-2. แต่เราไม่ต้องการให้ผู้อื่นมาให้อาหารซอมบี้ของเรา! ดังนั้นในอันดับแรก ต้องทำให้แน่ใจว่าซอมบี้นี้เป็นของเราเสียก่อน โดยใส่คำสั่ง `require` เพื่อให้มั่นใจว่า `msg.sender` คือเจ้าของของซอมบี้ (คล้ายกับตอนที่ทำในฟังก์ชั่น `createRandomZombie`).
+2. แต่เราไม่ต้องการให้ผู้อื่นมาให้อาหารซอมบี้ของเรา! ดังนั้นในอันดับแรก ต้องทำให้แน่ใจว่าซอมบี้นี้เป็นของเราเสียก่อน โดยใส่คำสั่ง `require` เพื่อให้มั่นใจว่า `msg.sender` คือเจ้าของของซอมบี้ (คล้ายกับตอนที่ทำในฟังก์ชั่น `createPseudoRandomZombie`).
 
  > Note: answer-checker ของเราค่อนข้างล้าหลัง จึงควรให้ `msg.sender` มาก่อน ไม่เช่นนั้นคำตอบจะถือว่าผิด แต่ในความเป็นจริงจะเอาอะไรขึ้นก่อนก็ไม่มีปัญหาแน่นอน
 

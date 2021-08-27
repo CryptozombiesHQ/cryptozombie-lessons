@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 Нам понадобится вспомогательная функция, которая генерирует случайный номер ДНК из строки. 
 
-1. Создай `private` (приватную) функцию под названием `_generateRandomDna` (сгенерировать случайную ДНК). Она будет брать один параметр под названием `_str` (строку `string`), и возвращать `uint`.
+1. Создай `private` (приватную) функцию под названием `_generatePseudoRandomDna` (сгенерировать случайную ДНК). Она будет брать один параметр под названием `_str` (строку `string`), и возвращать `uint`.
 
 2. Эта функция будет просматривать определенные переменные в контракте, но не менять их. Присвой ей модификатор `view` (просмотр). 
 

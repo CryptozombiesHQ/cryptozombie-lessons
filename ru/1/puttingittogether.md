@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,10 +70,10 @@ material:
 
 # Проверь себя
 
-1. Создай `public` (публичную) функцию под названием `createRandomZombie` (создать случайного зомби). Она получает на вход параметр имя `_name`  (строку `string`). _(Примечание
+1. Создай `public` (публичную) функцию под названием `createPseudoRandomZombie` (создать случайного зомби). Она получает на вход параметр имя `_name`  (строку `string`). _(Примечание
 : задай эту функцию как `public` аналогично предыдущей `private` (частной))_
 
-2. Первая строчка в коде функции должна вызывать `_generateRandomDna`(сгенерировать случайную ДНК) в `_name` (имя), и сохранять ее в `uint` под названием `randDna` (случайная ДНК).
+2. Первая строчка в коде функции должна вызывать `_generatePseudoRandomDna`(сгенерировать случайную ДНК) в `_name` (имя), и сохранять ее в `uint` под названием `randDna` (случайная ДНК).
 
 3. Вторая строчка кода вызывает функцию `_createZombie` (создать зомби) и сообщает ей `_name`(имя) и `randDna` (случайную ДНК).
 

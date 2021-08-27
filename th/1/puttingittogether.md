@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ material:
 
 # ทดสอบ
 
-1.	สร้างฟังก์ชั่นชนิด `public` โดยใช้ชื่อว่า `createRandomZombie` โดยฟังก์ชั่นนี้จะรับค่าพารามิเตอร์ชื่อว่า `_name` (เป็น `string`)  (โน้ต: ประกาศฟังก์ชั่นนี้ให้เป็นชนิด `public` ด้วยวิธีที่เหมือนกับการประกาศค่าฟังก์ชั่นในตัวอย่างก่อนหน้าให้เป็น `private`)
+1.	สร้างฟังก์ชั่นชนิด `public` โดยใช้ชื่อว่า `createPseudoRandomZombie` โดยฟังก์ชั่นนี้จะรับค่าพารามิเตอร์ชื่อว่า `_name` (เป็น `string`)  (โน้ต: ประกาศฟังก์ชั่นนี้ให้เป็นชนิด `public` ด้วยวิธีที่เหมือนกับการประกาศค่าฟังก์ชั่นในตัวอย่างก่อนหน้าให้เป็น `private`)
 
-2.	ในบรรทัดแรกของฟังก์ชันจะต้องทำการรันฟังก์ชัน `_generateRandomDna` บนพารามิเตอร์ `_name` และเก็บค่าไว้ในรูปของ `uint` ใช้ชื่อว่า `randDna`
+2.	ในบรรทัดแรกของฟังก์ชันจะต้องทำการรันฟังก์ชัน `_generatePseudoRandomDna` บนพารามิเตอร์ `_name` และเก็บค่าไว้ในรูปของ `uint` ใช้ชื่อว่า `randDna`
 
 3.	บรรทัดที่2 ควรจะรันฟังก์ชัน `_createZombie` โดยเพิ่ม `_name` และ `_randDna` เข้าไป
 

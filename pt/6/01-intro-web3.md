@@ -236,14 +236,14 @@ material:
             NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
             uint rand = uint(keccak256(_str));
             return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
             require(ownerZombieCount[msg.sender] == 0);
-            uint randDna = _generateRandomDna(_name);
+            uint randDna = _generatePseudoRandomDna(_name);
             randDna = randDna - randDna % 100;
             _createZombie(_name, randDna);
           }
@@ -388,7 +388,7 @@ Felizmente, o Web3.js esconde essas consultas desagradáveis por baixo dos panos
 Em vez de precisar construir a consulta acima, chamar uma função em seu código será algo como isto:
 
 ```
-CryptoZombies.methods.createRandomZombie("Vitalik Nakamoto 🤔")
+CryptoZombies.methods.createPseudoRandomZombie("Vitalik Nakamoto 🤔")
   .send({ from: "0xb60e8dd61c5d32be8058bb8eb970870f07233155", gas: "3000000" })
 ```
 

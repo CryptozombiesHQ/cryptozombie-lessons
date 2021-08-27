@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // 일종의 이벤트 리스너가 텍스트 입력값을 취한다:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // 우리 컨트랙트의 `createRandomZombie`함수를 호출한다:
-  ZombieFactory.createRandomZombie(name)
+  // 우리 컨트랙트의 `createPseudoRandomZombie`함수를 호출한다:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // `NewZombie` 이벤트가 발생하면 사용자 인터페이스를 업데이트한다

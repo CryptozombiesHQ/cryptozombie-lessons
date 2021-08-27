@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // začni písať tu
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-Naša funkcia `_generateRandomDna` by mala vracala naspať (pseudo) nahodnú hodnotu typu `uint`. Ako to môžme dosiahnuť? 
+Naša funkcia `_generatePseudoRandomDna` by mala vracala naspať (pseudo) nahodnú hodnotu typu `uint`. Ako to môžme dosiahnuť? 
 
 Ethereum má do seba vstavanú hash funkciu `keccak256`. Je to typ známej hashovacej funkcie SHA3. Hash funkcie mapujú vstupný reťazec znakov na nahodné 256-bitové hexadecimálne čislo. Len malá zmena vo vstupe spôsobí obrovskú zmenu vo výslednom hashi. 
 
@@ -93,7 +93,7 @@ V uvedenom príklade `a * b` vracia `uint`, my sa však výsledok snažíme ulo�
 
 # Vyskúšaj si to sám
 
-Poďme teraz vyplniť telo našej funkcie `_generateRandomDna`! Toto je treba spraviť:
+Poďme teraz vyplniť telo našej funkcie `_generatePseudoRandomDna`! Toto je treba spraviť:
 
 1. Prvý riadok kódu by mal spraviť `keccak256` hash reťazca `_str` a vygenerovať tak psedo náhodné hexadecimálne čislo, pretypovať ho na `uint` a nakoniec uložiť výsledok v premennej `rand` typu `uint`.
 

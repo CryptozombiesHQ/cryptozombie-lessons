@@ -26,13 +26,13 @@ material:
               // udalosť nového Zombie vyvolaj tu
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -60,13 +60,13 @@ material:
               NewZombie(id, _name, _dna);
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 

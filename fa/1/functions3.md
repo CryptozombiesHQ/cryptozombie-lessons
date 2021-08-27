@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -105,7 +105,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 به یه تابع کمکی احتیاج داریم که از یه رشته، DNA تصادفی تولید کنه.
 
-۱. یک تابع `private` به `_generateRandomDna` اسم بسازین. یک پارامتر به اسم `_str` از نوع رشته می‌گیره و یک `uint` برمی‌گردونه.
+۱. یک تابع `private` به `_generatePseudoRandomDna` اسم بسازین. یک پارامتر به اسم `_str` از نوع رشته می‌گیره و یک `uint` برمی‌گردونه.
 
 ۲. این تابع بعضی از متغیرهای قراردادمون رو می‌بینه ولی تغییرشون نمی‌ده پس از نوع `view` تعریفش کنید. 
 

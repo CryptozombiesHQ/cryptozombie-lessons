@@ -31,14 +31,14 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // start her
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-I leksjon 1 gjorde vi det slik at brukere kan lage nye zombier ved å kjøre `createRandomZombie` og skrive inn et navn. Men hvis brukerne kunne fortsette å kjøre denne funksjonen for å lage ubegrensede zombier i sin hær, ville spillet ikke være veldig morsomt.
+I leksjon 1 gjorde vi det slik at brukere kan lage nye zombier ved å kjøre `createPseudoRandomZombie` og skrive inn et navn. Men hvis brukerne kunne fortsette å kjøre denne funksjonen for å lage ubegrensede zombier i sin hær, ville spillet ikke være veldig morsomt.
 
 La oss gjøre det slik at hver spiller kun kan kjøre denne funksjonen en gang. På den måten vil nye spillere kalle det når de først starter spillet for å lage den første zombieen i sin hær.
 
@@ -110,10 +110,10 @@ Dermed er `require` ganske nyttig for å verifisere visse forhold som må være 
 
 # Test det
 
-I vårt zombispill ønsker vi ikke at brukeren skal kunne lage ubegrensede zombier i sin hær ved å gjenta "createRandomZombie" - det ville gjøre spillet ikke så morsomt.
+I vårt zombispill ønsker vi ikke at brukeren skal kunne lage ubegrensede zombier i sin hær ved å gjenta "createPseudoRandomZombie" - det ville gjøre spillet ikke så morsomt.
 
 La oss bruke `require` for å sikre at denne funksjonen bare blir utført en gang per bruker, når de lager sin første zombie.
 
-1. Sett en `require`-setning i begynnelsen av `createRandomZombie`. Funksjonen bør sjekke for at `ownerZombieCount[msg.sender]` er lik `0`, og kaster en feil ellers.
+1. Sett en `require`-setning i begynnelsen av `createPseudoRandomZombie`. Funksjonen bør sjekke for at `ownerZombieCount[msg.sender]` er lik `0`, og kaster en feil ellers.
 
 > Noter: I Solidity, spiller det ingen rolle hvilket begrep du legger først - begge ordrene er likeverdige. Men siden vår svarkontroll er veldig grunnleggende, vil den bare akseptere ett svar som riktig - det forventer at `ownerZombieCount[msg.sender]` kommer først.

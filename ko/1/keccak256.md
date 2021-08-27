@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // 여기서 시작
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-우리가 `_generateRandomDna` 함수의 반환값이 (반) 랜덤인 `uint`가 되기를 원하면, 어떻게 하면 되겠는가?
+우리가 `_generatePseudoRandomDna` 함수의 반환값이 (반) 랜덤인 `uint`가 되기를 원하면, 어떻게 하면 되겠는가?
 
 이더리움은 SHA3의 한 버전인 `keccak256`를 내장 해시 함수로 가지고 있지. 해시 함수는 기본적으로 입력 스트링을 랜덤 256비트 16진수로 매핑하네. 스트링에 약간의 변화라도 있으면 해시 값은 크게 달라지네. 
 
@@ -92,7 +92,7 @@ uint8 c = a * uint8(b);
 
 # 직접 해보기
 
-`_generateRandomDna` 함수의 내용을 채워 보세! 여기에 함수가 무엇을 해야 하는지 나와 있네:
+`_generatePseudoRandomDna` 함수의 내용을 채워 보세! 여기에 함수가 무엇을 해야 하는지 나와 있네:
 
 1. 코드 첫 줄에서는 `_str`을 이용한 `keccak256` 해시값을 받아서 의사 난수 16진수를 생성하고 이를 `uint`로 형 변환한 다음, `rand`라는 `uint`에 결과값을 저장해야 한다. 
 

@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ Quand un zombie se nourri d'une autre forme de vie, son ADN se combine avec l'au
 
 1. Créez une fonction appelée `feedAndMultiply` qui aura  deux paramètres : `_zombieId` (un `uint`) et `_targetDna` (aussi un `uint`). Cette fonction devra être `public`.
 
-2. Nous ne voulons pas que d'autres personnes puissent nourrir notre zombie ! Nous allons vérifier que nous sommes bien le propriétaire de ce zombie. Ajoutez une déclaration `require` pour vérifier que `msg.sender` est égal au propriétaire du zombie (de la même manière que dans la fonction `createRandomZombie`).
+2. Nous ne voulons pas que d'autres personnes puissent nourrir notre zombie ! Nous allons vérifier que nous sommes bien le propriétaire de ce zombie. Ajoutez une déclaration `require` pour vérifier que `msg.sender` est égal au propriétaire du zombie (de la même manière que dans la fonction `createPseudoRandomZombie`).
 
 > Remarque : De la même manière, parce que notre validation de réponse est basique, il faudra que `msg.sender` soit en premier, sinon cela ne sera pas validé. Normalement quand vous codez, vous pouvez choisir l'ordre que vous voulez, les 2 étant justes.
 

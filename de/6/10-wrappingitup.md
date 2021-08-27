@@ -46,7 +46,7 @@ So we've left this implementation bare-bones. Here's a checklist of ideas for th
 
 6. The user's homepage would also have options by each zombie to change name, change DNA, and level up (for a fee). Options would be greyed out if the user wasn't yet high enough level.
 
-7. For new users, we should display a welcome message with a prompt to create the first zombie in their army, which calls `createRandomZombie()`.
+7. For new users, we should display a welcome message with a prompt to create the first zombie in their army, which calls `createPseudoRandomZombie()`.
 
 8. We'd probably want to add an `Attack` event to our smart contract with the user's `address` as an `indexed` property, as discussed in the last chapter. This would allow us to build real-time notifications — we could show the user a popup alert when one of their zombies was attacked, so they could view the user/zombie who attacked them and retaliate.
 

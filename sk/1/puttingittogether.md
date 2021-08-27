@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Teraz ideme vytvoriť verejnú funkciu ktorá príjma vstup vo forme mena zombie
 
 # Vyskúšaj si to sám
 
-1. Vytvor `public` funkciu pomenovanú `createRandomZombie`. Tá bude príjmať jediný parameter `_name` (typu `string`). _(Poznámka: Deklaruj túto funkciu `public` rovnkým spôsobom, akým si doposiaľ deklaroval ostatné funkcie `private`)_ 
+1. Vytvor `public` funkciu pomenovanú `createPseudoRandomZombie`. Tá bude príjmať jediný parameter `_name` (typu `string`). _(Poznámka: Deklaruj túto funkciu `public` rovnkým spôsobom, akým si doposiaľ deklaroval ostatné funkcie `private`)_ 
 
-2. Prvý riadok funkcie by mal zavolať funkciu `_generateRandomDna` s podsunutým argumentom `_name` a uložiť výsledok v `uint`e s názvom `randDna`. 
+2. Prvý riadok funkcie by mal zavolať funkciu `_generatePseudoRandomDna` s podsunutým argumentom `_name` a uložiť výsledok v `uint`e s názvom `randDna`. 
 
 3. Druhý riadok by mal zavolať funkciu  `_createZombie` a predať jej argumenty `_name` a `randDna`.
 

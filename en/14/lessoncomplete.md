@@ -1,18 +1,8 @@
 ---
 title: Lesson Complete!
 actions: ['checkAnswer', 'hints']
-requireLogin: true
 material:
   lessonComplete: 1
 ---
 
-Congratulations, you’ve made it to the end!
-
-In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
-
-In the next lesson, we'll put together the missing pieces by implementing:
-
-* The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
-* A bare-bones client that ties everything together.
-
-Until then, stay tuned and happy coding!
+Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.

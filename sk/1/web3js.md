@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // naslúchač udalostí ktorý príjma textový vstup
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // Zavoláme funkciu `createRandomZombie` našeho kontraktu
-  ZombieFactory.createRandomZombie(name)
+  // Zavoláme funkciu `createPseudoRandomZombie` našeho kontraktu
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // Naslúchame na vyvolanie udalosti `NewZombie`. V prípade detekcie takej udalosti stránku obnovíme

@@ -36,7 +36,7 @@ material:
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
       function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _generatePseudoRandomDna(string _str) private view returns (uint) {
       }
       }
 ---
@@ -77,9 +77,9 @@ This function doesn't even read from the state of the app — its return value 
 
 # Put it to the test
 
-We're going to want a helper function that generates a random DNA number from a string.
+We're going to want a helper function that generates a pseudo-random DNA number from a string. 
 
-1. Create a `private` function called `_generateRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
+1. Create a `private` function called `_generatePseudoRandomDna`. It will take one parameter named `_str` (a `string`), and return a `uint`.
 
 2. This function will view some of our contract's variables but not modify them, so mark it as `view`.
 

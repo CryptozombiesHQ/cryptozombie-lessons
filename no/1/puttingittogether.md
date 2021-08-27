@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Vi skal lage en offentlig funksjon som tar inn en input, zombiens navn, og bruke
 
 # Test det
 
-1. Lag en `public` funksjon kalt `createRandomZombie`. Den kommer til å ta ett parameter kalt  `_name` (en `string`). _(Noter: Deklarer denne funksjonen `public` akkurat som du tidligere deklarerte funksjoner `private`)_
+1. Lag en `public` funksjon kalt `createPseudoRandomZombie`. Den kommer til å ta ett parameter kalt  `_name` (en `string`). _(Noter: Deklarer denne funksjonen `public` akkurat som du tidligere deklarerte funksjoner `private`)_
 
-2. Den første linjen med kode burde kjøre  `_generateRandomDna` funksjonen med `_name`, og lagre den som en  `uint` kalt `randDna`.
+2. Den første linjen med kode burde kjøre  `_generatePseudoRandomDna` funksjonen med `_name`, og lagre den som en  `uint` kalt `randDna`.
 
 3. Den andre linjen bør kjøre `_createZombie` funksjonen og gi den `_name` og `randDna`.
 

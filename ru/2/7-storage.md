@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -122,7 +122,7 @@ contract SandwichFactory {
 
 1. Создай функцию под названием `feedAndMultiply`. Она берет два параметра: `_zombieId` (`uint`) и `_targetDna` (тоже `uint`). Сделай функцию открытой `public`.
 
-2. Мы не хотим, чтобы наших зомби жрал кто-то еще! Убедимся, что зомби и вправду принадлежит нам. Добавь оператор `require` (требуется), чтобы убедиться, что `msg.sender` (отправитель) тот же, что и владелец зомби (точно так же, как мы делали в функции `createRandomZombie`).
+2. Мы не хотим, чтобы наших зомби жрал кто-то еще! Убедимся, что зомби и вправду принадлежит нам. Добавь оператор `require` (требуется), чтобы убедиться, что `msg.sender` (отправитель) тот же, что и владелец зомби (точно так же, как мы делали в функции `createPseudoRandomZombie`).
 
  > Примечание: из-за того, что наша проверялка довольна примитивна, ожидается, что `msg.sender` идет первым и если поменять порядок, то вылетит ошибка. Но вообще когда кодишь, можно использовать любой порядок — оба правильные.
 

@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // 入力テキストを取得する類のイベントのリスナーだ：
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // `createRandomZombie`関数を呼び出す部分だ：
-  ZombieFactory.createRandomZombie(name)
+  // `createPseudoRandomZombie`関数を呼び出す部分だ：
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // `NewZombie`イベントをリッスンしてUIを更新する部分だ

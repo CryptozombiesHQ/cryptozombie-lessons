@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // zacznij tutaj
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-Chcemy, aby nasza funkcja `_generateRandomDna` zwracała pseudo losową liczbę naturalną `uint`. W jaki sposób możemy to osiągnąć?
+Chcemy, aby nasza funkcja `_generatePseudoRandomDna` zwracała pseudo losową liczbę naturalną `uint`. W jaki sposób możemy to osiągnąć?
 
 W Ethereum wbudowana jest funka hashująca `keccak256`, która jest odmianą funkcji SHA3. Funkcja hashująca mapuje ciąg znaków (string) na 256-bit heksadecymalny numer. Mała zmiana wejściowego stringa powoduje całkowitą zmianę wyniku funkcji.
 
@@ -93,7 +93,7 @@ W powyższym przykładzie, `a * b` zwraca `uint`, ale my próbujemy zapisać to 
 
 #  Zadanie do wykonania
 
-Uzupełnijmy naszą funkcję `_generateRandomDna` ! Oto co powinniśmy zrobić:
+Uzupełnijmy naszą funkcję `_generatePseudoRandomDna` ! Oto co powinniśmy zrobić:
 
 1. W pierwszej linijce wywołaj funkcję `keccak256` na  `_str` aby wygenerować pseudo-losową heksadecymalną liczbę. Zmień jej typ na uint i zapisz rezultat jako `uint` o nazwie `rand`.
 

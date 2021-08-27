@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Nous allons créer une fonction publique qui prend un paramètre, le nom du zomb
 
 # A votre tour
 
-1. Créez une fonction `public` nommée `createRandomZombie`. Elle devra prendre seulement un paramètre `_name` (un `string`). _(Remarque : déclarez cette fonction `public`. de la même manière que vous avez déclaré la fonction précédente `private`)_
+1. Créez une fonction `public` nommée `createPseudoRandomZombie`. Elle devra prendre seulement un paramètre `_name` (un `string`). _(Remarque : déclarez cette fonction `public`. de la même manière que vous avez déclaré la fonction précédente `private`)_
 
-2. La première ligne de la fonction devra exécuter la fonction `_generateRandomDna` avec comme argument `_name` and stocker le résultat dans un `uint` nommé `randDna`.
+2. La première ligne de la fonction devra exécuter la fonction `_generatePseudoRandomDna` avec comme argument `_name` and stocker le résultat dans un `uint` nommé `randDna`.
 
 3. La deuxième ligne devra exécuter la fonction `_createZombie` avec comme arguments `_name` et `randDna`.
 

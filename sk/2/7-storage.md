@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ Keď sa zombie kŕmi na iných formách života, jeho DNA sa skombinuje s DNA ob
 
 1. Vytvor funkciu pomenovanú `feedAndMultiply`. Bude brať dva parametre: `_zombieId` (typu `uint`) a `_targetDna` (tiež typu `uint`). Táto funkcia bude `public`.
 
-2. Nechceme aby našeho zombie dával kŕmiť niekto iný! Takže najprv overíme vlastníctvo zombie. Pridaj `require` aby si zaručil že `msg.sender` je skutočne vlastník daného zombie (podobne ako sme použili `require` vo funkcii `createRandomZombie`).
+2. Nechceme aby našeho zombie dával kŕmiť niekto iný! Takže najprv overíme vlastníctvo zombie. Pridaj `require` aby si zaručil že `msg.sender` je skutočne vlastník daného zombie (podobne ako sme použili `require` vo funkcii `createPseudoRandomZombie`).
 
  > Poznámka: Pretože náš kontrolór odpovedí je primitívny, očakáva, že `msg.sender` bude v `require` prvý. Ak poradie prehodíš, odpoveď bude vyhodnotená ako nesprávna. V praxi ale na poradí výrazov v `require` nezáleží, oboje verzie sú správne.
 

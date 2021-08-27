@@ -31,14 +31,14 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // Начало здесь
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-В Уроке 1 мы дали пользователям возможность создания новых зомби, вызывая функцию `createRandomZombie` и вводя имя. Но если пользователи смогут неограниченно вызывать функцию и наплодят неограниченное число зомби в армии, будет совсем не круто.
+В Уроке 1 мы дали пользователям возможность создания новых зомби, вызывая функцию `createPseudoRandomZombie` и вводя имя. Но если пользователи смогут неограниченно вызывать функцию и наплодят неограниченное число зомби в армии, будет совсем не круто.
 
 Сделаем так, чтобы каждый игрок мог вызвать эту функцию только один раз. Таким образом новые игроки вызовут функцию в начале игры и создать первого зомби в армии.
 
@@ -109,10 +109,10 @@ function sayHiToVitalik(string _name) public returns (string) {
 
 # Проверь себя
 
-В нашей зомби-игре мы не хотим, чтобы пользователь создавал неограниченное количество зомби в  армии, постоянно вызывая `createRandomZombie` - это не смешно.
+В нашей зомби-игре мы не хотим, чтобы пользователь создавал неограниченное количество зомби в  армии, постоянно вызывая `createPseudoRandomZombie` - это не смешно.
 
 Используем `require`, чтобы убедиться, что функция выполняется только один раз, когда пользователь создает своего первого зомби.
 
-1. Поставь оператор `require` в начале `createRandomZombie`. Функция должна проверить и убедиться, что `ownerZombieCount [msg.sender]` равно `0`, либо выдать ошибку.
+1. Поставь оператор `require` в начале `createPseudoRandomZombie`. Функция должна проверить и убедиться, что `ownerZombieCount [msg.sender]` равно `0`, либо выдать ошибку.
 
 > Примечание. В Solidity не имеет значения, какой термин идет первым - ордеры эквивалентны. Но поскольку наш проверяльщик ответов очень примитивный, он будет принимать только один ответ как правильный - предполагается, что `ownerZombieCount [msg.sender]` будет стоять на первом месте.

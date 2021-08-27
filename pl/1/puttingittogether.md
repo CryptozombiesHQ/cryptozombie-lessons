@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Zamierzamy stworzyś publiczna funkcję która na wejściu dostanie imi zombie. 
 
 # Zadanie do wykonania
 
-1. Stwórz `public` funkcję o nazwie `createRandomZombie`. Powinna przyjmować jeden parametr `_name` (`string`). _(Notatka: Zadeklaruj tą funkcję jako `public` tak samo jak deklarowałeś poprzednie funkcje typu `private`)_
+1. Stwórz `public` funkcję o nazwie `createPseudoRandomZombie`. Powinna przyjmować jeden parametr `_name` (`string`). _(Notatka: Zadeklaruj tą funkcję jako `public` tak samo jak deklarowałeś poprzednie funkcje typu `private`)_
 
-2. Pierwsza linijka funkcji powinna wywołać funkcję `_generateRandomDna` na zmiennej `_name`, oraz zapisać ją jako `uint` o nazwie `randDna`.
+2. Pierwsza linijka funkcji powinna wywołać funkcję `_generatePseudoRandomDna` na zmiennej `_name`, oraz zapisać ją jako `uint` o nazwie `randDna`.
 
 3. Druga linijka powinna wywołaś funkcję `_createZombie` ze zmiennymi `_name` oraz `randDna`.
 

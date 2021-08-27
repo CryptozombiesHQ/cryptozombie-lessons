@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Creeremo una funzione pubblica che accetta un input, il nome dello zombi, ed usa
 
 # Facciamo una prova
 
-1. Creare una funzione `public` chiamata `createRandomZombie`. Ci vorrà un parametro chiamato `_name` (una `string`). _(Nota: dichiara questa funzione `public` proprio come hai dichiarato le funzioni precedenti `private`)_
+1. Creare una funzione `public` chiamata `createPseudoRandomZombie`. Ci vorrà un parametro chiamato `_name` (una `string`). _(Nota: dichiara questa funzione `public` proprio come hai dichiarato le funzioni precedenti `private`)_
 
-2. La prima riga dovrebbe eseguire la funzione `_generateRandomDna` passandogli una stringa `_name` e memorizzarla in un `uint` chiamato `randDna`.
+2. La prima riga dovrebbe eseguire la funzione `_generatePseudoRandomDna` passandogli una stringa `_name` e memorizzarla in un `uint` chiamato `randDna`.
 
 3. La seconda riga dovrebbe eseguire la funzione `_createZombie` passandogli `_name` e `randDna`.
 

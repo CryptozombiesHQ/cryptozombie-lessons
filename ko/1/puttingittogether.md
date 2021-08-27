@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ material:
 
 # 직접 해보기
 
-1. `createRandomZombie`라는 `public`함수를 생성한다. 이 함수는 `_name`이라는 `string`형 인자를 하나 전달받는다. _(참고: 함수를 `private`로 선언한 것과 마찬가지로 함수를 `public`로 생성할 것)_
+1. `createPseudoRandomZombie`라는 `public`함수를 생성한다. 이 함수는 `_name`이라는 `string`형 인자를 하나 전달받는다. _(참고: 함수를 `private`로 선언한 것과 마찬가지로 함수를 `public`로 생성할 것)_
 
-2. 이 함수의 첫 줄에서는 `_name`을 전달받은 `_generateRandomDna` 함수를 호출하고, 이 함수의 반환값을 `randDna`라는 `uint`형 변수에 저장해야 한다.
+2. 이 함수의 첫 줄에서는 `_name`을 전달받은 `_generatePseudoRandomDna` 함수를 호출하고, 이 함수의 반환값을 `randDna`라는 `uint`형 변수에 저장해야 한다.
 
 3. 두번째 줄에서는 `_createZombie` 함수를 호출하고 이 함수에 `_name`와 `randDna`를 전달해야 한다.
 

@@ -1,21 +1,21 @@
 ---
-title: App Front-ends & Web3.js
-header: "Lesson 6: App Front-ends & Web3.js"
-roadmap: roadmap6.png
+title: Chainlink, Oracles, External Computation & Data
+header: "Lesson 6: Chainlink: The Decentralized Blockchain Oracle"
+roadmap: xxx
 path: solidity
 publishedOn: Cryptozombies
 ---
 
-Huh, you've made it this far?!
+You just keep getting more impressive by the second, but how will you fair when we look to combine the **real world** and all of it's changes and information with our beloved zombies?
 
-You're no ordinary CryptoZombie...
+In this lesson, we are going to go over **Chainlink** and **oracles**. 
 
-By completing Lesson 5, you've demonstrated that you have a pretty firm grasp of Solidity.
+[Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72) or [Blockchain Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72) are devices that connect our smart contracts and zombies with data and computation from the real world, such as [pricing data on currencies](https://data.chain.link/), [random number generators](https://docs.chain.link/docs/get-a-random-number/), and [any other data we can think of](https://docs.chain.link/docs/make-a-http-get-request/). Interacting outside of a blockchain isn't possible without an oracle, as blockchains themselves are intentionally isolated and deterministic by nature.  
 
-But no DApp is complete without a way for its users to interact with it...
+So all we have to do, is trust one of these devices to honestly deliver our data and we are all set right?
 
-In this lesson, we're going to look at how to interact with your smart contract and build a basic front-end for your DApp using a library called **Web3.js**.
+The quick answer is no. At least not until there **_social trust_** or you come up with a **_decentralized version_**. You're doing all this work to build your smart contracts in a decentralized context, you'd basically ruin all the effort by pulling your data from a centralized version, even if you deliver the data yourself! 
 
-Note that app front-ends are written in **JavaScript**, not Solidity. But since the focus of this course is on Ethereum / Solidity, we're assuming you are already comfortable building websites with HTML, JavaScript (including ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), and JQuery, and will not be spending time covering the basics of those languages.
+When smart contract include data or computation from oracles they are considered [hybrid smart contracts](https://blog.chain.link/hybrid-smart-contracts-explained/), and many of the most successful decentralized applications include data from the external world. 
 
-If you are not already comfortable building websites with HTML / Javascript, you should complete a basic tutorial elsewhere before starting this lesson.
+Are you ready to dive in? Let's learn!

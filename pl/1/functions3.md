@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ Funkcja nie czyta żadnego stanu aplikacji — wartość którą zwraca zależy
 
 Chcemy stworzyć pomocniczą funkcje, która wygeneruje losowe DNA na podstawie string-a.
 
-1. Stwórz `private` funkcje o nazwie `_generateRandomDna`. Powinna przyjmować jeden parametr `_str` ( `string`) i zwracać `uint`.
+1. Stwórz `private` funkcje o nazwie `_generatePseudoRandomDna`. Powinna przyjmować jeden parametr `_str` ( `string`) i zwracać `uint`.
 
 2. Ta funkcja będzie wyświetlała dane z naszego kontraktu, ale nie będzie ich modyfikowała. Oznacz ją jako `view`.
 

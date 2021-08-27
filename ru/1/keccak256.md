@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // Начало здесь
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-Нужно, чтобы функция `_generateRandomDna` (сгенерировать случайную ДНК) возвращала (полу-) случайный `uint`. Как этого добиться? 
+Нужно, чтобы функция `_generatePseudoRandomDna` (сгенерировать случайную ДНК) возвращала (полу-) случайный `uint`. Как этого добиться? 
 
 В Ethereum есть встроенная хэш-функция `keccak256` (произносится как «кечак»), разновидность SHA3. Хеш-функция обычно преображает входную строку в случайное 256-битное шестнадцатеричное число. Небольшое изменение в строке приведет к сильному изменению хэша. 
 
@@ -92,7 +92,7 @@ uint8 c = a * uint8(b);
 
 # Проверь себя
 
-Давай заполним тело функции `_generateRandomDna` (сгенерировать случайную ДНК)! Для этого: 
+Давай заполним тело функции `_generatePseudoRandomDna` (сгенерировать случайную ДНК)! Для этого: 
 
 1. Первая строчка кода должна взять `keccak256`-хэш от `_str`, чтобы сгенерировать превдослучайное шестнадцатеричное
  число, преобразовать его в `uint` и сохранить результат в `uint` с именем `rand`. 

@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -70,9 +70,9 @@ Rastgele DNA'lı bir zombi oluşturmak için bir giriş, zombinin ismini alan ve
 
 # Teste koy
 
-1. `createRandomZombie` isimli bir `public` fonksiyon oluştur. `_name` (bir `string`) isimli bir parametre alacak. _(Not: Tıpkı önceki fonksiyonu `private` olarak ifade ettiğiniz gibi bu fonksiyonu `public` ifade edin)_
+1. `createPseudoRandomZombie` isimli bir `public` fonksiyon oluştur. `_name` (bir `string`) isimli bir parametre alacak. _(Not: Tıpkı önceki fonksiyonu `private` olarak ifade ettiğiniz gibi bu fonksiyonu `public` ifade edin)_
 
-2. Fonksiyonun ilk satırı `_name` üzerinde `_generateRandomDna` fonksiyonunu çalıştırmalı ve `randDna` isimli bir `uint` içinde onu depolamalıdır.
+2. Fonksiyonun ilk satırı `_name` üzerinde `_generatePseudoRandomDna` fonksiyonunu çalıştırmalı ve `randDna` isimli bir `uint` içinde onu depolamalıdır.
 
 3. İkinci satır `_createZombie` fonksiyonunu çalıştırmalı ve `_name` ve `randDna` vermeli.
 

@@ -45,7 +45,7 @@ L'implémentation est donc minimale. Voici une liste d'idées de choses que l'on
 
 6. La page d'accueil utilisateur pourrait aussi avoir comme options pour chaque zombie de changer son nom, changer son ADN et gagner un niveau (avec un frais). Les options seraient grisées si l'utilisateur n'a pas encore le bon niveau.
 
-7. Pour les nouveaux utilisateurs, on pourrait afficher un message de bienvenue avec un moyen pour créer son premier zombie, en appelant `createRandomZombie()`.
+7. Pour les nouveaux utilisateurs, on pourrait afficher un message de bienvenue avec un moyen pour créer son premier zombie, en appelant `createPseudoRandomZombie()`.
 
 8. On voudrait sûrement ajouter un évènement `Attack` à notre smart contract avec l'adresse de l'utilisateur comme propriété `indexed` comme vu dans le chapitre précédent. Cela permettrait d'avoir des notifications en temps réel - on pourrait afficher une alerte à un utilisateur lorsque l'un de ses zombies est attaqué, et il pourrait voir le zombie/utilisateur qui l'a attaqué et rendre la pareille.
 

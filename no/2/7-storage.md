@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ Når en zombie feeds på et annet livsform, vil dets DNA kombinere med det andre
 
 1. Lag en funksjon kalt `feedAndMultiply`. Den vil ta to parametere: `_zombieId` (en `uint`) og `_targetDna` (en `uint`). Denne funksjon skal være `public`.
 
-2. Vi ønsker ikke å la noen andre mate med vår zombie! Så først, la oss sørge for at vi eier denne zombieen. Legg til en `require` statement for å være sikker at `msg.sender` er zombie-ens eier (likt som vi gjorde det i `createRandomZombie` funksjonen).
+2. Vi ønsker ikke å la noen andre mate med vår zombie! Så først, la oss sørge for at vi eier denne zombieen. Legg til en `require` statement for å være sikker at `msg.sender` er zombie-ens eier (likt som vi gjorde det i `createPseudoRandomZombie` funksjonen).
 
  > Noter: Igjen, fordi vår svar-kontroller er primitiv, forventer den `msg.sender` å komme først og vil markere feil hvis du bytter rekkefølgen. Men normalt når du er koder, kan du bruke hvilken rekkefølge du foretrekker - begge er riktige.
 

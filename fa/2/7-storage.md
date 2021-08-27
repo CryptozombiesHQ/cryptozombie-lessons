@@ -42,14 +42,14 @@ material:
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -125,7 +125,7 @@ contract SandwichFactory {
 
 1. تابعی به نام `feedAndMultiply` ایجاد کنید. این تابع دو پارامتر ورودی خواهد داشت: `_zombieId` (از نوع`uint`) و `_targetDna` (همچنین`uint`). این تابع باید `public` باشد.
 
-2. ما نمی خواهیم اجازه دهیم شخص دیگری با استفاده از زامبی ما تغذیه کند! بنابراین اول ، بیایید مطمئن شویم که مالک این زامبی هستیم. برای اطمینان از اینکه `msg.sender` برابر با صاحب این زامبی است ، عبارت`require` را اضافه کنید (شبیه کاری که در عملکرد `createRandomZombie` انجام دادیم).
+2. ما نمی خواهیم اجازه دهیم شخص دیگری با استفاده از زامبی ما تغذیه کند! بنابراین اول ، بیایید مطمئن شویم که مالک این زامبی هستیم. برای اطمینان از اینکه `msg.sender` برابر با صاحب این زامبی است ، عبارت`require` را اضافه کنید (شبیه کاری که در عملکرد `createPseudoRandomZombie` انجام دادیم).
 
  > توجه: مجدداً ، به دلیل اینکه بررسی جواب ما ابتدایی است ، انتظار می رود که ابتدا `msg.sender` بیاید و در صورت تغییر ترتیب ، آن را اشتباه علامت گذاری می کند. اما به طور معمول هنگام کدگذاری ، می توانید از هر ترتیبی که ترجیح می دهید استفاده کنید - هر دو درست هستند.
 

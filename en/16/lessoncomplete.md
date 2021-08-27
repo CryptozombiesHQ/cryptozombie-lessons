@@ -5,8 +5,10 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations! You've just finsihed implementing your decentralized oracle!
+Awesome, you've completed Lesson 2 of our series about building and interacting with an oracle.
 
-The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
+Because we're just building an oracle for demo purposes, we've made a bunch of decisions that simplified things a bit. For example, think about what would happen when you bring the oracle down for an upgrade. Yeah, even if it'll take just a few minutes until you bring it back online, all the requests made during this period will be lost. And there's no way to notify the app that a particular request hasn't been processed. A solution for this is to keep track of the last block that got processed, and, every time the oracle starts, it should take it from there.
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+A production-ready oracle should take care of this, and a few other things, of which, the most important is: how to make the oracle more **_decentralized_**. And this is exactly what we'll cover next.
+
+Stay tuned for our next lesson!

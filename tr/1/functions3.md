@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ Bu fonksiyon uygulamanın durumundan tam okumuyor — getirdiği değer sadece 
 
 Bir diziden rastgele bir DNA sayısı oluşturan yardımcı bir fonksiyon isteyeceğiz.
 
-1. `_generateRandomDna` denilen `private` bir fonksiyon oluşturun. `_str` (bir `string`) isimli bir parametre alacak ve bir `uint` getirecek.
+1. `_generatePseudoRandomDna` denilen `private` bir fonksiyon oluşturun. `_str` (bir `string`) isimli bir parametre alacak ve bir `uint` getirecek.
 
 2. Bu fonksiyon kontratlarımızın değişkenlerinin bazılarını görecek fakat onları değiştirmeyecek, yani onu `view` olarak işaretleyin.
 

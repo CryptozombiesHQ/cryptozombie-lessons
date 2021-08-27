@@ -25,7 +25,7 @@ material:
       zombies.push(Zombie(_name, _dna));
       }
       
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _generatePseudoRandomDna(string _str) private view returns (uint) {
       // start here
       }
       
@@ -38,10 +38,10 @@ material:
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
       function _createZombie(string _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function _generatePseudoRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
       }
 ---
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+We want our `_generatePseudoRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
 
 Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input string into a random 256-bit hexadecimal number. A slight change in the string will cause a large change in the hash.
 
@@ -57,7 +57,8 @@ Example:
 
 As you can see, the returned values are totally different despite only a 1 character change in the input.
 
-> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
+> Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes. 
+> We will learn more about secure randomness when we get to our Chainlink VRF section. If you want your smart contract to secure anything of value, we will want to use secure randomness. But for the learning, for now we will use this!
 
 ## Typecasting
 
@@ -75,7 +76,7 @@ In the above, `a * b` returns a `uint`, but we were trying to store it as a `uin
 
 # Put it to the test
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+Let's fill in the body of our `_generatePseudoRandomDna` function! Here's what it should do:
 
 1. The first line of code should take the `keccak256` hash of `_str` to generate a pseudo-random hexadecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
 

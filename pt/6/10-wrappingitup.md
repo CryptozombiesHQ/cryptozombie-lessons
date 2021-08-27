@@ -45,7 +45,7 @@ Então, deixamos esta implementação básica. Aqui está uma lista de idéias p
 
 6. A página inicial do usuário também teria opções de cada zumbi para mudar o nome, alterar o DNA e subir de nível (por uma taxa). As opções seriam exibidas em cinza se o usuário ainda não estivesse no nível alto o suficiente.
 
-7. Para novos usuários, devemos exibir uma mensagem de boas-vindas com um aviso para criar o primeiro zumbi em seu exército, que chama `createRandomZombie()`.
+7. Para novos usuários, devemos exibir uma mensagem de boas-vindas com um aviso para criar o primeiro zumbi em seu exército, que chama `createPseudoRandomZombie()`.
 
 8. Nós provavelmente quereríamos adicionar um evento `Attack` ao nosso smart contract com o `address` do usuário como uma propriedade `indexed`, conforme discutido no último capítulo. Isso nos permitiria criar notificações em tempo real — poderíamos mostrar ao usuário um alerta popup quando um de seus zumbis fosse atacado, para que eles pudessem ver o usuário / zumbi que os atacou e retaliar.
 
