@@ -159,7 +159,7 @@ Funkcja ta wygląda następująco:
     }
     
 
-Ta funkcja wygląda nieco inaczej, niż jesteśmy przyzwyczajeni. Możesz zauważyć, że zwraca ona... wiele różnych wartości. Jeśli programowałeś w językach takich jak Javascript to jest tu różnica — w Solidity, możesz zwrócić z funkcji więcej niż jedną wartość.
+Ta funkcja wygląda nieco inaczej, niż jesteśmy przyzwyczajeni. Możesz zauważyć, że zwraca ona... wiele różnych wartości. If you're coming from a programming language like JavaScript, this is different — in Solidity you can return more than one value from a function.
 
 Teraz, jak wiemy już, jak wygląda ta funkcja, możemy użyć jej do tworzenia interfejsu:
 
