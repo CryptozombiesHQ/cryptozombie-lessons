@@ -159,7 +159,7 @@ La función es así:
     }
     
 
-La función parece un poco diferente de las que hemos usado. Puedes ver que devuelve... una lista de valores diferentes. Si vienes de un lenguaje de programación como Javascript, esto es diferente — en Solidity puedes devolver más de un valor a una función.
+La función parece un poco diferente de las que hemos usado. Puedes ver que devuelve... una lista de valores diferentes. If you're coming from a programming language like JavaScript, this is different — in Solidity you can return more than one value from a function.
 
 Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
