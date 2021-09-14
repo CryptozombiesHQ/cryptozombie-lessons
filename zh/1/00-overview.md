@@ -10,4 +10,4 @@ publishedOn: Cryptozombies
 
 这个教程会教你如何搭建一个**以太网的游戏**。
 
-此课程为 Solidity 初学者设计，需要你对其他的程序语言有所了解（如 JavaScript)。
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. JavaScript).
