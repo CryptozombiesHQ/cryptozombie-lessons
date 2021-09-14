@@ -113,7 +113,7 @@ Diremos que los gato-zombis tienen `99` en los últimos dos dígitos de su ADN (
 
 ## Declaraciones if
 
-Una declaración if en Solidity es igual que en javascript:
+If statements in Solidity look just like JavaScript:
 
     function eatBLT(string memory sandwich) public {
       // Remember with strings, we have to compare their keccak256 hashes
