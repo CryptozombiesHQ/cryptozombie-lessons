@@ -10,4 +10,4 @@ Więc myślisz, że posiadasz to, co jest potrzebne aby zostać **CryptoZombie**
 
 Ten kurs nauczy Cię jak **stworzyć grę na Ethereum**.
 
-Jest przeznaczony dla początkujących w Solidity, ale zakładamy, że masz jakieś doświadczenie w programowaniu w innym języku (np. Javascript).
+It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. JavaScript).
