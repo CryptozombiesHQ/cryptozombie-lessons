@@ -15,13 +15,13 @@ material:
 
 ¡Eso es, has completado la lección 2!
 
-Ahora puede probar nuestra demostración a la derecha para verlo en acción. Sigue adelante, sé que no puedes esperar hasta el final de esta página 
+You can check out the demo to the right to see it in action. Go ahead, I know you can't wait until the bottom of this page 
 
-## Implementación Javascript
+## JavaScript implementation
 
 Una vez estemos listos para implementar este contrato en Ethereum solamente tendremos que compilar e implementar `ZombieFeeding` — debido a que este contrato es nuestro contrato final que hereda de `ZombieFactory`, y tiene acceso a todos los métodos públicos de ambos contratos.
 
-Vamos a ver un ejemplo de cómo interactuaría nuestro contrato implementado usando Javascript y web3.js:
+Let's look at an example of interacting with our deployed contract using JavaScript and web3.js:
 
     var abi = /* abi generado por el compilador */
     var ZombieFeedingContract = web3.eth.contract(abi)
@@ -61,6 +61,6 @@ Vamos a ver un ejemplo de cómo interactuaría nuestro contrato implementado usa
 
 Selecciona el gato del que te quieres alimentar. ¡El ADN de tu zombi y el ADN del gato se combinarán, y recibirás un nuevo zombi en tu ejército!
 
-¿Puedes ver esas bonitas piernas de gato en tu zombi? Esos son nuestros últimos dígitos `99` del ADN en marcha 
+Notice those cute cat legs on your new zombie? That's our final `99` digits of DNA at work 
 
 Puedes volver a empezar y probar de nuevo si quieres. Cuando consigas un gato zombi con el que estés contento (solo te puedes quedar uno), ¡sigue adelante y procede al siguiente capítulo para terminar la lección 2!
