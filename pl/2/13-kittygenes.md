@@ -113,7 +113,7 @@ Powiemy, że koto-Zombi mają `99` jako ostatnie cyfry DNA (bo koty mają 9 ży�
 
 ## Wyrażenia if
 
-Wyrażenia if w Solidity wyglądają jak w Javascripcie:
+If statements in Solidity look just like JavaScript:
 
     function eatBLT(string memory sandwich) public {
       // Remember with strings, we have to compare their keccak256 hashes
