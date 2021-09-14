@@ -17,11 +17,11 @@ Tak jest, udało Ci się ukończyć lekcje 2!
 
 You can check out the demo to the right to see it in action. Go ahead, I know you can't wait until the bottom of this page 
 
-## Implementacja Javascript
+## JavaScript implementation
 
 Gdy jesteśmy gotowi, aby umieścić kontrakt w Ethereum będziemy musieli tylko skompilować i wdrożyć `ZombieFeeding` — ten kontrakt jest naszym ostatecznym kontraktem, który dziedziczy po `ZombieFactory` i ma dostęp do wszystkich publicznych metod w obu kontraktach.
 
-Spójrzmy na przykład interakcji z naszymi wdrożonymi kontraktami za pomocą Javascript i web3.js:
+Let's look at an example of interacting with our deployed contract using JavaScript and web3.js:
 
     var abi = /* abi wygenerowane przez kompilator */
     var ZombieFeedingContract = web3.eth.contract(abi)
