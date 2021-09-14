@@ -70,7 +70,7 @@ Ejemplo:
     }
     
 
-La aplicación con la interfaz de usuario podría entonces estar escuchando el evento. Una implementación en JavaScript sería así:
+Your app front-end could then listen for the event. A JavaScript implementation would look something like:
 
     YourContract.IntegersAdded(function(error, result) {
       // do something with result
