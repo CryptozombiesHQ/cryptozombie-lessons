@@ -12,9 +12,9 @@ material:
     answer: 1
 ---
 
-Nasz kontrakt Solidity jest gotowy! Teraz potrzebujemy napisać aplikacje frontend'ową w Javascript, która będzie wchodziła w interakcję z kontraktem.
+Our Solidity contract is complete! Now we need to write a JavaScript frontend that interacts with the contract.
 
-Ethereum posiada bibliotekę Javascript o nazwie ***Web3.js***.
+Ethereum has a JavaScript library called ***Web3.js***.
 
 W późniejszych lekcjach, zagłębimy się w temat wdrażania kontraktu i ustawienia Web3.js. Lecz na tą chwile, spójrz na przykład kodu, jak Web3.js oddziaływuje na nasz wdrożony już kontrakt.
 
@@ -69,7 +69,7 @@ Nie martw sie, jeżeli nie ma to dla Ciebie narazie żadnego sensu.
     }
     
 
-To, czym zajmuję się kod Javascript, jest pobieranie wartości generowanych w `zombieDetails` i użycie trochę przeglądarkowej magii Javascriptu (używamy Vue.js) aby zamieniać obrazki i zastosowywać filtry CSS. Otrzymasz do tego cały kod w późniejszej lekcji.
+What our JavaScript then does is take the values generated in `zombieDetails` above, and use some browser-based JavaScript magic (we're using Vue.js) to swap out the images and apply CSS filters. Otrzymasz do tego cały kod w późniejszej lekcji.
 
 # Spróbuj!
 
