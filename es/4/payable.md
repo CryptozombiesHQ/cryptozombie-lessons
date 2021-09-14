@@ -281,7 +281,7 @@ Lo que sucede aquí es que alguien llamaría a la función desde web3.js (desde 
     OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
     
 
-Nótese el campo `value`, donde la llamada de función javascript especifíca cuánto `ether` enviar (0.001). Si piensas en la transacción como un sobre, y los parámetros que usted envía a la llamada de función son los contenidos de la carta que coloca adentro, entonces añadir un `value` es como poner dinero en efectivo dentro del sobre — la carta y el dinero son entregados juntos al receptor.
+Notice the `value` field, where the JavaScript function call specifies how much `ether` to send (0.001). Si piensas en la transacción como un sobre, y los parámetros que usted envía a la llamada de función son los contenidos de la carta que coloca adentro, entonces añadir un `value` es como poner dinero en efectivo dentro del sobre — la carta y el dinero son entregados juntos al receptor.
 
 > Nota: Si una función no es marcada como `payable` y usted intenta enviar Ether a esta, como se hizo anteriormente, la función rechazará tu transacción.
 
