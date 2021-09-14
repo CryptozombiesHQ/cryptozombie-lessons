@@ -97,7 +97,7 @@ Vamos a actualizar nuestro método `_createZombie` de la Lección para asignar l
 
 2. Segundo, vamos a incrementar `ownerZombieCount` para este `msg.sender`.
 
-En Solidity, puedes incrementar un `uint` con `++`, así como en javascript:
+In Solidity, you can increase a `uint` with `++`, just like in JavaScript:
 
     uint number = 0;
     number++;
