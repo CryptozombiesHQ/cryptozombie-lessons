@@ -277,7 +277,7 @@ Quelqu'un va appeler la fonction depuis web3.js (depuis l'interface utilisateur 
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-On remarque le champs `value` (valeur), où l'appel de la fonction Javascript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donnés au même moment au destinataire.
+On remarque le champs `value` (valeur), où l'appel de la fonction JavaScript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donnés au même moment au destinataire.
 
 > Remarque : Si une fonction n'est pas marquée `payable` et que vous essayez de lui envoyer des Ether, la fonction rejettera votre transaction.
 

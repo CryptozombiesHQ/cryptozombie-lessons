@@ -15,11 +15,11 @@ Ecco fatto, hai completato la lezione 2!
 
 Puoi vedere la demo a destra per vederla in azione. Vai avanti, so che non puoi aspettare fino alla fine di questa pagina 😉. Fai clic su un gattino per attaccare e vedi il nuovo gatto-zombi che ottieni!
 
-## Implementazione Javascript
+## Implementazione JavaScript
 
 Una volta che siamo pronti a distribuire questo contratto su Ethereum, compileremo ed implementeremo semplicemente `ZombieFeeding`, poiché questo contratto è il nostro contratto finale che eredita da `ZombieFactory` ed ha accesso a tutti i metodi pubblici in entrambi i contratti.
 
-Diamo un'occhiata ad un esempio di interazione con il nostro contratto distribuito utilizzando Javascript e web3.js:
+Diamo un'occhiata ad un esempio di interazione con il nostro contratto distribuito utilizzando JavaScript e web3.js:
 
 ```
 var abi = /* abi generato dal compilatore */

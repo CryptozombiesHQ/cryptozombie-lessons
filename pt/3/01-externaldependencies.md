@@ -141,7 +141,7 @@ material:
       }
 ---
 
-Até agora, Solidity pareceu bastante similar a outras linguagens como Javascript. Mas as aplicações distribuídas em Ethereum são um tanto diferentes de aplicações normais em diversas maneiras.
+Até agora, Solidity pareceu bastante similar a outras linguagens como JavaScript. Mas as aplicações distribuídas em Ethereum são um tanto diferentes de aplicações normais em diversas maneiras.
 
 Para começar, após você implantar um contrato em Ethereum, este é **_imutável_**, quer dizer que ele nunca poder ser modificado ou melhorado novamente.
 

@@ -122,7 +122,7 @@ function whatIsMyNumber() public view returns (uint) {
 
 2. ขั้นตอนที่ 2 คือการเพิ่มจำนวน `ownerZombieCount` สำหรับ `msg.sender` 
 
-ใน Solidity จะเพิ่มค่า `uint` ด้วยเครื่องหมาย `++` เหมือนใน javascript:
+ใน Solidity จะเพิ่มค่า `uint` ด้วยเครื่องหมาย `++` เหมือนใน JavaScript:
 
 ```
 uint number = 0;

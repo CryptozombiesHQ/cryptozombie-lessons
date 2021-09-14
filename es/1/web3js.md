@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-¡Nuestro contrato en Solidity está completo! Ahora tenemos que escribir una aplicación de usuario en javascript para interactuar con él.
+¡Nuestro contrato en Solidity está completo! Ahora tenemos que escribir una aplicación de usuario en JavaScript para interactuar con él.
 
-Ethereum tiene una librería Javascript llamada **_Web3.js_**.
+Ethereum tiene una librería JavaScript llamada **_Web3.js_**.
 
 En lecciones posteriores veremos en detalle como publicar un contrato y como configurar Web3.js. Pero por ahora vamos solamente a ver un ejemplo de código de cómo Web3.js interactuaría con nuestro contrato.
 
@@ -67,7 +67,7 @@ function generateZombie(id, name, dna) {
   return zombieDetails
 }
 ```
-Lo que nuestro código javascript hace es recoger los valores generados en `zombieDetails` más arriba, y usar un poco de magia Javascript en el navegador (usamos Vue.js) para intercambiar las imágenes y aplicar filtros CSS. Te daremos todo el código para hacer esto en una lección posterior.
+Lo que nuestro código JavaScript hace es recoger los valores generados en `zombieDetails` más arriba, y usar un poco de magia JavaScript en el navegador (usamos Vue.js) para intercambiar las imágenes y aplicar filtros CSS. Te daremos todo el código para hacer esto en una lección posterior.
 
 # ¡Pruébalo!
 
