@@ -10,7 +10,7 @@ You just keep getting more impressive by the second, but how will you fare when 
 
 In this lesson, we are going to go over **Chainlink** and **oracles**. 
 
-[Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72) or [Blockchain Oracles](https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72) are devices that connect our smart contracts and zombies with data and computation from the real world, such as [pricing data on currencies](https://data.chain.link/), [random number generators](https://docs.chain.link/docs/get-a-random-number/), and [any other data we can think of](https://docs.chain.link/docs/make-a-http-get-request/). Interacting outside of a blockchain isn't possible without an oracle, as blockchains themselves are intentionally isolated and deterministic by nature.  
+<a href="https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72" target=_new>Blockchain Oracles</a> are devices that connect our smart contracts and zombies with data and computation from the real world, such as <a href="https://data.chain.link/" target=_new>pricing data on currencies</a>, <a href="https://docs.chain.link/docs/get-a-random-number/" target=_new>random number generators</a>, and  <a href="https://docs.chain.link/docs/make-a-http-get-request/" target=_new>any other data we can think of</a>. Blockchains can't interact with the outside world, as they are intentionally isolated and deterministic by nature.
 
 So all we have to do, is trust one of these devices to honestly deliver our data and we are all set right?
 
