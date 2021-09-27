@@ -14,7 +14,7 @@ In this lesson, we are going to go over **Chainlink** and **oracles**.
 
 So all we have to do, is trust one of these devices to honestly deliver our data and we are all set right?
 
-The quick answer is no. At least not until there **_social trust_** or you come up with a **_decentralized version_**. You're doing all this work to build your smart contracts in a decentralized context, you'd basically ruin all the effort by pulling your data from a centralized version, even if you deliver the data yourself! 
+The quick answer is no. At least not until there is **_social trust_** or you come up with a **_decentralized version_**. You're doing all this work to build your smart contracts in a decentralized context, you'd basically ruin all the effort by pulling your data from a centralized version! This means, that even if you deliver the data by yourself, it's still centralized, because you are the centralized point!
 
 When smart contract include data or computation from oracles they are considered [hybrid smart contracts](https://blog.chain.link/hybrid-smart-contracts-explained/), and many of the most successful decentralized applications include data from the external world. 
 
