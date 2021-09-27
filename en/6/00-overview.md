@@ -6,7 +6,7 @@ path: solidity
 publishedOn: Cryptozombies
 ---
 
-You just keep getting more impressive by the second, but how will you fair when we look to combine the **real world** and all of it's changes and information with our beloved zombies?
+You just keep getting more impressive by the second, but how will you fare when we look to combine the **real-world** and all of its changes and information with our beloved zombies?
 
 In this lesson, we are going to go over **Chainlink** and **oracles**. 
 
