@@ -16,6 +16,6 @@ So all we have to do, is trust one of these devices to honestly deliver our data
 
 The quick answer is no. At least not until there **_social trust_** or you come up with a **_decentralized version_**. You're doing all this work to build your smart contracts in a decentralized context, you'd basically ruin all the effort by pulling your data from a centralized version, even if you deliver the data yourself! 
 
-When smart contract include data or computation from oracles they are considered [hybrid smart contracts](https://blog.chain.link/hybrid-smart-contracts-explained/), and many of the most successful decentralized applications include data from the external world. 
+When your smart contracts include data or computation from oracles, they are considered <a href="https://blog.chain.link/hybrid-smart-contracts-explained/" target=_new>hybrid smart contracts</a>, and many of the most successful decentralized applications include data from the external world. 
 
 Are you ready to dive in? Let's learn!
