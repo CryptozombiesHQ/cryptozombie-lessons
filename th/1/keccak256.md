@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // start here
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-ถ้าเราต้องการที่จะให้ฟังก์ชั่น `_generateRandomDna` รีเทิร์นค่า (กึ่ง) สุ่มชนิด `uint` เราจะสามารถทำได้อย่างไร?
+ถ้าเราต้องการที่จะให้ฟังก์ชั่น `_generatePseudoRandomDna` รีเทิร์นค่า (กึ่ง) สุ่มชนิด `uint` เราจะสามารถทำได้อย่างไร?
 
 Ethereum มีฟังก์ชันแฮช (Hash function) `keccak256` เป็นของตัวเอง ซึ่งในกรณีนี้จะเป็นเวอร์ชั่น SHA3 แฮชฟังก์ชั่นโดยปกติแล้วก็จะรวบรวมข้อมูล input ชนิด string เข้าให้เป็นเลขสุ่ม Hexadecimal ที่มี 256 บิท  ทั้งนี้การเปลี่ยนแปลงของข้อมูล string เพียงเล็กน้อยก็จะส่งผลยิ่งใหญ่ต่อค่าแฮชได้ (hash)
 
@@ -92,7 +92,7 @@ uint8 c = a * uint8(b);
 
 # ทดสอบ
 
-เราจะมาเริ่มทำการใส่โค้ดในส่วน body ของฟังก์ชัน `_generateRandomDna` กัน! ซึ่งนี่คือสิ่งที่จะต้องทำ
+เราจะมาเริ่มทำการใส่โค้ดในส่วน body ของฟังก์ชัน `_generatePseudoRandomDna` กัน! ซึ่งนี่คือสิ่งที่จะต้องทำ
 
 1.	ในโค้ดบรรทัดแรกนั้นควรมีเลขแฮช `keccak256` ของ `_str` เพื่อที่จะสร้างเลขกึ่งสุ่มแบบ hexadecimal ขึ้นมา และต้อง typecast ข้อมูลให้อยู่เป็นชนิด `uint` สุดท้ายแล้วจึงเก็บค่าผลลัพธ์ให้เป็นข้อมูลชนิด `uint` ให้ชื่อว่า `rand`
 

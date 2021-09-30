@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // commencez ici
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-Comment faire pour que notre fonction `_generateRandomDna` retourne un `uint` (presque) aléatoire ?
+Comment faire pour que notre fonction `_generatePseudoRandomDna` retourne un `uint` (presque) aléatoire ?
 
 Ethereum a la fonction de hachage `keccak256` intégrée, qui est une variante de SHA3. Une fonction de hachage permet fondamentalement de lier une chaîne d'entrée à un nombre hexadécimal aléatoire de 256 bits. Le moindre changement dans la chaîne provoquera un grand changement dans le hachage.
 
@@ -92,7 +92,7 @@ Ci-dessus, `a * b` renvoie un `uint`, mais nous essayons de le stocker comme un 
 
 # A votre tour.
 
-Complétons le corps de notre fonction `_generateRandomDna` ! Voila ce qu'elle devrait faire :
+Complétons le corps de notre fonction `_generatePseudoRandomDna` ! Voila ce qu'elle devrait faire :
 
 1. La première ligne de code doit prendre le hachage `keccak256` de `_str` pour générer un nombre pseudo-aléatoire hexadécimal, le convertir en un `uint`, et enfin stocker le résultat dans un `uint` nommé `rand`.
 

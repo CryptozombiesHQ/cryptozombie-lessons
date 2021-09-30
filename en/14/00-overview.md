@@ -1,18 +1,26 @@
 ---
-title: How to Build an Oracle
-header: How to Build an Oracle
-path: solidity_advanced
+title: All About Binance Chain
+header: All About Binance Chain
+roadmap: roadmap.jpg
+path: beyond_ethereum
 publishedOn: Cryptozombies
 ---
 
-By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. If so, you may already have noticed that smart contracts can't directly access data from the outside world through an HTTP request or something similar. Instead, smart contracts pull data through something called an **_oracle_**. 
+Have you seen some of the recent updates from Loom Network?
 
-This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**.
+If not, here's the thing: we've been busy building the most practical and efficient multichain network for blockchain interoperability. We’re already live in production and have integrations to Ethereum, Tron, and Binance (with more major chains are on the way 😉).
 
-In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
+Why should you care?
 
-That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
+Well, integrating with all major blockchains means that as soon as you deploy to Loom Network, your dapp becomes accessible to the user base of all these chains combined — and you'll be able to accept a multitude of tokens as payment.
 
-The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+We do all the heavy lifting, so you can simply focus on coding your awesome dapp!
 
-Time to write some code!
+In this lesson, we'll walk you through how to:
+
+* Create your own token on the Binance Chain
+* Freeze and unfreeze tokens
+* Place an order on the Binance DEX
+
+Let's get started...
+

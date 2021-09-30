@@ -1,17 +1,20 @@
 ---
-title: How to Build an Oracle - Part 2
-header: How to Build an Oracle - Part 2
+title: How to Build an Oracle
+header: How to Build an Oracle
 path: solidity_advanced
 publishedOn: Cryptozombies
 ---
 
-Welcome to the second part of our series about building an oracle. This lesson picks up where we left off last time, and we're going to look at how to:
+By completing the previous tutorials you've demonstrated a good grasp of Solidity and JavaScript; and you are probably well on your way to building your first dapp. We previously learnt how to work with Chainlink oracles, a modular framework for building and working with decentralized data and computation from outside the blockchain.
 
-* Implement the JavaScript component of the oracle.
-* Write a simple Node.js client that interacts with the oracle. To keep things simple, you won't be building a fully-fledged web interface, but the code you'll write in this lesson will help you understand all the key aspects.
-* To glue everything together, we'll teach you how to deploy the smart contracts and run the oracle.
+This lesson is the first in the sequence of three lessons that aim to show how you can **_build and interact with an oracle_**. It's important to know the ramifications of doing something like this on your own, including upkeep, decentrality, data quality and everything else!
 
-Note that this is an advanced lesson and it requires:
+In the first two lessons, we will be teaching you to build and interact with the simplest possible oracle that allows only one user, its owner, to fetch data from Binance's public API.
 
-* A bit of **JavaScript** knowledge.
-* A basic understanding of `web3`. If you don’t know how `web3` works, don't worry. We've got you covered. Just head over to <a href="https://cryptozombies.io/en/lesson/6" target=_blank>Lesson 6</a> first.
+That said, I have a question for you: why would users trust your oracle?🤔🤔🤔
+
+The quick answer is that they wouldn't. At least not until there **_social trust_** or you come up with a **_decentralized version_**. Thus, in the third lesson, we'll show you how to make your oracle more decentralized. But, for now, let's start with the beginning.
+
+We will be working with Truffle here, you can also make use of everything we will learn here out of the box with the [Chainlink Truffle Starter Kits](https://github.com/smartcontractkit/truffle-starter-kit).
+
+Time to write some code!

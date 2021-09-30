@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 스트링으로부터 랜덤 DNA 숫자를 생성하는 도우미 함수가 필요할 걸세. 
 
-1. `_generateRandomDna`라는 `private` 함수를 만드시게. 이 함수는 `_str` (`string`형)을 인자로 전달받고, `uint`을 반환해야 하네.
+1. `_generatePseudoRandomDna`라는 `private` 함수를 만드시게. 이 함수는 `_str` (`string`형)을 인자로 전달받고, `uint`을 반환해야 하네.
 
 2. 이 함수는 컨트랙트 변수를 보지만 변경하지는 않을 것이므로 `view`로 선언하게.
 

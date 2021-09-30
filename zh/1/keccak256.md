@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // 这里开始
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-如何让 `_generateRandomDna` 函数返回一个全(半) 随机的 `uint`?
+如何让 `_generatePseudoRandomDna` 函数返回一个全(半) 随机的 `uint`?
 
 Ethereum 内部有一个散列函数`keccak256`，它用了SHA3版本。一个散列函数基本上就是把一个字符串转换为一个256位的16进制数字。字符串的一个微小变化会引起散列数据极大变化。
 
@@ -92,7 +92,7 @@ uint8 c = a * uint8(b);
 
 # 实战演习
 
-给 `_generateRandomDna` 函数添加代码! 它应该完成如下功能:
+给 `_generatePseudoRandomDna` 函数添加代码! 它应该完成如下功能:
 
 1. 第一行代码取 `_str` 的 `keccak256` 散列值生成一个伪随机十六进制数，类型转换为 `uint`, 最后保存在类型为 `uint` 名为 `rand` 的变量中。
 

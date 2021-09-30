@@ -28,13 +28,13 @@ material:
       // and fire it here
       }
       
-      function _generateRandomDna(string _str) private view returns (uint) {
+      function _generatePseudoRandomDna(string _str) private view returns (uint) {
       uint rand = uint(keccak256(_str));
       return rand % dnaModulus;
       }
       
-      function createRandomZombie(string _name) public {
-      uint randDna = _generateRandomDna(_name);
+      function createPseudoRandomZombie(string _name) public {
+      uint randDna = _generatePseudoRandomDna(_name);
       _createZombie(_name, randDna);
       }
       
@@ -48,8 +48,8 @@ material:
       struct Zombie { string name; uint dna; }
       Zombie[] public zombies;
       function _createZombie(string _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
-      function createRandomZombie(string _name) public { uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
+      function _generatePseudoRandomDna(string _str) private view returns (uint) { uint rand = uint(keccak256(_str)); return rand % dnaModulus; }
+      function createPseudoRandomZombie(string _name) public { uint randDna = _generatePseudoRandomDna(_name); _createZombie(_name, randDna); }
       }
 ---
 Our contract is almost finished! Now let's add an ***event***.

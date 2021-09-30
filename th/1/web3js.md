@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // ต่อไปนี้จะเป็น event listener บางตัวที่จะรับค่า input ชนิดข้อความ:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // เรียกฟังก์ชัน `createRandomZombie` ในcontract ของเรา:
-  ZombieFactory.createRandomZombie(name)
+  // เรียกฟังก์ชัน `createPseudoRandomZombie` ในcontract ของเรา:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // รับฟังเหตุการณ์ `NewZombie` event, and update the UI `NewZombie` พร้อมทั้งทำการอัพเดท User Interface หรือการแสดงผลในส่วนของผู้ใช้

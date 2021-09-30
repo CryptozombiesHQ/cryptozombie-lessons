@@ -12,7 +12,7 @@ material:
     ignoreZombieCache: true
     answer: 1
 ---
-In lesson 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.
+In lesson 1, we created a function that takes a name, uses it to generate a pseudo-random zombie, and adds that zombie to our app's zombie database on the blockchain.
 
 In lesson 2, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.
 

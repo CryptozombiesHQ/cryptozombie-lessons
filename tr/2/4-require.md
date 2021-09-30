@@ -31,14 +31,14 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // start here
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-Ders 1'de, onu kullanıcıların `createRandomZombie` çağırarak ve bir isim girerek oluşturabileceği şekilde yaptık. Ancak, kullanıcılar ordularında sınırsız zombi oluşturmak için bu fonksiyonu çağırmayı sürdürebilseydi, oyun çok eğlenceli olmazdı.
+Ders 1'de, onu kullanıcıların `createPseudoRandomZombie` çağırarak ve bir isim girerek oluşturabileceği şekilde yaptık. Ancak, kullanıcılar ordularında sınırsız zombi oluşturmak için bu fonksiyonu çağırmayı sürdürebilseydi, oyun çok eğlenceli olmazdı.
 
 Onu, her oyuncunun bu fonksiyonu bir kez çağırabileceği şekilde yapalım. Bu yolla yeni oyuncular ordularındaki ilk zombiyi oluşturmak için oyunu ilk başlattıklarında onu çağıracaklar.
 
@@ -109,10 +109,10 @@ Böylelikle `require`, bir fonksiyonun çalışmasından önce doğru olması ge
 
 # Teste koy
 
-Zombi oyunumuzda, bir kullanıcının aralıksız olarak `createRandomZombie` çağırmasıyla zombi ordularında sınırsız zombi oluşturabilmelerini istemiyoruz — bu oyunu daha eğlenceli yapmaz.
+Zombi oyunumuzda, bir kullanıcının aralıksız olarak `createPseudoRandomZombie` çağırmasıyla zombi ordularında sınırsız zombi oluşturabilmelerini istemiyoruz — bu oyunu daha eğlenceli yapmaz.
 
 İlk zombilerini oluşturduklarında, bu fonksiyonun kullanıcı başına bir kere uygulandığından emin olmak için `require` kullanalım.
 
-1. `createRandomZombie` başlangıcında bir `require` koşulu koyun. Fonksiyon `ownerZombieCount[msg.sender]`'in `0`'a eşit olduğundan emin olmak için denetlemeli ve aksi takdirde hata çıkarır.
+1. `createPseudoRandomZombie` başlangıcında bir `require` koşulu koyun. Fonksiyon `ownerZombieCount[msg.sender]`'in `0`'a eşit olduğundan emin olmak için denetlemeli ve aksi takdirde hata çıkarır.
 
 > Not: Solidity'de, ilk hangi terimi koyduğunuzun önemi yoktur — her iki sıra da eşdeğerdir. Ancak, cevap tarayıcımız gayet temel olduğundan, sadece bir cevabı doğru olarak kabul edecektir — `ownerZombieCount[msg.sender]`'in ilk gelmesi için bekliyor.

@@ -42,14 +42,14 @@ material:
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ Quando uno zombi si nutre di un'altra forma di vita, il suo DNA si combinerà co
 
 1. Creare una funzione chiamata `feedAndMultiply`. Ci vorranno due parametri: `_zombieId` (un `uint`) e `_targetDna` (sempre un `uint`). Questa funzione dovrebbe essere `public`.
 
-2. Non vogliamo permettere a qualcun altro di nutrirsi usando il nostro zombi! Quindi, prima, assicuriamoci di possedere questo zombi. Aggiungi l'istruzione `request` per assicurarti che `msg.sender` sia uguale al proprietario di questo zombi (simile a come abbiamo fatto nella funzione `createRandomZombie`).
+2. Non vogliamo permettere a qualcun altro di nutrirsi usando il nostro zombi! Quindi, prima, assicuriamoci di possedere questo zombi. Aggiungi l'istruzione `request` per assicurarti che `msg.sender` sia uguale al proprietario di questo zombi (simile a come abbiamo fatto nella funzione `createPseudoRandomZombie`).
 
 > Nota: ancora una volta, poiché il nostro controllo di risposta è primitivo, si aspetta che `msg.sender` venga prima di tutto e lo contrassegnerà come sbagliato se si cambia l'ordine. Ma normalmente quando stai programmando, puoi usare qualunque ordine tu preferisca — entrambi sono corretti.
 

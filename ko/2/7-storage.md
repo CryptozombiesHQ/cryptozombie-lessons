@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -123,7 +123,7 @@ contract SandwichFactory {
 
 1. `feedAndMultiply`라는 함수를 생성한다. 이 함수는 `uint`형인 `_zombieId` 및 `_targetDna`을 전달받는다. 이 함수는 `public`으로 선언되어야 한다.
 
-2. 다른 누군가가 우리 좀비에게 먹이를 주는 것을 원치 않는다. 그러므로 주인만이 좀비에게 먹이를 줄 수 있도록 한다. `require` 구문을 추가하여 `msg.sender`가 좀비 주인과 동일하도록 한다. (이는 `createRandomZombie` 함수에서 쓰인 방법과 동일하다)
+2. 다른 누군가가 우리 좀비에게 먹이를 주는 것을 원치 않는다. 그러므로 주인만이 좀비에게 먹이를 줄 수 있도록 한다. `require` 구문을 추가하여 `msg.sender`가 좀비 주인과 동일하도록 한다. (이는 `createPseudoRandomZombie` 함수에서 쓰인 방법과 동일하다)
 
  > 참고: 다시 말하지만, 우리가 작성한 확인 기능은 기초적이기 때문에 컴파일러는 `msg.sender`가 먼저 나올 것을 기대하고, 항의 순서를 바꾸면 잘못된 값이 입력되었다고 할 걸세. 하지만 보통 코드를 작성할 때 항의 순서는 자네가 원하는 대로 정하면 되네. 어떤 경우든 참이 되거든. 
 

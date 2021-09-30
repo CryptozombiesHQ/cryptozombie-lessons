@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ Esta función no lee desde el estado de la aplicación - el valor devuelto depen
 
 Necesitaremos una función que nos ayude a generar un número aleatorio para el ADN a partir de una cadena de texto.
 
-1. Crear una función `private` que se llame `_generateRandomDna`. Recibirá un parámetro llamado `_str` (de tipo `string`), y devolverá un `uint`.
+1. Crear una función `private` que se llame `_generatePseudoRandomDna`. Recibirá un parámetro llamado `_str` (de tipo `string`), y devolverá un `uint`.
 
 2. Esta función tendrá que ver algunas de las variables de nuestro contrato, pero no modificará ninguna, así que la marcaremos como `view`.
 

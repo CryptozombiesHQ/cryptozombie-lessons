@@ -311,14 +311,14 @@ material:
             NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
             uint rand = uint(keccak256(_str));
             return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
             require(ownerZombieCount[msg.sender] == 0);
-            uint randDna = _generateRandomDna(_name);
+            uint randDna = _generatePseudoRandomDna(_name);
             randDna = randDna - randDna % 100;
             _createZombie(_name, randDna);
           }
@@ -478,12 +478,12 @@ material:
               }
             }
 
-            function createRandomZombie(name) {
+            function createPseudoRandomZombie(name) {
               // Isso vai demorar um pouco, então atualize a interface do usuário para que o usuário saiba
               // a transação foi enviada
               $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
               // Envie o tx para nosso contrato:
-              return cryptoZombies.methods.createRandomZombie(name)
+              return cryptoZombies.methods.createPseudoRandomZombie(name)
               .send({from: userAccount})
               .on("receipt", function (receipt) {
                 $ ("#txStatus").text("Criado com sucesso" + name + "!");
@@ -563,14 +563,14 @@ Existem algumas diferenças importantes das funções `call`:
 
 ## Criando zumbis
 
-Vejamos um exemplo com a primeira função em nosso contrato que um novo usuário irá chamar: `createRandomZombie`.
+Vejamos um exemplo com a primeira função em nosso contrato que um novo usuário irá chamar: `createPseudoRandomZombie`.
 
 Como revisão, aqui está o código de Solidity em nosso contrato:
 
 ```
-function createRandomZombie (string _name) public {
+function createPseudoRandomZombie (string _name) public {
   require (ownerZombieCount [msg.sender] == 0);
-  uint randDna = _generateRandomDna (_name);
+  uint randDna = _generatePseudoRandomDna (_name);
   randDna = randDna - randDna% 100;
   _createZombie (_name, randDna);
 }
@@ -579,12 +579,12 @@ function createRandomZombie (string _name) public {
 Aqui está um exemplo de como poderíamos chamar essa função em Web3.js usando MetaMask:
 
 ```
-function createRandomZombie(name) {
+function createPseudoRandomZombie(name) {
   // Isso vai demorar um pouco, então atualize a interface do usuário para que o usuário saiba
   // a transação foi enviada
   $("#txStatus").text("Criando novo zumbi no blockchain. Isso pode demorar um pouco ...");
   // Envie o tx para nosso contrato:
-  return cryptoZombies.methods.createRandomZombie(name)
+  return cryptoZombies.methods.createPseudoRandomZombie(name)
   .send({from: userAccount})
   .on("receipt", function (receipt) {
     $ ("#txStatus").text("Criado com sucesso" + name + "!");
@@ -609,13 +609,13 @@ Nossa função envia (`send`) uma transação para nosso provedor Web3 e acorren
 
 Adicionamos um `div` com o ID `txStatus` — dessa forma podemos usar esse div para atualizar o usuário com mensagens com o status de nossas transações.
 
-1. Abaixo de `displayZombies`, copie e cole o código de `createRandomZombie` acima.
+1. Abaixo de `displayZombies`, copie e cole o código de `createPseudoRandomZombie` acima.
 
 2. Vamos implementar outra função: `feedOnKitty`.
 
   A lógica para chamar o `feedOnKitty` será quase idêntica — nós enviaremos uma transação que chama a função, e uma transação bem-sucedida resultará em um novo zumbi sendo criado para nós, então vamos redesenhar a UI depois que ela for bem sucedida.
 
-  Faça uma cópia de `createRandomZombie` logo abaixo dela, mas faça as seguintes alterações:
+  Faça uma cópia de `createPseudoRandomZombie` logo abaixo dela, mas faça as seguintes alterações:
   
   a) Chame a segunda função `feedOnKitty`, que recebe 2 argumentos: `zombieId` e `kittyId`
 

@@ -45,7 +45,7 @@ Quindi questa implementazione è stata lasciata a nudo, in chiaro. Ecco un elenc
 
 6. L'homepage dell'utente avrebbe anche delle opzioni per ogni zombi: per cambiare nome e per cambiare DNA e salire di livello (a pagamento). Tali opzioni sarebbero disattivate se l'utente non fosse ancora abbastanza alto di livello.
 
-7. Per i nuovi utenti dovremmo visualizzare un messaggio di benvenuto con la richiesta di creare il primo zombi del loro esercito, che chiama `createRandomZombie()`.
+7. Per i nuovi utenti dovremmo visualizzare un messaggio di benvenuto con la richiesta di creare il primo zombi del loro esercito, che chiama `createPseudoRandomZombie()`.
 
 8. Vorremmo aggiungere un evento `Attack` al nostro contratto intelligente con l'`address` dell'utente come proprietà `indexed`, come discusso nell'ultimo capitolo. Ciò ci consentirebbe di creare notifiche in tempo reale: potremmo mostrare all'utente un avviso popup quando uno dei loro zombi è stato attaccato, in modo da poter visualizzare l'utente/zombi che li ha attaccati e vendicarsi.
 

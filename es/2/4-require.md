@@ -31,14 +31,14 @@ material:
               emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // empieza aquí
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-En la lección 1, hicimos que los usuarios puediesen crear nuevos zombis llamando a `createRandomZombie` e introduciendo un nombre. Sin embargo, si un usuario continuase llamando a esta función crearía un ejército de zombis ilimitado, el juego no sería muy divertido.
+En la lección 1, hicimos que los usuarios puediesen crear nuevos zombis llamando a `createPseudoRandomZombie` e introduciendo un nombre. Sin embargo, si un usuario continuase llamando a esta función crearía un ejército de zombis ilimitado, el juego no sería muy divertido.
 
 Vamos a hacer que un jugador solo pueda llamar a esta función una vez. De esta manera los nuevo jugadores podrán llamar a esta función cuando empiezen el juego para crear el primer zombi de su ejército.
 
@@ -110,10 +110,10 @@ De este modo `require` es muy útil a la hora de verificar que ciertas condicion
 
 # Vamos a probarlo
 
-En nuestro juego de zombis, no queremos que un usuario pueda crear zombis ilimitados en su ejército llamado a `createRandomZombie` — esto haría que el juego no fuese muy divertido.
+En nuestro juego de zombis, no queremos que un usuario pueda crear zombis ilimitados en su ejército llamado a `createPseudoRandomZombie` — esto haría que el juego no fuese muy divertido.
 
 Vamos a usar `require` para asegurarnos que esta función solo pueda ser ejecutada una vez por usuario, cuando vayan a crear a su primer zombi.
 
-1. Coloca una sentencia `require` al principio de la función `createRandomZombie`. La función debería comprobar que `ownerZombieCount[msg.sender]` sea igual a `0`, y si no que lanze un error.
+1. Coloca una sentencia `require` al principio de la función `createPseudoRandomZombie`. La función debería comprobar que `ownerZombieCount[msg.sender]` sea igual a `0`, y si no que lanze un error.
 
 > Nota: En Solidity, no importa que termino pongamos primero - ambos son equivalentes. De todas formas, como nuestro corrector de respuestas es bastante básico, solo aceptamos una respuesta correcta - esta espera que `ownerZombieCount[msg.sender]` vaya primero.

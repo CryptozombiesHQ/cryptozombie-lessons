@@ -1,25 +1,21 @@
 ---
-title: Lesson Complete!
+title: Lesson 8 Complete!
 actions: ['checkAnswer', 'hints']
 material:
   lessonComplete:
     answer: 1
 ---
 
-## Congratulations! You've now implemented your first ERC721x token.
+You're a legend!
 
-This was just an example implementation — there are many different design decisions you could make with your token contract depending on the type of items you want to have in your game, and how you want your players to receive and interact with them.
+You've now implemented **three** custom game modes with custom deck rules.
 
-We've looked at how to have items with infinite supply as well as rare items with a fixed supply; how to control who, how, and when new items can be minted; how users will receive the items; and how the items can be converted to be backward compatible with legacy ERC721 services.
+See how easy that can be?
 
-You can change the way some of these functions work depending on your needs.
+Now only your imagination is the limit... 
 
-### Next Steps
+In the very near future, you'll be able to use our Zombie Battleground Custom Game Creator tool to deploy your own smart contracts directly to Loom GameChain — and every Zombie Battleground player will be able to load your game mode and start playing it!
 
-For implementing ERC721x in your next project, go ahead and head over to our open source implementation on <a href="https://github.com/loomnetwork/erc721x" target=_blank>GitHub</a>.
+You can get a headstart now by starting to brainstorm your own custom game modes and writing out the Solidity contracts.
 
-You can follow the instructions there to add it to your project, and start using it with an example implementation just like we did in this lesson.
-
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and someone will help you out.
-
-Otherwise, head on back to the <a href="/course">course page</a>, and choose your next CryptoZombies adventure!
+And we'll let you know as soon as the game creator tool goes live.

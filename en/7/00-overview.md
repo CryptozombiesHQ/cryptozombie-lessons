@@ -1,20 +1,21 @@
 ---
-title: "Custom Game Modes: Zombie Battleground"
-header: "Custom Game Modes: Zombie Battleground"
+title: App Front-ends & Web3.js
+header: "Lesson 7: App Front-ends & Web3.js"
 roadmap: roadmap6.png
+path: solidity
 publishedOn: Cryptozombies
 ---
 
-Welcome, veteran CryptoZombie!
+Huh, you've made it this far?!
 
-In this course, we are going to venture into the land of real game development.
+You're no ordinary CryptoZombie...
 
-You will be building a *custom game mode* for our blockchain-based mobile card game, <a href="https://loom.games" target=_blank>Zombie Battleground</a>. 
+By completing Lesson 5, you've demonstrated that you have a pretty firm grasp of Solidity.
 
-**Once you complete this course, you’ll have the skillset to build your own mod of Zombie Battleground**. Very soon we'll be launching a custom game creator tool, and you'll be able to deploy these mods to Loom GameChain, where they will be immediately playable by thousands of real Zombie Battleground players.
+But no DApp is complete without a way for its users to interact with it...
 
-Pretty cool, right?
+In this lesson, we're going to look at how to interact with your smart contract and build a basic front-end for your DApp using a library called **Web3.js**.
 
-Okay, let's start building the next great Ethereum game- Aliens vs Zombies!😆😆😆
+Note that app front-ends are written in **JavaScript**, not Solidity. But since the focus of this course is on Ethereum / Solidity, we're assuming you are already comfortable building websites with HTML, JavaScript (including ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), and JQuery, and will not be spending time covering the basics of those languages.
 
-If you’re ready… Then let’s dive right in and build your first mod!
+If you are not already comfortable building websites with HTML / Javascript, you should complete a basic tutorial elsewhere before starting this lesson.

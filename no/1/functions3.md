@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ Denne funksjonen leser ikke fra statusen til appen engang — den returnerer in
 
 Vi kommer til å trenge en hjelpe-funksjon som genererer et tilfeldig DNA-nummer basert på en string
 
-1. Lag en `private` funksjon kalt `_generateRandomDna`. Den vil ta ett parameter kalt `_str` (en `string`), og returnerer et `uint`.
+1. Lag en `private` funksjon kalt `_generatePseudoRandomDna`. Den vil ta ett parameter kalt `_str` (en `string`), og returnerer et `uint`.
 
 2. Denne funksjonen kommer til å lese noen av kontraktens variabler, men ikke modifisere dem, så merk den som `view`. 
 

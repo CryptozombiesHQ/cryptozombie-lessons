@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 //  event listener do pobierania tekstu z inputu:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // wywołanie funkcji `createRandomZombie` w naszym kontrakcie:
-  ZombieFactory.createRandomZombie(name)
+  // wywołanie funkcji `createPseudoRandomZombie` w naszym kontrakcie:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // nasłuchiwanie na event `NewZombie`, oraz aktualizacja UI (interfejsu użytkownika)

@@ -31,14 +31,14 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // ここから始めるのだ
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-レッスン 1では、`createRandomZombie`を呼び出して名前を入力することで、新しいゾンビを作成したな。だが、これではゲームとしては何も面白くはない。誰でも簡単にゾンビ軍団をいくらでも増やせるからだ。
+レッスン 1では、`createPseudoRandomZombie`を呼び出して名前を入力することで、新しいゾンビを作成したな。だが、これではゲームとしては何も面白くはない。誰でも簡単にゾンビ軍団をいくらでも増やせるからだ。
 
 そこで、プレイヤーは1度しかこの関数を呼び出せないようにするのだ。ゲームを始めるときには、最低1体のゾンビを作る必要があるからな。
 
@@ -110,11 +110,11 @@ function sayHiToVitalik(string _name) public returns (string) {
 
 # それではテストだ
 
-`createRandomZombie`を繰り返し呼び出して、いくらでもゾンビを増やせるのは、ゲームとして面白くなさすぎだ。
+`createPseudoRandomZombie`を繰り返し呼び出して、いくらでもゾンビを増やせるのは、ゲームとして面白くなさすぎだ。
 
 そこで、`require`を使い、最初のゾンビを作るときだけこの関数が呼び出せるようにせよ。
 
-1. `createRandomZombie`の最初に`require` ステートメントを記述せよ。この関数で`ownerZombieCount[msg.sender]` が `0`であるかを確認し、そうでなければエラーを投げるように設定せよ。
+1. `createPseudoRandomZombie`の最初に`require` ステートメントを記述せよ。この関数で`ownerZombieCount[msg.sender]` が `0`であるかを確認し、そうでなければエラーを投げるように設定せよ。
 
 >注：Solidityでは、どの用語を最初に書いても問題はありません。しかしながら、システムのチェッカーがベーシックなものなので、1種類しか答えを判定することができません。そこで、`ownerZombieCount[msg.sender]` を先に書くようにしてください。
 

@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 我们想建立一个帮助函数，它根据一个字符串随机生成一个DNA数据。
 
-1. 创建一个 `private` 函数，命名为 `_generateRandomDna`。它只接收一个输入变量 `_str` (类型 `string`), 返回一个 `uint` 类型的数值。
+1. 创建一个 `private` 函数，命名为 `_generatePseudoRandomDna`。它只接收一个输入变量 `_str` (类型 `string`), 返回一个 `uint` 类型的数值。
 
 2. 此函数只读取我们合约中的一些变量，所以标记为`view`。
 

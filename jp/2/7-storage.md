@@ -42,14 +42,14 @@ material:
                 NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generatePseudoRandomDna(string _str) private view returns (uint) {
                 uint rand = uint(keccak256(_str));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createPseudoRandomZombie(string _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
+                uint randDna = _generatePseudoRandomDna(_name);
                 _createZombie(_name, randDna);
             }
 
@@ -124,7 +124,7 @@ contract SandwichFactory {
 
 1. `feedAndMultiply`という関数を作成せよ。そこに `_zombieId` (`uint`)と `_targetDna` (`uint`)の2つのパラメーターを設定せよ。この関数は `public`で作成せよ。
 
-2. 我々のゾンビに他の誰かが餌を与えるのは見たくない！そこでまずゾンビが我々のものだと確認するようにしたい。そこで、`require`ステートメントを追加して`msg.sender`がこのゾンビのオーナーであるかどうかを確認せよ（`createRandomZombie`関数を作成した時のやり方を参考にせよ）。
+2. 我々のゾンビに他の誰かが餌を与えるのは見たくない！そこでまずゾンビが我々のものだと確認するようにしたい。そこで、`require`ステートメントを追加して`msg.sender`がこのゾンビのオーナーであるかどうかを確認せよ（`createPseudoRandomZombie`関数を作成した時のやり方を参考にせよ）。
 
  > 注: 繰り返しで恐縮ですが、回答のチェッカーシステムがベーシックなもののため、`msg.sender`を最初に書かないとエラーになります。ここ以外でコードを書く場合には好きな順番で構いません。
 

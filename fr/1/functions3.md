@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -93,7 +93,7 @@ Cette fonction ne lit aucune donnée du contrat - elle retourne une valeur qui d
 
 Nous allons vouloir une fonction d'aide pour générer un nombre ADN aléatoire à partir d'une chaîne de caractères.
 
-1. Créez une fonction `private` appelée `_generateRandomDna`. Elle prendra un paramètre nommé `_str` (un `string`), et retournera un `uint`.
+1. Créez une fonction `private` appelée `_generatePseudoRandomDna`. Elle prendra un paramètre nommé `_str` (un `string`), et retournera un `uint`.
 
 2. Cette fonction affichera des variables de notre contrat sans les modifier, marquez-la comme `view`.
 

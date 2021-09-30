@@ -28,8 +28,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // 某个监听文本输入的监听器:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  //调用合约的 `createRandomZombie` 函数:
-  ZombieFactory.createRandomZombie(name)
+  //调用合约的 `createPseudoRandomZombie` 函数:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // 监听 `NewZombie` 事件, 并且更新UI

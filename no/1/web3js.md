@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // En type event-lytter for å ta tekst-input:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // Kjør kontraktens `createRandomZombie` funksjon:
-  ZombieFactory.createRandomZombie(name)
+  // Kjør kontraktens `createPseudoRandomZombie` funksjon:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // Lytt etter `NewZombie` eventet, og oppdater UI

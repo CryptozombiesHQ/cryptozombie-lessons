@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
@@ -51,13 +51,13 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
-              uint randDna = _generateRandomDna(_name);
+          function createPseudoRandomZombie(string _name) public {
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,9 +71,9 @@ material:
 
 # دست به کد شو
 
-۱. یک تابع عمومی به اسم `createRandomZombie` بنویسین. این تابع یک پارامتر `_name` از نوع `string` می‌گیره. _(نکته: این تابع رو با کلمه کلیدی `public`، عمومی تعریف کنید همونطور که تابع قبل رو با استفاده از کلمه کلیدی `private`، خصوصی تعریف کردین.)_
+۱. یک تابع عمومی به اسم `createPseudoRandomZombie` بنویسین. این تابع یک پارامتر `_name` از نوع `string` می‌گیره. _(نکته: این تابع رو با کلمه کلیدی `public`، عمومی تعریف کنید همونطور که تابع قبل رو با استفاده از کلمه کلیدی `private`، خصوصی تعریف کردین.)_
 
-۲. اولین خط تابع باید تابع `_generateRandomDna` را روی `_name` اجرا کمه و در یک `uint` به اسم `randDna` ذخیره کنه.
+۲. اولین خط تابع باید تابع `_generatePseudoRandomDna` را روی `_name` اجرا کمه و در یک `uint` به اسم `randDna` ذخیره کنه.
 
 ۳. دومین خط باید تابع `_createZombie` اجرا شه و اسم `_name`  و DNA تصادفی  `randDna` رو تولید کنه.
 

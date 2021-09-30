@@ -15,7 +15,7 @@ In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombie
 
 * Our factory will maintain a database of all zombies in our army
 * Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+* Each zombie will have a pseudo-random and unique appearance
 
 In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 

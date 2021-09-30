@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           }
 
-          // ここに_generateRandomDna関数を作成するのだ
+          // ここに_generatePseudoRandomDna関数を作成するのだ
 
       }
     answer: >
@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -97,7 +97,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 文字列からランダムなDNA番号を生成するヘルパー関数を作りたい。
 
-1. `_generateRandomDna`という名前の`private`関数を作成せよ。パラメーターは `_str`(`string`)という名前で、戻り値を`uint`に設定せよ。
+1. `_generatePseudoRandomDna`という名前の`private`関数を作成せよ。パラメーターは `_str`(`string`)という名前で、戻り値を`uint`に設定せよ。
 
 2. この関数はコントラクトの変数を読み込むことはあるが、編集することはない。そこで修飾子を`view`と設定せよ。
 

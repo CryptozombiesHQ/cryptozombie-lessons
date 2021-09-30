@@ -5,8 +5,8 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations!
+Congratulations! You've just finsihed implementing your decentralized oracle!
 
-You’ve made it to the end! By completing this lesson, you should have a good grasp of the basic functions and concepts of zkSync.
+The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
 
 Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.

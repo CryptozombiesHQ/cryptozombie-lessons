@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // comece aqui
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-Nós queremos que a nossa função `_generateRandomDna` retorne um (semi) aleatório `uint`. Como podemos fazer isso ?
+Nós queremos que a nossa função `_generatePseudoRandomDna` retorne um (semi) aleatório `uint`. Como podemos fazer isso ?
 
 Ethereum tem uma função de hash `keccak256` interna, que é uma versão do SHA3. Uma função hash basicamente transforma uma string de entrada em um número hexadecimal aleatório de 256-bits. Qualquer pequena mudança na `string` irá causar uma total mudança em sua hash.
 
@@ -95,7 +95,7 @@ Logo acima, `a * b` retorna um `uint`, mas nós estamos tentando guardar o seu v
 
 # Vamos testar
 
-Vamos preencher o corpo da nossa função `_generateRandomDna`!
+Vamos preencher o corpo da nossa função `_generatePseudoRandomDna`!
 O que deve ser feito é:
 
 1. Na primeira linha de código, pegue o hash de `_str` utilizando a função `keccak256` gerando um hexadecimal pseudo-aleatório, converta-o em um `uint`, e finalmente guarde o resultado em um `uint` chamado `rand`.

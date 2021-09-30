@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -96,7 +96,7 @@ Takáto funkcia nemodifikuje a ani žiadne dáta kontraktu nečíta - návratov�
 
 Budeme potrebovať pomocnú funkciu, ktorá generuje náhodné DNA z reťazca. 
 
-1. Vytvor funkciu pomenovanú `_generateRandomDna` s viditelnosťou `private`. Bude príjmať jediný argument nazvaný `_str` (a `string`) a vracať bude hodnotu typu `uint`;
+1. Vytvor funkciu pomenovanú `_generatePseudoRandomDna` s viditelnosťou `private`. Bude príjmať jediný argument nazvaný `_str` (a `string`) a vracať bude hodnotu typu `uint`;
 
 2. Táto funkcia bude používať niektoré premenné našeho kontraktu, no nebude ich nijak modifikovať, preto ju označíme ako `view`.
 

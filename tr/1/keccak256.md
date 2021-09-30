@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // start here
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-`_generateRandomDna` fonksiyonumuzun rastgele bir (yarım) `uint` getirmesini istiyoruz. Bunu nasıl başarabiliriz?
+`_generatePseudoRandomDna` fonksiyonumuzun rastgele bir (yarım) `uint` getirmesini istiyoruz. Bunu nasıl başarabiliriz?
 
 Ethereum'un yapılmış SHA3'ün bir sürümü `keccak256` hash fonksiyonu vardır. Bir hash fonksiyonu temel olarak rastgele bir 256-bit onaltılı sayı içine bir giriş dizisi planlar. Dizideki az bir değişiklik hashdeki büyük bir değişime neden olur.
 
@@ -92,7 +92,7 @@ Yukarıda, `a * b` bir `uint` getirir fakat onu otansiyel problemlere neden olab
 
 # Teste koy
 
-Hadi `_generateRandomDna` fonksiyonumuzun gövdesini dolduralım! İşte yapılması gereken şey:
+Hadi `_generatePseudoRandomDna` fonksiyonumuzun gövdesini dolduralım! İşte yapılması gereken şey:
 
 1. Kodun ilk satırı sözde rastgele bir onaltılı oluşturmak için `_str`nin `keccak256` hashini almalıdır, bir `uint` olarak typecastleyin ve son olarak `rand` denilen bir `uint` içinde sonucu depolayın.
 

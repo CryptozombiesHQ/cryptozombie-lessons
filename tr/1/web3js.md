@@ -29,8 +29,8 @@ var ZombieFactory = ZombieFactoryContract.at(contractAddress)
 // metin girişi almak için etkinlik dinleyicilerinin bir sırası:
 $("#ourButton").click(function(e) {
   var name = $("#nameInput").val()
-  // Call our contract's `createRandomZombie` function:
-  ZombieFactory.createRandomZombie(name)
+  // Call our contract's `createPseudoRandomZombie` function:
+  ZombieFactory.createPseudoRandomZombie(name)
 })
 
 // `NewZombie` etkinliği için dinle ve kullanıcı arayüzünü güncelle

@@ -45,7 +45,7 @@ Preto sme nechali túto implementáciu pomerne strohú. Tu je zoznam nápadov, k
 
 6. Na domovskej stránke by taktiež mohli byť možnosti každému zombie zmeniť meno, DNA a zvýšiť level (za poplatok). Možnosti by boli zašednuté v prípade, že daný zombie užívateľa ešte nedosiahol požadovaný level. 
 
-7. Pre nových užívateľov by sme mali zobraziť uvítaciu správu s výzvou k vytoreniu ich prvého zombie. Zavolali by sme tu funkciu `createRandomZombie()`.
+7. Pre nových užívateľov by sme mali zobraziť uvítaciu správu s výzvou k vytoreniu ich prvého zombie. Zavolali by sme tu funkciu `createPseudoRandomZombie()`.
 
 8. Pravdepodobne by sme taktiež mali pridať udalosť `Attack` do našeho smart kontraktu. Táto udalosť by zaznamenala adresu užívateľa ako `indexed` parameter, tak ako sme si o tom hovorili v predošlej kapitole. Toto by umožnilo notifikácie v reálnom čase, takže by si mohli pozrieť zombieho ktorý ich napadol a nejakým spôsobom reagovať.
 

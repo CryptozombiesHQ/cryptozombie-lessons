@@ -31,14 +31,14 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               // začni písať tu
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
@@ -71,21 +71,21 @@ material:
               NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createPseudoRandomZombie(string _name) public {
               require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
+              uint randDna = _generatePseudoRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
 ---
 
-V Lekcií 1 sme napísali kód tak, aby užívatelia mohli vytvárať nových zombie volaním funkcie `createRandomZombie` s menom zombie ako parametrom. Problém je, že ak by užívatelia mohli volať túto funkciu bez obmedzení, mohli by si vytvárať nekonečné armády zombie. Hra by potom pre ostatných nebola veľmi zábavná.
+V Lekcií 1 sme napísali kód tak, aby užívatelia mohli vytvárať nových zombie volaním funkcie `createPseudoRandomZombie` s menom zombie ako parametrom. Problém je, že ak by užívatelia mohli volať túto funkciu bez obmedzení, mohli by si vytvárať nekonečné armády zombie. Hra by potom pre ostatných nebola veľmi zábavná.
 
 Poďme spraviť potrebné úpravy na to, aby hráč mohol z jednej adresy vytvoriť nového zombie iba raz. Tým pádom hráči zavolajú túto funkciu iba jeden krát, pre vytvorenie ich prvopočiatočného zombie.
 
@@ -111,10 +111,10 @@ Ak zavoláš túto funkciu takto: `sayHiToVitalik("Vitalik")`, vráti naspäť h
 
 # Vyskúšaj si to sám
 
-V našej zombie hre nechceme, aby užívateľ mohol donekonečna vytvárať neobmedzený počet zombie opakovaným volaním `createRandomZombie` - hra by nebola veľmi zábavná.
+V našej zombie hre nechceme, aby užívateľ mohol donekonečna vytvárať neobmedzený počet zombie opakovaným volaním `createPseudoRandomZombie` - hra by nebola veľmi zábavná.
 
 Poďme použiť `require` konštrukt na to, aby sme zaručili že táto funkcia bude vykonaná pre každého hráča len raz, keď si vytvoria svojho prvého zombie.
 
-1. Vlož konštrukt `require` na začiatok funkcie `createRandomZombie`. Funkcia by mala kontrolovať, že `ownerZombieCount[msg.sender]` sa rovná `0`, a v opačnom prípade vyhodiť error.
+1. Vlož konštrukt `require` na začiatok funkcie `createPseudoRandomZombie`. Funkcia by mala kontrolovať, že `ownerZombieCount[msg.sender]` sa rovná `0`, a v opačnom prípade vyhodiť error.
 
 > Poznámka: V Solidity nezáleží ktorý výraz do require zadáš ako prvý. Výsledok bude rovnaký pre oboje zoradenia. Bohužiaľ, nakoľko je náš softvér na kontrolovanie odpovedí veľmi jednoduchý, akceptuje jedinú správnu odpoved - očakáva že `ownerZombieCount[msg.sender]` bude prvým výrazom argumentom v require.

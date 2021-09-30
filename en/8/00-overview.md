@@ -1,14 +1,20 @@
 ---
-title: "Custom Deck Rules"
-header: "Custom Deck Rules"
+title: "Custom Game Modes: Zombie Battleground"
+header: "Custom Game Modes: Zombie Battleground"
 roadmap: roadmap6.png
 publishedOn: Cryptozombies
 ---
 
-Now that we've got the basics of Zombie Battleground custom game modes under our belt, let's look at a few examples of implementing custom deck rules.
+Welcome, veteran CryptoZombie!
 
-This lesson contains **three examples** of game modes with custom deck rules — and should give you a good foundation in understanding what kind of things are possible... 
+In this course, we are going to venture into the land of real game development.
 
-And hopefully give you some ideas for your own custom game modes you want to build!
+You will be building a *custom game mode* for our blockchain-based mobile card game, <a href="https://loom.games" target=_blank>Zombie Battleground</a>. 
 
-Are you ready to get started?
+**Once you complete this course, you’ll have the skillset to build your own mod of Zombie Battleground**. Very soon we'll be launching a custom game creator tool, and you'll be able to deploy these mods to Loom GameChain, where they will be immediately playable by thousands of real Zombie Battleground players.
+
+Pretty cool, right?
+
+Okay, let's start building the next great Ethereum game- Aliens vs Zombies!😆😆😆
+
+If you’re ready… Then let’s dive right in and build your first mod!

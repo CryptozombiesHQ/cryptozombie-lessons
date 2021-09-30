@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // start here
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
@@ -58,7 +58,7 @@ material:
 
 <div dir="rtl">
 
-می‌خوایم تابع `_generateRandomDna` یک مقدار (نیمه) تصادفی از نوع `uint` برگردونه. چطور می‌تونیم این کار رو انجام بدیم؟
+می‌خوایم تابع `_generatePseudoRandomDna` یک مقدار (نیمه) تصادفی از نوع `uint` برگردونه. چطور می‌تونیم این کار رو انجام بدیم؟
 
 تابع هش اتریوم نام دارد که نسخه‌ای از است. تابع هش کارش اینه که ورودی رو به یه عدد هگزا دسیمال(مبنای ۱۶) تصادفی ۲۵۶ بیتی تبدیل کنه. یک تغییر کوچک در ورودی، موجب تغییر بزرگی در هش میشه.
 
@@ -102,7 +102,7 @@ In the above, `a * b` returns a `uint`, but we were trying to store it as a `uin
 
 # دست به کد شو
 
-بیایین تابع `_generateRandomDna` را تکمیل کنیم! کارایی که باید انجام بدیم:
+بیایین تابع `_generatePseudoRandomDna` را تکمیل کنیم! کارایی که باید انجام بدیم:
 
 ۱. اولین خط کد باید با استفاده از `keccak256` مقدار هش `abi.encodePacked(_str)` را برای تولید اعداد هگزادسیمال تصادفی تولید کند، و در نهایت نتیجه را در یک متغیر از نوع `uint` با نام `rand` ذخیره کند. 
 

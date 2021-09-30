@@ -46,7 +46,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
 
           }
 
@@ -95,7 +95,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 
 ตอนนี้เราต้องการฟังก์ชั่นตัวช่วยที่จะสร้างเลข DNA แบบสุ่มขึ้นมาจากข้อมูลชนิด string 
 
-1.	สร้างฟังก์ชั่นชนิด `private` ขึ้นโดยใช้ชื่อว่า `_generateRandomDNA`  ซึ่งฟังก์ชั่นนี้ต้องการพารามิเตอร์ชื่อว่า `_str` (เป็น `string`) และมีการรีเทิร์นค่าออกมาเป็นข้อมูลชนิด `uint`
+1.	สร้างฟังก์ชั่นชนิด `private` ขึ้นโดยใช้ชื่อว่า `_generatePseudoRandomDna`  ซึ่งฟังก์ชั่นนี้ต้องการพารามิเตอร์ชื่อว่า `_str` (เป็น `string`) และมีการรีเทิร์นค่าออกมาเป็นข้อมูลชนิด `uint`
 
 2.	ในฟังก์ชั่นนี้จะสามารถดูตัวแปรบางตัวใน contract ของเราได้ แต่ไม่สามารถที่จะเปลี่ยนแปลงค่าอะไรใดๆ ได้ ดังนั้นฟังก์ชั่นนี้จะมีค่าเป็น `view`
 

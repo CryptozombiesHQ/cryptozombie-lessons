@@ -23,7 +23,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               // ここから始めるのだ
           }
 
@@ -48,7 +48,7 @@ material:
               zombies.push(Zombie(_name, _dna));
           } 
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generatePseudoRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
               return rand % dnaModulus;
           }
@@ -56,7 +56,7 @@ material:
       }
 ---
 
-`_generateRandomDna`関数を（セミ）ランダムな`uint`で返したいのだが、何か良いアイディアがあるかな？
+`_generatePseudoRandomDna`関数を（セミ）ランダムな`uint`で返したいのだが、何か良いアイディアがあるかな？
 
 イーサリアムにはSHA3のバージョンの一つである`keccak256`が組み込まれている。ハッシュ関数は基本的には、文字列をランダムな256ビットの16進数にマッピングする機能だ。文字列をほんの少しでも変更すれば、ハッシュは大きく変わるから気をつけるようにな。
 
@@ -92,7 +92,7 @@ uint8 c = a * uint8(b);
 
 # それではテストだ
 
-`_generateRandomDna`関数の中身を書いてみよ！以下の点に従って書くように：
+`_generatePseudoRandomDna`関数の中身を書いてみよ！以下の点に従って書くように：
 
 1. コードの最初の行は `_str`の`keccak256`ハッシュを取得し、擬似乱数の16進数を生成し、それを`uint`に型キャストして、 `rand`という`uint`に格納せよ。
 
