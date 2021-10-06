@@ -1,11 +1,11 @@
 ---
 title: 구조체
-actions: ['정답 확인하기', '힌트 보기']
+actions: ["정답 확인하기", "힌트 보기"]
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -16,7 +16,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -42,7 +42,7 @@ struct Person {
 
 ```
 
-구조체를 통해 여러 특성을 가진, 보다 복잡한 자료형을 생성할 수 있지. 
+구조체를 통해 여러 특성을 가진, 보다 복잡한 자료형을 생성할 수 있지.
 
 > 참고로 `string`이라는 새로운 자료형을 방금 소개했네. 스트링은 임의의 길이를 가진 UTF-8 데이터를 위해 활용되네. 이를테면 `string greeting = "Hello world!"` 이렇게 말이지.
 

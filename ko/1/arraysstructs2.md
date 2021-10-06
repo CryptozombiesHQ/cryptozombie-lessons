@@ -1,11 +1,11 @@
 ---
 title: 구조체와 배열 활용하기
-actions: ['정답 확인하기', '힌트 보기']
+actions: ["정답 확인하기", "힌트 보기"]
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -19,13 +19,13 @@ material:
 
           Zombie[] public zombies;
 
-          function createZombie(string _name, uint _dna) {
+          function createZombie (string memory _name, uint _dna) public {
               // 여기서 시작
           }
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -40,14 +40,14 @@ material:
 
           Zombie[] public zombies;
 
-          function createZombie(string _name, uint _dna) {
+          function createZombie (string memory _name, uint _dna) public {
               zombies.push(Zombie(_name, _dna));
           }
 
       }
 ---
 
-### 새로운 구조체 생성하기 
+### 새로운 구조체 생성하기
 
 지난 예시의 `Person` 구조체를 기억하나?
 
@@ -90,5 +90,5 @@ numbers.push(15);
 
 createZombie 함수가 무언가 할 수 있도록 만들어 보세!
 
-1. 함수에 코드를 넣어 새로운 `Zombie`를 생성하여 `zombies` 배열에 추가하도록 한다. 새로운 좀비를 위한 `name`과 `dna`는 `createZombie`함수의 인자값이어야 한다. 
+1. 함수에 코드를 넣어 새로운 `Zombie`를 생성하여 `zombies` 배열에 추가하도록 한다. 새로운 좀비를 위한 `name`과 `dna`는 `createZombie`함수의 인자값이어야 한다.
 2. 코드를 한 줄로 간결하게 작성해 보자.
