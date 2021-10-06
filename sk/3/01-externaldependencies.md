@@ -141,7 +141,7 @@ material:
       }
 ---
 
-Doposiaľ Solidity vyzeralo celkom podobne ako ostatné programovanie jazyky, napríklad Javascript. Existuje však niekoľko veľkých rozdielov, akými sa decentralizované aplikácie (DApps) na Ethéreu líšia od klasických aplikácií.
+Doposiaľ Solidity vyzeralo celkom podobne ako ostatné programovanie jazyky, napríklad JavaScript. Existuje však niekoľko veľkých rozdielov, akými sa decentralizované aplikácie (DApps) na Ethéreu líšia od klasických aplikácií.
 
 Za prvé, po tom čo nasadíš svoj kontrakt na Ethereum blockchain, stane sa **_nemeniteľným_**. To znamená že jeho kód už nikdy nemože byť upravený.
 

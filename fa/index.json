@@ -19,7 +19,7 @@
       "course" : {
           "solidity" : {
               "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
-              "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+              "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. JavaScript)."
           },
           "hand_on_path": {
               "title": "Hands-on Path: Make and Deploy a Custom Game Mode",

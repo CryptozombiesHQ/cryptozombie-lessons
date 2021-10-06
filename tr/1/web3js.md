@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-Solidity kontratımız tamamlandı! Şimdi kontrat ile etkileşen bir javascript ön yüzü yazmamız gerek.
+Solidity kontratımız tamamlandı! Şimdi kontrat ile etkileşen bir JavaScript ön yüzü yazmamız gerek.
 
-Ethereum **_Web3.js_** denilen bir Javascript kütüphanesine sahip.
+Ethereum **_Web3.js_** denilen bir JavaScript kütüphanesine sahip.
 
 Sonraki bir derste, bir kontratın nasıl dağıtılacağının ve Web3.js kurulumunun derinlerine ineceğiz. Fakat şimdilik, Web3.js'nin sevk edilmiş kontratla nasıl etkileşeceğine ilişkin bazı örnek kodlara bakalım.
 
@@ -68,7 +68,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Java scriptimiz daha sonra ne yaparsa yukarıdaki `zombieDetails` içinde oluşturulan değerleri alır ve görüntüleri götürmek için bir tarayıcı merkezli javascript sihirbazı (biz Vue.js kullanıyoruz) kullanır ve CSS filtreleri uygular. Sonraki derslerde bunun için tüm kodları alacaksınız.
+Java scriptimiz daha sonra ne yaparsa yukarıdaki `zombieDetails` içinde oluşturulan değerleri alır ve görüntüleri götürmek için bir tarayıcı merkezli JavaScript sihirbazı (biz Vue.js kullanıyoruz) kullanır ve CSS filtreleri uygular. Sonraki derslerde bunun için tüm kodları alacaksınız.
 
 # Bir şans ver!
 

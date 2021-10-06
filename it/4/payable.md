@@ -310,7 +310,7 @@ Quello che succede qui è che qualcuno potrebbe chiamare la funzione da web3.js 
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-Si noti il campo `value`, in cui la chiamata della funzione javascript specifica la quantità di `ether` da inviare (0.001). Pensa la transazione come ad una busta, i parametri che invii alla chiamata di funzione sono i contenuti della lettera che hai inserito, quindi aggiungere un valore è come mettere denaro nella busta: la lettera e il denaro vengono consegnati insieme al destinatario.
+Si noti il campo `value`, in cui la chiamata della funzione JavaScript specifica la quantità di `ether` da inviare (0.001). Pensa la transazione come ad una busta, i parametri che invii alla chiamata di funzione sono i contenuti della lettera che hai inserito, quindi aggiungere un valore è come mettere denaro nella busta: la lettera e il denaro vengono consegnati insieme al destinatario.
 
 >Nota: se una funzione non è contrassegnata come `payable` e si tenta di inviare Ether come sopra, la funzione rifiuterà la transazione.
 

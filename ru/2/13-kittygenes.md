@@ -145,7 +145,7 @@ material:
 
 ## Оператор «если»
 
-Оператор «если» в Solidity похож на javascript:
+Оператор «если» в Solidity похож на JavaScript:
 
 ```
 function eatBLT(string sandwich) public {

@@ -184,7 +184,7 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-Fonksiyon alışık olduğumuzdan biraz farklı gözüküyor. Bir grup farklı değer getirdiğini... görebilirsiniz. Javascript gibi bir programlama dilinden geliyorsanız, bu farklıdır — Solidity'de bir fonksiyondan birden fazla değer getirebilirsiniz.
+Fonksiyon alışık olduğumuzdan biraz farklı gözüküyor. Bir grup farklı değer getirdiğini... görebilirsiniz. JavaScript gibi bir programlama dilinden geliyorsanız, bu farklıdır — Solidity'de bir fonksiyondan birden fazla değer getirebilirsiniz.
 
 Şimdi bu foksiyonun nasıl göründüğünü biliyoruz, onu bir arayüz oluşturmak için kullanabiliriz:
 

@@ -15,11 +15,11 @@ material:
 
 Çalışmasını görmek için demoyu kontrol edebilirsiniz. Devam edin, Biliyorum bu sayfanın aşağısına kadar bekleyemiyorsunuz 😉. Saldırı için bir kitty'e tıklayın ve edindiğiniz yeni kitty zombieyi görün!
 
-## Javascript uygulaması
+## JavaScript uygulaması
 
 Bu kontratı Ethereum'a açmaya hazır olduğumuzda `ZombieFeeding`'i derleyip yayacağız — bu kontrat `ZombieFactory`'den kalan son kontratımız olduğundan ve her iki kontratta da tüm genel yöntemlere erişimi olduğundan.
 
-Javascript ve web3.js kullanarak yayılan kontratımızın bir etkileşim örneğine bakalım:
+JavaScript ve web3.js kullanarak yayılan kontratımızın bir etkileşim örneğine bakalım:
 
 ```
 var abi = /* abi derleyici tarafından oluşturuldu */
