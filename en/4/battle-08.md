@@ -292,7 +292,7 @@ In chapter 6 we calculated a random number from 0 to 100. Now let's use that num
 
 ## Put it to the test
 
-1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attackVictoryProbability`.
+1. Create an `if` statement that checks if `rand` is **_greater than or equal to_** `attackVictoryProbability`.
 
 2. If this condition is true, our zombie wins! So:
 
