@@ -385,7 +385,7 @@ Le code Solidity de notre jeu zombie est enfin terminé !
 
 Dans les prochaines leçons, nous allons regarder comment déployer le code sur Ethereum, et comment interagir avec en utilisant Web3.js.
 
-Mais il reste une dernière chose dans la Leçon 5 avec de vous laisser partir : Nous allons voir comment **commenter votre code**.
+Mais il reste une dernière chose dans la Leçon 5 avant de vous laisser partir : Nous allons voir comment **commenter votre code**.
 
 
 ## Syntaxe pour commenter
