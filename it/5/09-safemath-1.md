@@ -438,7 +438,7 @@ uint8 number = 255;
 number++;
 ```
 
-In questo caso, lo abbiamo fatto andare in overflow — quindi `number` è controintuitivamente ora uguale a `0` anche se lo abbiamo aumentato. (Se aggiungi 1 al binario `11111111`, si reimposta su` 00000000`, come un orologio che va da `23:59` a `00:00`).
+In questo caso, lo abbiamo fatto andare in overflow — quindi `number` è controintuitivamente ora uguale a `0` anche se lo abbiamo aumentato. (Se aggiungi 1 al binario `11111111`, si reimposta su `00000000`, come un orologio che va da `23:59` a `00:00`).
 
 L'underflow è simile, dove se sottrai `1` da un `uint8` che equivale a `0`, ora sarà uguale a `255` (perché `uint`s non è firmato e non può essere negativo).
 

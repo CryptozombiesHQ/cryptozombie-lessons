@@ -70,7 +70,7 @@ material:
 
 # 实战演习
 
-1. 创建一个 `public` 函数，命名为` createRandomZombie`. 它将被传入一个变量 `_name` (数据类型是 `string`)。 _(注: 定义公共函数 `public` 和定义一个私有 `private` 函数的做法一样)_。
+1. 创建一个 `public` 函数，命名为 `createRandomZombie`. 它将被传入一个变量 `_name` (数据类型是 `string`)。 _(注: 定义公共函数 `public` 和定义一个私有 `private` 函数的做法一样)_。
 
 2. 函数的第一行应该调用 `_generateRandomDna` 函数，传入 `_name` 参数, 结果保存在一个类型为 `uint` 的变量里，命名为 `randDna`。
 

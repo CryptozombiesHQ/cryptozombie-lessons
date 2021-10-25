@@ -246,7 +246,7 @@ function updateTimestamp() public {
 }
 
 // Restituirà `true` se sono trascorsi 5 minuti da quando
-// è stato chiamato` updateTimestamp`, `false` invece se non sono trascorsi 5 minuti
+// è stato chiamato `updateTimestamp`, `false` invece se non sono trascorsi 5 minuti
 function fiveMinutesHavePassed() public view returns (bool) {
   return (now >= (lastUpdated + 5 minutes));
 }
