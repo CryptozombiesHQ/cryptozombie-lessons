@@ -16,4 +16,4 @@ En esta lección, vamos a aprender a como interactuar con un Contrato Inteligent
 
 Ten en cuenta que los front-ends de las DApps están escritas en **JavaScript** y no Solidity. Pero dado que el enfoque de este curso está en Ethereum y Solidity, ya damos por hecho que ya te sientes cómodo construyendo sitios web con HTML, JavaScript (incluyendo ES6 <a href="https://developers.google.com/web/fundamentals/primers/promises" target=_blank>promises</a>), y JQuery, así que no vamos a perder mucho tiempo cubriendo lo básico de dichos lenguajes.
 
-Si aún no te sientes muy cómodo construyendo sitios web con HTML / Javascript, es muy recomendable que sigas cualquier tutorial sobre estos lenguajes de programación.
+Si aún no te sientes muy cómodo construyendo sitios web con HTML / JavaScript, es muy recomendable que sigas cualquier tutorial sobre estos lenguajes de programación.

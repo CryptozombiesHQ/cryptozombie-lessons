@@ -145,7 +145,7 @@ Diremos que los gato-zombis tienen `99` en los últimos dos dígitos de su ADN (
 
 ## Sentencias if
 
-Una sentencia if en Solidity es igual que en javascript:
+Una sentencia if en Solidity es igual que en JavaScript:
 
 ```
 function eatBLT(string sandwich) public {

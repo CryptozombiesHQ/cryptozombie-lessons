@@ -275,4 +275,4 @@ Nous allons implémenter une fonction de nombre aléatoire que nous pourrons uti
 
 3. La fonction devra d'abord incrémenter `randNonce` (en utilisant la syntaxe `randNonce++`).
 
-4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg,sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo `%_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).
+4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg,sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo (%) `_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).

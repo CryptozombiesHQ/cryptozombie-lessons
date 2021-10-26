@@ -122,7 +122,7 @@ La oss oppdatere vår `_createZombie`-metode fra leksjon 1 for å tilordne eiers
 
 2. Så, la oss øke `ownerZombieCount` for denne `msg.sender`-en.
 
-I Solidity kan du øke en `uint` med `++`, akkurat som i javascript:
+I Solidity kan du øke en `uint` med `++`, akkurat som i JavaScript:
 
 ```
 uint number = 0;

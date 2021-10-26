@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -18,7 +18,7 @@ material:
             _;
           }
 
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
@@ -33,7 +33,7 @@ material:
         }
 
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -60,7 +60,11 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
+
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
@@ -69,6 +73,7 @@ material:
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -79,7 +84,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -103,19 +108,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generateRandomDna(string memory _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -124,7 +129,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
           /**
           * @title Ownable
@@ -200,7 +205,7 @@ material:
             }
           }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefeeding.sol";
 
@@ -211,7 +216,7 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
           require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
@@ -221,7 +226,7 @@ material:
           zombies[_zombieId].dna = _newDna;
         }
 
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
 
         }
 
@@ -254,6 +259,6 @@ This function's logic is a bit complicated so it will take a few chapters to imp
 
 2. Let's make it an `external view` function, so we can call it from `web3.js` without needing any gas.
 
-3. The function should return a `uint[]` (an array of `uint`).
+3. The function should return a `uint[]` (an array of `uint`) as `memory` data location.
 
 Leave the function body empty for now, we'll fill it in in the next chapter.

@@ -12,7 +12,7 @@ material:
 
 Nasz kontrakt Solidity jest gotowy! Teraz musimy już tylko napisać frontend w JavaScripcie, który będzie wchodził w interakcje z naszym kontraktem.
 
-Ethereum dostarcza biblotekę Javascript o nazwie **_Web3.js_**.
+Ethereum dostarcza biblotekę JavaScript o nazwie **_Web3.js_**.
 
 
 W późniejszych lekcjach pokażemy jak publikować kontrakt oraz jak ustawić Web3.js. Narazie jednak zobaczmy jak wygląda przykładowy kod, który komunikuje się z kontraktem.
@@ -68,7 +68,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Następnie javascript pobiera wygenerowaną powyżej wartość w `zombieDetails` i używa przeglądarkowej magii (używamy Vue.js) aby podmienić zdjęcia i filtry CSS. Zobaczysz ten kod w późniejszej lekcji.
+Następnie JavaScript pobiera wygenerowaną powyżej wartość w `zombieDetails` i używa przeglądarkowej magii (używamy Vue.js) aby podmienić zdjęcia i filtry CSS. Zobaczysz ten kod w późniejszej lekcji.
 
 # Zadanie do wykonania
 

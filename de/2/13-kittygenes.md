@@ -112,7 +112,7 @@ We'll say that cat-zombies have `99` as their last two digits of DNA (since cats
 
 ## If statements
 
-If statements in Solidity look just like javascript:
+If statements in Solidity look just like JavaScript:
 
     function eatBLT(string sandwich) public {
       // Remember with strings, we have to compare their keccak256 hashes

@@ -5,8 +5,4 @@ material:
   lessonComplete: 1
 ---
 
-Awesome!
-
-You just issued a BEP-2 Token on the Binance test net and minted 1 billion tokens.
-
-But this is just an appetizer and we're working on more cool stuff. In the next lessons, we'll show you how to ...
+Congratulations, you’ve made it to the end! By now you should have a decent grasp of the basic functions and concepts of Binance Chain, how to create a token and how to trade on the DEX. The GUI exists to do many of the functions we walked through, but the real power lies in creating your own token. If you have any suggestions for further courses or comments on this one, please email us at suggestions@cleverflare.com.

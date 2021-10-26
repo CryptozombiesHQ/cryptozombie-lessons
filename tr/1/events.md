@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Uygulamanızın başlangıç aşaması daha sonra etkinliği dinleyebilir. Bir javascript uygulaması şöyle görünür: 
+Uygulamanızın başlangıç aşaması daha sonra etkinliği dinleyebilir. Bir JavaScript uygulaması şöyle görünür: 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 

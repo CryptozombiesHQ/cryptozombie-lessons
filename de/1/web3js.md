@@ -11,9 +11,9 @@ material:
     hideSliders: true
     answer: 1
 ---
-Our Solidity contract is complete! Now we need to write a javascript frontend that interacts with the contract.
+Our Solidity contract is complete! Now we need to write a JavaScript frontend that interacts with the contract.
 
-Ethereum has a Javascript library called ***Web3.js***.
+Ethereum has a JavaScript library called ***Web3.js***.
 
 In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
 
@@ -68,7 +68,7 @@ Don't worry if this doesn't all make sense yet.
     }
     
 
-What our javascript then does is take the values generated in `zombieDetails` above, and use some browser-based javascript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
+What our JavaScript then does is take the values generated in `zombieDetails` above, and use some browser-based JavaScript magic (we're using Vue.js) to swap out the images and apply CSS filters. You'll get all the code for this in a later lesson.
 
 # Give it a try!
 
