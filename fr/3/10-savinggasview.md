@@ -204,7 +204,7 @@ Les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieu
 
 C'est parce que les fonctions `view` ne changent rien sur la blockchain - elles lisent seulement des données. Marquer une fonction avec `view` indique à `web3.js` qu'il a seulement besoin d'interroger votre nœud local d'Ethereum pour faire marcher la fonction, et il n'a pas besoin de créer une transaction sur la blockchain (qui devra être exécuter sur tous les nœuds et qui coûtera du gas).
 
-Nous parlerons de comment configurer web3.js avec notre propre nœud plus tard. Pour l'instant, la chose à retenir et que vous pouvez optimiser la consommation de gas de votre DApp pour vos utilisateurs en utilisant les fonctions `external view` quand c'est possible.
+Nous parlerons de comment configurer web3.js avec notre propre nœud plus tard. Pour l'instant, la chose à retenir est que vous pouvez optimiser la consommation de gas de votre DApp pour vos utilisateurs en utilisant les fonctions `external view` quand c'est possible.
 
 > Remarque : Si une fonction `view` est appelée intérieurement à partir d'une autre fonction du même contrat qui **n'est pas** une fonction `view`, elle coûtera du gas. C'est parce que l'autre fonction va créer une transaction sur Ethereum, et aura besoin d'être vérifiée par chaque nœud. Ainsi les fonctions `view` sont gratuites seulement quand elles sont appelées depuis l'extérieur.
 
