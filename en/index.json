@@ -264,7 +264,7 @@
             "randomZombieGenerator": "random zombie generator",
             "achievementPreamble": [
                 "Your friend has learned the basics of Ethereum game development, and created {zombieName}, a Level 1 CryptoZombie as proof!",
-                "In order to complete Lesson 1 of CryptoZombies, your friend built a {randomZombieGenerator} and learned about:"
+                "In order to complete Lesson 1 of CryptoZombies, your friend built {randomZombieGenerator} and learned about:"
             ],
             "achievements": [
                 "How to write Ethereum smart contracts",
