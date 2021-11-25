@@ -251,7 +251,7 @@ material:
 
 Maintenant que nous avons codé ce qu'il se passe quand notre zombie gagne, voyons voir ce qu'il arrive quand il **perd**.
 
-Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leurs compteurs `lossCount`, et leurs comptes à rebours sont déclenchés afin qu'ils attendent un jour pour attaquer de nouveau.
+Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leur compteur `lossCount`, et leur compte à rebours est déclenché afin qu'ils attendent un jour pour attaquer de nouveau.
 
 Pour implémenter cette logique, nous allons avoir besoin de la déclaration `else` (sinon) :
 
