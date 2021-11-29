@@ -145,7 +145,7 @@ Secondly, we're not defining the function bodies. Instead of curly braces (`{` a
 
 So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.
 
-By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
+By including this interface in our app's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
 
 We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
 
