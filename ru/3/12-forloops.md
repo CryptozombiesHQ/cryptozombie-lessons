@@ -208,9 +208,9 @@ material:
 
 Очевидная реализация функции `getZombiesByOwner` — хранить карту соответствий `mapping` владельцев зомби-армий в контракте `ZombieFactory`:
 
-`` `
-mapping (address => uint[]) public ownerToZombies
-`` `
+```
+mapping (address => uint[]) public ownerToZombies;
+```
 
 Каждый раз при создании нового зомби просто используем `ownerToZombies[owner].push (zombieId)`, чтобы добавить солдата в массив владельца. И `getZombiesByOwner` будет очень простой функцией:
 
