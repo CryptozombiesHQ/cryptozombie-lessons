@@ -63,7 +63,7 @@ Ethereum ha la funzione hash `keccak256` integrata, che è una versione di SHA3.
 È utile per molti scopi in Ethereum, ma per ora lo useremo solo per la generazione di numeri pseudo-casuali.
 
 
-Importante: `keccak256` prevede un singolo parametro di tipo` byte`. Ciò significa che dobbiamo "impacchettare" tutti i parametri prima di chiamare `keccak256`:
+Importante: `keccak256` prevede un singolo parametro di tipo `byte`. Ciò significa che dobbiamo "impacchettare" tutti i parametri prima di chiamare `keccak256`:
 
 Esempio:
 
@@ -97,6 +97,6 @@ Come vedi sopra `a * b` restituisce un `uint`, ma stavamo provando a memorizzarl
 
 Riempiamo il body della nostra funzione `_generateRandomDna`! Ecco cosa dovrebbe fare:
 
-1. La prima riga di codice dovrebbe prendere l'hash `keccak256` di `abi.encodePacked(_str)` per generare un esadecimale pseudo-casuale, dichiararlo come` uint` ed infine archiviare il risultato in un `uint` chiamato `rand`.
+1. La prima riga di codice dovrebbe prendere l'hash `keccak256` di `abi.encodePacked(_str)` per generare un esadecimale pseudo-casuale, dichiararlo come `uint` ed infine archiviare il risultato in un `uint` chiamato `rand`.
 
 2. Vogliamo che il nostro DNA sia lungo solo 16 cifre (ricordi il nostro `dnaModulus`?). Quindi la seconda riga di codice dovrebbe esssere la `return` del valore `rand` (`%`) `dnaModulus`.

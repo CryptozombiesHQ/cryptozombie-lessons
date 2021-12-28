@@ -13,7 +13,7 @@ material:
 
 ¡Felicidades! Has escrito con éxito tu primer front-end Web3.js que interactúa con tu contrato inteligente.
 
-¡Como recompensa, obtienes tu propio zombie `The Phantom of Web3`! Nivel 3.0 (para Web 3.0 😉), completo con máscara de zorro. Miralo hacia la derecha.
+¡Como recompensa, obtienes tu propio zombie `The Phantom of Web3`! Nivel 3.0 (para Web 3.0 😉), completo con máscara de zorro. Puedes verlo a la derecha.
 
 ## Siguientes pasos
 

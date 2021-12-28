@@ -303,7 +303,7 @@ Questa funzione restituirà un array con il contenuto `[2, 4, 6, 8, 10]`.
 
 ## Facciamo una prova
 
-Finiamo la nostra funzione `getZombiesByOwner` scrivendo un ciclo` for` che scorre attraverso tutti gli zombi nella nostra DApp, confronta il loro proprietario per vedere se abbiamo una corrispondenza e li inserisce nel nostro array `result` prima di restituirlo.
+Finiamo la nostra funzione `getZombiesByOwner` scrivendo un ciclo `for` che scorre attraverso tutti gli zombi nella nostra DApp, confronta il loro proprietario per vedere se abbiamo una corrispondenza e li inserisce nel nostro array `result` prima di restituirlo.
 
 1. Dichiarare un `uint` chiamato `counter` ed impostarlo uguale a `0`. Useremo questa variabile per tenere traccia dell'indice nel nostro array `result`.
 

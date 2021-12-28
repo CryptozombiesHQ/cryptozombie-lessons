@@ -162,7 +162,7 @@ Poďme implemntovať mačacie gény do našeho zombie DNA kódu.
 
 1. Za prvé uprav definíciu funkcie `feedAndMultiply` tak, aby príjmala tretí argument: `string` s názvom `_species`.
 
-2. Po tom čo vypočítaš DNA nového zombie, pridaj podmienku `if` a porovnaj `keccak256` hashe reťazcov `_species` a`"kitty"`.
+2. Po tom čo vypočítaš DNA nového zombie, pridaj podmienku `if` a porovnaj `keccak256` hashe reťazcov `_species` a `"kitty"`.
 
 3. Vo tele `if` podmienky nahraď posledné dve cifry DNA čislom 99. Jedna z možností ako to dosiahnuť je použiť nasledovný metódu: `newDna = newDna - newDna % 100 + 99;`.
 

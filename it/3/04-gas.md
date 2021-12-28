@@ -258,7 +258,7 @@ struct MiniMe {
   uint c;
 }
 
-// `mini` costerà meno gas rispetto a` normale` a causa della struttura ad incastro.
+// `mini` costerà meno gas rispetto a `normale` a causa della struttura ad incastro.
 NormalStruct normal = NormalStruct(10, 20, 30);
 MiniMe mini = MiniMe(10, 20, 30); 
 ```

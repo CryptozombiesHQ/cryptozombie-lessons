@@ -157,6 +157,6 @@ La oss lage en funksjon som henter kitty-genene fra kontrakten:
 
   > Noter: I vår `KittyInterface`, `genes` er et `uint256` — men hvis du husker leksjon 1, `uint` er et alias for `uint256` — de er en og samme ting.
 
-3. Funksjonen skal da kalle funksjonen `kittyContract.getKitty` med`_kittyId` og lagre `genes` i `kittyDna`. Husk - `getKitty` returnerer massevis av variabler. (10 for å være nøyaktig - jeg er snill, jeg regnet dem for deg!). Men alt vi bryr oss om er den siste, `genes`. Teller kommaene dine forsiktig!
+3. Funksjonen skal da kalle funksjonen `kittyContract.getKitty` med `_kittyId` og lagre `genes` i `kittyDna`. Husk - `getKitty` returnerer massevis av variabler. (10 for å være nøyaktig - jeg er snill, jeg regnet dem for deg!). Men alt vi bryr oss om er den siste, `genes`. Teller kommaene dine forsiktig!
 
 4. Sist men ikke minst, funksjonen skal kalle på `feedAndMultiply`, og gi den `_zombieId` og `kittyDna`.

@@ -105,7 +105,7 @@ function setMyNumber(uint _myNumber) public {
 
 function whatIsMyNumber() public view returns (uint) {
   // Hent verdien som er lagret i avsenderens adresse
-  // Vil være `0` hvis avsenderen ikke har kalt` setMyNumber` ennå
+  // Vil være `0` hvis avsenderen ikke har kalt `setMyNumber` ennå
   return favoriteNumber[msg.sender];
 }
 ```
