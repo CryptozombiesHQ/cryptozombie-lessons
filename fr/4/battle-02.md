@@ -243,7 +243,7 @@ Ensuite, cela utilisera le `keccak` pour convertir ces paramètres en un hachage
 
 ### Cette méthode est vulnérable aux attaques d'un nœud malhonnête.
 
-En Ethereum, quand vous appelez la fonction d'un contrat, vous diffuser une **_transaction_** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW dans un **_bloc_** au reste du réseau.
+En Ethereum, quand vous appelez la fonction d'un contrat, vous diffusez une **_transaction_** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW dans un **_bloc_** au reste du réseau.
 
 Quand un nœud a résolu un PoW, les autres nœuds arrêtent d'essayer de résoudre le PoW, ils vérifient que la liste des transactions de l'autre nœud soit valide, acceptent le bloc et passent à la résolution du bloc suivant.
 
@@ -275,4 +275,4 @@ Nous allons implémenter une fonction de nombre aléatoire que nous pourrons uti
 
 3. La fonction devra d'abord incrémenter `randNonce` (en utilisant la syntaxe `randNonce++`).
 
-4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg,sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo (%) `_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).
+4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg.sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo (%) `_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).
