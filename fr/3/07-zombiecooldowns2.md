@@ -208,7 +208,7 @@ material:
 
 Maintenant, modifions `feedAndMultiply` pour prendre en compte notre compte à rebours.
 
-Si on regarde cette fonction, on peut voir que nous l'avions rendu `public` dans les leçons précédentes. Une habitude importante de sécurité et d'examiner tous les fonctions `public` et `external`, et essayer d'imaginer de quelles manières les utilisateurs pourraient en abuser. Rappelez-vous, à part si ces fonctions ont un modificateur `onlyOwner`, tout le monde peut appeler ces fonctions avec les données qu'il veut.
+Si on regarde cette fonction, on peut voir que nous l'avions rendu `public` dans les leçons précédentes. Une habitude importante de sécurité est d'examiner tous les fonctions `public` et `external`, et essayer d'imaginer de quelles manières les utilisateurs pourraient en abuser. Rappelez-vous, à part si ces fonctions ont un modificateur `onlyOwner`, tout le monde peut appeler ces fonctions avec les données qu'il veut.
 
 En réexaminant cette fonction en particulier, un utilisateur pourrait appeler directement la fonction avec n'importe quel `_targetDna` ou `_species`. Ça ne correspond pas vraiment à notre jeu - nous voulons qu'ils suivent nos règles !
 
