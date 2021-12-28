@@ -187,7 +187,6 @@ material:
 mapping (uint => uint) public age;
 
 // Модификатор требует, чтобы пользователь был старше определенного возраста:
-Modifier that requires this user to be older than a certain age:
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
