@@ -91,7 +91,7 @@ Vamos a hacer que un jugador solo pueda llamar a esta función una vez. De esta 
 
 ¿Cómo podemos hacer para que esta función solo pueda ser llamada una vez por jugador?
 
-Para eso usamos `require`. `require` hace que la función lanze un error y pare de ejecutarse si la condición no es verdadera:
+Para eso usamos `require`. `require` hace que la función lance un error y pare de ejecutarse si la condición no es verdadera:
 
 ```
 function sayHiToVitalik(string _name) public returns (string) {
