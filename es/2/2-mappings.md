@@ -103,7 +103,7 @@ En la Lección 1 vimos los **_structs_** y los **_arrays_**. Los **_mapeos_** so
 Definir un `mapping` se asemejaría a esto:
 
 ```
-// Para una aplicación financial, guardamos un uint con el balance de su cuenta:
+// Para una aplicación financiera, guardamos un uint con el balance de su cuenta:
 mapping (address => uint) public accountBalance;
 // O podría usarse para guardar / ver los usuarios basados en ese userId
 mapping (uint => string) userIdToName;
