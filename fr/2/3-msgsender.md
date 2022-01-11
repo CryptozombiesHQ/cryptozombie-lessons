@@ -90,7 +90,7 @@ Pour cela, nous allons utiliser quelque-chose appelé `msg.sender` (message.exp�
 
 En Solidity, il existe des variables globales accessibles à toutes les fonctions. L'une d'elles est `msg.sender`, qui faire référence à l'`address` de la personne (ou du smart contract) qui a appelée la fonction actuelle.
 
-> Remarque : En Solidity, l'exécution d'une fonction nécessite obligatoirement un appel extérieur. Un contrat va juste rester là dans la blockchain à ne rien faire jusqu'à ce que quelqu'un appelle un de ses fonctions. Il y aura toujours un `msg.sender`.
+> Remarque : En Solidity, l'exécution d'une fonction nécessite obligatoirement un appel extérieur. Un contrat va juste rester là dans la blockchain à ne rien faire jusqu'à ce que quelqu'un appelle une de ses fonctions. Il y aura toujours un `msg.sender`.
 
 Voici un exemple d'utilisation de `msg.sender` pour mettre à jour un `mapping`.
 
