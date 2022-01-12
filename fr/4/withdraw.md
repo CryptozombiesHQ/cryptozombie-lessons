@@ -22,7 +22,7 @@ material:
 
           // 1. Créez une fonction withdraw ici
 
-          // 2. Crées une fonction setLevelUpFee ici
+          // 2. Créez une fonction setLevelUpFee ici
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
