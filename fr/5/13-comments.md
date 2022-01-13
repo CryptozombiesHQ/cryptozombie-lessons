@@ -431,7 +431,7 @@ Le standard dans la communauté Solidity est d'utiliser un format appelé **_nat
 ```
 /// @title Un contrat pour des opérations mathématiques basiques
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
-/// @notice Pour l'instant, ce contrat rajouter simplement une fonction multiplication
+/// @notice Pour l'instant, ce contrat rajoute simplement une fonction multiplication
 contract Math {
   /// @notice Multiplie 2 nombres ensemble
   /// @param x le premier uint.
