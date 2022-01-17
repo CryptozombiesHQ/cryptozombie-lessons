@@ -1,26 +1,28 @@
 ---
-title: "Deploying DApps with Truffle"
-header: "Deploying DApps with Truffle"
+title: Testing Smart Contracts with Truffle
+header: Testing Smart Contracts with Truffle
 roadmap: roadmap.jpg
 path: solidity_advanced
-position: 2
+position: 1
 publishedOn: Cryptozombies
 ---
 
-Remember that we promised to teach you how to deploy a smart contract?
+Welcome! By completing the previous lessons you’ve demonstrated that you really know your stuff.
 
-It's been a while, but the time has come!
+So, go ahead and deploy the game to the mainnet. Enjoy your success!
 
-In this lesson, we will be teaching you how to deploy to **_Ethereum_** using **_Truffle_**.
+Hang on a moment... There are a _few things_ you might have already thought of. After all, once contracts get deployed to the mainnet, they will live there forever. If there are mistakes in them, they will still live on as well. Like undead zombies.
 
-And this is not all. You are going to learn how to deploy your smart contracts to **_Loom_** as well😎.
+Mistakes, or _**bugs**_, happen to every coder, no matter how skilled. It's unlikely that you would make a major mistake like giving attacking zombies a 100% chance of victory, but it could happen.
 
-Why deploy to **_Loom_**? After all, **_Ethereum_** is the most secure network.
+Clearly giving the attacking side 100% of wins would mean what you had written was no longer a game, or even any fun at all. A bug like this would kill your game dead, and no promise of juicy brains would drag your zombies from their graves.
 
-Yes, we totally agree with that. But on Ethereum each transaction costs _gas_, so your users will have to pay fees for each and every transaction. Also, they will have to wait at least 10 seconds for each transaction to be confirmed.
+To stop this terrible thing from happening, it is essential that you thoroughly test every aspect of the game.
 
-In a nutshell, **_on Ethereum, all transactions benefit from the same security guarantees_**. For something like a user-facing DApp or a game, this level of security isn't always a requirement. In fact, it just harms the user experience.
+By the end of this lesson, you will be able to:
 
-On **_Loom_**, users have access to much speedier and gas-free transactions. This makes **_Loom_** a much better fit for something like a game or a user-facing DApp.
+- Test your smart contracts with `Truffle` against `Ganache`
+- Use `Chai` to write more expressive assertions
+- Test against `Loom`😉
 
-Enough talking! Let's get started😉
+Let's get started!
