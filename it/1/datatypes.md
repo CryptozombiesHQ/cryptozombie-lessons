@@ -35,7 +35,7 @@ contract Example {
 }
 ```
 
-In questo contratto di esempio abbiamo creato un `uint` chiamato` myUnsignedInteger` e lo abbiamo impostato su 100.
+In questo contratto di esempio abbiamo creato un `uint` chiamato `myUnsignedInteger` e lo abbiamo impostato su 100.
 
 ## Numeri Interi senza Segno: `uint`
 
@@ -47,4 +47,4 @@ Il tipo di dati `uint` è un numero intero senza segno, nel senso che **il suo v
 
 Il nostro DNA di zombi sarà determinato da un numero di 16 cifre.
 
-Dichiarare un `uint` chiamato` dnaDigits` ed impostarlo uguale a `16`.
+Dichiarare un `uint` chiamato `dnaDigits` ed impostarlo uguale a `16`.

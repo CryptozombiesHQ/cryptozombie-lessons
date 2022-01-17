@@ -385,7 +385,7 @@ Le code Solidity de notre jeu zombie est enfin terminé !
 
 Dans les prochaines leçons, nous allons regarder comment déployer le code sur Ethereum, et comment interagir avec en utilisant Web3.js.
 
-Mais il reste une dernière chose dans la Leçon 5 avec de vous laisser partir : Nous allons voir comment **commenter votre code**.
+Mais il reste une dernière chose dans la Leçon 5 avant de vous laisser partir : Nous allons voir comment **commenter votre code**.
 
 
 ## Syntaxe pour commenter
@@ -431,7 +431,7 @@ Le standard dans la communauté Solidity est d'utiliser un format appelé **_nat
 ```
 /// @title Un contrat pour des opérations mathématiques basiques
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
-/// @notice Pour l'instant, ce contrat rajouter simplement une fonction multiplication
+/// @notice Pour l'instant, ce contrat rajoute simplement une fonction multiplication
 contract Math {
   /// @notice Multiplie 2 nombres ensemble
   /// @param x le premier uint.

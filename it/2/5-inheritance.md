@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_eredita_** da `Doge`. Ciò significa che se si compila e si distribuisce `BabyDoge`, esso avrà accesso sia a `catchphrase()` che a `anotherCatchphrase()` (ed a qualsiasi altra funzione pubblica che possiamo definire su` Doge`).
+`BabyDoge` **_eredita_** da `Doge`. Ciò significa che se si compila e si distribuisce `BabyDoge`, esso avrà accesso sia a `catchphrase()` che a `anotherCatchphrase()` (ed a qualsiasi altra funzione pubblica che possiamo definire su `Doge`).
 
 Questo può essere usato per l'eredità logica (come fosse una sottoclasse, un `Gatto` è un `Animale`). Ma può anche essere usato semplicemente per organizzare il tuo codice raggruppando logica simile in contratti diversi.
 

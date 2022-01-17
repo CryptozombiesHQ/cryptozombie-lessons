@@ -175,34 +175,6 @@ import l11_ch13 from './11/13.md'
 import l11_ch14 from './11/14.md'
 import l11_complete from './11/lessoncomplete.md'
 
-// lesson11 Testing
-import l12_overview from './12/00-overview.md'
-import l12_ch1 from './12/01.md'
-import l12_ch2 from './12/02.md'
-import l12_ch3 from './12/03.md'
-import l12_ch4 from './12/04.md'
-import l12_ch5 from './12/05.md'
-import l12_ch6 from './12/06.md'
-import l12_ch7 from './12/07.md'
-import l12_ch8 from './12/08.md'
-import l12_ch9 from './12/09.md'
-import l12_complete from './12/lessoncomplete.md'
-
-// Lesson 13 - How to Create a BEP2 Token
-import l13_overview from './13/00-overview.md'
-import l13_ch1 from './13/01.md'
-import l13_ch2 from './13/02.md'
-import l13_ch3 from './13/03.md'
-import l13_ch4 from './13/04.md'
-import l13_ch5 from './13/05.md'
-import l13_ch6 from './13/06.md'
-import l13_ch7 from './13/07.md'
-import l13_ch8 from './13/08.md'
-import l13_ch9 from './13/09.md'
-import l13_ch10 from './13/10.md'
-import l13_ch11 from './13/11.md'
-import l13_ch12 from './13/12.md'
-import l13_complete from './13/lessoncomplete.md'
 
 //Lesson 14 - How to Build an Oracle Part 1 (Smart Contracts)
 import l14_overview from './14/00-overview.md'
@@ -282,6 +254,21 @@ import l18_ch7 from './18/07.md'
 import l18_ch8 from './18/08.md'
 import l18_ch9 from './18/09.md'
 import l18_complete from './18/lessoncomplete.md'
+
+//Lesson 19
+import l19_overview from './19/00-overview.md'
+import l19_ch1 from './19/01.md'
+import l19_ch2 from './19/02.md'
+import l19_ch3 from './19/03.md'
+import l19_ch4 from './19/04.md'
+import l19_ch5 from './19/05.md'
+import l19_ch6 from './19/06.md'
+import l19_ch7 from './19/07.md'
+import l19_ch8 from './19/08.md'
+import l19_ch9 from './19/09.md'
+import l19_ch10 from './19/10.md'
+import l19_ch11 from './19/11.md'
+import l19_complete from './19/lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -462,35 +449,6 @@ export default {
     l11_ch14,
     l11_complete,
   ],
-  12: [
-    l12_overview,
-    l12_ch1,
-    l12_ch2,
-    l12_ch3,
-    l12_ch4,
-    l12_ch5,
-    l12_ch6,
-    l12_ch7,
-    l12_ch8,
-    l12_ch9,
-    l12_complete,
-  ],
-  13: [
-    l13_overview,
-    l13_ch1,
-    l13_ch2,
-    l13_ch3,
-    l13_ch4,
-    l13_ch5,
-    l13_ch6,
-    l13_ch7,
-    l13_ch8,
-    l13_ch9,
-    l13_ch10,
-    l13_ch11,
-    l13_ch12,
-    l13_complete
-  ],
   14: [
     l14_overview,
     l14_ch1,
@@ -569,5 +527,20 @@ export default {
     l18_ch8,
     l18_ch9,
     l18_complete
+  ],
+  19: [
+    l19_overview,
+    l19_ch1,
+    l19_ch2,
+    l19_ch3,
+    l19_ch4,
+    l19_ch5,
+    l19_ch6,
+    l19_ch7,
+    l19_ch8,
+    l19_ch9,
+    l19_ch10,
+    l19_ch11,
+    l19_complete
   ]
 }
