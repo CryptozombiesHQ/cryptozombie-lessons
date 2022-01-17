@@ -145,7 +145,7 @@ Les deux derniers chiffres de l'ADN d'un zombie-chat sont `99` (car les chats on
 
 ## déclaration `if` (si)
 
-Les déclaration `if` en Solidity sont les mêmes qu'en Javascript :
+Les déclaration `if` en Solidity sont les mêmes qu'en JavaScript :
 
 ```
 function eatBLT(string sandwich) public {

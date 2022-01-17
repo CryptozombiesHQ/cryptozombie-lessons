@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Twoja aplikacja frontowa może nasłuchiwać na zdarzenia. Javascript-owa implementacja powinna wyglądać następująco: 
+Twoja aplikacja frontowa może nasłuchiwać na zdarzenia. JavaScript-owa implementacja powinna wyglądać następująco: 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 

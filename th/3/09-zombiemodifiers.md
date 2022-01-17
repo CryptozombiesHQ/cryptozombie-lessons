@@ -209,6 +209,6 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 2. ในฟังก์ชั่นนี้ ก่อนอื่นเราจะต้องทำการยืนยันความถูกต้องว่า `msg.sender` มีค่าเท่ากับ `zombieToOwner[_zombieId]` โดยการใช้ `require` statement
 
-3. ต่อมาฟังก์ชั่นจะต้องตั้งค่า `zombies[_zombieId].name` ให้เท่ากับ`_newName`
+3. ต่อมาฟังก์ชั่นจะต้องตั้งค่า `zombies[_zombieId].name` ให้เท่ากับ `_newName`
 
 3. สร้างอีกฟังก์ชั่นหนึ่งขึ้นมาโดยใช้ชื่อว่า `changeDna` ไว้ด้านล่างฟังก์ชั่น `changeName` เนื้อหาและความหมายต่างๆ เหมือนกับของใน `changeName` เว้นแต่ argument ที่ 2 นั้นจะต้องเปลี่ยนให้เป็น `_newDna` (ชนิด `uint`) แทน และควรมีค่า `20` ในส่วนของพารามิเตอร์ `_level` บน `aboveLevel` นอกจากนี้ตัวจะต้องมีการตั้งค่า`dna` ไปเป็น `_newDna`แทนที่จะเป็นการตั้งชื่อของซอมบี้

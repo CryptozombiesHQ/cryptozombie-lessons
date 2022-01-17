@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-Solidity contract ของเราก็เสร็จเรียบร้อยแล้ว! ตอนนี้ก็ได้เวลาของการเขียน javascript ที่จะไว้ใช้ด้านหน้าเพื่อ interact กับ contract แล้ว
+Solidity contract ของเราก็เสร็จเรียบร้อยแล้ว! ตอนนี้ก็ได้เวลาของการเขียน JavaScript ที่จะไว้ใช้ด้านหน้าเพื่อ interact กับ contract แล้ว
 
-Ethereum นั้นมี Javascript library  ชื่อว่า **_Web3.js_**
+Ethereum นั้นมี JavaScript library  ชื่อว่า **_Web3.js_**
 
 ในบทหลังๆ เราจะทำการเรียนรู้ในเชิงลึกเกี่ยวกับการนำ contract มาปรับใช้และติดตั้ง Web3.js แต่ในตอนนี้จะขอพูดถึงแค่ตัวอย่างของโค้ดว่า Web3.jsนั้น interact กับ contractที่นำมาปรับใช้ของเราอย่างไร 
 
@@ -68,7 +68,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-และนี่ก็คือ javascript ของเรา ที่จะทำการสร้าง `zombieDetails` ด้านบน และอาจจะต้องใช้ javascripts ที่หามาจาก browser อีกเล็กน้อย (ในที่นี้เราใช้ Vau.js) เพื่อใช้ในการเปลี่ยนรูปต่างๆ ไปมาและใส่ CSS filter ต่างๆ ซึ่งคุณจะเข้าใจโค้ดทั้งหมดนี้ในบทต่อๆ ไป
+และนี่ก็คือ JavaScript ของเรา ที่จะทำการสร้าง `zombieDetails` ด้านบน และอาจจะต้องใช้ javascripts ที่หามาจาก browser อีกเล็กน้อย (ในที่นี้เราใช้ Vau.js) เพื่อใช้ในการเปลี่ยนรูปต่างๆ ไปมาและใส่ CSS filter ต่างๆ ซึ่งคุณจะเข้าใจโค้ดทั้งหมดนี้ในบทต่อๆ ไป
 
 # ลองมาทดสอบกัน!
 

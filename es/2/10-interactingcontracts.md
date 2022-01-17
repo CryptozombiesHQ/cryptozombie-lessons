@@ -184,7 +184,7 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-La función parece algo diferente de las que hemos usado. Puedes ver que devuelve... una lista de diferentes valores. Si vienes de un lenguaje de programación como Javascript, esto es diferente - en Solidity puedes devolver más de un valor en una función.
+La función parece algo diferente de las que hemos usado. Puedes ver que devuelve... una lista de diferentes valores. Si vienes de un lenguaje de programación como JavaScript, esto es diferente - en Solidity puedes devolver más de un valor en una función.
 
 Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 

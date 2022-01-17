@@ -146,7 +146,7 @@ material:
 
 ## عبارات شرطی
 
-عبارات شرطی در Solidity درست مثل javascript هستند:
+عبارات شرطی در Solidity درست مثل JavaScript هستند:
 
 ```
 function eatBLT(string sandwich) public {

@@ -95,7 +95,7 @@ Questa funzione non legge nemmeno dallo stato dell'app - il suo valore di ritorn
 
 Vogliamo una funzione di aiuto che generi un numero di DNA casuale da una stringa.
 
-1. Creare una funzione `private` chiamata` _generateRandomDna`. Prenderà un parametro chiamato `_str` (una` string`) e restituirà un `uint`.
+1. Creare una funzione `private` chiamata `_generateRandomDna`. Prenderà un parametro chiamato `_str` (una `string`) e restituirà un `uint`.
 
 2. Questa funzione visualizzerà alcune delle variabili del nostro contratto ma non le modificherà, contrassegnala quindi come `view`.
 

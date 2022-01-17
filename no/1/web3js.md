@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-Solidity-kontrakten vår er ferdig! Nå trenger vi å skrive en javascript frontend som kan samhandle kontrakten vår.
+Solidity-kontrakten vår er ferdig! Nå trenger vi å skrive en JavaScript frontend som kan samhandle kontrakten vår.
 
-Ethereum har et Javascript library kalt **_Web3.js_**.
+Ethereum har et JavaScript library kalt **_Web3.js_**.
 
 I en senere leksjon, kommer vi til å gå mer i dybden på hvordan distribuere en kontrakt og sette opp Web3.js. Men for nå la oss se på litt eksempel kode for hvordan Web3.js vil samhandle vår distribuerte kontrakt.
 
@@ -68,7 +68,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Det som javascript-en vår så gjør er å ta de genererte dataene i `zombieDetails` over, og bruker dem som nettleser-basert javascript magi (vi bruker Vue.js) for å bytte ut bildene og legge til CSS filter. Du kommer til å få all koden til dette i senere leksjoner.
+Det som javascript-en vår så gjør er å ta de genererte dataene i `zombieDetails` over, og bruker dem som nettleser-basert JavaScript magi (vi bruker Vue.js) for å bytte ut bildene og legge til CSS filter. Du kommer til å få all koden til dette i senere leksjoner.
 
 # Test det!
 
