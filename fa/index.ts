@@ -175,35 +175,6 @@ import l11_ch13 from './11/13.md'
 import l11_ch14 from './11/14.md'
 import l11_complete from './11/lessoncomplete.md'
 
-// lesson11 Testing
-import l12_overview from './12/00-overview.md'
-import l12_ch1 from './12/01.md'
-import l12_ch2 from './12/02.md'
-import l12_ch3 from './12/03.md'
-import l12_ch4 from './12/04.md'
-import l12_ch5 from './12/05.md'
-import l12_ch6 from './12/06.md'
-import l12_ch7 from './12/07.md'
-import l12_ch8 from './12/08.md'
-import l12_ch9 from './12/09.md'
-import l12_complete from './12/lessoncomplete.md'
-
-// Lesson 13 - How to Create a BEP2 Token
-import l13_overview from './13/00-overview.md'
-import l13_ch1 from './13/01.md'
-import l13_ch2 from './13/02.md'
-import l13_ch3 from './13/03.md'
-import l13_ch4 from './13/04.md'
-import l13_ch5 from './13/05.md'
-import l13_ch6 from './13/06.md'
-import l13_ch7 from './13/07.md'
-import l13_ch8 from './13/08.md'
-import l13_ch9 from './13/09.md'
-import l13_ch10 from './13/10.md'
-import l13_ch11 from './13/11.md'
-import l13_ch12 from './13/12.md'
-import l13_complete from './13/lessoncomplete.md'
-
 //Lesson 14 - How to Build an Oracle Part 1 (Smart Contracts)
 import l14_overview from './14/00-overview.md'
 import l14_ch1 from './14/01.md'
@@ -461,35 +432,6 @@ export default {
     l11_ch13,
     l11_ch14,
     l11_complete,
-  ],
-  12: [
-    l12_overview,
-    l12_ch1,
-    l12_ch2,
-    l12_ch3,
-    l12_ch4,
-    l12_ch5,
-    l12_ch6,
-    l12_ch7,
-    l12_ch8,
-    l12_ch9,
-    l12_complete,
-  ],
-  13: [
-    l13_overview,
-    l13_ch1,
-    l13_ch2,
-    l13_ch3,
-    l13_ch4,
-    l13_ch5,
-    l13_ch6,
-    l13_ch7,
-    l13_ch8,
-    l13_ch9,
-    l13_ch10,
-    l13_ch11,
-    l13_ch12,
-    l13_complete
   ],
   14: [
     l14_overview,
