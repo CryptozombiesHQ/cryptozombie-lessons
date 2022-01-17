@@ -1,11 +1,11 @@
 ---
 title: 배열
-actions: ['정답 확인하기', '힌트 보기']
+actions: ["정답 확인하기", "힌트 보기"]
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,7 +21,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -70,6 +70,6 @@ Person[] public people;
 
 # 직접 해보기
 
-우리 앱에 좀비 군대를 저장하고 싶네. 그리고 우리 좀비들을 다른 앱에 자랑하고 싶네. 그러니 좀비 군대 저장소를 public으로 해야 하네. 
+우리 앱에 좀비 군대를 저장하고 싶네. 그리고 우리 좀비들을 다른 앱에 자랑하고 싶네. 그러니 좀비 군대 저장소를 public으로 해야 하네.
 
 1. `Zombie` **_구조체_**의 public 배열을 생성하고 이름을 `zombies`로 한다.
