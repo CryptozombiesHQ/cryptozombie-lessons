@@ -17,7 +17,7 @@ Vous pouvez voir comment cela fonctionne avec la démo à droite. Allez-y, je sa
 
 ## Implémentation JavaScript
 
-Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à tous les fonctions publiques des deux contrats.
+Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à toutes les fonctions publiques des deux contrats.
 
 Voici un exemple d'interaction avec notre contrat déployé utilisant JavaScript et web3.js:
 
