@@ -102,6 +102,21 @@ import l6_ch9 from './6/09-subscribing-to-events.md'
 import l6_ch10 from './6/10-wrappingitup.md'
 import l6_complete from './6/lessoncomplete.md'
 
+// course 2 - custom game modes
+import l7_overview from './7/00-overview.md'
+import l7_ch1 from './7/01.md'
+import l7_ch2 from './7/02.md'
+import l7_ch3 from './7/03.md'
+import l7_ch4 from './7/04.md'
+import l7_ch5 from './7/05.md'
+import l7_ch6 from './7/06.md'
+import l7_ch7 from './7/07.md'
+import l7_ch8 from './7/08.md'
+import l7_ch9 from './7/09.md'
+import l7_ch10 from './7/10.md'
+import l7_ch11 from './7/11.md'
+import l7_complete from './7/lessoncomplete.md'
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -207,4 +222,19 @@ export default {
     l6_ch10,
     l6_complete
   ],
+  7: [
+    l7_overview,
+    l7_ch1,
+    l7_ch2,
+    l7_ch3,
+    l7_ch4,
+    l7_ch5,
+    l7_ch6,
+    l7_ch7,
+    l7_ch8,
+    l7_ch9,
+    l7_ch10,
+    l7_ch11,
+    l7_complete,
+  ]
 }

@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Il front-end dell'app potrebbe quindi ascoltare l'evento. Un'implementazione javascript sarebbe simile a:
+Il front-end dell'app potrebbe quindi ascoltare l'evento. Un'implementazione JavaScript sarebbe simile a:
 
 ```
 YourContract.IntegersAdded(function(error, result) { 

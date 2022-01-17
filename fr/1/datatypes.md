@@ -41,7 +41,7 @@ Dans cet exemple de contrat, nous avons créé un `uint` appelé `myUnsignedInte
 
 Le type de données `uint` est un entier non signé, cela veut dire que **sa valeur doit être non négative**. Il existe aussi un type de données `int` pour les entiers signés.
 
-> Remarque: En Solidity, `uint` est en fait un alias pour` uint256`, un entier non signé de 256 bits. Vous pouvez déclarer des uints avec moins de bits - `uint8`,` uint16`, `uint32`, etc. Mais en général il est plus simple d'utiliser `uint` sauf dans des cas spécifiques que nous aborderons dans les leçons suivantes.
+> Remarque: En Solidity, `uint` est en fait un alias pour `uint256`, un entier non signé de 256 bits. Vous pouvez déclarer des uints avec moins de bits - `uint8`, `uint16`, `uint32`, etc. Mais en général il est plus simple d'utiliser `uint` sauf dans des cas spécifiques que nous aborderons dans les leçons suivantes.
 
 
 # A votre tour

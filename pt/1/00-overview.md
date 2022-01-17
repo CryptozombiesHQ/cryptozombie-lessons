@@ -9,4 +9,4 @@ Então, você acha que tem o que é preciso para se tornar um **CryptoZombie**, 
 Este curso irá ensinar você como **construir um jogo no Ethereum**
 
 É projetado para iniciantes em Solidity, mas presume que você tem alguma experiência
-em programação em outra linguagem (exemplo: Javascript)
+em programação em outra linguagem (exemplo: JavaScript)

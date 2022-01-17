@@ -242,7 +242,7 @@ Desde que funções `view` não custam gas algum quando chamadas externamente, p
 
 ## Usando laços `for`
 
-A sintaxe do laço `for` em Solidity é similar a de Javascript.
+A sintaxe do laço `for` em Solidity é similar a de JavaScript.
 
 Vejamos um exemplo onde queremos fazer um array de números pares:
 

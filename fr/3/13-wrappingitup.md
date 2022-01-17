@@ -20,8 +20,8 @@ Félicitations ! Vous avez terminé la Leçon 3.
 - Nous avons appris à protéger les fonctions principales avec `onlyOwner`
 - Nous avons appris ce qu'est le gas et son optimisation
 - Nous avons ajouté niveau et compte à rebours à nos zombies
-- Nous avons maintenant des fonctions pour mettre à jour le nom d'un zombie et son ADN une fois que le zombie à un certain niveau
-- Et enfin, nous avons maintenant une fonction pour renvoyer l'armée de zombie d'un utilisateur
+- Nous avons maintenant des fonctions pour mettre à jour le nom d'un zombie et son ADN une fois que le zombie a un certain niveau
+- Et enfin, nous avons maintenant une fonction pour renvoyer l'armée de zombies d'un utilisateur
 
 ## Voici votre récompense
 

@@ -182,7 +182,7 @@ Maintenant, utilisons notre modificateur `aboveLevel` pour créer quelques fonct
 Notre jeu aura quelques incitatifs pour que les gens fassent gagner des niveaux à leur zombies :
 
 - Pour les zombies de niveau 2 ou plus, les utilisateurs pourront changer leur nom.
-- Pour les zombies de niveau 20 ou plus, les utilisateurs pour leur donner un ADN personnalisé.
+- Pour les zombies de niveau 20 ou plus, les utilisateurs pourront leur donner un ADN personnalisé.
 
 Nous implémenterons ces fonctions ci-dessous. Voici un exemple de code d'une leçon précédente en référence :
 
@@ -211,4 +211,4 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 3. Ensuite la fonction devra définir `zombies[_zombieId].name` égal à `_newName`.
 
-4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et son contenu seront presque identiques à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sur, elle devra définir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.
+4. Créez une autre fonction `changeDna` en dessous de `changeName`. Sa définition et son contenu seront presque identiques à `changeName`, excepté pour le second argument qui sera `_newDna` (un `uint`), et qu'elle devra passer `20` pour l'argument `_level` à `aboveLevel`. Et bien sûr, elle devra définir le `dna` zombie égal à `_newDna` au lieu de définir le nom du zombie.

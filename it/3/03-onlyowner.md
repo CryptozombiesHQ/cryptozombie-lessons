@@ -218,7 +218,7 @@ material:
       }
 ---
 
-Ora che il nostro contratto di base `ZombieFactory` eredita da` Ownable`, possiamo usare il modificatore di funzione `onlyOwner` anche in` ZombieFeeding`.
+Ora che il nostro contratto di base `ZombieFactory` eredita da `Ownable`, possiamo usare il modificatore di funzione `onlyOwner` anche in `ZombieFeeding`.
 
 Ciò è dovuto al modo in cui funziona l'eredità del contratto. Ricorda:
 
@@ -325,4 +325,4 @@ Nel caso di `onlyOwner` l'aggiunta di questa funzione di modifica garantirà che
 
 Ora possiamo limitare l'accesso a `setKittyContractAddress` in modo che nessuno, tranne noi, possa modificarlo in futuro.
 
-1. Aggiungi il modificatore `onlyOwner` a` setKittyContractAddress`.
+1. Aggiungi il modificatore `onlyOwner` a `setKittyContractAddress`.

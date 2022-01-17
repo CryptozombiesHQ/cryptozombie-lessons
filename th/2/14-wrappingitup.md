@@ -19,7 +19,7 @@ material:
 
 เนื่องจากตอนนี้ contract ได้พร้อมแล้วที่จะปรับใช้บน Ethereum เราจะมาคอมไพล์และใช้ฟังก์ชั่น `ZombieFeeding` กัน— เนื่องจาก contract นี้มีการ inherit  มาจาก `ZombieFactory` ทำให้สามารถเข้าถึง method ของทั้ง 2 contract ที่เป็น public ได้
 
-มาดูตัวอย่างของการ interact กับ contract ของเราโดยการใช้Javascript และ web3.js กันดีกว่า:
+มาดูตัวอย่างของการ interact กับ contract ของเราโดยการใช้JavaScript และ web3.js กันดีกว่า:
 
 ```
 var abi = /* abi สร้างโดย compiler */

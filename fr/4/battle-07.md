@@ -272,7 +272,7 @@ Revenons à `zombiefactory.sol`, et ajoutons ces propriétés à notre structure
 
 ## A votre tour
 
-1. Modifiez la structure`Zombie` en lui ajoutant 2 propriétés :
+1. Modifiez la structure `Zombie` en lui ajoutant 2 propriétés :
 
   a. `winCount`, un `uint16`
 

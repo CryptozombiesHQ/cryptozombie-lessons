@@ -145,7 +145,7 @@ material:
 
 ## ตัวอย่าง If statements
 
-If statements in Solidity look just like javascript:
+If statements in Solidity look just like JavaScript:
 
 ```
 function eatBLT(string sandwich) public {

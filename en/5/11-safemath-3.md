@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
         import "./safemath.sol";
@@ -38,7 +38,7 @@ material:
           mapping (uint => address) public zombieToOwner;
           mapping (address => uint) ownerZombieCount;
 
-          function _createZombie(string _name, uint _dna) internal {
+          function _createZombie(string memory _name, uint _dna) internal {
             // Note: We chose not to prevent the year 2038 problem... So don't need
             // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
             uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
@@ -48,12 +48,12 @@ material:
             emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generateRandomDna(string memory _str) private view returns (uint) {
             uint rand = uint(keccak256(abi.encodePacked(_str)));
             return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
             require(ownerZombieCount[msg.sender] == 0);
             uint randDna = _generateRandomDna(_name);
             randDna = randDna - randDna % 100;
@@ -62,7 +62,7 @@ material:
 
         }
       "zombieownership.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombieattack.sol";
         import "./erc721.sol";
@@ -101,7 +101,7 @@ material:
 
         }
       "zombieattack.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiehelper.sol";
 
@@ -131,7 +131,7 @@ material:
           }
         }
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -158,7 +158,7 @@ material:
             zombies[_zombieId].level++;
           }
 
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) onlyOwnerOf(_zombieId) {
+          function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) onlyOwnerOf(_zombieId) {
             zombies[_zombieId].name = _newName;
           }
 
@@ -166,7 +166,7 @@ material:
             zombies[_zombieId].dna = _newDna;
           }
 
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
             uint[] memory result = new uint[](ownerZombieCount[_owner]);
             uint counter = 0;
             for (uint i = 0; i < zombies.length; i++) {
@@ -180,7 +180,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -220,7 +220,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal onlyOwnerOf(_zombieId) {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) internal onlyOwnerOf(_zombieId) {
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
@@ -239,7 +239,7 @@ material:
           }
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -315,7 +315,7 @@ material:
           }
         }
       "safemath.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
          * @title SafeMath
@@ -431,7 +431,7 @@ material:
           }
         }
       "erc721.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ERC721 {
           event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
@@ -443,7 +443,7 @@ material:
           function approve(address _approved, uint256 _tokenId) external payable;
         }
     answer: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./ownable.sol";
       import "./safemath.sol";
@@ -474,19 +474,19 @@ material:
         mapping (uint => address) public zombieToOwner;
         mapping (address => uint) ownerZombieCount;
 
-        function _createZombie(string _name, uint _dna) internal {
+        function _createZombie(string memory _name, uint _dna) internal {
           uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
           zombieToOwner[id] = msg.sender;
           ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
           emit NewZombie(id, _name, _dna);
         }
 
-        function _generateRandomDna(string _str) private view returns (uint) {
+        function _generateRandomDna(string memory _str) private view returns (uint) {
           uint rand = uint(keccak256(abi.encodePacked(_str)));
           return rand % dnaModulus;
         }
 
-        function createRandomZombie(string _name) public {
+        function createRandomZombie(string memory _name) public {
           require(ownerZombieCount[msg.sender] == 0);
           uint randDna = _generateRandomDna(_name);
           randDna = randDna - randDna % 100;

@@ -69,7 +69,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Náš Javascript ďalej vezme niektoré z hodnôt zo `zombieDetails` vyššie a so štipkou javascriptovej mágie (používame Vue.js) dosiahneme, aby sme menili obrázky a aplikovali CSS filtre. V neskorších lekciách uvidíš kompletný kód.
+Náš JavaScript ďalej vezme niektoré z hodnôt zo `zombieDetails` vyššie a so štipkou javascriptovej mágie (používame Vue.js) dosiahneme, aby sme menili obrázky a aplikovali CSS filtre. V neskorších lekciách uvidíš kompletný kód.
 
 # Vyskúšaj si to sám
 

@@ -236,13 +236,13 @@ L'étape 3 serait extrêmement coûteuse en gas, vu que nous aurions besoin de r
 
 Puisque écrire dans le stockage est une des opérations les plus chères en Solidity, chaque appel à cette fonction de transfert serait extrêmement coûteuse en gas. Et encore pire, cela coûterait un montant de gas différent à chaque appel, en fonction de combien de zombie l'utilisateur a dans son armée et de l'index du zombie transféré. L'utilisateur ne saurait pas combien de gas envoyer.
 
-> Remarque : Bien sûr, nous pourrions juste bouger le dernier zombie du tableau pour combler le trou et réduire la taille du tableau de 1. Mais nous changerions l'ordre de notre armée de zombie à chaque transfert.
+> Remarque : Bien sûr, nous pourrions juste bouger le dernier zombie du tableau pour combler le trou et réduire la taille du tableau de 1. Mais nous changerions l'ordre de notre armée de zombies à chaque transfert.
 
 Comme les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieurement, nous pouvons simplement utiliser une boucle `for` dans `getZombiesByOwner` pour parcourir le tableau entier de zombie et construire un tableau de zombies qui appartiennent à un utilisateur spécifique. Ainsi notre fonction `transfer` sera beaucoup moins coûteuse, puisque nous n'aurons pas besoin de réorganiser un tableau dans le stockage, et bien qu'étant contre-intuitive cette approche est moins chère globalement.
 
 ## Utiliser des boucles `for`
 
-La syntaxe des boucles `for` en Solidity est similaire qu'en JavaScript.
+La syntaxe des boucles `for` en Solidity est similaire à celle qu'on utilise en JavaScript.
 
 Voici un exemple où nous voulons faire un tableau de nombre pairs :
 
@@ -251,7 +251,7 @@ function getEvens() pure external returns(uint[]) {
   uint[] memory evens = new uint[](5);
   // On suit l'index du nouveau tableau
   uint counter = 0;
-  // On itère de 1 à 19 avec une boucle `for` :
+  // On itère de 1 à 10 avec une boucle `for` :
   for (uint i = 1; i <= 10; i++) {
     // Si `i` est pair...
     if (i % 2 == 0) {

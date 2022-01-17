@@ -10,9 +10,9 @@ material:
     answer: 1
 ---
 
-Notre contrat Solidity est fini ! Maintenant nous devons écrire la partie client en Javascript pour interagir avec le contrat.
+Notre contrat Solidity est fini ! Maintenant nous devons écrire la partie client en JavaScript pour interagir avec le contrat.
 
-Ethereum a une bibliothèque Javascript appelée **_Web3.js_**.
+Ethereum a une bibliothèque JavaScript appelée **_Web3.js_**.
 
 Dans une prochaine leçon, nous verrons en détail comment déployer un contrat et configurer Web3.js. Mais pour l'instant, regardons simplement un exemple de code pour voir comment Web3.js pourrait interagir avec notre contrat déployé.
 
@@ -69,7 +69,7 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Notre code Javascript prends alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie Javascript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
+Notre code JavaScript prends alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie JavaScript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
 
 # A votre tour d’essayer !
 

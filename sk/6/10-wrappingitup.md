@@ -55,7 +55,7 @@ Preto sme nechali túto implementáciu pomerne strohú. Tu je zoznam nápadov, k
 
 A to je len začiatok - som si istý že by sa dalo vymyslieť ešte oveľa viac funkcií. Už teraz máme obrovský zoznam.
 
-Kedže pre vytvorenie takéhoto webového rozrania by sme potrebovali napísať veľa front-end kódu (HTML, CSS, Javascript, framework ako React alebo Vue.js), tvorba kompletného frontedu by zabrala osobitný kurz s aspoň 10 lekciami. Túto implementáciu teda necháme na tebe.
+Kedže pre vytvorenie takéhoto webového rozrania by sme potrebovali napísať veľa front-end kódu (HTML, CSS, JavaScript, framework ako React alebo Vue.js), tvorba kompletného frontedu by zabrala osobitný kurz s aspoň 10 lekciami. Túto implementáciu teda necháme na tebe.
 
 > Poznámka: Napriek tomu že sú smart kontrakty decentralizované, náš front end pre interakciu s našou DAppkou by bol kompletne centralizovaný na nejakom webovom serveri.
 >

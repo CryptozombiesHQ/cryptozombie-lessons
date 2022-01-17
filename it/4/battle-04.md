@@ -339,7 +339,7 @@ Questa è la stessa logica di cui avremo bisogno per la nostra funzione di attac
 
 Torniamo a `zombiefeeding.sol` poiché questo è il primo posto in cui abbiamo usato quella logica. Facciamo un refactor nel suo `modifier`.
 
-1. Creare un `modifier` chiamato `ownerOf`. Ci vorrà 1 argomento: `_zombieId` (a` uint`).
+1. Creare un `modifier` chiamato `ownerOf`. Ci vorrà 1 argomento: `_zombieId` (a `uint`).
 
   Il body dovrebbe `richiedere` che `msg.sender` sia uguale a `zombieToOwner[_zombieId]` per continuare con la funzione. Puoi fare riferimento a `zombiehelper.sol` se non ricordi la sintassi di un `modifier`.
 

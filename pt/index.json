@@ -1,13 +1,13 @@
 {
     "base": {
         "name": "CryptoZombies",
-        "tagLine": "Aprenda a criar jogos em Ethereum",
+        "tagLine": "Aprenda a criar jogos na Ethereum",
         "lesson": "Lição {lessonNum}",
         "chapter": "Capítulo {chapterNum}",
         "syncing": "Sincronizando...",
         "telegram": {
             "name": "Telegram",
-            "openChat": "Open Chat",
+            "openChat": "Abrir o Chat",
             "action": "Participe em nosso Telegram",
             "link": "https://t.me/loomnetwork"
         },
@@ -20,7 +20,7 @@
         "readOnly": "somente leitura"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "Recompensas",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "Lição {lessonNum}: {title}",
         "signIn": "Faça login e restaure o seu progresso",

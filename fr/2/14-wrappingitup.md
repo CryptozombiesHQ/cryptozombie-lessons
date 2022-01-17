@@ -15,11 +15,11 @@ Et voila, vous avez terminé la leçon 2 !
 
 Vous pouvez voir comment cela fonctionne avec la démo à droite. Allez-y, je sais que nous avez hâte d'arriver en bas de cette page 😉. Cliquez sur un chaton pour l'attaquer et regardez le nouveau zombie que vous obtiendrez !
 
-## Implémentation Javascript
+## Implémentation JavaScript
 
 Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à tous les fonctions publiques des deux contrats.
 
-Voici un exemple d'interaction avec notre contrat déployé utilisant Javascript et web3.js:
+Voici un exemple d'interaction avec notre contrat déployé utilisant JavaScript et web3.js:
 
 ```
 var abi = /* abi générée par le compilateur */

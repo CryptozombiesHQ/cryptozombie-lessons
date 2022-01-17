@@ -145,7 +145,7 @@ Vi sier at katetzombier har `99` som de to siste sifrene i DNA (siden katter har
 
 ## If statements
 
-If statements i Solidity ser akkurat ut som i javascript:
+If statements i Solidity ser akkurat ut som i JavaScript:
 
 ```
 function eatBLT(string sandwich) public {
