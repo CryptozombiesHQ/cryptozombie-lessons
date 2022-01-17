@@ -1,10 +1,23 @@
 ---
-title: Lesson Complete!
+title: '¡Lección 1 Completa!'
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - 'comprobarRespuesta'
+  - 'pistas'
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Well done, you've completed the first lesson of our series about Chainlink oracles. Now that you understand the basic request model, in the next lesson, you'll learn how Chainlink technology can be expanded to include any data or computation.
+¡Felicidades! Has completado la primera lección, y has creado el primer zombi para tu ejército.
+
+# Pasos Siguientes
+
+Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombies cada semana, para poder seguir construyendo nuestro juego y hacer crecer tu ejército de zombis.
+
+### 1. Inicia sesión para guardar tu progreso
+
+***Inicia Sesión*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones.
+
+### 2. Comparte tu zombi con tus amigos
+
+***Comparte*** tu zombi en Twitter, blah blah, etc. (Necesita insertar imágenes / enlaces)
