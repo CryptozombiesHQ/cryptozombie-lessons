@@ -548,7 +548,7 @@ contract Math {
 
 Tenga en cuenta que no siempre tiene que usar todas estas etiquetas para cada función — todas las etiquetas son opcionales. Pero al menos, deje una nota  `@dev` explicando lo que hace cada función.
 
-# Póngalo a prueba
+# Vamos a probarlo
 
 Si no lo ha notado todavía, el corrector de CryptoZombies ignora los comentarios cuando verifica sus respuestas. Por lo tanto, no podemos verificar su código utilizando comentarios natspec  ;)
 

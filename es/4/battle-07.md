@@ -308,7 +308,7 @@ Cada uno tiene sus propios beneficios y riesgos dependiendo en cómo planeamos i
 
 Así que regresemos a `zombiefactory.sol` y añadamos estas propiedades a nuestra estructura `Zombie`.
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 1. Modifique nuestra estructura `Zombie` para que tenga 2 propiedades más:
 

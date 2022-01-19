@@ -475,6 +475,6 @@ material:
 
 Arreglemos todos esos problemas potenciales en `ZombieAttack`. (También había un `zombies[_zombieId].level++;` que necesitaba ser arreglado en `ZombieHelper`, pero nosotros nos ocupamos de eso ya, así no gastamos un capítulo adicional para hacerlo 😉).
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 Continúa e implementa los métodos de SafeMath en todos los incrementales `++` que aparecen en `ZombieAttack`. Hemos dejado comentarios en el código para que sean fáciles de encontrar.

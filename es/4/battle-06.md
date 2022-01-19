@@ -275,7 +275,7 @@ Suficiente refactorización — regresemos a `zombieattack.sol`.
 
 Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el modificador `ownerOf` para ser utilizado.
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 1. Añada el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`.
 

@@ -489,7 +489,7 @@ Deberíamos poner:
 myUint = myUint.add(1);
 ```
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 Tenemos dos sitios en `ZombieOwnership` donde se hacen operaciones matemáticas. Vamos a sustituirlos por los métodos que proporciona SafeMath.
 
