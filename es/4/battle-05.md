@@ -303,7 +303,7 @@ material:
 
 Tenemos un par de lugares más en `zombiehelper.sol` donde necesitamos implementar nuestro nuevo `modifier` `ownerOf`.
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 1. Actualice `changeName()` para utilizar `ownerOf`
 
