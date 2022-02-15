@@ -1,0 +1,26 @@
+{
+    "1": {
+        "pageTitle": "Lihat CryptoZombie saya {{ .ZombieName }}!",
+        "ogDesc": "Saya baru saja menyelesaikan Pelajaran CryptoZombies 1 dan mempelajari dasar-dasar pengkodean game di Ethereum. Lihatlah zombie pertama di pasukan saya!"
+    },
+    "2": {
+        "pageTitle": "CryptoZombie saya {{ .ZombieName }} baru saja makan CryptoKitty dan naik level!",
+        "ogDesc": "Saya baru saja menyelesaikan Pelajaran 2 CryptoZombies, dan menambahkan CryptoKitty yang dihidupkan kembali ke pasukan zombie saya. Ayo lihat!"
+    },
+    "3": {
+        "pageTitle": "Lihat Tentara CryptoZombie saya!",
+        "ogDesc": "Saya baru saja menyelesaikan Pelajaran 3 CryptoZombies! Tentara zombie saya tumbuh..."
+    },
+    "4": {
+        "pageTitle": "CryptoZombie saya mengalahkan zombie IOTA jahat!",
+        "ogDesc": "Saya baru saja menyelesaikan Pelajaran CryptoZombies 4, dan mengalahkan zombie IOTA yang jahat! Ayo hidupkan kembali pertempuran..."
+    },
+    "5": {
+        "pageTitle": "Pasukan CryptoZombie Saya Telah Tumbuh!",
+        "ogDesc": "Saya baru saja menyelesaikan CryptoZombies Pelajaran 5, dan mendapatkan level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG!"
+    },
+    "6": {
+        "pageTitle": "Lihat 'The Phantom of Web3', CryptoZombie Level 3.0 saya!",
+        "ogDesc": "Saya baru saja menyelesaikan Pelajaran 6 CryptoZombies, dan belajar bagaimana menggunakan Web3.js, MetaMask, dan Infura untuk membangun DApp saya sendiri!"
+    }
+}
