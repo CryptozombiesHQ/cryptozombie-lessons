@@ -71,7 +71,7 @@ material:
 
 さて、Solidityには変数を格納できる場所が2つ用意されている。`storage` と`memory`だ。
 
-**_Storage_** はブロックチェーン上に永久に格納される変数だ。それとは対照的に**_Memory_**は一時的な変数で、外部関数をコントラクトに呼び出す際に消去されるものだ。まぁ、コンピューターのハードディスクとRAMみたいなイメージでいい。
+**_Storage_** はブロックチェーン上に永久に格納される変数だ。それとは対照的に**_Memory_**は一時的な変数で、外部関数をコントラクトに呼び出し終えるたびに消去されるものだ。まぁ、コンピューターのハードディスクとRAMみたいなイメージでいい。
 
 ほとんどの場合にはSolidityが判定して処理するから使う必要はない。状態変数（関数外で宣言された変数のことだ）の場合はデフォルトで `storage`で、ブロックチェーン上に永久に格納される。一方、関数内で宣言された変数は`memory`として扱われて関数の呼び出しが終われば消えるように設定されている。
 
@@ -91,7 +91,7 @@ contract SandwichFactory {
 
     // ^ かなり簡単に見えるが、この場合Solidityが明示的に`storage` や `memory`を
     // 宣言するように警告が出るはずだ。
- 
+
     // そこで、`storage`と宣言してみるぞ：
     Sandwich storage mySandwich = sandwiches[_index];
     //...この場合`mySandwich`がstorage内の`sandwiches[_index]`を
@@ -105,7 +105,7 @@ contract SandwichFactory {
     // コピーすることになり...
     anotherSandwich.status = "Eaten!";
     // ...一時的な変数を変更するだけで、`sandwiches[_index + 1]`には
-    // なんの影響もない。次のようにすることも可能だ： 
+    // なんの影響もない。次のようにすることも可能だ：
     sandwiches[_index + 1] = anotherSandwich;
     // ...ブロックチェーンのstorageに変更したい場合はこうだ。
   }
@@ -133,4 +133,3 @@ contract SandwichFactory {
 この課題は`}`を含めて4行以内で記述すること。
 
 次のチャプターでこの関数について続けていくぞ！
-
