@@ -91,7 +91,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-Appen din, på front-end siden, kan lytte etter eventet. En javascript implementasjon vil se slik ut: 
+Appen din, på front-end siden, kan lytte etter eventet. En JavaScript implementasjon vil se slik ut: 
 
 ```
 YourContract.IntegersAdded(function(error, result) { 

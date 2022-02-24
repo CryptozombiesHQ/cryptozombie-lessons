@@ -221,7 +221,7 @@ function _doStuff(Zombie storage _zombie) internal {
 }
 ```
 
-De cette manière, nous pouvons donner une référence à notre zombie à une fonction au lieu de donner l'Id zombie et le rechercher.
+De cette manière, nous pouvons donner à notre fonction une référence à notre zombie au lieu de donner l'Id zombie et de le rechercher.
 
 ## A votre tour
 

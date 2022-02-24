@@ -2,6 +2,7 @@
 title: "Custom Deck Rules"
 header: "Custom Deck Rules"
 roadmap: roadmap6.png
+publishedOn: Cryptozombies
 ---
 
 Now that we've got the basics of Zombie Battleground custom game modes under our belt, let's look at a few examples of implementing custom deck rules.

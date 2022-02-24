@@ -449,6 +449,6 @@ Você pode usar esse código pronto em todos os aplicativos criados para exigir 
 
 ## Vamos testar
 
-Criamos algumas tags de script vazias antes da tag de fechamento `</body>` em nosso arquivo HTML. Podemos escrever o nosso código javascript para esta lição aqui.
+Criamos algumas tags de script vazias antes da tag de fechamento `</body>` em nosso arquivo HTML. Podemos escrever o nosso código JavaScript para esta lição aqui.
 
 1. Vá em frente e copie/cole o código do modelo acima para detectar o Metamask. É o bloco que começa com o `window.addEventListener`.

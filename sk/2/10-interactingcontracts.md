@@ -184,7 +184,7 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-Táto funkcia vyzerá trochu inak ako to, na čo sme zvyknutý. Všimni si že vracia... nie jednu, ale hneď niekoľko hodnôt. Ak prichádzaš z jazykov ako Javascript, možno budeš prekvapený. v Solidity je možné vrátit z funkcie niekoľko hodnôt naraz.
+Táto funkcia vyzerá trochu inak ako to, na čo sme zvyknutý. Všimni si že vracia... nie jednu, ale hneď niekoľko hodnôt. Ak prichádzaš z jazykov ako JavaScript, možno budeš prekvapený. v Solidity je možné vrátit z funkcie niekoľko hodnôt naraz.
 
 Teraz keď už vieme, ako táto funkcia vyzerá, môžme to použiť na deklaráciu rozrania:
 

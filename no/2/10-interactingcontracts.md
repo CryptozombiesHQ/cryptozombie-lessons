@@ -183,7 +183,7 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-Funksjonen ser litt annerledes ut enn vi er vant til. Du kan se det returnerer ... en rekke forskjellige verdier. Hvis du kommer fra et programmeringsspråk som Javascript, er dette annerledes - i Solidity kan du returnere mer enn en verdi fra en funksjon.
+Funksjonen ser litt annerledes ut enn vi er vant til. Du kan se det returnerer ... en rekke forskjellige verdier. Hvis du kommer fra et programmeringsspråk som JavaScript, er dette annerledes - i Solidity kan du returnere mer enn en verdi fra en funksjon.
 
 Nå som vi vet hva denne funksjonen ser ut, kan vi bruke den til å lage et interface:
 

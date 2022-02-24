@@ -15,11 +15,11 @@ material:
 
 Du kan sjekke demoen til høyre for å se den i aksjon. Fortsett, jeg vet at du ikke kan vente til bunnen av denne siden 😉. Klikk en kattunge for å angripe, og se den nye kittyzombieen du får!
 
-## Javascript implementasjon
+## JavaScript implementasjon
 
 Når vi er klare til å distribuere denne kontrakten til Ethereum, samler vi og distribuerer `ZombieFeeding` - siden denne kontrakten er vår endelige kontrakt som arver fra `ZombieFactory`, og har tilgang til alle offentlige metoder i begge kontrakter.
 
-La oss se på et eksempel på samspill med vår distribuerte kontrakt ved hjelp av Javascript og web3.js:
+La oss se på et eksempel på samspill med vår distribuerte kontrakt ved hjelp av JavaScript og web3.js:
 
 ```
 var abi = /* abi generert av kompilatoren */

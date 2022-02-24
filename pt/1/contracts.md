@@ -5,7 +5,7 @@ material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Enter solidity version here
+      pragma solidity //1. Coloque a versão do Solidity aqui
 
       // 2. Crie seu contract aqui
     answer: > 

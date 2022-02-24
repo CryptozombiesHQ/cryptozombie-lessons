@@ -167,7 +167,7 @@ Mettons à jour notre code de la Leçon 2 pour pouvoir changer l'adresse du cont
 
 1. Supprimez la ligne de code où nous avons écrit en dur `ckAddress`.
 
-2. Changez la ligne où nous avons créé `kittyContract` pour simplement déclarer une variable - c.-à.-d. ne pas la rendre égal à quelque chose.
+2. Changez la ligne où nous avons créé `kittyContract` pour simplement déclarer une variable - c.-à.-d. ne pas la rendre égale à quelque chose.
 
 3. Créez une fonction appelée `setKittyContractAddress` qui aura un paramètre, `_address` (une `address`), et qui devra être une fonction `external`.
 

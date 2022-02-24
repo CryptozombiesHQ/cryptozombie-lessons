@@ -2,6 +2,7 @@
 title: "Custom Game Modes: Zombie Battleground"
 header: "Custom Game Modes: Zombie Battleground"
 roadmap: roadmap6.png
+publishedOn: Cryptozombies
 ---
 
 Welcome, veteran CryptoZombie!

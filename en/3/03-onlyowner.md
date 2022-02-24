@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -35,7 +35,7 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
@@ -54,7 +54,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -75,19 +75,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generateRandomDna(string memory _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -96,7 +96,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -172,7 +172,7 @@ material:
           }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefactory.sol";
 
@@ -199,7 +199,7 @@ material:
           kittyContract = KittyInterface(_address);
         }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
           _targetDna = _targetDna % dnaModulus;
@@ -237,7 +237,7 @@ A function modifier looks just like a function, but uses the keyword `modifier` 
 Let's take a closer look by examining `onlyOwner`:
 
 ```
-pragma solidity ^0.4.25;
+pragma solidity >=0.5.0 <0.6.0;
 
 /**
  * @title Ownable
@@ -316,7 +316,7 @@ contract Ownable {
 
 Notice the `onlyOwner` modifier on the `renounceOwnership` function. When you call `renounceOwnership`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `renounceOwnership`.
 
-So while there are other ways you can use modifiers, one of the most common use-cases is to add quick `require` check before a function executes.
+So while there are other ways you can use modifiers, one of the most common use-cases is to add a quick `require` check before a function executes.
 
 In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
 

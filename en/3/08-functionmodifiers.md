@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -17,7 +17,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -52,7 +52,7 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) internal {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
@@ -73,7 +73,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -97,19 +97,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generateRandomDna(string memory _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -118,7 +118,7 @@ material:
 
         }
       "ownable.sol": |
-        pragma solidity ^0.4.25;
+        pragma solidity >=0.5.0 <0.6.0;
 
         /**
         * @title Ownable
@@ -194,7 +194,7 @@ material:
           }
         }
     answer: >
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefeeding.sol";
 

@@ -197,7 +197,7 @@ Variabelen `now` vil returnere gjeldende unix tidsstempel (antall sekunder som h
 
 > Noter: Unix-tid lagres tradisjonelt i et 32-biters nummer. Dette vil funke til `År 2038` - problemet er, 32-biters unix tidsstempler vil overløpe og ødelegge mange eldre systemer. Så hvis vi ønsker at vår DApp skulle fortsette å løpe 20 år fra nå, kunne vi bruke et 64-biters nummer i stedet - men brukerne våre må bruke mer gas til å bruke vår DApp i mellomtiden. Designbeslutninger!
 
-Solidity inneholder også tidsenhetene `seconds`, `minutes`,`hours`,`days`, `weeks` og`years`. Disse vil konvertere til en `uint` av antall sekunder i den lengden av tiden. Så `1 minutes` er `60`, `1 hours` er`3600` (60 sekunder x 60 minutter), `1 days` er `86400` (24 timer x 60 minutter x 60 sekunder) etc.
+Solidity inneholder også tidsenhetene `seconds`, `minutes`,`hours`,`days`, `weeks` og `years`. Disse vil konvertere til en `uint` av antall sekunder i den lengden av tiden. Så `1 minutes` er `60`, `1 hours` er `3600` (60 sekunder x 60 minutter), `1 days` er `86400` (24 timer x 60 minutter x 60 sekunder) etc.
 
 Her er et eksempel på hvordan disse tidsenhetene kan være nyttige:
 

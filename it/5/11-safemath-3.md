@@ -521,7 +521,7 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 // Quindi non andrà in overflow a 2^8, poiché 256 è un `uint256` valido.
 ```
 
-Questo significa che avremo bisogno di implementare altre 2 librerie per prevenire overflow/underflow con i nostri `uint16` e `uint32`. Possiamo richiamare `SafeMath16` e` SafeMath32`.
+Questo significa che avremo bisogno di implementare altre 2 librerie per prevenire overflow/underflow con i nostri `uint16` e `uint32`. Possiamo richiamare `SafeMath16` e `SafeMath32`.
 
 Il codice sarà esattamente lo stesso di SafeMath, tranne per il fatto che tutte le istanze di `uint256` saranno sostituite da `uint32` o `uint16`.
 
@@ -535,6 +535,6 @@ Assegnazione:
 
 1. Dichiara che stiamo usando `SafeMath32` per `uint32`.
 
-2. Dichiara che stiamo usando `SafeMath16` per` uint16`.
+2. Dichiara che stiamo usando `SafeMath16` per `uint16`.
 
 3. C'è un'altra riga di codice in ZombieFactory dove dovremmo usare un metodo di SafeMath. Abbiamo lasciato un commento per indicare dove.

@@ -110,7 +110,7 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-In questo banale esempio chiunque potrebbe chiamare `setMyNumber` e memorizzare un` uint` nel nostro contratto, che sarebbe legato al loro indirizzo. Quindi quando hanno chiamato `whatIsMyNumber` sono stati restituiti gli `uint` che avevano archiviato.
+In questo banale esempio chiunque potrebbe chiamare `setMyNumber` e memorizzare un `uint` nel nostro contratto, che sarebbe legato al loro indirizzo. Quindi quando hanno chiamato `whatIsMyNumber` sono stati restituiti gli `uint` che avevano archiviato.
 
 L'uso di `msg.sender` ti offre la sicurezza della blockchain di Ethereum - l'unico modo in cui qualcuno può modificare i dati di qualcun altro sarebbe quello di rubare la chiave privata associata al suo indirizzo Ethereum.
 
@@ -122,7 +122,7 @@ Aggiorniamo il nostro metodo `_createZombie` della lezione 1 per assegnare la pr
 
 2. Successivamente aumentiamo `ownerZombieCount` per questo `msg.sender`.
 
-In Solidity puoi aumentare un `uint` con `++`, proprio come in javascript:
+In Solidity puoi aumentare un `uint` con `++`, proprio come in JavaScript:
 
 ```
 uint number = 0;

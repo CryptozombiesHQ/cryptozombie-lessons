@@ -187,7 +187,6 @@ material:
 mapping (uint => uint) public age;
 
 // Модификатор требует, чтобы пользователь был старше определенного возраста:
-Modifier that requires this user to be older than a certain age:
 modifier olderThan(uint _age, uint _userId) {
   require (age[_userId] >= _age);
   _;
@@ -199,7 +198,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
   // Логика функции
 }
 ```
-Видишь, модификатор `oldThan` берет аргументы так же, как функция, а функция `driveCar` отдает аргументы модификатору.
+Видишь, модификатор `olderThan` берет аргументы так же, как функция, а функция `driveCar` отдает аргументы модификатору.
 
 Создадим свой `modifier`, который использует свойство зомби `level`, чтобы ограничить доступ к особым возможностям.
 

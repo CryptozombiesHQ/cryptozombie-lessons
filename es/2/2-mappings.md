@@ -86,7 +86,7 @@ Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
 
 La blockchain de Ethereum está creada por **_cuentas_**, que podrían ser como cuentas bancarias. Una cuenta tiene un balance de **_Ether_** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
 
-Cada cuenta tiene una `dirección`, que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
+Cada cuenta tiene una dirección (`address`), que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
@@ -103,18 +103,18 @@ En la Lección 1 vimos los **_structs_** y los **_arrays_**. Los **_mapeos_** so
 Definir un `mapping` se asemejaría a esto:
 
 ```
-// Para una aplicación financial, guardamos un uint con el balance de su cuenta:
+// Para una aplicación financiera, guardamos un uint con el balance de su cuenta:
 mapping (address => uint) public accountBalance;
-// O podría usarse para guardar / ver los usuarios basados en ese userId
+// O podría usarse para guardar / ver los usuarios basados en un userId
 mapping (uint => string) userIdToName;
 ```
 
-Un mapeo es esencialmente una asociación valor-clave para guardar y ver datos. En el primer ejemplo, la llave es un `address` (dirección) y el valor correspondería a un `uint`, y en el segundo ejemplo la llave es un `uint` y el valor un `string`.
+Un mapeo es esencialmente una asociación valor-clave para guardar y ver datos. En el primer ejemplo, la clave es un `address` (dirección) y el valor correspondería a un `uint`, y en el segundo ejemplo la clave es un `uint` y el valor un `string`.
 
 # Vamos a probarlo
 
 Para guardar el dueño de un zombi, vamos a usar dos mapeos: el primero guardará el rastro de la dirección que posee ese zombi y la otra guardará el rastro de cuantos zombis posee cada propietario.
 
-1. Crea un mapeo llamado `zombieToOwner`. Su llave será un `uint` (guardaremos y podremos ver el zombi basados en esta id) y el valor será un `address`. Vamos a hacer este mapeo `public`.
+1. Crea un mapeo llamado `zombieToOwner`. Su clave será un `uint` (guardaremos y podremos ver el zombi basados en esta id) y el valor será un `address`. Vamos a hacer este mapeo `public`.
 
-2. Crea un mapeo llamado `ownerZombieCount`, cuya llave sea un `address` y el valor un `uint`.
+2. Crea un mapeo llamado `ownerZombieCount`, cuya clave sea un `address` y el valor un `uint`.
