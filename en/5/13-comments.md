@@ -558,7 +558,7 @@ However, by now you're a Solidity whiz — we're just going to assume you've go
 
 Give it a try anyway, and try adding some natspec tags to `ZombieOwnership`:
 
-1. `@title` — E.g. A contract that manages transfering zombie ownership
+1. `@title` — E.g. A contract that manages transferring zombie ownership
 
 2. `@author` — Your name!
 
