@@ -551,7 +551,7 @@ Sin embargo, a estas alturas ya eres un genio de Solidity — ¡Vamos a asumir 
 
 Pruébalo de todos modos e intenta añadir algunas etiquetas natspec a `ZombieOwnership`:
 
-1. El `@title` — Es decir. Un contrato que gestiona la transferencia de la propiedad de un zombi
+1. `@title` — E.g. A contract that manages transferring zombie ownership
 
 2. `@author` — Tu nombre!
 
