@@ -100,7 +100,7 @@ mapping (address => uint) favoriteNumber;
 function setMyNumber(uint _myNumber) public {
   // `msg.sender`에 대해 `_myNumber`가 저장되도록 `favoriteNumber` 매핑을 업데이트한다 `
   favoriteNumber[msg.sender] = _myNumber;
-  // ^ 데이터를 저장하는 구문은 배열로 데이터를 저장할 떄와 동일하다 
+  // ^ 데이터를 저장하는 구문은 배열로 데이터를 저장할 때와 동일하다 
 }
 
 function whatIsMyNumber() public view returns (uint) {

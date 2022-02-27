@@ -199,7 +199,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 }
 ```
 
-여기서 자네는 `olderthan` 제어자가 함수와 비슷하게 인수를 받는 것을 볼 수 있을 것이네. 그리고 `driveCar` 함수는 받은 인수를 제어자로 전달하고 있지.
+여기서 자네는 `olderThan` 제어자가 함수와 비슷하게 인수를 받는 것을 볼 수 있을 것이네. 그리고 `driveCar` 함수는 받은 인수를 제어자로 전달하고 있지.
 
 이제 특별한 능력에 제한을 걸 수 있도록 좀비의 `level` 속성을 사용하는 우리만의 `modifier`를 만들어보세.
 

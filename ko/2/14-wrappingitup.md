@@ -50,7 +50,7 @@ $(".kittyImage").click(function(e) {
 // 우리의 컨트랙트에서 발생 가능한 NewZombie 이벤트에 귀를 기울여서 이벤트 발생 시 이벤트를 제시할 수 있도록 한다: 
 ZombieFactory.NewZombie(function(error, result) {
   if (error) return
-  // 이 함수는 레슨 1에서와 같이 좀비를 제시한다: 
+  // 이 함수는 좀비를 당신에게 보여줍니다 (마치 레슨 1의 마지막처럼!): 
   generateZombie(result.zombieId, result.name, result.dna)
 })
 ```
