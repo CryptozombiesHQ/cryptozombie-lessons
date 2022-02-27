@@ -411,7 +411,7 @@ bower install web3
 // ...etc.
 ```
 
-Ou você pode simplesmente baixar o arquivo `.js` minificado do <a href="https://github.com/ethereum/web3.js/blob/1.0/dist/web3.min.js" target=_blank>github</a> e incluir no seu projeto:
+Ou você pode simplesmente baixar o arquivo `.js` minificado do <a href="https://github.com/ChainSafe/web3.js/blob/1.x/dist/web3.min.js" target=_blank>github</a> e incluir no seu projeto:
 
 ```
 <script language="javascript" type="text/javascript" src="web3.min.js"></script>

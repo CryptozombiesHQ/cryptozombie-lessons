@@ -16,7 +16,7 @@ material:
 ## Recapitulemos:
 
 - Hemos añadido una manera de actualizar nuestro contrato CryptoKitties
-- Hemos aprendido a progeter las función esenciales con `onlyOwner`
+- Hemos aprendido a proteger las funciones esenciales con `onlyOwner`
 - Hemos aprendido sobre el gas y optimización del mismo
 - Hemos añadido niveles y enfriamientos a nuestros zombis
 - Ahora tenemos funciones para actualizar el nombre y el ADN del zombi una vez que llega a un cierto nivel

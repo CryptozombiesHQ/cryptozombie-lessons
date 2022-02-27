@@ -96,7 +96,7 @@ Votre application frontale pourrait alors être en attente de l'évènement. Voi
 ```
 YourContract.IntegersAdded(function(error, result) {
   // faire quelque chose avec le résultat
-}
+})
 ```
 
 # A votre tour

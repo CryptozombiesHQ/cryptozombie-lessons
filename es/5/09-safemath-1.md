@@ -467,7 +467,7 @@ uint256 c = a.mul(2); // 5 * 2 = 10
 
 Veremos qué hacen estas funciones en el próximo capítulo, pero por ahora agreguemos la librería SafeMath a nuestro contrato.
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 Ya hemos incluido la librería `SafeMath` de OpenZeppelin por ti en `safemath.sol`. Ahora puedes echarle un vistazo rápido al código si lo deseas, pero lo veremos en profundidad en el siguiente capítulo.
 

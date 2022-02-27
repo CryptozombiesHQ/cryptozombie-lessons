@@ -531,7 +531,7 @@ Hemos avanzado esta parte e implementado el código por ti — mira en `safemat
 
 Ahora tenemos que implementarlo en ZombieFactory.
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 Tareas:
 

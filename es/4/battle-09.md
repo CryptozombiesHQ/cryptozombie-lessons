@@ -305,7 +305,7 @@ if (zombieCoins[msg.sender] > 100000000) {
 }
 ```
 
-## Póngalo a prueba
+## Vamos a probarlo
 
 1. Añada un statement `else`. Si nuestro zombie pierde:
 
