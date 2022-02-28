@@ -43,7 +43,7 @@ material:
 
               function displayZombies(ids) {
                 $("#zombies").empty();
-                for (id of ids) {
+                for (const id of ids) {
                   // Look up zombie details from our contract. Returns a `zombie` object
                   getZombieDetails(id)
                   .then(function(zombie) {
@@ -506,7 +506,7 @@ material:
 
             function displayZombies(ids) {
               $("#zombies").empty();
-              for (id of ids) {
+              for (const id of ids) {
                 // Busca os detalhes de zumbis do nosso contrato. Retorna um objeto `zumbi`
                 getZombieDetails (id)
                 .then(function(zumbi) {

@@ -436,7 +436,7 @@ material:
 
             function displayZombies(ids) {
               $("#zombies").empty();
-              for (id of ids) {
+              for (const id of ids) {
                 // Busca os detalhes de zumbis do nosso contrato. Retorna um objeto `zumbi`
                 getZombieDetails (id)
                 .then(function(zumbi) {
@@ -560,6 +560,6 @@ Criamos uma função vazia `displayZombies` para você. Vamos preenchê-lo.
 
 1. A primeira coisa que queremos fazer é esvaziar o div `#zombies`. No JQuery, você pode fazer isso com `$("#zombies").empty();`.
 
-2. Em seguida, vamos querer percorrer todos os ids, usando um loop for: `for (id of ids) {`
+2. Em seguida, vamos querer percorrer todos os ids, usando um loop for: `for (const id of ids) {}`
 
 3. Dentro do loop for, copie e cole o bloco de código acima do chamado `getZombieDetails(id)` para cada id e então use `$("#zombies").append(...)` para adicioná-lo ao nosso HTML.
