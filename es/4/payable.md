@@ -257,7 +257,7 @@ Las funciones `payable` son parte de lo que hace de Solidity y Ethereum algo tan
 
 Piénsalo por un momento. Cuando llama una función API en un servidor web normal, no puede enviar dólares (USD$) junto con su llamada de función — ni enviar Bitcoin.
 
-Pero en Ethereum, ya que tanto el dinero (*Ether*), los datos (*payload de transacción*) y el mismo código de contrato viven en Ethereum, es posible para usted llamar a una función **y** pagar dinero por el contrato al mismo tiempo.
+But in Ethereum, because the money (*Ether*), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function ***and*** pay money to the contract at the same time.
 
 Esto abarca una lógica realmente interesante, como requerir un cierto pago por el contrato con el motivo de ejecutar una función.
 
