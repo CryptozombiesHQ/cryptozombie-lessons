@@ -247,7 +247,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 1. Create a function called `changeName`. It will take 2 arguments: `_zombieId` (a `uint`), and `_newName` (a `string` with the data location set to `calldata` ), and make it `external`. It should have the `aboveLevel` modifier, and should pass in `2` for the `_level` parameter. (Don't forget to also pass the `_zombieId`).
 
-> Note: `calldata` is somehow similar to `memory`, but it's only available to `external` functions.
+> Note: `calldata` is somewhat similar to `memory`, but it's only available to `external` functions.
 
 2. In this function, first we need to verify that `msg.sender` is equal to `zombieToOwner[_zombieId]`. Use a `require` statement.
 
