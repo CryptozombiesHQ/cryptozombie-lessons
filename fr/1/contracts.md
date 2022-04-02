@@ -19,7 +19,7 @@ material:
 
 Commençons par les bases :
 
-Un **contrat** (contract) permet d'encapsuler du code Solidity, c'est la composante fondamentale de toutes applications Ethereum - toutes les variables et fonctions appartiennent à un contrat, et ce sera le point de départ de tous vos projets.
+Un **contrat** (contract) permet d'encapsuler du code Solidity. Un `contract` est la composante fondamentale de toutes applications Ethereum - toutes les variables et fonctions appartiennent à un contrat, et ce sera le point de départ de tous vos projets.
 
 Un contrat vide nommé `HelloWorld` ressemblerait à ceci :
 
@@ -53,4 +53,5 @@ Pour commencer à créer notre armée de Zombies, créons un contrat de base app
 
 2. Créez un contrat vide appelé `ZombieFactory`.
 
-Lorsque vous avez terminé, cliquez sur "Vérifier La Réponse" ci-dessous. Si vous êtes bloqué, vous pouvez cliquer sur "Indice".
+Lorsque vous avez terminé, cliquez sur "Vérifier La Réponse" ci-dessous. Si vous êtes bloqué, vous pouvez cliquer sur "Montrez-moi la réponse".
+
