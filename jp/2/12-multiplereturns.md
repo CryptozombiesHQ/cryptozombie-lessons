@@ -153,7 +153,7 @@ function getLastReturnValue() external {
 
 1. `feedOnKitty`という名前の関数を作成せよ。そこに `_zombieId` と`_kittyId`というどちらも `uint`のパラメーターを設定せよ。また関数は `public`を使用せよ。
 
-2. その関数の中で、まず最初に`kittyDna`という`uint` の関数を宣言せよ。
+2. その関数の中で、まず最初に`kittyDna`という`uint` の変数を宣言せよ。
 
   > 注: `KittyInterface`と`genes` は、`uint256`です。ただし、レッスン1で解説した通り `uint`は`uint256`のエイリアスのため、両者は同じことを意味しています。
 
