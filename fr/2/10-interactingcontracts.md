@@ -95,7 +95,7 @@ material:
       }
 ---
 
-Il est temps de nourrir nos zombies ! Et qu'est ce que les zombies aiment manger par dessus tout ?
+Il est temps de nourrir nos zombies ! Et qu'est-ce que les zombies aiment manger par dessus tout ?
 
 Eh bien, il se trouve que les CryptoZombies adorent manger des...
 
@@ -126,11 +126,11 @@ contract LuckyNumber {
   }
 }
 ```
-Cela serait un simple contrat où n'importe qui pourrait stocker son nombre porte-bonheur, et il serait associé à leur adresse Ethereum. Ensuite n'importe qui pourrait regarder leur nombre porte-bonheur en utilisant leur adresse.
+Cela serait un simple contrat où n'importe qui pourrait stocker son nombre porte-bonheur, et il serait associé à leur adresse Ethereum. Ensuite, n'importe qui pourrait regarder leur nombre porte-bonheur en utilisant leur adresse.
 
 Maintenant, imaginons que nous avons un contrat externe qui voudrait lire les données de ce contrat en utilisant la fonction `getNum`.
 
-Premièrement, nous devrions définir une **_interface_** du contract `LuckyNumber` :
+Premièrement, nous devrions définir une **_interface_** du contrat `LuckyNumber` :
 
 ```
 contract NumberInterface {
@@ -138,15 +138,15 @@ contract NumberInterface {
 }
 ```
 
-Vous remarquerez que cela ressemble à la définition d'un contrat, avec quelques différences. Premièrement nous déclarons seulement les fonctions avec lesquelles nous souhaitons interagir - dans ce cas, `getNum` - et nous ne mentionnons aucune autre fonction ou variable.
+Vous remarquerez que cela ressemble à la définition d'un contrat, avec quelques nuances. Premièrement, nous déclarons seulement les fonctions avec lesquelles nous souhaitons interagir - dans ce cas, `getNum` - et nous ne mentionnons aucune autre fonction ou variable.
 
-Deuxièmement, nous ne définissons par de corps de fonction, à la place des `{` et `}`, nous finissons simplement la déclaration de la fonction avec un `;`.
+Deuxièmement, nous ne définissons pas de corps de fonction. A la place des `{` et `}`, nous finissons simplement la déclaration de la fonction avec un `;`.
 
 C'est un peu comme le squelette d'un contrat. C'est comme ça que le compilateur sait que c'est une interface.
 
-En incluant cette interface dans le code de notre dapp, notre contrat sait à quoi ressemble les fonctions de l'autre contrat, comment les appeler, et quelle type de réponse en attendre.
+En incluant cette interface dans le code de notre dapp, notre contrat sait à quoi ressemble les fonctions de l'autre contrat, comment les appeler, et quel type de réponse en attendre.
 
-Nous verrons comment appeler les fonctions de l'autre contrat dans la prochaine leçon, pour l'instant nous allons déclarer notre interface pour le contrat CryptoKitties.
+Nous verrons comment appeler les fonctions de l'autre contrat dans la prochaine leçon. Pour l'instant, nous allons déclarer notre interface pour le contrat CryptoKitties.
 
 # A votre tour
 
@@ -182,10 +182,10 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-La fonction est un peu différente que ce dont nous avons l'habitude. Vous pouvez voir qu'elle retourne... un tas de différentes valeurs. Si vous venez d'un langage de programmation comme JavaScript, c'est différent - en Solidity une fonction peut retourner plus d'une valeur.
+La fonction est un peu différente que ce dont nous avons l'habitude. Vous pouvez voir qu'elle retourne... un tas de différentes valeurs. Si vous venez d'un langage de programmation comme JavaScript, c'est différent - en Solidity, une fonction peut retourner plus d'une valeur.
 
 Maintenant que nous savons à quoi ressemble notre fonction, nous pouvons l'utiliser pour créer une interface :
 
-1. Définissez une interface appelée `KittyInterface`. C'est comme déclarer un nouveau contrat - nous utilisons le mot clé `contract`.
+1. Définissez une interface appelée `KittyInterface`. C'est comme déclarer un nouveau contrat - nous utilisons le mot-clé `contract`.
 
 2. Dans l'interface, définissez une fonction `getKitty` (qui devrait être un copier/coller de la fonction ci-dessus, mais avec un `;` après la déclaration `returns` au lieu de tout ce qu'il y a entre les `{}`).

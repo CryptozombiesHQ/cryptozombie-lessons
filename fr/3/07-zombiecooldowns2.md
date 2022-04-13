@@ -208,16 +208,16 @@ material:
 
 Maintenant, modifions `feedAndMultiply` pour prendre en compte notre compte à rebours.
 
-Si on regarde cette fonction, on peut voir que nous l'avions rendu `public` dans les leçons précédentes. Une habitude importante de sécurité est d'examiner tous les fonctions `public` et `external`, et essayer d'imaginer de quelles manières les utilisateurs pourraient en abuser. Rappelez-vous, à part si ces fonctions ont un modificateur `onlyOwner`, tout le monde peut appeler ces fonctions avec les données qu'il veut.
+Si l'on regarde cette fonction, on peut voir que nous l'avions rendu `public` dans les leçons précédentes. Une habitude importante de sécurité est d'examiner tous les fonctions `public` et `external`, et essayer d'imaginer de quelles manières les utilisateurs pourraient en abuser. Rappelez-vous, à part si ces fonctions ont un modificateur `onlyOwner`, tout le monde peut appeler ces fonctions avec les données qu'il veut.
 
 En réexaminant cette fonction en particulier, un utilisateur pourrait appeler directement la fonction avec n'importe quel `_targetDna` ou `_species`. Ça ne correspond pas vraiment à notre jeu - nous voulons qu'ils suivent nos règles !
 
-En regardant de plus près, cette fonction n'a besoin d'être appelée seulement par `feedOnKitty()`, la façon la plus simple d'empêcher ce genre d'abus et de la rendre `internal`.
+En regardant de plus près, cette fonction n'a besoin d'être appelée seulement par `feedOnKitty()`. La façon la plus simple d'empêcher ce genre d'abus est donc de la rendre `internal`.
 
 ## A votre tour
 
-1. Actuellement `feedAndMultiply` est une fonction `public`. Rendez là `internal` afin que le contrat soit plus sécurisé. Nous ne voulons pas que les utilisateurs soit capables de l'appeler avec n'importe quel ADN.
+1. Actuellement `feedAndMultiply` est une fonction `public`. Rendez-la `internal` afin que le contrat soit plus sécurisé. Nous ne voulons pas que les utilisateurs soit capables de l'appeler avec n'importe quel ADN.
 
-2. Faites en sorte que `feedAndMultiply` prenne notre `cooldownTime` en compte. Premièrement, après avoir défini `myZombie`, ajoutons une déclaration `require` qui vérifie `_isReady()` en lui passant `myZombie`. De cette manière l'utilisateur peut seulement exécuter cette fonction si le compte à rebours du zombie est écoulé.
+2. Faites en sorte que `feedAndMultiply` prenne notre `cooldownTime` en compte. Premièrement, après avoir défini `myZombie`, ajoutons une déclaration `require` qui vérifie `_isReady()` en lui passant `myZombie`. De cette manière, l'utilisateur peut seulement exécuter cette fonction si le compte à rebours du zombie est écoulé.
 
 3. A la fin de la fonction, appelez `_triggerCooldown(myZombie)` afin que l'action de manger déclenche le compte à rebours du zombie.

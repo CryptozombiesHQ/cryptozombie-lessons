@@ -249,7 +249,7 @@ material:
       }
 ---
 
-Maintenant que nous avons codé ce qu'il se passe quand notre zombie gagne, voyons voir ce qu'il arrive quand il **perd**.
+Maintenant que nous avons codé ce qu'il se passe lorsque notre zombie gagne, voyons voir ce qu'il arrive quand il **perd**.
 
 Dans notre jeu, quand les zombies perdent, ils ne perdent pas de niveau - ils rajoutent simplement une défaite à leur compteur `lossCount`, et leur compte à rebours est déclenché afin qu'ils attendent un jour pour attaquer de nouveau.
 
@@ -273,4 +273,4 @@ if (zombieCoins[msg.sender] > 100000000) {
 
   b. Incrémentez `winCount` de `enemyZombie`.
 
-2. En dehors de la déclaration `else`, exécutez la fonction `_triggerCooldown` sur `myZombie`. De cette manière le zombie ne peut attaquer qu'une fois par jour.
+2. En dehors de la déclaration `else`, exécutez la fonction `_triggerCooldown` sur `myZombie`. De cette manière, le zombie ne peut attaquer qu'une fois par jour.

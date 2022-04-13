@@ -11,12 +11,12 @@ material:
     answer: 1
 ---
 
-Félicitations ! Cela termine la Leçon 4.
+Félicitations ! Cela termine la leçon 4.
 
 Allez-y et testez votre fonction de combat à droite !
 
 
-## Revendiquer votre récompense
+## Réclamer votre récompense
 
 Après avoir gagné le combat :
 

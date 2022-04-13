@@ -261,6 +261,6 @@ Il y a encore quelques endroits dans `zombiehelper.sol` où nous devons impléme
 
 ## A votre tour
 
-1. Mettez à jour `changeName()` pour utiliser `ownerOf`
+1. Mettez à jour `changeName()` pour utiliser `ownerOf`.
 
-2. Mettez à jour `changeDna()` pour utiliser `ownerOf`
+2. Mettez à jour `changeDna()` pour utiliser `ownerOf`.

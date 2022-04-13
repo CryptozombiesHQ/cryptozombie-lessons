@@ -135,13 +135,13 @@ material:
 
 La logique de notre fonction est terminée... mais nous allons ajouter une fonctionnalité bonus.
 
-Nous allons faire que les zombies créés à partir de chatons aient une caractéristique unique, qui montrera qu'ils sont des zombie-chats.
+Nous allons faire en sorte que les zombies créés à partir de chatons aient une caractéristique unique, qui montrera qu'ils sont des zombie-chats.
 
 Pour cela, nous allons ajouter un code spécial chaton à l'ADN du zombie.
 
-Si vous vous rappelez de la leçon 1, nous n'utilisons seulement les 12 premiers chiffres de notre ADN à 16 chiffres pour déterminer l'apparence du zombie. Nous allons utiliser les 2 derniers chiffres inutilisés pour gérer les caractéristiques "spéciales".
+Si vous vous rappelez de la leçon 1, nous utilisions seulement les 12 premiers chiffres de notre ADN à 16 chiffres pour déterminer l'apparence du zombie. Nous allons maintenant utiliser les 2 derniers chiffres inutilisés pour gérer les caractéristiques "spéciales".
 
-Les deux derniers chiffres de l'ADN d'un zombie-chat sont `99` (car les chats ont 9 vies). Dans notre code, nous allons dire **si** un zombie provient d'un chat, alors ces deux derniers chiffres d'ADN seront `99`.
+Les deux derniers chiffres de l'ADN d'un zombie-chat sont `99` (car les chats ont 9 vies). Dans notre code, nous allons dire que **si** un zombie provient d'un chat, alors les deux derniers chiffres de son ADN seront `99`.
 
 ## déclaration `if` (si)
 
@@ -167,6 +167,6 @@ Nous allons implémenter les gènes de chat dans notre code zombie.
 
 3. Dans cette déclaration `if`, nous voulons remplacer les 2 derniers chiffres de l'ADN par `99`. Une façon de le faire est d'utiliser cette logique : `newDna = newDna - newDna % 100 + 99;`.
 
-  > Explication : Si `newDna` est `334455`. Alors `newDna % 100` est `55`, donc `newDna - newDna % 100` est `334400`. Enfin on ajoute `99` pour avoir `334499`.
+  > Explication : Si `newDna` est `334455`. Alors `newDna % 100` est `55`, donc `newDna - newDna % 100` est `334400`. Nous ajoutons ensuite `99` pour avoir `334499`.
 
 4. Enfin, nous avons besoin de changer l'appel de la fonction à l'intérieur de `feedOnKitty`. Quand elle appelle `feedAndMultiply`, ajoutez l'argument `"kitty"` à la fin.

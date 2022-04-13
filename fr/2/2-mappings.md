@@ -78,7 +78,7 @@ material:
       }
 ---
 
-Rendons notre jeu multijoueur en attribuant aux zombies de notre base de donnée un propriétaire.
+Rendons notre jeu multijoueur en attribuant aux zombies de notre base de données un propriétaire.
 
 Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` (mappage) et `address` (adresse).
 
@@ -92,14 +92,14 @@ Chaque compte a une `address`, qui est l'équivalent d'un numéro de compte banc
 
 (Cette adresse appartient à l'équipe de CryptoZombies. Si vous aimez CryptoZombies, vous pouvez nous envoyer quelques Ethers ! 😉 )
 
-Nous entrerons dans les détails des adresses dans une prochaine leçon, pour l'instant, la seule chose que vous devez comprendre c'est que **une adresse appartient à un utilisateur unique** (ou a un smart contract).
+Nous étudierons plus en détail les adresses dans une prochaine leçon. Pour le moment, la seule chose que vous devez comprendre c'est que **une adresse appartient à un utilisateur unique** (ou a un smart contract).
 
 Nous pouvons donc l'utiliser comme un ID unique pour définir l'appartenance de nos zombies. Quand un utilisateur crée de nouveaux zombies en interagissant avec notre application, nous pourrons définir l'appartenance de ces zombies à l'adresse Ethereum utilisée pour appeler la fonction.
 
 
 ## Mappages
 
-Dans la Leçon 1 nous avec vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
+Dans la Leçon 1 nous avons vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
 
 Voici un exemple de `mapping` :
 
@@ -110,7 +110,7 @@ mapping (address => uint) public accountBalance;
 mapping (uint => string) userIdToName;
 ```
 
-Un mappage est fondamentalement un stockage de valeur-clé pour stocker et rechercher des données. Dans le premier exemple, la clé est une `address` et la valeur est un `uint`, et dans le second exemple, la clé est un `uint` et la valeur un `string`.
+Un mappage est fondamentalement un stockage de clé-valeur pour stocker et rechercher des données. Dans le premier exemple, la clé est une `address` et la valeur est un `uint`. Dans le second exemple, la clé est un `uint` et la valeur un `string`.
 
 
 # A votre tour

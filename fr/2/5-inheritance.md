@@ -112,9 +112,9 @@ contract BabyDoge is Doge {
 ```
 
 
-`BabyDoge` **_hérite_**  de `Doge`. Cela veut dire que si vous compilez et déployez `BabyDoge`, il aura accès à `catchphrase()` et à `anotherCatchphrase()` (et n'importe quelle fonction publique que nous définirions dans `Doge`).
+`BabyDoge` **_hérite_**  de `Doge`. Cela veut dire que si vous compilez et déployez `BabyDoge`, il aura accès à `catchphrase()` et à `anotherCatchphrase()` (et n'importe quelle fonction publique que nous définirons dans `Doge`).
 
-Cela peut être utiliser pour les héritages logiques (comme avec les sous-classes, un `Chat` est un `Animal`). Mais cela peut aussi simplement être utilisé pour organiser votre code en groupant les logiques similaires en différentes classes.
+Cela peut être utilisé pour les héritages logiques (comme avec les sous-classes, un `Chat` est un `Animal`). Mais cela peut aussi simplement être utilisé pour organiser votre code en groupant les logiques similaires en différentes classes.
 
 # A votre tour
 

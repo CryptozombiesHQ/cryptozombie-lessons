@@ -231,4 +231,4 @@ De cette manière, nous pouvons donner à notre fonction une référence à notr
 
 3. Ensuite, créez une fonction appelée `_isReady`. Cette fonction aura aussi 1 paramètre `Zombie storage` appelé `_zombie`. Elle sera une fonction `internal view` et retournera un `bool`.
 
-4. Le corps de cette fonction devra retourner `(_zombie.readyTime <= now)`, qui sera soit `true` soit `false`. Cette fonction nous dira si assez de temps s'est écoulé depuis la dernière fois que le zombie à mangé.
+4. Le corps de cette fonction devra retourner `(_zombie.readyTime <= now)`, qui sera soit `true`, soit `false`. Cette fonction nous dira si assez de temps s'est écoulé depuis la dernière fois que le zombie à mangé.

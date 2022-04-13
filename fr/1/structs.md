@@ -44,11 +44,11 @@ struct Person {
 
 Les structures vous permettent de créer des types de données plus complexes avec plusieurs propriétés.
 
-> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères sont utilisées pour les données UTF-8 de longueur arbitraire. Ex. `string greeting = "Hello world!"`
+> Remarque : Nous venons d'introduire un nouveau type, `string` (Chaîne de caractères). Les chaînes de caractères sont utilisées pour les données UTF-8 de longueur arbitraire. Exemple : `string greeting = "Hello world!"`
 
 # A votre tour
 
-Dans notre application, nous allons vouloir créer des zombies ! Et les zombies ont plusieurs propriétés, une structure est parfaitement adapté pour ça.
+Dans notre application, nous allons vouloir créer des zombies ! Et les zombies ont plusieurs propriétés, une structure est parfaitement adaptée pour ça.
 
 1. Créez une `struct` nommée `Zombie`.
 

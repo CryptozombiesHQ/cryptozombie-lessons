@@ -196,11 +196,11 @@ material:
       }
 ---
 
-Une des opérations les plus coûteuse en Solidity est d'utiliser `storage` - particulièrement quand on écrit.
+Une des opérations les plus coûteuses en Solidity est d'utiliser `storage` - particulièrement quand on écrit.
 
 C'est parce qu'à chaque fois que vous écrivez ou changez un bout d'information, c'est écrit de manière permanente sur la blockchain. Pour toujours ! Des milliers de nœuds à travers le monde vont stocker cette information sur leurs disques durs, et cette quantité d'information continue de grandir au fur et à mesure que la blockchain grandit. Et il y a un prix à cela.
 
-Afin de réduire les coûts, vous voulez éviter d'écrire des données en stockage à part quand c'est absolument nécessaire. Par moment cela peut impliquer une logique de programmation qui a l'air inefficace - comme reconstruire un tableau dans la `memory` à chaque fois que la fonction est appelée au lieu de sauvegarder ce tableau comme une variable afin de le retrouver rapidement.
+Afin de réduire les coûts, vous voulez éviter d'écrire des données en stockage, à part quand c'est absolument nécessaire. Par moment, cela peut impliquer une logique de programmation qui a l'air inefficace - comme reconstruire un tableau dans la `memory` à chaque fois que la fonction est appelée, au lieu de sauvegarder ce tableau comme une variable afin de le retrouver rapidement.
 
 Dans la plupart des langages de programmation, faire une boucle sur un grand ensemble de données est coûteux. Mais en Solidity, c'est beaucoup moins cher que d'utiliser `storage` s'il y a une fonction `external view`, puisque `view` ne coûte aucun gas. (Et le gas coûte réellement de l'argent pour vos utilisateurs !).
 
@@ -208,7 +208,7 @@ Nous allons voir les boucles `for` dans le prochain chapitre, mais pour l'instan
 
 ## Déclarer des tableaux dans la mémoire
 
-Vous pouvez utiliser le mot clé `memory` avec des tableaux afin de créer un nouveau tableau dans une fonction sans avoir besoin de l'écrire dans le stockage. Le tableau existera seulement jusqu'à la fin de l'appel de la fonction, et cela sera beaucoup plus économique, d'un point de vue du gas, que de mettre à jour un tableau dans `storage` - c'est gratuit si c'est une fonction `view` appelée extérieurement.
+Vous pouvez utiliser le mot-clé `memory` avec des tableaux afin de créer un nouveau tableau dans une fonction sans avoir besoin de l'écrire dans le stockage. Le tableau existera seulement jusqu'à la fin de l'appel de la fonction, et cela sera beaucoup plus économique (en gas), que de mettre à jour un tableau dans `storage` - c'est gratuit si c'est une fonction `view` appelée extérieurement.
 
 Voici comment déclarer un tableau dans la mémoire :
 
@@ -235,6 +235,6 @@ Dans notre fonction `getZombiesByOwner`, nous voulons renvoyer un tableau `uint[
 
 1. Déclarez une variable `uint[] memory` appelée `result`
 
-2. Définissez la égale à un nouveau tableau de `uint`. La longueur du tableau devra être le nombre de zombies que cet `_owner` possède, qui peut être obtenu à partir de notre `mapping` en faisant : `ownerZombieCount[_owner]`.
+2. Définissez-la égale à un nouveau tableau de `uint`. La longueur du tableau devra être le nombre de zombies que cet `_owner` possède, qui peut être obtenu à partir de notre `mapping` en faisant : `ownerZombieCount[_owner]`.
 
-3. A la fin de la fonction, renvoyez `result`. Pour l'instant c'est simplement un tableau vide, mais nous le remplirons dans le prochain chapitre.
+3. A la fin de la fonction, renvoyez `result`. Pour l'instant, c'est simplement un tableau vide, mais nous le remplirons dans le prochain chapitre.

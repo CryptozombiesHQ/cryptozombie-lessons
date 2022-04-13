@@ -12,7 +12,7 @@ material:
     answer: 1
 ---
 
-Félicitations ! Vous avez terminé la Leçon 5.
+Félicitations ! Vous avez terminé la leçon 5.
 
 Comme récompense, nous vous avons transféré votre propre zombie de niveau 10 **H4XF13LD MORRIS 💯💯😎💯💯** !
 
@@ -26,10 +26,10 @@ Avant de continuer, vous avez la possibilité de renommer vos zombies en cliquan
 
 Dans cette leçon nous avons appris :
 
-- Les tokens, le standard ERC721, et les actifs/zombies échangeables
-- Les bibliothèques et comment s'en servir
-- Comment empêcher les débordements en utilisant la bibliothèque SafeMath
-- Commenter son code et le standard natspec
+- Les tokens, le standard ERC721, et les actifs/zombies échangeables.
+- Les bibliothèques et comment s'en servir.
+- Comment empêcher les débordements en utilisant la bibliothèque SafeMath.
+- Commenter son code et le standard natspec.
 
 Cette leçon termine le code de notre jeu Solidity ! (Pour l'instant — nous rajouterons peut-être plus de leçons).
 

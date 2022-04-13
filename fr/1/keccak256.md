@@ -60,9 +60,9 @@ Comment faire pour que notre fonction `_generateRandomDna` retourne un `uint` (p
 
 Ethereum a la fonction de hachage `keccak256` intégrée, qui est une variante de SHA3. Une fonction de hachage permet fondamentalement de lier une chaîne d'entrée à un nombre hexadécimal aléatoire de 256 bits. Le moindre changement dans la chaîne provoquera un grand changement dans le hachage.
 
-Cela sert à beaucoup de chose pour Ethereum, mais pour l'instant nous allons simplement l'utiliser pour générer un nombre pseudo-aléatoire.
+Cela sert à beaucoup de chosed pour Ethereum, mais pour l'instant nous allons simplement l'utiliser pour générer un nombre pseudo-aléatoire.
 
-Exemple:
+Exemple :
 
 ```
 //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
@@ -72,7 +72,7 @@ keccak256("aaaac");
 ```
 Comme vous pouvez le voir, les valeurs retournées sont complètement différentes alors qu'il y a seulement 1 caractère de changé à l'argument d'entrée.
 
-> Remarque: La génération de nombres aléatoires **sécurisés** dans la blockchain est un problème très complexe. Notre méthode ici n'est pas sécurisée, mais comme la sécurité n'est pas la grande priorité de notre ADN Zombie, cela sera suffisant pour notre usage.
+> Remarque : La génération de nombres aléatoires **sécurisés** dans la blockchain est un problème très complexe. Notre méthode ici n'est pas sécurisée, mais comme la sécurité n'est pas la grande priorité de notre ADN Zombie, cela sera suffisant pour notre usage.
 
 ## Conversion de type
 

@@ -8,7 +8,7 @@ Hein, vous êtes arrivé jusqu'ici ?!
 
 Vous n'êtes pas un CryptoZombie ordinaire...
 
-En finissant la Leçon 5, vous avez prouvé que vous avez une assez bonne compréhension de Solidity.
+En finissant la leçon 5, vous avez prouvé que vous avez une assez bonne compréhension de Solidity.
 
 Mais aucune DApp n'est terminée sans un moyen pour ses utilisateurs d'interagir avec...
 

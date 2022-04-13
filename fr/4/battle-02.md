@@ -257,11 +257,11 @@ Si j'ai un nœud, je pourrais publier une transaction **seulement à mon propre 
 
 Parce que tout le contenu de la blockchain est visible de tous les participants, c'est un problème difficile, et la solution est au-delà du cadre de ce tutoriel. Vous pouvez lire <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>Cette discussion StackOverflow (en anglais)</a> pour vous faire une idée. Une des possibilités serait d'avoir un **_oracle_** pour avoir accès à une fonction aléatoire en dehors de la blockchain Ethereum.
 
-Bien sur, puisque des dizaine de milliers de nœuds Ethereum sur le réseau rivalisent pour résoudre le prochain bloc, mes chances de résoudre le prochain bloc sont vraiment faibles. Il me faudrait énormément de puissance de calcul et de temps pour réussir à l'exploiter - mais si la récompense est assez élevée (si je pouvais parier 100 000 000$ sur la fonction pile ou face), cela vaudrait la peine de l'attaquer.
+Bien sûr, puisque des dizaines de milliers de nœuds Ethereum sur le réseau rivalisent pour résoudre le prochain bloc, mes chances de résoudre le prochain bloc sont vraiment faibles. Il me faudrait énormément de puissance de calcul et de temps pour réussir à l'exploiter - mais si la récompense est assez élevée (si je pouvais parier 100 000 000$ sur la fonction pile ou face), cela vaudrait la peine de l'attaquer.
 
 Même si cette fonction aléatoire N'EST PAS sécurisée sur Ethereum, en pratique, à part si notre fonction aléatoire a beaucoup d'argent en jeu, les utilisateurs de votre jeu n'auront sûrement pas assez de ressources pour l'attaquer.
 
-Puisque nous construisons simplement un jeu à des fin de démonstration dans ce tutoriel, et qu'il n'y a pas vraiment d'argent en jeu, nous allons accepter les compromis d'utiliser un générateur de nombre aléatoire simple à implémenter, sachant qu'il n'est pas totalement sûr.
+Puisque nous construisons simplement un jeu à des fins de démonstration dans ce tutoriel, et qu'il n'y a pas vraiment d'argent en jeu, nous allons accepter les compromis d'utiliser un générateur de nombre aléatoire simple à implémenter, sachant qu'il n'est pas totalement sûr.
 
 Dans une prochaine leçon, il se peut que nous voyons comment utiliser des **_oracles_** (un moyen sécurisé de récupérer des données en dehors d'Ethereum) pour générer une fonction aléatoire depuis l'extérieur de la blockchain.
 
@@ -275,4 +275,4 @@ Nous allons implémenter une fonction de nombre aléatoire que nous pourrons uti
 
 3. La fonction devra d'abord incrémenter `randNonce` (en utilisant la syntaxe `randNonce++`).
 
-4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg.sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo (%) `_modulus`. (Ouf! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).
+4. Enfin, elle devra (en une ligne de code) calculer un `uint` à partir du hachage `keccak256` de `now`, `msg.sender` et `randNonce` - et renvoyer avec `return` cette valeur modulo (%) `_modulus`. (Ouf ! C'était un gros morceau, si vous n'avez pas tout suivi, jetez un œil à l'exemple ci-dessus où nous avons généré un nombre aléatoire - la logique est très similaire).

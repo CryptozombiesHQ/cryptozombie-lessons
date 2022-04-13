@@ -385,30 +385,30 @@ Le code Solidity de notre jeu zombie est enfin terminé !
 
 Dans les prochaines leçons, nous allons regarder comment déployer le code sur Ethereum, et comment interagir avec en utilisant Web3.js.
 
-Mais il reste une dernière chose dans la Leçon 5 avant de vous laisser partir : Nous allons voir comment **commenter votre code**.
+Mais il reste une dernière chose dans la leçon 5 avant de vous laisser partir : Nous allons voir comment **commenter votre code**.
 
 
 ## Syntaxe pour commenter
 
-Commenter en Solidity est la même chose qu'en JavaScript. Vous avez déjà vu quelques exemples de commentaire sur une seule ligne au cours des leçons de CryptoZombies :
+Commenter en Solidity est la même chose qu'en JavaScript. Vous avez déjà vu quelques exemples de commentaires sur une seule ligne au cours des leçons de CryptoZombies :
 
 ```
 // Ceci est un commentaire sur une seule ligne. C'est une note pour nous-même (ou pour les autres)
 ```
 
-Il suffit d'ajouter un `//` n'importe où et vous pouvez commentez. C'est tellement simple que vous devriez le faire tout le temps.
+Il suffit d'ajouter un `//` n'importe où et vous pouvez commenter. C'est tellement simple que vous devriez le faire tout le temps.
 
 Mais je sais — parfois une seule ligne n'est pas assez. Vous êtes un écrivain né, après tout !
 
-C'est pourquoi il existe aussi des commentaires multi-ligne :
+C'est pourquoi il existe aussi des commentaires multilignes :
 
 
 ```
 contract CryptoZombies {
-  /* Ceci est un commentaire multi-ligne. Je voudrais tous vous
+  /* Ceci est un commentaire multilignes. Je voudrais tous vous
     remercier d'avoir pris le temps de faire ce cours de programmation.
     Je sais que c'est accessible gratuitement, et ça le restera toujours,
-    mais nous avons quand même mis toute notre énergie pour que ce cours
+    mais nous avons quand même mis toute notre énergie afin que ce cours
     soit le meilleur possible.
 
     Nous en sommes simplement au début de la programmation sur Blockchain.
@@ -424,7 +424,7 @@ contract CryptoZombies {
 }
 ```
 
-C'est une particulièrement bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
+C'est une bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous-même, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
 
 Le standard dans la communauté Solidity est d'utiliser un format appelé **_natspec_**, qui ressemble à ça :
 
@@ -433,11 +433,11 @@ Le standard dans la communauté Solidity est d'utiliser un format appelé **_nat
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
 /// @notice Pour l'instant, ce contrat rajoute simplement une fonction multiplication
 contract Math {
-  /// @notice Multiplie 2 nombres ensemble
+  /// @notice Multiplie 2 nombres ensembles
   /// @param x le premier uint.
   /// @param y le deuxième uint.
   /// @return z le résultat de (x * y)
-  /// @dev Cette fonction ne vérifie pas les débordement pour l'instant
+  /// @dev Cette fonction ne vérifie pas les débordements pour l'instant
   function multiply(uint x, uint y) returns (uint z) {
     // C'est un commentaire normal, qui ne sera pas pris en compte par natspec
     z = x * y;
@@ -449,9 +449,9 @@ contract Math {
 
 `@notice` explique à un **utilisateur** ce que le contrat / fonction fait. `@dev` est pour donner plus de détails aux développeurs.
 
-`@param` et `@return` servent à décrire chaque paramètres et ce que la fonction renvoie.
+`@param` et `@return` servent à décrire chaque paramètre et ce que la fonction renvoie.
 
-Vous n'avez pas tout le temps besoin d'utiliser tous ces tags pour chaque fonction — tous les tags sont optionnels. Au minimum, laissez une note `@dev` pour expliquer ce que chaque fonction fait.
+Vous n'avez pas tout le temps besoin d'utiliser tous ces tags pour chaque fonction — ils sont optionnels. Au minimum, laissez une note `@dev` pour expliquer ce que chaque fonction fait.
 
 # A votre tour
 

@@ -496,7 +496,7 @@ Le code sera exactement le même que SafeMath, à l'exception des instances `uin
 
 Nous avons pris de l'avance et avons implémenté ce code pour vous — vous pouvez voir le code dans `safemath.sol`.
 
-Maintenant nous devons l'implémenter dans ZombieFactory.
+Nous devons désormais l'implémenter dans ZombieFactory.
 
 ## A votre tour
 

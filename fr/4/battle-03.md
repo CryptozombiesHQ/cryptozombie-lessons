@@ -227,16 +227,16 @@ material:
       }
 ---
 
-Maintenant que nous avons une source d'aléatoire dans notre contrat, nous pouvons l'utiliser dans nos combats de zombie pour calculer le résultat.
+Maintenant que nous avons une source d'aléatoire dans notre contrat, nous pouvons l'utiliser dans nos combats de zombies pour calculer le résultat.
 
-Les combats de zombie fonctionnent ainsi :
+Les combats de zombies fonctionnent ainsi :
 
-- Vous choisissez un de vos zombies, et un zombie adversaire à attaquer.
-- Si vous êtes le zombie attaquant, vous avez 70% de chance de gagner. Le zombie qui se défend à 30% de chance de gagner.
-- Tous les zombies (attaquant et défendant) auront un `winCount` (compteur de victoire) et `lossCount` (compteur de défaite) qui vont évoluer en fonction du résultat du combat.
+- Vous choisissez un de vos zombies, et un zombie ennemi à attaquer.
+- Si vous êtes le zombie attaquant, vous avez 70% de chances de gagner. Le zombie qui se défend à 30% de chances de gagner.
+- Tous les zombies (attaquant et défendant) auront un `winCount` (compteur de victoires) et `lossCount` (compteur de défaites) qui vont évoluer en fonction du résultat du combat.
 - Si le zombie attaquant gagne, il gagne un niveau et fait naître un nouveau zombie.
 - S'il perd, rien ne se passe (à part son `lossCount` qui augmente).
-- Qu'il gagne ou perdre, le compte à rebours de repos du zombie attaquant est déclenché.
+- Qu'il gagne ou perde, le compte à rebours de repos du zombie attaquant est déclenché.
 
 Cela fait beaucoup de logique à implémenter, nous allons donc le faire en plusieurs fois au cours des prochains chapitres.
 

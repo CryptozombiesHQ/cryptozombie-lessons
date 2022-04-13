@@ -89,6 +89,6 @@ numbers.push(15);
 
 Faisons faire quelque chose à notre fonction createZombie !
 
-1. Remplissez le corps de la fonction afin qu'elle crée un nouveau `Zombie` et qu'elle l'ajoute au tableau `zombies`. Les noms `name` et `dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
+1. Remplissez le corps de la fonction afin qu'elle créée un nouveau `Zombie` et qu'elle l'ajoute au tableau `zombies`. Les noms `name` et `dna` pour le nouveau Zombie devraient provenir des arguments de la fonction.
 
 2. Faites-le en une ligne de code pour garder les choses concises.

@@ -231,11 +231,11 @@ material:
 
 Nous avons, jusqu'à présent, vu plusieurs **_modificateurs de fonction_**. Il n'est pas forcément évident de se rappeler de tous, nous allons donc les revoir rapidement :
 
-1. Il existe des modificateurs de visibilité qui contrôlent quand et depuis où la fonction peut être appelée : `private` veut dire que la fonction ne peut être appelée que par les autres fonctions à l'intérieur du contrat; `internal` est comme `private` mais en plus, elle peut être appelée par les contrats qui héritent de celui-ci; avec `external`, la fonction ne peut être appelée que depuis l'extérieur du contrat; et enfin avec `public`, elle peut être appelée depuis n'importe où, à l'intérieur et à l'extérieur.
+1. Il existe des modificateurs de visibilité qui contrôlent quand et depuis où la fonction peut être appelée : `private` veut dire que la fonction ne peut être appelée que par les autres fonctions à l'intérieur du contrat ; `internal` est comme `private` mais en plus, elle peut être appelée par les contrats qui héritent de celui-ci ; avec `external`, la fonction ne peut être appelée que depuis l'extérieur du contrat ; et enfin avec `public`, elle peut être appelée depuis n'importe où, à l'intérieur et à l'extérieur.
 
-2. Il existe aussi des modificateurs d'état, qui nous indiquent comment la fonction interagit avec la BlockChain : `view` nous indique qu'en exécutant cette fonction, aucune donnée ne sera écrite/modifiée. `pure` nous indique que non seulement aucune donnée ne sera enregistrée sur la BlockChain, mais qu'en plus aucune donnée de la BlockChain ne sera lue. Ces 2 fonctions ne coûtent pas de gas si elles sont appelées depuis l'extérieur du contrat (mais elle coûtent du gas si elles sont appelées à l'intérieur du contrat par une autre fonction).
+2. Il existe aussi des modificateurs d'état, qui nous indiquent comment la fonction interagit avec la BlockChain : `view` nous indique qu'en exécutant cette fonction, aucune donnée ne sera écrite/modifiée. `pure` nous indique que non seulement aucune donnée ne sera enregistrée sur la BlockChain, mais qu'en plus aucune donnée de la BlockChain ne sera lue. Ces 2 fonctions ne coûtent pas de gas si elles sont appelées depuis l'extérieur du contrat (mais elle ont un coût en gas si elles sont appelées à l'intérieur du contrat par une autre fonction).
 
-3. Ensuite nous avons les modificateurs personnalisés, que nous avons étudiés à la leçon 3 : `onlyOwner` et `aboveLevel` par exemple. Nous avons pu déterminer des logiques personnalisés pour ceux-ci, afin de choisir de quelles manières ils affectent une fonction.
+3. Ensuite, nous avons les modificateurs personnalisés, que nous avons étudiés à la leçon 3 : `onlyOwner` et `aboveLevel` par exemple. Nous avons pu déterminer des logiques personnalisées pour ceux-ci, afin de choisir de quelles manières ils affectent une fonction.
 
 On peut aussi ajouter plusieurs modificateurs à la définition d'une fonction :
 
@@ -270,14 +270,14 @@ contract OnlineStore {
 
 Ici, `msg.value` est la façon de voir combien d'Ether ont été envoyés au contrat, et `ether` est une unité intégrée.
 
-Quelqu'un va appeler la fonction depuis web3.js (depuis l'interface utilisateur JavaScript de la DApp) de cette manière là :
+Quelqu'un va appeler la fonction depuis web3.js (depuis l'interface utilisateur JavaScript de la DApp) de cette manière :
 
 ```
 // En supposant que `OnlineStore` pointe vers le contrat Ethereum :
 OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
 ```
 
-On remarque le champs `value` (valeur), où l'appel de la fonction JavaScript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donnés au même moment au destinataire.
+On remarque le champ `value` (valeur), où l'appel de la fonction JavaScript indique combien d'`ether` envoyer (0.001). Si vous imaginez la transaction comme une enveloppe, et les paramètres que vous envoyez à l'appel de la fonction comme étant la lettre que vous mettez à l'intérieur, alors ajouter `value` revient au même que d'ajouter du cash à l'intérieur de l'enveloppe - la lettre et l'argent vont être donnés au même moment au destinataire.
 
 > Remarque : Si une fonction n'est pas marquée `payable` et que vous essayez de lui envoyer des Ether, la fonction rejettera votre transaction.
 

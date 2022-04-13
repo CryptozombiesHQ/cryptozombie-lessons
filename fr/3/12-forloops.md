@@ -214,7 +214,7 @@ Pour notre fonction `getZombiesByOwner`, une implémentation naïve serait de st
 mapping (address => uint[]) public ownerToZombies
 ```
 
-Et à chaque fois que l'on créerait un nouveau zombie, nous utiliserions simplement `ownerToZombies[owner].push(zombieId)` pour l'ajouter au tableau de zombie de son propriétaire. Et `getZombiesByOwner` serait une fonction toute simple :
+Et à chaque fois que l'on créerait un nouveau zombie, nous utiliserions simplement `ownerToZombies[owner].push(zombieId)` pour l'ajouter au tableau de zombies de son propriétaire. Et `getZombiesByOwner` serait une fonction toute simple :
 
 ```
 function getZombiesByOwner(address _owner) external view returns (uint[]) {
@@ -224,7 +224,7 @@ function getZombiesByOwner(address _owner) external view returns (uint[]) {
 
 ### Le problème avec cette approche
 
-Il serait tentant de faire comme cela par simplicité. Mais regardons ce qu'il arriverait si nous ajoutions plus tard une fonction pour transférer un zombie d'un propriétaire à un autre (Ce que nous allons certainement vouloir dans une prochaine leçon !).
+Il serait tentant de faire comme cela par simplicité. Mais regardons ce qui arriverait si nous ajoutons plus tard une fonction pour transférer un zombie d'un propriétaire à un autre (Ce que nous allons certainement vouloir faire dans une prochaine leçon !).
 
 La fonction de transfert devra :
 1. Ajouter le zombie au tableau `ownerToZombies` du nouveau propriétaire
@@ -232,13 +232,13 @@ La fonction de transfert devra :
 3. Décaler chaque zombie du tableau de l'ancien propriétaire d'une place pour boucher le trou, et enfin
 4. Réduire la taille du tableau de 1.
 
-L'étape 3 serait extrêmement coûteuse en gas, vu que nous aurions besoin de réécrire chaque zombie décalé. Si un propriétaire a 20 zombies, et échange le premier, nous devrions faire 19 écritures pour garder l'ordre du tableau.
+L'étape 3 serait extrêmement coûteuse en gas, vu que nous aurions besoin de réécrire chaque zombie décalé. Si un propriétaire a 20 zombies, et échange le premier, nous devrons faire 19 écritures pour garder l'ordre du tableau.
 
-Puisque écrire dans le stockage est une des opérations les plus chères en Solidity, chaque appel à cette fonction de transfert serait extrêmement coûteuse en gas. Et encore pire, cela coûterait un montant de gas différent à chaque appel, en fonction de combien de zombie l'utilisateur a dans son armée et de l'index du zombie transféré. L'utilisateur ne saurait pas combien de gas envoyer.
+Puisque écrire dans le stockage est une des opérations les plus chères en Solidity, chaque appel à cette fonction de transfert serait extrêmement coûteuse en gas. Et encore pire, cela coûterait un montant de gas différent à chaque appel, en fonction de combien de zombies l'utilisateur a dans son armée et de l'index du zombie transféré. L'utilisateur ne saurait pas combien de gas envoyer.
 
 > Remarque : Bien sûr, nous pourrions juste bouger le dernier zombie du tableau pour combler le trou et réduire la taille du tableau de 1. Mais nous changerions l'ordre de notre armée de zombies à chaque transfert.
 
-Comme les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieurement, nous pouvons simplement utiliser une boucle `for` dans `getZombiesByOwner` pour parcourir le tableau entier de zombie et construire un tableau de zombies qui appartiennent à un utilisateur spécifique. Ainsi notre fonction `transfer` sera beaucoup moins coûteuse, puisque nous n'aurons pas besoin de réorganiser un tableau dans le stockage, et bien qu'étant contre-intuitive cette approche est moins chère globalement.
+Comme les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieurement, nous pouvons simplement utiliser une boucle `for` dans `getZombiesByOwner` pour parcourir le tableau entier de zombie et construire un tableau de zombies qui appartiennent à un utilisateur spécifique. Ainsi, notre fonction `transfer` sera beaucoup moins coûteuse, puisque nous n'aurons pas besoin de réorganiser un tableau dans le stockage, et bien qu'étant contre-intuitive, cette approche est moins chère globalement.
 
 ## Utiliser des boucles `for`
 
@@ -269,11 +269,11 @@ Cette fonction retournera un tableau contenant `[2, 4, 6, 8, 10]`.
 
 ## A votre tour
 
-Finissons notre fonction `getZombiesByOwner` en écrivant une boucle `for` qui va parcourir tous les zombies de notre DApp, comparer leur propriétaire afin de voir s'il correspond, et les rajouter à notre tableau `result` avant de le retourner.
+Finissons notre fonction `getZombiesByOwner` en écrivant une boucle `for` qui va parcourir tous les zombies de notre DApp, comparer leur propriétaire afin de voir s'il correspond, et les ajouter à notre tableau `result` avant de le retourner.
 
 1. Déclarer un `uint` appelé `counter` qui soit égal à `0`. Nous utiliserons cette variable pour connaître l'index de notre tableau `result`.
 
-2. Déclarez une boucle `for` qui commence à `uint i = 0` et qui va jusqu'à `i < zombies.length`. Cela parcourra tous les zombies de notre tableau.
+2. Déclarez une boucle `for` qui commence à `uint i = 0` et qui va jusqu'à `i < zombies.length`. Elle parcourra tous les zombies de notre tableau.
 
 3. Dans cette boucle `for`, faire une déclaration `if` qui va vérifier si `zombieToOwner[i]` est égal à `_owner`. Cela comparera les 2 adresses pour voir si elles sont égales.
 
@@ -281,4 +281,4 @@ Finissons notre fonction `getZombiesByOwner` en écrivant une boucle `for` qui v
   1. Ajoutez l'ID du zombie à notre tableau `result` en mettant `result[counter]` égal à `i`.
   2. Incrémentez `counter` de 1 (voir l'exemple de boucle `for` ci-dessus).
 
-Et voilà - la fonction va maintenant renvoyer tous les zombies d'un utilisateur `_owner` sans dépenser du gas.
+Et voilà ! La fonction va maintenant renvoyer tous les zombies d'un utilisateur `_owner` sans dépenser du gas.
