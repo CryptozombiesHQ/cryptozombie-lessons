@@ -130,18 +130,32 @@ import l8_ch9 from './8/09.md'
 import l8_complete from './8/lessoncomplete.md'
 
 // lesson9 erc721x
-import l9_overview from './9/00-overview.md'
-import l9_ch1 from './9/01-erc721x.md'
-import l9_ch2 from './9/02-erc721x.md'
-import l9_ch3 from './9/03-erc721x.md'
-import l9_ch4 from './9/04-erc721x.md'
-import l9_ch5 from './9/05-erc721x.md'
-import l9_ch6 from './9/06-erc721x.md'
-import l9_ch7 from './9/07-erc721x.md'
-import l9_ch8 from './9/08-erc721x.md'
-import l9_ch9 from './9/09-erc721x.md'
-import l9_ch10 from './9/10-erc721x.md'
-import l9_complete from './9/lessoncomplete.md'
+// import l9_overview from './9/00-overview.md'
+// import l9_ch1 from './9/01-erc721x.md'
+// import l9_ch2 from './9/02-erc721x.md'
+// import l9_ch3 from './9/03-erc721x.md'
+// import l9_ch4 from './9/04-erc721x.md'
+// import l9_ch5 from './9/05-erc721x.md'
+// import l9_ch6 from './9/06-erc721x.md'
+// import l9_ch7 from './9/07-erc721x.md'
+// import l9_ch8 from './9/08-erc721x.md'
+// import l9_ch9 from './9/09-erc721x.md'
+// import l9_ch10 from './9/10-erc721x.md'
+// import l9_complete from './9/lessoncomplete.md'
+
+// lesson10 Truffle
+import l10_overview from './10/00-overview.md'
+import l10_ch1 from './10/01.md'
+import l10_ch2 from './10/02.md'
+// import l10_ch3 from './10/03.md'
+// import l10_ch4 from './10/04.md'
+// import l10_ch5 from './10/05.md'
+// import l10_ch6 from './10/06.md'
+// import l10_ch7 from './10/07.md'
+// import l10_ch8 from './10/08.md'
+// import l10_ch9 from './10/09.md'
+// import l10_ch10 from './10/10.md'
+// import l10_complete from './10/lessoncomplete.md'
 
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
@@ -276,18 +290,32 @@ export default {
     l8_ch9,
     l8_complete,
   ],
-  9: [
-    l9_overview,
-    l9_ch1,
-    l9_ch2,
-    l9_ch3,
-    l9_ch4,
-    l9_ch5,
-    l9_ch6,
-    l9_ch7,
-    l9_ch8,
-    l9_ch9,
-    l9_ch10,
-    l9_complete,
+  // 9: [
+  //   l9_overview,
+  //   l9_ch1,
+  //   l9_ch2,
+  //   l9_ch3,
+  //   l9_ch4,
+  //   l9_ch5,
+  //   l9_ch6,
+  //   l9_ch7,
+  //   l9_ch8,
+  //   l9_ch9,
+  //   l9_ch10,
+  //   l9_complete,
+  // ],
+  10: [
+    l10_overview,
+    l10_ch1,
+    l10_ch2,
+    // l10_ch3,
+    // l10_ch4,
+    // l10_ch5,
+    // l10_ch6,
+    // l10_ch7,
+    // l10_ch8,
+    // l10_ch9,
+    // l10_ch10,
+    // l10_complete,
   ],
 }
