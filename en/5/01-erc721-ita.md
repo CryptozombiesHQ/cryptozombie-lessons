@@ -1,5 +1,5 @@
 ---
-title: Tokens on Ethereum
+title: I token su Ethereum
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -284,48 +284,48 @@ material:
       }
 ---
 
-Let's talk about **_tokens_**.
+Parliamo di **_token_**.
 
-If you've been in the Ethereum space for any amount of time, you've probably heard people talking about tokens — specifically **_ERC20 tokens_**.
+Se conosci il mondo di Ethereum probabilmente hai sentito molte persone parlare di token —  in particolare del tipo di **_token ERC20_**.
 
-A **_token_** on Ethereum is basically just a smart contract that follows some common rules — namely it implements a standard set of functions that all other token contracts share, such as `transferFrom(address _from, address _to, uint256 _amount)` and `balanceOf(address _owner)`.
+Un **_token_** in Ethereum è fondamentalmente uno smart contract che segue alcune regole comuni — cioè contiene un insieme di funzioni standard che tutti gli altri token condividono, come `transferFrom(address _from, address _to, uint256 _amount)` e `balanceOf(address _owner)`.
 
-Internally the smart contract usually has a mapping, `mapping(address => uint256) balances`, that keeps track of how much balance each address has.
+Solitamente all'interno dello smart contract è contenuta una mappatura, `mapping(address => uint256) balances`, che tiene traccia del bilancio di ogni indirizzo.
 
-So basically a token is just a contract that keeps track of who owns how much of that token, and some functions so those users can transfer their tokens to other addresses.
+Quindi fondamentalmente un token è un contratto che tiene traccia di chi e di quanto possiede, includendo alcune funzioni aggiuntive in modo che gli utenti possano trasferire i loro token ad altri indirizzi.
 
-### Why does it matter?
+### Perché è importante?
 
-Since all ERC20 tokens share the same set of functions with the same names, they can all be interacted with in the same ways.
+Perchè tutti i token ERC20 condividono lo stesso insieme di funzioni con gli stessi nomi e possono quindi interagire tutti nello stesso modo.
 
-This means if you build an application that is capable of interacting with one ERC20 token, it's also capable of interacting with any ERC20 token. That way more tokens can easily be added to your app in the future without needing to be custom coded. You could simply plug in the new token contract address, and boom, your app has another token it can use.
+Questo significa che se costruisci un'applicazione che è in grado di interagire con uno specifico token ERC20, è anche in grado di interagire con qualsiasi altro token ERC20. In questo modo altri token possono essere facilmente aggiunti alla tua applicazione in futuro senza bisogno di essere sviluppati su misura. Basterà semplicemente inserire l'indirizzo del nuovo contratto che rappresenta il token, e boom, la tua app potrà utilizzare un nuovo token.
 
-One example of this would be an exchange. When an exchange adds a new ERC20 token, really it just needs to add another smart contract it talks to. Users can tell that contract to send tokens to the exchange's wallet address, and the exchange can tell the contract to send the tokens back out to users when they request a withdraw.
+Un esempio classico potrebbe essere quello di un exchange. Quando un exchange aggiunge un nuovo token ERC20 ha solo bisogno di aggiungere un altro contratto intelligente con cui dialogare. Gli utenti possono dire a quel determinato contratto di inviare token all'indirizzo del portafoglio dell' exchange, e l' exchange può dire al contratto di inviare i token indietro agli utenti quando richiedono un prelievo.
 
-The exchange only needs to implement this transfer logic once, then when it wants to add a new ERC20 token, it's simply a matter of adding the new contract address to its database.
+L' exchange ha solo bisogno di implementare questa logica di trasferimento una singola volta, e quando vorrà aggiungere un nuovo token ERC20, dovrà semplicemente aggiungere il nuovo indirizzo del contratto al suo database.
 
-### Other token standards
+### Altri standard di token
 
-ERC20 tokens are really cool for tokens that act like currencies. But they're not particularly useful for representing zombies in our zombie game.
+I token ERC20 sono davvero interessanti quando devono rappresentare uno scambio di valore, al pari di una valuta. Non sono però particolarmente adatti per rappresentare zombie nel nostro gioco di zombie.
 
-For one, zombies aren't divisible like currencies — I can send you 0.237 ETH, but transfering you 0.237 of a zombie doesn't really make sense.
+In primis, gli zombie non sono divisibili come le valute — io posso inviarti 0.237 ETH, ma inviarti 0.237 di zombie non avrebbe alcun senso logico.
 
-Secondly, all zombies are not created equal. Your Level 2 zombie "**Steve**" is totally not equal to my Level 732 zombie "**H4XF13LD MORRIS 💯💯😎💯💯**". (Not even close, *Steve*).
+Secondo, tutti gli zombie non sono creati equamente. Il tuo zombie di Livello 2 "**Steve**" è differente dal mio zombie "**H4XF13LD MORRIS 💯💯😎💯💯**" di Livello 732, che avrà altre proprietà e caratteristiche.
 
-There's another token standard that's a much better fit for crypto-collectibles like CryptoZombies — and they're called **_ERC721 tokens._**
+C'è un altro standard di token che è molto più adatto ai crypto-collectibles come CryptoZombies — e si chiamano **_ERC721 tokens._**
 
-**_ERC721 tokens_** are **not** interchangeable since each one is assumed to be unique, and are not divisible. You can only trade them in whole units, and each one has a unique ID. So these are a perfect fit for making our zombies tradeable.
+I **_token ERC721_** non **sono** intercambiabili e in alcun modo divisibili. Questo presuppone che ognuno di loro sia unico. Si possono scambiare solo su unità intere e ciascun token ha un unico ID. Questo è lo standard di token perfetto per rendere scambiabili i nostri zombie.
 
-> Note that using a standard like ERC721 has the benefit that we don't have to implement the auction or escrow logic within our contract that determines how players can trade / sell our zombies. If we conform to the spec, someone else could build an exchange platform for crypto-tradable ERC721 assets, and our ERC721 zombies would be usable on that platform. So there are clear benefits to using a token standard instead of rolling your own trading logic.
+> Nota che usare uno standard come ERC721 ha un vantaggio. Non dobbiamo implementare la logica dell'asta o dell'escrow all'interno del nostro contratto che determina come i giocatori possono scambiare / vendere i nostri zombie. Se ci conformiamo alle specifiche standard, qualcun altro potrebbe costruire una piattaforma di scambio per beni cripto-tradable ERC721, e i nostri zombie ERC721 sarebbero utilizzabili su quella piattaforma. Quindi ci sono chiari vantaggi nell'usare uno standard di token invece di creare la propria logica di scambio.
 
-## Putting it to the Test
+## Mettiti alla prova
 
-We're going to dive into the ERC721 implementation in the next chapter. But first, let's set up our file structure for this lesson.
+Ci immergeremo nell'implementazione dell'ERC721 nel prossimo capitolo. Ma prima, impostiamo la nostra struttura di file per questa lezione.
 
-We're going to store all the ERC721 logic in a contract called `ZombieOwnership`.
+Includeremo tutta la logica ERC721 in un contratto chiamato `ZombieOwnership`.
 
-1. Declare our `pragma` version at the top of the file (check previous lessons' files for the syntax).
+1. Dichiara la versione di `pragma` all' inizio del file (puoi controllare i file delle lezioni precedenti per la sintassi).
 
-2. This file should `import` from `zombieattack.sol`.
+2. Questo file dovrebbe contenere la variabile `import` da `zombieattack.sol`.
 
-3. Declare a new contract, `ZombieOwnership`, that inherits from `ZombieAttack`. Leave the body of the contract empty for now.
+3. Dichiarare un nuovo contratto, `ZombieOwnership`, che eredita da `ZombieAttack`. Lascia il corpo del contratto vuoto per ora.
