@@ -53,7 +53,7 @@ material:
       }
 ---
 
-W tym rozdziale nauczymy się o tym co zwracają funkcje **_return values_**, oraz o modyfikatorach funkcji.
+W tym rozdziale nauczymy się o tym co zwracają funkcje ***return values***, oraz o modyfikatorach funkcji.
 
 ## Return Values
 
@@ -73,13 +73,13 @@ W Solidity, w deklaracji funkcji trzeba napisać jaki typ zmiennej będzie zwrac
 
 Powyższa funkcja nie zmienia stanu w Solidity — nie zmiania żadnej wartości, ani nie zapisuje niczego.
 
-W takim przypadku możemy zadeklarować ją jako **_view_**. Oznacza to, że funkcja wyświetla tylko dane, ale nie modyfikuje ich:
+W takim przypadku możemy zadeklarować ją jako ***view***. Oznacza to, że funkcja wyświetla tylko dane, ale nie modyfikuje ich:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity zawiera również "czyste" **_pure_** funkcje. Oznacza to, że nie wykorzystuje się w nich żadnych danych z aplikacji. Rozważmy powyższy przykład:
+Solidity zawiera również "czyste" ***pure*** funkcje. Oznacza to, że nie wykorzystuje się w nich żadnych danych z aplikacji. Rozważmy powyższy przykład:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Funkcja nie czyta żadnego stanu aplikacji — wartość którą zwraca zależy tylko od jej parametrów. W takim przypadku możemy zadeklarować taką funkcje jako **_pure_**.
+Funkcja nie czyta żadnego stanu aplikacji — wartość którą zwraca zależy tylko od jej parametrów. W takim przypadku możemy zadeklarować taką funkcje jako ***pure***.
 
 > Notatka: Może to być trudne do zapamiętania kiedy oznaczać funkcje pure/view. Na szczęście kompilator Solidity jest na tyle mądry, że zwraca ostrzeżenia podczas kompilacji.
 

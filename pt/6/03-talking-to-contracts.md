@@ -864,7 +864,7 @@ material:
 
 Agora que inicializamos o Web3.js com o provedor Web3 da MetaMask, vamos configurá-lo para conversar com nosso smart contract.
 
-O Web3.js precisará de duas coisas para conversar com seu contrato: o **_endereço_** e o **_ABI_**.
+O Web3.js precisará de duas coisas para conversar com seu contrato: o ***endereço*** e o ***ABI***.
 
 ## Endereço do contrato
 
@@ -876,7 +876,7 @@ Você precisará copiar esse endereço após a implantação para conversar com 
 
 ## Contrato ABI
 
-A outra coisa que o Web3.js precisará para falar com o seu contrato é o seu **_ABI_**.
+A outra coisa que o Web3.js precisará para falar com o seu contrato é o seu ***ABI***.
 
 ABI significa Application Binary Interface (Interface Binária da Aplicação). Basicamente, é uma representação dos métodos de seus contratos no formato JSON que informa ao Web3.js como formatar chamadas de função de uma maneira que seu contrato entenderá.
 

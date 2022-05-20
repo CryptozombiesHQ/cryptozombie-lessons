@@ -14,8 +14,8 @@ Esto es solamente el comienzo. Iremos publicando nuevas lecciones de CryptoZombi
 
 ### 1. Regístrate para guardar tu progreso
 
-**_Regístrate_** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones!
+***Regístrate*** para guardar el progreso haciendo clic en el enlace "Guardar Progreso" arriba de la página. ¡Te avisaremos cuando tengamos nuevas lecciones!
 
 ### 2. Comparte tu zombi con tus amigos
 
-**_Comparte_** tu zombi en Twitter, bla bla, etc. (Necesita insertar imágenes / links)
+***Comparte*** tu zombi en Twitter, bla bla, etc. (Necesita insertar imágenes / links)

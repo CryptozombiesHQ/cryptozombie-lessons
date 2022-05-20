@@ -84,7 +84,7 @@ Para esto, vamos a necesitar dos nuevos tipos de datos: `mapping` y `address`.
 
 ## Direcciones
 
-La blockchain de Ethereum está creada por **_cuentas_**, que podrían ser como cuentas bancarias. Una cuenta tiene un balance de **_Ether_** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
+La blockchain de Ethereum está creada por ***cuentas***, que podrían ser como cuentas bancarias. Una cuenta tiene un balance de ***Ether*** (la divisa utilizada en la blockchain de Ethereum), y puedes recibir pagos en Ether de otras cuentas, de la misma manera que tu cuenta bancaria puede hacer transferencias a otras cuentas bancarias.
 
 Cada cuenta tiene una dirección (`address`), que sería como el número de la cuenta bancaria. Es un identificador único que apuntado a una cuenta, y se asemejaría a algo así:
 
@@ -98,7 +98,7 @@ Así que podemos utilizarlo como identificador único para nuestros zombis. Cuan
 
 ## Mapeando
 
-En la Lección 1 vimos los **_structs_** y los **_arrays_**. Los **_mapeos_** son otra forma de organizar los datos en Solidity.
+En la Lección 1 vimos los ***structs*** y los ***arrays***. Los ***mapeos*** son otra forma de organizar los datos en Solidity.
 
 Definir un `mapping` se asemejaría a esto:
 

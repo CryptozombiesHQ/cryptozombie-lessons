@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Nosso contrato esta quase terminado! Agora vamos adicionar um **_evento_**.
+Nosso contrato esta quase terminado! Agora vamos adicionar um ***evento***.
 
-**_Eventos_** são as maneiras dos seus contratos comunicarem que algo aconteceu na blockchain para o seu aplicativo em um frontend, que pode `ouvir` por certos tipos de eventos e tomar ações quando algo acontecer.
+***Eventos*** são as maneiras dos seus contratos comunicarem que algo aconteceu na blockchain para o seu aplicativo em um frontend, que pode `ouvir` por certos tipos de eventos e tomar ações quando algo acontecer.
 
 Exemplo:
 

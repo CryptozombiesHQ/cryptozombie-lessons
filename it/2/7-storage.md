@@ -71,11 +71,11 @@ material:
 
 In Solidity, there are two places you can store variables — in `storage` and in `memory`.
 
-**_Storage_** si riferisce alle variabili memorizzate in modo permanente sulla blockchain. Le variabili **_Memory_** invece sono temporanee e vengono cancellate tra le chiamate di funzioni esterne al contratto. Pensalo come il disco rigido del tuo computer rispetto alla RAM.
+***Storage*** si riferisce alle variabili memorizzate in modo permanente sulla blockchain. Le variabili ***Memory*** invece sono temporanee e vengono cancellate tra le chiamate di funzioni esterne al contratto. Pensalo come il disco rigido del tuo computer rispetto alla RAM.
 
 Il più delle volte non è necessario utilizzare queste parole chiave perché Solidity le gestisce per impostazione predefinita. Le variabili di stato (variabili dichiarate al di fuori delle funzioni) sono di default `storage` e scritte permanentemente nella blockchain, mentre le variabili dichiarate all'interno delle funzioni sono `memory` e scompaiono al termine della chiamata di funzione.
 
-Tuttavia ci sono momenti in cui è necessario utilizzare queste parole chiave, in particolare quando si ha a che fare con **_structs_** e **_arrays_** all'interno delle funzioni:
+Tuttavia ci sono momenti in cui è necessario utilizzare queste parole chiave, in particolare quando si ha a che fare con ***structs*** e ***arrays*** all'interno delle funzioni:
 
 ```
 contract SandwichFactory {

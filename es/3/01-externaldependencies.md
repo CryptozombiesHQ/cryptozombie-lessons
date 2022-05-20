@@ -143,7 +143,7 @@ material:
 
 Hasta ahora, Solidity se ha parecido bastante a otros lenguajes como JavaScript. Pero hay unas cuantas maneras en las que las DApps de Ethereum son diferentes a las aplicaciones normales.
 
-Para empezar, despues de implementar un contrato en Ethereum, es **_inmutable_**, lo que significa que nunca va a ser modificado o actualizado de nuevo.
+Para empezar, despues de implementar un contrato en Ethereum, es ***inmutable***, lo que significa que nunca va a ser modificado o actualizado de nuevo.
 
 El código inicial que implementes en el contrato es el que va a permanecer, permanentemente, en la blockchain. Esto es debido a que una de las mayores preocupaciones de Solidity es la seguridad. Si hay un error en el código del contrato, no hay forma de solucionarlo más adelante. Tendrás que decirles a tus usuarios que empiecen a usar otra dirección de contrato inteligente que incluya ese arreglo.
 

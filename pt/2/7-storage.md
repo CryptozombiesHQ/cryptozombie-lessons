@@ -71,11 +71,11 @@ material:
 
 Em Solidity, existem dois lugares onde você pode guardar as variáveis - na `storage` (armazenamento) e na `memory` (memória).
 
-**_Storage_** (Armazenamento) refere-se as variáveis guardadas permanentemente na blockchain. **_Memory_** (Memória) são variáveis temporárias, e são apagadas entre as chamadas externas para o seu contrato. Imagine como o disco rígido do seu computador vs memória RAM.
+***Storage*** (Armazenamento) refere-se as variáveis guardadas permanentemente na blockchain. ***Memory*** (Memória) são variáveis temporárias, e são apagadas entre as chamadas externas para o seu contrato. Imagine como o disco rígido do seu computador vs memória RAM.
 
 Na maior parte do tempo você não precisa usar essas palavras-reservadas porque a Solidity cuida disso pra você por padrão. Variáveis de estado (variáveis declaradas fora das funções) são por padrão `storage` e são escritas permanentemente na blockchain, enquanto variáveis declaradas dentro das funções são `memory` e irão desaparecer quando a função terminar.
 
-Porém, haverão momentos em que você precisará usar tais palavras-reservadas, por exemplo quando trabalhar com **_struct_** e **_arrays_** dentro das funções:
+Porém, haverão momentos em que você precisará usar tais palavras-reservadas, por exemplo quando trabalhar com ***struct*** e ***arrays*** dentro das funções:
 
 ```
 contract SandwichFactory {

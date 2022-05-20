@@ -34,7 +34,7 @@ Matte i Solidity er ganske rett frem. De følgende operasjonen er de samme som i
 * Divisjon: `x / y`
 * Modulus / rest: `x % y` _(for eksempel, `13 % 5` er `3`, fordi hvis du deler 5 på 13, 3 er resten)_
 
-Solidity støtter også **_eksponentielle operatorer_** (f.eks. "x til kraften av y", x^y):
+Solidity støtter også ***eksponentielle operatorer*** (f.eks. "x til kraften av y", x^y):
 
 ```
 uint x = 5 ** 2; // er lik 5^2 = 25

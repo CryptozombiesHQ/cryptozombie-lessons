@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Kontratımız neredeyse bitti! Hadi şimdi bir **_etkinlik_** ekleyelim.
+Kontratımız neredeyse bitti! Hadi şimdi bir ***etkinlik*** ekleyelim.
 
-**_Etkinlikler_** kontratınız için blok zincirinde olan birşeyin uygulamanızın başlangıç aşamasına iletilmesi için belirli etkinlikler için ‘dinlenebilen’ ve olduğunda harekete geçebilen bir yoldur.
+***Etkinlikler*** kontratınız için blok zincirinde olan birşeyin uygulamanızın başlangıç aşamasına iletilmesi için belirli etkinlikler için ‘dinlenebilen’ ve olduğunda harekete geçebilen bir yoldur.
 
 Örnek:
 

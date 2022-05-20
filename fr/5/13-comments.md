@@ -426,7 +426,7 @@ contract CryptoZombies {
 
 C'est une particulièrement bonne habitude de commenter son code pour expliquer le comportement attendu de chaque fonction de votre contrat. De cette manière, un autre développeur (ou vous, après 6 mois loin de votre projet !) peut parcourir votre code pour avoir une compréhension rapide du fonctionnement sans avoir à lire le code en détail.
 
-Le standard dans la communauté Solidity est d'utiliser un format appelé **_natspec_**, qui ressemble à ça :
+Le standard dans la communauté Solidity est d'utiliser un format appelé ***natspec***, qui ressemble à ça :
 
 ```
 /// @title Un contrat pour des opérations mathématiques basiques

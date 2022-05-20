@@ -25,7 +25,7 @@ material:
 
 Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
 
-**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
 ##### Example:
 ```

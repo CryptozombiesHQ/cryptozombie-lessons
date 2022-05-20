@@ -84,7 +84,7 @@ Para fazer isto, nós vamos precisar de 2 novos tipos de dados: `mapping` e `add
 
 ## Endereços
 
-O blockchain do Ethereum é feito de **_accounts_** (contas), que você pode imaginar como contas de banco. Um conta tem um saldo **_Ether_** (a moeda usada no blockchain do Ethereum), e você pode enviar e receber pagamentos de outras contas, como a sua conta de banco que você pode enviar uma transferência (DOC/TED) em dinheiro para outras contas.
+O blockchain do Ethereum é feito de ***accounts*** (contas), que você pode imaginar como contas de banco. Um conta tem um saldo ***Ether*** (a moeda usada no blockchain do Ethereum), e você pode enviar e receber pagamentos de outras contas, como a sua conta de banco que você pode enviar uma transferência (DOC/TED) em dinheiro para outras contas.
 
 Cada conta tem um `address` (endereço), que você pode imaginar como o número da conta bancária. Esse número é um identificador único que indica a conta, e se parece com isto:
 
@@ -98,7 +98,7 @@ Então nós podemos usar este ID único como propriedade dos nossos zumbis. Quan
 
 ## Mapeamentos
 
-Na Lição 1 nós vimos as **_structs_** (estruturas) e **_arrays_** (listas). **_Mapeamentos_** são uma outra forma de guardar dados organizados em Solidity.
+Na Lição 1 nós vimos as ***structs*** (estruturas) e ***arrays*** (listas). ***Mapeamentos*** são uma outra forma de guardar dados organizados em Solidity.
 
 Definindo um `mapping` (mapeamento) se parece com isto:
 

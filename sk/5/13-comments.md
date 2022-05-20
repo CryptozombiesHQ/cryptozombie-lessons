@@ -493,7 +493,7 @@ contract CryptoZombies {
 
 Je dobrou praktikou svoj kód komentovať a vysvetľovať očakávané správanie každej funkcie kontraktu. Tým pádom iný programátor (prípadne ty po 6 mesiacoch) bude schopný rýchlo vstrebať a pochopiť ako sa má kontrakt zhruba správať bez toho, aby musel dopodrobna čítať kód.
 
-Štandardným spôsob v Solidity komunite je používanie dokumentačného formátu zvaného **_natspec_**. Vyzerá nejako takto:
+Štandardným spôsob v Solidity komunite je používanie dokumentačného formátu zvaného ***natspec***. Vyzerá nejako takto:
 
 ```
 /// @title Kontrakt pre základné matematické operácie

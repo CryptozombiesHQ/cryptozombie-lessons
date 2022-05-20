@@ -95,7 +95,7 @@ material:
 
 Kód našej hry sa začína celkom predlžovať. Namiesto toho aby sme robili náš kontrakt extrémne dlhým, občas dáva zmysel rozdeliť logiku kódu do niekoľkých kontraktov, a tak lepšie zorganizovať kód aplikácie.
 
-Jedna z vlastností Solidity ktorá zľahčuje prácu s kódom je **_dedičnosť_** kontraktov:
+Jedna z vlastností Solidity ktorá zľahčuje prácu s kódom je ***dedičnosť*** kontraktov:
 
 ```
 contract Doge {
@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_dedí_** z kontraktu `Doge`. To znamená, že ak skompiluješ a nasadíš na blockchain `BabyDoge`, bude mať k dispozícií oboje `catchphrase()` aj `anotherCatchphrase()` (a taktiež akékoľvek iné funkcie ktoré by sme definovali na `Doge`).
+`BabyDoge` ***dedí*** z kontraktu `Doge`. To znamená, že ak skompiluješ a nasadíš na blockchain `BabyDoge`, bude mať k dispozícií oboje `catchphrase()` aj `anotherCatchphrase()` (a taktiež akékoľvek iné funkcie ktoré by sme definovali na `Doge`).
 
 Toto môže byť použité pre logickú dedičnost (napríklad v prípade podkategórie, `Mačka` je `Zviera`). Ale inokedy tiež jednoducho na to, aby sme zorganizovali náš kód zoskupením určitej logiky do viacerých kontraktov.
 

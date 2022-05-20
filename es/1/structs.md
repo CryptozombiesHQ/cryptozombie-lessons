@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Algunas veces necesitas tipos de datos más complejos. Para esto Solidity proporciona **_structs_** (estructuras de datos):
+Algunas veces necesitas tipos de datos más complejos. Para esto Solidity proporciona ***structs*** (estructuras de datos):
 
 ```
 struct Person {

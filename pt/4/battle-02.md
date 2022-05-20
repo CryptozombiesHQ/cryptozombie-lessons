@@ -244,7 +244,7 @@ O mesmo iria então usar `keccak` para converter os valores de entrada para o ha
 
 ### Este método é vulnerável a um ataque por um nó desonesto
 
-Em Ethereum, quando você chama uma função em um contrato, você transmite o mesmo para um nó ou muitos nós na rede como uma **_transação_**. Os nós na rede então coletam um monte de transações, tentam ser o primeiro a resolver um problema matemático e computacionalmente intensivo como uma "Proof of Work" (Prova de Trabalho), e então publicam este grupo de transações junto com a Proof Of Work (PoW) como um **_bloco_** para o resto da rede da rede.
+Em Ethereum, quando você chama uma função em um contrato, você transmite o mesmo para um nó ou muitos nós na rede como uma ***transação***. Os nós na rede então coletam um monte de transações, tentam ser o primeiro a resolver um problema matemático e computacionalmente intensivo como uma "Proof of Work" (Prova de Trabalho), e então publicam este grupo de transações junto com a Proof Of Work (PoW) como um ***bloco*** para o resto da rede da rede.
 
 Uma vez que o nó resolveu o PoW, os outros nós param de tentar resolver o PoW, verificam que a lista de transações do outro nó são válidas, e então aceitam o bloco e começam a tentar resolver o próximo bloco.
 
@@ -256,7 +256,7 @@ Se estivéssemos rodando um nó da rede, eu poderia publicar uma transação **s
 
 ## Então como podemos gerar número aleatórios de forma segura em Ethereum?
 
-Por que todos os conteúdos da blockchain são visíveis para todos os participantes, este é um problema difícil, e sua solução esta além do escopo deste tutorial. Você pode ler <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>esta pergunta no StackOverflow</a> para ter algumas ideias. Uma ideia seria usar um **_oracle_** (oráculo) para acessar uma função de número aleatório de fora da blockchain do Ethereum.
+Por que todos os conteúdos da blockchain são visíveis para todos os participantes, este é um problema difícil, e sua solução esta além do escopo deste tutorial. Você pode ler <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>esta pergunta no StackOverflow</a> para ter algumas ideias. Uma ideia seria usar um ***oracle*** (oráculo) para acessar uma função de número aleatório de fora da blockchain do Ethereum.
 
 Claro que uma vez que milhares de nós na rede Ethereum estão competindo para resolver o próximo bloco, minhas chances de resolver o próximo bloco são extremamente baixas. E iria me tomar um monte de tempo ou recursos computacionais para tornar esse _exploit_ lucrativo - mas se as recompensas fossem altas o suficiente (algo do tipo ganhar uma aposta de $100,000,000 no jogo da moeda), então valeria a pena pra mim fazer este ataque.
 
@@ -264,7 +264,7 @@ Então enquanto esta geração de número aleatório NÃO é segura no Ethereum,
 
 E por que estamos construindo um jogo simples com o propósito de demonstração neste tutorial e por que não há real dinheiro envolvido, vamos aceitar esse _tradeoff_ de usar um gerador de números aleatórios que é simples de implementar, sabendo que não é totalmente seguro.
 
-Em lições futuras, talvez podemos cobrir os **_oracles_** (uma forma segura de obter dados fora da rede do Ethereum) para gerar números aleatórios seguros fora da blockchain.
+Em lições futuras, talvez podemos cobrir os ***oracles*** (uma forma segura de obter dados fora da rede do Ethereum) para gerar números aleatórios seguros fora da blockchain.
 
 ## Vamos testar
 

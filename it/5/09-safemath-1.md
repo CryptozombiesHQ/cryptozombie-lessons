@@ -427,7 +427,7 @@ Volevamo mantenere questa lezione gestibile, quindi siamo andati con l'implement
 
 Esamineremo una delle principali funzionalità di sicurezza di cui dovresti essere a conoscenza quando scrivi contratti intelligenti: prevenire overflow e underflow.
 
-Che cosa è un **_overflow_**?
+Che cosa è un ***overflow***?
 
 Diciamo che abbiamo un `uint8`, che può avere solo 8 bit. Ciò significa che il numero più grande che possiamo memorizzare è il binario `11111111` (o in decimale, 2^8 - 1 = 255).
 
@@ -446,11 +446,11 @@ Anche se non stiamo usando `uint8` qui, e sembra improbabile che un `uint256` tr
 
 ### Uso di SafeMath
 
-Per evitare questo, OpenZeppelin ha creato una **_libreria_** chiamata SafeMath che previene questi problemi.
+Per evitare questo, OpenZeppelin ha creato una ***libreria*** chiamata SafeMath che previene questi problemi.
 
 Ma prima di entrare nel dettaglio... Cos'è una libreria?
 
-Una **_libreria_** è un tipo speciale di contratto in Solidity. Una delle cose per cui è utile è che collega le sue funzioni a tipi di dati nativi.
+Una ***libreria*** è un tipo speciale di contratto in Solidity. Una delle cose per cui è utile è che collega le sue funzioni a tipi di dati nativi.
 
 Ad esempio, con la libreria SafeMath, useremo la sintassi `using SafeMath for uint256`. La libreria SafeMath ha 4 funzioni: `add`, `sub`, `mul` e `div`. E ora possiamo accedere a queste funzioni da `uint256` come segue:
 

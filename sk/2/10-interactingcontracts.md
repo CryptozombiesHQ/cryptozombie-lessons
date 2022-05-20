@@ -109,7 +109,7 @@ Naša hra v skutočnosti neporaní žiadnu mačičku CryptoKitty. Budeme iba *č
 
 ## Interakcia s inými kontraktmi
 
-Na to aby náš kontrakt mohol komunikovať s iným kontraktom na blockchain, budeme musieť najrpv definovať **_rozhranie_** (**_interface_**).
+Na to aby náš kontrakt mohol komunikovať s iným kontraktom na blockchain, budeme musieť najrpv definovať ***rozhranie*** (***interface***).
 
 Poďme sa pozrieť na nasledujúci jednoduchý príklad. Predstavme si, že na blockchaine je nasadený takýto kontrakt:
 
@@ -131,7 +131,7 @@ Toto by bol jednoduchý kontrakt na ukladanie štastné číslo. Ktokoľvek mô�
 
 Zvážme situáciou kedy by sme mali externý kontrakt, z ktorého by sme chceli čítať dáta z `LuckyNumber` kontraktu pomocou funkcie `getNum`.
 
-Najprv by sme museli definovať **_rozhranie_** (**_interface_** ) v našom kontrakte:
+Najprv by sme museli definovať ***rozhranie*** (***interface*** ) v našom kontrakte:
 
 ```
 contract NumberInterface {

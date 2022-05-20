@@ -12,7 +12,7 @@ material:
 
 Nasz kontrakt Solidity jest gotowy! Teraz musimy już tylko napisać frontend w JavaScripcie, który będzie wchodził w interakcje z naszym kontraktem.
 
-Ethereum dostarcza biblotekę JavaScript o nazwie **_Web3.js_**.
+Ethereum dostarcza biblotekę JavaScript o nazwie ***Web3.js***.
 
 
 W późniejszych lekcjach pokażemy jak publikować kontrakt oraz jak ustawić Web3.js. Narazie jednak zobaczmy jak wygląda przykładowy kod, który komunikuje się z kontraktem.

@@ -189,7 +189,7 @@ material:
 
 ## OpenZeppelin's `Ownable` contract
 
-ด้านล่างนี้คือ contract ชื่อ `Ownable` ที่รับมาจาก library ของ Solidity **_OpenZeppelin_** OpenZeppelin คือ library ของ secure and community-vetted smart contracts ที่สามารถนำมาใช้ใน DApps ของเรา หลังจากบทนี้เป็นต้นไป เราแนะนำว่าให้ลองไปดูเว็บไซต์นี้ได้ในขณะที่รอให้บทเรียนที่ 4 ออกมา เพื่อความเข้าใจที่มากยิ่งขึ้นของตัวคุณเอง!
+ด้านล่างนี้คือ contract ชื่อ `Ownable` ที่รับมาจาก library ของ Solidity ***OpenZeppelin*** OpenZeppelin คือ library ของ secure and community-vetted smart contracts ที่สามารถนำมาใช้ใน DApps ของเรา หลังจากบทนี้เป็นต้นไป เราแนะนำว่าให้ลองไปดูเว็บไซต์นี้ได้ในขณะที่รอให้บทเรียนที่ 4 ออกมา เพื่อความเข้าใจที่มากยิ่งขึ้นของตัวคุณเอง!
 
 ลองอ่าน contract ด้านล่างคร่าวๆ ดู คุณจะพบบางอย่างที่เรายังไม่ได้ศึกษากัน แต่ไม่ต้องเป็นห่วงไปเพราะเราจะได้เรียนรู้กันแน่ๆ ในอนาคต
 
@@ -233,7 +233,7 @@ contract Ownable {
 
 มานั่งไล่เรียงถึงสิ่งใหม่ๆ ที่เราเพิ่งจะเห็นเป็นครั้งแรกกัน:
 
-- Constructors: `function Ownable()` คือ **_constructor_** ซึ่งเป็นฟังก์ชั่นพิเศษทางเลือก(optional special function) สามารถมีชื่อเดียวกับ contract ได้ ฟังก์ชั่นนี้จะถูกรันโค้ด เพียงแค่ครั้งเดียวในตอนที่ contract ถูกสร้างขึ้นมาครั้งแรก
+- Constructors: `function Ownable()` คือ ***constructor*** ซึ่งเป็นฟังก์ชั่นพิเศษทางเลือก(optional special function) สามารถมีชื่อเดียวกับ contract ได้ ฟังก์ชั่นนี้จะถูกรันโค้ด เพียงแค่ครั้งเดียวในตอนที่ contract ถูกสร้างขึ้นมาครั้งแรก
 - Function Modifiers: `modifier onlyOwner()` Modifier จัดว่าเป็นฟังก์ชั่นแบบกึ่ง ที่จะถูกใช้ในการปรับแต่งฟังก์ชั่นอื่น ๆ โดยปกติจะใช้ในการเช็คลำดับของ requirement เวลาจะ execute ออกมา ในกรณีนี้ `onlyOwner` สามารถถูกใช้ในการจำกัดการเข้าใช้เพื่อให้ **เฉพาะ** แค่ **เจ้าของ หรือ owner** ของ contract จะสามารถใช้ function นี้ได้ เราจะกล่าวเพิ่มเติมเกี่ยวกับ function modifier ในบทถัดไป และประเด็นที่ว่าสัญลักษณ์ประหลาด `_;` ทำหน้าที่อะไร
 - `indexed` keyword: ในตอนนี้เรายังไม่จำเป็นต้องใช้มัน ฉะนั้น ยังไม่ต้องสนใจดีกว่า
 

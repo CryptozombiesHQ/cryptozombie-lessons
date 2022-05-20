@@ -95,7 +95,7 @@ material:
 
 Oyun kodumuz oldukça uzun. Son derece uzun bir kontrat yapmaktansa, bazen kodu organize etmek için kod mantığınızı çoğlu kontratlara bölmek onu anlamlı yapar.
 
-Bunu daha yönetilebilir yapan Solidity'nin bir özelliği de kontrat **_mirası_**:
+Bunu daha yönetilebilir yapan Solidity'nin bir özelliği de kontrat ***mirası***:
 
 ```
 contract Doge {
@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`Doge`'den  `BabyDoge` **_mirasları_**. Bu, `BabyDoge`'u derleyip açarsanız hem `catchphrase()` hem de `anotherCatchphrase()` erişimine sahip olacağı anlamına gelir (ve `Doge`'da belirtebileceğimiz her bir diğer genel fonksiyonlar).
+`Doge`'den  `BabyDoge` ***mirasları***. Bu, `BabyDoge`'u derleyip açarsanız hem `catchphrase()` hem de `anotherCatchphrase()` erişimine sahip olacağı anlamına gelir (ve `Doge`'da belirtebileceğimiz her bir diğer genel fonksiyonlar).
 
 Bu mantıklı miras için kullanılılabilir (bir alt sınıfla olduğu gibi, bir `Cat` bir `Animal`'dır). Fakat ayrıca farklı sınıflar içine benzer mantığı birlikte gruplayarak kodunuzu organize etmek için basitçe kullanılabilir.
 

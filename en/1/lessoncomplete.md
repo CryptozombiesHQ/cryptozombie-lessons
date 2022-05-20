@@ -14,8 +14,8 @@ This is just the beginning. We will be releasing a new CryptoZombies lesson each
 
 ### 1. Sign in to save your progress
 
-**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
 ### 2. Share your zombie with your friends
 
-**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+***Share*** your zombie on Twitter, blah blah, etc. (Need to insert images / links)

@@ -429,7 +429,7 @@ But we wanted to keep this lesson manageable, so we went with the most basic imp
 
 We're going to look at one major security feature you should be aware of when writing smart contracts: Preventing overflows and underflows.
 
-What's an **_overflow_**?
+What's an ***overflow***?
 
 Let's say we have a `uint8`, which can only have 8 bits. That means the largest number we can store is binary `11111111` (or in decimal, 2^8 - 1 = 255).
 
@@ -448,11 +448,11 @@ While we're not using `uint8` here, and it seems unlikely that a `uint256` will 
 
 ### Using SafeMath
 
-To prevent this, OpenZeppelin has created a **_library_** called SafeMath that prevents these issues by default.
+To prevent this, OpenZeppelin has created a ***library*** called SafeMath that prevents these issues by default.
 
 But before we get into that... What's a library?
 
-A **_library_** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
+A ***library*** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
 
 For example, with the SafeMath library, we'll use the syntax `using SafeMath for uint256`. The SafeMath library has 4 functions — `add`, `sub`, `mul`, and `div`. And now we can access these functions from `uint256` as follows:
 

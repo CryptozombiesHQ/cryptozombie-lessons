@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Kontrakten vår er nesten ferdig! La oss legge til et **_event_**.
+Kontrakten vår er nesten ferdig! La oss legge til et ***event***.
 
-**_Eventer_** er en måte for kontrakten din til å kommunisere at noe skjedde i blockchain-en til front-end appen din, som kan 'lytte' etter spesielle eventer på blockchain-en.
+***Eventer*** er en måte for kontrakten din til å kommunisere at noe skjedde i blockchain-en til front-end appen din, som kan 'lytte' etter spesielle eventer på blockchain-en.
 
 Example:
 

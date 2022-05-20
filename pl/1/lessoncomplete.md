@@ -14,8 +14,8 @@ To dopiero początek. Będziemy wypuszczać nową lekcję CryptoZombies co tydzi
 
 ### 1. Zarejestruj się aby zapisać swój postęp
 
-**_Zarejestruj się_** aby zapisać swój postęp klikając przycisk "Zapisz" na górze strony. Poinformujemy Cię, kiedy pojawi się nowa lekcja.
+***Zarejestruj się*** aby zapisać swój postęp klikając przycisk "Zapisz" na górze strony. Poinformujemy Cię, kiedy pojawi się nowa lekcja.
 
 ### 2. Udostępnij swojego Zombie przyjaciołom
 
-**_Udostępnij_** twojego zombie na Twitterze, blah blah, etc. (Need to insert images / links)
+***Udostępnij*** twojego zombie na Twitterze, blah blah, etc. (Need to insert images / links)

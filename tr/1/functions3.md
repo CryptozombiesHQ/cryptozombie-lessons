@@ -53,7 +53,7 @@ material:
       }
 ---
 
-Bu bölümde, Fonksiyon **_değerleri getirmeyi_** ve fonksiyon değiştiricileri öğreneceğiz.
+Bu bölümde, Fonksiyon ***değerleri getirmeyi*** ve fonksiyon değiştiricileri öğreneceğiz.
 
 ## Değerleri Getirme
 
@@ -73,13 +73,13 @@ Solidity'de, fonksiyon ifadesi değer getirme türü içerir (bu durumda `string
 
 Yukardaki fonksiyon aslında Solidity'de durumu değiştirmez — örn. bir değeri değiştirmez veya hiçbir şey yazmaz.
 
-Yani bu durumda onu, veriyi görüntüleyen fakat değiştirmeyen anlamında **_görüntü_** fonksiyonu olarak ifade edebilirdik:
+Yani bu durumda onu, veriyi görüntüleyen fakat değiştirmeyen anlamında ***görüntü*** fonksiyonu olarak ifade edebilirdik:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity ayrıca uygulamadaki bir veriye tam erişemediğiniz anlamına gelen **_saf_** fonksiyonlar içerir. Aşağıdaki duruma bakın:
+Solidity ayrıca uygulamadaki bir veriye tam erişemediğiniz anlamına gelen ***saf*** fonksiyonlar içerir. Aşağıdaki duruma bakın:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Bu fonksiyon uygulamanın durumundan tam okumuyor — getirdiği değer sadece kendi fonksiyon parametrelerine bağlıdır. Yani bu durumda fonksiyonu **_saf_** olarak ifade edebiliriz.
+Bu fonksiyon uygulamanın durumundan tam okumuyor — getirdiği değer sadece kendi fonksiyon parametrelerine bağlıdır. Yani bu durumda fonksiyonu ***saf*** olarak ifade edebiliriz.
 
 > Not: Fonksiyonların ne zaman saf/görüntü olarak işaretleneceğini hatırlamak zor olabilir. Neyse ki Solidity derleyicisi, bu değiştiricilerden birini ne zaman kullanmanız gerektiğini bildiren uyarıların verilmesi konusunda iyidir.
 

@@ -143,7 +143,7 @@ material:
 
 Jusqu'à présent, Solidity était plutôt similaire aux autres langages comme JavaScript. Mais il y a de nombreuses différences entre les DApps Ethereum et les applications normales.
 
-Pour commencer, une fois que vous avez déployé un contrat Ethereum, il est **_immuable_**, ce qui veut dire qu'il ne pourra plus jamais être modifié ou mis à jour.
+Pour commencer, une fois que vous avez déployé un contrat Ethereum, il est ***immuable***, ce qui veut dire qu'il ne pourra plus jamais être modifié ou mis à jour.
 
 Le code que vous allez déployer initialement pour un contrat restera de manière permanente sur la blockchain. C'est pour cela que la sécurité est une préoccupation si importante en Solidity. S'il y a une faille dans le code de votre contrat, il n'y aucun moyen pour vous de le patcher plus tard. Vous devrez dire à vos utilisateurs d'utiliser une adresse de contrat différente qui a le correctif.
 

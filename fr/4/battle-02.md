@@ -243,7 +243,7 @@ Ensuite, cela utilisera le `keccak` pour convertir ces paramètres en un hachage
 
 ### Cette méthode est vulnérable aux attaques d'un nœud malhonnête.
 
-En Ethereum, quand vous appelez la fonction d'un contrat, vous diffusez une **_transaction_** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW dans un **_bloc_** au reste du réseau.
+En Ethereum, quand vous appelez la fonction d'un contrat, vous diffusez une ***transaction*** à un nœud ou à des nœuds du réseau. Les nœuds du réseau vont ensuite collecter plusieurs transactions, vont essayer d'être le premier à résoudre un problème mathématique qui demande un calcul intensif appelé "Proof of Work" (Preuve de Travail) ou PoW, et vont ensuite diffuser ce groupe de transactions avec leur PoW dans un ***bloc*** au reste du réseau.
 
 Quand un nœud a résolu un PoW, les autres nœuds arrêtent d'essayer de résoudre le PoW, ils vérifient que la liste des transactions de l'autre nœud soit valide, acceptent le bloc et passent à la résolution du bloc suivant.
 
@@ -255,7 +255,7 @@ Si j'ai un nœud, je pourrais publier une transaction **seulement à mon propre 
 
 ## Comment faire pour générer des nombres aléatoires de manière sûre sur Ethereum ?
 
-Parce que tout le contenu de la blockchain est visible de tous les participants, c'est un problème difficile, et la solution est au-delà du cadre de ce tutoriel. Vous pouvez lire <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>Cette discussion StackOverflow (en anglais)</a> pour vous faire une idée. Une des possibilités serait d'avoir un **_oracle_** pour avoir accès à une fonction aléatoire en dehors de la blockchain Ethereum.
+Parce que tout le contenu de la blockchain est visible de tous les participants, c'est un problème difficile, et la solution est au-delà du cadre de ce tutoriel. Vous pouvez lire <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>Cette discussion StackOverflow (en anglais)</a> pour vous faire une idée. Une des possibilités serait d'avoir un ***oracle*** pour avoir accès à une fonction aléatoire en dehors de la blockchain Ethereum.
 
 Bien sur, puisque des dizaine de milliers de nœuds Ethereum sur le réseau rivalisent pour résoudre le prochain bloc, mes chances de résoudre le prochain bloc sont vraiment faibles. Il me faudrait énormément de puissance de calcul et de temps pour réussir à l'exploiter - mais si la récompense est assez élevée (si je pouvais parier 100 000 000$ sur la fonction pile ou face), cela vaudrait la peine de l'attaquer.
 
@@ -263,7 +263,7 @@ Même si cette fonction aléatoire N'EST PAS sécurisée sur Ethereum, en pratiq
 
 Puisque nous construisons simplement un jeu à des fin de démonstration dans ce tutoriel, et qu'il n'y a pas vraiment d'argent en jeu, nous allons accepter les compromis d'utiliser un générateur de nombre aléatoire simple à implémenter, sachant qu'il n'est pas totalement sûr.
 
-Dans une prochaine leçon, il se peut que nous voyons comment utiliser des **_oracles_** (un moyen sécurisé de récupérer des données en dehors d'Ethereum) pour générer une fonction aléatoire depuis l'extérieur de la blockchain.
+Dans une prochaine leçon, il se peut que nous voyons comment utiliser des ***oracles*** (un moyen sécurisé de récupérer des données en dehors d'Ethereum) pour générer une fonction aléatoire depuis l'extérieur de la blockchain.
 
 ## A votre tour
 

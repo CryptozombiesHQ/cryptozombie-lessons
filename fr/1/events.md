@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _** (event).
+Notre contrat est presque fini ! nous allons maintenant ajouter un *** évènement *** (event).
 
-Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
+Un *** évènement *** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
 
 Exemple :
 

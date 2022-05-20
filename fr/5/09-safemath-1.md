@@ -396,7 +396,7 @@ Mais nous voulons garder cette leçon simple, nous avons opté pour l'implément
 
 Nous allons voir une fonctionnalité de sécurité majeure à prendre en compte quand vous écrivez des smart contracts : Prévenir les débordements.
 
-C'est quoi un **_débordement_** ?
+C'est quoi un ***débordement*** ?
 
 Imaginez un `uint8`, qui peut seulement avoir 8 bits. Ce qui veut dire que le binaire du plus grand nombre que l'on peut stocker est `11111111` (ou en décimal, 2^8 -1 = 255).
 
@@ -415,11 +415,11 @@ Nous n'utilisons pas de `uint8` ici, et il paraît peut probable qu'un `uint256`
 
 ### Utiliser SafeMath
 
-Pour prévenir cela, OpenZeppelin a créé une **_bibliothèque_** appelée SafeMath qui empêche ces problèmes.
+Pour prévenir cela, OpenZeppelin a créé une ***bibliothèque*** appelée SafeMath qui empêche ces problèmes.
 
 Mais d'abord, c'est quoi une bibliothèque ?
 
-Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet de rajouter des fonctions à un type de données natif.
+Une ***bibliothèque*** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet de rajouter des fonctions à un type de données natif.
 
 Par exemple. avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath a 4 fonctions — `add`, `sub`, `mul`, et `div`. Et maintenant nous pouvons utiliser ces fonctions à partir d'un `uint256` en faisant :
 

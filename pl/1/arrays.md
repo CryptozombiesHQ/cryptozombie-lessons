@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Kiedy chcesz zdefiniować kolekcje czegoś, możesz użyć **_array_**. Istnieją dwa typy tablic w Solidity: **_fixed_** oraz **_dynamic_**:
+Kiedy chcesz zdefiniować kolekcje czegoś, możesz użyć ***array***. Istnieją dwa typy tablic w Solidity: ***fixed*** oraz ***dynamic***:
 
 ```
 // Tablica typu fixed o długości dwóch elementów:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Możesz również stworzyć tablicę typu **_structs_**. Używająć `Person` struct z pierwszego rozdziału:
+Możesz również stworzyć tablicę typu ***structs***. Używająć `Person` struct z pierwszego rozdziału:
 
 ```
 Person[] people; // Tablica typu dynamic, możemy wciąż do niej dodawać nowe elementy
@@ -61,7 +61,7 @@ Pamiętasz, że zmienne stanu (state variables) są zapisane permanentnie w bloc
 
 ## Public Arrays
 
-Możesz deklarować tablice jako `public` Solidity automatycznie stworzy **_getter_** dla niej. Składnia wygląda następująco:
+Możesz deklarować tablice jako `public` Solidity automatycznie stworzy ***getter*** dla niej. Składnia wygląda następująco:
 
 ```
 Person[] public people;
@@ -74,4 +74,4 @@ Inne kontrakty będą mogły później czytać (ale nie zapisywać) tą tablice.
 
 Zamierzamy dodać armię zombi do naszej aplikacji. Chcemy również, aby armia była widoczna dla innych aplikacji. W takim razie będzie musiała być zapisana jako publiczna.
 
-1. Stwórz publiczną tablicę `Zombie` **_structs_**, i nazwij ją `zombies`.
+1. Stwórz publiczną tablicę `Zombie` ***structs***, i nazwij ją `zombies`.

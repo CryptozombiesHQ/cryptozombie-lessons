@@ -246,7 +246,7 @@ No capítulo 6 nós calculamos um número aleatório entre 0 e 100. Agora vamos 
 
 ## Vamos testar
 
-1. Crie uma declaração `if` que verifica se `rand` é **_menor que ou igual a_** `attackVictoryProbability`.
+1. Crie uma declaração `if` que verifica se `rand` é ***menor que ou igual a*** `attackVictoryProbability`.
 
 2. Se esta condição for verdadeira, nosso zumbi venceu! Então:
 

@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Quando vuoi raccogliere qualcosa, puoi usare un **_array_**. Esistono due tipi di array in Solidity: array **_fissi_** ed array **_dinamici_**:
+Quando vuoi raccogliere qualcosa, puoi usare un ***array***. Esistono due tipi di array in Solidity: array ***fissi*** ed array ***dinamici***:
 
 ```
 // Array con una lunghezza fissa di 2 elementi:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Puoi anche creare una matrice di **_strutture_**. Utilizzando la struttura `Person` del capitolo precedente:
+Puoi anche creare una matrice di ***strutture***. Utilizzando la struttura `Person` del capitolo precedente:
 ```
 Person[] people; // array dinamico, possiamo continuare ad aggiungere strutture
 ```
@@ -59,7 +59,7 @@ Ricordi che le variabili di stato sono memorizzate in modo permanente nella bloc
 
 ## Array Pubblici
 
-Puoi dichiarare un array come `pubblico`, Solidity creerà automaticamente un metodo **_getter_** per esso. La sintassi è:
+Puoi dichiarare un array come `pubblico`, Solidity creerà automaticamente un metodo ***getter*** per esso. La sintassi è:
 
 ```
 Person[] public people;
@@ -71,4 +71,4 @@ Altri contratti sarebbero quindi in grado di leggere, ma non di scrivere, su que
 
 Vogliamo archiviare un esercito di zombi nella nostra app. Vorremmo poi mostrare tutti i nostri zombi ad altre app, quindi dovrà essere pubblico.
 
-1. Crea un array pubblico di **_strutture_** `Zombie`  e chiamalo `zombies`.
+1. Crea un array pubblico di ***strutture*** `Zombie`  e chiamalo `zombies`.

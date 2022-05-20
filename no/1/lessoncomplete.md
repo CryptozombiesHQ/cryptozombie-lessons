@@ -14,8 +14,8 @@ Dette er bare begynnelsen. Vi kommer til å slippe en ny CryptoZombies leksjon h
 
 ### 1. Logg inn for å lagre progressjonen din
 
-**_Logg inn_** for å lagre progressjonen din ved å klikke "Save Progress" linken på toppen av siden. Vi lar deg vite når neste leksjon blir tilgjengelig.
+***Logg inn*** for å lagre progressjonen din ved å klikke "Save Progress" linken på toppen av siden. Vi lar deg vite når neste leksjon blir tilgjengelig.
 
 ### 2. Del zombien din til vennene dine
 
-**_Del_** zombien din via Twitter, blah blah, etc. (Need to insert images / links)
+***Del*** zombien din via Twitter, blah blah, etc. (Need to insert images / links)

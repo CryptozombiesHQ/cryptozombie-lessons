@@ -95,7 +95,7 @@ material:
 
 Le code de notre jeu commence à être un peu long. A la place de faire un contrat vraiment long, il vaut mieux parfois séparer la logique de votre code en plusieurs contrats pour mieux l'organiser.
 
-Une des fonctionnalités de Solidity qui rend les contrats plus facile à gérer est l'**_héritage_** :
+Une des fonctionnalités de Solidity qui rend les contrats plus facile à gérer est l'***héritage*** :
 
 ```
 contract Doge {
@@ -112,7 +112,7 @@ contract BabyDoge is Doge {
 ```
 
 
-`BabyDoge` **_hérite_**  de `Doge`. Cela veut dire que si vous compilez et déployez `BabyDoge`, il aura accès à `catchphrase()` et à `anotherCatchphrase()` (et n'importe quelle fonction publique que nous définirions dans `Doge`).
+`BabyDoge` ***hérite***  de `Doge`. Cela veut dire que si vous compilez et déployez `BabyDoge`, il aura accès à `catchphrase()` et à `anotherCatchphrase()` (et n'importe quelle fonction publique que nous définirions dans `Doge`).
 
 Cela peut être utiliser pour les héritages logiques (comme avec les sous-classes, un `Chat` est un `Animal`). Mais cela peut aussi simplement être utilisé pour organiser votre code en groupant les logiques similaires en différentes classes.
 

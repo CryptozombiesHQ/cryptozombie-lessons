@@ -71,11 +71,11 @@ material:
 
 V Solidity existujú dve miesta kde môžu premenné "sýdliť". Buď v trvalom dátovom úložisku kontraktu, tzv. `storage`, alebo v pamäti `memory`.
 
-**_Storage_** referuje na premenné trvalo uložené na blockchaine. **_Memory_** premenné su dočasné, a sú vymazané medzi jednotlivými externými volaniami funkcii kontraktu. Môžeš o týchto dvoch typoch úložísk premýšlať podobne ako o hard disku a RAMke.
+***Storage*** referuje na premenné trvalo uložené na blockchaine. ***Memory*** premenné su dočasné, a sú vymazané medzi jednotlivými externými volaniami funkcii kontraktu. Môžeš o týchto dvoch typoch úložísk premýšlať podobne ako o hard disku a RAMke.
 
 Vačsinou nebudeš nutne musieť používať tieto kľučové slova, pretože Solidity vie, ako s premennými zaobchádzať. Stavové premenné (premenné deklarované mimo funkcií) sú automaticky typu `storage` a sú zapísané na blockchain. Naopak, premenné deklarované vo vnútri funkcií sú automaticky typu `memory`. Ich hodnota bude zabudnutá keď bežiaca funkcia dobehne.
 
-Existujú však prípady kedy budeš tieto kľučové slová ručne špecifikovať. Predovšetkým vtedy, keď budeš pracovať so **_štruktúrami_** a **_poliami_** v rámci funkcií:
+Existujú však prípady kedy budeš tieto kľučové slová ručne špecifikovať. Predovšetkým vtedy, keď budeš pracovať so ***štruktúrami*** a ***poliami*** v rámci funkcií:
 
 ```
 contract SandwichFactory {

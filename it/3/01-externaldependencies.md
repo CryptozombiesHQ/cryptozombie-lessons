@@ -143,7 +143,7 @@ material:
 
 Fino ad ora Solidity era molto simile ad altri linguaggi come JavaScript. Ma ci sono numerose DApp di Ethereum che in realtà sono abbastanza diverse dalle normali applicazioni.
 
-Per cominciare, dopo aver distribuito un contratto su Ethereum, è **_ immutable_**, il che significa che non può mai essere modificato o aggiornato di nuovo.
+Per cominciare, dopo aver distribuito un contratto su Ethereum, è *** immutable***, il che significa che non può mai essere modificato o aggiornato di nuovo.
 
 Il codice iniziale che distribuisci ad un contratto rimarrà lì, in modo permanente, sulla blockchain. Questo è uno dei motivi per cui la sicurezza è una preoccupazione così grande in Solidity. Se c'è un difetto nel codice del contratto non c'è modo di correggerlo in seguito. Dovresti dire ai tuoi utenti di iniziare ad utilizzare un indirizzo di contratto intelligente diverso contenente la correzione.
 

@@ -265,7 +265,7 @@ material:
       }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+Up until now, we've covered quite a few ***function modifiers***. It can be difficult to try to remember everything, so let's run through a quick review:
 
 1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
 
@@ -287,7 +287,7 @@ In this chapter, we're going to introduce one more function modifier: `payable`.
 
 Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
 
-But in Ethereum, because the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **_and_** pay money to the contract at the same time. 
+But in Ethereum, because the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function ***and*** pay money to the contract at the same time. 
 
 This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
 

@@ -143,7 +143,7 @@ material:
 
 Doposiaľ Solidity vyzeralo celkom podobne ako ostatné programovanie jazyky, napríklad JavaScript. Existuje však niekoľko veľkých rozdielov, akými sa decentralizované aplikácie (DApps) na Ethéreu líšia od klasických aplikácií.
 
-Za prvé, po tom čo nasadíš svoj kontrakt na Ethereum blockchain, stane sa **_nemeniteľným_**. To znamená že jeho kód už nikdy nemože byť upravený.
+Za prvé, po tom čo nasadíš svoj kontrakt na Ethereum blockchain, stane sa ***nemeniteľným***. To znamená že jeho kód už nikdy nemože byť upravený.
 
 Kód kontraktu ktorý nasadíš na blockchain tam zostane navždy, permanentne. Práve to je ale jeden z dôvodov, prečo je bezpečnosť v prípade Solidity kontraktov extrémne dôležitá záležitosť. Ak je v tvojom kód chyba, nie je spôsob ako ju dodatočne napraviť. Musel by si povedať svojim užívateľom povedať, aby začali používať adresu nového smart kontraktu, obsahujúceho opravu chyby.
 

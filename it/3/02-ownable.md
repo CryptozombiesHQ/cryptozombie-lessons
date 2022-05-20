@@ -223,7 +223,7 @@ Per gestire casi come questo, c'è una pratica comune come quella di rendere i c
 
 ## Contratti `di proprietà` OpenZeppelin
 
-Di seguito è riportato il contratto `Ownable` tratto dalla libreria di Solidity **_OpenZeppelin_**. OpenZeppelin è una libreria di contratti intelligenti sicuri e controllati dalla community che è possibile utilizzare nelle proprie DApp. Dopo questa lezione ti consigliamo vivamente di visitare il loro sito per migliorare il tuo apprendimento!
+Di seguito è riportato il contratto `Ownable` tratto dalla libreria di Solidity ***OpenZeppelin***. OpenZeppelin è una libreria di contratti intelligenti sicuri e controllati dalla community che è possibile utilizzare nelle proprie DApp. Dopo questa lezione ti consigliamo vivamente di visitare il loro sito per migliorare il tuo apprendimento!
 
 Dai un'occhiata al contratto di seguito. Vedrai alcune cose che non abbiamo ancora imparato ma non preoccuparti, ne riparleremo in seguito.
 
@@ -303,7 +303,7 @@ contract Ownable {
 
 Ci sono alcune cose nuove che non abbiamo mai visto prima:
 
-- Costruttori: `constructor()` è un **_costruttore_**, che è una funzione speciale opzionale. Verrà eseguito solo una volta, quando il contratto viene creato per la prima volta.
+- Costruttori: `constructor()` è un ***costruttore***, che è una funzione speciale opzionale. Verrà eseguito solo una volta, quando il contratto viene creato per la prima volta.
 - Modificatori di funzioni: `modifier onlyOwner()`. I modificatori sono una specie di mezze funzioni che vengono utilizzate per modificare altre funzioni, in genere per verificare alcuni requisiti prima dell'esecuzione. In questo caso, `onlyOwner` può essere usato per limitare l'accesso, quindi **solo** il **proprietario** del contratto può eseguire questa funzione. Parleremo di più sui modificatori di funzione nel prossimo capitolo e su cosa faccia quello strano `_;`.
 - parola chiave `indexed`: non preoccuparti di questo, non ne abbiamo ancora bisogno.
 

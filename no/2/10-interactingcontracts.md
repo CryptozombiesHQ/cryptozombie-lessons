@@ -109,7 +109,7 @@ Ikke bekymre deg - vårt spill kommer ikke til å skade noen CryptoKitty. Vi les
 
 ## Samhandl med andre kontrakter
 
-For vår kontrakt å snakke med en annen kontrakt på blockchain som vi ikke eier, må vi først definere et **_ interface _**.
+For vår kontrakt å snakke med en annen kontrakt på blockchain som vi ikke eier, må vi først definere et *** interface ***.
 
 La oss se på et enkelt eksempel. Si at det var en kontrakt på blockchainen som så ut som dette:
 
@@ -131,7 +131,7 @@ Dette ville være en enkel kontrakt hvor alle kunne lagre sitt lucky nummer, og 
 
 La oss si at vi hadde en ekstern kontrakt som ønsket å lese dataene i denne kontrakten ved hjelp av `getNum`-funksjonen.
 
-Først må vi definere en **_interface_** av `LuckyNumber` kontrakten:
+Først må vi definere en ***interface*** av `LuckyNumber` kontrakten:
 
 ```
 contract NumberInterface {

@@ -34,7 +34,7 @@ Matematyczne operacje w Solidity są intuicyjne. Poniższe operacje są takie sa
 * dzielenie: `x / y`
 * Modulo / reszta z dzielenia: `x % y` _(na przykład, `13 % 5` wynosi `3`, ponieważ jeśli podzielisz 13 przez 5, 3 jest resztą z dzielenia)_
 
-Solidity również wspiera  **_potęgowanie_** (np. "x do potęgi y", x^y):
+Solidity również wspiera  ***potęgowanie*** (np. "x do potęgi y", x^y):
 
 ```
 uint x = 5 ** 2; // wynosi 5^2 = 25

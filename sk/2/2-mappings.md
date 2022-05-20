@@ -85,7 +85,7 @@ Aby sme to dosiahli, budeme potrebovať 2 nové dátové štruktúry `mapping` a
 ## Adresy
 ## Addresses
 
-Ethereum blockchain je tvorený **_účtami_**. Môžeš o nich premýšľať podobným spôsobom ako o bankových účtoch. Účet má určitý balans **_Etheru_** (kryptomena na Ethereum blockchaine). Môžeš odosielať a príjmať platby do a z ostatných učtov. Rovnako ako keď sú prevádzané peniaze medzi bankovými účtami. 
+Ethereum blockchain je tvorený ***účtami***. Môžeš o nich premýšľať podobným spôsobom ako o bankových účtoch. Účet má určitý balans ***Etheru*** (kryptomena na Ethereum blockchaine). Môžeš odosielať a príjmať platby do a z ostatných učtov. Rovnako ako keď sú prevádzané peniaze medzi bankovými účtami. 
 
 Každý účet má svoju `adresu`. Tu je možné prirovnať k číslu bankového účtu. Je to unikátny identifikátor referujúci na jeden konkrétny účet. Môže vyzerať napríklad takto:
 
@@ -99,7 +99,7 @@ To znamená že môžeme adresu použiť ako unikátny identifikátor vlastníct
 
 ## Mapovania
 
-V Lekcii 1 sme sa pozreli na **_štruktúry_** (structs) a **_polia_** (arrays). **_Mapovania_** (**_mapping_**) sú ďalším spôsobom ako v Solidity môžeme pracovať so štrukturovanými dátami.
+V Lekcii 1 sme sa pozreli na ***štruktúry*** (structs) a ***polia*** (arrays). ***Mapovania*** (***mapping***) sú ďalším spôsobom ako v Solidity môžeme pracovať so štrukturovanými dátami.
 
 Deklarácia mapovania vyzerá takto: 
 

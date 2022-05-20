@@ -519,7 +519,7 @@ contract CryptoZombies {
 
 In particolare è buona norma commentare il codice per spiegare il comportamento previsto di ogni funzione del contratto. In questo modo un altro sviluppatore (o tu, dopo una pausa di 6 mesi da un progetto!) potrà rapidamente scremare e capire ad alto livello cosa fa il tuo codice senza dover leggere il codice stesso.
 
-Lo standard nella comunità di Solidity è quello di usare un formato chiamato **_natspec_**, che assomiglia a questo:
+Lo standard nella comunità di Solidity è quello di usare un formato chiamato ***natspec***, che assomiglia a questo:
 
 ```
 /// @title Un contratto per operazioni matematiche di base

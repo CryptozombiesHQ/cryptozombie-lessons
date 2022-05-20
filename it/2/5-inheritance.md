@@ -95,7 +95,7 @@ material:
 
 Il nostro codice di gioco sta diventando piuttosto lungo. Invece di creare un contratto estremamente lungo, a volte, ha senso dividere la logica del codice su più contratti per organizzare il codice.
 
-Una caratteristica di Solidity che lo rende più gestibile è il contratto **_eredità_** (**_inheritance_**):
+Una caratteristica di Solidity che lo rende più gestibile è il contratto ***eredità*** (***inheritance***):
 
 ```
 contract Doge {
@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_eredita_** da `Doge`. Ciò significa che se si compila e si distribuisce `BabyDoge`, esso avrà accesso sia a `catchphrase()` che a `anotherCatchphrase()` (ed a qualsiasi altra funzione pubblica che possiamo definire su `Doge`).
+`BabyDoge` ***eredita*** da `Doge`. Ciò significa che se si compila e si distribuisce `BabyDoge`, esso avrà accesso sia a `catchphrase()` che a `anotherCatchphrase()` (ed a qualsiasi altra funzione pubblica che possiamo definire su `Doge`).
 
 Questo può essere usato per l'eredità logica (come fosse una sottoclasse, un `Gatto` è un `Animale`). Ma può anche essere usato semplicemente per organizzare il tuo codice raggruppando logica simile in contratti diversi.
 

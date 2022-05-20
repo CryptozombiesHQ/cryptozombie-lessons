@@ -290,7 +290,7 @@ Nel capitolo 6 abbiamo calcolato un numero casuale da 0 a 100. Ora usiamo quel n
 
 ## Facciamo una prova
 
-1. Crea un'istruzione `if` che controlli se `rand` è **_minore o uguale ad_** `attackVictoryProbability`.
+1. Crea un'istruzione `if` che controlli se `rand` è ***minore o uguale ad*** `attackVictoryProbability`.
 
 2. Se questa condizione è vera, il nostro zombi vince! Così:
 

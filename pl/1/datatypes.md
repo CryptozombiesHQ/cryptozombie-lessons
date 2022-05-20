@@ -25,7 +25,7 @@ material:
 
 Dobra robota! Teraz kiedy mamy już podstawowy kontrakt, możemy nauczyć się jak Solidity obchodzi się ze zmiennymi.
 
-**_Zmienne stanu_** są permanentnie zapisywane w pamięci kontraktu. Znaczy to mniej więcej tyle, że są zapisane w blockchainie Ethereum. Możesz myśleć o tym jak o zapisywaniu do bazy danych.
+***Zmienne stanu*** są permanentnie zapisywane w pamięci kontraktu. Znaczy to mniej więcej tyle, że są zapisane w blockchainie Ethereum. Możesz myśleć o tym jak o zapisywaniu do bazy danych.
 
 ##### Przykład:
 ```

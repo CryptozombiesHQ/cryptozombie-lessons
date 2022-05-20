@@ -14,8 +14,8 @@ Isso é só o começo. Nós iremos lançar uma nova lição do CryptoZombies tod
 
 ### 1. Cadastre-se para salvar o seu progresso
 
-**_Cadastre-se_** para salvar o seu progresso clicando no link "Save Progress" no topo da página. Nós vamos avisar você logo que uma nova lição for adicionada.
+***Cadastre-se*** para salvar o seu progresso clicando no link "Save Progress" no topo da página. Nós vamos avisar você logo que uma nova lição for adicionada.
 
 ### 2. Compartilhe o seu zumbi com os amigos
 
-**_Compartilhe_** seu zumbi no Twitter, blah blah, etc. (Need to insert images / links)
+***Compartilhe*** seu zumbi no Twitter, blah blah, etc. (Need to insert images / links)

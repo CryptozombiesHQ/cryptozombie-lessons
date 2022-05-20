@@ -34,7 +34,7 @@ material:
 * Division (การหาร): `x / y`
 * Modulus / remainder (การหารเอาเศษ): `x % y`  (ตัวอย่างเช่น`13 % 5` จะได้ `3` ออกมาเป็นเศษและคำตอบของโอเปอร์เรชั่นนี้)_
 
-นอกจากนี้ Solidity ยังรองรับ **_exponential operator_**  อีกด้วย (เช่น x ยกกำลังy ,x^y):
+นอกจากนี้ Solidity ยังรองรับ ***exponential operator***  อีกด้วย (เช่น x ยกกำลังy ,x^y):
 
 ```
 uint x = 5 ** 2; // เท่ากับ 5^2 = 25

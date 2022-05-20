@@ -32,7 +32,7 @@ material:
       }
 ---
 
-A volte è necessario un tipo di dati più complesso. Per questo Solidity fornisce **_structs_**:
+A volte è necessario un tipo di dati più complesso. Per questo Solidity fornisce ***structs***:
 
 ```
 struct Person {
@@ -41,7 +41,7 @@ struct Person {
 }
 
 ```
-Le strutture (**_structs_**) consentono di creare tipi di dati più complicati con proprietà multiple.
+Le strutture (***structs***) consentono di creare tipi di dati più complicati con proprietà multiple.
 
 > Nota che abbiamo appena introdotto un nuovo tipo `string`. Le stringhe vengono utilizzate per dati UTF-8 di lunghezza arbitraria. Es. `string greeting = "Ciao mondo!"`
 

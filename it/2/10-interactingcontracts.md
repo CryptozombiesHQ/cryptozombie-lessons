@@ -109,7 +109,7 @@ Non preoccuparti: il nostro gioco non danneggerà effettivamente i CryptoKitties
 
 ## Interagire con altri contratti
 
-Affinché il nostro contratto parli con un altro contratto sulla blockchain che non possediamo, per prima cosa dobbiamo definire una **_interface_**.
+Affinché il nostro contratto parli con un altro contratto sulla blockchain che non possediamo, per prima cosa dobbiamo definire una ***interface***.
 
 Diamo un'occhiata ad un semplice esempio. Supponiamo che ci fosse un contratto sulla blockchain che assomigli a questo:
 
@@ -131,7 +131,7 @@ Questo sarebbe un semplice contratto in cui chiunque potrebbe memorizzare il pro
 
 Ora diciamo che avevamo un contratto esterno che voleva leggere i dati in questo contratto usando la funzione `getNum`.
 
-Per prima cosa dovremmo definire una **_interface_** del contratto `LuckyNumber`:
+Per prima cosa dovremmo definire una ***interface*** del contratto `LuckyNumber`:
 
 ```
 contract NumberInterface {

@@ -71,11 +71,11 @@ material:
 
 En Solidity, il y a deux endroits pour stocker les variables - dans le `storage` (stockage) ou dans la `memory` (mémoire).
 
-Le **_stockage_** est utilisé pour les variables stockées de manière permanente dans la blockchain. Les variables **_mémoires_** sont temporaires, et effacées entre les appels de fonction extérieure à votre contrat. C'est un peu comme le disque dur et la mémoire vive de votre ordinateur.
+Le ***stockage*** est utilisé pour les variables stockées de manière permanente dans la blockchain. Les variables ***mémoires*** sont temporaires, et effacées entre les appels de fonction extérieure à votre contrat. C'est un peu comme le disque dur et la mémoire vive de votre ordinateur.
 
 La plupart du temps, vous n'aurez pas besoin d'utiliser ces mots clés car Solidity gère ça tout seul. les variables d'état (déclarées en dehors des fonctions) sont par défaut `storage` et écrites de manière permanente dans la blockchain, alors que les variables déclarées à l'intérieur des fonctions sont `memory` et disparaissent quand l'appel à la fonction est terminé.
 
-Cependant, il peut arriver que vous ayez besoin d'utiliser ces mots clés, surtout quand vous utilisez des **_structures_** et des **_tableaux_** à l'intérieur de fonctions :
+Cependant, il peut arriver que vous ayez besoin d'utiliser ces mots clés, surtout quand vous utilisez des ***structures*** et des ***tableaux*** à l'intérieur de fonctions :
 
 ```
 contract SandwichFactory {

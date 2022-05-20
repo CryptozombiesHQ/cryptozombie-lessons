@@ -12,7 +12,7 @@ material:
 
 Our Solidity contract is complete! Now we need to write a JavaScript frontend that interacts with the contract.
 
-Ethereum has a JavaScript library called **_Web3.js_**.
+Ethereum has a JavaScript library called ***Web3.js***.
 
 In a later lesson, we'll go over in depth how to deploy a contract and set up Web3.js. But for now let's just look at some sample code for how Web3.js would interact with our deployed contract.
 

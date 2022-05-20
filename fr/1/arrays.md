@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_** (array). il y a deux sortes de tableaux dans Solidity : les tableaux  **_fixes_** et les tableaux **_dynamiques_** :
+Quand vous voulez regrouper des éléments, vous pouvez utiliser un ***tableau*** (array). il y a deux sortes de tableaux dans Solidity : les tableaux  ***fixes*** et les tableaux ***dynamiques*** :
 
 ```
 // Tableau avec une longueur fixe de 2 éléments :
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Vous pouvez aussi créer un tableau de **_structure_**. En utilisant la structure Person du chapitre précédent :
+Vous pouvez aussi créer un tableau de ***structure***. En utilisant la structure Person du chapitre précédent :
 
 ```
 Person[] people; // Tableau dynamique, on peut en rajouter sans limite.
@@ -60,7 +60,7 @@ Vous vous rappelez que les variables d'état sont stockées définitivement dans
 
 ## Tableaux publics
 
-Vous pouvez déclarer un tableau comme `public`, et Solidity créera automatiquement une méthode **_d'accès_**. La syntaxe ressemble à :
+Vous pouvez déclarer un tableau comme `public`, et Solidity créera automatiquement une méthode ***d'accès***. La syntaxe ressemble à :
 
 ```
 Person[] public people;
@@ -71,4 +71,4 @@ Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc 
 
 Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications, cette armée devra donc être publique.
 
-1. Créez un tableau public de **_structures_** `Zombie`, et appelez le `zombies`.
+1. Créez un tableau public de ***structures*** `Zombie`, et appelez le `zombies`.

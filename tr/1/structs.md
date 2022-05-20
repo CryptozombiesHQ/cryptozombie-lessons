@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Bazen daha karışık bir veri türüne ihtiyacınız olur. Bunun için, Solidity **_yapılar_** sağlar:
+Bazen daha karışık bir veri türüne ihtiyacınız olur. Bunun için, Solidity ***yapılar*** sağlar:
 
 ```
 struct Person {

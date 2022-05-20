@@ -53,7 +53,7 @@ material:
       }
 ---
 
-V tejto kapitole sa naučíme o **_návratových hodnotách_** funkcie a funkčných modifikátoroch.
+V tejto kapitole sa naučíme o ***návratových hodnotách*** funkcie a funkčných modifikátoroch.
 
 ## Návratové hodnoty
 
@@ -73,13 +73,13 @@ Deklarácia funkcie v Solidity obsahuje typ návratovej hodnoty (v tomto prípad
 
 Funkcie vyššie vlastne ale nijak nemení stav kontraktu. Nemení ani nezapisuje žiadne hodnoty.  
 
-V takom prípade deklarujeme funkcie ako funkcie kategórie **_view_**. To značí, že funkcia dáta iba číta, no nemodifikuje ich.
+V takom prípade deklarujeme funkcie ako funkcie kategórie ***view***. To značí, že funkcia dáta iba číta, no nemodifikuje ich.
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity taktiež obsahuje funkcie kategórie **_pure_**, čo signalizuje, že funkcia dokonca ani nepristupuje ku žiadnym dátam kontraktu. Napríklad:
+Solidity taktiež obsahuje funkcie kategórie ***pure***, čo signalizuje, že funkcia dokonca ani nepristupuje ku žiadnym dátam kontraktu. Napríklad:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Takáto funkcia nemodifikuje a ani žiadne dáta kontraktu nečíta - návratová hodnota tejto funkcie závisí len od jej funkčných parametrov. Takže práve v tomto prípade by sme funkciu deklarovali ako **_pure_** funkciu.
+Takáto funkcia nemodifikuje a ani žiadne dáta kontraktu nečíta - návratová hodnota tejto funkcie závisí len od jej funkčných parametrov. Takže práve v tomto prípade by sme funkciu deklarovali ako ***pure*** funkciu.
 
 > Note: Môže byť náročné si dať pozor a vždy správne označiť funkcie ako pure/view. Našťastie nás Solidity kompilátor upozorní vždy keď je to nutné, aby sme nejakú funkciu označiť jedným z týchto modifikátorov.
 

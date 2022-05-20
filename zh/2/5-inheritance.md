@@ -111,7 +111,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-由于 `BabyDoge` 是从 `Doge` 那里  **_inherits_** （继承)过来的。 这意味着当你编译和部署了 `BabyDoge`，它将可以访问 `catchphrase()` 和 `anotherCatchphrase()`和其他我们在 `Doge` 中定义的其他公共函数。
+由于 `BabyDoge` 是从 `Doge` 那里  ***inherits*** （继承)过来的。 这意味着当你编译和部署了 `BabyDoge`，它将可以访问 `catchphrase()` 和 `anotherCatchphrase()`和其他我们在 `Doge` 中定义的其他公共函数。
 
 这可以用于逻辑继承（比如表达子类的时候，`Cat` 是一种 `Animal`）。 但也可以简单地将类似的逻辑组合到不同的合约中以组织代码。
 

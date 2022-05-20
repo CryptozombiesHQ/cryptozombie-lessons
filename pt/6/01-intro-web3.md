@@ -365,7 +365,7 @@ material:
 
 Ao completar a Lição 5, nosso DApp zumbi está completo. Agora vamos criar uma página web básica onde seus usuários podem interagir com ela.
 
-Para fazer isso, vamos usar uma biblioteca JavaScript da Fundação Ethereum chamada **_Web3.js_**.
+Para fazer isso, vamos usar uma biblioteca JavaScript da Fundação Ethereum chamada ***Web3.js***.
 
 ## O que é Web3.js?
 
@@ -375,7 +375,7 @@ Lembre-se, a rede Ethereum é composta de nós, cada um contendo uma cópia do b
  2. A função que você deseja chamar, e
  3. As variáveis que você deseja passar para essa função.
 
-Os nós do Ethereum só falam uma linguagem chamada **_JSON-RPC_**, que não é muito legível por humanos. Uma consulta para informar ao nó que você deseja chamar uma função em um contrato é algo como isto:
+Os nós do Ethereum só falam uma linguagem chamada ***JSON-RPC***, que não é muito legível por humanos. Uma consulta para informar ao nó que você deseja chamar uma função em um contrato é algo como isto:
 
 ```
 // É... Boa sorte escrevendo toda a sua chamada de função desta maneira!

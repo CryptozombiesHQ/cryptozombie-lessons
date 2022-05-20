@@ -84,7 +84,7 @@ Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` 
 
 ## Adresses
 
-La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte a un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
+La blockchain Ethereum est constituée de ***comptes***, un peu comme des comptes en banque. Un compte a un montant d'***Ether*** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
 
 Chaque compte a une `address`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
 
@@ -99,7 +99,7 @@ Nous pouvons donc l'utiliser comme un ID unique pour définir l'appartenance de 
 
 ## Mappages
 
-Dans la Leçon 1 nous avec vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
+Dans la Leçon 1 nous avec vu les ***structures*** et les ***tableaux***. Les ***mappages*** sont une autre façon d'organiser des données en Solidity.
 
 Voici un exemple de `mapping` :
 

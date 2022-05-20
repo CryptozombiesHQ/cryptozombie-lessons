@@ -14,9 +14,9 @@ Questo è solo l'inizio. Rilasceremo una nuova lezione di CryptoZombies ogni set
 
 ### 1. Accedi per salvare i tuoi progressi
 
-**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
-**_Accedi** per salvare i tuoi progressi facendo clic sul link "Salva Progressi" nella parte superiore della pagina. Ti faremo sapere non appena aggiungeremo una nuova lezione.
+***Sign in*** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+***Accedi** per salvare i tuoi progressi facendo clic sul link "Salva Progressi" nella parte superiore della pagina. Ti faremo sapere non appena aggiungeremo una nuova lezione.
 
 ### 2. Condividi il tuo zombi con i tuoi amici
 
-**_Condividi_** il tuo zombi su Twitter, blah blah, ecc. (Devi inserire immagini / collegamenti)
+***Condividi*** il tuo zombi su Twitter, blah blah, ecc. (Devi inserire immagini / collegamenti)

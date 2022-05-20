@@ -143,7 +143,7 @@ material:
 
 Até agora, Solidity pareceu bastante similar a outras linguagens como JavaScript. Mas as aplicações distribuídas em Ethereum são um tanto diferentes de aplicações normais em diversas maneiras.
 
-Para começar, após você implantar um contrato em Ethereum, este é **_imutável_**, quer dizer que ele nunca poder ser modificado ou melhorado novamente.
+Para começar, após você implantar um contrato em Ethereum, este é ***imutável***, quer dizer que ele nunca poder ser modificado ou melhorado novamente.
 
 O código que você implantou para um contrato esta lá permanentemente, para sempre, na blockchain. Esta é uma das razões na qual a segurança em Solidity é uma grande preocupação. Se houver uma falha no código do contrato, não há maneira de remendar depois. Você precisará dizer aos seus usuários para começarem a usar um outro smart contract que tem a correção.
 

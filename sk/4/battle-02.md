@@ -248,7 +248,7 @@ Potom tento kód použije `keccak` a skonvertuje kombináciu všetkých vstupov 
 
 ### Táto metóda je zraniteľná útokom nečestného uzlu
 
-Keď v Ethéreu zavoláš funkciu kontraktu, rozpošle sa Ethéreum uzlom (serverom ktoré overujú transakcie) vo forme **_transakcie_**. Uzly v sieti pozbierajú niekoľko takýchto transakcií a pokúsia sa ako prvé vyriešiť výpočtovo náročný matematický problém, známy ako "Proof of Work". Keď ho vyriešia, zverejnia na Ethéreum sieť skupinu transakcií spolu vypočítaným riešením Proof of Work (PoW) vo forme **_bloku_**.
+Keď v Ethéreu zavoláš funkciu kontraktu, rozpošle sa Ethéreum uzlom (serverom ktoré overujú transakcie) vo forme ***transakcie***. Uzly v sieti pozbierajú niekoľko takýchto transakcií a pokúsia sa ako prvé vyriešiť výpočtovo náročný matematický problém, známy ako "Proof of Work". Keď ho vyriešia, zverejnia na Ethéreum sieť skupinu transakcií spolu vypočítaným riešením Proof of Work (PoW) vo forme ***bloku***.
 
 Po tom čo jeden uzol vyrieši PoW, ostatné uzly sa prestanú počítať atuálny PoW, ale overia že list transakcií ktoré zverejnil úspešný uzol je validný, akceptujú nový blok a začnú sa snažiť vyriešiť PoW pre ďalší blok.
 
@@ -260,7 +260,7 @@ Keby som v Ethéreum sieti bežal svoj vlastný uzol, mohol by som zverejniť tr
 
 ## Tak ako bezpečne vygenerujeme náhodné čisla na Ethereum?
 
-Pretože všetok obsah blockchainu je viditeľný všetkým zučastneným, je to náročný problém, a jeho riešenie je nad rámec tohoto tutoriálu. Môžeš sa o tom dočítať viacej <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>v tomto StackOverflow vlákne</a>. Jeden z nápadov je používať tzv. **_oracle_** pre prístup k funkcii generujúcej náhodné čísla mimo Ethereum blockchain.
+Pretože všetok obsah blockchainu je viditeľný všetkým zučastneným, je to náročný problém, a jeho riešenie je nad rámec tohoto tutoriálu. Môžeš sa o tom dočítať viacej <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>v tomto StackOverflow vlákne</a>. Jeden z nápadov je používať tzv. ***oracle*** pre prístup k funkcii generujúcej náhodné čísla mimo Ethereum blockchain.
 
 Samozrejme že keďže by sme v sieti súťažili v overovaní ďalšieho bloku s desiatkami tísic iných Ethereum uzlov, šanca že by sa nám podarilo vyriešiť nasledujúci blok (ktorý by mohol obstahovať nami zmanipulovanú transakciu) by bola veľmi nízka. Potrebovali by sme veľké množstvo výpočtových zdrojov na to, aby sme z tejto zranitelnosti mohli s výnosne ťažiť. Keby však bola potenciálna odmena dostatočne veľká (keby bolo možné na hádzanie mincov staviť napríklad $100,000,000), stálo by to za pokus o útok.
 
@@ -268,7 +268,7 @@ Náhodná generácia čísel na Ethereu teda NIE JE bezpečná. Pokiaľ ale na n
 
 Pretože v tomto tutoriále vytvárame len jednoduchú hru za účelom ukážky, a v stávke nie sú žiadne reálne peniaze, rozhodli sme sa akceptovať riziká ktoré so sebou nesie použitie takéhoto náhodného generátora. Generátor nebude celkom 100% bezpečný, no výhodou je jeho jednoduchá implementácia.
 
-V budúcich lekciách môžno pokryjeme tému **_oracle_** (bezpečný spôsob ako získať dáta z mimo Ethereum siete) na to, aby sme mohli získať náhodné čísla generované mimo blockchain. 
+V budúcich lekciách môžno pokryjeme tému ***oracle*** (bezpečný spôsob ako získať dáta z mimo Ethereum siete) na to, aby sme mohli získať náhodné čísla generované mimo blockchain. 
 
 ## Vyskúšaj si to sám
 

@@ -247,7 +247,7 @@ material:
 
 ## มาทดสอบกันเถอะ
 
-1. สร้าง statement `if` ที่จะเช็คว่า `rand` มีค่าน้อยกว่าหรือเท่ากับ **_less than or equal to_** `attackVictoryProbability`หรือไม่
+1. สร้าง statement `if` ที่จะเช็คว่า `rand` มีค่าน้อยกว่าหรือเท่ากับ ***less than or equal to*** `attackVictoryProbability`หรือไม่
 
 2. ถ้า condition นั้นเป็นจริงก็แปลว่า ซอมบี้ของเราชนะ! หมายถึง:
 

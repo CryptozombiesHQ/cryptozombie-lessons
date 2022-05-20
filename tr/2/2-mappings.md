@@ -84,7 +84,7 @@ To do this, Bunu yapmak için, 2 yeni veri türüne ihtiyacımı olacak: `mappin
 
 ## Addresler
 
-Ethereum blok zinciri banka hesapları gibi düşünebileceğiniz **_hesaplardan_**. Bir hesabın **_Ether_** (Ethereum blok zincirinde kullanılan para birimi) bakiyesi vardır ve banka hesabınızın diğer banka hespalarına elektronik para transferi yapabildiği gibi diğer hesaplara Ether ödemeleri gönderebilir ve alabilirsiniz. 
+Ethereum blok zinciri banka hesapları gibi düşünebileceğiniz ***hesaplardan***. Bir hesabın ***Ether*** (Ethereum blok zincirinde kullanılan para birimi) bakiyesi vardır ve banka hesabınızın diğer banka hespalarına elektronik para transferi yapabildiği gibi diğer hesaplara Ether ödemeleri gönderebilir ve alabilirsiniz. 
 
 Her hesap bir banka hesap numarası gibi düşünebileceğiniz bir `address'`'e sahiptir. O, hesabı işaret eden özel bir tanımlayıcıdır ve bunun gibi görünür: 
 
@@ -98,7 +98,7 @@ Yani, zombilerimizin sahipliği için onu bir özel kimlik olarak kullanabiliriz
 
 ## Haritalandırmalar
 
-Ders 1'de **_yapılar_** ve **_sıralamalar_**'a baktık. **_Haritalandırmalar_** Solidiy'de organize edilen verilerin depolanmasının başka bir yoludur.
+Ders 1'de ***yapılar*** ve ***sıralamalar***'a baktık. ***Haritalandırmalar*** Solidiy'de organize edilen verilerin depolanmasının başka bir yoludur.
 
 Bunun gibi bir `mapping` tanımlamak:
 

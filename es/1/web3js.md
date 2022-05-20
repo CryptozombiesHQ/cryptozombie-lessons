@@ -12,7 +12,7 @@ material:
 
 ¡Nuestro contrato en Solidity está completo! Ahora tenemos que escribir una aplicación de usuario en JavaScript para interactuar con él.
 
-Ethereum tiene una librería JavaScript llamada **_Web3.js_**.
+Ethereum tiene una librería JavaScript llamada ***Web3.js***.
 
 En lecciones posteriores veremos en detalle como publicar un contrato y como configurar Web3.js. Pero por ahora vamos solamente a ver un ejemplo de código de cómo Web3.js interactuaría con nuestro contrato.
 

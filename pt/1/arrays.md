@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Quando você quer uma lista de algo, você pode usar um **_array_** (lista). Existem dois tipos de arrays (listas) em Solidity: **_fixed_** (fixo) arrays e **_dynamic_** (dinâmico) arrays:
+Quando você quer uma lista de algo, você pode usar um ***array*** (lista). Existem dois tipos de arrays (listas) em Solidity: ***fixed*** (fixo) arrays e ***dynamic*** (dinâmico) arrays:
 
 ```
 // Array com tamanho fixo de 2 elementos:
@@ -52,7 +52,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Você também pode criar um array de **_structs_** (Estruturas). Usando a estrutura `Person` do capítulo anterior.
+Você também pode criar um array de ***structs*** (Estruturas). Usando a estrutura `Person` do capítulo anterior.
 
 ```
 Person[] people; // Array dinâmico, podemos continuar adicionando
@@ -63,7 +63,7 @@ Você lembra que variáveis de estado são guardadas permanentemente na blockcha
 ## Arrays públicos
 
 
-Você pode declarar um array como `public` (público), e Solidity vai automaticamente criar um método **_getter_** para ele. A sintaxe fica assim:
+Você pode declarar um array como `public` (público), e Solidity vai automaticamente criar um método ***getter*** para ele. A sintaxe fica assim:
 
 ```
 Person[] public people;
@@ -76,4 +76,4 @@ Outros contracts poderão ler (mas não escrever) este array. Isso é um padrão
 Nós queremos armazenar um exército de zumbis em nosso aplicativo. E queremos mostrar todos os nossos zumbis para outros aplicativos, então queremos que seja público.
 
 
-1. Crie um array público de `Zombie` **_structs_**, e nomei-o como `zombies`
+1. Crie um array público de `Zombie` ***structs***, e nomei-o como `zombies`

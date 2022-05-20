@@ -12,7 +12,7 @@ material:
 
 Il nostro contratto di Solidity è completo! Ora dobbiamo scrivere un frontend JavaScript che interagisce con il contratto.
 
-Ethereum ha una libreria JavaScript chiamata **_Web3.js_**.
+Ethereum ha una libreria JavaScript chiamata ***Web3.js***.
 
 In una lezione successiva esamineremo in dettaglio come distribuire un contratto e configurare Web3.js. Ma per ora diamo un'occhiata al codice di esempio di come Web3.js interagirebbe con il nostro contratto distribuito.
 
