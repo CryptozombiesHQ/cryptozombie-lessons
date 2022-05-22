@@ -13,7 +13,7 @@ material:
 
         contract ZombieBattle is ZombieHelper {
           uint randNonce = 0;
-          // Здесь создай attackVictoryProbability 
+          // Здесь создай attackVictoryProbability
 
           function randMod(uint _modulus) internal returns(uint) {
             randNonce++;
@@ -214,7 +214,7 @@ material:
         }
     answer: >
       pragma solidity ^0.4.19;
-      
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {
@@ -235,7 +235,7 @@ material:
 
 Зомби-битвы будут устроены так:
 
-- Ты выбираешь одного из своих зомби-бойцов и подбираешь ему оппонента 
+- Ты выбираешь одного из своих зомби-бойцов и подбираешь ему оппонента
 - Если ты атакуешь, то у твоего зомби 70% шанс на победу. У защищающегося зомби шанс выиграть 30%
 - Все зомби (атакующие и защищающие) будут иметь `winCount` и `lossCount`, которые меняют значение в зависимости от результата боя
 - Если атакующий зомби побеждает, он получает следующий уровень и производит нового зомби

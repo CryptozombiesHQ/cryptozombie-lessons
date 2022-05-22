@@ -44,9 +44,9 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          // 2. Add modifier to function definition:
+          // 2. Добавь модификатор к определению функции:
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
-            // 3. Remove this line
+            // 3. Удали эту строку
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
