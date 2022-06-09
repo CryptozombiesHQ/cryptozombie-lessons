@@ -15,6 +15,29 @@
       "name": "Twitter",
       "link": "https://twitter.com/loomnetwork"
     },
+    "find_source_code_repo": "你可以在这里找到本课程的源代码 <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> 这个 Github 仓库</a>.",
+    "course" : [
+      {
+          "id": "solidity",
+          "title": "Solidity Path: 智能合约初级到中级",
+          "summary": "<p>所以你认为你有能力成为一只 <strong>加密僵尸</strong>,了吗?</p> <p>本课程将教会你如何 <strong>在以太坊上建立一个游戏</strong>.</p> 本课程是为Solidity初学者设计的, 但是我们假设你有其他编程语言的经验 (例如: Javascript)."
+      },
+      {
+          "id": "chainlink",
+          "title": "Chainlink Path: 去中心化的 Oracles",
+          "summary": "将现实世界中所有变化的元素融合到我们心爱的僵尸里吧."
+      },
+      {
+          "id": "solidity_advanced",
+          "title": "高级 Solidity Path: 获得更深入的知识",
+          "summary": "<b>使用Truffle测试只能合约</b> 这将教会你: <br> - 使用 Truffle 和 Ganache 测试你的智能合约 <br> - 使用Chai来写更有表达力的断言 <br> - 对照Loom进行测试😉</p> <p><b>使用 Truffle 发布以太坊 DApps </b> 这将指导你使用Truffle完成智能合约的部署过程.</p>"
+      },
+      {
+          "id": "beyond_ethereum",
+          "title": "Beyond Ethereum Path: 探索区块链生态系统",
+          "summary": "探索区块链生态系统."
+      }
+  ],
     "solidity_path": "Solidity 教程: 智能合约基础教程",
     "hands_on_path": "实战教程: 编写及部署自定义游戏模式",
     "plasma_path": "Plasma 教程: 如何使用 Plasma Cash",
@@ -22,7 +45,8 @@
     "the_curriculum": "课程列表",
     "course_overview":"课程预览",
     "start": "开始",
-    "skip_lesson": "跳过本课"
+    "skip_lesson": "跳过本课",
+    "graduate": "准备好毕业了吗?或者你已经有了经验?"
   },
   "editor": {
     "readOnly": "只读"
