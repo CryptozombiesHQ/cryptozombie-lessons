@@ -324,15 +324,12 @@ Prenditi un momento... Fai riferimento ad alcune delle nostre lezioni precedenti
 La risposta è qua sotto, non continuare fino a quando non ci hai pensato.
 
 ## La Risposta
-
-We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
-Abbiamo eseguito questo controllo più volte nelle lezioni precedenti. In `changeName()`, `changeDna()` e `feedAndMultiply()`, abbiamo usato il seguente controllo:
+Abbiamo eseguito questo controllo più volte nelle lezioni precedenti. In `changeName()`, `changeDna()` e `feedAndMultiply()`, abbiamo usato:
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
 ```
 
-This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own `modifier` to clean up our code and avoid repeating ourselves.
 Questa è la stessa logica di cui avremo bisogno per la nostra funzione di attacco. Dato che stiamo usando la stessa logica più volte, spostiamola nel suo `modifier` per ripulire il nostro codice ed evitare di ripeterci.
 
 ## Facciamo una prova
