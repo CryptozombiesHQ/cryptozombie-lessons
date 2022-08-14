@@ -202,7 +202,7 @@ material:
 
       import "./zombiehelper.sol";
 
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
 
       }
 ---
@@ -221,4 +221,4 @@ payable関数とコントラクトの残高について学習してきたが、�
 
 2. `zombiehelper.sol`を`import`せよ。
 
-3. `ZombieBattle`という名の新規`contract`を宣言せよ。これは`ZombieHelper`を継承する。コントラクト本文は、今はまだ空のままにしておくのだ。
+3. `ZombieAttack`という名の新規`contract`を宣言せよ。これは`ZombieHelper`を継承する。コントラクト本文は、今はまだ空のままにしておくのだ。

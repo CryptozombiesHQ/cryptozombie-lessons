@@ -9,7 +9,7 @@ material:
       "zombieattack.sol": |
         import "./zombiehelper.sol";
 
-        contract ZombieBattle is ZombieHelper {
+        contract ZombieAttack is ZombieHelper {
           // ここから始めるのだ
         }
       "zombiehelper.sol": |
@@ -205,7 +205,7 @@ material:
     answer: >
       import "./zombiehelper.sol";
 
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
         uint randNonce = 0;
 
         function randMod(uint _modulus) internal returns(uint) {
