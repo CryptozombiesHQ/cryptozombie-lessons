@@ -216,7 +216,7 @@ La logique de cette fonction est un peu compliquée, il nous faudra plusieurs ch
 
 1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre, une `address` appelée `_owner`.
 
-2. Ce sera une fonction `external`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte de gas.
+2. Ce sera une fonction `external view`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte de gas.
 
 3. La fonction devra retourner un `uint[]` (un tableau de `uint`).
 
