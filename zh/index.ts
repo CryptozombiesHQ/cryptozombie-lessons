@@ -146,6 +146,38 @@ import l9_complete from './9/lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
+// lesson10 Truffle
+import l10_overview from './10/00-overview.md'
+import l10_ch1 from './10/01.md'
+import l10_ch2 from './10/02.md'
+import l10_ch3 from './10/03.md'
+import l10_ch4 from './10/04.md'
+import l10_ch5 from './10/05.md'
+import l10_ch6 from './10/06.md'
+import l10_ch7 from './10/07.md'
+import l10_ch8 from './10/08.md'
+import l10_ch9 from './10/09.md'
+import l10_ch10 from './10/10.md'
+import l10_complete from './10/lessoncomplete.md'
+
+// lesson11 Testing
+import l11_overview from './11/00-overview.md'
+import l11_ch1 from './11/01.md'
+import l11_ch2 from './11/02.md'
+import l11_ch3 from './11/03.md'
+import l11_ch4 from './11/04.md'
+import l11_ch5 from './11/05.md'
+import l11_ch6 from './11/06.md'
+import l11_ch7 from './11/07.md'
+import l11_ch8 from './11/08.md'
+import l11_ch9 from './11/09.md'
+import l11_ch10 from './11/10.md'
+import l11_ch11 from './11/11.md'
+import l11_ch12 from './11/12.md'
+import l11_ch13 from './11/13.md'
+import l11_ch14 from './11/14.md'
+import l11_complete from './11/lessoncomplete.md'
+
 
 export default {
   1: [
@@ -278,18 +310,50 @@ export default {
     l8_ch9,
     l8_complete,
   ],
-  9: [
-    l9_overview,
-    l9_ch1,
-    l9_ch2,
-    l9_ch3,
-    l9_ch4,
-    l9_ch5,
-    l9_ch6,
-    l9_ch7,
-    l9_ch8,
-    l9_ch9,
-    l9_ch10,
-    l9_complete,
+  // 9: [
+  //   l9_overview,
+  //   l9_ch1,
+  //   l9_ch2,
+  //   l9_ch3,
+  //   l9_ch4,
+  //   l9_ch5,
+  //   l9_ch6,
+  //   l9_ch7,
+  //   l9_ch8,
+  //   l9_ch9,
+  //   l9_ch10,
+  //   l9_complete,
+  // ],
+  10: [
+    l10_overview,
+    l10_ch1,
+    l10_ch2,
+    l10_ch3,
+    l10_ch4,
+    l10_ch5,
+    l10_ch6,
+    l10_ch7,
+    l10_ch8,
+    l10_ch9,
+    l10_ch10,
+    l10_complete,
+  ],
+  11: [
+    l11_overview,
+    l11_ch1,
+    l11_ch2,
+    l11_ch3,
+    l11_ch4,
+    l11_ch5,
+    l11_ch6,
+    l11_ch7,
+    l11_ch8,
+    l11_ch9,
+    l11_ch10,
+    l11_ch11,
+    l11_ch12,
+    l11_ch13,
+    l11_ch14,
+    l11_complete,
   ],
 }
