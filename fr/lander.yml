@@ -1,37 +1,136 @@
 ---
 fr:
-  ogdescription: CryptoZombies est une école de programmation interactive qui vous apprend à écrire des smart contracts en Solidity, en construisant votre propre jeu crypto de crypto-collectibles.
-  ogtitle: CryptoZombies - Apprenez à coder sur Ethereum. Propulsé par Loom Network
-  langshort: FR #should be recognizable in local languages, like chinese would be 中文
-  learn_title: Apprenez à coder des DApps Ethereum en construisant votre propre jeu
-  learn_desc: CryptoZombies est une école de programmation interactive qui vous apprend à écrire des smart contracts en Solidity, en construisant votre propre jeu crypto.
-  get_started: Commencez maintenant, gratuitement
-  learn_more: En savoir plus
-  what_title: CryptoZombies c'est quoi ?
-  what_desc1: CryptoZombies est une école de programmation gratuite et interactive qui vous apprend à construire des jeux sur Ethereum.
-  what_desc2: Le cours a été pensé pour les débutants en Solidity en commençant avec les bases. Si vous n'avez jamais codé avec Solidity avant, ne vous inquiétez pas — nous allons vous accompagner étape par étape.
-  collect_title: Gagner des crypto-collectibles
-  collect_desc1: Gagner des crypto-collectibles zombies et des bonus en complétant les leçons de programmation.
-  collect_desc2: Après avoir complété toutes les leçons et déployé votre DApp, lancez votre armée de zombie contre les zombies des autres joueurs dans l'un des tous premiers jeux basés sur la blockchain ! Moitié école de programmation, moitié jeu de stratégie MMO crypto-collectible.
-  collect_desc3: Qu'attendez vous ? Cliquez sue le bouton ci-dessous pour plonger dans la leçon 1 et construire votre première DApp. En plus c'est gratuit !
-  start_title: Commencer maintenant
-  int_title: Leçons de programmation interactives
-  inbrowser_desc: Leçons étape par étape intégrées au navigateur, qui en partant des bases de Solidity vont vous permettre de créer votre propre jeu basé sur la blockchain complètement fonctionnel. A la fin de la leçon 1 (qui peut être fait en 1 fois), vous en saurez assez pour vous appeler officiellement un développeur Solidity !
-  zombie_title: Construire une armée de zombie
-  zombie_desc: Dans la Leçon 1, vous allez construire une usine à zombie pour créer votre armée. Chaque zombie que vous allez créer aura un ADN aléatoire et aura une apparence unique. Les prochaines leçons (1 par semaine) vont ajouter plus de fonctionnalités à votre jeu, comme la possibilité de combattre les zombies d'autres personnes !
-  who_made: Qui a créé CryptoZombies et pourquoi est-ce gratuit ?
-  who_made1: CryptoZombies a été développé par l'équipe de
-  who_made2: . Nous développons une plateforme pour faire des applications commerciale sur les sidechains Ethereum.
-  who_made3: Nous pensons que les blockchains sont capables de faire beaucoup plus que simplement des paiements, et nous voulons que plus de développeurs sortent des sentiers battus et essayent de développer des DApps de grande envergures. Nous pensons que les jeux pourront vraiment être révolutionnés par la blockchain. Nous avons donc développé CryptoZombies pour aider et inspirer la prochaine génération de développeurs de jeux blockchain.
-  find_us: En plus de CryptoZombies, nous travaillons sur des projets vraiment cools. Si vous voulez nous suivre, nous contacter pour un projet, ou simplement dire bonjour, vous pouvez nous trouver sur
-  and_our: et notre
-  email_us_at: ", ou envoyez nous un mail"
-  footer_network: Réseau
-  footer_info: Information
-  footer_contact: Contact
-  footer_contact_jobs: Carrière
-  footer_email: Mail
-  footer_about: A propos
-  footer_desc: CryptoZombies.io est une plateforme d'enseignement gratuite pour apprendre aux développeurs existants ou aux débutants la programmation pour la blockchain. Propulsé par Loom Network - une plateforme pour faire des applications commerciale sur Ethereum.
-  telegram_open_chat: Ouvrir le chat
-  telegram_link: https://t.me/loomnetwork
+  meta:
+    ogtitle: "Tutoriel Solidity #1 et cours de programmation Ethereum Blockchain | CryptoZombies"
+    ogdescription: CryptoZombies est une école de programmation interactive qui vous apprend à écrire des smart contracts en Solidity, en construisant votre propre jeu crypto de collectibles.
+  header: 
+    start_course: Commencer le cours
+  homepage:
+    learn_title: Apprenez à coder les DApps Blockchain en créant des jeux simples
+    learn_desc: CryptoZombies est une école de programmation interactive qui vous apprend à écrire des smart contracts en Solidity, en construisant votre propre jeu crypto.
+    why_different: Pourquoi CryptoZombies est différent
+    students: Étudiants
+    one_million: 1M+
+    classes_completed: Cours terminés
+    largest_ed_platform: CryptoZombies est la plus grande plate-forme éducative pour le développement de la blockchain, elle existe depuis plus de 4 ans, avec plus de 400 000 utilisateurs enregistrés qui ont terminé plusieurs cours.
+    actual_demand:  CryptoZombies a été le premier tutoriel sur Internet pour les NFT, et est toujours très pertinent pour la nouvelle génération de développeurs Web3 qui cherchent à entrer dans l'industrie aujourd'hui. Actuellement, le programme CryptoZombies est principalement axé sur le développement d'Ethereum et de Solidity, mais il y a beaucoup de demande pour du contenu ciblant d'autres chaînes telles que Binance, TRON et même des projets comme Chainlink.
+    interactive_coding_lessons: Interactive Coding Lessons
+    inbrowser_desc: Les leçons étape par étape dans le navigateur vous emmènent des bases mêmes de Solidity à la création de votre propre jeu entièrement fonctionnel basé sur la blockchain. Même à la fin de la leçon 1 (qui peut être complétée en une seule séance), vous en saurez assez pour vous appeler officiellement un développeur blockchain !
+    zombie_title: Construisez une armée de zombies
+    zombie_army: Après avoir terminé toutes les leçons et déployé votre DApp, opposez votre armée de zombies aux zombies des autres joueurs dans l'un des premiers jeux basés sur la blockchain au monde ! Moitié école de code, moitié jeu de stratégie crypto-collectible MMO.
+    collect_desc1: Développer le format du cours
+    collect_desc2: Nous allons étendre le format de cours existant à un format en direct et plus engageant hébergé dans le métaverse. Cela vous permettra de faire des événements de codage en direct, dans lesquels vous pourrez facilement partager votre code/écran avec un instructeur ou vos pairs, et interagir avec d'autres étudiants en utilisant le chat, l'audio ou la vidéo.
+    collect_desc3: Et vous connaissez le meilleur ? Tout est entièrement gratuit!
+    courses: Cours
+    roadmap: Feuille de route
+    roadmap_desc: La feuille de route illustre ce sur quoi nous travaillons. Nous le mettons à jour en permanence en fonction de vos commentaires.
+    migrate_telegram: Migrez la salle CZ Telegram vers notre chat communautaire
+    reputation_points: Points de réputation
+    participation_rewards: Récompenses de participation
+    launch_token: Lancer CZ Token sur la chaîne BNB
+    live_events: Organisez plus d'événements en direct
+    token_bridge: Déployer le pont de jetons CZ
+    code_together: Lancer "Codage Ensemble"
+    expand_course: Élargir l'offre de cours CZ
+    premium_courses: Cours Premium
+    nft_collection: Collection NFT
+    cz_testnet: CZ Testnet
+    nft_marketplace: Réseau de test CZ
+    cz_mainnet: Réseau principal CZ
+    staking: Jalonnement
+    token_bridge_mainnet: Pont de jeton (réseau principal)
+    nft_bridge_mainnet: Pont NFT (réseau principal)
+    qa_board: Conseil de questions et réponses
+    jobs_board: Conseil des emplois
+    ipad: Prise en charge de l'iPad
+    token_info: Informations sur le jeton
+    token_info_desc: Le jeton sera utilisé pour inciter les utilisateurs à suivre des cours et à interagir avec la communauté CZ.
+    token_rewards: Récompenses de jetons Jouez pour gagner
+    token_rewards_desc1: Nous donnons aux développeurs les moyens d'apprendre et d'aider les autres, en leur fournissant les moyens de gagner des récompenses pour vos contributions.
+    token_rewards_desc2: Nous allons étendre le format de cours existant à un format en direct et plus engageant hébergé dans le métaverse. Cela permettra aux utilisateurs d'organiser des événements de codage en direct, au cours desquels ils pourront facilement partager leur code/écran avec un instructeur ou leurs pairs, et interagir avec d'autres étudiants par chat, audio ou vidéo.
+    why_token: Pourquoi le jeton est important
+    why_token_desc1: CryptoZombies introduira un jeton qui sera utilisé dans la stratégie "Jouer pour gagner". Le jeton sera utilisé pour inciter les utilisateurs à suivre des cours et à utiliser quotidiennement le site CZ ou les applications mobiles pour interagir avec la communauté CZ.
+    why_token_desc2: Les jetons CZ seront rachetés et brûlés lorsque les utilisateurs paieront pour les cours.
+    nft_rewards: Récompenses NFT
+    nft_rewards_desc: Les récompenses NFT encourageront l'engagement et la fidélité à long terme, nous aidant à créer des communautés plus actives et engagées par rapport aux plateformes éducatives existantes.
+    zbg_cards: Cartes Zombie Battleground
+    zbg_cards_desc1: CryptoZombies introduira un jeton qui sera utilisé dans la stratégie "Jouer pour gagner".
+    zbg_cards_desc2: Le jeton sera utilisé pour inciter les utilisateurs à suivre des cours et à utiliser quotidiennement le site CZ ou les applications mobiles pour interagir avec la communauté CZ.
+    zbg_cards_desc3: Nous avons l'intention d'étendre la communauté CZ actuelle en la déplaçant de Telegram vers nos propres applications iOS et Android qui permettront aux utilisateurs de discuter du développement de la blockchain et de poser des questions dans un format de type StackOverflow.
+    course_completion_nfts: Achèvement du cours NFT
+    course_completion_nfts_desc: Déployez les certificats NFT pour l'achèvement du cours, chaque utilisateur recevra un certificat NFT personnalisé pour les cours qu'il a suivis.
+    latest_news: Dernières nouvelles
+    latest_news_desc: Points de vue de notre équipe, témoignages d'utilisateurs et comment démarrer.
+    readmore: En savoir plus >
+    all_posts: Afficher tous les messages
+    learn_more: Apprendre encore plus
+
+  links: 
+    blog: Blog
+    courses: Cours
+    github: GitHub
+    twitter: Twitter
+    privacy: Politique de confidentialité
+    cookies: Cookies
+    terms: Conditions
+    what_is_blockchain: Qu'est-ce que la blockchain ?
+
+  newsletter:
+    newsletter: Bulletin
+    title: Restez à jour
+    desc: Rejoignez notre liste de diffusion pour rester au courant de nos dernières fonctionnalités
+    email_placeholder: Entrez votre adresse email
+    submit: Soumettre
+  footer:
+    desc: Apprenez à coder les DApps Blockchain en créant des jeux simples
+    get_started: Commencer
+    get_in_touch: Entrer en contact
+    copyright: © Copyright 2022 Cryptozombies Tous droits réservés
+    telegram_open_chat: Ouvrir le chat
+    telegram_link: https://t.me/loomnetworkdev
+  blogs:
+    latest_news_desc: Points de vue de notre équipe, témoignages d'utilisateurs et comment démarrer.
+    our_blog: Nos blogs
+  what_is_blockchain_lander:
+    dont_be_noob: Ne soyez pas un Blockchain Noob.
+    master_basic_blockchain : Maîtrisez les bases de la Blockchain en moins de 10 minutes avec ce jeu interactif (gratuit).
+    what_are_you_waiting_for: Qu'est-ce que tu attends? Commençons.
+    become_blockchain_ninja: Devenez un ninja Blockchain, de manière interactive.
+    cryptozombies_origins: CryptoZombies Origins
+    is_a_free: est un jeu interactif (gratuit) conçu pour aider les débutants à comprendre les concepts de base de la Blockchain de manière amusante.
+    so_it_aint_like_school: Donc, ce n'est pas comme l'école.
+    when_you_pass_each_trial: Lorsque vous réussirez chaque essai, non seulement vous vous souviendrez
+    finally_understand: vous allez enfin comprendre comment fonctionne la Blockchain
+    after_today: Après aujourd'hui, vos amis et votre famille VOUS demanderont de leur parler de Blockchain.
+    pass_9_trials: Passez les 9 épreuves du gardien pour gagner. Ne soyez pas un Dead Acolyte.
+    interactive_game: est un jeu interactif dans lequel vous —  un Acolyte CryptoZombie, devez réussir TOUS LES 9 ÉPREUVES de connaissances sans un seul échec afin de vaincre le gardien Araignée de Web3.
+    you_wont_get_much: Vous n'obtiendrez pas beaucoup d'aide autre que d'Etherboy, votre acolyte de confiance qui vous donnera juste assez d'indices pour vous orienter dans la bonne direction.
+    many_will_attempt: Beaucoup tenteront, mais seuls quelques-uns tueront l'araignée gardienne de Web3 sans mourir d'une mort misérable.
+    do_you_have_what: Avez-vous ce qu'il faut pour le rendre vivant ou subirez-vous le même sort que tous les Acolytes morts d'hier ? (SE DÉCHIRER)
+    join_the_1: Rejoignez le 1% de geeks qui comprennent réellement Blockchain - sans être un geek.
+    even_though: Même si nous sommes en 2022 - plus d'une DÉCENNIE APRÈS la sortie de la première version de Bitcoin, 99% du monde n'a ENCORE AUCUNE INDICE de ce qu'est la Blockchain et de son fonctionnement.
+    with: Avec
+    a_complete_beginner: UN DÉBUTANT COMPLET peut maîtriser GRATUITEMENT les concepts de base de Blockchain en moins de 10 minutes.
+    if_you_manage: Si vous parvenez à traverser les 9 épreuves en vie et à survivre à l'araignée gardienne, vous ferez partie des 1% de personnes dans le monde qui comprennent le fonctionnement de Blockchain.
+    once_you_understand: Une fois que vous aurez compris le fonctionnement de Blockchain, l'avenir de Web3 vous appartiendra et vous serez mieux préparé pour l'avenir d'Internet que la plupart des pays du monde.
+    seriously: Sérieusement.
+    who_made_this: Qui l'a fait et pourquoi est-ce gratuit ?
+    much_like_original: Tout comme notre école de code d'origine
+    we_made_cryptozombies_origins: nous avons rendu CryptoZombies Origins GRATUIT pour rendre les connaissances Blockchain plus accessibles au plus grand nombre de personnes possible dans le monde.
+    its_our_way: C'est notre façon d'aider les débutants à comprendre les concepts de base de Blockchain et, par conséquent, d'accélérer l'adoption massive de la technologie Blockchain.
+    if_youd_like: Si vous souhaitez éradiquer « Blockchain Ignorance » dans le monde, allez-y et partagez ce jeu avec vos amis et votre famille qui n'ont aucune idée de Blockchain.
+  termspage:
+    title: Conditions
+    desc: CryptoZombies exige que tous les visiteurs de ce site Web détenu, exploité, autorisé et contrôlé par CryptoZombies adhèrent aux conditions d'utilisation suivantes. En accédant et en utilisant les CryptoZombies, vous indiquez votre reconnaissance et votre acceptation des présentes Conditions d'utilisation. Si vous n'êtes pas d'accord avec ces conditions d'utilisation, vous ne devez pas utiliser les CryptoZombies. Le terme "vous" ou "votre" fait référence à l'utilisateur ou au spectateur des CryptoZombies. CryptoZombies peut modifier, suspendre ou interrompre tout aspect des CryptoZombies à tout moment, y compris la disponibilité de toute fonctionnalité, base de données ou contenu. CryptoZombies peut également imposer des limites à certaines fonctionnalités et services et/ou restreindre votre accès à tout ou partie des CryptoZombies sans préavis ni responsabilité d'aucune sorte. Les termes et conditions de l'accord de service d'un client CryptoZombies pour toute partie des CryptoZombies prévaudront en cas de dispositions pouvant entrer en conflit avec les présentes conditions d'utilisation.
+  cookiespage:
+    title: Cookies
+    desc: Cryptozombies souhaite utiliser nos propres cookies et ceux de tiers et des technologies similaires à des fins statistiques et marketing, y compris des cookies et des technologies de fournisseurs tiers pour activer certaines fonctions et fonctionnalités et pour collecter des informations supplémentaires qui nous aident à améliorer ce site et nos services. Ce site peut utiliser des cookies de session (qui expirent lorsque vous fermez votre navigateur) et des cookies persistants (qui restent sur votre appareil après la fermeture de votre navigateur jusqu'à ce que vous les supprimiez ou qu'ils expirent). Nous utilisons ces technologies à des fins de sécurité, pour vous aider à naviguer sur ce site, pour afficher des informations plus efficacement, pour mieux vous servir avec des informations personnalisées sur ce site et pour recueillir des informations statistiques sur la façon dont les visiteurs utilisent ce site afin d'améliorer continuellement sa conception. et fonctions.
+  privacypage:
+    title: Politique de confidentialité
+    desc: CryptoZombies ("CryptoZombies", "nous", "notre", "nous") se soucie de votre vie privée et souhaite que vous sachiez comment nous collectons, utilisons et divulguons les données. Cette déclaration de confidentialité couvre la collecte, l'utilisation et la divulgation des données collectées via cryptozombies.io où cette déclaration de confidentialité est publiée ou liée (collectivement, ce «site»). Cette déclaration de confidentialité décrit également vos droits légaux en relation avec ces données. Tel qu'utilisé dans cette politique de confidentialité, les « informations personnelles » désignent les informations qui vous identifient ou qui peuvent être utilisées pour vous identifier, et les « services » désignent, collectivement, le site Web CryptoZombies et la plate-forme CryptoZombies.
+    personal_information: Informations personnelles que nous collectons et comment nous les utilisons
+    personal_information_desc: Nous collectons et utilisons des informations personnelles en fonction du contexte de vos interactions avec nous. Comme décrit ci-dessous, nous recueillons certaines de ces informations personnelles lorsque vous nous les fournissez directement et, dans certains cas, nous recevons des informations personnelles de tiers. Nous recueillons également automatiquement certaines informations lorsque vous interagissez avec les Services.
+    information_collect: Informations que nous recueillons automatiquement
+    information_collect_desc: "En plus des informations que vous nous fournissez directement, nous collectons automatiquement certaines informations lorsque vous utilisez les Services. Les types d'informations que nous recueillons automatiquement peuvent inclure : Des informations techniques sur votre ordinateur, appareil, matériel ou logiciel que vous utilisez pour accéder à Internet ou à nos Services, telles que l'adresse IP ou d'autres informations transactionnelles ou d'identification de votre appareil (telles que marque et modèle, informations sur les systèmes d'exploitation et les navigateurs de l'appareil, ou autres spécifications relatives à l'appareil ou au système) ; Données d'utilisation et d'activité, informations et statistiques sur votre interaction avec les Services qui peuvent inclure les URL des Services que vous avez visités, les URL des pages de renvoi et de sortie, les pages vues, le temps passé sur une page, le nombre de clics, les applications et fonctionnalités que vous utilisez, les dates, les heures et la durée de vos visites, quand et combien de temps vous utilisez ces applications et fonctionnalités, votre utilisation et vos interactions au sein des espaces virtuels sur la plate-forme CryptoZombies, y compris, sans s'y limiter, le temps que vous passez dans CryptoZombies et autres statistiques d'utilisation ; Les informations qui facilitent une expérience plus sûre et plus personnalisée avec les Services, telles que les informations d'identification de l'utilisateur, les préférences enregistrées et les identifiants de l'appareil ou les informations d'utilisation à des fins d'authentification et de prévention de la fraude ; et des informations sur votre emplacement approximatif, que nous pouvons déduire des informations sur l'appareil telles que l'adresse IP."
+    information_obtain: Informations que nous obtenons de tiers
+    information_obtain_desc: "Dans certains cas, nous recevons des informations personnelles de tiers. Par exemple, si vous avez été invité à assister à un événement virtuel sur la plate-forme CryptoZombies par un hôte CryptoZombies, nous pouvons recevoir votre nom et votre adresse e-mail de l'hôte CryptoZombies pour faciliter votre inscription et votre participation. Nous pouvons également recevoir des informations personnelles d'autres sources tierces, notamment : nos prestataires de services, tels que les fournisseurs d'analyses en ligne ; Les courtiers en données auprès desquels nous achetons des données démographiques pour compléter les données que nous collectons ; Services qui rendent le contenu généré par l'utilisateur à partir de leur service accessible à d'autres, tels que les publications publiques sur les réseaux sociaux ; et Sources accessibles au public, telles que les registres du commerce. De plus, si vous interagissez avec nous sur les réseaux sociaux en publiant sur nos pages, en nous identifiant (ou en utilisant certains hashtags ou autres identifiants) dans les publications, ou en communiquant avec nous ou en participant à des activités de réseaux sociaux dans lesquelles nous sommes impliqués, nous pouvons collecter certaines informations du compte de réseau social que vous utilisez pour interagir avec nous, y compris le nom associé au compte, le pseudo du compte, l'activité récente, le contenu de tout message dans lequel nous sommes tagués et d'autres informations pouvant être contenues sur votre profil de médias sociaux pour nous permettre de répondre aux messages et de comprendre et de dialoguer avec notre public."
