@@ -71,11 +71,11 @@ material:
 
 Solidity'de, değişkenleri depolayacağınız iki yer vardır — `storage` ve `memory`.
 
-**_Depolama_** değişkenlerin kalıcı olarak blok zincirinde depolanmasını işaret eder. **_Hafıza_** değişkenleri geçicidir ve kontratınızı çağıran harici fonksiyon arasında silinir. Bilgisayarınızın hard diski ve RAM'i gibi düşünün.
+***Depolama*** değişkenlerin kalıcı olarak blok zincirinde depolanmasını işaret eder. ***Hafıza*** değişkenleri geçicidir ve kontratınızı çağıran harici fonksiyon arasında silinir. Bilgisayarınızın hard diski ve RAM'i gibi düşünün.
 
 Çoğu zaman Solidity onları varsayılan olarak işlediğinden bu anahtar kelimeleri kullanmanız gerekmez. Durum değişkenleri (fonksiyonların dışında tanımlanmış) fonksiyonların içinde belirlenen değişkenler `memory` iken ve fonksiyon bitir çağırdığında gözden kaybolacakken varsayılan `storage` ve kalıcı olarak blok zincirine yazılır.
 
-Ancak, **_yapılar_** ve **_sıralar_** ile fonksiyon içine yaklaşım zamanı olarak adlandırılan bu anahtarlara ihtiyacınız olmadığında süreler vardır.:
+Ancak, ***yapılar*** ve ***sıralar*** ile fonksiyon içine yaklaşım zamanı olarak adlandırılan bu anahtarlara ihtiyacınız olmadığında süreler vardır.:
 
 ```
 contract SandwichFactory {

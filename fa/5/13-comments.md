@@ -523,7 +523,7 @@ contract CryptoZombies {
 
 In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
 
-The standard in the Solidity community is to use a format called **_natspec_**, which looks like this:
+The standard in the Solidity community is to use a format called ***natspec***, which looks like this:
 
 ```
 /// @title A contract for basic math operations

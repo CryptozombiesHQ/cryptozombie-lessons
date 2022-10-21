@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Når du vil ta i bruk en kolleksjon av elementer kan du bruke en **_array_**. Det er to forskjellinge typer Array i Solidity: **_fixed_** arrays og **_dynamic_** arrays:
+Når du vil ta i bruk en kolleksjon av elementer kan du bruke en ***array***. Det er to forskjellinge typer Array i Solidity: ***fixed*** arrays og ***dynamic*** arrays:
 
 ```
 // Array med en fastslått lengde på 2 strings:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-Du kan også lage en array av **_structs_**. Ved å ta i bruk forrige kapittels `Person` struct:
+Du kan også lage en array av ***structs***. Ved å ta i bruk forrige kapittels `Person` struct:
 
 ```
 Person[] people; // dynamisk Array, vi kan fortsette å legge til elementer
@@ -60,7 +60,7 @@ Husk at status variabler er lagret direkte på Blockchain-en. Så å lage en dyn
 
 ## Offentlige Array-er
 
-Du kan deklarere en array som `public`, og Solidity vil automatisk lage en **_getter_** metode for den. Syntaksen ser slik ut:
+Du kan deklarere en array som `public`, og Solidity vil automatisk lage en ***getter*** metode for den. Syntaksen ser slik ut:
 
 ```
 Person[] public people;
@@ -72,4 +72,4 @@ Andre contracts vil da ha mulighet til å lese (men ikke skrive til) denne array
 
 Vi kommer til å ville lagre en hel gjeng med Zombier i appen vår. Og vi kommer til å ville vise frem alle zombiene våre til andre apper, så vi vil at det skal være offentlig (public).
 
-1. Lag en offentlig(public) array av `Zombie` **_structs_**, og gi den navnet `zombies`.
+1. Lag en offentlig(public) array av `Zombie` ***structs***, og gi den navnet `zombies`.

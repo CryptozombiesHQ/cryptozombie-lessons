@@ -34,7 +34,7 @@ Solidity'de matematik oldukça anlaşılırdır. Aşağıdaki işlemler çoğu p
 * Bölme: `x / y`
 * Modül / artan: `x % y` _(örneğin, `13 % 5`  `3`tür, çünkü 13'ü 5'e bölerseniz, kalan 3'tür)_
 
-Solidity ayrıca bir  **_üstel operatör_** destekler (örn. "x'in y üstü", x^y):
+Solidity ayrıca bir  ***üstel operatör*** destekler (örn. "x'in y üstü", x^y):
 
 ```
 uint x = 5 ** 2; //  5^2 = 25'e eşittir

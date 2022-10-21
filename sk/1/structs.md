@@ -32,7 +32,7 @@ material:
       }
 ---
 
-Občas je potrebné použiť komplexnejšie dátové typy. Na to má pre nás Solidity pripravené **_štruktúry_** ( **_struct_**):
+Občas je potrebné použiť komplexnejšie dátové typy. Na to má pre nás Solidity pripravené ***štruktúry*** ( ***struct***):
 
 ```
 struct Person {

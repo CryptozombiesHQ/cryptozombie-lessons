@@ -109,7 +109,7 @@ material:
 
 ## การมีปฎิสัมพันธ์กับ contract อื่น
 
-หากอยากให้ contract ของเราสามารถสื่อสารกับ contract อื่นบน blockchain ได้ ก่อนอื่นจะต้องทำการ define **_interface_** ขึ้นเสียก่อน
+หากอยากให้ contract ของเราสามารถสื่อสารกับ contract อื่นบน blockchain ได้ ก่อนอื่นจะต้องทำการ define ***interface*** ขึ้นเสียก่อน
 
 มาดูที่ตัวอย่างง่าย ๆ กันก่อนดีกว่า เช่น หากมี contract หนึ่งบน blockchain ที่มีหน้าตาดังนี้:
 
@@ -131,7 +131,7 @@ contract LuckyNumber {
 
 สมมติว่าเรามี contract จากภายนอก (external contract) ที่ต้องการเข้ามาอ่านข้อมูลใน contract นี้โดยจะใช้ฟังก์ชั่น `getNum`
 
-ก่อนอื่นเลยเราก็ต้อง define **_interface_** ของ contract ที่ชื่อ `LuckyNumber`  ซะก่อน:
+ก่อนอื่นเลยเราก็ต้อง define ***interface*** ของ contract ที่ชื่อ `LuckyNumber`  ซะก่อน:
 
 ```
 contract NumberInterface {

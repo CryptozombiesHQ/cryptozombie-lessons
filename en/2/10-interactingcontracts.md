@@ -109,7 +109,7 @@ Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We'
 
 ## Interacting with other contracts
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+For our contract to talk to another contract on the blockchain that we don't own, first we need to define an ***interface***.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
@@ -131,7 +131,7 @@ This would be a simple contract where anyone could store their lucky number, and
 
 Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+First we'd have to define an ***interface*** of the `LuckyNumber` contract:
 
 ```
 contract NumberInterface {

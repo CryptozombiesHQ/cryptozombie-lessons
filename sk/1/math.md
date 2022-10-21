@@ -35,7 +35,7 @@ Matematika v Solidity je celkom priamočiara. Nasledujúce operácie fungujú ro
 * Delenie: `x / y`
 * Modulo / zvyšok: `x % y` _(napríklad, `13 % 5` je `3`, pretože keď sa pokúsiš 13 deliť 5timi celočíselne, dostaneš zvyšok 3)_
 
-Solidity taktiež podporuje **_exponenciálny operátor_** (operáciu "x umocnené na y", ktorú obvykle zapisujeme ako "x^y"):
+Solidity taktiež podporuje ***exponenciálny operátor*** (operáciu "x umocnené na y", ktorú obvykle zapisujeme ako "x^y"):
 
 ```
 uint x = 5 ** 2; // sa rovná 5^2 = 25

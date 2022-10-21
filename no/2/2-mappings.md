@@ -84,7 +84,7 @@ For å gjøre dette trenger vi 2 nye datatyper:`mapping` og `address`.
 
 ## Adresser
 
-Ethereum blockchain består av **_accounts_**, som du kan tenke på som bankkontoer. En konto har en balanse mellom **_Ether_** (den valutaen som brukes i Ethereum-blokkkjeden), og du kan sende og motta Ether-betalinger til andre kontoer, akkurat som at bankkontoen din kan overføre penger til andre bankkontoer.
+Ethereum blockchain består av ***accounts***, som du kan tenke på som bankkontoer. En konto har en balanse mellom ***Ether*** (den valutaen som brukes i Ethereum-blokkkjeden), og du kan sende og motta Ether-betalinger til andre kontoer, akkurat som at bankkontoen din kan overføre penger til andre bankkontoer.
 
 Hver konto har en `address`, som du kan tenke på som et bankkontonummer. Det er en unik identifikator som peker på den kontoen, og det ser slik ut:
 
@@ -98,7 +98,7 @@ Så vi kan bruke den som en unik ID for eierskap av våre zombier. Når en bruke
 
 ## Mapping
 
-I Leksjon 1 så vi på  **_structs_** og **_arrays_**. **_Mappings_**er en annen måte å lagre organisert data på i Solidity.
+I Leksjon 1 så vi på  ***structs*** og ***arrays***. ***Mappings***er en annen måte å lagre organisert data på i Solidity.
 
 Definere en `mapping` ser slik ut:
 

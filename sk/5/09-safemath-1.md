@@ -397,7 +397,7 @@ Chceli sme však túto lekciu spraviť ľahko stráviteľnú, preto sme prešli 
 
 Teraz sa pozrieme na jednu z najdôležitejších bezpečnostných vlastností, ktorých by si si mal byť vedomí pri písani smart kontraktov. Ochrana pred pretečením a podtečením.
 
-Čo je to  **_pretečenie_**?
+Čo je to  ***pretečenie***?
 
 
 Dajme tomu, že máme nejaký `uint8`, ktorý má len 8 bitov. To znamená, že najväčšie číslo, ktoré môže držat je binárne `11111111` (decimálne je to, 2^8 - 1 = 255).
@@ -417,11 +417,11 @@ V našom kóde síce nepoužívame `uint8`, a môže sa zdať nepravdepodobné, 
 
 ### Používanie SafeMath
 
-Na to, aby sme sa tomu vyhli, OpenZeppelin vytvoril **_knižnicu_** (**_library_**) s názvom SafeMath. Tá zabraňuje vyššie spomenutým problémom.
+Na to, aby sme sa tomu vyhli, OpenZeppelin vytvoril ***knižnicu*** (***library***) s názvom SafeMath. Tá zabraňuje vyššie spomenutým problémom.
 
 Ale než sa k tomu dostaneme... čo je to vlastne knižnica?
 
-**_Knižnica_** (**_library_**), je v solidity špeciálny typ kontraktu. Jeden zo spôsobov, akým sú knižnice užitočné je ten, že môžu rozšíriť natívne dátové typy o nové funkcie.
+***Knižnica*** (***library***), je v solidity špeciálny typ kontraktu. Jeden zo spôsobov, akým sú knižnice užitočné je ten, že môžu rozšíriť natívne dátové typy o nové funkcie.
 
 Najprv musíme deklarovať v našom kontrakte, že chceme časť knižnice používať takýmto spôsobom `using SafeMath for uint256`. SafeMath knižnica má 4 funkcie - `add`, `sub`, `mul`, and `div`. K týmto funkciám budeme môcť pristupovať z `uint256` takto:
 

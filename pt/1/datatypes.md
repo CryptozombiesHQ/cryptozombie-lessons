@@ -25,7 +25,7 @@ material:
 
 Bom trabalho! Agora que temos a casca para os nossos contratos, vamos aprender sobre como trabalhar com variáveis em Solidity.
 
-**_Variáveis de Estado_** são permanentemente gravadas no armazenamento do contrato. Isso quer dizer que são escritas na blockchain do Ethereum. Pense nelas como escrever em um banco de dados.
+***Variáveis de Estado*** são permanentemente gravadas no armazenamento do contrato. Isso quer dizer que são escritas na blockchain do Ethereum. Pense nelas como escrever em um banco de dados.
 
 ##### Exemplo:
 ```

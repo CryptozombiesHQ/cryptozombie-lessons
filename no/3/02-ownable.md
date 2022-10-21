@@ -189,7 +189,7 @@ For å håndtere saker som denne, en vanlig praksises som har oppstått er å la
 
 ## OpenZeppelin's `Ownable` kontrakter
 
-Nedenfor er den `Ownable` kontrakten hentet fra **_OpenZeppelin_** Solidity library. OpenZeppelin er et library med sikre og samfunnsmessige smart-kontrakter som du kan bruke i dine egne DApps. Etter denne leksjonen, mens du venter på utgivelsen av leksjon 4, anbefaler vi at du sjekker ut deres nettsted for å lære mer!
+Nedenfor er den `Ownable` kontrakten hentet fra ***OpenZeppelin*** Solidity library. OpenZeppelin er et library med sikre og samfunnsmessige smart-kontrakter som du kan bruke i dine egne DApps. Etter denne leksjonen, mens du venter på utgivelsen av leksjon 4, anbefaler vi at du sjekker ut deres nettsted for å lære mer!
 
 Gi kontrakten under en gjennomgang. Du kommer til å se ting vi ikke har lært enda, men ikke vær bekymret, vi kommert til å snakke om dem senere.
 
@@ -233,7 +233,7 @@ contract Ownable {
 
 Et par nye ting her har vi ikke sett før:
 
-- Constructors: `function Ownable ()` er en **_constructor_**, som er en valgfri spesialfunksjon som har samme navn som kontrakten. Det vil bli utført bare én gang, når kontrakten er først opprettet.
+- Constructors: `function Ownable ()` er en ***constructor***, som er en valgfri spesialfunksjon som har samme navn som kontrakten. Det vil bli utført bare én gang, når kontrakten er først opprettet.
 - Funksjonsmodifikatorer: `modifier onlyOwner ()`. Modifikatorer er en slags halvfunksjon som brukes til å endre andre funksjoner, vanligvis for å kontrollere krav før utførelsen. I dette tilfellet kan `onlyOwner` brukes til å begrense tilgangen slik **kun eieren** av kontrakten kan kjøre denne funksjonen. Vi snakker mer om funksjonsmodifikatorer i neste kapittel, og hva `_;` gjør.
 - `indexed` nøkkelordet: ikke bekymre deg om dette, vi trenger ikke det enda.
 

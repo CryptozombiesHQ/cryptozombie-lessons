@@ -189,7 +189,7 @@ Para lidar com casos assim, uma prática que se tornou comum é tornar o contrat
 
 ## Contratos `Ownable` do OpenZeppelin
 
-Abaixo um contrato `Ownable` pego da biblioteca Solidity do **_OpenZeppelin_**. OpenZeppelin é uma biblioteca de contratos seguros e auditados pela comunidade que você pode usar em suas próprias DApps. Após esta lição, recomendamos fortemente que você visite o site deles para maior aprendizado.
+Abaixo um contrato `Ownable` pego da biblioteca Solidity do ***OpenZeppelin***. OpenZeppelin é uma biblioteca de contratos seguros e auditados pela comunidade que você pode usar em suas próprias DApps. Após esta lição, recomendamos fortemente que você visite o site deles para maior aprendizado.
 
 Leia com atenção o contrato abaixo. Você verá algumas coisas que nós já aprendemos, mas não se preocupe, iremos falar mais sobre isso em seguida.
 
@@ -233,7 +233,7 @@ contract Ownable {
 
 Um pouco de novas coisas que não vimos antes:
 
-- Construtores: `function Ownable()` é um **_construtor_**, que é uma função opcional e especial que tem o mesmo nome do contrato. Esta será executada somente uma vez, quando o contrato é criado a primeira vez.
+- Construtores: `function Ownable()` é um ***construtor***, que é uma função opcional e especial que tem o mesmo nome do contrato. Esta será executada somente uma vez, quando o contrato é criado a primeira vez.
 - Funções Modificadoras: `modifier onlyOwner()`. Modificadores são um tipo de meia-função que são usadas para modificar outras funções, normalmente usadas para checar algo requerido antes da execução. Neste caso, `onlyOwner` pode ser usada para limitar o acesso então **only** (somente) o **owner** (dono) do contrato pode executar esta função. Nós iremos falar mais sobre funções modificadoras no próximo capítulo, e o que esse `_;` faz.
 - Palavra-chave `indexed`: não se preocupe com isso, nós ainda não precisamos.
 

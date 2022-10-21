@@ -255,7 +255,7 @@ V Kapitole 6 sme výpočítali náhodné čislo v rozsahu od 0 do 100. Teraz tot
 
 ## Vyskúšaj si to sám
 
-1. Vytvor `if` podmienku, ktorá bude kontrolovať či `rand`  je **_menej alebo sa rovná_** `attackVictoryProbability`.
+1. Vytvor `if` podmienku, ktorá bude kontrolovať či `rand`  je ***menej alebo sa rovná*** `attackVictoryProbability`.
 
 2. Ak je táto podmienka pravdivá, náš zombie vyhrá. Takže:
 

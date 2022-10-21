@@ -386,11 +386,11 @@ material:
 
 Ótimo! Agora que temos o Web3.js em nosso projeto, vamos inicializá-lo e conversar com o blockchain.
 
-A primeira coisa que precisamos é de um **_Web3 Provider_**.
+A primeira coisa que precisamos é de um ***Web3 Provider***.
 
-Lembre-se, o Ethereum é composto de **_nodes_** (nós) que compartilham uma cópia dos mesmos dados. Definir um provedor Web3 em Web3.js informa ao nosso código **em que nó** devemos falar para lidar com nossas leituras e escritas. É como definir a URL do servidor da Web remoto para suas chamadas de API em um aplicativo da web tradicional.
+Lembre-se, o Ethereum é composto de ***nodes*** (nós) que compartilham uma cópia dos mesmos dados. Definir um provedor Web3 em Web3.js informa ao nosso código **em que nó** devemos falar para lidar com nossas leituras e escritas. É como definir a URL do servidor da Web remoto para suas chamadas de API em um aplicativo da web tradicional.
 
-Você poderia hospedar seu próprio nó Ethereum como um provedor. No entanto, há um serviço de terceiros que facilita a sua vida, para que você não precise manter seu próprio nó Ethereum para fornecer um DApp para seus usuários — **_Infura_**.
+Você poderia hospedar seu próprio nó Ethereum como um provedor. No entanto, há um serviço de terceiros que facilita a sua vida, para que você não precise manter seu próprio nó Ethereum para fornecer um DApp para seus usuários — ***Infura***.
 
 ## Infura
 
@@ -408,7 +408,7 @@ No entanto, como o DApp será usado por muitos usuários — e esses usuários v
 
 A criptografia é complicada, portanto, a menos que você seja um especialista em segurança e realmente saiba o que está fazendo, provavelmente não é uma boa ideia tentar gerenciar as chaves privadas dos usuários no front-end de nosso aplicativo.
 
-Mas, felizmente, você não precisa — já existem serviços que lidam com isso para você. O mais popular deles é **_Metamask_**.
+Mas, felizmente, você não precisa — já existem serviços que lidam com isso para você. O mais popular deles é ***Metamask***.
 
 ## Metamask
 

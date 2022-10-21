@@ -53,7 +53,7 @@ material:
       }
 ---
 
-En este capítulo aprenderemos sobre los **_valores de retorno_** de una función, y sobre modificadores de funciones.
+En este capítulo aprenderemos sobre los ***valores de retorno*** de una función, y sobre modificadores de funciones.
 
 ## Valores de Retorno
 
@@ -73,13 +73,13 @@ En Solidity, la declaración de la función contiene al final tipo de dato del v
 
 La función de arriba no cambia el estado en Solidity, esto es que no cambia ningún valor o escribe nada.
 
-En este caso podríamos declararla como función **_view_**, que significa que solo puede ver los datos pero no modificarlos:
+En este caso podríamos declararla como función ***view***, que significa que solo puede ver los datos pero no modificarlos:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity también contiene funciones **_pure_**, que significa que ni siquiera accedes a los datos de la aplicación. Por ejemplo:
+Solidity también contiene funciones ***pure***, que significa que ni siquiera accedes a los datos de la aplicación. Por ejemplo:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como **_pure_**.
+Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como ***pure***.
 
 > Nota: No siempre es fácil recordar marcar una función como pure o view, por suerte el compilador de Solidity es muy bueno avisándonos de cuándo debemos usar estos modificadores de función.
 

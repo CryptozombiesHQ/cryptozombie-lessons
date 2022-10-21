@@ -12,7 +12,7 @@ material:
 
 Nosso contrato em Solidity esta completo! Agora nós vamos escrever o frontend  em JavaScript que interage com o contrato.
 
-Ethereum possui uma biblioteca  em JavaScript chamada **_Web3.js_**.
+Ethereum possui uma biblioteca  em JavaScript chamada ***Web3.js***.
 
 Nas lições mais à frente, iremos nos aprofundar em como implantar um contrato e configurar a Web3.js. Mas por enquanto vamos somente ver uma amostra de um código de como a Web3.js irá interagir com um contrato já implantado (deployed).
 

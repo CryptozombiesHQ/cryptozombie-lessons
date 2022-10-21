@@ -229,7 +229,7 @@ material:
       }
 ---
 
-Nous avons, jusqu'à présent, vu plusieurs **_modificateurs de fonction_**. Il n'est pas forcément évident de se rappeler de tous, nous allons donc les revoir rapidement :
+Nous avons, jusqu'à présent, vu plusieurs ***modificateurs de fonction***. Il n'est pas forcément évident de se rappeler de tous, nous allons donc les revoir rapidement :
 
 1. Il existe des modificateurs de visibilité qui contrôlent quand et depuis où la fonction peut être appelée : `private` veut dire que la fonction ne peut être appelée que par les autres fonctions à l'intérieur du contrat; `internal` est comme `private` mais en plus, elle peut être appelée par les contrats qui héritent de celui-ci; avec `external`, la fonction ne peut être appelée que depuis l'extérieur du contrat; et enfin avec `public`, elle peut être appelée depuis n'importe où, à l'intérieur et à l'extérieur.
 

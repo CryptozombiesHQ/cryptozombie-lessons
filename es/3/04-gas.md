@@ -223,9 +223,9 @@ Vamos a ver otra característica por la que Solidity es diferente a otros lengua
 
 ## Gas — el combustible que mueven las DApps de Ethereum
 
-En Solidity, tus usuarios tienen que pagar cada vez que ejecuten una función en tu DApp usando una divisa llamada **_gas_**. Los usuarios compran gas con Ether (la divisa de Ethereum), así que deben gastar ETH para poder ejecutar funciones en tu DApp.
+En Solidity, tus usuarios tienen que pagar cada vez que ejecuten una función en tu DApp usando una divisa llamada ***gas***. Los usuarios compran gas con Ether (la divisa de Ethereum), así que deben gastar ETH para poder ejecutar funciones en tu DApp.
 
-La cantidad de gas necesaria para ejecutar una función depende en cuán compleja sea la lógica de la misma. Cada operación individual tiene un **_coste de gas_** basado aproximadamente en cuantos recursos computacionales se necesitarán para llevarla a cabo (p. ej. escribir en memoria es más caro que añadir dos integers). El total **_coste de gas_** de tu función es la suma del coste de cada una de sus operaciones.
+La cantidad de gas necesaria para ejecutar una función depende en cuán compleja sea la lógica de la misma. Cada operación individual tiene un ***coste de gas*** basado aproximadamente en cuantos recursos computacionales se necesitarán para llevarla a cabo (p. ej. escribir en memoria es más caro que añadir dos integers). El total ***coste de gas*** de tu función es la suma del coste de cada una de sus operaciones.
 
 Como ejecutar funciones cuestan dinero real a los usuarios, la optimización de código es mucho más importante en Ethereum que en cualquier otro lenguaje. Si tu código es descuidado, tus usuarios van a tener que pagar un premium para ejecutar tus funciones - esto puede suponer millones de dolares gastados innecesariamente por miles de usuarios en tasas.
 

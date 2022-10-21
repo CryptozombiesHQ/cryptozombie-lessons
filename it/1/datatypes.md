@@ -25,7 +25,7 @@ material:
 
 Ottimo lavoro! Ora che abbiamo una shell per il nostro contratto, impariamo come Solidity gestisce le variabili.
 
-**_Le Variabili di Stato_** vengono memorizzate in modo permanente nella memoria dei contratti. Ciò significa che sono scritti sulla blockchain di Ethereum. Pensa a loro come a scrivere su un DB.
+***Le Variabili di Stato*** vengono memorizzate in modo permanente nella memoria dei contratti. Ciò significa che sono scritti sulla blockchain di Ethereum. Pensa a loro come a scrivere su un DB.
 
 ##### Example:
 ```

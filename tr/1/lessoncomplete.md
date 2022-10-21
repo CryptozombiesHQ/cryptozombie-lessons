@@ -14,8 +14,8 @@ Oyunu daha da ileriye götürmek ve zombi ordunuzun büyümesini sürdürmek iç
 
 ### 1. İlerlemenizi kaydetmek için oturum açın
 
-Sayfanın üstündeki "İlerlemeyi Kaydet" linkine tıklayarak ilerlemenizi kaydetmek için **_Oturum aç_**. Yeni bir ders eklediğimizde size bildireceğiz.
+Sayfanın üstündeki "İlerlemeyi Kaydet" linkine tıklayarak ilerlemenizi kaydetmek için ***Oturum aç***. Yeni bir ders eklediğimizde size bildireceğiz.
  
 ### 2. Zombinizi arkadaşlarınızla paylaşın
 
-Zombinizi Twitter falan **_Paylaşın_** (Görüntüler / linkler eklemek gerek) 
+Zombinizi Twitter falan ***Paylaşın*** (Görüntüler / linkler eklemek gerek) 

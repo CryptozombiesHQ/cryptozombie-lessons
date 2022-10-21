@@ -34,7 +34,7 @@ La matematica in Solidity è piuttosto semplice. Le seguenti operazioni sono le 
 * Divisione: `x / y`
 * Modulo / Resto: `x % y` _(per esempio, `13 % 5` è `3`, perchè se dividi 13 per 5, il resto è 3)_
 
-Solidity supporta anche un **_operatore esponenziale_** (ovvero "x alla potenza di y", x^y):
+Solidity supporta anche un ***operatore esponenziale*** (ovvero "x alla potenza di y", x^y):
 
 ```
 uint x = 5 ** 2; // uguale a 5^2 = 25

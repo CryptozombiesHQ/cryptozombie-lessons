@@ -143,7 +143,7 @@ material:
 
 Hittil har Solidity sett ganske lik ut som andre språk, som JavaScript. Men det er mange måter Ethereum DApps er forskjellig fra normale applikasjoner.
 
-Til å begynne med, etter at du har distribuert en kontrakt til Ethereum, er den **_uforanderlig (Immutable)_**, noe som betyr at den aldri kan endres eller oppdateres igjen.
+Til å begynne med, etter at du har distribuert en kontrakt til Ethereum, er den ***uforanderlig (Immutable)***, noe som betyr at den aldri kan endres eller oppdateres igjen.
 
 Den opprinnelige koden du distribuerer til en kontrakt er der for å være permanent, i blockchain-en. Dette er en av grunnene til at sikkerhet er en så stor bekymring i Solidity. Hvis det er feil i kontraktskoden din, er det ikke mulig å fikse det senere. Du må få brukerne til å begynne å bruke en annen smart-kontrakt adresse enn den som har feilen.
 

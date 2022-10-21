@@ -25,7 +25,7 @@ material:
 
 Bien joué ! Maintenant que nous avons une structure pour notre contrat, voyons voir comment Solidity gère les variables.
 
-**_Les variables d'état_** sont stockées de manière permanente dans le stockage du contrat. Cela signifie qu'elles sont écrites dans la blockchain Ethereum. C'est comme écrire dans une base de données.
+***Les variables d'état*** sont stockées de manière permanente dans le stockage du contrat. Cela signifie qu'elles sont écrites dans la blockchain Ethereum. C'est comme écrire dans une base de données.
 
 ##### Exemple:
 ```

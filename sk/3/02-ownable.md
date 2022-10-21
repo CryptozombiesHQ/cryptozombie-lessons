@@ -189,7 +189,7 @@ Na zabezpečenie takýchto situácií sa stalo bežnou praktikou urobiť kontrak
 
 ## `Ownable` kontrakty od OpenZeppelin
 
-V bloku kódu nižšie je `Ownable` kontrakt z  **_OpenZeppelin_**  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použiť vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
+V bloku kódu nižšie je `Ownable` kontrakt z  ***OpenZeppelin***  Solidity knižnice. OpenZeppelin je knižnica bezpečných, komunitou schválených smart kontraktov, ktoré môžeš použiť vo svojich aplikáciách. Keď dokončíš túto lekciu, doporučujeme sa pozrieť na webové stránky OpenZeppelinu pre ďalšie informácie.
 
 Pozri si tento kontrakt. Uvidíš niekoľko vecí, ktoré sme zatiaľ ešte neprebrali. Dostaneme sa k nim za chvíľu.
 
@@ -233,7 +233,7 @@ contract Ownable {
 
 Niekoľko vecí ktoré sme doposiaľ nevideli:
 
-- Konštruktory. `function Ownable()` je **_konštruktor_** (**_constructor_**). To je funkcia, ktorú môžeš ale nemusíš definovať, má rovnaký názov ako kontrakt. Bude vykonaná iba raz, a to v čase ked je kontrakt vytvorený.
+- Konštruktory. `function Ownable()` je ***konštruktor*** (***constructor***). To je funkcia, ktorú môžeš ale nemusíš definovať, má rovnaký názov ako kontrakt. Bude vykonaná iba raz, a to v čase ked je kontrakt vytvorený.
 - Funkčné modifikátory: `modifier onlyOwner()`. Modifikátory sú také polovičaté funkcie, použité na modifikáciu chovania iných funkcií. Obvykle na skontrolovanie určitých požiadavok pred vykonaním funkcie. V tomto prípade `onlyOwner` je modifikátor ktorý limituje právo spúštať funkciu iba (only) vlastníkom (owner). Pozrieme sa na ne z blízka v ďalšej kapitole, kde si taktiež vysvetlíme, čo znamená ten podivný kód `_;`.
 - Kľučové slovo `indexed`: toto zatiaľ riešit nebudeme, zatiaľ ho nepotrebujeme.
 

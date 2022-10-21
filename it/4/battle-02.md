@@ -295,7 +295,7 @@ Se ho un nodo, potrei pubblicare una transazione **solo sul mio nodo** e non con
 
 ## Quindi come possiamo generare numeri casuali in modo sicuro in Ethereum?
 
-Poiché l'intero contenuto della blockchain è visibile a tutti i partecipanti, questo è un problema difficile e la sua soluzione va oltre lo scopo di questo tutorial. Puoi leggere <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>questo thread StackOverflow</a> per alcune idee. Un'idea sarebbe quella di utilizzare **_oracle_** per accedere ad una funzione di numero casuale dall'esterno della blockchain di Ethereum.
+Poiché l'intero contenuto della blockchain è visibile a tutti i partecipanti, questo è un problema difficile e la sua soluzione va oltre lo scopo di questo tutorial. Puoi leggere <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>questo thread StackOverflow</a> per alcune idee. Un'idea sarebbe quella di utilizzare ***oracle*** per accedere ad una funzione di numero casuale dall'esterno della blockchain di Ethereum.
 
 Naturalmente, poiché decine di migliaia di nodi Ethereum sulla rete sono in competizione per risolvere il blocco successivo, le mie probabilità di risolvere il blocco successivo sono davvero basse. Ci vorrebbe molto tempo e risorse informatiche per sfruttare questo profitto - ma se la ricompensa è abbastanza alta (come se potessi scommettere $100.000.000 sulla funzione di lancio della moneta), varrebbe la pena attaccare.
 
@@ -303,7 +303,7 @@ Quindi, sebbene questa generazione di numeri casuali NON sia sicura su Ethereum,
 
 Poiché in questo tutorial stiamo solo costruendo un semplice gioco a scopo dimostrativo e non ci sono soldi veri sulla linea, accetteremo i compromessi dell'utilizzo di un generatore di numeri casuali che è semplice da implementare, sapendo però che non è totalmente sicuro.
 
-Nella prossima lezione potremo vedere come usare **_oracles_** (un modo sicuro per recuperare i dati al di fuori di Ethereum) per generare una funzione casuale dall'esterno della blockchain.
+Nella prossima lezione potremo vedere come usare ***oracles*** (un modo sicuro per recuperare i dati al di fuori di Ethereum) per generare una funzione casuale dall'esterno della blockchain.
 
 ## Facciamo una prova
 

@@ -25,7 +25,7 @@ material:
 
 Godt jobbet! Nå som vi har laget et skjellett til kontrakten, la oss lære om hvordan Solidity jobber med variabler.
 
-**_Status variabler_**er permanent lagret i kontrakt-lagringsplass. Dette betyr at de blir lagret i Ethereum blockchain-en. Tenk på dem som om du lagrer til en database.
+***Status variabler***er permanent lagret i kontrakt-lagringsplass. Dette betyr at de blir lagret i Ethereum blockchain-en. Tenk på dem som om du lagrer til en database.
 
 ##### Eksempel:
 ```

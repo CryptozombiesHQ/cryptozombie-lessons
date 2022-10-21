@@ -25,7 +25,7 @@ material:
 
 Aferin! Şimdi kontratımız için bir iskelet bulduk, hadi Solidity'nin değişkenlerle nasıl iş yaptığını öğrenelim.
 
-**_Hal_değişkenleri_** kontrat deposunda kalıcı olarak depolanır. Bu Ethereum blok zinciri için yazıldığı anlamına gelir. Onları bir veritabanına yazmak gibi düşünün. 
+***Hal_değişkenleri*** kontrat deposunda kalıcı olarak depolanır. Bu Ethereum blok zinciri için yazıldığı anlamına gelir. Onları bir veritabanına yazmak gibi düşünün. 
 
 ##### Örnek:
 ```

@@ -94,7 +94,7 @@ material:
 ---
 Vår spillkode begynner å bli ganske lang. I stedet for å lage en ekstremt lang kontrakt, er det noen ganger greit å dele kodelogikken din på tvers av flere kontrakter for å organisere koden.
 
-En egenskap av Solidity som gjør dette mer overkommelig er kontrakt **_arv_**:
+En egenskap av Solidity som gjør dette mer overkommelig er kontrakt ***arv***:
 
 ```
 contract Doge {
@@ -110,7 +110,7 @@ contract BabyDoge is Doge {
 }
 ```
 
-`BabyDoge` **_arver_** fra `Doge`. Det betyr at hvis du kompilerer og distribuerer `BabyDoge`,vil den ha adgang til både `catchphrase()` og `anotherCatchphrase()` og eventuelle andre offentlige funksjoner vi kan definere i `Doge`).
+`BabyDoge` ***arver*** fra `Doge`. Det betyr at hvis du kompilerer og distribuerer `BabyDoge`,vil den ha adgang til både `catchphrase()` og `anotherCatchphrase()` og eventuelle andre offentlige funksjoner vi kan definere i `Doge`).
 
 Dette kan brukes til logisk arv (som med en underklasse, en `katt` er et`dyr`). Men det kan også brukes til å organisere koden din ved å gruppere lignende logikk sammen i forskjellige klasser.
 

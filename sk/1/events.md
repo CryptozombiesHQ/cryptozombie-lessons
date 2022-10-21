@@ -75,7 +75,7 @@ material:
 
 Náš kontrakt je takmer hotový. Poďme ešte pridať **udalosti**.
 
-**Udalosti** (**_Events_**) sú spôsob, ako kontrakt môže dať vedieť front endu tvojej aplikácie vedieť, že sa v tvojom kontrakte niečo nastalo. Tvoja aplikácia može sledovať vyvolanie určitých typov udalostí a reagovať keď nastanú. 
+**Udalosti** (***Events***) sú spôsob, ako kontrakt môže dať vedieť front endu tvojej aplikácie vedieť, že sa v tvojom kontrakte niečo nastalo. Tvoja aplikácia može sledovať vyvolanie určitých typov udalostí a reagovať keď nastanú. 
 
 Príklad:
 

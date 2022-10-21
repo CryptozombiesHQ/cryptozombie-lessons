@@ -19,8 +19,8 @@ zkSync is built on the ZK rollup architecture, a level-two scaling solution in w
 
 This is the short answer to why we think zkSync is important:
 
-* The protocol allows ETH and ERC20 token transfers with **_instant confirmations_** and 10 min finality on Ethereum.
-* Provides Mainnet-level security with **_zero reliance on 3rd parties_**.
+* The protocol allows ETH and ERC20 token transfers with ***instant confirmations*** and 10 min finality on Ethereum.
+* Provides Mainnet-level security with ***zero reliance on 3rd parties***.
 * Low transaction fees
 * Fast deposits and withdrawals
 

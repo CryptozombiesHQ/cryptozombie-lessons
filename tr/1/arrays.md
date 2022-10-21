@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Bir şeyin bir koleksiyonunu istediğinizde, bir **_sıralama_** (array) kullanabilirsiniz. Solidity'de iki tür sıralama vardır: **_sabit_** sıralamalar ve **_dinamik_** sıralamalar:
+Bir şeyin bir koleksiyonunu istediğinizde, bir ***sıralama*** (array) kullanabilirsiniz. Solidity'de iki tür sıralama vardır: ***sabit*** sıralamalar ve ***dinamik*** sıralamalar:
 
 ```
 // İki öğeli sabit uzunlukta sıralama:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-**_Yapılar_**'ın bir sıralamasını da oluşturabilirsiniz. Önceki bölümün `Person` yapısını kullanarak: 
+***Yapılar***'ın bir sıralamasını da oluşturabilirsiniz. Önceki bölümün `Person` yapısını kullanarak: 
 
 ```
 Person[] people; // dinamik Sıralama, ona eklemeyi sürdürebiliriz.
@@ -60,7 +60,7 @@ Durum değişkenlerinin blok zincirinde kalıcı olarak saklandığını hatırl
 
 ## Genel Sıralamalar
 
-Bir sıralamayı `public` olarak ilan edebilirsiniz ve Solidity otomatik olarak onun için bir **_gaz alıcı_** oluşturacak. Söz dizimi şöyle görünüyor: 
+Bir sıralamayı `public` olarak ilan edebilirsiniz ve Solidity otomatik olarak onun için bir ***gaz alıcı*** oluşturacak. Söz dizimi şöyle görünüyor: 
 
 ```
 Person[] public people;
@@ -72,4 +72,4 @@ Diğer kontratlar daha sonra bu diziyi okuyabilir (ancak yazamaz). Bu genel veri
 
 Uygulamamızda bir zombi ordusu depolamak isteyeceğiz. Ve zombilerimizi tüm diğer uygulamalara göstermek isteyeceğiz, böylece onun genel olmasını isteyeceğiz.
 
-1. `Zombie` **_yapıları_**'nın bir genel sıralamasını oluştur ve onu `zombies` olarak isimlendir.
+1. `Zombie` ***yapıları***'nın bir genel sıralamasını oluştur ve onu `zombies` olarak isimlendir.

@@ -12,7 +12,7 @@ material:
 
 Solidity kontratımız tamamlandı! Şimdi kontrat ile etkileşen bir JavaScript ön yüzü yazmamız gerek.
 
-Ethereum **_Web3.js_** denilen bir JavaScript kütüphanesine sahip.
+Ethereum ***Web3.js*** denilen bir JavaScript kütüphanesine sahip.
 
 Sonraki bir derste, bir kontratın nasıl dağıtılacağının ve Web3.js kurulumunun derinlerine ineceğiz. Fakat şimdilik, Web3.js'nin sevk edilmiş kontratla nasıl etkileşeceğine ilişkin bazı örnek kodlara bakalım.
 

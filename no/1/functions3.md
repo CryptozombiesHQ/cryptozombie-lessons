@@ -53,7 +53,7 @@ material:
       }
 ---
 
-I dette kapittelets skal vi lære om funksjoners **_return verdier_**, og funksjon modifiseringer.
+I dette kapittelets skal vi lære om funksjoners ***return verdier***, og funksjon modifiseringer.
 
 ## Return Verdier
 
@@ -73,13 +73,13 @@ I Solidity, når en deklarerer en funksjons retur verdier må en legge til hvilk
 
 Funksjonen over endrer egentlig ingenting i solidity — f.eks. endrer den ingen verdier eller skriver ingenting.
 
-Så i dette tilfellet kan vi sette den som en **_view_** funksjon, som betyr at dens verdier bare kan leses og ikke kan endre noe:
+Så i dette tilfellet kan vi sette den som en ***view*** funksjon, som betyr at dens verdier bare kan leses og ikke kan endre noe:
 
 ```
 function sayHello() public view returns (string) {
 ```
 
-Solidity har også **_pure_** funksjoner, som betyr at du ikke en gang tar i bruk data i applikasjonen. Ta en titt på det følgende:
+Solidity har også ***pure*** funksjoner, som betyr at du ikke en gang tar i bruk data i applikasjonen. Ta en titt på det følgende:
 
 ```
 function _multiply(uint a, uint b) private pure returns (uint) {
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Denne funksjonen leser ikke fra statusen til appen engang — den returnerer informasjon som bare blir gitt fra parameterene. Så i dette tilfellet kan vi definere funksjonen som **_pure_**.
+Denne funksjonen leser ikke fra statusen til appen engang — den returnerer informasjon som bare blir gitt fra parameterene. Så i dette tilfellet kan vi definere funksjonen som ***pure***.
 
 > Noter: Det kan være vanskelig å huske å definere funksjoner som pure/view. Heldigvis er Solidity sin kompilator flink til å gi deg varsler om hvor det kan være lurt å legge til en av disse modifisatorene.
 

@@ -12,7 +12,7 @@ material:
 
 Notre contrat Solidity est fini ! Maintenant nous devons écrire la partie client en JavaScript pour interagir avec le contrat.
 
-Ethereum a une bibliothèque JavaScript appelée **_Web3.js_**.
+Ethereum a une bibliothèque JavaScript appelée ***Web3.js***.
 
 Dans une prochaine leçon, nous verrons en détail comment déployer un contrat et configurer Web3.js. Mais pour l'instant, regardons simplement un exemple de code pour voir comment Web3.js pourrait interagir avec notre contrat déployé.
 

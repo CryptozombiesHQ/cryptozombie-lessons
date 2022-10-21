@@ -33,6 +33,6 @@ V tejto lekcii sme sa naučili o:
 
 Táto lekcia bola zavŕšením písaním Solidity kódu našej hry! (Zatiaľ - možno niekedy v budúcnosti pridáme ďalšie lekcie)
 
-V ďalších dvoch lekciách sa naučís, ako nasadzovať tvoje kontrakty a pracovať s nimi z Javascriptu použitím **_web3.js_** (takže môžeš vytvoriť front-end tvojej DAppky).
+V ďalších dvoch lekciách sa naučís, ako nasadzovať tvoje kontrakty a pracovať s nimi z Javascriptu použitím ***web3.js*** (takže môžeš vytvoriť front-end tvojej DAppky).
 
 Premenuj svojich zombie ako sa ti páči a pokračuj na ďalšiu kapitolu pre oficiálne ukončenie tejto lekcie.

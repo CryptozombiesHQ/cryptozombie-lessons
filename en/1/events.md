@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
+Our contract is almost finished! Now let's add an ***event***.
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+***Events*** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
 Example:
 

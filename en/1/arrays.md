@@ -39,7 +39,7 @@ material:
       }
 ---
 
-When you want a collection of something, you can use an **_array_**. There are two types of arrays in Solidity: **_fixed_** arrays and **_dynamic_** arrays:
+When you want a collection of something, you can use an ***array***. There are two types of arrays in Solidity: ***fixed*** arrays and ***dynamic*** arrays:
 
 ```
 // Array with a fixed length of 2 elements:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+You can also create an array of ***structs***. Using the previous chapter's `Person` struct:
 
 ```
 Person[] people; // dynamic Array, we can keep adding to it
@@ -60,7 +60,7 @@ Remember that state variables are stored permanently in the blockchain? So creat
 
 ## Public Arrays
 
-You can declare an array as `public`, and Solidity will automatically create a **_getter_** method for it. The syntax looks like:
+You can declare an array as `public`, and Solidity will automatically create a ***getter*** method for it. The syntax looks like:
 
 ```
 Person[] public people;
@@ -72,4 +72,4 @@ Other contracts would then be able to read from, but not write to, this array. S
 
 We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
-1. Create a public array of `Zombie` **_structs_**, and name it `zombies`.
+1. Create a public array of `Zombie` ***structs***, and name it `zombies`.

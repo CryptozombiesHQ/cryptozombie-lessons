@@ -73,9 +73,9 @@ material:
       }
 ---
 
-Nasz kontrakt jest prawie gotowy! Teraz dodajmy jeszcze **_event_**.
+Nasz kontrakt jest prawie gotowy! Teraz dodajmy jeszcze ***event***.
 
-**_Events(Zdarzenia)_** pozwalają Twojemu kontraktowi wysłać informacje do frontowej aplikacji. Frontowa aplikacja 'nasłuchuje', czy dane zdarzenie zaszło i jeśli tak jest to podejmuje stosowną akcję.
+***Events(Zdarzenia)*** pozwalają Twojemu kontraktowi wysłać informacje do frontowej aplikacji. Frontowa aplikacja 'nasłuchuje', czy dane zdarzenie zaszło i jeśli tak jest to podejmuje stosowną akcję.
 
 Przykład:
 

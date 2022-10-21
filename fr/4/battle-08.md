@@ -247,7 +247,7 @@ Au chapitre 6 nous avons calculé un nombre aléatoire entre 0 et 100. Nous allo
 
 ## A votre tour
 
-1. Créez une déclaration `if` qui va vérifier si `rand` est **_plus petit ou égal_** à `attackVictoryProbability`.
+1. Créez une déclaration `if` qui va vérifier si `rand` est ***plus petit ou égal*** à `attackVictoryProbability`.
 
 2. Si c'est le cas, notre zombie gagne ! Donc :
 

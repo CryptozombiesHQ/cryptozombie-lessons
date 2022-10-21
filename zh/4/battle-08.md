@@ -249,7 +249,7 @@ material:
 
 ## 实战演习
 
-1. 创建一个 `if` 语句来检查 `rand` 是不是 **_小于或者等于_** `attackVictoryProbability`。
+1. 创建一个 `if` 语句来检查 `rand` 是不是 ***小于或者等于*** `attackVictoryProbability`。
 
 2. 如果以上条件为 `true`， 我们的僵尸就赢了！所以：
 

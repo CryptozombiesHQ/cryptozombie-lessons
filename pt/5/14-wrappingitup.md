@@ -33,6 +33,6 @@ Nesta lição aprendemos sobre:
 
 Esta lição conclui o código do nosso jogo em Solidity! (No momento – podemos adicionar ainda mais lições no futuro).
 
-Nas próximas duas lições, iremos ver como em como implantar os seus contratos e interagir com eles usando **_web3.j_** (então você pode criar um front-end para a sua DApp).
+Nas próximas duas lições, iremos ver como em como implantar os seus contratos e interagir com eles usando ***web3.j*** (então você pode criar um front-end para a sua DApp).
 
 Vá em frente e renomeie qualquer um dos seus zumbis se você quiser, então siga para o próximo capítulo para completar a lição.

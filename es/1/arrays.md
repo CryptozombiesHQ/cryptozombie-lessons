@@ -39,7 +39,7 @@ material:
       }
 ---
 
-Cuando quieres tener una colección de algo, puedes usar un **_array_**. Hay dos tipos de arrays en Solidity: arrays **_fijos_** y arrays **_dinámicos_**:
+Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos tipos de arrays en Solidity: arrays ***fijos*** y arrays ***dinámicos***:
 
 ```
 // Un Array con una longitud fija de 2 elementos:
@@ -50,7 +50,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-También puedes crear arrays de **_estructuras_**. Si usásemos la estructura `Person` del capítulo anterior:
+También puedes crear arrays de ***estructuras***. Si usásemos la estructura `Person` del capítulo anterior:
 
 ```
 Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
@@ -60,7 +60,7 @@ Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
 
 ## Arrays Públicos
 
-Puedes declarar un array como `público`, y Solidity creará automaticamente una función **_getter_** para acceder a él. La sintaxis es así:
+Puedes declarar un array como `público`, y Solidity creará automaticamente una función ***getter*** para acceder a él. La sintaxis es así:
 
 ```
 Person[] public people;
@@ -72,4 +72,4 @@ Otros contratos entonces podrán leer (pero no escribir) de este array. Es un pa
 
 Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras applicaciones, así que lo queremos público:
 
-1. Crea un array público de **_estructuras_** `Zombie` y llámalo `zombies`.
+1. Crea un array público de ***estructuras*** `Zombie` y llámalo `zombies`.

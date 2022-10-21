@@ -12,7 +12,7 @@ material:
 
 Náš Solidity kontrakt je hotový. Teraz potrebujeme napísať Javascriptový frontend, ktorý bude prepojený s našim kontraktom.
 
-Ethereum má k dispozícii Javascriptovú knižnicu **_Web3.js_**.
+Ethereum má k dispozícii Javascriptovú knižnicu ***Web3.js***.
 
 V neskorších lekciách sa pozrieme na to, ako náš kontrakt nasaďiť na blokchain, a ako nastaviť Web3.js. Zatiaľ sa však pozrieme len na ukážkový kód, Ilustrujeme, ako by sme pomocou Web3.js pracovali s nasadeným kontraktom. 
 

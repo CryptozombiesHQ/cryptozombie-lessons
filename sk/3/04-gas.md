@@ -185,9 +185,9 @@ Poďme sa pozrieť na ďalší aspekt ktorým sa Solidity líši od ostatných p
 
 ## Gas — palivo na ktorom bežia Ethereum DApps 
 
-V solidity musia užívatelia zaplatiť zakaždým keď zavolajú nejakú funkciu tvojho kontraktu menou nazývanou **_gas_** (plyn). Užívatelia si môžu kúpiť gas za Ether (Ethéreum kryptomena). Znamená to, že tvoji užívatelia musia utrácať ETH na to, aby mohli volať funkcie tvojej DAppky.
+V solidity musia užívatelia zaplatiť zakaždým keď zavolajú nejakú funkciu tvojho kontraktu menou nazývanou ***gas*** (plyn). Užívatelia si môžu kúpiť gas za Ether (Ethéreum kryptomena). Znamená to, že tvoji užívatelia musia utrácať ETH na to, aby mohli volať funkcie tvojej DAppky.
 
-Koľko gasu je na vykonanie funkcie potrebné záleží od toho, aká zložita je logika volanej funkcie. Každá individuálna operácia má určitú **_spotrebu gasu_** (**_gas cost_**). Spotreba gasu operácie je daná tým, koľko výpočtových zdrojov bude potrebných na vykonanie operácie (napríklad zápis dát do blockchain je oveľa drahšia operácia ako sčítanie dvoch čísel). Finálna množstvo gasu potrebné na vykonanie funkcie je vypočítané súčet všetkých výdajov gasu jednotlivých individuálnych výpočtových operácií počas behu funkcie.
+Koľko gasu je na vykonanie funkcie potrebné záleží od toho, aká zložita je logika volanej funkcie. Každá individuálna operácia má určitú ***spotrebu gasu*** (***gas cost***). Spotreba gasu operácie je daná tým, koľko výpočtových zdrojov bude potrebných na vykonanie operácie (napríklad zápis dát do blockchain je oveľa drahšia operácia ako sčítanie dvoch čísel). Finálna množstvo gasu potrebné na vykonanie funkcie je vypočítané súčet všetkých výdajov gasu jednotlivých individuálnych výpočtových operácií počas behu funkcie.
 
 Pretože vykonávanie funkcií stojí tvojich užívateľov reálne peniaze, optimalizácia kódu je na Ethéreu oveľa dôležitejšie ako v iných programovacích jazykoch. Ak je tvoj kód neporiadny, užívatelia budú musieť utratiť za používanie tvojho kontraktu viac. V prípade tísícok užívateľov je možné, že by ľudia zbytočne premrhali milióny dolárov.  
 

@@ -187,9 +187,9 @@ La oss se på en annen måte Solidity er ganske forskjellig fra andre programmer
 
 ## Gas — drivstoffet Ethereum DApps kjører på
 
-I Solidity må brukerne betale hver gang de utfører en funksjon på din DApp ved hjelp av en valuta som kalles **_gas_**. Brukere kjøper gass med Ether (valutaen på Ethereum), så brukerne må bruke ETH for å kunne utføre funksjoner på  din DApp.
+I Solidity må brukerne betale hver gang de utfører en funksjon på din DApp ved hjelp av en valuta som kalles ***gas***. Brukere kjøper gass med Ether (valutaen på Ethereum), så brukerne må bruke ETH for å kunne utføre funksjoner på  din DApp.
 
-Hvor mye gass som kreves for å utføre en funksjon, avhenger av hvor kompleks den funksjonens logikk er. Hver enkelt operasjon har en **_gas cost_** basert på hvor mye databehandlingsressurser som kreves for å utføre denne operasjonen (for eksempel å skrive til storage er mye dyrere enn å legge til to integers). Den totale **_gas cost_**-en av funksjonen din er summen av gasskostnadene for alle sine individuelle operasjoner.
+Hvor mye gass som kreves for å utføre en funksjon, avhenger av hvor kompleks den funksjonens logikk er. Hver enkelt operasjon har en ***gas cost*** basert på hvor mye databehandlingsressurser som kreves for å utføre denne operasjonen (for eksempel å skrive til storage er mye dyrere enn å legge til to integers). Den totale ***gas cost***-en av funksjonen din er summen av gasskostnadene for alle sine individuelle operasjoner.
 
 Fordi løpende funksjoner koster ekte penger for brukerne, er kodeoptimalisering mye viktigere i Ethereum enn i andre programmeringsspråk. Hvis koden din er slurvete, må brukerne betale en høy pris for å utføre dine funksjoner - og dette kan gi opptil millioner av dollar i unødvendige avgifter over tusenvis av brukere.
 

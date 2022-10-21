@@ -53,7 +53,7 @@ material:
       }
 ---
 
-Neste capítulo vamos aprender sobre funções que **_retornam valores_**, e sobre modificadores de funções.
+Neste capítulo vamos aprender sobre funções que ***retornam valores***, e sobre modificadores de funções.
 
 ## Retornando Valores
 
@@ -87,7 +87,7 @@ function _multiply(uint a, uint b) private pure returns (uint) {
 }
 ```
 
-Esta função nem mesmo lê um estado da aplicação - os seus valores retornados dependem somente dos parâmetros da função. Então neste caso nós podemos declarar a função como **_pura_** usando a palavra reservada `pure`.
+Esta função nem mesmo lê um estado da aplicação - os seus valores retornados dependem somente dos parâmetros da função. Então neste caso nós podemos declarar a função como ***pura*** usando a palavra reservada `pure`.
 
 > Nota: Pode ser um tanto quanto complicado lembrar quando marcar a função como pura/observação (pure/view). Para a nossa sorte o compilador de Solidity faz um bom trabalho em avisar-nos quando devemos usar algum desses modificadores.
 

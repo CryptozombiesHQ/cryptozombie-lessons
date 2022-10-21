@@ -228,7 +228,7 @@ material:
 
       }
 ---
-Doposiaľ sme hovorili o niekoľkých **_funkčných modifikátoroch_**. Môže byť ťažké si všetko zapamätať, poďme si to teda ešte rýchlo zopakovať.
+Doposiaľ sme hovorili o niekoľkých ***funkčných modifikátoroch***. Môže byť ťažké si všetko zapamätať, poďme si to teda ešte rýchlo zopakovať.
 
 1. K dispozicií mamé modifikátory viditelnosti, ktoré určujú odkiaľ môže byť funkcia zavolaná. `private` znamená, že môže byť volaná len z ostatných funkcií rovnakého kontraktu. `internal` je ako `private`, ale môže byť volaná taktiež z kódu oddedených kontraktov. `external` funkcie môžu byť volané iba externe, mimo daného kontraktu. Na záver, funkcie `public` môžu byť volané odkiaľkoľvek - interne aj externe. 
 

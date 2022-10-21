@@ -71,11 +71,11 @@ material:
 
 I Solidity,  er det to steder du kan lagre variabler — i `storage` og in `memory`.
 
-**_Storage_** refererer til variabler lagret permanent på blockchain. **_Memory_** variabler er midlertidige, og slettes mellom eksterne funksjonssamtaler til kontrakten din. Tenk på det som datamaskinens harddisk vs RAM.
+***Storage*** refererer til variabler lagret permanent på blockchain. ***Memory*** variabler er midlertidige, og slettes mellom eksterne funksjonssamtaler til kontrakten din. Tenk på det som datamaskinens harddisk vs RAM.
 
 Mesteparten av tiden trenger du ikke å bruke disse nøkkelordene, fordi Solidity håndterer dem som standard. Status-variabler (variabler deklarert utenfor funksjoner) er som standard `storage` og skrevet permanent til blockchainen, mens variabler som er deklarert inne i funksjonene, er`memory` og vil forsvinne når funksjonsanropet avsluttes.
 
-Men, det er noen ganger du faktisk trenger å bruke disse nøkkelordene, mest når vi håndterer **_structs_** og **_arrays_** inne i funksjoner:
+Men, det er noen ganger du faktisk trenger å bruke disse nøkkelordene, mest når vi håndterer ***structs*** og ***arrays*** inne i funksjoner:
 
 ```
 contract SandwichFactory {

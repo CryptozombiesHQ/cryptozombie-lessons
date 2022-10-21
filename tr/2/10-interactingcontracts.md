@@ -109,7 +109,7 @@ Endişelenme — oyunumuz aslında herhangi birinin CryptoKitty'sine zarar verm
 
 ## Diğer kontratlarla etkileşime girmek
 
-Blok zincirinde sahip olmadığımız başka bir kontratla kontratımızın görüşmesi için, ilk olarak bir **_arayüz_** belirlememiz gerek.
+Blok zincirinde sahip olmadığımız başka bir kontratla kontratımızın görüşmesi için, ilk olarak bir ***arayüz*** belirlememiz gerek.
 
 Bir basit örneği inceleyelim. Blok zincirinde bunun gibi bir kontratın olduğunu farz edelim:
 
@@ -131,7 +131,7 @@ Bu, herhangi birinin şanslı numarasını depolayabileceği basit bir kontrat o
 
 Şimdi `getNum` fonksiyonunu kullanarak bu kontratta verileri okumak istediğimiz harici bir kontrat yaptığımızı farz edelim.
 
-İlk olarak `LuckyNumber` kontratın bir **_arayüzünü_** tanımlamamız gerekirdi:
+İlk olarak `LuckyNumber` kontratın bir ***arayüzünü*** tanımlamamız gerekirdi:
 
 ```
 contract NumberInterface {

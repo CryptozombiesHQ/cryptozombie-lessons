@@ -12,7 +12,7 @@ material:
 
 Solidity contract ของเราก็เสร็จเรียบร้อยแล้ว! ตอนนี้ก็ได้เวลาของการเขียน JavaScript ที่จะไว้ใช้ด้านหน้าเพื่อ interact กับ contract แล้ว
 
-Ethereum นั้นมี JavaScript library  ชื่อว่า **_Web3.js_**
+Ethereum นั้นมี JavaScript library  ชื่อว่า ***Web3.js***
 
 ในบทหลังๆ เราจะทำการเรียนรู้ในเชิงลึกเกี่ยวกับการนำ contract มาปรับใช้และติดตั้ง Web3.js แต่ในตอนนี้จะขอพูดถึงแค่ตัวอย่างของโค้ดว่า Web3.jsนั้น interact กับ contractที่นำมาปรับใช้ของเราอย่างไร 
 

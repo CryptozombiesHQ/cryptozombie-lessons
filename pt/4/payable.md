@@ -229,7 +229,7 @@ material:
       }
 ---
 
-Até agora, nós cobrimos algumas **_funções modificadoras_**. Pode até ser difícil tentar lembrar de tudo, então vamos para uma rápida revisão:
+Até agora, nós cobrimos algumas ***funções modificadoras***. Pode até ser difícil tentar lembrar de tudo, então vamos para uma rápida revisão:
 
 1. Temos os modificadores de visibilidade que controlam quando em onde a função pode ser chamada: `private` significa que somente pode ser chamada de outras funções dentro do contrato; `internal` é como `private` mas também pode ser chamada por contratos que herdaram este contrato; `external` pode ser chamada somente de fora do contrato; e finalmente `public` que pode ser chamada de qualquer lugar, tanto internamente quando externamente.
 

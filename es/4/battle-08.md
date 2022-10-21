@@ -286,7 +286,7 @@ En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemo
 
 ## Vamos a probarlo
 
-1. Cree una declaración `if` que verifique si `rand` es **_menor o igual a_** `attackVictoryProbability`.
+1. Cree una declaración `if` que verifique si `rand` es ***menor o igual a*** `attackVictoryProbability`.
 
 2. Si esta condición resulta verdadera ¡Nuestro zombie gana! Entonces:
 
