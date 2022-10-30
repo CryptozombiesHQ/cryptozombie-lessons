@@ -147,11 +147,11 @@ function getLastReturnValue() external {
 
 # A votre tour
 
-Il est temps d'interagir avec le contrat CryptoKitties !
+Il est temps d'intéragir avec le contrat CryptoKitties !
 
 Nous allons créer une fonction qui récupère les gènes d'un chaton à partir du contrat :
 
-1. Créez une fonction appelée `feedOnKitty`. Elle prendra 2 paramètres `uint`, `_zombieId` et `_kittyId` et elle devra être `public`.
+1. Créez une fonction appelée `feedOnKitty`. Elle prendra 2 paramètres `uint`, `_zombieId` et `_kittyId` et devra être `public`.
 
 2. La fonction devra d'abord déclarer un `uint` nommé `kittyDna`.
 

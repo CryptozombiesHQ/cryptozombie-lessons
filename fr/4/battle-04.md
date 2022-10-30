@@ -284,7 +284,7 @@ Réfléchissez-y, et voyez si vous arrivez à trouver une réponse tout seul.
 
 Prenez votre temps, vous pouvez regarder le code des versions précédentes pour avoir des idées...
 
-La réponse se trouve ci-dessous, réfléchissez par vous même avant de continuer.
+La réponse se trouve ci-dessous, réfléchissez par vous-même avant de continuer.
 
 ## La réponse
 
@@ -302,7 +302,7 @@ Nous sommes de retour à `zombiefeeding.sol`, puisque c'est le premier endroit o
 
 1. Créez un `modifier` appelé `ownerOf` qui aura un paramètre, `_zombieId` (un `uint`).
 
-  Le corps devra vérifier avec `require` que `msg.sender` soit égal à `zombieToOwner[_zombieId]`, puis continuer avec la fonction. Vous pouvez regarder la fonction `zombiehelper.sol` si vous ne vous rappelez plus de la syntaxe d'un modificateur.
+  Le corps devra vérifier avec `require` que `msg.sender` est égal à `zombieToOwner[_zombieId]`, puis continuer avec la fonction. Vous pouvez regarder la fonction `zombiehelper.sol` si vous ne vous rappelez plus de la syntaxe d'un modificateur.
 
 2. Changez la définition de la fonction `feedAndMultiply` afin qu'elle utilise le modificateur `ownerOf`.
 

@@ -142,6 +142,6 @@ De cette manière, votre contrat peut interagir avec n'importe quel autre contra
 
 # A votre tour
 
-Nous allons configurer notre contrat pour qu'il puisse lire le smart contract CryptoKitties !
+Nous allons configurer notre contrat afin qu'il puisse lire le smart contract CryptoKitties !
 
-1. J'ai sauvegardé l´adresse du contrat CryptoKitties dans le code pour vous, sous une variable appelée `ckAddress`. A la prochaine ligne, créer une `KittyInterface` nommée `kittyContract`, et initialisez la avec `ckAddress` - de la même manière que nous avons fait avec `numberContract` au dessus.
+1. J'ai sauvegardé l´adresse du contrat CryptoKitties dans le code pour vous, sous une variable appelée `ckAddress`. A la prochaine ligne, créez une `KittyInterface` nommée `kittyContract`, et initialisez-la avec `ckAddress` - de la même manière que ce que nous avons fait avec `numberContract` ci-dessus.

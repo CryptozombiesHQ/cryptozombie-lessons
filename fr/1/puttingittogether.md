@@ -72,7 +72,7 @@ Nous allons créer une fonction publique qui prend un paramètre, le nom du zomb
 
 1. Créez une fonction `public` nommée `createRandomZombie`. Elle devra prendre seulement un paramètre `_name` (un `string`). _(Remarque : déclarez cette fonction `public`. de la même manière que vous avez déclaré la fonction précédente `private`)_
 
-2. La première ligne de la fonction devra exécuter la fonction `_generateRandomDna` avec comme argument `_name` and stocker le résultat dans un `uint` nommé `randDna`.
+2. La première ligne de la fonction devra exécuter la fonction `_generateRandomDna` avec comme argument `_name` et stocker le résultat dans un `uint` nommé `randDna`.
 
 3. La deuxième ligne devra exécuter la fonction `_createZombie` avec comme arguments `_name` et `randDna`.
 

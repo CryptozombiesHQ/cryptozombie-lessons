@@ -419,9 +419,9 @@ Pour prévenir cela, OpenZeppelin a créé une **_bibliothèque_** appelée Safe
 
 Mais d'abord, c'est quoi une bibliothèque ?
 
-Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet de rajouter des fonctions à un type de données natif.
+Une **_bibliothèque_** est un type de contrat spécial en Solidity. Une de leurs fonctionnalités est que cela permet d'ajouter des fonctions à un type de données natif.
 
-Par exemple. avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath a 4 fonctions — `add`, `sub`, `mul`, et `div`. Et maintenant nous pouvons utiliser ces fonctions à partir d'un `uint256` en faisant :
+Par exemple, avec la bibliothèque SafeMath, nous allons utiliser la syntaxe `using SafeMath for uint256`. La bibliothèque SafeMath a 4 fonctions — `add`, `sub`, `mul`, et `div`. Et désormais, nous pouvons utiliser ces fonctions à partir d'un `uint256` en faisant :
 
 ```
 using SafeMath for uint256;
@@ -431,11 +431,11 @@ uint256 b = a.add(3); // 5 + 3 = 8
 uint256 c = a.mul(2); // 5 * 2 = 10
 ```
 
-Nous verrons ce que font ces fonctions dans le prochain chapitre, pour l'instant, nous allons ajouter la bibliothèque SafeMath à notre contrat.
+Nous verrons ce que font ces fonctions dans le prochain chapitre. Pour l'instant, nous allons ajouter la bibliothèque SafeMath à notre contrat.
 
 ## A votre tour
 
-Nous avons déjà rajouté la bibliothèque `SafeMath` d'OpenZeppelin pour vous dans `safemath.sol`. Vous pouvez regarder le code si vous voulez, mais nous allons l'étudier en détails dans le prochain chapitre.
+Nous avons déjà ajouté la bibliothèque `SafeMath` d'OpenZeppelin pour vous dans `safemath.sol`. Vous pouvez regarder le code si vous voulez, mais nous allons l'étudier en détail dans le prochain chapitre.
 
 Pour l'instant, nous allons faire en sorte que notre contrat utilise SafeMath. Nous allons le faire dans ZombieFactory, notre contrat de base - de cette manière nous pourrons l'utiliser dans tous les sous-contrats qui en héritent.
 

@@ -46,7 +46,7 @@ Quand vous voulez regrouper des éléments, vous pouvez utiliser un **_tableau_*
 uint[2] fixedArray;
 // Un autre Tableau fixe, qui peut contenir 5 `string` :
 string[5] stringArray;
-// un Tableau dynamique, il n'a pas de taille fixe, il peut continuer de grandir :
+// un Tableau dynamique. Il n'a pas de taille fixe, il peut continuer de grandir :
 uint[] dynamicArray;
 ```
 
@@ -56,7 +56,7 @@ Vous pouvez aussi créer un tableau de **_structure_**. En utilisant la structur
 Person[] people; // Tableau dynamique, on peut en rajouter sans limite.
 ```
 
-Vous vous rappelez que les variables d'état sont stockées définitivement dans la blockchain ? Il peut donc être utile de créer des tableaux dynamique de structure pour stocker des données structurées dans votre contrat, un peu comme une base de données.
+Vous vous rappelez que les variables d'état sont stockées définitivement dans la blockchain ? Il peut donc être utile de créer des tableaux dynamiques de structure pour stocker des données structurées dans votre contrat, un peu comme une base de données.
 
 ## Tableaux publics
 
@@ -69,6 +69,6 @@ Les autres contrats vont pouvoir lire (mais pas écrire) ce tableau. C'est donc 
 
 # A votre tour
 
-Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications, cette armée devra donc être publique.
+Nous allons vouloir stocker une armée de zombies dans notre application. Et nous allons vouloir montrer tous nos zombies à d'autres applications. Cette armée devra donc être publique.
 
 1. Créez un tableau public de **_structures_** `Zombie`, et appelez le `zombies`.

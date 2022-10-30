@@ -181,7 +181,7 @@ Nous allons faire en sorte que les zombies acquièrent des aptitudes spéciales 
 
 ## Modificateurs de fonction avec arguments
 
-Précédemment nous avons vu l'exemple simple de `onlyOwner`. Mais les modificateurs de fonction peuvent aussi prendre des arguments, par exemple :
+Précédemment, nous avons vu l'exemple simple de `onlyOwner`. Mais les modificateurs de fonction peuvent aussi prendre des arguments, par exemple :
 
 ```
 // Un mappage pour stocker l'âge d'un utilisateur :
@@ -202,7 +202,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 Vous pouvez voir ici que le modificateur `olderThan` prend des arguments comme une fonction. Et que la fonction `driveCar` donne ces arguments au modificateur.
 
-Essayons de faire notre propre `modifier` qui utilise le `level` d'un zombie pour restreindre l'accès a des aptitudes spéciales.
+Essayons de faire notre propre `modifier` qui utilise le `level` d'un zombie pour restreindre l'accès à des aptitudes spéciales.
 
 ## A votre tour
 
@@ -210,4 +210,4 @@ Essayons de faire notre propre `modifier` qui utilise le `level` d'un zombie pou
 
 2. Le corps devra s'assurer que `zombies[_zombieId].level` soit plus grand ou égal à `_level`.
 
-3. Rappelez vous que la dernière ligne d'un modificateur doit appeler le reste de la fonction avec `_;`.
+3. Rappelez-vous que la dernière ligne d'un modificateur doit appeler le reste de la fonction avec `_;`.

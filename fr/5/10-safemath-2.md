@@ -416,7 +416,7 @@ library SafeMath {
 }
 ```
 
-Tout d'abord, nous avons le mot-clé `library` (bibliothèque) - les bibliothèques sont similaires aux contrats avec quelques différences. Dans ce cas là, les bibliothèques nous permettent d'utiliser le mot-clé `using` (utiliser), qui va automatiquement rajouter toutes les méthodes de cette bibliothèque à un autre type de donnée :
+Tout d'abord, nous avons le mot-clé `library` (bibliothèque) - les bibliothèques sont similaires aux contrats avec quelques différences. Dans ce cas-là, les bibliothèques nous permettent d'utiliser le mot-clé `using` (utiliser), qui va automatiquement ajouter toutes les méthodes de cette bibliothèque à un autre type de données :
 
 ```
 using SafeMath for uint;
@@ -440,7 +440,7 @@ function add(uint256 a, uint256 b) internal pure returns (uint256) {
 
 `add` ajoute simplement 2 `uint` comme `+`, mais elle contient aussi une déclaration `assert` (affirme) pour vérifier que la somme est plus grande que `a`. Cela nous protège d'un débordement.
 
-`assert` est la même chose que `require`, et va renvoyer une erreur si ce n'est pas vérifié. La différence entre `assert` et `require` c'est que `require` va rembourser l'utilisateur du gas restant quand la fonction échoue, alors que `assert` non. La plupart du temps vous allez vouloir utiliser `require` dans votre code, `assert` est plutôt utilisé quand quelque chose a vraiment mal tourné avec le code (comme un débordement d'`uint`).
+`assert` est la même chose que `require`, et va renvoyer une erreur si ce n'est pas vérifié. La différence entre `assert` et `require` c'est que `require` va rembourser l'utilisateur du gas restant quand la fonction échoue, alors que `assert` non. La plupart du temps, vous allez vouloir utiliser `require` dans votre code, `assert` est plutôt utilisé quand quelque chose a vraiment mal tourné avec le code (comme un débordement d'`uint`).
 
 Pour résumer, `add`, `sub`, `mul`, et `div` de SafeMath sont des fonctions qui font les 4 opérations mathématiques basiques, et qui renvoient une erreur en cas de débordement
 
@@ -449,7 +449,7 @@ Pour résumer, `add`, `sub`, `mul`, et `div` de SafeMath sont des fonctions qui 
 Pour prévenir les débordements, nous pouvons voir les endroits dans notre code où nous utilisons `+`, `-`, `*`, ou `/`,
 et les remplacer par `add`, `sub`, `mul`, `div`.
 
-Ex. A lieu d'écrire :
+Ex. Au lieu d'écrire :
 
 ```
 myUint++;

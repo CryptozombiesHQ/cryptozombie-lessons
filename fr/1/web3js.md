@@ -69,10 +69,10 @@ function generateZombie(id, name, dna) {
 }
 ```
 
-Notre code JavaScript prends alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie JavaScript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
+Notre code JavaScript prend alors les valeurs générées dans `zombieDetails` ci-dessus, et utilise de la magie JavaScript (nous utilisons Vue.js) pour changer les images et appliquer des filtres CSS. Vous obtiendrez tout le code nécessaire dans une prochaine leçon.
 
 # A votre tour d’essayer !
 
-Allez-y - rentrer un nom dans le champ à droite, et regardez quel zombie vous obtiendrez !
+Allez-y ! Entrez un nom dans le champ à droite, et regardez quel zombie vous obtiendrez !
 
 **Une fois que vous avez un zombie qui vous satisfait, cliquez sur "Prochain Chapitre" ci-dessous pour enregistrer votre zombie et terminer la leçon 1 !**

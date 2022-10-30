@@ -67,7 +67,7 @@ Vous remarquerez que nous avons fait un peu de ménage dans notre code à droite
 
 Notre code devenant plutôt long, nous l'avons donc séparé en plusieurs fichiers pour mieux le gérer. C'est comme cela que vous devriez gérer les projets Solidity qui ont beaucoup de lignes de code.
 
-Quand vous avez plusieurs fichiers et que vous voulez importer un fichier dans un autre, Solidity utilise le mot clé `import` (importation) :
+Quand vous avez plusieurs fichiers et que vous voulez importer un fichier dans un autre, Solidity utilise le mot-clé `import` (importation) :
 
 ```
 import "./someothercontract.sol";
@@ -83,4 +83,4 @@ Nous avons donc un fichier nommé `someothercontract.sol` dans le même réperto
 
 Maintenant que nous avons une structure avec plusieurs fichiers, nous allons avoir besoin d'utiliser `import` pour lire le contenu de l'autre fichier :
 
-1. Importer `zombiefactory.sol` dans notre nouveau fichier `zombiefeeding.sol`.
+1. Importez `zombiefactory.sol` dans notre nouveau fichier `zombiefeeding.sol`.

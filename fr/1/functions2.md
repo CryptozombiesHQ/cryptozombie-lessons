@@ -66,6 +66,6 @@ Comme vous pouvez le voir, nous avons utilisé le mot-clé `private` après le n
 
 # A votre tour.
 
-La fonction `createZombie` de notre contrat est par défaut publique - cela veut dire que n'importe qui peut l'appeler et créer un nouveau Zombie dans notre contrat ! Changeons la en privée.
+La fonction `createZombie` de notre contrat est par défaut publique - cela veut dire que n'importe qui peut l'appeler et créer un nouveau Zombie dans notre contrat ! Changeons-la en privée.
 
 1. Modifiez `createZombie` pour que ce soit une fonction privée. N'oubliez pas la convention de nom !

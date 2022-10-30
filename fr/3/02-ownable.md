@@ -185,13 +185,13 @@ Avez-vous trouvé la faille de sécurité dans le chapitre précédent ?
 
 Nous voulons être capable de mettre à jour cette adresse de notre contrat, mais nous ne voulons pas que tout le monde puisse le faire.
 
-Pour gérer une situation comme celle-là, il y a une pratique courante qui consiste à rendre les contrats `Ownable` (avec propriétaire) - ce qui veut dire qu'ils ont un propriétaire (vous) avec des privilèges spéciaux.
+Pour gérer une situation comme celle-ci, il y a une pratique courante qui consiste à rendre les contrats `Ownable` (avec propriétaire) - ce qui veut dire qu'ils ont un propriétaire (vous) avec des privilèges spéciaux.
 
 ## Le contrat `Ownable` d'OpenZeppelin
 
-Ci-dessous vous trouverez le contrat `Ownable` issu de la bibliothèque Solidity d'**_OpenZeppelin_**. OpenZeppelin est une bibliothèque de smart contracts sécurisés et approuvés par la communauté que vous pouvez utiliser dans vos propres DApps. Après cette leçon, alors que vous allez attendre avec impatience la sortie de la Leçon 4, nous vous recommandons fortement d'aller voir leur site internet pour en apprendre d'avantage !
+Ci-dessous, vous trouverez le contrat `Ownable` issu de la bibliothèque Solidity d'**_OpenZeppelin_**. OpenZeppelin est une bibliothèque de smart contracts sécurisés et approuvés par la communauté que vous pouvez utiliser dans vos propres DApps. Après cette leçon, alors que vous allez attendre avec impatience la sortie de la leçon 4, nous vous recommandons fortement d'aller voir leur site internet pour en apprendre davantage !
 
-Lisez-le contrat ci-dessous. Vous allez voir des choses que nous ne connaissons pas encore, mais ne vous inquiétez pas, nous en parlerons plus tard.
+Lisez le contrat ci-dessous. Vous allez voir des choses que nous ne connaissons pas encore, mais ne vous inquiétez pas, nous en parlerons plus tard.
 
 ```
  /**
@@ -234,26 +234,26 @@ contract Ownable {
 
 Quelques nouveautés que nous n'avions pas encore vues :
 
-- Constructeurs : `function Ownable()` est un **_constructor_** (constructeur), c'est une fonction spéciale optionnelle qui a le même nom que le contrat. Elle sera exécutée seulement une fois, lorsque le contrat est créé.
+- Constructeurs : `function Ownable()` est un **_constructor_** (constructeur). C'est une fonction spéciale optionnelle qui a le même nom que le contrat. Elle ne sera exécutée qu'une seule fois, lorsque le contrat est créé.
 - Modificateurs de fonction : `modifier onlyOwner()`. Les modificateurs sont comme des demi-fonctions qui permettent de modifier d'autres fonctions, souvent pour vérifier des conditions avant l'exécution. Dans ce cas, `onlyOwner` peut être utilisé pour limiter l'accès pour que **seulement** (only) le **propriétaire** (owner) du contrat puisse exécuter cette fonction. Nous parlerons plus en détail des modificateurs de fonction dans le prochain chapitre, et ce que cet étrange `_;` fait.
-- Mot-clé `indexed` : ne vous inquiétez pas pour celui là, nous n'en avons pas encore besoin.
+- Mot-clé `indexed` : ne vous inquiétez pas pour celui-là, nous n'en avons pas encore besoin.
 
-Pour résumer le contrat `Ownable` fait fondamentalement ceci :
+Pour résumer, le contrat `Ownable` fait ceci :
 
-1. Quand un contrat est créé, son constructeur défini le `owner` égal à `msg.sender` (la personne qui le déploie)
+1. Quand un contrat est créé, son constructeur définit le `owner` égal à `msg.sender` (la personne qui le déploie).
 
-2. Il ajoute un modificateur `onlyOwner`, qui permet de restreindre l'accès à certaines fonctions à seulement le `owner`
+2. Il ajoute un modificateur `onlyOwner`, qui permet de restreindre l'accès de certaines fonctions qu'au `owner`.
 
-3. Il vous permet de transférer le contrat à un nouvel `owner`
+3. Il vous permet de transférer le contrat à un nouvel `owner`.
 
 `onlyOwner` est une condition si courante pour les contrats que la plupart des DApps Solidity commencent par copier/coller ce contrat `Ownable`, et leur premier contrat en hérite.
 
-Vu que nous voulons limiter `setKittyContractAddress` à `onlyOwner`, nous allons faire pareil pour notre contrat.
+Vu que nous voulons limiter `setKittyContractAddress` à `onlyOwner`, nous allons en faire de même pour notre contrat.
 
 ## A votre tour
 
 Nous avons pris de l'avance et avons copié le code du contrat `Ownable` dans un nouveau fichier, `ownable.sol`. Nous allons faire hériter `ZombieFactory` de celui-ci.
 
-1. Modifiez notre code pour `import` le contenu de `ownable.sol`. Si vous ne vous rappelez plus comment faire, regardez `zombiefeeding.sol`.
+1. Modifiez notre code pour `import` le contenu de `ownable.sol`. Si vous ne vous souvenez plus comment faire, regardez `zombiefeeding.sol`.
 
 2. Modifiez le contrat `ZombieFactory` pour qu'il hérite de `Ownable`. Pareillement, regardez `zombiefeeding.sol` si vous ne vous rappelez plus comment faire.

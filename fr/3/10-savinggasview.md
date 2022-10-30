@@ -194,19 +194,19 @@ material:
 
 Excellent ! Nous avons maintenant des aptitudes spéciales pour nos zombies de niveau supérieur, afin de motiver les utilisateurs à leurs faire gagner des niveaux. Nous pourrons en ajouter plus par la suite si nous le désirons.
 
-Nous allons ajouter une fonction de plus : notre DApp a besoin d'une fonction pour voir toute l'armée de zombie d'un utilisateur - nous allons l'appeler `getZombiesByOwner`.
+Nous allons ajouter une fonction de plus : notre DApp a besoin d'une fonction pour voir toute l'armée de zombies d'un utilisateur - nous allons l'appeler `getZombiesByOwner`.
 
-Cette fonction permettra seulement de lire des données depuis la blockchain, cela sera donc une fonction `view`. Ce qui nous amène à un sujet important à propos de l'optimisation de gas :
+Cette fonction permettra seulement de lire des données depuis la blockchain ; cela sera donc une fonction `view`. Ce qui nous amène à un sujet important à propos de l'optimisation de gas :
 
 ## Les fonctions `view` ne coûtent pas de gas
 
 Les fonctions `view` ne coûtent pas de gas quand elles sont appelées extérieurement par un utilisateur.
 
-C'est parce que les fonctions `view` ne changent rien sur la blockchain - elles lisent seulement des données. Marquer une fonction avec `view` indique à `web3.js` qu'il a seulement besoin d'interroger votre nœud local d'Ethereum pour faire marcher la fonction, et il n'a pas besoin de créer une transaction sur la blockchain (qui devra être exécuter sur tous les nœuds et qui coûtera du gas).
+C'est parce que les fonctions `view` ne changent rien sur la blockchain - elles lisent seulement des données. Marquer une fonction avec `view` indique à `web3.js` qu'il a seulement besoin d'interroger votre nœud local d'Ethereum pour faire marcher la fonction, et il n'a pas besoin de créer une transaction sur la blockchain (qui devra être exécutée sur tous les nœuds et qui aura un coût en gas).
 
-Nous parlerons de comment configurer web3.js avec notre propre nœud plus tard. Pour l'instant, la chose à retenir est que vous pouvez optimiser la consommation de gas de votre DApp pour vos utilisateurs en utilisant les fonctions `external view` quand c'est possible.
+Nous parlerons de comment configurer web3.js avec notre propre nœud plus tard. Pour l'instant, la chose à retenir est que vous pouvez optimiser la consommation de gas de votre DApp pour vos utilisateurs en utilisant les fonctions `external view` lorsque c'est possible.
 
-> Remarque : Si une fonction `view` est appelée intérieurement à partir d'une autre fonction du même contrat qui **n'est pas** une fonction `view`, elle coûtera du gas. C'est parce que l'autre fonction va créer une transaction sur Ethereum, et aura besoin d'être vérifiée par chaque nœud. Ainsi les fonctions `view` sont gratuites seulement quand elles sont appelées depuis l'extérieur.
+> Remarque : Si une fonction `view` est appelée intérieurement à partir d'une autre fonction du même contrat qui **n'est pas** une fonction `view`, elle aura un coût en gas. C'est parce que l'autre fonction va créer une transaction sur Ethereum, et aura besoin d'être vérifiée par chaque nœud. Ainsi, les fonctions `view` sont gratuites seulement lorsqu'elles sont appelées depuis l'extérieur.
 
 ## A votre tour
 
@@ -214,7 +214,7 @@ Nous allons implémenter une fonction qui retournera toute l'armée de zombies d
 
 La logique de cette fonction est un peu compliquée, il nous faudra plusieurs chapitres pour l'implémenter.
 
-1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre, une `address` appelée `_owner`.
+1. Créez une nouvelle fonction appelée `getZombiesByOwner` avec un paramètre : une `address` appelée `_owner`.
 
 2. Ce sera une fonction `external`, afin que nous puissions l'appeler depuis `web3.js` sans que cela nous coûte de gas.
 

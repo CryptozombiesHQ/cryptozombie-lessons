@@ -158,7 +158,7 @@ C'est peu probable, mais si cela arrive cela rendrait notre DApp complètement i
 
 Pour cette raison, c'est souvent utile d'avoir des fonctions qui vous permettent de mettre à jour des portions clés de la DApp.
 
-Par exemple, au lieu d'écrire en dur l'adresse du contrat CryptoKitties dans notre DApp, nous devrions sûrement avoir une fonction `setKittyContractAddress` qui nous permet de changer cette adresse dans le futur au cas où quelque chose arriverait au contrat CryptoKitties.
+Par exemple, au lieu d'écrire en dur l'adresse du contrat CryptoKitties dans notre DApp, nous devrions sûrement avoir une fonction `setKittyContractAddress` qui nous permette de changer cette adresse dans le futur au cas où quelque chose arriverait au contrat CryptoKitties.
 
 
 ## A votre tour

@@ -185,18 +185,18 @@ material:
 
 Maintenant que notre contrat de base `ZombieFactory` hérite de `Ownable`, nous pouvons utiliser le modificateur de fonction `onlyOwner` aussi dans `ZombieFeeding`.
 
-C'est grâce à la façon dont l'héritage fonctionne. Souvenez-vous :
+C'est possible car c'est le principe de l'héritage. Souvenez-vous :
 
 ```
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable
 ```
 
-Ainsi `ZombieFeeding` est aussi `Ownable`, et peut accéder aux fonctions / évènements / modificateurs du contrat `Ownable`. Cela s'appliquera aussi à n'importe quel contrat qui héritera de `ZombieFeeding`.
+Ainsi, `ZombieFeeding` est aussi `Ownable`, et peut accéder aux fonctions / évènements / modificateurs du contrat `Ownable`. Cela s'appliquera aussi à n'importe quel contrat qui héritera de `ZombieFeeding`.
 
 ## Modificateurs de fonction
 
-Un modificateur de fonction ressemble à une fonction, mais utilise le mot clé `modifier` (modificateur) à la place de `function`. Et il ne peut pas être directement appelé comme une fonction - à la place, nous pouvons rajouter le nom du modificateur à la fin de la définition d'une fonction pour changer le fonctionnement de cette fonction.
+Un modificateur de fonction ressemble à une fonction, mais utilise le mot-clé `modifier` (modificateur) à la place de `function`. Et il ne peut pas être directement appelé comme une fonction - à la place, nous pouvons rajouter le nom du modificateur à la fin de la définition d'une fonction pour changer le fonctionnement de cette fonction.
 
 Regardons cela de plus près avec `onlyOwner` :
 
@@ -223,18 +223,18 @@ contract MyContract is Ownable {
 }
 ```
 
-Vous avez vu le modificateur `onlyOwner` sur la fonction `likeABoss` ? Quand vous appelez `likeABoss`, le code de `onlyOwner` s'exécute **en premier**. Puis, quand il arrive à la déclaration `_;` dans `onlyOwner`, il continu avec le code de `likeABoss`.
+Vous avez vu le modificateur `onlyOwner` sur la fonction `likeABoss` ? Quand vous appelez `likeABoss`, le code de `onlyOwner` s'exécute **en premier**. Puis, quand il arrive à la déclaration `_;` dans `onlyOwner`, il continue avec le code de `likeABoss`.
 
-Il peut y avoir d'autres raisons d'utiliser des modificateurs, mais le cas d'utilisation le plus courant est pour rajouter facilement une vérification `require` avant l'exécution d'une fonction.
+Il peut y avoir d'autres raisons d'utiliser des modificateurs, mais le cas d'utilisation le plus courant c'est lorsqu'on veut ajouter facilement une vérification `require` avant l'exécution d'une fonction.
 
-Dans le cas de `onlyOwner`, rajouter ce modificateur à une fonction fera en sorte que **seulement** le **propriétaire** du contrat (vous, si vous l'avez déployé) pourra appeler cette fonction.
+Dans le cas de `onlyOwner`, ajouter ce modificateur à une fonction fera en sorte que **seulement** le **propriétaire** du contrat (vous, si vous l'avez déployé) pourra appeler cette fonction.
 
-> Remarque : Donner des privilèges spéciaux au propriétaire du contrat comme là est souvent nécessaire, cependant cela pourrait aussi être utilisé malicieusement. Par exemple, le propriétaire pourrait ajouter une fonction de porte dérobée qui lui permettrait de transférer n'importe quel zombie à lui-même !
+> Remarque : Donner des privilèges spéciaux au propriétaire du contrat comme ici est souvent nécessaire. Cependant, cela pourrait aussi être utilisé malicieusement. Par exemple, le propriétaire pourrait ajouter une fonction de porte dérobée qui lui permettrait de transférer n'importe quel zombie à lui-même !
 
-> C'est donc important de se rappeler que ce n'est pas parce qu'une DApp est sur Ethereum que cela veut dire qu'elle est décentralisée - vous devez lire le code source en entier pour vous assurez que le propriétaire n'a pas de privilèges qui pourraient vous inquiéter. En tant que développeur, il existe un équilibre entre garder le contrôle d'un DApp pour corriger de potentiels bugs, et construire une plateforme sans propriétaire en laquelle vos utilisateurs peuvent avoir confiance pour sécuriser leurs données.
+> C'est donc important de se rappeler que ce n'est pas parce qu'une DApp est sur Ethereum que cela veut dire qu'elle est décentralisée - vous devez lire le code source en entier pour vous assurer que le propriétaire n'a pas de privilèges qui pourraient vous inquiéter. En tant que développeur, il existe un équilibre entre garder le contrôle d'un DApp pour corriger de potentiels bugs, et construire une plateforme sans propriétaire en laquelle vos utilisateurs peuvent avoir confiance pour sécuriser leurs données.
 
 ## A votre tour
 
-Maintenant nous pouvons restreindre l'accès à `setKittyContractAddress` pour que nous soyons le seul à pouvoir le modifier plus tard.
+Désormais, nous pouvons restreindre l'accès à `setKittyContractAddress` pour que nous soyons les seuls à pouvoir le modifier plus tard.
 
 1. Rajoutez le modificateur `onlyOwner` à `setKittyContractAddress`.

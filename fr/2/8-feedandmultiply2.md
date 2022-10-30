@@ -100,6 +100,6 @@ Plus tard, nous pourrons faire une formule plus compliquée, comme ajouter un pe
 
 > Remarque : Vous pouvez accéder aux propriétés de `myZombie` en utilisant `myZombie.name` et `myZombie.dna`
 
-3. Une fois que nous avons le nouvel ADN, appelons `_createZombie`. Vous pouvez regarder l'onglet `zombiefactory.sol` si vous avez oublié quels arguments cette fonction a besoin pour être appelée. Cette fonction a besoin d'un nom, appelons notre nouveau zombie `NoName` pour l'instant - nous pourrons écrire une fonction pour changer les noms des zombies plus tard.
+3. Une fois que nous avons le nouvel ADN, appelons `_createZombie`. Vous pouvez regarder l'onglet `zombiefactory.sol` si vous avez oublié quels sont les arguments que cette fonction a besoin pour être appelée. Cette fonction a besoin d'un nom, appelons notre nouveau zombie `NoName` pour l'instant - nous pourrons écrire une fonction pour changer les noms des zombies plus tard.
 
-> Note: Pour les experts de Solidity, vous avez peut-être remarqué un problème avec notre code ! Ne vous inquiétez-pas, nous corrigerons cela dans le prochain chapitre ;)
+> Note: Pour les experts de Solidity, vous avez peut-être remarqué un problème avec notre code ! Ne vous inquiétez pas, nous corrigerons cela dans le prochain chapitre. ;)

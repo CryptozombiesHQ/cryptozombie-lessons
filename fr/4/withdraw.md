@@ -262,14 +262,14 @@ Vous remarquerez que nous utilisons `owner` et `onlyOwner` du contrat `Ownable`,
 
 Vous pouvez transférer des Ether à une adresse en utilisant la fonction `transfer`, et `this.balance` retournera la balance totale stockée sur le contrat. Si 100 utilisateurs ont payé 1 Ether à votre contrat, `this.balance` sera égal à 100 Ether.
 
-Vous pouvez utilisez `transfer` pour envoyer des fonds à n'importe quelle adresse Ethereum. Par exemple, vous pouvez avoir une fonction qui renvoie les Ether à `msg.sender` s'il paye trop cher pour un article :
+Vous pouvez utiliser `transfer` pour envoyer des fonds à n'importe quelle adresse Ethereum. Par exemple, vous pouvez avoir une fonction qui renvoie les Ether à `msg.sender` s'il paye trop cher pour un article :
 
 ```
 uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-Ou dans un contrat avec un acheteur et un vendeur, vous pouvez stocker l'adresse du vendeur, et quand quelqu'un achète son article, lui envoyer le montant payés par l'acheteur : `seller.transfer(msg.value)`.
+Ou dans un contrat avec un acheteur et un vendeur, vous pouvez stocker l'adresse du vendeur, et quand quelqu'un achète son article, lui envoyer le montant payé par l'acheteur : `seller.transfer(msg.value)`.
 
 Ce sont quelques exemples de ce qui rend la programmation Ethereum vraiment cool - vous pouvez avoir des marchés décentralisés qui ne sont contrôlés par personne.
 

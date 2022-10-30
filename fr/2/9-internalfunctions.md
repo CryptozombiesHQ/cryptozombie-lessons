@@ -104,13 +104,13 @@ material:
 
 **Le code dans notre leçon précédente avait une erreur !**
 
-Si vous essayer de le compiler, le compilateur renverra une erreur.
+Si vous essayez de le compiler, le compilateur renverra une erreur.
 
-Le problème est que nous essayons d'appeler la fonction `_createZombie` à l'intérieur de `ZombieFeeding`, mais `_createZombie` est une fonction `private` de `ZombieFactory`. Cela veut dire que aucun contrat qui hérite de `ZombieFactory` ne peut y accéder.
+Le problème est que nous essayons d'appeler la fonction `_createZombie` à l'intérieur de `ZombieFeeding`, mais `_createZombie` est une fonction `private` de `ZombieFactory`. Cela veut dire qu'aucun contrat qui hérite de `ZombieFactory` peut y accéder.
 
 ## Interne et externe
 
-En plus de `public` et `private`, Solidity a deux autres visibilité pour les fonctions : `internal` (interne) et `external` (externe).
+En plus de `public` et `private`, Solidity a deux autres visibilités pour les fonctions : `internal` (interne) et `external` (externe).
 
 `internal` est similaire à `private`, à l'exception qu'elle est aussi accessible aux contrats qui héritent de ce contrat. **(On dirait que c'est ce que l'on veut!)**.
 

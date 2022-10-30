@@ -185,7 +185,7 @@ material:
 
 La propriété `level` est plutôt explicite. Plus tard, quand nous créerons le système de combat, les zombies avec le plus de victoires vont monter en niveau avec le temps et auront accès à plus d'aptitudes.
 
-La propriété `readyTime` demande un peu plus d'explication. Le but est d'ajouter un "temps de recharge", une durée qu'un zombie doit attendre après avoir mangé ou attaqué avant de pouvoir manger / attaquer de nouveau. Sans ça, un zombie pourrait attaquer et se multiplier 1000 fois par jour, ce qui rendrait le jeu trop facile.
+La propriété `readyTime` demande un peu plus d'explication. Le but est d'ajouter un "temps de recharge" (ou "cooldown"), une durée qu'un zombie doit attendre après avoir mangé ou attaqué avant de pouvoir manger / attaquer de nouveau. Sans ça, un zombie pourrait attaquer et se multiplier 1000 fois par jour, ce qui rendrait le jeu trop facile.
 
 Afin de savoir combien de temps un zombie doit attendre avant d'attaquer de nouveau, nous pouvons utiliser les unités de temps de Solidity.
 
@@ -197,7 +197,7 @@ La variable `now` (maintenant) va retourner l'horodatage actuel unix (le nombre 
 
 > Remarque : L'horodatage unix est traditionnellement stocké dans un nombre 32-bit. Cela mènera au problème "Année 2038", quand l'horodatage unix 32-bits aura débordé et cassera beaucoup de système existant. Si nous voulons que notre DApp continue de marcher dans 20 ans, nous pouvons utiliser un nombre 64-bit à la place - mais nos utilisateurs auront besoin de dépenser plus de gas pour utiliser notre DApp pendant ce temps. Décision de conception !
 
-Solidity a aussi des unités de temps `seconds` (secondes), `minutes`, `hours` (heures), `days` (jours) et `years` (ans). Ils vont se convertir en un `uint` correspondant au nombre de seconde de ce temps. Donc `1 minutes` est `60`, `1 hours` est `3600` (60 secondes x 60 minutes), `1 days` est `86400` (24 heures x 60 minutes x 60 seconds), etc.
+Solidity a aussi des unités de temps `seconds` (secondes), `minutes`, `hours` (heures), `days` (jours) et `years` (ans). Ils vont se convertir en un `uint` correspondant au nombre de secondes de ce temps. Donc `1 minutes` est `60`, `1 hours` est `3600` (60 secondes x 60 minutes), `1 days` est `86400` (24 heures x 60 minutes x 60 seconds), etc.
 
 Voici un exemple montrant l'utilité de ces unités de temps :
 
@@ -210,8 +210,8 @@ function updateTimestamp() public {
 }
 
 // Retournera `true` si 5 minutes se sont écoulées
-// depuis que `updateTimestamp` a été appelé, `false`
-// si 5 minutes ne se sont pas passées
+// depuis que `updateTimestamp` a été appelée, `false`
+// si 5 minutes ne se sont pas écoulées
 function fiveMinutesHavePassed() public view returns (bool) {
   return (now >= (lastUpdated + 5 minutes));
 }
@@ -231,6 +231,6 @@ Ajoutons un temps de recharge à notre DApp, afin que les zombies aient besoin d
 
 > Remarque : Le `uint32(...)` est nécessaire car `now` renvoie un `uint256` par défaut. nous devons donc le convertir en un `uint32`.
 
-`now + cooldownTime` sera égal à l'horodatage unix actuel (en secondes) plus le nombre de secondes d'un jour - qui sera égal à l'horodatage unix dans 24h. Plus tard, nous pourrons comparer si le `readyTime` du zombie est supérieur à `now` pour voir si assez de temps s'est écoulé pour utiliser le zombie à nouveau.
+`now + cooldownTime` sera égal à l'horodatage unix actuel (en secondes) + le nombre de secondes d'un jour - qui sera égal à l'horodatage unix dans 24h. Plus tard, nous pourrons comparer si le `readyTime` du zombie est supérieur à `now` pour voir si assez de temps s'est écoulé pour utiliser à nouveau le zombie.
 
 Nous implémenterons cette fonctionnalité pour limiter les actions en fonction de `readyTime` dans le prochain chapitre.

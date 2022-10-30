@@ -75,7 +75,7 @@ material:
 
 Notre contrat est presque fini ! nous allons maintenant ajouter un **_ évènement _** (event).
 
-Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être «à l'écoute» de certains événements pour prendre des mesures quand ils se produisent.
+Un **_ évènement _** est un moyen pour votre contrat d'indiquer à votre application frontale (front-end) que quelque chose vient d'arriver sur la blockchain, l'application frontale pouvant être « à l'écoute » de certains événements pour prendre des mesures quand ils se produisent.
 
 Exemple :
 
@@ -101,7 +101,7 @@ YourContract.IntegersAdded(function(error, result) {
 
 # A votre tour
 
-A chaque fois qu'un nouveau zombie est créé, nous voulons qu'un évènement informe l'application frontale, ainsi, elle pourra l'afficher.
+A chaque fois qu'un nouveau zombie est créé, nous voulons qu'un évènement informe l'application frontale. Ainsi, elle pourra l'afficher.
 
 1. Déclarez un `event` appelé `NewZombie`. Les arguments devront être `zombieId` (un `uint`), `name` (un `string`), et `dna` (un `uint`).
 

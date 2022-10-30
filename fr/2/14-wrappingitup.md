@@ -17,9 +17,9 @@ Vous pouvez voir comment cela fonctionne avec la démo à droite. Allez-y, je sa
 
 ## Implémentation JavaScript
 
-Une fois que nous sommes prêt à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à toutes les fonctions publiques des deux contrats.
+Une fois que nous sommes prêts à déployer ce contrat sur Ethereum, nous avons juste besoin de compiler et déployer `ZombieFeeding` - vu que c'est notre contrat final qui hérite de `ZombieFactory`, et qui a accès à toutes les fonctions publiques des deux contrats.
 
-Voici un exemple d'interaction avec notre contrat déployé utilisant JavaScript et web3.js:
+Voici un exemple d'intéraction avec notre contrat déployé utilisant JavaScript et web3.js :
 
 ```
 var abi = /* abi générée par le compilateur */
@@ -59,8 +59,8 @@ ZombieFactory.NewZombie(function(error, result) {
 
 # A votre tout d'essayer !
 
-Choisissez un chaton que vous voulez donner à manger. L'ADN de votre zombie et celui du chaton vont se mélanger, et vous aurez un nouveau zombie dans votre armée !
+Cliquez sur le chaton que vous voulez donner à manger au zombie. L'ADN de votre zombie et celui du chaton vont se mélanger, et vous aurez un nouveau zombie dans votre armée !
 
 Vous avez vu ces jolies jambes de chat sur votre nouveau zombie ? C'est grâce aux chiffres `99` à la fin de notre ADN 😉
 
-Vous pouvez recommencer si vous le souhaitez. Quand vous avez un zombie qui vous plaît (vous n'en aurez qu'un), continuez et passez au prochain chapitre pour terminer la leçon 2 !
+Vous pouvez recommencer si vous le souhaitez. Quand vous avez un zombie qui vous plaît (vous n'en aurez qu'un !), continuez et passez au prochain chapitre pour terminer la leçon 2 !
