@@ -278,6 +278,6 @@ In our `getZombiesByOwner` function, we want to return a `uint[]` array with all
 
 1. Declare a `uint[] memory` variable called `result`
 
-2. Set it equal to a new `uint` array. The length of the array should be however many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
+2. Set it equal to a new `uint` array. The length of the array should be how many zombies this `_owner` owns, which we can look up from our `mapping` with: `ownerZombieCount[_owner]`.
 
 3. At the end of the function return `result`. It's just an empty array right now, but in the next chapter we'll fill it in.
