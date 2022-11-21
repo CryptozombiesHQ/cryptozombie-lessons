@@ -75,6 +75,6 @@ eatHamburgers("vitalik", 100);
 
 In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-1. Create a `public` function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`). Don't forget to pass the first argument by value by using the `memory` keyword
+1. Create a `public` function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`). Don't forget to pass the first argument by reference by using the `memory` keyword
 
 Leave the body empty for now — we'll fill it in later.
