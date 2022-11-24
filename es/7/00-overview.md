@@ -1,20 +1,20 @@
 ---
-title: "Custom Game Modes: Zombie Battleground"
-header: "Custom Game Modes: Zombie Battleground"
+title: "Modos de Juego Personalizados: Zombie Battleground"
+header: "Modos de Juego Personalizados: Zombie Battleground"
 roadmap: roadmap6.png
 publishedOn: Cryptozombies
 ---
 
-Welcome, veteran CryptoZombie!
+Bienvenid@, CryptoZombie veteran@!
 
-In this course, we are going to venture into the land of real game development.
+En este curso, vamos a aventurarnos en el campo del desarrollo de videojuegos reales.
 
-You will be building a *custom game mode* for our blockchain-based mobile card game, <a href="https://loom.games" target=_blank>Zombie Battleground</a>. 
+Vas a construir un *modo de juego personalizado* para nuestro juego de cartas para móvil basado en el blockchain, <a href="https://loom.games" target=_blank>Zombie Battleground</a>. 
 
-**Once you complete this course, you’ll have the skillset to build your own mod of Zombie Battleground**. Very soon we'll be launching a custom game creator tool, and you'll be able to deploy these mods to Loom GameChain, where they will be immediately playable by thousands of real Zombie Battleground players.
+**Una vez hayas completado este curso, tendrás las habilidades para crear tu propio mod de Zombie Battleground**. Muy pronto vamos a publicar una herramienta para crear juegos personalizados, y podrás desplegar estos mods en Loom GameChain, donde serán jugables inmediatamente por miles de jugadores de Zombie Battleground.
 
-Pretty cool, right?
+Mola, verdad?
 
-Okay, let's start building the next great Ethereum game- Aliens vs Zombies!😆😆😆
+Deacuerdo, empecemos a desarrollar el próximo gran juego de Ethereum: Aliens vs Zombies!😆😆😆
 
-If you’re ready… Then let’s dive right in and build your first mod!
+Si estás listo... ¡Entonces entremos de lleno y construyamos tu primer mod!
