@@ -78,7 +78,7 @@ material:
       }
 ---
 
-Rendons notre jeu multijoueur en attribuant aux zombies de notre base de donnée un propriétaire.
+Rendons notre jeu multijoueur en attribuant aux zombies de notre base de données un propriétaire.
 
 Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` (mappage) et `address` (adresse).
 
@@ -99,7 +99,7 @@ Nous pouvons donc l'utiliser comme un ID unique pour définir l'appartenance de 
 
 ## Mappages
 
-Dans la Leçon 1 nous avec vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
+Dans la Leçon 1 nous avons vu les **_structures_** et les **_tableaux_**. Les **_mappages_** sont une autre façon d'organiser des données en Solidity.
 
 Voici un exemple de `mapping` :
 
@@ -110,7 +110,7 @@ mapping (address => uint) public accountBalance;
 mapping (uint => string) userIdToName;
 ```
 
-Un mappage est fondamentalement un stockage de valeur-clé pour stocker et rechercher des données. Dans le premier exemple, la clé est une `address` et la valeur est un `uint`, et dans le second exemple, la clé est un `uint` et la valeur un `string`.
+Un mappage est fondamentalement un stockage de clé-valeur pour stocker et rechercher des données. Dans le premier exemple, la clé est une `address` et la valeur est un `uint`, et dans le second exemple, la clé est un `uint` et la valeur un `string`.
 
 
 # A votre tour
