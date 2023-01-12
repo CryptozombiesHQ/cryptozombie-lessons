@@ -97,7 +97,7 @@ function testDnaSplicing() public {
 
 1. まず、`_targetDna`が16桁であることを確認せよ。`_targetDna`を `_targetDna % dnaModulus`と同様にして最後の16桁だけ取り出せば良い。
 
-2. 次に`newDna`という名前の`uint`関数を宣言し、`myZombie`のDNAと`_targetDna`の平均値を設定せよ（上の例と同じだ）。
+2. 次に`newDna`という名前の`uint`変数を宣言し、`myZombie`のDNAと`_targetDna`の平均値を設定せよ（上の例と同じだ）。
 
   > 注:`myZombie.name` と `myZombie.dna`を使って`myZombie`プロパティにアクセスできます。
 
