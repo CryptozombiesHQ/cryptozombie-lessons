@@ -20,12 +20,11 @@
         "readOnly": "閲覧のみ"
     },
     "lessonMenu": {
-        "getReward": "Rewards",
+        "getReward": "賞品",
         "pageTitle": "@:base.name | @:base.tagLine",
         "itemLabel": "レッスン {lessonNum}: {title}",
         "signIn": "サインインをすれば進捗をロード",
-        "progressLoaded": "進捗がロードされました",
-        "getReward": "賞品"
+        "progressLoaded": "進捗がロードされました"
     },
     "overview": {
         "pageTitle": "@:base.name {lesson} | @:base.tagLine",
