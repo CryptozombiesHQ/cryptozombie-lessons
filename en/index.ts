@@ -270,6 +270,20 @@ import l19_ch10 from './19/10.md'
 import l19_ch11 from './19/11.md'
 import l19_complete from './19/lessoncomplete.md'
 
+
+//Lesson 20
+import l20_overview from './20/00-overview.md'
+import l20_ch1 from './20/01.md'
+import l20_ch2 from './20/02.md'
+import l20_ch3 from './20/03.md'
+import l20_ch4 from './20/04.md'
+import l20_ch5 from './20/05.md'
+import l20_ch6 from './20/06.md'
+import l20_ch7 from './20/07.md'
+import l20_ch8 from './20/08.md'
+import l20_ch9 from './20/09.md'
+import l20_complete from './20/lessoncomplete.md'
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -542,5 +556,18 @@ export default {
     l19_ch10,
     l19_ch11,
     l19_complete
+  ],
+  20: [
+    l20_overview,
+    l20_ch1,
+    l20_ch2,
+    l20_ch3,
+    l20_ch4,
+    l20_ch5,
+    l20_ch6,
+    l20_ch7,
+    l20_ch8,
+    l20_ch9,
+    l20_complete
   ]
 }

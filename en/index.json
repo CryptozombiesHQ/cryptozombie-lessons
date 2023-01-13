@@ -13,34 +13,44 @@
         },
         "twitter": {
             "name": "Twitter",
-            "link": "https://twitter.com/loomnetwork"
+            "link": "https://twitter.com/CryptoZombiesHQ"
         },
         "find_source_code_repo": "You can find the source code for these lessons at <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> this Github repo</a>.",
         "course" : [
             {
                 "id": "solidity",
-                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+                "pathName": "Solidity",
+                "title": "Solidity: Beginner to Intermediate Smart Contracts",
                 "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
             },
             {
                 "id": "chainlink",
-                "title": "Chainlink Path: Decentralized Oracles",
+                "pathName": "Chainlink",
+                "title": "Chainlink: Decentralized Oracles",
                 "summary": "Combine the real-world and all of its changes and information with our beloved zombies."
             },
             {
                 "id": "solidity_advanced",
-                "title": "Advanced Solidity Path: Get In-depth Knowledge",
+                "pathName": "Advanced Solidity",
+                "title": "Advanced Solidity: Get In-depth Knowledge",
                 "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
             },
             {
                 "id": "beyond_ethereum",
-                "title": "Beyond Ethereum Path: Explore the Blockchain Ecosystem",
+                "pathName": "Beyond Ethereum",
+                "title": "Beyond Ethereum: Explore the Blockchain Ecosystem",
                 "summary": "Explore the blockchain ecosystem."
+            },
+            {
+                "id": "tron",
+                "pathName": "Tron",
+                "title": "Tron: Decentralize the web",
+                "summary": "Start working with TRON, one of the fastest-growing public blockchains."
             }
         ],
-        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
-        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+        "solidity_path": "Solidity: Beginner to Intermediate Smart Contracts",
+        "hands_on_path": "Hands-on: Make and Deploy a Custom Game Mode",
+        "hand_on_plasma": "Advanced Solidity: Get In-depth Knowledge",
         "start_resume": "Start/Resume",
         "the_curriculum": "The Curriculum",
         "course_overview":"Course Overview",
@@ -190,7 +200,7 @@
             ],
             "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
             "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Thanks @CryptoZombiesHQ. Take a look at the first zombie in my army!"
         },
         "lesson2": {
             "header": [
@@ -207,7 +217,7 @@
                 "When you're ready, click the button below to access Lesson 3:"
             ],
             "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Thanks @CryptoZombiesHQ. Watch my zombie battle more CryptoKitties:"
         },
         "lesson3": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -240,7 +250,7 @@
                 "When you're ready, click the button below to access Lesson 5:"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Thanks @CryptoZombiesHQ. Try it out yourself:"
         },
         "lesson5": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -256,7 +266,7 @@
                 "When you're ready, click the button below to access Lesson 6:"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Thanks @CryptoZombiesHQ. Check out my zombie army:"
         },
         "lesson6": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -272,7 +282,7 @@
                 "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Thanks @CryptoZombiesHQ. Check out my zombie army:"
         }
     },
     "zombieBattle": {
