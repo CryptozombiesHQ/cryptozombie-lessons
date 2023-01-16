@@ -50,7 +50,9 @@
         "tryAgain": "もう一度答え合わせ",
         "checkAnswer": "答え合せ",
         "showMeTheAnswer": "答えを表示",
-        "hideAnswer": "答えを隠す"
+        "hideAnswer": "答えを隠す",
+        "next_chapter": "次へ",
+        "prev_chapter": "戻る"
     },
     "lessonComplete": {
         "shareLinksAction": "下のボタンをクリックするだけでシェアできるぞ：",
