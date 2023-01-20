@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public returns (uint) {
 그러면 자네 앱의 사용자 단은 해당 이벤트가 일어나는지 귀를 기울이지. 자바스크립트로 이를 구현하면 다음과 같네:
 
 ```
-YourContract.IntegersAdded(function(error, result) {
+YourContract.IntegersAdded(function(error, result)) {
   // 결과와 관련된 행동을 취한다
 }
 ```
