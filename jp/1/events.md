@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 アプリのフロントエンドをリッスン（接続待ち）状態にできる。JavaScriptで実装すると次のように書けるのだ：
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // 結果について何らかの処理をする
 }
 ```
