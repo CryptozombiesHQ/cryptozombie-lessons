@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 Front end tvojej aplikácie môže sledovať vyvolanie tejto udalosti. Javascriptová implementácia by vyzerala zhruba takto:
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // nejaká reakcia na zachytenú eventu
 }
 ```
