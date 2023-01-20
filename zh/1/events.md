@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 你的 app 前端可以监听这个事件。JavaScript 实现如下:
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // 干些事
 }
 ```
