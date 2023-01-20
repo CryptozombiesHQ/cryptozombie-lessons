@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 Votre application frontale pourrait alors être en attente de l'évènement. Voici un exemple d'implémentation JavaScript :
 
 ```
-YourContract.IntegersAdded(function(error, result) {
+YourContract.IntegersAdded(function(error, result)) {
   // faire quelque chose avec le résultat
 })
 ```
