@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 Теперь внешний интерфейс приложения сможет услышать событие. Примерно так будет выглядеть выполнение JavaScript:
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // Воспользуйся результатом
 }
 ```
