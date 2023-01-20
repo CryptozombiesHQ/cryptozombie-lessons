@@ -96,7 +96,7 @@ function add(uint _x, uint _y) public {
 فرانت اپ شما منتظر رویداد می‌مونه. پیاده‌سازی جاوااسکریپتش یه چیزی شبیه این می‌شه:
 </div>
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // do something with result
 }
 ```
