@@ -93,7 +93,7 @@ function add(uint _x, uint _y) public {
 La aplicación con la interfaz de usuario podría entonces estar escuchando el evento. Una implementación en JavaScript sería así:
 
 ```
-YourContract.IntegersAdded(function(error, result) {
+YourContract.IntegersAdded(function(error, result)) {
   // hacer algo con `result`
 }
 ```
