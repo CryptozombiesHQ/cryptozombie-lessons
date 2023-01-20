@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 ด้านหน้าแอพพลิเคชั่นของคุณในตอนนี้ก็จะสามารถรับฟังอีเว้นท์ที่จะเกิดได้แล้ว ส่วนใน JavaScript การเขียนโค้ดจะหน้าตาดังนี้ :
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result)) { 
   // ทำบางอย่างกับ result
 }
 ```
