@@ -87,7 +87,7 @@ contract SandwichFactory {
   Sandwich[] sandwiches;
 
   function eatSandwich(uint _index) public {
-    // Сэндвич mySandwich = sandwiches[_index];
+    // Sandwich mySandwich = sandwiches[_index];
 
     // ^ Вроде все в порядке, но Solidity выдаст предупреждение, 
     // что надо ясно указать `storage` или `memory`.
