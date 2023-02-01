@@ -1,6 +1,7 @@
 ---
 title: Lesson 1 Complete!
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   lessonComplete:
     answer: 1

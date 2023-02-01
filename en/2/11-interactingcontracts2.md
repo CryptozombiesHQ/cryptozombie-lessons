@@ -1,6 +1,7 @@
 ---
 title: Using an Interface
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

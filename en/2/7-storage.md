@@ -1,6 +1,7 @@
 ---
 title: Storage vs Memory (Data location)
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

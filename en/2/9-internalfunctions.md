@@ -1,6 +1,7 @@
 ---
 title: More on Function Visibility
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

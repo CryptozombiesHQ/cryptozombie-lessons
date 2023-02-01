@@ -2,6 +2,7 @@
 title: Lesson Overview
 actions: ['checkAnswer', 'hints']
 skipCheckAnswer: true
+requireLogin: true
 material:
   saveZombie: false
   zombieResult:

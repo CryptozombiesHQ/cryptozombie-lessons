@@ -1,6 +1,7 @@
 ---
 title: Keccak256 and Typecasting
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
