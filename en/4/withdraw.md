@@ -299,11 +299,9 @@ contract GetPaid is Ownable {
 
 Note that we're using `owner()` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
 
-And most important for `_owner` variable that it's have to be a `address payable` type for doing a sending and transferring ether instruction.
+It is important to note that you cannot transfer Ether to an address unless that address is of type `address payable`. But the `_owner` variable is of type `uint160`, meaning that we must explicitly cast it to `address payable`.
 
-But our `owner()` isn't a type `address payable` so we have to explicitly cast to `address payable`. Casting any integer type like `uint160` to address produces an `address payable`.
-
-You can transfer Ether to an address using the `transfer` function, and `address(this).balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `address(this).balance` would equal 100 Ether.
+Once you cast the address from `uint160` to `address payable`, you can transfer Ether to that address using the `transfer` function, and `address(this).balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `address(this).balance` would equal 100 Ether.
 
 You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
 

@@ -1,6 +1,7 @@
 ---
 title: More on Functions
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

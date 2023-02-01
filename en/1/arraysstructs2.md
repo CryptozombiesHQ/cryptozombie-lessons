@@ -1,6 +1,7 @@
 ---
 title: Working With Structs and Arrays
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
