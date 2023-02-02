@@ -3,16 +3,23 @@ title: State Variables & Integers
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
       #![no_std]
 
       mx_sc::imports!();
 
-      // start here
-
       #[mx_sc::contract]
-      pub trait ZombieFactory {}
+      pub trait ZombieFactory {
+
+        #[init]
+        fn init(&self) {
+          // set up your storage value here
+        }
+
+        // write your storage function here
+
+      }
 
       
     answer: >
@@ -68,4 +75,4 @@ There are also a couple integer data type for signed integers such as `i8`, `i16
 
 Our Zombie DNA is going to be determined by a 16-digit number.
 
-Declare a `SingleValueMapper<usize>` constant named `DNA_DIGITS`, and set it equal to `16`.
+Write a storage mapper of type `SingleValueMapper<usize>` named `dna_digits`, and set it equal to `16`.
