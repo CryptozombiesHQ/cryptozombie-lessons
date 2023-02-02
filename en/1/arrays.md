@@ -21,7 +21,7 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get())
+          let dna_modulus = 10usize.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
@@ -48,7 +48,7 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get())
+          let dna_modulus = 10usize.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
@@ -59,7 +59,7 @@ material:
         fn dna_modulus(&self) -> SingleValueMapper<usize>;
 
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> SingleValueMapper<ManagedVec<Zombie>>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
 ---
 
@@ -85,15 +85,17 @@ Always remember that Rust uses generics to define the type of data an array hold
 
 ## Putting it inside storage
 
-When it comes to putting complex data types into storage we can still use a `SingleValueMapper` for this job. Keep in mind though that we can do better, but more of that in the future.
+When it comes to putting arrays into storage `SingleValueMapper` might not be the bets option for the job, since every time we need something from our list we need to read it all and if an item needs to be changed the whole list needs to be rewritten.
+
+For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper` were introduced. These mappers behave like arrays and allow access on elements they contain by index and value. The diference between them is that `UnorderedSetMapper` is far more efficient since it stores internally each element's index to provide a `O(1)` search complexity, but the cost of using it relies on the fact that it doesn't provide a sorting of the elements within.
 
 ```
   #[storage_mapper("my_list_of_people")]
-  fn my_list_of_people(&self) -> SingleValueMapper<ManagedVec<People>>;
+  fn my_list_of_people(&self) -> UnorderedSetMapper<People>;
 ```
 
 # Put it to the test
 
 We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.
 
-1. Create an array of `Zombie` **_structs_**, and store it inside a storage named `zombies`.
+1. Create storage for a list of `Zombie` **_structs_**, named `zombies`.

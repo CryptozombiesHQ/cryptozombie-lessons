@@ -18,7 +18,7 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get())
+          let dna_modulus = 10usize.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
@@ -45,7 +45,7 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get())
+          let dna_modulus = 10usize.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 

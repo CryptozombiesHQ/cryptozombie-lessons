@@ -3,24 +3,38 @@ title: Function Declarations
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      mx_sc::imports!();
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: usize;
+      }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          Zombie[] public zombies;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
+
+          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
           // start here
 
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<usize>;
+
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
       pragma solidity >=0.5.0 <0.6.0;
@@ -45,36 +59,37 @@ material:
       }
 ---
 
-A function declaration in solidity looks like the following:
+A function declaration in Rust looks like the following:
 
 ```
-function eatHamburgers(string memory _name, uint _amount) public {
+public function eat_hamburgers(&self, amount: usize) {
 
 }
 ```
 
-This is a function named `eatHamburgers` that takes 2 parameters: a `string` and a `uint`. For now the body of the function is empty. Note that we're specifying the function visibility as `public`. We're also providing instructions about where the `_name` variable should be stored- in `memory`. This is required for all reference types such as arrays, structs, and mappings.
+This is a function named `eat_hamburgers` that takes 2 parameters: a reference to `self` and a `usize`. For now the body of the function is empty. Note that we're specifying the function visibility as `public`. 
 
 What is a reference type you ask?
 
-Well, there are two ways in which you can pass an argument to a Solidity function:
+Well, there are three ways in which you can pass an argument to a Rust function:
 
- * By value, which means that the Solidity compiler creates a new copy of the parameter's value and passes it to your function. This allows your function to modify the value without worrying that the value of the initial parameter gets changed.
- * By reference, which means that your function is called with a... reference to the original variable. Thus, if your function changes the value of the variable it receives, the value of the original variable gets changed.
+ * By value, which means that the ownership over the parameter's value is passes to your function. This blocks the use of the initial parameter once the function call had ended since having it consummed by the function.
+ * By reference, which means that your function is borrowing the value of the parameter. Thus, this doesn't allow the function to change the value of the parameter since it is just `borrowed`. Once the function call finished, the ownership of the parameter returns to its initial owner.
+ * By mutable reference, which means that your function is borrowing the value of the parameter and gets the permission to change it. Once the function call finished, the ownership of the parameter returns to its initial owner keeping all changes done inside the function.
 
 
-> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) in order to differentiate them from global variables. We'll use that convention throughout our tutorial.
+> Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) if the parameter is not used within the function. We'll use that convention throughout our tutorial.
 
 You would call this function like so:
 
 ```
-eatHamburgers("vitalik", 100);
+person.eat_hamburgers(100);
 ```
 
 # Put it to the test
 
 In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-1. Create a `public` function named `createZombie`. It should take two parameters: **\_name** (a `string`), and **\_dna** (a `uint`). Don't forget to pass the first argument by value by using the `memory` keyword
+1. Create a `public` function named `create_zombie`. It should take two parameters: **\_name** (a `ManagedBuffer`), and **\_dna** (a `usize`).
 
 Leave the body empty for now — we'll fill it in later.
