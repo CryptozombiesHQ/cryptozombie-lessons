@@ -61,7 +61,11 @@ pub trait Example {
 }
 ```
 
-In this example contract, we stored in our storage a `usize` under the name `my_size` and set it equal to 100. You can spot out that we use a procedural macro `#[storage_mapper("dna_digits")]`that defines our dna_digits function as a storage mapper
+In this example contract, we created a storage for a `usize` named `my_size` and than set the value of it to 100. 
+
+## Procedural Macros
+
+You can spot out that we have `#[storage_mapper("dna_digits")]` which is something we call a procedural macro. This element adds on compile a body to the function that defines its behaviour as a storage mapper. Though they look scary, storages in the MultiversX framework are actually simple and are defined by basically a function declarations with the proper procedural macro above it.
 
 ## Unsigned Integers: `usize`
 
