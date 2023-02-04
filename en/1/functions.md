@@ -11,7 +11,7 @@ material:
 
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
-          dna: usize;
+          dna: u32;
       }
 
       #[mx_sc::contract]
@@ -21,53 +21,68 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
           // start here
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("zombies")]
         fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      mx_sc::imports!();
 
-      contract ZombieFactory {
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
 
-          Zombie[] public zombies;
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
-          function createZombie(string memory _name, uint _dna) public {
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
-          }
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
+
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
 ---
+
+## Functions in Rust
 
 A function declaration in Rust looks like the following:
 
 ```
-public function eat_hamburgers(&self, amount: usize) {
+pub function eat_hamburgers(&self, amount: u32) {
 
 }
 ```
 
-This is a function named `eat_hamburgers` that takes 2 parameters: a reference to `self` and a `usize`. For now the body of the function is empty. Note that we're specifying the function visibility as `public`. 
+This is a function named `eat_hamburgers` that takes 2 parameters: a reference to `self` and a `u32`. For now the body of the function is empty. Note that we're specifying the function visibility as `public`. Without the `pub` keyword the function would be private, visible only within the entity that implements it.
 
 What is a reference type you ask?
 
@@ -80,16 +95,55 @@ Well, there are three ways in which you can pass an argument to a Rust function:
 
 > Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) if the parameter is not used within the function. We'll use that convention throughout our tutorial.
 
-You would call this function like so:
+You would call this function like so from within trait / struct that implements it:
+
+```
+self.eat_hamburgers(100);
+```
+
+Like this from outside the trait that implements it:
+
+```
+Person::eat_hamburgers(100);
+```
+
+Or like this from outside the struct that implements it:
 
 ```
 person.eat_hamburgers(100);
+```
+
+## Creating a structure type object
+
+In Rust creating a structure type object is done very easy:
+
+```
+let given_name = ManagedBuffer::from{b"Bob"};
+let given_age = 30u32;
+let person = Person { name: given_name, age: given_age };
+```
+
+If for example you have a variable whose name is matching the structure fiend's than the syntax can be simplified:
+
+
+```
+let name = ManagedBuffer::from{b"Bob"};
+let age = 30u32;
+let person = Person { name, age };
+```
+## Putting elements into a UnorderedSetMapper
+
+Adding an element to an `UnorderedSetMapper` is done by the method `insert`:
+
+
+```
+self.persons().insert(new_person);
 ```
 
 # Put it to the test
 
 In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-1. Create a `public` function named `create_zombie`. It should take two parameters: **\_name** (a `ManagedBuffer`), and **\_dna** (a `usize`).
+1. Create a `private` function named `create_zombie`. It should take two parameters: **\_name** (a `ManagedBuffer`), and **\_dna** (a `u32`).
 
-Leave the body empty for now — we'll fill it in later.
+2. Inside the body create a new zombie and put it inside the storage.

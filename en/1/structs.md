@@ -18,15 +18,15 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
       }
     answer: >
       #![no_std]
@@ -35,7 +35,7 @@ material:
 
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
-          dna: usize;
+          dna: u32;
       }
 
       #[mx_sc::contract]
@@ -45,15 +45,15 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
       }
 ---
 
@@ -88,4 +88,4 @@ In our app, we're going to want to create some zombies! And zombies will have mu
 
 1. Create a `struct` named `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `ManagedBuffer`), and `dna` (a `usize`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `ManagedBuffer`), and `dna` (a `u32`).

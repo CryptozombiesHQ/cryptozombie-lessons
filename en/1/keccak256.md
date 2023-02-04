@@ -3,99 +3,132 @@ title: Keccak256 and Typecasting
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity ^0.4.25;
+      #![no_std]
 
-      contract ZombieFactory {
+      mx_sc::imports!();
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          Zombie[] public zombies;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
 
-          function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              // start here
-          }
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
+        #[view]
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+            // start here
+        }
+
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+
+        }
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
-      pragma solidity ^0.4.25;
+      #![no_std]
 
+      mx_sc::imports!();
 
-      contract ZombieFactory {
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
 
-          Zombie[] public zombies;
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[view]
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+            let keccak = self.crypto().keccak256(str);
+            let rand = u32::from_be_bytes(keccak);
+            rand % dna_modulus
+        }
 
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+
+        }
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
 ---
 
-We want our `_generateRandomDna` function to return a (semi) random `uint`. How can we accomplish this?
+We want our `generate_random_dna` function to return a (semi) random `u32`. How can we accomplish this?
 
-Ethereum has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash.
+Rust has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash. This function can be accessed like this:
 
-It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.
+```
+let my_keccak = self.crypto().keccak256(my_str);
+```
+Where `my_str` is a `ManagedBuffer`. The return type of this function is a `ManagedByteArray<Self::Api, 32>` which can be further processed by making into a byte array with `my_keccak.to_byte_array()`. from here we can do a straigth up conversion to  `u32` with `u32::from_be_bytes(my_keccak)` si that we can extract the dna from it.
 
-Also important, `keccak256` expects a single parameter of type `bytes`. This means that we have to "pack" any parameters before calling `keccak256`:
+It's useful for many purposes in MultiversX Rust framework, but for right now we're just going to use it for pseudo-random number generation.
 
-Example:
 
 ```
 //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
-keccak256(abi.encodePacked("aaaab"));
+self.crypto().keccak256(ManagedBuffer::from(b"aaaab"));
 //b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
-keccak256(abi.encodePacked("aaaac"));
+self.crypto().keccak256(ManagedBuffer::from(b"aaaac"));
 ```
 
 As you can see, the returned values are totally different despite only a 1 character change in the input.
 
 > Note: **Secure** random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.
 
-## Typecasting
-
-Sometimes you need to convert between data types. Take the following example:
-
-```
-uint8 a = 5;
-uint b = 6;
-// throws an error because a * b returns a uint, not uint8:
-uint8 c = a * b;
-// we have to typecast b as a uint8 to make it work:
-uint8 c = a * uint8(b);
-```
-
-In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
-
 # Put it to the test
 
-Let's fill in the body of our `_generateRandomDna` function! Here's what it should do:
+Let's fill in the body of our `generate_random_dna` function! Here's what it should do:
 
-1. The first line of code should take the `keccak256` hash of `abi.encodePacked(_str)` to generate a pseudo-random hexadecimal, typecast it as a `uint`, and finally store the result in a `uint` called `rand`.
+1. The first line of code should take the `keccak256` hash of the given ManagedBuffer parameter `str` to generate a pseudo-random hexadecimal, typecast it as a byte array further converting it to a `u32`, and finally store the result in a `u32` called `rand`.
 
-2. We want our DNA to only be 16 digits long (remember our `dnaModulus`?). So the second line of code should `return` the above value modulus (`%`) `dnaModulus`.
+2. We want our DNA to only be 16 digits long (remember our `dna_modulus`?). So the next step in our code should `return` the above value modulus (`%`) `dna_modulus`.

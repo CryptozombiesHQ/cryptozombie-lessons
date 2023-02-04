@@ -11,7 +11,7 @@ material:
 
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
-          dna: usize;
+          dna: u32;
       }
 
       #[mx_sc::contract]
@@ -21,15 +21,15 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
       }
     answer: >
       #![no_std]
@@ -38,7 +38,7 @@ material:
 
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
-          dna: usize;
+          dna: u32;
       }
 
       #[mx_sc::contract]
@@ -48,15 +48,15 @@ material:
         fn init(&self) {
           self.dna_digits().set(16);
 
-          let dna_modulus = 10usize.pow(self.dna_digits().get());
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
           self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<usize>;
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("zombies")]
         fn zombies(&self) -> UnorderedSetMapper<Zombie>;
@@ -71,7 +71,7 @@ let fixed_array: ArrayVec<u8, 2>;
 // another fixed Array, can contain 5 strings:
 let string_array: ArrayVec<ManagedBuffer, 5>;
 // a dynamic Array - has no fixed size, can keep growing:
-let dynamic_array: ManagedVec<usize>;
+let dynamic_array: ManagedVec<u32>;
 ```
 
 You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:

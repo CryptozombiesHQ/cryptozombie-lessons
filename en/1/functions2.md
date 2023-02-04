@@ -3,70 +3,132 @@ title: Private / Public Functions
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      mx_sc::imports!();
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          Zombie[] public zombies;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
 
-          function createZombie(string memory _name, uint _dna) public {
-              zombies.push(Zombie(_name, _dna));
-          }
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
+
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
+
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
+
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      mx_sc::imports!();
 
-      contract ZombieFactory {
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
 
-          Zombie[] public zombies;
+          let dna_modulus = 10u32.pow(self.dna_digits().get());
+          self.dna_modulus().set(dna_modulus);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          }
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
+        #[view]
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+
+        }
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("dna_modulus")]
+        fn dna_modulus(&self) -> SingleValueMapper<u32>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
 ---
 
-In Solidity, functions are `public` by default. This means anyone (or any other contract) can call your contract's function and execute its code.
+In this chapter, we're going to learn about function **_return values_**, and function modifiers.
 
-Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as `private` by default, and then only make `public` the functions you want to expose to the world.
+## Return Values
 
-Let's look at how to declare a private function:
+To return a value from a function, the declaration looks like this:
 
 ```
-uint[] numbers;
 
-function _addToArray(uint _number) private {
-  numbers.push(_number);
+fn say_hello() -> ManagedBuffer {
+  let greeting = ManagedBuffer::from(b"What's up dog");
+  return greeting;
+}
+
+```
+Alternativelly you can leave the returned element as the last line of the function without the delimiter `;` having the same effect as the classic format:
+
+```
+
+function say_hello() -> ManagedBuffer {
+  ManagedBuffer::from(b"What's up dog")
+}
+
+```
+
+In Rust, the function declaration contains the type of the return value (in this case `ManagedBuffer`) indicated by `->`
+
+## Function modifiers
+
+The above function doesn't actually change state in Rust — e.g. it doesn't change any values or write anything.
+
+So in this case we could declare it as a **#[view]** function, meaning it's only viewing the data but not modifying it. As a good practice storage values usually are declared as **#[view]** as well. Since in Rust the code writing convention is `snake_case` if you desire the name of a certain element be different on blockchain you can always set it so inside the view:
+
+```
+#[view(sayHello)]
+function say_hello() -> ManagedBuffer {
+  ManagedBuffer::from(b"What's up dog")
 }
 ```
 
-This means only other functions within our contract will be able to call this function and add to the `numbers` array.
-
-As you can see, we use the keyword `private` after the function name. And as with function parameters, it's convention to start private function names with an underscore (`_`).
-
 # Put it to the test
 
-Our contract's `createZombie` function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.
+We're going to want a helper function that generates a random DNA number from a string.
 
-1. Modify `createZombie` so it's a private function. Don't forget the naming convention!
+1. Create a `private` function called `generate_random_dna`. It will take one parameter named `str` (a `ManagedBuffer`), and return a `u32`.
+
+2. This function will view some of our contract's variables but not modify them, so mark it as `#[view]`.
+
+3. The function body should be empty at this point — we'll fill it in later.
+
+4. Set the storage values declared before as `#[view]` as well

@@ -36,7 +36,7 @@ material:
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<usize>;
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
       }
 ---
 
@@ -57,21 +57,21 @@ pub trait Example {
   }
 
   #[storage_mapper("my_size")]
-  fn my_size(&self) -> SingleValueMapper<usize>;
+  fn my_size(&self) -> SingleValueMapper<u32>;
 }
 ```
 
-In this example contract, we created a storage for a `usize` named `my_size` and than set the value of it to 100. 
+In this example contract, we created a storage for a `u32` named `my_size` and than set the value of it to 100. 
 
 ## Procedural Macros
 
 You can spot out that we have `#[storage_mapper("dna_digits")]` which is something we call a procedural macro. This element adds on compile a body to the function that defines its behaviour as a storage mapper. Though they look scary, storages in the MultiversX framework are actually simple and are defined by basically a function declarations with the proper procedural macro above it.
 
-## Unsigned Integers: `usize`
+## Unsigned Integers: `u32`
 
-The `usize` data type is an unsigned integer, meaning **its value must be non-negative**. 
+The `u32` data type is an unsigned integer, meaning **its value must be non-negative**. 
 
-> Note: In Rust, `usize` is actually an alias for `u32` or `u64` depending on the architecture, a 32 respectively 64-bit unsigned integer. You can declare usize with less bits — `u8`, `u16`, `u32`, etc.. But in general you want to simply use `usize` except in specific cases, which we'll talk about in later lessons.
+> Note: You can declare `u32` with less bits — `u8`, `u16`, `u32`, etc.. But in general you want to simply use `u32` except in specific cases, which we'll talk about in later lessons.
 
 There are also a couple integer data type for signed integers such as `i8`, `i16`, `i32`, etc..
 
@@ -79,4 +79,4 @@ There are also a couple integer data type for signed integers such as `i8`, `i16
 
 Our Zombie DNA is going to be determined by a 16-digit number.
 
-Write a storage mapper of type `SingleValueMapper<usize>` named `dna_digits`, and set it equal to `16`.
+Write a storage mapper of type `SingleValueMapper<u32>` named `dna_digits`, and set it equal to `16`.
