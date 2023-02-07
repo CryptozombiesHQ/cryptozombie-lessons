@@ -16,7 +16,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -24,15 +24,15 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
-            self.zombies().insert(Zombie{ name, dna })
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
         }
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
       #![no_std]
@@ -46,7 +46,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -54,12 +54,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
-            self.zombies().insert(Zombie{ name, dna })
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
+        fn generate_random_dna(&self) -> u64{
 
         }
 
@@ -69,7 +69,7 @@ material:
 
         #[view]
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
@@ -116,7 +116,7 @@ function say_hello() -> ManagedBuffer {
 
 We're going to want a helper function that generates a random DNA number from a string.
 
-1. Create a `private` function called `generate_random_dna`. It will take one parameter named `str` (a `ManagedBuffer`), and return a `u64`.
+1. Create a `private` function called `generate_random_dna`. It will take no parameter (except the `self`).
 
 2. This function will view some of our contract's variables but not modify them, so mark it as `#[view]`.
 

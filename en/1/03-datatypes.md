@@ -10,7 +10,7 @@ material:
       multiversx_sc::imports!();
       multiversx_sc::derive_imports!();
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -29,7 +29,7 @@ material:
       multiversx_sc::imports!();
       multiversx_sc::derive_imports!();
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]

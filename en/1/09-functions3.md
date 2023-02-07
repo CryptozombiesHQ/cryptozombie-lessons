@@ -16,7 +16,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -24,12 +24,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
-            self.zombies().insert(Zombie{ name, dna })
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
+        fn generate_random_dna(&self) -> u64{
 
         }
 
@@ -41,7 +41,7 @@ material:
 
         #[view]
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
       #![no_std]
@@ -55,7 +55,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -63,12 +63,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
-            self.zombies().insert(Zombie{ name, dna })
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
+        fn generate_random_dna(&self) -> u64{
 
         }
 
@@ -83,7 +83,7 @@ material:
 
         #[view]
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 

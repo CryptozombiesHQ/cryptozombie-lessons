@@ -5,75 +5,108 @@ material:
   editor:
     language: rust
     startingCode: |
-      pragma solidity  >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          Zombie[] public zombies;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          // start here
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            // start here
+        }
 
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
-      pragma solidity  >=0.5.0 <0.6.0;
+      #![no_std]
 
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract ZombieFactory {
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-          } 
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
+        }
 
-          function createRandomZombie(string memory _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
 We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
 
-We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.
+We're going to create a public function that takes an input, the zombie's name, to create a zombie with random DNA and that given name.
 
 # Put it to the test
 
-1. Create a `public` function named `createRandomZombie`. It will take one parameter named `_name` (a `string` with the data location set to `memory`). _(Note: Declare this function `public` just as you declared previous functions `private`)_
+Lets populate the `create_random_zombie` endpoint
 
-2. The first line of the function should run the `_generateRandomDna` function on `_name`, and store it in a `uint` named `randDna`.
+1. The first line of the function should run the `generate_random_dna` function on, and store it in an `u64` varialble named `rand_dna`.
 
-3. The second line should run the `_createZombie` function and pass it `_name` and `randDna`.
+2. The second line should run the `create_z_ombie` function and pass it `name` and `rand_dna`.
 
-4. The solution should be 4 lines of code (including the closing `}` of the function).
+3. The solution should be 5 lines of code (including the closing `}` of the function and the `#[endpoint]` annotation).

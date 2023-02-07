@@ -16,7 +16,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -39,7 +39,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -51,7 +51,7 @@ material:
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
@@ -83,8 +83,10 @@ For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper`
 
 ```
   #[storage_mapper("my_list_of_people")]
-  fn my_list_of_people(&self) -> UnorderedSetMapper<People>;
+  fn my_list_of_people(&self) -> UnorderedSetMapper<People<Self::Api>>;
 ```
+
+> Note: Since People has a member which is a managed type when specifying the return type we also need to specify the generic. If we are inside the contract this generic type is take from the containing tyait, reason why we will have `Self::Api` in there in stead of `M: ManagedTypeApi`.
 
 # Put it to the test
 

@@ -15,8 +15,7 @@ material:
       multiversx_sc::imports!();
       multiversx_sc::derive_imports!();
 
-
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
         #[init]
         fn init(&self) {}
@@ -49,7 +48,7 @@ pub trait ZombieFactory {
 }
 ```
 
-Here `#[mx_sc::contract]` is a procedural macro that defines the `ZombieFactory` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
+Here `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieFactory` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
 
 What every contract has as a mandatory function is a init, marked with `#[init]`. Here all the presets of the contract should be put.
 

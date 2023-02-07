@@ -12,7 +12,7 @@ material:
 
       // start here
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -35,7 +35,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]

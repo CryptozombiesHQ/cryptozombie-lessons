@@ -16,7 +16,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -28,9 +28,9 @@ material:
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
-        
+
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
       #![no_std]
@@ -44,7 +44,7 @@ material:
           dna: u64,
       }
 
-      #[mx_sc::contract]
+      #[multiversx_sc::contract]
       pub trait ZombieFactory {
 
         #[init]
@@ -52,15 +52,15 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
-            self.zombies().insert(Zombie{ name, dna })
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
         }
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
         #[storage_mapper("zombies")]
-        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
+        fn zombies(&self) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
