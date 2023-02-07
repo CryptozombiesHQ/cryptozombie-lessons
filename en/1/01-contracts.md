@@ -7,15 +7,20 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
     answer: > 
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
 
       #[mx_sc::contract]
-      pub trait ZombieFactory {}
+      pub trait ZombieFactory {
+        #[init]
+        fn init(&self) {}
+      }
 ---
 
 
@@ -38,10 +43,15 @@ In here we are interested for now of **lib.rs** from inside the root folder **sr
 
 ```
 #[mx_sc::contract]
-pub trait ZombieFactory {}
+pub trait ZombieFactory {
+        #[init]
+        fn init(&self) {}
+}
 ```
 
 Here `#[mx_sc::contract]` is a procedural macro that defines the `ZombieFactory` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
+
+What every contract has as a mandatory function is a init, marked with `#[init]`. Here all the presets of the contract should be put.
 
 ## Basic syntagm
 
@@ -57,7 +67,7 @@ Rust's standard design library is split into a few layers, each building on the 
 
 Now, the main idea is that the platform develped by **MultiversX** is avoiding the use of `alloc` since the dynamic memory allocation is faulty of increasing the size of the contract, also the reason of certain data types with unfixed size are replaced with something easier to manage. More of this in the next lessons, but for now we require just the simple adding of `#![no_std]`
 
-The next step is importing the **MultiversX** Rust SDK, done by calling the macro `mx_sc::imports!();`
+The next step is importing the **MultiversX** Rust SDK, done by calling the macros `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();`
 
 # Put it to the test
 

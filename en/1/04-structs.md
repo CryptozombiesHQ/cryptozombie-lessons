@@ -7,7 +7,8 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
       // start here
 
@@ -25,8 +26,10 @@ material:
     answer: >
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -58,6 +61,7 @@ The managed types work by only storing a handle within the contract memory, whic
 Sometimes you need a more complex data type. For this, Rust provides **_structs_**:
 
 ```
+#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
 struct Person<M: ManagedTypeApi> {
   age: u8;
   name: ManagedBuffer<M>;
@@ -67,6 +71,8 @@ struct Person<M: ManagedTypeApi> {
 
 Structs allow you to create more complicated data types that have multiple properties.
 You will also notice that our struct has a generic argument `<M: ManagedTypeApi>` with a restriction, which is telling us that this structure uses a managed data type. What we can say for now is that whenever a struct or another datatype that contains managed data types is defined this generic with the restriction needs to be added, since the managed type also requires it as seed in the example above.
+
+The scarry part of this declaration though is the procedural macro `#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]`. You can just take it as it is, since it is just a set of implementations for our stucture type to help with the serialization and deserialization. what we can say is that for now we will just add it to every structure type or enumerator written by smart contract developers. 
 
 > Note that the contract already is aware of managed types, reason why using the generic to indicate it is not required.
 

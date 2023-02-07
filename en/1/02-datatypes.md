@@ -7,7 +7,8 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
       #[mx_sc::contract]
       pub trait ZombieFactory {
@@ -25,7 +26,8 @@ material:
     answer: >
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
       #[mx_sc::contract]
       pub trait ZombieFactory {
@@ -61,7 +63,7 @@ pub trait Example {
 }
 ```
 
-In this example contract, we created a storage for a `u32` named `my_size` and than set the value of it to 100. 
+In this example contract, we created a storage for a `u32` named `my_size` and than set the value of it to 100. Since we want this to be sent when the contract is deployed we will set it up inside our init.
 
 ## Procedural Macros
 

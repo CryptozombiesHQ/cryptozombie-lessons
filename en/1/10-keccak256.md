@@ -7,8 +7,10 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -47,8 +49,10 @@ material:
     answer: >
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -87,7 +91,7 @@ material:
       }
 ---
 
-We want our `generate_random_dna` function to return a (semi) random `u32`. How can we accomplish this?
+We want our `generate_random_dna` function to return a random `u32`. How can we accomplish this?
 
 Rust has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash. This function can be accessed like this:
 

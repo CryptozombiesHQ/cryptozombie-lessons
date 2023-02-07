@@ -7,8 +7,10 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -20,9 +22,6 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
           // start here
@@ -30,17 +29,16 @@ material:
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
 
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
-
         #[storage_mapper("zombies")]
         fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -52,9 +50,6 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u32){
@@ -63,9 +58,6 @@ material:
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
-
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
 
         #[storage_mapper("zombies")]
         fn zombies(&self) -> UnorderedSetMapper<Zombie>;

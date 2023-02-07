@@ -7,8 +7,10 @@ material:
     startingCode: |
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;
@@ -44,8 +46,10 @@ material:
     answer: >
       #![no_std]
 
-      mx_sc::imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
       struct Zombie<M: ManagedTypeApi> {
           name: ManagedBuffer<M>;
           dna: u32;

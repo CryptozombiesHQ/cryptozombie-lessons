@@ -5,11 +5,10 @@
 import l1_overview from './1/00-overview.md'
 import contracts from './1/01-contracts.md'
 import datatypes from './1/02-datatypes.md'
-import lessonoverview from './1/03-lessonoverview.md'
+import lessonoverview from './1/00-lessonoverview.md'
 import structs from './1/04-structs.md'
 import arrays from './1/05-arrays.md'
 import functions from './1/06-functions.md'
-import arraysstructs2 from './1/07-arraysstructs2.md'
 import functions2 from './1/08-functions2.md'
 import functions3 from './1/09-functions3.md'
 import keccak256 from './1/10-keccak256.md'
@@ -292,11 +291,9 @@ export default {
     lessonoverview,
     contracts,
     datatypes,
-    math,
     structs,
     arrays,
     functions,
-    arraysstructs2,
     functions2,
     functions3,
     keccak256,
