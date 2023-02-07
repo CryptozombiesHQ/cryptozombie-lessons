@@ -20,9 +20,6 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u32){
@@ -39,10 +36,6 @@ material:
         #[view]
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
-
-        #[view]
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
 
         #[view]
         #[storage_mapper("zombies")]
@@ -64,9 +57,6 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u32){
@@ -86,10 +76,6 @@ material:
         #[view]
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
-
-        #[view]
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
 
         #[view]
         #[storage_mapper("zombies")]

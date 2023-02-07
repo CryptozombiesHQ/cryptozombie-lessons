@@ -3,8 +3,8 @@
 
 // lesson 1
 import l1_overview from './1/00-overview.md'
-import datatypes from './1/01-datatypes.md'
-import contracts from './1/02-contracts.md'
+import contracts from './1/01-contracts.md'
+import datatypes from './1/02-datatypes.md'
 import lessonoverview from './1/03-lessonoverview.md'
 import structs from './1/04-structs.md'
 import arrays from './1/05-arrays.md'

@@ -3,47 +3,62 @@ title: Working With Structs and Arrays
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      mx_sc::imports!();
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          Zombie[] public zombies;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
+        }
 
-          function createZombie (string memory _name, uint _dna) public {
-              // start here
-          }
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
+
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      mx_sc::imports!();
 
-      contract ZombieFactory {
+      struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>;
+          dna: u32;
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[mx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+            self.zombies().insert(Zombie{ name, dna })
+        }
 
-          function createZombie (string memory _name, uint _dna) public {
-              zombies.push(Zombie(_name, _dna));
-          }
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u32>;
 
+        #[storage_mapper("zombies")]
+        fn zombies(&self) -> UnorderedSetMapper<Zombie>;
       }
 ---
 

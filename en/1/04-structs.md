@@ -17,16 +17,10 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
-
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
       }
     answer: >
       #![no_std]
@@ -44,16 +38,10 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16);
-
-          let dna_modulus = 10u32.pow(self.dna_digits().get());
-          self.dna_modulus().set(dna_modulus);
         }
 
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u32>;
-
-        #[storage_mapper("dna_modulus")]
-        fn dna_modulus(&self) -> SingleValueMapper<u32>;
       }
 ---
 

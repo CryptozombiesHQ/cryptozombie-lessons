@@ -3,7 +3,7 @@ title: Events
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
       pragma solidity >=0.5.0 <0.6.0;
 
