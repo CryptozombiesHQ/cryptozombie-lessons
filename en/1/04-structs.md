@@ -17,11 +17,11 @@ material:
 
         #[init]
         fn init(&self) {
-          self.dna_digits().set(16);
+          self.dna_digits().set(16u8);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<u32>;
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
       }
     answer: >
       #![no_std]
@@ -40,11 +40,11 @@ material:
 
         #[init]
         fn init(&self) {
-          self.dna_digits().set(16);
+          self.dna_digits().set(16u8);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<u32>;
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
       }
 ---
 

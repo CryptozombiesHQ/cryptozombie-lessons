@@ -34,11 +34,11 @@ material:
 
         #[init]
         fn init(&self) {
-          self.dna_digits().set(16);
+          self.dna_digits().set(16u8);
         }
 
         #[storage_mapper("dna_digits")]
-        fn dna_digits(&self) -> SingleValueMapper<u32>;
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
       }
 ---
 
@@ -55,7 +55,7 @@ pub trait Example {
 
   #[init]
   fn init(&self) {
-    self.my_size().set(100);
+    self.my_size().set(100u32);
   }
 
   #[storage_mapper("my_size")]
@@ -65,15 +65,17 @@ pub trait Example {
 
 In this example contract, we created a storage for a `u32` named `my_size` and than set the value of it to 100. Since we want this to be sent when the contract is deployed we will set it up inside our init.
 
+> Note: You can easy cast any number to a type by adding the type to the end of the number. In this case `100u32` is 100 casted as a `u32`.
+
 ## Procedural Macros
 
 You can spot out that we have `#[storage_mapper("dna_digits")]` which is something we call a procedural macro. This element adds on compile a body to the function that defines its behaviour as a storage mapper. Though they look scary, storages in the MultiversX framework are actually simple and are defined by basically a function declarations with the proper procedural macro above it.
 
-## Unsigned Integers: `u32`
+## Unsigned Integers: `u8`
 
-The `u32` data type is an unsigned integer, meaning **its value must be non-negative**. 
+The `u8` data type is a 8-bit unsigned integer, meaning **its value must be non-negative**. 
 
-> Note: You can declare `u32` with less bits — `u8`, `u16`, `u32`, etc.. But in general you want to simply use `u32` except in specific cases, which we'll talk about in later lessons.
+> Note: You can declare unsigned integer types with more bits — `u16`, `u32`, `u64` etc.. But in this case you want to simply use `u8` because we want to store in it a small number representing the number of digits of the zombie dna.
 
 There are also a couple integer data type for signed integers such as `i8`, `i16`, `i32`, etc..
 
