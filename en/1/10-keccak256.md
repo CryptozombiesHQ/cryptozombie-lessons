@@ -11,9 +11,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -24,12 +24,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
             // start here
         }
 
@@ -53,9 +53,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -66,12 +66,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
           
           // todo
         }
@@ -91,7 +91,7 @@ material:
       }
 ---
 
-We want our `generate_random_dna` function to return a random `u32`. How can we accomplish this?
+We want our `generate_random_dna` function to return a random `u64`. How can we accomplish this?
 
 Rust has the hash function `keccak256` built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash. This function can be accessed like this:
 

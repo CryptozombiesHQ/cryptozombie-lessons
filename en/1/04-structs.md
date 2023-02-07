@@ -30,9 +30,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -82,4 +82,4 @@ In our app, we're going to want to create some zombies! And zombies will have mu
 
 1. Create a `struct` named `Zombie`.
 
-2. Our `Zombie` struct will have 2 properties: `name` (a `ManagedBuffer`), and `dna` (a `u32`).
+2. Our `Zombie` struct will have 2 properties: `name` (a `ManagedBuffer`), and `dna` (a `u64`).

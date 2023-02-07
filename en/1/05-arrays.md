@@ -11,9 +11,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -34,9 +34,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]

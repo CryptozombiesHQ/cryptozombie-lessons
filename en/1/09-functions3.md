@@ -11,9 +11,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -24,12 +24,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
 
         }
 
@@ -50,9 +50,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -63,12 +63,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
 
         }
 

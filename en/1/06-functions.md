@@ -11,9 +11,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -39,9 +39,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -52,7 +52,7 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
@@ -136,6 +136,6 @@ self.persons().insert(new_person);
 
 In our app, we're going to need to be able to create some zombies. Let's create a function for that.
 
-1. Create a `private` function named `create_zombie`. It should take two parameters: **\_name** (a `ManagedBuffer`), and **\_dna** (a `u32`).
+1. Create a `private` function named `create_zombie`. It should take two parameters: **\_name** (a `ManagedBuffer`), and **\_dna** (a `u64`).
 
 2. Inside the body create a new zombie and put it inside the storage.

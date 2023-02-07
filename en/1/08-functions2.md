@@ -11,9 +11,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -24,7 +24,7 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
@@ -41,9 +41,9 @@ material:
       multiversx_sc::derive_imports!();
 
       #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-      struct Zombie<M: ManagedTypeApi> {
-          name: ManagedBuffer<M>;
-          dna: u32;
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
       #[mx_sc::contract]
@@ -54,12 +54,12 @@ material:
           self.dna_digits().set(16u8);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u32){
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64){
             self.zombies().insert(Zombie{ name, dna })
         }
 
         #[view]
-        fn generate_random_dna(&self, str: ManagedBuffer) -> u32{
+        fn generate_random_dna(&self, str: ManagedBuffer) -> u64{
 
         }
 
@@ -116,7 +116,7 @@ function say_hello() -> ManagedBuffer {
 
 We're going to want a helper function that generates a random DNA number from a string.
 
-1. Create a `private` function called `generate_random_dna`. It will take one parameter named `str` (a `ManagedBuffer`), and return a `u32`.
+1. Create a `private` function called `generate_random_dna`. It will take one parameter named `str` (a `ManagedBuffer`), and return a `u64`.
 
 2. This function will view some of our contract's variables but not modify them, so mark it as `#[view]`.
 
