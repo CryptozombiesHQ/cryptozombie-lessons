@@ -3,7 +3,7 @@ title: "Contracts"
 actions: ['checkAnswer', 'hints']
 material: 
   editor:
-    language: sol
+    language: rust
     startingCode: |
       #![no_std]
 
