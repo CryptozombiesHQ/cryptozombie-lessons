@@ -3,7 +3,7 @@ title: More on Function Visibility
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode:
       "zombiefactory.sol": |
         pragma solidity >=0.5.0 <0.6.0;

@@ -3,131 +3,143 @@ title: Msg.sender
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust by:
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies().insert(Zombie { name, dna });
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              // start here
-              emit NewZombie(id, _name, _dna);
-          }
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            
+            // start here
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
+        }
 
-          function createRandomZombie(string memory _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(
+            &self,
+            owner: &ManagedAddress
+        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract ZombieFactory {
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
+            self.zombies(&owner).insert(Zombie { name, dna });
+        }
 
-          Zombie[] public zombies;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let caller = self.blockchain().get_caller();
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(&caller, name, rand_dna);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              emit NewZombie(id, _name, _dna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string memory _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(
+            &self,
+            owner: &ManagedAddress
+        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
-Now that we have our mappings to keep track of who owns a zombie, we'll want to update the `_createZombie` method to use them.
+Now that we have our mapping to keep track of who owns a zombie, we'll want to update the `create_zombie` so that the zombie created to be stored by the caller address.
 
-In order to do this, we need to use something called `msg.sender`.
+## Getting the caller
 
-## msg.sender
-
-In Solidity, there are certain global variables that are available to all functions. One of these is `msg.sender`, which refers to the `address` of the person (or smart contract) who called the current function.
-
-> Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a `msg.sender`.
-
-Here's an example of using `msg.sender` and updating a `mapping`:
+In the MultiversX Rust framework is done very easy by:
 
 ```
-mapping (address => uint) favoriteNumber;
-
-function setMyNumber(uint _myNumber) public {
-  // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
-  favoriteNumber[msg.sender] = _myNumber;
-  // ^ The syntax for storing data in a mapping is just like with arrays
-}
-
-function whatIsMyNumber() public view returns (uint) {
-  // Retrieve the value stored in the sender's address
-  // Will be `0` if the sender hasn't called `setMyNumber` yet
-  return favoriteNumber[msg.sender];
-}
+let caller = self.blockchain().get_caller();
 ```
 
-In this trivial example, anyone could call `setMyNumber` and store a `uint` in our contract, which would be tied to their address. Then when they called `whatIsMyNumber`, they would be returned the `uint` that they stored.
+## Working with references
 
-Using `msg.sender` gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.
+You will experience that while working in Rust many of the times we will have to deal the reference the proper way. Certain functions will be optimized if have a certain element as a reference, just borrowing it from the caller and after their code block is executed returning it back.  
+
+```
+fn say_hello(&self) -> ManagedBuffer {
+    let person = ManagedBuffer::from(b"Bob");
+    self.say_hello_to_person(person)
+}
+
+#[endpoint]
+fn say_hello_to_person(&self, name: &ManagedBuffer) -> ManagedBuffer{
+    let mut message = ManagedBuffer::from(b"Hello ");
+    message.append(name);
+    message
+}
+```
 
 # Put it to the test
 
-Let's update our `_createZombie` method from lesson 1 to assign ownership of the zombie to whoever called the function.
+Let's update our `create_zombie` method and the `create_random_zombie` endpoint from lesson 1 to assign ownership of the zombie to whoever called the function.
 
-1. First, after we get back the new zombie's `id`, let's update our `zombieToOwner` mapping to store `msg.sender` under that `id`.
+1. Starting with `create_random_zombie`, we need to get the caller of the endpoint.
 
-2. Second, let's increase `ownerZombieCount` for this `msg.sender`. 
-
-In Solidity, you can increase a `uint` with `++`, just like in JavaScript:
-
-```
-uint number = 0;
-number++;
-// `number` is now `1`
-```
-
-Your final answer for this chapter should be 2 lines of code.
+2. Second, we will pass the address as a parameter to `create_zombie` which puts the zombies storage insert, adding the caller as a key. Keep in mind that we need to give this parameter as a reference. `create_zombie` will get a third parameter called `owner` which will be our `&ManagedAddress`

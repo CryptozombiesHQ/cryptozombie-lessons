@@ -72,7 +72,7 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-            let rand_source = RandomnessSource::new();
+            let mut rand_source = RandomnessSource::new();
             let dna_digits = self.dna_digits().get();
             let max_dna_value = u64::pow(10u64, dna_digits as u32);
             rand_source.next_u64_in_range(0u64, max_dna_value)
