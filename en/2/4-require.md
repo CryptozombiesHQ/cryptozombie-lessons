@@ -5,115 +5,141 @@ material:
   editor:
     language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
+            self.zombies(&owner).insert(Zombie { name, dna });
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              emit NewZombie(id, _name, _dna);
-          }
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let caller = self.blockchain().get_caller();
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+            // start here
 
-          function createRandomZombie(string memory _name) public {
-              // start here
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(&caller, name, rand_dna);
+        }
 
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(
+            &self,
+            owner: &ManagedAddress
+        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract ZombieFactory {
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[multiversx_sc::contract]
+      pub trait ZombieFactory {
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+        }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
+            self.zombies(&owner).insert(Zombie { name, dna });
+        }
 
-          Zombie[] public zombies;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let caller = self.blockchain().get_caller();
+            require!(self.zombies(&caller).len() == 0, "You already own a zombie");
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(&caller, name, rand_dna);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              emit NewZombie(id, _name, _dna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string memory _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(
+            &self,
+            owner: &ManagedAddress
+        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
       }
 ---
 
-In lesson 1, we made it so users can create new zombies by calling `createRandomZombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
+In lesson 1, we made it so users can create new zombies by calling `create_random_zombie` and entering a name. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.
 
 Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.
 
 How can we make it so this function can only be called once per player?
 
-For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
+For that we use `require!`. `require!` makes it so that the function will throw an error and stop executing if some condition is not true:
 
 ```
-function sayHiToVitalik(string memory _name) public returns (string memory) {
-  // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-  // (Side note: Solidity doesn't have native string comparison, so we
-  // compare their keccak256 hashes to see if the strings are equal)
-  require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
+#[endpoint]
+fn say_hi_to_vitalik(&self, name: ManagedBuffer) -> ManagedBuffer {
+  // Compares if name equals "Vitalik". Throws an error and exits if not true.
+  require!(
+    name == ManagedBuffer::from(b"Vitalik")
+    "Hey! You are not Vitalik!");
   // If it's true, proceed with the function:
-  return "Hi!";
+  ManagedBuffer::from(b"Hi!");
 }
 ```
 
-If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+If you call this function with `say_hi_to_vitalik(ManagedBuffer::from(b"Vitalik"))`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
-Thus `require` is quite useful for verifying certain conditions that must be true before running a function.
+Thus `require!` is quite useful for verifying certain conditions that must be true before running a function.
 
 # Put it to the test
 
-In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `createRandomZombie` — it would make the game not very fun.
+In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling `create_random_zombie` — it would make the game not very fun.
 
-Let's use `require` to make sure this function only gets executed one time per user, when they create their first zombie.
+Let's use `require!` to make sure this function only gets executed one time per user, when they create their first zombie.
 
-1. Put a `require` statement at the beginning of `createRandomZombie`. The function should check to make sure `ownerZombieCount[msg.sender]` is equal to `0`, and throw an error otherwise.
+1. Put a `require!` statement at the beginning of `create_random_zombie`. The function should check to make sure `self.zombies(&caller).len()` is equal to `0`, and throw an error message `You already own a zombie` otherwise.
 
-> Note: In Solidity, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `ownerZombieCount[msg.sender]` to come first.
+> Note: In Rust, it doesn't matter which term you put first — both orders are equivalent. However, since our answer checker is really basic, it will only accept one answer as correct — it's expecting `self.zombies(&caller).len()` to come first.
