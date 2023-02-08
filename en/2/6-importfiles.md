@@ -5,82 +5,151 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefeeding.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        // put import statement here
-
-        contract ZombieFeeding is ZombieFactory {
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding {
 
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombie.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+        
+        #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+        pub struct Zombie<M: ManagedTypeApi> {
+            pub name: ManagedBuffer<M>,
+            pub dna: u64,
+        }
+      "zombiefactory.rs": |
+        #![no_std]
 
-        contract ZombieFactory {
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-            event NewZombie(uint zombieId, string name, uint dna);
+        // start here
 
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
+        #[multiversx_sc::contract]
+        pub trait ZombieFactory : ZombieFeeding{
 
-            struct Zombie {
-                string name;
-                uint dna;
-            }
+          #[init]
+          fn init(&self) {
+            self.dna_digits().set(16u8);
+          }
 
-            Zombie[] public zombies;
+          fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
+              self.zombies(&owner).insert(Zombie { name, dna });
+          }
 
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
+          #[view]
+          fn generate_random_dna(&self) -> u64{
+              let mut rand_source = RandomnessSource::new();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              rand_source.next_u64_in_range(0u64, max_dna_value)
+          }
 
-            function _createZombie(string memory _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
-            }
+          #[endpoint]
+          fn create_random_zombie(&self, name: ManagedBuffer){
+              let caller = self.blockchain().get_caller();
+              require!(self.zombies(&caller).len() == 0, "You already own a zombie");
+              let rand_dna = self.generate_random_dna();
+              self.create_zombie(&caller, name, rand_dna);
+          }
 
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
-            }
+          #[view]
+          #[storage_mapper("dna_digits")]
+          fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
-
+          #[view]
+          #[storage_mapper("zombies")]
+          fn zombies(
+              &self,
+              owner: &ManagedAddress
+          ) -> UnorderedSetMapper<Zombie<Self::Api>>;
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+        #![no_std]
 
-      import "./zombiefactory.sol";
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-      contract ZombieFeeding is ZombieFactory {
+        mod zombiefeeding;
+        mod zombie;
 
-      }
+        use zombie::Zombie;
+
+        #[multiversx_sc::contract]
+        pub trait ZombieFactory : zombiefeeding::ZombieFeeding{
+
+          #[init]
+          fn init(&self) {
+            self.dna_digits().set(16u8);
+          }
+
+          fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
+              self.zombies(&owner).insert(Zombie { name, dna });
+          }
+
+          #[view]
+          fn generate_random_dna(&self) -> u64{
+              let mut rand_source = RandomnessSource::new();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              rand_source.next_u64_in_range(0u64, max_dna_value)
+          }
+
+          #[endpoint]
+          fn create_random_zombie(&self, name: ManagedBuffer){
+              let caller = self.blockchain().get_caller();
+              require!(self.zombies(&caller).len() == 0, "You already own a zombie");
+              let rand_dna = self.generate_random_dna();
+              self.create_zombie(&caller, name, rand_dna);
+          }
+
+          #[view]
+          #[storage_mapper("dna_digits")]
+          fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+          #[view]
+          #[storage_mapper("zombies")]
+          fn zombies(
+              &self,
+              owner: &ManagedAddress
+          ) -> UnorderedSetMapper<Zombie<Self::Api>>;
+        }
 
 ---
 
 Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
 
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Solidity projects.
+Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Rust projects.
 
-When you have multiple files and you want to import one file into another, Solidity uses the `import` keyword:
+When you have multiple files and you want to import one file into another, Rust uses the `mod` keyword:
 
 ```
-import "./someothercontract.sol";
+mod some_other_module;
 
-contract newContract is SomeOtherContract {
+#[multiversx_sc::contract]
+pub trait NewContract : some_other_module::SomeOtherModule {
 
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+So if we had a file named `some_other_module.rs` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+
+in case of our `Zombie` struct just importing the file will not be enough since we will not use it for inheritance, but we simply just use it within our trait, reason why additionally we will need to write `use zombie::Zombie;`, this since our `Zombie` struct will be inside `zombie.rs`.
+
+
+> Notice : separating our struct and module trait in separate files still requires us to add `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();` since they use managed types which are not basic rust elements, but provided by the MultiversX Rust framework.
+> Notice : the fields of our `Zombie` struct the `name` and the `dna` require now to be public since they are not part of the same file, so their visibility is no longer ensured.
+
 
 # Put it to the test
 
-Now that we've set up a multi-file structure, we need to use `import` to read the contents of the other file:
+Now that we've set up a multi-file structure, we need to import the contents of the other files:
 
-1. Import `zombiefactory.sol` into our new file, `zombiefeeding.sol`. 
+1. Import `zombiefeeding` and `zombie` into our contract file , `zombiefactory.rs`. 
+
+2. Remember to add the file name of `zombiefeeding` also to the contract's implementation of `ZombieFeeding` 
