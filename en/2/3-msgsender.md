@@ -17,7 +17,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -28,6 +28,9 @@ material:
         fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
               self.new_zombie_event(*id, &name, dna);
+
+              // write storages here
+
               self.zombies(id).set(Zombie { name, dna });
               *id +=1;
             });
@@ -68,6 +71,14 @@ material:
         #[view]
         #[storage_mapper("zombies")]
         fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[view]
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[view]
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
     answer: >
       #![no_std]
@@ -82,7 +93,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -90,11 +101,13 @@ material:
           self.zombies_count().set(1usize);
         }
 
-        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+        fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
-              self.new_zombie_event(*id, &name, dna);
-              self.zombies(id).set(Zombie { name, dna });
-              *id +=1;
+                self.new_zombie_event(*id, &name, dna);
+                self.zombies(id).set(Zombie { name, dna });
+                self.owned_zombies(&owner).insert(id);
+                self.zombie_owner(id).set(owner);
+                *id += 1;
             });
         }
 
@@ -110,7 +123,7 @@ material:
         fn create_random_zombie(&self, name: ManagedBuffer){
             let caller = self.blockchain().get_caller();
             let rand_dna = self.generate_random_dna();
-            self.create_zombie(&caller, name, rand_dna);
+            self.create_zombie(caller, name, rand_dna);
         }
 
         #[event("new_zombie_event")]
@@ -131,6 +144,14 @@ material:
         #[view]
         #[storage_mapper("zombies")]
         fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[view]
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[view]
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
 ---
 
@@ -162,10 +183,19 @@ fn say_hello_to_person(&self, name: &ManagedBuffer) -> ManagedBuffer{
 }
 ```
 
+## Putting elements into a UnorderedSetMapper
+
+Adding an element to an `UnorderedSetMapper` is done by the method `insert`:
+
+```
+self.persons().insert(new_person);
+```
+
 # Put it to the test
 
-Let's update our `create_zombie` method and the `create_random_zombie` endpoint from lesson 1 to assign ownership of the zombie to whoever called the function.
+Let's update our `create_random_zombie` endpoint from lesson 1 to assign ownership of the zombie to whoever called the function. 
+We will want to store a list of zombie ids inside `owned_zombies` for each caller that creates the zombie and the owner for each zombie inside `zombie_owner`.
 
 1. Starting with `create_random_zombie`, we need to get the caller of the endpoint.
 
-2. Second, we will pass the address as a parameter to `create_zombie` which puts the zombies storage insert, adding the caller as a key. Keep in mind that we need to give this parameter as a reference. `create_zombie` will get a third parameter called `owner` which will be our `&ManagedAddress`
+2. Second, we will pass the address as a parameter to the function `create_zombie` which sets the `owned_zombies`, and the `zombie_owner` storages. We will have something similar to how we set the zombie insize the `zombies` storage.

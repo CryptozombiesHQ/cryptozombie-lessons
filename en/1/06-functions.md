@@ -17,7 +17,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -49,7 +49,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {

@@ -16,7 +16,7 @@ material:
       multiversx_sc::derive_imports!();
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
         #[init]
         fn init(&self) {}
       }
@@ -42,7 +42,7 @@ In here we are interested for now of **lib.rs** from inside the root folder **sr
 
 ```
 #[mx_sc::contract]
-pub trait ZombieFactory {
+pub trait ZombiesContract {
         #[init]
         fn init(&self) {}
 }

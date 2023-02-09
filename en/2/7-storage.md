@@ -5,7 +5,7 @@ material:
   editor:
     language: rust
     startingCode:
-      " zombiefeeding.rs": |
+      "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
@@ -22,36 +22,117 @@ material:
             pub name: ManagedBuffer<M>,
             pub dna: u64,
         }
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
+        // start here
+
+        #[multiversx_sc::module]
+        pub trait ZombieFactory{
+            fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+                self.zombies_count().update(|id| {
+                    self.new_zombie_event(*id, &name, dna);
+                    self.zombies(id).set(Zombie { name, dna });
+                    self.owned_zombies(&owner).insert(*id);
+                    self.zombie_owner(id).set(owner);
+                    *id += 1;
+                });
+            }
+
+            #[view]
+            fn generate_random_dna(&self) -> u64 {
+                let mut rand_source = RandomnessSource::new();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                rand_source.next_u64_in_range(0u64, max_dna_value)
+            }
+
+            #[endpoint]
+            fn create_random_zombie(&self, name: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You already own a zombie"
+                );
+                let rand_dna = self.generate_random_dna();
+                self.create_zombie(caller, name, rand_dna);
+            }
+
+            #[event("new_zombie_event")]
+            fn new_zombie_event(
+                &self,
+                #[indexed] zombie_id: usize,
+                name: &ManagedBuffer,
+                #[indexed] dna: u64,
+            );
+        }
+      "storage.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[view]
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+            #[view]
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[view]
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+        }
+      "lib.rs": |
         #![no_std]
 
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        mod zombiefeeding;
+        mod storages;
         mod zombie;
-
-        use zombie::Zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
 
         #[multiversx_sc::contract]
-        pub trait ZombieFactory : zombiefeeding::ZombieFeeding{
+        pub trait Adder:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+            }
+        }
+    answer: >
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          #[init]
-          fn init(&self) {
-            self.dna_digits().set(16u8);
-            self.zombies_count().set(1usize);
-          }
+      use crate::{storages, zombie::Zombie};
 
-          fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+      #[multiversx_sc::module]
+      pub trait ZombieFactory: storages::Storages {
+          fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
               self.zombies_count().update(|id| {
-                self.new_zombie_event(*id, &name, dna);
-                self.zombies(id).set(Zombie { name, dna });
-                *id +=1;
+                  self.new_zombie_event(*id, &name, dna);
+                  self.zombies(id).set(Zombie { name, dna });
+                  self.owned_zombies(&owner).insert(*id);
+                  self.zombie_owner(id).set(owner);
+                  *id += 1;
               });
           }
 
           #[view]
-          fn generate_random_dna(&self) -> u64{
+          fn generate_random_dna(&self) -> u64 {
               let mut rand_source = RandomnessSource::new();
               let dna_digits = self.dna_digits().get();
               let max_dna_value = u64::pow(10u64, dna_digits as u32);
@@ -59,108 +140,52 @@ material:
           }
 
           #[endpoint]
-          fn create_random_zombie(&self, name: ManagedBuffer){
+          fn create_random_zombie(&self, name: ManagedBuffer) {
               let caller = self.blockchain().get_caller();
-              require!(self.zombies(&caller).len() == 0, "You already own a zombie");
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You already own a zombie"
+              );
               let rand_dna = self.generate_random_dna();
-              self.create_zombie(&caller, name, rand_dna);
+              self.create_zombie(caller, name, rand_dna);
           }
 
           #[event("new_zombie_event")]
           fn new_zombie_event(
-              &self, 
-              #[indexed] name: &ManagedBuffer, 
+              &self,
+              #[indexed] zombie_id: usize,
+              name: &ManagedBuffer,
               #[indexed] dna: u64,
           );
-
-          #[view]
-          #[storage_mapper("dna_digits")]
-          fn dna_digits(&self) -> SingleValueMapper<u8>;
-
-          #[view]
-          #[storage_mapper("zombies_count")]
-          fn zombies_count(&self) -> SingleValueMapper<usize>;
-
-          #[view]
-          #[storage_mapper("zombies")]
-          fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
-        }
-    answer: >
-      pragma solidity >=0.5.0 <0.6.0;
-
-      import "./zombiefactory.sol";
-
-      contract ZombieFeeding is ZombieFactory {
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-        }
-
       }
+
 ---
 
-In Solidity, there are two locations you can store variables — in `storage` and in `memory`.
+In MultiversX Rust framework, there are two locations you can store variables — in `storage` and in `memory`.
 
 **_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
 
 Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
 
-However, there are times when you do need to use these keywords, namely when dealing with **_structs_** and **_arrays_** within functions:
+The great part in MyltiversX Rust framework is that the variables within storage are easily distinguished from memory variables doe the special annotations.
+
+## Giving access within another module 
+
+When not in that file that manages the solution (`lib.rs`) or the contract trait file giving access to another file is done by also including the `crate` annotation, which indicates that we are refering to the current root folder. A general rule is that if we import a structure inside a module, another module that implements that module will have it recognised, but not usable. 
+
+In other words if we imported the `Zombie` structure inside the Storage module, and `ZombieFactory` would implement `Storage` the Zombie struct type will be deduced inside `ZombieFactory` as well, but `self.zombies(id).set(Zombie { name, dna });` will throw an error by simple fact that `ZombieFactory` doesn't have it itself included.
 
 ```
-contract SandwichFactory {
-  struct Sandwich {
-    string name;
-    string status;
-  }
+use crate::{my_module, my_other_module, my_struct::MyStruct};
 
-  Sandwich[] sandwiches;
+#[multiversx_sc::module]
+pub trait NewModule : my_module::MyModule + my_other_module::MyOtherModule {
 
-  function eatSandwich(uint _index) public {
-    // Sandwich mySandwich = sandwiches[_index];
-
-    // ^ Seems pretty straightforward, but solidity will give you a warning
-    // telling you that you should explicitly declare `storage` or `memory` here.
-
-    // So instead, you should declare with the `storage` keyword, like:
-    Sandwich storage mySandwich = sandwiches[_index];
-    // ...in which case `mySandwich` is a pointer to `sandwiches[_index]`
-    // in storage, and...
-    mySandwich.status = "Eaten!";
-    // ...this will permanently change `sandwiches[_index]` on the blockchain.
-
-    // If you just want a copy, you can use `memory`:
-    Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...in which case `anotherSandwich` will simply be a copy of the 
-    // data in memory, and...
-    anotherSandwich.status = "Eaten!";
-    // ...will just modify the temporary variable and have no effect 
-    // on `sandwiches[_index + 1]`. But you can do this:
-    sandwiches[_index + 1] = anotherSandwich;
-    // ...if you want to copy the changes back into blockchain storage.
-  }
 }
 ```
 
-Don't worry if you don't fully understand when to use which one yet — throughout this tutorial we'll tell you when to use `storage` and when to use `memory`, and the Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.
-
-For now, it's enough to understand that there are cases where you'll need to explicitly declare `storage` or `memory`!
-
 # Put it to the test
 
-It's time to give our zombies the ability to feed and multiply!
+Since our contract it has been separated into modules and in the future all the modules will require access to the storage in a way or another we separated the storage mappers into another file. This file though doesn't have access to our ZOmbies structure yet. 
 
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
-
-1. Create a function called `feedAndMultiply`. It will take two parameters: `_zombieId` (a `uint`) and `_targetDna` (also a `uint`). This function should be `public`.
-
-2. We don't want to let someone else feed our zombie! So first, let's make sure we own this zombie. Add a `require` statement to verify that `msg.sender` is equal to this zombie's owner (similar to how we did in the `createRandomZombie` function).
-
- > Note: Again, because our answer-checker is primitive, it's expecting `msg.sender` to come first and will mark it wrong if you switch the order. But normally when you're coding, you can use whichever order you prefer — both are correct.
-
-3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `myZombie` (which will be a `storage` pointer). Set this variable to be equal to index `_zombieId` in our `zombies` array.
-
-You should have 4 lines of code so far, including the line with the closing `}`.
-
-We'll continue fleshing out this function in the next chapter!
+1. Import the Zombie structure and the storages trait in `zombiefactory.rs`.

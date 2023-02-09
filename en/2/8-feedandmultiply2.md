@@ -5,88 +5,156 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefeeding.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        import "./zombiefactory.sol";
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding {
 
-        contract ZombieFeeding is ZombieFactory {
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
             // start here
-          }
 
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombie.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+        
+        #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+        pub struct Zombie<M: ManagedTypeApi> {
+            pub name: ManagedBuffer<M>,
+            pub dna: u64,
+        }
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        contract ZombieFactory {
+        use crate::{storages, zombie::Zombie};
 
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
+        #[multiversx_sc::module]
+        pub trait ZombieFactory: storages::Storages {
+            fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+                self.zombies_count().update(|id| {
+                    self.new_zombie_event(*id, &name, dna);
+                    self.zombies(id).set(Zombie { name, dna });
+                    self.owned_zombies(&owner).insert(*id);
+                    self.zombie_owner(id).set(owner);
+                    *id += 1;
+                });
             }
 
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string memory _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
+            #[view]
+            fn generate_random_dna(&self) -> u64 {
+                let mut rand_source = RandomnessSource::new();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                rand_source.next_u64_in_range(0u64, max_dna_value)
             }
 
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
+            #[endpoint]
+            fn create_random_zombie(&self, name: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You already own a zombie"
+                );
+                let rand_dna = self.generate_random_dna();
+                self.create_zombie(caller, name, rand_dna);
             }
 
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
+            #[event("new_zombie_event")]
+            fn new_zombie_event(
+                &self,
+                #[indexed] zombie_id: usize,
+                name: &ManagedBuffer,
+                #[indexed] dna: u64,
+            );
+        }
+      "storage.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
+        use crate::zombie::Zombie;
+
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[view]
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+            #[view]
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[view]
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+        }
+      "lib.rs": |
+        #![no_std]
+
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+
+        mod storages;
+        mod zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
+
+        #[multiversx_sc::contract]
+        pub trait Adder:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      import "./zombiefactory.sol";
+      use crate::{storages, zombiefactory};
 
-      contract ZombieFeeding is ZombieFactory {
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+          #[endpoint]
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You can only feed your own zombie"
+              );
+              let my_zombie = self.zombies(&zombie_id).get();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              let verified_target_dna = target_dna % max_dna_value;
+              let new_dna = (my_zombie.dna + verified_target_dna) / 2;
+              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+          }
       }
+
 ---
 
-Let's finish writing the `feedAndMultiply` function.
+It's time to give our zombies the ability to feed and multiply!
+When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
 
 The formula for calculating a new zombie's DNA is simple: the average between the feeding zombie's DNA and the target's DNA. 
 
 For example:
 
 ```
-function testDnaSplicing() public {
-  uint zombieDna = 2222222222222222;
-  uint targetDna = 4444444444444444;
-  uint newZombieDna = (zombieDna + targetDna) / 2;
+fn test_dna_splicing() {
+  let zombie_dna = 2222222222222222;
+  let target_dna = 4444444444444444;
+  let new_zombie_dna = (zombie_dna + target_dna) / 2;
   // ^ will be equal to 3333333333333333
 }
 ```
@@ -95,12 +163,18 @@ Later we can make our formula more complicated if we want to, like adding some r
 
 # Put it to the test
 
-1. First we need to make sure that `_targetDna` isn't longer than 16 digits. To do this, we can set `_targetDna` equal to `_targetDna % dnaModulus` to only take the last 16 digits.
+1. Create an endpoint called `feed_and_multiply`. It will take two parameters: `zombie_id` (a `usize`) and `target_dna` (a u64). 
 
-2. Next our function should declare a `uint` named `newDna`, and set it equal to the average of `myZombie`'s DNA and `_targetDna` (as in the example above).
+2. We don't want to let someone else feed our zombie! So first, let's make sure we own this zombie. Add a `require` statement to verify that the caller of the endpoint is the zombie's owner (similar to how we did in the `create_random_zombie` function) or returns an error "You can only feed your own zombie" otherwise.
 
-  > Note: You can access the properties of `myZombie` using `myZombie.name` and `myZombie.dna`
+3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `my_zombie` (which will take the zombie with that certain id from the storage `zombie`).
 
-3. Once we have the new DNA, let's call `_createZombie`. You can look at the `zombiefactory.sol` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+4. We need to make sure that `target_dna` isn't longer than 16 digits. To do this, we can create a new variabe `verified_target_dna` and set it  equal to `target_dna % max_dna_value`  with `let max_dna_value = u64::pow(10u64, dna_digits as u32);` to only take the last 16 digits.
 
-> Note: For you Solidity whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
+5. Next our function should declare a `u64` named `new_dna`, and set it equal to the average of `my_zombie`'s DNA and `verified_target_dna` (as in the example above).
+
+> Note: You can access the properties of `my_zombie` using `myZombie.name` and `myZombie.dna`
+
+3. Once we have the new DNA, let's call `create_zombie`. You can look at the `zombie_factory.rs` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
+
+> Note: For you Rust whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)

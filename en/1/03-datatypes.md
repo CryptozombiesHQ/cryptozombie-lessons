@@ -11,7 +11,7 @@ material:
       multiversx_sc::derive_imports!();
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -30,7 +30,7 @@ material:
       multiversx_sc::derive_imports!();
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {

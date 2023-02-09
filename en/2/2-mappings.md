@@ -17,7 +17,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -79,7 +79,7 @@ material:
       }
 
       #[multiversx_sc::contract]
-      pub trait ZombieFactory {
+      pub trait ZombiesContract {
 
         #[init]
         fn init(&self) {
@@ -126,7 +126,15 @@ material:
 
         #[view]
         #[storage_mapper("zombies")]
-        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+        fn zombie(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[view]
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[view]
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
 ---
 
@@ -145,6 +153,17 @@ Each account has an `address`, which you can think of like a bank account number
 We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
 
 So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
+
+## Advanced mapper types
+
+When it comes to putting arrays into storage `SingleValueMapper` might not be the bets option for the job, since every time we need something from our list we need to read it all and if an item needs to be changed the whole list needs to be rewritten.
+
+For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper` were introduced. These mappers behave like arrays and allow access on elements they contain by index and value. The diference between them is that `UnorderedSetMapper` is far more efficient since it stores internally each element's index to provide a `O(1)` search complexity, but the cost of using it relies on the fact that it doesn't provide a sorting of the elements within.
+
+```
+  #[storage_mapper("my_list_of_people")]
+  fn my_list_of_people(&self) -> UnorderedSetMapper<People<Self::Api>>;
+```
 
 ## Mappings
 
@@ -174,6 +193,6 @@ Addresses in MultiversX Rust framework are used with the ManagedAddress data typ
 
 To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
 
-1. Update the `zombies` storage setting an account to it. For now on we will have an `UnorderedStorageMapper` for each account.
-
-> Note: at any time one may call `self.zombies(&address).len()` to see the number of zombies an account has.
+1. Create a new indexed `SingleValueMapper` storage named `zombie_owner` for a `ManagedAddress`. The index named `id` should be of `usize` type.
+   
+2. Create a new indexed `UnorderedSetMapper` storage named `owned_zombies` for a `usize`. The index named `owner` should be of `&ManagedAddress` type.
