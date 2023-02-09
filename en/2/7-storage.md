@@ -5,54 +5,85 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      " zombiefeeding.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        import "./zombiefactory.sol";
-
-        contract ZombieFeeding is ZombieFactory {
-
-          // Start here
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding {
 
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombie.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+        
+        #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+        pub struct Zombie<M: ManagedTypeApi> {
+            pub name: ManagedBuffer<M>,
+            pub dna: u64,
+        }
 
-        contract ZombieFactory {
+        #![no_std]
 
-            event NewZombie(uint zombieId, string name, uint dna);
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
+        mod zombiefeeding;
+        mod zombie;
 
-            struct Zombie {
-                string name;
-                uint dna;
-            }
+        use zombie::Zombie;
 
-            Zombie[] public zombies;
+        #[multiversx_sc::contract]
+        pub trait ZombieFactory : zombiefeeding::ZombieFeeding{
 
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
+          #[init]
+          fn init(&self) {
+            self.dna_digits().set(16u8);
+            self.zombies_count().set(1usize);
+          }
 
-            function _createZombie(string memory _name, uint _dna) private {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
-            }
+          fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+              self.zombies_count().update(|id| {
+                self.new_zombie_event(*id, &name, dna);
+                self.zombies(id).set(Zombie { name, dna });
+                *id +=1;
+              });
+          }
 
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
-            }
+          #[view]
+          fn generate_random_dna(&self) -> u64{
+              let mut rand_source = RandomnessSource::new();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              rand_source.next_u64_in_range(0u64, max_dna_value)
+          }
 
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
+          #[endpoint]
+          fn create_random_zombie(&self, name: ManagedBuffer){
+              let caller = self.blockchain().get_caller();
+              require!(self.zombies(&caller).len() == 0, "You already own a zombie");
+              let rand_dna = self.generate_random_dna();
+              self.create_zombie(&caller, name, rand_dna);
+          }
 
+          #[event("new_zombie_event")]
+          fn new_zombie_event(
+              &self, 
+              #[indexed] name: &ManagedBuffer, 
+              #[indexed] dna: u64,
+          );
+
+          #[view]
+          #[storage_mapper("dna_digits")]
+          fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+          #[view]
+          #[storage_mapper("zombies_count")]
+          fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+          #[view]
+          #[storage_mapper("zombies")]
+          fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
         }
     answer: >
       pragma solidity >=0.5.0 <0.6.0;

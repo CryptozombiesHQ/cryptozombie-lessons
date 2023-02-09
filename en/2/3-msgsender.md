@@ -22,10 +22,15 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
         }
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
-            self.zombies().insert(Zombie { name, dna });
+            self.zombies_count().update(|id| {
+              self.new_zombie_event(*id, &name, dna);
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
         }
 
         #[view]
@@ -45,16 +50,24 @@ material:
             self.create_zombie(name, rand_dna);
         }
 
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
+
         #[view]
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
         #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
         #[storage_mapper("zombies")]
-        fn zombies(
-            &self,
-            owner: &ManagedAddress
-        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
       }
     answer: >
       #![no_std]
@@ -74,10 +87,15 @@ material:
         #[init]
         fn init(&self) {
           self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
         }
 
-        fn create_zombie(&self, owner: &ManagedAddress, name: ManagedBuffer, dna: u64) {
-            self.zombies(&owner).insert(Zombie { name, dna });
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+              self.new_zombie_event(*id, &name, dna);
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
         }
 
         #[view]
@@ -95,16 +113,24 @@ material:
             self.create_zombie(&caller, name, rand_dna);
         }
 
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
+
         #[view]
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
         #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
         #[storage_mapper("zombies")]
-        fn zombies(
-            &self,
-            owner: &ManagedAddress
-        ) -> UnorderedSetMapper<Zombie<Self::Api>>;
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
       }
 ---
 
