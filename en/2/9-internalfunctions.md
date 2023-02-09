@@ -23,7 +23,7 @@ material:
                 let my_zombie = self.zombies(&zombie_id).get();
 
                 // start here
-                
+
             }
         }
       "zombiefactory.rs": |
@@ -111,7 +111,7 @@ material:
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
-        pub trait Adder:
+        pub trait ZombiesContract:
             zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
         {
             #[init]
@@ -120,29 +120,28 @@ material:
             }
         }
     answer: >
-      "zombiefactory.rs": |
-        multiversx_sc::imports!();
-        multiversx_sc::derive_imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-        use crate::{storages, zombiefactory};
+      use crate::{storages, zombiefactory};
 
-        #[multiversx_sc::module]
-        pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
-            #[endpoint]
-            fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
-                let caller = self.blockchain().get_caller();
-                require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
-                );
-                let my_zombie = self.zombies(&zombie_id).get();
-                let dna_digits = self.dna_digits().get();
-                let max_dna_value = u64::pow(10u64, dna_digits as u32);
-                let verified_target_dna = target_dna % max_dna_value;
-                let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
-            }
-        }
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+          #[endpoint]
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You can only feed your own zombie"
+              );
+              let my_zombie = self.zombies(&zombie_id).get();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              let verified_target_dna = target_dna % max_dna_value;
+              let new_dna = (my_zombie.dna + verified_target_dna) / 2;
+              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+          }
+      }
 ---
 
 In this lesson we will continue the `feed_and_multiply` endpoint.

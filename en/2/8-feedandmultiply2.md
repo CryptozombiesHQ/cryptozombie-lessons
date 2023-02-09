@@ -109,7 +109,7 @@ material:
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
-        pub trait Adder:
+        pub trait ZombiesContract:
             zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
         {
             #[init]
