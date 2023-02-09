@@ -5,158 +5,267 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        import "./zombiefactory.sol";
+        use crate::{storages, zombiefactory};
 
-        contract KittyInterface {
-          function getKitty(uint256 _id) external view returns (
-            bool isGestating,
-            bool isReady,
-            uint256 cooldownIndex,
-            uint256 nextActionAt,
-            uint256 siringWithId,
-            uint256 birthTime,
-            uint256 matronId,
-            uint256 sireId,
-            uint256 generation,
-            uint256 genes
-          );
+        mod crypto_kitties_proxy {
+            multiversx_sc::imports!();
+            multiversx_sc::derive_imports!();
+
+            #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+            pub struct Kitty {
+                is_gestating: bool,
+                is_ready: bool,
+                cooldown_index: u64,
+                next_action_at: u64,
+                siring_with_id: u64,
+                birth_time: u64,
+                matron_id: u64,
+                sire_id: u64,
+                generation: u64,
+                genes: u64,
+            }
+
+            #[multiversx_sc::proxy]
+            pub trait CryptoKitties {
+                #[endpoint]
+                fn get_kitty(&self, id: usize) -> Kitty;
+            }
         }
 
-        contract ZombieFeeding is ZombieFactory {
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+            #[endpoint]
+            fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You can only feed your own zombie"
+                );
+                let my_zombie = self.zombies(&zombie_id).get();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                let verified_target_dna = target_dna % max_dna_value;
+                let new_dna = (my_zombie.dna + verified_target_dna) / 2;
+                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+            }
 
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          KittyInterface kittyContract = KittyInterface(ckAddress);
+            #[callback]
+            fn get_kitty_callback(
+              &self, 
+              #[call_result] result: ManagedAsyncCallResult<u32>,
+              zombie_id: usize
+            ) {
+                match result {
+                    ManagedAsyncCallResult::Ok(kitty) => {
+                    },
+                    ManagedAsyncCallResult::Err(_) => {
+                    },
+                }
+            }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            _createZombie("NoName", newDna);
-          }
-
-          // define function here
-
+            #[endpoint]
+            fn feed_on_kitty(
+              &self, 
+              zombie_id: usize,
+              kitty_id: usize,
+            ) {
+              let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
+                self.kitty_proxy(crypto_kitties_sc_address)
+                    .get_kitty(kitty_id)
+                    .async_call()
+                    .with_callback(self.callbacks().get_kitty_callback(zombie_id))
+                    .call_and_exit();
+            }
+            #[proxy]
+            fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        contract ZombieFactory {
+        use crate::{storages, zombie::Zombie};
 
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
+        #[multiversx_sc::module]
+        pub trait ZombieFactory: storages::Storages {
+            fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+                self.zombies_count().update(|id| {
+                    self.new_zombie_event(*id, &name, dna);
+                    self.zombies(id).set(Zombie { name, dna });
+                    self.owned_zombies(&owner).insert(*id);
+                    self.zombie_owner(id).set(owner);
+                    *id += 1;
+                });
             }
 
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string memory _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
+            #[view]
+            fn generate_random_dna(&self) -> u64 {
+                let mut rand_source = RandomnessSource::new();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                rand_source.next_u64_in_range(0u64, max_dna_value)
             }
 
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
+            #[endpoint]
+            fn create_random_zombie(&self, name: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You already own a zombie"
+                );
+                let rand_dna = self.generate_random_dna();
+                self.create_zombie(caller, name, rand_dna);
             }
 
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                _createZombie(_name, randDna);
-            }
+            #[event("new_zombie_event")]
+            fn new_zombie_event(
+                &self,
+                #[indexed] zombie_id: usize,
+                name: &ManagedBuffer,
+                #[indexed] dna: u64,
+            );
+        }
+      "storage.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
+        use crate::zombie::Zombie;
+
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[view]
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+            #[view]
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[view]
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+        }
+      "lib.rs": |
+        #![no_std]
+
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+
+        mod storages;
+        mod zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
+
+        #[multiversx_sc::contract]
+        pub trait ZombiesContract:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      import "./zombiefactory.sol";
+      use crate::{storages, zombiefactory};
+      use crypto_kitties_proxy::Kitty;
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
+      mod crypto_kitties_proxy {
+          multiversx_sc::imports!();
+          multiversx_sc::derive_imports!();
+
+          #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+          pub struct Kitty {
+              pub is_gestating: bool,
+              pub is_ready: bool,
+              pub cooldown_index: u64,
+              pub next_action_at: u64,
+              pub siring_with_id: u64,
+              pub birth_time: u64,
+              pub matron_id: u64,
+              pub sire_id: u64,
+              pub generation: u64,
+              pub genes: u64,
+          }
+
+          #[multiversx_sc::proxy]
+          pub trait CryptoKitties {
+              #[endpoint]
+              fn get_kitty(&self, id: usize) -> Kitty;
+          }
       }
 
-      contract ZombieFeeding is ZombieFactory {
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+          #[endpoint]
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You can only feed your own zombie"
+              );
+              let my_zombie = self.zombies(&zombie_id).get();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              let verified_target_dna = target_dna % max_dna_value;
+              let new_dna = (my_zombie.dna + verified_target_dna) / 2;
+              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+          }
 
-        address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-        KittyInterface kittyContract = KittyInterface(ckAddress);
+          #[callback]
+          fn get_kitty_callback(
+            &self, 
+            #[call_result] result: ManagedAsyncCallResult<Kitty>,
+            zombie_id: usize
+          ) {
+              match result {
+                  ManagedAsyncCallResult::Ok(kitty) => {
+                    let kitty_dna = kitty.genes;
+                    self.feed_and_multiply(zombie_id, kitty_dna);
+                  },
+                  ManagedAsyncCallResult::Err(_) => {},
+              }
+          }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna);
-        }
-
+          #[endpoint]
+          fn feed_on_kitty(
+            &self, 
+            zombie_id: usize,
+            kitty_id: usize,
+          ) {
+            let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
+              self.kitty_proxy(crypto_kitties_sc_address)
+                  .get_kitty(kitty_id)
+                  .async_call()
+                  .with_callback(self.callbacks().get_kitty_callback(zombie_id))
+                  .call_and_exit();
+          }
+          #[proxy]
+          fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
       }
 ---
+We are now ready to complete our `callback`, doing something with the genes of our returned kitty.
 
-This `getKitty` function is the first example we've seen that returns multiple values. Let's look at how to handle them:
-
-```
-function multipleReturns() internal returns(uint a, uint b, uint c) {
-  return (1, 2, 3);
-}
-
-function processMultipleReturns() external {
-  uint a;
-  uint b;
-  uint c;
-  // This is how you do multiple assignment:
-  (a, b, c) = multipleReturns();
-}
-
-// Or if we only cared about one of the values:
-function getLastReturnValue() external {
-  uint c;
-  // We can just leave the other fields blank:
-  (,,c) = multipleReturns();
-}
-```
 
 # Put it to the test
 
-Time to interact with the CryptoKitties contract!
+1. Inside the brackets of `ManagedAsyncCallResult::Ok(kitty) => {}` we now need to extract the kitty genes and store them inside a new variable called `kitty_dna`.
 
-Let's make a function that gets the kitty genes from the contract:
-
-1. Make a function called `feedOnKitty`. It will take 2 `uint` parameters, `_zombieId` and `_kittyId`, and should be a `public` function.
-
-2. The function should first declare a `uint` named `kittyDna`.
-
-  > Note: In our `KittyInterface`, `genes` is a `uint256` — but if you remember back to lesson 1, `uint` is an alias for `uint256` — they're the same thing.
-
-3. The function should then call the `kittyContract.getKitty` function with `_kittyId` and store `genes` in `kittyDna`. Remember — `getKitty` returns a ton of variables. (10 to be exact — I'm nice, I counted them for you!). But all we care about is the last one, `genes`. Count your commas carefully!
-
-4. Finally, the function should call `feedAndMultiply`, and pass it both `_zombieId` and `kittyDna`.
+2. Finally, the callback should call `feed_and_multiply`, and pass it both `zombie_id` and `kitty_dna`.

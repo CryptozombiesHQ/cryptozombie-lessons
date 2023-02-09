@@ -11,6 +11,8 @@ material:
 
         use crate::{storages, zombiefactory};
 
+        // start here
+
         #[multiversx_sc::module]
         pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
             #[endpoint]
@@ -122,35 +124,55 @@ material:
             }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      import "./zombiefactory.sol";
+      use crate::{storages, zombiefactory};
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
+      mod crypto_kitties_proxy {
+          multiversx_sc::imports!();
+          multiversx_sc::derive_imports!();
+
+          #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+          pub struct Kitty {
+              pub is_gestating: bool,
+              pub is_ready: bool,
+              pub cooldown_index: u64,
+              pub next_action_at: u64,
+              pub siring_with_id: u64,
+              pub birth_time: u64,
+              pub matron_id: u64,
+              pub sire_id: u64,
+              pub generation: u64,
+              pub genes: u64,
+          }
+
+          #[multiversx_sc::proxy]
+          pub trait CryptoKitties {
+              #[endpoint]
+              fn get_kitty(&self, id: usize) -> Kitty;
+          }
       }
 
-      contract ZombieFeeding is ZombieFactory {
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+          #[endpoint]
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You can only feed your own zombie"
+              );
+              let my_zombie = self.zombies(&zombie_id).get();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              let verified_target_dna = target_dna % max_dna_value;
+              let new_dna = (my_zombie.dna + verified_target_dna) / 2;
+              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+          }
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          _createZombie("NoName", newDna);
-        }
-
+          #[proxy]
+          fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
       }
 ---
 
@@ -168,37 +190,50 @@ Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We'
 
 ## Interacting with other contracts
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_interface_**.
+For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_Proxy_**.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
 ```
-contract LuckyNumber {
-  mapping(address => uint) numbers;
+#[multiversx_sc::contract]
+pub trait Adder {
+   
+    ...
 
-  function setNum(uint _num) public {
-    numbers[msg.sender] = _num;
-  }
-
-  function getNum(address _myAddress) public view returns (uint) {
-    return numbers[_myAddress];
-  }
+    #[endpoint]
+    fn add(&self, a: BigUint, b: BigUint) -> BigUint {
+        a + b
+    }
 }
 ```
 
-This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
+This would be a simple contract where you would sum up 2 numbers and returns their sum.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+Now let's say we had an external contract that wanted to read the data in this contract using the `add` function. 
 
-First we'd have to define an **_interface_** of the `LuckyNumber` contract:
+First we'd have to define an **_Proxy_** of the `Adder` contract:
 
 ```
-contract NumberInterface {
-  function getNum(address _myAddress) public view returns (uint);
+mod my_adder_proxy {
+    multiversx_sc::imports!();
+
+    #[multiversx_sc::proxy]
+    pub trait Adder {        
+      #[endpoint]
+      fn add(&self, a: BigUint, b: BigUint) -> BigUint
+    }
+}
+
+#[multiversx_sc::contract]
+pub trait MyContract {
+    
+    ...
+
+    #[proxy]
+    fn adder_proxy(&self, to: ManagedAddress) -> my_adder_proxy::Proxy<Self::Api>;
 }
 ```
-
-Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case `getNum` — and we don't mention any of the other functions or state variables.
+Notice that this looks like defining a contract except the `#[multiversx_sc::proxy]` annotation of the trait and a few other differences. For one, we're only declaring the functions we want to interact with — in this case `add` — and we don't mention any of the other functions or state variables.
 
 Secondly, we're not defining the function bodies. Instead of curly braces (`{` and `}`), we're simply ending the function declaration with a semi-colon (`;`).
 
@@ -206,47 +241,48 @@ So it kind of looks like a contract skeleton. This is how the compiler knows it'
 
 By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.
 
-We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.
+Next we might see inside our contract / module another function with the `#[proxy]` annotation. It looks kind of similar to how we define a storage mapper, except the return type being of type `Proxy` from our proxy module defined before.
+
 
 # Put it to the test
 
-We've looked up the CryptoKitties source code for you, and found a function called `getKitty` that returns all the kitty's data, including its "genes" (which is what our zombie game needs to form a new zombie!).
+We've sketched some CryptoKitties source code for you showing how a function `get_kitty` would look like. From here we are interested of its return type which includes its "genes" (which is what our zombie game needs to form a new zombie!).
 
-The function looks like this:
+The `CryptoKitties` contract and our function looks like this:
 
 ```
-function getKitty(uint256 _id) external view returns (
-    bool isGestating,
-    bool isReady,
-    uint256 cooldownIndex,
-    uint256 nextActionAt,
-    uint256 siringWithId,
-    uint256 birthTime,
-    uint256 matronId,
-    uint256 sireId,
-    uint256 generation,
-    uint256 genes
-) {
-    Kitty storage kit = kitties[_id];
+multiversx_sc::imports!();
+multiversx_sc::derive_imports!();
 
-    // if this variable is 0 then it's not gestating
-    isGestating = (kit.siringWithId != 0);
-    isReady = (kit.cooldownEndBlock <= block.number);
-    cooldownIndex = uint256(kit.cooldownIndex);
-    nextActionAt = uint256(kit.cooldownEndBlock);
-    siringWithId = uint256(kit.siringWithId);
-    birthTime = uint256(kit.birthTime);
-    matronId = uint256(kit.matronId);
-    sireId = uint256(kit.sireId);
-    generation = uint256(kit.generation);
-    genes = kit.genes;
+#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+pub struct Kitty {
+    pub is_gestating: bool,
+    pub is_ready: bool,
+    pub cooldown_index: u64,
+    pub next_action_at: u64,
+    pub siring_with_id: u64,
+    pub birth_time: u64,
+    pub matron_id: u64,
+    pub sire_id: u64,
+    pub generation: u64,
+    pub genes: u64,
+}
+
+[multiversx_sc::contract]
+pub trait CryptoKitty {
+
+  ...
+
+  fn get_kitty(&self, id: usize) -> Kitty {
+    ...
+  }
 }
 ```
 
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like JavaScript, this is different — in Solidity you can return more than one value from a function.
+The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like JavaScript, this is different — in Rust you can return more than one value from a function. 
 
-Now that we know what this function looks like, we can use it to create an interface:
+Now that we know what this function looks like, we can use it to create an proxy:
 
-1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
+1. Define a module proxy called `crypto_kitties_proxy` and put the `get_kitty` endpoint inside it. Don't forget to add also `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();` to the proxy module wigether with the `#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]` macro to the `Kitty` struct.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces).
+2. Write the proxy function inside the ZombieFeeding module and call it `kitty_proxy`.
