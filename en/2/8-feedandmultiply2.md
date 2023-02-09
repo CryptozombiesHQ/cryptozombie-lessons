@@ -133,33 +133,12 @@ material:
                   "You can only feed your own zombie"
               );
               let my_zombie = self.zombies(&zombie_id).get();
-              let dna_digits = self.dna_digits().get();
-              let max_dna_value = u64::pow(10u64, dna_digits as u32);
-              let verified_target_dna = target_dna % max_dna_value;
-              let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
           }
       }
 
 ---
 
 It's time to give our zombies the ability to feed and multiply!
-When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.
-
-The formula for calculating a new zombie's DNA is simple: the average between the feeding zombie's DNA and the target's DNA. 
-
-For example:
-
-```
-fn test_dna_splicing() {
-  let zombie_dna = 2222222222222222;
-  let target_dna = 4444444444444444;
-  let new_zombie_dna = (zombie_dna + target_dna) / 2;
-  // ^ will be equal to 3333333333333333
-}
-```
-
-Later we can make our formula more complicated if we want to, like adding some randomness to the new zombie's DNA. But for now we'll keep it simple — we can always come back to it later.
 
 # Put it to the test
 
@@ -169,12 +148,4 @@ Later we can make our formula more complicated if we want to, like adding some r
 
 3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `my_zombie` (which will take the zombie with that certain id from the storage `zombie`).
 
-4. We need to make sure that `target_dna` isn't longer than 16 digits. To do this, we can create a new variabe `verified_target_dna` and set it  equal to `target_dna % max_dna_value`  with `let max_dna_value = u64::pow(10u64, dna_digits as u32);` to only take the last 16 digits.
-
-5. Next our function should declare a `u64` named `new_dna`, and set it equal to the average of `my_zombie`'s DNA and `verified_target_dna` (as in the example above).
-
-> Note: You can access the properties of `my_zombie` using `myZombie.name` and `myZombie.dna`
-
-3. Once we have the new DNA, let's call `create_zombie`. You can look at the `zombie_factory.rs` tab if you forget which parameters this function needs to call it. Note that it requires a name, so let's set our new zombie's name to `"NoName"` for now — we can write a function to change zombies' names later.
-
-> Note: For you Rust whizzes, you may notice a problem with our code here! Don't worry, we'll fix this in the next chapter ;)
+4. Don't forget to import `storages` and `zombiefactory` and to make `ZombieFeeding` a supertrait by adding `Storages` and `ZombieFactory` to its definition.

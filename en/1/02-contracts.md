@@ -70,8 +70,8 @@ The next step is importing the **MultiversX** Rust SDK, done by calling the macr
 
 # Put it to the test
 
-To start creating our Zombie army, let's create a base contract called `ZombieFactory`.
+To start creating our Zombie army, let's create a base contract called `ZombieFContract`.
 
-1. In the box to the right, create an empty contract called `ZombieFactory`.
+1. In the box to the right, create an empty contract called `ZombieFContract`.
 
 When you're finished, click "check answer" below. If you get stuck, you can click "hint".

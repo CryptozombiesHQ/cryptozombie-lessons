@@ -171,7 +171,7 @@ material:
 
 Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple files to organize the code.
 
-One feature of Rust that makes this more manageable is contract modules:
+One feature of the MultiversX Rust framework Rust that makes this more manageable is contract modules emphasized through supertraits:
 
 ```
 #[multiversx_sc::contract]
@@ -189,14 +189,12 @@ pub trait BabyDoge {
 }
 ```
 
-`BabyDoge` is a module of `Doge`. That means when youcompile and deploy `Doge` you will have access to what `BabyDoge` offers as well.
-
-This can be used for trait inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
+`BabyDoge` is a module of the `Doge` contract. In rust terminology `Doge` becomes a supertrait, gaining access to everything `BabyDodge` contains
 
 # Put it to the test
 
 In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own module.
 
-1. Make a module called `ZombieFeeding` below `ZombieFactory`. This module should be empty for now
+1. Make a module called `ZombieFeeding` below `ZombieContract`. This module should be empty for now
 
-2. Add `ZombieFeeding` the implementation to the ZombieFactory contract.
+2. Add `ZombieFeeding` to the definition of the ZombieContract contract.

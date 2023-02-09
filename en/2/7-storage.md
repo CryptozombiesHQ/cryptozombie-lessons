@@ -189,3 +189,5 @@ pub trait NewModule : my_module::MyModule + my_other_module::MyOtherModule {
 Since our contract it has been separated into modules and in the future all the modules will require access to the storage in a way or another we separated the storage mappers into another file. This file though doesn't have access to our ZOmbies structure yet. 
 
 1. Import the Zombie structure and the storages trait in `zombiefactory.rs`.
+
+2. Make `ZombieFactory` a supertrait by adding the `Storage` trait to its definition

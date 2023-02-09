@@ -118,7 +118,7 @@ material:
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
-        pub trait Adder:
+        pub trait ZombieContract:
             zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
         {
             #[init]
@@ -165,4 +165,4 @@ Now that we've set up a multi-file structure, we need to import the contents of 
 
 1. Import the other modules into `lib.rs`
    
-2. Update the definition of our `ZombieContract` trait to implement
+2. Update the definition of our `ZombieContract` contract supertrait to contain all the other module traits
