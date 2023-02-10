@@ -128,11 +128,9 @@ material:
         #[storage_mapper("zombies")]
         fn zombie(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
-        #[view]
         #[storage_mapper("zombie_owner")]
         fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
         
-        #[view]
         #[storage_mapper("owned_zombies")]
         fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }

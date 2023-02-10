@@ -46,8 +46,6 @@ import l3_ch7 from './3/07-zombiecooldowns2.md'
 import l3_ch8 from './3/08-functionmodifiers.md'
 import l3_ch9 from './3/09-zombiemodifiers.md'
 import l3_ch10 from './3/10-savinggasview.md'
-import l3_ch11 from './3/11-savinggasstorage.md'
-import l3_ch12 from './3/12-forloops.md'
 import l3_ch13 from './3/13-wrappingitup.md'
 import l3_complete from './3/14-lessoncomplete.md'
 
@@ -330,8 +328,6 @@ export default {
     l3_ch8,
     l3_ch9,
     l3_ch10,
-    l3_ch11,
-    l3_ch12,
     l3_ch13,
     l3_complete
   ],

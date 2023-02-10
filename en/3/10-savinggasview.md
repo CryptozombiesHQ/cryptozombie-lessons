@@ -159,11 +159,9 @@ material:
 
         #[multiversx_sc::module]
         pub trait Storages {
-            #[view]
             #[storage_mapper("dna_digits")]
             fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-            #[view]
             #[storage_mapper("zombies_count")]
             fn zombies_count(&self) -> SingleValueMapper<usize>;
 
@@ -171,21 +169,17 @@ material:
             #[storage_mapper("zombies")]
             fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
-            #[view]
             #[storage_mapper("zombie_owner")]
             fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
 
-            #[view]
             #[storage_mapper("crypto_kitties_sc_address")]
             fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
 
-            #[view]
-            #[storage_mapper("cooldown_time")]
-            fn cooldown_time(&self) -> SingleValueMapper<u64>;
-
-            #[view]
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
         }
       "lib.rs": |
         #![no_std]
@@ -251,46 +245,36 @@ material:
                 .update(|my_zombie| my_zombie.dna = dna);
         }
     answer: >
-      multiversx_sc::imports!();
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-      use crate::storage;
+        use crate::zombie::Zombie;
 
-      #[multiversx_sc::module]
-      pub trait ZombieHelper: storage::Storage {
-          fn check_above_level(&self, level: u16, zombie_id: usize) {
-              let my_zombie = self.zombies(&zombie_id).get();
-              require!(my_zombie.level >= level, "Zombie is too low level");
-          }
-      }
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-      #[endpoint]
-      fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-          self.check_above_level(2u16, zombie_id);
-          let caller = self.blockchain().get_caller();
-          require!(
-              caller == self.zombie_owner(&zombie_id).get(),
-              "Only the owner of the zombie can perform this operation"
-          );
-          self.zombies(&zombie_id)
-              .update(|my_zombie| my_zombie.name = name);
-      }
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
 
-      #[endpoint]
-      fn change_dna(&self, zombie_id: usize, dna: u64) {
-          self.check_above_level(20u16, zombie_id);
-          let caller = self.blockchain().get_caller();
-          require!(
-              caller == self.zombie_owner(&zombie_id).get(),
-              "Only the owner of the zombie can perform this operation"
-          );
-          self.zombies(&zombie_id)
-              .update(|my_zombie| my_zombie.dna = dna);
-      }
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
-      #[view]
-      fn get_zombies_by_owner(&self, owner: ManagedAddress) -> ManagedVec<usize>{
-        
-      }
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+        }
 ---
 
 Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
@@ -311,14 +295,6 @@ We'll cover setting up web3.js with your own node later. But for now the big tak
 
 ## Put it to the test
 
-We're going to implement a function that will return a user's entire zombie army. We can later call this function from `web3.js` if we want to display a user profile page with their entire army.
+We want users to be able to receive the list of zombies by owner address, reason why we would like to give view access to `owned_zombies`
 
-This function's logic is a bit complicated so it will take a few chapters to implement.
-
-1. Create a new function named `get_zombies_by_owner`. It will take one argument, an `ManagedAddress` named `owner`.
-
-2. Let's make it a `#[view]` function, so we can call it from `web3.js` without needing any gas.
-
-3. The function should return a `ManagedVec<usize>` (an array of `usize`).
-
-Leave the function body empty for now, we'll fill it in in the next chapter.
+1. Add the `#[view]` annotation to the `owned_zombies` storage_mapper.
