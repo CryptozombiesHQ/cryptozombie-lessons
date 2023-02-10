@@ -28,10 +28,10 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        use crate::{storages, zombie::Zombie};
+        use crate::{storage, zombie::Zombie};
 
         #[multiversx_sc::module]
-        pub trait ZombieFactory: storages::Storages {
+        pub trait ZombieFactory: storage::Storage {
             fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
                 self.zombies_count().update(|id| {
                     self.new_zombie_event(*id, &name, dna);
@@ -103,14 +103,14 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        mod storages;
+        mod storage;
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
         pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
         {
             #[init]
             fn init(&self) {
@@ -121,10 +121,10 @@ material:
       multiversx_sc::imports!();
       multiversx_sc::derive_imports!();
 
-      use crate::{storages, zombiefactory};
+      use crate::{storage, zombiefactory};
 
       #[multiversx_sc::module]
-      pub trait ZombieFeeding: storages::Storages + zombiefactory::ZombieFactory {
+      pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
           #[endpoint]
           fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
               let caller = self.blockchain().get_caller();

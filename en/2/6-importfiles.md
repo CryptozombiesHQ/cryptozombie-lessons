@@ -112,14 +112,14 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        mod storages;
+        mod storage;
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
         pub trait ZombieContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storages::Storages
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
         {
             #[init]
             fn init(&self) {

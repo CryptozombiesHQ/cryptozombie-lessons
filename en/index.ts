@@ -38,7 +38,6 @@ import lesson2complete from './2/15-lessoncomplete.md'
 // lesson3
 import l3_overview from './3/00-overview.md'
 import l3_ch1 from './3/01-externaldependencies.md'
-import l3_ch2 from './3/02-ownable.md'
 import l3_ch3 from './3/03-onlyowner.md'
 import l3_ch4 from './3/04-gas.md'
 import l3_ch5 from './3/05-timeunits.md'
@@ -323,7 +322,6 @@ export default {
   3: [
     l3_overview,
     l3_ch1,
-    l3_ch2,
     l3_ch3,
     l3_ch4,
     l3_ch5,

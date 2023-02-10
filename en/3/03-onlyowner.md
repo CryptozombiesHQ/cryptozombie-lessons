@@ -1,331 +1,245 @@
 ---
-title: onlyOwner Function Modifier
+title: Ownable Contracts
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefeeding.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        import "./zombiefactory.sol";
+        use crate::{storage, zombiefactory};
+        use crypto_kitties_proxy::Kitty;
 
-        contract KittyInterface {
-          function getKitty(uint256 _id) external view returns (
-            bool isGestating,
-            bool isReady,
-            uint256 cooldownIndex,
-            uint256 nextActionAt,
-            uint256 siringWithId,
-            uint256 birthTime,
-            uint256 matronId,
-            uint256 sireId,
-            uint256 generation,
-            uint256 genes
-          );
+        mod crypto_kitties_proxy {
+            multiversx_sc::imports!();
+            multiversx_sc::derive_imports!();
+
+            #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+            pub struct Kitty {
+                pub is_gestating: bool,
+                pub is_ready: bool,
+                pub cooldown_index: u64,
+                pub next_action_at: u64,
+                pub siring_with_id: u64,
+                pub birth_time: u64,
+                pub matron_id: u64,
+                pub sire_id: u64,
+                pub generation: u64,
+                pub genes: u64,
+            }
+
+            #[multiversx_sc::proxy]
+            pub trait CryptoKitties {
+                #[endpoint]
+                fn get_kitty(&self, id: usize) -> Kitty;
+            }
         }
 
-        contract ZombieFeeding is ZombieFactory {
-
-          KittyInterface kittyContract;
-
-          // Modify this function:
-          function setKittyContractAddress(address _address) external {
-            kittyContract = KittyInterface(_address);
-          }
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
-              newDna = newDna - newDna % 100 + 99;
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
+            #[endpoint]
+            fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You can only feed your own zombie"
+                );
+                let my_zombie = self.zombies(&zombie_id).get();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                let verified_target_dna = target_dna % max_dna_value;
+                let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
+                if species == ManagedBuffer::from(b"kitty") {
+                  new_dna = new_dna - new_dna % 100 + 99
+                }
+                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
             }
-            _createZombie("NoName", newDna);
-          }
 
-          function feedOnKitty(uint _zombieId, uint _kittyId) public {
-            uint kittyDna;
-            (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            feedAndMultiply(_zombieId, kittyDna, "kitty");
-          }
+            #[callback]
+            fn get_kitty_callback(
+              &self, 
+              #[call_result] result: ManagedAsyncCallResult<Kitty>,
+              zombie_id: usize
+            ) {
+                match result {
+                    ManagedAsyncCallResult::Ok(kitty) => {
+                      let kitty_dna = kitty.genes;
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                    },
+                    ManagedAsyncCallResult::Err(_) => {},
+                }
+            }
 
+            #[endpoint]
+            fn feed_on_kitty(
+              &self, 
+              zombie_id: usize,
+              kitty_id: usize,
+            ) {
+              let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
+                self.kitty_proxy(crypto_kitties_sc_address)
+                    .get_kitty(kitty_id)
+                    .async_call()
+                    .with_callback(self.callbacks().get_kitty_callback(zombie_id))
+                    .call_and_exit();
+            }
+            #[proxy]
+            fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
-
-        import "./ownable.sol";
-
-        contract ZombieFactory is Ownable {
-
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string memory _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
-            }
-
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
-            }
-
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                randDna = randDna - randDna % 100;
-                _createZombie(_name, randDna);
-            }
-
+      "zombie.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+        
+        #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+        pub struct Zombie<M: ManagedTypeApi> {
+            pub name: ManagedBuffer<M>,
+            pub dna: u64,
         }
-      "ownable.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        /**
-        * @title Ownable
-        * @dev The Ownable contract has an owner address, and provides basic authorization control
-        * functions, this simplifies the implementation of "user permissions".
-        */
-        contract Ownable {
-          address private _owner;
+        use crate::{storage, zombie::Zombie};
 
-          event OwnershipTransferred(
-            address indexed previousOwner,
-            address indexed newOwner
-          );
+        #[multiversx_sc::module]
+        pub trait ZombieFactory: storage::Storage {
+            fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+                self.zombies_count().update(|id| {
+                    self.new_zombie_event(*id, &name, dna);
+                    self.zombies(id).set(Zombie { name, dna });
+                    self.owned_zombies(&owner).insert(*id);
+                    self.zombie_owner(id).set(owner);
+                    *id += 1;
+                });
+            }
 
-          /**
-          * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-          * account.
-          */
-          constructor() internal {
-            _owner = msg.sender;
-            emit OwnershipTransferred(address(0), _owner);
-          }
+            #[view]
+            fn generate_random_dna(&self) -> u64 {
+                let mut rand_source = RandomnessSource::new();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                rand_source.next_u64_in_range(0u64, max_dna_value)
+            }
 
-          /**
-          * @return the address of the owner.
-          */
-          function owner() public view returns(address) {
-            return _owner;
-          }
+            #[endpoint]
+            fn create_random_zombie(&self, name: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You already own a zombie"
+                );
+                let rand_dna = self.generate_random_dna();
+                self.create_zombie(caller, name, rand_dna);
+            }
 
-          /**
-          * @dev Throws if called by any account other than the owner.
-          */
-          modifier onlyOwner() {
-            require(isOwner());
-            _;
-          }
+            #[event("new_zombie_event")]
+            fn new_zombie_event(
+                &self,
+                #[indexed] zombie_id: usize,
+                name: &ManagedBuffer,
+                #[indexed] dna: u64,
+            );
+        }
+      "storage.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-          /**
-          * @return true if `msg.sender` is the owner of the contract.
-          */
-          function isOwner() public view returns(bool) {
-            return msg.sender == _owner;
-          }
+        use crate::zombie::Zombie;
 
-          /**
-          * @dev Allows the current owner to relinquish control of the contract.
-          * @notice Renouncing to ownership will leave the contract without an owner.
-          * It will not be possible to call the functions with the `onlyOwner`
-          * modifier anymore.
-          */
-          function renounceOwnership() public onlyOwner {
-            emit OwnershipTransferred(_owner, address(0));
-            _owner = address(0);
-          }
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[view]
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-          /**
-          * @dev Allows the current owner to transfer control of the contract to a newOwner.
-          * @param newOwner The address to transfer ownership to.
-          */
-          function transferOwnership(address newOwner) public onlyOwner {
-            _transferOwnership(newOwner);
-          }
+            #[view]
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
 
-          /**
-          * @dev Transfers control of the contract to a newOwner.
-          * @param newOwner The address to transfer ownership to.
-          */
-          function _transferOwnership(address newOwner) internal {
-            require(newOwner != address(0));
-            emit OwnershipTransferred(_owner, newOwner);
-            _owner = newOwner;
-          }
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[view]
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[view]
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+        }
+      "lib.rs": |       
+        #![no_std]
+
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+
+        mod storage;
+        mod zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
+
+        #[multiversx_sc::contract]
+        pub trait ZombiesContract:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+            }
+
+            #[endpoint]
+            fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
+                self.crypto_kitties_sc_address().set(address);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      import "./zombiefactory.sol";
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
+      mod storage;
+      mod zombie;
+      mod zombiefactory;
+      mod zombiefeeding;
 
-      contract ZombieFeeding is ZombieFactory {
-
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) external onlyOwner {
-          kittyContract = KittyInterface(_address);
-        }
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
-            newDna = newDna - newDna % 100 + 99;
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract:
+          zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+      {
+          #[init]
+          fn init(&self) {
+              self.dna_digits().set(16u8);
           }
-          _createZombie("NoName", newDna);
-        }
 
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
-        }
-
+          #[only_owner]
+          #[endpoint]
+          fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
+              self.crypto_kitties_sc_address().set(address);
+          }
       }
 ---
 
-Now that our base contract `ZombieFactory` inherits from `Ownable`, we can use the `onlyOwner` function modifier in `ZombieFeeding` as well.
+Did you spot the security hole in the previous chapter?
 
-This is because of how contract inheritance works. Remember:
+`set_crypto_kitties_sc_address` is an endpoint, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
 
-```
-ZombieFeeding is ZombieFactory
-ZombieFactory is Ownable
-```
+We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
 
-Thus `ZombieFeeding` is also `Ownable`, and can access the functions / events / modifiers from the `Ownable` contract. This applies to any contracts that inherit from `ZombieFeeding` in the future as well.
+To handle cases like this, one common practice that has emerged is to make endpoint accessible only by the owner (you) who has special privileges.
 
-## Function Modifiers
-
-A function modifier looks just like a function, but uses the keyword `modifier` instead of the keyword `function`. And it can't be called directly like a function can — instead we can attach the modifier's name at the end of a function definition to change that function's behavior.
-
-Let's take a closer look by examining `onlyOwner`:
-
-```
-pragma solidity >=0.5.0 <0.6.0;
-
-/**
- * @title Ownable
- * @dev The Ownable contract has an owner address, and provides basic authorization control
- * functions, this simplifies the implementation of "user permissions".
- */
-contract Ownable {
-  address private _owner;
-
-  event OwnershipTransferred(
-    address indexed previousOwner,
-    address indexed newOwner
-  );
-
-  /**
-   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-   * account.
-   */
-  constructor() internal {
-    _owner = msg.sender;
-    emit OwnershipTransferred(address(0), _owner);
-  }
-
-  /**
-   * @return the address of the owner.
-   */
-  function owner() public view returns(address) {
-    return _owner;
-  }
-
-  /**
-   * @dev Throws if called by any account other than the owner.
-   */
-  modifier onlyOwner() {
-    require(isOwner());
-    _;
-  }
-
-  /**
-   * @return true if `msg.sender` is the owner of the contract.
-   */
-  function isOwner() public view returns(bool) {
-    return msg.sender == _owner;
-  }
-
-  /**
-   * @dev Allows the current owner to relinquish control of the contract.
-   * @notice Renouncing to ownership will leave the contract without an owner.
-   * It will not be possible to call the functions with the `onlyOwner`
-   * modifier anymore.
-   */
-  function renounceOwnership() public onlyOwner {
-    emit OwnershipTransferred(_owner, address(0));
-    _owner = address(0);
-  }
-
-  /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
-   */
-  function transferOwnership(address newOwner) public onlyOwner {
-    _transferOwnership(newOwner);
-  }
-
-  /**
-   * @dev Transfers control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
-   */
-  function _transferOwnership(address newOwner) internal {
-    require(newOwner != address(0));
-    emit OwnershipTransferred(_owner, newOwner);
-    _owner = newOwner;
-  }
-}
-```
-
-Notice the `onlyOwner` modifier on the `renounceOwnership` function. When you call `renounceOwnership`, the code inside `onlyOwner` executes **first**. Then when it hits the `_;` statement in `onlyOwner`, it goes back and executes the code inside `renounceOwnership`.
-
-So while there are other ways you can use modifiers, one of the most common use-cases is to add a quick `require` check before a function executes.
-
-In the case of `onlyOwner`, adding this modifier to a function makes it so **only** the **owner** of the contract (you, if you deployed it) can call that function.
-
->Note: Giving the owner special powers over the contract like this is often necessary, but it could also be used maliciously. For example, the owner could add a backdoor function that would allow him to transfer anyone's zombies to himself!
-
->So it's important to remember that just because a DApp is on Ethereum does not automatically mean it's decentralized — you have to actually read the full source code to make sure it's free of special controls by the owner that you need to potentially worry about. There's a careful balance as a developer between maintaining control over a DApp such that you can fix potential bugs, and building an owner-less platform that your users can trust to secure their data.
+In many other blockchains this element is hard to deal, requiring to import another contract and use it as proxy to secure your endpoints. In MultiversX Rust framework this is easily done by simply setting the `#[only_owner]` annotation  before the `#[endpoint]` annotation.
 
 ## Put it to the test
 
-Now we can restrict access to `setKittyContractAddress` so that no one but us can modify it in the future.
+Now we can restrict access to `set_crypto_kitties_sc_address` so that no one but us can modify it in the future.
 
-1. Add the `onlyOwner` modifier to `setKittyContractAddress`.
+1. Make the set_crypto_kitties_sc_address endpoint accessible only by the owner.
