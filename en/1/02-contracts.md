@@ -58,7 +58,7 @@ A rust contract typically starts with `#![no_std]` - a feature indicating that o
 
 Rust's standard design library is split into a few layers, each building on the assumed platform capabilities of the one below. Knowing that there is:
 
-- `sdt`: the full standard library that assumes the presence of threads, a filesystem, and networking. [...]
+- `std`: the full standard library that assumes the presence of threads, a filesystem, and networking. [...]
 
 - `alloc`: the collections layer builds on the core by assuming runtime support for dynamic memory allocation.
 
