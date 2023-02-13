@@ -44,8 +44,8 @@ material:
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
                 );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
@@ -178,6 +178,9 @@ material:
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
 
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
             #[storage_mapper("cooldown_time")]
             fn cooldown_time(&self) -> SingleValueMapper<u64>;
         }
@@ -191,15 +194,17 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
 
         #[multiversx_sc::contract]
         pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
             }
 
             #[only_owner]
@@ -244,102 +249,133 @@ material:
             self.zombies(&zombie_id)
                 .update(|my_zombie| my_zombie.dna = dna);
         }
+
+        #[payable("EGLD")]
+        #[endpoint]
+        fn level_up(&self, zombie_id: usize){
+            let payment_amount = self.call_value().egld_value();
+            let fee = self.level_up_fee().get();
+            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+        }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-      import "./zombiefeeding.sol";
+        use crate::zombie::Zombie;
 
-      contract ZombieHelper is ZombieFeeding {
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-        uint levelUpFee = 0.001 ether;
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
 
-        modifier aboveLevel(uint _level, uint _zombieId) {
-          require(zombies[_zombieId].level >= _level);
-          _;
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
         }
+    answer: >
+        multiversx_sc::imports!();
 
-        function withdraw() external onlyOwner {
-          address payable _owner = address(uint160(owner()));
-          _owner.transfer(address(this).balance);
+        use crate::storage;
 
-        }
-
-        function setLevelUpFee(uint _fee) external onlyOwner {
-          levelUpFee = _fee;
-        }
-
-        function levelUp(uint _zombieId) external payable {
-          require(msg.value == levelUpFee);
-          zombies[_zombieId].level++;
-        }
-
-        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].name = _newName;
-        }
-
-        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].dna = _newDna;
-        }
-
-        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
-          uint[] memory result = new uint[](ownerZombieCount[_owner]);
-          uint counter = 0;
-          for (uint i = 0; i < zombies.length; i++) {
-            if (zombieToOwner[i] == _owner) {
-              result[counter] = i;
-              counter++;
+        #[multiversx_sc::module]
+        pub trait ZombieHelper: storage::Storage {
+            fn check_above_level(&self, level: u16, zombie_id: usize) {
+                let my_zombie = self.zombies(&zombie_id).get();
+                require!(my_zombie.level >= level, "Zombie is too low level");
             }
-          }
-          return result;
         }
 
-      }
+        #[endpoint]
+        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+            self.check_above_level(2u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.name = name);
+        }
+
+        #[endpoint]
+        fn change_dna(&self, zombie_id: usize, dna: u64) {
+            self.check_above_level(20u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.dna = dna);
+        }
+
+        #[payable("EGLD")]
+        #[endpoint]
+        fn level_up(&self, zombie_id: usize){
+            let payment_amount = self.call_value().egld_value();
+            let fee = self.level_up_fee().get();
+            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+            self.collected_fees().update(|fees| fees += fee);
+            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+        }
+
+        #[only_owner]
+        #[endpoint]
+        fn withdraw(&self) {
+          let caller_address = self.blockchain().get_caller();
+          let collected_fees = self.collected_fees().get();
+          self.send().direct_egld(&caller_address, &collected_fees);
+          self.collected_fees().clear();
+        }
 ---
 
-In the previous chapter, we learned how to send Ether to a contract. So what happens after you send it?
+In the previous chapter, we learned how to send EGLD  to a contract. So what happens after you send it?
 
-After you send Ether to a contract, it gets stored in the contract's Ethereum account, and it will be trapped there — unless you add a function to withdraw the Ether from the contract.
+After you send EGLD to a contract, it gets stored in the contract's EGLD account, and it will be trapped there — unless you add a function to withdraw the EGLD from the contract.
 
-You can write a function to withdraw Ether from the contract as follows:
+You can write a function to withdraw EGLD from the contract as follows:
 
 ```
-contract GetPaid is Ownable {
-  function withdraw() external onlyOwner {
-    address payable _owner = address(uint160(owner()));
-    _owner.transfer(address(this).balance);
+  #[only_owner]
+  #[endpoint]
+  fn withdraw(&self) {
+    let caller_address = self.blockchain().get_caller();
+    let collected_fees = self.collected_fees.get()
+    self.send().direct_egld(&caller_address, collected_fees);
+    self.collected_fees.unset();
   }
-}
 ```
 
-Note that we're using `owner()` and `onlyOwner` from the `Ownable` contract, assuming that was imported.
+Note that we're using `onlyOwner` since just the owner should have access to this
 
-And most important for `_owner` variable that it's have to be a `address payable` type for doing a sending and transferring ether instruction.
 
-But our `owner()` isn't a type `address payable` so we have to explicitly cast to `address payable`. Casting any integer type like `uint160` to address produces an `address payable`.
-
-You can transfer Ether to an address using the `transfer` function, and `address(this).balance` will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, `address(this).balance` would equal 100 Ether.
-
-You can use `transfer` to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the `msg.sender` if they overpaid for an item:
-
-```
-uint itemFee = 0.001 ether;
-msg.sender.transfer(msg.value - itemFee);
-```
-
-Or in a contract with a buyer and a seller, you could save the seller's address in storage, then when someone purchases his item, transfer him the fee paid by the buyer: `seller.transfer(msg.value)`.
-
-These are some examples of what makes Ethereum programming really cool — you can have decentralized marketplaces like this that aren't controlled by anyone.
+You can transfer EGLD to an address using the `self.send().direct_egld()` function.
+You can use `self.send().direct()` to send any type of funds to any MultiversX address.
 
 ## Putting it to the Test
 
-1. Create a `withdraw` function in our contract, which should be identical to the `GetPaid` example above.
+1. Change the level_up function so that all the fees received will get stored in a new storage mapper called `colleted_fees` of `BigUint` type
 
-2. The price of Ether has gone up over 10x in the past year. So while 0.001 ether is about $1 at the time of this writing, if it goes up 10x again, 0.001 ETH will be $10 and our game will be a lot more expensive.
-
-  So it's a good idea to create a function that allows us as the owner of the contract to set the `levelUpFee`.
-
-  a. Create a function called `setLevelUpFee` that takes one argument, `uint _fee`, is `external`, and uses the modifier `onlyOwner`.
-
-  b. The function should set `levelUpFee` equal to `_fee`.
+2. Create a `withdraw` function in our contract, which should be identical to the `withdraw` example above.

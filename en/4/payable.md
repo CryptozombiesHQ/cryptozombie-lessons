@@ -6,6 +6,7 @@ material:
   editor:
     language: rust
     startingCode:
+   
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -44,8 +45,8 @@ material:
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
                 );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
@@ -191,10 +192,11 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
 
         #[multiversx_sc::contract]
         pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
         {
             #[init]
             fn init(&self) {
@@ -245,112 +247,190 @@ material:
                 .update(|my_zombie| my_zombie.dna = dna);
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-      import "./zombiefeeding.sol";
+        use crate::zombie::Zombie;
 
-      contract ZombieHelper is ZombieFeeding {
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-        uint levelUpFee = 0.001 ether;
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
 
-        modifier aboveLevel(uint _level, uint _zombieId) {
-          require(zombies[_zombieId].level >= _level);
-          _;
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
         }
+    answer: >
+        #![no_std]
 
-        function levelUp(uint _zombieId) external payable {
-          require(msg.value == levelUpFee);
-          zombies[_zombieId].level++;
-        }
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].name = _newName;
-        }
+        mod storage;
+        mod zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
+        mod zombiehelper;
 
-        function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          zombies[_zombieId].dna = _newDna;
-        }
-
-        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
-          uint[] memory result = new uint[](ownerZombieCount[_owner]);
-          uint counter = 0;
-          for (uint i = 0; i < zombies.length; i++) {
-            if (zombieToOwner[i] == _owner) {
-              result[counter] = i;
-              counter++;
+        #[multiversx_sc::contract]
+        pub trait ZombiesContract:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+                self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                
             }
-          }
-          return result;
-        }
 
-      }
+            #[only_owner]
+            #[endpoint]
+            fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
+                self.crypto_kitties_sc_address().set(address);
+            }
+        }
+    answer: >
+        multiversx_sc::imports!();
+
+        use crate::storage;
+
+        #[multiversx_sc::module]
+        pub trait ZombieHelper: storage::Storage {
+            fn check_above_level(&self, level: u16, zombie_id: usize) {
+                let my_zombie = self.zombies(&zombie_id).get();
+                require!(my_zombie.level >= level, "Zombie is too low level");
+            }
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
+
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
+
+            #[payable("EGLD")]
+            #[endpoint]
+            fn level_up(&self, zombie_id: usize){
+                let payment_amount = self.call_value().egld_value();
+                let fee = self.level_up_fee().get();
+                require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+                self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+            }
+        }
 ---
 
-Up until now, we've covered quite a few **_function modifiers_**. It can be difficult to try to remember everything, so let's run through a quick review:
+Up until now, we've covered quite a few **_function anotations_**. It can be difficult to try to remember everything, so let's run through a quick review:
 
-1. We have visibility modifiers that control when and where the function can be called from: `private` means it's only callable from other functions inside the contract; `internal` is like `private` but can also be called by contracts that inherit from this one; `external` can only be called outside the contract; and finally `public` can be called anywhere, both internally and externally.
+1. `#[endpoint]`- makes the function visible and callable outside the contract
+2. `#[view]`-like an endpoint but tells us that by running the function, no data will be saved/changed. Usually the best way of just giving access on something to be viewed.
+3.`#[storage_mapper(nu_mapper_name)]` - defines the function as a storage mapper of its return type, and the parameter defined as the key that accesses it. We learned about diverse storage mapper types, we will not remond them here, but if you want to to refresh yuor memory make sure to check `https://docs.multiversx.com/developers/developer-reference/storage-mappers/`
+4. `#[only_owner]` - makes an endpoint or a module be accessed only by the owner of the contract
+5. `#[proxy]`= marks the function as a proxy - a function from another contract that we want to call.
 
-2. We also have state modifiers, which tell us how the function interacts with the BlockChain: `view` tells us that by running the function, no data will be saved/changed. `pure` tells us that not only does the function not save any data to the blockchain, but it also doesn't read any data from the blockchain. Both of these don't cost any gas to call if they're called externally from outside the contract (but they do cost gas if called internally by another function).
+In this chapter, we're going to introduce one more function annotation: `payable`.
 
-3. Then we have custom `modifiers`, which we learned about in Lesson 3: `onlyOwner` and `aboveLevel`, for example. For these we can define custom logic to determine how they affect a function.
+## The `payable` annotation
 
-These modifiers can all be stacked together on a function definition as follows:
-
-```
-function test() external view onlyOwner anotherModifier { /* ... */ }
-```
-
-In this chapter, we're going to introduce one more function modifier: `payable`.
-
-## The `payable` Modifier
-
-`payable` functions are part of what makes Solidity and Ethereum so cool — they are a special type of function that can receive Ether.
+`payable` functions are part of what makes MultiversX and Rust so cool — they are a special type of function that can receive any token, default being `EGLD`.
 
 Let that sink in for a minute. When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.
 
-But in Ethereum, because the money (_Ether_), the data (*transaction payload*), and the contract code itself all live on Ethereum, it's possible for you to call a function **_and_** pay money to the contract at the same time. 
+But in MultiversX, because the money (EGLD), the data (*transaction payload*), and the contract code itself all live on MultiversX, it's possible for you to call a function **_and_** pay money to the contract at the same time. 
 
 This allows for some really interesting logic, like requiring a certain payment to the contract in order to execute a function.
+
+The amounts in the MultiversX SC are stored in BigUint, a numeric datatype that allows us to easier manage amounts of crypto. Because of its high precision the value of 1 EGLD will be 10^18 (1 000 000 000 000 000 000) 
 
 ## Let's look at an example
 
 ```
-contract OnlineStore {
-  function buySomething() external payable {
-    // Check to make sure 0.001 ether was sent to the function call:
-    require(msg.value == 0.001 ether);
-    // If so, some logic to transfer the digital item to the caller of the function:
-    transferThing(msg.sender);
+
+#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+pub struct my_token<M: ManagedTypeApi> {
+    pub token_name: EgldOrEsdtTokenIdentifier<M>,
+    pub nonce: u64,
+    pub amount: BigUint<M>,
+}
+
+
+#[multiversx_sc::contract]
+pub trait OnlineStore {
+
+  #[init]
+  fn init(&self){
+      self.my_fee().set(BigUint::from(1000000000000000u64))
   }
+  #[payable("EGLD")]
+  #[endpoint]
+  fn buy_something(&self) {
+    // Check to make sure 1 EGLD was sent to the function call:
+    let payment_amount = self.call_value().egld_value();
+    let fee = self.my_fee().get();
+    require!(payment_amount == fee, "Payment must be 0.001 EGLD");
+    // If so, some logic to transfer the digital item to the caller of the function:
+    
+    let caller_address = self.blockchain().get_caller();
+    let my_bought_token = self.get_my_funds.get();
+    self.send().direct(
+          &caller_address,
+          &my_bought_token.token_name,
+          my_bought_token.nonce,
+          &my_bought_token.amount,
+      );
+  }
+  
+  fn my_fee(&self) -> SingleValueMapper<BigUint>;
 }
 ```
 
-Here, `msg.value` is a way to see how much Ether was sent to the contract, and `ether` is a built-in unit.
-
-What happens here is that someone would call the function from web3.js (from the DApp's JavaScript front-end) as follows:
-
-```
-// Assuming `OnlineStore` points to your contract on Ethereum:
-OnlineStore.buySomething({from: web3.eth.defaultAccount, value: web3.utils.toWei(0.001)})
-```
-
-Notice the `value` field, where the JavaScript function call specifies how much `ether` to send (0.001). If you think of the transaction like an envelope, and the parameters you send to the function call are the contents of the letter you put inside, then adding a `value` is like putting cash inside the envelope — the letter and the money get delivered together to the recipient.
-
->Note: If a function is not marked `payable` and you try to send Ether to it as above, the function will reject your transaction.
-
-
+Here, `self.call_value().egld_value()` is a way to see how much EGLD was sent to the contract, and `EGLD` is a built-in unit.
+My funds in our case is a function that retrieves from the storage out token that we sell for that 1 EGLD price.
 ## Putting it to the Test
 
-Let's create a `payable` function in our zombie game.
+Let's create a `payable` endpoint in our zombie game.
 
-Let's say our game has a feature where users can pay ETH to level up their zombies. The ETH will get stored in the contract, which you own — this a simple example of how you could make money on your games!
+Let's say our game has a feature where users can pay EGLD to level up their zombies. The EGLD will get stored in the contract, which you own — this a simple example of how you could make money on your games!
 
-1. Define a `uint` named `levelUpFee`, and set it equal to `0.001 ether`.
+1. Define a `BigUint` named `level_up_fee`, and set it equal to `1000000000000000u64` (that is 0.001 EGLD).
 
-2. Create a function named `levelUp`. It will take one parameter, `_zombieId`, a `uint`. It should be `external` and `payable`.
+2. Create a function named `level_up`. It will take one parameter, `zombie_id`, a `usize`. It should be a `payable` endpoint.
 
-3. The function should first `require` that `msg.value` is equal to `levelUpFee`.
+3. The function should first `require` that ` self.call_value().egld_value()` is equal to `level_up_fee`.
 
-4. It should then increment this zombie's `level`: `zombies[_zombieId].level++`.
+4. It should then increment this zombie's `level`: `self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);`
