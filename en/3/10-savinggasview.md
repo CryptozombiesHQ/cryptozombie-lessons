@@ -44,8 +44,8 @@ material:
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
                 );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
@@ -191,10 +191,11 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
 
         #[multiversx_sc::contract]
         pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
         {
             #[init]
             fn init(&self) {
@@ -219,30 +220,29 @@ material:
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        }
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
 
-        #[endpoint]
-        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-            self.check_above_level(2u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.name = name);
-        }
-
-        #[endpoint]
-        fn change_dna(&self, zombie_id: usize, dna: u64) {
-            self.check_above_level(20u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.dna = dna);
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
         }
     answer: >
         multiversx_sc::imports!();

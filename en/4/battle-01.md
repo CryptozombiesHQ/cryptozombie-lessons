@@ -6,7 +6,7 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombieattack.sol": |
+      "zombieattack.rs": |     
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -45,8 +45,8 @@ material:
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
                 );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
@@ -192,10 +192,16 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
@@ -220,38 +226,39 @@ material:
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        }
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
 
-        #[endpoint]
-        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-            self.check_above_level(2u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.name = name);
-        }
-
-        #[endpoint]
-        fn change_dna(&self, zombie_id: usize, dna: u64) {
-            self.check_above_level(20u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.dna = dna);
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
 
-      import "./zombiehelper.sol";
+      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
 
-      contract ZombieAttack is ZombieHelper {
-
+      #[multiversx_sc::module]
+      pub trait ZombieAttack:
+          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+      {
       }
 ---
 
@@ -261,12 +268,12 @@ Following the format from previous chapters, we'll organize our code by creating
 
 ## Put it to the test
 
-Let's review creating a new contract. Repetition leads to mastery!
+Let's review creating a new module. Repetition leads to mastery!
 
-If you can't remember the syntax for doing these, check `zombiehelper.sol` for the syntax — but try to do it without peeking first to test your knowledge.
+If you can't remember the syntax for doing these, check `zombiefeeding.rs` for the syntax — but try to do it without peeking first to test your knowledge.
 
-1. Declare at the top of the file that we're using Solidity version `>=0.5.0 <0.6.0`.
+1. Write the MultiversX Rust framework import at tne beginning of the fil `multiversx_sc::imports!();`. `multiversx_sc::derive_imports!();` will not be required in this case since we will not define any new struct type that will need the encode / decode implementations for serialization.
 
-2. `import` from `zombiehelper.sol`.
+2. Import the `Zombie` struct and the `Storage`, `ZombieFactory`, `ZombieFeeding`, `ZombieHelper`trait files, 
 
-3. Declare a new `contract` called `ZombieAttack` that inherits from `ZombieHelper`. Leave the contract body empty for now.
+3. Declare a new module supertrait called `ZombieAttack` that implements `Storage`, `ZombieFeeding`, `ZombieFactory` and `ZombieHelper`;

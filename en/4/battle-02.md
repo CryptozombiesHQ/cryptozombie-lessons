@@ -6,7 +6,16 @@ material:
   editor:
     language: rust
     startingCode:
-      "zombieattack.sol": |
+      "zombieattack.rs": |     
+        multiversx_sc::imports!();
+
+        use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+        #[multiversx_sc::module]
+        pub trait ZombieAttack:
+            storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+        {
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -45,8 +54,8 @@ material:
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
-                    self.owned_zombies(&caller).is_empty(),
-                    "You can only feed your own zombie"
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
                 );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
@@ -192,10 +201,16 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
@@ -220,105 +235,75 @@ material:
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        }
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
 
-        #[endpoint]
-        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-            self.check_above_level(2u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.name = name);
-        }
-
-        #[endpoint]
-        fn change_dna(&self, zombie_id: usize, dna: u64) {
-            self.check_above_level(20u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.dna = dna);
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      
+      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
 
-      import "./zombiehelper.sol";
-
-      contract ZombieAttack is ZombieHelper {
-        uint randNonce = 0;
-
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
-        }
+      #[multiversx_sc::module]
+      pub trait ZombieAttack:
+          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+      {
+          fn rand_mod(&self, modulus: u8) -> u8 {
+              let mut rand_source = RandomnessSource::new();
+              rand_source.next_u8() % modulus
+          }
       }
-
 ---
 
 Great! Now let's figure out the battle logic.
 
-All good games require some level of randomness. So how do we generate random numbers in Solidity?
+All good games require some level of randomness. So how do we generate random numbers in Rust?
 
-The real answer here is, you can't. Well, at least you can't do it safely.
+If you remember we talked about `RandomnessSource` in somewhere in the first lessons.
 
-Let's look at why.
+Due to the nature of the environemnt, nodes must all have the same "random" generator to be able to reach consensus. This is solved by using Golang's standard seeded random number generator, directly in the VM: https://cs.opensource.google/go/go/+/refs/tags/go1.17.5:src/math/rand/
 
-## Random number generation via `keccak256`
+The VM function mBufferSetRandom uses this library, seeded with the concatenation of:
 
-The best source of randomness we have in Solidity is the `keccak256` hash function.
+- previous block random seed
+- current block random seed
+- tx hash
+  
+We're not going to go into details about how exactly the Golang library uses the seed or how it generates said random numbers, as that's not the purpose of this tutorial.
 
-We could do something like the following to generate a random number:
+The `ManagedBuffer` type has two methods you can use for this:
 
-```
-// Generate a random number between 1 and 100:
-uint randNonce = 0;
-uint random = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
-randNonce++;
-uint random2 = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
-```
+- `fn new_random(nr_bytes: usize) -> Self`, which creates a new `ManagedBuffer` of nr_bytes random bytes
+- `fn set_random(&mut self, nr_bytes: usize)`, which sets an already existing buffer to random bytes
 
-What this would do is take the timestamp of `now`, the `msg.sender`, and an incrementing `nonce` (a number that is only ever used once, so we don't run the same hash function with the same input parameters twice).
-
-It would then "pack" the inputs and use `keccak` to convert them to a random hash. Next, it would convert that hash to a `uint`, and then use `% 100` to take only the last 2 digits. This will give us a totally random number between 0 and 99.
-
-### This method is vulnerable to attack by a dishonest node
-
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
-
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
-
-**This makes our random number function exploitable.**
-
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
-
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
-
-## So how do we generate random numbers safely in Ethereum?
-
-Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside of the Ethereum blockchain.
-
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
-
-So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
-
-Because we're just building a simple game for demo purposes in this tutorial and there's no real money on the line, we're going to accept the tradeoffs of using a random number generator that is simple to implement, knowing that it isn't totally secure.
-
-In a future lesson, we may cover using **_oracles_** (a secure way to pull data in from outside of Ethereum) to generate secure random numbers from outside the blockchain.
+For convenience, a wrapper over these methods was created, namely the `RandomnessSource` struct, which contains methods for generating a random number for all base rust unsigned numerical types, and a method for generating random bytes.
 
 ## Put it to the test
 
-Let's implement a random number function we can use to determine the outcome of our battles, even if it isn't totally secure from attack.
+Let's implement a random number function we can use to determine the outcome of our battles.
 
-1. Give our contract a `uint` called `randNonce`, and set it equal to `0`.
+1. Create a function called `rand_mod` (random-modulus). THis function will not be available outside the contract and will have a parameter `u8` named `modulus`, and `returns` a `u8`.
 
-2. Create a function called `randMod` (random-modulus). It will be an `internal` function that takes a `uint` named `_modulus`, and `returns` a `uint`.
+2. The function should first declare a new mutbale variable `rand_source` and give it as value `RandomnessSource::new()`;
 
-3. The function should first increment `randNonce` (using the syntax `randNonce++`).
-
-4. Finally, it should (in one line of code) calculate the `uint` typecast of the `keccak256` hash of `abi.encodePacked(now,msg.sender,randNonce)` — and `return` that value `% _modulus`. (Whew! That was a mouthful. If you didn't follow that, just take a look at the example above where we generated a random number — the logic is very similar).
+3. Finally, it should return `rand_source.next_usize() % modulus` making sure the returned number is always smaller than the value of `modulus`
