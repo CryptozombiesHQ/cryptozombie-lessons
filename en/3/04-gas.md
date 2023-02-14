@@ -215,21 +215,21 @@ Let's look at another way Rust is quite different from other programming languag
 
 ## Gas — the fuel MultiversX DApps run on
 
-In Rust, your users have to pay every time they execute a function on your DApp using a currency called **_gas_**. Users buy gas with EGLD (the currency on MultiversX), so your users have to spend EGLD in order to execute functions on your DApp. 
+In Rust,your users have to pay every time they execute a function on your DApp, via the concept of **_gas_**. They pay for the contract execution with EGLD (the currency on MultiversX), an amount proportional with the amount of computation required to carry out the operation.
 
 How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a **_gas cost_** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total **_gas cost_** of your function is the sum of the gas costs of all its individual operations.
 
 Because running functions costs real money for your users, code optimization is much more important in MultiversX than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
 
 ## Why is gas necessary?
-<!-- 
-Multivers is like a big, slow, but extremely secure computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes Ethereum decentralized, and its data immutable and censorship-resistant.
 
-The creators of Ethereum wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
+MultiversX is like a big, extremely secure computer, relatively fast as blockchains go, but slower than a regular computer. When you execute a function, every single node on the network needs to run that same function to verify its output — thousands of nodes verifying every function execution is what makes MultiversX decentralized, and its data immutable and censorship-resistant.
 
-> Note: This isn't necessarily true for other blockchain, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the Ethereum mainnet — the gas costs would be prohibitively expensive. But it could run on a blockchain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on Loom vs the Ethereum mainnet in a future lesson. -->
+The creators of MultiversX wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
 
-## numeric types
+> Note: This isn't necessarily true for other blockchain, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the MultiversX mainnet — the gas costs would be prohibitively expensive. But it could run on a blockchain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on Loom vs the MultiversX mainnet in a future lesson.
+
+## Numeric types
 
 In Lesson 1, we mentioned that there are other types of unsigned integers: `u8`, `u16`, `u32`, etc.
 

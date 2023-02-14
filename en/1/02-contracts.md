@@ -27,7 +27,7 @@ Starting with the absolute basics:
 
 Rust is a multiparadigm  programming language focused on type safety and performance, enabling users to build fast and robust applications. A `contract` is the fundamental building block of MultiversX applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
 
-An empty contract named `HelloWorld` can be created with **mxpy** by running `mxpy contract new hello-world --template empty` from terminal and its structure would liik like this:
+An empty contract named `HelloWorld` can be created with **mxpy** by running `mxpy contract new hello-world --template empty` from terminal and its structure would look like this:
 
 ```
 ├── meta
@@ -48,7 +48,7 @@ pub trait ZombiesContract {
 }
 ```
 
-Here `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieFactory` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
+Here `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieContract` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
 
 What every contract has as a mandatory function is a init, marked with `#[init]`. Here all the presets of the contract should be put.
 
@@ -70,8 +70,8 @@ The next step is importing the **MultiversX** Rust SDK, done by calling the macr
 
 # Put it to the test
 
-To start creating our Zombie army, let's create a base contract called `ZombieFContract`.
+To start creating our Zombie army, let's create a base contract called `ZombieContract`.
 
-1. In the box to the right, create an empty contract called `ZombieFContract`.
+1. In the box to the right, create an empty contract called `ZombieContract`.
 
 When you're finished, click "check answer" below. If you get stuck, you can click "hint".

@@ -294,4 +294,4 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 3. Then the function we should save `self.blockchain().get_caller()` inside a variable named caller and check that that he is the owner of the zombie indicated with `zombie_id` (by checking the `zombie_owner` storage mapper), or throw an error "Only the owner of the zombie can perform this operation" otherwise. if everything is good than the function should set update the name of the zombie to `new_name`.
 
-4. Create another endpoint named `change_dna` below `change_name`. its logic should be the same as for the name, but with level required above 20 and for the dna of the zombie.
+4. Create another endpoint named `change_dna` below `change_name`. its logic should be the same as for the name, but with level required above 20 and for the DNA of the zombie.

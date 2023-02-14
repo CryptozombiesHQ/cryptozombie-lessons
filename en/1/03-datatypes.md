@@ -75,7 +75,7 @@ You can spot out that we have `#[storage_mapper("dna_digits")]` which is somethi
 
 The `u8` data type is a 8-bit unsigned integer, meaning **its value must be non-negative**. 
 
-> Note: You can declare unsigned integer types with more bits — `u16`, `u32`, `u64` etc.. But in this case you want to simply use `u8` because we want to store in it a small number representing the number of digits of the zombie dna.
+> Note: You can declare unsigned integer types with more bits — `u16`, `u32`, `u64` etc.. But in this case you want to simply use `u8` because we want to store in it a small number representing the number of digits of the zombie DNA.
 
 There are also a couple integer data type for signed integers such as `i8`, `i16`, `i32`, etc..
 

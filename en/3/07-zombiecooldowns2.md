@@ -327,7 +327,7 @@ Looking back at this function, you can see we made it an endpoint available to e
 
 Re-examining this particular function, the user could call the function directly and pass in any `target_dna` or `species` they want to. This doesn't seem very game-like — we want them to follow our rules!
 
-On closer inspection, this function only needs to be called by `feed_on_kitty()`, so the easiest way to prevent these exploits is to make it `internal`.
+On closer inspection, this function only needs to be called by `feed_on_kitty()`, so the easiest way to prevent these exploits is to remove the `#[endpoint]` annotation
 
 ## Put it to the test
 
