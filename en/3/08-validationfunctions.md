@@ -1,12 +1,11 @@
 ---
-title: Zombie Battles
+title: More on Function Modifiers
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
-      "zombieattack.rs": |     
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -41,22 +40,36 @@ material:
 
         #[multiversx_sc::module]
         pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            #[endpoint]
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
                     caller == self.zombie_owner(&zombie_id).get(),
                     "Only the owner of the zombie can perform this operation"
                 );
+                require!(self.is_ready(zombie_id), "Zombie is not ready");
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
+                self.trigger_cooldown(zombie_id);
+            }
+
+            fn trigger_cooldown(&self, zombie_id: usize) {
+                let cooldown_time = self.cooldown_time().get();
+                self.zombies(&zombie_id).update(|my_zombie| {
+                    my_zombie.ready_time = self.blockchain().get_block_timestamp() + cooldown_time
+                });
+            }
+
+            #[view]
+            fn is_ready(&self, zombie_id: usize) -> bool {
+                let my_zombie = self.zombies(&zombie_id).get();
+                my_zombie.ready_time <= self.blockchain().get_block_timestamp()
             }
 
             #[callback]
@@ -68,7 +81,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -170,6 +183,10 @@ material:
             #[storage_mapper("zombies")]
             fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
+            #[view]
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
             #[storage_mapper("zombie_owner")]
             fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
 
@@ -178,15 +195,6 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
-
-            #[storage_mapper("level_up_fee")]
-            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
-
-            #[storage_mapper("collected_fees")]
-            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
-
-            #[storage_mapper("cooldown_time")]
-            fn cooldown_time(&self) -> SingleValueMapper<u64>;
         }
       "lib.rs": |
         #![no_std]
@@ -199,21 +207,15 @@ material:
         mod zombiefactory;
         mod zombiefeeding;
         mod zombiehelper;
-        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait Adder:
-            zombiefactory::ZombieFactory
-            + zombiefeeding::ZombieFeeding
-            + storage::Storage
-            + zombiehelper::ZombieHelper
-            + zombieattack::ZombieAttack
+        pub trait ZombiesContract:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
-                self.level_up_fee().set(BigUint::from(1000000000000000u64));
             }
 
             #[only_owner]
@@ -229,76 +231,33 @@ material:
 
         #[multiversx_sc::module]
         pub trait ZombieHelper: storage::Storage {
-            fn check_above_level(&self, level: u16, zombie_id: usize) {
-                let my_zombie = self.zombies(&zombie_id).get();
-                require!(my_zombie.level >= level, "Zombie is too low level");
-            }
-            #[endpoint]
-            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-                self.check_above_level(2u16, zombie_id);
-                let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
-                self.zombies(&zombie_id)
-                    .update(|my_zombie| my_zombie.name = name);
-            }
-
-            #[endpoint]
-            fn change_dna(&self, zombie_id: usize, dna: u64) {
-                self.check_above_level(20u16, zombie_id);
-                let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
-                self.zombies(&zombie_id)
-                    .update(|my_zombie| my_zombie.dna = dna);
-            }
-
-            #[payable("EGLD")]
-            #[endpoint]
-            fn level_up(&self, zombie_id: usize){
-                let payment_amount = self.call_value().egld_value();
-                let fee = self.level_up_fee().get();
-                require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
-                self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
-            }
-
-            #[only_owner]
-            #[endpoint]
-            fn withdraw(&self) {
-            let caller_address = self.blockchain().get_caller();
-            let collected_fees = self.collected_fees().get();
-            self.send().direct_egld(&caller_address, &collected_fees);
-            self.collected_fees().clear();
-            }
+            
+            // start here 
         }
     answer: >
       multiversx_sc::imports!();
 
-      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+      use crate::storage;
 
       #[multiversx_sc::module]
-      pub trait ZombieAttack:
-          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
-      {
+      pub trait ZombieHelper: storage::Storage {
+          fn check_above_level(&self, level: u16, zombie_id: usize) {
+              let my_zombie = self.zombies(&zombie_id).get();
+              require!(my_zombie.level >= level, "Zombie is too low level");
+          }
       }
+
+
 ---
 
-Now that we've learned about payable functions and contract balances, it's time to add functionality for zombie battles!
+Great! Our zombie now has a functional cooldown timer.
 
-Following the format from previous chapters, we'll organize our code by creating a new file / contract for the attack functionality that imports from the previous contract.
+Next, we're going to add some additional validation methods. We've created a new file for you called `zombiehelper.rs`. This will help to keep our code organized.
+
+Let's make it so zombies gain special abilities after reaching a certain level.
 
 ## Put it to the test
 
-Let's review creating a new module. Repetition leads to mastery!
+1. In `ZombieHelper`, create a function called `check_above_level`. It will take 2 arguments, `level` (a `u16`) and `zombie_id` (also a `size`).
 
-If you can't remember the syntax for doing these, check `zombiefeeding.rs` for the syntax — but try to do it without peeking first to test your knowledge.
-
-1. Write the MultiversX Rust framework import at tne beginning of the fil `multiversx_sc::imports!();`. `multiversx_sc::derive_imports!();` will not be required in this case since we will not define any new struct type that will need the encode / decode implementations for serialization.
-
-2. Import the `Zombie` struct and the `Storage`, `ZombieFactory`, `ZombieFeeding`, `ZombieHelper`trait files, 
-
-3. Declare a new module supertrait called `ZombieAttack` that implements `Storage`, `ZombieFeeding`, `ZombieFactory` and `ZombieHelper`;
+2. The body should read `self.zombies(&zombie_id)` into a variable `my_zombie` and checks to make sure `my_zombie.level` is greater than or equal to `level` or return an error message "Zombie is too low level" otherwise.

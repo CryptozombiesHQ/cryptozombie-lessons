@@ -1,5 +1,5 @@
 ---
-title: Zombie Loss 😞
+title: Zombie Wins and Losses
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -21,33 +21,10 @@ material:
             }
 
             #[endpoint]
-            fn attack(&self, zombie_id: usize, target_id: usize) {
+            fn attack(&self, zombie_id: usize, target_id: usize){
                 let caller = self.blockchain().get_caller();
                 self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 let rand = self.rand_mod(100u8);
-                let attack_victory_probability = self.attack_victory_probability().get();
-                if rand <= attack_victory_probability {
-                    self.zombies(&zombie_id).update(|my_zombie| {
-                        my_zombie.win_count += 1;
-                        my_zombie.level += 1;
-                    });
-
-                    let mut enemy_dna = 0;
-                    self.zombies(&target_id).update(|enemy_zombie| {
-                        enemy_zombie.loss_count += 1;
-                        enemy_dna = enemy_zombie.dna;
-                    });
-                    self.feed_and_multiply(zombie_id, enemy_dna, ManagedBuffer::from(b"zombie"));
-                } else {
-                    self.zombies(&zombie_id).update(|my_zombie| {
-                        my_zombie.loss_count += 1;
-                    });
-
-                    self.zombies(&target_id).update(|enemy_zombie| {
-                        enemy_zombie.win_count += 1;
-                    });
-                    self.trigger_cooldown(zombie_id);
-                }
             }
         }
       "zombiefeeding.rs": |
@@ -92,10 +69,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
             #[callback]
             fn get_kitty_callback(
@@ -106,7 +83,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -275,12 +252,12 @@ material:
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-          
+        
             fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
-              require!(
-                  caller == &self.zombie_owner(&zombie_id).get(),
-                  "Only the owner of the zombie can perform this operation"
-              );
+            require!(
+                caller == &self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
             }
 
             #[endpoint]
@@ -300,7 +277,7 @@ material:
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.dna = dna);
             }
-            
+        
             #[payable("EGLD")]
             #[endpoint]
             fn level_up(&self, zombie_id: usize){
@@ -321,79 +298,89 @@ material:
           }
 
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      import "./zombiehelper.sol";
-
-      contract ZombieAttack is ZombieHelper {
-        uint randNonce = 0;
-        uint attackVictoryProbability = 70;
-
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
-        }
-
-        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
-          Zombie storage myZombie = zombies[_zombieId];
-          Zombie storage enemyZombie = zombies[_targetId];
-          uint rand = randMod(100);
-        }
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          pub name: ManagedBuffer<M>,
+          pub dna: u64,
+          pub level: u16,
+          pub ready_time: u64,
+          pub win_count: usize,
+          pub loss_count: usize,
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      import "./zombiehelper.sol";
+      use crate::{storage, zombie::Zombie};
 
-      contract ZombieAttack is ZombieHelper {
-        uint randNonce = 0;
-        uint attackVictoryProbability = 70;
-
-        function randMod(uint _modulus) internal returns(uint) {
-          randNonce++;
-          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
-        }
-
-        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
-          Zombie storage myZombie = zombies[_zombieId];
-          Zombie storage enemyZombie = zombies[_targetId];
-          uint rand = randMod(100);
-          if (rand <= attackVictoryProbability) {
-            myZombie.winCount++;
-            myZombie.level++;
-            enemyZombie.lossCount++;
-            feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-          } else {
-            myZombie.lossCount++;
-            enemyZombie.winCount++;
-            _triggerCooldown(myZombie);
+      #[multiversx_sc::module]
+      pub trait ZombieFactory: storage::Storage {
+          fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+              self.zombies_count().update(|id| {
+                  self.new_zombie_event(*id, &name, dna);
+                  let cooldown_time = self.cooldown_time().get();
+                  self.zombies(id).set(Zombie {
+                      name,
+                      dna,
+                      level: 1u16,
+                      ready_time: self.blockchain().get_block_timestamp(),
+                      win_count: 0usize,
+                      loss_count: 0usize,
+                  });
+                  self.owned_zombies(&owner).insert(*id);
+                  self.zombie_owner(id).set(owner);
+                  *id += 1;
+              });
           }
-        }
+
+          #[view]
+          fn generate_random_dna(&self) -> u64 {
+              let mut rand_source = RandomnessSource::new();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              rand_source.next_u64_in_range(0u64, max_dna_value)
+          }
+
+          #[endpoint]
+          fn create_random_zombie(&self, name: ManagedBuffer) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You already own a zombie"
+              );
+              let rand_dna = self.generate_random_dna();
+              self.create_zombie(caller, name, rand_dna);
+          }
+
+          #[event("new_zombie_event")]
+          fn new_zombie_event(
+              &self,
+              #[indexed] zombie_id: usize,
+              name: &ManagedBuffer,
+              #[indexed] dna: u64,
+          );
       }
 ---
 
-Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
+For our zombie game, we're going to want to keep track of how many battles our zombies have won and lost. That way we can maintain a "zombie leaderboard" in our game state.
 
-In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
+We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
 
-To implement this logic, we'll need an `else` statement.
+Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
 
-`else` statements are written just like in JavaScript and many other languages:
-
-```
-if (zombieCoins[msg.sender] > 100000000) {
-  // You rich!!!
-} else {
-  // We require more ZombieCoins...
-}
-```
+So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
 
 ## Put it to the test
 
-1. Add an `else` statement. If our zombie loses:
+1. Modify our `Zombie` struct to have 2 more properties:
 
-  a. Increment `myZombie`'s `lossCount`.
+  a. `win_count`, a `usize`
 
-  b. Increment `enemyZombie`'s `winCount`.
+  b. `loss_count`, also a `uzise`
 
-  c. Run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)
+1. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `create_zombie`.
+
+  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.

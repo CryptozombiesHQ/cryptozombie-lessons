@@ -1,11 +1,30 @@
 ---
-title: More on Function Modifiers
+title: More Refactoring
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
+      "zombieattack.rs": |
+        multiversx_sc::imports!();
+
+        use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+        #[multiversx_sc::module]
+        pub trait ZombieAttack:
+            storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+        {
+            fn rand_mod(&self, modulus: u8) -> u8 {
+                let mut rand_source = RandomnessSource::new();
+                rand_source.next_u8() % modulus
+            }
+
+            #[endpoint]
+            fn attack(&self, zombie_id: usize, target_id: usize){
+
+            }
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -40,36 +59,22 @@ material:
 
         #[multiversx_sc::module]
         pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
+            #[endpoint]
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
                 require!(
                     caller == self.zombie_owner(&zombie_id).get(),
                     "Only the owner of the zombie can perform this operation"
                 );
-                require!(self.is_ready(zombie_id), "Zombie is not ready");
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
-                self.trigger_cooldown(zombie_id);
-            }
-
-            fn trigger_cooldown(&self, zombie_id: usize) {
-                let cooldown_time = self.cooldown_time().get();
-                self.zombies(&zombie_id).update(|my_zombie| {
-                    my_zombie.ready_time = self.blockchain().get_block_timestamp() + cooldown_time
-                });
-            }
-
-            #[view]
-            fn is_ready(&self, zombie_id: usize) -> bool {
-                let my_zombie = self.zombies(&zombie_id).get();
-                my_zombie.ready_time <= self.blockchain().get_block_timestamp()
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -81,7 +86,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -183,10 +188,6 @@ material:
             #[storage_mapper("zombies")]
             fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
-            #[view]
-            #[storage_mapper("zombie_owner")]
-            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
-
             #[storage_mapper("zombie_owner")]
             fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
 
@@ -195,6 +196,18 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+            
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("attack_victory_probability")]
+            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
       "lib.rs": |
         #![no_std]
@@ -207,15 +220,22 @@ material:
         mod zombiefactory;
         mod zombiefeeding;
         mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                self.attack_victory_probability().set(70u8);
             }
 
             #[only_owner]
@@ -227,37 +247,144 @@ material:
       "zombiehelper.rs": |
         multiversx_sc::imports!();
 
-        use crate::storage;
+          use crate::storage;
 
-        #[multiversx_sc::module]
-        pub trait ZombieHelper: storage::Storage {
+          #[multiversx_sc::module]
+          pub trait ZombieHelper: storage::Storage {
+              fn check_above_level(&self, level: u16, zombie_id: usize) {
+                  let my_zombie = self.zombies(&zombie_id).get();
+                  require!(my_zombie.level >= level, "Zombie is too low level");
+              }
             
-            // start here 
-        }
+              fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
+                require!(
+                    caller == &self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+              }
+
+              #[endpoint]
+              fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                  self.check_above_level(2u16, zombie_id);
+                  let caller = self.blockchain().get_caller();
+                  self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                  self.zombies(&zombie_id)
+                      .update(|my_zombie| my_zombie.name = name);
+              }
+
+              #[endpoint]
+              fn change_dna(&self, zombie_id: usize, dna: u64) {
+                  self.check_above_level(20u16, zombie_id);
+                  let caller = self.blockchain().get_caller();
+                  self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                  self.zombies(&zombie_id)
+                      .update(|my_zombie| my_zombie.dna = dna);
+              }
+            
+              #[payable("EGLD")]
+              #[endpoint]
+              fn level_up(&self, zombie_id: usize){
+                  let payment_amount = self.call_value().egld_value();
+                  let fee = self.level_up_fee().get();
+                  require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+                  self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+              }
+
+              #[only_owner]
+              #[endpoint]
+              fn withdraw(&self) {
+              let caller_address = self.blockchain().get_caller();
+              let collected_fees = self.collected_fees().get();
+              self.send().direct_egld(&caller_address, &collected_fees);
+              self.collected_fees().clear();
+              }
+          }
+
     answer: >
       multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      use crate::storage;
+      use crate::{storage, zombiefactory, zombiehelper};
+      use crypto_kitties_proxy::Kitty;
 
-      #[multiversx_sc::module]
-      pub trait ZombieHelper: storage::Storage {
-          fn check_above_level(&self, level: u16, zombie_id: usize) {
-              let my_zombie = self.zombies(&zombie_id).get();
-              require!(my_zombie.level >= level, "Zombie is too low level");
+      mod crypto_kitties_proxy {
+          multiversx_sc::imports!();
+          multiversx_sc::derive_imports!();
+
+          #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+          pub struct Kitty {
+              pub is_gestating: bool,
+              pub is_ready: bool,
+              pub cooldown_index: u64,
+              pub next_action_at: u64,
+              pub siring_with_id: u64,
+              pub birth_time: u64,
+              pub matron_id: u64,
+              pub sire_id: u64,
+              pub generation: u64,
+              pub genes: u64,
+          }
+
+          #[multiversx_sc::proxy]
+          pub trait CryptoKitties {
+              #[endpoint]
+              fn get_kitty(&self, id: usize) -> Kitty;
           }
       }
 
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
+              let caller = self.blockchain().get_caller();
+              self.check_zombie_belongs_to_caller(zombie_id, &caller);
+              let my_zombie = self.zombies(&zombie_id).get();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              let verified_target_dna = target_dna % max_dna_value;
+              let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
+              if species == ManagedBuffer::from("kitty") {
+                new_dna = new_dna - new_dna % 100 + 99
+              }
+              self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
+          }
 
+          #[callback]
+          fn get_kitty_callback(
+            &self, 
+            #[call_result] result: ManagedAsyncCallResult<Kitty>,
+            zombie_id: usize
+          ) {
+              match result {
+                  ManagedAsyncCallResult::Ok(kitty) => {
+                    let kitty_dna = kitty.genes;
+                    self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
+                  },
+                  ManagedAsyncCallResult::Err(_) => {},
+              }
+          }
+
+          #[endpoint]
+          fn feed_on_kitty(
+            &self, 
+            zombie_id: usize,
+            kitty_id: usize,
+          ) {
+            let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
+              self.kitty_proxy(crypto_kitties_sc_address)
+                  .get_kitty(kitty_id)
+                  .async_call()
+                  .with_callback(self.callbacks().get_kitty_callback(zombie_id))
+                  .call_and_exit();
+          }
+          #[proxy]
+          fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
+      }
 ---
 
-Great! Our zombie now has a functional cooldown timer.
-
-Next, we're going to add some additional helper methods. We've created a new file for you called `zombiehelper.rs`. This will help to keep our code organized.
-
-Let's make it so zombies gain special abilities after reaching a certain level.
+We have a places in `zombiedeefing.rs` where we need to replace the check for the zombie belonging to the caller with our function created in the previous lesson.
 
 ## Put it to the test
 
-1. In `ZombieHelper`, create a function called `check_above_level`. It will take 2 arguments, `level` (a `u16`) and `zombie_id` (also a `size`).
+1. Update `feed_and_multiply` to use `check_zombie_belongs_to_caller`
 
-2. The body should read `self.zombies(&zombie_id)` into a variable `my_zombie` and checks to make sure `my_zombie.level` is greater than or equal to `level` or return an error message "Zombie is too low level" otherwise.
+Remember to also make `ZombieFeeding` implement `ZombieHelper` for this to work

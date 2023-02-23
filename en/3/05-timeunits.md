@@ -52,10 +52,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -67,7 +67,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -266,15 +266,13 @@ In order to keep track of how much time a zombie has to wait until it can attack
 
 In the MultiversX Rust framework time can be accessed through `self.blockchain().get_block_timestamp()` and will return the current unix timestamp of the latest block (the number of seconds that have passed since January 1st 1970). The unix time as I write this is `1515527488`.
 
->Note: Unix time is traditionally stored in a 32-bit number. This will lead to the "Year 2038" problem, when 32-bit unix timestamps will overflow and break a lot of legacy systems. So if we wanted our DApp to keep running 20 years from now, we could use a 64-bit number instead — but our users would have to spend more gas to use our DApp in the meantime. Design decisions!
-
 Having access to timestamp gives us the possibility to deal with time through calculus in order to design our Zombie `cooldown` feature.
 
 ## Put it to the test 
 
 Let's add a cooldown time to our DApp, and make it so zombies have to wait **1 day (or 86400 seconds)** after attacking or feeding to attack again.
 
-We declares a `SingleValueMapper` for a `u64` called `cooldown_time`, and set it equal to `86400u64` inside the init.
+We declared a `SingleValueMapper` for a `u64` called `cooldown_time`, and set it equal to `86400u64` inside the init.
 
 1. Since we added a `level` and `ready_time` to our `Zombie` struct in the previous chapter, we need to update `create_zombie()` to use the correct number of arguments when we create a new `Zombie` struct.
   

@@ -1,5 +1,5 @@
 ---
-title: Private / Public Functions
+title: Putting It Together
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -32,12 +32,28 @@ material:
             });
         }
 
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
+
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            // start here
+        }
+
+        #[view]
         #[storage_mapper("dna_digits")]
         fn dna_digits(&self) -> SingleValueMapper<u8>;
 
+        #[view]
         #[storage_mapper("zombies_count")]
         fn zombies_count(&self) -> SingleValueMapper<usize>;
-        
+
+        #[view]
         #[storage_mapper("zombies")]
         fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
       }
@@ -71,7 +87,16 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
         }
 
         #[view]
@@ -88,53 +113,16 @@ material:
       }
 ---
 
-In this chapter, we're going to learn about function **_return values_**, and function modifiers.
+We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
 
-## Return Values
-
-To return a value from a function, the declaration looks like this:
-
-```
-
-fn say_hello() -> ManagedBuffer {
-  let greeting = ManagedBuffer::from(b"What's up dog");
-  return greeting;
-}
-
-```
-Alternativelly you can leave the returned element as the last line of the function without the delimiter `;` having the same effect as the classic format:
-
-```
-
-function say_hello() -> ManagedBuffer {
-  ManagedBuffer::from(b"What's up dog")
-}
-
-```
-
-In Rust, the function declaration contains the type of the return value (in this case `ManagedBuffer`) indicated by `->`
-
-## Function modifiers
-
-The above function doesn't actually change state in Rust — e.g. it doesn't change any values or write anything.
-
-So in this case we could declare it as a **#[view]** function, meaning it's only viewing the data but not modifying it. As a good practice storage values usually are declared as **#[view]** as well. Since in Rust the code writing convention is `snake_case` if you desire the name of a certain element be different on blockchain you can always set it so inside the view:
-
-```
-#[view(sayHello)]
-function say_hello() -> ManagedBuffer {
-  ManagedBuffer::from(b"What's up dog")
-}
-```
+We're going to create a public function that takes an input, the zombie's name, to create a zombie with random DNA and that given name.
 
 # Put it to the test
 
-We're going to want a helper function that generates a random DNA number from a string.
+Lets populate the `create_random_zombie` endpoint
 
-1. Create a `private` function called `generate_random_dna`. It will take no parameter (except the `self`).
+1. The first line of the function should run the `generate_random_dna` function on, and store it in an `u64` varialble named `rand_dna`.
 
-2. This function will view some of our contract's variables but not modify them, so mark it as `#[view]`.
+2. The second line should run the `create_zombie` function and pass it `name` and `rand_dna`.
 
-3. The function body should be empty at this point — we'll fill it in later.
-
-4. Set the storage values declared before as `#[view]` as well
+3. The solution should be 5 lines of code (including the closing `}` of the function and the `#[endpoint]` annotation).

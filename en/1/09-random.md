@@ -1,9 +1,9 @@
 ---
-title: Events
+title: Keccak256 and Typecasting
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
       #![no_std]
 
@@ -34,16 +34,12 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-            let mut rand_source = RandomnessSource::new();
-            let dna_digits = self.dna_digits().get();
-            let max_dna_value = u64::pow(10u64, dna_digits as u32);
-            rand_source.next_u64_in_range(0u64, max_dna_value)
+            // start here
         }
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-            let rand_dna = self.generate_random_dna();
-            self.create_zombie(name, rand_dna);
+
         }
 
         #[view]
@@ -81,7 +77,6 @@ material:
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
-              self.new_zombie_event(*id, &name, dna);
               self.zombies(id).set(Zombie { name, dna });
               *id +=1;
             });
@@ -97,17 +92,8 @@ material:
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-            let rand_dna = self.generate_random_dna();
-            self.create_zombie(name, rand_dna);
-        }
 
-        #[event("new_zombie_event")]
-        fn new_zombie_event(
-            &self, 
-            #[indexed] zombie_id: usize, 
-            name: &ManagedBuffer, 
-            #[indexed] dna: u64,
-        );
+        }
 
         #[view]
         #[storage_mapper("dna_digits")]
@@ -123,36 +109,71 @@ material:
       }
 ---
 
-Our contract is almost finished! Now let's add an **_event_**.
 
-**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+## Math functions 
 
-Example:
+
+Math in Rust is pretty straightforward. The following operations are the same as in most programming languages:
+
+* Addition: `x + y`
+* Subtraction: `x - y`,
+* Multiplication: `x * y`
+* Division: `x / y`
+* Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 5 into 13, 3 is the remainder)_
+
+For raising to a power the operation is done straigth up from the numeric type method `pow` :
 
 ```
-// declare the event
-#[event("integers_added")]
-fn integers_added_event(
-    &self, 
-    #[indexed] x: &BigUint, 
-    #[indexed] y: &BigUint, 
-    result: &BigUint
-);
+let x = u32::pow(5, 2); // equal to 5^2 = 25
+```
 
-#[endpoint]
-fn add(&self, x: BigUint, y: BigUint) -> BigUint {
-  let result = x.clone() + y.clone();
-  // fire an event to let the app know the function was called:
-  self.integers_added_event(&x, &y, &result);
-  return result;
+This can alternatively be written
+
+```
+let x = 5u32.pow(2); // equal to 5^2 = 25
+```
+
+## Random generation
+
+We want our `generate_random_dna` function to return a random `u64`. How can we accomplish this?
+
+Randomness in the blockchain environment is a challenging task to accomplish. Due to the nature of the environemnt, nodes must all have the same "random" generator to be able to reach consensus. This is solved by using Golang's standard seeded random number generator, directly in the VM: https://cs.opensource.google/go/go/+/refs/tags/go1.17.5:src/math/rand/
+
+```
+let mut rand_source = RandomnessSource::new();
+let my_rand_u16 = rand_source.next_u16();
+```
+By what you might guess `RandomnessSource` comes with a function for each numerical type in Rust.
+
+The `RandomnessSource` struct also provides methods for generating numbers within a range, namely the `fn next_usize_in_range(min: usize, max: usize) -> usize`, which generates a random usize in the `[min, max)` range. These methods are available for the rest of the numerical types as well, but for this example, we need usize (in Rust, indexes are usize).
+```
+let vec_len = my_vec.len();
+let mut rand_source = RandomnessSource::new();
+for i in 0..vec_len {
+    let rand_index = rand_source.next_usize_in_range(i, vec_len);
+    let first_item = my_vec.get(i).unwrap();
+    let second_item = my_vec.get(rand_index).unwrap();
+
+    my_vec.set(i, &second_item);
+    my_vec.set(rand_index, &first_item);
 }
 ```
-In the MultiversX Rust framework the parameters of an event need to be indexed with maximum 1 unindexed, which is considered data. Indexed parameters have the `#[indexed]` annotation.
+
+## Casting types
+
+Most of the numeric types in Rust are easily castable between themselves
+
+```
+let my_u32 = 42u32;
+let my_u64 = my_u32 as u64;
+```
 
 # Put it to the test
 
-We want an event to let our front-end know every time a new zombie was created, so the app can display it.
+Let's fill in the body of our `generate_random_dna` function! Here's what it should do:
 
-1. Declare an `event` called `new_zombie_event`. It should pass `zombie_id` (a `usize`), `name` (a `&ManagedBuffer`), and `dna` (a `u64`). `zombie_id` and `dna` should be indexed.
+1. The first line of code should contain the instantiation of a `RandomnessSource` object.
 
-2. Modify the `create_zombie` function to fire the `new_zombie_event` event before adding the new Zombie to our `zombies` storage. Be aware that id needs to be dereferenced here cince we have it inside update as a reference. The `name` will be passed as reference so it should have a `&` in front of it inside the event. 
+2. Next we need to get dna_digits out of the storage in order to use it.
+
+3. Since we will be using `next_u64_in_range` we will need to specify the range of our dna number which will be [0; 10^16). Note that the exponent of the power function needs to be u32 so a cast will need to be added.

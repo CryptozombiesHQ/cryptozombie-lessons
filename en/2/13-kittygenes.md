@@ -51,7 +51,7 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -231,10 +231,10 @@ material:
               let max_dna_value = u64::pow(10u64, dna_digits as u32);
               let verified_target_dna = target_dna % max_dna_value;
               let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-              if species == ManagedBuffer::from(b"kitty") {
+              if species == ManagedBuffer::from("kitty") {
                 new_dna = new_dna - new_dna % 100 + 99
               }
-              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+              self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
           }
 
           #[callback]
@@ -246,7 +246,7 @@ material:
               match result {
                   ManagedAsyncCallResult::Ok(kitty) => {
                     let kitty_dna = kitty.genes;
-                    self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                    self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                   },
                   ManagedAsyncCallResult::Err(_) => {},
               }
@@ -286,7 +286,7 @@ If statements in Rust look just like JavaScript, except we don't need the parent
 
 ```
 fn eatBLT(&self, sandwich: ManagedBuffer) {
-  if sandwich == ManagedBuffer::from(b"sandwich") {
+  if sandwich == ManagedBuffer::from("sandwich") {
     self.eat();
   }
 }
@@ -298,10 +298,10 @@ Let's implement cat genes in our zombie code.
 
 1. First, let's change the function definition for `feed_and_multiply` so it takes a 3rd argument: a `ManagedBuffer` named `species` 
 
-2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing `species` and the `ManagedBuffer::from(b"kitty")`.  
+2. Next, after we calculate the new zombie's DNA, let's add an `if` statement comparing `species` and the `ManagedBuffer::from("kitty")`.  
 
 3. Inside the `if` statement, we want to replace the last 2 digits of DNA with `99`. One way to do this is using the logic: `new_dna = new_dna - new_dna % 100 + 99;`. In order for this to work we need to change the declaration of `new_dna` and make it `mut`
 
   > Explanation: Assume `new_dna` is `334455`. Then `new_dna % 100` is `55`, so `new_dna - new_dna % 100` is `334400`. Finally add `99` to get `334499`.
 
-4. Lastly, we need to change the function call inside `feed_on_kitty`. When it calls `feed_and_multiply`, add the parameter `ManagedBuffer::from(b"kitty")` to the end.
+4. Lastly, we need to change the function call inside `feed_on_kitty`. When it calls `feed_and_multiply`, add the parameter `ManagedBuffer::from("kitty")` to the end.

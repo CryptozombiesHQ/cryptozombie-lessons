@@ -27,7 +27,7 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
         }
       "zombie.rs": |
@@ -173,7 +173,7 @@ material:
               let max_dna_value = u64::pow(10u64, dna_digits as u32);
               let verified_target_dna = target_dna % max_dna_value;
               let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+              self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
           }
 
           #[proxy]
@@ -195,7 +195,7 @@ Don't worry — our game isn't actually going to hurt anyone's CryptoKitty. We'
 
 ## Interacting with other contracts
 
-For our contract to talk to another contract on the blockchain that we don't own, first we need to define an **_Proxy_**.
+For our contract to talk to another contract on the blockchain that we don't own, first we need to define a **_Proxy_**.
 
 Let's look at a simple example. Say there was a contract on the blockchain that looked like this:
 
@@ -283,8 +283,6 @@ pub trait CryptoKitty {
   }
 }
 ```
-
-The function looks a bit different than we're used to. You can see it returns... a bunch of different values. If you're coming from a programming language like JavaScript, this is different — in Rust you can return more than one value from a function. 
 
 Now that we know what this function looks like, we can use it to create an proxy:
 

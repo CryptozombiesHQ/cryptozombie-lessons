@@ -1,12 +1,12 @@
 ---
-title: Random Numbers
+title: Zombie Loss 😞
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
-      "zombieattack.rs": |     
+      "zombieattack.rs": |
         multiversx_sc::imports!();
 
         use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
@@ -15,6 +15,40 @@ material:
         pub trait ZombieAttack:
             storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
         {
+            fn rand_mod(&self, modulus: usize) -> usize {
+                let mut rand_source = RandomnessSource::new();
+                rand_source.next_usize() % modulus
+            }
+
+            #[endpoint]
+            fn attack(&self, zombie_id: usize, target_id: usize) {
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                let rand = self.rand_mod(100u8);
+                let attack_victory_probability = self.attack_victory_probability().get();
+                if rand <= attack_victory_probability {
+                    self.zombies(&zombie_id).update(|my_zombie| {
+                        my_zombie.win_count += 1;
+                        my_zombie.level += 1;
+                    });
+
+                    let mut enemy_dna = 0;
+                    self.zombies(&target_id).update(|enemy_zombie| {
+                        enemy_zombie.loss_count += 1;
+                        enemy_dna = enemy_zombie.dna;
+                    });
+                    self.feed_and_multiply(zombie_id, enemy_dna, ManagedBuffer::from("zombie"));
+                } else {
+                    self.zombies(&zombie_id).update(|my_zombie| {
+                        my_zombie.loss_count += 1;
+                    });
+
+                    self.zombies(&target_id).update(|enemy_zombie| {
+                        enemy_zombie.win_count += 1;
+                    });
+                    self.trigger_cooldown(zombie_id);
+                }
+            }
         }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
@@ -49,25 +83,20 @@ material:
         }
 
         #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            #[endpoint]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
-
             #[callback]
             fn get_kitty_callback(
               &self, 
@@ -77,7 +106,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -196,6 +225,9 @@ material:
 
             #[storage_mapper("cooldown_time")]
             fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("attack_victory_probability")]
+            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
       "lib.rs": |
         #![no_std]
@@ -223,6 +255,7 @@ material:
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
                 self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                self.attack_victory_probability().set(70u8);
             }
 
             #[only_owner]
@@ -234,22 +267,27 @@ material:
       "zombiehelper.rs": |
         multiversx_sc::imports!();
 
-        use crate::storage;
+          use crate::storage;
 
-        #[multiversx_sc::module]
-        pub trait ZombieHelper: storage::Storage {
+          #[multiversx_sc::module]
+          pub trait ZombieHelper: storage::Storage {
             fn check_above_level(&self, level: u16, zombie_id: usize) {
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
+          
+            fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
+              require!(
+                  caller == &self.zombie_owner(&zombie_id).get(),
+                  "Only the owner of the zombie can perform this operation"
+              );
+            }
+
             #[endpoint]
             fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
                 self.check_above_level(2u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.name = name);
             }
@@ -258,10 +296,7 @@ material:
             fn change_dna(&self, zombie_id: usize, dna: u64) {
                 self.check_above_level(20u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.dna = dna);
             }
@@ -283,52 +318,82 @@ material:
             self.send().direct_egld(&caller_address, &collected_fees);
             self.collected_fees().clear();
             }
-        }
-    answer: >
-      multiversx_sc::imports!();
-      
-      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
-
-      #[multiversx_sc::module]
-      pub trait ZombieAttack:
-          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
-      {
-          fn rand_mod(&self, modulus: u8) -> u8 {
-              let mut rand_source = RandomnessSource::new();
-              rand_source.next_u8() % modulus
           }
+
+    answer: >
+      pragma solidity >=0.5.0 <0.6.0;
+
+      import "./zombiehelper.sol";
+
+      contract ZombieAttack is ZombieHelper {
+        uint randNonce = 0;
+        uint attackVictoryProbability = 70;
+
+        function randMod(uint _modulus) internal returns(uint) {
+          randNonce++;
+          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
+        }
+
+        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+          Zombie storage myZombie = zombies[_zombieId];
+          Zombie storage enemyZombie = zombies[_targetId];
+          uint rand = randMod(100);
+        }
+      }
+    answer: >
+      pragma solidity >=0.5.0 <0.6.0;
+
+      import "./zombiehelper.sol";
+
+      contract ZombieAttack is ZombieHelper {
+        uint randNonce = 0;
+        uint attackVictoryProbability = 70;
+
+        function randMod(uint _modulus) internal returns(uint) {
+          randNonce++;
+          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
+        }
+
+        function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
+          Zombie storage myZombie = zombies[_zombieId];
+          Zombie storage enemyZombie = zombies[_targetId];
+          uint rand = randMod(100);
+          if (rand <= attackVictoryProbability) {
+            myZombie.winCount++;
+            myZombie.level++;
+            enemyZombie.lossCount++;
+            feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
+          } else {
+            myZombie.lossCount++;
+            enemyZombie.winCount++;
+            _triggerCooldown(myZombie);
+          }
+        }
       }
 ---
 
-Great! Now let's figure out the battle logic.
+Now that we've coded what happens when your zombie wins, let's figure out what happens when it **loses**.
 
-All good games require some level of randomness. So how do we generate random numbers in Rust?
+In our game, when zombies lose, they don't level down — they simply add a loss to their `lossCount`, and their cooldown is triggered so they have to wait a day before attacking again.
 
-If you remember we talked about `RandomnessSource` in somewhere in the first lessons.
+To implement this logic, we'll need an `else` statement.
 
-Due to the nature of the environemnt, nodes must all have the same "random" generator to be able to reach consensus. This is solved by using Golang's standard seeded random number generator, directly in the VM: https://cs.opensource.google/go/go/+/refs/tags/go1.17.5:src/math/rand/
+`else` statements are written just like in JavaScript and many other languages:
 
-The VM function mBufferSetRandom uses this library, seeded with the concatenation of:
-
-- previous block random seed
-- current block random seed
-- tx hash
-  
-We're not going to go into details about how exactly the Golang library uses the seed or how it generates said random numbers, as that's not the purpose of this tutorial.
-
-The `ManagedBuffer` type has two methods you can use for this:
-
-- `fn new_random(nr_bytes: usize) -> Self`, which creates a new `ManagedBuffer` of nr_bytes random bytes
-- `fn set_random(&mut self, nr_bytes: usize)`, which sets an already existing buffer to random bytes
-
-For convenience, a wrapper over these methods was created, namely the `RandomnessSource` struct, which contains methods for generating a random number for all base rust unsigned numerical types, and a method for generating random bytes.
+```
+if (zombieCoins[msg.sender] > 100000000) {
+  // You rich!!!
+} else {
+  // We require more ZombieCoins...
+}
+```
 
 ## Put it to the test
 
-Let's implement a random number function we can use to determine the outcome of our battles.
+1. Add an `else` statement. If our zombie loses:
 
-1. Create a function called `rand_mod` (random-modulus). THis function will not be available outside the contract and will have a parameter `u8` named `modulus`, and `returns` a `u8`.
+  a. Increment `myZombie`'s `lossCount`.
 
-2. The function should first declare a new mutbale variable `rand_source` and give it as value `RandomnessSource::new()`;
+  b. Increment `enemyZombie`'s `winCount`.
 
-3. Finally, it should return `rand_source.next_usize() % modulus` making sure the returned number is always smaller than the value of `modulus`
+  c. Run the `_triggerCooldown` function on `myZombie`. This way the zombie can only attack once per day. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)

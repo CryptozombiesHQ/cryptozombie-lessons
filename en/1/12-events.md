@@ -1,9 +1,9 @@
 ---
-title: More on Functions
+title: Events
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: rust
+    language: sol
     startingCode: |
       #![no_std]
 
@@ -34,10 +34,17 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
         }
 
-        // start here
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
+        }
 
         #[view]
         #[storage_mapper("dna_digits")]
@@ -74,6 +81,7 @@ material:
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
+              self.new_zombie_event(*id, &name, dna);
               self.zombies(id).set(Zombie { name, dna });
               *id +=1;
             });
@@ -81,13 +89,25 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
         }
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
         }
+
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] zombie_id: usize, 
+            name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
 
         #[view]
         #[storage_mapper("dna_digits")]
@@ -103,21 +123,36 @@ material:
       }
 ---
 
-In the MultiversX Rust framework there is another anotation called `#[endpoint]` which is the only way to display a function public for interacting with the contract.
+Our contract is almost finished! Now let's add an **_event_**.
 
-An endpoint would look similar to a basic function but has the `#[endpoint]` proc macro above:
+**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+
+Example:
 
 ```
+// declare the event
+#[event("integers_added")]
+fn integers_added_event(
+    &self, 
+    #[indexed] x: &BigUint, 
+    #[indexed] y: &BigUint, 
+    result: &BigUint
+);
+
 #[endpoint]
-fn say_hello() -> ManagedBuffer {
-  ManagedBuffer::from(b"What's up dog")
+fn add(&self, x: BigUint, y: BigUint) -> BigUint {
+  let result = &x + &y;
+  // fire an event to let the app know the function was called:
+  self.integers_added_event(&x, &y, &result);
+  return result;
 }
 ```
+In the MultiversX Rust framework the parameters of an event need to be indexed with maximum 1 unindexed, which is considered data. Indexed parameters have the `#[indexed]` annotation.
 
 # Put it to the test
 
-We would like to have a way a user to use the contract to create a random dna zombie
+We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
-1. Create an endpoint named `create_random_zombie`. It will take one parameter named `name` (a `ManagedBuffer`).
+1. Declare an `event` called `new_zombie_event`. It should pass `zombie_id` (a `usize`), `name` (a `&ManagedBuffer`), and `dna` (a `u64`). `zombie_id` and `dna` should be indexed.
 
-2. The function body should be empty at this point — we'll fill it in later.
+2. Modify the `create_zombie` function to fire the `new_zombie_event` event before adding the new Zombie to our `zombies` storage. Be aware that id needs to be dereferenced here cince we have it inside update as a reference. The `name` will be passed as reference so it should have a `&` in front of it inside the event. 

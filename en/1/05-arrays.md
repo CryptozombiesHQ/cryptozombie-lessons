@@ -72,10 +72,10 @@ let string_array: ArrayVec<ManagedBuffer, 5>;
 let dynamic_array: ManagedVec<u32>;
 ```
 
-You can also create an array of **_structs_**. Using the previous chapter's `Person` struct:
+You can also create an array of **_struct_**. Using the previous chapter's `Person` struct:
 
 ```
-let people: ManagedVec<People>; // dynamic Array, we can keep adding to it
+let people: ManagedVec<Person>; // dynamic Array, we can keep adding to it
 ```
 
 Always remember that Rust uses generics to define the type of data an array holds.
@@ -83,14 +83,14 @@ Always remember that Rust uses generics to define the type of data an array hold
 
 ## Putting it inside storage
 
-When it comes to putting arrays into storage, a simple `SingleValueMapper` can be enough if we introduce an index that gives us the id of the entity. In this way we can use a simple storave value as an indexed element to access any data type..
+When it comes to putting arrays into storage, a simple `SingleValueMapper` can be enough if we introduce an index that gives us the id of the entity. In this way we can use a simple storage value as an indexed element to access any data type..
 
 ```
   #[storage_mapper("my_people")]
-  fn people(&self, id: usize) -> SingleValueMapper<People<Self::Api>>;
+  fn people(&self, id: usize) -> SingleValueMapper<Person<Self::Api>>;
 ```
 
-> Note: Since People has a member which is a managed type when specifying the return type we also need to specify the generic. If we are inside the contract this generic type is take from the containing tyait, reason why we will have `Self::Api` in there in stead of `M: ManagedTypeApi`.
+Remember we mentioned the contract already is aware of managed types? It can be accessed wth: `Self::Api` in stead of `M: ManagedTypeApi`.
 
 # Put it to the test
 

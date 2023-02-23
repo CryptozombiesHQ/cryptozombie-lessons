@@ -159,11 +159,7 @@ material:
 
 In MultiversX Rust framework, there are two locations you can store variables — in `storage` and in `memory`.
 
-**_Storage_** refers to variables stored permanently on the blockchain. **_Memory_** variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.
-
-Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default `storage` and written permanently to the blockchain, while variables declared inside functions are `memory` and will disappear when the function call ends.
-
-The great part in MyltiversX Rust framework is that the variables within storage are easily distinguished from memory variables doe the special annotations.
+The great part in MultiversX Rust framework is that the variables within storage are easily distinguished from memory variables due to the special annotations.
 
 ## Giving access within another module 
 
@@ -182,8 +178,8 @@ pub trait NewModule : my_module::MyModule + my_other_module::MyOtherModule {
 
 # Put it to the test
 
-Since our contract it has been separated into modules and in the future all the modules will require access to the storage in a way or another we separated the storage mappers into another file. This file though doesn't have access to our ZOmbies structure yet. 
+By now our contract has been separated into several modules. In the future all the modules will require access to the storage in a way or another, reason why we separated the storage mappers into another file. This file though doesn't have access to our Zombies structure yet. 
 
 1. Import the Zombie structure and the storages trait in `zombiefactory.rs`.
 
-2. Make `ZombieFactory` a supertrait by adding the `Storage` trait to its definition
+2. Add the `Storage` supertrait to the `ZombieFactory` contract

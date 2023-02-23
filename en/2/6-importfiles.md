@@ -144,13 +144,13 @@ pub trait NewContract : some_module::SomeModule +  some_other_module::SomeOtherM
 }
 ```
 
-So if we had 2 file named `some_module.rs` and `some_other_module.rs` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
+So if we had 2 files named `some_module.rs` and `some_other_module.rs` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
 
 In case of our `Zombie` struct just importing the file will not be enough since we will not use it for inheritance, but we simply just use it within our trait, reason why additionally we will need to write `use zombie::Zombie;`, this since our `Zombie` struct will be inside `zombie.rs`.
 
 An important aspect is that inside a crate (solution folder) there must always be 1 and only 1 file that gathers all other ones. A rule for this is to be either `lib.rs` in case of a library usable outside, or the contract trait file in our case.
 
-> Notice : separating our struct and module trait in separate files still requires us to add `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();` since they use managed types which are not basic rust elements, but provided by the MultiversX Rust framework.
+> Notice : separating our struct and module trait in separate files still requires us to add `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();` since they use managed types which are not basic Rust elements, but provided by the MultiversX Rust framework.
 > Notice: structures don't need to be implemented by the trait, reason why we will not add `zombie::Zombie` to the contract trait definition.
 > Notice : the fields of our `Zombie` struct the `name` and the `dna` require now to be public since they are not part of the same file, so their visibility is no longer ensured.
 

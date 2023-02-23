@@ -1,11 +1,32 @@
 ---
-title: Withdraws
+title: Zombie Victory 😄
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
+      "zombieattack.rs": |
+        multiversx_sc::imports!();
+
+        use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+        #[multiversx_sc::module]
+        pub trait ZombieAttack:
+            storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+        {
+            fn rand_mod(&self, modulus: usize) -> usize {
+                let mut rand_source = RandomnessSource::new();
+                rand_source.next_usize() % modulus
+            }
+
+            #[endpoint]
+            fn attack(&self, zombie_id: usize, target_id: usize){
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                let rand = self.rand_mod(100u8);
+            }
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -39,25 +60,20 @@ material:
         }
 
         #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            #[endpoint]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
-
             #[callback]
             fn get_kitty_callback(
               &self, 
@@ -67,7 +83,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -99,6 +115,8 @@ material:
             pub dna: u64,
             pub level: u16,
             pub ready_time: u64,
+            pub win_count: usize,
+            pub loss_count: usize,
         }
       "zombiefactory.rs": |
         multiversx_sc::imports!();
@@ -117,6 +135,8 @@ material:
                         dna,
                         level: 1u16,
                         ready_time: self.blockchain().get_block_timestamp(),
+                        win_count: 0usize,
+                        loss_count: 0usize,
                     });
                     self.owned_zombies(&owner).insert(*id);
                     self.zombie_owner(id).set(owner);
@@ -177,12 +197,18 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
-
+            
             #[storage_mapper("level_up_fee")]
             fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
 
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
+
             #[storage_mapper("cooldown_time")]
             fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("attack_victory_probability")]
+            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
       "lib.rs": |
         #![no_std]
@@ -195,16 +221,22 @@ material:
         mod zombiefactory;
         mod zombiefeeding;
         mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
                 self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                self.attack_victory_probability().set(70u8);
             }
 
             #[only_owner]
@@ -216,166 +248,117 @@ material:
       "zombiehelper.rs": |
         multiversx_sc::imports!();
 
-        use crate::storage;
+          use crate::storage;
 
-        #[multiversx_sc::module]
-        pub trait ZombieHelper: storage::Storage {
+          #[multiversx_sc::module]
+          pub trait ZombieHelper: storage::Storage {
             fn check_above_level(&self, level: u16, zombie_id: usize) {
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        }
-
-        #[endpoint]
-        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-            self.check_above_level(2u16, zombie_id);
-            let caller = self.blockchain().get_caller();
+        
+            fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
             require!(
-                caller == self.zombie_owner(&zombie_id).get(),
+                caller == &self.zombie_owner(&zombie_id).get(),
                 "Only the owner of the zombie can perform this operation"
             );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.name = name);
-        }
-
-        #[endpoint]
-        fn change_dna(&self, zombie_id: usize, dna: u64) {
-            self.check_above_level(20u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.dna = dna);
-        }
-
-        #[payable("EGLD")]
-        #[endpoint]
-        fn level_up(&self, zombie_id: usize){
-            let payment_amount = self.call_value().egld_value();
-            let fee = self.level_up_fee().get();
-            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
-            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
-        }
-    answer: >
-        multiversx_sc::imports!();
-        multiversx_sc::derive_imports!();
-
-        use crate::zombie::Zombie;
-
-        #[multiversx_sc::module]
-        pub trait Storages {
-            #[storage_mapper("dna_digits")]
-            fn dna_digits(&self) -> SingleValueMapper<u8>;
-
-            #[storage_mapper("zombies_count")]
-            fn zombies_count(&self) -> SingleValueMapper<usize>;
-
-            #[view]
-            #[storage_mapper("zombies")]
-            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
-
-            #[storage_mapper("zombie_owner")]
-            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
-
-            #[storage_mapper("crypto_kitties_sc_address")]
-            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
-
-            #[storage_mapper("owned_zombies")]
-            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
-
-            #[storage_mapper("cooldown_time")]
-            fn cooldown_time(&self) -> SingleValueMapper<u64>;
-
-            #[storage_mapper("level_up_fee")]
-            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
-
-            #[storage_mapper("collected_fees")]
-            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
-        }
-    answer: >
-        multiversx_sc::imports!();
-
-        use crate::storage;
-
-        #[multiversx_sc::module]
-        pub trait ZombieHelper: storage::Storage {
-            fn check_above_level(&self, level: u16, zombie_id: usize) {
-                let my_zombie = self.zombies(&zombie_id).get();
-                require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        }
 
-        #[endpoint]
-        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
-            self.check_above_level(2u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.name = name);
-        }
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
 
-        #[endpoint]
-        fn change_dna(&self, zombie_id: usize, dna: u64) {
-            self.check_above_level(20u16, zombie_id);
-            let caller = self.blockchain().get_caller();
-            require!(
-                caller == self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            self.zombies(&zombie_id)
-                .update(|my_zombie| my_zombie.dna = dna);
-        }
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
+            
+            #[payable("EGLD")]
+            #[endpoint]
+            fn level_up(&self, zombie_id: usize){
+                let payment_amount = self.call_value().egld_value();
+                let fee = self.level_up_fee().get();
+                require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+                self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+            }
 
-        #[payable("EGLD")]
-        #[endpoint]
-        fn level_up(&self, zombie_id: usize){
-            let payment_amount = self.call_value().egld_value();
-            let fee = self.level_up_fee().get();
-            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
-            self.collected_fees().update(|fees| fees += fee);
-            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
-        }
+            #[only_owner]
+            #[endpoint]
+            fn withdraw(&self) {
+            let caller_address = self.blockchain().get_caller();
+            let collected_fees = self.collected_fees().get();
+            self.send().direct_egld(&caller_address, &collected_fees);
+            self.collected_fees().clear();
+            }
+          }
+    answer: >
+      multiversx_sc::imports!();
 
-        #[only_owner]
-        #[endpoint]
-        fn withdraw(&self) {
-          let caller_address = self.blockchain().get_caller();
-          let collected_fees = self.collected_fees().get();
-          self.send().direct_egld(&caller_address, &collected_fees);
-          self.collected_fees().clear();
-        }
+      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+      #[multiversx_sc::module]
+      pub trait ZombieAttack:
+          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+      {
+          fn rand_mod(&self, modulus: usize) -> usize {
+              let mut rand_source = RandomnessSource::new();
+              rand_source.next_usize() % modulus
+          }
+
+          #[endpoint]
+          fn attack(&self, zombie_id: usize, target_id: usize) {
+              let caller = self.blockchain().get_caller();
+              self.check_zombie_belongs_to_caller(zombie_id, &caller);
+              let rand = self.rand_mod(100u8);
+              let attack_victory_probability = self.attack_victory_probability().get();
+              if rand <= attack_victory_probability {
+                  self.zombies(&zombie_id).update(|my_zombie| {
+                      my_zombie.win_count += 1;
+                      my_zombie.level += 1;
+                  });
+
+                  let mut enemy_dna = 0;
+                  self.zombies(&target_id).update(|enemy_zombie| {
+                      enemy_zombie.loss_count += 1;
+                      enemy_dna = enemy_zombie.dna;
+                  });
+                  self.feed_and_multiply(zombie_id, enemy_dna, ManagedBuffer::from("zombie"));
+              } else {
+                  self.zombies(&zombie_id).update(|my_zombie| {
+                      my_zombie.loss_count += 1;
+                  });
+
+                  self.zombies(&target_id).update(|enemy_zombie| {
+                      enemy_zombie.win_count += 1;
+                  });
+                  self.trigger_cooldown(zombie_id);
+              }
+          }
+      }
 ---
 
-In the previous chapter, we learned how to send EGLD  to a contract. So what happens after you send it?
+Now that we have a `win_count` and `loss_count`, we can update them depending on which zombie wins the fight.
 
-After you send EGLD to a contract, it gets stored in the contract's EGLD account, and it will be trapped there — unless you add a function to withdraw the EGLD from the contract.
+In chapter 6 we calculated a random number from 0 to 100. Now let's use that number to determine who wins the fight, and update our stats accordingly.
 
-You can write a function to withdraw EGLD from the contract as follows:
+## Put it to the test
 
-```
-  #[only_owner]
-  #[endpoint]
-  fn withdraw(&self) {
-    let caller_address = self.blockchain().get_caller();
-    let collected_fees = self.collected_fees.get()
-    self.send().direct_egld(&caller_address, collected_fees);
-    self.collected_fees.unset();
-  }
-```
+1. Create an `if` statement that checks if `rand` is **_less than or equal to_** `attack_victory_probability`.
 
-Note that we're using `onlyOwner` since just the owner should have access to this
+2. If this condition is true, our zombie wins! So:
 
+  b. Declare a variable named `enemy_zombie`, and set it equal to `self.zombies(&target_id).get()`.
+  a. Access `self.zombies(&zombie_id)` udating it by increasing `win_count` and `level` by 1. (Level up!!!!!!!)
 
-You can transfer EGLD to an address using the `self.send().direct_egld()` function.
-You can use `self.send().direct()` to send any type of funds to any MultiversX address.
+  c. Accees `self.zombies(&target_id)` `loss_count`. (Loser!!!!!! 😫 😫 😫)
 
-## Putting it to the Test
-
-1. Change the level_up function so that all the fees received will get stored in a new storage mapper called `colleted_fees` of `BigUint` type
-
-2. Create a `withdraw` function in our contract, which should be identical to the `withdraw` example above.
+  d. Run the `feed_and_multiply` function. Check `zombiefeeding.rs` to see the syntax for calling it. For the 3rd argument (`species`), pass the string `"zombie"`. (It doesn't actually do anything at the moment, but later we could add extra functionality for spawning zombie-based zombies if we wanted to).

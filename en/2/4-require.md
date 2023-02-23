@@ -167,17 +167,17 @@ For that we use `require!`. `require!` makes it so that the function will throw 
 
 ```
 #[endpoint]
-fn say_hi_to_vitalik(&self, name: ManagedBuffer) -> ManagedBuffer {
-  // Compares if name equals "Vitalik". Throws an error and exits if not true.
+fn say_hi_to_bob(&self, name: ManagedBuffer) -> ManagedBuffer {
+  // Compares if name equals "Bob". Throws an error and exits if not true.
   require!(
-    name == ManagedBuffer::from(b"Vitalik")
-    "Hey! You are not Vitalik!");
+    name == ManagedBuffer::from("Bob")
+    "Hey! You are not Bob!");
   // If it's true, proceed with the function:
-  ManagedBuffer::from(b"Hi!");
+  ManagedBuffer::from("Hi!");
 }
 ```
 
-If you call this function with `say_hi_to_vitalik(ManagedBuffer::from(b"Vitalik"))`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
+If you call this function with `say_hi_to_bob(ManagedBuffer::from("Bob"))`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
 Thus `require!` is quite useful for verifying certain conditions that must be true before running a function.
 

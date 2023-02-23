@@ -1,5 +1,5 @@
 ---
-title: Back to Attack!
+title: Refactoring Common Logic
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -58,20 +58,25 @@ material:
         }
 
         #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
+            #[endpoint]
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
-                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
+
             #[callback]
             fn get_kitty_callback(
               &self, 
@@ -81,7 +86,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -242,27 +247,22 @@ material:
       "zombiehelper.rs": |
         multiversx_sc::imports!();
 
-          use crate::storage;
+        use crate::storage;
 
-          #[multiversx_sc::module]
-          pub trait ZombieHelper: storage::Storage {
+        #[multiversx_sc::module]
+        pub trait ZombieHelper: storage::Storage {
             fn check_above_level(&self, level: u16, zombie_id: usize) {
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
-        
-            fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
-            require!(
-                caller == &self.zombie_owner(&zombie_id).get(),
-                "Only the owner of the zombie can perform this operation"
-            );
-            }
-
             #[endpoint]
             fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
                 self.check_above_level(2u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.name = name);
             }
@@ -271,7 +271,10 @@ material:
             fn change_dna(&self, zombie_id: usize, dna: u64) {
                 self.check_above_level(20u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.dna = dna);
             }
@@ -288,42 +291,83 @@ material:
             #[only_owner]
             #[endpoint]
             fn withdraw(&self) {
-                let caller_address = self.blockchain().get_caller();
-                let collected_fees = self.collected_fees().get();
-                self.send().direct_egld(&caller_address, &collected_fees);
-                self.collected_fees().clear();
+            let caller_address = self.blockchain().get_caller();
+            let collected_fees = self.collected_fees().get();
+            self.send().direct_egld(&caller_address, &collected_fees);
+            self.collected_fees().clear();
             }
-          }
+        }
 
     answer: >
       multiversx_sc::imports!();
 
-      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+      use crate::storage;
 
       #[multiversx_sc::module]
-      pub trait ZombieAttack:
-          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
-      {
-          fn rand_mod(&self, modulus: u8) -> u8 {
-              let mut rand_source = RandomnessSource::new();
-              rand_source.next_u8() % modulus
+      pub trait ZombieHelper: storage::Storage {
+          fn check_above_level(&self, level: u16, zombie_id: usize) {
+              let my_zombie = self.zombies(&zombie_id).get();
+              require!(my_zombie.level >= level, "Zombie is too low level");
+          }
+        
+          fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
+            require!(
+                caller == &self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
           }
 
           #[endpoint]
-          fn attack(&self, zombie_id: usize, target_id: usize){
+          fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+              self.check_above_level(2u16, zombie_id);
               let caller = self.blockchain().get_caller();
               self.check_zombie_belongs_to_caller(zombie_id, &caller);
-              let rand = self.rand_mod(100u8);
+              self.zombies(&zombie_id)
+                  .update(|my_zombie| my_zombie.name = name);
+          }
+
+          #[endpoint]
+          fn change_dna(&self, zombie_id: usize, dna: u64) {
+              self.check_above_level(20u16, zombie_id);
+              let caller = self.blockchain().get_caller();
+              self.check_zombie_belongs_to_caller(zombie_id, &caller);
+              self.zombies(&zombie_id)
+                  .update(|my_zombie| my_zombie.dna = dna);
           }
       }
 ---
 
-Enough refactoring — back to `zombieattack.sol`.
+Whoever calls our `attack` function — we want to make sure the user actually owns the zombie they're attacking with. It would be a security concern if you could attack with someone else's zombie!
 
-We're going to continue defining our `attack` function, now that we have the `check_zombie_belongs_to_caller`
+Can you think of how we would add a check to see if the person calling this function is the owner of the `zombie_id` they're passing in?
+
+Give it some thought, and see if you can come up with the answer on your own.
+
+Take a moment... Refer to some of our previous lessons' code for ideas...
+
+Answer below, don't continue until you've given it some thought.
+
+## The answer
+We'll go back to `zombiehelper.rs`.
+
+We've done this check multiple times now in previous lessons. In `changeName()`, `changeDna()`, and `feedAndMultiply()`, we used the following check:
+
+```
+let caller = self.blockchain().get_caller();
+require!(
+    caller == &self.zombie_owner(&zombie_id).get(),
+    "Only the owner of the zombie can perform this operation"
+);
+```
+
+This is the same logic we'll need for our `attack` function. Since we're using the same logic multiple times, let's move this into its own function to clean up our code and avoid repeating ourselves.
 
 ## Put it to the test
 
-1. After you get the caller, add the `check_zombie_belongs_to_caller` call to `attack` to make sure the caller owns `zombie_id`.
+1. Create a functioncalled `check_zombie_belongs_to_caller`. It will take 2 argument, `zombie_id` (a `usuze`) and `caller` (a `&ManagedAddress`).
 
-2. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `u8` named `rand`, and set it equal to the result of the `rand_mod` function with `100u8` as an argument.
+  The body should contain the require from the code above with caller being received as parameter.
+
+> Notice that in order to avoid cloning the address of the caller we will pass it through reference and compare it as reference.
+
+2. Change the function definition of `change_dna` and `change_name` to use this function instead of the straigth up call

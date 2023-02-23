@@ -1,12 +1,12 @@
 ---
-title: Zombie Fightin'
+title: Random Numbers
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
-      "zombieattack.rs": |
+      "zombieattack.rs": |     
         multiversx_sc::imports!();
 
         use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
@@ -15,11 +15,7 @@ material:
         pub trait ZombieAttack:
             storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
         {
-            fn rand_mod(&self, modulus: usize) -> usize {
-                let mut rand_source = RandomnessSource::new();
-                rand_source.next_usize() % modulus
-            }
-        } 
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -66,10 +62,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -81,7 +77,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -200,9 +196,6 @@ material:
 
             #[storage_mapper("cooldown_time")]
             fn cooldown_time(&self) -> SingleValueMapper<u64>;
-
-            #[storage_mapper("attack_victory_probability")]
-            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
       "lib.rs": |
         #![no_std]
@@ -230,7 +223,6 @@ material:
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
                 self.level_up_fee().set(BigUint::from(1000000000000000u64));
-                self.attack_victory_probability().set(70u8);
             }
 
             #[only_owner]
@@ -294,7 +286,7 @@ material:
         }
     answer: >
       multiversx_sc::imports!();
-
+      
       use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
 
       #[multiversx_sc::module]
@@ -305,31 +297,38 @@ material:
               let mut rand_source = RandomnessSource::new();
               rand_source.next_u8() % modulus
           }
-
-          #[endpoint]
-          fn attack(&self, zombie_id: usize, target_id: usize){
-
-          }
       }
 ---
 
-Now that we have a source of some randomness in our contract, we can use it in our zombie battles to calculate the outcome.
+Great! Now let's figure out the battle logic.
 
-Our zombie battles will work as follows:
+All good games require some level of randomness. So how do we generate random numbers in Rust?
 
-- You choose one of your zombies, and choose an opponent's zombie to attack.
-- If you're the attacking zombie, you will have a 70% chance of winning. The defending zombie will have a 30% chance of winning.
-- All zombies (attacking and defending) will have a `win_count` and a `loss_count` that will increment depending on the outcome of the battle.
-- If the attacking zombie wins, it levels up and spawns a new zombie.
-- If it loses, nothing happens (except its `loss_count` incrementing).
-- Whether it wins or loses, the attacking zombie's cooldown time will be triggered.
+If you remember we talked about `RandomnessSource` in somewhere in the first lessons.
 
-This is a lot of logic to implement, so we'll do it in pieces over the coming chapters.
+Due to the nature of the environemnt, nodes must all have the same "random" generator to be able to reach consensus. This is solved by using Golang's standard seeded random number generator, directly in the VM: https://cs.opensource.google/go/go/+/refs/tags/go1.17.5:src/math/rand/
+
+The VM function mBufferSetRandom uses this library, seeded with the concatenation of:
+
+- previous block random seed
+- current block random seed
+- tx hash
+  
+We're not going to go into details about how exactly the Golang library uses the seed or how it generates said random numbers, as that's not the purpose of this tutorial.
+
+The `ManagedBuffer` type has two methods you can use for this:
+
+- `fn new_random(nr_bytes: usize) -> Self`, which creates a new `ManagedBuffer` of nr_bytes random bytes
+- `fn set_random(&mut self, nr_bytes: usize)`, which sets an already existing buffer to random bytes
+
+For convenience, a wrapper over these methods was created, namely the `RandomnessSource` struct, which contains methods for generating a random number for all base Rust unsigned numerical types, and a method for generating random bytes.
 
 ## Put it to the test
 
-We defined inside `storages.rs` a storage mapper for a `u8` called `attack_victory_probability`, and set it equal to `70u8` inside the init.
+Let's implement a random number function we can use to determine the outcome of our battles.
 
-1. Create an endpoint called `attack`. It will take two parameters: `zombie_id` (a `usize`) and `target_id` (also a `usize`). 
+1. Create a function called `rand_mod` (random-modulus). THis function will not be available outside the contract and will have a parameter `u8` named `modulus`, and `returns` a `u8`.
 
-Leave the function body empty for now.
+2. The function should first declare a new mutable variable `rand_source` and give it as value `RandomnessSource::new()`;
+
+3. Finally, it should return `rand_source.next_usize() % modulus` making sure the returned number is always smaller than the value of `modulus`

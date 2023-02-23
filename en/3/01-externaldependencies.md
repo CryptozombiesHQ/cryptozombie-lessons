@@ -52,10 +52,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -67,7 +67,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -217,15 +217,15 @@ material:
       }
 ---
 
-Up until now, Rust might have been a bit harder to deal with and the syntax hard to get, but fro this point we will experience what a strong programing language and a well designed framework can achieve when it comes to more complex elements for smart contract development and optimization. 
+Up until now, Rust might have been a bit harder to deal with, and the syntax hard to get, but from this point we will experience what a strong programing language and a well designed framework can achieve when it comes to more complex elements for smart contract development and optimization. 
 
-To start with, after you deploy a contract to MultiversX, compared with other blockchains it is upgradable and hopefully one day soon manageable through versioning and even undeployable. Of course all these features come at a very complex syntax as you have seen by now, but as uncle be once told Peter: "With great power comes great responsability".
+Unlike on other blockchains, a contract deployed to MultiversX can be made upgradable and at some point, it will also be possible to undeploy it. Although contracts can be made upgradable, it is not enforced. For some contracts it's even non-desirable.
 
 But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do.
 
 ## External dependencies
 
-In Lesson 2, we stored made a proxy for the CtyproKitties contract and accessed it through an address that we stored within the storage. Imagine how would it looked like if we hard codded that address straigth up in the contract and what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+In Lesson 2, we wrote a proxy for the CryproKitties contract and accessed it through an address from storage. Think of the consequences if we had hard-coded that address in our contract and at some point a bug would have been discovered in the CryptoKitties contract, leading to the destruction of all kitties.
 
 It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
 

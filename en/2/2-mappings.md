@@ -154,9 +154,9 @@ So we can use it as a unique ID for ownership of our zombies. When a user create
 
 ## Advanced mapper types
 
-When it comes to putting arrays into storage `SingleValueMapper` might not be the bets option for the job, since every time we need something from our list we need to read it all and if an item needs to be changed the whole list needs to be rewritten.
+When it comes to putting arrays into storage `SingleValueMapper` might not be the best option for the job, since every time we need something from our list we need to read it all and if an item needs to be changed the whole list needs to be rewritten.
 
-For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper` were introduced. These mappers behave like arrays and allow access on elements they contain by index and value. The diference between them is that `UnorderedSetMapper` is far more efficient since it stores internally each element's index to provide a `O(1)` search complexity, but the cost of using it relies on the fact that it doesn't provide a sorting of the elements within.
+For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper` were introduced. These mappers behave like arrays and allow access on elements they contain by index and value. The difference between them is that `UnorderedSetMapper` is far more efficient since it stores internally each element's index to provide a `O(1)` search complexity, but the cost of using it relies on the fact that it doesn't provide a sorting of the elements within.
 
 ```
   #[storage_mapper("my_list_of_people")]

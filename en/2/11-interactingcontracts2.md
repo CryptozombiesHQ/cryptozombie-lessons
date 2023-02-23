@@ -50,7 +50,7 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[proxy]
@@ -202,7 +202,7 @@ material:
               let max_dna_value = u64::pow(10u64, dna_digits as u32);
               let verified_target_dna = target_dna % max_dna_value;
               let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+              self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
           }
 
           #[callback]
@@ -234,8 +234,6 @@ material:
           fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
       }
 ---
-
-Continuing our previous example with `NumberInterface`, once we've defined the interface as:
 
 A part of our contract that used this proxy would look like this:
 
@@ -278,7 +276,7 @@ A part of our contract that used this proxy would look like this:
 
 ```
 
-When calling another contract depending if both contracts are on same shard or on diferent shards we can make a direct call or a asynchronus call to one of their endpoints. In this context we can assume that the contracts are on diferent shards, reason why we used `async_call`.
+When calling another contract, if both contracts are in the same shard or not, we can make a direct call or a asynchronus call to one of their endpoints. In this context we can assume that the contracts are on diferent shards, reason why we used `async_call`.
 
 Since we are talking about asynchronus call we have no idea when we will recieve a response from the other contract (or if we will), reason why we will attach to this call another type of function defined by us, a callback which when will receive the result he will do something with it. The result is basically a fancy looking option with the result type of the called endpoint as a content or an error which in this case we will just ignore. A callback is just a basic function having the `#[callback]` annotation.
 

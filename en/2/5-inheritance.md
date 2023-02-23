@@ -169,25 +169,25 @@ material:
 
 Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple files to organize the code.
 
-One feature of the MultiversX Rust framework Rust that makes this more manageable is contract modules emphasized through supertraits:
+One feature of the MultiversX Rust framework Rust that makes this more manageable is contract modules, implemented as supertraits:
 
 ```
 #[multiversx_sc::contract]
 pub trait Doge: BabyDoge {
   fn catchphrase(&self) -> ManagedBuffer{
-    ManagedBuffer::from(b"So Wow CryptoDoge")
+    ManagedBuffer::from("So Wow CryptoDoge")
   }
 }
 
 #[multiversx_sc::module]
 pub trait BabyDoge {
   fn another_catchphrase(&self) -> ManagedBuffer {
-    ManagedBuffer::from(b"Such Moon BabyDoge")
+    ManagedBuffer::from("Such Moon BabyDoge")
   }
 }
 ```
 
-`BabyDoge` is a module of the `Doge` contract. In rust terminology `Doge` becomes a supertrait, gaining access to everything `BabyDodge` contains
+In Rust terminology `BabyDoge` is a supertrait of `Doge`, and so `Doge` can use all methods of `BabyDoge` as if they were its own.
 
 # Put it to the test
 

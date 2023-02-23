@@ -19,17 +19,6 @@ Before starting it is recommended to install our tool **mxpy** and please make s
 
 - **3.8** or later on Linux and MacOS
 
-Smart contracts written in C require the ncurses library routines for compiling. Install them using the following:
-
-For Linux:
-```
-sudo apt install libncurses5
-```
-For MacOS:
-```
-brew install ncurses
-```
-
 In order to install **mxpy** using the `mxpy-up` installation script, run the following commands in a terminal:
 
 ```
@@ -37,7 +26,7 @@ wget -O mxpy-up.py https://raw.githubusercontent.com/multiversx/mx-sdk-py-cli/ma
 python3 mxpy-up.py
 ```
 
-This will create a light Python virtual environment (based on `venv`) in `~/multiversx-sdk/mxpy-venv `and also include `~/multiversx-sdk`in your **`$PATH`** variable (by editing the appropriate `.profile` file).
+The command above will install **mxpy**. Make sure you follow the instructions provided by the installer.
 
 For forther information please make sure to check https://docs.multiversx.com/sdk-and-tools/sdk-py/installing-mxpy/
 

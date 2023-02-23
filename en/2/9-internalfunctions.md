@@ -143,7 +143,7 @@ material:
               let max_dna_value = u64::pow(10u64, dna_digits as u32);
               let verified_target_dna = target_dna % max_dna_value;
               let new_dna = (my_zombie.dna + verified_target_dna) / 2;
-              self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+              self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
           }
       }
 ---

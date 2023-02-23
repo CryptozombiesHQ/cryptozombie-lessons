@@ -153,11 +153,11 @@ material:
       }
 ---
 
-Now that we have our mapping to keep track of who owns a zombie, we'll want to update the `create_zombie` so that the zombie created to be stored by the caller address.
+Now that we have our mapping to keep track of who owns a zombie, we'll want to update the `create_zombie` so that the zombie created will be stored by the caller address.
 
 ## Getting the caller
 
-In the MultiversX Rust framework is done very easy by:
+In the MultiversX Rust framework this is done very easy by:
 
 ```
 let caller = self.blockchain().get_caller();
@@ -165,17 +165,17 @@ let caller = self.blockchain().get_caller();
 
 ## Working with references
 
-You will experience that while working in Rust many of the times we will have to deal the reference the proper way. Certain functions will be optimized if have a certain element as a reference, just borrowing it from the caller and after their code block is executed returning it back.  
+You will experience that while working in Rust many of the times you will have to deal with the reference the proper way. Certain functions will be optimized if they have a certain element as a reference, borrowing it from the caller and after their code block is executed returning it back.  
 
 ```
 fn say_hello(&self) -> ManagedBuffer {
-    let person = ManagedBuffer::from(b"Bob");
+    let person = ManagedBuffer::from("Bob");
     self.say_hello_to_person(person)
 }
 
 #[endpoint]
 fn say_hello_to_person(&self, name: &ManagedBuffer) -> ManagedBuffer{
-    let mut message = ManagedBuffer::from(b"Hello ");
+    let mut message = ManagedBuffer::from("Hello ");
     message.append(name);
     message
 }
@@ -196,4 +196,4 @@ We will want to store a list of zombie ids inside `owned_zombies` for each calle
 
 1. Starting with `create_random_zombie`, we need to get the caller of the endpoint.
 
-2. Second, we will pass the address as a parameter to the function `create_zombie` which sets the `owned_zombies`, and the `zombie_owner` storages. We will have something similar to how we set the zombie insize the `zombies` storage.
+2. Second, we will pass the address as a parameter to the function `create_zombie` which sets the `owned_zombies`, and the `zombie_owner` storages. We will have something similar to how we set the zombie inside the `zombies` storage. The caller will be the first parameter of `create_zombie`.

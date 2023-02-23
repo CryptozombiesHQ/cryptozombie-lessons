@@ -80,7 +80,7 @@ material:
 A function declaration in Rust looks like the following:
 
 ```
-pub function eat_hamburgers(&self, amount: u32) {
+pub fn eat_hamburgers(&self, amount: u32) {
 
 }
 ```
@@ -91,10 +91,15 @@ What is a reference type you ask?
 
 Well, there are three ways in which you can pass an argument to a Rust function:
 
- * By value, which means that the ownership over the parameter's value is passes to your function. This blocks the use of the initial parameter once the function call had ended since having it consummed by the function.
+ * By value, which means that the ownership over the parameter's value is passed to your function. This blocks the use of the initial parameter once the function call had ended since having it consummed by the function.
  * By reference, which means that your function is borrowing the value of the parameter. Thus, this doesn't allow the function to change the value of the parameter since it is just `borrowed`. Once the function call finished, the ownership of the parameter returns to its initial owner.
  * By mutable reference, which means that your function is borrowing the value of the parameter and gets the permission to change it. Once the function call finished, the ownership of the parameter returns to its initial owner keeping all changes done inside the function.
 
+```
+pub fn my function(value: u32, reference: &u32, mutable_reference: &mut u32) {
+  ...
+}
+```
 
 > Note: It's convention (but not required) to start function parameter variable names with an underscore (`_`) if the parameter is not used within the function. We'll use that convention throughout our tutorial.
 
@@ -121,16 +126,16 @@ person.eat_hamburgers(100);
 In Rust creating a structure type object is done very easy:
 
 ```
-let given_name = ManagedBuffer::from{b"Bob"};
+let given_name = ManagedBuffer::from("Bob");
 let given_age = 30u32;
 let person = Person { name: given_name, age: given_age };
 ```
 
-If for example you have a variable whose name is matching the structure fiend's than the syntax can be simplified:
+If for example you have a variable whose name is matching the structure field's than the syntax can be simplified:
 
 
 ```
-let name = ManagedBuffer::from{b"Bob"};
+let name = ManagedBuffer::from("Bob");
 let age = 30u32;
 let person = Person { name, age };
 ```
@@ -157,7 +162,7 @@ let my_person = self.persons(id).get();
 For updating the value of a mapper we can use the `update` method which expects a closure as parameter. You can see the closure as a no name function which we use to access or to process elements in an advaned way within a data type.
 
 ```
-let name = ManagedBuffer::from{b"Joe"};
+let name = ManagedBuffer::from("Joe");
 let age = 35u32;
 let new_person = Person { name, age };
 
@@ -175,11 +180,9 @@ let mut old_favorite_number = 0u32;
 
 self.favorite_number(id).update(|number| { 
   old_favorite_number = *number;
-  *stored_person = new_person;
+  *number = new_number;
 });
 ```
-
-The benefit of doing something like this is that we will be more efficient with storage reading and writing since we access the storage of `person` just once for update in stead of 2 times for reading the old value and again for updating it.
 
 # Put it to the test
 
@@ -191,5 +194,5 @@ The id of the introduced zombie should be stored in a separate storage of type `
   
 4. Next we create a new zombie and put it inside the storage inder the `id` index.
 
-5. And finally we increase the value of `id` by one, and after we close the closure of the update function.
+5. Finally let's not forget to increment the value of `id`.
 

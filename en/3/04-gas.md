@@ -52,10 +52,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -67,7 +67,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -215,11 +215,11 @@ Let's look at another way Rust is quite different from other programming languag
 
 ## Gas — the fuel MultiversX DApps run on
 
-In Rust,your users have to pay every time they execute a function on your DApp, via the concept of **_gas_**. They pay for the contract execution with EGLD (the currency on MultiversX), an amount proportional with the amount of computation required to carry out the operation.
+On MultiversX, your users have to pay every time they execute a function on your DApp, via the concept of gas. They pay for the contract execution with EGLD (the currency on MultiversX), an amount proportional with the amount of computation required to carry out the operation.
 
 How much gas is required to execute a function depends on how complex that function's logic is. Each individual operation has a **_gas cost_** based roughly on how much computing resources will be required to perform that operation (e.g. writing to storage is much more expensive than adding two integers). The total **_gas cost_** of your function is the sum of the gas costs of all its individual operations.
 
-Because running functions costs real money for your users, code optimization is much more important in MultiversX than in other programming languages. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
+Because running functions costs real money for your users, code optimisation is much more important in writing smart contracts than regular application in any programming language. If your code is sloppy, your users are going to have to pay a premium to execute your functions — and this could add up to millions of dollars in unnecessary fees across thousands of users.
 
 ## Why is gas necessary?
 
@@ -227,16 +227,13 @@ MultiversX is like a big, extremely secure computer, relatively fast as blockcha
 
 The creators of MultiversX wanted to make sure someone couldn't clog up the network with an infinite loop, or hog all the network resources with really intensive computations. So they made it so transactions aren't free, and users have to pay for computation time as well as storage.
 
-> Note: This isn't necessarily true for other blockchain, like the ones the CryptoZombies authors are building at Loom Network. It probably won't ever make sense to run a game like World of Warcraft directly on the MultiversX mainnet — the gas costs would be prohibitively expensive. But it could run on a blockchain with a different consensus algorithm. We'll talk more about what types of DApps you would want to deploy on Loom vs the MultiversX mainnet in a future lesson.
-
 ## Numeric types
 
 In Lesson 1, we mentioned that there are other types of unsigned integers: `u8`, `u16`, `u32`, etc.
 
-Using the right type per context in MultiversX Rust framework is importand because of how they try to optimize the contracts by allocating just the right amount of space, without overallocating.
+Using the right type per context in MultiversX Rust framework is important because of how the contracts are optimised in allocating just the right amount of space, without overallocating.
 
-Specific to MultiversX Rust framework there is another numeric type very specific called `BigUint`.
-BigUint is simply a handle to the actual representation, similar to how system file handles work, so it's simply a struct with an `i32` as member, representing the handle. All the operations have to be done through API functions, passing the handles for result, first operand, second operand. Using Rust's operator overloading feature, we're able to overwrite arithmetic operators and provide an easy way of adding BigUints, just like primitive number types.
+Specific to MultiversX Rust framework there is another numeric type called `BigUint` generaly used in MultiversX Rust contracts for amounts of crypto currency and not only.
 
 ## Put it to the test
 

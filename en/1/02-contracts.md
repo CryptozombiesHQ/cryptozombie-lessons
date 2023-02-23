@@ -9,6 +9,8 @@ material:
 
       multiversx_sc::imports!();
       multiversx_sc::derive_imports!();
+
+      // start here
     answer: > 
       #![no_std]
 
@@ -41,6 +43,10 @@ An empty contract named `HelloWorld` can be created with **mxpy** by running `mx
 In here we are interested for now of **lib.rs** from inside the root folder **src**, and would look like this.
 
 ```
+#![no_std]
+
+multiversx_sc::imports!();
+  
 #[mx_sc::contract]
 pub trait ZombiesContract {
         #[init]
@@ -48,25 +54,15 @@ pub trait ZombiesContract {
 }
 ```
 
-Here `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieContract` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that make the transition from a more user friendly code writing to a very complex and high performant contract build.
+The first line of code" `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieContract` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that take care of optimizing the code you write. Think of them for now as some additional annotations that transform basic Rust elements into smart contract ones.
 
-What every contract has as a mandatory function is a init, marked with `#[init]`. Here all the presets of the contract should be put.
+Every contract has a mandatory function init, marked with `#[init]`. Here all the presets of the contract should be put.
 
-## Basic syntagm
+## Basic syntax
 
-A rust contract typically starts with `#![no_std]` - a feature indicating that our application will link to the `core` crate rather than the `std`.
+A MultiversX contract starts with `#[no_std]` to avoid importing Rust standard library and bloating smart contract size
 
-Rust's standard design library is split into a few layers, each building on the assumed platform capabilities of the one below. Knowing that there is:
-
-- `std`: the full standard library that assumes the presence of threads, a filesystem, and networking. [...]
-
-- `alloc`: the collections layer builds on the core by assuming runtime support for dynamic memory allocation.
-
-- `core`: the core layer makes no (well, not very many) assumptions about the > underlying platform. Just about any target that can run Rust code is supported by core.
-
-Now, the main idea is that the platform develped by **MultiversX** is avoiding the use of `alloc` since the dynamic memory allocation is faulty of increasing the size of the contract, also the reason of certain data types with unfixed size are replaced with something easier to manage. More of this in the next lessons, but for now we require just the simple adding of `#![no_std]`
-
-The next step is importing the **MultiversX** Rust SDK, done by calling the macros `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();`
+The next step is importing the **MultiversX** Rust library, done by calling the macros `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();`
 
 # Put it to the test
 
@@ -74,4 +70,4 @@ To start creating our Zombie army, let's create a base contract called `ZombieCo
 
 1. In the box to the right, create an empty contract called `ZombieContract`.
 
-When you're finished, click "check answer" below. If you get stuck, you can click "hint".
+When you have finished, click "check answer" below. If you get stuck, you can click "hint".

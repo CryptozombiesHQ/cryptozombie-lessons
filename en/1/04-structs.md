@@ -48,13 +48,13 @@ material:
       }
 ---
 
-# The dynamic allocation problem
+# Managed types
 
 Many basic Rust types (like String and Vec<T>) are dynamically allocated on the heap. In simple terms, it means the program (in this case, the smart contract) keeps asking for more and more memory from the runtime environment (the VM). For small collections, this doesn't matter much, but for bigger collection, this can become slow and the VM might even stop the contract and mark the execution as failed.
 
 The managed types work by only storing a handle within the contract memory, which is a u32 index, while the actual payload resides in reserved VM memory. More information about this can be found in **MultiversX**'s documentation https://docs.multiversx.com/developers/best-practices/the-dynamic-allocation-problem/
 
-> Note that we just introduced a new type, `ManagedBuffer` which is **MultiversX**s approach of dealing with datatypes such as `string`. Ex. `let greeting = ManagedBuffer::from(b"Hello world!");`
+Since String is a problematic type from memory alocation point of view, in the MultiversX Rust framework it was introduced `ManagedBuffer` a type that solved this issue. It can be used something like this: `let greeting = ManagedBuffer::from("Hello world!");`
 
 # Structs
 
@@ -70,11 +70,11 @@ struct Person<M: ManagedTypeApi> {
 ```
 
 Structs allow you to create more complicated data types that have multiple properties.
-You will also notice that our struct has a generic argument `<M: ManagedTypeApi>` with a restriction, which is telling us that this structure uses a managed data type. What we can say for now is that whenever a struct or another datatype that contains managed data types is defined this generic with the restriction needs to be added, since the managed type also requires it as seed in the example above.
+You will also notice that our struct has a generic argument `<M: ManagedTypeApi>` with a restriction, which is telling us that this structure uses a managed data type. This generic needs to be added to a struct or another type whenever it contains managed types, as the managed types need it as a seed as well.
 
-The scary part of this declaration though is the procedural macro `#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]`. You can just take it as it is, since it is just a set of implementations for our stucture type to help with the serialization and deserialization. What we can say is that for now we will just add it to every structure type or enumerator written by smart contract developers. 
+This declaration contains the procedural macro `#[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]`. You can just take it as it is, since it is just a set of implementations for our stucture type to help with the serialization and deserialization. For now we will just add it to every structure type or enumerator written by smart contract developers. 
 
-> Note that the contract already is aware of managed types, which is why using the generic to indicate it is not required.
+> Note that the contract is already aware of managed types, which is why using the generic to indicate it is not required.
 
 # Put it to the test
 

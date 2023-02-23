@@ -1,5 +1,5 @@
 ---
-title: Putting It Together
+title: More on Functions
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -34,16 +34,10 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-            let mut rand_source = RandomnessSource::new();
-            let dna_digits = self.dna_digits().get();
-            let max_dna_value = u64::pow(10u64, dna_digits as u32);
-            rand_source.next_u64_in_range(0u64, max_dna_value)
+
         }
 
-        #[endpoint]
-        fn create_random_zombie(&self, name: ManagedBuffer){
-            // start here
-        }
+        // start here
 
         #[view]
         #[storage_mapper("dna_digits")]
@@ -87,16 +81,12 @@ material:
 
         #[view]
         fn generate_random_dna(&self) -> u64{
-            let mut rand_source = RandomnessSource::new();
-            let dna_digits = self.dna_digits().get();
-            let max_dna_value = u64::pow(10u64, dna_digits as u32);
-            rand_source.next_u64_in_range(0u64, max_dna_value)
+
         }
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-            let rand_dna = self.generate_random_dna();
-            self.create_zombie(name, rand_dna);
+
         }
 
         #[view]
@@ -113,16 +103,23 @@ material:
       }
 ---
 
-We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.
+In the MultiversX Rust framework there is another anotation called `#[endpoint]` which is the only way to display a function public for interacting with the contract.
 
-We're going to create a public function that takes an input, the zombie's name, to create a zombie with random DNA and that given name.
+An endpoint would look similar to a basic function but has the `#[endpoint]` proc macro above:
+
+If you remember views from last lesson than you can see similarities betweed it and the endpoint. The element that diferentiates them is the fact that views don't mutate the state whereas endpoints do.
+
+```
+#[endpoint]
+fn say_hello() -> ManagedBuffer {
+  ManagedBuffer::from("What's up dog")
+}
+```
 
 # Put it to the test
 
-Lets populate the `create_random_zombie` endpoint
+We would like to have a way a user to use the contract to create a random dna zombie
 
-1. The first line of the function should run the `generate_random_dna` function on, and store it in an `u64` varialble named `rand_dna`.
+1. Create an endpoint named `create_random_zombie`. It will take one parameter named `name` (a `ManagedBuffer`).
 
-2. The second line should run the `create_z_ombie` function and pass it `name` and `rand_dna`.
-
-3. The solution should be 5 lines of code (including the closing `}` of the function and the `#[endpoint]` annotation).
+2. The function body should be empty at this point — we'll fill it in later.

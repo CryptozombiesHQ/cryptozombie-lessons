@@ -52,10 +52,10 @@ material:
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
                 let verified_target_dna = target_dna % max_dna_value;
                 let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from(b"kitty") {
+                if species == ManagedBuffer::from("kitty") {
                   new_dna = new_dna - new_dna % 100 + 99
                 }
-                self.create_zombie(caller, ManagedBuffer::from(b"NoName"), new_dna);
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
 
             #[callback]
@@ -67,7 +67,7 @@ material:
                 match result {
                     ManagedAsyncCallResult::Ok(kitty) => {
                       let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from(b"kitty"));
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
                     },
                     ManagedAsyncCallResult::Err(_) => {},
                 }
@@ -231,7 +231,20 @@ We do want the ability to update this address in our contract, but we don't want
 
 To handle cases like this, one common practice that has emerged is to make endpoint accessible only by the owner (you) who has special privileges.
 
-In many other blockchains this element is hard to deal, requiring to import another contract and use it as proxy to secure your endpoints. In MultiversX Rust framework this is easily done by simply setting the `#[only_owner]` annotation  before the `#[endpoint]` annotation.
+In MultiversX Rust framework this is easily done by simply setting the `#[only_owner]` annotation  before the `#[endpoint]` annotation.
+
+## Managing ownership
+
+Now that we know how to declare an endpoint as `only_owner` we can ask ourselves about if this ownership is transferable and the answer is YES.
+A familiar scenario to smart contract developers is the following: 
+
+- Developer of smart contract writes the deployment script this includes all the setup and initialisation needed.
+
+- Project owner provides the developer with his address that he wants to have ownership with.
+
+- The developer deploys the contract and at the end changes the ownership to the project owner.
+
+- Thanks to reproducible builds, we can make sure that the on-chain contract has the expected code. And thanks to the public nature of the blockchain we can also make sure that the contract is set-up properly.
 
 ## Put it to the test
 
