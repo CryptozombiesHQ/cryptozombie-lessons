@@ -227,7 +227,7 @@ But this is also a feature of smart contracts. The code is law. If you read the 
 
 In Lesson 2, we wrote a proxy for the CryproKitties contract and accessed it through an address from storage. Think of the consequences if we had hard-coded that address in our contract and at some point a bug would have been discovered in the CryptoKitties contract, leading to the destruction of all kitties.
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it unless we upgrade it.
 
 For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
 
