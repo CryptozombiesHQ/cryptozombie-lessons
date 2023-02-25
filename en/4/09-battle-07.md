@@ -1,11 +1,32 @@
 ---
-title: Saving Gas With 'View' Functions
+title: Zombie Wins and Losses
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
+      "zombieattack.rs": |
+        multiversx_sc::imports!();
+
+        use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+        #[multiversx_sc::module]
+        pub trait ZombieAttack:
+            storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+        {
+            fn rand_mod(&self, modulus: usize) -> usize {
+                let mut rand_source = RandomnessSource::new();
+                rand_source.next_usize() % modulus
+            }
+
+            #[endpoint]
+            fn attack(&self, zombie_id: usize, target_id: usize){
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                let rand = self.rand_mod(100u8);
+            }
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -39,14 +60,10 @@ material:
         }
 
         #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            #[endpoint]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
@@ -57,7 +74,6 @@ material:
                 }
                 self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
-
             #[callback]
             fn get_kitty_callback(
               &self, 
@@ -177,9 +193,18 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+            
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
 
             #[storage_mapper("cooldown_time")]
             fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("attack_victory_probability")]
+            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
       "lib.rs": |
         #![no_std]
@@ -192,15 +217,22 @@ material:
         mod zombiefactory;
         mod zombiefeeding;
         mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                self.attack_victory_probability().set(70u8);
             }
 
             #[only_owner]
@@ -212,22 +244,27 @@ material:
       "zombiehelper.rs": |
         multiversx_sc::imports!();
 
-        use crate::storage;
+          use crate::storage;
 
-        #[multiversx_sc::module]
-        pub trait ZombieHelper: storage::Storage {
+          #[multiversx_sc::module]
+          pub trait ZombieHelper: storage::Storage {
             fn check_above_level(&self, level: u16, zombie_id: usize) {
                 let my_zombie = self.zombies(&zombie_id).get();
                 require!(my_zombie.level >= level, "Zombie is too low level");
             }
+        
+            fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
+            require!(
+                caller == &self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            }
+
             #[endpoint]
             fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
                 self.check_above_level(2u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.name = name);
             }
@@ -236,61 +273,114 @@ material:
             fn change_dna(&self, zombie_id: usize, dna: u64) {
                 self.check_above_level(20u16, zombie_id);
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 self.zombies(&zombie_id)
                     .update(|my_zombie| my_zombie.dna = dna);
             }
-        }
+        
+            #[payable("EGLD")]
+            #[endpoint]
+            fn level_up(&self, zombie_id: usize){
+                let payment_amount = self.call_value().egld_value();
+                let fee = self.level_up_fee().get();
+                require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+                self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+            }
+
+            #[only_owner]
+            #[endpoint]
+            fn withdraw(&self) {
+            let caller_address = self.blockchain().get_caller();
+            let collected_fees = self.collected_fees().get();
+            self.send().direct_egld(&caller_address, &collected_fees);
+            self.collected_fees().clear();
+            }
+          }
+
     answer: >
-        multiversx_sc::imports!();
-        multiversx_sc::derive_imports!();
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-        use crate::zombie::Zombie;
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          pub name: ManagedBuffer<M>,
+          pub dna: u64,
+          pub level: u16,
+          pub ready_time: u64,
+          pub win_count: usize,
+          pub loss_count: usize,
+      }
+    answer: >
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-        #[multiversx_sc::module]
-        pub trait Storages {
-            #[storage_mapper("dna_digits")]
-            fn dna_digits(&self) -> SingleValueMapper<u8>;
+      use crate::{storage, zombie::Zombie};
 
-            #[storage_mapper("zombies_count")]
-            fn zombies_count(&self) -> SingleValueMapper<usize>;
+      #[multiversx_sc::module]
+      pub trait ZombieFactory: storage::Storage {
+          fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+              self.zombies_count().update(|id| {
+                  self.new_zombie_event(*id, &name, dna);
+                  let cooldown_time = self.cooldown_time().get();
+                  self.zombies(id).set(Zombie {
+                      name,
+                      dna,
+                      level: 1u16,
+                      ready_time: self.blockchain().get_block_timestamp(),
+                      win_count: 0usize,
+                      loss_count: 0usize,
+                  });
+                  self.owned_zombies(&owner).insert(*id);
+                  self.zombie_owner(id).set(owner);
+                  *id += 1;
+              });
+          }
 
-            #[view]
-            #[storage_mapper("zombies")]
-            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+          #[view]
+          fn generate_random_dna(&self) -> u64 {
+              let mut rand_source = RandomnessSource::new();
+              let dna_digits = self.dna_digits().get();
+              let max_dna_value = u64::pow(10u64, dna_digits as u32);
+              rand_source.next_u64_in_range(0u64, max_dna_value)
+          }
 
-            #[storage_mapper("zombie_owner")]
-            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+          #[endpoint]
+          fn create_random_zombie(&self, name: ManagedBuffer) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  self.owned_zombies(&caller).is_empty(),
+                  "You already own a zombie"
+              );
+              let rand_dna = self.generate_random_dna();
+              self.create_zombie(caller, name, rand_dna);
+          }
 
-            #[storage_mapper("crypto_kitties_sc_address")]
-            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
-
-            #[view]
-            #[storage_mapper("owned_zombies")]
-            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
-
-            #[storage_mapper("cooldown_time")]
-            fn cooldown_time(&self) -> SingleValueMapper<u64>;
-        }
+          #[event("new_zombie_event")]
+          fn new_zombie_event(
+              &self,
+              #[indexed] zombie_id: usize,
+              name: &ManagedBuffer,
+              #[indexed] dna: u64,
+          );
+      }
 ---
 
-Awesome! Now we have some special abilities for higher-level zombies, to give our owners an incentive to level them up. We can add more of these later if we want to.
+For our zombie game, we're going to want to keep track of how many battles our zombies have won and lost. That way we can maintain a "zombie leaderboard" in our game state.
 
-Let's add one more function: our DApp needs a method to view a user's entire zombie army — let's call it `get_zombies_by_owner`.
+We could store this data in a number of ways in our DApp — as individual mappings, as leaderboard Struct, or in the `Zombie` struct itself.
 
-This function will only need to read data from the blockchain, so we can make it a `view` function. Which brings us to an important topic when talking about gas optimization:
+Each has its own benefits and tradeoffs depending on how we intend on interacting with the data. In this tutorial, we're going to store the stats on our `Zombie` struct for simplicity, and call them `winCount` and `lossCount`.
 
-## View functions don't cost gas
-
-View functions can be called/queried for free externally by a user.
-
-This is because view functions don't actually change anything on the blockchain, they only read data. So it's possible to query your own MultiversX node or other public ones and they can present the data for free without having to create a transaction. It's important to note that it is also possible to create a transaction calling a view function that will actually cost you gas - but the situations where you'd want that are very rare.
+So let's jump back to `zombiefactory.sol`, and add these properties to our `Zombie` struct.
 
 ## Put it to the test
 
-We want users to be able to receive the list of zombies by owner address, reason why we would like to give view access to `owned_zombies`
+1. Modify our `Zombie` struct to have 2 more properties:
 
-1. Add the `#[view]` annotation to the `owned_zombies` storage_mapper.
+  a. `win_count`, a `usize`
+
+  b. `loss_count`, also a `uzise`
+
+1. Now that we have new properties on our `Zombie` struct, we need to change our function definition in `create_zombie`.
+
+  Change the zombie creation definition so it creates each new zombie with `0` wins and `0` losses.

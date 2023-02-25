@@ -3,118 +3,194 @@ title: Mappings and Addresses
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+              self.new_zombie_event(*id, &name, dna);
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
+        }
 
-          // declare mappings here
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              emit NewZombie(id, _name, _dna);
-          } 
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
 
-          function createRandomZombie(string memory _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
       }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract ZombieFactory {
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+              self.new_zombie_event(*id, &name, dna);
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
+        }
 
-          Zombie[] public zombies;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(name, rand_dna);
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              emit NewZombie(id, _name, _dna);
-          } 
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-          function createRandomZombie(string memory _name) public {
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
 
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombie(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
 ---
 
 Let's make our game multi-player by giving the zombies in our database an owner.
 
-To do this, we'll need 2 new data types: `mapping` and `address`.
+To do this, we'll need a way to link zombies to users.
 
 ## Addresses
 
-The Ethereum blockchain is made up of **_accounts_**, which you can think of like bank accounts. An account has a balance of **_Ether_** (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
+The MultiversX blockchain is made up of **_accounts_**, which you can think of like bank accounts. An account has a balance of **_EGLD_** (the currency used on the MultiversX blockchain), and you can send and receive EGLD payments to other accounts, just like your bank account can wire transfer money to other bank accounts.
 
 Each account has an `address`, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:
 
-`0x0cE446255506E92DF41614C46F1d6df9Cc969183`
-
-(This address belongs to the CryptoZombies team. If you're enjoying CryptoZombies, you can send us some Ether! 😉 )
+`erd1njqj2zggfup4nl83x0nfgqjkjserm7mjyxdx5vzkm8k0gkh40ezqtfz9lg`
 
 We'll get into the nitty gritty of addresses in a later lesson, but for now you only need to understand that **an address is owned by a specific user** (or a smart contract).
 
 So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.
 
+## Advanced mapper types
+
+When it comes to putting arrays into storage `SingleValueMapper` might not be the best option for the job, since every time we need something from our list we need to read it all and if an item needs to be changed the whole list needs to be rewritten.
+
+For this kind of situations mappers such as `SetMapper` and `UnorderedSetMapper` were introduced. These mappers behave like arrays and allow access on elements they contain by index and value. The difference between them is that `UnorderedSetMapper` is far more efficient since it stores internally each element's index to provide a `O(1)` search complexity, but the cost of using it relies on the fact that it doesn't provide a sorting of the elements within.
+
+```
+  #[storage_mapper("my_list_of_people")]
+  fn my_list_of_people(&self) -> UnorderedSetMapper<People<Self::Api>>;
+```
+
 ## Mappings
 
-In Lesson 1 we looked at **_structs_** and **_arrays_**. **_Mappings_** are another way of storing organized data in Solidity.
-
-Defining a `mapping` looks like this:
+In Lesson 1 we looked at **structs** and **storages**. When it comes to mapping an address to an entity storages are the best way to do this as well.
+This element looks like:
 
 ```
 // For a financial app, storing a uint that holds the user's account balance:
-mapping (address => uint) public accountBalance;
-// Or could be used to store / lookup usernames based on userId
-mapping (uint => string) userIdToName;
+#[storage_mapper("account_balance")]
+    fn account_egld_balance(
+        &self,
+        user: &ManagedAddress,
+    ) -> SingleValueMapper<BigUint>;
+// Or could be used to store / lookup usernames (herotags)
+#[storage_mapper("herotag")]
+    fn herotag(
+        &self,
+        user: &ManagedAddress,
+    ) -> SingleValueMapper<ManagedBuffer>;
 ```
 
-A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `uint`, and in the second example the key is a `uint` and the value a `string`.
+A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an `address` and the value is a `BigUint`, and in the second example the key is a `address` and the value a `ManagedBuffer`.
+
+Addresses in MultiversX Rust framework are used with the ManagedAddress data type as seen in the example above. Notice that we are not accessing an account by bey being straigth up a `ManagedAddress`, but rather a reference to it. In Rust ownership is important as we discussed in lesson 1 so we will try as much as possible not to clone unnecessary data when it can be reused.
 
 # Put it to the test
 
 To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.
 
-1. Create a mapping called `zombieToOwner`. The key will be a `uint` (we'll store and look up the zombie based on its id) and the value an `address`. Let's make this mapping `public`.
-
-2. Create a mapping called `ownerZombieCount`, where the key is an `address` and the value a `uint`.
+1. Create a new indexed `SingleValueMapper` storage named `zombie_owner` for a `ManagedAddress`. The index named `id` should be of `usize` type.
+   
+2. Create a new indexed `UnorderedSetMapper` storage named `owned_zombies` for a `usize`. The index named `owner` should be of `&ManagedAddress` type.

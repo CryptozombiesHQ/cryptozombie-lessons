@@ -1,5 +1,5 @@
 ---
-title: Public Functions & Security
+title: Withdraws
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
@@ -56,19 +56,6 @@ material:
                   new_dna = new_dna - new_dna % 100 + 99
                 }
                 self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
-            }
-
-            fn trigger_cooldown(&self, zombie_id: usize) {
-                let cooldown_time = self.cooldown_time().get();
-                self.zombies(&zombie_id).update(|my_zombie| {
-                    my_zombie.ready_time = self.blockchain().get_block_timestamp() + cooldown_time
-                });
-            }
-
-            #[view]
-            fn is_ready(&self, zombie_id: usize) -> bool {
-                let my_zombie = self.zombies(&zombie_id).get();
-                my_zombie.ready_time <= self.blockchain().get_block_timestamp()
             }
 
             #[callback]
@@ -182,10 +169,6 @@ material:
             #[storage_mapper("zombies")]
             fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
 
-            #[view]
-            #[storage_mapper("zombie_owner")]
-            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
-
             #[storage_mapper("zombie_owner")]
             fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
 
@@ -194,6 +177,12 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
         }
       "lib.rs": |
         #![no_std]
@@ -205,15 +194,17 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
 
         #[multiversx_sc::contract]
         pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage + zombiehelper::ZombieHelper
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
                 self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
             }
 
             #[only_owner]
@@ -222,117 +213,169 @@ material:
                 self.crypto_kitties_sc_address().set(address);
             }
         }
+      "zombiehelper.rs": |
+        multiversx_sc::imports!();
+
+        use crate::storage;
+
+        #[multiversx_sc::module]
+        pub trait ZombieHelper: storage::Storage {
+            fn check_above_level(&self, level: u16, zombie_id: usize) {
+                let my_zombie = self.zombies(&zombie_id).get();
+                require!(my_zombie.level >= level, "Zombie is too low level");
+            }
+        }
+
+        #[endpoint]
+        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+            self.check_above_level(2u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.name = name);
+        }
+
+        #[endpoint]
+        fn change_dna(&self, zombie_id: usize, dna: u64) {
+            self.check_above_level(20u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.dna = dna);
+        }
+
+        #[payable("EGLD")]
+        #[endpoint]
+        fn level_up(&self, zombie_id: usize){
+            let payment_amount = self.call_value().egld_value();
+            let fee = self.level_up_fee().get();
+            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+        }
     answer: >
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        use crate::{storage, zombiefactory};
-        use crypto_kitties_proxy::Kitty;
+        use crate::zombie::Zombie;
 
-        mod crypto_kitties_proxy {
-            multiversx_sc::imports!();
-            multiversx_sc::derive_imports!();
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
 
-            #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-            pub struct Kitty {
-                pub is_gestating: bool,
-                pub is_ready: bool,
-                pub cooldown_index: u64,
-                pub next_action_at: u64,
-                pub siring_with_id: u64,
-                pub birth_time: u64,
-                pub matron_id: u64,
-                pub sire_id: u64,
-                pub generation: u64,
-                pub genes: u64,
-            }
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
 
-            #[multiversx_sc::proxy]
-            pub trait CryptoKitties {
-                #[endpoint]
-                fn get_kitty(&self, id: usize) -> Kitty;
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
+        }
+    answer: >
+        multiversx_sc::imports!();
+
+        use crate::storage;
+
+        #[multiversx_sc::module]
+        pub trait ZombieHelper: storage::Storage {
+            fn check_above_level(&self, level: u16, zombie_id: usize) {
+                let my_zombie = self.zombies(&zombie_id).get();
+                require!(my_zombie.level >= level, "Zombie is too low level");
             }
         }
 
-        #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
-                let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
-                require!(self.is_ready(zombie_id), "Zombie is not ready");
-                let my_zombie = self.zombies(&zombie_id).get();
-                let dna_digits = self.dna_digits().get();
-                let max_dna_value = u64::pow(10u64, dna_digits as u32);
-                let verified_target_dna = target_dna % max_dna_value;
-                let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
-                if species == ManagedBuffer::from("kitty") {
-                  new_dna = new_dna - new_dna % 100 + 99
-                }
-                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
-                self.trigger_cooldown(zombie_id);
-            }
+        #[endpoint]
+        fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+            self.check_above_level(2u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.name = name);
+        }
 
-            fn trigger_cooldown(&self, zombie_id: usize) {
-                let cooldown_time = self.cooldown_time().get();
-                self.zombies(&zombie_id).update(|my_zombie| {
-                    my_zombie.ready_time = self.blockchain().get_block_timestamp() + cooldown_time
-                });
-            }
+        #[endpoint]
+        fn change_dna(&self, zombie_id: usize, dna: u64) {
+            self.check_above_level(20u16, zombie_id);
+            let caller = self.blockchain().get_caller();
+            require!(
+                caller == self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            self.zombies(&zombie_id)
+                .update(|my_zombie| my_zombie.dna = dna);
+        }
 
-            #[view]
-            fn is_ready(&self, zombie_id: usize) -> bool {
-                let my_zombie = self.zombies(&zombie_id).get();
-                my_zombie.ready_time <= self.blockchain().get_block_timestamp()
-            }
+        #[payable("EGLD")]
+        #[endpoint]
+        fn level_up(&self, zombie_id: usize){
+            let payment_amount = self.call_value().egld_value();
+            let fee = self.level_up_fee().get();
+            require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+            self.collected_fees().update(|fees| fees += fee);
+            self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+        }
 
-            #[callback]
-            fn get_kitty_callback(
-              &self, 
-              #[call_result] result: ManagedAsyncCallResult<Kitty>,
-              zombie_id: usize
-            ) {
-                match result {
-                    ManagedAsyncCallResult::Ok(kitty) => {
-                      let kitty_dna = kitty.genes;
-                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
-                    },
-                    ManagedAsyncCallResult::Err(_) => {},
-                }
-            }
-
-            #[endpoint]
-            fn feed_on_kitty(
-              &self, 
-              zombie_id: usize,
-              kitty_id: usize,
-            ) {
-              let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
-                self.kitty_proxy(crypto_kitties_sc_address)
-                    .get_kitty(kitty_id)
-                    .async_call()
-                    .with_callback(self.callbacks().get_kitty_callback(zombie_id))
-                    .call_and_exit();
-            }
-            #[proxy]
-            fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
+        #[only_owner]
+        #[endpoint]
+        fn withdraw(&self) {
+          let caller_address = self.blockchain().get_caller();
+          let collected_fees = self.collected_fees().get();
+          self.send().direct_egld(&caller_address, &collected_fees);
+          self.collected_fees().clear();
         }
 ---
 
-Now let's modify `feed_and_multiply` to take our cooldown timer into account.
+In the previous chapter, we learned how to send EGLD  to a contract. So what happens after you send it?
 
-Looking back at this function, you can see we made it an endpoint available to everyone in the last lesson. An important security practice is to examine all your endpoints and who has access to them, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like `#[only_owner]`, any user can call them and pass them any data they want to.
+After you send EGLD to a contract, it gets stored in the contract's EGLD account, and it will be trapped there — unless you add a function to withdraw the EGLD from the contract.
 
-Re-examining this particular function, the user could call the function directly and pass in any `target_dna` or `species` they want to. This doesn't seem very game-like — we want them to follow our rules!
+You can write a function to withdraw EGLD from the contract as follows:
 
-On closer inspection, this function only needs to be called by `feed_on_kitty()`, so the easiest way to prevent these exploits is to remove the `#[endpoint]` annotation
+```
+  #[only_owner]
+  #[endpoint]
+  fn withdraw(&self) {
+    let caller_address = self.blockchain().get_caller();
+    let collected_fees = self.collected_fees.get()
+    self.send().direct_egld(&caller_address, collected_fees);
+    self.collected_fees.unset();
+  }
+```
 
-## Put it to the test
+Note that we're using `only_owner` since just the owner should have access to this
 
-1. Currently `feed_and_multiply` is an endpoint with open access to everyone. Let's make it a simple function by removing the `#[endpoint]' annotation so that the contract is more secure. We don't want users to be able to call this function with any DNA they want.
 
-2. Let's make `feed_and_multiply` take our `cooldown_time` into account. First, before we look up `my_zombie`, let's add a `require` statement that checks `is_ready()` and throws an error "Zombie is not ready" if it is `false`. This way the user can only execute this function if a zombie's cooldown time is over.
+You can transfer EGLD to an address using the `self.send().direct_egld()` function.
+You can use `self.send().direct()` to send any type of funds to any MultiversX address.
 
-3. At the end of the function let's call `trigger_cooldown(zombie_id)` so that feeding triggers the zombie's cooldown time.
+## Putting it to the Test
+
+1. Change the level_up function so that all the fees received will get stored in a new storage mapper called `colleted_fees` of `BigUint` type
+
+2. Create a `withdraw` function in our contract, which should be identical to the `withdraw` example above.

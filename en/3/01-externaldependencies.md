@@ -4,171 +4,236 @@ actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: rust
     startingCode:
-      "zombiefeeding.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombiefeeding.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        import "./zombiefactory.sol";
+        use crate::{storage, zombiefactory};
+        use crypto_kitties_proxy::Kitty;
 
-        contract KittyInterface {
-          function getKitty(uint256 _id) external view returns (
-            bool isGestating,
-            bool isReady,
-            uint256 cooldownIndex,
-            uint256 nextActionAt,
-            uint256 siringWithId,
-            uint256 birthTime,
-            uint256 matronId,
-            uint256 sireId,
-            uint256 generation,
-            uint256 genes
-          );
+        mod crypto_kitties_proxy {
+            multiversx_sc::imports!();
+            multiversx_sc::derive_imports!();
+
+            #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+            pub struct Kitty {
+                pub is_gestating: bool,
+                pub is_ready: bool,
+                pub cooldown_index: u64,
+                pub next_action_at: u64,
+                pub siring_with_id: u64,
+                pub birth_time: u64,
+                pub matron_id: u64,
+                pub sire_id: u64,
+                pub generation: u64,
+                pub genes: u64,
+            }
+
+            #[multiversx_sc::proxy]
+            pub trait CryptoKitties {
+                #[endpoint]
+                fn get_kitty(&self, id: usize) -> Kitty;
+            }
         }
 
-        contract ZombieFeeding is ZombieFactory {
-
-          // 1. Remove this:
-          address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // 2. Change this to just a declaration:
-          KittyInterface kittyContract = KittyInterface(ckAddress);
-
-          // 3. Add setKittyContractAddress method here
-
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
-            require(msg.sender == zombieToOwner[_zombieId]);
-            Zombie storage myZombie = zombies[_zombieId];
-            _targetDna = _targetDna % dnaModulus;
-            uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
-              newDna = newDna - newDna % 100 + 99;
+        #[multiversx_sc::module]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
+            #[endpoint]
+            fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    caller == self.zombie_owner(&zombie_id).get(),
+                    "Only the owner of the zombie can perform this operation"
+                );
+                let my_zombie = self.zombies(&zombie_id).get();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                let verified_target_dna = target_dna % max_dna_value;
+                let mut new_dna = (my_zombie.dna + verified_target_dna) / 2;
+                if species == ManagedBuffer::from("kitty") {
+                  new_dna = new_dna - new_dna % 100 + 99
+                }
+                self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
-            _createZombie("NoName", newDna);
-          }
 
-          function feedOnKitty(uint _zombieId, uint _kittyId) public {
-            uint kittyDna;
-            (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-            feedAndMultiply(_zombieId, kittyDna, "kitty");
-          }
+            #[callback]
+            fn get_kitty_callback(
+              &self, 
+              #[call_result] result: ManagedAsyncCallResult<Kitty>,
+              zombie_id: usize
+            ) {
+                match result {
+                    ManagedAsyncCallResult::Ok(kitty) => {
+                      let kitty_dna = kitty.genes;
+                      self.feed_and_multiply(zombie_id, kitty_dna, ManagedBuffer::from("kitty"));
+                    },
+                    ManagedAsyncCallResult::Err(_) => {},
+                }
+            }
 
+            #[endpoint]
+            fn feed_on_kitty(
+              &self, 
+              zombie_id: usize,
+              kitty_id: usize,
+            ) {
+              let crypto_kitties_sc_address = self.crypto_kitties_sc_address().get();
+                self.kitty_proxy(crypto_kitties_sc_address)
+                    .get_kitty(kitty_id)
+                    .async_call()
+                    .with_callback(self.callbacks().get_kitty_callback(zombie_id))
+                    .call_and_exit();
+            }
+            #[proxy]
+            fn kitty_proxy(&self, to: ManagedAddress) -> crypto_kitties_proxy::Proxy<Self::Api>;
         }
-      "zombiefactory.sol": |
-        pragma solidity >=0.5.0 <0.6.0;
+      "zombie.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+        
+        #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+        pub struct Zombie<M: ManagedTypeApi> {
+            pub name: ManagedBuffer<M>,
+            pub dna: u64,
+        }
+      "zombiefactory.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
-        contract ZombieFactory {
+        use crate::{storage, zombie::Zombie};
 
-            event NewZombie(uint zombieId, string name, uint dna);
-
-            uint dnaDigits = 16;
-            uint dnaModulus = 10 ** dnaDigits;
-
-            struct Zombie {
-                string name;
-                uint dna;
+        #[multiversx_sc::module]
+        pub trait ZombieFactory: storage::Storage {
+            fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+                self.zombies_count().update(|id| {
+                    self.new_zombie_event(*id, &name, dna);
+                    self.zombies(id).set(Zombie { name, dna });
+                    self.owned_zombies(&owner).insert(*id);
+                    self.zombie_owner(id).set(owner);
+                    *id += 1;
+                });
             }
 
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string memory _name, uint _dna) internal {
-                uint id = zombies.push(Zombie(_name, _dna)) - 1;
-                zombieToOwner[id] = msg.sender;
-                ownerZombieCount[msg.sender]++;
-                emit NewZombie(id, _name, _dna);
+            #[view]
+            fn generate_random_dna(&self) -> u64 {
+                let mut rand_source = RandomnessSource::new();
+                let dna_digits = self.dna_digits().get();
+                let max_dna_value = u64::pow(10u64, dna_digits as u32);
+                rand_source.next_u64_in_range(0u64, max_dna_value)
             }
 
-            function _generateRandomDna(string memory _str) private view returns (uint) {
-                uint rand = uint(keccak256(abi.encodePacked(_str)));
-                return rand % dnaModulus;
+            #[endpoint]
+            fn create_random_zombie(&self, name: ManagedBuffer) {
+                let caller = self.blockchain().get_caller();
+                require!(
+                    self.owned_zombies(&caller).is_empty(),
+                    "You already own a zombie"
+                );
+                let rand_dna = self.generate_random_dna();
+                self.create_zombie(caller, name, rand_dna);
             }
 
-            function createRandomZombie(string memory _name) public {
-                require(ownerZombieCount[msg.sender] == 0);
-                uint randDna = _generateRandomDna(_name);
-                randDna = randDna - randDna % 100;
-                _createZombie(_name, randDna);
-            }
+            #[event("new_zombie_event")]
+            fn new_zombie_event(
+                &self,
+                #[indexed] zombie_id: usize,
+                name: &ManagedBuffer,
+                #[indexed] dna: u64,
+            );
+        }
+      "storage.rs": |
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
 
+        use crate::zombie::Zombie;
+
+        #[multiversx_sc::module]
+        pub trait Storages {
+            #[storage_mapper("dna_digits")]
+            fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+            #[storage_mapper("zombies_count")]
+            fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+            #[view]
+            #[storage_mapper("zombies")]
+            fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+            #[storage_mapper("zombie_owner")]
+            fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("crypto_kitties_sc_address")]
+            fn crypto_kitties_sc_address(&self) -> SingleValueMapper<ManagedAddress>;
+
+            #[storage_mapper("owned_zombies")]
+            fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+        }
+      "lib.rs": |
+        #![no_std]
+
+        multiversx_sc::imports!();
+        multiversx_sc::derive_imports!();
+
+        mod storage;
+        mod zombie;
+        mod zombiefactory;
+        mod zombiefeeding;
+
+        #[multiversx_sc::contract]
+        pub trait ZombiesContract:
+            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+        {
+            #[init]
+            fn init(&self) {
+                self.dna_digits().set(16u8);
+            }
         }
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      import "./zombiefactory.sol";
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract KittyInterface {
-        function getKitty(uint256 _id) external view returns (
-          bool isGestating,
-          bool isReady,
-          uint256 cooldownIndex,
-          uint256 nextActionAt,
-          uint256 siringWithId,
-          uint256 birthTime,
-          uint256 matronId,
-          uint256 sireId,
-          uint256 generation,
-          uint256 genes
-        );
-      }
+      mod storage;
+      mod zombie;
+      mod zombiefactory;
+      mod zombiefeeding;
 
-      contract ZombieFeeding is ZombieFactory {
-
-        KittyInterface kittyContract;
-
-        function setKittyContractAddress(address _address) external {
-          kittyContract = KittyInterface(_address);
-        }
-
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
-          require(msg.sender == zombieToOwner[_zombieId]);
-          Zombie storage myZombie = zombies[_zombieId];
-          _targetDna = _targetDna % dnaModulus;
-          uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
-            newDna = newDna - newDna % 100 + 99;
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract:
+          zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+      {
+          #[init]
+          fn init(&self) {
+              self.dna_digits().set(16u8);
           }
-          _createZombie("NoName", newDna);
-        }
 
-        function feedOnKitty(uint _zombieId, uint _kittyId) public {
-          uint kittyDna;
-          (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-          feedAndMultiply(_zombieId, kittyDna, "kitty");
-        }
-
+          #[endpoint]
+          fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
+              self.crypto_kitties_sc_address().set(address);
+          }
       }
 ---
 
-Up until now, Solidity has looked quite similar to other languages like JavaScript.  But there are a number of ways that Ethereum DApps are actually quite different from normal applications.
+Up until now, Rust might have been a bit harder to deal with, and the syntax hard to get, but from this point we will experience what a strong programing language and a well designed framework can achieve when it comes to more complex elements for smart contract development and optimization. 
 
-To start with, after you deploy a contract to Ethereum, it’s **_immutable_**, which means that it can never be modified or updated again.
+Unlike on other blockchains, a contract deployed to MultiversX can be made upgradable and at some point, it will also be possible to undeploy it. Although contracts can be made upgradable, it is not enforced. For some contracts it's even non-desirable.
 
-The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity.  If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.
-
-But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give you unexpected results.
+But this is also a feature of smart contracts. The code is law. If you read the code of a smart contract and verify it, you can be sure that every time you call a function it's going to do exactly what the code says it will do.
 
 ## External dependencies
 
-In Lesson 2, we hard-coded the CryptoKitties contract address into our DApp.  But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?
+In Lesson 2, we wrote a proxy for the CryproKitties contract and accessed it through an address from storage. Think of the consequences if we had hard-coded that address in our contract and at some point a bug would have been discovered in the CryptoKitties contract, leading to the destruction of all kitties.
 
-It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.
+It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it unless we upgrade it.
 
 For this reason, it often makes sense to have functions that will allow you to update key portions of the DApp.
 
-For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a `setKittyContractAddress` function that lets us change this address in the future in case something happens to the CryptoKitties contract.
 
 ## Put it to the test
 
 Let's update our code from Lesson 2 to be able to change the CryptoKitties contract address.
 
-1. Delete the line of code where we hard-coded `ckAddress`.
-
-2. Change the line where we created `kittyContract` to just declare the variable — i.e. don't set it equal to anything.
-
-3. Create a function called `setKittyContractAddress`. It will take one argument, `_address` (an `address`), and it should be an `external` function.
-
-4. Inside the function, add one line of code that sets `kittyContract` equal to `KittyInterface(_address)`.
-
-> Note: If you notice a security hole with this function, don't worry — we'll fix it in the next chapter ;)
+1. Inside `lib.rs` create an endpoint `set_crypto_kitties_sc_address` that gets a `ManagedAddress` parameter called `address` and sets the value of `crypto_kitties_sc_address`. Be aware that we don't need to cann update to set the value of an already set storage mapper if we are not interested of its current value.

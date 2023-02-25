@@ -14,4 +14,4 @@ This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll lea
 
 You've been warned — no kitties and rainbows in Lesson 3!
 
-But a lot of densely-packed Solidity knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
+But a lot of densely-packed Rust knowledge. We strongly recommended that you complete Lesson 2 before starting this one.

@@ -3,120 +3,196 @@ title: Inheritance
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: sol
+    language: rust
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
-      contract ZombieFactory {
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-          event NewZombie(uint zombieId, string name, uint dna);
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
 
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
 
-          struct Zombie {
-              string name;
-              uint dna;
-          }
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
 
-          Zombie[] public zombies;
+        fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+                self.new_zombie_event(*id, &name, dna);
+                self.zombies(id).set(Zombie { name, dna });
+                self.owned_zombies(&owner).insert(id);
+                self.zombie_owner(id).set(owner);
+                *id += 1;
+            });
+        }
 
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
 
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              emit NewZombie(id, _name, _dna);
-          }
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let caller = self.blockchain().get_caller();
+            require!(
+                self.owned_zombies(&caller).is_empty(),
+                "You already own a zombie"
+            );
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(caller, name, rand_dna);
+        }
 
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
 
-          function createRandomZombie(string memory _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
 
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[view]
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[view]
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
 
       // Start here
 
     answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+      #![no_std]
 
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
 
-      contract ZombieFactory {
-
-          event NewZombie(uint zombieId, string name, uint dna);
-
-          uint dnaDigits = 16;
-          uint dnaModulus = 10 ** dnaDigits;
-
-          struct Zombie {
-              string name;
-              uint dna;
-          }
-
-          Zombie[] public zombies;
-
-          mapping (uint => address) public zombieToOwner;
-          mapping (address => uint) ownerZombieCount;
-
-          function _createZombie(string memory _name, uint _dna) private {
-              uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              zombieToOwner[id] = msg.sender;
-              ownerZombieCount[msg.sender]++;
-              emit NewZombie(id, _name, _dna);
-          }
-
-          function _generateRandomDna(string memory _str) private view returns (uint) {
-              uint rand = uint(keccak256(abi.encodePacked(_str)));
-              return rand % dnaModulus;
-          }
-
-          function createRandomZombie(string memory _name) public {
-              require(ownerZombieCount[msg.sender] == 0);
-              uint randDna = _generateRandomDna(_name);
-              _createZombie(_name, randDna);
-          }
-
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
       }
 
-      contract ZombieFeeding is ZombieFactory {
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract : ZombieFeeding{
+
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
+
+        fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+                self.new_zombie_event(*id, &name, dna);
+                self.zombies(id).set(Zombie { name, dna });
+                self.owned_zombies(&owner).insert(id);
+                self.zombie_owner(id).set(owner);
+                *id += 1;
+            });
+        }
+
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+            let mut rand_source = RandomnessSource::new();
+            let dna_digits = self.dna_digits().get();
+            let max_dna_value = u64::pow(10u64, dna_digits as u32);
+            rand_source.next_u64_in_range(0u64, max_dna_value)
+        }
+
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+            let caller = self.blockchain().get_caller();
+            require!(
+                self.owned_zombies(&caller).is_empty(),
+                "You already own a zombie"
+            );
+            let rand_dna = self.generate_random_dna();
+            self.create_zombie(caller, name, rand_dna);
+        }
+
+        #[event("new_zombie_event")]
+        fn new_zombie_event(
+            &self, 
+            #[indexed] name: &ManagedBuffer, 
+            #[indexed] dna: u64,
+        );
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+
+        #[storage_mapper("zombie_owner")]
+        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
+        
+        #[storage_mapper("owned_zombies")]
+        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+      }
+
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding {
 
       }
 
 ---
 
-Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple contracts to organize the code.
+Our game code is getting quite long. Rather than making one extremely long contract, sometimes it makes sense to split your code logic across multiple files to organize the code.
 
-One feature of Solidity that makes this more manageable is contract **_inheritance_**:
+One feature of the MultiversX Rust framework Rust that makes this more manageable is contract modules, implemented as supertraits:
 
 ```
-contract Doge {
-  function catchphrase() public returns (string memory) {
-    return "So Wow CryptoDoge";
+#[multiversx_sc::contract]
+pub trait Doge: BabyDoge {
+  fn catchphrase(&self) -> ManagedBuffer{
+    ManagedBuffer::from("So Wow CryptoDoge")
   }
 }
 
-contract BabyDoge is Doge {
-  function anotherCatchphrase() public returns (string memory) {
-    return "Such Moon BabyDoge";
+#[multiversx_sc::module]
+pub trait BabyDoge {
+  fn another_catchphrase(&self) -> ManagedBuffer {
+    ManagedBuffer::from("Such Moon BabyDoge")
   }
 }
 ```
 
-`BabyDoge` **_inherits_** from `Doge`. That means if you compile and deploy `BabyDoge`, it will have access to both `catchphrase()` and `anotherCatchphrase()` (and any other public functions we may define on `Doge`).
-
-This can be used for logical inheritance (such as with a subclass, a `Cat` is an `Animal`). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.
+In Rust terminology `BabyDoge` is a supertrait of `Doge`, and so `Doge` can use all methods of `BabyDoge` as if they were its own.
 
 # Put it to the test
 
-In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from `ZombieFactory`.
+In the next chapters, we're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own module.
 
-1. Make a contract called `ZombieFeeding` below `ZombieFactory`. This contract should inherit from our `ZombieFactory` contract.
+1. Make a module called `ZombieFeeding` below `ZombieContract`. This module should be empty for now
+
+2. Add `ZombieFeeding` to the definition of the ZombieContract contract.

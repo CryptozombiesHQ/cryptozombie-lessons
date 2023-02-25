@@ -1,11 +1,30 @@
 ---
-title: Ownable Contracts
+title: Back to Attack!
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
   editor:
     language: rust
     startingCode:
+      "zombieattack.rs": |
+        multiversx_sc::imports!();
+
+        use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+        #[multiversx_sc::module]
+        pub trait ZombieAttack:
+            storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+        {
+            fn rand_mod(&self, modulus: u8) -> u8 {
+                let mut rand_source = RandomnessSource::new();
+                rand_source.next_u8() % modulus
+            }
+
+            #[endpoint]
+            fn attack(&self, zombie_id: usize, target_id: usize){
+
+            }
+        }
       "zombiefeeding.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
@@ -39,14 +58,10 @@ material:
         }
 
         #[multiversx_sc::module]
-        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
-            #[endpoint]
+        pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory + zombiehelper: ZombieHelper{
             fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64, species: ManagedBuffer) {
                 let caller = self.blockchain().get_caller();
-                require!(
-                    caller == self.zombie_owner(&zombie_id).get(),
-                    "Only the owner of the zombie can perform this operation"
-                );
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
                 let my_zombie = self.zombies(&zombie_id).get();
                 let dna_digits = self.dna_digits().get();
                 let max_dna_value = u64::pow(10u64, dna_digits as u32);
@@ -57,7 +72,6 @@ material:
                 }
                 self.create_zombie(caller, ManagedBuffer::from("NoName"), new_dna);
             }
-
             #[callback]
             fn get_kitty_callback(
               &self, 
@@ -92,11 +106,13 @@ material:
       "zombie.rs": |
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
-        
+
         #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
         pub struct Zombie<M: ManagedTypeApi> {
             pub name: ManagedBuffer<M>,
             pub dna: u64,
+            pub level: u16,
+            pub ready_time: u64,
         }
       "zombiefactory.rs": |
         multiversx_sc::imports!();
@@ -109,7 +125,13 @@ material:
             fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
                 self.zombies_count().update(|id| {
                     self.new_zombie_event(*id, &name, dna);
-                    self.zombies(id).set(Zombie { name, dna });
+                    let cooldown_time = self.cooldown_time().get();
+                    self.zombies(id).set(Zombie {
+                        name,
+                        dna,
+                        level: 1u16,
+                        ready_time: self.blockchain().get_block_timestamp(),
+                    });
                     self.owned_zombies(&owner).insert(*id);
                     self.zombie_owner(id).set(owner);
                     *id += 1;
@@ -169,8 +191,20 @@ material:
 
             #[storage_mapper("owned_zombies")]
             fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
+            
+            #[storage_mapper("level_up_fee")]
+            fn level_up_fee(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("collected_fees")]
+            fn collected_fees(&self) -> SingleValueMapper<BigUint>;
+
+            #[storage_mapper("cooldown_time")]
+            fn cooldown_time(&self) -> SingleValueMapper<u64>;
+
+            #[storage_mapper("attack_victory_probability")]
+            fn attack_victory_probability(&self) -> SingleValueMapper<u8>;
         }
-      "lib.rs": |       
+      "lib.rs": |
         #![no_std]
 
         multiversx_sc::imports!();
@@ -180,74 +214,116 @@ material:
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
+        mod zombiehelper;
+        mod zombieattack;
 
         #[multiversx_sc::contract]
-        pub trait ZombiesContract:
-            zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
+        pub trait Adder:
+            zombiefactory::ZombieFactory
+            + zombiefeeding::ZombieFeeding
+            + storage::Storage
+            + zombiehelper::ZombieHelper
+            + zombieattack::ZombieAttack
         {
             #[init]
             fn init(&self) {
                 self.dna_digits().set(16u8);
+                self.cooldown_time().set(86400u64);
+                self.level_up_fee().set(BigUint::from(1000000000000000u64));
+                self.attack_victory_probability().set(70u8);
             }
 
+            #[only_owner]
             #[endpoint]
             fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
                 self.crypto_kitties_sc_address().set(address);
             }
         }
-    answer: >
-      #![no_std]
+      "zombiehelper.rs": |
+        multiversx_sc::imports!();
 
-      multiversx_sc::imports!();
-      multiversx_sc::derive_imports!();
+          use crate::storage;
 
-      mod storage;
-      mod zombie;
-      mod zombiefactory;
-      mod zombiefeeding;
+          #[multiversx_sc::module]
+          pub trait ZombieHelper: storage::Storage {
+            fn check_above_level(&self, level: u16, zombie_id: usize) {
+                let my_zombie = self.zombies(&zombie_id).get();
+                require!(my_zombie.level >= level, "Zombie is too low level");
+            }
+        
+            fn check_zombie_belongs_to_caller(&self, zombie_id: usize, caller: &ManagedAddress) {   
+            require!(
+                caller == &self.zombie_owner(&zombie_id).get(),
+                "Only the owner of the zombie can perform this operation"
+            );
+            }
 
-      #[multiversx_sc::contract]
-      pub trait ZombiesContract:
-          zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
-      {
-          #[init]
-          fn init(&self) {
-              self.dna_digits().set(16u8);
+            #[endpoint]
+            fn change_name(&self, zombie_id: usize, name: ManagedBuffer) {
+                self.check_above_level(2u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.name = name);
+            }
+
+            #[endpoint]
+            fn change_dna(&self, zombie_id: usize, dna: u64) {
+                self.check_above_level(20u16, zombie_id);
+                let caller = self.blockchain().get_caller();
+                self.check_zombie_belongs_to_caller(zombie_id, &caller);
+                self.zombies(&zombie_id)
+                    .update(|my_zombie| my_zombie.dna = dna);
+            }
+            
+            #[payable("EGLD")]
+            #[endpoint]
+            fn level_up(&self, zombie_id: usize){
+                let payment_amount = self.call_value().egld_value();
+                let fee = self.level_up_fee().get();
+                require!(payment_amount == fee, "Payment must be must be 0.001 EGLD");
+                self.zombies(&zombie_id).update(|my_zombie| my_zombie.level += 1);
+            }
+
+            #[only_owner]
+            #[endpoint]
+            fn withdraw(&self) {
+                let caller_address = self.blockchain().get_caller();
+                let collected_fees = self.collected_fees().get();
+                self.send().direct_egld(&caller_address, &collected_fees);
+                self.collected_fees().clear();
+            }
           }
 
-          #[only_owner]
+    answer: >
+      multiversx_sc::imports!();
+
+      use crate::{storage, zombie::Zombie, zombiefactory, zombiefeeding, zombiehelper};
+
+      #[multiversx_sc::module]
+      pub trait ZombieAttack:
+          storage::Storage + zombiefeeding::ZombieFeeding + zombiefactory::ZombieFactory + zombiehelper::ZombieHelper
+      {
+          fn rand_mod(&self, modulus: u8) -> u8 {
+              let mut rand_source = RandomnessSource::new();
+              rand_source.next_u8() % modulus
+          }
+
           #[endpoint]
-          fn set_crypto_kitties_sc_address(&self, address: ManagedAddress) {
-              self.crypto_kitties_sc_address().set(address);
+          fn attack(&self, zombie_id: usize, target_id: usize){
+              let caller = self.blockchain().get_caller();
+              self.check_zombie_belongs_to_caller(zombie_id, &caller);
+              let rand = self.rand_mod(100u8);
           }
       }
 ---
 
-Did you spot the security hole in the previous chapter?
+Enough refactoring — back to `zombieattack.sol`.
 
-`set_crypto_kitties_sc_address` is an endpoint, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.
-
-We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.
-
-To handle cases like this, one common practice that has emerged is to make endpoint accessible only by the owner (you) who has special privileges.
-
-In MultiversX Rust framework this is easily done by simply setting the `#[only_owner]` annotation  before the `#[endpoint]` annotation.
-
-## Managing ownership
-
-Now that we know how to declare an endpoint as `only_owner` we can ask ourselves about if this ownership is transferable and the answer is YES.
-A familiar scenario to smart contract developers is the following: 
-
-- Developer of smart contract writes the deployment script this includes all the setup and initialisation needed.
-
-- Project owner provides the developer with his address that he wants to have ownership with.
-
-- The developer deploys the contract and at the end changes the ownership to the project owner.
-
-- Thanks to reproducible builds, we can make sure that the on-chain contract has the expected code. And thanks to the public nature of the blockchain we can also make sure that the contract is set-up properly.
+We're going to continue defining our `attack` function, now that we have the `check_zombie_belongs_to_caller`
 
 ## Put it to the test
 
-Now we can restrict access to `set_crypto_kitties_sc_address` so that no one but us can modify it in the future.
+1. After you get the caller, add the `check_zombie_belongs_to_caller` call to `attack` to make sure the caller owns `zombie_id`.
 
-1. Make the set_crypto_kitties_sc_address endpoint accessible only by the owner.
+2. We're going to use a random number between 0 and 99 to determine the outcome of our battle. So declare a `u8` named `rand`, and set it equal to the result of the `rand_mod` function with `100u8` as an argument.

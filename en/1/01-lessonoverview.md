@@ -38,4 +38,4 @@ In the panel to the right, go ahead and move the `head gene` slider to the 7th h
 
 1. Play with the sliders on the right side of the page. Experiment to see how the different numerical values correspond to different aspects of the zombie's appearance.
 
-Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Solidity!
+Ok, enough playing around. When you're ready to continue, hit "Next Chapter" below, and let's dive into learning Rust!

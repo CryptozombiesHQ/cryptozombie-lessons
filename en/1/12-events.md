@@ -1,9 +1,9 @@
 ---
-title: Msg.sender
+title: Events
 actions: ['checkAnswer', 'hints']
 material:
   editor:
-    language: rust by:
+    language: sol
     startingCode: |
       #![no_std]
 
@@ -27,10 +27,6 @@ material:
 
         fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
-              self.new_zombie_event(*id, &name, dna);
-
-              // write storages here
-
               self.zombies(id).set(Zombie { name, dna });
               *id +=1;
             });
@@ -46,19 +42,9 @@ material:
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-            
-            // start here
-
             let rand_dna = self.generate_random_dna();
             self.create_zombie(name, rand_dna);
         }
-
-        #[event("new_zombie_event")]
-        fn new_zombie_event(
-            &self, 
-            #[indexed] name: &ManagedBuffer, 
-            #[indexed] dna: u64,
-        );
 
         #[view]
         #[storage_mapper("dna_digits")]
@@ -71,12 +57,6 @@ material:
         #[view]
         #[storage_mapper("zombies")]
         fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
-
-        #[storage_mapper("zombie_owner")]
-        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
-        
-        #[storage_mapper("owned_zombies")]
-        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
     answer: >
       #![no_std]
@@ -99,13 +79,11 @@ material:
           self.zombies_count().set(1usize);
         }
 
-        fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
             self.zombies_count().update(|id| {
-                self.new_zombie_event(*id, &name, dna);
-                self.zombies(id).set(Zombie { name, dna });
-                self.owned_zombies(&owner).insert(id);
-                self.zombie_owner(id).set(owner);
-                *id += 1;
+              self.new_zombie_event(*id, &name, dna);
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
             });
         }
 
@@ -119,15 +97,15 @@ material:
 
         #[endpoint]
         fn create_random_zombie(&self, name: ManagedBuffer){
-            let caller = self.blockchain().get_caller();
             let rand_dna = self.generate_random_dna();
-            self.create_zombie(caller, name, rand_dna);
+            self.create_zombie(name, rand_dna);
         }
 
         #[event("new_zombie_event")]
         fn new_zombie_event(
             &self, 
-            #[indexed] name: &ManagedBuffer, 
+            #[indexed] zombie_id: usize, 
+            name: &ManagedBuffer, 
             #[indexed] dna: u64,
         );
 
@@ -142,58 +120,39 @@ material:
         #[view]
         #[storage_mapper("zombies")]
         fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
-
-        #[view]
-        #[storage_mapper("zombie_owner")]
-        fn zombie_owner(&self, id: &usize) -> SingleValueMapper<ManagedAddress>;
-        
-        #[view]
-        #[storage_mapper("owned_zombies")]
-        fn owned_zombies(&self, owner: &ManagedAddress) -> UnorderedSetMapper<usize>;
       }
 ---
 
-Now that we have our mapping to keep track of who owns a zombie, we'll want to update the `create_zombie` so that the zombie created will be stored by the caller address.
+Our contract is almost finished! Now let's add an **_event_**.
 
-## Getting the caller
+**_Events_** are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
 
-In the MultiversX Rust framework this is done very easy by:
-
-```
-let caller = self.blockchain().get_caller();
-```
-
-## Working with references
-
-You will experience that while working in Rust many of the times you will have to deal with the reference the proper way. Certain functions will be optimized if they have a certain element as a reference, borrowing it from the caller and after their code block is executed returning it back.  
+Example:
 
 ```
-fn say_hello(&self) -> ManagedBuffer {
-    let person = ManagedBuffer::from("Bob");
-    self.say_hello_to_person(person)
-}
+// declare the event
+#[event("integers_added")]
+fn integers_added_event(
+    &self, 
+    #[indexed] x: &BigUint, 
+    #[indexed] y: &BigUint, 
+    result: &BigUint
+);
 
 #[endpoint]
-fn say_hello_to_person(&self, name: &ManagedBuffer) -> ManagedBuffer{
-    let mut message = ManagedBuffer::from("Hello ");
-    message.append(name);
-    message
+fn add(&self, x: BigUint, y: BigUint) -> BigUint {
+  let result = &x + &y;
+  // fire an event to let the app know the function was called:
+  self.integers_added_event(&x, &y, &result);
+  return result;
 }
 ```
-
-## Putting elements into a UnorderedSetMapper
-
-Adding an element to an `UnorderedSetMapper` is done by the method `insert`:
-
-```
-self.persons().insert(new_person);
-```
+In the MultiversX Rust framework the parameters of an event need to be indexed with maximum 1 unindexed, which is considered data. Indexed parameters have the `#[indexed]` annotation.
 
 # Put it to the test
 
-Let's update our `create_random_zombie` endpoint from lesson 1 to assign ownership of the zombie to whoever called the function. 
-We will want to store a list of zombie ids inside `owned_zombies` for each caller that creates the zombie and the owner for each zombie inside `zombie_owner`.
+We want an event to let our front-end know every time a new zombie was created, so the app can display it.
 
-1. Starting with `create_random_zombie`, we need to get the caller of the endpoint.
+1. Declare an `event` called `new_zombie_event`. It should pass `zombie_id` (a `usize`), `name` (a `&ManagedBuffer`), and `dna` (a `u64`). `zombie_id` and `dna` should be indexed.
 
-2. Second, we will pass the address as a parameter to the function `create_zombie` which sets the `owned_zombies`, and the `zombie_owner` storages. We will have something similar to how we set the zombie inside the `zombies` storage. The caller will be the first parameter of `create_zombie`.
+2. Modify the `create_zombie` function to fire the `new_zombie_event` event before adding the new Zombie to our `zombies` storage. Be aware that id needs to be dereferenced here cince we have it inside update as a reference. The `name` will be passed as reference so it should have a `&` in front of it inside the event. 

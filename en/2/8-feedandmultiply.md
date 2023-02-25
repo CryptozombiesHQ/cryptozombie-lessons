@@ -1,5 +1,5 @@
 ---
-title: Import
+title: Zombie DNA
 actions: ['checkAnswer', 'hints']
 material:
   editor:
@@ -11,6 +11,8 @@ material:
 
         #[multiversx_sc::module]
         pub trait ZombieFeeding {
+
+            // start here
 
         }
       "zombie.rs": |
@@ -26,8 +28,10 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
+        use crate::{storage, zombie::Zombie};
+
         #[multiversx_sc::module]
-        pub trait ZombieFactory{
+        pub trait ZombieFactory: storage::Storage {
             fn create_zombie(&self, owner: ManagedAddress, name: ManagedBuffer, dna: u64) {
                 self.zombies_count().update(|id| {
                     self.new_zombie_event(*id, &name, dna);
@@ -69,6 +73,8 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
+        use crate::zombie::Zombie;
+
         #[multiversx_sc::module]
         pub trait Storages {
             #[storage_mapper("dna_digits")]
@@ -93,28 +99,13 @@ material:
         multiversx_sc::imports!();
         multiversx_sc::derive_imports!();
 
-        #[multiversx_sc::contract]
-        pub trait ZombieContract
-        {
-            #[init]
-            fn init(&self) {
-                self.dna_digits().set(16u8);
-            }
-        }
-
-    answer: >
-        #![no_std]
-
-        multiversx_sc::imports!();
-        multiversx_sc::derive_imports!();
-
         mod storage;
         mod zombie;
         mod zombiefactory;
         mod zombiefeeding;
 
         #[multiversx_sc::contract]
-        pub trait ZombieContract:
+        pub trait ZombiesContract:
             zombiefactory::ZombieFactory + zombiefeeding::ZombieFeeding + storage::Storage
         {
             #[init]
@@ -122,43 +113,34 @@ material:
                 self.dna_digits().set(16u8);
             }
         }
+    answer: >
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
+
+      use crate::{storage, zombiefactory};
+
+      #[multiversx_sc::module]
+      pub trait ZombieFeeding: storage::Storage + zombiefactory::ZombieFactory {
+          fn feed_and_multiply(&self, zombie_id: usize, target_dna: u64) {
+              let caller = self.blockchain().get_caller();
+              require!(
+                  caller == self.zombie_owner(&zombie_id).get(),
+                  "Only the owner of the zombie can perform this operation"
+              );
+              let my_zombie = self.zombies(&zombie_id).get();
+          }
+      }
 
 ---
 
-Whoa! You'll notice we just cleaned up the code to the right, and you now have tabs at the top of your editor. Go ahead, click between the tabs to try it out.
-
-Our code was getting pretty long, so we split it up into multiple files to make it more manageable. This is normally how you will handle long codebases in your Rust projects.
-
-When you have multiple files and you want to import one file into another, Rust uses the `mod` keyword:
-
-```
-mod some_module;
-mod some_other_module;
-mod my_struct;
-
-use my_struct::MyStruct;
-
-#[multiversx_sc::contract]
-pub trait NewContract : some_module::SomeModule +  some_other_module::SomeOtherModule {
-
-}
-```
-
-So if we had 2 files named `some_module.rs` and `some_other_module.rs` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
-
-In case of our `Zombie` struct just importing the file will not be enough since we will not use it for inheritance, but we simply just use it within our trait, reason why additionally we will need to write `use zombie::Zombie;`, this since our `Zombie` struct will be inside `zombie.rs`.
-
-An important aspect is that inside a crate (solution folder) there must always be 1 and only 1 file that gathers all other ones. A rule for this is to be either `lib.rs` in case of a library usable outside, or the contract trait file in our case.
-
-> Notice : separating our struct and module trait in separate files still requires us to add `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();` since they use managed types which are not basic Rust elements, but provided by the MultiversX Rust framework.
-> Notice: structures don't need to be implemented by the trait, reason why we will not add `zombie::Zombie` to the contract trait definition.
-> Notice : the fields of our `Zombie` struct the `name` and the `dna` require now to be public since they are not part of the same file, so their visibility is no longer ensured.
-
+It's time to give our zombies the ability to feed and multiply!
 
 # Put it to the test
 
-Now that we've set up a multi-file structure, we need to import the contents of the other files:
+1. Create an endpoint called `feed_and_multiply`. It will take two parameters: `zombie_id` (a `usize`) and `target_dna` (a u64). 
 
-1. Import the other modules into `lib.rs`
-   
-2. Update the definition of our `ZombieContract` contract supertrait to contain all the other module traits
+2. We don't want to let someone else feed our zombie! So first, let's make sure we own this zombie. Add a `require` statement to verify that the caller of the endpoint is the zombie's owner (similar to how we did in the `create_random_zombie` function) or returns an error "You can only feed your own zombie" otherwise.
+
+3. We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local `Zombie` named `my_zombie` (which will take the zombie with that certain id from the storage `zombie`).
+
+4. Don't forget to import `storages` and `zombiefactory` and to make `ZombieFeeding` a supertrait by adding `Storages` and `ZombieFactory` to its definition.
