@@ -1,0 +1,125 @@
+---
+title: More on Functions
+actions: ['checkAnswer', 'hints']
+material:
+  editor:
+    language: rust
+    startingCode: |
+      #![no_std]
+
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
+
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
+
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
+
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
+
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
+        }
+
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+
+        }
+
+        // start here
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+      }
+    answer: >
+      #![no_std]
+
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
+
+      #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
+      pub struct Zombie<M: ManagedTypeApi> {
+          name: ManagedBuffer<M>,
+          dna: u64,
+      }
+
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
+
+        #[init]
+        fn init(&self) {
+          self.dna_digits().set(16u8);
+          self.zombies_count().set(1usize);
+        }
+
+        fn create_zombie(&self, name: ManagedBuffer, dna: u64) {
+            self.zombies_count().update(|id| {
+              self.zombies(id).set(Zombie { name, dna });
+              *id +=1;
+            });
+        }
+
+        #[view]
+        fn generate_random_dna(&self) -> u64{
+
+        }
+
+        #[endpoint]
+        fn create_random_zombie(&self, name: ManagedBuffer){
+
+        }
+
+        #[view]
+        #[storage_mapper("dna_digits")]
+        fn dna_digits(&self) -> SingleValueMapper<u8>;
+
+        #[view]
+        #[storage_mapper("zombies_count")]
+        fn zombies_count(&self) -> SingleValueMapper<usize>;
+
+        #[view]
+        #[storage_mapper("zombies")]
+        fn zombies(&self, id: &usize) -> SingleValueMapper<Zombie<Self::Api>>;
+      }
+---
+
+In the MultiversX Rust framework there is another anotation called `#[endpoint]` which is the only way to display a function public for interacting with the contract.
+
+An endpoint would look similar to a basic function but has the `#[endpoint]` proc macro above:
+
+If you remember views from last lesson than you can see similarities betweed it and the endpoint. The element that diferentiates them is the fact that views don't mutate the state whereas endpoints do.
+
+```
+#[endpoint]
+fn say_hello() -> ManagedBuffer {
+  ManagedBuffer::from("What's up dog")
+}
+```
+
+# Put it to the test
+
+We would like to have a way a user to use the contract to create a random dna zombie
+
+1. Create an endpoint named `create_random_zombie`. It will take one parameter named `name` (a `ManagedBuffer`).
+
+2. The function body should be empty at this point — we'll fill it in later.

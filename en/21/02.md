@@ -1,0 +1,73 @@
+---
+title: "Contracts"
+actions: ['checkAnswer', 'hints']
+material: 
+  editor:
+    language: rust
+    startingCode: |
+      #![no_std]
+
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
+
+      // start here
+    answer: > 
+      #![no_std]
+
+      multiversx_sc::imports!();
+      multiversx_sc::derive_imports!();
+
+      #[multiversx_sc::contract]
+      pub trait ZombiesContract {
+        #[init]
+        fn init(&self) {}
+      }
+---
+
+
+Starting with the absolute basics:
+
+Rust is a multiparadigm  programming language focused on type safety and performance, enabling users to build fast and robust applications. A `contract` is the fundamental building block of MultiversX applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.
+
+An empty contract named `HelloWorld` can be created with **mxpy** by running `mxpy contract new hello-world --template empty` from terminal and its structure would look like this:
+
+```
+├── meta
+├── scenarios
+├── src
+  ├── lib.rs
+├── tests
+├── wasm
+. Cargo.toml
+```
+In here we are interested for now of **lib.rs** from inside the root folder **src**, and would look like this.
+
+```
+#![no_std]
+
+multiversx_sc::imports!();
+  
+#[mx_sc::contract]
+pub trait ZombiesContract {
+        #[init]
+        fn init(&self) {}
+}
+```
+
+The first line of code" `#[multiversx_sc::contract]` is a procedural macro that defines the `ZombieContract` trait as a contract. You will see a pattern of using procedural macros, since these are the ones that take care of optimizing the code you write. Think of them for now as some additional annotations that transform basic Rust elements into smart contract ones.
+
+Every contract has a mandatory function init, marked with `#[init]`. Here all the presets of the contract should be put.
+
+## Basic syntax
+
+A MultiversX contract starts with `#[no_std]` to avoid importing Rust standard library and bloating smart contract size
+
+The next step is importing the **MultiversX** Rust library, done by calling the macros `multiversx_sc::imports!();` and `multiversx_sc::derive_imports!();`
+
+# Put it to the test
+
+To start creating our Zombie army, let's create a base contract called `ZombieContract`.
+
+1. In the box to the right, create an empty contract called `ZombieContract`.
+
+When you have finished, click "check answer" below. If you get stuck, you can click "hint".
