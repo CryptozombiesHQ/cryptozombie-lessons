@@ -1,8 +1,8 @@
 ---
-title: Advanced Solidity Concepts
+title: Advanced Rust Concepts
 header: "Lesson 3: Advanced Rust Concepts"
 roadmap: roadmap3.png
-path: solidity
+path: rust
 publishedOn: Cryptozombies
 ---
 
