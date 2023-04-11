@@ -26,7 +26,7 @@ Now that you're familiar with the exciting possibilities of MultiversX, let's ge
 
 ## Installing mxpy
 
-Before starting it is recommended to install our tool **mxpy** and please make sure you have a working **Python 3** environment:
+Before starting this course, it is recommended that you install our CLI tool named **mxpy** . Also, please make sure you have a working **Python 3** environment:
 
 - **3.8** or later on Linux and MacOS
 
