@@ -39,5 +39,5 @@ python3 mxpy-up.py
 
 The command above will install **mxpy**. Make sure you follow the instructions provided by the installer.
 
-For forther information please make sure to check https://docs.multiversx.com/sdk-and-tools/sdk-py/installing-mxpy/
+For further information please make sure to check https://docs.multiversx.com/sdk-and-tools/sdk-py/installing-mxpy/
 
