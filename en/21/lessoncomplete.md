@@ -10,12 +10,4 @@ Congratulations! You have completed the first lesson, and you have created the f
 
 # Next Steps
 
-This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
-
-### 1. Sign in to save your progress
-
-**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
-
-### 2. Share your zombie with your friends
-
-**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
+This is just the beginning. The next step awaits you where you will learn more complex MultiversX framework concepts allowing user interaction with their zombies.
