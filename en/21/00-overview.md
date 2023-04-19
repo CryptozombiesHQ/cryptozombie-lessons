@@ -2,7 +2,7 @@
 title: Making the Zombie Factory
 header: Welcome, human!
 roadmap: roadmap.jpg
-path: MultiversX
+path: multiversx
 publishedOn: Cryptozombies
 ---
 

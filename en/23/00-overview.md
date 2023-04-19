@@ -2,7 +2,7 @@
 title: Advanced Rust Concepts
 header: "Lesson 3: Advanced Rust Concepts"
 roadmap: roadmap3.png
-path: rust
+path: multiversx
 publishedOn: Cryptozombies
 ---
 
