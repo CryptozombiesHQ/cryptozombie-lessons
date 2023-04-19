@@ -3,11 +3,7 @@ title: Wrapping It Up
 actions: ['checkAnswer', 'hints']
 requireLogin: true
 material:
-  saveZombie: false
-  zombieDeck:
-    zombie:
-      lesson: 2
-    hideSliders: true
+  lessonComplete:
     answer: 1
 ---
 
@@ -19,13 +15,8 @@ Congratulations! That concludes Lesson 3.
 - We've learned to protect core functions with `only_owner`
 - We've learned about gas and gas optimization
 - We added levels and cooldowns to our zombies
-- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
-- And finally, we now have a function to return a user's zombie army
+- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level\
 
-## Claim your reward
+Now that your Rust skills have greatly improved it's time to prepare for zombie attacks. 
 
-As a reward for completing Lesson 3, both of your zombies have leveled up!
-
-And now that NoName (the kitty-zombie you created in Lesson 2), is upgraded to level 2, you can call `change_name` to give him/her a name. NoName no more!
-
-Go ahead and give NoName a name, then proceed to the next chapter to complete the lesson.
+Lesson 4 awaits you!
