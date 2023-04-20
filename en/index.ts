@@ -333,6 +333,7 @@ import l23_ch6 from './23/06.md'
 import l23_ch7 from './23/07.md'
 import l23_ch8 from './23/08.md'
 import l23_ch9 from './23/09.md'
+import l23_ch10 from './23/10.md'
 import l23_complete from './23/lessoncomplete.md'
 
 
@@ -681,6 +682,7 @@ export default {
     l23_ch7,
     l23_ch8,
     l23_ch9,
+    l23_ch10,
     l23_complete
   ],
   24: [

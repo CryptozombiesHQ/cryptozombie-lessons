@@ -8,7 +8,7 @@ material:
 
 That's it, you've completed lesson 2!
 
-Now that our zombies learned to feed and multiply it is time to get serious.
+Now that our zombies have learned to feed and multiply, it is time to get serious.
 The next chapter comes with advanced smart contract development concepts, highly emphasizing optimisation.
 
 Are you prepared?
