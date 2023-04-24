@@ -284,6 +284,75 @@ import l20_ch8 from './20/08.md'
 import l20_ch9 from './20/09.md'
 import l20_complete from './20/lessoncomplete.md'
 
+
+
+//Lesson 21
+import l21_overview from './21/00-overview.md'
+import l21_ch1 from './21/01.md'
+import l21_ch2 from './21/02.md'
+import l21_ch3 from './21/03.md'
+import l21_ch4 from './21/04.md'
+import l21_ch5 from './21/05.md'
+import l21_ch6 from './21/06.md'
+import l21_ch7 from './21/07.md'
+import l21_ch8 from './21/08.md'
+import l21_ch9 from './21/09.md'
+import l21_ch10 from './21/10.md'
+import l21_ch11 from './21/11.md'
+import l21_complete from './21/lessoncomplete.md'
+
+
+
+//Lesson 22
+import l22_overview from './22/00-overview.md'
+import l22_ch1 from './22/01.md'
+import l22_ch2 from './22/02.md'
+import l22_ch3 from './22/03.md'
+import l22_ch4 from './22/04.md'
+import l22_ch5 from './22/05.md'
+import l22_ch6 from './22/06.md'
+import l22_ch7 from './22/07.md'
+import l22_ch8 from './22/08.md'
+import l22_ch9 from './22/09.md'
+import l22_ch10 from './22/10.md'
+import l22_ch11 from './22/11.md'
+import l22_ch12 from './22/12.md'
+import l22_ch13 from './22/13.md'
+import l22_complete from './22/lessoncomplete.md'
+
+
+
+//Lesson 23
+import l23_overview from './23/00-overview.md'
+import l23_ch1 from './23/01.md'
+import l23_ch2 from './23/02.md'
+import l23_ch3 from './23/03.md'
+import l23_ch4 from './23/04.md'
+import l23_ch5 from './23/05.md'
+import l23_ch6 from './23/06.md'
+import l23_ch7 from './23/07.md'
+import l23_ch8 from './23/08.md'
+import l23_ch9 from './23/09.md'
+import l23_ch10 from './23/10.md'
+import l23_complete from './23/lessoncomplete.md'
+
+
+
+//Lesson 24
+import l24_overview from './24/00-overview.md'
+import l24_ch1 from './24/01.md'
+import l24_ch2 from './24/02.md'
+import l24_ch3 from './24/03.md'
+import l24_ch4 from './24/04.md'
+import l24_ch5 from './24/05.md'
+import l24_ch6 from './24/06.md'
+import l24_ch7 from './24/07.md'
+import l24_ch8 from './24/08.md'
+import l24_ch9 from './24/09.md'
+import l24_ch10 from './24/10.md'
+import l24_ch11 from './24/11.md'
+import l24_complete from './24/lessoncomplete.md'
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -569,5 +638,66 @@ export default {
     l20_ch8,
     l20_ch9,
     l20_complete
+  ],
+  21: [
+    l21_overview,
+    l21_ch1,
+    l21_ch2,
+    l21_ch3,
+    l21_ch4,
+    l21_ch5,
+    l21_ch6,
+    l21_ch7,
+    l21_ch8,
+    l21_ch9,
+    l21_ch10,
+    l21_ch11,
+    l21_complete
+  ],
+  22: [
+    l22_overview,
+    l22_ch1,
+    l22_ch2,
+    l22_ch3,
+    l22_ch4,
+    l22_ch5,
+    l22_ch6,
+    l22_ch7,
+    l22_ch8,
+    l22_ch9,
+    l22_ch10,
+    l22_ch11,
+    l22_ch12,
+    l22_ch13,
+    l22_complete
+  ],
+  23: [
+    l23_overview,
+    l23_ch1,
+    l23_ch2,
+    l23_ch3,
+    l23_ch4,
+    l23_ch5,
+    l23_ch6,
+    l23_ch7,
+    l23_ch8,
+    l23_ch9,
+    l23_ch10,
+    l23_complete
+  ],
+  24: [
+    l24_overview,
+    l24_ch1,
+    l24_ch2,
+    l24_ch3,
+    l24_ch4,
+    l24_ch5,
+    l24_ch6,
+    l24_ch7,
+    l24_ch8,
+    l24_ch9,
+    l24_ch10,
+    l24_ch11,
+    l24_complete
   ]
 }
