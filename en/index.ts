@@ -307,12 +307,12 @@ import l21_complete from './21/lessoncomplete.md'
 import l22_overview from './22/00-overview.md'
 import l22_ch1 from './22/01.md'
 import l22_ch2 from './22/02.md'
-import l22_ch3 from './20/03.md'
+import l22_ch3 from './22/03.md'
 import l22_ch4 from './22/04.md'
 import l22_ch5 from './22/05.md'
 import l22_ch6 from './22/06.md'
 import l22_ch7 from './22/07.md'
-import l22_ch8 from './20/08.md'
+import l22_ch8 from './22/08.md'
 import l22_ch9 from './22/09.md'
 import l22_ch10 from './22/10.md'
 import l22_ch11 from './22/11.md'
@@ -333,6 +333,7 @@ import l23_ch6 from './23/06.md'
 import l23_ch7 from './23/07.md'
 import l23_ch8 from './23/08.md'
 import l23_ch9 from './23/09.md'
+import l23_ch10 from './23/10.md'
 import l23_complete from './23/lessoncomplete.md'
 
 
@@ -681,6 +682,7 @@ export default {
     l23_ch7,
     l23_ch8,
     l23_ch9,
+    l23_ch10,
     l23_complete
   ],
   24: [
