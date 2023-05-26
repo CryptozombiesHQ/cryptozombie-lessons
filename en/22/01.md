@@ -1,6 +1,7 @@
 ---
 title: Lesson 2 Overview
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   saveZombie: false
   zombieBattle:
