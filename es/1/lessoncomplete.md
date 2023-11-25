@@ -1,6 +1,7 @@
 ---
 title: ¡Lección 1 Completa!
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   lessonComplete:
     answer: 1

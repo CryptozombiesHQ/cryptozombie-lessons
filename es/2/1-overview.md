@@ -1,6 +1,7 @@
 ---
 title: Resumen de la Lección 2
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   saveZombie: false
   zombieBattle:

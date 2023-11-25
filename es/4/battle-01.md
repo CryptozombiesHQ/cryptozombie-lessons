@@ -255,7 +255,7 @@ Hagamos un repaso de cómo crear un nuevo contrato ¡La repetición hace al maes
 
 Si no puede recordar la sintaxis para hacerla, vea `zombiehelper.sol` para ponerse al día — pero primero trate de hacerlo sin fijarse para poner a prueba su conocimiento.
 
-1. Anuncie al principio del archivo que estamos utilizando Solidity en su versión `^0.4.19`.
+1. Anuncie al principio del archivo que estamos utilizando Solidity en su versión `^0.4.25`.
 
 2. `import` (importe) desde `zombiehelper.sol`.
 

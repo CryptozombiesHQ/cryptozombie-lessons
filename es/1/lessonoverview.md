@@ -2,6 +2,7 @@
 title: Resumen de la Lección
 actions: ['checkAnswer', 'hints']
 skipCheckAnswer: true
+requireLogin: true
 material:
   saveZombie: false
   zombieResult:
