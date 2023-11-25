@@ -1,11 +1,12 @@
 ---
 title: Juntándolo Todo
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
@@ -31,7 +32,7 @@ material:
           // empieza aquí
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity ^0.4.25;
 
 
       contract ZombieFactory {

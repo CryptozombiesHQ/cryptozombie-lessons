@@ -1,6 +1,7 @@
 ---
 title: Empaquetando todo
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   saveZombie: true
   zombieBattle:

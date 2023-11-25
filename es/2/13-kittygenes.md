@@ -1,6 +1,7 @@
 ---
 title: "Bonus: Genes de Gato"
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -149,7 +150,7 @@ Una sentencia if en Solidity es igual que en JavaScript:
 
 ```
 function eatBLT(string sandwich) public {
-  // Recuerda que con strings, debemos comparar sus hashes keccak256 
+  // Recuerda que con strings, debemos comparar sus hashes keccak256
   // para comprobar su equidad
   if (keccak256(abi.encondePacked(sandwich)) == keccak256(abi.encodePacked("BLT"))) {
     eat();

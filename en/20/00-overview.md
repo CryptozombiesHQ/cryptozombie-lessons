@@ -6,7 +6,7 @@ path: tron
 publishedOn: Cryptozombies
 ---
 
-<img src="/course/static/image/lesson-20/tron-decentralize-the-web.png" alt="Decentralize the Web" height="150" width="469">
+<img src="ASSET_PATH/static/image/lesson-20/tron-decentralize-the-web.png" alt="Decentralize the Web" height="150" width="469">
 
 Welcome, CryptoZombie!
 

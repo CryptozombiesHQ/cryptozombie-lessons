@@ -102,10 +102,10 @@ contract SandwichFactory {
 
     // If you just want a copy, you can use `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...in which case `anotherSandwich` will simply be a copy of the 
+    // ...in which case `anotherSandwich` will simply be a copy of the
     // data in memory, and...
     anotherSandwich.status = "Eaten!";
-    // ...will just modify the temporary variable and have no effect 
+    // ...will just modify the temporary variable and have no effect
     // on `sandwiches[_index + 1]`. But you can do this:
     sandwiches[_index + 1] = anotherSandwich;
     // ...if you want to copy the changes back into blockchain storage.

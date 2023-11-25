@@ -514,7 +514,7 @@ contract CryptoZombies {
     https://github.com/loomnetwork/cryptozombie-lessons
 
     O si tiene algunas ideas, comentarios o simplemente quiere decirnos hola
-    - Únase a nuestra comunidad de Telegram en https://t.me/loomnetwork
+    - Únase a nuestra comunidad de Telegram en https://t.me/loomnetworkdev
   */
 }
 ```

@@ -1,6 +1,7 @@
 ---
 title: Funciones Públicas y Privadas
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

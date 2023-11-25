@@ -1,6 +1,7 @@
 ---
 title: Require
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

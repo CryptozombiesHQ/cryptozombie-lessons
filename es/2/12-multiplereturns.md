@@ -1,6 +1,7 @@
 ---
 title: Manejando Múltiples Valores Devueltos
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

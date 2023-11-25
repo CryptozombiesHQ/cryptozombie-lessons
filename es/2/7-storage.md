@@ -1,6 +1,7 @@
 ---
 title: Storage vs Memory
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -101,7 +102,7 @@ contract SandwichFactory {
 
     // Si únicamente quieres una copia, puedes usar `memory`:
     Sandwich memory anotherSandwich = sandwiches[_index + 1];
-    // ...donde `anotherSandwich` seria una simple copia de 
+    // ...donde `anotherSandwich` seria una simple copia de
     // los datos en memoria, y...
     anotherSandwich.status = "Eaten!";
     // ...modificará la variable temporal y no tendrá efecto
@@ -130,6 +131,6 @@ Cuando un zombi se alimente de otras formas de vida, su ADN se combinará con el
 
 3. Vamos a necesitar obtener el ADN de este zombi. Así que lo próximo que nuestra función debería hacer es declarar un `Zombie` localmente llamado `myZombie` (que deberá ser un puntero del tipo `storage`). Inicializa esta variable para que sea igual que el índice `_zombieId` de nuestro array `zombies`.
 
-Deberás tener unas 4 líneas de código, incluyendo la línea de fín de la función `}`. 
+Deberás tener unas 4 líneas de código, incluyendo la línea de fín de la función `}`.
 
 ¡Continuaremos rellenando esta función en el siguiente capítulo!

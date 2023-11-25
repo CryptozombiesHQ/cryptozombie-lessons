@@ -353,6 +353,67 @@ import l24_ch10 from './24/10.md'
 import l24_ch11 from './24/11.md'
 import l24_complete from './24/lessoncomplete.md'
 
+//Lesson 25 - Neo Name System C#
+import l25_overview from './25/00-overview.md'
+import l25_ch1 from './25/01.md'
+import l25_ch2 from './25/02.md'
+import l25_ch3 from './25/03.md'
+import l25_ch4 from './25/04.md'
+import l25_ch5 from './25/05.md'
+import l25_ch6 from './25/06.md'
+import l25_complete from './25/lessoncomplete.md'
+
+//Lesson 26 - Neo Name System Node.js
+import l26_overview from './26/00-overview.md'
+import l26_ch1 from './26/01.md'
+import l26_ch2 from './26/02.md'
+import l26_ch3 from './26/03.md'
+import l26_ch4 from './26/04.md'
+import l26_ch5 from './26/05.md'
+import l26_ch6 from './26/06.md'
+import l26_ch7 from './26/07.md'
+import l26_ch8 from './26/08.md'
+import l26_ch9 from './26/09.md'
+import l26_ch10 from './26/10.md'
+import l26_ch11 from './26/11.md'
+import l26_ch12 from './26/12.md'
+import l26_ch13 from './26/13.md'
+import l26_ch14 from './26/14.md'
+import l26_complete from './26/lessoncomplete.md'
+
+
+// Lesson 27 - NFT with Royalties on Optimism
+import l27_overview from './27/00-overview.md'
+import l27_ch1 from './27/01.md'
+import l27_ch2 from './27/02.md'
+import l27_ch3 from './27/03.md'
+import l27_ch4 from './27/04.md'
+import l27_ch5 from './27/05.md'
+import l27_ch6 from './27/06.md'
+import l27_ch7 from './27/07.md'
+import l27_ch8 from './27/08.md'
+import l27_ch9 from './27/09.md'
+import l27_ch10 from './27/10.md'
+import l27_ch11 from './27/11.md'
+import l27_ch12 from './27/12.md'
+import l27_complete from './27/lessoncomplete.md'
+
+
+// Lesson 28- Testing and Deploying on Optimism
+import l28_overview from './28/00-overview.md'
+import l28_ch1 from './28/01.md'
+import l28_ch2 from './28/02.md'
+import l28_ch3 from './28/03.md'
+import l28_ch4 from './28/04.md'
+import l28_ch5 from './28/05.md'
+import l28_ch6 from './28/06.md'
+import l28_ch7 from './28/07.md'
+import l28_ch8 from './28/08.md'
+import l28_ch9 from './28/09.md'
+import l28_ch10 from './28/10.md'
+import l28_ch11 from './28/11.md'
+import l28_complete from './28/lessoncomplete.md'
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -699,5 +760,64 @@ export default {
     l24_ch10,
     l24_ch11,
     l24_complete
+  ],
+  25: [
+    l25_overview,
+    l25_ch1,
+    l25_ch2,
+    l25_ch3,
+    l25_ch4,
+    l25_ch5,
+    l25_ch6,
+    l25_complete
+  ],
+  26: [
+    l26_overview,
+    l26_ch1,
+    l26_ch2,
+    l26_ch3,
+    l26_ch4,
+    l26_ch5,
+    l26_ch6,
+    l26_ch7,
+    l26_ch8,
+    l26_ch9,
+    l26_ch10,
+    l26_ch11,
+    l26_ch12,
+    l26_ch13,
+    l26_ch14,
+    l26_complete
+  ],
+  27: [
+    l27_overview,
+    l27_ch1,
+    l27_ch2,
+    l27_ch3,
+    l27_ch4,
+    l27_ch5,
+    l27_ch6,
+    l27_ch7,
+    l27_ch8,
+    l27_ch9,
+    l27_ch10,
+    l27_ch11,
+    l27_ch12,
+    l27_complete
+  ],
+  28: [
+    l28_overview,
+    l28_ch1,
+    l28_ch2,
+    l28_ch3,
+    l28_ch4,
+    l28_ch5,
+    l28_ch6,
+    l28_ch7,
+    l28_ch8,
+    l28_ch9,
+    l28_ch10,
+    l28_ch11,
+    l28_complete
   ]
 }

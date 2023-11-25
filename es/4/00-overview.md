@@ -2,6 +2,8 @@
 title: Sistema de Batalla Zombie
 header: "Lesson 4: Zombie Battle System"
 roadmap: roadmap4.jpg
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Ha llegado el momento, humano...
