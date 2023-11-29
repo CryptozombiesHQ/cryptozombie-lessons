@@ -1,9 +1,10 @@
 ---
 title: Lesson Overview
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
 skipCheckAnswer: true
+requireLogin: true
 material:
   saveZombie: false
   zombieResult:
@@ -14,9 +15,9 @@ material:
 
 In Lesson 1, you're going to build a "Zombie Factory" to build an army of zombies.
 
-* Our factory will maintain a database of all zombies in our army
-* Our factory will have a function for creating new zombies
-* Each zombie will have a random and unique appearance
+- Our factory will maintain a database of all zombies in our army
+- Our factory will have a function for creating new zombies
+- Each zombie will have a random and unique appearance
 
 In later lessons, we'll add more functionality, like giving zombies the ability to attack humans or other zombies! But before we get there, we have to add the basic functionality of creating new zombies.
 
@@ -24,8 +25,9 @@ In later lessons, we'll add more functionality, like giving zombies the ability 
 
 The zombie's appearance will be based on its "Zombie DNA". Zombie DNA is simple — it's a 16-digit integer, like:
 
-    8356281049284737
-    
+```
+8356281049284737
+```
 
 Just like real DNA, different parts of this number will map to different traits. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
 
