@@ -1,65 +1,77 @@
 ---
 title: Arrays
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity >=0.5.0 <0.6.0;
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
 
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
-      struct Zombie {
-      string name;
-      uint dna;
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          // empieza aquí
+
       }
-
-      // start here
-
-      }
-    answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+    answer: |
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
       }
 ---
 
-Cuando quieres tener una colección de algo, puedes usar un ***array***. Hay dos tipos de arrays en Solidity: arrays ***fijos*** y arrays ***dinámicos***:
+Cuando quieres tener una colección de algo, puedes usar un **_array_**. Hay dos tipos de arrays en Solidity: arrays **_fijos_** y arrays **_dinámicos_**:
 
-    // Array con un numero fijo de 2 elementos:
-    uint[2] fixedArray;
-    // otro array fijo que contiene 5 cadenas (strings):
-    string[5] stringArray;
-    // un array dinamico que no tiene tamaño fijo y puede seguir creciendo:
-    uint[] dynamicArray;
-    
+```
+// Un Array con una longitud fija de 2 elementos:
+uint[2] fixedArray;
+// otro Array fijo, con longitud de 5 elementos:
+string[5] stringArray;
+// un Array dinámico, sin longitud fija que puede seguir creciendo:
+uint[] dynamicArray;
+```
 
-Tú también puedes crear un array de ***structs*** (estructuras). Usando los capítulos previos `Person` struct:
+También puedes crear arrays de **_estructuras_**. Si usásemos la estructura `Person` del capítulo anterior:
 
-    Person[] people; // Array dinámico, podemos seguir añadiéndolo
-    
+```
+Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
+```
 
-Recuerdas que las variables de estado están guardadas permanentemente en la Blockchain? Entonces al crear un array dinámico de estructuras como este, puede ser muy útil para guardar datos estructurados en tu contrato, a manera de una base de datos.
+¿Recuerdas que las variables de estado quedan guardadas permanentemente en la blockchain? Así que crear un array de estructuras puede ser muy útil para guardar datos estructurados en tu contrato, como una base de datos.
 
 ## Arrays Públicos
 
-Tú puedes declarar un array como `public`, y Solidity automáticamente creará un método ***getter*** para ello. La sintaxis se parecería a esto:
+Puedes declarar un array como `público`, y Solidity creará automaticamente una función **_getter_** para acceder a él. La sintaxis es así:
 
-    Person[] public people;
-    
+```
+Person[] public people;
+```
 
-Otros contractos serían capaces de leer este array pero no escribirlo. Éste es un patrón útil para almacenar datos `´ublicos en tu contrato.
+Otros contratos entonces podrán leer (pero no escribir) de este array. Es un patrón de uso muy útil para guardar datos públicos en tu contrato.
 
-# Vamos a probarlo
+# Put it to the test
 
-Vamos a querer almacenar un ejército de zombies en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombies a otras aplicaciones, por lo que querremos que sea público.
+Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras applicaciones, así que lo queremos público:
 
-1. Crea un array publico de `Zombie` ***structs***, y llámalo `zombies`.
+1. Crea un array público de **_estructuras_** `Zombie` y llámalo `zombies`.
