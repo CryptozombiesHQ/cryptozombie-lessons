@@ -1,37 +1,40 @@
 ---
-title: Deploying to TRON
-header: Deploying to TRON
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
-path: tron
+path: multiversx
 publishedOn: Cryptozombies
 ---
 
-<img src="ASSET_PATH/static/image/lesson-20/tron-decentralize-the-web.png" alt="Decentralize the Web" height="150" width="469">
-
 Welcome, CryptoZombie!
 
-Now that you've got a bit of experience under your belt, we're going to deep dive into the blockchain ecosystem by teaching you how to deploy a smart contract to TRON.
+In this tutorial, you'll learn how to deploy a smart contract to MultiversX, a sharded smart contract execution platform with a PoS consensus mechanism. Wondering why MultiversX is worth exploring? Let's go through its advantages over other blockchains and VMs:
 
-But why would you want to deploy to TRON?🧐
+- Performance: With a current throughput of 15,000 TPS, 6s block time, and $0.001 transaction cost, MultiversX significantly outperforms many other blockchains. In testnet, it even reached 263,000 TPS! Its Adaptive State Sharding architecture allows it to scale beyond 100,000 TPS as the network grows.
 
-To answer this, let's take a look at what TRON has to offer compared to other blockchains.
+- Developer-friendly: For a smooth coding experience, developers have the MultiversX IDE at their disposal, as well as a Rust framework with a debugger, and royalties with 30% of the gas paid for the smart contract execution returned to authors. This creates a seamless development experience and incentivizes high-quality smart contract creation.
 
-First, TRON uses the DPoS consensus algorithm which enables a maximum of 2000 transactions per second.
+- MultiversX WASM VM: This fast and secure virtual machine executes smart contracts written in any programming language that can compile to WebAssembly, allowing for broader language support and greater flexibility.
 
-Second, transactions are cheaper compared to Ethereum.
+- High-performant and ultra-safe Rust framework: Rust is known to be a low-level multi-paradigm programming language featuring the same architecture as a computer processor, the reason why it is designed for scripting high-performance and machine-efficient code. The MultiversX framework provides super easy ways to design advanced, relatively low-sized smart contracts while at the same time, keeping the gas costs low.
 
-Also, the team developed a lightweight Turing-complete virtual machine named TVM ("TRON Virtual Machine") that reduces resource consumption and improves system performance.
+MultiversX's innovative Adaptive State Sharding and Secure Proof of Stake consensus mechanism make it a great platform for deploying your CryptoZombies smart contract. By offering scalability, high performance, and developer-friendly tools, MultiversX can provide the ideal environment for your smart contract deployment.
 
-What is a Turing-complete virtual machine, you ask?
+Now that you're familiar with the exciting possibilities of MultiversX, let's get started with deploying your CryptoZombies smart contract on this groundbreaking platform!
 
-A virtual machine creates a level of abstraction between your code and the computer than runs it. This improves portability, and makes sure that applications are separated from their host. A Turing-complete virtual machine is a virtual machine that you can use to perform virtually any task as long as it has enough time and processing power.
+## Installing mxpy
 
-First things first. If you're new to Cryptozombies, it's highly recommended that you go over the first six lessons before starting this one. Also, if you are not comfortable with JavaScript, consider going through a tutorial elsewhere before starting this lesson.
+Before starting this course, it is recommended that you install our CLI tool named **mxpy** . Also, please make sure you have a working **Python 3** environment:
 
-So you've worked your way through our previous lessons?
+- **3.8** or later on Linux and MacOS
 
-Awesome! That means you're ready to deploy your smart contract💪🏻.
+In order to install **mxpy** using the `mxpy-up` installation script, run the following commands in a terminal:
 
-Although you’ll be deploying the `ZombieFactory` smart contract you've written in the previous lessons, the steps you’ll learn can be used to deploy your own smart contracts.
+```
+wget -O mxpy-up.py https://raw.githubusercontent.com/multiversx/mx-sdk-py-cli/main/mxpy-up.py
+python3 mxpy-up.py
+```
 
-That being said, do you want to get access to much speedier and cheaper transactions? If so, read on...
+The command above will install **mxpy**. Make sure you follow the instructions provided by the installer.
+
+For further information please make sure to check https\://docs.multiversx.com/sdk-and-tools/sdk-py/installing-mxpy/
