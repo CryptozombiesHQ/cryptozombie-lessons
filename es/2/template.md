@@ -1,21 +1,20 @@
 ---
-title: Tipos de Datos
+title: Tipo de Datos
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
-    0: |
-
-    1: >
-
+    startingCode: ""
+    answer: ""
 ---
 
 El código de Solidity está encapsulado en contratos. Un contrato es básicamente...
 
-    contract HolaMundo
-    
-    
+```
+contract HelloWorld
 
-# Vamos a probarlo
+```
+
+# Put it to the test
