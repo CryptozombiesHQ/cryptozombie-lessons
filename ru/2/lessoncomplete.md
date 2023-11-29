@@ -7,23 +7,21 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations, you've reached the end of our wild journey into the world of smart contract development in Neo! Give yourself a round of applause and a big high-five. You are now a certified Neo Smart Contract Superstar!
+Congratulations, you've made it to the end of our Node.js CLI Mastery course for Neo Name Service! Give yourself a pat on the back and a well-deserved round of applause. You are now a certified CLI ninja, ready to conquer the blockchain world with your command-line superpowers!
 
-Thank you for joining us on this fantastic journey. It's been a blast, and we hope you had as much fun as we did.
+But before we bid you farewell, let's take a moment to reflect on our incredible journey together. We've laughed, we've learned, and we've written more command-line commands than we can count. Who knew that a CLI-based client could be so much fun?!
 
-Are you hungry for more blockchain adventures? Ready to unleash your command-line prowess and take your skills to the next level? Then join us for the next thrilling lesson in our Neo Smart Contract Development series: "CLI Mastery - Unleash the Power of Neo Name Service!"
+We hope you've had as much fun as we did, and we look forward to seeing you continue your CLI adventures in the future. Until then, stay curious, keep coding, and remember: the command line is where the real magic happens!
 
-In this exciting lesson, we'll dive deep into the command line, where true blockchain heroes are born. Learn how to wield Node.js like a pro, build a powerful CLI-based, and interact with the Neo Name Service in ways you've never imagined!
+Farewell, fellow CLI maestro. May your code always run smoothly, and may the Neo Name Service be forever in your command!
 
-Don't miss out on the opportunity to become a CLI ninja, armed with the knowledge and skills to command the blockchain with a single line of code.
+## Register Your Favorite NNS Name
 
-## Further Your Learning
+Feeling adventurous and want to test your creations without real assets on the line? No problem! Take advantage of the test environment on the <a href="https://testnet.neo.link" target="_blank">NNS Testnet</a>.
 
-To continue your blockchain journey and explore more about NNS, check out these valuable resources:
+Want to register your favorite name on the Neo Mainnet? Head over to the  <a href="https://neo.link" target="_blank">Neo Name Service</a> page and let the world know who you are!
 
-- **NNS GitHub Repo**: Explore the <a href="https://github.com/neo-project/non-native-contracts/tree/master/src/NameService" target="_blank">NNS GitHub repository</a> and discover the magic behind the Neo Name Service!
-
-- NNS API Docs: Want to interact with NNS programmatically? Check out the NNS API documentation for detailed information on endpoints and functionalities. See the <a href="https://docs.neo.link/reference/api-reference" target="_blank">NNS API Docs</a>.
+Whether you're registering your name on the Mainnet or playing with ideas on the Testnet, your journey as a blockchain pioneer is just beginning. So go ahead, make your mark, and let your creativity shine in the decentralized world of Neo! Happy naming and happy coding!
 
 ## In Need of Help?
 
