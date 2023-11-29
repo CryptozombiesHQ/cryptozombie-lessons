@@ -1,16 +1,23 @@
 ---
-title: Advanced zkSync Concepts
-header: Advanced zkSync Concepts
+title: Data Feeds and Computation
+header: Data Feeds and Computation
+roadmap: roadmap.jpg
+path: chainlink
 publishedOn: Cryptozombies
-path: beyond_ethereum
 ---
 
-Welcome to the second part of our series about the zkSync protocol. This lesson picks up where we left off last time, and we're going to look at how to deposit, transfer, and withdraw ERC20 tokens.
+<img src="ASSET_PATH/static/image/lesson-19/chainlink_logo.svg" alt="Chainlink Logo" height="150" width="469">
 
-You need to know the basics of JavaScript before starting this lesson. Let's take the following example: `console.log(false === '0')`
+You just keep getting more impressive by the second, but how will you fare when we look to combine the **real-world** and all of its changes and information with our beloved zombies?
 
-If this snippet gets executed, what will be the output?
+In this lesson, we are going to go over **Chainlink** and **oracles**.
 
-If you answered `false`, then you’re set!
+<u><a href="https://betterprogramming.pub/what-is-a-blockchain-oracle-f5ccab8dbd72" target="_blank">Blockchain Oracles</a> </u>are devices that connect our smart contracts and zombies with data and computation from the real world, such as <u><a href="https://data.chain.link/" target="_blank">pricing data on currencies</a></u>, <a href="https://docs.chain.link/docs/get-a-random-number/" style="color: unset" target="_blank">random number generators</a>, and  <a href="https://docs.chain.link/docs/make-a-http-get-request/" style="color: unset" target="_blank">any other data we can think of</a>. Blockchains can't interact with the outside world, as they are intentionally isolated and deterministic by nature.
 
-We also strongly recommend that you complete <a href="https://cryptozombies.io/en/lesson/17" >Lesson 17</a> before starting this one.
+So all we have to do, is trust one of these devices to honestly deliver our data and we are all set right?
+
+The quick answer is no. At least not until there is **_social trust_** or you come up with a **_decentralized version_**. You're doing all this work to build your smart contracts in a decentralized context, you'd basically ruin all the effort by pulling your data from a centralized version! This means, that even if you deliver the data by yourself, it's still centralized, because you are the centralized point!
+
+When your smart contracts include data or computation from oracles, they are considered <a href="https://blog.chain.link/hybrid-smart-contracts-explained/" style="color: unset" target=_new>hybrid smart contracts</a>, and many of the most successful decentralized applications include data from the external world.
+
+Are you ready to dive in? Let's learn!
