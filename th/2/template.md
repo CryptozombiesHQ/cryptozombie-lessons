@@ -1,21 +1,20 @@
 ---
 title: Data Types
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
 material:
   editor:
     language: sol
-    0: |
-
-    1: >
-
+    startingCode: ""
+    answer: ""
 ---
 
 Solidity's code is encapsulated in contracts. A contract is basically...
 
-    contract HelloWorld
-    
-    
+```
+contract HelloWorld
+
+```
 
 # Put it to the test
