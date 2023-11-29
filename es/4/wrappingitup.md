@@ -1,30 +1,30 @@
 ---
-title: Empaquetandolo todo
+title: Wrapping It Up
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
-requireLogin: verdadero
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
-  saveZombie: verdadero
+  saveZombie: true
   battleArena:
     zombie:
       lesson: 2
-    hideSliders: verdadero
+    hideSliders: true
     answer: 1
 ---
 
-¡Felicidades! Eso concluye la Lección 4.
+¡Enhorabuena! Con esto concluye la Lección 4.
 
-¡Adelante y prueba tu función de batalla a la derecha!
+¡Ahora vaya y pruebe la función de batalla a su derecha!
 
-## Reclama tu recompensa
+## Reclame su recompensa
 
-Después de ganar la batalla:
+Luego de ganar la batalla:
 
-1. Tu zombi subirá de nivel
+1. Su zombie subirá de nivel.
 
-2. Tu zombi incrementará su `winCount`
+2. El `winCount` de su zombie incrementará.
 
-3. ¡Generarás un nuevo zombi para añadirlo a tu ejército!
+3. ¡Generará un nuevo zombie para que se sume a su ejercito!
 
-Adelante y prueba la batalla, luego procede al siguiente capítulo para completar la lección.
+Adelante, pruebe la batalla, luego proceda al próximo capítulo para completar la lección.
