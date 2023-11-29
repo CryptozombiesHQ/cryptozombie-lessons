@@ -1,10 +1,9 @@
 ---
-title: '¡Lección 4 Completa!'
+title: ¡Lección 4 completada!
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - checkAnswer
+  - hints
 material:
   lessonComplete:
     answer: 1
 ---
-
