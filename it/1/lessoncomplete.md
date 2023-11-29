@@ -1,14 +1,24 @@
 ---
-title: Lesson Complete!
+title: Lesson 1 Complete!
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Congratulations! You've just finsihed implementing your decentralized oracle!
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-The lessons in this series were aimed at getting you familiarized with the concepts and the challenges behind writing an oracle. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready oracle!💪🏻
+# Next Steps
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
+
+### 1. Sign in to save your progress
+
+**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+
+### 2. Share your zombie with your friends
+
+**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
