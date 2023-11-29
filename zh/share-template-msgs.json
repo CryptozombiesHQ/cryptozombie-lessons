@@ -1,26 +1,26 @@
 {
     "1": {
-        "pageTitle": "瞅瞅我的CryptoZombie {{ .ZombieName }}!",
-        "ogDesc": "我刚完成了CryptoZombies的第1课程，来看看我的僵尸军团！"
+        "pageTitle": "Check out my CryptoZombie {{ .ZombieName }}!",
+        "ogDesc": "I just completed CryptoZombies Lesson 1 and learned the basics of coding a game on Ethereum. Take a look at the first zombie in my army! Thanks @CryptoZombiesHQ."
     },
     "2": {
-        "pageTitle": "我的僵尸{{ .ZombieName }}刚吃了个 CryptoKitty，升级了!",
-        "ogDesc": "我刚完成了CryptoZombies的第二课！还给我的僵尸大军收编了一只猫咪僵尸，你不来看看么？"
+        "pageTitle": "My CryptoZombie {{ .ZombieName }} just ate a CryptoKitty and leveled up!",
+        "ogDesc": "I just completed CryptoZombies Lesson 2, and added a reanimated CryptoKitty to my zombie army. Come take a look! Thanks @CryptoZombiesHQ."
     },
     "3": {
-        "pageTitle": "来看看我的僵尸军团!",
-        "ogDesc": "我刚完成了CryptoZombies的第三课！我的僵尸军团变大了！"
+        "pageTitle": "Check out my CryptoZombie Army!",
+        "ogDesc": "I just completed CryptoZombies Lesson 3! Thanks @CryptoZombiesHQ. My zombie army is growing."
     },
     "4": {
-        "pageTitle": "我的僵尸刚刚打败了邪恶的 IOTA 僵尸!",
-        "ogDesc": "我刚完成了CryptoZombies的第四课！还打败了邪恶的 IOTA 僵尸！ 来一起战斗吧..."
+        "pageTitle": "My CryptoZombie defeated the evil IOTA zombie!",
+        "ogDesc": "I just completed CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Come relive the battle. Thanks @CryptoZombiesHQ."
     },
     "5": {
-        "pageTitle": "我的 CryptoZombie 大军壮大了！",
-        "ogDesc": "我刚完成了 CryptoZombies 第五课， 还获得了一个10级僵尸，6不6？"
+        "pageTitle": "My CryptoZombie Army Has Grown!",
+        "ogDesc": "I just completed CryptoZombies Lesson 5, and got a level 10 H4XF13LD MORRIS 💯💯😎💯💯 zombie OMG! Thanks @CryptoZombiesHQ."
     },
     "6": {
-        "pageTitle": "瞧瞧我的 'The Phantom of Web3',我的 3.0 CryptoZombie!",
-        "ogDesc": "我刚完成了 CryptoZombies 第六课， 学会了如何使用 Web3.js, MetaMask, 以及 Infura 来打造我自己的 DApp!"
+        "pageTitle": "Check out 'The Phantom of Web3', my Level 3.0 CryptoZombie!",
+        "ogDesc": "I just completed CryptoZombies Lesson 6, and learned how to use Web3.js, MetaMask, and Infura to build my own DApp! Thanks @CryptoZombiesHQ."
     }
 }
