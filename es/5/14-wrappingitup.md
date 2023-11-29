@@ -1,40 +1,40 @@
 ---
-title: Empaquetandolo todo
+title: Wrapping It Up
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
-requireLogin: verdadero
-skipCheckAnswer: verdadero
+  - checkAnswer
+  - hints
+requireLogin: true
+skipCheckAnswer: true
 material:
-  saveZombie: falso
+  saveZombie: false
   zombieDeck:
     zombie:
       lesson: 5
-    hideSliders: verdadero
+    hideSliders: true
     answer: 1
 ---
 
 ¡Felicidades! Eso concluye la Lección 5.
 
-Como recompensa. ¡Te transferimos tu propio zombi de nivel 10 **H4XF13LD MORRIS </p> 
+¡Te transferimos tu propio zombi de nivel 10 **H4XF13LD MORRIS 💯💯😎💯💯**!
 
-(OH POR DIOS, el legendario zombi **H4XF13LD MORRIS </p> 
+(OMG, el legendario zombi **H4XF13LD MORRIS 💯💯😎💯💯** !!!!111)
 
-Ahora tienes 4 zombis en tu ejército.
+Ahora tienes 4 zombies en tu ejército.
 
-Antes de seguir adelante, tienes la opción de cambiar el nombre de cualquiera de ellos si lo deseas haciendo clic en ellos a la derecha y escribiendo un nuevo nombre. (Aunque no sé por qué querrías renombrar **H4XF13LD MORRIS </p> 
+Antes de seguir adelante, tienes la opción de cambiar el nombre de cualquiera de ellos si lo deseas haciendo clic en ellos a la derecha y escribiendo un nuevo nombre. (Aunque no sé por qué querrías renombrar **H4XF13LD MORRIS 💯💯😎💯💯**, claramente es el mejor nombre de la historia).
 
 ## Recapitulemos:
 
 En esta lección aprendimos sobre:
 
-- Tokens, el estándar ERC721, y comerciar con activos/zombis
-- Librerías y cómo usarlas
-- Cómo prevenir desbordamientos por exceso (overflows) y por defecto (underflows) usando la librería SafeMath
-- Comentar tu código y el estándar natspec
+- Tokens, el estándar ERC721, y comerciar con activos/zombies.
+- Librerias y cómo usarlas.
+- Cómo prevenir desbordamientos por exceso (overflows) y por defecto (underflows) usando la librería SafeMath.
+- Comentar tu código y el estándar natspec.
 
-¡Esta lección concluye el código en Solidity de nuestro juego! (Por ahora — podemos añadir aún más lecciones en el futuro).
+¡Esta lección concluye el código en Solidity de nuestro juego! (Por ahora, podemos añadir aún más lecciones en el futuro).
 
-En las próximas 2 lecciones, vamos a ver cómo desplegar sus contratos e interactuar con ellos usando ***web3.js*** (para que pueda construir un front-end para su DApp).
+En las próximas 2 lecciones, vamos a ver cómo desplegar sus contratos e interactuar con ellos usando _**web3.js**_ (para que pueda construir un front-end para su DApp).
 
-Continúa y renombra cualquiera de tus zombis si lo deseas, luego pasa al siguiente capítulo para completar la lección.
+Continúa y renombra cualquiera de tus zombies si lo deseas, luego pasa al siguiente capítulo para completar la lección.
