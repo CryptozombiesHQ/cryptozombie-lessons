@@ -1,17 +1,18 @@
 ---
-title: "Contratos"
+title: Contratos
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity //1. Coloca la versión de solidity aquí
+      pragma solidity //1. Poner la versión de Solidity aquí
 
       //2. Crear el contrato aquí
-    answer: >
-      pragma solidity >=0.5.0 <0.6.0;
+    answer: |
+      pragma solidity ^0.4.25;
 
       contract ZombieFactory {
       }
@@ -19,36 +20,39 @@ material:
 
 Empecemos con lo más fundamental:
 
-El código Solidity está encapsulado en **contratos**. Un `contract` (contrato) es el bloque de construcción fundamental de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
+El código Solidity está encapsulado en **contratos**. Un `contrato` es el bloque de construcción más básico de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
 
-Un contrato vacío llamado `HelloWorld` se asemejaría a esto:
+Un contrato vacio llamado `HolaMundo` se parecería a esto:
 
-    contract HelloWorld {
-    
-    }
-    
+```
+contract HolaMundo {
+
+}
+```
 
 ## Versión Pragma
 
-Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar en tu código.
+Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar con tu código.
 
-For the scope of this tutorial, we'll want to be able to compile our smart contracts with any compiler version in the range of 0.5.0 (inclusive) to 0.6.0 (exclusive). It looks like this: `pragma solidity >=0.5.0 <0.6.0;`.
+For the scope of this tutorial, we'll want to be able to compile our smart contracts with any compiler version in the range of 0.5.0 (inclusive) to 0.6.0 (exclusive).
+Esta declaración se asemeja a esto: `pragma solidity ^0.4.25;` (para usar la última versión del compilador de Solidity actual, la 0.4.25).
 
 Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
 
-    pragma solidity >=0.5.0 <0.6.0;
-    
-    contract HelloWorld {
-    
-    }
-    
+```
+pragma solidity ^0.4.25;
 
-# Vamos a probarlo
+contract HolaMundo {
 
-Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory`.
+}
+```
 
-1. In the box to the right, make it so our contract uses solidity version `>=0.5.0 <0.6.0`.
+# Put it to the test
 
-2. Crea un contrato vacío llamado `ZombieFactory`.
+Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory` (Fábrica de Zombis).
+
+1. En la caja de la derecha, haz lo necesario para que el contrato use la versión de Solidity `0.4.25`.
+
+2. Crea un contrato vacio que se llame `ZombieFactory`.
 
 Cuando hayas terminado, haz clic en "comprobar respuesta" abajo. Si te quedas atascado, haz clic en "pistas".
