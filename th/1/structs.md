@@ -1,8 +1,9 @@
 ---
 title: Structs
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
@@ -11,29 +12,37 @@ material:
 
       contract ZombieFactory {
 
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
-      // start here
+          // start here
 
       }
-    answer: >
+    answer: |
       pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
       }
 ---
 
-Sometimes you need a more complex data type. For this, Solidity provides ***structs***:
+Sometimes you need a more complex data type. For this, Solidity provides **_structs_**:
 
-    struct Person {
-      uint age;
-      string name;
-    }
-    
-    
+```
+struct Person {
+  uint age;
+  string name;
+}
+
+```
 
 Structs allow you to create more complicated data types that have multiple properties.
 
