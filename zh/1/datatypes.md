@@ -1,8 +1,9 @@
 ---
 title: State Variables & Integers
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
@@ -11,28 +12,31 @@ material:
 
       contract ZombieFactory {
 
-      //start here
+          //start here
 
       }
-    answer: >
+    answer: |
       pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
-      uint dnaDigits = 16;
+
+          uint dnaDigits = 16;
+
       }
 ---
 
 Great job! Now that we've got a shell for our contract, let's learn about how Solidity deals with variables.
 
-***State variables*** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
+**_State variables_** are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.
 
 ##### Example:
 
-    contract Example {
-      // This will be stored permanently in the blockchain
-      uint myUnsignedInteger = 100;
-    }
-    
+```
+contract Example {
+  // This will be stored permanently in the blockchain
+  uint myUnsignedInteger = 100;
+}
+```
 
 In this example contract, we created a `uint` called `myUnsignedInteger` and set it equal to 100.
 
