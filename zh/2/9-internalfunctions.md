@@ -1,79 +1,106 @@
 ---
 title: More on Function Visibility
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      "zombiefactory.sol": |
+      zombiefactory.sol: |
         pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
-        event NewZombie(uint zombieId, string name, uint dna);
+            event NewZombie(uint zombieId, string name, uint dna);
 
-        uint dnaDigits = 16;
-        uint dnaModulus = 10 ** dnaDigits;
+            uint dnaDigits = 16;
+            uint dnaModulus = 10 ** dnaDigits;
 
-        struct Zombie {
-        string name;
-        uint dna;
+            struct Zombie {
+                string name;
+                uint dna;
+            }
+
+            Zombie[] public zombies;
+
+            mapping (uint => address) public zombieToOwner;
+            mapping (address => uint) ownerZombieCount;
+
+            // edit function definition below
+            function _createZombie(string memory _name, uint _dna) private {
+                uint id = zombies.push(Zombie(_name, _dna)) - 1;
+                zombieToOwner[id] = msg.sender;
+                ownerZombieCount[msg.sender]++;
+                emit NewZombie(id, _name, _dna);
+            }
+
+            function _generateRandomDna(string memory _str) private view returns (uint) {
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
+                return rand % dnaModulus;
+            }
+
+            function createRandomZombie(string memory _name) public {
+                require(ownerZombieCount[msg.sender] == 0);
+                uint randDna = _generateRandomDna(_name);
+                _createZombie(_name, randDna);
+            }
+
         }
-
-        Zombie[] public zombies;
-
-        mapping (uint => address) public zombieToOwner;
-        mapping (address => uint) ownerZombieCount;
-
-        // edit function definition below
-        function _createZombie(string memory _name, uint _dna) private {
-        uint id = zombies.push(Zombie(_name, _dna)) - 1;
-        zombieToOwner[id] = msg.sender;
-        ownerZombieCount[msg.sender]++;
-        emit NewZombie(id, _name, _dna);
-        }
-
-        function _generateRandomDna(string memory _str) private view returns (uint) {
-        uint rand = uint(keccak256(abi.encodePacked(_str)));
-        return rand % dnaModulus;
-        }
-
-        function createRandomZombie(string memory _name) public {
-        require(ownerZombieCount[msg.sender] == 0);
-        uint randDna = _generateRandomDna(_name);
-        _createZombie(_name, randDna);
-        }
-
-        }
-      "zombiefeeding.sol": |
+      zombiefeeding.sol: |
         pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
         contract ZombieFeeding is ZombieFactory {
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna) public {
-        require(msg.sender == zombieToOwner[_zombieId]);
-        Zombie storage myZombie = zombies[_zombieId];
-        _targetDna = _targetDna % dnaModulus;
-        uint newDna = (myZombie.dna + _targetDna) / 2;
-        _createZombie("NoName", newDna);
-        }
+          function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+            require(msg.sender == zombieToOwner[_zombieId]);
+            Zombie storage myZombie = zombies[_zombieId];
+            _targetDna = _targetDna % dnaModulus;
+            uint newDna = (myZombie.dna + _targetDna) / 2;
+            _createZombie("NoName", newDna);
+          }
 
         }
-    answer: >
+    answer: |
       pragma solidity >=0.5.0 <0.6.0;
       contract ZombieFactory {
-      event NewZombie(uint zombieId, string name, uint dna);
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
-      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
-      function _createZombie(string memory _name, uint _dna) internal { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; emit NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
-      function createRandomZombie(string memory _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
+
+          event NewZombie(uint zombieId, string name, uint dna);
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          mapping (uint => address) public zombieToOwner;
+          mapping (address => uint) ownerZombieCount;
+
+          function _createZombie(string memory _name, uint _dna) internal {
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
+              zombieToOwner[id] = msg.sender;
+              ownerZombieCount[msg.sender]++;
+              emit NewZombie(id, _name, _dna);
+          }
+
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string memory _name) public {
+              require(ownerZombieCount[msg.sender] == 0);
+              uint randDna = _generateRandomDna(_name);
+              _createZombie(_name, randDna);
+          }
+
       }
 ---
 
@@ -93,27 +120,28 @@ In addition to `public` and `private`, Solidity has two more types of visibility
 
 For declaring `internal` or `external` functions, the syntax is the same as `private` and `public`:
 
-    contract Sandwich {
-      uint private sandwichesEaten = 0;
-    
-      function eat() internal {
-        sandwichesEaten++;
-      }
-    }
-    
-    contract BLT is Sandwich {
-      uint private baconSandwichesEaten = 0;
-    
-      function eatWithBacon() public returns (string memory) {
-        baconSandwichesEaten++;
-        // We can call this here because it's internal
-        eat();
-      }
-    }
-    
+```
+contract Sandwich {
+  uint private sandwichesEaten = 0;
+
+  function eat() internal {
+    sandwichesEaten++;
+  }
+}
+
+contract BLT is Sandwich {
+  uint private baconSandwichesEaten = 0;
+
+  function eatWithBacon() public returns (string memory) {
+    baconSandwichesEaten++;
+    // We can call this here because it's internal
+    eat();
+  }
+}
+```
 
 # Put it to the test
 
 1. Change `_createZombie()` from `private` to `internal` so our other contract can access it.
-    
-    We've already focused you back to the proper tab, `zombiefactory.sol`.
+
+We've already focused you back to the proper tab, `zombiefactory.sol`.
