@@ -1,44 +1,60 @@
 ---
 title: Keccak256 and Typecasting
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
-      struct Zombie {
-      string name;
-      uint dna;
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function _createZombie(string memory _name, uint _dna) private {
+              zombies.push(Zombie(_name, _dna));
+          }
+
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              // start here
+          }
+
       }
-
-      Zombie[] public zombies;
-
-      function _createZombie(string memory _name, uint _dna) private {
-      zombies.push(Zombie(_name, _dna));
-      }
-
-      function _generateRandomDna(string memory _str) private view returns (uint) {
-      // start here
-      }
-
-      }
-    answer: >
-      pragma solidity ^0.4.25;
+    answer: |
+      pragma solidity  >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
-      function _createZombie(string memory _name, uint _dna) private { zombies.push(Zombie(_name, _dna)); }
-      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function _createZombie(string memory _name, uint _dna) private {
+              zombies.push(Zombie(_name, _dna));
+          }
+
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
+              return rand % dnaModulus;
+          }
+
       }
 ---
 
@@ -52,11 +68,12 @@ Also important, `keccak256` expects a single parameter of type `bytes`. This mea
 
 Example:
 
-    //6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
-    keccak256(abi.encodePacked("aaaab"));
-    //b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
-    keccak256(abi.encodePacked("aaaac"));
-    
+```
+//6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5
+keccak256(abi.encodePacked("aaaab"));
+//b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
+keccak256(abi.encodePacked("aaaac"));
+```
 
 As you can see, the returned values are totally different despite only a 1 character change in the input.
 
@@ -66,13 +83,14 @@ As you can see, the returned values are totally different despite only a 1 chara
 
 Sometimes you need to convert between data types. Take the following example:
 
-    uint8 a = 5;
-    uint b = 6;
-    // throws an error because a * b returns a uint, not uint8:
-    uint8 c = a * b;
-    // we have to typecast b as a uint8 to make it work:
-    uint8 c = a * uint8(b);
-    
+```
+uint8 a = 5;
+uint b = 6;
+// throws an error because a * b returns a uint, not uint8:
+uint8 c = a * b;
+// we have to typecast b as a uint8 to make it work:
+uint8 c = a * uint8(b);
+```
 
 In the above, `a * b` returns a `uint`, but we were trying to store it as a `uint8`, which could cause potential problems. By casting it as a `uint8`, it works and the compiler won't throw an error.
 
