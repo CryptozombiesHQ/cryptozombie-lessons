@@ -11,6 +11,44 @@ files:
     translation: /%two_letters_code%/5/%original_file_name%
   - source: /en/6
     translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/10
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/11
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/12
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/13
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/14
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/15
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/16
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/17
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/18
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/19
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/20
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/21
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/22
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/23
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/24
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/25
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/26
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/27
+    translation: /%two_letters_code%/6/%original_file_name%
+  - source: /en/28
+    translation: /%two_letters_code%/6/%original_file_name%
   - source: /en/*
     ignore:
       - index.ts
