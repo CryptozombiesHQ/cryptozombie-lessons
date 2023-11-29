@@ -1,19 +1,19 @@
 ---
-title: Empaquetandolo todo
+title: Wrapping It Up
 actions:
-  - 'comprobarRespuesta'
-  - 'pistas'
-requireLogin: verdadero
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
-  saveZombie: falso
+  saveZombie: false
   zombieDeck:
     zombie:
       lesson: 2
-    hideSliders: verdadero
+    hideSliders: true
     answer: 1
 ---
 
-¡Felicidades! Eso concluye la Lección 3.
+¡Felicidades! Has terminado la Lección 3.
 
 ## Recapitulemos:
 
@@ -24,9 +24,9 @@ material:
 - Ahora tenemos funciones para actualizar el nombre y el ADN del zombi una vez que llega a un cierto nivel
 - Y finalmente, ahora tenemos una función que devuelve el ejército de un usuario
 
-## Reclama tu recompensa
+## Reclama tu premio
 
-Como recompensa por completar la Lección 3, ¡ambos zombis han subido de nivel!
+Como premio por completar la Lección 3, ¡ambos zombis han subido de nivel!
 
 Y ahora que NoName (el gato-zombi que creaste en la Lección 2), ha subido a nivel 2, puedes llamar a `changeName` para darle un nombre. ¡No más NoName!
 
