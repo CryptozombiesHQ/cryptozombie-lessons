@@ -6,7 +6,7 @@ path: solidity
 publishedOn: Cryptozombies
 ---
 
-Grr... ¿No puedo frenarte, no? Tus habilidades en Solidity son formidables, humano...
+Grr... I just can't slow you down, can I? Tus habilidades en Solidity son formidables, humano...
 
 Ahora que tienes algo de experiencia programando Solidity, vamos a adentrarnos en aspectos más técnicos del desarrollo en Ethereum.
 
