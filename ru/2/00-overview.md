@@ -1,6 +1,6 @@
 ---
-title: Intro to Smart Contract Development in Neo
-header: Mastering the Neo Name Service
+title: CLI Mastery - Unleash the Power of Neo Name Service!
+header: CLI Mastery - Unleash the Power of Neo Name Service!
 roadmap: roadmap.jpg
 path: neo
 publishedOn: Cryptozombies
@@ -8,18 +8,12 @@ publishedOn: Cryptozombies
 
 <img src="ASSET_PATH/static/image/lesson-25/neo_color_light.png" alt="Neo Logo" style="width: 40%; height: 40%">
 
-Neo is a powerful and innovative blockchain platform that is revolutionizing the way decentralized applications (dApps) are built and operated.
+Welcome to a wild and adventurous journey into the realm of Neo Name Service (NNS) and Node.js! Buckle up and get ready to embark on a thrilling course that combines blockchain magic with command-line wizardry. Get ready to build your very own CLI-based client for Neo Name Service using the awesome powers of Node.js!
 
-So, what makes NEO stand out from the crowd? Firstly, NEO is designed to be highly scalable, capable of handling a vast number of transactions per second. This scalability is crucial for real-world adoption and ensures a seamless user experience even during periods of high network activity.
+In this lesson, we'll dive headfirst into the world of NNS, where you'll discover the secret realm of naming assets on the Neo blockchain. But hold on tight, because we won't be satisfied with just scratching the surface. Oh no, we're going deep! We won't be building just any ordinary web-based app. Nope! We're taking it to the next level with a CLI-based client. Why? Because who needs fancy buttons and pretty graphics when you can rock the command line like a true hacker?!
 
-Additionally, NEO takes a proactive approach to compliance and regulation, making it an ideal platform for businesses and enterprises looking to leverage blockchain technology. Its compliance-oriented architecture facilitates the integration of traditional legal frameworks, enabling smart contracts and dApps to coexist harmoniously with existing systems.
+Through this action-packed journey, you'll learn how to harness the power of Node.js to interact with the Neo Name Service in the most badass way possible. From querying domain information to registering new domains, you'll be unleashing commands like a Neo ninja!
 
-NEO also supports multiple programming languages, including widely-used ones like C#, Java, and Python, making it accessible to a broader range of developers. This versatility enables developers to leverage their existing skills and knowledge, reducing the learning curve and increasing productivity.
+So, if you're ready to join this epic adventure, grab your keyboard and let's dive headfirst into the captivating world of Neo Name Service!
 
-Furthermore, NEO has a robust ecosystem that encompasses a range of tools, libraries, and frameworks. Developers can take advantage of the neon-js JavaScript library, among others, to streamline the development process and create powerful dApps with ease.
-
-In this course, we'll dive deep into the NEO Name Service ("Neo NS), a distributed, open, and extensible naming system based on the Neo blockchain. It maps human-readable names to various complex data types, such as IP address, domain aliases, content hash, and so forth.
-
-This course is divided into two parts. The first part will teach you general aspects of smart contract development in Neo by writing a smart contract in C# that interacts with the NEO Name Service. The second part will focus on building a CLI-based client in Node.js.
-
-Get ready to unleash your creativity, as we guide you through hands-on exercises and practical examples to help you harness the full potential of the Neo blockchain!💪🏻
+Get ready to impress your friends and become the ultimate CLI hero!
