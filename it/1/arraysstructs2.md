@@ -1,8 +1,9 @@
 ---
-title: Lavorando con Structs e Arrays
+title: Working With Structs and Arrays
 actions:
-  - 'controllaRisposta'
-  - 'suggerimenti'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
@@ -11,70 +12,85 @@ material:
 
       contract ZombieFactory {
 
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
-      struct Zombie {
-      string name;
-      uint dna;
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function createZombie (string memory _name, uint _dna) public {
+              // start here
+          }
+
       }
-
-      Zombie[] public zombies;
-
-      function createZombie (string memory _name, uint _dna) public {
-      // start here
-      }
-
-      }
-    answer: >
+    answer: |
       pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
-      function createZombie (string memory _name, uint _dna) public { zombies.push(Zombie(_name, _dna)); }
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          function createZombie (string memory _name, uint _dna) public {
+              zombies.push(Zombie(_name, _dna));
+          }
+
       }
 ---
 
-### Creazione di nuove Structs
+### Creating New Structs
 
-Ricordi la nostra struct di `Persona` nell' esempio precedente?
+Remember our `Person` struct in the previous example?
 
-    struct Person {
-      uint age;
-      string name;
-    }
-    
-    Person[] public people;
-    
+```
+struct Person {
+  uint age;
+  string name;
+}
 
-Adesso andremo a imparare come creare una nuova `Persona` e aggiungerla all' array delle nostre `persone`.
+Person[] public people;
+```
 
-    // creare una Nuova Persona:
-    Person satoshi = Person(172, "Satoshi");
-    
-    // Aggiungere quella persona all' Array:
-    people.push(satoshi);
-    
+Now we're going to learn how to create new `Person`s and add them to our `people` array.
 
-Possiamo inoltre combinare questi elementi insieme ed eseguirli in una sola riga di codice per mantenere le cose pulite:
+```
+// create a New Person:
+Person satoshi = Person(172, "Satoshi");
 
-    people.push(Person(16, "Vitalik"));
-    
+// Add that person to the Array:
+people.push(satoshi);
+```
 
-Nota che `array.push()` aggiunge qualcosa alla **fine** dell' array, quindi gli elementi rimangono nell'ordine in cui li abbiamo aggiunti. Come nel seguente esempio:
+We can also combine these together and do them in one line of code to keep things clean:
 
-    uint[] numbers;
-    numbers.push(5);
-    numbers.push(10);
-    numbers.push(15);
-    // i numeri sono ora equivalenti a [5, 10, 15]
-    
+```
+people.push(Person(16, "Vitalik"));
+```
 
-# Facciamo un test
+Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
 
-Creiamo la nostra funzione createZombie in modo che faccia qualcosa!
+```
+uint[] numbers;
+numbers.push(5);
+numbers.push(10);
+numbers.push(15);
+// numbers is now equal to [5, 10, 15]
+```
 
-1. Compila il corpo della funzione in modo da creare un nuovo `Zombie`, e aggiugilo all' array `zombies`. Il `nome` e il `dna` per il nuovo zombie dovrebbero arrivare dagli argomenti della funzione.
-2. Facciamolo in una riga di codice per mantenere le cose pulite.
+# Put it to the test
+
+Let's make our createZombie function do something!
+
+1. Fill in the function body so it creates a new `Zombie`, and adds it to the `zombies` array. The `name` and `dna` for the new Zombie should come from the function arguments.
+2. Let's do it in one line of code to keep things clean.
