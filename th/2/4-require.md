@@ -1,8 +1,9 @@
 ---
 title: Require
 actions:
-  - 'checkAnswer'
-  - 'hints'
+  - checkAnswer
+  - hints
+requireLogin: true
 material:
   editor:
     language: sol
@@ -11,52 +12,78 @@ material:
 
       contract ZombieFactory {
 
-      event NewZombie(uint zombieId, string name, uint dna);
+          event NewZombie(uint zombieId, string name, uint dna);
 
-      uint dnaDigits = 16;
-      uint dnaModulus = 10 ** dnaDigits;
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
 
-      struct Zombie {
-      string name;
-      uint dna;
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          mapping (uint => address) public zombieToOwner;
+          mapping (address => uint) ownerZombieCount;
+
+          function _createZombie(string memory _name, uint _dna) private {
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
+              zombieToOwner[id] = msg.sender;
+              ownerZombieCount[msg.sender]++;
+              emit NewZombie(id, _name, _dna);
+          }
+
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string memory _name) public {
+              // start here
+              uint randDna = _generateRandomDna(_name);
+              _createZombie(_name, randDna);
+          }
+
       }
-
-      Zombie[] public zombies;
-
-      mapping (uint => address) public zombieToOwner;
-      mapping (address => uint) ownerZombieCount;
-
-      function _createZombie(string memory _name, uint _dna) private {
-      uint id = zombies.push(Zombie(_name, _dna)) - 1;
-      zombieToOwner[id] = msg.sender;
-      ownerZombieCount[msg.sender]++;
-      emit NewZombie(id, _name, _dna);
-      }
-
-      function _generateRandomDna(string memory _str) private view returns (uint) {
-      uint rand = uint(keccak256(abi.encodePacked(_str)));
-      return rand % dnaModulus;
-      }
-
-      function createRandomZombie(string memory _name) public {
-      // start here
-      uint randDna = _generateRandomDna(_name);
-      _createZombie(_name, randDna);
-      }
-
-      }
-    answer: >
+    answer: |
       pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
-      event NewZombie(uint zombieId, string name, uint dna);
-      uint dnaDigits = 16; uint dnaModulus = 10 ** dnaDigits;
-      struct Zombie { string name; uint dna; }
-      Zombie[] public zombies;
-      mapping (uint => address) public zombieToOwner; mapping (address => uint) ownerZombieCount;
-      function _createZombie(string memory _name, uint _dna) private { uint id = zombies.push(Zombie(_name, _dna)) - 1; zombieToOwner[id] = msg.sender; ownerZombieCount[msg.sender]++; emit NewZombie(id, _name, _dna); }
-      function _generateRandomDna(string memory _str) private view returns (uint) { uint rand = uint(keccak256(abi.encodePacked(_str))); return rand % dnaModulus; }
-      function createRandomZombie(string memory _name) public { require(ownerZombieCount[msg.sender] == 0); uint randDna = _generateRandomDna(_name); _createZombie(_name, randDna); }
+
+          event NewZombie(uint zombieId, string name, uint dna);
+
+          uint dnaDigits = 16;
+          uint dnaModulus = 10 ** dnaDigits;
+
+          struct Zombie {
+              string name;
+              uint dna;
+          }
+
+          Zombie[] public zombies;
+
+          mapping (uint => address) public zombieToOwner;
+          mapping (address => uint) ownerZombieCount;
+
+          function _createZombie(string memory _name, uint _dna) private {
+              uint id = zombies.push(Zombie(_name, _dna)) - 1;
+              zombieToOwner[id] = msg.sender;
+              ownerZombieCount[msg.sender]++;
+              emit NewZombie(id, _name, _dna);
+          }
+
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
+              return rand % dnaModulus;
+          }
+
+          function createRandomZombie(string memory _name) public {
+              require(ownerZombieCount[msg.sender] == 0);
+              uint randDna = _generateRandomDna(_name);
+              _createZombie(_name, randDna);
+          }
+
       }
 ---
 
@@ -68,15 +95,16 @@ How can we make it so this function can only be called once per player?
 
 For that we use `require`. `require` makes it so that the function will throw an error and stop executing if some condition is not true:
 
-    function sayHiToVitalik(string memory _name) public returns (string memory) {
-      // Compares if _name equals "Vitalik". Throws an error and exits if not true.
-      // (Side note: Solidity doesn't have native string comparison, so we
-      // compare their keccak256 hashes to see if the strings are equal)
-      require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
-      // If it's true, proceed with the function:
-      return "Hi!";
-    }
-    
+```
+function sayHiToVitalik(string memory _name) public returns (string memory) {
+  // Compares if _name equals "Vitalik". Throws an error and exits if not true.
+  // (Side note: Solidity doesn't have native string comparison, so we
+  // compare their keccak256 hashes to see if the strings are equal)
+  require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
+  // If it's true, proceed with the function:
+  return "Hi!";
+}
+```
 
 If you call this function with `sayHiToVitalik("Vitalik")`, it will return "Hi!". If you call it with any other input, it will throw an error and not execute.
 
