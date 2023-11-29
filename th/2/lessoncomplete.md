@@ -1,16 +1,17 @@
 ---
-title: Lesson Complete!
+title: Lesson 1 Complete!
 actions:
   - checkAnswer
   - hints
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Awesome, you've mastered the art of deploying smart contracts to TRON!👏🏻👏🏻👏🏻
+Congratulations! You have completed the first lesson and you have created the first zombie in your army.
 
-Remember, deploying to TRON brings you faster and cheaper transactions which make it the perfect choice for building the decentralized web.
+# Next Steps
 
-Note that, to make this lesson easier to understand, we've made several decisions that simplified things a bit and omitted some important steps like testing.
+This is just the beginning. The next step awaits you, where you will learn more complex MultiversX framework concepts allowing user interaction with the zombies.
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://t.me/MultiversXDevelopers" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
