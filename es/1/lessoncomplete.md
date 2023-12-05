@@ -1,20 +1,24 @@
 ---
-title: Lesson Complete!
+title: ¡Lección 1 completada!
 actions:
   - checkAnswer
   - hints
 requireLogin: true
 material:
-  lessonComplete: 1
+  lessonComplete:
+    answer: 1
 ---
 
-Congratulations, you’ve made it to the end!
+¡Felicidades! You have completed lesson 1, and you have created the first zombie in your army.
 
-In this lesson, you started exploring how you can build and interact with a centralized oracle by writing two simple smart contracts.
+# Next Steps
 
-In the next lesson, we'll put together the missing pieces by implementing:
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-- The JavaScript component of the oracle. This fetches the ETH price from the Binance public API
-- A bare-bones client that ties everything together.
+### 1. Sign in to save your progress
 
-Until then, stay tuned and happy coding!
+**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
+
+### 2. Share your zombie with your friends
+
+**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)
