@@ -1,12 +1,12 @@
 ---
 title: Eventos
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -93,7 +93,7 @@ function add(uint _x, uint _y) public {
 }
 ```
 
-La aplicación con la interfaz de usuario podría entonces estar escuchando el evento. Una implementación en JavaScript sería así:
+El front-end de tu aplicación podría entonces escuchar el evento. Una implementación en JavaScript sería así:
 
 ```
 YourContract.IntegersAdded(function(error, result) {
@@ -101,11 +101,11 @@ YourContract.IntegersAdded(function(error, result) {
 }
 ```
 
-# Put it to the test
+# Ponlo a prueba
 
-Queremos tener un evento que nos haga saber cada vez que un zombi nuevo se ha creado, de forma que pueda mostrarnoslo.
+Queremos que nuestro front-end sepa cada vez que se creó un nuevo zombie, para que la aplicación pueda mostrarlo.
 
-1. Declara un `evento` llamado `NewZombie`. Debería pasar las variables `zombieId` (un `uint`), `name` (un `string`), y `dna` (un `uint`).
+1. Declara un `event` llamado `NewZombie`. Debería pasar las variables `zombieId` (un `uint`), `name` (un `string`), y `dna` (un `uint`).
 
 2. Modifica la función `_createZombie` para lanzar el evento `NewZombie` después de haber añadido el nuevo Zombi a nuestro array de `zombies`.
 
