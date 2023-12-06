@@ -25,9 +25,9 @@ material:
       }
 ---
 
-¡Buen trabajo! Ahora que tenemos una capa para nuestro contrato, aprendamos cómo maneja las variables Solidity.
+¡Buen trabajo! Ahora que tenemos una base para nuestro contrato, aprendamos cómo maneja las variables Solidity.
 
-Las **_Variables de estado_** se guardan permanentemente en el almacenamiento del contrato. Esto significa que se escriben en la cadena de bloques de Ethereum. Piensa en ellos como en escribir en una base de datos.
+Las **_Variables de estado_** se guardan permanentemente en el almacenamiento del contrato. Esto significa que se escriben en la cadena de bloques de Ethereum. Piensa en ellos como escribir en una base de datos.
 
 ##### Ejemplo:
 
@@ -42,11 +42,11 @@ En este contrato de ejemplo, hemos creado un `uint` llamado `myUnsignedInteger` 
 
 ## Enteros sin Signo: `uint`
 
-El tipo de dato `uint` es un entero sin signo, esto es **su valor siempre debe ser no-negativo**. Hay también un tipo de dato `int` para números enteros con signo.
+El tipo de dato `uint` es un entero sin signo, significa que **su valor siempre debe ser no-negativo**. Hay también un tipo de dato `int` para números enteros con signo.
 
 > Nota: En Solidity, `uint` es realmente un alias para `uint256`, un número entero de 256-bits. Puedes declarar uints con menos bits — `uint8`, `uint16`, `uint32`, etc.. Pero por lo general usaremos `uint` excepto en casos específicos, de los que hablaremos en otras lecciones más adelante.
 
-# Put it to the test
+# Ponlo a prueba
 
 El ADN de nuestro Zombi va a estar determinado por un número de 16 dígitos.
 
