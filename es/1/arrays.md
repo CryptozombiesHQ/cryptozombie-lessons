@@ -1,12 +1,12 @@
 ---
-title: Arrays
+title: ""
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -41,7 +41,7 @@ material:
       }
 ---
 
-Cuando quieres tener una colección de algo, puedes usar un **_array_**. Hay dos tipos de arrays en Solidity: arrays **_fijos_** y arrays **_dinámicos_**:
+Cuando quieres tener una colección de algo, puedes usar un arreglo (**_array_**). Hay dos tipos de arrays en Solidity: arrays **_fijos_** y arrays **_dinámicos_**:
 
 ```
 // Un Array con una longitud fija de 2 elementos:
@@ -52,7 +52,7 @@ string[5] stringArray;
 uint[] dynamicArray;
 ```
 
-También puedes crear arrays de **_estructuras_**. Si usáramos la estructura `Person` del capítulo anterior:
+También puedes crear un array de estructuras (**_structs_**). Si usáramos el struct `Person` del capítulo anterior:
 
 ```
 Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
@@ -65,13 +65,12 @@ Person[] people; // Array dinámico, podemos seguir añadiéndole elementos
 Puedes declarar un array como `público`, y Solidity creará automaticamente una función **_getter_** para acceder a él. La sintaxis es así:
 
 ```
-Person[] public people;
 ```
 
 Otros contratos entonces podrían leer, pero no escribir en este array. Así que este es un patrón útil para almacenar datos públicos en su contrato.
 
-# Put it to the test
+# Ponlo a prueba
 
 Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras applicaciones, así que lo queremos público:
 
-1. Crea un array público de **_estructuras_** `Zombie` y llámalo `zombies`.
+1. Crea un array público de **_structs_** `Zombie` y llámalo `zombies`.
