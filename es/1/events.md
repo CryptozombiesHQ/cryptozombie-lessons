@@ -109,4 +109,4 @@ Queremos que nuestro front-end sepa cada vez que se creó un nuevo zombie, para 
 
 2. Modifica la función `_createZombie` para lanzar el evento `NewZombie` después de haber añadido el nuevo Zombi a nuestro array de `zombies`.
 
-3. Vas a necesitar el `id` del zombi. `array.push()` devuelve un `uint` con el nuevo tañamo del array - y como el primer elemento del array tiene índice 0, `array.push() - 1` será el índice del zombi que acabamos de añadir. Guarda el resultado de `zombies.push() - 1` en un número de tipo `uint` llamado `id`, así podrás usarlo en el evento `NewZombie` de la siguiente línea.
+3. Vas a necesitar el `id` del zombi. `array.push()` devuelve un `uint` con el nuevo tamaño del array - y como el primer elemento del array tiene índice 0, `array.push() - 1` será el índice del zombi que acabamos de añadir. Guarda el resultado de `zombies.push() - 1` en un número de tipo `uint` llamado `id`, así podrás usarlo en el evento `NewZombie` de la siguiente línea.
