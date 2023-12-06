@@ -1,12 +1,12 @@
 ---
 title: Declaración de Funciones
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -55,27 +55,26 @@ function eatHamburgers(string _name, uint _amount) {
 }
 ```
 
-Esta es una función llamada `eatHamburgers` que toma dos parámetros: una cadena de texto (`string`) y un número entero sin signo `uint`. Por ahora dejamos el cuerpo de la función vacio. Note that we're specifying the function visibility as `public`. We're also providing instructions about where the `_name` variable should be stored- in `memory`. This is required for all reference types such as arrays, structs, mappings, and strings.
+Esta es una función llamada `eatHamburgers` que toma dos parámetros: una cadena de texto (`string`) y un número entero sin signo `uint`. Por ahora dejamos el cuerpo de la función vacio. Tenga en cuenta que estamos especificando la visibilidad de la función como `public`. También estamos proporcionando instrucciones sobre dónde debe almacenarse la variable `_name` en `memory`. Esto es necesario para todos los tipos de referencia, tales como arrays, strings, mappings y strings.
 
-What is a reference type you ask?
+¿Te preguntarás qué es un tipo de referencia?
 
-Vamos a probarlo
+Bueno, hay dos maneras en que se puede pasar un argumento a una función de Solidity:
 
-- By value, which means that the Solidity compiler creates a new copy of the parameter's value and passes it to your function. This allows your function to modify the value without worrying that the value of the initial parameter gets changed.
-- By reference, which means that your function is called with a... reference to the original variable. Thus, if your function changes the value of the variable it receives, the value of the original variable gets changed.
+- Por valor, lo que significa que el compilador de Solidity crea una nueva copia del valor del parámetro y lo pasa a su función. Esto permite que su función modifique el valor sin preocuparse de que el valor del parámetro inicial sea cambiado.
+- Por referencia, lo que significa que tu función es llamada con una... referencia a la variable original. Por lo tanto, si su función cambia el valor de la variable que recibe, el valor de la variable original se cambia.
 
 > Nota: la convención (no obligatoria) es llamar los parámetros de las funciones con nombres que empiezan con un subrayado (`_`) para de esta forma diferenciarlos de variables globales. Utilizaremos esta convención en este tutorial.
 
 Y llamaríamos a esta función de esta forma:
 
 ```
-eatHamburgers("vitalik", 100);
 ```
 
-# Put it to the test
+# Ponlo a prueba
 
 En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Crear una función llamada `createZombie`. Debería tomar dos parámetros **\_name** (un `string`), y **\_dna** (un número entero sin signo `uint`). Don't forget to pass the first argument by value by using the `memory` keyword
+1. Crear una función llamada `createZombie`. Debería tomar dos parámetros **\_name** (un `string`), y **\_dna** (un número entero sin signo `uint`). No te olvides de pasar el primer argumento por valor usando la palabra clave `memory`
 
 Dejemos el cuerpo de la función vacio por ahora, lo rellenaremos más tarde.
