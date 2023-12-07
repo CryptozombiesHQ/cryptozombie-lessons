@@ -1,8 +1,8 @@
 ---
 title: Más sobre Funciones
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
@@ -69,11 +69,11 @@ function sayHello() public returns (string) {
 }
 ```
 
-En Solidity, la declaración de la función contiene al final tipo de dato del valor de retorno (en nuestro caso `string`).
+En Solidez, la declaración de función contiene el tipo de valor de retorno (en este caso `string`).
 
-## Modificadores de Función
+## Modificadores de Funciones
 
-La función de arriba no cambia el estado en Solidity, esto es que no cambia ningún valor o escribe nada.
+La función anterior no cambia realmente el estado en Solidity — por ejemplo, no cambia ningún valor ni escribe nada.
 
 En este caso podríamos declararla como función **_view_**, que significa que solo puede ver los datos pero no modificarlos:
 
