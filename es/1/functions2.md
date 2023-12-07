@@ -1,12 +1,12 @@
 ---
 title: Funciones Públicas y Privadas
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -56,18 +56,13 @@ Esto no es algo que queramos que pase siempre, y de hecho puede hacer vulnerable
 Vamos a ver como se declara una función privada:
 
 ```
-uint[] numbers;
-
-function _addToArray(uint _number) private {
-  numbers.push(_number);
-}
 ```
 
 Esto significa que solo otras funciones dentro de tu contrato podrán llamar a esta función y añadir al array `numbers`.
 
 Como puedes ver, usamos la palabra clave `private` después del nombre de la función. Y de las misma forma que con los parámetros de funciones, la convención es nombrar las funciones privadas empezando con una barra baja (`_`).
 
-# Put it to the test
+# Ponlo a prueba
 
 Nuestro contrato tiene una función `createZombie` que es pública por defecto, esto significa ¡qué cualquiera podría llamarlo y crear un nuevo zombi en nuestro contrato! Vamos a hacerla privada.
 
