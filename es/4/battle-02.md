@@ -256,9 +256,9 @@ material:
 
 ¡Grandioso! Ahora descifremos la lógica de batalla
 
-Todo buen juego necesita algún nivel de aleatoriedad. Entonces ¿Cómo generamos números aleatorios en Solidity?
+Todos los buenos juegos requieren algún nivel de aleatoriedad. Entonces ¿Cómo generamos números aleatorios en Solidity?
 
-La respuesta correcta es que no puede. Bueno, al menos no puede hacerlo de una manera segura.
+La respuesta correcta aquí, es que no puedes. Bueno, al menos no puedes hacerlo de una manera segura.
 
 Veamos por qué.
 
@@ -269,7 +269,7 @@ La mejor fuente de aleatoriedad que tenemos en solidity es la función hash `kec
 Podríamos hacer algo como lo siguiente para generar un número aleatorio:
 
 ```
-// Generate a random number between 1 and 100:
+// Generar un número aleatorio entre 1 y 100:
 uint randNonce = 0;
 uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
 randNonce++;
@@ -278,7 +278,7 @@ uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
 
 Lo que esto haría es tomar la marca de tiempo de `now`, el `msg.sender`, y un `nonce` (un número que sólo se utiliza una vez, para que no ejecutemos dos veces la misma función hash con los mismos parámetros de entrada) en incremento.
 
-It would then "pack" the inputs and use `keccak` to convert them to a random hash. Luego entonces utilizaría `keccak` para convertir estas entradas a un hash aleatorio, convertir ese hash a un `uint` y luego utilizar `% 100` para tomar los últimos 2 dígitos solamente, dándonos un número totalmente aleatorio entre 0 y 99. This will give us a totally random number between 0 and 99.
+Entonces "pack" (empaquetaría) las entradas y usaría `keccak` para convertirlas en un hash aleatorio. Luego, convertiría ese hash a un `uint`, y luego usaría `% 100` para tomar solo los 2 últimos dígitos. Esto nos dará un número completamente aleatorio entre 0 y 99.
 
 ### Este método es vulnerable a ataques de nodos deshonestos
 
