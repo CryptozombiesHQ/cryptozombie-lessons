@@ -71,6 +71,6 @@ Otros contratos entonces podrían leer, pero no escribir en este array. Así que
 
 # Ponlo a prueba
 
-Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras applicaciones, así que lo queremos público:
+Vamos a guardar un ejército de zombis en nuestra aplicación. Y vamos a querer mostrar todos nuestros zombis a otras aplicaciones, así que lo queremos público:
 
 1. Crea un array público de **_structs_** `Zombie` y llámalo `zombies`.
