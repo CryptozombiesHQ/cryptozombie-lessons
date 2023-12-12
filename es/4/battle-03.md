@@ -1,5 +1,5 @@
 ---
-title: Pelea Zombie
+title: Pelea de Zombis
 actions:
   - checkAnswer
   - hints
