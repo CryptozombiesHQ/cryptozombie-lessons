@@ -1,12 +1,12 @@
 ---
-title: Keccak256 y Encasillado de tipo
+title: Keccak256 y Typecasting
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -62,9 +62,9 @@ Queremos que nuestra función `_generateRandomDna` devuelva un valor semi-aleato
 
 Ethereum incluye una función hash llamada `keccak256`, que es una versión de SHA3. Una función hash lo que hace es mapear una cadena de caracteres a un número aleatorio hexadecimal de 256-bits. Un pequeño cambio en la cadena de texto producirá un hash completamente distinto.
 
-Es muy útil para muchas cosas, pero por ahora vamos a usarlo solamente para generar un número cuasi-aleatorio.
+Es útil para muchos propósitos en Ethereum, pero por ahora solo lo vamos a usar para generación de números pseudo-aleatorios.
 
-Also important, `keccak256` expects a single parameter of type `bytes`. This means that we have to "pack" any parameters before calling `keccak256`:
+También importante, `keccak256` espera un único parámetro de tipo `bytes`. Esto significa que tenemos que "empaquetar" cualquier parámetro antes de llamar a `keccak256`:
 
 Ejemplo:
 
@@ -79,7 +79,7 @@ Como puedes ver, el valor devuelto para cada caso es completamente distinto, a p
 
 > Nota: Generar números aleatorios de forma **segura** en la cadena de bloques es algo muy difícil. El método que usamos aquí no es seguro, pero la seguridad no es nuestra prioridad para el ADN del Zombi, es suficiente para este propósito.
 
-## Typecasting
+##
 
 A veces es necesario convertir entre tipos de datos. Por ejemplo en el siguiente caso:
 
