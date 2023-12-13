@@ -1,14 +1,14 @@
 ---
-title: Web3.js
+title: ""
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   saveZombie: true
   zombieResult:
     zombie:
-      lesson: 1
+      lesson: 0
     hideSliders: true
     answer: 1
 ---
