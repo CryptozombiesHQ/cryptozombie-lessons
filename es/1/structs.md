@@ -1,12 +1,12 @@
 ---
 title: Estructuras
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -15,7 +15,7 @@ material:
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
 
-          // start here
+          // empezar aquí
 
       }
     answer: |
@@ -37,21 +37,16 @@ material:
 Algunas veces necesitas tipos de datos más complejos. Para esto Solidity proporciona **_structs_** (estructuras de datos):
 
 ```
-struct Person {
-  uint age;
-  string name;
-}
-
 ```
 
-Las estructuras te permiten crear tipos de datos más complejos que tienen varias propiedades.
+Los structs te permiten crear tipos de datos más complejos que tienen varias propiedades.
 
-> Vamos a probarlo Nota: acabamos de introductir un nuevo tipo de dato `string`, que se usan para cadenas de texto UTF-8 de longitud arbitraria. Ex. Ejemplo: `string greeting = "¡Hola Mundo!"`
+> Tenga en cuenta que acabamos de introducir un nuevo tipo, `string`. Las cadenas se utilizan para datos UTF-8 de longitud arbitraria. Ej. Ejemplo: `string greeting = "¡Hola Mundo!"`
 
-# Put it to the test
+# Ponlo a prueba
 
-En nuestra aplicación, vamos a querer crear unos cuantos zombies. Y los zombis tienen varias propiedades, así que es un caso perfecto para usar estructuras de datos `structs`
+En nuestra aplicación, vamos a querer crear unos cuantos zombies. Y los zombies tendrán múltiples propiedades, por lo que este es un caso de uso perfecto para un struct.
 
 1. Crea un `struct` llamado `Zombie`.
 
-2. Nuestra estructura `Zombie` tendrá dos propiedades: `name` (de tipo `string`), y `dna` (de tipo `uint`).
+2. Nuestro struct `Zombie` tendrá dos propiedades: `name` (de tipo `string`), y `dna` (de tipo `uint`).
