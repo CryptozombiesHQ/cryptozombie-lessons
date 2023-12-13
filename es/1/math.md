@@ -1,12 +1,12 @@
 ---
 title: Operaciones Matemáticas
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -41,8 +41,8 @@ Solidity también tiene un **_operador exponencial_** (por ejemplo "x elevado a 
 uint x = 5 ** 2; // es igual a 5^2 = 25
 ```
 
-# Put it to the test
+# Ponlo a prueba
 
-Para asegurarnos de que el ADN de nuestro Zombi tiene solo 16 dígitos, creemos un número entero sin signo igual a 10^16 y usémoslo para calcular el módulo cualquiera. That way we can later use the modulus operator `%` to shorten an integer to 16 digits.
+Para asegurarse de que el ADN de nuestro Zombie tiene sólo 16 caracteres, hagamos que otro `uint` sea igual a 10^16. De esta manera podemos utilizar más adelante el operador de módulo `%` para acortar un entero a 16 dígitos.
 
 1. Crea una variable de tipo `uint` llamada `dnaModulus`, y dale el valor de **10 elevado a `dnaDigits`**.
