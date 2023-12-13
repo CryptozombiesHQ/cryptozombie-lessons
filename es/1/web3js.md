@@ -36,13 +36,13 @@ $("#ourButton").click(function(e) {
   ZombieFactory.createRandomZombie(name)
 })
 
-// Escucha al evento de `NewZombie`, y actualiza la interfaz
+// Escucha el evento `NewZombie`, y actualiza la interfaz
 var event = ZombieFactory.NewZombie(function(error, result) {
   if (error) return
   generateZombie(result.zombieId, result.name, result.dna)
 })
 
-// Recogemos el adn del zombi y actualizamos nuestra imagen
+// Toma el adn del zombi y actualiza nuestra imagen
 function generateZombie(id, name, dna) {
   let dnaStr = String(dna)
   // rellenamos el ADN con ceros si es menor de 16 caracteres
@@ -65,13 +65,13 @@ function generateZombie(id, name, dna) {
     eyeColorChoice: parseInt(dnaStr.substring(8, 10) / 100 * 360),
     clothesColorChoice: parseInt(dnaStr.substring(10, 12) / 100 * 360),
     zombieName: name,
-    zombieDescription: "A Level 1 CryptoZombie",
+    zombieDescription: "Un CryptoZombie de nivel 1",
   }
   return zombieDetails
 }
 ```
 
-Lo que nuestro código JavaScript hace es recoger los valores generados en `zombieDetails` más arriba, y usar un poco de magia JavaScript en el navegador (usamos Vue.js) para intercambiar las imágenes y aplicar filtros CSS. Te daremos todo el código para hacer esto en una lección posterior.
+Lo que nuestro código JavaScript hace es recoger los valores generados en `zombieDetails` más arriba, y usar un poco de magia JavaScript en el navegador (usamos Vue.js) para intercambiar las imágenes y aplicar filtros CSS. Obtendrás todo el código para esto en una lección posterior.
 
 # ¡Pruébalo!
 
