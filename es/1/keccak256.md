@@ -27,7 +27,7 @@ material:
           }
 
           function _generateRandomDna(string _str) private view returns (uint) {
-              // empezar aquí
+              // empieza aquí
           }
 
       }
