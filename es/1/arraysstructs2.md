@@ -1,12 +1,12 @@
 ---
-title: Trabajando con estructuras y arrays
+title: Trabajando con Structs y Structs
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -54,12 +54,6 @@ material:
 ¿Recuerdas las estructura `Person` en el ejemplo anterior?
 
 ```
-struct Person {
-  uint age;
-  string name;
-}
-
-Person[] public people;
 ```
 
 Ahora aprenderemos como crear un nuevo `Person` y añadirlo a nuestro array `people`.
@@ -75,7 +69,6 @@ people.push(satoshi);
 También podemos combinar estas dos cosas para hacerlas en una sola línea y mantener el código limpio:
 
 ```
-people.push(Person(16, "Vitalik"));
 ```
 
 Date cuenta que `array.push()` añade algo al **final** del array, así que los elementos siguen el orden de añadido. Observa este ejemplo:
@@ -88,7 +81,7 @@ numbers.push(15);
 // el array `numbers` es ahora [5, 10, 15]
 ```
 
-# Put it to the test
+# Ponlo a prueba
 
 ¡Hagamos hacer algo a nuestra función `createZombie`!
 
