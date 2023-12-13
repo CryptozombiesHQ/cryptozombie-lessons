@@ -1,26 +1,22 @@
 ---
 title: Contratos
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
-    startingCode: |
-      pragma solidity //1. Poner la versión de Solidity aquí
+    language: ""
+    startingCode: |2
+       Introduzca la versión de Solidity aquí
 
-      //2. Crear el contrato aquí
-    answer: |
-      pragma solidity ^0.4.25;
-
-      contract ZombieFactory {
-      }
+      //2. Crea un contrato aquí
+    answer: ""
 ---
 
 Empecemos con lo más fundamental:
 
-El código Solidity está encapsulado en **contratos**. Un `contrato` es el bloque de construcción más básico de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
+El código Solidity está encapsulado en **contratos**. Un `contrato` (contract) es el bloque de construcción más básico de las aplicaciones de Ethereum — todas las variables y las funciones pertenecen a un contrato, y este será el punto de partida de todos tus proyectos.
 
 Un contrato vacio llamado `HolaMundo` se parecería a esto:
 
@@ -34,7 +30,7 @@ contract HolaMundo {
 
 Todo el código fuente en Solidity debería empezar con una declaración "version pragma" de la versión del compilador que debe de usarse para ese código. Esto previene problemas con versiones futuras del compilador que podrían no ser compatibles y fallar con tu código.
 
-For the scope of this tutorial, we'll want to be able to compile our smart contracts with any compiler version in the range of 0.5.0 (inclusive) to 0.6.0 (exclusive).
+Para el alcance de este tutorial, queremos poder compilar nuestros contratos inteligentes con cualquier versión del compilador en el rango de 0. .0 (inclusive) a 0.6.0 (exclusivo).
 Esta declaración se asemeja a esto: `pragma solidity ^0.4.25;` (para usar la última versión del compilador de Solidity actual, la 0.4.25).
 
 Poniendo todo junto, este es el esqueleto de como se empieza un contrato — lo primero que escribirás cada vez que empieces un nuevo proyecto:
@@ -47,7 +43,7 @@ contract HolaMundo {
 }
 ```
 
-# Put it to the test
+# Ponlo a prueba
 
 Para empezar a crear tu ejército de Zombis, vamos a crear un contrato base llamado `ZombieFactory` (Fábrica de Zombis).
 
