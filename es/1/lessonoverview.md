@@ -1,8 +1,8 @@
 ---
 title: Resumen de la Lección
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 skipCheckAnswer: true
 requireLogin: true
 material:
@@ -10,7 +10,7 @@ material:
   zombieResult:
     hideNameField: true
     ignoreZombieCache: true
-    answer: 1
+    answer: 0
 ---
 
 En la Lección 1 vas a construir una "Fabrica de Zombis" para poder crear tu ejército de zombis.
@@ -29,7 +29,7 @@ La apariencia del zombi esta basada en el ADN del Zombi. El ADN del Zombi es sen
 8356281049284737
 ```
 
-Al igual que el ADN de verdad, las diferentes partes de este número están ligadas a los diferentes rasgos del Zombi. The first 2 digits map to the zombie's head type, the second 2 digits to the zombie's eyes, etc.
+Al igual que el ADN de verdad, las diferentes partes de este número están ligadas a los diferentes rasgos del Zombi. Los 2 primeros dígitos corresponden al tipo de cabeza del zombi, los 2 segundos dígitos a los ojos del zombi, etc.
 
 > Nota: Para este tutorial mantendremos las cosas sencillas, y nuestros zombis solo tendrán 7 tipos distintos de cabezas (aunque podríamos tener 100 con dos dígitos). Más tarde añadiremos más tipos de cabeza para poder aumentar el número posible de variantes de zombis.
 
@@ -37,7 +37,7 @@ En el ejemplo de arriba, los dos primeros dígitos del ADN son `83`. Para mapear
 
 Usando el panel de la derecha mueve la barra del `Gen Cabeza` hasta la cabeza 7 (la que tiene el gorro de Santa Claus) para así ver que trazo corresponde con él.
 
-# Put it to the test
+# Ponlo a prueba
 
 1. Juega con las barras de desplazamiento de la derecha de la página. Experimenta para ver como diferentes valores corresponden con diferentes aspectos del zombi.
 
