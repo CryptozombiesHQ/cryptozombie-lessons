@@ -1,12 +1,12 @@
 ---
-title: Putting It Together
+title: Colocándolo junto
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode: |
       pragma solidity ^0.4.25;
 
@@ -69,7 +69,7 @@ material:
 
 Vamos a crear una función pública que tomará un parámetro, el nombre del zombi, y usará ese nombre para crear un zombi con un ADN aleatorio.
 
-# Put it to the test
+# Ponlo a prueba
 
 1. Crea una función pública (`public`) llamada `createRandomZombie`. Recibirá un parámetro llamado `_name` (una cadena de caracteres `string`). _(Nota: declara esta función como `public` de la misma forma que hiciste para declarar las anteriores funciones `private`)_
 
