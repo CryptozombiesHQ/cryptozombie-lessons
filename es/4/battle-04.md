@@ -314,13 +314,13 @@ material:
       }
 ---
 
-Quien sea que llame a nuestra función `attack` — queremos asegurarnos de que el usuario sea realmente el dueño del zombie con el que está atacando ¡Sería un problema de seguridad si se pudiera atacar con el zombie de alguien más! Vamos a probarlo
+Quienquiera que llame a nuestra función `attack` — queremos asegurarnos de que el usuario sea realmente el dueño del zombi con el que está atacando. ¡Sería un problema de seguridad si pudieras atacar con el zombi de otra persona!
 
-¿Puede pensar en cómo podríamos añadir un chequeo para ver si la persona que llama a esta función es el dueño del `_zombieId` que está pasando?
+¿Se te ocurre cómo agregaríamos una comprobación para ver si la persona que llama a esta función es el propietario del `_zombieId` que está pasando?
 
-Pienselo por un rato, vea si puede conseguir una respuesta usted mismo por su lado.
+Piénsalo un poco y ve si puedes llegar a la respuesta por tu cuenta.
 
-Tomese un momento... Revise el código de algunas de las lecciones anteriores para conseguir ideas...
+Tómate un momento... Consulta algunas de nuestras lecciones de código anteriores para obtener ideas...
 
 Más abajo la respuesta, no continúe hasta que lo haya pensado realmente.
 
