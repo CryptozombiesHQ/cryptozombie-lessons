@@ -1,5 +1,5 @@
 ---
-title: Victorias y Derrotas Zombie
+title: Victorias y Derrotas Zombi
 actions:
   - checkAnswer
   - hints
@@ -26,28 +26,19 @@ material:
               uint dna;
               uint32 level;
               uint32 readyTime;
-              // 1. Vamos a probarlo Add new properties here
-            }
-
-            Zombie[] public zombies;
-
-            mapping (uint => address) public zombieToOwner;
-            mapping (address => uint) ownerZombieCount;
-
-            function _createZombie(string _name, uint _dna) internal {
-                // 2.Modifica new zombie creation aqui:
+              // 1. Vamos a probarlo Modifica la creación de nuevo zombi aquí:
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
                 emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
+            function _generateRandomDna(string memory _str) private view returns (uint) {
                 uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -300,24 +291,24 @@ material:
       }
 ---
 
-Para nuestro juego zombie querremos contabilizar cuantas batallas han ganado o perdido nuestros zombies. De esta manera podemos mantener un "tabla de posiciones zombie" en nuestro estado de juego.
+Para nuestro juego de zombis, querremos realizar un seguimiento de cuántas batallas han ganado y perdido nuestros zombis. De esta manera podemos mantener un "tabla de posiciones zombi" en nuestro estado de juego.
 
-Podríamos almacenar estos datos de diferentes maneras en nuestro DApp — como mapeos individuales, como Estructuras de la tabla de posiciones o en la misma estructura `Zombie`.
+Podríamos almacenar estos datos de diferentes maneras en nuestra DApp — como mapeos individuales, como Estructuras de la tabla de posiciones o en la misma estructura `Zombi`.
 
-Cada uno tiene sus propios beneficios y riesgos dependiendo en cómo planeamos interactuar con los datos. En este tutorial vamos a almacenar las estadísticas en nuestra estructura `Zombie` para mayor sencillez y las llamaremos `winCount` y `lossCount`.
+Cada uno tiene sus propios beneficios y riesgos dependiendo en cómo planeamos interactuar con los datos. En este tutorial, vamos a almacenar las estadísticas en nuestra estructura `Zombi` para simplificar y las llamaremos `winCount` y `lossCount`.
 
-Así que regresemos a `zombiefactory.sol` y añadamos estas propiedades a nuestra estructura `Zombie`.
+Así que regresemos a `zombiefactory.sol`, y añadamos estas propiedades a nuestra estructura `Zombi`.
 
-## Put it to the test
+## Ponlo a prueba
 
-1. Modifique nuestra estructura `Zombie` para que tenga 2 propiedades más:
+1. Modifica nuestra estructura `Zombie` para tener 2 propiedades más:
 
 a. `winCount`, un `uint16`
 
 b. `lossCount`, también es un `uint16`
 
-> Nota: Recuerde, ya que podemos insertar `uint`s dentro de las estructuras, querremos utilizar los `uint`s más pequeños que podamos. Un `uint8` es muy pequeño, dado que 2^8 = 256 — si nuestros zombies son atacados una vez al día, podrían rebasar esto en un año. Pero 2^16 es 65536 — así que, a menos que un usuario gane o pierda todos los días por 179 años seguidos, estamos seguros.
+> Nota: Recuerde, dado que podemos empaquetar estructuras internas de `uint, queremos utilizar los `uint`más pequeños que podamos usar. Un`uint8\` es muy pequeño, dado que 2^8 = 256 — si nuestros zombis son atacados una vez al día, ellos podrían rebasar esto en un año. Pero 2^16 es 65536, por lo que, a menos que un usuario gane o pierda todos los días durante 179 años seguidos, deberíamos estar a salvo aquí.
 
-2. Ahora que tenemos nuevas propiedades en nuestra estructura `Zombie`, necesitamos cambiar nuestra definición de función en `_createZombie()`.
+2. Ahora que tenemos nuevas propiedades en nuestra estructura `Zombi`, necesitamos cambiar nuestra definición de función en `_createZombie()`.
 
-Cambie la definición de creación de zombie para generar cada zombie nuevo con `0` victorias y `0` derrotas.
+Cambia la definición de creación de zombi para crear cada nuevo zombi con `0` victorias y `0` derrotas.
