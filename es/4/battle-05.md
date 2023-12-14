@@ -31,13 +31,13 @@ material:
             levelUpFee = _fee;
           }
 
-          // 1. Modifica la siguiente funcion para que use `ownerOf`:
+          // 1. Modifica la siguiente función para que use `ownerOf`:
           function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
 
-          // 2. Haz lo mismo para la siguiente funcion:
+          // 2. Haz lo mismo para la siguiente función:
           function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].dna = _newDna;
@@ -224,10 +224,10 @@ material:
           }
 
           /**
-          * @dev Allows the current owner to relinquish control of the contract.
-          * @notice Renouncing to ownership will leave the contract without an owner.
-          * It will not be possible to call the functions with the `onlyOwner`
-          * modifier anymore.
+          * @dev Permite al actual propietario renunciar al control del contrato.
+          * @notice Renunciando a la propiedad dejará el contrato sin dueño.
+          *No será posible llamar las funciones con el `onlyOwner`
+           * modificador más.
           */
           function renounceOwnership() public onlyOwner {
             emit OwnershipTransferred(_owner, address(0));
@@ -236,7 +236,7 @@ material:
 
           /**
           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-          * @param newOwner The address to transfer ownership to.
+          * @param newOwner La dirección a la que se transferirá la propiedad.
           */
           function transferOwnership(address newOwner) public onlyOwner {
             _transferOwnership(newOwner);
@@ -244,7 +244,7 @@ material:
 
           /**
           * @dev Transfers control of the contract to a newOwner.
-          * @param newOwner The address to transfer ownership to.
+          * @param newOwner La dirección a la que se transferirá la propiedad.
           */
           function _transferOwnership(address newOwner) internal {
             require(newOwner != address(0));
@@ -303,8 +303,8 @@ material:
 
 Tenemos un par de lugares más en `zombiehelper.sol` donde necesitamos implementar nuestro nuevo `modifier` `ownerOf`.
 
-## Put it to the test
+## Ponlo a prueba
 
-1. Actualice `changeName()` para utilizar `ownerOf`
+1. Actualiza `changeName()` para utilizar `ownerOf`
 
-2. Actualice `changeDna()` para utilizar `ownerOf`
+2. Actualiza `changeDna()` para utilizar `ownerOf`
