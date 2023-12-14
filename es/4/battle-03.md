@@ -266,23 +266,23 @@ material:
       }
 ---
 
-Ahora que tenemos una fuente de aleatoriedad en nuestro contrato, podemos utilizar en nuestras batallas zombie para calcular el resultado.
+Ahora que tenemos una fuente de aleatoriedad en nuestro contrato, podemos usarla en nuestras batallas zombi para calcular el resultado.
 
-Nuestras batallas zombie funcionarán de la siguiente manera:
+Nuestras batallas zombi funcionarán de la siguiente manera:
 
-- Usted escoge a uno de sus zombies y escoge un zombie del oponente para atacar.
-- Si usted es el zombie que ataca, tendrá un 70% de oportunidad de ganar. El zombie que defiende tendrá un 30% de oportunidad de ganar.
-- Todos los zombies (atacando y defendiendo) tendrán un `winCount` y un `lossCount` que incrementará dependiendo del resultado de la batalla.
-- Si el zombie que ataca gana, sube de nivel y genera un nuevo zombie.
-- Si pierde, no ocurre nada (solamente incrementa su `lossCount`)
-- Sea que gane o que pierda, el tiempo de enfriamiento o recarga del zombie que ataca empezará a correr.
+- Escoges a uno de tus zombis y a un zombi del oponente para atacar.
+- Si tú eres el zombi que ataca, tendrás un 70% de oportunidad de ganar. El zombi que defiende tendrá un 30% de oportunidad de ganar.
+- Todos los zombis (atacando y defendiendo) tendrán un `winCount` y un `lossCount` que incrementará dependiendo del resultado de la batalla.
+- Si el zombi que ataca gana, sube de nivel y genera un nuevo zombi.
+- Si pierde, no pasa nada (solamente incrementa su `lossCount`).
+- Sea que ganes o pierdas, el tiempo de enfriamiento o recarga del zombi que ataca empezará a correr.
 
-Esto es mucha lógica a implementar así que lo haremos por partes en los siguientes capítulos.
+Esto es mucha lógica a implementar, así que lo haremos por partes en los siguientes capítulos.
 
-## Pongalo a prueba
+## Ponlo a prueba
 
-1. Dele a nuestro contrato una variable `uint` llamada `attackVictoryProbability`, y configurela como igual a `70`.
+1. Dale a nuestro contrato una variable `uint` llamada `attackVictoryProbability`, y configúrala como igual a `70`.
 
-2. Cree una función llamada `attack`. Tomará dos parametros: `_zombieId` (una `uint`) y `_targetId` (también una `uint`). Debería ser una función `external`.
+2. Crea una función llamada `attack`. Tomarás dos parámetros: `_zombieId` (una `uint`) y `_targetId` (también una `uint`). Debería ser una función `external`.
 
-Deje vacío el cuerpo de función por ahora.
+Deja vacío el cuerpo de la función por ahora.
