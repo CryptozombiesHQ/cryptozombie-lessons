@@ -1,5 +1,5 @@
 ---
-title: Eventos
+title: Eventos (Events)
 actions:
   - ""
   - ""
