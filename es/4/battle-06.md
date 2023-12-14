@@ -1,5 +1,5 @@
 ---
-title: ¡De Vuelta al Ataque!
+title: ¡Volvemos al ataque!
 actions:
   - checkAnswer
   - hints
@@ -21,9 +21,9 @@ material:
             return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
           }
 
-          // 1. Agrega el modificador aqui
+          // 1. Agrega el modificador aquí
           function attack(uint _zombieId, uint _targetId) external {
-            // 2. Define la  funcion aqui
+            // 2. Define la  función aquí
           }
         }
       zombiehelper.sol: |
@@ -272,16 +272,16 @@ material:
 
 Suficiente refactorización — regresemos a `zombieattack.sol`.
 
-Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el modificador `ownerOf` para ser utilizado.
+Vamos a continuar definiendo nuestra función `attack`, ahora que tenemos el modificador `ownerOf` para usar.
 
-## Put it to the test
+## Ponlo a prueba
 
-1. Añada el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`.
+1. Añade el modificador `ownerOf` a `attack` para asegurar que el que llame posea `_zombieId`.
 
-2. Lo primero que nuestra función debería hacer es conseguirles un puntero de `storage` a ambos zombies para poder interactuar con ellos más facilmente:
+2. Lo primero que nuestra función debe hacer es obtener un puntero de `storage` a ambos zombis para que podamos interactuar fácilmente con ellos:
 
-a. Anuncie un `Zombie storage` llamado `myZombie` y configurelo como igual a `zombies[_zombieId]`.
+a. Anuncia un `Zombie storage` llamado `myZombie` y configúralo igual a `zombies[_zombieId]`.
 
-b. Anuncie un `Zombie storage` llamado `enemyZombie` y configurelo como igual a `zombies[_targetId]`.
+b. Anuncia un `Zombie storage` llamado `enemyZombie` y configúralo igual a `zombies[_targetId]`.
 
-3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. Entonces anuncie un `uint` llamado `rand` y configurelo para que sea igual al resultado de la función `randMod` con `100` como un argumento.
+3. Vamos a utilizar un número aleatorio entre 0 y 99 para determinar el resultado de nuestra batalla. Entonces anuncia un `uint` llamado `rand` y configúralo igual al resultado de la función `randMod` con `100` como un argumento.
