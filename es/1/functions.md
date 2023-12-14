@@ -75,6 +75,6 @@ Y llamaríamos a esta función de esta forma:
 
 En nuestra aplicación, vamos a necesitar poder crear unos cuantos zombis. Creemos una función para ello.
 
-1. Crear una función llamada `createZombie`. Debería tomar dos parámetros **\_name** (un `string`), y **\_dna** (un número entero sin signo `uint`). No te olvides de pasar el primer argumento por valor usando la palabra clave `memory`
+1. Crea una función 'public' llamada `createZombie`. Debería tomar dos parámetros **\_name** (un `string`), y **\_dna** (un número entero sin signo `uint`). No te olvides de pasar el primer argumento por valor usando la palabra clave `memory`
 
 Dejemos el cuerpo de la función vacio por ahora, lo rellenaremos más tarde.
