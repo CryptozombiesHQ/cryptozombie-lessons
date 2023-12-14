@@ -326,7 +326,7 @@ Más abajo la respuesta, no continúe hasta que lo haya pensado realmente.
 
 ## La respuesta
 
-Hemos hecho este chequeo varias veces en lecciones anteriores. En `changeName()`, `changeDna()`, y `feedAndMultiply()`, utilizamos el siguiente chequeo:
+Hemos realizado esta comprobación varias veces en lecciones anteriores. En `changeName()`, `changeDna()`, y `feedAndMultiply()`, utilizamos el siguiente chequeo:
 
 ```
 require(msg.sender == zombieToOwner[_zombieId]);
@@ -334,14 +334,14 @@ require(msg.sender == zombieToOwner[_zombieId]);
 
 Esta es la misma lógica que necesitaremos para nuestra función `attack`. Ya que estamos utilizando multiples veces la misma lógica, movamos esto a su propio `modifier` para limpiar nuestro código y evitar redundancias.
 
-## Put it to the test
+## Ponlo a prueba
 
-Regresamos a `zombiefeeding.sol`, dado que este es el primer lugar dónde usamos esa lógica. Vamos a refactorizarlo en su propio `modifier`.
+Regresamos a `zombiefeeding.sol`, ya que este es el primer lugar donde usamos esa lógica. Refactoricémoslo en su propio "modificador".
 
-1. Cree un `modifier` llamado `ownerOf`. Tomará 1 argumento, `_zombieId` (un `uint`).
+1. Crea un `modifier` llamado `ownerOf`. Tomará 1 argumento, `_zombieId` (un `uint`).
 
-El cuerpo debería `require` (requerir) que `msg.sender` sea igual a `zombieToOwner[_zombieId]` y luego continuar con la función. Puede consultar `zombiehelper.sol` si no recuerda la sintaxis para un modificador.
+El cuerpo debería `require` (requerir) que `msg.sender` sea igual a `zombieToOwner[_zombieId]`, para luego continuar con la función. Puedes consultar `zombiehelper.sol` si no recuerdas la sintaxis para un modificador.
 
-2. Cambie la definición de función de `feedAndMultiply` de manera que utilice el modificador `ownerOf`.
+2. Cambia la definición de función de `feedAndMultiply` de manera que utilice el modificador `ownerOf`.
 
-3. Ahora que estamos utilizando un `modifier`, puede eliminar la línea `require(msg.sender == zombieToOwner[_zombieId]);`
+3. Ahora que estamos utilizando un `modifier`, puedes eliminar la línea `require(msg.sender == zombieToOwner[_zombieId]);`
