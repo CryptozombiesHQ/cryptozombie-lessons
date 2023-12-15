@@ -22,9 +22,9 @@ material:
             _;
           }
 
-          // 1. Crear la función withdraw aquí
+          // 1. Crea la función withdraw aquí
 
-          // 2. Crear la función setLevelUpFee aquí
+          // 2. Crea la función setLevelUpFee aquí
 
           function levelUp(uint _zombieId) external payable {
             require(msg.value == levelUpFee);
@@ -282,27 +282,28 @@ material:
       }
 ---
 
-En el capitulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre cuando lo envía?
+En el capítulo anterior, aprendimos cómo enviar Ether a un contrato. Entonces ¿Qué ocurre después que lo enviaste?
 
-Luego de enviar Ether a un contrato, este se almacena en la cuenta de Ethereum del contrato y estará atrapado ahí — a menos que añada una función para retirar el Ether del contrato
+Luego de enviar Ether a un contrato, se almacena en la cuenta Ethereum del contrato, y estará atrapado ahí — a menos que tú añadas una función para retirar el Ether del contrato.
 
-Puede escribir una función para retirar Ether del contrato de la siguiente forma:
+Puede escribir una función para retirar Ether desde el contrato de la siguiente forma:
 
 ```
 contract GetPaid is Ownable {
   function withdraw() external onlyOwner {
-    owner.transfer(this.balance);
+    address payable _owner = address(uint160(owner()));
+    _owner.transfer(address(this).balance);
   }
 }
 ```
 
-Nótese que estamos utilizando `owner` y `onlyOwner` del contrato `Ownable`, asumiendo que este fue importado.
+Ten en cuenta que estamos usando `owner()` y `onlyOwner` del contrato `Ownable`, asumiendo que fue importado.
 
-It is important to note that you cannot transfer Ether to an address unless that address is of type `address payable`. But the `_owner` variable is of type `uint160`, meaning that we must explicitly cast it to `address payable`.
+Es importante tener en cuenta que no puedes transferir Ether a una dirección a menos que esa dirección sea del tipo `address payable`. Pero la variable `_owner` es de tipo `uint160`, lo que significa que debemos convertirla explícitamente en `address payable`.
 
-Puede transferir Ether a una dirección utilizando la función `transfer` y `this.balance` devolverá el balance total almacenado en el contrato. Así que si 100 usuarios han pagado 1 Ether a nuestro contrato, `this.balance` sería igual a 100 Ether.
+Una vez que hayas convertido la dirección de `uint160` a `address payable`, puedes transferir Ether a esa dirección usando la función `transfer`, y `address(this).balance` devolverá el saldo total almacenado en el contrato. Entonces, si 100 usuarios han pagado 1 Ether a nuestro contrato,`address(this).balance` sería igual a 100 Ether.
 
-Puede utilizar `transfer` para enviar fondos a cualquier dirección de Ethereum. Por ejemplo, podría tener una función que transfiera Ether de vuelta al `msg.sender` si rebasan el precio al pagar un item.
+Puedes utilizar `transfer` para enviar fondos a cualquier dirección de Ethereum. Por ejemplo, podrías tener una función que transfiera Ether de vuelta al `msg.sender` si pagaron en exceso el precio por un ítem:
 
 ```
 uint itemFee = 0.001 ether;
