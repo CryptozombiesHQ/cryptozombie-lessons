@@ -1,5 +1,5 @@
 ---
-title: ¡Lección 4 completada!
+title: ¡Lección 4 Completada!
 actions:
   - checkAnswer
   - hints
