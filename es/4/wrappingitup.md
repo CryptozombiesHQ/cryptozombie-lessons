@@ -1,5 +1,5 @@
 ---
-title: Wrapping It Up
+title: Resumiendo
 actions:
   - checkAnswer
   - hints
@@ -13,18 +13,18 @@ material:
     answer: 1
 ---
 
-¡Enhorabuena! Con esto concluye la Lección 4.
+¡Felicidades! Con esto concluye la Lección 4.
 
-¡Ahora vaya y pruebe la función de batalla a su derecha!
+¡Adelante, prueba tu función de batalla a la derecha!
 
-## Reclame su recompensa
+## Reclama tu recompensa
 
-Luego de ganar la batalla:
+Después de ganar la batalla:
 
-1. Su zombie subirá de nivel.
+1. Tu zombi subirá de nivel
 
-2. El `winCount` de su zombie incrementará.
+2. El `winCount` de tu zombi incrementará
 
-3. ¡Generará un nuevo zombie para que se sume a su ejercito!
+3. ¡Engendrarás un nuevo zombi para agregar a tu ejército!
 
-Adelante, pruebe la batalla, luego proceda al próximo capítulo para completar la lección.
+Adelante, prueba la batalla, luego continúa con el siguiente capítulo para completar la lección.
