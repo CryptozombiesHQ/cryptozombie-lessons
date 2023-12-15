@@ -324,4 +324,4 @@ Así que es una buena idea crear una función que nos permita, como dueños del 
 
 a. Cree una función llamada `setLevelUpFee` que tome un argumento, `uint _fee`, sea `external` y utilice el modificador `onlyOwner`.
 
-b. La función debería configurar `levelUpFee` como igual a `_fee`.
+b. La función debe establecer "levelUpFee" igual a "\_fee".
