@@ -1,5 +1,5 @@
 ---
-title: Derrota Zombie 😞
+title: Derrota Zombi 😞
 actions:
   - checkAnswer
   - hints
@@ -289,28 +289,28 @@ material:
       }
 ---
 
-Ahora que hemos codificado lo que ocurre cuando su zombie gana, descifremos lo que ocurre cuando **pierde**.
+Ahora que hemos codificado lo que ocurre cuando tu zombi gana, descifremos lo que ocurre cuando **pierde**.
 
-En nuestro juego, cuando los zombies pierden su nivel no disminuye — simplemente añaden una derrota a su `lossCount` y su tiempo de enfriamiento o recarga se activa para que tengan que esperar un día antes de volver a atacar.
+En nuestro juego, cuando los zombis pierden, no disminuye su nivel — simplemente se añade una derrota a su `lossCount`, y su tiempo de enfriamiento o recarga se activa por lo que tienen que esperar un día antes de atacar nuevamente.
 
-Para implementar está lógica necesitaremos un statement `else`.
+Para implementar esta lógica necesitaremos una declaración `else`.
 
-Los statements `else` se escriben como en JavaScript y muchos otros lenguajes:
+Las declaraciones `else` se escriben como en JavaScript y muchos otros lenguajes:
 
 ```
 if (zombieCoins[msg.sender] > 100000000) {
-  // You rich!!!
+  // ¡¡¡Eres rico!!!
 } else {
-  // We require more ZombieCoins...
+  // Requerimos más ZombieCoins...
 }
 ```
 
-## Put it to the test
+## Ponlo a prueba
 
-1. Añada un statement `else`. Si nuestro zombie pierde:
+1. Añada una declaración `else`. Si nuestro zombi pierde:
 
 a. Incrementa el `lossCount` de `myZombie`.
 
 b. Incrementa el `winCount` del `enemyZombie`.
 
-c. Fuera del statement "else", ejecute la función `_triggerCooldown` en `myZombie`. De esta manera el zombie sólo puede atacar una vez al día. (Remember, `_triggerCooldown` is already run inside `feedAndMultiply`. So the zombie's cooldown will be triggered whether he wins or loses.)
+c. Ejecute la función `_triggerCooldown` en `myZombie`. De esta manera el zombi solo puede atacar una vez al día. (Recuerda, `_triggerCooldown` ya se ejecuta dentro de `feedAndMultiply`. Por lo tanto, el tiempo de reutilización del zombi se activará tanto si gana como si pierde)
