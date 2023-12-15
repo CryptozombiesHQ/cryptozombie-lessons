@@ -1,5 +1,5 @@
 ---
-title: Zombie Victory 😄
+title: Victoria Zombi
 actions:
   - checkAnswer
   - hints
