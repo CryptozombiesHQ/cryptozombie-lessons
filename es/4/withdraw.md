@@ -310,18 +310,18 @@ uint itemFee = 0.001 ether;
 msg.sender.transfer(msg.value - itemFee);
 ```
 
-O en un contrato con un comprador y un vendedor, usted podría guardar la dirección del vendedor en la memoria, luego, cuando alguien adquiera su item, transferirle la tasa pagada por el comprador: `seller.transfer(msg.value)`.
+O en un contrato con un comprador y un vendedor, podrías guardar la dirección del vendedor en la memoria, luego cuando alguien adquiera su item, transferirle la tasa pagada por el comprador: `seller.transfer(msg.value)`.
 
-Estos son algunos ejemplos de lo que hace de la programación de Ethereum algo realmente genial — puede tener mercados descentralizados como este que no son controlados por nadie.
+Estos son algunos ejemplos de lo que hace de la programación de Ethereum algo realmente genial — puedes tener mercados descentralizados como este que no son controlados por nadie.
 
-## Pongalo a prueba
+## Ponlo a prueba
 
-1. Cree una función `withdraw` en nuestro contrato, la cual debería ser idéntica al ejemplo `GetPaid` anterior.
+1. Crea una función `withdraw` en nuestro contrato, la cual debería ser idéntica al ejemplo anterior `GetPaid`.
 
-2. El precio del Ether aumentó x10 en el año pasado. Así que mientras 0.001 ether es como $1 en el momento de escribir esto, si sube x10 de nuevo, 0.001 ETH sería equivalente a $10 y nuestro juego será mucho más costoso.
+2. El precio del Ether aumentó 10x en el año pasado. Así que mientras 0.001 ether es como $1 en el momento de escribir esto, si sube 10x de nuevo, 0.001 ETH sería equivalente a $10 y nuestro juego será mucho más costoso.
 
 Así que es una buena idea crear una función que nos permita, como dueños del contrato, configurar el `levelUpFee`.
 
-a. Cree una función llamada `setLevelUpFee` que tome un argumento, `uint _fee`, sea `external` y utilice el modificador `onlyOwner`.
+a. Crea una función llamada `setLevelUpFee` que tome un argumento, `uint _fee`, sea `external` y use el modificador `onlyOwner`.
 
 b. La función debe establecer "levelUpFee" igual a "\_fee".
