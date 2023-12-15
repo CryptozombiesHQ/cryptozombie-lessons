@@ -321,12 +321,12 @@ Observe el campo `value`, donde la llamada a la función JavaScript especifica c
 
 Vamos a crear una función `payable` en nuestro juego zombi.
 
-Digamos que nuestro juego tiene una función donde los usuarios pueden pagar ETH para subir el nivel de sus zombies. El ETH será almacenado en el contrato, el cual usted posee — ¡Esto es tan solo un ejemplo de cómo podría hacer dinero en sus juego
+Digamos que nuestro juego tiene una función donde los usuarios pueden pagar ETH para subir el nivel de sus zombis. El ETH será almacenado en el contrato, el cual tú posees — ¡Esto es un simple ejemplo de cómo podrías hacer dinero en tus juegos!
 
-1. Defina un `uint` llamado `levelUpFee` y configurelo como igual a `0.001 ether`.
+1. Define un `uint` llamado `levelUpFee` y configúralo como igual a `0.001 ether`.
 
-2. Cree una función llamada `levelUp`. Esta tomará un parametro, `_zombieId`, un `uint`. Debería ser `external` y `payable`.
+2. Crea una función llamada `levelUp`. Esta tomará un parámetro, `_zombieId`, un `uint`. Debería ser `external` y `payable`.
 
 3. La función primero debería `require` (requerir) que `msg.value` sea igual a `levelUpFee`.
 
-4. Luego el `level` de este zombie debería incrementar: `zombies[_zombieId].level++`.
+4. Luego el `level` de este zombi debería incrementar: `zombies[_zombieId].level++`.
