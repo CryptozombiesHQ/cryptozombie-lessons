@@ -280,20 +280,20 @@ material:
       }
 ---
 
-Ahora que tenemos un `winCount` y  `lossCount`, podemos actualizarlos dependiendo de cuál zombie gane la pelea.
+Ahora que tenemos un `winCount` y `lossCount`, podemos actualizarlos dependiendo de cuál zombi gane la pelea.
 
-En el capítulo 6 calculamos un número aleatorio entre 0 y 100. Ahora utilicemos ese número para determinar quien gana la pelea y actualizar nuestras estadísticas apropiadamente.
+En el capítulo 6 calculamos un número aleatorio del 0 al 100. Ahora utilicemos ese número para determinar quien gana la pelea, y actualizar nuestras estadísticas apropiadamente.
 
-## Put it to the test
+## Ponlo a prueba
 
-1. Cree una declaración `if` que verifique si `rand` es **_menor o igual a_** `attackVictoryProbability`.
+1. Crea una declaración `if` que verifique si `rand` es **_menor que o igual a_** `attackVictoryProbability`.
 
-2. Si esta condición resulta verdadera ¡Nuestro zombie gana! Entonces:
+2. Si esta condición es verdadera ¡Nuestro zombi gana! Entonces:
 
 a. Incrementa el `winCount` de `myZombie`.
 
-b. Incrementa el `level` de `myZombie`. (¡¡¡Sube de nivel!!!)
+b. Incrementa el `level` de `myZombie`. (¡¡¡Subes de nivel!!!)
 
 c. Incrementa el `lossCount` del `enemyZombie`. (¡¡¡Perdedor!!! 😫 😫 😫)
 
-d. Ejecute la función `feedAndMultiply`. Revise `zombiefeeding.sol` para que vea la sintaxis para llamarlo. Para el 3er argumento (`_species`), pase la cadena de caracteres `"zombie"`. (Esto no hace nada ahora mismo, pero luego podríamos añadir un poco más de funcionalidad para generar zombies tipo "zombie-based" si lo deseamos)
+d. Ejecuta la función `feedAndMultiply`. Consulta `zombiefeeding.sol` para ver la sintaxis para llamarlo. Para el 3er argumento (`_species`), pasa la cadena de caracteres `"zombie"`. (Esto no hace nada ahora mismo, pero luego podríamos añadir más funcionalidad para generar zombis tipo "zombie-based" si lo deseamos).
