@@ -9,7 +9,7 @@ material:
     answer: 1
 ---
 
-¡Felicidades! Has completado la lección 1, y has creado el primer zombi en tu ejército.
+¡Felicidades! Has completado la lección 1, y has creado el primer zombie en tu ejército.
 
 # Próximos pasos
 
@@ -21,4 +21,4 @@ Este es solo el comienzo. Lanzaremos una nueva lección de CryptoZombies cada se
 
 ### 2. Comparte tu zombie con tus amigos
 
-**_Comparte_** tu zombie en Twitter, bla bla etc. (Necesita insertar imágenes / enlaces)
+**_Comparte_** tu zombie en X - Twitter, bla bla etc. (Necesita insertar imágenes / enlaces)
