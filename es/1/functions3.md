@@ -55,7 +55,7 @@ material:
       }
 ---
 
-En este capítulo aprenderemos sobre los **_valores de retorno_** de una función, y sobre modificadores de funciones.
+En este capítulo aprenderemos sobre los **_valores de retorno_** **(_return values_)** de una función, y sobre modificadores de funciones.
 
 ## Valores de Retorno
 
@@ -64,12 +64,12 @@ Para devolver un valor desde una función, la declaración es la siguiente:
 ```
 string greeting = "Qué tal viejo!";
 
-function sayHello() public returns (string) {
+function sayHello() public returns (string memory) {
   return greeting;
 }
 ```
 
-En Solidez, la declaración de función contiene el tipo de valor de retorno (en este caso `string`).
+En Solidity, la declaración de función contiene el tipo de valor de retorno (en este caso `string`).
 
 ## Modificadores de Funciones
 
@@ -81,9 +81,12 @@ En este caso podríamos declararla como función **_view_**, que significa que s
 function sayHello() public view returns (string) {
 ```
 
-La solidez también contiene funciones **_pure_**, lo que significa que ni siquiera estás accediendo a ningún dato en la aplicación. Considera lo siguiente:
+Solidity también contiene funciones **_pure_**, que significa que ni siquiera accedes a los datos de la aplicación. Considera lo siguiente:
 
 ```
+function _multiply(uint a, uint b) private pure returns (uint) {
+  return a * b;
+}
 ```
 
 Esta función no lee desde el estado de la aplicación - el valor devuelto depende por completo de los parámetros que le pasemos. En este caso deberíamos declarar la función como **_pure_**.
