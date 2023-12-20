@@ -1,5 +1,5 @@
 ---
-title: Trabajando con Structs y Structs
+title: Trabajando con estructuras y arrays
 actions:
   - ""
   - ""
@@ -59,14 +59,14 @@ material:
 Ahora aprenderemos como crear un nuevo `Person` y añadirlo a nuestro array `people`.
 
 ```
-// crear un nuevo `Person`
+// crea un nuevo `Person`
 Person satoshi = Person(172, "Satoshi");
 
-// añadir esta persona a nuestro array
+// añade esta persona a nuestro array
 people.push(satoshi);
 ```
 
-También podemos combinar estas dos cosas para hacerlas en una sola línea y mantener el código limpio:
+También podemos combinar estas dos cosas para hacerlas en una sola línea de código para mantenerlo limpio:
 
 ```
 ```
