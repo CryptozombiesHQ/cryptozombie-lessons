@@ -1,12 +1,12 @@
 ---
 title: ¿Qué Comen Los Zombis?
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   editor:
-    language: sol
+    language: ""
     startingCode:
       zombiefeeding.sol: |
         pragma solidity ^0.4.25;
@@ -97,13 +97,13 @@ material:
 
 ¡Es hora de alimentar a nuestros zombis! Y ¿Qué es lo que más les gusta comer?
 
-Bueno lo que pasa es que a los CryptoZombies lo que les encanta comer es...
+Bueno sucede que a los CryptoZombies les encanta comer...
 
 **¡CryptoKitties!** 😱😱😱
 
 (Sí, es enserio 😆 )
 
-Para hacer esto necesitamos leer el kittyDna del contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es blockchain genial?!
+Para hacer esto necesitamos leer el kittyDna del contrato inteligente CryptoKitties. Podemos hacer eso debido a que los datos de los CryptoKitties guardados en la blockchain son públicos. ¡¿No es genial la blockchain?!
 
 No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty. Solo vamos a _leer_ los datos de los CryptoKitties, no podemos borrarlos 😉
 
@@ -111,20 +111,9 @@ No te preocupes - nuestro juego aún no va a hacer dañor a ningún CryptoKitty.
 
 Para que nuestro contrato pueda hablar a otro contrato de la blockchain que no poseemos, necesitamos definir una **_interfaz_**.
 
-Vamos a ver un simple ejemplo. Digamos que hay un contrato en la blockchain tal que así:
+Vamos a ver un simple ejemplo. Digamos que hay un contrato en la blockchain que se ve así:
 
 ```
-contract LuckyNumber {
-  mapping(address => uint) numbers;
-
-  function setNum(uint _num) public {
-    numbers[msg.sender] = _num;
-  }
-
-  function getNum(address _myAddress) public view returns (uint) {
-    return numbers[_myAddress];
-  }
-}
 ```
 
 Este seria un simple contrato donde cualquiera puede guardar su número de la suerte, y este estará asociado a su dirección de Ethereum. De esta forma cualquiera podría ver el número de la suerte de una persona usando su dirección.
