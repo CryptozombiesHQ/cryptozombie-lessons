@@ -71,19 +71,19 @@ También podemos combinar estas dos cosas para hacerlas en una sola línea de c�
 ```
 ```
 
-Date cuenta que `array.push()` añade algo al **final** del array, así que los elementos siguen el orden de añadido. Observa este ejemplo:
+Ten en cuenta que `array.push()` añade algo al **final** del array, así que los elementos siguen el orden de añadido. Observa el siguiente ejemplo:
 
 ```
 uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// el array `numbers` es ahora [5, 10, 15]
+// el array `numbers` es ahora igual a [5, 10, 15]
 ```
 
 # Ponlo a prueba
 
 ¡Hagamos hacer algo a nuestra función `createZombie`!
 
-1. Rellena el cuerpo de la función para que cree un nuevo `Zombie` y añádelo al array `zombies`. El nombre (`name`) y ADN (`dna`) del nuevo Zombi debería venir de los argumentos pasados a la función.
-2. Hagámoslo en una sola línea de código para que quede bonito.
+1. Rellena el cuerpo de la función para que cree un nuevo `Zombie` y lo añada al array `zombies`. El nombre (`name`) y Adn (`dna`) para el nuevo Zombi debería venir de los argumentos de la función.
+2. Hagámoslo en una sola línea de código para que quede limpio.
