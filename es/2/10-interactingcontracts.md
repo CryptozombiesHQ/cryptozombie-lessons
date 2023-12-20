@@ -123,22 +123,19 @@ Ahora digamos que tenemos un contrato externo que quiere leer la información de
 Primero debemos usar una **_interfaz_** del contrato `LuckyNumber`:
 
 ```
-contract NumberInterface {
-  function getNum(address _myAddress) public view returns (uint);
-}
 ```
 
-Ten en cuenta que esto se asemeja a definir un contrato, con alguna diferencia. Primero, solo declaramos las funciones con las que queremos interactuar - en este caso `getNum` — y no mencionamos ninguna otra función o variables de estado.
+Tenga en cuenta que esto parece a definir un contrato, con algunas diferencias. Primero, solo declaramos las funciones con las que queremos interactuar - en este caso `getNum` — y no mencionamos ninguna otra función o variables de estado.
 
 Segundo, no definimos el cuerpo de la función. En vez de usar las llaves (`{` y `}`), solamente terminaremos la función añadiendo un punto y coma al final de la declaración (`;`).
 
-Sería como definir el esqueleto del contrato. Así es como conoce el compilador a las interfaces.
+Sería como definir el esqueleto del contrato. Así es como el compilador sabe que es una interfaz.
 
-Incluyendo esta interfaz en el código de tu dapp nuestro contrato sabe como son las funciones de otro contrato, como llamarlas, y que tipo de respuesta recibiremos.
+Al incluir esta interfaz en el código de nuestra aplicación nuestro contrato sabe cómo son las funciones del otro contrato, cómo llamarlos y qué tipo de respuesta esperar.
 
-Entraremos en como llamar a las funciones de otros contratos en la siguiente lección, por ahora vamos a declarar nuestra interfaz para el contrato de CryptoKitties.
+Vamos a empezar a llamar las funciones del otro contrato en la siguiente lección, pero por ahora vamos a declarar nuestra interfaz para el contrato de CryptoKitties.
 
-# Put it to the test
+# Ponlo a prueba
 
 Hemos mirado el código fuente de CryptoKitties por tí, y hemos encontrado una función llamada `getKitty` que devuelve todos los datos de un kitty, incluyendo sus "genes" (¡qué es lo que nuestro juego de zombis necesita para crear un nuevo zombi!).
 
@@ -173,7 +170,7 @@ function getKitty(uint256 _id) external view returns (
 }
 ```
 
-La función parece algo diferente de las que hemos usado. Puedes ver que devuelve... una lista de diferentes valores. Si vienes de un lenguaje de programación como JavaScript, esto es diferente - en Solidity puedes devolver más de un valor en una función.
+La función parece algo diferente de las que hemos usado. Puedes ver que devuelve... una lista de diferentes valores. Si vienes de un lenguaje de programación como JavaScript, esto es diferente — en Solidity puedes devolver más de un valor de una función.
 
 Ahora que sabemos como es esta función, podemos usarla para crear una interfaz:
 
