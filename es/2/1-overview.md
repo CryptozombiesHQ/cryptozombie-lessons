@@ -1,22 +1,22 @@
 ---
 title: Resumen de la Lección 2
 actions:
-  - checkAnswer
-  - hints
+  - ""
+  - ""
 requireLogin: true
 material:
   saveZombie: false
   zombieBattle:
     zombie:
-      lesson: 1
+      lesson: 0
     humanBattle: true
     ignoreZombieCache: true
-    answer: 1
+    answer: 0
 ---
 
-En la lección 1, creamos una función que recibía un nombre, lo usaba para generar un zombi aleatorio, y lo añadía a la base de datos de zombis de nuestra app guardada en la blockchain.
+En la lección 1, creamos una función que toma un nombre, lo usa para generar un zombi aleatorio, y añade ese zombie a la base de datos zombie de nuestra aplicación en la cadena de bloques.
 
-En la Lección 2, vamos a hacer nuestra app más parecida a un juego: Vamos a hacerlo multijugador, y también añadiremos más diversión a la creación de zombis en vez de crearlos aleatoriamente.
+En la lección 2, vamos a hacer que nuestra aplicación sea más similar a un juego: vamos a hacerlo multijugador, y también estaremos añadiendo una manera más divertida de crear zombies en lugar de generarlos al azar.
 
 ¿Cómo crearemos nuevos zombis? ¡Haciendo que nuestros zombis se "alimenten" de otras formas de vida!
 
@@ -28,7 +28,7 @@ Cuando un zombi se alimenta, infecta al huésped con un virus. El virus conviert
 
 Para saber esto... ¡Tendrás que completar la lección 2!
 
-# Put it to the test
+# Ponlo a prueba
 
 A la derecha tenemos una demostración simple de la alimentación. ¡Haz clic en un humano para ver que pasa cuando tu zombi se alimenta!
 
