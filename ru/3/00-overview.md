@@ -1,5 +1,5 @@
 ---
-title: Продвинутые концепции Solidity 
+title: Продвинутые концепции Solidity
 header: "Урок 3: Продвинутые концепции Solidity"
 roadmap: roadmap3.png
 ---

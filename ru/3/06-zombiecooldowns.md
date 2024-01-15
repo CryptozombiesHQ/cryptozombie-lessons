@@ -34,7 +34,7 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          // 1. Здесь задать функцию `_triggerCooldown` 
+          // 1. Здесь задать функцию `_triggerCooldown`
 
           // 2. Здесь задать функцию `_isReady`
 
