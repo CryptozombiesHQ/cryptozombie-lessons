@@ -99,8 +99,8 @@ material:
         pragma solidity ^0.4.25;
         /**
          * @title Ownable
-         * @dev The Ownable contract has an owner address, and provides basic authorization control
-         * functions, this simplifies the implementation of "user permissions".
+         * @dev El contrato Ownable tiene una dirección dueña, y provee unas funciones básicas de autorización,
+         * esto simplifica la implementación de "permisos de usuario"
          */
         contract Ownable {
           address public _owner;
@@ -108,22 +108,22 @@ material:
           event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
           /**
-           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-           * account.
+           * @dev El constructor Ownable setea el dueño original del contrato al
+           * sender.
            */
            constructor() internal {
              _owner = msg.sender;
              emit OwnershipTransferred(address(0), _owner)
            }
           /**
-          * @return the address of the owner.
+          * @retorna el address del dueño
           */
           function owner() public view returns(address) {
             return _owner;
           }
 
           /**
-           * @dev Throws if called by any account other than the owner.
+           * @dev Falla si se llama desde otra cuenta que no sea el dueño.
            */
           modifier onlyOwner() {
             require(isOwner());
@@ -131,17 +131,17 @@ material:
           }
 
            /**
-          * @return true if `msg.sender` is the owner of the contract.
+          * @retorna true si `msg.sender` es el dueño del contrato
           */
           function isOwner() public view returns(bool) {
             return msg.sender == _owner;
           }
 
             /**
-          * @dev Allows the current owner to relinquish control of the contract.
-          * @notice Renouncing to ownership will leave the contract without an owner.
-          * It will not be possible to call the functions with the `onlyOwner`
-          * modifier anymore.
+          * @dev Permite al dueño actual a renunciar al control del contrato.
+          * @notice Renunciar a la propiedad dejará al contrato sin un dueño u `owner`
+          * No será posible llamar a las funciones con el modificador 
+          * `onlyOwner`
           */
           function renounceOwnership() public onlyOwner {
             emit OwnershipTransferred(_owner, address(0));
@@ -149,16 +149,16 @@ material:
           }
 
           /**
-           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-           * @param newOwner The address to transfer ownership to.
+           * @dev Permite al dueño actual de transferir el control del contrato a un nuevo dueño `newOwner`
+           * @param `newOwner` La dirección a transferir la propiedad
            */
           function transferOwnership(address newOwner) public onlyOwner {
             _transferOwnership(newOwner);
           }
 
           /**
-          * @dev Transfers control of the contract to a newOwner.
-          * @param newOwner The address to transfer ownership to.
+          * @dev Transfiere el control del contrato al nuevo dueño
+          * @param `newOwner`. La dirección a transferir la propiedad
           */
           function _transferOwnership(address newOwner) internal {
             require(newOwner != address(0));
