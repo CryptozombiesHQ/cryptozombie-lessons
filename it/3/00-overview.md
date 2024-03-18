@@ -13,4 +13,4 @@ Questa lezione sarà un pò meno appariscente (scusate, nessun colpo di scena!).
 
 Sei stato avvisato: niente gattini e arcobaleni nella Lezione 3!
 
-Ma qui molta conoscenza di Solidità è densamente raggruppata. Ti consigliamo vivamente di completare la lezione 2 prima di iniziare questa.
+Qui vengono illustrati molti concetti fondamentali di Solidity. Ti consigliamo vivamente di completare la lezione 2 prima di iniziare questo capitolo.

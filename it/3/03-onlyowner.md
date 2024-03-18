@@ -218,7 +218,7 @@ material:
       }
 ---
 
-Ora che il nostro contratto di base `ZombieFactory` eredita da `Ownable`, possiamo usare il modificatore di funzione `onlyOwner` anche in `ZombieFeeding`.
+Ora che il nostro contratto di base `ZombieFactory` eredita da `Ownable`, possiamo usare il modificatore di funzione `onlyOwner` anche in  `ZombieFeeding`.
 
 Ciò è dovuto al modo in cui funziona l'eredità del contratto. Ricorda:
 

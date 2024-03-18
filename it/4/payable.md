@@ -263,7 +263,7 @@ material:
       }
 ---
 
-Fino ad ora abbiamo nascosto alcune **_funzioni di modifica_**. Può essere difficile ricordare tutto, quindi passiamo a una breve recensione:
+Fino ad ora abbiamo nascosto alcune **_funzioni di modifica_**. Può essere difficile ricordare tutto, facciamo un breve riassunto di ciò che abbiamo imparato:
 
 1. Abbiamo modificatori di visibilità che controllano da dove e quando la funzione può essere chiamata: `private` significa che è richiamabile solo da altre funzioni all'interno del contratto; `internal` è come `private` ma può anche essere chiamata da contratti che ereditano; `external` può essere chiamata solo al di fuori del contratto; ed infine `public` può essere chiamata ovunque, sia internamente che esternamente.
 
@@ -277,7 +277,7 @@ Tutti questi modificatori possono essere impilati insieme su una definizione di 
 function test() external view onlyOwner anotherModifier { /* ... */ }
 ```
 
-In questo capitolo introdurremo un altra funzione di modifica: `payable`.
+In questo capitolo introdurremo un'altra funzione di modifica: `payable`.
 
 ## Il modificatore `payable`
 
@@ -285,7 +285,7 @@ Le funzioni `payable` fanno parte di ciò che rendono Solidity ed Ethereum così
 
 Riflettici un minuto. Quando chiami una funzione API su un normale server web, non puoi inviare dollari USA insieme alla tua chiamata di funzione, né puoi inviare Bitcoin.
 
-Ma in Ethereum poiché sia il denaro (_Ether_), che i dati (*transaction payload*), che il codice del contratto stesso vivono tutti su Ethereum, è possibile chiamare una funzione **e** pagare il contratto al lo stesso tempo.
+Ma in Ethereum poiché sia il denaro (_Ether_), che i dati (*transaction payload*), che il codice del contratto stesso vivono tutti su Ethereum, è possibile chiamare una funzione **e** pagare il contratto allo stesso tempo.
 
 Ciò consente una logica davvero interessante, come richiedere un certo pagamento al contratto per eseguire una funzione.
 
