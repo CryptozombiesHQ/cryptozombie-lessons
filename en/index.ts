@@ -318,6 +318,7 @@ import l22_ch10 from './22/10.md'
 import l22_ch11 from './22/11.md'
 import l22_ch12 from './22/12.md'
 import l22_ch13 from './22/13.md'
+import l22_ch14 from './22/14.md'
 import l22_complete from './22/lessoncomplete.md'
 
 
@@ -730,6 +731,7 @@ export default {
     l22_ch11,
     l22_ch12,
     l22_ch13,
+    l22_ch14,
     l22_complete
   ],
   23: [
