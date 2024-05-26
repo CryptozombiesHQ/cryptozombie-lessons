@@ -1,15 +1,39 @@
 ---
-title: Testing and Deploying Your Smart Contracts
-header: Testing and Deploying Your Smart Contracts
+title: Making the Zombie Factory
+header: Welcome, human!
 roadmap: roadmap.jpg
-path: optimism
+path: multiversx
 publishedOn: Cryptozombies
 ---
 
-<img src="ASSET_PATH/static/image/lesson-26/optimism-logo.svg" alt="Optimism Logo" style="width: 40%; height: 40%">
+Welcome, CryptoZombie!
 
-Welcome to our lesson on testing and deploying smart contracts using the  <a href="https://github.com/ethereum-optimism/optimism-starter" target="_blank">Optimism Starter</a>! Testing is a critical step in the smart contract development lifecycle and, under the hood, the Optimism starter uses Forge for this.
+In this tutorial, you'll learn how to deploy a smart contract to MultiversX, a sharded smart contract execution platform with a PoS consensus mechanism. Wondering why MultiversX is worth exploring? Let's go through its advantages over other blockchains and VMs:
 
-In this lesson, you'll learn how to leverage Forge, a robust testing framework that ships with Foundry and allows you to write comprehensive tests that cover various scenarios. We'll walk you through the process of executing tests, verifying the expected behavior, and identifying any potential issues or bugs.
+- Performance: With a current throughput of 15,000 TPS, 6s block time, and $0.001 transaction cost, MultiversX significantly outperforms many other blockchains. In testnet, it even reached 263,000 TPS! Its Adaptive State Sharding architecture allows it to scale beyond 100,000 TPS as the network grows.
 
-Once your contract passes the testing phase, it's time to deploy it on OP Mainnet using Foundry. Foundry provides a streamlined deployment process, making deploying your smart contract on OP Mainnet effortless. You'll discover the step-by-step procedures to configure your deployment settings and unleash the scalability and cost-efficiency benefits that Optimism offers.
+- Developer-friendly: For a smooth coding experience, developers have the MultiversX IDE at their disposal, as well as a Rust framework with a debugger, and royalties with 30% of the gas paid for the smart contract execution returned to authors. This creates a seamless development experience and incentivizes high-quality smart contract creation.
+
+- MultiversX WASM VM: This fast and secure virtual machine executes smart contracts written in any programming language that can compile to WebAssembly, allowing for broader language support and greater flexibility.
+
+- High-performant and ultra-safe Rust framework: Rust is known to be a low-level multi-paradigm programming language featuring the same architecture as a computer processor, the reason why it is designed for scripting high-performance and machine-efficient code. The MultiversX framework provides super easy ways to design advanced, relatively low-sized smart contracts while at the same time, keeping the gas costs low.
+
+MultiversX's innovative Adaptive State Sharding and Secure Proof of Stake consensus mechanism make it a great platform for deploying your CryptoZombies smart contract. By offering scalability, high performance, and developer-friendly tools, MultiversX can provide the ideal environment for your smart contract deployment.
+
+Now that you're familiar with the exciting possibilities of MultiversX, let's get started with deploying your CryptoZombies smart contract on this groundbreaking platform!
+
+## Installing sc-meta
+
+At MultiversX we developed a universal smart contract management tool called `multiversx-sc-meta` (or `sc-meta` as we will later interact with it).
+
+It is called that, because it provides a layer of meta-programming over the regular smart contract development. It can read and interact with some of the code written by developers.
+
+- **3.8** or later on Linux and MacOS
+
+In order to install it, simply call
+
+```
+cargo install multiversx-sc-meta --locked
+```
+
+For further information please make sure to check https://docs.multiversx.com/developers/meta/sc-meta/
