@@ -24,20 +24,18 @@ Now that you're familiar with the exciting possibilities of MultiversX, let's ge
 
 
 
-## Installing mxpy
+## Installing sc-meta
 
-Before starting this course, it is recommended that you install our CLI tool named **mxpy** . Also, please make sure you have a working **Python 3** environment:
+At MultiversX we developed a universal smart contract management tool called `multiversx-sc-meta` (or `sc-meta` as we will later interact with it). 
+
+It is called that, because it provides a layer of meta-programming over the regular smart contract development. It can read and interact with some of the code written by developers.
 
 - **3.8** or later on Linux and MacOS
 
-In order to install **mxpy** using the `mxpy-up` installation script, run the following commands in a terminal:
+In order to install it, simply call 
 
 ```
-wget -O mxpy-up.py https://raw.githubusercontent.com/multiversx/mx-sdk-py-cli/main/mxpy-up.py
-python3 mxpy-up.py
+cargo install multiversx-sc-meta --locked
 ```
 
-The command above will install **mxpy**. Make sure you follow the instructions provided by the installer.
-
-For further information please make sure to check https://docs.multiversx.com/sdk-and-tools/sdk-py/installing-mxpy/
-
+For further information please make sure to check https://docs.multiversx.com/developers/meta/sc-meta/
