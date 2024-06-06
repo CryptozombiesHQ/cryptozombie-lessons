@@ -77,7 +77,6 @@ contract newContract is SomeOtherContract {
 }
 ```
 
-So if we had a file named `someothercontract.sol` in the same directory as this contract (that's what the `./` means), it would get imported by the compiler.
 Quindi se avessimo un file chiamato `someothercontract.sol` nella stessa directory di questo contratto (ecco cosa significa `./`), esso verrebbe importato dal compilatore.
 
 # Facciamo una prova
