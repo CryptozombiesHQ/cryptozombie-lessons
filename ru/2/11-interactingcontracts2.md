@@ -28,7 +28,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
           address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
-          // Здесь запусти контракт котика, взяв сверху `ckAddress` 
+          // Здесь запусти контракт котика, взяв сверху `ckAddress`
 
           function feedAndMultiply(uint _zombieId, uint _targetDna) public {
             require(msg.sender == zombieToOwner[_zombieId]);
@@ -125,7 +125,7 @@ contract NumberInterface {
 Мы можем использовать его в контракте следующим образом:
 ```
 contract MyContract {
-  address NumberInterfaceAddress = 0xab38... 
+  address NumberInterfaceAddress = 0xab38...
   // ^ Адрес контракта FavoriteNumber в Ethereum
   NumberInterface numberContract = NumberInterface(NumberInterfaceAddress)
   // Сейчас `numberContract` указывает на другие контракты
@@ -138,7 +138,7 @@ contract MyContract {
 }
 ```
 
-Этим способом контракт будет взаимодействовать с всеми другими контрактами в блокчейне Ethereum, если они задают функции как `public` (открытые) или `external` (внешние). 
+Этим способом контракт будет взаимодействовать с всеми другими контрактами в блокчейне Ethereum, если они задают функции как `public` (открытые) или `external` (внешние).
 
 # Проверь себя
 
