@@ -510,6 +510,8 @@ enemyZombie.lossCount++;
 
 We should prevent overflows here as well just to be safe. (It's a good idea in general to just use SafeMath instead of the basic math operations. Maybe in a future version of Solidity these will be implemented by default, but for now we have to take extra security precautions in our code).
 
+Future Me- In Solidity version 0.8.0 and above overflows and underflows are not a problem while using basic math operations. So, no need to use SafeMath in version 0.8 and above but our Cryptozombies is based on version <0.6.0 we will go forward with SafeMath here.
+
 However we have a slight problem — `winCount` and `lossCount` are `uint16`s, and `level` is a `uint32`. So if we use SafeMath's `add` method with these as arguments, it won't actually protect us from overflow since it will convert these types to `uint256`:
 
 ```
