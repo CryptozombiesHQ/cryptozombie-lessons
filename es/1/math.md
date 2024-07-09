@@ -33,7 +33,7 @@ Las matemáticas de Solidity son bastante básicas. Las siguientes operaciones s
 - Resta: `x - y`,
 - Multiplicación: `x * y`
 - División: `x / y`
-- Módulo: `x % y` _(por ejemplo, `13 % 5` es `3`, ya que al dividir 13 entre 5, 3 es el resto)_
+- Modulus / remainder: `x % y` _(for example, `13 % 5` is `3`, because if you divide 13 into 5, 3 is the remainder)_
 
 Solidity también tiene un **_operador exponencial_** (por ejemplo "x elevado a y", x^y):
 
