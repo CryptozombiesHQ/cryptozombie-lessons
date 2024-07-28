@@ -19,7 +19,7 @@ material:
 
 所以我们把一些实现略去了。这里是你要完整实现所需要完成的基本事项列表：
 
-1. 为 `attack`, `changeName`, `changeDna` 以及 ERC721 函数 `transfer`, `ownerOf`, `balanceOf` 等实现前端函数。这些函数的实现将和我们讲过的 `send`事务的函数非常相似。
+1. 为 `attack`, `changeName`, `changeDna` 以及 ERC721 函数 `transfer`, `ownerOf`, `balanceOf` 等实现前端函数。这些函数的实现将和我们讲过的 `send`交易的函数非常相似。
 
 2. 实现一个“管理界面”，在那里你可以调用 `setKittyContractAddress`, `setLevelUpFee`, 以及 `withdraw`。再次，在前端这块没有什么特别的代码——这些实现之间将非常相似。你应该保证从部署合同时候相同的以太坊地址调用这些函数，因为他们都有`onlyOwner` 修饰符。
 
