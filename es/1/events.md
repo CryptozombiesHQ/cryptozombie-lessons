@@ -97,8 +97,8 @@ El front-end de tu aplicación podría entonces escuchar el evento. Una implemen
 
 ```
 YourContract.IntegersAdded(function(error, result) {
-  // hacer algo con `result`
-}
+  // do something with the result
+})
 ```
 
 # Ponlo a prueba
