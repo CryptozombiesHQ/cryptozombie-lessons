@@ -78,7 +78,7 @@ uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// el array `numbers` es ahora igual a [5, 10, 15]
+// The `numbers` array is now equal to [5, 10, 15]
 ```
 
 # Ponlo a prueba
