@@ -93,7 +93,7 @@ material:
 
 ---
 
-Il nostro codice di gioco sta diventando piuttosto lungo. Invece di creare un contratto estremamente lungo, a volte, ha senso dividere la logica del codice su più contratti per organizzare il codice.
+Il codice del nostro gioco sta diventando piuttosto lungo. Invece di creare un contratto estremamente lungo, a volte, ha senso dividere la logica su più contratti per organizzare il codice.
 
 Una caratteristica di Solidity che lo rende più gestibile è il contratto **_eredità_** (**_inheritance_**):
 
@@ -117,6 +117,6 @@ Questo può essere usato per l'eredità logica (come fosse una sottoclasse, un `
 
 # Facciamo una prova
 
-Nei prossimi capitoli implementeremo la funzionalità per i nostri zombi di nutrirsi e moltiplicarsi. Mettiamo questa logica nel suo contratto che eredita tutti i metodi da `ZombieFactory`.
+Nei prossimi capitoli implementeremo la funzionalità per i nostri zombi di nutrirsi e moltiplicarsi. Mettiamo questa logica in un nuovo contratto che eredita tutti i metodi da `ZombieFactory`.
 
 1. Crea un contratto chiamato `ZombieFeeding` sotto `ZombieFactory`. Questo contratto dovrà ereditare dal nostro contratto `ZombieFactory`.

@@ -246,7 +246,7 @@ Guardando la storia di questa funzione, puoi vedere che l'abbiamo resa `public` 
 
 Riesaminiamo questa particolare funzione, l'utente può chiamare direttamente la funzione e passare qualsiasi `_targetDna` o `_species` che desidera. Così non sembra un gioco: vogliamo che seguano le nostre regole!
 
-Con un esame più attento, questa funzione dovrà essere chiamata solo da `feedOnKitty()` quindi il modo più semplice per prevenire questi exploit è renderla `internal`.
+Esaminando più attentamente notiamo che questa funzione dovrà essere chiamata solo da `feedOnKitty()` quindi il modo più semplice per prevenire questi exploit è renderla `internal`.
 
 ## Facciamo una prova
 
