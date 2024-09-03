@@ -105,7 +105,7 @@ Eh bien, il se trouve que les CryptoZombies adorent manger des...
 
 Pour pouvoir faire ça, nous allons avoir besoin de lire l'ADN des chatons (kittyDna) depuis le smart contract CryptoKitties. Nous pouvons le faire car les données de CryptoKitties sont stockées ouvertement sur la blockchain. C'est pas génial la blockchain ?!
 
-Ne vous en faites pas - notre jeu ne va faire de mal à aucun CryptoKitty. Nous allons seulement *lire* les données de CryptoKitties, nous ne sommes pas capables de les supprimer 😉.
+Ne vous en faites pas - notre jeu ne fera de mal à aucun CryptoKitty. Nous allons seulement *lire* les données de CryptoKitties; nous ne sommes pas capables de les supprimer 😉.
 
 ## Interagir avec d'autres contrats
 
