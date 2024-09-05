@@ -74,7 +74,17 @@ people.push(satoshi);
 We can also combine these together and do them in one line of code to keep things clean:
 
 ```
-people.push(Person(16, "Vitalik"));
+people.push(Person(172, "Satoshi"));
+```
+
+If we wanted to be able to create a new person with any given age and name, we could write a function like so:
+
+```
+// create and add a person to the people array
+function createPerson (uint _age, string memory _name) public {
+  // we can use the age and name given in the function arguments
+  people.push(Person(_age, _name));
+}
 ```
 
 Note that `array.push()` adds something to the **end** of the array, so the elements are in the order we added them. See the following example:
