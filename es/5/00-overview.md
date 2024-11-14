@@ -2,6 +2,8 @@
 title: ERC721 & Crypto-Coleccionables
 header: "Leccion 5: ERC721 & Crypto-Coleccionables"
 roadmap: roadmap5.jpg
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 ¡Wow! Se está animando la cosa por aquí...

@@ -1,6 +1,7 @@
 ---
 title: ADN del Zombi
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

@@ -2,6 +2,7 @@
 title: Lesson Overview
 actions: ['checkAnswer', 'hints']
 skipCheckAnswer: true
+requireLogin: true
 material:
   saveZombie: false
   zombieResult:
@@ -30,7 +31,7 @@ Just like real DNA, different parts of this number will map to different traits.
 
 > Note: For this tutorial, we've kept things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations.
 
-For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type. 
+For example, the first 2 digits of our example DNA above are `83`. To map that to the zombie's head type, we do `83 % 7 + 1` = 7. So this Zombie would have the 7th zombie head type.
 
 In the panel to the right, go ahead and move the `head gene` slider to the 7th head (the Santa hat) to see what trait the `83` would correspond to.
 

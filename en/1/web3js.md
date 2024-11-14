@@ -1,6 +1,7 @@
 ---
 title: Web3.js
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   saveZombie: true
   zombieResult:
@@ -72,6 +73,6 @@ What our JavaScript then does is take the values generated in `zombieDetails` ab
 
 # Give it a try!
 
-Go ahead — type in your name to the box on the right, and see what kind of zombie you get!
+Go ahead — type in your name in the box on the right, and see what kind of zombie you get!
 
 **Once you have a zombie you're happy with, go ahead and click "Next Chapter" below to save your zombie and complete lesson 1!**

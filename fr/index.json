@@ -14,7 +14,8 @@
         "twitter": {
             "name": "Twitter",
             "link": "https://twitter.com/loomnetwork"
-        }
+        },
+        "find_source_code_repo": "Retrouvez le code source de ces leçons sur <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> ce répertoire Github</a>."
     },
     "editor": {
         "readOnly": "lecture seulement"

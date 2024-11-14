@@ -13,34 +13,140 @@
         },
         "twitter": {
             "name": "Twitter",
-            "link": "https://twitter.com/loomnetwork"
+            "link": "https://twitter.com/CryptoZombiesHQ"
         },
         "find_source_code_repo": "You can find the source code for these lessons at <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> this Github repo</a>.",
+        "start_course": "Start Course",
+        "tutorial": {
+            "name": "Tutorials",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "TUTORIAL",
+                    "logo": "../static/image/tutorial1.png",
+                    "title": "How to Set Up Core Web3 Developer Tools",
+                    "description": "Learn how to write a simple web3 script to get the latest block number from the Ethereum mainnet using Alchemy.",
+                    "levels": [
+                        "Beginner",
+                        "Java Script",
+                        "React"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "TUTORIAL",
+                    "logo": "../static/image/tutorial2.png",
+                    "title": "How to Set Up Core Web3 Developer Tools",
+                    "description": "Learn how to write a simple web3 script to get the latest block number from the Ethereum mainnet using Alchemy.",
+                    "levels": [
+                        "Beginner",
+                        "Java Script",
+                        "React"
+                    ]
+                }
+            ]
+        },
         "course" : [
             {
                 "id": "solidity",
-                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
-                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
-            },
-            {
-                "id": "chainlink",
-                "title": "Chainlink Path: Decentralized Oracles",
-                "summary": "Combine the real-world and all of its changes and information with our beloved zombies."
+                "pathName": "Solidity",
+                "title": "Solidity: Beginner to Intermediate Smart Contracts",
+                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript).",
+                "description": "Get up to speed with the basics of Solidity.",
+                "class": "slider-first",
+                "tags": [
+                    "Solidity",
+                    "Beginner",
+                    "Intermediate"
+                ]
             },
             {
                 "id": "solidity_advanced",
-                "title": "Advanced Solidity Path: Get In-depth Knowledge",
-                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+                "pathName": "Advanced Solidity",
+                "title": "Advanced Solidity: Get In-depth Knowledge",
+                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>",
+                "description": "Deploying Ethereum DApps with Truffle will walk you through the process of deploying your smart contracts with Truffle.",
+                "class": "slider-first",
+                "tags": [
+                    "Solidity",
+                    "Advanced"
+                ]
             },
             {
                 "id": "beyond_ethereum",
-                "title": "Beyond Ethereum Path: Explore the Blockchain Ecosystem",
-                "summary": "Explore the blockchain ecosystem."
-            }
+                "pathName": "Beyond Ethereum",
+                "title": "Beyond Ethereum: Explore the Blockchain Ecosystem",
+                "summary": "Explore the blockchain ecosystem.",
+                "description": "Explore the blockchain ecosystem.",
+                "class": "slider-first",
+                "tags": [
+                    "zkSync",
+                    "Beginner"
+                ]
+            },
+						{
+							"id": "optimism",
+							"pathName": "Optimism",
+							"title": "Optimism Unleashed",
+							"summary": "Welcome to our groundbreaking course on writing, testing, and deploying smart contracts using the OP stack!",
+							"description": "Welcome to our groundbreaking course on writing, testing, and deploying smart contracts using the OP stack! In this course, we will explore the exciting world of Optimism, a revolutionary Layer 2 scaling solution built to enhance Ethereum's capabilities. At its core, Optimism is an EVM-compatible layer 2 protocol that aims to address the scalability and cost challenges of the Ethereum network. Throughout this course, you will embark on a hands-on journey, starting from the basics of writing and testing smart contracts and, by the end, you will possess the skills and knowledge necessary to deploy your own smart contracts on OP Mainnet!",
+							"class": "slider-first",
+							"tags": [
+								"Optimism",
+                "Intermediate"
+							]
+						},
+            {
+                "id": "tron",
+                "pathName": "Tron",
+                "title": "Tron: Decentralize the web",
+                "summary": "Start working with TRON, one of the fastest-growing public blockchains.",
+                "description": "Start working with TRON, one of the fastest-growing public blockchains.",
+                "class": "slider-first",
+                "tags": [
+                    "Tron"
+                ]
+            },
+            {
+              "id": "neo",
+              "pathName": "Neo",
+              "title": "Mastering the NEO Blockchain",
+              "summary": "This course will teach you how to: </br> - Install and set up the neon-js library </br> - Connect to the Neo blockchain </br> - Query the blockchain </br> - Resolve addresses and query domain information </br> - Handle transactions, signing, and serialization using neon-js </br> - Implement domain registration, transfer, and ownership functionalities </br> - Implement error handling and input validation",
+              "description": "Start using Neo, a feature-complete blockchain platform for building decentralized applications.",
+              "class": "slider-first",
+              "tags": [
+                "Neo",
+                "Intermediate"
+              ]
+            },
+            {
+              "id": "chainlink",
+              "pathName": "Chainlink",
+              "title": "Chainlink: Decentralized Oracles",
+              "summary": "Combine the real-world and all of its changes and information with our beloved zombies.",
+              "description": "Combine the real-world and all of its changes and information with our beloved zombies.",
+              "class": "slider-second",
+              "tags": [
+                  "Chainlink",
+                  "Oracle",
+                  "Intermediate"
+              ]
+            },
+						{
+							"id": "multiversx",
+							"pathName": "MultiversX",
+							"title": "MultiversX",
+							"summary": "Bring your beloved zombies to MultiversX.",
+							"description": "Bring your beloved zombies to MultiversX, a highly scalable, secure and decentralized blockchain network created to enable radically new applications, for users, businesses, society, and the new metaverse frontier.",
+							"class": "slider-first",
+							"tags": [
+								"MultiversX"
+							]
+						}
         ],
-        "solidity_path": "Solidity Path: Beginner to Intermediate Smart Contracts",
-        "hands_on_path": "Hands-on Path: Make and Deploy a Custom Game Mode",
-        "hand_on_plasma": "Advanced Solidity Path: Get In-depth Knowledge",
+        "solidity_path": "Solidity: Beginner to Intermediate Smart Contracts",
+        "hands_on_path": "Hands-on: Make and Deploy a Custom Game Mode",
+        "hand_on_plasma": "Advanced Solidity: Get In-depth Knowledge",
         "start_resume": "Start/Resume",
         "the_curriculum": "The Curriculum",
         "course_overview":"Course Overview",
@@ -71,7 +177,8 @@
             "password": "Password",
             "enter_email": "Enter email",
             "enter_password": "Enter password",
-            "forgot_password": "Forgot password?",
+            "re_enter_password": "Re-enter Password",
+            "forgot_password": "Forgot your password?",
             "enter_email_password": "Please enter email and password.",
             "password_length": "Your password length must be 6 to 50 characters.",
             "cancel": "Cancel"
@@ -91,7 +198,8 @@
             "email_length": "Your email length must be 3 to 191 characters.",
             "password_length": "Your password length must be 6 to 50 characters.",
             "invalid_repeat_password": "Passwords don't match.",
-            "success": "Your account has been successfully registered."
+            "success": "Your account has been successfully registered.",
+            "bot_detected": "Bot detected! Refresh the page and try again if you're human."
         },
         "reset_password": {
             "reset_password": "Reset Password",
@@ -102,7 +210,9 @@
             "required_password": "Please enter a password and confirm it.",
             "password_length": "Your password length must be 6 to 50 characters.",
             "invalid_repeat_password": "Passwords don't match.",
-            "reset_success": "Password has been updated successfully."
+            "reset_success": "Password has been updated successfully.",
+            "confirm": "OK",
+            "cancel": "Cancel"
         },
         "forgot_password": {
             "reset_password": "Reset Password",
@@ -190,7 +300,7 @@
             ],
             "footer": "Make sure your progress is saved below before you proceed to Lesson 2.",
             "zombieDesc": "A Level 1 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Take a look at the first zombie in my army!"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 1 and learned the basics of coding a game on #Ethereum. Thanks @CryptoZombiesHQ. Take a look at the first zombie in my army!"
         },
         "lesson2": {
             "header": [
@@ -207,7 +317,7 @@
                 "When you're ready, click the button below to access Lesson 3:"
             ],
             "zombieDesc": "A Level 2 CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Watch my zombie battle more CryptoKitties:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 2! My zombie ate some #CryptoKitties, and I learned more about #Ethereum development. Thanks @CryptoZombiesHQ. Watch my zombie battle more CryptoKitties:"
         },
         "lesson3": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -240,7 +350,7 @@
                 "When you're ready, click the button below to access Lesson 5:"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Try it out yourself:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 4, and defeated the evil IOTA zombie! Thanks @CryptoZombiesHQ. Try it out yourself:"
         },
         "lesson5": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -256,7 +366,7 @@
                 "When you're ready, click the button below to access Lesson 6:"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Check out my zombie army:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 5 and got a level 10 CryptoZombie! Thanks @CryptoZombiesHQ. Check out my zombie army:"
         },
         "lesson6": {
             "achievementsUnlocked": "Achievements Unlocked:",
@@ -272,7 +382,7 @@
                 "In the meantime, join us on {telegramLink}, or follow our {twitterLink} to join the conversation!"
             ],
             "zombieDesc": "A Level {levelNum} CryptoZombie",
-            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Check out my zombie army:"
+            "shareLinkText": "I just completed #CryptoZombies Lesson 6, and earned a Level 3.0 'The Phantom of Web3' CryptoZombie! Thanks @CryptoZombiesHQ. Check out my zombie army:"
         }
     },
     "zombieBattle": {

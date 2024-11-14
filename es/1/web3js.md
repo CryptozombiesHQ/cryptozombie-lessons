@@ -1,6 +1,7 @@
 ---
 title: Web3.js
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   saveZombie: true
   zombieResult:

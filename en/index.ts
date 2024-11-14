@@ -270,6 +270,151 @@ import l19_ch10 from './19/10.md'
 import l19_ch11 from './19/11.md'
 import l19_complete from './19/lessoncomplete.md'
 
+
+//Lesson 20
+import l20_overview from './20/00-overview.md'
+import l20_ch1 from './20/01.md'
+import l20_ch2 from './20/02.md'
+import l20_ch3 from './20/03.md'
+import l20_ch4 from './20/04.md'
+import l20_ch5 from './20/05.md'
+import l20_ch6 from './20/06.md'
+import l20_ch7 from './20/07.md'
+import l20_ch8 from './20/08.md'
+import l20_ch9 from './20/09.md'
+import l20_complete from './20/lessoncomplete.md'
+
+
+
+//Lesson 21
+import l21_overview from './21/00-overview.md'
+import l21_ch1 from './21/01.md'
+import l21_ch2 from './21/02.md'
+import l21_ch3 from './21/03.md'
+import l21_ch4 from './21/04.md'
+import l21_ch5 from './21/05.md'
+import l21_ch6 from './21/06.md'
+import l21_ch7 from './21/07.md'
+import l21_ch8 from './21/08.md'
+import l21_ch9 from './21/09.md'
+import l21_ch10 from './21/10.md'
+import l21_ch11 from './21/11.md'
+import l21_complete from './21/lessoncomplete.md'
+
+
+
+//Lesson 22
+import l22_overview from './22/00-overview.md'
+import l22_ch1 from './22/01.md'
+import l22_ch2 from './22/02.md'
+import l22_ch3 from './22/03.md'
+import l22_ch4 from './22/04.md'
+import l22_ch5 from './22/05.md'
+import l22_ch6 from './22/06.md'
+import l22_ch7 from './22/07.md'
+import l22_ch8 from './22/08.md'
+import l22_ch9 from './22/09.md'
+import l22_ch10 from './22/10.md'
+import l22_ch11 from './22/11.md'
+import l22_ch12 from './22/12.md'
+import l22_ch13 from './22/13.md'
+import l22_ch14 from './22/14.md'
+import l22_complete from './22/lessoncomplete.md'
+
+
+
+//Lesson 23
+import l23_overview from './23/00-overview.md'
+import l23_ch1 from './23/01.md'
+import l23_ch2 from './23/02.md'
+import l23_ch3 from './23/03.md'
+import l23_ch4 from './23/04.md'
+import l23_ch5 from './23/05.md'
+import l23_ch6 from './23/06.md'
+import l23_ch7 from './23/07.md'
+import l23_ch8 from './23/08.md'
+import l23_ch9 from './23/09.md'
+import l23_ch10 from './23/10.md'
+import l23_complete from './23/lessoncomplete.md'
+
+
+
+//Lesson 24
+import l24_overview from './24/00-overview.md'
+import l24_ch1 from './24/01.md'
+import l24_ch2 from './24/02.md'
+import l24_ch3 from './24/03.md'
+import l24_ch4 from './24/04.md'
+import l24_ch5 from './24/05.md'
+import l24_ch6 from './24/06.md'
+import l24_ch7 from './24/07.md'
+import l24_ch8 from './24/08.md'
+import l24_ch9 from './24/09.md'
+import l24_ch10 from './24/10.md'
+import l24_ch11 from './24/11.md'
+import l24_complete from './24/lessoncomplete.md'
+
+//Lesson 25 - Neo Name System C#
+import l25_overview from './25/00-overview.md'
+import l25_ch1 from './25/01.md'
+import l25_ch2 from './25/02.md'
+import l25_ch3 from './25/03.md'
+import l25_ch4 from './25/04.md'
+import l25_ch5 from './25/05.md'
+import l25_ch6 from './25/06.md'
+import l25_complete from './25/lessoncomplete.md'
+
+//Lesson 26 - Neo Name System Node.js
+import l26_overview from './26/00-overview.md'
+import l26_ch1 from './26/01.md'
+import l26_ch2 from './26/02.md'
+import l26_ch3 from './26/03.md'
+import l26_ch4 from './26/04.md'
+import l26_ch5 from './26/05.md'
+import l26_ch6 from './26/06.md'
+import l26_ch7 from './26/07.md'
+import l26_ch8 from './26/08.md'
+import l26_ch9 from './26/09.md'
+import l26_ch10 from './26/10.md'
+import l26_ch11 from './26/11.md'
+import l26_ch12 from './26/12.md'
+import l26_ch13 from './26/13.md'
+import l26_ch14 from './26/14.md'
+import l26_complete from './26/lessoncomplete.md'
+
+
+// Lesson 27 - NFT with Royalties on Optimism
+import l27_overview from './27/00-overview.md'
+import l27_ch1 from './27/01.md'
+import l27_ch2 from './27/02.md'
+import l27_ch3 from './27/03.md'
+import l27_ch4 from './27/04.md'
+import l27_ch5 from './27/05.md'
+import l27_ch6 from './27/06.md'
+import l27_ch7 from './27/07.md'
+import l27_ch8 from './27/08.md'
+import l27_ch9 from './27/09.md'
+import l27_ch10 from './27/10.md'
+import l27_ch11 from './27/11.md'
+import l27_ch12 from './27/12.md'
+import l27_complete from './27/lessoncomplete.md'
+
+
+// Lesson 28- Testing and Deploying on Optimism
+import l28_overview from './28/00-overview.md'
+import l28_ch1 from './28/01.md'
+import l28_ch2 from './28/02.md'
+import l28_ch3 from './28/03.md'
+import l28_ch4 from './28/04.md'
+import l28_ch5 from './28/05.md'
+import l28_ch6 from './28/06.md'
+import l28_ch7 from './28/07.md'
+import l28_ch8 from './28/08.md'
+import l28_ch9 from './28/09.md'
+import l28_ch10 from './28/10.md'
+import l28_ch11 from './28/11.md'
+import l28_complete from './28/lessoncomplete.md'
+
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -542,5 +687,139 @@ export default {
     l19_ch10,
     l19_ch11,
     l19_complete
+  ],
+  20: [
+    l20_overview,
+    l20_ch1,
+    l20_ch2,
+    l20_ch3,
+    l20_ch4,
+    l20_ch5,
+    l20_ch6,
+    l20_ch7,
+    l20_ch8,
+    l20_ch9,
+    l20_complete
+  ],
+  21: [
+    l21_overview,
+    l21_ch1,
+    l21_ch2,
+    l21_ch3,
+    l21_ch4,
+    l21_ch5,
+    l21_ch6,
+    l21_ch7,
+    l21_ch8,
+    l21_ch9,
+    l21_ch10,
+    l21_ch11,
+    l21_complete
+  ],
+  22: [
+    l22_overview,
+    l22_ch1,
+    l22_ch2,
+    l22_ch3,
+    l22_ch4,
+    l22_ch5,
+    l22_ch6,
+    l22_ch7,
+    l22_ch8,
+    l22_ch9,
+    l22_ch10,
+    l22_ch11,
+    l22_ch12,
+    l22_ch13,
+    l22_ch14,
+    l22_complete
+  ],
+  23: [
+    l23_overview,
+    l23_ch1,
+    l23_ch2,
+    l23_ch3,
+    l23_ch4,
+    l23_ch5,
+    l23_ch6,
+    l23_ch7,
+    l23_ch8,
+    l23_ch9,
+    l23_ch10,
+    l23_complete
+  ],
+  24: [
+    l24_overview,
+    l24_ch1,
+    l24_ch2,
+    l24_ch3,
+    l24_ch4,
+    l24_ch5,
+    l24_ch6,
+    l24_ch7,
+    l24_ch8,
+    l24_ch9,
+    l24_ch10,
+    l24_ch11,
+    l24_complete
+  ],
+  25: [
+    l25_overview,
+    l25_ch1,
+    l25_ch2,
+    l25_ch3,
+    l25_ch4,
+    l25_ch5,
+    l25_ch6,
+    l25_complete
+  ],
+  26: [
+    l26_overview,
+    l26_ch1,
+    l26_ch2,
+    l26_ch3,
+    l26_ch4,
+    l26_ch5,
+    l26_ch6,
+    l26_ch7,
+    l26_ch8,
+    l26_ch9,
+    l26_ch10,
+    l26_ch11,
+    l26_ch12,
+    l26_ch13,
+    l26_ch14,
+    l26_complete
+  ],
+  27: [
+    l27_overview,
+    l27_ch1,
+    l27_ch2,
+    l27_ch3,
+    l27_ch4,
+    l27_ch5,
+    l27_ch6,
+    l27_ch7,
+    l27_ch8,
+    l27_ch9,
+    l27_ch10,
+    l27_ch11,
+    l27_ch12,
+    l27_complete
+  ],
+  28: [
+    l28_overview,
+    l28_ch1,
+    l28_ch2,
+    l28_ch3,
+    l28_ch4,
+    l28_ch5,
+    l28_ch6,
+    l28_ch7,
+    l28_ch8,
+    l28_ch9,
+    l28_ch10,
+    l28_ch11,
+    l28_complete
   ]
 }

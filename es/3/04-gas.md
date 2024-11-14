@@ -262,14 +262,14 @@ struct MiniMe {
 
 // `mini` costará menos gas que `normal` debido al empaquetado de la estructura
 NormalStruct normal = NormalStruct(10, 20, 30);
-MiniMe mini = MiniMe(10, 20, 30); 
+MiniMe mini = MiniMe(10, 20, 30);
 ```
 
 Por esta razón, dentro de una estructura querrás usar los subtipos más pequeños que vayas a necesitar.
 
 Querrás también agrupar los tipos de datos que sean iguales (es decir, ponerlos al lado
 en la estructura) así Solidity podrá minimizar el espacio requerido. Por ejemplo, una estructura
-con campos `uint c; uint32 a; uint32 b;` costará menos gas que una estructura con campos 
+con campos `uint c; uint32 a; uint32 b;` costará menos gas que una estructura con campos
 `uint32 a; uint c; uint32 b;` porque los campos `uint32` están agrupados al lado.
 
 

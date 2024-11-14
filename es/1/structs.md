@@ -1,6 +1,7 @@
 ---
 title: Estructuras
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

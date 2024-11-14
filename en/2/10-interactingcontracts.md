@@ -1,6 +1,7 @@
 ---
 title: What Do Zombies Eat?
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -129,7 +130,7 @@ contract LuckyNumber {
 
 This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.
 
-Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function. 
+Now let's say we had an external contract that wanted to read the data in this contract using the `getNum` function.
 
 First we'd have to define an **_interface_** of the `LuckyNumber` contract:
 
@@ -190,4 +191,4 @@ Now that we know what this function looks like, we can use it to create an inter
 
 1. Define an interface called `KittyInterface`. Remember, this looks just like creating a new contract — we use the `contract` keyword.
 
-2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces.
+2. Inside the interface, define the function `getKitty` (which should be a copy/paste of the function above, but with a semi-colon after the `returns` statement, instead of everything inside the curly braces).

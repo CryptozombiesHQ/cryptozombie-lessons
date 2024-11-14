@@ -1,6 +1,7 @@
 ---
 title: Más en la Visibilidad de Funciones
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

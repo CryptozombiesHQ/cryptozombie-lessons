@@ -1,6 +1,7 @@
 ---
 title: ¿Qué Comen Los Zombis?
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

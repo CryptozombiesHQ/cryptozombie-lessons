@@ -1,6 +1,7 @@
 ---
 title: Importar
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -14,7 +15,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         contract ZombieFactory {
 
@@ -83,4 +84,4 @@ Entonces si tenemos un fichero llamado `someothercontract.sol` en el mismo direc
 
 Ahora que tenemos una estructura de múltiples ficheros, necesitamos usar `import` para leer el contenido del otro fichero:
 
-1. Importa `zombiefactory.sol` en nuestro nuevo fichero, `zombiefeeding.sol`. 
+1. Importa `zombiefactory.sol` en nuestro nuevo fichero, `zombiefeeding.sol`.

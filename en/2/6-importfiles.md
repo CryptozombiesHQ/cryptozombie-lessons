@@ -1,6 +1,7 @@
 ---
 title: Import
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

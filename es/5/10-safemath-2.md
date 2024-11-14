@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombieownership.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity ^0.4.25;
 
         import "./zombieattack.sol";
         import "./erc721.sol";

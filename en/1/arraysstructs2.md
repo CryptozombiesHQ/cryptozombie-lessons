@@ -1,6 +1,7 @@
 ---
 title: Working With Structs and Arrays
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -83,7 +84,7 @@ uint[] numbers;
 numbers.push(5);
 numbers.push(10);
 numbers.push(15);
-// numbers is now equal to [5, 10, 15]
+// The `numbers` array is now equal to [5, 10, 15]
 ```
 
 # Put it to the test

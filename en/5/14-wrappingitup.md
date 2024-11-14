@@ -33,6 +33,6 @@ In this lesson we learned about:
 
 This lesson concludes our game's Solidity code! (For now — we may add even more lessons in the future).
 
-In the next 2 lessons, we're going to look at how to deploy your contracts and interact with them using **_web3.js_** (so you can build a front-end for your DApp).
+In the next lesson, we're going to look at how to deploy your contracts and interact with them using **_web3.js_** (so you can build a front-end for your DApp).
 
 Go ahead and rename any of your zombies if you like, then proceed to the next chapter to complete the lesson.

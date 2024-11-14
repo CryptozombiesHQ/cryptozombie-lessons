@@ -1,7 +1,7 @@
 ---
 en:
   ogdescription: CryptoZombies is an interactive code school that teaches you to write smart contracts in Solidity through building your own crypto-collectables game.
-  ogtitle: CryptoZombies - Learn to code games on Ethereum. Powered by Loom Network
+  ogtitle: CryptoZombies - Learn to code games on Ethereum.
   langshort: EN #should be recognizable in local languages, like chinese would be 中文
   learn_title: Learn to Code Ethereum DApps By Building Your Own Game
   learn_desc: CryptoZombies is an interactive code school that teaches you to write smart contracts in Solidity through building your own crypto-collectables game.
@@ -14,13 +14,13 @@ en:
   collect_desc1: Earn crypto-collectible Zombies and bonuses by completing coding lessons.
   collect_desc2: After completing all lessons and deploying your DApp, pit your zombie army against other players' zombies in one of the world's first blockchain-based games! Half code-school, half MMO crypto-collectible strategy game.
   collect_desc3: What are you waiting for? Click the button below to dive into lesson 1 and build your first DApp. It's free!
-  start_title: Get Started Now  
+  start_title: Get Started Now
   int_title: Interactive Coding Lessons
   inbrowser_desc: In-browser step-by-step lessons take you from the very basics of Solidity to creating your own fully-functional blockchain-based game. Even by the end of Lesson 1 (which can be completed in one sitting), you'll know enough to officially call yourself a Solidity developer!
   zombie_title: Build a Zombie Army
   zombie_desc: In Lesson 1, you will build a Zombie Factory to build your army. Every Zombie you create will have randomly generated DNA and have his own unique appearance. Further lessons (1 released each week) will add more functionality to your game, like the ability to battle other people's zombies!
   who_made: Who Made CryptoZombies and Why Is It Free?
-  who_made1: CryptoZombies was made by the team at 
+  who_made1: CryptoZombies was made by the team at
   who_made2: . We're building a platform for running large-scale applications on Ethereum sidechains.
   who_made3: We think blockchains are capable of a lot more than just payments, and we want to get more developers thinking outside the box and trying to build large-scale DApps. Games are one of the areas where we think blockchain will really revolutionize things. So we built CryptoZombies to help educate and inspire the next generation of blockchain game devs.
   find_us: Aside from CryptoZombies, we're working on some really cool projects. If you'd like to follow us, get in touch for a project, or just say hi, you can find us on
@@ -32,6 +32,6 @@ en:
   footer_contact_jobs: Jobs
   footer_email: Email
   footer_about: About
-  footer_desc: CryptoZombies.io is a free teaching platform to teach existing developers or complete newcomers the ins and out of programming for the Blockchain. Powered by Loom Network - a platform for building commercial scale apps on Ethereum.
+  footer_desc: CryptoZombies.io is a free teaching platform to teach existing developers or complete newcomers the ins and out of programming for the Blockchain.
   telegram_open_chat: Open Chat
-  telegram_link: https://t.me/loomnetwork
+  telegram_link: https://t.me/loomnetworkdev

@@ -1,6 +1,7 @@
 ---
 title: Handling Multiple Return Values
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol

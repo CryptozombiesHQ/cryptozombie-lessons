@@ -1,6 +1,7 @@
 ---
 title: Usando una Interfaz
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -145,4 +146,4 @@ De esta manera, tu contrato puede interactuar con otro contrato de la blockchain
 
 ¡Vamos a preparar nuestro contrato para leer el contrato inteligente de CryptoKitties!
 
-1. He guardado la dirección del contrato de CryptoKitties en el código por ti, dentro de la variable `ckAddress`. En la siguiente línea, crea una`KittyInterface` llamada `kittyContract`, e inicializala con `ckAddress` — igual que como hemos hecho con `numberContract` arriba.
+1. He guardado la dirección del contrato de CryptoKitties en el código por ti, dentro de la variable `ckAddress`. En la siguiente línea, crea una `KittyInterface` llamada `kittyContract`, e inicializala con `ckAddress` — igual que como hemos hecho con `numberContract` arriba.

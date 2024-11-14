@@ -1,6 +1,7 @@
 ---
 title: Herencia
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
@@ -112,7 +113,7 @@ contract BabyDoge is Doge {
 ```
 
 `BabyDoge` **_hereda_** de `Doge`. Eso significa que si compilas y ejecutas `BabyDoge`, este tendrá acceso tanto a `catchphrase()` como a `anotherCatchphrase()` (y a cualquier otra función publica que definamos en `Doge`).
- 
+
 Esto puede usarse como una herencia lógica (como una subclase, un `Gato` es un `Animal`). Pero también puede usarse simplemente para organizar tu código agrupando lógica similar en diferentes clases.
 
 # Vamos a probarlo

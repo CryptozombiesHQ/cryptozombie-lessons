@@ -9,12 +9,45 @@
             "name": "Telegram",
             "openChat": "チャットに参加",
             "action": "Telegramに参加する",
-            "link": "https://t.me/loomnetworkJP"
+            "link": "https://t.me/loomnetworkdev"
         },
         "twitter": {
             "name": "Twitter",
-            "link": "https://twitter.com/LoomNetworkJP"
-        }
+            "link": "https://twitter.com/CryptoZombiesHQ"
+        },
+        "find_source_code_repo": "You can find the source code for these lessons at <a href='' target='_blank'> this Github repo</a>.",
+        "login_logout": {
+            "enter_email_password": "Please enter email and password.",
+            "password_length": "Your password length must be 6 to 50 characters."
+        },
+        "course": [
+            {
+                "id": "solidity",
+                "title": "Solidity Path: Beginner to Intermediate Smart Contracts",
+                "summary": "<p>So you think you have what it takes to become a <strong>CryptoZombie</strong>, huh?</p> <p>This course will teach you how to <strong>build a game on Ethereum</strong>.</p> It's designed for beginners to Solidity, but it assumes you have some experience programming in another language (e.g. Javascript)."
+            },
+            {
+                "id": "solidity_advanced",
+                "title": "Advanced Solidity Path: Get In-depth Knowledge",
+                "summary": "<b>Testing Smart Contracts with Truffle</b> will teach you to: <br> - Test your smart contracts with Truffle against Ganache <br> - Use Chai to write more expressive assertions <br> - Test against Loom😉</p> <p><b>Deploying Ethereum DApps with Truffle</b> will walk you through the process of deploying your smart contracts with Truffle.</p>"
+            },
+            {
+                "id": "chainlink",
+                "title": "Chainlink Path: Decentralized Oracles",
+                "summary": "Combine the real-world and all of its changes and information with our beloved zombies."
+            },
+            {
+                "id": "beyond_ethereum",
+                "title": "Beyond Ethereum Path: Explore the Blockchain Ecosystem",
+                "summary": "Explore the blockchain ecosystem."
+            },
+            {
+                "id": "tron",
+                "pathName": "Tron",
+                "title": "Tron: Decentralize the web",
+                "summary": "Start working with TRON, one of the fastest-growing public blockchains."
+            }
+        ]
     },
     "editor": {
         "readOnly": "閲覧のみ"
@@ -66,7 +99,7 @@
             ],
             "footer": "レッスン 2に進む前に進捗を保存するのだぞ。",
             "zombieDesc": "クリプトゾンビ　レベル 1",
-            "shareLinkText": "#CryptoZombies のレッスン1を終えて#イーサリアム でゲームを構築する基本を学んだのでシェアするよ。 これが作った最初のゾンビ！"
+            "shareLinkText": "#CryptoZombies のレッスン1を終えて#イーサリアム でゲームを構築する基本を学んだのでシェアするよ。ありがとう@CryptoZombiesHQ！これが作った最初のゾンビ！"
         },
         "lesson2": {
             "header": [
@@ -83,7 +116,7 @@
                 "準備ができたら、下のボタンを押すとレッスン3に進みます："
             ],
             "zombieDesc": "クリプトゾンビ　レベル 2",
-            "shareLinkText": "#クリプトゾンビ のレッスン2が終わったよ！#CryptoKitties を捕食させることができたのと、#イーサリアム の開発がかなりわかってきたよ。これがクリプトキティーズを捕食したゾンビ："
+            "shareLinkText": "#クリプトゾンビ のレッスン2が終わったよ！#CryptoKitties を捕食させることができたのと、#イーサリアム の開発がかなりわかってきたよ。ありがとう@CryptoZombiesHQ！これがクリプトキティーズを捕食したゾンビ："
         },
         "lesson3": {
             "achievementsUnlocked": "次の課題が解除されました：",
@@ -99,7 +132,7 @@
                 "準備ができたら、下のボタンを押すとレッスン4に進みます："
             ],
             "zombieDesc": "クリプトゾンビ　レベル 3",
-            "shareLinkText": "#CryptoZombies のレッスン3が終わったよ！作ったゾンビ軍団はこんな感じ:"
+            "shareLinkText": "#CryptoZombies のレッスン3が終わったよ！ありがとう@CryptoZombiesHQ！作ったゾンビ軍団はこんな感じ:"
         },
         "lesson4": {
             "achievementsUnlocked": "次の課題が解除されました：",
@@ -116,7 +149,7 @@
                 "準備ができたら、下のボタンを押すとレッスン5に進みます："
             ],
             "zombieDesc": "クリプトゾンビ レベル{levelNum} ",
-            "shareLinkText": "#CryptoZombies のLesson4が終わったよ！敵のIOTAゾンビをやっつけたよ！みんなもやってみて! "
+            "shareLinkText": "#CryptoZombies のLesson4が終わったよ！ありがとう@CryptoZombiesHQ！敵のIOTAゾンビをやっつけたよ！みんなもやってみて! "
         },
         "lesson5": {
             "achievementsUnlocked": "次の課題が解除されました：",
@@ -132,7 +165,7 @@
                 "準備ができたら、下のボタンを押すとレッスン6に進みます："
             ],
             "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
-            "shareLinkText": "#CryptoZombies のLesson5が終わってレベル10のゾンビをゲットしたよ！作ったゾンビ軍団をチェックしてみて！"
+            "shareLinkText": "#CryptoZombies のLesson5が終わってレベル10のゾンビをゲットしたよ！ありがとう@CryptoZombiesHQ！作ったゾンビ軍団をチェックしてみて！"
         },
         "lesson6": {
             "achievementsUnlocked": "次の課題が解除されました：",
@@ -148,7 +181,7 @@
                 "それまで{telegramLink}か{twitterLink}に参加してみましょう!"
             ],
             "zombieDesc": "レベル {levelNum} のクリプトゾンビe",
-            "shareLinkText": "#CryptoZombies のレッスン６が完了！レベル3.0のクリプトゾンビ'The Phantom of Web3'をゲットしたよ!ゾンビ軍団が大きくなってきた！😉"
+            "shareLinkText": "#CryptoZombies のレッスン６が完了！レベル3.0のクリプトゾンビ'The Phantom of Web3'をゲットしたよ!ありがとう@CryptoZombiesHQ！ゾンビ軍団が大きくなってきた！😉"
         }
     },
     "zombieBattle": {

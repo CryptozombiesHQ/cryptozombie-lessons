@@ -1,6 +1,7 @@
 ---
 title: Msg.sender
 actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   editor:
     language: sol
