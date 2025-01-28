@@ -1,19 +1,29 @@
 ---
-title: CLI Mastery - Unleash the Power of Neo Name Service!
-header: CLI Mastery - Unleash the Power of Neo Name Service!
+title: Creating NFTs with Royalties
+header: Creating NFTs with Royalties
 roadmap: roadmap.jpg
-path: neo
+path: optimism
 publishedOn: Cryptozombies
 ---
 
-<img src="ASSET_PATH/static/image/lesson-25/neo_color_light.png" alt="Neo Logo" style="width: 40%; height: 40%">
+<img src="ASSET_PATH/static/image/lesson-26/optimism-logo.svg" alt="Optimism Logo" style="width: 40%; height: 40%">
 
-Welcome to a wild and adventurous journey into the realm of Neo Name Service (NNS) and Node.js! Buckle up and get ready to embark on a thrilling course that combines blockchain magic with command-line wizardry. Get ready to build your very own CLI-based client for Neo Name Service using the awesome powers of Node.js!
+In this new course, we will guide you on how to construct Non-Fungible Tokens (NFTs) with royalty capabilities, and contracts seamlessly on OP Mainnet! To accomplish this, we will make use of the powerful tools at our disposal: the feature-rich <a href="https://github.com/ethereum-optimism/optimism-starter" target="_blank">Optimism Starter</a> toolkit, the convenient <a href="https://app.optimism.io/faucet" target="_blank">Superchain Faucet</a>, and the reliable and well-known OpenZeppelin's implementations of both ERC-721 and ERC-2981 standards.
 
-In this lesson, we'll dive headfirst into the world of NNS, where you'll discover the secret realm of naming assets on the Neo blockchain. But hold on tight, because we won't be satisfied with just scratching the surface. Oh no, we're going deep! We won't be building just any ordinary web-based app. Nope! We're taking it to the next level with a CLI-based client. Why? Because who needs fancy buttons and pretty graphics when you can rock the command line like a true hacker?!
+## The Optimism Starter
 
-Through this action-packed journey, you'll learn how to harness the power of Node.js to interact with the Neo Name Service in the most badass way possible. From querying domain information to registering new domains, you'll be unleashing commands like a Neo ninja!
+The <a href="https://github.com/ethereum-optimism/optimism-starter" target="_blank">Optimism Starter</a> is an open-source project developed by the Optimism team that provides you with a well-structured template and pre-configured environment that streamlines the process of building, testing, and deploying smart contracts on the Optimism network. It comes equipped with essential tools, libraries, and configurations, allowing you to focus on the logic of their smart contracts without having to worry about complex setup procedures.
 
-So, if you're ready to join this epic adventure, grab your keyboard and let's dive headfirst into the captivating world of Neo Name Service!
+## Superchain Faucet
 
-Get ready to impress your friends and become the ultimate CLI hero!
+The <a href="https://app.optimism.io/faucet" target="_blank">Superchain Faucet</a> is a web application that allows you to request ETH for the Optimism test network. It serves as a valuable resource for developers who want to experiment and test their applications without the need for real funds.
+
+## The ERC-721 Standard
+
+ERC-721 is a standard interface for non-fungible tokens (NFTs) on the Ethereum blockchain. NFTs are unique digital assets that can represent ownership or proof of authenticity of a specific item.
+
+## The ERC-2981 Standard
+
+ERC-2981 represents a mechanism for creators to receive royalties whenever their NFTs are sold or traded on a marketplace, allowing contracts to signal a royalty amount to be paid to the NFT creator or rights holder every time the NFT is sold or re-sold. This is intended for NFT marketplaces that want to support the ongoing funding of artists and other NFT creators. Note that the royalty payment must be voluntary, as executing transfers between wallets does not always imply a sale occurred.
+
+By the end of this course, you will possess the expertise to craft NFTs with royalties and leverage the scalability and cost advantages provided by OP Mainnet.
