@@ -1,14 +1,17 @@
 ---
-title: Zombies Attack Their Victims
-header: So, you've made it to Lesson 2!
-roadmap: roadmap2.jpg
+title: Advanced Rust Concepts
+header: "Lesson 3: Advanced Rust Concepts"
+roadmap: roadmap3.png
 path: multiversx
 publishedOn: Cryptozombies
 ---
 
-Impressive, human! You're a better coder than I thought.
+Grr... I just can't slow you down, can I? Your Rust skills are formidable, human...
 
-This lesson will teach you how to **multiply your zombie army by feeding on other life forms**.
+Now that you've got some experience coding Rust under your belt, we're going to dive into some of the more technical aspects of MultiversX development.
 
-In this lesson we will cover some more advanced MultiversX Rust framework concepts, so it's highly
-recommended that you complete Lesson 1 before starting.
+This lesson will be a bit less flashy (sorry, no plot twists!). But you’ll learn some really important concepts that will take you closer to building real DApps — things like **contract ownership, gas costs, code optimization, and security**.
+
+You've been warned — no kitties and rainbows in Lesson 3!
+
+But a lot of densely-packed Rust knowledge. We strongly recommended that you complete Lesson 2 before starting this one.
