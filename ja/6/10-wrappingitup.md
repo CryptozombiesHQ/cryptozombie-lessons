@@ -35,7 +35,7 @@ b. A user page, where you could view a user's zombie army with a permalink. You 
 
 c. A homepage, which is a variation of the user page that shows the current user's zombie army. (This is the page we started implementing in index.html).
 
-4. Some method in the UI that allows the user to feed on CryptoKitties. We could have a button by each zombie on the homepage that says "Feed Me", then a text box that prompted the user to enter a kitty's ID (or a URL to that kitty, e.g. <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https\://www\.cryptokitties.co/kitty/578397</a>). This would then trigger our function `feedOnKitty`.
+4. Some method in the UI that allows the user to feed on CryptoKitties. We could have a button by each zombie on the homepage that says "Feed Me", then a text box that prompted the user to enter a kitty's ID (or a URL to that kitty, e.g. <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https://www.cryptokitties.co/kitty/578397</a>). This would then trigger our function `feedOnKitty`.
 
 5. Some method in the UI for the user to attack another user's zombie.
 
