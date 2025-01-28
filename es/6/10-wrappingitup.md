@@ -35,7 +35,7 @@ b. Una página de usuario, donde puedes ver el ejército zombie de un usuario co
 
 c. Una página de inicio, que es una variación de la página de usuario que muestra el ejército zombie del usuario actual. (Esta es la página que comenzamos a implementar en index.html).
 
-4. Algún método en la interfaz de usuario que permite al usuario alimentarse de CryptoKitties. Podríamos tener un botón por cada zombie en la página de inicio que diga "Feed Me", a continuación, un cuadro de texto que solicite al usuario ingresar la identificación de un "kitty" (o una URL a ese "kitty", ejemplo; <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https\://www\.cryptokitties.co/kitty/578397</a>). Esto dispararía nuestra función `feedOnKitty`.
+4. Algún método en la interfaz de usuario que permite al usuario alimentarse de CryptoKitties. Podríamos tener un botón por cada zombie en la página de inicio que diga "Feed Me", a continuación, un cuadro de texto que solicite al usuario ingresar la identificación de un "kitty" (o una URL a ese "kitty", ejemplo; <a href="https://www.cryptokitties.co/kitty/578397" target=_blank>https://www.cryptokitties.co/kitty/578397</a>). Esto dispararía nuestra función `feedOnKitty`.
 
 5. Algún método en la interfaz de usuario (UI) para que el usuario ataque al zombi de otro usuario.
 
