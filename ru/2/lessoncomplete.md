@@ -7,10 +7,10 @@ material:
   lessonComplete: 1
 ---
 
-Congratulations on completing the lesson on how to use the <a href="https://github.com/ethereum-optimism/optimism-starter" target="_blank">Optimism Starter</a> to test and deploy your smart contract on OP Mainnet! You've taken a significant step towards becoming a proficient blockchain developer, equipped with the knowledge to deploy scalable and cost-effective solutions.
+Awesome, you've mastered the art of deploying smart contracts to TRON!👏🏻👏🏻👏🏻
 
-Remember, learning is a continuous journey, and the more you practice and experiment, the more proficient you'll become. Stay curious, stay engaged, and continue building on your newfound knowledge. The blockchain world is full of opportunities, and your expertise can play a pivotal role in shaping the future of web3.
+Remember, deploying to TRON brings you faster and cheaper transactions which make it the perfect choice for building the decentralized web.
 
-Happy building, and see you in the next lesson!
+Note that, to make this lesson easier to understand, we've made several decisions that simplified things a bit and omitted some important steps like testing.
 
 Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
