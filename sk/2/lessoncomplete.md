@@ -3,15 +3,22 @@ title: Wrapping It Up
 actions:
   - checkAnswer
   - hints
+requireLogin: true
 material:
   lessonComplete:
     answer: 1
 ---
 
-That's it, you've completed lesson 2!
+Congratulations! That concludes Lesson 3.
 
-Now that our zombies have learned to feed and multiply, it is time to get serious.
-The next chapter comes with advanced smart contract development concepts, highly emphasizing optimisation.
+## Let's recap:
 
-Are you prepared?
-Your zombie army awaits you!
+- We've added a way to update our CryptoKitties contracts
+- We've learned to protect core functions with `only_owner`
+- We've learned about gas and gas optimization
+- We added levels and cooldowns to our zombies
+- We now have functions to update a zombie's name and DNA once the zombie gets above a certain level
+
+Now that your Rust skills have greatly improved, it's time to prepare for zombie attacks.
+
+Lesson 4 awaits you!
