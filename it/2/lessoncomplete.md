@@ -1,5 +1,5 @@
 ---
-title: Lesson 1 Complete!
+title: Wrapping It Up
 actions:
   - checkAnswer
   - hints
@@ -8,10 +8,10 @@ material:
     answer: 1
 ---
 
-Congratulations! You have completed the first lesson and you have created the first zombie in your army.
+That's it, you've completed lesson 2!
 
-# Next Steps
+Now that our zombies have learned to feed and multiply, it is time to get serious.
+The next chapter comes with advanced smart contract development concepts, highly emphasizing optimisation.
 
-This is just the beginning. The next step awaits you, where you will learn more complex MultiversX framework concepts allowing user interaction with the zombies.
-
-Got questions? Head on over to our <a href="https://t.me/MultiversXDevelopers" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+Are you prepared?
+Your zombie army awaits you!
