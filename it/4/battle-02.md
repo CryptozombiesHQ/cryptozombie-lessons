@@ -287,7 +287,7 @@ In Ethereum, quando si chiama la funzione di un contratto, si trasmette una tran
 
 Quando un nodo ha risolto un PoW, gli altri nodi smettono di tentare di risolverlo, controllano che l'elenco delle transazioni dell'altro nodo sia valido, accettano il blocco e procedono alla risoluzione del blocco successivo.
 
-**Questo rende utilizzabile la nostra funzione di numero casuale.**
+**Questo renderebbe inutilizzabile la nostra funzione di numeri casuali.**
 
 Immagina di avere un contratto testa o croce, o raddoppi i tuoi soldi o perdi tutto. Usa la funzione di sopra per determinare se è testa o croce. (`random >= 50` è testa, `random < 50` è croce).
 

@@ -262,11 +262,11 @@ Questo approccio è allettante per la sua semplicità. Ma vediamo cosa succede s
 
 Tale funzione di trasferimento dovrebbe:
 1. Inserire lo zombi sull'array `ownerToZombies` del nuovo proprietario,
-2. Rimuovi lo zombi dall'array `ownerToZombies` del vecchio proprietario,
-3. Sposta tutti gli zombi nell'array del proprietario più vecchio di un posto per riempire il buco, e poi
-4. Riduci la lunghezza dell'array di 1.
+2. Rimuovere lo zombi dall'array `ownerToZombies` del vecchio proprietario,
+3. Spostare tutti gli zombi nell'array del proprietario più vecchio di un posto per riempire il buco, e poi
+4. Ridurre la lunghezza dell'array di 1.
 
-Lo step 3 sarebbe estremamente costoso dal punto di vista del gas, dal momento che dovremmo scrivere per ogni zombi di cui abbiamo cambiato la posizione. Se un proprietario ha 20 zombi e scambia il primo, dovremmo fare 19 scritture per mantenere l'ordine dell'array.
+Lo step 3 sarebbe estremamente costoso dal punto di vista del gas, dal momento che dovremmo effettuare un'operazione di scrittura per ogni zombi di cui abbiamo cambiato la posizione. Se un proprietario ha 20 zombi e scambia il primo, dovremmo fare 19 operazioni di scrittura per mantenere l'ordine dell'array.
 
 Poiché la scrittura su memoria è una delle operazioni più costose in Solidity, ogni chiamata a questa funzione di trasferimento sarebbe estremamente costosa dal punto di vista del gas. E peggio ancora, costerebbe una diversa quantità di gas ogni volta che viene chiamata, a seconda di quanti zombi ha l'utente nel proprio esercito e dell'indice dello zombi scambiato. Quindi l'utente non saprebbe quanto gas inviare esattamente.
 

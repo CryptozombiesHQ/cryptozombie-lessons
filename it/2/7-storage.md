@@ -69,7 +69,7 @@ material:
       }
 ---
 
-In Solidity, there are two places you can store variables — in `storage` and in `memory`.
+In Solidity puoi salvare le variabili all'interno di `storage` o dentro `memory`.
 
 **_Storage_** si riferisce alle variabili memorizzate in modo permanente sulla blockchain. Le variabili **_Memory_** invece sono temporanee e vengono cancellate tra le chiamate di funzioni esterne al contratto. Pensalo come il disco rigido del tuo computer rispetto alla RAM.
 

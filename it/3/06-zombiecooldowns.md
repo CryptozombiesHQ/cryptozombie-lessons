@@ -243,7 +243,7 @@ Questo farà in modo che gli zombi non potranno nutrirsi illimitatamente di gatt
 
 Innanzitutto definiremo alcune funzioni di aiuto che ci consentono di impostare e controllare il `readyTime` di uno zombi.
 
-## Passando le strutture come argomenti
+## Passare le strutture come argomenti
 
 È possibile passare un puntatore di archiviazione ad una struttura come argomento di una funzione `private` o `internal`. Ciò è utile, ad esempio, per passare le nostre strutture `Zombie` tra le funzioni.
 

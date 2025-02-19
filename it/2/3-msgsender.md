@@ -82,13 +82,13 @@ material:
       }
 ---
 
-Ora che abbiamo i nostri mapping per tenere traccia di chi possiede uno zombi, vorremmo aggiornare il metodo `_createZombie` per usarli.
+Ora che abbiamo i nostri mapping per tenere traccia di chi possiede uno zombi, possiamo usarli aggiornando il metodo `_createZombie`.
 
 Per fare ciò dobbiamo usare qualcosa chiamato `msg.sender`.
 
 ## msg.sender
 
-In Solidity esistono alcune variabili globali che sono disponibili per tutte le funzioni. Una di queste è "msg.sender", che si riferisce all'`address` della persona (o contratto intelligente) che ha chiamato la funzione corrente.
+In Solidity esistono alcune variabili globali disponibili per tutte le funzioni. Una di queste è "msg.sender", che si riferisce all'`address` della persona (o contratto intelligente) che ha chiamato la funzione corrente.
 
 > Nota: in Solidity l'esecuzione della funzione deve sempre iniziare con un chiamante esterno. Un contratto siederà sulla blockchain senza fare nulla fino a quando qualcuno non chiama una delle sue funzioni. Quindi ci sarà sempre un `msg.sender`.
 
@@ -110,9 +110,9 @@ function whatIsMyNumber() public view returns (uint) {
 }
 ```
 
-In questo banale esempio chiunque potrebbe chiamare `setMyNumber` e memorizzare un `uint` nel nostro contratto, che sarebbe legato al loro indirizzo. Quindi quando hanno chiamato `whatIsMyNumber` sono stati restituiti gli `uint` che avevano archiviato.
+In questo banale esempio chiunque potrebbe chiamare `setMyNumber` e memorizzare un `uint` nel nostro contratto, legandolo così al proprio indirizzo. Successivamente, lo stesso utente può ottenere il valore `uint` che ha salvato in precedenza semplicemente chiamando `whatIsMyNumber`.
 
-L'uso di `msg.sender` ti offre la sicurezza della blockchain di Ethereum - l'unico modo in cui qualcuno può modificare i dati di qualcun altro sarebbe quello di rubare la chiave privata associata al suo indirizzo Ethereum.
+L'uso di `msg.sender` garantisce la sicurezza della blockchain di Ethereum - l'unico modo in cui qualcuno può modificare i dati di qualcun altro è rubare la chiave privata associata al suo indirizzo Ethereum.
 
 # Facciamo una prova
 

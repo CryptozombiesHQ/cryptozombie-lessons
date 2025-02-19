@@ -237,13 +237,13 @@ I creatori di Ethereum volevano assicurarsi che qualcuno non potesse ostruire la
 
 ## Struttura ad incastro per risparmiare gas
 
-Nella Lezione 1 abbiamo menzionato che ci sono altri tipi di `uint`s: `uint8`, `uint16`, `uint32`, ecc.
+Nella Lezione 1 abbiamo menzionato che ci sono altri tipi di `uint`: `uint8`, `uint16`, `uint32`, ecc.
 
 Normalmente non c'è alcun vantaggio nell'utilizzare questi sottotipi perché Solidity riserva 256 bit di memoria indipendentemente dalla dimensione `uint`. Ad esempio, l'uso di `uint8` invece di `uint` (`uint256`) non ti farà risparmiare alcun gas.
 
-Ma c'è un'eccezione a questo: dentro `struct`s.
+Ma c'è un'eccezione a questo: inserire gli `uint` all'interno di uno `struct`.
 
-Se hai più `uint`s all'interno di una struttura, l'uso di un `uint` di dimensioni minori, quando possibile, consentirà a Solidity di raggruppare queste variabili per occupare meno spazio di archiviazione. Per esempio:
+Se hai più `uint` all'interno di una struttura, l'uso di un `uint` di dimensioni minori, quando possibile, consentirà a Solidity di raggruppare queste variabili per occupare meno spazio di archiviazione. Per esempio:
 
 ```
 struct NormalStruct {

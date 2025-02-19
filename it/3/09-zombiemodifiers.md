@@ -240,7 +240,7 @@ function driveCar(uint _userId) public olderThan(16, _userId) {
 
 1. Creare una funzione chiamata `changeName`. Ci vorranno 2 argomenti: `_zombieId` (un `uint`) e `_newName` (una `string`), inoltre lo renderemo `external`. Dovrebbe avere il modificatore `aboveLevel` e dovrebbe passare `2` per il parametro `_level`. (Non dimenticare di passare anche lo `_zombieId`).
 
-2. Per prima cosa in questa funzione dobbiamo verificare che `msg.sender` sia uguale a `zombieToOwner[_zombieId]`. Utilizzare un'istruzione `request`.
+2. Per prima cosa in questa funzione dobbiamo verificare che `msg.sender` sia uguale a `zombieToOwner[_zombieId]`. Utilizzare un'istruzione `require`.
 
 3. Quindi la funzione dovrebbe impostare `zombies[_zombieId].name` uguale a `_newName`.
 
