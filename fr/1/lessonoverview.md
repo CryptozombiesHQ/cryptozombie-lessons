@@ -26,11 +26,11 @@ L'apparence du zombie va dépendre de son "ADN Zombie". L'ADN d'un Zombie est si
 8356281049284737
 ```
 
-Tout comme l'ADN réel, différentes parties de ce nombre représenteront différents traits. Les 2 premiers chiffres correspondent au type de tête du zombie, les 2 derniers chiffres aux yeux du zombie, etc.
+Tout comme l'ADN réel, chaque partie de ce nombre représente un trait différent. Par exemple, les 2 premiers chiffres déterminent le type de tête du zombie, les 2 chiffres suivants déterminent la couleur des yeux, etc.
 
 > Remarque : Pour ce tutoriel, nous avons fait simple, et nos zombies peuvent avoir seulement 7 types de têtes différentes (même si 2 chiffres permettent 100 options possibles). Plus tard, nous pourrions ajouter plus de types de têtes si nous voulions augmenter le nombre de zombies possibles.
 
-Par exemple, les 2 premiers chiffres de notre ADN exemple sont `83`. Pour les faire correspondre à un type de tête, nous devons faire `83 % 7 + 1` = 7. Ce Zombie aura donc le 7ième type de tête.
+Par exemple, les 2 premiers chiffres de notre ADN exemple sont `83`. Pour déterminer le type de tête correspondant, nous utilisons le calcul 83 % 7 + 1, ce qui donne 7. Ce Zombie aura donc le 7ième type de tête.
 
 Dans le panneau de droite, essayez de déplacer le curseur `head gene` (gène pour la tête) sur la 7ème tête (le bonnet de Noël) pour voir à quel trait correspond le `83`.
 

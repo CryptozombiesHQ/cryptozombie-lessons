@@ -84,13 +84,13 @@ Pour cela, nous allons avoir besoin de 2 nouveaux types de données : `mapping` 
 
 ## Adresses
 
-La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte a un montant d'**_Ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des Ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
+La blockchain Ethereum est constituée de **_comptes_**, un peu comme des comptes en banque. Un compte a un montant d'**_ether_** (c'est la monnaie utilisée sur la blockchain Ethereum), et vous pouvez envoyer des ethers à d'autres comptes ou en recevoir, de la même manière que vous pouvez transférer de l'argent d'un compte bancaire à un autre.
 
 Chaque compte a une `address`, qui est l'équivalent d'un numéro de compte bancaire. c'est un identifiant unique qui désigne un compte et qui ressemble à :
 
 `0x0cE446255506E92DF41614C46F1d6df9Cc969183`
 
-(Cette adresse appartient à l'équipe de CryptoZombies. Si vous aimez CryptoZombies, vous pouvez nous envoyer quelques Ethers ! 😉 )
+(Cette adresse appartient à l'équipe de CryptoZombies. Si vous aimez CryptoZombies, vous pouvez nous envoyer quelques ethers ! 😉 )
 
 Nous entrerons dans les détails des adresses dans une prochaine leçon, pour l'instant, la seule chose que vous devez comprendre c'est que **une adresse appartient à un utilisateur unique** (ou a un smart contract).
 
