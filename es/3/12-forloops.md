@@ -269,7 +269,7 @@ Esa función de transferencia necesitaría que:
 
 El paso 3 costará demasiado gas, debido a que tenemos que hacer una escritura por cada zombi que queramos mover. Si un usuario tiene 20 zombis y cambia el primero de todos, tenemos que hacer 19 escrituras para mantener el orden del array.
 
-Como escribir en storage es una de las operaciones más caras en Solidity, cada llamada a la función de transferencia será exteremadamente cara en cuanto al gas. Y lo peor, la función costará diferente cantidad de gas cada vez que se llame, dependiendo de cuantos zombis tenga el usuario en su ejército y la cantidad de zombis a mover. Así que el usuario no sabrá cuanto gas enviar.
+Como escribir en storage es una de las operaciones más caras en Solidity, cada llamada a la función de transferencia será extremadamente cara en cuanto al gas. Y lo peor, la función costará diferente cantidad de gas cada vez que se llame, dependiendo de cuantos zombis tenga el usuario en su ejército y la cantidad de zombis a mover. Así que el usuario no sabrá cuanto gas enviar.
 
 > Nota: Por supuesto, podemos mover el último zombi del array para rellenar el hueco que hemos dejado y reducir la longitud del array en uno. Pero cambiaremos el orden de nuestro ejército cada vez que hagamos una transferencia de zombi.
 
