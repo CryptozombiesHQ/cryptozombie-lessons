@@ -64,6 +64,9 @@ fr:
     readmore: En savoir plus >
     all_posts: Afficher tous les messages
     learn_more: Apprendre encore plus
+    latest_videos: Dernières vidéos
+    latest_videos_desc: Découvrez notre collection complète de vidéos éducatives sur la blockchain.
+    all_videos: Voir toutes les vidéos
 
   links: 
     blog: Blog
@@ -74,6 +77,7 @@ fr:
     cookies: Cookies
     terms: Conditions
     what_is_blockchain: Qu'est-ce que la blockchain ?
+    videos: Vidéos
 
   newsletter:
     newsletter: Bulletin
