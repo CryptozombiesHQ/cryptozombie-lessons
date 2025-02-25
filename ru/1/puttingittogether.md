@@ -21,7 +21,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -49,7 +49,7 @@ material:
 
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -66,7 +66,7 @@ material:
 
 Мы почти закончили с генератором случайных зомби! Давай создадим публичную функцию, которая объединит в себе все сделанное ранее.
 
-Создадим публичную функцию, которая получает на вход параметр имя зомби и использует его, чтобы создать зомби со случайной ДНК. 
+Создадим публичную функцию, которая получает на вход параметр имя зомби и использует его, чтобы создать зомби со случайной ДНК.
 
 # Проверь себя
 
