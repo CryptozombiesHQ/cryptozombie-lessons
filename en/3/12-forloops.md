@@ -235,7 +235,7 @@ material:
           uint counter = 0;
           for (uint i = 0; i < zombies.length; i++) {
             if (zombieToOwner[i] == _owner) {
-              result[counter] = i;
+              result[counter] = zombies[i].dna;
               counter++;
             }
           }
@@ -319,7 +319,7 @@ Let's finish our `getZombiesByOwner` function by writing a `for` loop that itera
 3. Inside the `for` loop, make an `if` statement that checks if `zombieToOwner[i]` is equal to `_owner`. This will compare the two addresses to see if we have a match.
 
 4. Inside the `if` statement:
-   1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `i`.
+   1. Add the zombie's ID to our `result` array by setting `result[counter]` equal to `zombies[i].dna`.
    2. Increment `counter` by 1 (see the `for` loop example above).
 
 That's it — the function will now return all the zombies owned by `_owner` without spending any gas.
