@@ -1,0 +1,450 @@
+{
+    "base": {
+        "name": "CryptoZombies",
+        "tagLine": "Belajar membuat kode game di Ethereum",
+        "lesson": "Pelajaran {lessonNum}",
+        "chapter": "Bab {chapterNum}",
+        "syncing": "Sinkronisasi...",
+        "telegram": {
+            "name": "Telegram",
+            "openChat": "Tanya Pertanyaan",
+            "action": "Bergabung dengan Telegram kami",
+            "link": "https://t.me/loomnetworkdev"
+        },
+        "twitter": {
+            "name": "Twitter",
+            "link": "https://twitter.com/loomnetwork"
+        },
+        "find_source_code_repo": "Anda dapat menemukan kode sumber untuk pelajaran ini di <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> repo Github ini</a>.",
+        "course" : [
+            {
+                "id": "solidity",
+                "title": "Jalur Solidity: Smart Contracts untuk Pemula hingga Menengah",
+                "summary": "<p>Jadi kamu pikir kamu memiliki apa yang diperlukan untuk menjadi <strong>CryptoZombie</strong>, huh?</p> <p>Kursus ini akan mengajarkan kamu bagaimana caranya <strong>membuat game di atas Ethereum</strong>.</p> Ini dirancang untuk pemula Solidity, tetapi mengasumsikan kamu memiliki beberapa pengalaman pemrograman dalam bahasa lain (misalnya Javascript)."
+            },
+            {
+                "id": "chainlink",
+                "title": "Jalur Chainlink: Oracles Terdesentralisasi",
+                "summary": "Gabungkan dunia nyata dan semua perubahan serta informasinya dengan zombie kita tercinta"
+            },
+            {
+                "id": "solidity_advanced",
+                "title": "Jalur Solidity Tingkat Lanjut: Dapatkan Pengetahuan Mendalam",
+                "summary": "<b>Menguji Smart Contracts dengan Truffle</b> akan mengajari anda untuk: <br> - Uji smart contract kamu dengan Truffle terhadap Ganache <br> - Gunakan Chai untuk menulis pernyataan yang lebih ekspresif <br> - Uji terhadap Loom😉</p> <p><b>Menyebarkan Ethereum DApps dengan Truffle</b> akan memandu kamu melalui proses penerapan smart contract kamu dengan Truffle.</p>"
+            },
+            {
+                "id": "beyond_ethereum",
+                "title": "Diluar Jalur Ethereum: Jelajahi Ekosistem Blockchain",
+                "summary": "Jelajahi ekosistem blockchain."
+            }
+        ],
+        "solidity_path": "Jalur Solidity: Smart Contracts untuk Pemula hingga Menengah",
+        "hands_on_path": "Jalur Langsung: Buat dan Terapkan Mode Game Kustom",
+        "hand_on_plasma": "Jalur Solidity Tingkat Lanjut: Dapatkan Pengetahuan Mendalam",
+        "start_resume": "Mulai/Lanjutkan",
+        "the_curriculum": "Kurikulum",
+        "course_overview":"Ringkasan Kursus",
+        "start": "Mulai",
+        "skip_lesson": "Lewati Pelajaran",
+        "graduate": "Siap untuk Lulus? atau Kamu Sudah Berpengalaman?",
+        "you_will":"Kamu Akan",
+        "will_list": {
+            "use": "Gunakan solidity tingkat menengah",
+            "deploy": "Terapkan ke PlasmaChain langsung",
+            "interact": "Mintalah gamer sejati bermain dan berinteraksi dengan Dapp kamu",
+            "earn": "Mengisi tiket masuk dan mendapatkan uang!"
+        },
+        "make_game": "Buat mode permainan kamu sekarang!",
+        "goto_lesson_list" : "Pergi ke daftar pelajaran",
+        "share_link": "Bagikan",
+        "zbbg_slogan": "Zombie Battleground adalah Game Kartu Koleksi Pertama yang Dijalankan Sepenuhnya di Blockchain",
+        "zbbg_link": "Dapatkan Akses Awal Sekarang!",
+        "coming_soon": "Segera Datang",
+        "login_logout": {
+            "sign_in": "Masuk",
+            "sign_out": "Keluar" ,
+            "register": "Daftar"
+        },
+        "sign_in_modal": {
+            "sign_in": "Masuk",
+            "email": "Email",
+            "password": "Password",
+            "enter_email": "Masukkan email",
+            "enter_password": "Masukkan password",
+            "forgot_password": "Lupa password?",
+            "enter_email_password": "Silahkan masukkan email dan password.",
+            "password_length": "Panjang password kamu harus 6 hingga 50 karakter.",
+            "cancel": "Batal"
+
+        },
+        "register": {
+            "register": "Daftar",
+            "create_account": "Buat Akun",
+            "register_new_account": "Daftar akun baru",
+            "email": "Email",
+            "password": "Password",
+            "enter_email": "Masukkan email",
+            "enter_password": "Masukkan password",
+            "re_enter_new_password": "Masukkan kembali password baru",
+            "confirm_new_password": "Ulangi password",
+            "required_email_password": "Silahkan masukkan email, password dan konfirmasi.",
+            "email_length": "Panjang email kamu harus 3 hingga 191 karakter.",
+            "password_length": "Panjang password kamu harus 6 hingga 50 karakter.",
+            "invalid_repeat_password": "Passwords tidak cocok.",
+            "success": "Akun kamu telah berhasil didaftarkan."
+        },
+        "reset_password": {
+            "reset_password": "Reset Password",
+            "reset_my_password": "Reset password saya",
+            "enter_new_password": "Masukkan password baru",
+            "re_enter_new_password": "Masukkan kembali password baru",
+            "confirm_new_password": "Ulangi password",
+            "required_password": "Silahkan masukkan password dan konfirmasi.",
+            "password_length": "Panjang password kamu harus 6 hingga 50 karakter.",
+            "invalid_repeat_password": "Passwords tidak cocok.",
+            "reset_success": "Password telah berhasil diperbarui."
+        },
+        "forgot_password": {
+            "reset_password": "Reset Password",
+            "enter_email": "Masukkan email kamu",
+            "send": "Kirim permintaan",
+            "reset_link": "Tautan reset password akan dikirim ke email kamu.",
+            "success": "Berhasil. Silahkan periksa email kamu. Kamu akan mendapatkan tautan reset password",
+            "required_email": "Silahkan masukkan email."
+        }
+    },
+    "achievements":{
+        "achievements": "Prestasi",
+        "achieved": "tercapai",
+        "finished_first":{
+            "title": "Selesai pelajaran pertama",
+            "desc": "Menyelesaikan pelajaran pertama dalam kursus apapun"
+        },
+        "finished_solidity":{
+            "title": "Selesai jalur solidity",
+            "desc": "Menyelesaikan semua pelajaran di jalur Solidity"
+        },
+        "finished_lesson7":{
+            "title": "Membangun sebuah multi-fungible token",
+            "desc": "Membangun sebuah multi-fungible token"
+        }
+    },
+    "rewards": {
+        "rewards" : "penghargaan",
+        "test_key": "Kunci Penguji Alfa untuk Medan Pertempuran Zombie",
+        "loom_tokens":"Loom Tokens",
+        "no_reward": " Kamu tidak memiliki imbalan apapun"
+    },
+    "footer":{
+        "intro": "CryptoZombies adalah sekolah kode interaktif gratis, open source, yang mengajarkan kamu untuk membuat game di Ethereum. Kursus ini dirancang untuk pemula Solidity dan dimulai dengan dasar-dasar mutlak. Jadi, jika kamu belum pernah membuat kode dengan Solidity sebelumnya, jangan khawatir kami akan memandu kamu langkah demi langkah.",
+        "find_more": "Temukan lebih banyak lagi..."
+    },
+    "editor": {
+        "readOnly": "baca saja"
+    },
+    "lessonMenu": {
+        "getReward": "Hadiah",
+        "pageTitle": "@:base.name | @:base.tagLine",
+        "itemLabel": "{title}",
+        "signIn": "Masuk dan muat kemajuan kamu",
+        "progressLoaded": "Kemajuan kamu sedang dimuat"
+    },
+    "overview": {
+        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+        "presents": "Hadiah",
+        "title": "{title}",
+        "signInPrompt": "Mulai sekarang, kamu harus masuk agar kami dapat menyinkronkan kemajuan dan zombie kamu. Silahkan masuk menggunakan tombol di bawah ini:",
+        "signInButton": "Masuk",
+        "levelUpText": "Dalam pelajaran ini kita akan menaikkan level zombie yang dihasilkan dalam pelajaran sebelumnya.",
+        "missingZombieText": "Sayangnya sepertinya kamu tidak memiliki zombie dari Pelajaran {lessonNum}. Jika kamu belum menyelesaikan pelajaran itu, silahkan lakukan sebelum melanjutkan:",
+        "fixMissingZombieText": "Jika kamu telah menyelesaikan Pelajaran {lessonNum} dan menerima pesan ini karena kesalahan, kamu dapat langsung melompat ke akhir dan {generateNewZombie}.",
+        "generateNewZombieLink": "menghasilkan zombie baru",
+        "areYouReady": "Apakah kamu siap untuk memulai?",
+        "resumeLesson": "Lanjutkan Pelajaran {lessonNum}"
+    },
+    "chapter": {
+        "pageTitle": "@:base.name | {lesson} {chapter}",
+        "header": "Bab {chapterNum}: {title}",
+        "saveProgress": "Simpan Kemajuan",
+        "autosaveEnabled": "Simpan otomatis Diaktifkan",
+        "resumeProgress": "Lanjutkan Kemajuan",
+        "showHint": "Tunjukkan Petunjuk",
+        "nextChapter": "Bab Selanjutnya",
+        "tryAgain": "Coba Lagi",
+        "checkAnswer": "Periksa Jawaban",
+        "showMeTheAnswer": "Tunjukkan Jawabannya",
+        "hideAnswer": "Sembunyikan Jawaban",
+        "next_chapter": "LANJUT",
+        "prev_chapter": "KEMBALI"
+    },
+    "lessonComplete": {
+        "shareLinksAction": "Atau kamu bisa klik tombol di bawah ini untuk berbagi:",
+        "signIn": "Masuk dan simpan kemajuan kamu",
+        "goToNextLesson": "Lanjutkan ke Pelajaran Berikutnya",
+        "lesson1": {
+            "header": [
+                "Selamat! Kamu telah menyelesaikan Pelajaran 1 CryptoZombies!",
+                "Kamu secara resmi selangkah lebih dekat untuk membangun game kamu sendiri di Ethereum.",
+                "Pamerkan zombie pertamamu ke teman-temanmu!",
+                "Ini tautan permanen ke zombiemu:"
+            ],
+            "footer": "Pastikan kemajuanmu disimpan di bawah ini sebelum melanjutkan ke Pelajaran 2.",
+            "zombieDesc": "CryptoZombie Tingkat 1",
+            "shareLinkText": "Saya baru saja menyelesaikan Pelajaran 1 #CryptoZombies dan mempelajari dasar-dasar pengkodean game di #Ethereum. Lihatlah zombie pertama di pasukanku!"
+        },
+        "lesson2": {
+            "header": [
+                "Selamat! kamu telah menyelesaikan {lesson2} CryptoZombies!",
+                "Prestasi Terbuka:",
+                "{zombieName} telah ditingkatkan ke Level 2!",
+                "Anda telah menambahkan NoName, seekor CatZombie ke pasukanmu! (Jangan khawatir, Kamu akan belajar bagaimana mengubah namanya di Pelajaran ke 3)",
+                "Pamerkan CryptoKitty-slayer kamu ke teman-temanmu!",
+                "Bagikan URL ini agar temanmu dapat membunuh CryptoKitties dengan zombiemu:"
+            ],
+            "footer": [
+                "Menikmati CryptoZombies? Beritahu Kami!",
+                "Bergabunglah dengan percakapan di {telegramLink}, atau ikuti kami di {twitterLink}",
+                "Saat kamu siap, klik tombol di bawah untuk mengakses Pelajaran ke 3:"
+            ],
+            "zombieDesc": "CryptoZombie Level 2",
+            "shareLinkText": "Saya baru saja menyelesaikan #CryptoZombies Pelajaran ke 2! Zombie saya memakan #CryptoKitties, dan saya belajar lebih banyak tentang pengembangan #Ethereum. Tonton pertempuran zombie saya dengan CryptoKitties lebih banyak:"
+        },
+        "lesson3": {
+            "achievementsUnlocked": "Prestasi Terbuka:",
+            "zombieUpgraded": "{zombieName} telah ditingkatkan ke Level {levelNum}!",
+            "header": [
+                "Selamat! Kamu telah menyelesaikan {lesson3} CryptoZombies!",
+                "Pamerkan tentara zombie kamu ke teman-temanmu!",
+                "Bagikan URL ini agar temanmu dapat melihat pasukanmu:"
+            ],
+            "footer": [
+                "Menikmati CryptoZombies? Beritahu Kami!",
+                "Bergabunglah dengan percakapan di {telegramLink}, atau ikuti kami di {twitterLink}",
+                "Saat kamu siap, klik tombol di bawah untuk mengakses Pelajaran ke 4"
+            ],
+            "zombieDesc": "CryptoZombie Level 3",
+            "shareLinkText": "Saya baru saja menyelesaikan #CryptoZombies Pelajaran ke 3! Lihat tentara zombie saya:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Prestasi Terbuka:",
+            "zombieUpgraded": "{zombieName} telah ditingkatkan ke Level {levelNum}!",
+            "newZombieAdded": "Anda telah menambahkan zombie Level 1 baru ke pasukanmu!",
+            "header": [
+                "Selamat! Kamu telah menyelesaikan {lesson4} CryptoZombies!",
+                "Pamerkan tentara zombie kamu ke teman-temanmu!",
+                "Bagikan URL ini agar temanmu dapat melihat pasukanmu:"
+            ],
+            "footer": [
+                "Menikmati CryptoZombies? Beritahu Kami!",
+                "Bergabunglah dengan percakapan di {telegramLink}, atau ikuti kami di {twitterLink}",
+                "Saat kamu siap, klik tombol di bawah untuk mengakses Pelajaran ke 5"
+            ],
+            "zombieDesc": "CryptoZombie Level {levelNum}",
+            "shareLinkText": "Saya baru saja menyelesaikan #CryptoZombies Pelajaran ke 4, dan mengalahkan zombie IOTA jahat! Cobalah sendiri:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "Prestasi Terbuka:",
+            "newZombieAdded": "Kamu menerima {zombieName}, level {levelNum} CryptoZombie!",
+            "header": [
+                "Selamat! Kamu telah menyelesaikan {lesson5} CryptoZombies!",
+                "Pamerkan tentara zombie kamu ke teman-temanmu!",
+                "Bagikan URL ini agar temanmu dapat melihat pasukanmu:"
+            ],
+            "footer": [
+                "Menikmati CryptoZombies? Beritahu Kami!",
+                "Bergabunglah dengan percakapan di {telegramLink}, atau ikuti kami di {twitterLink}",
+                "Saat kamu siap, klik tombol di bawah untuk mengakses Pelajaran ke 6"
+            ],
+            "zombieDesc": "CryptoZombie Level {levelNum}",
+            "shareLinkText": "Saya baru saja menyelesaikan #CryptoZombies Pelajaran ke 5 dan mendapatkan CryptoZombie level 10! Lihat tentara zombie saya:"
+        },
+        "lesson6": {
+            "achievementsUnlocked": "Prestasi Terbuka:",
+            "newZombieAdded": "Kamu menerima {zombieName}, level {levelNum} CryptoZombie!",
+            "header": [
+                "Selamat! Kamu telah menyelesaikan {lesson6} CryptoZombies!",
+                "Pamerkan tentara zombie kamu ke teman-temanmu!",
+                "Bagikan URL ini agar temanmu dapat melihat pasukanmu:"
+            ],
+            "footer": [
+                "Pelajaran ke 7 akan keluar dalam beberapa minggu ke depan!",
+                "Kamu akan mendapatkan email dari kami segera setelah siap.",
+                "Sementara itu, bergabunglah dengan kami di {telegramLink}, atau ikuti {twitterLink} kami untuk bergabung dalam percakapan!"
+            ],
+            "zombieDesc": "CryptoZombie Level {levelNum}",
+            "shareLinkText": "Saya baru saja menyelesaikan #CryptoZombies Pelajaran ke 6, dan dapatkan CryptoZombie Level 3.0 'The Phantom of Web3' ! Lihat tentara zombie saya:"
+        }
+    },
+    "zombieBattle": {
+        "yourTurn": "Giliranmu",
+        "zombieDna": "{name}'s DNA",
+        "newZombieGenerated": "{species} Baru Dihasilkan!",
+        "catZombie": "Cat-Zombie",
+        "mutantZombie": "Mutant-Zombie",
+        "newSpeciesDna": "DNA {species} baru",
+        "cryptoKitty": "CryptoKitty",
+        "human": "Human",
+        "tryAnotherCombo": "Coba Kombinasi Lain"
+    },
+    "zombieChar": {
+        "defaultZombieDesc": "CryptoZombie Level 1"
+    },
+    "zombieDeck": {
+        "zombieDesc": "CryptoZombie Level {levelNum}",
+        "nameInputPlaceholder": "Beri {name} sebuah nama baru dan tekan 'Simpan'",
+        "save": "Simpan",
+        "yourDeck": "Deck Kamu"
+    },
+    "zombieResult": {
+        "headGeneLabel": "Gen Kepala:",
+        "eyeGeneLabel": "Gen Mata:",
+        "shirtGeneLabel": "Gen Baju:",
+        "skinColorGeneLabel": "Gen Warna Kulit:",
+        "eyeColorGeneLabel": "Gen Warna Mata:",
+        "clothesColorGeneLabel": "Gen Warna Baju:",
+        "nameInputPlaceholder": "Masukkan nama di sini",
+        "defaultZombieDesc": "CryptoZombie Level 1"
+    },
+    "battleArena": {
+        "IOTAslain": "IOTA telah terbunuh dalam pertempuran!",
+        "winCount": "Jumlah Kemenangan Zombiemu:",
+        "iotaLose": "Hitungan Kehilangan IOTA",
+        "newZombie": "Zombie Baru Telah Dibuat"
+    },
+    "sharePage": {
+        "pageTitle": "Lihat CryptoZombie {zombieName} saya!",
+        "presents": "Hadiah",
+        "zombieDesc": "{name}, sebuah Level {levelNum} CryptoZombie",
+        "lesson1": {
+            "zombieDesc": "CryptoZombie Level 1",
+            "randomZombieGenerator": "generator zombie acak",
+            "achievementPreamble": [
+                "Teman Anda telah mempelajari dasar-dasar pengembangan game Ethereum, dan membuat {zombieName}, CryptoZombie Level 1 sebagai bukt!",
+                "Untuk menyelesaikan Pelajaran 1 CryptoZombies, teman Anda membuat {randomZombieGenerator} dan mempelajarinya:"
+            ],
+            "achievements": [
+                "Cara menulis Ethereum smart contracts",
+                "Pemrograman Solidity, bahasa pemrograman smart contract Ethereum",
+                "Membangun game di Ethereum"
+            ],
+            "tryItOut": "Cobalah generator zombie acak.",
+            "below": "di bawah",
+            "above": "di atas",
+            "zombieGeneratorText": "{tryItOut} Masukkan nama di kotak {below}{above} untuk menghasilkan zombie baru!",
+            "nameInputPlaceholder": "Masukkan nama untuk menghasilkan zombie",
+            "callToAction": [
+                "Ingin membangun CryptoZombie Anda sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game Anda sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson2": {
+            "zombieCardBattle": "Pertempuran Kartu Zombie",
+            "love": "Suka",
+            "achievementPreamble": [
+                "Teman Anda telah menyelesaikan Pelajaran 2 CryptoZombies, dan meningkatkan {zombieName} menjadi pembunuh CryptoKitty!",
+                "Pembunuh CryptoKitty?!",
+                "Ternyata CryptoZombies {love} memberi makan CryptoKitties.",
+                "Ketika CryptoZombie memakan CryptoKitty, DNA mereka bercampur dan CryptoKitty menjadi dihidupkan kembali sebagai CryptoZombie.",
+                "Silakan, pilih CryptoKitty untuk diserang, dan lihat jenis CatZombie yang Anda dapatkan!",
+                "Konsep Solidity Dikuasai",
+                "Untuk menyelesaikan Pelajaran 2 Sekolah Kode CryptoZombies, teman Anda membuat {zombieCardBattle} dan mempelajarinya:"
+            ],
+            "achievements": [
+                "Dasar-dasar membuat game multi-pemain",
+                "Berinteraksi dengan contracts lain di jaringan Ethereum",
+                "Mengatur proyek Solidity yang lebih besar menjadi beberapa contracts"
+            ],
+            "callToAction": [
+                "Ingin membangun CryptoZombies kamu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game kamu sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson3": {
+            "achievementPreamble": [
+                "Temanmu telah menyelesaikan Pelajaran 3 CryptoZombies, dan meningkatkan pasukan zombie mereka!",
+                "Untuk menyelesaikan Pelajaran 3 CryptoZombies, teman Anda mempelajari tentang:"
+            ],
+            "achievements": [
+                "Cara membuat smart contracts yang dapat diperbarui",
+                "Mengamankan contracts dengan kepemilikan contract",
+                "Gas dan gas optimalisasi di Ethereum",
+                "Pengubah function dan pemeriksaan keamanan"
+            ],
+            "callToAction": [
+                "Ingin membangun pasukan CryptoZombiemu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game Anda sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "Temanmu telah menyelesaikan Pelajaran 4 CryptoZombies, dan mengalahkan zombie IOTA jahat!",
+                "Silakan dan coba sendiri ke sebelah. Gunakan tentara temanmu untuk terlibat dalam pertempuran!",
+                "Untuk menyelesaikan Pelajaran 4 CryptoZombies, temanmu mempelajari tentang:"
+            ],
+            "achievements": [
+                "Functions yang dapat dibayar, dan cara mendapatkan uang dari game berbasis Ethereum kamu",
+                "Withdrawing ETH dari smart contracts",
+                "Pembuatan nomor acak & keamanan di Ethereum",
+                "Dan banyak lagi!"
+            ],
+            "callToAction": [
+                "Ingin membangun pasukan CryptoZombiemu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game kamu sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Temanmu telah menyelesaikan Pelajaran CryptoZombies 5, dan menerima CryptoZombie level 10!",
+                "Periksa pasukan zombie temanmu di sebelah. Cukup tangguh, ya?",
+                "Untuk menyelesaikan Pelajaran 5 CryptoZombies, temanmu mempelajari tentang:"
+            ],
+            "achievements": [
+                "Tokens, standar ERC721, dan pembuatan token / aset yang dapat diperdagangkan",
+                "Pustaka Solidity dan cara menggunakannya",
+                "Pustaka SafeMath dan mencegah uint overflows dan underflows",
+                "Mengomentari kode Soliditymu dan standar natspec"
+            ],
+            "callToAction": [
+                "Ingin membangun pasukan CryptoZombiemu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game kamu sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson6": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "Teman Anda telah menyelesaikan Pelajaran 6 CryptoZombies dan menerima CryptoZombie Level 3.0 `The Phantom of Web3`!",
+                "Lihat tentara zombie temanmu di sebelah. Cukup tangguh, ya?",
+                "Untuk menyelesaikan Pelajaran 6 CryptoZombies, temanmu mempelajari tentang:"
+            ],
+            "achievements": [
+                "Membangun front-end web untuk smart contracts Ethereum menggunakan Web3.js",
+                "Menggunakan MetaMask dan Infura untuk membangun user-facing DApps",
+                "Mendengarkan acara smart contract dan menunjukkan pembaruan waktu secara nyata kepada pengguna",
+                "Dan banyak lagi!"
+            ],
+            "callToAction": [
+                "Ingin membangun pasukan CryptoZombiemu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game kamu sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        },
+        "lesson7": {
+            "zombieDesc": "Ayo bangun Zombie Battleground seperti game!",
+            "achievementPreamble": [
+                "Temanmu telah menyelesaikan Pelajaran 7 CryptoZombies, dan menerima CryptoZombie level 12!",
+                "Lihat tentara zombie temanmu di sebelah. Cukup tangguh, ya?",
+                "Untuk menyelesaikan Pelajaran 7 CryptoZombies, temanmu mempelajari tentang:"
+            ],
+            "achievements": [
+                "Multi fungible tokens, dan standar ERC721X",
+                "Cara membuat faucet dapat di-mints, pengguna dapat mengklaim, dan mentransfer token",
+                "Cara menggunakan ERC721X untuk mengimplementasikan unique, limited edition, dan kartu edisi standar"
+            ],
+            "callToAction": [
+                "Ingin membangun pasukan CryptoZombiemu sendiri dan bergabung dengan barisan?",
+                "Belajar membuat game kamu sendiri di Ethereum secara GRATIS dengan CryptoZombies! Mulai sekarang:"
+            ]
+        }
+    },
+    "czSlogan": "CryptoZombies: Pelajari pemrograman blockchain ethereum dengan tutorial solidity kami!"
+}
