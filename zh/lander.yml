@@ -1,5 +1,40 @@
 ---
 zh:
+  ogdescription: CryptoZombies 是个在编游戏的过程中学习 Solidity 智能协议语言的互动教程。
+  ogtitle: CryptoZombies - 编游戏的同时学习以太坊的智能协议. Loom Network 产品。
+  langshort: 中文
+  learn_title: 学习以太坊Dapps编码来构建你自己的游戏
+  learn_desc: CryptoZombies 是个在编游戏的过程中学习 Solidity 智能协议语言的互动教程。
+  get_started: 开始学习吧，这些都是免费的！
+  learn_more: 了解更多
+  what_title: 什么是CryptoZombies?
+  what_desc1: CryptoZombies是一个免费的、互动的代码学校，教你在以太坊上构建游戏。
+  what_desc2: 该课程是为Solidity的初学者设计的，从最基础的知识开始。因此，如果您以前从未用Solidity编码过，不用担心--我们会一步一步地引导您完成。
+  collect_title: 赚取数字收藏品
+  collect_desc1: 通过完成编码课程，赚取加密僵尸数字收藏品和奖金。
+  collect_desc2: 在完成所有的课程并发布你的DApp后, 在世界上第一个基于区块链的游戏中，让你的僵尸军队与其他玩家的僵尸进行对决! 一半是编程学校，一半是MMO加密战略游戏。
+  collect_desc3: 你还在等什么? 点击下面的按钮进入第一课，建立你额第一个DApp. 这是免费的!
+  start_title: 现在就开始吧  
+  int_title: 交互式编程课
+  inbrowser_desc: 在浏览器中，通过课程一步步的带您从Solidity的基础知识到创建您自己基于区块链完整功能的游戏.即使在第一课结束时（可以一次性完成），你也会掌握足够的知识来正式称呼自己为Solidity开发者了！
+  zombie_title: 构建一只僵尸军队
+  zombie_desc: 在第一课中, 你将建造一个僵尸工厂来创造你的僵尸军队。每一只你创建的僵尸都将拥有随机的DNA并且拥有自己独特的外表。后续的课程（每周发布一节）将为你的游戏增加更多的功能，比如与其他人的僵尸作战的能力！
+  who_made: 谁创造了CryptoZombies ，并且为什么这是免费的?
+  who_made1: CryptoZombies 的创造团队是 
+  who_made2: 。 我们正在建立一个在以太坊侧链上运行大规模应用的平台。
+  who_made3: 我们认为区块链的能力不仅仅是支付, 我们希望让更多的开发者跳出框架，尝试建立大规模的DApps.  我们认为游戏是区块链将真正革新的领域之一。因此我们建立了 CryptoZombies ，来帮助教育和激励下一代的区块链游戏开发者。
+  find_us: 除了CryptoZombies之外，我们还在进行一些非常酷的项目。如果你想关注我们，与其他项目取得联系，或者只是打个招呼，你可以在以下网址找到我们
+  and_our: 和我们一起
+  email_us_at: ", 或者给我们发送邮件"
+  footer_network: 网路
+  footer_info: 信息
+  footer_contact: 合约
+  footer_contact_jobs: 工作
+  footer_email: 邮箱
+  footer_about: 关于
+  footer_desc: CryptoZombies.io 是一个免费的教学平台，教现有的开发人员或小白学习区块链编程的来龙去脉。动力来自 Loom Network - 一个在以太坊上建立商业规模的应用程序的平台.
+  telegram_open_chat: 打开TG
+  telegram_link: https://t.me/loomnetworkCN
   meta:
     ogtitle: "#1 Solidity Tutorial & Ethereum Blockchain Programming Course | CryptoZombies"
     ogdescription: CryptoZombies is The Most Popular, Interactive Solidity Tutorial That Will Help You Learn Blockchain Programming by Building Your Own Fun Game with Zombies — Master Blockchain Development with Web3, Infura, Metamask & Ethereum Smart Contracts and Become a Blockchain Developer in Record Time!.
