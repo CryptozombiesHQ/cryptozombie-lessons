@@ -484,7 +484,7 @@ material:
 
 En las próximas lecciones, veremos cómo desplegar el código en Ethereum y cómo interactuar con él utilizando Web3.js.
 
-Pero una última cosa antes de que te dejemos ir de la Lección 5.
+But one final thing before we let you go in Lesson 5: Let's talk about **commenting on your code**.
 
 ## Sintaxis para los comentarios
 
@@ -502,26 +502,25 @@ Por lo tanto, también tenemos comentarios de varias líneas:
 
 ```
 contract CryptoZombies {
-  /* Este es un comentario con múltiples líneas.
-  	Me gustaría agradecerles a todos vosotros, los que se han tomado su
-  	tiempo para probar este curso de programación.
-  	Sé que es gratis para todos ustedes, y se mantendrá libre
-    para siempre, pero aún ponemos nuestro corazón y nuestra alma en hacer
-    esto tan bueno como puede ser.
+  /* This is a multi-line comment. I'd like to thank all of you
+    who have taken your time to try this programming course.
+    I know it's free to all of you, and it will stay free
+    forever, but we still put our heart and soul into making
+    this as good as it can be.
 
-    Sepa que este es todavía el comienzo del desarrollo de Blockchain.
-    Hemos llegado muy lejos, pero hay muchas maneras de hacer esto en
-    comunidad mejor. Si cometimos un error en alguna parte, puedes
-    ayudarnos y abrir una pull request aquí:
+    Know that this is still the beginning of Blockchain development.
+    We've come very far but there are so many ways to make this
+    community better. If we made a mistake somewhere, you can
+    help us out and open a pull request here:
     https://github.com/loomnetwork/cryptozombie-lessons
 
-    O si tiene algunas ideas, comentarios o simplemente quiere decirnos hola
-    - Únase a nuestra comunidad de Telegram en https://t.me/loomnetworkdev
+    Or if you have some ideas, comments, or just want to say
+    hi - drop by our Telegram community at https://t.me/loomnetworkdev
   */
 }
 ```
 
-En particular, es una buena práctica comentar su código para explicar el comportamiento esperado de cada función en su contrato. De esta forma, otro desarrollador (¡O tú, después de un paréntesis de 6 meses en un proyecto!) puede leer rápidamente y comprender a un nivel alto lo que hace su código sin tener que leer el código en sí.
+In particular, it's good practice to comment on your code to explain the expected behavior of every function in your contract. De esta forma, otro desarrollador (¡O tú, después de un paréntesis de 6 meses en un proyecto!) puede leer rápidamente y comprender a un nivel alto lo que hace su código sin tener que leer el código en sí.
 
 El estándar en la comunidad Solidity es usar un formato llamado **_natspec_**, que tiene esta apariencia:
 
