@@ -487,7 +487,7 @@ The Solidity code for our zombie game is finally finished!
 
 In the next lessons, we'll look at how to deploy the code to Ethereum, and how to interact with it with Web3.js.
 
-But one final thing before we let you go in Lesson 5: Let's talk about **commenting your code**.
+But one final thing before we let you go in Lesson 5: Let's talk about **commenting on your code**.
 
 ## Syntax for comments
 
@@ -505,7 +505,7 @@ Thus we also have multi-line comments:
 
 ```
 contract CryptoZombies {
-  /* This is a multi-lined comment. I'd like to thank all of you
+  /* This is a multi-line comment. I'd like to thank all of you
     who have taken your time to try this programming course.
     I know it's free to all of you, and it will stay free
     forever, but we still put our heart and soul into making
@@ -523,7 +523,7 @@ contract CryptoZombies {
 }
 ```
 
-In particular, it's good practice to comment your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
+In particular, it's good practice to comment on your code to explain the expected behavior of every function in your contract. This way another developer (or you, after a 6 month hiatus from a project!) can quickly skim and understand at a high level what your code does without having to read the code itself.
 
 The standard in the Solidity community is to use a format called **_natspec_**, which looks like this:
 
