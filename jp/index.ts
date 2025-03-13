@@ -115,6 +115,24 @@ import l7_ch9 from './7/09.md'
 import l7_ch10 from './7/10.md'
 import l7_ch11 from './7/11.md'
 import l7_complete from './7/lessoncomplete.md'
+
+// lesson11 Testing
+import l11_overview from './11/00-overview.md'
+import l11_ch1 from './11/01.md'
+import l11_ch2 from './11/02.md'
+import l11_ch3 from './11/03.md'
+import l11_ch4 from './11/04.md'
+import l11_ch5 from './11/05.md'
+import l11_ch6 from './11/06.md'
+import l11_ch7 from './11/07.md'
+import l11_ch8 from './11/08.md'
+import l11_ch9 from './11/09.md'
+import l11_ch10 from './11/10.md'
+import l11_ch11 from './11/11.md'
+import l11_ch12 from './11/12.md'
+import l11_ch13 from './11/13.md'
+import l11_ch14 from './11/14.md'
+import l11_complete from './11/lessoncomplete.md'
 // chapterList is an ordered array of chapters. The order represents the order of the chapters.
 // chapter index will be 1-based and not zero-based. First chapter is 1
 
@@ -234,5 +252,23 @@ export default {
     l7_ch10,
     l7_ch11,
     l7_complete,
+  ],
+  11: [
+    l11_overview,
+    l11_ch1,
+    l11_ch2,
+    l11_ch3,
+    l11_ch4,
+    l11_ch5,
+    l11_ch6,
+    l11_ch7,
+    l11_ch8,
+    l11_ch9,
+    l11_ch10,
+    l11_ch11,
+    l11_ch12,
+    l11_ch13,
+    l11_ch14,
+    l11_complete,
   ],
 }
