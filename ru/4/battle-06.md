@@ -22,7 +22,7 @@ material:
 
           // 1. Здесь добавь модификатор
           function attack(uint _zombieId, uint _targetId) external {
-            // 2. Здесь определи функцию 
+            // 2. Здесь определи функцию
           }
         }
       "zombiehelper.sol": |
@@ -214,7 +214,7 @@ material:
         }
     answer: >
       pragma solidity ^0.4.19;
-      
+
       import "./zombiehelper.sol";
 
       contract ZombieBattle is ZombieHelper {

@@ -24,7 +24,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
               // Здесь запусти событие
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -58,7 +58,7 @@ material:
           function _createZombie(string _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               NewZombie(id, _name, _dna);
-          } 
+          }
 
           function _generateRandomDna(string _str) private view returns (uint) {
               uint rand = uint(keccak256(_str));
@@ -75,7 +75,7 @@ material:
 
 Наш контракт почти готов! Осталось добавить **_событие_**.
 
-**_Событие_** — это способ, которым контракт сообщает внешнему интерфейсу приложения, что в блокчейне произошло некое событие. Интерфейс может «услышать» определенные события и выполнить заданное действие по его наступлении. 
+**_Событие_** — это способ, которым контракт сообщает внешнему интерфейсу приложения, что в блокчейне произошло некое событие. Интерфейс может «услышать» определенные события и выполнить заданное действие по его наступлении.
 
 Пример:
 
@@ -85,7 +85,7 @@ event IntegersAdded(uint x, uint y, uint result);
 
 function add(uint _x, uint _y) public {
   uint result = _x + _y;
-  // Запусти событие, чтобы оповестить приложение о вызове функции: 
+  // Запусти событие, чтобы оповестить приложение о вызове функции:
   IntegersAdded(_x, _y, result);
   return result;
 }
@@ -94,7 +94,7 @@ function add(uint _x, uint _y) public {
 Теперь внешний интерфейс приложения сможет услышать событие. Примерно так будет выглядеть выполнение JavaScript:
 
 ```
-YourContract.IntegersAdded(function(error, result) { 
+YourContract.IntegersAdded(function(error, result) {
   // Воспользуйся результатом
 }
 ```
@@ -105,6 +105,6 @@ YourContract.IntegersAdded(function(error, result) {
 
 1. Задай `event` (событие) под названием `NewZombie` (новый зомби). Оно должно сообщать `zombieId` (`uint`), имя `name` (строку `string`) и ДНК `dna` (`uint`).
 
-2. Измени функцию `_createZombie` (создать зомби) так, чтобы событие `NewZombie` запускалось после добавления нового солдата в массив `zombies`. 
+2. Измени функцию `_createZombie` (создать зомби) так, чтобы событие `NewZombie` запускалось после добавления нового солдата в массив `zombies`.
 
 3. Тебе понадобится `id` — идентификатор зомби. `array.push()` возвращает `uint` новой длины массива. Поскольку первый элемент в массиве имеет индекс 0, `array.push () - 1` вернет индекс только что добавленного зомби. Сохрани результат `zombies.push () - 1` в `uint` с названием `id`, чтобы его можно было использовать в событии `NewZombie` в следующей строчке.
