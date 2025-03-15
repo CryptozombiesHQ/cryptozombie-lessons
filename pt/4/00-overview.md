@@ -1,7 +1,9 @@
 ---
 title: Sistema de Batalha Zumbi
-header: "Lesson 4: Sistema de Batalha Zumbi"
+header: "Lição 4: Sistema de Batalha Zumbi"
 roadmap: roadmap4.jpg
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Chegou a hora, humano...

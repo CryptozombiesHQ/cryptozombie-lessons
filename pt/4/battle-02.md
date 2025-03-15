@@ -7,13 +7,15 @@ material:
     language: sol
     startingCode:
       "zombieattack.sol": |
+        pragma solidity >=0.5.0 <0.6.0;
+
         import "./zombiehelper.sol";
 
-        contract ZombieBattle is ZombieHelper {
+        contract ZombieAttack is ZombieHelper {
           // Comece aqui
         }
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -27,7 +29,8 @@ material:
           }
 
           function withdraw() external onlyOwner {
-            owner.transfer(this.balance);
+            address payable _owner = address(uint160(owner()));
+            _owner.transfer(address(this).balance);
           }
 
           function setLevelUpFee(uint _fee) external onlyOwner {
@@ -39,7 +42,7 @@ material:
             zombies[_zombieId].level++;
           }
 
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
@@ -49,7 +52,7 @@ material:
             zombies[_zombieId].dna = _newDna;
           }
 
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
             uint[] memory result = new uint[](ownerZombieCount[_owner]);
             uint counter = 0;
             for (uint i = 0; i < zombies.length; i++) {
@@ -63,7 +66,7 @@ material:
 
         }
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -98,13 +101,13 @@ material:
               return (_zombie.readyTime <= now);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) internal {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             require(_isReady(myZombie));
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
+            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
@@ -118,7 +121,7 @@ material:
           }
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -142,19 +145,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+            function _generateRandomDna(string memory _str) private view returns (uint) {
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -163,54 +166,91 @@ material:
 
         }
       "ownable.sol": |
-        /**
-         * @title Ownable
-         * @dev The Ownable contract has an owner address, and provides basic authorization control
-         * functions, this simplifies the implementation of "user permissions".
-         */
-        contract Ownable {
-          address public owner;
+        pragma solidity >=0.5.0 <0.6.0;
 
-          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        /**
+        * @title Ownable
+        * @dev O Ownable tem um endereço de proprietário e fornece funções básicas de controle de
+        * autorização, isso simplifica a implementação de "permissões de usuário".
+        */
+        contract Ownable {
+          address private _owner;
+
+          event OwnershipTransferred(
+            address indexed previousOwner,
+            address indexed newOwner
+          );
 
           /**
-           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-           * account.
-           */
-          function Ownable() public {
-            owner = msg.sender;
+          * @dev O construtor Ownable define o `owner` original do contrato como o remetente
+          * da conta.
+          */
+          constructor() internal {
+            _owner = msg.sender;
+            emit OwnershipTransferred(address(0), _owner);
           }
 
+          /**
+          * @return o endereço do proprietário.
+          */
+          function owner() public view returns(address) {
+            return _owner;
+          }
 
           /**
-           * @dev Throws if called by any account other than the owner.
-           */
+          * @dev Lança se chamado por qualquer conta que não seja o proprietário.
+          */
           modifier onlyOwner() {
-            require(msg.sender == owner);
+            require(isOwner());
             _;
           }
 
-
           /**
-           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-           * @param newOwner The address to transfer ownership to.
-           */
-          function transferOwnership(address newOwner) public onlyOwner {
-            require(newOwner != address(0));
-            OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
+          * @return true se `msg.sender` é o proprietário do contrato.
+          */
+          function isOwner() public view returns(bool) {
+            return msg.sender == _owner;
           }
 
+          /**
+          * @dev Permite que o proprietário atual abra mão do controle do contrato.
+          * @notice Renunciar à propriedade deixará o contrato sem proprietário.
+          * Não será mais possível chamar as funções com o modificador `onlyOwner`.
+          */
+          function renounceOwnership() public onlyOwner {
+            emit OwnershipTransferred(_owner, address(0));
+            _owner = address(0);
+          }
+
+          /**
+          * @dev Permite que o proprietário atual transfira o controle do contrato para um newOwner.
+          * @param newOwner O endereço para transferir a propriedade para.
+          */
+          function transferOwnership(address newOwner) public onlyOwner {
+            _transferOwnership(newOwner);
+          }
+
+          /**
+          * @dev Transfere o controle do contrato para um newOwner.
+          * @param newOwner O endereço para transferir a propriedade para.
+          */
+          function _transferOwnership(address newOwner) internal {
+            require(newOwner != address(0));
+            emit OwnershipTransferred(_owner, newOwner);
+            _owner = newOwner;
+          }
         }
     answer: >
+      pragma solidity >=0.5.0 <0.6.0;
+
       import "./zombiehelper.sol";
 
-      contract ZombieBattle is ZombieHelper {
+      contract ZombieAttack is ZombieHelper {
         uint randNonce = 0;
 
         function randMod(uint _modulus) internal returns(uint) {
           randNonce++;
-          return uint(keccak256(now, msg.sender, randNonce)) % _modulus;
+          return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
         }
       }
 
@@ -233,9 +273,9 @@ Podemos fazer algo como a seguir para gerar um número aleatório:
 ```
 // Gera um número aleatório entre 1 e 100:
 uint randNonce = 0;
-uint random = uint(keccak256(now, msg.sender, randNonce)) % 100;
+uint random = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
 randNonce++;
-uint random2 = uint(keccak256(now, msg.sender, randNonce)) % 100;
+uint random2 = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % 100;
 ```
 
 Que seria obter o timestamp de `now`, e `msg.sender`, e incrementar um `nonce` (um número que é usado somente uma vez, então nós não iremos rodar a mesma função de hash com os mesmos parâmetros duas vezes).
@@ -250,7 +290,7 @@ Uma vez que o nó resolveu o PoW, os outros nós param de tentar resolver o PoW,
 
 **Isto torna a nossa função de números aleatórios explorável.**
 
-Digamos que temos um contrato de jogo de moeda - se o resultado for "cara" você dobra o seu dinheiro, "coroa" você perde tudo. Digamos que utilizamos a função geradora de aleatórios acima para determinar "cara" ou "coroa". (`random >= 50`) é "cara", `random < 50` é "coroa").
+Digamos que temos um contrato de jogo de moeda - se o resultado for "cara" você dobra o seu dinheiro, "coroa" você perde tudo. Digamos que utilizamos a função geradora de aleatórios acima para determinar "cara" ou "coroa". (`random >= 50` é cara, `random < 50` é coroa).
 
 Se estivéssemos rodando um nó da rede, eu poderia publicar uma transação **somente para o meu nó** e não compartilhá-la. Eu poderia então rodar a função do jogo da moeda para ver se eu ganho - e se eu perco. Eu poderia fazer isso indefinidamente até eu finalmente ganhar o jogo da moeda e resolver o próximo bloco, e lucrar.
 
@@ -258,7 +298,7 @@ Se estivéssemos rodando um nó da rede, eu poderia publicar uma transação **s
 
 Por que todos os conteúdos da blockchain são visíveis para todos os participantes, este é um problema difícil, e sua solução esta além do escopo deste tutorial. Você pode ler <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>esta pergunta no StackOverflow</a> para ter algumas ideias. Uma ideia seria usar um **_oracle_** (oráculo) para acessar uma função de número aleatório de fora da blockchain do Ethereum.
 
-Claro que uma vez que milhares de nós na rede Ethereum estão competindo para resolver o próximo bloco, minhas chances de resolver o próximo bloco são extremamente baixas. E iria me tomar um monte de tempo ou recursos computacionais para tornar esse _exploit_ lucrativo - mas se as recompensas fossem altas o suficiente (algo do tipo ganhar uma aposta de $100,000,000 no jogo da moeda), então valeria a pena pra mim fazer este ataque.
+Claro que uma vez que milhares de nós na rede Ethereum estão competindo para resolver o próximo bloco, minhas chances de resolver o próximo bloco são extremamente baixas. E iria me tomar um monte de tempo ou recursos computacionais para tornar esse exploit lucrativo - mas se as recompensas fossem altas o suficiente (algo do tipo ganhar uma aposta de $100,000,000 no jogo da moeda), então valeria a pena pra mim fazer este ataque.
 
 Então enquanto esta geração de número aleatório NÃO é segura no Ethereum, em prática ao menos que a nossa função de número aleatório tenha um monte de dinheiro em jogo, os usuários do jogo não usaram recursos o suficiente para atacá-la.
 
@@ -276,4 +316,4 @@ Vamos implementar uma função de números aleatórios que podemos determinar os
 
 3. A função deverá primeiro incrementar o `randNonce` (usando a sintaxe `randNonce++`).
 
-4. Finalmente, esta deverá (em uma linha de código) calcular o `uint` convertendo o resultado do hash de `keccak256` para os valores de `now`, `msg.sender`, e `randNonce` e retornar o valor `% _modulus`. (Uffa! Essa foi difícil. Se você não entendeu, de uma olhada no exemplo acima onde geramos um número aleatório - a lógica é muito parecida).
+4. Finalmente, esta deverá (em uma linha de código) calcular o `uint` convertendo o resultado do hash `keccak256` de `abi.encodePacked(now,msg.sender,randNonce)` — e `retornar` o valor `% _modulus`. (Ufa! Essa foi difícil. Se você não entendeu, dê uma olhada no exemplo acima, onde geramos um número aleatório — a lógica é muito parecida).
