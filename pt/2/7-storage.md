@@ -1,12 +1,13 @@
 ---
 title: Armazenamento vs Memória (Storage vs Memory)
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -16,7 +17,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
@@ -35,19 +36,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) private {
+            function _createZombie(string memory _name, uint _dna) private {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+            function _generateRandomDna(string memory _str) private view returns (uint) {
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 _createZombie(_name, randDna);
@@ -55,7 +56,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefactory.sol";
 
@@ -75,7 +76,7 @@ Em Solidity, existem dois lugares onde você pode guardar as variáveis - na `st
 
 Na maior parte do tempo você não precisa usar essas palavras-reservadas porque a Solidity cuida disso pra você por padrão. Variáveis de estado (variáveis declaradas fora das funções) são por padrão `storage` e são escritas permanentemente na blockchain, enquanto variáveis declaradas dentro das funções são `memory` e irão desaparecer quando a função terminar.
 
-Porém, haverão momentos em que você precisará usar tais palavras-reservadas, por exemplo quando trabalhar com **_struct_** e **_arrays_** dentro das funções:
+Porém, haverão momentos em que você precisará usar tais palavras-reservadas, por exemplo quando trabalhar com **_structs_** e **_arrays_** dentro das funções:
 
 ```
 contract SandwichFactory {
