@@ -2,6 +2,8 @@
 title: Conceitos Avançados de Solidity
 header: "Lição 3: Conceitos Avançados de Solidity"
 roadmap: roadmap3.png
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Grr... Eu não consigo parar você, consigo? Suas habilidades em Solidity são formidáveis, humano...
