@@ -1,11 +1,12 @@
 ---
 title: Listas
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,7 +22,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -45,10 +46,10 @@ Quando você quer uma lista de algo, você pode usar um **_array_** (lista). Exi
 // Array com tamanho fixo de 2 elementos:
 uint[2] fixedArray;
 
-// Outro array fixo, pode conter 5 strings:
+// outro array fixo, pode conter 5 strings:
 string[5] stringArray;
 
-// Um array dinâmico - não tem tamanho fixo, e pode continuar aumentando:
+// um array dinâmico - não tem tamanho fixo, e pode continuar aumentando:
 uint[] dynamicArray;
 ```
 

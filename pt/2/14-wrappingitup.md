@@ -1,6 +1,7 @@
 ---
 title: Finalizando
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   saveZombie: true
   zombieBattle:

@@ -7,7 +7,7 @@ material:
     language: sol
     startingCode:
       "zombiehelper.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefeeding.sol";
 
@@ -18,7 +18,7 @@ material:
             _;
           }
 
-          function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+          function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
             require(msg.sender == zombieToOwner[_zombieId]);
             zombies[_zombieId].name = _newName;
           }
@@ -28,7 +28,7 @@ material:
             zombies[_zombieId].dna = _newDna;
           }
 
-          function getZombiesByOwner(address _owner) external view returns(uint[]) {
+          function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
             uint[] memory result = new uint[](ownerZombieCount[_owner]);
             // Comece aqui
             return result;
@@ -37,7 +37,7 @@ material:
         }
 
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -64,15 +64,20 @@ material:
             kittyContract = KittyInterface(_address);
           }
 
-          function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+          function _triggerCooldown(Zombie storage _zombie) internal {
+            _zombie.readyTime = uint32(now + cooldownTime);
+          }
+
+          function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
-            if (keccak256(_species) == keccak256("kitty")) {
+            if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
               newDna = newDna - newDna % 100 + 99;
             }
             _createZombie("NoName", newDna);
+            _triggerCooldown(myZombie);
           }
 
           function feedOnKitty(uint _zombieId, uint _kittyId) public {
@@ -83,7 +88,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
 
@@ -107,19 +112,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+            function _generateRandomDna(string memory _str) private view returns (uint) {
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -128,47 +133,83 @@ material:
 
         }
       "ownable.sol": |
-        /**
-         * @title Ownable
-         * @dev The Ownable contract has an owner address, and provides basic authorization control
-         * functions, this simplifies the implementation of "user permissions".
-         */
-        contract Ownable {
-          address public owner;
+        pragma solidity >=0.5.0 <0.6.0;
 
-          event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+        /**
+        * @title Ownable
+        * @dev The Ownable contract has an owner address, and provides basic authorization control
+        * functions, this simplifies the implementation of "user permissions".
+        */
+        contract Ownable {
+          address private _owner;
+
+          event OwnershipTransferred(
+            address indexed previousOwner,
+            address indexed newOwner
+          );
 
           /**
-           * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-           * account.
-           */
-          function Ownable() public {
-            owner = msg.sender;
+          * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+          * account.
+          */
+          constructor() internal {
+            _owner = msg.sender;
+            emit OwnershipTransferred(address(0), _owner);
           }
 
+          /**
+          * @return the address of the owner.
+          */
+          function owner() public view returns(address) {
+            return _owner;
+          }
 
           /**
-           * @dev Throws if called by any account other than the owner.
-           */
+          * @dev Throws if called by any account other than the owner.
+          */
           modifier onlyOwner() {
-            require(msg.sender == owner);
+            require(isOwner());
             _;
           }
 
-
           /**
-           * @dev Allows the current owner to transfer control of the contract to a newOwner.
-           * @param newOwner The address to transfer ownership to.
-           */
-          function transferOwnership(address newOwner) public onlyOwner {
-            require(newOwner != address(0));
-            OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
+          * @return true if `msg.sender` is the owner of the contract.
+          */
+          function isOwner() public view returns(bool) {
+            return msg.sender == _owner;
           }
 
+          /**
+          * @dev Allows the current owner to relinquish control of the contract.
+          * @notice Renouncing to ownership will leave the contract without an owner.
+          * It will not be possible to call the functions with the `onlyOwner`
+          * modifier anymore.
+          */
+          function renounceOwnership() public onlyOwner {
+            emit OwnershipTransferred(_owner, address(0));
+            _owner = address(0);
+          }
+
+          /**
+          * @dev Allows the current owner to transfer control of the contract to a newOwner.
+          * @param newOwner The address to transfer ownership to.
+          */
+          function transferOwnership(address newOwner) public onlyOwner {
+            _transferOwnership(newOwner);
+          }
+
+          /**
+          * @dev Transfers control of the contract to a newOwner.
+          * @param newOwner The address to transfer ownership to.
+          */
+          function _transferOwnership(address newOwner) internal {
+            require(newOwner != address(0));
+            emit OwnershipTransferred(_owner, newOwner);
+            _owner = newOwner;
+          }
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefeeding.sol";
 
@@ -179,7 +220,7 @@ material:
           _;
         }
 
-        function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) {
+        function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
           require(msg.sender == zombieToOwner[_zombieId]);
           zombies[_zombieId].name = _newName;
         }
@@ -189,7 +230,7 @@ material:
           zombies[_zombieId].dna = _newDna;
         }
 
-        function getZombiesByOwner(address _owner) external view returns(uint[]) {
+        function getZombiesByOwner(address _owner) external view returns(uint[] memory) {
           uint[] memory result = new uint[](ownerZombieCount[_owner]);
           uint counter = 0;
           for (uint i = 0; i < zombies.length; i++) {
@@ -204,20 +245,20 @@ material:
       }
 ---
 
-No capítulo anterior, mencionamos que algumas vezes você irá querer usar o laço `for` para construir os conteúdos de um array em uma função ao invés de simplesmente salvar esse array no storage.
+In the previous chapter, we mentioned that sometimes you'll want to use a `for` loop to build the contents of an array in a function rather than simply saving that array to storage.
 
-Veremos o por quê.
+Let's look at why.
 
-Para a nossa função `getZombiesByOwner`, uma implementação ingênua seria guardar os donos dos exércitos de zumbis em um storage (armazenamento) no contrato `ZombieFactory`:
+For our `getZombiesByOwner` function, a naive implementation would be to store a `mapping` of owners to zombie armies in the `ZombieFactory` contract:
 
 ```
 mapping (address => uint[]) public ownerToZombies
 ```
 
-Então toda vez que criamos um novo zumbi, seria simples usar `ownerToZombies[owner].push(zombieId)` para adicioná-lo no array do dono do zumbi. E `getZombiesByOwner` seria uma função bem simples:
+Then every time we create a new zombie, we would simply use `ownerToZombies[owner].push(zombieId)` to add it to that owner's zombies array. And `getZombiesByOwner` would be a very straightforward function:
 
 ```
-function getZombiesByOwner(address _owner) external view returns (uint[]) {
+function getZombiesByOwner(address _owner) external view returns (uint[] memory) {
   return ownerToZombies[_owner];
 }
 ```
@@ -238,7 +279,7 @@ Um vez que escrever em storage (armazenamento) é uma das operações mais caras
 
 > Nota: É claro que poderíamos somente mover o último zumbi na lista e preencher um espaço vazio para reduzir o tamanho do array. Mas então mudaríamos a ordem dos nossos exército de zumbis toda vez que houvesse uma troca.
 
-Desde que funções `view` não custam gas algum quando chamadas externamente, poderíamos simplesmente usar um laço `for` em `getZombiesByOwner` para iterar todos os zumbis na lista e construir um array de zumbis que pertencem a este usuário específico. Então nossa função `transfer` seria muito mais barata, um vez que não precisamos reordenar qualquer array em storage, e de certa maneira não intuitiva essa abordagem é mais barata de todas.
+Desde que funções `view` não custam gás quando chamadas externamente, podemos simplesmente usar um for-loop em `getZombiesByOwner` para iterar todo o array zombies e construir um array dos zumbis que pertencem a esse dono específico. Então nossa função `transfer` será muito mais barata, já que não precisamos reordenar nenhum array no armazenamento, e um tanto contraintuitivamente essa abordagem é mais barata no geral.
 
 ## Usando laços `for`
 
@@ -247,25 +288,20 @@ A sintaxe do laço `for` em Solidity é similar a de JavaScript.
 Vejamos um exemplo onde queremos fazer um array de números pares:
 
 ```
-function getEvens() pure external returns(uint[]) {
+function getEvens() pure external returns(uint[] memory) {
   uint[] memory evens = new uint[](5);
-
   // Mantêm o registro do índex do novo array:
   uint counter = 0;
-
   // Itera 1 através de 10 com um laço for:
   for (uint i = 1; i <= 10; i++) {
     // Se `i` é par ...
     if (i % 2 == 0) {
-
       // Adiciona em nosso array
       evens[counter] = i;
-
       // Incrementa o contador para o próximo índex vazio em `evens`:
       counter++;
     }
   }
-
   return evens;
 }
 ```

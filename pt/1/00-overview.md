@@ -2,6 +2,8 @@
 title: Fazendo a Fábrica de Zumbi
 header: Bem vindo, humano!
 roadmap: roadmap.jpg
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Então, você acha que tem o que é preciso para se tornar um **CryptoZombie**, hein?

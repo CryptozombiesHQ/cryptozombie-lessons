@@ -1,11 +1,12 @@
 ---
 title: Requerer (Require)
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -24,19 +25,19 @@ material:
           mapping (uint => address) public zombieToOwner;
           mapping (address => uint) ownerZombieCount;
 
-          function _createZombie(string _name, uint _dna) private {
+          function _createZombie(string memory _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
+              emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               // comece aqui
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
@@ -44,7 +45,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -64,19 +65,19 @@ material:
           mapping (uint => address) public zombieToOwner;
           mapping (address => uint) ownerZombieCount;
 
-          function _createZombie(string _name, uint _dna) private {
+          function _createZombie(string memory _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
               zombieToOwner[id] = msg.sender;
               ownerZombieCount[msg.sender]++;
-              NewZombie(id, _name, _dna);
+              emit NewZombie(id, _name, _dna);
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               require(ownerZombieCount[msg.sender] == 0);
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
@@ -94,12 +95,11 @@ Como podemos fazer esta função ser chamada somente uma vez por jogador?
 Para isso nós vamos usar o `require` (requerer). `require` faz com que a função lance um erro e pare a execução se alguma condição não for verdadeira:
 
 ```
-function sayHiToVitalik(string _name) public returns (string) {
+function sayHiToVitalik(string memory _name) public returns (string memory) {
   // Compara se _name é igual à "Vitalik". Lança um erro e termina se não for verdade.
   // (Lembrete: Solidity não tem uma forma nativa de comparar strings, então
   // temos que comparar os hashes keccak256 para verificar a igualdade)
-  require(keccak256(_name) == keccak256("Vitalik"));
-
+  require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Vitalik")));
   // Se é verdade, prossiga com a função:
   return "Olá!";
 }

@@ -1,12 +1,13 @@
 ---
 title: "Bônus: Genes de Gatinhos"
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
       "zombiefeeding.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
 
@@ -49,7 +50,7 @@ material:
 
         }
       "zombiefactory.sol": |
-        pragma solidity ^0.4.19;
+        pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
 
@@ -68,19 +69,19 @@ material:
             mapping (uint => address) public zombieToOwner;
             mapping (address => uint) ownerZombieCount;
 
-            function _createZombie(string _name, uint _dna) internal {
+            function _createZombie(string memory _name, uint _dna) internal {
                 uint id = zombies.push(Zombie(_name, _dna)) - 1;
                 zombieToOwner[id] = msg.sender;
                 ownerZombieCount[msg.sender]++;
-                NewZombie(id, _name, _dna);
+                emit NewZombie(id, _name, _dna);
             }
 
-            function _generateRandomDna(string _str) private view returns (uint) {
-                uint rand = uint(keccak256(_str));
+            function _generateRandomDna(string memory _str) private view returns (uint) {
+                uint rand = uint(keccak256(abi.encodePacked(_str)));
                 return rand % dnaModulus;
             }
 
-            function createRandomZombie(string _name) public {
+            function createRandomZombie(string memory _name) public {
                 require(ownerZombieCount[msg.sender] == 0);
                 uint randDna = _generateRandomDna(_name);
                 randDna = randDna - randDna % 100;
@@ -89,7 +90,7 @@ material:
 
         }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       import "./zombiefactory.sol";
 
@@ -113,12 +114,12 @@ material:
         address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
         KittyInterface kittyContract = KittyInterface(ckAddress);
 
-        function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
+        function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
           require(msg.sender == zombieToOwner[_zombieId]);
           Zombie storage myZombie = zombies[_zombieId];
           _targetDna = _targetDna % dnaModulus;
           uint newDna = (myZombie.dna + _targetDna) / 2;
-          if (keccak256(_species) == keccak256("kitty")) {
+          if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
             newDna = newDna - newDna % 100 + 99;
           }
           _createZombie("NoName", newDna);
@@ -148,10 +149,10 @@ Digamos que o gato-zumbi tem `99` como seus últimos 2 dígitos de DNA (desde qu
 Declaração de condições em Solidity parecem com as de JavaScript:
 
 ```
-function eatBLT(string sandwich) public {
+function eatBLT(string memory sandwich) public {
   // Lembre-se com strings, temos que comprar os seus hashes em keccak256
   // para checar igualdade
-  if (keccak256(sandwich) == keccak256("BLT")) {
+  if (keccak256(abi.encodePacked(sandwich)) == keccak256(abi.encodePacked("BLT"))) {
     eat();
   }
 }
@@ -161,12 +162,12 @@ function eatBLT(string sandwich) public {
 
 Vamos implementar o genes dos gatos em nosso código zumbi.
 
-1. Primeiro, vamos mudar a definição para a função `feedAndMultiply` então ela terá um terceiro argumento: uma `string` chamada `_species`
+1. Primeiro, vamos mudar a definição para a função `feedAndMultiply` então ela terá um terceiro argumento: uma `string` chamada `_species` que vamos armazenar na `memory`
 
-2. Próximo, após calcularmos o DNA do novo zumbi, vamos adicionar uma condição `if` comparando o hash  `keccak256` da `_species` e a string `"kitty"`.
+2. Próximo, após calcularmos o DNA do novo zumbi, vamos adicionar uma condição `if` comparando o hash  `keccak256` da `_species` e a string `"kitty"`. Não podemos passar strings diretamente para `keccak256`. Em vez disso, vamos passar `abi.encodePacked(_species)` como um argumento no lado esquerdo e `abi.encodePacked("kitty")` como um argumento no lado direito.
 
 3. Dentro da condição `if`, nós queremos substituir os dois últimos dígitos do DNA com `99`. Uma maneira de fazer isso é usando a lógica: `newDna = newDna - newDna % 100 + 99;`.
 
   > Explicação: Suponha que `newDna` é `334455`. Então `newDna % 100` é `55`, então `newDna - newDna % 100` é `334400`. Finalmente adicione `99` para ter `334499`.
 
-4. Por último, nós precisamos mudar dentro da chamada da função `feedOnKitty`. Quando ela chamar `feedAndMultiply`, adicione o parâmetro `"Kitty"` no final.
+4. Por último, nós precisamos mudar dentro da chamada da função `feedOnKitty`. Quando ela chamar `feedAndMultiply`, adicione o parâmetro `"kitty"` no final.
