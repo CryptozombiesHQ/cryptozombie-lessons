@@ -2,6 +2,8 @@
 title: Aplicativos Front-end & Web3.js
 header: "Lição 6: Aplicativos Front-end & Web3.js"
 roadmap: roadmap6.png
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Huh, você chegou até aqui ?!
