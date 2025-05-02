@@ -285,21 +285,21 @@ It would then "pack" the inputs and use `keccak` to convert them to a random has
 
 ### This method is vulnerable to attack by a dishonest node
 
-In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, try to be the first to solve a computationally-intensive mathematical problem as a "Proof of Work", and then publish that group of transactions along with their Proof of Work (PoW) as a **_block_** to the rest of the network.
+In Ethereum, when you call a function on a contract, you broadcast it to a node or nodes on the network as a **_transaction_**. The nodes on the network then collect a bunch of transactions, and validators are selected to propose and validate new blocks through a **_Proof of Stake (PoS)_** consensus mechanism. Ethereum transitioned from Proof of Work to Proof of Stake on September 15, 2022, with an event called "The Merge."
 
-Once a node has solved the PoW, the other nodes stop trying to solve the PoW, verify that the other node's list of transactions are valid, and then accept the block and move on to trying to solve the next block.
+In the Proof of Stake system, validators (who have deposited or "staked" 32 ETH) are randomly selected to propose new blocks and validate transactions. Other validators then attest to the validity of these blocks, and when sufficient attestations are collected, the block is added to the blockchain.
 
 **This makes our random number function exploitable.**
 
-Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
+Let's say we had a coin flip contract — heads you double your money, tails you lose everything. Let's say it used the above random function to determine heads or tails. (`random >= 50` is heads, `random < 50` is tails).
 
-If I were running a node, I could publish a transaction **only to my own node** and not share it. I could then run the coin flip function to see if I won — and if I lost, choose not to include that transaction in the next block I'm solving. I could keep doing this indefinitely until I finally won the coin flip and solved the next block, and profit.
+If I were running a validator node, I could still manipulate the outcome by choosing to include or exclude certain transactions, or by manipulating the block timestamp. A validator could choose not to include transactions with unfavorable outcomes or could attempt to influence the randomness in other ways.
 
 ## So how do we generate random numbers safely in Ethereum?
 
 Because the entire contents of the blockchain are visible to all participants, this is a hard problem, and its solution is beyond the scope of this tutorial. You can read <a href="https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract" target=_new>this StackOverflow thread</a> for some ideas. One idea would be to use an **_oracle_** to access a random number function from outside of the Ethereum blockchain.
 
-Of course, since tens of thousands of Ethereum nodes on the network are competing to solve the next block, my odds of solving the next block are extremely low. It would take me a lot of time or computing resources to exploit this profitably — but if the reward were high enough (like if I could bet $100,000,000 on the coin flip function), it would be worth it for me to attack.
+Even with Proof of Stake, where energy consumption is dramatically reduced compared to Proof of Work, there are still economic incentives for validators to try to manipulate outcomes if the rewards are high enough (like if someone could bet $100,000,000 on the coin flip function).
 
 So while this random number generation is NOT secure on Ethereum, in practice unless our random function has a lot of money on the line, the users of your game likely won't have enough resources to attack it.
 
