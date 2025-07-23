@@ -1,8 +1,6 @@
 ---
 title: Operaciones Matemáticas
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
