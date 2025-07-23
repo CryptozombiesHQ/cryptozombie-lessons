@@ -1,8 +1,6 @@
 ---
 title: Math Operations
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
