@@ -1,8 +1,6 @@
 ---
 title: ""
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   saveZombie: true
