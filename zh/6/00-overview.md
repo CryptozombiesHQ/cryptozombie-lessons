@@ -8,12 +8,12 @@ roadmap: roadmap6.png
 
 你真是个了不得的 CryptoZombie...
 
-通过前五课的学习，相信你已经有了扎实的 Solidity 基础.
+通过前五课的学习，相信你已经具备扎实的 Solidity 基础。
 
-但是若没有一个互动界面让用户来使用，一个 DApp 就不能称之为完整。
+但是若没有一个互动界面让用户来使用，就不是一个完整的 DApp 。
 
-在这一课，我们将来学习如果用一个名为 **Web3.js** 的库来为你的 DApp 创建一个基本的前端界面，和你的智能合约交互。
+在这一课，我们将学习如何使用 **Web3.js** 库，为你的 DApp 创建能够与你所开发的智能合约交互的基本前端界面。
 
-需要注意的是这个 APP 界面将使用 **JavaScript** 来写，并不是 Solidity。因为我们的课程专注于 Ethereum / Solidity，我们就暂时假定你已经会用HTML, JavaScript(包括 ES6 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target=_blank>promises</a>)，以及 JQuery 写网站了。因此我们不会花时间来介绍这些技术的基础知识。
+需要注意的是这个 APP 界面将使用 **JavaScript** 而不是 Solidity开发。原因是我们的课程专注于 Ethereum / Solidity，假定你已经会用HTML、JavaScript(包括 ES6 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target=_blank>promises</a>)以及 JQuery 开发网站。因此我们不会介绍这些技术的基础知识。
 
-如果你还不会用 HTML/JavaScript 来写网站，你应该先去学习一下这方面的基础知识再来继续接下来的课程。
+如果你还不会用 HTML/JavaScript 来开发网站，你应该先去学习相关的基础知识再继续本课程的学习。
