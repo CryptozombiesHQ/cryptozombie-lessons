@@ -1,8 +1,6 @@
 ---
 title: Eventos (Events)
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
