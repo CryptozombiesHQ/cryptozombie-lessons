@@ -1,8 +1,6 @@
 ---
 title: Working With Structs and Arrays
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
