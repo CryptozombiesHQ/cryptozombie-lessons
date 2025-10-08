@@ -1,8 +1,6 @@
 ---
 title: Trabajando con estructuras y arrays
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
