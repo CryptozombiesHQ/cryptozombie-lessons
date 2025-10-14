@@ -10,7 +10,7 @@ material:
 
       contract ZombieFactory {
 
-          // declare our event here
+          // 1. Declare your event here
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -23,8 +23,8 @@ material:
           Zombie[] public zombies;
 
           function _createZombie(string memory _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-              // and fire it here
+              zombies.push(Zombie(_name, _dna)); // 2. Store the result of `zombies.push(...) - 1` in a `uint` called `id`
+              // 3. Fire the new event
           }
 
           function _generateRandomDna(string memory _str) private view returns (uint) {
@@ -106,6 +106,7 @@ We want an event to let our front-end know every time a new zombie was created, 
 
 1. Declare an `event` called `NewZombie`. It should pass `zombieId` (a `uint`), `name` (a `string`), and `dna` (a `uint`).
 
-2. Modify the `_createZombie` function to fire the `NewZombie` event after adding the new Zombie to our `zombies` array.
+2. Modify the first line of the `_createZombie` function. You're going to need the zombie's `id`. The `array.push()` function returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
 
-3. You're going to need the zombie's `id`. `array.push()` returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Store the result of `zombies.push() - 1` in a `uint` called `id`, so you can use this in the `NewZombie` event in the next line.
+3. On the next line, fire the `NewZombie` event.
+
