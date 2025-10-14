@@ -1,21 +1,22 @@
 ---
-title: Lição 1 Completa!
-actions: ['verificarResposta', 'dicas']
+title: Lesson 1 Complete!
+actions: ['checkAnswer', 'hints']
+requireLogin: true
 material:
   lessonComplete:
     answer: 1
 ---
 
-Parabéns! Você completou a lição 1, e você criou o primeiro zumbi do seu exército.
+Congratulations! You have completed lesson 1, and you have created the first zombie in your army.
 
-# Próximos Passos
+# Next Steps
 
-Isso é só o começo. Nós iremos lançar uma nova lição do CryptoZombies toda semana, para construir muito mais e continuar crescendo o nosso exército de zumbis.
+This is just the beginning. We will be releasing a new CryptoZombies lesson each week, to build out the game further and further and keep growing your zombie army.
 
-### 1. Cadastre-se para salvar o seu progresso
+### 1. Sign in to save your progress
 
-**_Cadastre-se_** para salvar o seu progresso clicando no link "Save Progress" no topo da página. Nós vamos avisar você logo que uma nova lição for adicionada.
+**_Sign in_** to save your progress by clicking the "Save Progress" link at the top of the page. We'll let you know as soon as we add a new lesson.
 
-### 2. Compartilhe o seu zumbi com os amigos
+### 2. Share your zombie with your friends
 
-**_Compartilhe_** seu zumbi no Twitter, blah blah, etc. (Need to insert images / links)
+**_Share_** your zombie on Twitter, blah blah, etc. (Need to insert images / links)

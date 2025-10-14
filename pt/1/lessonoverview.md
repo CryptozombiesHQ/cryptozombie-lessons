@@ -2,6 +2,7 @@
 title: Visão Geral da Lição
 actions: ['verificarResposta', 'dicas']
 skipCheckAnswer: true
+requireLogin: true
 material:
   saveZombie: false
   zombieResult:

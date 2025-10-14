@@ -1,6 +1,7 @@
 ---
 title: Web3.js
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   saveZombie: true
   zombieResult:

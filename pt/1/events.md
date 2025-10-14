@@ -1,11 +1,12 @@
 ---
 title: Eventos
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -21,24 +22,24 @@ material:
 
           Zombie[] public zombies;
 
-          function _createZombie(string _name, uint _dna) private {
+          function _createZombie(string memory _name, uint _dna) private {
               zombies.push(Zombie(_name, _dna));
               // dispare o evento aqui
-          } 
+          }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
           }
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {
@@ -55,17 +56,17 @@ material:
 
           Zombie[] public zombies;
 
-          function _createZombie(string _name, uint _dna) private {
+          function _createZombie(string memory _name, uint _dna) private {
               uint id = zombies.push(Zombie(_name, _dna)) - 1;
-              NewZombie(id, _name, _dna);
-          } 
+              emit NewZombie(id, _name, _dna);
+          }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
-              uint rand = uint(keccak256(_str));
+          function _generateRandomDna(string memory _str) private view returns (uint) {
+              uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
           }
@@ -75,18 +76,18 @@ material:
 
 Nosso contrato esta quase terminado! Agora vamos adicionar um **_evento_**.
 
-**_Eventos_** são as maneiras dos seus contratos comunicarem que algo aconteceu na blockchain para o seu aplicativo em um frontend, que pode `ouvir` por certos tipos de eventos e tomar ações quando algo acontecer.
+**_Eventos_** são as maneiras dos seus contratos comunicarem que algo aconteceu na blockchain para o seu aplicativo em um frontend, que pode 'ouvir' por certos tipos de eventos e tomar ações quando algo acontecer.
 
 Exemplo:
 
 ```
-// Declarando o evento
+// declarando o evento
 event IntegersAdded(uint x, uint y, uint result);
 
-function add(uint _x, uint _y) public {
+function add(uint _x, uint _y) public returns (uint) {
   uint result = _x + _y;
-  // Dispare um evento e deixe o aplicativo saber que a função foi chamada:
-  IntegersAdded(_x, _y, result);
+  // dispare um evento e deixe o aplicativo saber que a função foi chamada:
+  emit IntegersAdded(_x, _y, result);
   return result;
 }
 ```
@@ -96,7 +97,7 @@ O seu aplicativo frontend poderá então ouvir o evento. Uma implementação em 
 ```
 YourContract.IntegersAdded(function(error, result) {
   // Faça algo com o resultado
-}
+})
 ```
 
 # Vamos testar

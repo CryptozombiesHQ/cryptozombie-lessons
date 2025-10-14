@@ -1,11 +1,12 @@
 ---
 title: Estruturas
 actions: ['verificarResposta', 'dicas']
+requireLogin: true
 material:
   editor:
     language: sol
     startingCode: |
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
@@ -16,7 +17,7 @@ material:
 
       }
     answer: >
-      pragma solidity ^0.4.19;
+      pragma solidity >=0.5.0 <0.6.0;
 
 
       contract ZombieFactory {

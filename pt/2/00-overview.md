@@ -2,6 +2,8 @@
 title: Zumbis atacam suas vítimas
 header: Então, você chegou a Lição 2!
 roadmap: roadmap2.jpg
+path: solidity
+publishedOn: Cryptozombies
 ---
 
 Impressionante, humano! Você é melhor programador(a) do que pensei.
