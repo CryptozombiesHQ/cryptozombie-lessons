@@ -15,19 +15,135 @@
       "name": "Twitter",
       "link": "https://twitter.com/loomnetwork"
     },
+    "find_source_code_repo": "你可以在这里找到本课程的源代码 <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> 这个 Github 仓库</a>.",
+    "course": [
+      {
+        "id": "solidity",
+        "title": "Solidity Path: 智能合约初级到中级",
+        "summary": "<p>所以你认为你有能力成为一只 <strong>加密僵尸</strong>,了吗?</p> <p>本课程将教会你如何 <strong>在以太坊上建立一个游戏</strong>.</p> 本课程是为Solidity初学者设计的, 但是我们假设你有其他编程语言的经验 (例如: Javascript)."
+      },
+      {
+        "id": "chainlink",
+        "title": "Chainlink Path: 去中心化的 Oracles",
+        "summary": "将现实世界中所有变化的元素融合到我们心爱的僵尸里吧."
+      },
+      {
+        "id": "solidity_advanced",
+        "title": "高级 Solidity Path: 获得更深入的知识",
+        "summary": "<b>使用Truffle测试只能合约</b> 这将教会你: <br> - 使用 Truffle 和 Ganache 测试你的智能合约 <br> - 使用Chai来写更有表达力的断言 <br> - 对照Loom进行测试😉</p> <p><b>使用 Truffle 发布以太坊 DApps </b> 这将指导你使用Truffle完成智能合约的部署过程.</p>"
+      },
+      {
+        "id": "beyond_ethereum",
+        "title": "Beyond Ethereum Path: 探索区块链生态系统",
+        "summary": "探索区块链生态系统."
+      }
+    ],
     "solidity_path": "Solidity 教程: 智能合约基础教程",
     "hands_on_path": "实战教程: 编写及部署自定义游戏模式",
-    "plasma_path": "Plasma 教程: 如何使用 Plasma Cash",
+    "hand_on_plasma": "高级 Solidity Path: 获得更深入的知识",
     "start_resume": "开始/继续",
     "the_curriculum": "课程列表",
-    "course_overview":"课程预览",
+    "course_overview": "课程预览",
     "start": "开始",
-    "skip_lesson": "跳过本课"
+    "skip_lesson": "跳过本课",
+    "graduate": "准备好毕业了吗?或者你已经有了经验?",
+    "you_will": "你将会",
+    "will_list": {
+      "use": "达到Solidity中级水平",
+      "deploy": "部署到一个在线的PlasmaChain链",
+      "interact": "拥有真正的玩家来玩你的游戏并和你的Dapp进行交互",
+      "earn": "收取入场费并赚到一些外快！"
+    },
+    "make_game": "立即制作你的游戏模式吧!",
+    "goto_lesson_list": "访问课程列表",
+    "share_link": "分享",
+    "zbbg_slogan": "僵尸角斗场是第一款完全在区块链上运行的收集类卡牌游戏",
+    "zbbg_link": "获取早期使用权！",
+    "coming_soon": "即将推出",
+    "login_logout": {
+      "sign_in": "登录",
+      "sign_out": "注销",
+      "register": "注册"
+    },
+    "sign_in_modal": {
+      "sign_in": "登录",
+      "email": "邮箱",
+      "password": "密码",
+      "enter_email": "输入邮箱",
+      "enter_password": "输入密码",
+      "forgot_password": "忘记密码?",
+      "enter_email_password": "请输入邮箱和密码。",
+      "password_length": "密码长度必须为6至50个字符",
+      "cancel": "取消"
+
+    },
+    "register": {
+      "register": "注册",
+      "create_account": "创建账号",
+      "register_new_account": "注册新账号",
+      "email": "电子邮箱",
+      "password": "密码",
+      "enter_email": "输入邮箱",
+      "enter_password": "输入密码",
+      "re_enter_new_password": "再次输入密码",
+      "confirm_new_password": "输入密码",
+      "required_email_password": "请输入邮箱地址和密码并确认其正确",
+      "email_length": "您的电子邮箱长度必须为3至191个字符.",
+      "password_length": "您的密码长度必须为6至50个字符.",
+      "invalid_repeat_password": "密码不匹配.",
+      "success": "注册成功."
+    },
+    "reset_password": {
+      "reset_password": "重置密码",
+      "reset_my_password": "重置我的密码",
+      "enter_new_password": "输入新密码",
+      "re_enter_new_password": "再次输入新密码",
+      "confirm_new_password": "再次输入新密码",
+      "required_password": "请输入密码并保证输入正确.",
+      "password_length": "您的密码长度必须为6至50个字符.",
+      "invalid_repeat_password": "密码不匹配.",
+      "reset_success": "密码重置成功."
+    },
+    "forgot_password": {
+      "reset_password": "重置密码",
+      "enter_email": "输入您的邮箱地址",
+      "send": "发送重置邮件",
+      "reset_link": "密码重置链接已发送到您的邮箱.",
+      "success": "成功. 请检查您的邮箱. 您将收到重置密码的网页链接.",
+      "required_email": "请输入邮箱地址."
+    }
+  },
+  "achievements": {
+    "achievements": "成就",
+    "achieved": "取得的成就",
+    "finished_first": {
+      "title": "完成第一课",
+      "desc": "完成了第一次课程学习"
+    },
+    "finished_solidity": {
+      "title": "完成Solidity学习路线",
+      "desc": "完成了所有Solidity学习路线的课程"
+    },
+    "finished_lesson7": {
+      "title": "构建了一个多样化的代币",
+      "desc": "构建了一个多样化的代币"
+    }
+  },
+  "rewards": {
+    "rewards": "奖励",
+    "test_key": "首轮僵尸竞技场的测试密钥",
+    "loom_tokens": "Loom Tokens",
+    "no_reward": " 您没有获得任何奖励"
+  },
+  "footer": {
+    "intro": "CryptoZombies是一个免费、开源、互动的代码学校，教你在以太坊上构建游戏。该课程是为Solidity的初学者设计的，从零基础知识开始学习。因此，如果你以前从未用Solidity编码过，不用担心--我们会一步一步地指导你。",
+    "find_more": "寻找更多..."
   },
   "editor": {
     "readOnly": "只读"
   },
   "lessonMenu": {
+    "getReward": "奖励",
     "pageTitle": "@:base.name | @:base.tagLine",
     "itemLabel": "教程 {lessonNum}: {title}",
     "signIn": "登录后同步进度",
@@ -57,7 +173,9 @@
     "tryAgain": "再查",
     "checkAnswer": "交卷",
     "showMeTheAnswer": "我要看答案！",
-    "hideAnswer": "不看答案了！"
+    "hideAnswer": "不看答案了！",
+    "next_chapter": "下一章",
+    "prev_chapter": "上一章"
   },
   "lessonComplete": {
     "shareLinksAction": "点击以下按钮后分享:",
@@ -309,6 +427,24 @@
         "想打造你自己的 CryptoZombies 并加入排行么？",
         "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
       ]
+    },
+    "lesson7": {
+      "zombieDesc": "一起来建立一个像僵尸竞技场的游戏吧！",
+      "achievementPreamble": [
+        "你朋友完成了CryptoZombies 第七课还获得了一个12级的CryptoZombie!",
+        "看看左边你朋友的僵尸大军，挺壮观的对吧?",
+        "为了完成 CryptoZombies 第七课, 你朋友学到了:"
+      ],
+      "achievements": [
+        "多重可替换代币，以及ERC721X标准",
+        "如何建立一个铸造、让用户认领和转让代币的阀门",
+        "如何使用ERC721X来实现独特的、限量版的和标准版的卡片"
+      ],
+      "callToAction": [
+        "想打造你自己的 CryptoZombies 并加入排行么？",
+        "在 CryptoZombies 中免费学习编写你自己的以太坊游戏！ 快来吧："
+      ]
     }
-  }
+  },
+  "czSlogan": "CryptoZombies: 使用我们的Solidity教程来学习以太坊区块链编程吧！"
 }
