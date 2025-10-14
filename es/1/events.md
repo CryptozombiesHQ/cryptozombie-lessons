@@ -6,11 +6,11 @@ material:
   editor:
     language: ""
     startingCode: |
-      pragma solidity ^0.4.25;
+      pragma solidity >=0.5.0 <0.6.0;
 
       contract ZombieFactory {
 
-          // declara nuestro evento aquí
+          // 1. Declare your event here
 
           uint dnaDigits = 16;
           uint dnaModulus = 10 ** dnaDigits;
@@ -22,17 +22,17 @@ material:
 
           Zombie[] public zombies;
 
-          function _createZombie(string _name, uint _dna) private {
-              zombies.push(Zombie(_name, _dna));
-              // y lánzalo aquí
+          function _createZombie(string memory _name, uint _dna) private {
+              zombies.push(Zombie(_name, _dna)); // 2. Store the result of `zombies.push(...) - 1` in a `uint` called `id`
+              // 3. Fire the new event
           }
 
-          function _generateRandomDna(string _str) private view returns (uint) {
+          function _generateRandomDna(string memory _str) private view returns (uint) {
               uint rand = uint(keccak256(abi.encodePacked(_str)));
               return rand % dnaModulus;
           }
 
-          function createRandomZombie(string _name) public {
+          function createRandomZombie(string memory _name) public {
               uint randDna = _generateRandomDna(_name);
               _createZombie(_name, randDna);
           }
@@ -105,6 +105,7 @@ Queremos que nuestro front-end sepa cada vez que se creó un nuevo zombie, para 
 
 1. Declara un `event` llamado `NewZombie`. Debería pasar las variables `zombieId` (un `uint`), `name` (un `string`), y `dna` (un `uint`).
 
-2. Modifica la función `_createZombie` para lanzar el evento `NewZombie` después de haber añadido el nuevo Zombi a nuestro array de `zombies`.
+2. Modify the first line of the `_createZombie` function. Vas a necesitar el `id` del zombi. The `array.push()` function returns a `uint` of the new length of the array - and since the first item in an array has index 0, `array.push() - 1` will be the index of the zombie we just added. Guarda el resultado de `zombies.push() - 1` en un número de tipo `uint` llamado `id`, así podrás usarlo en el evento `NewZombie` de la siguiente línea.
 
-3. Vas a necesitar el `id` del zombi. `array.push()` devuelve un `uint` con el nuevo tamaño del array - y como el primer elemento del array tiene índice 0, `array.push() - 1` será el índice del zombi que acabamos de añadir. Guarda el resultado de `zombies.push() - 1` en un número de tipo `uint` llamado `id`, así podrás usarlo en el evento `NewZombie` de la siguiente línea.
+3. On the next line, fire the `NewZombie` event.
+
