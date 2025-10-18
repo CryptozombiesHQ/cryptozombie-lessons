@@ -46,7 +46,7 @@ material:
           function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
             require(msg.sender == zombieToOwner[_zombieId]);
             Zombie storage myZombie = zombies[_zombieId];
-            // 2. Здесь добавь проверку `_isReady` 
+            // 2. Здесь добавь проверку `_isReady`
             _targetDna = _targetDna % dnaModulus;
             uint newDna = (myZombie.dna + _targetDna) / 2;
             if (keccak256(_species) == keccak256("kitty")) {
