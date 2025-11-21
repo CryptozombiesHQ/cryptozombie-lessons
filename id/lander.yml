@@ -1,0 +1,37 @@
+---
+id:
+  ogdescription: CryptoZombies adalah sekolah kode interaktif yang mengajarkan kamu untuk menulis smart contracts di Solidity dengan membuat game koleksi kriptomu sendiri.
+  ogtitle: CryptoZombies - Belajar membuat kode game di Ethereum. Didukung oleh Jaringan Loom
+  langshort: ID #should be recognizable in local languages, like chinese would be 中文
+  learn_title: Belajar Membuat Kode Ethereum DApps Dengan Membangun Game Kamu Sendiri
+  learn_desc: CryptoZombies adalah sekolah kode interaktif yang mengajarkan kamu untuk menulis smart contracts di Solidity dengan membuat game koleksi kriptomu sendiri.
+  get_started: Mulai, Ini Gratis
+  learn_more: Selengkapnya
+  what_title: Apa itu CryptoZombies?
+  what_desc1: CryptoZombies adalah sekolah kode interaktif gratis yang mengajarkan kamu membuat game di Ethereum.
+  what_desc2: Kursus ini dirancang untuk pemula Solidity dan dimulai dengan dasar-dasar yang mutlak. Jadi, jika kamu belum pernah membuat kode dengan Solidity sebelumnya, jangan khawatir — kami akan memandu kamu langkah demi langkah.
+  collect_title: Hasilkan Koleksi Crypto
+  collect_desc1: Hasilkan koleksi crypto Zombie dan bonusenya dengan menyelesaikan pelajaran coding.
+  collect_desc2: Setelah menyelesaikan semua pelajaran dan menerapkan DApp kamu, adu pasukan zombie kamu melawan zombie pemain lain di salah satu game berbasis blockchain pertama di dunia! Setengah dari sekolah kode, Setengah game strategi koleksi crypto MMO.
+  collect_desc3: Apa yang kamu tunggu? Klik tombol di bawah untuk mempelajari pelajaran 1 dan membangun DApp pertamamu. Gratis!
+  start_title: Mulai Sekarang 
+  int_title: Pelajaran Coding Interaktif
+  inbrowser_desc: Pelajaran langkah-demi-langkah dalam browser membawa kamu dari dasar-dasar Solidity hingga membuat game berbasis blockchainmu sendiri yang berfungsi penuh. Bahkan pada akhir Pelajaran 1 (yang dapat diselesaikan dalam sekali duduk), Kamu akan cukup tahu untuk secara resmi menyebut dirimu sebagai pengembang Solidity!
+  zombie_title: Bangung Tentara Zombie
+  zombie_desc: Dalam Pelajaran 1, kamu akan membangun Pabrik Zombie untuk membangun pasukanmu. Setiap Zombie yang kamu buat akan memiliki DNA yang dihasilkan secara acak dan memiliki keunikannya sendiri. Pelajaran lebih lanjut (1 dirilis setiap minggu) akan menambahkan lebih banyak fungsionalitas ke permainanmu, seperti kemampuan untuk melawan zombie orang lain!
+  who_made: Siapa yang Membuat CryptoZombies dan Mengapa Gratis?
+  who_made1: CryptoZombies dibuat oleh tim di
+  who_made2: . Kami sedang membangun platform untuk menjalankan aplikasi skala besar di sidechain Ethereum.
+  who_made3: Kami pikir blockchain mampu melakukan lebih dari sekadar pembayaran, dan kami ingin membuat lebih banyak pengembang berpikir di luar kebiasaan dan mencoba membangun DApps skala besar. Game adalah salah satu area di mana kami pikir blockchain akan benar-benar merevolusi banyak hal. Jadi kami membangun CryptoZombies untuk membantu mendidik dan menginspirasi generasi berikutnya dari pengembang game blockchain.
+  find_us: Selain CryptoZombies, kami sedang mengerjakan beberapa proyek yang sangat keren. Jika kamu ingin mengikuti kami, menghubungi kami untuk proyek, atau hanya menyapa, kamu dapat menemukan kami di
+  and_our: dan kita
+  email_us_at: ", atau email kami di"
+  footer_network: Jaringan
+  footer_info: Informasi
+  footer_contact: Kontak Kami
+  footer_contact_jobs: Pekerjaan
+  footer_email: Email
+  footer_about: Tentang Kami
+  footer_desc: CryptoZombies.io is a free teaching platform to teach existing developers or complete newcomers the ins and out of programming for the Blockchain. Powered by Loom Network - a platform for building commercial scale apps on Ethereum.
+  telegram_open_chat: Open Chat
+  telegram_link: https://t.me/loomnetwork
