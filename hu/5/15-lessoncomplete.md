@@ -1,0 +1,7 @@
+---
+title: 5. lecke befejezve!
+actions: ['checkAnswer', 'hints']
+material:
+  lessonComplete:
+    answer: 1
+---

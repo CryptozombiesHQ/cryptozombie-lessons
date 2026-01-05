@@ -1,0 +1,38 @@
+---
+hu:
+  ogdescription: A CryptoZombies egy interaktív programozási iskola, amely megtanít okos szerződéseket írni Solidity-ben, saját kripto-gyűjthető játékod építésével.
+  ogtitle: CryptoZombies - Tanulj meg játékokat programozni az Ethereumon. Powered by Loom Network
+  langshort: HU
+  learn_title: Tanuld meg az Ethereum DApp-ok programozását saját játékod építésével
+  learn_desc: A CryptoZombies egy interaktív programozási iskola, amely megtanít okos szerződéseket írni Solidity-ben, saját kripto-gyűjthető játékod építésével.
+  get_started: Kezdj el, ingyenes
+  learn_more: Tudj meg többet
+  what_title: Mi a CryptoZombies?
+  what_desc1: A CryptoZombies egy ingyenes, interaktív programozási iskola, amely megtanít játékokat építeni az Ethereumon.
+  what_desc2: A kurzus kezdőknek készült Solidity-ben, és az abszolút alapoktól kezd. Tehát ha még soha nem programoztál Solidity-ben, ne aggódj - lépésről lépésre végigvezetünk.
+  collect_title: Szerezz Kripto-Gyűjthetőket
+  collect_desc1: Szerezz kripto-gyűjthető Zombie-kat és bónuszokat a programozási leckék befejezésével.
+  collect_desc2: Az összes lecke befejezése és a DApp telepítése után, küzdj zombi seregeddel más játékosok zombijai ellen az egyik első blockchain-alapú játékban a világon! Félig programozási iskola, félig MMO kripto-gyűjthető stratégiai játék.
+  collect_desc3: Mire vársz még? Kattints az alábbi gombra, merülj el az 1. leckében és építsd meg az első DApp-odat. Ingyenes!
+  start_title: Kezdj el most
+  int_title: Interaktív programozási leckék
+  inbrowser_desc: Böngészőben lépésről lépésre leckék vezetnek a Solidity alapjaitól a saját teljes funkcionalitású blockchain-alapú játékodig. Már az 1. lecke végén (amely egy ülésben befejezhető) elég tudásod lesz, hogy hivatalosan Solidity fejlesztőnek nevezd magad!
+  zombie_title: Építs egy Zombie sereget
+  zombie_desc: Az 1. leckében egy Zombie Gyárat építesz a sereged felépítéséhez. Minden Zombie, amit létrehozol, véletlenszerűen generált DNS-sel és saját egyedi megjelenéssel rendelkezik. További leckék (hetente egy megjelenik) több funkcionalitást adnak a játékodhoz, mint például a képesség, hogy mások zombijaival harcolj!
+  who_made: Ki készítette a CryptoZombies-t és miért ingyenes?
+  who_made1: A CryptoZombies-t a
+  who_made2: csapata készítette. Platformot építünk nagy léptékű alkalmazások futtatására Ethereum sidechain-eken.
+  who_made3: Úgy gondoljuk, hogy a blockchainek sokkal többet tudnak, mint csak fizetések, és szeretnénk, ha több fejlesztő gondolkodna a dobozon kívül és próbálna nagy léptékű DApp-okat építeni. A játékok az egyik terület, ahol úgy gondoljuk, hogy a blockchain valóban forradalmasítani fogja a dolgokat. Ezért építettük meg a CryptoZombies-t, hogy segítsünk oktatni és inspirálni a blockchain játékfejlesztők következő generációját.
+  find_us: A CryptoZombies mellett néhány igazán menő projekten dolgozunk. Ha szeretnél követni minket, lépj kapcsolatba egy projekttel, vagy csak köszönj, megtalálsz minket a
+  and_our: és a
+  email_us_at: ", vagy írj nekünk emailt a"
+  footer_network: Hálózat
+  footer_info: Információ
+  footer_contact: Kapcsolat
+  footer_contact_jobs: Állások
+  footer_email: Email
+  footer_about: Rólunk
+  footer_desc: A CryptoZombies.io egy ingyenes oktatási platform, amely megtanítja a meglévő fejlesztőket vagy teljesen kezdőket a Blockchain programozásának minden részletére. Powered by Loom Network - egy platform nagy léptékű alkalmazások létrehozásához az Ethereumon.
+  telegram_open_chat: Chat megnyitása
+  telegram_link: https://t.me/loomnetworkdev
+
