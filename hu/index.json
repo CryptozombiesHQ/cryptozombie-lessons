@@ -1,0 +1,560 @@
+{
+    "base": {
+        "name": "CryptoZombies",
+        "tagLine": "Tanulj meg játékokat programozni az Ethereumon",
+        "lesson": "Lecke {lessonNum}",
+        "chapter": "Fejezet {chapterNum}",
+        "syncing": "Szinkronizálás...",
+        "telegram": {
+            "name": "Telegram",
+            "openChat": "Kérdés feltevése",
+            "action": "Csatlakozz a Telegram csoportunkhoz",
+            "link": "https://t.me/loomnetworkdev"
+        },
+        "twitter": {
+            "name": "Twitter",
+            "link": "https://twitter.com/CryptoZombiesHQ"
+        },
+        "find_source_code_repo": "A leckék forráskódját megtalálod ebben a <a href='https://github.com/loomnetwork/cryptozombies-lesson-code' target='_blank'> Github repository-ban</a>.",
+        "start_course": "Kurzus indítása",
+        "tutorial": {
+            "name": "Oktatóanyagok",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "OKTATÓANYAG",
+                    "logo": "../static/image/tutorial1.png",
+                    "title": "Hogyan állítsd be az alapvető Web3 fejlesztői eszközöket",
+                    "description": "Tanuld meg, hogyan írj egy egyszerű web3 szkriptet, amely lekéri a legfrissebb blokkszámot az Ethereum mainnetről az Alchemy használatával.",
+                    "levels": [
+                        "Kezdő",
+                        "JavaScript",
+                        "React"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "OKTATÓANYAG",
+                    "logo": "../static/image/tutorial2.png",
+                    "title": "Hogyan állítsd be az alapvető Web3 fejlesztői eszközöket",
+                    "description": "Tanuld meg, hogyan írj egy egyszerű web3 szkriptet, amely lekéri a legfrissebb blokkszámot az Ethereum mainnetről az Alchemy használatával.",
+                    "levels": [
+                        "Kezdő",
+                        "JavaScript",
+                        "React"
+                    ]
+                }
+            ]
+        },
+        "course" : [
+            {
+                "id": "solidity",
+                "pathName": "Solidity",
+                "title": "Solidity: Kezdőtől középhaladóig okos szerződések",
+                "summary": "<p>Szóval azt hiszed, megvan benned, hogy <strong>CryptoZombie</strong> legyél, mi?</p> <p>Ez a kurzus megtanít, hogyan <strong>építs játékot az Ethereumon</strong>.</p> Kezdőknek készült Solidity-ben, de feltételezi, hogy van némi programozási tapasztalatod egy másik nyelven (pl. JavaScript).",
+                "description": "Ismerkedj meg a Solidity alapjaival.",
+                "class": "slider-first",
+                "tags": [
+                    "Solidity",
+                    "Kezdő",
+                    "Középhaladó"
+                ]
+            },
+            {
+                "id": "solidity_advanced",
+                "pathName": "Haladó Solidity",
+                "title": "Haladó Solidity: Mélyreható tudás",
+                "summary": "<b>Okos szerződések tesztelése Truffle-lel</b> megtanít: <br> - Teszteld az okos szerződéseidet Truffle-lel Ganache ellen <br> - Használd a Chai-t kifejezőbb állítások írásához <br> - Tesztelj Loom ellen😉</p> <p><b>Ethereum DApp-ok telepítése Truffle-lel</b> végigvezet az okos szerződéseid Truffle-lel történő telepítésének folyamatán.</p>",
+                "description": "Az Ethereum DApp-ok Truffle-lel történő telepítése végigvezet az okos szerződéseid Truffle-lel történő telepítésének folyamatán.",
+                "class": "slider-first",
+                "tags": [
+                    "Solidity",
+                    "Haladó"
+                ]
+            },
+            {
+                "id": "beyond_ethereum",
+                "pathName": "Az Ethereumon túl",
+                "title": "Az Ethereumon túl: Fedezd fel a Blockchain ökoszisztémát",
+                "summary": "Fedezd fel a blockchain ökoszisztémát.",
+                "description": "Fedezd fel a blockchain ökoszisztémát.",
+                "class": "slider-first",
+                "tags": [
+                    "zkSync",
+                    "Kezdő"
+                ]
+            },
+            {
+                "id": "optimism",
+                "pathName": "Optimism",
+                "title": "Optimism Felszabadítva",
+                "summary": "Üdvözölünk az áttörő kurzusunkban az OP stack használatával történő okos szerződések írásáról, teszteléséről és telepítéséről!",
+                "description": "Üdvözölünk az áttörő kurzusunkban az OP stack használatával történő okos szerződések írásáról, teszteléséről és telepítéséről! Ebben a kurzusban felfedezzük az Optimism izgalmas világát, egy forradalmi Layer 2 skálázási megoldást, amely az Ethereum képességeinek fokozására épült. Magjában az Optimism egy EVM-kompatibilis 2. réteg protokoll, amely az Ethereum hálózat skálázhatósági és költségkihívásait kívánja megoldani. A kurzus során egy gyakorlati utazásra indulunk, az okos szerződések írásának és tesztelésének alapjaitól kezdve, és a végén meglesznek a szükséges készségek és tudás, hogy saját okos szerződéseidet telepítsd az OP Mainnetre!",
+                "class": "slider-first",
+                "tags": [
+                    "Optimism",
+                    "Középhaladó"
+                ]
+            },
+            {
+                "id": "tron",
+                "pathName": "Tron",
+                "title": "Tron: Decentralizáld a webet",
+                "summary": "Kezdj el dolgozni a TRON-nal, az egyik leggyorsabban növekvő nyilvános blockchainnel.",
+                "description": "Kezdj el dolgozni a TRON-nal, az egyik leggyorsabban növekvő nyilvános blockchainnel.",
+                "class": "slider-first",
+                "tags": [
+                    "Tron"
+                ]
+            },
+            {
+                "id": "neo",
+                "pathName": "Neo",
+                "title": "A NEO Blockchain elsajátítása",
+                "summary": "Ez a kurzus megtanít: </br> - A neon-js könyvtár telepítését és beállítását </br> - Csatlakozást a Neo blockchainhez </br> - A blockchain lekérdezését </br> - Címek feloldását és domain információk lekérdezését </br> - Tranzakciók kezelését, aláírását és szerializálását neon-js használatával </br> - Domain regisztráció, átadás és tulajdonjog funkcionalitások implementálását </br> - Hibakezelés és bemeneti validáció implementálását",
+                "description": "Kezdj el használni a Neo-t, egy teljes funkcionalitású blockchain platformot decentralizált alkalmazások építéséhez.",
+                "class": "slider-first",
+                "tags": [
+                    "Neo",
+                    "Középhaladó"
+                ]
+            },
+            {
+                "id": "chainlink",
+                "pathName": "Chainlink",
+                "title": "Chainlink: Decentralizált Oracle-ok",
+                "summary": "Kombináld a valós világot és minden változását és információját a szeretett zombijainkkal.",
+                "description": "Kombináld a valós világot és minden változását és információját a szeretett zombijainkkal.",
+                "class": "slider-second",
+                "tags": [
+                    "Chainlink",
+                    "Oracle",
+                    "Középhaladó"
+                ]
+            },
+            {
+                "id": "multiversx",
+                "pathName": "MultiversX",
+                "title": "MultiversX",
+                "summary": "Hozd el a szeretett zombijaidat a MultiversX-re.",
+                "description": "Hozd el a szeretett zombijaidat a MultiversX-re, egy nagymértékben skálázható, biztonságos és decentralizált blockchain hálózatra, amely radikálisan új alkalmazások engedélyezésére készült, felhasználók, vállalatok, társadalom és az új metaverse határ számára.",
+                "class": "slider-first",
+                "tags": [
+                    "MultiversX"
+                ]
+            }
+        ],
+        "solidity_path": "Solidity: Kezdőtől középhaladóig okos szerződések",
+        "hands_on_path": "Gyakorlati: Készíts és telepíts egy egyedi játékmódot",
+        "hand_on_plasma": "Haladó Solidity: Mélyreható tudás",
+        "start_resume": "Indítás/Folytatás",
+        "the_curriculum": "A tananyag",
+        "course_overview": "Kurzus áttekintés",
+        "start": "Indítás",
+        "skip_lesson": "Lecke kihagyása",
+        "graduate": "Készen állsz a diplomázásra? Vagy már tapasztalt vagy?",
+        "you_will": "Fogsz",
+        "will_list": {
+            "use": "Középhaladó szintű solidity használata",
+            "deploy": "Telepítés egy élő PlasmaChainre",
+            "interact": "Valódi játékosok játszanak és interaktálnak a Dappoddal",
+            "earn": "Fizetséget kérhetsz és pénzt kereshetsz!"
+        },
+        "make_game": "Készítsd el a játékmódodat most!",
+        "goto_lesson_list": "Ugrás a leckék listájához",
+        "share_link": "Megosztás",
+        "zbbg_slogan": "A Zombie Battleground az első gyűjthető kártyajáték, amely teljes egészében a blockchainen fut",
+        "zbbg_link": "Szerezd meg a korai hozzáférést most!",
+        "coming_soon": "Hamarosan",
+        "login_logout": {
+            "sign_in": "Bejelentkezés",
+            "sign_out": "Kijelentkezés",
+            "register": "Regisztráció"
+        },
+        "sign_in_modal": {
+            "sign_in": "Bejelentkezés",
+            "email": "Email",
+            "password": "Jelszó",
+            "enter_email": "Add meg az email címet",
+            "enter_password": "Add meg a jelszót",
+            "re_enter_password": "Jelszó újra megadása",
+            "forgot_password": "Elfelejtetted a jelszavad?",
+            "enter_email_password": "Kérjük, add meg az email címet és a jelszót.",
+            "password_length": "A jelszó hosszának 6 és 50 karakter között kell lennie.",
+            "cancel": "Mégse"
+        },
+        "register": {
+            "register": "Regisztráció",
+            "create_account": "Fiók létrehozása",
+            "register_new_account": "Új fiók regisztrálása",
+            "email": "Email",
+            "password": "Jelszó",
+            "enter_email": "Add meg az email címet",
+            "enter_password": "Add meg a jelszót",
+            "re_enter_new_password": "Új jelszó újra megadása",
+            "confirm_new_password": "Jelszó ismételt megadása",
+            "required_email_password": "Kérjük, add meg az email címet, a jelszót és erősítsd meg.",
+            "email_length": "Az email hosszának 3 és 191 karakter között kell lennie.",
+            "password_length": "A jelszó hosszának 6 és 50 karakter között kell lennie.",
+            "invalid_repeat_password": "A jelszavak nem egyeznek.",
+            "success": "A fiókodat sikeresen regisztráltuk.",
+            "bot_detected": "Bot észlelve! Frissítsd az oldalt és próbáld újra, ha ember vagy."
+        },
+        "reset_password": {
+            "reset_password": "Jelszó visszaállítása",
+            "reset_my_password": "Jelszavam visszaállítása",
+            "enter_new_password": "Add meg az új jelszót",
+            "re_enter_new_password": "Új jelszó újra megadása",
+            "confirm_new_password": "Jelszó ismételt megadása",
+            "required_password": "Kérjük, add meg a jelszót és erősítsd meg.",
+            "password_length": "A jelszó hosszának 6 és 50 karakter között kell lennie.",
+            "invalid_repeat_password": "A jelszavak nem egyeznek.",
+            "reset_success": "A jelszó sikeresen frissítve lett.",
+            "confirm": "OK",
+            "cancel": "Mégse"
+        },
+        "forgot_password": {
+            "reset_password": "Jelszó visszaállítása",
+            "enter_email": "Add meg az email címed",
+            "send": "Kérés küldése",
+            "reset_link": "A jelszó visszaállítási linket elküldjük az email címedre.",
+            "success": "Siker. Kérjük, ellenőrizd az email fiókodat. Megkapod a jelszó visszaállítási linket.",
+            "required_email": "Kérjük, add meg az email címet."
+        }
+    },
+    "achievements": {
+        "achievements": "Eredmények",
+        "achieved": "elérve",
+        "finished_first": {
+            "title": "Első lecke befejezve",
+            "desc": "Befejezted az első leckét bármely kurzusban"
+        },
+        "finished_solidity": {
+            "title": "A Solidity útvonal befejezve",
+            "desc": "Befejezted az összes leckét a Solidity útvonalon"
+        },
+        "finished_lesson7": {
+            "title": "Multi-fungible token építése",
+            "desc": "Multi-fungible token építése"
+        }
+    },
+    "rewards": {
+        "rewards": "jutalmak",
+        "test_key": "Alpha Tester kulcs a Zombie Battleground-hoz",
+        "loom_tokens": "Loom Tokenek",
+        "no_reward": "Nincs még egyetlen jutalmad sem"
+    },
+    "footer": {
+        "intro": "A CryptoZombies egy ingyenes, nyílt forráskódú, interaktív programozási iskola, amely megtanít játékokat építeni az Ethereumon. A kurzus kezdőknek készült Solidity-ben, és az abszolút alapoktól kezd. Tehát ha még soha nem programoztál Solidity-ben, ne aggódj - lépésről lépésre végigvezetünk.",
+        "find_more": "Tudj meg többet..."
+    },
+    "editor": {
+        "readOnly": "csak olvasható"
+    },
+    "lessonMenu": {
+        "getReward": "Jutalmak",
+        "pageTitle": "@:base.name | @:base.tagLine",
+        "itemLabel": "{title}",
+        "signIn": "Jelentkezz be és töltsd be a haladásod",
+        "progressLoaded": "A haladásod betöltve"
+    },
+    "overview": {
+        "pageTitle": "@:base.name {lesson} | @:base.tagLine",
+        "presents": "Bemutatja",
+        "title": "{title}",
+        "signInPrompt": "Innentől kezdve be kell jelentkezned, hogy szinkronizálni tudjuk a haladásodat és a zombijaidat. Kérjük, jelentkezz be az alábbi gombbal:",
+        "signInButton": "Bejelentkezés",
+        "levelUpText": "Ebben a leckében fejlesztjük a korábbi leckékben generált zombikat.",
+        "missingZombieText": "Sajnos úgy tűnik, nincs zombid a {lessonNum}. leckéből. Ha még nem fejezted be azt a leckét, kérjük, tedd meg, mielőtt folytatnád:",
+        "fixMissingZombieText": "Ha már befejezted a {lessonNum}. leckét és hibásan kaptad ezt az üzenetet, egyszerűen ugorj a végére és {generateNewZombie}.",
+        "generateNewZombieLink": "generálj egy új zombit",
+        "areYouReady": "Készen állsz a kezdésre?",
+        "resumeLesson": "Folytasd a {lessonNum}. leckét"
+    },
+    "chapter": {
+        "pageTitle": "@:base.name | {lesson} {chapter}",
+        "header": "Fejezet {chapterNum}: {title}",
+        "saveProgress": "Haladás mentése",
+        "autosaveEnabled": "Automatikus mentés engedélyezve",
+        "resumeProgress": "Haladás folytatása",
+        "showHint": "Tipp megjelenítése",
+        "nextChapter": "Következő fejezet",
+        "tryAgain": "Újrapróbálás",
+        "checkAnswer": "Válasz ellenőrzése",
+        "showMeTheAnswer": "Mutasd meg a választ",
+        "hideAnswer": "Válasz elrejtése",
+        "next_chapter": "TOVÁBB",
+        "prev_chapter": "VISSZA"
+    },
+    "lessonComplete": {
+        "shareLinksAction": "Vagy kattints az alábbi gombokra a megosztáshoz:",
+        "signIn": "Jelentkezz be és mentsd el a haladásod",
+        "goToNextLesson": "Tovább a következő leckéhez",
+        "lesson1": {
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies 1. leckéjét!",
+                "Hivatalosan egy lépéssel közelebb vagy ahhoz, hogy saját játékokat építs az Ethereumon.",
+                "Mutasd meg az első zombidat a barátaidnak!",
+                "Itt van a zombidhoz tartozó permalink:"
+            ],
+            "footer": "Mielőtt folytatnád a 2. leckével, győződj meg róla, hogy a haladásod el van mentve lent.",
+            "zombieDesc": "Egy 1. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 1. leckéjét és megtanultam a játékprogramozás alapjait az #Ethereumon. Köszönöm @CryptoZombiesHQ. Nézd meg a seregem első zombiját!"
+        },
+        "lesson2": {
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies {lesson2} leckéjét!",
+                "Eredmények feloldva:",
+                "{zombieName} 2. szintre lépett!",
+                "Hozzáadtad a NoName-t, egy MacskaZombit a seregedhez! (Ne izgulj, a 3. leckében megtanulod, hogyan változtathatod meg a nevét)",
+                "Mutasd meg a CryptoKitty-vadászd a barátaidnak!",
+                "Oszd meg ezt az URL-t, hogy a barátaid CryptoKitties-t vadászhatnak a zombiddal:"
+            ],
+            "footer": [
+                "Élvezed a CryptoZombies-t? Jelezd nekünk!",
+                "Csatlakozz a beszélgetéshez a {telegramLink}-en, vagy kövess minket a {twitterLink}-en",
+                "Amikor készen állsz, kattints az alábbi gombra a 3. lecke eléréséhez:"
+            ],
+            "zombieDesc": "Egy 2. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 2. leckéjét! A zombim megevett néhány #CryptoKitties-t, és többet tanultam az #Ethereum fejlesztésről. Köszönöm @CryptoZombiesHQ. Nézd meg, ahogy a zombim több CryptoKitties-t vadász:"
+        },
+        "lesson3": {
+            "achievementsUnlocked": "Eredmények feloldva:",
+            "zombieUpgraded": "{zombieName} {levelNum}. szintre lépett!",
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies {lesson3} leckéjét!",
+                "Mutasd meg a zombi sereged a barátaidnak!",
+                "Oszd meg ezt az URL-t, hogy a barátaid megnézhessék a seregedet:"
+            ],
+            "footer": [
+                "Élvezed a CryptoZombies-t? Jelezd nekünk!",
+                "Csatlakozz a beszélgetéshez a {telegramLink}-en, vagy kövess minket a {twitterLink}-en",
+                "Amikor készen állsz, kattints az alábbi gombra a 4. lecke eléréséhez:"
+            ],
+            "zombieDesc": "Egy 3. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 3. leckéjét! Nézd meg a zombi seregem:"
+        },
+        "lesson4": {
+            "achievementsUnlocked": "Eredmények feloldva:",
+            "zombieUpgraded": "{zombieName} {levelNum}. szintre lépett!",
+            "newZombieAdded": "Hozzáadtál egy új 1. szintű zombit a seregedhez!",
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies {lesson4} leckéjét!",
+                "Mutasd meg a zombi sereged a barátaidnak!",
+                "Oszd meg ezt az URL-t, hogy a barátaid megnézhessék a seregedet:"
+            ],
+            "footer": [
+                "Élvezed a CryptoZombies-t? Jelezd nekünk!",
+                "Csatlakozz a beszélgetéshez a {telegramLink}-en, vagy kövess minket a {twitterLink}-en",
+                "Amikor készen állsz, kattints az alábbi gombra a 5. lecke eléréséhez:"
+            ],
+            "zombieDesc": "Egy {levelNum}. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 4. leckéjét, és legyőztem a gonosz IOTA zombit! Köszönöm @CryptoZombiesHQ. Próbáld ki te is:"
+        },
+        "lesson5": {
+            "achievementsUnlocked": "Eredmények feloldva:",
+            "newZombieAdded": "Megkaptad a {zombieName}-t, egy {levelNum}. szintű CryptoZombie-t!",
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies {lesson5} leckéjét!",
+                "Mutasd meg a zombi sereged a barátaidnak!",
+                "Oszd meg ezt az URL-t, hogy a barátaid megnézhessék a teljes zombi seregedet:"
+            ],
+            "footer": [
+                "Élvezed a CryptoZombies-t? Jelezd nekünk!",
+                "Csatlakozz a beszélgetéshez a {telegramLink}-en, vagy kövess minket a {twitterLink}-en",
+                "Amikor készen állsz, kattints az alábbi gombra a 6. lecke eléréséhez:"
+            ],
+            "zombieDesc": "Egy {levelNum}. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 5. leckéjét és kaptam egy 10. szintű CryptoZombie-t! Köszönöm @CryptoZombiesHQ. Nézd meg a zombi seregem:"
+        },
+        "lesson6": {
+            "achievementsUnlocked": "Eredmények feloldva:",
+            "newZombieAdded": "Megkaptad a {zombieName}-t, egy {levelNum}. szintű CryptoZombie-t!",
+            "header": [
+                "Gratulálunk! Befejezted a CryptoZombies {lesson6} leckéjét!",
+                "Mutasd meg a zombi sereged a barátaidnak!",
+                "Oszd meg ezt az URL-t, hogy a barátaid megnézhessék a teljes zombi seregedet:"
+            ],
+            "footer": [
+                "A 7. lecke néhány héten belül megjelenik!",
+                "Emailt küldünk, amint kész lesz.",
+                "Addig is csatlakozz hozzánk a {telegramLink}-en, vagy kövess minket a {twitterLink}-en, hogy csatlakozz a beszélgetéshez!"
+            ],
+            "zombieDesc": "Egy {levelNum}. szintű CryptoZombie",
+            "shareLinkText": "Épp most fejeztem be a #CryptoZombies 6. leckéjét, és kaptam egy 3.0 szintű 'A Web3 Fantomja' CryptoZombie-t! Köszönöm @CryptoZombiesHQ. Nézd meg a zombi seregem:"
+        }
+    },
+    "zombieBattle": {
+        "yourTurn": "Te jössz",
+        "zombieDna": "{name} DNS-e",
+        "newZombieGenerated": "Új {species} generálva!",
+        "catZombie": "Macska-Zombie",
+        "mutantZombie": "Mutáns-Zombie",
+        "newSpeciesDna": "Új {species} DNS-e",
+        "cryptoKitty": "CryptoKitty",
+        "human": "Ember",
+        "tryAnotherCombo": "Próbálj egy másik kombinációt"
+    },
+    "zombieChar": {
+        "defaultZombieDesc": "Egy 1. szintű CryptoZombie"
+    },
+    "zombieDeck": {
+        "zombieDesc": "Egy {levelNum}. szintű CryptoZombie",
+        "nameInputPlaceholder": "Adj {name}-nek egy új nevet és nyomd meg a 'Mentés' gombot",
+        "save": "Mentés",
+        "yourDeck": "A paklid"
+    },
+    "zombieResult": {
+        "headGeneLabel": "Fej gén:",
+        "eyeGeneLabel": "Szem gén:",
+        "shirtGeneLabel": "Póló gén:",
+        "skinColorGeneLabel": "Bőrszín gén:",
+        "eyeColorGeneLabel": "Szemszín gén:",
+        "clothesColorGeneLabel": "Ruhaszín gén:",
+        "nameInputPlaceholder": "Add meg a nevet itt",
+        "defaultZombieDesc": "Egy 1. szintű CryptoZombie"
+    },
+    "battleArena": {
+        "IOTAslain": "Az IOTA-t legyőzték a csatában!",
+        "winCount": "A zombid győzelmeinek száma:",
+        "iotaLose": "Az IOTA vereségeinek száma",
+        "newZombie": "Új zombi létrehozva"
+    },
+    "sharePage": {
+        "pageTitle": "Nézd meg a CryptoZombie-m {zombieName}!",
+        "presents": "Bemutatja",
+        "zombieDesc": "{name}, egy {levelNum}. szintű CryptoZombie",
+        "lesson1": {
+            "zombieDesc": "Egy 1. szintű CryptoZombie",
+            "randomZombieGenerator": "véletlenszerű zombi generátor",
+            "achievementPreamble": [
+                "A barátod megtanulta az Ethereum játékfejlesztés alapjait, és létrehozta a {zombieName}-t, egy 1. szintű CryptoZombie-t bizonyítékként!",
+                "A CryptoZombies 1. leckéjének befejezéséhez a barátod épített egy {randomZombieGenerator}-t és megtanulta:"
+            ],
+            "achievements": [
+                "Hogyan írjunk Ethereum okos szerződéseket",
+                "Programozás Solidity-ben, az Ethereum okos szerződés programozási nyelvében",
+                "Játékok építése az Ethereumon"
+            ],
+            "tryItOut": "Próbáld ki a véletlenszerű zombi generátort.",
+            "below": "alul",
+            "above": "felül",
+            "zombieGeneratorText": "{tryItOut} Add meg a nevet a {below}{above} mezőben egy új zombi generálásához!",
+            "nameInputPlaceholder": "Add meg a nevet egy zombi generálásához",
+            "callToAction": [
+                "Szeretnél saját CryptoZombie-t építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson2": {
+            "zombieCardBattle": "Zombi Kártya Csata",
+            "love": "szeretnek",
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 2. leckéjét, és fejlesztette a {zombieName}-t egy CryptoKitty-vadásszá!",
+                "Egy CryptoKitty-vadász?!",
+                "Kiderült, hogy a CryptoZombies {love} táplálkozni CryptoKitties-ekkel.",
+                "Amikor egy CryptoZombie CryptoKitty-vel táplálkozik, a DNS-ük összekeveredik és a CryptoKitty újraéled CryptoZombie-ként.",
+                "Gyerünk, válassz egy CryptoKitty-t a támadáshoz, és nézd meg, milyen MacskaZombit kapsz!",
+                "Solidity Koncepciók Elsajátítva",
+                "A CryptoZombies Kód Iskola 2. leckéjének befejezéséhez a barátod épített egy {zombieCardBattle}-t és megtanulta:"
+            ],
+            "achievements": [
+                "A többjátékos játék készítésének alapjai",
+                "Interakció más szerződésekkel az Ethereum hálózaton",
+                "Nagyobb Solidity projektek több szerződésbe szervezése"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombies-t építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson3": {
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 3. leckéjét, és fejlesztette a zombi seregét!",
+                "A CryptoZombies 3. leckéjének befejezéséhez a barátod megtanulta:"
+            ],
+            "achievements": [
+                "Hogyan építsünk frissíthető okos szerződéseket",
+                "Szerződések biztonságossá tétele szerződés tulajdonjoggal",
+                "Gas és gas optimalizálás az Ethereumon",
+                "Függvény módosítók és biztonsági ellenőrzések"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombie sereget építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson4": {
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 4. leckéjét, és legyőzte a gonosz IOTA zombit!",
+                "Gyerünk, próbáld ki te is a bal oldalon. Használd a barátod seregét a csatához!",
+                "A CryptoZombies 4. leckéjének befejezéséhez a barátod megtanulta:"
+            ],
+            "achievements": [
+                "Fizethető függvények, és hogyan keress pénzt Ethereum-alapú játékaiddal",
+                "ETH kivonása okos szerződésekből",
+                "Véletlenszám generálás és biztonság az Ethereumon",
+                "És még sok más!"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombie sereget építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson5": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 5. leckéjét, és kapott egy 10. szintű CryptoZombie-t!",
+                "Nézd meg a barátod zombi seregét a bal oldalon. Elég félelmetes, mi?",
+                "A CryptoZombies 5. leckéjének befejezéséhez a barátod megtanulta:"
+            ],
+            "achievements": [
+                "Tokenek, az ERC721 szabvány, és kereskedhető tokenek/eszközök létrehozása",
+                "Solidity könyvtárak és azok használata",
+                "A SafeMath könyvtár és uint túlcsordulások és alulcsordulások megelőzése",
+                "Solidity kód kommentálása és a natspec szabvány"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombie sereget építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson6": {
+            "zombieDesc": "{name} CryptoZombie",
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 6. leckéjét és kapott egy 3.0 szintű `A Web3 Fantomja` CryptoZombie-t!",
+                "Nézd meg a barátod zombi seregét a bal oldalon. Elég félelmetes, mi?",
+                "A CryptoZombies 6. leckéjének befejezéséhez a barátod megtanulta:"
+            ],
+            "achievements": [
+                "Web frontend-ek építése Ethereum okos szerződésekhez Web3.js használatával",
+                "MetaMask és Infura használata felhasználóbarát DApp-ok építéséhez",
+                "Okos szerződés események figyelése és valós idejű frissítések megjelenítése a felhasználóknak",
+                "És még sok más!"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombie sereget építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        },
+        "lesson7": {
+            "zombieDesc": "Építsünk egy Zombie Battleground-szerű játékot!",
+            "achievementPreamble": [
+                "A barátod befejezte a CryptoZombies 7. leckéjét, és kapott egy 12. szintű CryptoZombie-t!",
+                "Nézd meg a barátod zombi seregét a bal oldalon. Elég félelmetes, mi?",
+                "A CryptoZombies 7. leckéjének befejezéséhez a barátod megtanulta:"
+            ],
+            "achievements": [
+                "Multi-fungible tokenek, és az ERC721X szabvány",
+                "Hogyan építsünk egy csapot, amely verziókat készít, lehetővé teszi a felhasználók számára a követelést, és átadja a tokeneket",
+                "Hogyan használjuk az ERC721X-et egyedi, limitált kiadású és standard kiadású kártyák implementálásához"
+            ],
+            "callToAction": [
+                "Szeretnél saját CryptoZombie sereget építeni és csatlakozni a sorokhoz?",
+                "Tanulj meg saját játékokat építeni az Ethereumon INGYENESEN a CryptoZombies-szel! Kezdj el most:"
+            ]
+        }
+    },
+    "czSlogan": "CryptoZombies: Tanulj ethereum blockchain programozást a Solidity oktatóanyagunkkal!"
+}
+

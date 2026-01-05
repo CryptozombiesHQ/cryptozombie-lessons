@@ -1,0 +1,27 @@
+{
+    "1": {
+        "pageTitle": "Nézd meg a CryptoZombie-m {{ .ZombieName }}!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 1. leckéjét és megtanultam a játékprogramozás alapjait az Ethereumon. Nézd meg a seregem első zombiját! Köszönöm @CryptoZombiesHQ."
+    },
+    "2": {
+        "pageTitle": "A CryptoZombie-m {{ .ZombieName }} épp most evett egy CryptoKitty-t és szintet lépett!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 2. leckéjét, és hozzáadtam egy újraélesztett CryptoKitty-t. Gyere és nézd meg!"
+    },
+    "3": {
+        "pageTitle": "Nézd meg a CryptoZombie seregem!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 3. leckéjét! A zombi seregem növekszik..."
+    },
+    "4": {
+        "pageTitle": "A CryptoZombie-m legyőzte a gonosz IOTA zombit!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 4. leckéjét, és legyőztem a gonosz IOTA zombit! Gyere és éljük át újra a csatát..."
+    },
+    "5": {
+        "pageTitle": "A CryptoZombie seregem növekedett!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 5. leckéjét, és kaptam egy 10. szintű H4XF13LD MORRIS 💯💯😎💯💯 zombit OMG!"
+    },
+    "6": {
+        "pageTitle": "Nézd meg \"A Web3 Fantomja\"-t, a 3.0 szintű CryptoZombie-m!",
+        "ogDesc": "Épp most fejeztem be a CryptoZombies 6. leckéjét és megtanultam, hogyan építsem a saját DApp-omat Web3.js, MetaMask és Infura használatával!"
+    }
+}
+

@@ -10,6 +10,7 @@ import sk from './sk'
 import de from './de'
 import it from './it'
 import fa from './fa'
+import hu from './hu'
 
 export default {
   en, // English (source for all translations)
@@ -23,5 +24,6 @@ export default {
   sk,
   de,
   it,
-  fa
+  fa,
+  hu
 }
