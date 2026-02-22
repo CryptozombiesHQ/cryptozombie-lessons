@@ -1,14 +1,12 @@
 ---
 title: Storage vs Memory (Data location)
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
@@ -18,7 +16,7 @@ material:
           // Start here
 
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
