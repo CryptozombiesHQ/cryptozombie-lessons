@@ -1,8 +1,6 @@
 ---
 title: Inheritance
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
@@ -48,6 +46,7 @@ material:
       }
 
       // Start here
+
     answer: |
       pragma solidity >=0.5.0 <0.6.0;
 
