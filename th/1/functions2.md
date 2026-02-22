@@ -1,8 +1,6 @@
 ---
 title: Private / Public Functions
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
