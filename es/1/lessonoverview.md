@@ -1,8 +1,6 @@
 ---
 title: Resumen de la Lección
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 skipCheckAnswer: true
 requireLogin: true
 material:
