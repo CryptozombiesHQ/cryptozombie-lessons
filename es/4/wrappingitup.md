@@ -1,8 +1,6 @@
 ---
 title: Resumiendo
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   saveZombie: true
