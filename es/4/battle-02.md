@@ -1,20 +1,18 @@
 ---
 title: Números Aleatorios
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombieattack.sol: |
+      "zombieattack.sol": |
         import "./zombiehelper.sol";
 
         contract ZombieBattle is ZombieHelper {
           // Start here
         }
-      zombiehelper.sol: |
+      "zombiehelper.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefeeding.sol";
@@ -65,7 +63,7 @@ material:
           }
 
         }
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -120,7 +118,7 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         import "./ownable.sol";
@@ -165,7 +163,7 @@ material:
             }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         pragma solidity ^0.4.25;
 
         /**
