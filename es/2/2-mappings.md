@@ -1,8 +1,6 @@
 ---
 title: Mapeos y Direcciones
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
