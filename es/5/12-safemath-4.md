@@ -1,14 +1,12 @@
 ---
 title: SafeMath Part 4
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombieattack.sol: |
+      "zombieattack.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiehelper.sol";
@@ -41,7 +39,7 @@ material:
             }
           }
         }
-      zombieownership.sol: |
+      "zombieownership.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombieattack.sol";
@@ -80,7 +78,7 @@ material:
           }
 
         }
-      zombiehelper.sol: |
+      "zombiehelper.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefeeding.sol";
@@ -129,7 +127,7 @@ material:
           }
 
         }
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -188,7 +186,7 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         import "./ownable.sol";
@@ -240,7 +238,7 @@ material:
           }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         pragma solidity ^0.4.25;
         /**
          * @title Ownable
@@ -313,7 +311,7 @@ material:
             _owner = newOwner;
           }
         }
-      safemath.sol: |
+      "safemath.sol": |
         pragma solidity ^0.4.25;
 
         /**
@@ -429,7 +427,7 @@ material:
             return c;
           }
         }
-      erc721.sol: |
+      "erc721.sol": |
         pragma solidity ^0.4.25;
         contract ERC721 {
             event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
