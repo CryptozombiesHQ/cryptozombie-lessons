@@ -1,14 +1,12 @@
 ---
 title: Import
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         // put import statement here
@@ -16,7 +14,7 @@ material:
         contract ZombieFeeding is ZombieFactory {
 
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         contract ZombieFactory {
