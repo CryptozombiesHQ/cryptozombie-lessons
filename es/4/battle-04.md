@@ -1,14 +1,12 @@
 ---
 title: Refactorizando Lógica Común
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -67,7 +65,7 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
-      zombieattack.sol: |
+      "zombieattack.sol": |
         pragma solidity ^0.4.25;
         import "./zombiehelper.sol";
 
@@ -83,7 +81,7 @@ material:
           function attack(uint _zombieId, uint _targetId) external {
           }
         }
-      zombiehelper.sol: |
+      "zombiehelper.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefeeding.sol";
@@ -134,7 +132,7 @@ material:
           }
 
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         import "./ownable.sol";
@@ -179,7 +177,7 @@ material:
             }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         "ownable.sol": |
         pragma solidity ^0.4.25;
 
