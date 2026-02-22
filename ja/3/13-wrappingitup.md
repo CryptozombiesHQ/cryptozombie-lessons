@@ -1,8 +1,6 @@
 ---
 title: Wrapping It Up
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   saveZombie: false
