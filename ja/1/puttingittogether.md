@@ -1,8 +1,6 @@
 ---
 title: Putting It Together
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
