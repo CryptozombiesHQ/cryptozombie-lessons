@@ -1,8 +1,6 @@
 ---
-title: Contracts
-actions:
-  - checkAnswer
-  - hints
+title: "Contracts"
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
