@@ -1,8 +1,6 @@
 ---
 title: Herencia
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
@@ -48,6 +46,7 @@ material:
       }
 
       // Empieza aquí
+
     answer: |
       pragma solidity ^0.4.25;
 
