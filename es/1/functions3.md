@@ -1,8 +1,6 @@
 ---
 title: Más sobre Funciones
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
