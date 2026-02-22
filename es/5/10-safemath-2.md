@@ -1,14 +1,12 @@
 ---
 title: SafeMath Part 2
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombieownership.sol: |
+      "zombieownership.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombieattack.sol";
@@ -48,7 +46,7 @@ material:
             emit Approval(msg.sender, _approved, _tokenId);
           }
         }
-      zombieattack.sol: |
+      "zombieattack.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiehelper.sol";
@@ -78,7 +76,7 @@ material:
             }
           }
         }
-      zombiehelper.sol: |
+      "zombiehelper.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefeeding.sol";
@@ -127,7 +125,7 @@ material:
           }
 
         }
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -186,7 +184,7 @@ material:
             feedAndMultiply(_zombieId, kittyDna, "kitty");
           }
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         import "./ownable.sol";
@@ -236,7 +234,7 @@ material:
           }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         pragma solidity ^0.4.25;
 
         /**
@@ -312,7 +310,7 @@ material:
             _owner = newOwner;
           }
         }
-      safemath.sol: |
+      "safemath.sol": |
         pragma solidity ^0.4.25;
 
         /**
@@ -360,7 +358,7 @@ material:
             return c;
           }
         }
-      erc721.sol: |
+      "erc721.sol": |
         pragma solidity ^0.4.25;
 
         contract ERC721 {
