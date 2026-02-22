@@ -1,8 +1,6 @@
 ---
 title: Tipo de Datos
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 material:
   editor:
     language: sol
@@ -18,3 +16,4 @@ contract HelloWorld
 ```
 
 # Put it to the test
+
