@@ -1,14 +1,12 @@
 ---
 title: Time Units
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         import "./ownable.sol";
@@ -54,7 +52,7 @@ material:
             }
 
         }
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         import "./zombiefactory.sol";
@@ -100,7 +98,7 @@ material:
           }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         pragma solidity >=0.5.0 <0.6.0;
 
         /**
