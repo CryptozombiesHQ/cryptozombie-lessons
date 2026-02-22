@@ -1,14 +1,12 @@
 ---
 title: Funciones Públicas & Seguridad
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -65,7 +63,7 @@ material:
           }
 
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         import "./ownable.sol";
@@ -110,7 +108,7 @@ material:
             }
 
         }
-      ownable.sol: |
+      "ownable.sol": |
         pragma solidity ^0.4.25;
 
         /**
