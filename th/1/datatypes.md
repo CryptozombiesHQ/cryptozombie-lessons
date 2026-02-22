@@ -1,8 +1,6 @@
 ---
 title: State Variables & Integers
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
