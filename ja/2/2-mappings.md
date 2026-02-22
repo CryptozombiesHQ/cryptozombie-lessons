@@ -1,8 +1,6 @@
 ---
 title: Mappings and Addresses
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
