@@ -1,14 +1,12 @@
 ---
 title: Más en la Visibilidad de Funciones
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
     language: sol
     startingCode:
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         contract ZombieFactory {
@@ -48,7 +46,7 @@ material:
             }
 
         }
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
