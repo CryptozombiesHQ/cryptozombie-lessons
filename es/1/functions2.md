@@ -1,8 +1,6 @@
 ---
 title: Funciones Públicas y Privadas
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
