@@ -1,8 +1,6 @@
 ---
 title: Lesson Overview
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 skipCheckAnswer: true
 requireLogin: true
 material:
