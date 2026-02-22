@@ -1,14 +1,12 @@
 ---
 title: ¿Qué Comen Los Zombis?
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
     language: ""
     startingCode:
-      zombiefeeding.sol: |
+      "zombiefeeding.sol": |
         pragma solidity ^0.4.25;
 
         import "./zombiefactory.sol";
@@ -26,7 +24,7 @@ material:
           }
 
         }
-      zombiefactory.sol: |
+      "zombiefactory.sol": |
         pragma solidity ^0.4.25;
 
         contract ZombieFactory {
