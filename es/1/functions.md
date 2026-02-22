@@ -1,8 +1,6 @@
 ---
 title: Declaración de Funciones
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
