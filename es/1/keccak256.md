@@ -1,8 +1,6 @@
 ---
 title: Keccak256 y Typecasting
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
