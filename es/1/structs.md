@@ -1,8 +1,6 @@
 ---
 title: Estructuras
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
