@@ -1,8 +1,6 @@
 ---
 title: Structs
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
