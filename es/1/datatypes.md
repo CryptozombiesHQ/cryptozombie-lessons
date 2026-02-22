@@ -1,8 +1,6 @@
 ---
 title: Variables de Estado y Números Enteros
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
