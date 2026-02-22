@@ -1,8 +1,6 @@
 ---
 title: Keccak256 and Typecasting
-actions:
-  - checkAnswer
-  - hints
+actions: [ 'checkAnswer', 'hints' ]
 requireLogin: true
 material:
   editor:
