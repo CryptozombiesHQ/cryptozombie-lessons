@@ -1,8 +1,6 @@
 ---
-title: Contratos
-actions:
-  - ""
-  - ""
+title: "Contratos"
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
