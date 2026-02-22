@@ -1,8 +1,6 @@
 ---
 title: Colocándolo junto
-actions:
-  - ""
-  - ""
+actions: [ '', '' ]
 requireLogin: true
 material:
   editor:
