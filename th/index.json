@@ -6,10 +6,10 @@
         "chapter": "หัวข้อ {chapterNum}",
         "syncing": "กำลังเชื่อมข้อมูล...",
         "telegram": {
-            "name": "Telegram",
+            "name": "Discord",
             "openChat": "เปิดแชท",
-            "action": "เข้ามาพูดคุยทาง Telegram กับเรา",
-            "link": "https://t.me/loomnetworkTH"
+            "action": "เข้ามาพูดคุยทาง Discord กับเรา",
+            "link": "https://discord.gg/N75HkEmmA"
         },
         "twitter": {
             "name": "Twitter",

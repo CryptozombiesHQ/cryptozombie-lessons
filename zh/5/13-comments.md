@@ -413,8 +413,8 @@ contract CryptoZombies {
    如果我们在哪个地方出了错，欢迎在我们的 github 提交 PR 或者 issue 来帮助我们改进：
     https://github.com/loomnetwork/cryptozombie-lessons
 
-    或者，如果你有任何的想法、建议甚至仅仅想和我们打声招呼，欢迎来我们的电报群：
-     https://t.me/loomnetworkcn
+    或者，如果你有任何的想法、建议甚至仅仅想和我们打声招呼，欢迎来我们的Discord：
+     https://discord.gg/N75HkEmmA
   */
 }
 ```

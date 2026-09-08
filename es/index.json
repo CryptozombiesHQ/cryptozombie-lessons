@@ -6,10 +6,10 @@
       "chapter": "Capítulo {chapterNum}",
       "syncing": "Sincronización...",
       "telegram": {
-          "name": "Telegram",
+          "name": "Discord",
           "openChat": "Abrir el chat",
-          "action": "Únete a nuestro Telegram",
-          "link": "https://t.me/loomnetworkdev"
+          "action": "Únete a nuestro Discord",
+          "link": "https://discord.gg/N75HkEmmA"
       },
       "twitter": {
           "name": "Twitter",
@@ -260,7 +260,7 @@
           "footer": [
               "¡La lección 7 estará lista en las próximas semanas!",
               "Recibirás un e-mail tan temprano como sea posible.",
-              "¡De mientras, únete a nuestro telegram {telegramLink}, o síguenos en {twitterLink} para hablarnos!"
+              "¡De mientras, únete a nuestro {telegramLink}, o síguenos en {twitterLink} para hablarnos!"
           ],
           "zombieDesc": "Un CryptoZombie de Nivel {levelNum}",
           "shareLinkText": "He completado la Lección 6 de #CryptoZombies, ¡y he ganado el zombie 'The Phantom of Web3' de nivel 3.0! Gracias @CryptoZombiesHQ. Héchale un vistazo a mi ejército zombie:"

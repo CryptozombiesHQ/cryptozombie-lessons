@@ -6,10 +6,10 @@
         "chapter": "챕터 {chapterNum}",
         "syncing": "동기화 진행 중...",
         "telegram": {
-            "name": "텔레그램",
+            "name": "Discord",
             "openChat": "질문하기",
-            "action": "텔레그램 들어가기",
-            "link": "https://t.me/loomnetworkKR"
+            "action": "Discord 들어가기",
+            "link": "https://discord.gg/N75HkEmmA"
         },
         "twitter": {
             "name": "트위터",

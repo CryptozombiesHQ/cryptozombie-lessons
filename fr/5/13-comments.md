@@ -419,7 +419,7 @@ contract CryptoZombies {
 
     Ou si vous avez des idées, commentaires, ou si vous voulez
     tout simplement dire bonjour - rejoignez-nous sur notre communauté
-    Telegram à https://t.me/loomnetwork
+    Discord à https://discord.gg/N75HkEmmA
   */
 }
 ```

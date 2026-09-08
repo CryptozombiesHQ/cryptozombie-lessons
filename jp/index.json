@@ -6,10 +6,10 @@
         "chapter": "チャプター {chapterNum}",
         "syncing": "同期中...",
         "telegram": {
-            "name": "Telegram",
+            "name": "Discord",
             "openChat": "チャットに参加",
-            "action": "Telegramに参加する",
-            "link": "https://t.me/loomnetworkdev"
+            "action": "Discordに参加する",
+            "link": "https://discord.gg/N75HkEmmA"
         },
         "twitter": {
             "name": "Twitter",

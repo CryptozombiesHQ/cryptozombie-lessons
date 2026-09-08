@@ -6,10 +6,10 @@
         "chapter": "Kapitola {chapterNum}",
         "syncing": "Synchronizujem...",
         "telegram": {
-            "name": "Telegram",
+            "name": "Discord",
             "openChat": "Open Chat",
-            "action": "Pripojte sa k telegramu",
-            "link": "https://t.me/loomnetwork"
+            "action": "Pripojte sa k Discord",
+            "link": "https://discord.gg/N75HkEmmA"
         },
         "twitter": {
             "name": "Twitter",

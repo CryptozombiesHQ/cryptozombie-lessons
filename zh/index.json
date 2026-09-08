@@ -6,10 +6,10 @@
     "chapter": "第{chapterNum}章",
     "syncing": "正在同步...",
     "telegram": {
-      "name": "Telegram",
+      "name": "Discord",
       "openChat": "加入群聊",
-      "action": "加入我们的Telegram",
-      "link": "https://t.me/loomnetworkCN"
+      "action": "加入我们的Discord",
+      "link": "https://discord.gg/N75HkEmmA"
     },
     "twitter": {
       "name": "Twitter",
@@ -118,7 +118,7 @@
       ],
       "footer": [
         "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
-        "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
+        "加入我们的 Discord: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
         "准备好了的话，点击下面的按钮进入第五课："
       ],
       "zombieDesc": "一个 {levelNum} 级CryptoZombie",
@@ -134,7 +134,7 @@
       ],
       "footer": [
         "喜欢我们的课程么？ 来跟我们打声招呼鼓励一下我们吧",
-        "加入我们的电报群: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
+        "加入我们的 Discord: {telegramLink}, 或者成为我们的 {twitterLink} 粉丝",
         "准备好了的话，点击下面的按钮进入第五课："
       ],
       "zombieDesc": "一个 {levelNum} 级 CryptoZombie",
