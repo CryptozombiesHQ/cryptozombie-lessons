@@ -409,7 +409,7 @@ contract CryptoZombies {
     https://github.com/loomnetwork/cryptozombie-lessons
 
     หากว่ามีไอเดียอะไรใหม่ๆ คอมเม้นท์ หรือเพียงแค่ต้องการทักทายกัน
-     - เข้ามายัง Telegram community ของเราได้ที่ https://t.me/loomnetwork
+     - เข้ามายัง Discord community ของเราได้ที่ https://discord.gg/GbwwAqv7Ue
   */
 }
 ```

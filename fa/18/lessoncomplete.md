@@ -11,4 +11,4 @@ You could also use <a href="https://github.com/tj/commander.js/" target=_blank>C
 
 The lessons in this series were aimed at getting you familiarized with the zkSync protocol. Even if this was just a demo implementation, and we've made a few decisions that simplified things a bit, we trust you have the skills to make a production-ready application!💪🏻
 
-Got questions? Head on over to our <a href="https://t.me/loomnetworkdev" target=_blank>developer chat</a> on Telegram and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://discord.gg/GbwwAqv7Ue" target=_blank>developer chat</a> on Discord and a member of our team will help you out.

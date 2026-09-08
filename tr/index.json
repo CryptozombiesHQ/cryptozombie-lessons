@@ -6,10 +6,10 @@
         "chapter": "Bölüm {chapterNum}",
         "syncing": "Senkronlanıyor...",
         "telegram": {
-            "name": "Telegram",
+            "name": "Discord",
             "openChat": "Chati Aç",
-            "action": "Telegram'a Katıl",
-            "link": "https://t.me/loomnetwork"
+            "action": "Discord'a Katıl",
+            "link": "https://discord.gg/GbwwAqv7Ue"
         },
         "twitter": {
             "name": "Twitter",

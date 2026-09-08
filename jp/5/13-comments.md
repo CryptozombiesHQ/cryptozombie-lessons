@@ -416,7 +416,7 @@ contract CryptoZombies {
     https://github.com/loomnetwork/cryptozombie-lessons
 
     Or if you have some ideas, comments, or just want to say
-    hi - drop by our Telegram community at https://t.me/loomnetwork
+    hi - drop by our Discord community at https://discord.gg/GbwwAqv7Ue
   */
 }
 ```
