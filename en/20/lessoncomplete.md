@@ -11,4 +11,4 @@ Remember, deploying to TRON brings you faster and cheaper transactions which mak
 
 Note that, to make this lesson easier to understand, we've made several decisions that simplified things a bit and omitted some important steps like testing.
 
-Got questions? Head on over to our <a href="https://discord.gg/N75HkEmmA" target=_blank>developer chat</a> on Discord and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://discord.gg/GbwwAqv7Ue" target=_blank>developer chat</a> on Discord and a member of our team will help you out.

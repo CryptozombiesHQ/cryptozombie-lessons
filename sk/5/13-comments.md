@@ -486,7 +486,7 @@ contract CryptoZombies {
     https://github.com/loomnetwork/cryptozombie-lessons
 
     Ak máš nejaké nové nápady, komentáre, alebo chceš len pozraviť,
-    zastav sa v našej Discord komunite https://discord.gg/N75HkEmmA
+    zastav sa v našej Discord komunite https://discord.gg/GbwwAqv7Ue
   */
 }
 ```

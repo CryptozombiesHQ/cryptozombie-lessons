@@ -26,4 +26,4 @@ To continue your blockchain journey and explore more about NNS, check out these 
 
 ## In Need of Help?
 
-Got questions? Head on over to our <a href="https://discord.gg/N75HkEmmA" target=_blank>developer chat</a> on Discord and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://discord.gg/GbwwAqv7Ue" target=_blank>developer chat</a> on Discord and a member of our team will help you out.

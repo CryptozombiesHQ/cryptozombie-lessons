@@ -11,4 +11,4 @@ Remember, learning is a continuous journey, and the more you practice and experi
 
 Happy building, and see you in the next lesson!
 
-Got questions? Head on over to our <a href="https://discord.gg/N75HkEmmA" target=_blank>developer chat</a> on Discord and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://discord.gg/GbwwAqv7Ue" target=_blank>developer chat</a> on Discord and a member of our team will help you out.

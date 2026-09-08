@@ -419,7 +419,7 @@ contract CryptoZombies {
 
     Ou si vous avez des idées, commentaires, ou si vous voulez
     tout simplement dire bonjour - rejoignez-nous sur notre communauté
-    Discord à https://discord.gg/N75HkEmmA
+    Discord à https://discord.gg/GbwwAqv7Ue
   */
 }
 ```

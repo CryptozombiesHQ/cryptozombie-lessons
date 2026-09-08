@@ -11,4 +11,4 @@ But the journey doesn't end here. Next, it's time to put your smart contract to 
 
 But that's not all. We'll show how to deploy your royalties NFT smart contract on Optimism, harnessing its blazing-fast transaction speeds and reduced costs!
 
-Got questions? Head on over to our <a href="https://discord.gg/N75HkEmmA" target=_blank>developer chat</a> on Discord and a member of our team will help you out.
+Got questions? Head on over to our <a href="https://discord.gg/GbwwAqv7Ue" target=_blank>developer chat</a> on Discord and a member of our team will help you out.
